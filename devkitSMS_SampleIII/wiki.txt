@@ -3,7 +3,6 @@
 
 
 <br /><br />
-
 In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
 <br /><br />
 However, as projects became larger they seemed longer to build.  Plus it didn't seem possible to debug step through C source code.  Look for opportunities to improve the process further as we build Platform Explorer!
@@ -106,7 +105,7 @@ Therefore, in an attempt to improve build compile times, we'd like to separate i
 Note: here object file would have to be version controlled and build script may change during development.
 <br /><br />
 
-<u>Timings</u>
+<u>Timing</u>
 <br />
 In order to test hypothesis that separating code improves compilation speed then record build script times:
 <br />
@@ -138,4 +137,146 @@ echo.
 echo Time taken: %_sec:~-2%.%_cs:~-2% secs
 echo
 </pre>
+
+<u>Coding</u>
+<br />
+The following coding changes + enhancements have been made throughout Platform Explorer development:
+<br /><br />
+<b>devkitSMS</b>
+<br />
+The original SMSlib.h and PSGlib.h header files do not seem to have include guard clauses which means they can't be included more than once so let's create wrappers for them.  In fact, this is beneficial for debugging.
+<pre class="csharp" name="code">
+_sms_manager.h
+#ifndef _SMS_MANAGER_H_
+#define _SMS_MANAGER_H_
+
+void devkit_SMS_init();
+void devkit_SMS_displayOn();
+void devkit_SMS_displayOff();
+void devkit_SMS_mapROMBank( unsigned char n );
+///...
+
+// input
+unsigned int devkit_SMS_getKeysStatus();
+unsigned int devkit_PORT_A_KEY_UP();
+unsigned int devkit_PORT_A_KEY_DOWN();
+unsigned int devkit_PORT_A_KEY_LEFT();
+unsigned int devkit_PORT_A_KEY_RIGHT();
+unsigned int devkit_PORT_A_KEY_1();
+unsigned int devkit_PORT_A_KEY_2();
+
+// #defines
+unsigned char devkit_SPRITEMODE_NORMAL();
+unsigned int devkit_VDPFEATURE_HIDEFIRSTCOL();
+
+#endif//_SMS_MANAGER_H_
+</pre>
+Note: repeat this process for PSGlib.h.  Also, don't forget to upgrade PSGlib to include PSGResume() API.
+
+<br /><br />
+
+<b>Screen</b>
+<br />
+As projects get larger there will be more screens.  Therefore, refactor and channel through screen manager:
+<pre class="csharp" name="code">
+// screen_manager.c
+#include "screen_manager.h"
+#include "global_manager.h"
+#include "enum_manager.h"
+
+// Screens
+#include "splash_screen.h"
+#include "intro_screen.h"
+// ...
+#include "over_screen.h"
+
+static void( *load_method[ MAX_SCREEENS ] )( );
+static void( *update_method[ MAX_SCREEENS ] )( unsigned char *screen_type );
+
+static unsigned char curr_screen_type;
+static unsigned char next_screen_type;
+
+void engine_screen_manager_init( unsigned char open_screen_type )
+{
+	next_screen_type = open_screen_type;
+	curr_screen_type = screen_type_none;
+
+	// Set load methods.
+	load_method[ screen_type_splash ] = screen_splash_screen_load;
+	load_method[ screen_type_intro ] = screen_intro_screen_load;
+// ...
+}
+
+void engine_screen_manager_update()
+{
+	if( curr_screen_type != next_screen_type )
+	{
+		curr_screen_type = next_screen_type;
+		load_method[ curr_screen_type ]();
+	}
+
+	update_method[ curr_screen_type ]( &next_screen_type );
+}
+</pre>
+<br />
+<b>Input</b>
+<br />
+Remove previous + current input state that was injected into methods and channel through input manager:
+<pre class="csharp" name="code">
+// input_manager.c
+#include "input_manager.h"
+#include "_sms_manager.h"
+
+// Must be static to persist values!
+static unsigned int curr_joypad1 = 0;
+static unsigned int prev_joypad1 = 0;
+
+// Private helper methods.
+static unsigned char engine_input_manager_hold( unsigned int data );
+static unsigned char engine_input_manager_move( unsigned int data );
+
+// Public method.
+void engine_input_manager_update()
+{
+	prev_joypad1 = curr_joypad1;
+	curr_joypad1 = devkit_SMS_getKeysStatus();
+}
+
+
+// main.c
+for (;;)
+{
+	if( devkit_SMS_queryPauseRequested() )
+	{
+		devkit_SMS_resetPauseRequest();
+		global_pause = !global_pause;
+		if( global_pause )
+		{
+			devkit_PSGSilenceChannels();
+		}
+		else
+		{
+			devkit_PSGRestoreVolumes();
+		}
+	}
+
+	if( global_pause )
+	{
+		continue;
+	}
+
+	devkit_SMS_initSprites();
+	engine_input_manager_update();
+
+	engine_screen_manager_update();
+
+	devkit_SMS_finalizeSprites();
+	devkit_SMS_waitForVBlank();
+	devkit_SMS_copySpritestoSAT();
+
+	devkit_PSGFrame();
+	devkit_PSGSFXFrame();
+}
+</pre>
+
 </span>

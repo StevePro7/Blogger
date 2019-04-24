@@ -1,0 +1,34 @@
+<u>Coding</u>
+<br />
+The following coding changes + enhancements have been made throughout Platform Explorer development:
+<br /><br />
+<b>devkitSMS</b>
+<br />
+The original SMSlib.h and PSGlib.h header files do not seem to have include guard clauses which means they can't be included more than once so let's create wrappers for them.  In fact, this is beneficial for debugging.
+<pre class="csharp" name="code">
+_sms_manager.h
+#ifndef _SMS_MANAGER_H_
+#define _SMS_MANAGER_H_
+
+void devkit_SMS_init();
+void devkit_SMS_displayOn();
+void devkit_SMS_displayOff();
+void devkit_SMS_mapROMBank( unsigned char n );
+///...
+
+// input
+unsigned int devkit_SMS_getKeysStatus();
+unsigned int devkit_PORT_A_KEY_UP();
+unsigned int devkit_PORT_A_KEY_DOWN();
+unsigned int devkit_PORT_A_KEY_LEFT();
+unsigned int devkit_PORT_A_KEY_RIGHT();
+unsigned int devkit_PORT_A_KEY_1();
+unsigned int devkit_PORT_A_KEY_2();
+
+// #defines
+unsigned char devkit_SPRITEMODE_NORMAL();
+unsigned int devkit_VDPFEATURE_HIDEFIRSTCOL();
+
+#endif//_SMS_MANAGER_H_
+</pre>
+Note: repeat this process for PSGlib.h.  Also, don't forget to upgrade PSGlib to include PSGResume() API.
