@@ -1,0 +1,10 @@
+<u>Separation</u>
+<br />
+As projects became larger they seemed longer to build.  Traditionally, this has been because all the code has been spread across multiple header files but with only 1x main.c which forces a complete rebuild each time.
+<br /><br />
+Therefore, in an attempt to improve build compile times, we'd like to separate interface from implementation code: keep header files lean with goal that static code in translation units need not be constantly recompiled!
+<br /><br />
+Note: here object file would have to be version controlled and build script may change during development.
+<br /><br />
+
+

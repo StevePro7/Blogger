@@ -1,0 +1,35 @@
+
+
+
+<u>Timings</u>
+<br />
+In order to test hypothesis that separating code improves compilation speed then record build script times:
+<br />
+
+<pre class="csharp" name="code">
+:: Calculate the start timestamp
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
+
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 debug_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_manager.c
+:: continue compiling remaining implementation [*.c] files
+
+sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 main.c
+
+:: Calculate the difference in cSeconds
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _duration=_hours*60*60*100+_min*60*100+_sec*100+_cs-_started
+
+:: Populate variables for rendering (100+ needed for padding)
+set /a _hours=_duration/60/60/100,_min=100+_duration/60/100%%60,_sec=100+(_duration/100%%60%%60),_cs=100+_duration%%100
+
+echo.
+echo Time taken: %_sec:~-2%.%_cs:~-2% secs
+echo
+</pre>

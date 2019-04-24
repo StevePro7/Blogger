@@ -2,6 +2,8 @@
 
 
 
+<br /><br />
+
 In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
 <br /><br />
 However, as projects became larger they seemed longer to build.  Plus it didn't seem possible to debug step through C source code.  Look for opportunities to improve the process further as we build Platform Explorer!
@@ -85,4 +87,55 @@ Formatting is important because formatted code makes it easier to read, understa
 
 <br /><br />
 
+<u>Setup</u>
+<br />
+Create folder C:\PlatformExplorerSMS. Create the following sub-folders: asm, crt0, dev, gfx, lib, psg, tmp.  Note: tmp sub-folder contains dummy PSGlib.h and SMSlib.h header files used for debugging - more soon.
+<!--
+<a href="https://4.bp.blogspot.com/-QmpPb0E7YuI/XMBHf-Zyg0I/AAAAAAAAFZw/DE78cmCYrxY9ly-zI_tHFe1bfrrQCARVwCLcBGAs/s1600/Setup.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-QmpPb0E7YuI/XMBHf-Zyg0I/AAAAAAAAFZw/DE78cmCYrxY9ly-zI_tHFe1bfrrQCARVwCLcBGAs/s640/Setup.png" width="98%" height="513" data-original-width="1031" data-original-height="827" /></a>
+-->
+IMPORTANT: more information on which files reside in sub-folders and why can be found at here and here.
+<br /><br />
+
+
+<u>Separation</u>
+<br />
+As projects became larger they seemed longer to build.  Traditionally, this has been because all the code has been spread across multiple header files but with only 1x main.c which forces a complete rebuild each time.
+<br /><br />
+Therefore, in an attempt to improve build compile times, we'd like to separate interface from implementation code: keep header files lean with goal that static code in translation units need not be constantly recompiled!
+<br /><br />
+Note: here object file would have to be version controlled and build script may change during development.
+<br /><br />
+
+<u>Timings</u>
+<br />
+In order to test hypothesis that separating code improves compilation speed then record build script times:
+<br />
+
+<pre class="csharp" name="code">
+:: Calculate the start timestamp
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
+
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 debug_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_manager.c
+:: continue compiling remaining implementation [*.c] files
+
+sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 main.c
+
+:: Calculate the difference in cSeconds
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _duration=_hours*60*60*100+_min*60*100+_sec*100+_cs-_started
+
+:: Populate variables for rendering (100+ needed for padding)
+set /a _hours=_duration/60/60/100,_min=100+_duration/60/100%%60,_sec=100+(_duration/100%%60%%60),_cs=100+_duration%%100
+
+echo.
+echo Time taken: %_sec:~-2%.%_cs:~-2% secs
+echo
+</pre>
 </span>
