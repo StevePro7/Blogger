@@ -1,0 +1,51 @@
+SMS Manager
+17/04/2019
+
+
+After build.bat write this continuation:
+
+One issue found with this is that it seems that SMSlib.h and PSGlib.h could only be included once
+e.g. previously in main.h as with all other header files would be included in the main.c file
+
+
+Now that the source code is scaled out across multiple translation units it seems that in its current incarnation SMSlib.h and PSGlib.h cannot be #include more than once because there don't seem to be any header include guard clauses.
+
+No matter, we can wrap the SMSlib.h and PSGlib.h files in our own SMS Manager and PSG Manager files that act as wrappers around the original lib header files
+
+NOTE: by doing this could actually be advantageous if we would like to try and integrate compilation and debugging later on in the project
+
+
+<pre class="csharp" name="code">
+_sms_manager.h
+#ifndef _SMS_MANAGER_H_
+#define _SMS_MANAGER_H_
+
+void devkit_SMS_init();
+void devkit_SMS_displayOn();
+void devkit_SMS_displayOff();
+void devkit_SMS_mapROMBank( unsigned char n );
+
+
+// input
+unsigned int devkit_SMS_getKeysStatus();
+unsigned int devkit_PORT_A_KEY_UP();
+unsigned int devkit_PORT_A_KEY_DOWN();
+unsigned int devkit_PORT_A_KEY_LEFT();
+unsigned int devkit_PORT_A_KEY_RIGHT();
+unsigned int devkit_PORT_A_KEY_1();
+unsigned int devkit_PORT_A_KEY_2();
+
+// #defines
+unsigned char devkit_SPRITEMODE_NORMAL();
+unsigned int devkit_VDPFEATURE_HIDEFIRSTCOL();
+
+#endif//_SMS_MANAGER_H_
+</pre>
+
+
+Repeat the same for PSG Manager
+
+
+IMPORTANT
+Don't show the implementation _sms_manager.c file YET!
+I want to show this later on the compile and debugger stage

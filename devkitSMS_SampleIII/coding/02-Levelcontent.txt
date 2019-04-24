@@ -1,0 +1,240 @@
+00.
+<span style="font-family:verdana;font-size:85%;">
+
+<b>Levels</b>
+<br />
+In 2018, Duckslayer Adventures by haroldoop gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing:
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%" >
+<pre class="csharp" name="code">
+&nbsp;&nbsp;
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.P..............
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;..........A.....
+&nbsp;&nbsp;..G...$@@@@....G
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.G............G.
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;.@@.1.......X.@@
+&nbsp;&nbsp;.####$$$$$$#####
+&nbsp;&nbsp;..###$$$$$$####.
+</pre>
+</td>
+<td valign="top" width="60%">
+<a href="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s1600/Level0101.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s640/Level0101.png" width="95%" /></a>
+</td>
+<td valign="top" width="20%">
+<table width="100%">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>KEY</b></td>
+<td valign="top" width="40%">&nbsp;<b>VALUE</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;.</td>
+<td valign="top" width="40%">&nbsp;blank</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;#</td>
+<td valign="top" width="40%">&nbsp;block</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;@</td>
+<td valign="top" width="40%">&nbsp;platform</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;$</td>
+<td valign="top" width="40%">&nbsp;optional</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;1</td>
+<td valign="top" width="40%">&nbsp;player</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;X</td>
+<td valign="top" width="40%">&nbsp;exit</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;G</td>
+<td valign="top" width="40%">&nbsp;gem</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;P</td>
+<td valign="top" width="40%">&nbsp;power</td>
+</tr>
+</table>
+</td>
+
+</tr>
+</table>
+
+</span>
+
+
+
+
+01.
+<span style="font-family:verdana;font-size:85%;">
+
+<u>Level Manager</u>
+<br />
+In 2018, Duckslayer Adventures by haroldoop gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing.
+<br /><br />
+
+In 2018, Duckslayer Adventures by haroldoop gave a great example of how levels could be stored externally in text files + converted into byte arrays using folder2c.  The byte arrays could then be interpreted at runtime for rendering.
+<br /><br />
+
+In 2018, haroldoop built Duckslayer Adventures and included the source code in which the levels were stored as txt files
+Then folder2c utility could be used to convert the level files into byte arrays which can be interpreted at runtime to load the levels for rendering
+
+This idea was used in "Platform Explorer" as a way to scale out the game: separate code from data and store in banks
+
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%" >
+<pre class="csharp" name="code">
+&nbsp;&nbsp;
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.P..............
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;..........A.....
+&nbsp;&nbsp;..G...$@@@@....G
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.G............G.
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;.@@.1.......X.@@
+&nbsp;&nbsp;.####$$$$$$#####
+&nbsp;&nbsp;..###$$$$$$####.
+</pre>
+</td>
+<td valign="top" width="60%">
+<a href="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s1600/Level0101.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s640/Level0101.png" width="95%" /></a>
+</td>
+<td valign="top" width="20%">
+<table width="100%">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>KEY</b></td>
+<td valign="top" width="40%">&nbsp;<b>VALUE</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;.</td>
+<td valign="top" width="40%">&nbsp;blank</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;#</td>
+<td valign="top" width="40%">&nbsp;block</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;@</td>
+<td valign="top" width="40%">&nbsp;platform</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;$</td>
+<td valign="top" width="40%">&nbsp;optional</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;1</td>
+<td valign="top" width="40%">&nbsp;player</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;X</td>
+<td valign="top" width="40%">&nbsp;exit</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;G</td>
+<td valign="top" width="40%">&nbsp;gem</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;P</td>
+<td valign="top" width="40%">&nbsp;power</td>
+</tr>
+</table>
+</td>
+
+</tr>
+</table>
+
+</span>
+
+
+
+
+
+02.
+<span style="font-family:verdana;font-size:85%;">
+
+In 2018, haroldoop built Duckslayer Adventures and included the source code in which the levels were stored as txt files
+Then folder2c utility could be used to convert the level files into byte arrays which can be interpreted at runtime to load the levels for rendering
+
+This idea was used in "Platform Explorer" as a way to scale out the game: separate code from data and store in banks
+
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%" >
+<pre class="csharp" name="code">
+&nbsp;&nbsp;
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.P..............
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;..........A.....
+&nbsp;&nbsp;..G...$@@@@....G
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.G............G.
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;.@@.1.......X.@@
+&nbsp;&nbsp;.####$$$$$$#####
+&nbsp;&nbsp;..###$$$$$$####.
+</pre>
+</td>
+<td valign="top" width="60%">
+<a href="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s1600/Level0101.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s640/Level0101.png" width="95%" /></a>
+</td>
+<td valign="top" width="20%">
+<table width="100%">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>KEY</b></td>
+<td valign="top" width="40%">&nbsp;<b>VALUE</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;.</td>
+<td valign="top" width="40%">&nbsp;blank</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;#</td>
+<td valign="top" width="40%">&nbsp;block</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;@</td>
+<td valign="top" width="40%">&nbsp;platform</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;$</td>
+<td valign="top" width="40%">&nbsp;optional</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;1</td>
+<td valign="top" width="40%">&nbsp;player</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;X</td>
+<td valign="top" width="40%">&nbsp;exit</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;G</td>
+<td valign="top" width="40%">&nbsp;gem</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;P</td>
+<td valign="top" width="40%">&nbsp;power</td>
+</tr>
+</table>
+</td>
+
+</tr>
+</table>
+
+</span>

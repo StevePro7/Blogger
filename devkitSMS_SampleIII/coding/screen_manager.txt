@@ -1,0 +1,34 @@
+screen manager
+17/04/2019
+
+
+Following on from devkitSMS II 
+Array of Function Pointers
+this was for the screen load() and update() functions
+
+As the game grows in scale and there are more screens available [state design pattern]
+it makes sense to factor ou this bloated code out into its own screen_manager component
+
+
+void engine_screen_manager_init( unsigned char open_screen_type )
+{
+	next_screen_type = open_screen_type;
+	curr_screen_type = screen_type_none;
+
+	// Set load methods.
+	load_method[ screen_type_none ] = screen_none_screen_load;
+	load_method[ screen_type_splash ] = screen_splash_screen_load;
+	load_method[ screen_type_intro ] = screen_intro_screen_load;
+// ...
+}
+
+void engine_screen_manager_update()
+{
+	if( curr_screen_type != next_screen_type )
+	{
+		curr_screen_type = next_screen_type;
+		load_method[ curr_screen_type ]();
+	}
+
+	update_method[ curr_screen_type ]( &next_screen_type );
+}

@@ -1,0 +1,37 @@
+Level content
+17/04/2019
+
+
+In 2018, haroldoop built Duckslayer Adventures and included the source code in which the levels were stored as txt files
+Then folder2c utility could be used to convert the level files into byte arrays which can be interpreted at runtime to load the levels for rendering
+
+This idea was used in "Platform Explorer" as a way to scale out the game: separate code from data and store in banks
+
+
+<pre class="csharp" name="code">
+................
+.P..............
+.@@...........@@
+..........A.....
+..G...$@@@@....G
+.@@...........@@
+................
+.G............G.
+.@@...........@@
+.@@.1.......X.@@
+.####$$$$$$#####
+..###$$$$$$####.
+</pre>
+
+Key	TABLE
+.	blank
+#	block
+@	platform
+$	optional
+1	player
+X	exit
+G	gem
+P	power
+
+haroldoop 
+http://www.smspower.org/forums/member601
