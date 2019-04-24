@@ -1,8 +1,51 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Debugging</u>
+<br />
+Visual Studio is useful IDE for navigating a large code base.  However, as the game code currently targets SDCC compiler it does not seem possible to debug step through the devkitSMS specific API source code.
+<br /><br />
+Nonetheless, leverage the _CONSOLE conditional compilation statement and implement the following code.  Here, it is possible to debug step through all ANSI-C code at least trusting devkitSMS code works correctly.
 
+<pre class="csharp" name="code">
+// _sms_manager.c
+#include "_sms_manager.h"
+#include "info_manager.h"
+#include &lt;stdbool.h&gt;
+
+#ifdef _CONSOLE
+#include "..\..\tmp\SMSlib.h"
+#else
+#include "..\..\lib\SMSlib.h"
+#endif
+
+void devkit_SMS_init()
+{
+	SMS_init();
+}
+void devkit_SMS_displayOn()
+{
+	SMS_displayOn();
+}
+void devkit_SMS_displayOff()
+{
+	SMS_displayOff();
+}
+void devkit_SMS_mapROMBank( unsigned char n )
+{
+	SMS_mapROMBank( n );
+}
+// ...
+// Sega header.
+#ifdef _CONSOLE
+#else
+	SMS_EMBED_SEGA_ROM_HEADER( productCode, revision );
+	SMS_EMBED_SDSC_HEADER( verMaj, verMin, dateYear, dateMonth, dateDay, author, name, descr );
+#endif
+</pre>
+Remember: <b>tmp</b> sub-folder contains dummy PSGlib.h and SMSlib.h header files that facilitate debugging.
 
 <br /><br />
+
 In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
 <br /><br />
 However, as projects became larger they seemed longer to build.  Plus it didn't seem possible to debug step through C source code.  Look for opportunities to improve the process further as we build Platform Explorer!
@@ -146,30 +189,24 @@ The following coding changes + enhancements have been made throughout Platform E
 <br />
 The original SMSlib.h and PSGlib.h header files do not seem to have include guard clauses which means they can't be included more than once so let's create wrappers for them.  In fact, this is beneficial for debugging.
 <pre class="csharp" name="code">
-_sms_manager.h
-#ifndef _SMS_MANAGER_H_
-#define _SMS_MANAGER_H_
-
+// _sms_manager.h
 void devkit_SMS_init();
 void devkit_SMS_displayOn();
 void devkit_SMS_displayOff();
 void devkit_SMS_mapROMBank( unsigned char n );
-///...
+// ...
 
 // input
 unsigned int devkit_SMS_getKeysStatus();
 unsigned int devkit_PORT_A_KEY_UP();
 unsigned int devkit_PORT_A_KEY_DOWN();
-unsigned int devkit_PORT_A_KEY_LEFT();
-unsigned int devkit_PORT_A_KEY_RIGHT();
+// ...
 unsigned int devkit_PORT_A_KEY_1();
 unsigned int devkit_PORT_A_KEY_2();
 
 // #defines
 unsigned char devkit_SPRITEMODE_NORMAL();
 unsigned int devkit_VDPFEATURE_HIDEFIRSTCOL();
-
-#endif//_SMS_MANAGER_H_
 </pre>
 Note: repeat this process for PSGlib.h.  Also, don't forget to upgrade PSGlib to include PSGResume() API.
 
@@ -242,32 +279,16 @@ void engine_input_manager_update()
 	curr_joypad1 = devkit_SMS_getKeysStatus();
 }
 
-
 // main.c
 for (;;)
 {
 	if( devkit_SMS_queryPauseRequested() )
 	{
-		devkit_SMS_resetPauseRequest();
-		global_pause = !global_pause;
-		if( global_pause )
-		{
-			devkit_PSGSilenceChannels();
-		}
-		else
-		{
-			devkit_PSGRestoreVolumes();
-		}
-	}
-
-	if( global_pause )
-	{
-		continue;
+// ...		
 	}
 
 	devkit_SMS_initSprites();
 	engine_input_manager_update();
-
 	engine_screen_manager_update();
 
 	devkit_SMS_finalizeSprites();
@@ -279,4 +300,221 @@ for (;;)
 }
 </pre>
 
+<br />
+
+<b>Banks</b>
+<br />
+
+In 2017, Astro Force by eruiz00 gave a great example on how to reference bank information generated from bmp2tile and folder2c in code to lookup data stored in arrays, for example, to load banked sprite animation:
+
+<pre class="csharp" name="code">
+// anim_object.h
+extern const unsigned char *player_anim_data[];
+extern const unsigned char player_anim_bank[];
+
+//anim_object.c
+#include "anim_object.h"
+#include "..\banks\bank2.h"
+
+const unsigned char *player_anim_data[] =
+{
+	player_idle__tiles__psgcompr,
+	player_run_left_01__tiles__psgcompr,
+	player_run_left_02__tiles__psgcompr,
+// ...
+	player_run_rght_04__tiles__psgcompr,
+	player_run_rght_05__tiles__psgcompr,
+};
+const unsigned char player_anim_bank[] =
+{
+	player_idle__tiles__psgcompr_bank,
+	player_run_left_01__tiles__psgcompr_bank,
+	player_run_left_02__tiles__psgcompr_bank,
+// ...
+	player_run_rght_04__tiles__psgcompr_bank,
+	player_run_rght_05__tiles__psgcompr_bank,
+};
+
+// anim_manager.c
+static void player_load( unsigned char index, unsigned int tile )
+{
+	const unsigned char *data = ( const unsigned char * ) player_anim_data[ index ];
+	const unsigned char bank = ( const unsigned char ) player_anim_bank[ index ];
+
+	devkit_SMS_mapROMBank( bank );
+	devkit_SMS_loadPSGaidencompressedTiles( data, tile );
+}
+</pre>
+<br />
+
+<b>Levels</b>
+<br />
+In 2018, Duckslayer Adventures by haroldoop gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing:
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%" >
+<pre class="csharp" name="code">
+&nbsp;&nbsp;
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.P..............
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;..........A.....
+&nbsp;&nbsp;..G...$@@@@....G
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;................
+&nbsp;&nbsp;.G............G.
+&nbsp;&nbsp;.@@...........@@
+&nbsp;&nbsp;.@@.1.......X.@@
+&nbsp;&nbsp;.####$$$$$$#####
+&nbsp;&nbsp;..###$$$$$$####.
+</pre>
+</td>
+<td valign="top" width="60%">
+<a href="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s1600/Level0101.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-KR1qFV6kMLs/XL8oMGZ6Y2I/AAAAAAAAFZE/wB00siBfJBkplLILCJnR1Us78Wq8H2I0ACLcBGAs/s640/Level0101.png" width="95%" /></a>
+</td>
+<td valign="top" width="20%">
+<table width="100%">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>KEY</b></td>
+<td valign="top" width="40%">&nbsp;<b>VALUE</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;.</td>
+<td valign="top" width="40%">&nbsp;blank</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;#</td>
+<td valign="top" width="40%">&nbsp;block</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;@</td>
+<td valign="top" width="40%">&nbsp;platform</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;$</td>
+<td valign="top" width="40%">&nbsp;optional</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;1</td>
+<td valign="top" width="40%">&nbsp;player</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;X</td>
+<td valign="top" width="40%">&nbsp;exit</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;G</td>
+<td valign="top" width="40%">&nbsp;gem</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;P</td>
+<td valign="top" width="40%">&nbsp;power</td>
+</tr>
+</table>
+</td>
+
+</tr>
+</table>
+
+<br />
+
+<b>Structs</b>
+<br />
+Finally, as seen in many code samples from haroldoop, structs are used extensively to store data especially data accessed globally throughout the code base.  Platform Explorer uses this idea coupled with "manager":
+
+<pre class="csharp" name="code">
+// hack_object.h
+typedef struct tag_struct_hack_object
+{
+	unsigned char hack_delayspeed;
+	unsigned char hack_invincible;
+	unsigned char hack_difficulty;
+	unsigned char hack_game_speed;
+
+} struct_hack_object;
+
+// hack_manager.h
+#include "hack_object.h"
+
+void engine_hack_manager_init();
+extern struct_hack_object global_hack_object;
+
+// hack_manager.c
+#include "hack_manager.h"
+#include "global_manager.h"
+#include "enum_manager.h"
+
+#define PEEK( addr)		(* ( unsigned char *)( addr ) )
+#define POKE( addr, data )	(* ( unsigned char *)( addr ) = ( data ) )
+
+#define HACKER_START		0x0050
+
+// Global variable.
+struct_hack_object global_hack_object;
+
+void engine_hack_manager_init()
+{
+	struct_hack_object *ho = &global_hack_object;
+	ho->hack_delayspeed = 0;
+	ho->hack_invincible = 0;
+	ho->hack_difficulty = 0;
+	ho->hack_game_speed = 0;
+
+#ifndef _CONSOLE
+	ho->hack_delayspeed = PEEK( HACKER_START - 1 );
+	ho->hack_invincible = PEEK( HACKER_START + 0 );
+	ho->hack_difficulty = PEEK( HACKER_START + 1 );
+	ho->hack_game_speed = PEEK( HACKER_START + 2 );
+#endif
+}
+</pre>
+
+<br />
+
+<u>Debugging</u>
+<br />
+Visual Studio is useful IDE for navigating a large code base.  However, as the game code currently targets SDCC compiler it does not seem possible to debug step through the devkitSMS specific API source code.
+<br /><br />
+Nonetheless, leverage the _CONSOLE conditional compilation statement and implement the following code.  Here, it is possible to debug step through all ANSI-C code at least trusting devkitSMS code works correctly.
+
+<pre class="csharp" name="code">
+// _sms_manager.c
+#include "_sms_manager.h"
+#include "info_manager.h"
+#include &lt;stdbool.h&gt;
+
+#ifdef _CONSOLE
+#include "..\..\tmp\SMSlib.h"
+#else
+#include "..\..\lib\SMSlib.h"
+#endif
+
+void devkit_SMS_init()
+{
+	SMS_init();
+}
+void devkit_SMS_displayOn()
+{
+	SMS_displayOn();
+}
+void devkit_SMS_displayOff()
+{
+	SMS_displayOff();
+}
+void devkit_SMS_mapROMBank( unsigned char n )
+{
+	SMS_mapROMBank( n );
+}
+// ...
+
+// Sega header.
+#ifdef _CONSOLE
+#else
+	SMS_EMBED_SEGA_ROM_HEADER( productCode, revision );
+	SMS_EMBED_SDSC_HEADER( verMaj, verMin, dateYear, dateMonth, dateDay, author, name, descr );
+#endif
+</pre>
+Remember: <b>tmp</b> sub-folder contains dummy PSGlib.h and SMSlib.h header files that facilitate debugging.
+
+<br /><br />
 </span>

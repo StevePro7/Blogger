@@ -1,0 +1,100 @@
+<b>Banks</b>
+<br />
+
+In 2017, Astro Force by eruiz00 gave a great example on how to reference bank information generated from bmp2tile and folder2c in code to lookup data stored in arrays, for example, to load banked sprite animation:
+
+<pre class="csharp" name="code">
+// anim_object.h
+extern const unsigned char *player_anim_data[];
+extern const unsigned char player_anim_bank[];
+
+//anim_object.c
+#include "anim_object.h"
+#include "..\banks\bank2.h"
+
+const unsigned char *player_anim_data[] =
+{
+	player_idle__tiles__psgcompr,
+	player_run_left_01__tiles__psgcompr,
+	player_run_left_02__tiles__psgcompr,
+// ...
+	player_run_rght_04__tiles__psgcompr,
+	player_run_rght_05__tiles__psgcompr,
+};
+const unsigned char player_anim_bank[] =
+{
+	player_idle__tiles__psgcompr_bank,
+	player_run_left_01__tiles__psgcompr_bank,
+	player_run_left_02__tiles__psgcompr_bank,
+// ...
+	player_run_rght_04__tiles__psgcompr_bank,
+	player_run_rght_05__tiles__psgcompr_bank,
+};
+
+// anim_manager.c
+static void player_load( unsigned char index, unsigned int tile )
+{
+	const unsigned char *data = ( const unsigned char * ) player_anim_data[ index ];
+	const unsigned char bank = ( const unsigned char ) player_anim_bank[ index ];
+
+	devkit_SMS_mapROMBank( bank );
+	devkit_SMS_loadPSGaidencompressedTiles( data, tile );
+}
+</pre>
+
+
+
+
+
+
+<b>Structs</b>
+<br />
+Finally, as seen in many code samples from haroldoop, structs are used extensively to store data especially data accessed globally throughout the code base.  Platform Explorer uses this idea coupled with "manager":
+
+<pre class="csharp" name="code">
+// hack_object.h
+typedef struct tag_struct_hack_object
+{
+	unsigned char hack_delayspeed;
+	unsigned char hack_invincible;
+	unsigned char hack_difficulty;
+	unsigned char hack_game_speed;
+
+} struct_hack_object;
+
+// hack_manager.h
+#include "hack_object.h"
+
+void engine_hack_manager_init();
+extern struct_hack_object global_hack_object;
+
+// hack_manager.c
+#include "hack_manager.h"
+#include "global_manager.h"
+#include "enum_manager.h"
+
+#define PEEK( addr)		(* ( unsigned char *)( addr ) )
+#define POKE( addr, data )	(* ( unsigned char *)( addr ) = ( data ) )
+
+#define HACKER_START		0x0050
+
+// Global variable.
+struct_hack_object global_hack_object;
+
+void engine_hack_manager_init()
+{
+	struct_hack_object *ho = &global_hack_object;
+	ho->hack_delayspeed = 0;
+//	ho->hack_localcheat = 0;
+	ho->hack_invincible = 0;
+	ho->hack_difficulty = 0;
+	ho->hack_game_speed = 0;
+
+#ifndef _CONSOLE
+	ho->hack_delayspeed = PEEK( HACKER_START - 1 );
+	ho->hack_invincible = PEEK( HACKER_START + 0 );
+	ho->hack_difficulty = PEEK( HACKER_START + 1 );
+	ho->hack_game_speed = PEEK( HACKER_START + 2 );
+#endif
+}
+</pre>
