@@ -1,0 +1,46 @@
+anLAYOUT
+17/04/2019
+
+Things would like to mention
+
+
+Convert content	half size @ Indexed mode
+Load sprites for animation?
+Clear VRAM between screen loads
+Platformer abs() function inefficient?
+Upgrade PSG sound library [resume]
+VS2015 upgrade from VS2008 + configure sim.
+Separate code into *.c files and build translation units separately
+timed build.bat
+devkitSMS wrapper for translation units as can only be included once [no header guards]
+ScreenManager to manage all the screens	build on function pointer array from devkitSMSII
+InputManager rather than pass prev / curr key input
+haraldo	structs as global variables extern
+haraldo	Level loaded as content folder2c
+eruiz	Array of content and use bank
+bank scripts
+Gimp2 export palette and use colormap to re-use same palette across images after Indexed mode
+Music convert vgm2psg and bank OK
+ROM power of 2
+debugging ANSI-C code and can also Ctrl+Shift+B to build ANSI-C source code to get faster feedback on [stupid] compiler errors
+
+03/04/2019
+
+devkitSMS III
+Intro
+
+VS2015 upgrade
+why?
+avail of toggle *.h and *.c files
+
+
+Discuss larger project
+therefore split out all *.h to *.h and *.c files
+Build each translation unit
+and for static modules that code never changes
+e.g. engine modules then don't need to rebuild or include header files each time
+more fast compile build times
+
+downside is that every now and again have to do full rebuild
+not sure if that is because of cyclical depenedencies??
+

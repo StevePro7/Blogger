@@ -1,0 +1,55 @@
+structs Global
+17/04/2019
+
+
+haraldoop again uses structs everywhere to store state object
+
+Borrowed this idea
+e.g.
+hack_object.h
+
+#ifndef _HACK_OBJECT_H_
+#define _HACK_OBJECT_H_
+
+typedef struct tag_struct_hack_object
+{
+	unsigned char hack_delayspeed;
+	unsigned char hack_invincible;
+	unsigned char hack_difficulty;
+	unsigned char hack_game_speed;
+	unsigned char hack_world;
+	unsigned char hack_round;
+	unsigned char hack_music;
+	unsigned char hack_sound;
+	unsigned char hack_enemy;
+
+} struct_hack_object;
+
+#endif//_HACK_OBJECT_H_
+
+
+Each object has a corresponding manager which has reference to the state object that can be accessed globally if necessary
+e.g.
+hack_manager
+
+
+
+Ideally, ALL interaction with the state object would be channelled thru the corresponding manager
+//but unfortunately this does not always occur in Indie game dev with tight time frames
+but can be accessed directly globally throughout code as necc.
+
+
+
+
+#ifndef _HACK_MANAGER_H_
+#define _HACK_MANAGER_H_
+
+#include "hack_object.h"
+
+void engine_hack_manager_init();
+void engine_hack_manager_invert();
+
+// Global variable.
+extern struct_hack_object global_hack_object;
+
+#endif//_HACK_MANAGER_H_

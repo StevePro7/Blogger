@@ -1,0 +1,40 @@
+Debugging
+17/04/2019
+
+
+Follows on from SMS Manager
+
+
+Refer back to the "explanation" back at the start of the text why not possible to use Visual Studio to build cross compiled code i.e. for compiler NOT x86 e.g. sdcc
+
+However, apart from devkitSMS specific calls, the majority of the C code written is C99 ANSI-C compliant
+Therefore, want to abstract all calls to devkitSMS SMSlib.h or PSGlib.h APIs so we are able to build just C game code using Ctrl+Shift+B in Visual Studio
+
+This way we can flesh out stupid compiler errors before even running the game via Ctrl+1 hot key!
+
+
+Create tmp folder on same level as lib and add the following 2x dummy header files to "replicate" such that APIs have the same name but all void functions are empty and any functions that have return data will be dummy
+
+Finally, in the debug build configuration the "_CONSOLE" conditional compilation statement will be defined
+Therefore, add the following code to the top of the SMS Manager implementation file
+
+<pre class="csharp" name="code">
+#include "_snd_manager.h"
+
+#ifdef _CONSOLE
+#include "..\..\tmp\PSGlib.h"
+#else
+#include "..\..\lib\PSGlib.h"
+#endif
+
+void devkit_PSGPlay( void *song )
+{
+	PSGPlay( song );
+}
+...
+</pre>
+
+
+To summarize, add breakpoint in source code, now F5 can debug step thru the ANSI-C source code and any calls to the devkitSMS will consume the "tmp" dummy APIs whereas Ctrl+1 hot key will NOT build + debug step thru source code but will invoke build.bat which sdcc builds all source code defined link to build binary and run SMS binary in emulator
+
+Get the best of both worlds - a lot of time saved by being able to compile up front and minimize runtime errors

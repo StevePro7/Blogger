@@ -1,0 +1,21 @@
+anINTRO
+17/04/2019
+
+In 2017, we did devkitSMS Programming Setup to "produce" build productive environment in order to build SMS games / 8-bit retro games for Sega MS
+CandyKidDemo
+
+In 2018, we did devkitSMS Programming Setup II to enhance productive environment:
+centralize utilities
+graphics
+batch scripts for content
+
+Now, we would like con't to enhance productive build environment to build SMS games as some things were missing:
+
+VS2008 eventually will not be supported so good opportunity to upgrade to VS2015 [or VS2017]
+Projects get larger need a way to scale out code and reduce compile times
+Graphics had a "hacky" way to ensure the palette for background or sprite tiles were the same
+
+Biggest Q: could it be possible to debug C source code for devkitSMS in Visual Studio
+Believe it is not possible [reason]
+
+but if not is there a halfway house that can at least step thru the ANSI-C source code at least??

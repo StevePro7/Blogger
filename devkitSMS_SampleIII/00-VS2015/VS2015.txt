@@ -1,0 +1,39 @@
+VS2015
+17/04/2018
+
+In 2017, we gave instrucctions how to use Visual Studio as a productive development environment to build SMS games.
+In the advent that VS2008 will eventually not be supported or MS will prevent VS2008 from running on Windows 10 [and beyond]
+
+Therefore, upgrade to VS2015 and 
+
+http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
+Download + install Visual Studio 2015 and setup solution
+
+
+Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project 
+
+Visual Studio
+http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html
+
+Name:	 Game
+ Location:	 C:\PlatformExplorerSMS\dev
+ Create directory for solution	 UNCHECKED
+
+Application type:	 Console application
+ Additional options:	 Empty project CHECKED
+
+External Tools
+Integrate the build process directly from within Visual Studio 2008 using the External Tools functionality. 
+Choose Tools menu | External Tools... | Add 
+
+
+ Title:	 Run Batch File
+ Command:	 CMD.EXE
+ Arguments:	 /c "$(SolutionDir)"build.bat
+ Initial directory:	 $(SolutionDir)
+ Use Output Window	 CHECKED
+ Close on exit	 CHECKED
+
+
+IMPORTANT
+One awesome feature that VS2015 has is that you can easily toggle interface to implementation files and vice versa so helps navigating a larger growing code base more efficiently

@@ -1,0 +1,97 @@
+topics
+09/04/2019
+
+01.
+Re-architect codebase
+split 1x main.c and many *.h files
+into component modules in which have *.h and *.c counter parts
+Why?
+Can modularize the code: build units and compile then static will not change so no need to continually compile the same source code
+Get the object code *.rel file and check-in to source control and just link - link step is fast!  compile takes longer as projects get larger
+
+Method
+keep *.h files very thin with not much to them
+build all logic + code in *.c individual components.  Once completed e.g. engine code font_manager.c then won't change so don't need to keep re-compile
+pro	faster build time
+con	must include / exclude *.c files as update code to re-build code changes and update object code - sometimes forget to toggle thus not built
+	also occasionally must "force" full rebuild otherwise sometimes change to major header file not replicated; not sure if this cyclic dependency tho'
+
+02.
+VS2015 upgrade
+why?
+Neat feature: can toggle interface to implementation file and vice versa:
+VS helps navigate code base better + intellisense etc e.g. VS2008
+but this feature more productive and again
+
+
+03.
+All code written in C with devkitSMS built on sdcc cross compiler but cannot debug step thru source code - no matter how hard tried to setup!
+Even tried to setup Eclipse IDE with sdcdb but still did not work => be able to debug step
+
+Therefore, try different approach: have 2x compilers
+z80	prod code
+x86	test code
+Abstract 3rd party lib devkitSMS and PSGlib into wrapper and mirror dummy interface "tmp"
+This way can now write C code and Ctrl+Shift+B to compile entire code base and catch any ANSI-C compilation errors in productive way
+rather than blindly build and run the ROM and trace thru error messages in a reactive way which is what was doing before
+
+
+
+04.
+Graphics
+Ensure that sprites have black background as will most likely be color[0] in sprite palette used for transparency
+Export palette - get image and export palette so can be applied to other graphics
+Unified palette = color map to guarantee all images use the same palette
+Python scripting to automate the Indexed mode and apply colormap process and export to PNG file
+
+Glitches
+must clear VRAM when switch title screen to load sprites then game over clear VRAM before reloading title
+Otherwise would get graphics glitches here and there as artefacts
+
+Ensure that commonly used gfx e.g. background tiles and font used throughout the game can be integrated in direct ROM
+i.e. do not ROM bank as could impact performance - hard to profile to prove this hypothesis but seems common sense!
+
+Bank switch for levels [below] and other graphics used thru game play once on level load but no furthre bank switching or loading!
+load from ROM and stored in VRAM so all good
+
+
+05.
+Sound
+PSG
+similiar with small sound effects used consistently throughout the game - also want those baked into direct [main] ROM
+so no bank switching required.
+but before level play switch ROM bank and load music - believe there *must* be RAM on the sound chip??
+otherwise how does this work - unless 8KB RAM is sufficient to store music in memory plus share with game variables etc.
+
+
+05.
+Optimization
+abs() function
+performance killer
+believe could not use in math.h as used floating point
+therefore found custom function myabs() but using this every frame for collision detection with *+1 or *-1 was killing performance
+esp. in sections with lots of platforms - extremely noticeable when integrated music as music would get sluggish
+Therefore, realized that just a comparison so if negative numbers then compare a < b otherwise positive compare a > b
+just make sure both same sign [if different] and multiply one comparison value = immediate performance improvement
+
+
+06.
+Levels
+folder2c
+Used idea from haroldoop "Duck Slayers" game in 2018 last year to do level design:
+store levels in txt files and use folder2c to convert into byte array
+Employ level_manager parse each text file to load each level
+This was great way to scale out game.  Esp. when was struggling to complete the game with desired number of levels
+Therefore, separate code from data:
+instead concentrate on building complete game and making engine rock solid tight!
+Meet deadline with initial 20x levels
+Then once rollout and after getting feedback from users can develop more levels externally and be confident to not break the game engine
+Scales well
+
+
+07.
+build.bat
+time how long the build takes
+
+Power of 2 ROM base
+dig up email from Calindro explaining why this was important

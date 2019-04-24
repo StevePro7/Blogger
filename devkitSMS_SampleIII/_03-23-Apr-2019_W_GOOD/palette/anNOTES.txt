@@ -1,0 +1,80 @@
+08/01/2019
+
+
+IMPORTANT
+How did I manage to export palette from Indexed image?
+http://gimpforums.com/thread-how-do-i-save-an-index-image-s-color-map
+
+Drop BMP 256 colors into Gimp
+Image | Mode | Indexed
+
+Windows | Dockable dialogs | Palettes
+right click list
+Select source	Image
+Palette name	NAME
+Columns		16
+Import
+
+when close Gimp will create new custom 4bpp 16-color palette to
+%USERPROFILE%\.gimp-2.8\palettes
+
+
+
+Idle
+.db $00 $01 $01 $05 $15 $05 $06 $15 $1A $2A $1A $1B $2A $2F $3F $3F
+.db $00 $01 $01 $05 $15 $05 $06 $15 $1A $2A $1A $1B $2A $2F $3F $3F
+
+Run
+.db $00 $01 $01 $05 $05 $15 $16 $06 $15 $1A $2A $1B $2A $2F $3F $3F
+
+Mons11
+.db $00 $01 $15 $15 $25 $16 $06 $15 $06 $27 $07 $0A $1A $2A $3F $3F
+
+Mons22
+.db $00 $01 $01 $05 $15 $05 $06 $15 $1A $2A $1A $1B $2A $2F $3F $3F
+
+
+https://www.lifewire.com/import-a-color-palette-into-gimp-1701682
+
+
+https://www.youtube.com/watch?v=xS93QrlAa3I
+
+
+Colors | Map | Set Colormap
+everything listed here is stored as GPL files here
+C:\Program Files\GIMP 2\share\gimp\2.0\palettes
+
+
+http://gimpforums.com/thread-how-do-i-save-an-index-image-s-color-map
+
+
+BEST thing
+64x64
+XNA halve image
+Save image BMP
+Gimp 4bpp
+Gimp change palette
+
+
+
+
+GIMP Palette
+Name: Platformer
+Columns: 16
+#
+ 34  25  15	Index 0
+ 57  43  28	Index 1
+ 70  48  16	Index 2
+102  73  22	Index 3
+ 81  78  72	Index 4
+103  77  48	Index 5
+139 102  42	Index 6
+109 107 102	Index 7
+173 130  61	Index 8
+140 138 132	Index 9
+180 142  98	Index 10
+216 164  91	Index 11
+172 172 167	Index 12
+241 191 134	Index 13
+206 206 201	Index 14
+253 255 252	Index 15

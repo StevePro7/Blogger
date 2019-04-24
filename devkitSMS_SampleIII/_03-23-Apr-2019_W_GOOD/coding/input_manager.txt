@@ -1,0 +1,71 @@
+input manager
+17/04/2019
+
+
+following on from screen manager?
+
+
+Another code tidy up from previous projects : input manager
+
+
+All screens had prev and curr input state passed into every screen method - did not like
+
+
+// Public method.
+void engine_input_manager_update();
+
+
+#include "input_manager.h"
+#include "_sms_manager.h"
+
+// Must be static to persist values!
+static unsigned int curr_joypad1 = 0;
+static unsigned int prev_joypad1 = 0;
+
+// Private helper methods.
+static unsigned char engine_input_manager_hold( unsigned int data );
+static unsigned char engine_input_manager_move( unsigned int data );
+
+// Public method.
+void engine_input_manager_update()
+{
+	prev_joypad1 = curr_joypad1;
+	curr_joypad1 = devkit_SMS_getKeysStatus();
+}
+
+
+Main loop
+for (;;)
+{
+	if( devkit_SMS_queryPauseRequested() )
+	{
+		devkit_SMS_resetPauseRequest();
+		global_pause = !global_pause;
+		if( global_pause )
+		{
+			devkit_PSGSilenceChannels();
+		}
+		else
+		{
+			devkit_PSGRestoreVolumes();
+		}
+	}
+
+	if( global_pause )
+	{
+		continue;
+	}
+
+	devkit_SMS_initSprites();
+	engine_input_manager_update();
+
+	engine_screen_manager_update();
+
+	devkit_SMS_finalizeSprites();
+	devkit_SMS_waitForVBlank();
+	devkit_SMS_copySpritestoSAT();
+
+	devkit_PSGFrame();
+	devkit_PSGSFXFrame();
+}
+

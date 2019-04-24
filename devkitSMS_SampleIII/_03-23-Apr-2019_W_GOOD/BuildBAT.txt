@@ -1,0 +1,62 @@
+Build BAT
+17/04/2019
+
+As project gets larger we need a way to scale out the code in such a way to try to keep the compile times down.
+
+
+A lot of homebrew projects will have 1x main.c file and all other code is separated into header files
+including PSGlib.h and SMSlib.h as seen in CandyKidDemo and SimpsonsTrivia
+
+While this works as there can be a natural ordering to the dependent files, the issue here is that on each build, every single header file is being included into the main.c and compiled as one larger + growing translation unit; 
+
+if there are no changes to any of the header files between each build yet they will be copied and included and re-built on each compile.
+
+To make matters worse, as there currently does not seem to be a way to debug step thru code, the code / build cycles may be very short in order to keep on top of debugging
+
+
+Therefore, propose to split code out from header interface files - keep header files lean and move more and more code to the implementation [*.c] files
+
+Once the *.c file is built it doesn't necessarily need to be built next time; esp. if there are no code changes
+
+In fact, with a lot of the "manager" type classes / components, e.g. sound_manager often what happens is that all the engine code can be written in one sitting, built and tested in isolation and once built the object file [*.rel] can be checked into source control and linked each time
+
+NB: the linker phase seems to be very quick thus little concern to link growing number of static object files
+
+
+In order to test this hypothesis: separating source code into implmentation files helps keep compile times manageable - then let's time the builds
+
+
+REFERENCE
+https://stackoverflow.com/questions/673523/how-do-i-measure-execution-time-of-a-command-on-the-windows-command-line
+
+How do I measure execution time of a command on the Windows command line?
+
+
+<pre class="csharp" name="code">
+:: Calculate the start timestamp
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
+
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 debug_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_manager.c
+:: continue compiling remaining implementation [*.c] files
+
+sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 main.c
+
+
+:: Calculate the difference in cSeconds
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _duration=_hours*60*60*100+_min*60*100+_sec*100+_cs-_started
+
+:: Populate variables for rendering (100+ needed for padding)
+set /a _hours=_duration/60/60/100,_min=100+_duration/60/100%%60,_sec=100+(_duration/100%%60%%60),_cs=100+_duration%%100
+
+echo.
+echo Time taken: %_sec:~-2%.%_cs:~-2% secs
+echo
+</pre>

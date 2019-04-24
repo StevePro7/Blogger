@@ -1,0 +1,78 @@
+25/02/2019
+Follow on from
+..\Palettes\anNOTES.txt
+
+01.
+Create master palette
+i.e.
+render all sprites into master BMP
+output and dump into GIMP2 with Indexed Mode 16
+Image | Mode | Indexed...
+Generate optimum palette
+Maximum number of colors
+16
+
+spritesheet.bmp
+E:\Steven\XNA\Platformer\SpriteBlackBG\Game\bin\x86\Debug
+C:\stevepro\XNA\Platformer\SpriteBlackBG\Game\bin\x86\Debug
+.db $00 $00 $01 $00 $11 $16 $25 $15 $15 $05 $27 $0B $2A $1A $2F $3F
+
+
+02.
+Get 240x32 sprite sheets and cut up into 10x frames 24x32 each
+Dump each PNG into GIMP2 and set Indexed mode 16 as before
+However, must ensure that the palette is the same
+
+Here are where the palettes live
+Install
+C:\Program Files\GIMP 2\share\gimp\2.0\palettes
+
+Custom
+%USERPROFILE%\.gimp-2.8\palettes
+
+All the install palettes can be seen
+Windows | Dockable dialogs | Palettes
+
+
+03.
+How did I generate my custom "Platformer" palette?
+
+Reference
+http://gimpforums.com/thread-how-do-i-save-an-index-image-s-color-map
+
+Launch GIMP2
+spritesheet.bmp
+Image | Mode | Indexed...
+Generate optimum palette
+Maximum number of colors
+16
+
+Windows | Dockable dialogs | Palettes
+Right palettes popup window
+Import palette
+
+PNG screenshot	ImportPalette
+Image
+Palette name	Platformer
+Columns		16
+Import
+
+This will save custom palette here
+IMPORTANT
+you must close GIMP2 and re-open for the palette to become available
+
+04.
+How to set the master palette
+Launch GIMP2
+Open spritesheet.bmp
+
+Image | Mode | Indexed...
+Generate optimum palette
+Maximum number of colors
+16
+
+Colors | Map | Set Colormap...
+Platformer
+OK
+
+File | Export As...

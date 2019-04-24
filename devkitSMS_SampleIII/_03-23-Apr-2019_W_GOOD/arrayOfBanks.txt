@@ -1,0 +1,93 @@
+Array of banks
+17/04/2019
+
+following on from haraldoop
+level [content] loaded using folder2c
+structs global
+
+
+another idea borrowed from eruiz [Astro Force]
+is after content.bat file to generate content stored in byte arrays
+referred to them in arrays
+
+Put in state object and refer in manager
+
+e.g.
+all sprite content stored in PSGcomp files
+
+// anim_object.h
+#ifndef _ANIM_OBJECT_H_
+#define _ANIM_OBJECT_H_
+
+// Player.
+extern const unsigned char *player_anim_data[];
+extern const unsigned char player_anim_bank[];
+
+#endif//_ANIM_OBJECT_H_
+
+
+//anim_object.c
+#include "anim_object.h"
+
+#include "..\banks\bank2.h"
+
+// Player.
+const unsigned char *player_anim_data[] =
+{
+	player_idle__tiles__psgcompr,
+	player_run_left_01__tiles__psgcompr,
+	player_run_left_02__tiles__psgcompr,
+	player_run_left_03__tiles__psgcompr,
+	player_run_left_04__tiles__psgcompr,
+	player_run_left_05__tiles__psgcompr,
+	player_run_rght_01__tiles__psgcompr,
+	player_run_rght_02__tiles__psgcompr,
+	player_run_rght_03__tiles__psgcompr,
+	player_run_rght_04__tiles__psgcompr,
+	player_run_rght_05__tiles__psgcompr,
+};
+const unsigned char player_anim_bank[] =
+{
+	player_idle__tiles__psgcompr_bank,
+	player_run_left_01__tiles__psgcompr_bank,
+	player_run_left_02__tiles__psgcompr_bank,
+	player_run_left_03__tiles__psgcompr_bank,
+	player_run_left_04__tiles__psgcompr_bank,
+	player_run_rght_01__tiles__psgcompr_bank,
+	player_run_rght_02__tiles__psgcompr_bank,
+	player_run_rght_03__tiles__psgcompr_bank,
+	player_run_rght_04__tiles__psgcompr_bank,
+	player_run_rght_05__tiles__psgcompr_bank,
+};
+
+
+Code sampe how to consume in anim_mananger
+
+
+#ifndef _ANIM_MANAGER_H_
+#define _ANIM_MANAGER_H_
+
+void engine_anim_manager_player_load_idle();
+void engine_anim_manager_player_load_move();
+void engine_anim_manager_tester_load_anim();
+void engine_anim_manager_enemyX_load_idle();
+
+#endif//_ANIM_MANAGER_H_
+
+
+
+// anim_manager.c
+void engine_anim_manager_player_load_idle()
+{
+	player_load( 0, PLAYER_TILE_IDLE );
+}
+
+// Private helper methods.
+static void player_load( unsigned char index, unsigned int tile )
+{
+	const unsigned char *data = ( const unsigned char * ) player_anim_data[ index ];
+	const unsigned char bank = ( const unsigned char ) player_anim_bank[ index ];
+
+	devkit_SMS_mapROMBank( bank );
+	devkit_SMS_loadPSGaidencompressedTiles( data, tile );
+}

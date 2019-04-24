@@ -1,0 +1,88 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<u>Graphics</u>
+<br />
+Previous work on SMS graphics progressed from MS Paint to Gimp to use Indexed mode with max 16 colors to conform to the 4bpp (bits per pixel) constraints.  However, this was only with 256x192 full screen images.
+<br /><br />
+Now, we would like to save multiple individual image files, for example, for sprite animations and share the color palette such that it can be used across either all relevant tiles.  Therefore, here's how to import palette:
+<br /><br />
+Launch Gimp | Open an image you would like the palette shared.  Image | Mode | Indexed to generate the 16 color palette (4bpp).  Windows | Dockable dialogs | Palettes.  Right click list and enter the following info:
+<a href="https://2.bp.blogspot.com/-x9y9ADCW3LE/XL9caF382CI/AAAAAAAAFZQ/gaZyruMDx_4n2-TOXo8mZnHOW_ZbFLbGgCLcBGAs/s1600/ImportPalette.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-x9y9ADCW3LE/XL9caF382CI/AAAAAAAAFZQ/gaZyruMDx_4n2-TOXo8mZnHOW_ZbFLbGgCLcBGAs/s640/ImportPalette.png" width="98%" /></a>
+<br />
+Now there will new custom 4bpp 16-color palette at %USERPROFILE%\.gimp-2.8\palettes.  Finally, extend previous process after Image | Mode | Indexed choose Colors | Map | Set Colormap... Palette: Platformer.
+<br /><br />
+EXPORT
+https://www.lifewire.com/import-a-color-palette-into-gimp-1701682
+http://gimpforums.com/thread-how-do-i-save-an-index-image-s-color-map
+<br /><br />
+
+
+
+<u>BMP2Tile</u>
+<br />
+Upgrade to Version 0.43 for -fullpalette option to Output 16 colors rather than as many present in image.
+<pre class="csharp" name="code">
+bmp2tile.exe raw\back_tiles.bmp -savetiles "back_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -exit
+bmp2tile.exe raw\back_tiles.bmp -savetilemap "back_tiles (tilemap).bin" -exit
+bmp2tile.exe raw\back_tiles.bmp -savepalette "back_tiles (palette).bin" -fullpalette -exit
+</pre>
+</span>
+
+
+
+
+
+<span style="font-family:verdana;font-size:85%;">
+
+<u>BMP2Tile</u>
+<br />
+Upgrade to Version 0.43 for -fullpalette option to Output 16 colors rather than as many present in image.
+<pre class="csharp" name="code">
+bmp2tile.exe raw\back_tiles.bmp -savetiles "back_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -exit
+bmp2tile.exe raw\back_tiles.bmp -savetilemap "back_tiles (tilemap).bin" -exit
+bmp2tile.exe raw\back_tiles.bmp -savepalette "back_tiles (palette).bin" -fullpalette -exit
+
+</pre>
+<br /><br />
+                    image.to take advantage of 
+BMP2Tile Version 0.43
+https://github.com/maxim-zhao/bmp2tile/releases/tag/v0.43
+now has -fullpalette option to force save all 16 colors
+-fullpalette        Output 16 colours rather than as many as are present in the
+                    image.
+
+bmp2tile.exe raw\back_tiles.bmp -savetiles "back_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -savetilemap "back_tiles (tilemap).bin" -savepalette "back_tiles (palette).bin" -fullpalette -exit
+
+Previous work using BMP2Tile was a very manual process: Launch BMP2Tile | drag n' drop the 4bpp image into BMP2Tile and manually configure options and save out the Tiles, Tilemap and Palette files one by one.
+<br /><br />
+
+<u>Graphics</u>
+<br />
+Previous work on SMS graphics progressed from MS Paint to Gimp to use Indexed mode with max 16 colors to conform to the 4bpp (bits per pixel) constraints.  However, this was only with 256x192 full screen images.
+<br /><br />
+Now, we would like to save multiple individual image files, for example, for sprite animations and share the color palette such that it can be used across either all relevant tiles.  Therefore, here's how to import palette:
+<br /><br />
+Launch Gimp | Open an image you would like the palette shared.  Image | Mode | Indexed to generate the 16 color palette (4bpp).  Windows | Dockable dialogs | Palettes.  Right click list and enter the following info:
+<a href="https://2.bp.blogspot.com/-x9y9ADCW3LE/XL9caF382CI/AAAAAAAAFZQ/gaZyruMDx_4n2-TOXo8mZnHOW_ZbFLbGgCLcBGAs/s1600/ImportPalette.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-x9y9ADCW3LE/XL9caF382CI/AAAAAAAAFZQ/gaZyruMDx_4n2-TOXo8mZnHOW_ZbFLbGgCLcBGAs/s640/ImportPalette.png" width="98%" /></a>
+<br />
+Now there will new custom 4bpp 16-color palette at %USERPROFILE%\.gimp-2.8\palettes.  Finally, extend previous process after Image | Mode | Indexed choose Colors | Map | Set Colormap... Palette: Platformer.
+<br /><br />
+EXPORT
+https://www.lifewire.com/import-a-color-palette-into-gimp-1701682
+<br /><br />
+
+
+
+<u>BMP2Tile</u>
+<br />
+BMP2Tile Version 0.43
+https://github.com/maxim-zhao/bmp2tile/releases/tag/v0.43
+now has -fullpalette option to force save all 16 colors
+-fullpalette        Output 16 colours rather than as many as are present in the
+                    image.
+
+bmp2tile.exe raw\back_tiles.bmp -savetiles "back_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -savetilemap "back_tiles (tilemap).bin" -savepalette "back_tiles (palette).bin" -fullpalette -exit
+
+Previous work using BMP2Tile was a very manual process: Launch BMP2Tile | drag n' drop the 4bpp image into BMP2Tile and manually configure options and save out the Tiles, Tilemap and Palette files one by one.
+<br /><br />
+</span>

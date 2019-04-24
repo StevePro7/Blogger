@@ -1,0 +1,68 @@
+anNOTES
+19/12/2018
+
+Follow up on devkitSMS II
+but instead of VS2008 do VS2015
+
+Why?
+Abit faster on debug (x86)
+E:\Steven\INSTALLATIONSEGA\sdcc2\Test2015
+
+
+Also mention can run both
+z80	F5	debug
+x86	Ctrl+1	run
+
+
+Project properties
+right click Game project
+Properties
+Configuration Properties
+General
+Output directory		$(SolutionDir)..\bin\$(ConfigurationName)
+Intermediate directory		$(SolutionDir)..\obj\$(ConfigurationName)
+leave all other default
+Apply | OK
+
+Also, get rid of x64 build configuration as not needed
+
+Build | Configuration Manager
+Active soltuion platform
+<Edit...>
+x64
+Remove
+OK
+
+
+EXAMPLE
+E:\Steven\INSTALLATIONSEGA\sdcc2\Test2015_02_MM\dev
+
+I had to run folder2c but F5 still gave issues
+so I included gfx.h and gfx.c and clean solution then rebuilt solution
+Now F5 steps thru code OK
+
+
+
+disassemble as done previously as I like to see if tiles loaded ok in meka
+copy output.sms ..\asm
+cd ..\asm
+smsexamine.exe output.sms
+cd ..\dev
+
+ConTEXT
+F10
+
+Here's how to configure keyboard
+Inputs menu
+Joypad		CHECKED
+Sega keyboard	CHECKED
+Configuration	CHECKED
+
+1/6 Keyboard	X
+Click	Up	press up arrow		Up
+Click	Down	press down arrow	Down
+Click	Left	press left arrow	Left
+Click	Right	press right arrow	Right
+Button1		press space
+Button2		press enter
+Pause/start	press Q
