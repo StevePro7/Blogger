@@ -1,49 +1,16 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Debugging</u>
+<u>Performance</u>
 <br />
-Visual Studio is useful IDE for navigating a large code base.  However, as the game code currently targets SDCC compiler it does not seem possible to debug step through the devkitSMS specific API source code.
-<br /><br />
-Nonetheless, leverage the _CONSOLE conditional compilation statement and implement the following code.  Here, it is possible to debug step through all ANSI-C code at least trusting devkitSMS code works correctly.
+In order to process collision detections in Platformers, it is commonplace to take the absolute value of the distance two points and use for comparison.  Unfortunately, there was a noticeable delay with this function:
 
 <pre class="csharp" name="code">
-// _sms_manager.c
-#include "_sms_manager.h"
-#include "info_manager.h"
-#include &lt;stdbool.h&gt;
-
-#ifdef _CONSOLE
-#include "..\..\tmp\SMSlib.h"
-#else
-#include "..\..\lib\SMSlib.h"
-#endif
-
-void devkit_SMS_init()
+// https://stackoverflow.com/questions/9772348/get-absolute-value-without-using-abs-function-nor-if-statement
+int myabs( int v )
 {
-	SMS_init();
+	return v * ( ( v < 0 ) * ( -1 ) + ( v > 0 ) );
 }
-void devkit_SMS_displayOn()
-{
-	SMS_displayOn();
-}
-void devkit_SMS_displayOff()
-{
-	SMS_displayOff();
-}
-void devkit_SMS_mapROMBank( unsigned char n )
-{
-	SMS_mapROMBank( n );
-}
-// ...
-// Sega header.
-#ifdef _CONSOLE
-#else
-	SMS_EMBED_SEGA_ROM_HEADER( productCode, revision );
-	SMS_EMBED_SDSC_HEADER( verMaj, verMin, dateYear, dateMonth, dateDay, author, name, descr );
-#endif
 </pre>
-Remember: <b>tmp</b> sub-folder contains dummy PSGlib.h and SMSlib.h header files that facilitate debugging.
-
 <br /><br />
 
 In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
@@ -517,4 +484,9 @@ void devkit_SMS_mapROMBank( unsigned char n )
 Remember: <b>tmp</b> sub-folder contains dummy PSGlib.h and SMSlib.h header files that facilitate debugging.
 
 <br /><br />
+
+<u>Summary</u>
+<br />
+To summarize, once again the SMS Power community has been awesome and by members sharing their code this has helped immensely with Platform Explorer doing so well in the 2019 Coding Competition <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+
 </span>

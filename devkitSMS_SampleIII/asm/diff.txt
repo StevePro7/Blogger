@@ -1,0 +1,63 @@
+_LABEL_20A_26:
+	push ix
+	ld   ix, $0000
+	add  ix, sp
+	ld   a, (ix+5)
+	rlca
+	and  $01
+	ld   c, a
+	ld   b, $00
+	xor  a
+	sub  c
+	ld   c, a
+	ld   a, $00
+	sbc  a, b
+	ld   b, a
+	xor  a
+	cp   (ix+4)
+	sbc  a, (ix+5)
+	jp   po, _LABEL_22E_27
+	xor  $80
+_LABEL_22E_27:
+	rlca
+	and  $01
+	ld   l, a
+	ld   h, $00
+	add  hl, bc
+	push hl
+	ld   l, (ix+4)
+	ld   h, (ix+5)
+	push hl
+	call _LABEL_3E8C_28
+	pop  af
+	pop  af
+	pop  ix
+	ret
+
+
+
+
+_LABEL_3E8C_28:
+	pop  af
+	pop  bc
+	pop  de
+	push de
+	push bc
+	push af
+	xor  a
+	ld   l, a
+	or   b
+	ld   b, $10
+	jr   nz, _LABEL_3E9D_29
+	ld   b, $08
+	ld   a, c
+_LABEL_3E9C_31:
+	add  hl, hl
+_LABEL_3E9D_29:
+	rl   c
+	rla
+	jr   nc, _LABEL_3EA3_30
+	add  hl, de
+_LABEL_3EA3_30:
+	djnz _LABEL_3E9C_31
+	ret
