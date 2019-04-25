@@ -1,4 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
+
+
 In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
 <br /><br />
 However, as projects became larger they seemed longer to build.  Plus it didn't seem possible to debug step through C source code.  Look for opportunities to improve the process further as we build Platform Explorer!
@@ -7,16 +9,19 @@ However, as projects became larger they seemed longer to build.  Plus it didn't 
 -->
 Let's check it out! 
 <br /><br />
+
 <u>Game</u>
 <br />
 Platform Explorer is an open source port of the XNA Platform starter kit for the Sega Master System.  This video game was also an entry in the SMS Power! 2019 Coding Competition.  Download source code <b>here</b>.
 <br /><br />
+
 <u>Software</u>
 <br />
 Follow all instructions from the previous post: this documents how to setup the pre-requisite software.
 <br />
 Note: ensure you have downloaded and installed the devkitSMS and Small Device C Compiler [SDCC].
 <br /><br />
+
 <u>Checklist</u>
 <br />
 Here is a checklist of tasks to complete in order to try and improve the existing development environment:
@@ -29,6 +34,7 @@ Here is a checklist of tasks to complete in order to try and improve the existin
 <li>Performance tweaks then polish</li>
 </ul>
 <br />
+
 <u>Graphics</u>
 <br />
 Previous work on SMS graphics progressed from MS Paint to Gimp to use Indexed mode with max 16 colors to conform to the 4bpp (bits per pixel) constraints.  However, this was only with 256x192 full screen images.
@@ -46,6 +52,8 @@ EXPORT
 https://www.lifewire.com/import-a-color-palette-into-gimp-1701682
 http://gimpforums.com/thread-how-do-i-save-an-index-image-s-color-map
 <br /><br />
+
+
 <u>BMP2Tile</u>
 <br />
 Upgrade to Version 0.43 for -fullpalette option to Output 16 colors rather than as many present in image.
@@ -54,6 +62,7 @@ bmp2tile.exe raw\back_tiles.bmp -savetiles "back_tiles (tiles).psgcompr" -noremo
 bmp2tile.exe raw\back_tiles.bmp -savetilemap "back_tiles (tilemap).bin" -exit
 bmp2tile.exe raw\back_tiles.bmp -savepalette "back_tiles (palette).bin" -fullpalette -exit
 </pre>
+
 <u>Visual Studio</u>
 <br />
 In 2017, we were inspired by this suggestion to use Visual Studio as an IDE to better navigate files in larger projects and help automate the development build system.  Now it is time to upgrade from VS2008 to 2015.
@@ -64,6 +73,7 @@ The motivation here assumes a point where it is difficult / impossible to use Vi
 -->
 Replicate all instructions here: Setup External Tools to integrate the build process directly from within Visual Studio and connect "Run Batch File" command to Ctrl+1 hot key and automatically build and execute code! 
 <br /><br />
+
 <u>Formatting</u>
 <br />
 Formatting is important because formatted code makes it easier to read, understand, maintain and debug.  Visual Studio 2015.  Tools menu | Options... | Text Editor | C/C++ | Formatting | Spacing.  Update settings:
@@ -79,7 +89,9 @@ Formatting is important because formatted code makes it easier to read, understa
 </tr>
 </table>
 -->
+
 <br /><br />
+
 <u>Setup</u>
 <br />
 Create folder C:\PlatformExplorerSMS. Create the following sub-folders: asm, crt0, dev, gfx, lib, psg, tmp.  Note: tmp sub-folder contains dummy PSGlib.h and SMSlib.h header files used for debugging - more soon.
@@ -88,6 +100,8 @@ Create folder C:\PlatformExplorerSMS. Create the following sub-folders: asm, crt
 -->
 IMPORTANT: more information on which files reside in sub-folders and why can be found at here and here.
 <br /><br />
+
+
 <u>Separation</u>
 <br />
 As projects became larger they seemed longer to build.  Traditionally, this has been because all the code has been spread across multiple header files but with only 1x main.c which forces a complete rebuild each time.
@@ -96,10 +110,12 @@ Therefore, in an attempt to improve build compile times, we'd like to separate i
 <br /><br />
 Note: here object file would have to be version controlled and build script may change during development.
 <br /><br />
+
 <u>Timing</u>
 <br />
 In order to test hypothesis that separating code improves compilation speed then record build script times:
 <br />
+
 <pre class="csharp" name="code">
 :: Calculate the start timestamp
 set _time=%time: =0%
@@ -182,24 +198,24 @@ static unsigned char next_screen_type;
 
 void engine_screen_manager_init( unsigned char open_screen_type )
 {
-  next_screen_type = open_screen_type;
-  curr_screen_type = screen_type_none;
+ next_screen_type = open_screen_type;
+ curr_screen_type = screen_type_none;
 
-  // Set load methods.
-  load_method[ screen_type_splash ] = screen_splash_screen_load;
-  load_method[ screen_type_intro ] = screen_intro_screen_load;
-  // ...
+ // Set load methods.
+ load_method[ screen_type_splash ] = screen_splash_screen_load;
+ load_method[ screen_type_intro ] = screen_intro_screen_load;
+// ...
 }
 
 void engine_screen_manager_update()
 {
-  if( curr_screen_type != next_screen_type )
-  {
-    curr_screen_type = next_screen_type;
-    load_method[ curr_screen_type ]();
-  }
+ if( curr_screen_type != next_screen_type )
+ {
+  curr_screen_type = next_screen_type;
+  load_method[ curr_screen_type ]();
+ }
 
-  update_method[ curr_screen_type ]( &next_screen_type );
+ update_method[ curr_screen_type ]( &next_screen_type );
 }
 </pre>
 <br />
@@ -222,34 +238,38 @@ static unsigned char engine_input_manager_move( unsigned int data );
 // Public method.
 void engine_input_manager_update()
 {
-  prev_joypad1 = curr_joypad1;
-  curr_joypad1 = devkit_SMS_getKeysStatus();
+ prev_joypad1 = curr_joypad1;
+ curr_joypad1 = devkit_SMS_getKeysStatus();
 }
 
 // main.c
 for (;;)
 {
-  if( devkit_SMS_queryPauseRequested() )
-  {
-    // ...
-  }
+ if( devkit_SMS_queryPauseRequested() )
+ {
+// ...  
+ }
 
-  devkit_SMS_initSprites();
-  engine_input_manager_update();
-  engine_screen_manager_update();
+ devkit_SMS_initSprites();
+ engine_input_manager_update();
+ engine_screen_manager_update();
 
-  devkit_SMS_finalizeSprites();
-  devkit_SMS_waitForVBlank();
-  devkit_SMS_copySpritestoSAT();
+ devkit_SMS_finalizeSprites();
+ devkit_SMS_waitForVBlank();
+ devkit_SMS_copySpritestoSAT();
 
-  devkit_PSGFrame();
-  devkit_PSGSFXFrame();
+ devkit_PSGFrame();
+ devkit_PSGSFXFrame();
 }
 </pre>
+
 <br />
+
 <b>Banks</b>
 <br />
+
 In 2017, Astro Force by eruiz00 gave a great example on how to reference bank information generated from bmp2tile and folder2c in code to lookup data stored in arrays, for example, to load banked sprite animation:
+
 <pre class="csharp" name="code">
 // anim_object.h
 extern const unsigned char *player_anim_data[];
@@ -261,34 +281,35 @@ extern const unsigned char player_anim_bank[];
 
 const unsigned char *player_anim_data[] =
 {
-  player_idle__tiles__psgcompr,
-  player_run_left_01__tiles__psgcompr,
-  player_run_left_02__tiles__psgcompr,
-  // ...
-  player_run_rght_04__tiles__psgcompr,
-  player_run_rght_05__tiles__psgcompr,
+ player_idle__tiles__psgcompr,
+ player_run_left_01__tiles__psgcompr,
+ player_run_left_02__tiles__psgcompr,
+// ...
+ player_run_rght_04__tiles__psgcompr,
+ player_run_rght_05__tiles__psgcompr,
 };
 const unsigned char player_anim_bank[] =
 {
-  player_idle__tiles__psgcompr_bank,
-  player_run_left_01__tiles__psgcompr_bank,
-  player_run_left_02__tiles__psgcompr_bank,
-  // ...
-  player_run_rght_04__tiles__psgcompr_bank,
-  player_run_rght_05__tiles__psgcompr_bank,
+ player_idle__tiles__psgcompr_bank,
+ player_run_left_01__tiles__psgcompr_bank,
+ player_run_left_02__tiles__psgcompr_bank,
+// ...
+ player_run_rght_04__tiles__psgcompr_bank,
+ player_run_rght_05__tiles__psgcompr_bank,
 };
 
 // anim_manager.c
 static void player_load( unsigned char index, unsigned int tile )
 {
-  const unsigned char *data = ( const unsigned char * ) player_anim_data[ index ];
-  const unsigned char bank = ( const unsigned char ) player_anim_bank[ index ];
+ const unsigned char *data = ( const unsigned char * ) player_anim_data[ index ];
+ const unsigned char bank = ( const unsigned char ) player_anim_bank[ index ];
 
-  devkit_SMS_mapROMBank( bank );
-  devkit_SMS_loadPSGaidencompressedTiles( data, tile );
+ devkit_SMS_mapROMBank( bank );
+ devkit_SMS_loadPSGaidencompressedTiles( data, tile );
 }
 </pre>
 <br />
+
 <b>Levels</b>
 <br />
 In 2018, Duckslayer Adventures by haroldoop gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing:
@@ -354,67 +375,71 @@ In 2018, Duckslayer Adventures by haroldoop gave a great example of how levels c
 </tr>
 </table>
 </td>
+
 </tr>
 </table>
+
 <br />
+
 <b>Structs</b>
 <br />
 Finally, as seen in many code samples from haroldoop, structs are used extensively to store data especially data accessed globally throughout the code base.  Platform Explorer uses this idea coupled with "manager":
+
 <pre class="csharp" name="code">
 // hack_object.h
 typedef struct tag_struct_hack_object
 {
-  unsigned char hack_delayspeed;
-  unsigned char hack_invincible;
-  unsigned char hack_difficulty;
-  unsigned char hack_game_speed;
+ unsigned char hack_delayspeed;
+ unsigned char hack_invincible;
+ unsigned char hack_difficulty;
+ unsigned char hack_game_speed;
 
 } struct_hack_object;
 
- 
 // hack_manager.h
 #include "hack_object.h"
 
 void engine_hack_manager_init();
 extern struct_hack_object global_hack_object;
 
-
 // hack_manager.c
 #include "hack_manager.h"
 #include "global_manager.h"
 #include "enum_manager.h"
 
-#define PEEK( addr)        (* ( unsigned char *)( addr ) )
+#define PEEK( addr)  (* ( unsigned char *)( addr ) )
 #define POKE( addr, data ) (* ( unsigned char *)( addr ) = ( data ) )
 
-#define HACKER_START       0x0050
+#define HACKER_START  0x0050
 
 // Global variable.
 struct_hack_object global_hack_object;
 
 void engine_hack_manager_init()
 {
-  struct_hack_object *ho = &global_hack_object;
-  ho->hack_delayspeed = 0;
-  ho->hack_invincible = 0;
-  ho->hack_difficulty = 0;
-  ho->hack_game_speed = 0;
+ struct_hack_object *ho = &global_hack_object;
+ ho->hack_delayspeed = 0;
+ ho->hack_invincible = 0;
+ ho->hack_difficulty = 0;
+ ho->hack_game_speed = 0;
 
 #ifndef _CONSOLE
-  ho->hack_delayspeed = PEEK( HACKER_START - 1 );
-  ho->hack_invincible = PEEK( HACKER_START + 0 );
-  ho->hack_difficulty = PEEK( HACKER_START + 1 );
-  ho->hack_game_speed = PEEK( HACKER_START + 2 );
+ ho->hack_delayspeed = PEEK( HACKER_START - 1 );
+ ho->hack_invincible = PEEK( HACKER_START + 0 );
+ ho->hack_difficulty = PEEK( HACKER_START + 1 );
+ ho->hack_game_speed = PEEK( HACKER_START + 2 );
 #endif
 }
 </pre>
 
 <br />
+
 <u>Debugging</u>
 <br />
 Visual Studio is useful IDE for navigating a large code base.  However, as the game code currently targets SDCC compiler it does not seem possible to debug step through the devkitSMS specific API source code.
 <br /><br />
 Nonetheless, leverage the _CONSOLE conditional compilation statement and implement the following code.  Here, it is possible to debug step through all ANSI-C code at least trusting devkitSMS code works correctly.
+
 <pre class="csharp" name="code">
 // _sms_manager.c
 #include "_sms_manager.h"
@@ -429,31 +454,33 @@ Nonetheless, leverage the _CONSOLE conditional compilation statement and impleme
 
 void devkit_SMS_init()
 {
-  SMS_init();
+ SMS_init();
 }
 void devkit_SMS_displayOn()
 {
-  SMS_displayOn();
+ SMS_displayOn();
 }
 void devkit_SMS_displayOff()
 {
-  SMS_displayOff();
+ SMS_displayOff();
 }
 void devkit_SMS_mapROMBank( unsigned char n )
 {
-  SMS_mapROMBank( n );
+ SMS_mapROMBank( n );
 }
 // ...
 
 // Sega header.
 #ifdef _CONSOLE
 #else
-  SMS_EMBED_SEGA_ROM_HEADER( productCode, revision );
-  SMS_EMBED_SDSC_HEADER( verMaj, verMin, dateYear, dateMonth, dateDay, author, name, descr );
+ SMS_EMBED_SEGA_ROM_HEADER( productCode, revision );
+ SMS_EMBED_SDSC_HEADER( verMaj, verMin, dateYear, dateMonth, dateDay, author, name, descr );
 #endif
 </pre>
 Remember: <b>tmp</b> sub-folder contains dummy PSGlib.h and SMSlib.h header files that facilitate debugging.
+
 <br /><br />
+
 <u>Performance</u>
 <br />
 In order to process collision detections in Platformers, it is commonplace to take the absolute value of the distance two points and use for comparison.  Unfortunately, there was noticeable delay with this function:
@@ -466,6 +493,10 @@ int abs( int v )
 </pre>
 After examining code this function invoked multiple times per frame it was clear that abs() could be replaced with simple if statement.  Being able to debug step through C code helped ensure code still worked as before!
 <br /><br />
+
+
+
+
 <u>Polish</u>
 <br />
 Also, as projects become larger, more content is required.  Therefore, to ensure polish throughout the game it was critical that the VRAM was cleared properly between large graphic content loads to avoid glitches.
@@ -485,11 +516,14 @@ void screen_intro_screen_load()
   devkit_SMS_displayOn();
 }
 </pre>
+
 <u>Deployment</u>
 <br />
 Finally, a big shout out to Calindro who helped deploy updated versions of Platform Explorer during the competition and for outlining it's always better to stick with power of 2 ROM sizes compatibility reasons.
 <br /><br />
+
 <u>Summary</u>
 <br />
 To summarize, once again the SMS Power community has been awesome and by members sharing their code this has helped immensely with Platform Explorer doing so well in the 2019 Coding Competition <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+
 </span>
