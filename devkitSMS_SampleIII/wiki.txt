@@ -1,17 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Performance</u>
-<br />
-In order to process collision detections in Platformers, it is commonplace to take the absolute value of the distance two points and use for comparison.  Unfortunately, there was a noticeable delay with this function:
-
-<pre class="csharp" name="code">
-// https://stackoverflow.com/questions/9772348/get-absolute-value-without-using-abs-function-nor-if-statement
-int myabs( int v )
-{
-	return v * ( ( v < 0 ) * ( -1 ) + ( v > 0 ) );
-}
-</pre>
-<br /><br />
 
 In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
 <br /><br />
@@ -36,8 +24,16 @@ Note: ensure you have downloaded and installed the devkitSMS and Small Device C 
 
 <u>Checklist</u>
 <br />
-Here is a checklist of tasks to complete in order to ...
-<br /><br />
+Here is a checklist of tasks to complete in order to try and improve the existing development environment:
+<ul>
+<li>Graphics changes and BMP2Tile update</li>
+<li>Visual Studio 2015 upgrade and setup</li>
+<li>Code file separation and build times</li>
+<li>Various code architectural updates</li>
+<li>Debug step through code support</li>
+<li>Performance tweaks then polish</li>
+</ul>
+<br />
 
 <u>Graphics</u>
 <br />
@@ -483,6 +479,47 @@ void devkit_SMS_mapROMBank( unsigned char n )
 </pre>
 Remember: <b>tmp</b> sub-folder contains dummy PSGlib.h and SMSlib.h header files that facilitate debugging.
 
+<br /><br />
+
+<u>Performance</u>
+<br />
+In order to process collision detections in Platformers, it is commonplace to take the absolute value of the distance two points and use for comparison.  Unfortunately, there was noticeable delay with this function:
+<pre class="csharp" name="code">
+// https://stackoverflow.com/questions/9772348/get-absolute-value-without-using-abs-function-nor-if-statement
+int abs( int v )
+{
+  return v * ( ( v < 0 ) * ( -1 ) + ( v > 0 ) );
+}
+</pre>
+After examining code this function invoked multiple times per frame it was clear that abs() could be replaced with simple if statement.  Being able to debug step through C code helped ensure code still worked as before!
+<br /><br />
+
+
+
+
+<u>Polish</u>
+<br />
+Also, as projects become larger, more content is required.  Therefore, to ensure polish throughout the game it was critical that the VRAM was cleared properly between large graphic content loads to avoid glitches.
+<pre class="csharp" name="code">
+// intro_screen.c
+void screen_intro_screen_load()
+{
+  // Unload VRAM each begin to remove any unwanted graphics glitches...!
+  devkit_SMS_displayOff();
+  engine_asm_manager_clear_VRAM();
+  engine_text_manager_clear_all();
+
+  engine_content_manager_load_back_tiles();
+  engine_content_manager_load_sprites();
+  engine_content_manager_load_title();
+  // ...
+  devkit_SMS_displayOn();
+}
+</pre>
+
+<u>Deployment</u>
+<br />
+Finally, a big shout out to Calindro who helped deploy updated versions of Platform Explorer during the competition and for outlining it's always better to stick with power of 2 ROM sizes compatibility reasons.
 <br /><br />
 
 <u>Summary</u>
