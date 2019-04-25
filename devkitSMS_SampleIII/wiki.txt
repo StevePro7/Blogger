@@ -1,7 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
-In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
+In <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">2017</a>, we checked out <a href="https://github.com/sverx/devkitSMS">devkitsms</a> to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In <a href="http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html">2018</a>, we streamlined this build process to develop <a href="http://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a>.
 <br /><br />
-However, as projects became larger they seemed longer to build.  Plus it didn't seem possible to debug step through C source code.  Look for opportunities to improve the process further as we build Platform Explorer!
+However, as projects became larger they seemed longer to build.  Plus it didn't seem possible to debug step through C source code.  Look for opportunities to improve the process further as we build <a href="http://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>!
 <!--
 <a href="https://3.bp.blogspot.com/-t4P2AWjzxkg/XKtrSak7jJI/AAAAAAAAFW4/2e56wqHdELU0DuHp39UIKDrKVpyxG1GbwCLcBGAs/s1600/Title.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-t4P2AWjzxkg/XKtrSak7jJI/AAAAAAAAFW4/2e56wqHdELU0DuHp39UIKDrKVpyxG1GbwCLcBGAs/s640/Title.png" width="95%" height="525" data-original-width="642" data-original-height="527" /></a>
 -->
@@ -9,13 +9,13 @@ Let's check it out!
 <br /><br />
 <u>Game</u>
 <br />
-Platform Explorer is an open source port of the XNA Platform starter kit for the Sega Master System.  This video game was also an entry in the SMS Power! 2019 Coding Competition.  Download source code <b>here</b>.
+Platform Explorer is an open source port of the XNA Platform <a href="https://www.youtube.com/watch?v=Wf49xwFrNMo">starter kit</a> for the Sega Master System.  This video game was also an entry in the SMS Power! <a href="http://www.smspower.org/Competitions/Coding-2019">2019</a> Coding Competition.  Download source code <b><a href="https://github.com/SteveProXNA/PlatformExplorerSMS">here</a></b>.
 <br /><br />
 <u>Software</u>
 <br />
-Follow all instructions from the previous post: this documents how to setup the pre-requisite software.
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a>: this documents how to setup the pre-requisite software.
 <br />
-Note: ensure you have downloaded and installed the devkitSMS and Small Device C Compiler [SDCC].
+Note: ensure you have downloaded and installed the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and Small Device C Compiler [<a href="http://sdcc.sourceforge.net">SDCC</a>].
 <br /><br />
 <u>Checklist</u>
 <br />
@@ -33,7 +33,7 @@ Here is a checklist of tasks to complete in order to try and improve the existin
 <br />
 Previous work on SMS graphics progressed from MS Paint to Gimp to use Indexed mode with max 16 colors to conform to the 4bpp (bits per pixel) constraints.  However, this was only with 256x192 full screen images.
 <br /><br />
-Now, we would like to save multiple individual image files, for example, for sprite animations and share the color palette such that it can be used across all relevant tiles.  Therefore, here is how to import the palette:
+Now, we would like to save multiple individual image files, for example, for sprite animations and share the color palette such that it can be used across all relevant tiles.  Therefore, here is how to <a href="http://gimpforums.com/thread-how-do-i-save-an-index-image-s-color-map">import</a> the palette:
 <br /><br />
 Launch Gimp | Open an image you would like the palette shared.  Image | Mode | Indexed to generate the 16 color palette (4bpp).  Windows | Dockable dialogs | Palettes.  Right click list and enter the following info:
 <!--
@@ -41,10 +41,6 @@ Launch Gimp | Open an image you would like the palette shared.  Image | Mode | I
 -->
 <br />
 Now there will new custom 4bpp 16-color palette at %USERPROFILE%\.gimp-2.8\palettes.  Finally, extend previous process after Image | Mode | Indexed choose Colors | Map | Set Colormap... Palette: Platformer.
-<br /><br />
-EXPORT
-https://www.lifewire.com/import-a-color-palette-into-gimp-1701682
-http://gimpforums.com/thread-how-do-i-save-an-index-image-s-color-map
 <br /><br />
 <u>BMP2Tile</u>
 <br />
@@ -56,7 +52,7 @@ bmp2tile.exe raw\back_tiles.bmp -savepalette "back_tiles (palette).bin" -fullpal
 </pre>
 <u>Visual Studio</u>
 <br />
-In 2017, we were inspired by this suggestion to use Visual Studio as an IDE to better navigate files in larger projects and help automate the development build system.  Now it is time to upgrade from VS2008 to 2015.
+In 2017, we were inspired by this <a href="http://www.smspower.org/forums/15228-DevkitSMSDevelopYourHomebrewInC?start=250">suggestion</a> to use Visual Studio as an IDE to better navigate files in larger projects and help automate the development build system.  Now it is time to upgrade from VS2008 to 2015.
 <br /><br />
 The motivation here assumes a point where it is difficult / impossible to use Visual Studio 2008 on Windows PC.  Plus Visual Studio 2015 has a cool feature to easily Toggle Header / Code files for increased productivity.
 <!--
@@ -98,7 +94,7 @@ Note: here object file would have to be version controlled and build script may 
 <br /><br />
 <u>Timing</u>
 <br />
-In order to test hypothesis that separating code improves compilation speed then record build script times:
+In order to test hypothesis that separating code improves compilation speed then <a href="https://stackoverflow.com/questions/673523/how-do-i-measure-execution-time-of-a-command-on-the-windows-command-line">record</a> build script times:
 <br />
 <pre class="csharp" name="code">
 :: Calculate the start timestamp
@@ -127,7 +123,6 @@ echo.
 echo Time taken: %_sec:~-2%.%_cs:~-2% secs
 echo
 </pre>
-
 <u>Coding</u>
 <br />
 The following coding changes + enhancements have been made throughout Platform Explorer development:
@@ -249,7 +244,7 @@ for (;;)
 <br />
 <b>Banks</b>
 <br />
-In 2017, Astro Force by eruiz00 gave a great example on how to reference bank information generated from bmp2tile and folder2c in code to lookup data stored in arrays, for example, to load banked sprite animation:
+In 2017, <a href="http://www.smspower.org/Homebrew/AstroForce-SMS">Astro Force</a> by <a href="http://www.smspower.org/forums/member10267">eruiz00</a> gave a great example on how to reference bank information generated from bmp2tile and folder2c in code to lookup data stored in arrays, for example, to load banked sprite animation:
 <pre class="csharp" name="code">
 // anim_object.h
 extern const unsigned char *player_anim_data[];
@@ -291,7 +286,7 @@ static void player_load( unsigned char index, unsigned int tile )
 <br />
 <b>Levels</b>
 <br />
-In 2018, Duckslayer Adventures by haroldoop gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing:
+In 2018, <a href="http://www.smspower.org/Homebrew/DuckslayerAdventures-SMS">Duckslayer Adventures</a> by <a href="http://www.smspower.org/forums/member601">haroldoop</a> gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing:
 <table width="99%" border="1">
 <tr>
 <td valign="top" width="20%" >
@@ -487,7 +482,7 @@ void screen_intro_screen_load()
 </pre>
 <u>Deployment</u>
 <br />
-Finally, a big shout out to Calindro who helped deploy updated versions of Platform Explorer during the competition and for outlining it's always better to stick with power of 2 ROM sizes compatibility reasons.
+Finally, a big shout out to <a href="http://www.smspower.org/forums/member6944">Calindro</a> who helped deploy updated versions of Platform Explorer during the competition and for outlining it's always better to stick with power of 2 ROM sizes compatibility reasons.
 <br /><br />
 <u>Summary</u>
 <br />
