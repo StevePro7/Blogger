@@ -1,5 +1,17 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Performance</u>
+<br />
+In order to process collision detections in Platformers, it is commonplace to take the absolute value of the distance two points and use for comparison.  Unfortunately, there was a noticeable delay with this function:
+
+<pre class="csharp" name="code">
+// https://stackoverflow.com/questions/9772348/get-absolute-value-without-using-abs-function-nor-if-statement
+int myabs( int v )
+{
+	return v * ( ( v < 0 ) * ( -1 ) + ( v > 0 ) );
+}
+</pre>
+<br /><br />
 
 In 2017, we checked out devkitSMS to setup productive development environment to build 8-bit retro video games for the Sega Master System.  In 2018, we streamlined this build process to develop Simpsons Trivia.
 <br /><br />
@@ -24,16 +36,8 @@ Note: ensure you have downloaded and installed the devkitSMS and Small Device C 
 
 <u>Checklist</u>
 <br />
-Here is a checklist of tasks to complete in order to try and improve the existing development environment:
-<ul>
-<li>Graphics changes and BMP2Tile update</li>
-<li>Visual Studio 2015 upgrade and setup</li>
-<li>Code file separation and build times</li>
-<li>Various code architectural updates</li>
-<li>Debug step through code support</li>
-<li>Performance tweaks then polish</li>
-</ul>
-<br />
+Here is a checklist of tasks to complete in order to ...
+<br /><br />
 
 <u>Graphics</u>
 <br />
@@ -198,24 +202,24 @@ static unsigned char next_screen_type;
 
 void engine_screen_manager_init( unsigned char open_screen_type )
 {
- next_screen_type = open_screen_type;
- curr_screen_type = screen_type_none;
+	next_screen_type = open_screen_type;
+	curr_screen_type = screen_type_none;
 
- // Set load methods.
- load_method[ screen_type_splash ] = screen_splash_screen_load;
- load_method[ screen_type_intro ] = screen_intro_screen_load;
+	// Set load methods.
+	load_method[ screen_type_splash ] = screen_splash_screen_load;
+	load_method[ screen_type_intro ] = screen_intro_screen_load;
 // ...
 }
 
 void engine_screen_manager_update()
 {
- if( curr_screen_type != next_screen_type )
- {
-  curr_screen_type = next_screen_type;
-  load_method[ curr_screen_type ]();
- }
+	if( curr_screen_type != next_screen_type )
+	{
+		curr_screen_type = next_screen_type;
+		load_method[ curr_screen_type ]();
+	}
 
- update_method[ curr_screen_type ]( &next_screen_type );
+	update_method[ curr_screen_type ]( &next_screen_type );
 }
 </pre>
 <br />
@@ -238,28 +242,28 @@ static unsigned char engine_input_manager_move( unsigned int data );
 // Public method.
 void engine_input_manager_update()
 {
- prev_joypad1 = curr_joypad1;
- curr_joypad1 = devkit_SMS_getKeysStatus();
+	prev_joypad1 = curr_joypad1;
+	curr_joypad1 = devkit_SMS_getKeysStatus();
 }
 
 // main.c
 for (;;)
 {
- if( devkit_SMS_queryPauseRequested() )
- {
-// ...  
- }
+	if( devkit_SMS_queryPauseRequested() )
+	{
+// ...		
+	}
 
- devkit_SMS_initSprites();
- engine_input_manager_update();
- engine_screen_manager_update();
+	devkit_SMS_initSprites();
+	engine_input_manager_update();
+	engine_screen_manager_update();
 
- devkit_SMS_finalizeSprites();
- devkit_SMS_waitForVBlank();
- devkit_SMS_copySpritestoSAT();
+	devkit_SMS_finalizeSprites();
+	devkit_SMS_waitForVBlank();
+	devkit_SMS_copySpritestoSAT();
 
- devkit_PSGFrame();
- devkit_PSGSFXFrame();
+	devkit_PSGFrame();
+	devkit_PSGSFXFrame();
 }
 </pre>
 
@@ -281,31 +285,31 @@ extern const unsigned char player_anim_bank[];
 
 const unsigned char *player_anim_data[] =
 {
- player_idle__tiles__psgcompr,
- player_run_left_01__tiles__psgcompr,
- player_run_left_02__tiles__psgcompr,
+	player_idle__tiles__psgcompr,
+	player_run_left_01__tiles__psgcompr,
+	player_run_left_02__tiles__psgcompr,
 // ...
- player_run_rght_04__tiles__psgcompr,
- player_run_rght_05__tiles__psgcompr,
+	player_run_rght_04__tiles__psgcompr,
+	player_run_rght_05__tiles__psgcompr,
 };
 const unsigned char player_anim_bank[] =
 {
- player_idle__tiles__psgcompr_bank,
- player_run_left_01__tiles__psgcompr_bank,
- player_run_left_02__tiles__psgcompr_bank,
+	player_idle__tiles__psgcompr_bank,
+	player_run_left_01__tiles__psgcompr_bank,
+	player_run_left_02__tiles__psgcompr_bank,
 // ...
- player_run_rght_04__tiles__psgcompr_bank,
- player_run_rght_05__tiles__psgcompr_bank,
+	player_run_rght_04__tiles__psgcompr_bank,
+	player_run_rght_05__tiles__psgcompr_bank,
 };
 
 // anim_manager.c
 static void player_load( unsigned char index, unsigned int tile )
 {
- const unsigned char *data = ( const unsigned char * ) player_anim_data[ index ];
- const unsigned char bank = ( const unsigned char ) player_anim_bank[ index ];
+	const unsigned char *data = ( const unsigned char * ) player_anim_data[ index ];
+	const unsigned char bank = ( const unsigned char ) player_anim_bank[ index ];
 
- devkit_SMS_mapROMBank( bank );
- devkit_SMS_loadPSGaidencompressedTiles( data, tile );
+	devkit_SMS_mapROMBank( bank );
+	devkit_SMS_loadPSGaidencompressedTiles( data, tile );
 }
 </pre>
 <br />
@@ -389,10 +393,10 @@ Finally, as seen in many code samples from haroldoop, structs are used extensive
 // hack_object.h
 typedef struct tag_struct_hack_object
 {
- unsigned char hack_delayspeed;
- unsigned char hack_invincible;
- unsigned char hack_difficulty;
- unsigned char hack_game_speed;
+	unsigned char hack_delayspeed;
+	unsigned char hack_invincible;
+	unsigned char hack_difficulty;
+	unsigned char hack_game_speed;
 
 } struct_hack_object;
 
@@ -407,27 +411,27 @@ extern struct_hack_object global_hack_object;
 #include "global_manager.h"
 #include "enum_manager.h"
 
-#define PEEK( addr)  (* ( unsigned char *)( addr ) )
-#define POKE( addr, data ) (* ( unsigned char *)( addr ) = ( data ) )
+#define PEEK( addr)		(* ( unsigned char *)( addr ) )
+#define POKE( addr, data )	(* ( unsigned char *)( addr ) = ( data ) )
 
-#define HACKER_START  0x0050
+#define HACKER_START		0x0050
 
 // Global variable.
 struct_hack_object global_hack_object;
 
 void engine_hack_manager_init()
 {
- struct_hack_object *ho = &global_hack_object;
- ho->hack_delayspeed = 0;
- ho->hack_invincible = 0;
- ho->hack_difficulty = 0;
- ho->hack_game_speed = 0;
+	struct_hack_object *ho = &global_hack_object;
+	ho->hack_delayspeed = 0;
+	ho->hack_invincible = 0;
+	ho->hack_difficulty = 0;
+	ho->hack_game_speed = 0;
 
 #ifndef _CONSOLE
- ho->hack_delayspeed = PEEK( HACKER_START - 1 );
- ho->hack_invincible = PEEK( HACKER_START + 0 );
- ho->hack_difficulty = PEEK( HACKER_START + 1 );
- ho->hack_game_speed = PEEK( HACKER_START + 2 );
+	ho->hack_delayspeed = PEEK( HACKER_START - 1 );
+	ho->hack_invincible = PEEK( HACKER_START + 0 );
+	ho->hack_difficulty = PEEK( HACKER_START + 1 );
+	ho->hack_game_speed = PEEK( HACKER_START + 2 );
 #endif
 }
 </pre>
@@ -454,72 +458,31 @@ Nonetheless, leverage the _CONSOLE conditional compilation statement and impleme
 
 void devkit_SMS_init()
 {
- SMS_init();
+	SMS_init();
 }
 void devkit_SMS_displayOn()
 {
- SMS_displayOn();
+	SMS_displayOn();
 }
 void devkit_SMS_displayOff()
 {
- SMS_displayOff();
+	SMS_displayOff();
 }
 void devkit_SMS_mapROMBank( unsigned char n )
 {
- SMS_mapROMBank( n );
+	SMS_mapROMBank( n );
 }
 // ...
 
 // Sega header.
 #ifdef _CONSOLE
 #else
- SMS_EMBED_SEGA_ROM_HEADER( productCode, revision );
- SMS_EMBED_SDSC_HEADER( verMaj, verMin, dateYear, dateMonth, dateDay, author, name, descr );
+	SMS_EMBED_SEGA_ROM_HEADER( productCode, revision );
+	SMS_EMBED_SDSC_HEADER( verMaj, verMin, dateYear, dateMonth, dateDay, author, name, descr );
 #endif
 </pre>
 Remember: <b>tmp</b> sub-folder contains dummy PSGlib.h and SMSlib.h header files that facilitate debugging.
 
-<br /><br />
-
-<u>Performance</u>
-<br />
-In order to process collision detections in Platformers, it is commonplace to take the absolute value of the distance two points and use for comparison.  Unfortunately, there was noticeable delay with this function:
-<pre class="csharp" name="code">
-// https://stackoverflow.com/questions/9772348/get-absolute-value-without-using-abs-function-nor-if-statement
-int abs( int v )
-{
-  return v * ( ( v < 0 ) * ( -1 ) + ( v > 0 ) );
-}
-</pre>
-After examining code this function invoked multiple times per frame it was clear that abs() could be replaced with simple if statement.  Being able to debug step through C code helped ensure code still worked as before!
-<br /><br />
-
-
-
-
-<u>Polish</u>
-<br />
-Also, as projects become larger, more content is required.  Therefore, to ensure polish throughout the game it was critical that the VRAM was cleared properly between large graphic content loads to avoid glitches.
-<pre class="csharp" name="code">
-// intro_screen.c
-void screen_intro_screen_load()
-{
-  // Unload VRAM each begin to remove any unwanted graphics glitches...!
-  devkit_SMS_displayOff();
-  engine_asm_manager_clear_VRAM();
-  engine_text_manager_clear_all();
-
-  engine_content_manager_load_back_tiles();
-  engine_content_manager_load_sprites();
-  engine_content_manager_load_title();
-  // ...
-  devkit_SMS_displayOn();
-}
-</pre>
-
-<u>Deployment</u>
-<br />
-Finally, a big shout out to Calindro who helped deploy updated versions of Platform Explorer during the competition and for outlining it's always better to stick with power of 2 ROM sizes compatibility reasons.
 <br /><br />
 
 <u>Summary</u>
