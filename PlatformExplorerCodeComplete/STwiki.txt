@@ -1,0 +1,207 @@
+<span style="font-family:verdana;font-size:85%;">
+I am a big fan of <a href="https://en.wikipedia.org/wiki/The_Simpsons">The Simpsons</a>; particularly the early seasons of the show.  The Simpsons appeared in comic books, film, music and video games.  However, The Simpsons had not appeared on the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a>!
+<br />
+Enter <a href="http://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> Quiz.
+<br /><br />
+Inspired from previous posts on <a href="http://steveproxna.blogspot.com/2013/09/sega-console-programming.html">Sega Console Programming</a> and <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a>, <b>Simpsons Trivia</b> is my third 8-bit video game written in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> assembler to target the Sega Master System (SMS).
+<a href="https://1.bp.blogspot.com/-SyXu4LLExtU/WulruLrYRJI/AAAAAAAAEks/2vh6VDieRx8EOU9zZ0WY7UYp0d0vi6GXwCLcBGAs/s1600/00.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-SyXu4LLExtU/WulruLrYRJI/AAAAAAAAEks/2vh6VDieRx8EOU9zZ0WY7UYp0d0vi6GXwCLcBGAs/s640/00.jpg" width="98%" height="525" data-original-width="642" data-original-height="527" /></a>
+Let's check it out! 
+<br /><br />
+Note: my two previous titles published for the Sega Master System were <b><a href="http://www.smspower.org/Homebrew/3DCity-SMS">3D City</a></b> and <b><a href="http://www.smspower.org/Homebrew/CandyKidDemo-SMS">Candy Kid Demo</a></b>.
+<br />
+Download source code <b><a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS">here</a></b>.
+<br /><br />
+Sega Retro Gaming <a href="http://steveproxna.blogspot.com/2013/06/sega-retro-gaming.html">post</a> documents how to play video games like Simpsons Trivia using a <a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> emulator.
+<br />
+devkitSMS Programming Setup <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a> documents development environment required to build <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> source.
+<table width="100%">
+<tr>
+<td valign="top" width="40%">
+<a href="https://2.bp.blogspot.com/-gZ8mYNiJgJQ/WuisqoP2bKI/AAAAAAAAEjc/9l3SODWTGY8IXhPl5j7SccFn7RUpLioiACLcBGAs/s1600/01.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-gZ8mYNiJgJQ/WuisqoP2bKI/AAAAAAAAEjc/9l3SODWTGY8IXhPl5j7SccFn7RUpLioiACLcBGAs/s640/01.jpg" width="95%" /></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://4.bp.blogspot.com/-F4-01rh_sUg/WuitJq7e9gI/AAAAAAAAEjk/4Au2E2gUufwirRb7_UthNyCsExxQIIvlgCLcBGAs/s1600/02.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-F4-01rh_sUg/WuitJq7e9gI/AAAAAAAAEjk/4Au2E2gUufwirRb7_UthNyCsExxQIIvlgCLcBGAs/s640/02.jpg" width="95%" /></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://3.bp.blogspot.com/-cqwe2gq2WDI/WuitejYztWI/AAAAAAAAEjw/hTbbXsdGgDgbaCnemvLUV5_VoWxdOsLOwCLcBGAs/s1600/03.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-cqwe2gq2WDI/WuitejYztWI/AAAAAAAAEjw/hTbbXsdGgDgbaCnemvLUV5_VoWxdOsLOwCLcBGAs/s640/03.jpg" width="95%" /></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://2.bp.blogspot.com/-5c0ESyy6_cg/WuitoQfYUdI/AAAAAAAAEj8/0x1hpv6BHuA6efoM1hwkaBMKu65GKMD8wCLcBGAs/s1600/04.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-5c0ESyy6_cg/WuitoQfYUdI/AAAAAAAAEj8/0x1hpv6BHuA6efoM1hwkaBMKu65GKMD8wCLcBGAs/s640/04.jpg" width="95%" /></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://4.bp.blogspot.com/-Ua0vpW41Xfs/Wuitv9EfyII/AAAAAAAAEkE/-gKZnnPDRus80bb1_BeazqlBCM41UvgogCLcBGAs/s1600/05.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-Ua0vpW41Xfs/Wuitv9EfyII/AAAAAAAAEkE/-gKZnnPDRus80bb1_BeazqlBCM41UvgogCLcBGAs/s640/05.jpg" width="95%" /></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://1.bp.blogspot.com/-ZiD1LGW7UT8/Wuit4FN8NsI/AAAAAAAAEkQ/uH7JQ7FIQh4FNd69AmKx6Xh8AMgnwUtGgCLcBGAs/s1600/06.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-ZiD1LGW7UT8/Wuit4FN8NsI/AAAAAAAAEkQ/uH7JQ7FIQh4FNd69AmKx6Xh8AMgnwUtGgCLcBGAs/s640/06.jpg" width="95%" /></a>
+</td>
+</tr>
+</table>
+<u>Instructions</u>
+<br />
+Simple: move joystick Up and Down to select a multi-choice answer: A, B, C, D. 
+<br />
+Press Button1 to select an answer or progress forward through any prompts.
+<br />
+Note: Press Button2 to always go back. Joystick Left and Right are not used.
+<br /><br />
+<u>ROM Hacking</u>
+<br />
+You can hack this ROM!  Download + dump <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/raw/master/SimpsonsTrivia-v1.02.sms">SimpsonsTrivia.sms</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F</b></td>
+<td valign="top" width="20%">&nbsp;Debug</td>
+<td valign="top" width="40%">&nbsp;Used in development => debugging.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Cheat</td>
+<td valign="top" width="40%">&nbsp;Non-zero value will show answers.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;Random</td>
+<td valign="top" width="40%">&nbsp;Ask random questions during quiz.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;Music</td>
+<td valign="top" width="40%">&nbsp;0=music play otherwise off.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0053</b></td>
+<td valign="top" width="20%">&nbsp;Sound</td>
+<td valign="top" width="40%">&nbsp;0=sound on otherwise off.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Extra</td>
+<td valign="top" width="40%">&nbsp;Set visibility on all extra info.</td>
+</tr>
+</table>
+<pre class="csharp" name="code">
+#ifndef _HACK_MANAGER_H_
+#define _HACK_MANAGER_H_
+
+#define PEEK(addr)   (*(unsigned char *)(addr))
+#define POKE(addr, data) (*(unsigned char *)(addr) = (data))
+
+#define HACKER_START  0x0050
+
+extern unsigned char hacker_debug, hacker_cheat, hacker_random;
+extern unsigned char hacker_music, hacker_sound, hacker_extra;
+
+void engine_hack_manager_init()
+{
+  hacker_debug = PEEK( HACKER_START - 1 );  // 0x004F
+  hacker_cheat = PEEK( HACKER_START + 0 );  // 0x0050
+  hacker_random= PEEK( HACKER_START + 1 );  // 0x0051
+  hacker_music = PEEK( HACKER_START + 2 );  // 0x0052
+  hacker_sound = PEEK( HACKER_START + 3 );  // 0x0053
+  hacker_extra = PEEK( HACKER_START + 4 );  // 0x0054
+}
+#endif//_HACK_MANAGER_H_
+</pre>
+<u>Cheat</u>
+<br />
+Some of the questions may be tough so you can cheat if necessary!  Either hack the ROM as above to show the answers or 
+alternatively press Button2 five times on the Title screen when prompted to "Press Start".
+<br /><br />
+<u>Credits</u>
+<br />
+StevePro Studios would like to thank the following, esp. at <a href="http://www.smspower.org">SMS Power</a>, for making this project possible:
+<table width="97%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/forums/member7198">sverx</a></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/sverx/devkitSMS">devkitSMS</a></td>
+<td valign="top" width="40%">&nbsp;Sega Master System development kit + libraries</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/forums/member5">Maxim</a></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/maxim/Software/BMP2Tile">BMP2Tile</a></td>
+<td valign="top" width="40%">&nbsp;Converts BMP images into 8x8 SMS tile data</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/vhelin">vhelin</a></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/vhelin/wla-dx">WLA-DX</a></td>
+<td valign="top" width="40%">&nbsp;Z80 multi platform cross Assembler package</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/forums/member6">Martin</a></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/Development/SMSExamine">SMS Examine</a></td>
+<td valign="top" width="40%">&nbsp;Z80 disassembler recompilable by WLA-DX</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/forums/member6944">Calindro</a></td>
+<td valign="top" width="20%">&nbsp;<a href="http://emulicious.net">Emulicious</a></td>
+<td valign="top" width="40%">&nbsp;SMS emulator (excellent debugging features)</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/forums/member3">Bock</a></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/meka">Meka</a></td>
+<td valign="top" width="40%">&nbsp;SMS emulator (excellent debugging features)</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<a href="http://segaretro.org/Steve_Snake">Steve Snake</a></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a></td>
+<td valign="top" width="40%">&nbsp;SMS emulator used for general play testing</td>
+</tr>
+</table>
+Note: music used from <a href="http://www.smspower.org/Music/BartVsTheSpaceMutants-SMS">Bart vs. the Space Mutants</a> + <a href="http://www.smspower.org/Music/Flicky-SG">Flicky</a> and sound FX from <a href="http://www.smspower.org/Homebrew/BalubaBalok-SMS">Baluba Balok</a> + <a href="http://www.mojontwins.com/juegos_mojonos/super-uwol-sg-1000">Super Uwol!</a>  Reference to original Simpsons Trivia questions can be found <a href="https://www.absurdtrivia.com/trivia/the-simpsons">here</a>.    
+<br /><br />
+<u>Homebrew</u>
+<br />
+The <a href="http://www.smspower.org/Homebrew">Homebrew</a> community at SMS Power celebrates Sega 8-bit preservation and fanaticism each year with its annual competitions.  Therefore, this is always an opportunity to participate by entering these games!
+<br /><br />
+However, during the past 3 years, I haven't seen as much interest in SMS Homebrew games than in 2018:
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;Atari Age</td>
+<td valign="top">&nbsp;<a href="http://atariage.com/forums/topic/277217-sms-power-coding-competition-2018">SMS Power! Coding competition 2018</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Indie Retro News</td>
+<td valign="top">&nbsp;<a href="http://www.indieretronews.com/2018/04/sms-power-competition-2018-sega-master.html">SMS Power! Competition 2018</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Vlog retrogaming</td>
+<td valign="top">&nbsp;<a href="http://retrogamecollec.com/vlog/6-nouveaux-jeux-master-system-grace-au-sms-power-2018">6 nouveaux jeux Master System grâce au SMS Power 2018 !!</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Marianne Vote *aka Révo*</td>
+<td valign="top">&nbsp;<a href="https://www.youtube.com/watch?v=7nE52nmp4e0">Présentation SMS Power Competition #21 2018 SEGA Master System</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;ROMhacking.Ru</td>
+<td valign="top">&nbsp;<a href="http://romhacking.ru/news/itogi_sms_power_competition_2018/2018-04-13-4970">????? SMS Power! Competition 2018</a></td>
+</tr>
+</table>
+Here are some cool Simpsons Trivia links from <a href="https://pdroms.de/files/mastersystem/simpsons-trivia">PD ROMS</a>, <a href="http://www.dcemu.co.uk/vbulletin/threads/1159894-Simpsons-Trivia-v1-02-(Master-System-Game)">DC EMU UK</a>, <a href="http://idpixel.ru/news/850-simpsons-trivia-a-bylo-li-eto-v-simpsonah">idpixel.ru</a> + <a href="https://www.youtube.com/watch?v=271zGCC-R9s">Tsar Evgeniy</a> [YouTube]
+<br /><br />
+<u>Popularity</u>
+<br />
+Arguably, recent interest for Sega Master System games has grown in popularity could be due to the high quality work of Indie game developer <a href="http://www.smspower.org/forums/member10267">eruiz00</a> with titles <a href="http://www.smspower.org/Homebrew/AstroForce-SMS">Astro Force</a>, <a href="http://www.smspower.org/Homebrew/SilverValley-SMS">Silver Valley</a> and <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a>.
+<br /><br />
+Not only do these awesome games keep the console <b>alive</b> but the fact that the community shares source code and assets; this certainly does help other developers improve their skills + contribute more games!
+<br /><br />
+<u>Summary</u>
+<br />
+To summarize, the <a href="http://www.smspower.org/Competitions/Coding-2018">2018</a> coding competition featured the fewest entries [6] compared to <a href="http://www.smspower.org/Competitions/Coding-2017">2017</a> [8] and <a href="http://www.smspower.org/Competitions/Coding-2016">2016</a> [16].  However, for each entry in 2018, there seemed to be more accompanying box art and/or instructions.
+<br /><br />
+In fact, some Homebrew productions come complete with box art, case, cover and physical ROM cartridge e.g. <a href="http://www.smspower.org/forums/files/duke_nukem_156.jpg">Duke Nukem</a>.  Again, community <a href="http://www.smspower.org/forums/member2883">members</a> helping transform this fun past time into a serious hobby!
+<br /><br />
+<u>Retrospective</u>
+<br />
+In 2013, an initial ambitious <a href="http://steveproxna.blogspot.ie/2013/09/sega-console-programming.html">goal</a> was to build a retro game in pure Z80 assembler to target the Sega Master System.  During the past 5 years, it seemed more feasible to code in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> using either the <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> or <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
+<br /><br />
+However, the 2018 competition entry <a href="http://www.smspower.org/Homebrew/Astroswab-SMS">Astroswab</a> by <a href="http://www.smspower.org/forums/member6892">hang-on</a> <b>was</b> written in pure Z80 assembler.  By sharing the source code, this project has given some solid ideas on how it could be possible to achieve this goal <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+</span>

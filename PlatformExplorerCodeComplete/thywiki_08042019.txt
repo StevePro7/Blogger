@@ -1,0 +1,204 @@
+<span style="font-family:verdana;font-size:85%;">
+<u>Summary</u>
+<br />
+Big thanks to @ARCADEMAN_tuber for uploading this awesome video of #SEGA #MasterSystem game "Platform Explorer"
+<br /><br />
+https://www.youtube.com/c/CanaldeARCADEMAN
+https://www.youtube.com/watch?v=RPIeLNv6JGA
+<br /><br />
+
+In the old days of Game Creation with <a href="https://en.wikibooks.org/wiki/Game_Creation_with_XNA/Basics/Setup">XNA</a>, there was a popular Microosft XNA project called "Platformer".  This starter kit contained code + content to demo basic game mechanics of a simple <a href="https://en.wikipedia.org/wiki/Platform_game">platform</a> video game.
+<br /><br />
+Therefore, "Platformer" seemed a good candidate to port to Sega Master System.  Enter <a href="http://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>!
+<br /><br />
+Inspired from previous posts on <a href="http://steveproxna.blogspot.com/2013/09/sega-console-programming.html">Sega Console Programming</a> and <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a>, <b>Platform Explorer</b> is my fourth 8-bit video game written in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> assembler to target Sega Master System (SMS).
+<!--
+<a href="https://3.bp.blogspot.com/-t4P2AWjzxkg/XKtrSak7jJI/AAAAAAAAFW4/2e56wqHdELU0DuHp39UIKDrKVpyxG1GbwCLcBGAs/s1600/Title.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-t4P2AWjzxkg/XKtrSak7jJI/AAAAAAAAFW4/2e56wqHdELU0DuHp39UIKDrKVpyxG1GbwCLcBGAs/s640/Title.png" width="95%" height="525" data-original-width="642" data-original-height="527" /></a>
+-->
+Let's check it out! 
+<br /><br />
+Note: previous titles published for the Master System include <a href="http://www.smspower.org/Homebrew/3DCity-SMS">3D City</a>, <a href="http://www.smspower.org/Homebrew/CandyKidDemo-SMS">Candy Kid</a> Demo + <a href="http://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a>.
+<br />
+Download source code <b><a href="https://github.com/SteveProXNA/PlatformExplorerSMS">here</a></b>. 
+<br /><br />
+Sega Retro Gaming <a href="http://steveproxna.blogspot.com/2013/06/sega-retro-gaming.html">post</a> documents how to play video games like Simpsons Trivia using a <a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> emulator.
+<br />
+devkitSMS Programming Setup <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a> documents development environment required to build <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> source.
+<!--
+<table width="100%">
+<tr>
+<td valign="top" width="40%">
+<a href="https://4.bp.blogspot.com/-7_OAWSDYnD8/XKtqeFNWTTI/AAAAAAAAFWM/sWK8gaoGzGQLG2O_Vd4JXwuRkWzBg8lswCLcBGAs/s1600/01.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-7_OAWSDYnD8/XKtqeFNWTTI/AAAAAAAAFWM/sWK8gaoGzGQLG2O_Vd4JXwuRkWzBg8lswCLcBGAs/s640/01.png" width="95%"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://2.bp.blogspot.com/-R893Ejd0xhU/XKtqp51-ahI/AAAAAAAAFWQ/_ygUC7RwIk07c2eQOz8vU_e2nkTTfCC6ACLcBGAs/s1600/02.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-R893Ejd0xhU/XKtqp51-ahI/AAAAAAAAFWQ/_ygUC7RwIk07c2eQOz8vU_e2nkTTfCC6ACLcBGAs/s640/02.png" width="95%"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://2.bp.blogspot.com/-KPLm93xsDe8/XKtqzJUVcxI/AAAAAAAAFWY/RKnNCvTlclgEsjU4znyJMoNFQqOsI_wZACLcBGAs/s1600/03.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-KPLm93xsDe8/XKtqzJUVcxI/AAAAAAAAFWY/RKnNCvTlclgEsjU4znyJMoNFQqOsI_wZACLcBGAs/s640/03.png" width="95%" /></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://1.bp.blogspot.com/-Vg1M5J5wEwE/XKtq7MREapI/AAAAAAAAFWg/bp65-EM-qcMid3G1uoSQr1hwjQ_SJRdaACLcBGAs/s1600/04.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-Vg1M5J5wEwE/XKtq7MREapI/AAAAAAAAFWg/bp65-EM-qcMid3G1uoSQr1hwjQ_SJRdaACLcBGAs/s640/04.png" width="95%" /></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://4.bp.blogspot.com/-9hqh9s6EuAM/XKtq_rIZIFI/AAAAAAAAFWk/iURbSqqRnLQDlkMa2ed4S4AVaqaRbWhzgCLcBGAs/s1600/05.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-9hqh9s6EuAM/XKtq_rIZIFI/AAAAAAAAFWk/iURbSqqRnLQDlkMa2ed4S4AVaqaRbWhzgCLcBGAs/s640/05.png" width="95%" /></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://1.bp.blogspot.com/-cCXt_eYaKIw/XKtrEHDtrWI/AAAAAAAAFWo/NTVzIX8vKdQEvMGqFLLmzIL-f_xdtBYuQCLcBGAs/s1600/06.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-cCXt_eYaKIw/XKtrEHDtrWI/AAAAAAAAFWo/NTVzIX8vKdQEvMGqFLLmzIL-f_xdtBYuQCLcBGAs/s640/06.png" width="95%" /></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://1.bp.blogspot.com/-VTDinjGg73g/XKtrIYLuqJI/AAAAAAAAFWs/dFSQZ0FKwJwwC_8jmx2xNeZyYh6JHKWYQCLcBGAs/s1600/07.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-VTDinjGg73g/XKtrIYLuqJI/AAAAAAAAFWs/dFSQZ0FKwJwwC_8jmx2xNeZyYh6JHKWYQCLcBGAs/s640/07.png" width="95%" /></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://1.bp.blogspot.com/-l_pnIoRLCeg/XKtrNAyrHhI/AAAAAAAAFW0/M6vqOtJCGg8hv2LRFIi7XoRp_1CZpeAPACLcBGAs/s1600/08.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-l_pnIoRLCeg/XKtrNAyrHhI/AAAAAAAAFW0/M6vqOtJCGg8hv2LRFIi7XoRp_1CZpeAPACLcBGAs/s640/08.png" width="95%" /></a>
+</td>
+</tr>
+</table>
+-->
+<u>Instructions</u>
+<br />
+Simple: move joystick Left or Right to run and Button1 to jump.  Avoid all enemies + guards and watch out for the pits!  After feedback from the community, you can now choose game speed as Slow [motion] or Fast.  
+<br /><br />
+After the third iteration, the first 10x levels are Tutorial and the currently remaining 40x levels are available "New Game".  There is capacity for 80-100 levels.  Please let me know if you'd like to design some levels <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+<br /><br />
+<u>Tools</u>
+<br />
+Here are a list of Tools and frameworks that were used in the development of this project:
+<table width="82%" border="1">
+<tr>
+<td valign="top" width="30%">&nbsp;KEY</td>
+<td valign="top" width="70%">&nbsp;VALUE</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Programming</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/sverx/devkitSMS">devkitSMS</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Compiler</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://sourceforge.net/projects/sdcc/files/sdcc/3.6.0">sdcc 3.6</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Assembler</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.villehelin.com/wla.html">WLA-DX</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>IDE</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202015&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio 2015</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Languages</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Graphics</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/maxim-zhao/bmp2tile/releases/tag/v0.43">BMP2Tile 0.43</a> / <a href="https://www.gimp.org">GIMP 2</a> / <a href="https://www.getpaint.net">paint.net</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Music</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/Music/Mod2PSG2">Mod2PSG2</a> / <a href="https://github.com/sverx/PSGlib/blob/master/tools/vgm2psg.exe">vgm2psg</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Emulators</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://emulicious.net">Emulicious</a> / <a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> / <a href="http://www.smspower.org/meka">Meka</a></td>
+</tr>
+</table>
+<br />
+<u>ROM Hacking</u>
+<br />
+You can hack this ROM!  Download + dump <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/PlatformExplorer-3.0.sms">PlatformExplorer</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F</b></td>
+<td valign="top" width="20%">&nbsp;DelaySpeed</td>
+<td valign="top" width="40%">&nbsp;Used during dev disables screen delays.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables auto invincible.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;Difficulty</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Hard otherwise use Easy.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;Game Speed</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Slow otherwise use Fast.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0053</b></td>
+<td valign="top" width="20%">&nbsp;World No.</td>
+<td valign="top" width="40%">&nbsp;Set start world no to zero-based value.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Round No.</td>
+<td valign="top" width="40%">&nbsp;Set start round no to zero-based value.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Round No.</td>
+<td valign="top" width="40%">&nbsp;Set start round no to zero-based value.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0055</b></td>
+<td valign="top" width="20%">&nbsp;Music Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=music to play otherwise disabled.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0056</b></td>
+<td valign="top" width="20%">&nbsp;Sound Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=sound to play otherwise disabled.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0057</b></td>
+<td valign="top" width="20%">&nbsp;Enemy move</td>
+<td valign="top" width="40%">&nbsp;Set value non-zero to disable movement.</td>
+</tr>
+</table>
+-->
+<br />
+<u>Bonuses</u>
+<ul>
+<li>
+Player will receive free man for every 20x gems collected during game.
+</li>
+<li>
+Player will also receive bonus 5x gems on collecting all gems in level.
+</li>
+</ul>
+<br />
+<u>Cheats</u>
+<ul>
+<li>
+Press Button2 five times on Start screen and you will be invincible each game this is actioned.
+</li>
+<li>
+Press Button2 three times while holding down on Difficulty screen to navigate to select screen.
+</li>
+<li>
+Press and hold Button2 during game play to reset player to original starting spot in each level.
+</li>
+<li>
+Press and hold Button2 while holding down to secretly quit out game back to the Start screen.
+</li>
+</ul>
+<br />
+<u>Credits</u>
+<br />
+Extra special thanks goes to <a href="http://www.smspower.org/forums/member7198">sverx</a> for the devkitSMS.  Plus StevePro Studios would like to thank <a href="http://www.smspower.org/forums/member10267">eruiz00</a> and <a href="http://www.smspower.org/forums/member601">haroldoop</a> for sharing source code from SMS <a href="http://www.smspower.org/Homebrew/Index">Homebrew</a> projects.  Many ideas here were used in this project!
+<br /><br />
+</span>

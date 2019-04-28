@@ -1,0 +1,53 @@
+You can hack this ROM!  Download + dump <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/PlatformExplorer-3.0.sms">PlatformExplorer.sms</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F</b></td>
+<td valign="top" width="20%">&nbsp;DelaySpeed</td>
+<td valign="top" width="40%">&nbsp;Used during dev disables screen delays.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables auto invincible.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;Difficulty</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Hard otherwise use Easy.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;Game Speed</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Slow otherwise use Fast.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0053</b></td>
+<td valign="top" width="20%">&nbsp;World No.</td>
+<td valign="top" width="40%">&nbsp;Set start world no to zero-based value.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Round No.</td>
+<td valign="top" width="40%">&nbsp;Set start round no to zero-based value.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0055</b></td>
+<td valign="top" width="20%">&nbsp;Music Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=music to play otherwise disabled.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0056</b></td>
+<td valign="top" width="20%">&nbsp;Sound Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=sound to play otherwise disabled.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0057</b></td>
+<td valign="top" width="20%">&nbsp;Enemy move</td>
+<td valign="top" width="40%">&nbsp;Set value non-zero to disable movement.</td>
+</tr>
+</table>
