@@ -40,7 +40,7 @@ Now there will new custom 4bpp 16-color palette at %USERPROFILE%\.gimp-2.8\palet
 <br /><br />
 <u>BMP2Tile</u>
 <br />
-Upgrade to Version <a href="https://github.com/maxim-zhao/bmp2tile/releases/tag/v0.43">0.43</a> for -fullpalette option to Output 16 colors rather than as many present in image.
+Upgrade to Version 0.43 for -fullpalette option to Output 16 colors rather than as many present in image.
 <pre class="csharp" name="code">
 bmp2tile.exe raw\back_tiles.bmp -savetiles "back_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -exit
 bmp2tile.exe raw\back_tiles.bmp -savetilemap "back_tiles (tilemap).bin" -exit
@@ -124,9 +124,6 @@ The following coding changes + enhancements have been made throughout Platform E
 The original <a href="https://github.com/sverx/devkitSMS/blob/master/SMSlib/src/SMSlib.h">SMSlib.h</a> and <a href="https://github.com/sverx/devkitSMS/blob/master/PSGlib/src/PSGlib.h">PSGlib.h</a> header files do not seem to have include guard clauses which means they can't be included more than once so let's create wrappers for them.  In fact, this is beneficial for debugging.
 <pre class="csharp" name="code">
 // _sms_manager.h
-#ifndef _SMS_MANAGER_H_
-#define _SMS_MANAGER_H_
-
 void devkit_SMS_init();
 void devkit_SMS_displayOn();
 void devkit_SMS_displayOff();
@@ -144,8 +141,6 @@ unsigned int devkit_PORT_A_KEY_2();
 // #defines
 unsigned char devkit_SPRITEMODE_NORMAL();
 unsigned int devkit_VDPFEATURE_HIDEFIRSTCOL();
-
-#endif//_SMS_MANAGER_H_
 </pre>
 Note: repeat this process for PSGlib.h.  Also, don't forget to upgrade PSGlib to include <a href="https://github.com/sverx/devkitSMS/blob/master/PSGlib/src/PSGlib.c">PSGResume</a>() API.
 <br /><br />
@@ -453,11 +448,11 @@ int abs( int v )
   return v * ( ( v < 0 ) * ( -1 ) + ( v > 0 ) );
 }
 </pre>
-After examining code this function invoked multiple times per frame it was clear that abs() could be replaced with simple if statement.  Being able to debug step through <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> code helped ensure this still worked as before!
+After examining code this function invoked multiple times per frame it was clear that abs() could be replaced with simple if statement.  Being able to debug step through C code helped ensure code still worked as before!
 <br /><br />
 <u>Polish</u>
 <br />
-Also, as projects become larger, more content is required.  Therefore, to ensure polish throughout the game it was critical that the <a href="https://en.wikipedia.org/wiki/Video_RAM_(dual-ported_DRAM)">VRAM</a> was cleared properly between large graphic content loads to avoid any glitches.
+Also, as projects become larger, more content is required.  Therefore, to ensure polish throughout the game it was critical that the VRAM was cleared properly between large graphic content loads to avoid any glitches.
 <pre class="csharp" name="code">
 // intro_screen.c
 void screen_intro_screen_load()
@@ -480,5 +475,5 @@ Finally, a big shout out to <a href="http://www.smspower.org/forums/member6944">
 <br /><br />
 <u>Summary</u>
 <br />
-To summarize, once again the SMS Power! community has been awesome and by members sharing their code this has helped immensely with <a href="http://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a> doing so well in the <a href="http://www.smspower.org/Competitions/Coding-2019">2019</a> Coding Competition <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+To summarize, once again the SMS Power community has been awesome and by members sharing their code this has helped immensely with Platform Explorer doing so well in the 2019 Coding Competition <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
 </span>
