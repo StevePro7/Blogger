@@ -1,0 +1,143 @@
+MAC anNOTES 02
+11/05/2019
+
+I installed Ubuntu on Virtual Box on my iMac last week
+I accept the default Irish keyboard
+Now I need to setup keyboard, set video resolution to 2560x1440
+I need to install all the relevant software
+
+Follow Notes first
+
+
+01.
+Change resolution first
+Settings | System Settings | Display
+Resolution 1920 x 1440 (4:3)
+I didn't see 256x1440 but I did see 2560 x 1600
+Apply
+
+Set the Mac dock to left to maximise virtual box height
+
+
+02.
+Setup share folder
+
+Connect to Server
+
+smb://STEVEPRO-PC
+Username	TEST
+Domain		WORKGROUP
+Password	otm123
+
+
+03.
+Update resolution
+https://www.youtube.com/watch?v=LiP-YqtZoNQ
+https://gist.github.com/adityaduggal/6fd97142a0b27d699a2d30a3a59e7cfd
+
+but this didn't work for 2560x1440 so revert back to 1920 x 1440
+
+
+03.
+Accept all defaults which means install Irish keyboard
+Remove
+
+Settings
+Text Entry
+Irish
+Remove
+ensure that English (US) is the only keyboard as this uses "@"
+
+
+03b.
+Disable lock screen
+Start the application "Settings"
+Choose "Privacy" under the "Personal" heading.
+Choose "Screen Lock"
+Toggle "Automatic Screen Lock" from the default "ON" to "OFF"
+
+
+04.
+Download + install Google Chrome
+Google Chrome
+https://askubuntu.com/questions/760085/how-do-you-install-google-chrome-on-ubuntu-16-04
+
+
+MUST download the *.deb file first	for Debian | Ubuntu
+
+sudo apt-get update
+sudo apt-get install libgconf2-4
+sudo apt-get install libnss3-1d
+sudo apt-get install libxss1
+
+
+Download google chrome from website
+http://www.google.com/chrome
+
+Save file into downloads
+
+sudo su
+cd
+cd Downloads
+sudo dpkg -i google-chrome-stable_amd64.deb
+
+
+
+06.
+Setup curl
+sudo apt install curl
+
+
+07.
+VScode.txt
+
+
+08.
+geany IDE
+https://tecadmin.net/install-geany-ide-ubuntu
+
+sudo add-apt-repository ppa:geany-dev/ppa
+sudo apt-get update
+
+sudo apt-get install geany geany-plugins-common
+
+
+IMPORTANT
+Not sure what I did but the resolution of the virtual box ubuntu is max'd out
+Actually some how managed to do this:
+
+01.
+VM | View | Scale mode
+When Virtual Box launches Ubuntu there is a prompt
+The virtual machine window will beg now switched to Scale mode
+You can go back to windowed mode at any time by pressing Host+C
+
+02.
+The keyboard Ctrl seems to be swapped for Windows [cmd] not sure how
+
+SOLUTION
+https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro
+
+key <LCTL> {    [ Super_L       ]   };
+key <LWIN> {    [ Control_L     ]   };
+
+...
+
+key <RCTL> {    [ Super_R       ]   };
+key <RWIN> {    [ Control_R     ]   };
+
+
+sudo rm -rf /var/lib/xkb/*
+Restart
+
+
+
+Can I copy + paste across machines?
+https://www.youtube.com/watch?v=8MiPmL0YaJk
+I did manage to install Guest Editions
+
+VM | Devices | Insert Guest Editions CD image...
+Virtual Box
+Settings | General | Advanced
+Shared clipboard	Bidirectional
+Drag n' drop		Bidirectional

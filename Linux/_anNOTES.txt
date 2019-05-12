@@ -1,0 +1,85 @@
+MAC anNOTES 02
+03/04/2019
+
+Consolidation of the following info
+
+C:\stevepro\INSTALL\Ubuntu
+C:\stevepro\INSTALL\VirtualBox
+
+
+00.
+Setup info
+Linux.html
+C:\stevepro\Personal\wiki
+
+01.
+Mac
+Virtual Box
+VirtualBox-6.0.4-128413-OSX.dmg
+C:\stevepro\INSTALL\VirtualBox
+
+02.
+ubuntu-16.04.3-desktop-amd64.iso
+C:\stevepro\INSTALL\Ubuntu
+
+03.
+Accept all defaults which means install Irish keyboard
+Remove
+
+Settings
+Text Entry
+Irish
+Remove
+ensure that English (US) is the only keyboard as this uses "@"
+
+04.
+Download + install Google Chrome
+Google Chrome
+https://askubuntu.com/questions/760085/how-do-you-install-google-chrome-on-ubuntu-16-04
+
+
+MUST download the *.deb file first	for Debian | Ubuntu
+
+sudo apt-get update
+sudo apt-get install libgconf2-4
+sudo apt-get install libnss3-1d
+sudo apt-get install libxss1
+
+
+Download google chrome from website
+http://www.google.com/chrome
+
+Save file into downloads
+
+sudo su
+cd
+cd Downloads
+sudo dpkg -i google-chrome-stable_amd64.deb
+
+
+05.
+Setup file share from perviously setup mount
+
+checkout "mount"
+C:\stevepro\INSTALL\Ubuntu
+
+Click Files
+Connect to Server
+smb://EUWK2WH8DP2.idev.spencerstuart.com
+
+Username	stboland
+Domain		idev
+Password	pwd125
+
+
+06.
+Setup curl
+sudo apt install curl
+
+
+07.
+VScode.txt
+
+
+
+
