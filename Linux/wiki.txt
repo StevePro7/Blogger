@@ -1,5 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
-Installing Ubuntu inside Windows using VirtualBox
+
+01. Installing Ubuntu inside Windows using VirtualBox
 <br />
 Follow instructions from here https://www.psychocats.net/ubuntu/virtualbox
 <br />
@@ -14,14 +15,47 @@ TABLE 01-VirtualBox - Create
 02. Download Ubuntu  At the time of this writing the latest version is 19.04 [LINKS]
 <br />
 VB | Settings | Storage | Controller IDE | Empty | Optical Drive: IDE Secondary Master
-Click disk icon | Choose a virtual CD/DVD disk file... Images | 06.jpg
+Click disk icon | Choose Virtual Optical Disk File... Images | 06.jpg
 <br />
 Navigate to ubuntu-19.04-desktop-amd64.iso file | OK
 <br />
 Double click Ubuntu [Powered Off] to Start
-
-
+<br />
+TODO blackscreen on Windows7... try again on Windows10 but could be HyperV issue
+<br />
 <br />
 
+02. Installing Ubuntu inside Mac OS/X using VirtualBox
+<br />
+Repeat the above steps from Windows
+01. Download VB Mac OS/X [LINKS]... follow all prompts
+<br />
+Double click Ubuntu [Powered Off] to Start
+<br />
+Follow instructions from here https://www.psychocats.net/ubuntu/installing
+<br />
+Launch VirtualBox | Double click Ubuntu - However, tweak the following settings:
+<br />
+TABLE 02-Ubuntu - includes Who are you?
+<br />
+Welcome to Ubuntu... installing all relevant Ubuntu files... Restart Now
+<br />
+<br />
+LOGIN - after login for first time here is some basic Setup
+<br />
+InitialSetup.txt.txt
+
+03. Install Ubuntu on Windows using HyperV Manager
+C:\GitHub\StevePro7\LinuxSetup\xx-SSI\HyperV.txt
+<br />
+
+04. Install Windows Subsystem for Linux
+C:\GitHub\StevePro7\Blogger\Linux\aaLAYOUT.txt
+Windows Subsystem Linux
+https://www.computerhope.com/issues/ch001879.htm
+<br />
+
+SUMMARY - after completing all the installation steps to get Ubuntu Linux up-and-running
+it's now time to install software and be productive!  This will be topic of the next post
 <br />
 </span>
