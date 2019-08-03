@@ -1,0 +1,27 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<u>Setup</u><br />
+This section assumes Ubuntu Linux is installed irrespective of the platform.  Now, let's do some basic setup:  Login and verify an Internet connection: Settings (top right hand side) | System Settings | Network | Wired.
+<br /><br />
+
+<b>Resolution</b><br />
+Typically, the initial display will not max out monitor resolution so let's fix that:  Show Applications (bottom right) | Settings | Display.  Choose resolution that makes sense for monitor size.  Use Landscape orientation.  In VirtualBox, View menu.  Choose Scaled Mode.  Drag screen borders to maximize remaining monitor space.
+<br /><br />
+
+<b>Keyboard</b><br />
+Settings | Region & Language.  Choose Language English (US) and Format for keyboard layout that you like.
+<br /><br />
+
+<b>Applications</b><br />
+Remove any unwanted applications from Favorites.  Add any new applications to Favorites accordingly.  E.g.: Show Applications | Search "Terminal".  Double Terminal to launch.  Right click Terminal | Add to Favorites.
+<br /><br />
+
+<b>Folder Share</b><br />
+In order to share files between the host and virtual machine enable folder share:  Show Applications | Files | Other Locations.  Connect to Server "smb://host-pc" | Connect.  Enter Windows Username and Password and WORKGROUP for Domain.  Otherwise, choose Domain as the Local Area Network [LAN] domain accordingly.
+<br /><br />
+
+<b>Guest Additions</b><br />
+In order to copy + paste between the host and virtual machine enable Guest Editions.  In VirtualBox Devices menu | Insert Guest Additions CD image.  After installation, choose Ubuntu | Settings | General | Advanced.  Ensure that both "Shared Clipboard" and "Drag n' Drop" are set to Bidirectional to copy + paste accordingly.
+<br /><br />
+
+</span>
