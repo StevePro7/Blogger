@@ -1,12 +1,11 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <b>Troubleshooting</b><br />
-
 <i>VT-x is not available (VERR_VMX_NO_VMX) After Windows 10 Update</i>
 <br />
 You may receive this <a href="https://forums.virtualbox.org/viewtopic.php?f=6&t=84618">error</a> on Windows 10 especially after a Windows Update.  If so then try the following;
 <ul>
-<li>Launch the Terminal command prompt as Administrator</li>
+<li>Launch the Terminal command prompt Run as Administrator</li>
 <li>Start | Programs | right click Command Prompt | Run as administrator</li>
 <li>Type the following command: <b>dism.exe /Online /Disable-Feature:Microsoft-Hyper-V</b>
 </li>

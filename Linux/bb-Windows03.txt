@@ -1,16 +1,20 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<b>Troubleshooting</b><br />
+<b>Hyper-V Manager</b><br />
+If you are still experiencing issues running Ubuntu Linux on Windows using VirtualBox because of the Microsoft <a href="https://en.wikipedia.org/wiki/Hypervisor">hypervisor</a> then try host Ubuntu using the <a href="https://en.wikipedia.org/wiki/Hyper-V">Hyper-V</a> Manager.  Start | run | Hyper-V Manager.
+<br /><br />
+Next, follow all instructions <a href="https://www.windowscentral.com/how-run-linux-distros-windows-10-using-hyper-v">here</a> to create a Linux virtual machine on Windows 10 using Hyper-V.  Verify Hyper-V is supported with <i>systeminfo.exe</i> command and that Hyper-V is enabled via Windows features.
+<br /><br />
+In Hyper-V Manager choose Action menu | Virtual Switch Manager | New virtual network switch | External.  Create Virtual Switch e.g. "MyVirtualSwitch".  Choose network adapter as External Network | Apply | OK.
+<br /><br />
+Create virtual machine: Action menu | New | Virtual Machine | Ubuntu.  Use default location.  Use default Generation 1.  Choose "MyVirtualSwitch" | Finish.  Follow steps as above to complete Ubuntu installation.
+<br /><br />
 
-<i>VT-x is not available (VERR_VMX_NO_VMX) After Windows 10 Update</i>
 <br />
-You may receive this <a href="https://forums.virtualbox.org/viewtopic.php?f=6&t=84618">error</a> on Windows 10 especially after a Windows Update.  If so then try the following;
-<ul>
-<li>Launch the Terminal command prompt as Administrator</li>
-<li>Start | Programs | right click Command Prompt | Run as administrator</li>
-<li>Type the following command: <b>dism.exe /Online /Disable-Feature:Microsoft-Hyper-V</b>
-</li>
-</ul>
-Restart computer when prompted.  Note: Windows may perform additional updates one or two more times.
+<b>Windows Subsystem for Linux</b><br />
+Windows <a href="https://www.computerhope.com/jargon/w/wsl.htm">Subsystem</a> for Linux [WSL] is an optional feature in Windows that provides a kernel compatibility layer based on Ubuntu.  This layer allows Linux programs to run on a Windows 10 version of the Bash shell.
+<br /><br />
+Determine if your Windows 10 64-bit version supports WSL: Settings | System | About.  Version >= 1607!  Next, follow all instructions <a href="https://www.computerhope.com/issues/ch001879.htm">here</a> to install configure and complete Windows Subsystem for Linux process.
+<br /><br />
 
 </span>

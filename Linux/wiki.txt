@@ -1,61 +1,127 @@
 <span style="font-family:verdana;font-size:85%;">
 
-01. Installing Ubuntu inside Windows using VirtualBox
-<br />
-Follow instructions from here https://www.psychocats.net/ubuntu/virtualbox
-<br />
-01. Download VB Windows [LINKS]... follow all prompts
-<br />
-Follow the installation process as documented  here https://www.psychocats.net/ubuntu/virtualbox
-<br />
-Launch VirtualBox | New | Create Virtual Machine - However, tweak the following settings:
-<br />
-TABLE 01-VirtualBox - Create
-<br />
-02. Download Ubuntu  At the time of this writing the latest version is 19.04 [LINKS]
-<br />
-VB | Settings | Storage | Controller IDE | Empty | Optical Drive: IDE Secondary Master
-Click disk icon | Choose Virtual Optical Disk File... Images | 06.jpg
-<br />
-Navigate to ubuntu-19.04-desktop-amd64.iso file | OK
-<br />
-Double click Ubuntu [Powered Off] to Start
-<br />
-TODO blackscreen on Windows7... try again on Windows10 but could be HyperV issue
-<br />
-<br />
-
-02. Installing Ubuntu inside Mac OS/X using VirtualBox
-<br />
-Repeat the above steps from Windows
-01. Download VB Mac OS/X [LINKS]... follow all prompts
-<br />
-Double click Ubuntu [Powered Off] to Start
-<br />
-Follow instructions from here https://www.psychocats.net/ubuntu/installing
-<br />
-Launch VirtualBox | Double click Ubuntu - However, tweak the following settings:
-<br />
-TABLE 02-Ubuntu - includes Who are you?
-<br />
-Welcome to Ubuntu... installing all relevant Ubuntu files... Restart Now
-<br />
-<br />
-LOGIN - after login for first time here is some basic Setup
-<br />
-InitialSetup.txt.txt
-
-03. Install Ubuntu on Windows using HyperV Manager
-C:\GitHub\StevePro7\LinuxSetup\xx-SSI\HyperV.txt
+<u>Windows</u><br />
+Install Ubuntu Linux on Windows using VirtualBox.  <a href="https://download.oracle.com/virtualbox/6.0.10/VirtualBox-6.0.10-132072-Win.exe">Download<a/> VirtualBox and install.  Follow all the prompts.  Next, follow all instructions <a href="https://www.psychocats.net/ubuntu/virtualbox">here</a> to create the virtual machine to host Ubuntu.  I have tweaked some inputs:
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Step</b></td>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;VM Name and OS Type</td>
+<td valign="top">&nbsp;Version</td>
+<td valign="top">&nbsp;Ubuntu (64-bit)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Memory</td>
+<td valign="top">&nbsp;Base Memory Size</td>
+<td valign="top">&nbsp;8 GB</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Virtual Hard Disk</td>
+<td valign="top">&nbsp;Start up Disk</td>
+<td valign="top">&nbsp;Create new hard disk</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create New Virtual Disk</td>
+<td valign="top">&nbsp;File type</td>
+<td valign="top">&nbsp;VDI (VirtualBox Disk Image)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Virtual disk storage details</td>
+<td valign="top">&nbsp;Storage details</td>
+<td valign="top">&nbsp;Fixed size</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Virtual disk file location and size</td>
+<td valign="top">&nbsp;Size</td>
+<td valign="top">&nbsp;100 GB</td>
+</tr>
+</table>
 <br />
 
-04. Install Windows Subsystem for Linux
-C:\GitHub\StevePro7\Blogger\Linux\aaLAYOUT.txt
-Windows Subsystem Linux
-https://www.computerhope.com/issues/ch001879.htm
+Complete virtual hard drive: click Create.  <a href="https://ubuntu.com/download/desktop/thank-you/?version=19.04&architecture=amd64">Download</a> Ubuntu 19.04.  In VirtualBox, click Settings | Storage | Controller IDE | Empty | Optical Drive: IDE Secondary Master.  Click icon | Choose Virtual Optical Disk File...
+
+<a href="https://1.bp.blogspot.com/-1no4mn72shg/XUQwpHPTryI/AAAAAAAAFlE/6RwspKdnKz43myN-ZWgnzcUUOXXqpdNXwCLcBGAs/s1600/Storage.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-1no4mn72shg/XUQwpHPTryI/AAAAAAAAFlE/6RwspKdnKz43myN-ZWgnzcUUOXXqpdNXwCLcBGAs/s640/Storage.jpg" width="98%" height="439" /></a>
+
+<br /><br />
+
+Navigate to downloaded Ubuntu ISO file | OK.  In VirtualBox, double click Ubuntu [Powered Off] to Start the virtual machine.  Next, follow all instructions <a href="https://www.psychocats.net/ubuntu/installing">here</a> for the Ubuntu installation.  I have tweaked some inputs:
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Step</b></td>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Welcome</td>
+<td valign="top">&nbsp;Option</td>
+<td valign="top">&nbsp;Install Ubuntu</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Keyboard layout*</td>
+<td valign="top">&nbsp;English</td>
+<td valign="top">&nbsp;English (US)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Updates and other software</td>
+<td valign="top">&nbsp;What apps would you like to install</td>
+<td valign="top">&nbsp;Normal installation</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Installation type</td>
+<td valign="top">&nbsp;Computer has no detected OS</td>
+<td valign="top">&nbsp;Erase disk and install Ubuntu</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Where are you?</td>
+<td valign="top">&nbsp;City</td>
+<td valign="top">&nbsp;Leave default selection</td>
+</tr>
+</table>
+* IMPORTANT do not change keyboard layout here as can corrupt buttons!  You can always change it later.
+<br /><br />
+
+The final install step "Who are you?"
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Your name</td>
+<td valign="top">&nbsp;Steven Boland</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Your computer's name</td>
+<td valign="top">&nbsp;stevepro-VirtualBox</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Pick a username</td>
+<td valign="top">&nbsp;stevepro</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Choose a password</td>
+<td valign="top">&nbsp;password</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Confirm your password</td>
+<td valign="top">&nbsp;password</td>
+</tr>
+</table>
 <br />
 
-SUMMARY - after completing all the installation steps to get Ubuntu Linux up-and-running
-it's now time to install software and be productive!  This will be topic of the next post
+<b>Troubleshooting</b><br />
+<i>VT-x is not available (VERR_VMX_NO_VMX) After Windows 10 Update</i>
 <br />
+You may receive this <a href="https://forums.virtualbox.org/viewtopic.php?f=6&t=84618">error</a> on Windows 10 especially after a Windows Update.  If so then try the following;
+<ul>
+<li>Launch the Terminal command prompt Run as Administrator</li>
+<li>Start | Programs | right click Command Prompt | Run as administrator</li>
+<li>Type the following command: <b>dism.exe /Online /Disable-Feature:Microsoft-Hyper-V</b>
+</li>
+</ul>
+Restart computer when prompted.  Note: Windows may perform additional updates one or two more times.
+
 </span>
