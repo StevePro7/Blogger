@@ -4,16 +4,7 @@
 Blurb about intro of Integrated Development Environments
 <br /><br />
 
-<u>03-CLion</u><br />
-<a href="https://en.wikipedia.org/wiki/JetBrains#CLion">CLion</a> is a commercial IDE from JetBrains for C/C++ available cross-platform on Windows, Mac OS/X and Linux using CMake build system.  <a href="https://www.jetbrains.com/clion/download/#section=linux">Download</a> CLion.  Launch Terminal and enter these following commands:
-<br />
-<pre class="csharp" name="code">
-cd ~/Downloads
-tar -xvzf CLion-2017.e.tar.gz
-</pre> 
-<br />
-
-<u>01-VS Code</u><br />
+<b>01-VS Code</b><br />
 <a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a> is a popular lightweight IDE available cross platform on Windows, Mac OS/X and Linux.  Launch Terminal and enter the following commands:
 <br />
 <pre class="csharp" name="code">
@@ -26,7 +17,7 @@ sudo apt-get install code # or code-insiders
 </pre> 
 <br />
 
-<u>02-Geany</u><br />
+<b>02-Geany</b><br />
 <a href="https://tecadmin.net/install-geany-ide-ubuntu">Geany</a> is a lightweight IDE using the GTK2 toolkit and may seem to be popular for C development on Linux.  Launch Terminal and enter the following commands:
 <br />
 <pre class="csharp" name="code">
@@ -36,5 +27,89 @@ sudo apt-get install geany geany-plugins-common
 </pre> 
 <br />
 
-<br /><br />
+<b>03-NetBeans</b><br />
+<a href="https://www.tecmint.com/install-netbeans-ide-in-ubuntu-debian-linux-mint">NetBeans</a> is an open source IDE available cross platform on Windows, Mac OS/X and Linux.  However, while the installation process may seem straightforward there may be requirement to install other dependencies.  Launch Terminal and enter these following commands:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+apt-cache search oracle-java8
+sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-set-default
+wget -c http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh
+chmod +x netbeans-8.2-linux.sh 
+./netbeans-8.2-linux.sh\
+</pre> 
+<br />
+
+<i>No compatible JDK was found</i><br />
+This seemed to be because the oracle-java8 commands were old and did not work.  Try this <a href="https://websiteforstudents.com/how-to-install-netbeans-on-ubuntu-16-04-17-10-18-04">install</a> instead:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt update
+sudo apt install oracle-java8-installer
+sudo apt install oracle-java8-set-default
+javac -version
+./netbeans-8.2-linux.sh\
+</pre> 
+<br />
+
+<i>Oracle java installer has no candidate</i><br />
+This can occur when <a href="https://askubuntu.com/questions/790671/oracle-java8-installer-no-installation-candidate">installing</a> Java on Debian not Ubuntu.  Launch Terminal and enter following commands:
+<br />
+<pre class="csharp" name="code">
+cd /etc/apt/sources.list.d
+rm webupd8team-java.list
+sudo apt-get update
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+</pre>
+<br />
+Finally, install the default JDK and use <b>/usr</b> folder when NetBeans IDE prompts for sufficient JDK location:
+<br />
+<pre class="csharp" name="code">
+sudo apt-get install default-jdk
+</pre> 
+<br />
+
+<b>04-CLion</b><br />
+<a href="https://en.wikipedia.org/wiki/JetBrains#CLion">CLion</a> is a commercial IDE from JetBrains for C/C++ available cross-platform on Windows, Mac OS/X and Linux using CMake build system.  <a href="https://www.jetbrains.com/clion/download/#section=linux">Download</a> CLion.  Launch Terminal and enter these following commands:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+tar -xvzf CLion-2017.e.tar.gz
+</pre> 
+<br />
+
+<b>05-Dotnet</b><br />
+Specifically .NET <a href="https://mohitgoyal.co/2018/09/22/install-dotnet-core-sdk-and-runtime-on-ubuntu-os">Core</a> is now open source and available cross platform on Windows, Mac OS/X and Linux!  Launch Terminal and enter the following commands:
+<br />
+<pre class="csharp" name="code">
+wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+# Install .NET Core Runtime
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install dotnet-hosting-2.0.6
+
+# Install the .NET SDK
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install dotnet-sdk-2.2
+
+# Verify installation
+dotnet --version
+dotnet --list-sdks
+dotnet --list-runtimes
+</pre>
+IMPORTANT<br />
+If you receive an error message similar to <i>Unable to locate package dotnet-sdk-2.2</i> then refer to <a href="https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/sdk-current">this</a> guide.
+<br />
+
 </span>

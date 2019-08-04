@@ -1,0 +1,39 @@
+04/08/2019
+I was trying to document my issues from NetBeans here:
+
+anNOTES02.txt
+E:\GitHub\StevePro7\LinuxSetup\04-InstallSoftware
+
+However, on Ubuntu 19.04 I simply went to Show Applications and Searched for NetBeans and just searched for NetBeans and installed without any command line but after launching this only ran Java projects!
+
+
+
+<b>04-NetBeans</b><br />
+<a href="https://www.tecmint.com/install-netbeans-ide-in-ubuntu-debian-linux-mint">NetBeans</a> is an open source IDE available cross platform on Windows, Mac OS/X and Linux.  However, while the installation process may seem straightforward there may be requirement to install other dependencies.  Launch Terminal and enter these following commands:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+apt-cache search oracle-java8
+sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-set-default
+wget -c http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh
+chmod +x netbeans-8.2-linux.sh 
+./netbeans-8.2-linux.sh\
+</pre> 
+<br />
+
+<i>No compatible JDK was found</i><br />
+This seemed to be because the oracle-java8 commands were old and did not work.  Try this <a href="https://websiteforstudents.com/how-to-install-netbeans-on-ubuntu-16-04-17-10-18-04">install</a> instead:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt update
+sudo apt install oracle-java8-installer
+sudo apt install oracle-java8-set-default
+javac -version
+./netbeans-8.2-linux.sh\
+</pre> 
+<br />
+
+<i>Oracle java installer has no candidate</i><br />
