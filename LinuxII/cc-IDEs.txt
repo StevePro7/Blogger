@@ -1,9 +1,40 @@
-IDEs
+<span style="font-family:verdana;font-size:85%;">
 
-VScode
+<u>IDEs</u><br />
+Blurb about intro of Integrated Development Environments
+<br /><br />
 
-Geany
+<u>03-CLion</u><br />
+<a href="https://en.wikipedia.org/wiki/JetBrains#CLion">CLion</a> is a commercial IDE from JetBrains for C/C++ available cross-platform on Windows, Mac OS/X and Linux using CMake build system.  <a href="https://www.jetbrains.com/clion/download/#section=linux">Download</a> CLion.  Launch Terminal and enter these following commands:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+tar -xvzf CLion-2017.e.tar.gz
+</pre> 
+<br />
 
-NetBeans
+<u>01-VS Code</u><br />
+<a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a> is a popular lightweight IDE available cross platform on Windows, Mac OS/X and Linux.  Launch Terminal and enter the following commands:
+<br />
+<pre class="csharp" name="code">
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-CLion
+sudo apt-get update
+sudo apt-get install code # or code-insiders
+</pre> 
+<br />
+
+<u>02-Geany</u><br />
+<a href="https://tecadmin.net/install-geany-ide-ubuntu">Geany</a> is a lightweight IDE using the GTK2 toolkit and may seem to be popular for C development on Linux.  Launch Terminal and enter the following commands:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:geany-dev/ppa
+sudo apt-get update
+sudo apt-get install geany geany-plugins-common
+</pre> 
+<br />
+
+<br /><br />
+</span>
