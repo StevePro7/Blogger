@@ -1,0 +1,38 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<b>02-Source Control</b><br />
+In the previous post, we setup a folder share and made it possible to copy + paste files across from host to virtual machine.  However, it may be easier to install source control client to simply pull + push files directly.
+
+<br /><br />
+
+<b>01-Browser</b><br />
+<a href="https://www.google.com/chrome">Download</a> Google Chrome as default browser.  Save *.deb file in Downloads folder and install from Terminal:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+sudo dpkg -i google-chrome-stable_amd64.deb
+</pre>
+By default, certain packages may not be <a href="https://askubuntu.com/questions/760085/how-do-you-install-google-chrome-on-ubuntu-16-04">installed</a> for this software.  If this is true then enter the commands:
+<br />
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt-get install libgconf2-4
+sudo apt-get install libnss3-1d
+sudo apt-get install libxss1
+sudo apt-get -f install
+</pre> 
+<br />
+
+<b>00-Java</b><br />
+By default, Java may not be installed but is a good idea to install because a lot software may be dependent:
+<br />
+<pre class="csharp" name="code">
+sudo apt install openjdk-11-jre-headless  # version 11.0.3+7-1ubuntu2~19.04.1, or
+sudo apt install default-jre              # version 2:1.11-71
+sudo apt install openjdk-8-jre-headless   # version 8u212-b03-0ubuntu1.19.04.2
+sudo apt install openjdk-12-jre-headless  # version 12.0.1+12-1
+sudo apt install openjdk-13-jre-headless  # version 13~13-0ubunt1
+</pre> 
+<br />
+
+</span>
