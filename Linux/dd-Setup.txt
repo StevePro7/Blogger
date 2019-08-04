@@ -9,7 +9,19 @@ Typically, the initial display will not max out monitor resolution so let's fix 
 <br /><br />
 
 <b>Keyboard</b><br />
-Settings | Region & Language.  Choose Language English (US) and Format for keyboard layout that you like.
+Settings | Region & Language.  Choose Language English (US) and Format for keyboard layout that you like.  Also, you may <a href="https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro">switch</a> the Command and Control key if you are on a Mac for consistency.  Launch Terminal:
+<pre class="csharp" name="code">
+sudo nano /usr/share/X11/xkb/symbols/pc
+key <LCTL> {    [ Super_L       ]   };
+key <LWIN> {    [ Control_L     ]   };
+key <RCTL> {    [ Super_R       ]   };
+key <RWIN> {    [ Control_R     ]   };
+sudo rm -rf /var/lib/xkb/*
+</pre> 
+<br />
+
+<b>Shortcuts</b><br />
+Following Keyboard, update <a href="https://askubuntu.com/questions/546669/copy-and-paste-doesnt-work-in-terminal">Terminal</a> keyboard shortcuts for copy and paste consistency.  Launch Terminal menu | Preferences | Shortcuts | Edit.  Choose Copy and press Ctrl+C and choose Paste and press Ctrl+V.  Also, handy Files Manager shortcuts: Ctrl+D to create [bookmark] <a href="https://askubuntu.com/questions/83118/create-a-link-to-a-folder-on-the-left-panel-of-nautilus-file-manager">link</a> to folder and Ctrl+L to show path.
 <br /><br />
 
 <b>Applications</b><br />
@@ -21,12 +33,7 @@ In order to share files between the host and virtual machine enable folder share
 <br /><br />
 
 <b>Guest Additions</b><br />
-In order to copy + paste between the host and virtual machine enable Guest Editions.  In VirtualBox Devices menu | Insert Guest Additions CD image.  After installation, choose Ubuntu | Settings | General | Advanced.  Ensure that both "Shared Clipboard" and "Drag n' Drop" are set to Bidirectional to copy + paste accordingly.
+In order to copy + paste between the host and virtual machine <a href="https://www.youtube.com/watch?v=8MiPmL0YaJk">enable</a> Guest Editions.  In VirtualBox Devices menu | Insert Guest Additions CD image.  After installation, choose Ubuntu | Settings | General | Advanced.  Ensure that both "Shared Clipboard" and "Drag n' Drop" are set to Bidirectional to copy + paste accordingly.
 <br /><br />
-
-<b>Shortcuts</b><br />
-Terminal Ctrl+Shift+C by default change to Ctrl+C
-https://askubuntu.com/questions/546669/copy-and-paste-doesnt-work-in-terminal
-
 
 </span>
