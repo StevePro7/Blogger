@@ -54,7 +54,7 @@ First, let's list some general purpose commands that can be applied + executed a
 </table>
 <br />
 
-<b>00-Java</b><br />
+<b>Java</b><br />
 By default, Java may not be installed but is a good idea to install because a lot software may be dependent.  Launch Terminal and enter the following commands:
 <br />
 <pre class="csharp" name="code">
@@ -66,7 +66,7 @@ sudo apt install openjdk-13-jre-headless  # version 13~13-0ubunt1
 </pre> 
 <br />
 
-<b>00-General</b><br />
+<b>Various</b><br />
 Here is a list of general software applications that I believe are handy to have installed.  Launch Terminal:
 <pre class="csharp" name="code">
 sudo apt-get install git
@@ -76,7 +76,7 @@ sudo apt-get install g++
 </pre> 
 <br />
 
-<b>01-Browser</b><br />
+<b>Browser</b><br />
 <a href="https://www.google.com/chrome">Download</a> Google Chrome as default browser.  Save *.deb file in Downloads folder and install from Terminal:
 <br />
 <pre class="csharp" name="code">
@@ -94,7 +94,7 @@ sudo apt-get -f install
 </pre> 
 <br />
 
-<b>02-Source Control</b><br />
+<b>Source Control</b><br />
 In the previous post, we setup a folder share and made it possible to copy + paste files across from host to virtual machine.  However, it may be easier to install source control client to simply pull + push files directly.
 <br /><br />
 Source control options include GitEye, SmartGit and GitKraken.  <a href="https://www.collab.net/downloads/giteye-linux-64">GitEye</a> is free but includes limited features:
@@ -125,7 +125,7 @@ sudo dpkg -i gitkraken*.deb
 Now we'd like to build our own software so let's install various <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated</a> Development Environments [IDEs].
 <br /><br />
 
-<b>01-VS Code</b><br />
+<b>VS Code</b><br />
 <a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a> is a popular lightweight IDE available cross platform on Windows, Mac OS/X and Linux.  Launch Terminal and enter the following commands:
 <br />
 <pre class="csharp" name="code">
@@ -138,8 +138,8 @@ sudo apt-get install code # or code-insiders
 </pre> 
 <br />
 
-<b>02-Geany</b><br />
-<a href="https://tecadmin.net/install-geany-ide-ubuntu">Geany</a> is a lightweight IDE using the GTK2 toolkit and may seem to be popular for C development on Linux.  Launch Terminal and enter the following commands:
+<b>Geany</b><br />
+<a href="https://tecadmin.net/install-geany-ide-ubuntu">Geany</a> is a lightweight IDE using the GTK2 toolkit and may seem to be popular for <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> development on Linux.  Launch Terminal and enter the following commands:
 <br />
 <pre class="csharp" name="code">
 sudo add-apt-repository ppa:geany-dev/ppa
@@ -148,7 +148,12 @@ sudo apt-get install geany geany-plugins-common
 </pre> 
 <br />
 
-<b>03-NetBeans</b><br />
+<b>Code Blocks</b><br />
+<a href="https://www.dummies.com/programming/cpp/how-to-install-c-codeblocks-in-ubuntu-linux">Code Blocks</a> seems to be popular IDE for Sega Genesis development>  Install directly from <a href="https://wiki.ubuntu.com/SoftwareCenter">Ubuntu</a> Software.
+<br /><br />
+
+<br />
+<b>NetBeans</b><br />
 <a href="https://www.tecmint.com/install-netbeans-ide-in-ubuntu-debian-linux-mint">NetBeans</a> is an open source IDE available cross platform on Windows, Mac OS/X and Linux.  However, while the installation process may seem straightforward there may be requirement to install other dependencies.  Launch Terminal and enter these following commands:
 <br />
 <pre class="csharp" name="code">
@@ -198,7 +203,7 @@ sudo apt-get install default-jdk
 </pre> 
 <br />
 
-<b>04-CLion</b><br />
+<b>CLion</b><br />
 <a href="https://en.wikipedia.org/wiki/JetBrains#CLion">CLion</a> is a commercial IDE from JetBrains for C/C++ available cross-platform on Windows, Mac OS/X and Linux using CMake build system.  <a href="https://www.jetbrains.com/clion/download/#section=linux">Download</a> CLion.  Launch Terminal and enter these following commands:
 <br />
 <pre class="csharp" name="code">
@@ -207,7 +212,7 @@ tar -xvzf CLion-2017.e.tar.gz
 </pre> 
 <br />
 
-<b>05-Dotnet</b><br />
+<b>Dotnet</b><br />
 Specifically .NET <a href="https://mohitgoyal.co/2018/09/22/install-dotnet-core-sdk-and-runtime-on-ubuntu-os">Core</a> is now open source and available cross platform on Windows, Mac OS/X and Linux!  Launch Terminal and enter the following commands:
 <br />
 <pre class="csharp" name="code">
