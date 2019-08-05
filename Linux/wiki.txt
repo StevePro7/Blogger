@@ -1,5 +1,10 @@
 <span style="font-family:verdana;font-size:85%;">
 
+Linux is <a href="https://blog.edx.org/why-learn-linux">everywhere</a>!  Linux is free open source operating system based on Unix OS.  Linux powers 90% of the world's fastest servers thus is the backbone of the Internet.  Linux dominates mobile platforms and the cloud.
+<a href="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s1600/Linux.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s640/Linux.jpg" width="98%" height="225" /></a>
+Let's check it out!
+<br /><br />
+
 <u>Windows</u><br />
 Install Ubuntu Linux on Windows using VirtualBox.  <a href="https://download.oracle.com/virtualbox/6.0.10/VirtualBox-6.0.10-132072-Win.exe">Download<a/> VirtualBox and install.  Follow all the prompts.  Next, follow all instructions <a href="https://www.psychocats.net/ubuntu/virtualbox">here</a> to create the virtual machine to host Ubuntu.  I have tweaked some inputs:
 <table width="99%" border="1">
@@ -147,5 +152,47 @@ Determine if your Windows 10 64-bit version supports WSL: Settings | System | Ab
 <u>Mac OS/X</u><br />
 Install Ubuntu Linux on Mac OS/X using VirtualBox.  <a href="https://download.oracle.com/virtualbox/6.0.10/VirtualBox-6.0.10-132072-OSX.dmg">Download</a> VirtualBox and install.  Follow all the prompts.  Next, follow all instructions <a href="https://www.psychocats.net/ubuntu/virtualbox">here</a> to create the virtual machine to host Ubuntu.  Repeat install like Windows!
 <br /><br />
+
+<br />
+<b><u>Setup</u></b><br />
+This section assumes Ubuntu Linux is installed irrespective of the platform.  Now, let's do some basic setup:  Login and verify an Internet connection: Settings (top right hand side) | System Settings | Network | Wired.
+<br /><br />
+
+<b>Resolution</b><br />
+Typically, the initial display will not max out monitor resolution so let's fix that:  Show Applications (bottom right) | Settings | Display.  Choose resolution that makes sense for monitor size.  Use Landscape orientation.  In VirtualBox, View menu.  Choose Scaled Mode.  Drag screen borders to maximize remaining monitor space.
+<br /><br />
+
+<b>Keyboard</b><br />
+Settings | Region & Language.  Choose Language English (US) and Format for keyboard layout that you like.  Also, you may <a href="https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro">switch</a> the Command and Control key if you are on a Mac for consistency.  Launch Terminal:
+<pre class="csharp" name="code">
+sudo nano /usr/share/X11/xkb/symbols/pc
+key <LCTL> {    [ Super_L       ]   };
+key <LWIN> {    [ Control_L     ]   };
+key <RCTL> {    [ Super_R       ]   };
+key <RWIN> {    [ Control_R     ]   };
+sudo rm -rf /var/lib/xkb/*
+</pre> 
+<br />
+
+<b>Shortcuts</b><br />
+Following Keyboard, update <a href="https://askubuntu.com/questions/546669/copy-and-paste-doesnt-work-in-terminal">Terminal</a> keyboard shortcuts for copy and paste consistency.  Launch Terminal menu | Preferences | Shortcuts | Edit.  Choose Copy and press Ctrl+C and choose Paste and press Ctrl+V.  Also, handy Files Manager shortcuts: Ctrl+D to create [bookmark] <a href="https://askubuntu.com/questions/83118/create-a-link-to-a-folder-on-the-left-panel-of-nautilus-file-manager">link</a> to folder and Ctrl+L to show path.
+<br /><br />
+
+<b>Applications</b><br />
+Remove any unwanted applications from Favorites.  Add any new applications to Favorites accordingly.  E.g.: Show Applications | Search "Terminal".  Double Terminal to launch.  Right click Terminal | Add to Favorites.
+<br /><br />
+
+<b>Folder Share</b><br />
+In order to share files between the host and virtual machine enable folder share:  Show Applications | Files | Other Locations.  Connect to Server "smb://host-pc" | Connect.  Enter Windows Username and Password and WORKGROUP for Domain.  Otherwise, choose Domain as the Local Area Network [LAN] domain accordingly.
+<br /><br />
+
+<b>Guest Additions</b><br />
+In order to copy + paste between the host and virtual machine <a href="https://www.youtube.com/watch?v=8MiPmL0YaJk">enable</a> Guest Editions.  In VirtualBox Devices menu | Insert Guest Additions CD image.  After installation, choose Ubuntu | Settings | General | Advanced.  Ensure that both "Shared Clipboard" and "Drag n' Drop" are set to Bidirectional to copy + paste accordingly.
+<br /><br />
+
+<br />
+
+<u>Summary</u><br />
+Now that Ubuntu Linux is installed on computer whichever configuration chosen it is time to install software!  This will be the topic in the next post.
 
 </span>
