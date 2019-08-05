@@ -1,5 +1,41 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Games</u><br />
+Finally, let's install some emulators in order to play + test 8-bit and 16-bit SEGA retro video games on Linux.
+<br /><br />
+
+<b>Kega Fusion</b><br />
+<a href="https://retrocdn.net/images/c/ca/Kega-fusion_3.63-2_i386.deb">Download</a> Kega Fusion as <a href="https://segaretro.org/Kega_Fusion">emulator</a> for general Sega retro video games.  Launch Terminal + run commands:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+sudo apt-get install Kega-fusion_3.63-2_i386.deb
+sudo apt-get -f install
+</pre> 
+<br />
+
+<b>Gens GS</b><br />
+<a href="https://retrocdn.net/images/7/75/Gens_2.16.7_i386.deb">Download</a> Gens GS as <a href="https://segaretro.org/Gens/GS?rdfrom=%2F%2Finfo.sonicretro.org%2Findex.php%3Ftitle%3DGens%2FGS%26redirect%3Dno">emulator</a> for Sega Genesis retro video games.  Launch Terminal and run commands:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+sudo apt-get update
+sudo dpkg -i Gens_2.16.7_i386.deb
+</pre> 
+<br />
+
+<b>Emulicious</b><br />
+<a href="https://emulicious.net/downloads/#">Download</a> Emulicious as <a href="https://emulicious.net">emulator</a> for Sega retro video games with great debugger!  Launch Terminal + run:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+mkdir Emulicious
+mv Emulicious.zip Emulicious
+cd Emulicious
+sudo unzip Emulicious.zip
+rm Emulicious.zip
+java -jar Emulicious.jar
+</pre> 
+<br />
 
 </span>
