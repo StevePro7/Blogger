@@ -1,10 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>IDEs</u><br />
-Now we'd like to build our own software so let's install various Integrated Development Environments [IDEs].
-<br /><br />
-Now we would like to build our own software so let's install various Integrated Development Environments.
-<br /><br />
+
 
 In the previous post, we discussed various options to set up Ubuntu Linux.  Now let's install some software.
 <!-- -->
@@ -236,5 +232,18 @@ dotnet --list-runtimes
 </pre>
 IMPORTANT<br />
 If you receive an error message similar to <i>Unable to locate package dotnet-sdk-2.2</i> then refer to <a href="https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/sdk-current">this</a> guide.
+<br /><br />
+
 <br />
+<u>Miscellaneous</u><br />
+After installing IDEs for C/C++ let's install a static code analysis debugging and profiling tool like <a href="http://valgrind.org/docs/manual/quick-start.html">Valgrind</a>:
+<br />
+<pre class="csharp" name="code">
+sudo apt install valgrind
+# Example "HelloWorld"
+cd ~/CLionProjects/HelloWorld/cmake-build-debug
+valgrind ./HelloWorld --lead-check=yes
+</pre> 
+<br />
+
 </span>

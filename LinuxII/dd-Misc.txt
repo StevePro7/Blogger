@@ -1,5 +1,15 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Miscellaneous</u><br />
+After installing IDEs for C/C++ let's install a static code analysis debugging and profiling tool like <a href="http://valgrind.org/docs/manual/quick-start.html">Valgrind</a>:
+<br />
+<pre class="csharp" name="code">
+sudo apt install valgrind
+# Example "HelloWorld"
+cd ~/CLionProjects/HelloWorld/cmake-build-debug
+valgrind ./HelloWorld --lead-check=yes
+</pre> 
+<br />
+
 
 </span>
