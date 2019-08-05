@@ -139,7 +139,10 @@ If you are still experiencing issues running Ubuntu Linux on Windows using Virtu
 Next, follow all instructions <a href="https://www.windowscentral.com/how-run-linux-distros-windows-10-using-hyper-v">here</a> to create a Linux virtual machine on Windows 10 using Hyper-V.  Verify Hyper-V is supported with <i>systeminfo.exe</i> command and that Hyper-V is enabled via Windows features.
 <br /><br />
 In Hyper-V Manager choose Action menu | Virtual Switch Manager | New virtual network switch | External.  Create Virtual Switch e.g. "MyVirtualSwitch".  Choose network adapter as External Network | Apply | OK.
-<br /><br />
+<br />
+
+<a href="https://4.bp.blogspot.com/-yXyYARUw6mI/XUiOKkI7zlI/AAAAAAAAFl0/9t8mHE7vxPYxYEWCyMlxevuEL8qmcIHVgCLcBGAs/s1600/option-virtual-switch-manager.webp" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-yXyYARUw6mI/XUiOKkI7zlI/AAAAAAAAFl0/9t8mHE7vxPYxYEWCyMlxevuEL8qmcIHVgCLcBGAs/s640/option-virtual-switch-manager.webp" width="98%" height="350" /></a>
+<br />
 Create virtual machine: Action menu | New | Virtual Machine | Ubuntu.  Use default location.  Use default Generation 1.  Choose "MyVirtualSwitch" | Finish.  Follow steps as above to complete Ubuntu installation.
 <br /><br />
 
