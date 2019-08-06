@@ -242,7 +242,7 @@ Finally, let's install some emulators in order to play + test 8-bit and 16-bit S
 <br />
 <pre class="csharp" name="code">
 cd ~/Downloads
-sudo apt-get install Kega-fusion_3.63-2_i386.deb
+sudo dpkg -i Kega-fusion_3.63-2_i386.deb
 sudo apt-get -f install
 </pre> 
 <br />
@@ -254,6 +254,7 @@ sudo apt-get -f install
 cd ~/Downloads
 sudo apt-get update
 sudo dpkg -i Gens_2.16.7_i386.deb
+sudo apt-get -f install
 </pre> 
 <br />
 
