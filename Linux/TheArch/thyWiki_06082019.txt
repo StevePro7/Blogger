@@ -164,24 +164,10 @@ This section assumes Ubuntu Linux is installed irrespective of the platform.  No
 Typically, the initial display will not max out monitor resolution so let's fix that:  Show Applications (bottom right) | Settings | Display.  Choose resolution that makes sense for monitor size.  Use Landscape orientation.  In VirtualBox, View menu.  Choose Scaled Mode.  Drag screen borders to maximize remaining monitor space.
 <br /><br />
 
-<b>Guest Additions</b><br />
-In order to copy + paste between the host and virtual machine <a href="https://www.youtube.com/watch?v=8MiPmL0YaJk">enable</a> Guest Editions.  In VirtualBox Devices menu | Insert Guest Additions CD image.  Follow all prompts and choose "Y" accordingly.  Restart Ubuntu VM.
-<br /><br />
-After installation, choose Ubuntu virtual machine | Settings | General | Advanced.  Ensure that both "Shared Clipboard" and "Drag n' Drop" are set to Bidirectional.  If this doesn't <a href="https://superuser.com/questions/1318231/why-doesnt-clipboard-sharing-work-with-ubuntu-18-04-lts-inside-virtualbox-5-1-2">work</a> then launch Terminal commands:
-<br />
-<pre class="csharp" name="code">
-sudo apt-get update
-sudo apt-get install virtualbox-guest-x11
-</pre> 
-<br />
-
 <b>Keyboard</b><br />
 Settings | Region & Language.  Choose Language English (US) and Format for keyboard layout that you like.  Also, you may <a href="https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro">switch</a> the Command and Control key if you are on a Mac for consistency.  Launch Terminal:
-<br />
 <pre class="csharp" name="code">
-cd /usr/share/X11/xkb/symbols
-sudo cp pc pc_bak
-sudo gedit pc
+sudo nano /usr/share/X11/xkb/symbols/pc
 key <LCTL> {    [ Super_L       ]   };
 key <LWIN> {    [ Control_L     ]   };
 key <RCTL> {    [ Super_R       ]   };
@@ -202,12 +188,12 @@ Remove any unwanted applications from Favorites.  Add any new applications to Fa
 In order to share files between the host and virtual machine enable folder share:  Show Applications | Files | Other Locations.  Connect to Server "smb://host-pc" | Connect.  Enter Windows Username and Password and WORKGROUP for Domain.  Otherwise, choose Domain as the Local Area Network [LAN] domain accordingly.
 <br /><br />
 
-<b>Screen Lock</b><br />
-Finally, you may like to disable screen lock for long periods of time.  Settings | Privacy | Screen Lock | Off.
+<b>Guest Additions</b><br />
+In order to copy + paste between the host and virtual machine <a href="https://www.youtube.com/watch?v=8MiPmL0YaJk">enable</a> Guest Editions.  In VirtualBox Devices menu | Insert Guest Additions CD image.  After installation, choose Ubuntu | Settings | General | Advanced.  Ensure that both "Shared Clipboard" and "Drag n' Drop" are set to Bidirectional to copy + paste accordingly.
 <br /><br />
 
-IMPORTANT<br />
-If, for any reason, changes made don't replicate then it may be necessary to simply restart virtual machine.
+<b>Screen Lock</b><br />
+Finally, you may like to disable screen lock for long periods of time.  Settings | Privacy | Screen Lock | Off.
 <br /><br />
 
 <br />
