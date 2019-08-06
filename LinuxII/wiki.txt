@@ -85,7 +85,8 @@ Here is a list of general software applications that I believe are handy to have
 sudo apt-get install git
 sudo apt-get install subversion
 sudo apt-get install curl
-sudo apt-get install g++
+sudo apt-get install python
+sudo apt-get install python3
 </pre> 
 <br />
 
@@ -94,7 +95,7 @@ sudo apt-get install g++
 <br />
 <pre class="csharp" name="code">
 cd ~/Downloads
-sudo dpkg -i google-chrome-stable_amd64.deb
+sudo dpkg -i google-chrome-stable_*.deb
 </pre>
 By default, certain packages may not be <a href="https://askubuntu.com/questions/760085/how-do-you-install-google-chrome-on-ubuntu-16-04">installed</a> for this software.  If this is true then enter the commands:
 <br />
@@ -119,19 +120,19 @@ mkdir GitEye
 mv GitEye*.zip GitEye
 cd GitEye
 unzip GitEye*.zip
+rm GitEye*.zip
+./GitEye
 </pre> 
 <br />
 
 <b>SmartGit</b><br />
-<a href="https://stackoverflow.com/questions/12185222/smartgit-installation-and-usage-on-ubuntu">SmartGit</a> is full-featured and similar to SourceTree for Windows and Mac but requires a commercial licence:
+<a href="https://www.syntevo.com/smartgit/download">Download</a> SmartGit as full-featured and similar product to SourceTree but it requires a commercial licence:
 <br />
 <pre class="csharp" name="code">
-sudo add-apt-repository ppa:eugenesan/ppa
-sudo apt-get update
-sudo apt-get install smartgit*
 cd ~/Downloads
-tar -xvzf Smart.zip
-cd ~/Downloads/smartgit/bin
+tar -xzvf smartgit*.tar.gz
+rm smartgit*.tar.gz
+cd smartgit/bin
 ./smartgit.sh
 </pre>
 <br />
@@ -158,9 +159,11 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 
 sudo apt-get update
 sudo apt-get install code # or code-insiders
-</pre> 
-<br />
+</pre>
+Note: if there's an issue with Visual Studio Code install then try <i>sudo apt-get --fix-broken install</i> + try again.
+<br /><br />
 
+<br />
 <b>Geany</b><br />
 <a href="https://tecadmin.net/install-geany-ide-ubuntu">Geany</a> is a lightweight IDE using the GTK2 toolkit and may seem to be popular for <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> development on Linux.  Launch Terminal and enter the following commands:
 <br />
