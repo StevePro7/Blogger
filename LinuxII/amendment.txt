@@ -20,3 +20,85 @@ tar -xzvf smartgit*.tar.gz
 cd smartGit
 
 sudo tar -xvzf *.tar
+
+
+
+02.
+NetBeans
+
+Oracle java installer has no candidate
+https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+
+Download jre-8u202-linux-x64.tar.gz
+
+cd ~/Downloads
+tar -zxf jdk-8u5-linux-x64.tar.gz
+
+mkdir /opt/jdk
+sudo cp -r jdk1.8.0_05 /opt/jdk
+
+cd /opt/jdk
+
+# java version 12.0.2
+update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_05/bin/java 100
+update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_05/bin/javac 100
+
+
+update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_12.0.2/bin/java 100
+update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_12.0.2/bin/javac 100
+
+
+
+
+
+ORG
+<br />
+<b>NetBeans</b><br />
+<a href="https://www.tecmint.com/install-netbeans-ide-in-ubuntu-debian-linux-mint">NetBeans</a> is an open source IDE available cross platform on Windows, Mac OS/X and Linux.  However, while the installation process may seem straightforward there may be requirement to install other dependencies.  Launch Terminal and enter these following commands:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+apt-cache search oracle-java8
+sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-set-default
+wget -c http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh
+chmod +x netbeans-8.2-linux.sh 
+./netbeans-8.2-linux.sh\
+</pre> 
+<br />
+
+<i>No compatible JDK was found</i><br />
+This seemed to be because the oracle-java8 commands were old and did not work.  Try this <a href="https://websiteforstudents.com/how-to-install-netbeans-on-ubuntu-16-04-17-10-18-04">install</a> instead:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt update
+sudo apt install oracle-java8-installer
+sudo apt install oracle-java8-set-default
+javac -version
+./netbeans-8.2-linux.sh\
+</pre> 
+<br />
+
+<i>Oracle java installer has no candidate</i><br />
+This can occur when <a href="https://askubuntu.com/questions/790671/oracle-java8-installer-no-installation-candidate">installing</a> Java on Debian not Ubuntu.  Launch Terminal and enter following commands:
+<br />
+<pre class="csharp" name="code">
+cd /etc/apt/sources.list.d
+rm webupd8team-java.list
+sudo apt-get update
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+</pre>
+<br />
+Finally, install the default JDK and use <b>/usr</b> folder when NetBeans IDE prompts for sufficient JDK location:
+<br />
+<pre class="csharp" name="code">
+sudo apt-get install default-jdk
+</pre> 
+<br />
