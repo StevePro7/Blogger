@@ -1,0 +1,132 @@
+Implementation
+04/09/2019
+
+
+Windows 10 Bash & Linux Subsystem Setup
+https://www.youtube.com/watch?v=Cvrqmq9A3tA
+
+
+00.
+Pre-req's
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
+This section is for Windows build 16215 or later. Follow these steps to check your build.
+NOTE: obviously must be 64 bit
+
+https://docs.microsoft.com/en-us/windows/wsl/troubleshooting#check-your-build-number
+
+System | Settings | About | Windows specifications
+Edition		Windows 10 Pro
+Version		1803
+Installed on	<date>
+OS build	17134.950
+Before doing this must check that you have Windows 10
+minimum build #
+
+
+01.
+Settings | Update & Security | For developers | Developer Mode
+
+ERROR
+developer mode is turned on however remote deployment and Windows device portal couldn't be found in windows update 0x800f0954
+
+Finx?
+https://social.technet.microsoft.com/Forums/windowsserver/en-US/99b143cc-395e-4198-b6c4-7fa1b05f7de3/issues-while-enabling-developer-mode-in-win-10-1709?forum=winserverwsus
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
+
+BEFORE	UseWUServer 	1
+AFTER	UseWUServer 	0
+
+Restart Windows Update service
+
+Settings | Update & Security | For Developers | Developer Mode
+now seems to update developer mode OK
+
+
+Restart PC
+Settings will add any additional requirements to enable Developer Mode
+
+
+02.
+Control Panel | Programs and Features | Turn Windows features on or off
+Restart PC
+
+Start | run | bash command
+Windowe flashes so I assume this is because it is failing and there is no Linux distribution currently installed
+
+Start | run | cmd
+Type bash
+
+The same happens on Powershell for commands
+bash
+cmd
+
+
+03.
+Install Ubuntu
+Start | Microsoft Store
+search for Ubuntu | Install
+
+After installing Launch
+Installing, this may take a few minutes...
+
+After installation complete will be prompted to enter username and password
+username	stevepro
+password	password		SP4
+
+
+NB: to relaunch Ubuntu bash
+Start | run | Ubuntu
+
+
+IMPORTANT
+When you first start using the bash command prompt from within Windows it may freak you out a bit because of the colors
+esp.
+cd /mnt/c
+ls
+
+Windows files		blue
+Windows directories	background color
+
+Linux files		white
+Linux directories	blue
+
+There is a thread here about changing the colors
+e.g.
+.bashrc
+https://superuser.com/questions/1066382/bash-on-ubuntu-on-windows-cant-change-some-directory-colors
+
+
+sudo apt update
+
+how do i know what version of ubuntu i have
+lsb_release -a 
+
+
+sudo apt upgrade
+lsb_release -a 
+
+
+
+Azure
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az
+
+
+Docker
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce
+docker
+
+
+Kubernetes
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+chmod +x ./kubectl
+kubectl
