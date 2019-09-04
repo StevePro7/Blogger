@@ -12,5 +12,24 @@ Before doing this must check that you have Windows 10
 minimum build #
 
 01.
-Settings | Update & Security | For Developers
-Developer Mode
+Settings | Update & Security | For Developers | Developer Mode
+
+ERROR
+developer mode is turned on however remote deployment and Windows device portal couldn't be found in windows update 0x800f0954
+
+Finx?
+https://social.technet.microsoft.com/Forums/windowsserver/en-US/99b143cc-395e-4198-b6c4-7fa1b05f7de3/issues-while-enabling-developer-mode-in-win-10-1709?forum=winserverwsus
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
+
+BEFORE	UseWUServer 	1
+AFTER	UseWUServer 	0
+
+Restart Windows Update service
+
+Settings | Update & Security | For Developers | Developer Mode
+now seems to update developer mode OK
+
+
+Restart PC
+Settings will add any additional requirements to enable Developer Mode
