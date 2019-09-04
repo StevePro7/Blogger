@@ -95,3 +95,38 @@ There is a thread here about changing the colors
 e.g.
 .bashrc
 https://superuser.com/questions/1066382/bash-on-ubuntu-on-windows-cant-change-some-directory-colors
+
+
+sudo apt update
+
+how do i know what version of ubuntu i have
+lsb_release -a 
+
+
+sudo apt upgrade
+lsb_release -a 
+
+
+
+Azure
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az
+
+
+Docker
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce
+docker
+
+
+Kubernetes
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+chmod +x ./kubectl
+kubectl
