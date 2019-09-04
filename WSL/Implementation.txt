@@ -7,12 +7,24 @@ https://www.youtube.com/watch?v=Cvrqmq9A3tA
 
 
 00.
-pre-reqs
+Pre-req's
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
+This section is for Windows build 16215 or later. Follow these steps to check your build.
+NOTE: obviously must be 64 bit
+
+https://docs.microsoft.com/en-us/windows/wsl/troubleshooting#check-your-build-number
+
+System | Settings | About | Windows specifications
+Edition		Windows 10 Pro
+Version		1803
+Installed on	<date>
+OS build	17134.950
 Before doing this must check that you have Windows 10
 minimum build #
 
+
 01.
-Settings | Update & Security | For Developers | Developer Mode
+Settings | Update & Security | For developers | Developer Mode
 
 ERROR
 developer mode is turned on however remote deployment and Windows device portal couldn't be found in windows update 0x800f0954
