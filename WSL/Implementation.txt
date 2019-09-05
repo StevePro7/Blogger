@@ -126,12 +126,59 @@ ssh localhost
 
 
 Hyper
-command terminal with 
+command terminal 
+Edit | Preferences | shell
+
+Example:
+Powershell on Windows
+C:\\WINDOWS\\System32\\windowsPowerShell\\v1.0\\powershell.exe
+
+can change this to
+Bash on Windows
+C:\\WINDOWS\\System32\\bash.exe
 
 
 VS Code
+Once you have installed Windows Subsystem for Linux you may get prompt
+The 'Remote WSL extension is recommended as you have Windows Linux Subsysmte (WSL) installed on your system
+Install
+
+Ctrl + `	
+toggle the integrated command line terminal
+
+Uses Windows powershell by default	on Windows
+TODO	check what does this use on MacOS or Linux?
+
 Change cmd prompt from powershell to bash
 
+Preferences | Settings
+search for Terminal
+scroll down to the botoom
+Terminal - Integrated - Shell: Windows 
+
+C:\\WINDOWS\\System32\\windowsPowerShell\\v1.0\\powershell.exe
+
+can change this to
+Bash on Windows
+C:\\WINDOWS\\System32\\bash.exe
+
+this is what you need in the settings.json file
+// Bash on Ubuntu (on Windows)
+"terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe"
+
+Reference
+https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration
+
+
+BEFORE
+"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+
+AFTER
+"terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe"
+
+
+settings.json
+%APPDATA%\Code\User\settings.json
 
 
 
