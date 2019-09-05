@@ -97,41 +97,14 @@ e.g.
 https://superuser.com/questions/1066382/bash-on-ubuntu-on-windows-cant-change-some-directory-colors
 
 
-
-DON'T OPEN LINUX FILES in Windows
-
-Key shortcut
-Ctrl + L	clear screen
-
-Copy from Windows	Ctrl+C
-Paste to Linux bash	right click mouse
-
-Copy from Linux		Ctrl+C
-Paste to Windows	Ctrl+V
-
-
 sudo apt update
 
-What version of Ubuntu
-lsb_release -a
+how do i know what version of ubuntu i have
+lsb_release -a 
+
 
 sudo apt upgrade
-lsb_release -a
-
-
-
-sudo apt install htop
-
-ssh localhost
-
-
-Hyper
-command terminal with 
-
-
-VS Code
-Change cmd prompt from powershell to bash
-
+lsb_release -a 
 
 
 
@@ -148,9 +121,11 @@ sudo apt install apt-transport-https ca-certificates curl software-properties-co
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 sudo apt update
 apt-cache policy docker-ce
+sudo apt install docker-ce
 docker
 
 
+Kubernetes
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 chmod +x ./kubectl
