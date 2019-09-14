@@ -147,8 +147,13 @@ Create virtual machine: Action menu | New | Virtual Machine | Ubuntu.  Use defau
 <b>Windows Subsystem for Linux</b><br />
 Windows <a href="https://www.computerhope.com/jargon/w/wsl.htm">Subsystem</a> for Linux [WSL] is an optional feature in Windows that provides a kernel compatibility layer based on Ubuntu.  This layer allows Linux programs to run on a Windows 10 version of the Bash shell.
 <br /><br />
-Determine if your Windows 10 64-bit version supports WSL: Settings | System | About.  Version >= 1607!  Next, follow all instructions <a href="https://www.computerhope.com/issues/ch001879.htm">here</a> to install configure and complete Windows Subsystem for Linux process.
+Determine if your Windows 10 64-bit version supports <a href="https://www.computerhope.com/issues/ch001879.htm">WSL</a>: Settings | System | About.  Version >= 1607.  Follow <a href="https://www.youtube.com/watch?v=Cvrqmq9A3tA">YouTube</a> instructions: Enable Developer Mode via Settings | Update & Security then For developers.  
 <br /><br />
+Enable Windows Subsystem for Linux: Control Panel | Programs and Features | Turn Windows features on.
+<a href="https://3.bp.blogspot.com/-sPtn1Cqc15A/XXz1B9WCRdI/AAAAAAAAFmg/eS4uYLrsd08zPfFBLOWwT8xs_JsoNYgAgCLcBGAsYHQ/s1600/WindowsFeatures.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-sPtn1Cqc15A/XXz1B9WCRdI/AAAAAAAAFmg/eS4uYLrsd08zPfFBLOWwT8xs_JsoNYgAgCLcBGAsYHQ/s640/WindowsFeatures.png" width="98%" height="280"/></a>
+Finally, launch Microsoft store.  Search for <a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab">Ubuntu</a>.  Install and Launch.  Set username and password to begin.  From cmd prompt type bash to shell out.  Windows files are mapped from /mnt directory thus C:\ => /mnt/c
+<br /><br />
+
 
 <br />
 <u>Mac OS/X</u><br />
