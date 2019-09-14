@@ -1,0 +1,217 @@
+<span style="font-family:verdana;font-size:85%;">
+
+Linux is <a href="https://blog.edx.org/why-learn-linux">everywhere</a>!  Linux is free open source operating system based on Unix OS.  Linux powers 90% of the world's fastest servers thus is the backbone of the Internet.  Linux dominates mobile platforms and the cloud.
+<a href="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s1600/Linux.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s640/Linux.jpg" width="98%" height="225" /></a>
+Let's check it out!
+<br /><br />
+
+<u>Windows</u><br />
+Install Ubuntu Linux on Windows using VirtualBox.  <a href="https://download.oracle.com/virtualbox/6.0.10/VirtualBox-6.0.10-132072-Win.exe">Download<a/> VirtualBox and install.  Follow all the prompts.  Next, follow all instructions <a href="https://www.psychocats.net/ubuntu/virtualbox">here</a> to create the virtual machine to host Ubuntu.  I have tweaked some inputs:
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Step</b></td>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;VM Name and OS Type</td>
+<td valign="top">&nbsp;Version</td>
+<td valign="top">&nbsp;Ubuntu (64-bit)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Memory</td>
+<td valign="top">&nbsp;Base Memory Size</td>
+<td valign="top">&nbsp;8 GB</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Virtual Hard Disk</td>
+<td valign="top">&nbsp;Start up Disk</td>
+<td valign="top">&nbsp;Create new hard disk</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create New Virtual Disk</td>
+<td valign="top">&nbsp;File type</td>
+<td valign="top">&nbsp;VDI (VirtualBox Disk Image)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Virtual disk storage details</td>
+<td valign="top">&nbsp;Storage details</td>
+<td valign="top">&nbsp;Fixed size</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Virtual disk file location and size</td>
+<td valign="top">&nbsp;Size</td>
+<td valign="top">&nbsp;100 GB</td>
+</tr>
+</table>
+<br />
+
+Complete virtual hard drive: click Create.  <a href="https://ubuntu.com/download/desktop/thank-you/?version=19.04&architecture=amd64">Download</a> Ubuntu 19.04.  In VirtualBox, click Settings | Storage | Controller IDE | Empty | Optical Drive: IDE Secondary Master.  Click icon | Choose Virtual Optical Disk File...
+
+<a href="https://1.bp.blogspot.com/-1no4mn72shg/XUQwpHPTryI/AAAAAAAAFlE/6RwspKdnKz43myN-ZWgnzcUUOXXqpdNXwCLcBGAs/s1600/Storage.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-1no4mn72shg/XUQwpHPTryI/AAAAAAAAFlE/6RwspKdnKz43myN-ZWgnzcUUOXXqpdNXwCLcBGAs/s640/Storage.jpg" width="98%" height="439" /></a>
+<br /><br />
+
+Navigate to downloaded Ubuntu ISO file | OK.  In VirtualBox, double click Ubuntu [Powered Off] to Start the virtual machine.  Next, follow all instructions <a href="https://www.psychocats.net/ubuntu/installing">here</a> for the Ubuntu installation.  I have tweaked some inputs:
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Step</b></td>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Welcome</td>
+<td valign="top">&nbsp;Option</td>
+<td valign="top">&nbsp;Install Ubuntu</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Keyboard layout*</td>
+<td valign="top">&nbsp;English</td>
+<td valign="top">&nbsp;English (US)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Updates and other software</td>
+<td valign="top">&nbsp;What apps would you like to install</td>
+<td valign="top">&nbsp;Normal installation</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Installation type</td>
+<td valign="top">&nbsp;Computer has no detected OS</td>
+<td valign="top">&nbsp;Erase disk and install Ubuntu</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Where are you?</td>
+<td valign="top">&nbsp;City</td>
+<td valign="top">&nbsp;Leave default selection</td>
+</tr>
+</table>
+* IMPORTANT do not change keyboard layout here as can corrupt buttons!  You can always change it later.
+<br /><br />
+
+The final install step "Who are you?"
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Your name</td>
+<td valign="top">&nbsp;Steven Boland</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Your computer's name</td>
+<td valign="top">&nbsp;stevepro-VirtualBox</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Pick a username</td>
+<td valign="top">&nbsp;stevepro</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Choose a password</td>
+<td valign="top">&nbsp;password</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Confirm your password</td>
+<td valign="top">&nbsp;password</td>
+</tr>
+</table>
+<br />
+
+<b>Troubleshooting</b><br />
+<i>VT-x is not available (VERR_VMX_NO_VMX) After Windows 10 Update</i>
+<br />
+You may receive this <a href="https://forums.virtualbox.org/viewtopic.php?f=6&t=84618">error</a> on Windows 10 especially after a Windows Update.  If so then try the following;
+<ul>
+<li>Launch the Terminal command prompt Run as Administrator</li>
+<li>Start | Programs | right click Command Prompt | Run as administrator</li>
+<li>Type the following command: <b>dism.exe /Online /Disable-Feature:Microsoft-Hyper-V</b>
+</li>
+</ul>
+Restart computer when prompted.  Note: Windows may perform additional updates one or two more times.
+<br /><br />
+
+<br />
+<b>Hyper-V Manager</b><br />
+If you are still experiencing issues running Ubuntu Linux on Windows using VirtualBox because of the Microsoft <a href="https://en.wikipedia.org/wiki/Hypervisor">hypervisor</a> then try host Ubuntu using the <a href="https://en.wikipedia.org/wiki/Hyper-V">Hyper-V</a> Manager.  Start | run | Hyper-V Manager.
+<br /><br />
+Next, follow all instructions <a href="https://www.windowscentral.com/how-run-linux-distros-windows-10-using-hyper-v">here</a> to create a Linux virtual machine on Windows 10 using Hyper-V.  Verify Hyper-V is supported with <i>systeminfo.exe</i> command and that Hyper-V is enabled via Windows features.
+<br /><br />
+In Hyper-V Manager choose Action menu | Virtual Switch Manager | New virtual network switch | External.  Create Virtual Switch e.g. "MyVirtualSwitch".  Choose network adapter as External Network | Apply | OK.
+<br />
+
+<a href="https://4.bp.blogspot.com/-yXyYARUw6mI/XUiOKkI7zlI/AAAAAAAAFl0/9t8mHE7vxPYxYEWCyMlxevuEL8qmcIHVgCLcBGAs/s1600/option-virtual-switch-manager.webp" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-yXyYARUw6mI/XUiOKkI7zlI/AAAAAAAAFl0/9t8mHE7vxPYxYEWCyMlxevuEL8qmcIHVgCLcBGAs/s640/option-virtual-switch-manager.webp" width="98%" height="350" /></a>
+<br />
+Create virtual machine: Action menu | New | Virtual Machine | Ubuntu.  Use default location.  Use default Generation 1.  Choose "MyVirtualSwitch" | Finish.  Follow steps as above to complete Ubuntu installation.
+<br /><br />
+
+<br />
+<b>Windows Subsystem for Linux</b><br />
+Windows <a href="https://www.computerhope.com/jargon/w/wsl.htm">Subsystem</a> for Linux [WSL] is an optional feature in Windows that provides a kernel compatibility layer based on Ubuntu.  This layer allows Linux programs to run on a Windows 10 version of the Bash shell.
+<br /><br />
+Determine if your Windows 10 64-bit version supports WSL: Settings | System | About.  Version >= 1607!  Next, follow all instructions <a href="https://www.computerhope.com/issues/ch001879.htm">here</a> to install configure and complete Windows Subsystem for Linux process.
+<br /><br />
+
+<br />
+<u>Mac OS/X</u><br />
+Install Ubuntu Linux on Mac OS/X using VirtualBox.  <a href="https://download.oracle.com/virtualbox/6.0.10/VirtualBox-6.0.10-132072-OSX.dmg">Download</a> VirtualBox and install.  Follow all the prompts.  Next, follow all instructions <a href="https://www.psychocats.net/ubuntu/virtualbox">here</a> to create the virtual machine to host Ubuntu.  Repeat install like Windows!
+<br /><br />
+
+<br />
+<b><u>Setup</u></b><br />
+This section assumes Ubuntu Linux is installed irrespective of the platform.  Now, let's do some basic setup:  Login and verify an Internet connection: Settings (top right hand side) | System Settings | Network | Wired.
+<br /><br />
+
+<b>Resolution</b><br />
+Typically, the initial display will not max out monitor resolution so let's fix that:  Show Applications (bottom right) | Settings | Display.  Choose resolution that makes sense for monitor size.  Use Landscape orientation.  In VirtualBox, View menu.  Choose Scaled Mode.  Drag screen borders to maximize remaining monitor space.
+<br /><br />
+
+<b>Guest Additions</b><br />
+In order to copy + paste between the host and virtual machine <a href="https://www.youtube.com/watch?v=8MiPmL0YaJk">enable</a> Guest Editions.  In VirtualBox Devices menu | Insert Guest Additions CD image.  Follow all prompts and choose "Y" accordingly.  Restart Ubuntu VM.
+<br /><br />
+After installation, choose Ubuntu virtual machine | Settings | General | Advanced.  Ensure that both "Shared Clipboard" and "Drag n' Drop" are set to Bidirectional.  If this doesn't <a href="https://superuser.com/questions/1318231/why-doesnt-clipboard-sharing-work-with-ubuntu-18-04-lts-inside-virtualbox-5-1-2">work</a> then launch Terminal commands:
+<br />
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt-get install virtualbox-guest-x11
+</pre> 
+<br />
+
+<b>Keyboard</b><br />
+Settings | Region & Language.  Choose Language English (US) and Format for keyboard layout that you like.  Also, you may <a href="https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro">switch</a> the Command and Control key if you are on a Mac for consistency.  Launch Terminal:
+<br />
+<pre class="csharp" name="code">
+cd /usr/share/X11/xkb/symbols
+sudo cp pc pc_bak
+sudo gedit pc
+key <LCTL> {    [ Super_L       ]   };
+key <LWIN> {    [ Control_L     ]   };
+key <RCTL> {    [ Super_R       ]   };
+key <RWIN> {    [ Control_R     ]   };
+sudo rm -rf /var/lib/xkb/*
+</pre> 
+<br />
+
+<b>Shortcuts</b><br />
+Following Keyboard, update <a href="https://askubuntu.com/questions/546669/copy-and-paste-doesnt-work-in-terminal">Terminal</a> keyboard shortcuts for copy and paste consistency.  Launch Terminal menu | Preferences | Shortcuts | Edit.  Choose Copy and press Ctrl+C and choose Paste and press Ctrl+V.  Also, handy Files Manager shortcuts: Ctrl+D to create [bookmark] <a href="https://askubuntu.com/questions/83118/create-a-link-to-a-folder-on-the-left-panel-of-nautilus-file-manager">link</a> to folder and Ctrl+L to show path.
+<br /><br />
+
+<b>Applications</b><br />
+Remove any unwanted applications from Favorites.  Add any new applications to Favorites accordingly.  E.g.: Show Applications | Search "Terminal".  Double Terminal to launch.  Right click Terminal | Add to Favorites.
+<br /><br />
+
+<b>Folder Share</b><br />
+In order to share files between the host and virtual machine enable folder share:  Show Applications | Files | Other Locations.  Connect to Server "smb://host-pc" | Connect.  Enter Windows Username and Password and WORKGROUP for Domain.  Otherwise, choose Domain as the Local Area Network [LAN] domain accordingly.
+<br /><br />
+
+<b>Screen Lock</b><br />
+Finally, you may like to disable screen lock for long periods of time.  Settings | Privacy | Screen Lock | Off.
+<br /><br />
+
+IMPORTANT<br />
+If, for any reason, changes made don't replicate then it may be necessary to simply restart virtual machine.
+<br /><br />
+
+<br />
+<u>Summary</u><br />
+Now that Ubuntu Linux is installed on computer whichever configuration chosen it is time to install software!  This will be the topic in the next post.
+
+</span>
