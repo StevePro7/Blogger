@@ -1,0 +1,54 @@
+Git integration
+16/08/2019
+
+While I was messing around with this tutorial I managed to add to Git on Azure
+
+
+https://www.youtube.com/watch?v=6Wv1OqbJs6M
+
+
+Still not sure how I did this because the initial push con't to prompt me with username and password
+
+https://dev.azure.com/SteveProStudios/_git/XUnitTest/commits?itemPath=%2F&itemVersion=GBmaster
+
+
+Username	SteveProStudios
+Email		steven_boland@hotmail.com
+Pwd		SP5
+
+
+I did link all my Azure DevOps to Git using the StevePro7 account
+[as this all for testing]
+
+I did add the following to global .gitconfig but not sure if this helped or not
+
+[credential]
+
+	helper = manager
+
+	useHttpPath = true
+
+i.e. from this 
+https://community.atlassian.com/t5/Sourcetree-questions/Git-Credential-Manager-for-Windows-Popups/qaq-p/579905
+
+git config --global credential.helper manager
+git config --global credential.useHttpPath true
+
+
+
+Somehow magically there was an access token created that linked STEVEPRO-PC
+https://dev.azure.com/SteveProStudios/_usersSettings/tokens?id=93146f79-b11d-4a14-8002-1d1cbfe3a614
+
+
+
+IMPORTANT
+I *think* I may know what happened to magically make this work
+The initial commits were under the default global Git account "StevePro7"
+but I went on the command line and changed the user.name and user.email for this repo
+I could commit + push from VS2019 but I think after the user.name change it now worked from CLI
+
+git config --get user.name
+git config user.name "SteveProStudios"
+
+git config --get user.email
+git config user.email "steven_boland@hotmail.com"

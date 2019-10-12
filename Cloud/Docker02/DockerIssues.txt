@@ -1,0 +1,30 @@
+Docker notes
+18/09/2019
+
+Bash
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+
+Must run the docker daemon
+
+Try ALOT from this
+https://upcloud.com/community/tutorials/how-to-configure-docker-swarm
+https://stackoverflow.com/questions/44678725/cannot-connect-to-the-docker-daemon-at-unix-var-run-docker-sock-is-the-docker
+
+none of them worked as I still kept getting the error on 
+docker images
+
+
+
+02.
+docker images
+
+I want to stop and/or remove all the docker images
+stop all containers:
+docker kill $(docker ps -q)
+
+remove all containers
+docker rm $(docker ps -a -q)
+
+remove all docker images
+docker rmi $(docker images -q)

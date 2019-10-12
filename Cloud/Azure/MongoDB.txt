@@ -1,0 +1,27 @@
+MongoDB
+22/08/2019
+
+Run service as Network Service
+
+C:\Program Files\MongoDB\Server\4.2\data\
+C:\Program Files\MongoDB\Server\4.2\log\
+
+C:\Program Files\MongoDB\Server\
+
+
+
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-2.2&tabs=visual-studio
+db.Books.find({}).pretty()
+
+
+C:\Program Files\MongoDB\Server\4.2\bin
+
+mongo
+use BookstoreDb
+db.createCollection('Books')
+db.Books.insertMany([{'Name':'Design Patterns','Price':54.93,'Category':'Computers','Author':'Ralph Johnson'}, {'Name':'Clean Code','Price':43.15,'Category':'Computers','Author':'Robert C. Martin'}])
+db.Books.find({}).pretty()
+
+
+The run the Web API project
+D:\Github\aspnet\AspNetCore.Docs\aspnetcore\tutorials\first-mongo-app\samples\2.x\SampleApp

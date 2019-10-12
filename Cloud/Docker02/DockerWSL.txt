@@ -1,0 +1,54 @@
+Setup docker on WSL
+05/10/2019
+
+
+Try the information from here:
+https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly
+
+
+Launch WSL Ubuntu bash
+confirm docker daemon issue still broken
+
+docker ps
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+
+
+Docker Desktop settings
+Check box
+Expose daemon on tcp://localhost
+
+
+sudo apt-get update -y
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update -y
+sudo apt-get install -y docker-ce
+sudo usermod -aG docker $USER
+
+
+Install Docker Compose
+sudo apt-get install -y python python-pip
+pip install --user docker-compose
+
+
+docker-compose can now be found in
+$HOME/.local/bin
+
+so ensure that $HOME/.local/bin is in $PATH
+but is the first entry
+
+
+
+echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
+
+
+
+Check all is working:
+docker info
+docker ps
+
+docker-compose --version
