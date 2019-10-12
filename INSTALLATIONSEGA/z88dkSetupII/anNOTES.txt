@@ -1,0 +1,62 @@
+z88dk Setup II
+12/10/2019
+
+2wk ago I re-setup z88dk with Galactic Revenge built
+1wk ago I ran some local test code samples built
+
+The process was very simple this time compare to last
+http://steveproxna.blogspot.com/2014/09/z88dk-programming-setup.html
+
+
+If you followed this blog then you will have
+C:\z88dk
+
+and cmd prompt zcc with result in 
+version 2.5.7
+
+Therefore remove or rename e.g. C:\z88dk_old
+
+Navigate here
+https://sourceforge.net/projects/z88dk/files/z88dk
+
+Download latest version - at the time of this writing is 1.99C
+https://sourceforge.net/projects/z88dk/files/z88dk/1.99C/z88dk-win32-1.99C.zip/download
+
+Unzip to C:\z88dk
+Add following directory C:\z88dk\bin to $PATH
+
+Example
+C:\Steven\Personal\INSTALLATIONSEGA\z88dk_code02\anTEST
+
+
+Not sure how devkit works
+e.g.
+#include "SMSlib.h"
+#include "PSGlib.h"
+
+as cannot see any linking to the SMSlib.lib static lib or PSGlib.rel
+only <arch>
+
+TODO
+may have to understand how this works but anyway does magically work
+
+
+Need to go thru the entire examples e.g. CandyKidDemoSMS
+graphics tiles
+sprite tiles
+sound effect
+music songs
+input detection
+pause menu
+
+to ensure all of this would work in order to build game
+in theory would have all the game code + banks etc.
+but just swap out 2x build scripts
+sdcc
+zcc
+
+
+Finally, I always use folder2c but I understand assets2banks replacing this
+Could have an example of this for completeness
+
+
