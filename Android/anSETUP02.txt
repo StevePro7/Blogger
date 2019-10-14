@@ -2,7 +2,7 @@ anSETUP02
 14/10/2019
 
 
-Con't on
+Con't on...
 Can't update Android SDK Build Tools in Visual Studio 2019
 https://superuser.com/questions/1447005/cant-update-android-sdk-build-tools-in-visual-studio-2019
 
@@ -51,3 +51,12 @@ to here
 C:\Program Files (x86)\Android\android-sdk\platforms
 
 Now VS2019 will build OK and can deploy to Android phone
+
+
+IMPORTANT
+Another way to do is simply re-direct Android Studio SDK path to Visual Studio SDK path
+i.e.
+C:\Program Files (x86)\Android\android-sdk
+
+If this is the case then when you update Android 10.0 (Q) then this may install only platform 29.0.3
+You may have to click SDK Tools and Update Android SDK Build Tools for completeness
