@@ -1,0 +1,37 @@
+TODO
+14/10/2019
+
+
+01.
+Setup adb to be added to the $PATH
+so can do from the cmd prompt
+adb devices
+
+
+02.
+Cannot see android-29 in VS
+so cannot see here
+C:\Program Files (x86)\Android\android-sdk\platforms
+
+but can see here via Android Studio
+C:\Users\22627\AppData\Local\Android\Sdk\platforms
+
+
+03.
+Install MonoGame and setup to run Android project
+
+
+android-29
+could do this:
+copy build-tools + platform from here to here
+C:\Users\22627\AppData\Local\Android\Sdk\build-tools\29.0.2
+C:\Users\22627\AppData\Local\Android\Sdk\platforms\android-29
+
+to
+C:\Program Files (x86)\Android\android-sdk\build-tools
+C:\Program Files (x86)\Android\android-sdk\platforms
+
+Really want to build for Android 10
+Make it fail
+Then copy over the stuff
+and re-build to see if this will work...!

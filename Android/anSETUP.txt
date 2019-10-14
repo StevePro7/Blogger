@@ -1,0 +1,68 @@
+anSETUP
+14/10/2019
+
+
+Assumes have installed Xamarin
+VS2017
+VS2019
+Mobile development with .NET
+
+
+Visual Studio
+Tools | Android | Android SDK Manager
+
+
+Tools | Options | Xamarin
+Android Settings
+C:\Program Files (x86)\Android\android-sdk
+
+Reference
+http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html
+
+NB: VS2019
+Android SDK Manager may be prompted to repair
+
+
+Download Android Studio
+https://developer.android.com/studio
+
+
+Control Panel
+Update
+VS2017
+VS2019
+
+
+Start | run | cmd
+adb devices
+
+not recognized by default
+
+
+
+
+Install Android Studio
+C:\Program Files\Android\Android Studio
+
+
+SDK Folder:
+C:\Users\22627\AppData\Local\Android\Sdk
+
+Note: this prompted to install API 29
+
+
+New application
+C:\Users\22627\AndroidStudioProjects\MyApplication
+
+
+Cannot see android-29 in Visual Studio
+https://stackoverflow.com/questions/52131837/the-project-is-missing-android-sdks-required-for-building
+
+check
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\Xamarin\AndroidSdkManager
+
+Can't update Android SDK Build Tools in Visual Studio 2019
+https://superuser.com/questions/1447005/cant-update-android-sdk-build-tools-in-visual-studio-2019
+
+User circumvent the problem by doing manually download and copy across
+https://androidsdkmanager.azurewebsites.net/Buildtools
