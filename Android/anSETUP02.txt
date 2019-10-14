@@ -1,0 +1,53 @@
+anSETUP02
+14/10/2019
+
+
+Con't on
+Can't update Android SDK Build Tools in Visual Studio 2019
+https://superuser.com/questions/1447005/cant-update-android-sdk-build-tools-in-visual-studio-2019
+
+User circumvent the problem by doing manually download and copy across
+https://androidsdkmanager.azurewebsites.net/Buildtools
+
+
+THIS WORKED
+Abit hacky but this works
+
+Install MonoGame
+Can create Android project in VS2017 but NO project template in VS2019 [currently]
+
+Install Android Studio
+This will install android-29 for Android 10.0 (API Level 29 - Q)
+
+Create new Android project in VS2017
+build and run with default values
+
+NB: add AndroidManifest.xml as necessary
+
+In VS2019
+Minimum Android version:	Android 9.0 (API Level 28 - Pie)
+Target Android version:		Android 10.0 (API Level 29 - Q)
+
+Why?
+This is a reminder that starting November 1, 2019, updates to apps and games on Google Play will be required to target Android 9 (API level 28) or higher. After this date, the Play Console will prevent you from submitting new APKs with a targetSdkVersion less than 28.
+
+
+build will fail because android-29 does not exist at
+C:\Program Files (x86)\Android\android-sdk
+
+Tools | Android | Android SDK Manager
+can only install up to Android 9.0 (API Level 28 - Pie)
+
+Therefore, manually copy android-29 from Android Studio SDK folder to Visual Studio SDK folder
+that is copy the following 2x folders:
+
+C:\Users\22627\AppData\Local\Android\Sdk\build-tools\29.0.2
+to here
+C:\Program Files (x86)\Android\android-sdk\build-tools
+
+and
+C:\Users\22627\AppData\Local\Android\Sdk\platforms\android-29
+to here
+C:\Program Files (x86)\Android\android-sdk\platforms
+
+Now VS2019 will build OK and can deploy to Android phone
