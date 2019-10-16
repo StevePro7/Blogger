@@ -9,8 +9,21 @@ https://forums.xamarin.com/discussion/146174/vs2019-error-this-abi-is-no-longer-
 
 SOLUTION
 https://stackoverflow.com/questions/54537469/targeting-64-bit-architectures-on-xamarin-android
-armeabi-v7a		WORK
-arm64-v8a ABI		erorr
+
+This web page states to select both:
+armeabi-v7a	
+arm64-v8a
+
+i.e.
+De-select
+x86
+x86_64	
+
+However, when debugging / running / deploying code that includes arm64-v8a MonoGame [3.7.1] gives the following error:
+Microsoft.Xna.Framework.Audio.NoAudioHardwareException: 'OpenAL drivers could not be found.'
+
+Therefore, it seems only feasible to 
+
 
 Choose these 2x values only
 Release
@@ -20,3 +33,21 @@ archive
 
 Android Options
 Advanced Android Options
+
+
+
+ERRORS
+
+Runtime error
+arm64-v8a
+Microsoft.Xna.Framework.Audio.NoAudioHardwareException: 'OpenAL drivers could not be found.'
+
+
+Compile error
+x86
+ADB0020: Android ABI mismatch. You are deploying an app supporting 'x86' ABIs to an incompatible device of ABI 'arm64-v8a;armeabi-v7a;armeabi'. You should either create an emulator matching one of your app's ABIs or add 'arm64-v8a' to the list of ABIs your app builds for.
+
+x86_64
+ADB0020: Android ABI mismatch. You are deploying an app supporting 'x86_64' ABIs to an incompatible device of ABI 'arm64-v8a;armeabi-v7a;armeabi'. You should either create an emulator matching one of your app's ABIs or add 'arm64-v8a' to the list of ABIs your app builds for.		 	
+
+		 	
