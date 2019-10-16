@@ -1,0 +1,22 @@
+Error
+16/10/2019
+
+
+invalid value armeabi in ${AndroidSupportedAbis}
+
+https://forums.xamarin.com/discussion/146174/vs2019-error-this-abi-is-no-longer-supported
+
+
+SOLUTION
+https://stackoverflow.com/questions/54537469/targeting-64-bit-architectures-on-xamarin-android
+armeabi-v7a		WORK
+arm64-v8a ABI		erorr
+
+Choose these 2x values only
+Release
+rebuild
+archive
+
+
+Android Options
+Advanced Android Options
