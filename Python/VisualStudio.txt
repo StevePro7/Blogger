@@ -1,0 +1,106 @@
+Visual Studio
+17/10/2019
+
+
+IT worked for VS2017
+tl;dr;
+
+Install VS2017
+Check Python option
+
+Install Visual Studio IntelliCode
+https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.VSIntelliCode
+
+NB: for VS2017 only - don't think there is alternative version for VS2019
+
+Launch VS2017
+Start | New Project | Python | Python Application
+
+
+Install any modules that you don't have installed
+Can install this via the command prompt but was not being detected by VS2017...??
+
+Therefore
+Right click Python 3.7 (global default)
+Install Python package...
+numpy
+
+
+Type the following:
+inport numpy as np
+np.
+
+Hit Ctrl+Space to prompt the intellisense drop down...!
+
+
+
+C:\Bitbucket\SteveProXNA\actionstuff\Python
+C:\Bitbucket\SteveProXNA\actionstuff\INSTALL\Python
+
+
+01.
+First would have already installed Visual Studio 2019
+
+
+02.
+But install Python for Windows 3.7
+Start here:
+C:\Bitbucket\SteveProXNA\actionstuff\INSTALL\Python
+
+
+OR type
+Start | run | cmd | python and should prompt to install Python from the Microsoft Store
+
+
+Ensure that you install PIP
+
+
+VS2019
+New Python Application
+
+Python interpreter detected so simply Hello World projects should work OK
+
+but this will fail
+import numpy as np
+No module named 'numpy'
+
+
+SUGGESTION
+https://thusithamabotuwana.wordpress.com/2015/07/06/using-visual-studio-2013-for-python-3-4-with-numpy-and-scipy-on-windows
+https://pypi.org/project/numpy
+
+Start | run | cmd
+pip install numpy
+
+Refresh VS2019 Python Environment
+now can see numpy listed in the packages
+
+
+However NO intellisense
+
+
+suggestions for VScode
+https://stackoverflow.com/questions/50389852/visual-studio-code-intellisense-not-working
+
+
+Try this
+https://stackoverflow.com/questions/30605416/visual-studio-how-to-add-python-module-to-intellisense
+https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.VSIntelliCode
+
+
+VS2017
+Right click Python 3.7 (global default)
+Install Python package...
+numpy
+
+
+
+directories
+PYTHON
+C:\Users\22627\source\repos\PythonApplication1\
+C:\Users\22627\Documents\Visual Studio 2017\Projects
+C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64
+
+
+Install Python for VS2017 then try to install the Intellisense suggested here:
+https://stackoverflow.com/questions/30605416/visual-studio-how-to-add-python-module-to-intellisense
