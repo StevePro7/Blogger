@@ -1,0 +1,42 @@
+SamsungS10
+18/10/2019
+
+
+VS2017
+Work
+arm64_v8a
+
+
+Not work
+x86
+x86_64
+
+
+
+C:\Users\22627\Documents\Visual Studio 2017\Projects\AndroidGame1\AndroidGame1\Game1.cs
+
+
+
+Unhandled Exception:
+
+System.FormatException: Input string was not in a correct format.
+
+
+Bug fix
+Convert.ToSingle(text, CultureInfo.InvariantCulture)
+
+
+
+S10
+Builds with 
+arm64_v8a 
+but I don't think that S8 likes this??
+
+I believe that S8 built OK with 
+armeabi-v7
+
+also, normally build OK but rebuild will fail
+
+
+Can trick S10 into build OK for armeabi-v7
+build arm64_v8a then uncheck and build armeabi-v7
