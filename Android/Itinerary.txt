@@ -1,0 +1,73 @@
+Itinerary
+20/10/2019
+
+Candy Kid
+Candy Kid FREE
+need to update to use the Immersive mode like Simpsons Trivia and 3D City
+
+
+AndroidManifest.xml
+
+
+Project Properties
+
+
+Candy Kid FREE
+
+AA.
+Right click Project
+Properties
+01.
+Application
+Compile using Android version (Target Framework)
+Android 9.0 (Pie)
+
+02.
+Android Manifest
+Version number		6
+Version name		1.5.1
+Minimum Android version	Android 9.0 (API Level 28 - Pie)
+Target Android version	Android 9.0 (API Level 28 - Pie)
+
+03.
+Android Options
+Advanced
+armeabi-v7a		ONLY
+
+
+BB.
+Properties
+AssemblyInfo.cs
+[assembly: AssemblyVersion ("1.5.1")]
+[assembly: AssemblyFileVersion ("1.5.1")]
+
+
+CC.
+GameActivity
+Ensure code uses Immersive mode
+
+, ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
+protected override void OnCreate(Bundle bundle)
+		{
+			base.OnCreate(bundle);
+			var g = new WindowsGame.Common.AnGame();
+
+			View view = (View)g.Services.GetService(typeof(View));
+#if !DEBUG
+			if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
+			{
+				view.SystemUiVisibility = (StatusBarVisibility)(SystemUiFlags.LayoutStable | SystemUiFlags.LayoutHideNavigation | SystemUiFlags.LayoutFullscreen | SystemUiFlags.HideNavigation | SystemUiFlags.Fullscreen | SystemUiFlags.ImmersiveSticky);
+			}
+#endif
+			SetContentView(view);
+			g.Run();
+		}
+
+
+DD.
+Ensure Convert.ToSingle() or any other equivalent code uses the CultureInfo.InvariantCulture optional parameter
+Otherwise code could crash esp. on European settings where "." is treated as ","
+
+
+
+Upgrade to API version 9.0
