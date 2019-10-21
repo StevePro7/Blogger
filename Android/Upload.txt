@@ -1,0 +1,81 @@
+Upload
+21/10/2019
+
+
+01.
+Right click project
+Properties
+Android Package Signing
+
+CHECKED
+Sign the APK file using the following keystore details
+
+Keystore
+C:\Users\TEST.000\AppData\Local\Xamarin\Mono for Android\Keystore\SteveProXNA\SteveProXNA.keystore
+
+Keystore Password
+
+Alias
+steveproxna
+
+HOW DID I know the Alias?
+https://stackoverflow.com/questions/28034899/how-to-retrieve-key-alias-and-key-password-for-signed-apk-in-android-studiomigr
+
+How do I know the Alias?
+steveproxna
+
+cd C:\Users\TEST.000\AppData\Local\Xamarin\Mono for Android\Keystore\SteveProXNA
+C:\Users\TEST.000\AppData\Local\Xamarin\Mono for Android\Keystore\SteveProXNA>
+keytool -list -v -keystore SteveProXNA.keystore
+
+Enter password
+SP4
+steveproxna
+
+
+
+IGNORE
+Rogue message about debug symbols for Ninject.dll
+https://stackoverflow.com/questions/55524295/xamarin-android-no-debug-symbols-file-was-found
+
+
+SEEMED TO ARCHIVE OK
+Keystore
+C:\Users\TEST.000\AppData\Local\Xamarin\Mono for Android\Keystore\SteveProXNA\SteveProXNA.keystore
+
+Keystore Password
+otm123
+
+Alias
+steveproxna
+
+Alias Password
+StevePro4
+
+
+Distribute...
+
+Follow instructions from blog
+http://steveproxna.blogspot.com/2018/09/
+
+{
+    "installed": {
+        "client_id": "415744896826-8be0cp55eko7sabk33pp5lpsr81gkdb2.apps.googleusercontent.com",
+        "project_id": "api-project-415744896826",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "pMYDeQaF9tjW0DQjFWgQ1N7C",
+        "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]
+    }
+}
+
+
+
+
+MISC
+Other commands that found while doing this to get info
+RE: keystore
+
+keytool -list -printcert -jarfile com.steveproxna.x3dcity1.0.0.apk
+keytool -list -printcert -jarfile com.steveproxna.x3dcity1.1.0.apk
