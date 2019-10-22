@@ -1,0 +1,28 @@
+Upload #02
+22/10/2019
+
+
+01.
+Right click project
+Properties
+Archive
+
+Use existing keystore SteveProXNA
+Error
+An error occur uploading APK has been signed with a different certificate to previous APK [403]
+APK has been signed with a different certificate to previous APKs [403]
+
+
+https://stackoverflow.com/questions/4843212/the-apk-must-be-signed-with-the-same-certificates-as-the-previous-version
+
+
+jarsigner -verify -verbose:summary -certs 1.2.0-CandyKid.Android.apk
+jarsigner -verify -verbose:summary -certs 1.3.0-CandyKid.Android.apk
+
+
+Tried to upload via Google Play on old computer which had steveproxna alias
+but rec'd different error msg
+
+An error occur uploading
+Release is not compliant with the Play-64 bit requirement [403]
+https://stackoverflow.com/questions/56026974/xamarin-this-release-is-not-compliant-with-the-google-play-64-bit-requirement
