@@ -1,0 +1,40 @@
+History
+23/10/2019
+
+Wrote initial Android apps using MonoGame 3.4
+2018 prototype 3D stuff but used latest version of MG for Android e.g. 3.6
+Create new project creates new project template layout
+
+22/10/2019
+CK upload
+Fail because mismatch certificate
+So upload on old PC and get new error: not 64-bit compliant
+So build against arm64-v8a instead of [old] armeabi-v7
+Error: audio not supported for 64-bit in old 3.4 version of MG
+So upgrade MG library / package to 3.7 but get error 'cos can't load content
+
+
+23/10/2019
+I know that I had working load content in 2018 w/ 3D prototype stuff
+so try to replicate that
+That's where I realized that my old CK Android project templates are different from new 3.7
+So try to create hello world style app Android to refresh how to do
+Get working - here is what is required
+
+Create new Android project
+Content load Content.mgcb in MG content pipeline builder
+IMPORTANT
+Ensure top level node Platfor set to Android
+Add AndroidManifest.xml
+Ensure that at least one architecture supported
+e.g. for testing 64-bit arm64-v8a
+[project properties | Android Options | Advanced]
+if no architecture set then will build run stop
+Ensure debug build configuration set to deploy!
+
+Comment out this line
+//Content.RootDirectory = "Content";
+
+and manually include "Content" in the asset name path [as I do in my projects anyway]
+image = Content.Load<Texture2D>("Content/ship_tex");
+
