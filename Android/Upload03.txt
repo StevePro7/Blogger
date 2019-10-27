@@ -1,0 +1,131 @@
+Upload #03
+24/10/2019
+27/10/2019
+
+Before uploading newer version of Android game
+ensure you increment the Version Code and Version [name]
+NB: Version [name] matches the game build version
+e.g.
+Version	1.3.0	name
+Build	1.3.0
+but
+Version code	4
+
+
+
+01.
+3D City
+Published game on the Mac
+
+SVN
+3D City.AND
+Load into Visual Studio for Mac
+Release
+Attach Android phone
+right click solution
+Clean solution
+Rebuild solution
+
+Right click project
+Archive for Publishing
+Sign and Distribute
+Google Play
+
+Must use original Client information on initial upload
+i.e.
+Nov 10, 2018
+
+i.e.
+"client_id": "415744896826-163p41lskis7por8i84v7o7ratbk5b8p.apps.googleusercontent.com",
+"client_secret": "dzYUEH-vp3gJlXFm3MFte6no",
+
+Register
+
+Browser opens automatically
+ensure logged in as SteveProStudios@gmail.com
+Allow
+{
+    "installed": {
+        "client_id": "415744896826-163p41lskis7por8i84v7o7ratbk5b8p.apps.googleusercontent.com",
+        "project_id": "api-project-415744896826",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "dzYUEH-vp3gJlXFm3MFte6no",
+        "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]
+    }
+}
+
+
+3D City
+Production
+testkey
+otmpwd
+pwd123
+OK
+
+This is in the keystore on the Mac
+~/.android/debug.keystore
+
+Should take some time but eventually get Published OK message etc.
+
+IMPORTANT
+Before shutting everything down
+redo this action and archive OK but Select Android AdHoc
+this will be the build that I check into source control
+
+
+02.
+Candy Kid
+Candy Kid FREE
+
+Published game on the old Windows PC
+bigfishgames PC
+
+SVN
+CandyKid.PROD.Android
+CandyKid.FREE.Android
+Load into Visual Studio for Mac
+Release
+Attach Android phone
+right click solution
+Clean solution
+Rebuild solution
+
+Right click project
+Archive...
+Distribute...
+Google Play
+steveproxna
+Continue
+
+Google Play Track
+Production
+
+Enter the for the selected certificate
+SP4
+
+
+Upload via archive with auto signing
+Android Package Signing
+
+Windows
+Keystore
+C:\Users\TEST.000\AppData\Local\Xamarin\Mono for Android\Keystore\SteveProXNA\SteveProXNA.keystore
+
+Keystore Password
+otmpwd
+pwd123
+
+Alias
+steveproxna
+
+Alias Password
+SP4
+
+goto Upload.txt
+HOW DID I know the Alias?
+https://stackoverflow.com/questions/28034899/how-to-retrieve-key-alias-and-key-password-for-signed-apk-in-android-studiomigr
+
+How do I know the Alias?
+steveproxna
