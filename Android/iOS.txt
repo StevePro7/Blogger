@@ -8,3 +8,39 @@ and re-update the MonoFramework SDK and Xamarin iOS framework to the latest vers
 
 IMPORTANT
 You may be prompted to update MonoFramework on the Mac itself or re-install
+
+
+WORKFLOW
+Launch VS2017
+New / open Xamarin.iOS MG project
+
+Mono versions mismatch
+The Mono version installed on Mac may not be compatible with this verison of Visual Studio.
+Would you like us to install Mono '5.18' for you?
+This will overwrite any existing Mono installation on your Mac.
+
+Install
+
+when you do this then you will be able to build + run code out from Windows to Mac
+via iPhone simulator or, if you have the bundle identifier + provisioning profiles setup for an iOS device, iPhone
+
+However, after development you will need to complete deployment
+and this can only be done on the Mac
+
+Therefore, when you launch Visual Studio for Mac you may be prompted to install MonoFramework due to MDK mismatch
+If you re-install MonoFramework then you will be able to launch Visual Studio for Mac and complete deployment
+Archive for Publishing 
+
+
+
+SOLUTION?
+On Windows I have the latest build of MG 3.7.189 but I thought that I had the latest build of MG on the Mac
+I downloaded and installed the latest version of MG on the Mac but when I launched Visual Studio for Mac
+I was prompted to update Mono Framework MDK 6.4.0.208 and Xamarin.iOS 13.4.0.2
+I wonder if this was the constant source of the mismatch issue
+
+Update on Mac and retry on Windows
+Still get the same error msg on Windows when launch Xamarin.iOS project in VS2017
+so the solution is to launch Xamarin.iOS project in VS2019...!!
+
+Now, will NOT be prompted to mismatch Mono framework version 5.18
