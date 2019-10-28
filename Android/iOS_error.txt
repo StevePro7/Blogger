@@ -1,0 +1,104 @@
+2019-10-28 17:57:17.697 CandyKid.FREE.iOS[1225:490014] error: * Assertion at /Users/builder/jenkins/workspace/xamarin-macios/xamarin-macios/external/mono/mono/mini/mini-generic-sharing.c:909, condition `oti' not met
+
+=================================================================
+	Native Crash Reporting
+=================================================================
+Got a SIGABRT while executing native code. This usually indicates
+a fatal error in the mono runtime or one of the native libraries 
+used by your application.
+=================================================================
+
+=================================================================
+	Native stacktrace:
+=================================================================
+	0xffc345 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0xff48a7 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0xffb95f - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x1c194259 - /usr/lib/system/libsystem_platform.dylib : _sigtramp
+	0x1c19a087 - /usr/lib/system/libsystem_pthread.dylib : pthread_kill
+	0x1c07695b - /usr/lib/system/libsystem_c.dylib : abort
+	0x1102b7c - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : xamarin_find_protocol_wrapper_type
+	0x10f09bd - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x10fccab - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x10fcd19 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0xff72b7 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0xff7015 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x1004e39 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x4bb084 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x141b40 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x4bb98c - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x3fa0a4 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x4bb764 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x95294 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x94f18 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x757bc - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0xbc360 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x4fa70 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0xc4d88 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x24e958 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x24c818 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.i
+OS.app/CandyKid.FREE.iOS : (null)
+	0x24c5e0 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x24c568 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x24eac8 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x482234 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : (null)
+	0x10027a7 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x107a167 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x107dcb3 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x10a71a1 - /var/containers/Bundle/Application
+2f e1 1e 
+ff 2f e1 52 cf 
+/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x10a6fc3 - /var/containers/Bundle/Application/F1A0C6F8-052E-437D-B4AE-954A011465BE/CandyKid.FREE.iOS.app/CandyKid.FREE.iOS : mono_pmip
+	0x1c19893b - /usr/lib/system/libsystem_pthread.dylib : <redacted>
+	0x1c19885d - /usr/lib/system/libsystem_pthread.dylib : _pthread_start
+	0x1c196468 - /usr/lib/system/libsystem_pthread.dylib : thread_start
+
+=================================================================
+	Basic Fault Address Reporting
+=================================================================
+Memory around native instruction pointer (0x1c0e1acc):0x1c0e1abc  1c ff 
+a0 e3 80 00 00 
+ef  ../.../.R.......
+e5 0c c0 9f e7 00 00 00 
+0x1c0e1acc  04 00 00 3a 04 c0 9f 
+ea  ...
+:....
+......
+..
+0x1c0e1adc  4c 
+45 0f 1a 1c ff 2f 
+e1 1e ff 2f e1 53 cf a0 e3 
+ LE..../.../.S...
+0x1c0e1aec  80 00 00 ef 04 00 00 3a 04 c0 
+9f e5 0c c0 9f e7  .
+..:...
+....
+.....
+
+
+=================================================================
+	Managed Stacktrace:
+	  at System.Collections.Generic.Dictionary`2:FindEntry <0x00317>
+=================================================================
+	  at <unknown> <0xffffffff>
+	  at System.Collections.Generic.GenericEqualityComparer`1:Equals <0x0002f>
+	  at System.Object:gsharedvt_out <0x0007b>
+	  at System.Collections.Generic.Dictionary`2:get_Item <0x0007b>
+	  at System.Object:gsharedvt_in <0x0007b>
+	  at WindowsGame.Managers.BoardManager:GetVector2 <0x00177>
+	  at WindowsGame.Managers.BoardManager:GetCandyVector2 <0x000db>
+	  at WindowsGame.Screens.Menus.InstructScreen:Initialize <0x00103>
+	  at WindowsGame.Managers.ScreenManager:LoadContent <0x002bf>
+	  at WindowsGame.MyGame:LoadContentAsync <0x00fab>
+	  at WindowsGame.Managers.ThreadManager:BackgroundLoadContent <0x00077>
+	  at System.Threading.ThreadHelper:ThreadStart_Context <0x000cb>
+	  at System.Threading.ExecutionContext:RunInternal <0x001ef>
+	  at System.Threading.ExecutionContext:Run <0x00033>
+	  at System.Threading.ExecutionContext:Run <0x0005b>
+	  at System.Threading.ThreadHelper:ThreadStart <0x0003f>
+	  at System.Object:runtime_invoke_dynamic <0x000ef>
+=================================================================
+The app has been terminated.
+Failed to Stop app:  An error occured on client IDB412383 while executing a reply for topic xvs/idb/4.12.3.83/stop-app
+The app has been terminated.
