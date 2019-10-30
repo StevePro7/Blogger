@@ -1,11 +1,39 @@
 <span style="font-family:verdana;font-size:85%;">
 
+>>99.anIMPORTANT<br/>
+<b>IMPORTANT</b><br/>
+If, for any reason, there are issues updating any IDEs mentioned here then simply Run as Administrator :)
+<br /><br />
 
->>02.anPRE-Reqs<br/>
-<u>Pre-Requisites</u><br />
+>>03.anAndroidSetup<br/>
+
+On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
+<br /><br />
+Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
+<table width="97%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Android Studio</b></td>
+<td valign="top">&nbsp;%USERPROFILE%\AppData\Local\Android\Sdk</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Visual Studio</b></td>
+<td valign="top">&nbsp;C:\Program Files (x86)\Android\android-sdk</td>
+</tr>
+</table>
+<br />
+
+Actually, it may be easier to align Android SDK location in Android Studio to that of Visual Studio because all Android game code will be built using MonoGame from Visual Studio.  Therefore, update Android SDK path:
+<!--
+<a href="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s1600/AndroidSDK.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s640/AndroidSDK.png" width="98%" height="380" /></a>
+-->
+<br />
+Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
+<br /><br />
+
 
 <br /><br />
 
+<br /><br />
 >>01.anINTRO<br/>
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -17,6 +45,64 @@ All these factors mandate upgrades to our mobile games and rebuilt using latest 
 -->
 <br />
 Let's check it out!
+<br /><br />
+
+
+
+>>02.anPRE-Reqs<br/>
+<u>Pre-Requisites</u><br />
+Install the following software on Windows and Mac.  Install "Mobile development with .NET" for Xamarin.
+<table width="96%" border="1">
+<tr>
+<td valign="top">&nbsp;&nbsp;<b>Windows</b>&nbsp;&nbsp;&nbsp;[Android]</td>
+<td valign="top">&nbsp;&nbsp;<b>Mac Os/X</b>&nbsp;&nbsp;&nbsp;[iOS]</td>
+</tr>
+<tr>
+<td valign="top">
+<ul>
+<li>Install Android Studio</li>
+<li>Install Visual Studio 2017</li>
+<li>Install Visual Studio 2019</li>
+<li>Install MonoGame for Visual Studio</li>
+</ul>
+</td>
+<td valign="top">
+<ul>
+<li>Install Xcode 11.0</li>
+<li>Install Xcode Tools</li>
+<li>Install Visual Studio for Mac</li>
+<li>Install MonoGame for MacOS</li>
+</ul>
+</td>
+</tr>
+</table>
+Note: this post assumes you already have bundle identifiers setup as the games are already published.
+<br /><br />
+
+
+>>03.anAndroidSetup<br/>
+
+On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
+<br /><br />
+Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
+<table width="97%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Android Studio</b></td>
+<td valign="top">&nbsp;%USERPROFILE%\AppData\Local\Android\Sdk</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Visual Studio</b></td>
+<td valign="top">&nbsp;C:\Program Files (x86)\Android\android-sdk</td>
+</tr>
+</table>
+<br />
+
+Actually, it may be easier to align Android SDK location in Android Studio to that of Visual Studio because all Android game code will be built using MonoGame from Visual Studio.  Therefore, update Android SDK path:
+<!--
+<a href="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s1600/AndroidSDK.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s640/AndroidSDK.png" width="98%" height="380" /></a>
+-->
+<br />
+Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
 <br /><br />
 
 </span>
