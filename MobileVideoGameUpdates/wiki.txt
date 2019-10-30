@@ -5,35 +5,9 @@
 If, for any reason, there are issues updating any IDEs mentioned here then simply Run as Administrator :)
 <br /><br />
 
->>03.anAndroidSetup<br/>
-
-On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
-<br /><br />
-Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
-<table width="97%" border="1">
-<tr>
-<td valign="top">&nbsp;<b>Android Studio</b></td>
-<td valign="top">&nbsp;%USERPROFILE%\AppData\Local\Android\Sdk</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<b>Visual Studio</b></td>
-<td valign="top">&nbsp;C:\Program Files (x86)\Android\android-sdk</td>
-</tr>
-</table>
-<br />
-
-Actually, it may be easier to align Android SDK location in Android Studio to that of Visual Studio because all Android game code will be built using MonoGame from Visual Studio.  Therefore, update Android SDK path:
-<!--
-<a href="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s1600/AndroidSDK.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s640/AndroidSDK.png" width="98%" height="380" /></a>
--->
-<br />
-Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
-<br /><br />
 
 
-<br /><br />
 
-<br /><br />
 >>01.anINTRO<br/>
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -80,6 +54,7 @@ Note: this post assumes you already have bundle identifiers setup as the games a
 <br /><br />
 
 
+
 >>03.anAndroidSetup<br/>
 
 On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
@@ -103,6 +78,81 @@ Actually, it may be easier to align Android SDK location in Android Studio to th
 -->
 <br />
 Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
+<br /><br />
+
+>>04.anAndroidLaunch<br/>
+Launch existing MonoGame Android project in Visual Studio 2017 e.g. 3D City.  Right click project.  Choose Properties.  Assume previous version 1.0.0 already exists on Google Play so upgrade Android version data:
+<br /><br />
+<i>Application</i><br />
+Compile using Android version (Target Framework).  Choose Android 9.0 (Pie) as minimum Android version.
+<br /><br />
+<i>Application Manifest</i><br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Element</b></td>
+<td valign="top">&nbsp;<b>Attribute</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application name</td>
+<td valign="top">&nbsp;3D City</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:label</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Package name</td>
+<td valign="top">&nbsp;com.steveproxna.x3dcity</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;package</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application icon</td>
+<td valign="top">&nbsp;@drawable/Icon</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:icon</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version number</td>
+<td valign="top">&nbsp;2</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionCode</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version name</td>
+<td valign="top">&nbsp;1.1.0</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionName</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Minimum Android version</td>
+<td valign="top">&nbsp;Android 9.0 (API Level 28 - Pie)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:minSdkVersion</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Target Android version</td>
+<td valign="top">&nbsp;Android 9.0 (API Level 28 - Pie)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:targetSdkVersion</td>
+</tr>
+</table>
+<br />
+AndroidManifest.xml
+<br />
+<pre class="csharp" name="code">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest package="com.steveproxna.x3dcity" android:versionCode="2" android:versionName="1.1.0"&gt;
+  &lt;uses-sdk android:minSdkVersion="28" android:targetSdkVersion="28" /"&gt;
+  &lt;application android:label="3D City" android:icon="@drawable/Icon"&gt;
+    &lt;meta-data android:name="android.max_aspect" android:value="2.1" /&gt;
+  &lt;/application&gt;
+&lt;/manifest&gt;
+</pre>
+<br />
+<i>Application Options</i><br />
+Click the Advanced button.  Select the following 2x Supported architectures: <b>armeabi-v7a</b> and <b>arm64-v8a</b>
+<br />TODO: add image ABIs.png<br />
 <br /><br />
 
 </span>

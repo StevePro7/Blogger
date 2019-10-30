@@ -25,3 +25,79 @@ change value to Android 10.0 (Q) - cannot do this in VS2017
 
 Finally, cannot currently create new MonoGame Android project in Visual Studio 2019 
 as there is currently no project template... must create in VS2017 and open in VS2019 if would like to target Android 10.0 (Q)
+
+
+
+
+>>04.anAndroidLaunch<br/>
+Launch existing MonoGame Android project in Visual Studio 2017 e.g. 3D City.  Right click project.  Choose Properties.  Assume previous version 1.0.0 already exists on Google Play so upgrade Android version data:
+<br /><br />
+<i>Application</i><br />
+Compile using Android version (Target Framework).  Choose Android 9.0 (Pie) as minimum Android version.
+<br /><br />
+<i>Application Manifest</i><br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Element</b></td>
+<td valign="top">&nbsp;<b>Attribute</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application name</td>
+<td valign="top">&nbsp;3D City</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:label</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Package name</td>
+<td valign="top">&nbsp;com.steveproxna.x3dcity</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;package</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application icon</td>
+<td valign="top">&nbsp;@drawable/Icon</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:icon</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version number</td>
+<td valign="top">&nbsp;2</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionCode</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version name</td>
+<td valign="top">&nbsp;1.1.0</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionName</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Minimum Android version</td>
+<td valign="top">&nbsp;Android 9.0 (API Level 28 - Pie)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:minSdkVersion</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Target Android version</td>
+<td valign="top">&nbsp;Android 9.0 (API Level 28 - Pie)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:targetSdkVersion</td>
+</tr>
+</table>
+<br />
+AndroidManifest.xml
+<br />
+<pre class="csharp" name="code">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest package="com.steveproxna.x3dcity" android:versionCode="2" android:versionName="1.1.0"&gt;
+ &lt;uses-sdk android:minSdkVersion="28" android:targetSdkVersion="28" /"&gt;
+ &lt;application android:label="3D City" android:icon="@drawable/Icon"&gt;
+  &lt;meta-data android:name="android.max_aspect" android:value="2.1" /&gt;
+ &lt;/application&gt;
+</pre>
+<br />
+<i>Application Options</i><br />
+Click the Advanced button.  Select the following 2x Supported architectures: <b>armeabi-v7a</b> and <b>arm64-v8a</b>
+<br />TODO: add image ABIs.png<br />
