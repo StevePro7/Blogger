@@ -1,0 +1,27 @@
+Android Launch
+30/10/2019
+
+>>04.anAndroidLaunch<br/>
+
+Launch existing MonoGame Android project in Visual Studio 2017.  Right click project | Properties.  
+
+In the Application tab choose Compile using Android version (Target Framework) Android 9.0 (Pie).  
+
+Android Manifest
+
+Android Options	Advanced	2x	supported architectures
+
+
+
+Then mention about Samsung S10
+how have to install Android 10.0 (Q) thru Android Studio first
+but will dump the stuff to correct location as aligned Android SDK path
+
+but must open MonoGame Android project in Visual Studio 2019
+Right click project | Properties
+
+change value to Android 10.0 (Q) - cannot do this in VS2017
+
+
+Finally, cannot currently create new MonoGame Android project in Visual Studio 2019 
+as there is currently no project template... must create in VS2017 and open in VS2019 if would like to target Android 10.0 (Q)
