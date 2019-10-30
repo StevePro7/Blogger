@@ -6,6 +6,8 @@ If, for any reason, there are issues updating any IDEs mentioned here then simpl
 <br /><br />
 
 
+
+
 >>01.anINTRO<br/>
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -149,29 +151,8 @@ AndroidManifest.xml
 </pre>
 <br />
 <i>Application Options</i><br />
-Click the Advanced button.  <a href="https://stackoverflow.com/questions/54537469/targeting-64-bit-architectures-on-xamarin-android">Target</a> the following 2x Supported architectures: <b>armeabi-v7a</b> and <b>arm64-v8a</b>.
-<!--
-<a href="https://1.bp.blogspot.com/-rnCQZu252jo/XboDtXRGJAI/AAAAAAAAFyI/gTUVhxkeG4o3jXJFj245SVXv0Ru8yGRhgCLcBGAsYHQ/s1600/ABIs.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-rnCQZu252jo/XboDtXRGJAI/AAAAAAAAFyI/gTUVhxkeG4o3jXJFj245SVXv0Ru8yGRhgCLcBGAsYHQ/s640/ABIs.png" width="98%" height="360" /></a>
--->
-<br /><br />
-
-
-
->>07.MonoGamePipeline<br/>
-Launch the MonoGame Pipeline tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
-<br /><br />
-
-<i>Data</i><br />
-Import any ASCII text files or XML configuration files.  Set the Build Action in the Properties section to Copy.
-<br /><br />
-<i>Fonts</i><br />
-Typically import pre-built XNB binary files from previous games e.g. Emulogic.xnb.  Set Build Action to Copy.
-<br /><br />
-<i>Sound</i><br />
-Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strange as built sound effects.  Convert WAV files to MP3.  Set Build Action to Build.  Set Processor to Song for music otherwise set to Sound Effect.
-<br /><br />
-<i>Textures</i><br />
-Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
+Click the Advanced button.  Select the following 2x Supported architectures: <b>armeabi-v7a</b> and <b>arm64-v8a</b>
+<br />TODO: add image ABIs.png<br />
 <br /><br />
 
 </span>

@@ -5,3 +5,9 @@ May have to upgrade CSproj file also esp. if Content rebuild does not create "Co
 e.g.
 bin/iOS/Content/*
 		
+Alternatively, create new MonoGame project using 3.7.1 latest build
+then port all old code across to new project and build this way
+
+Why?
+Because Content may *NOT* build correctly
+${Platform}/Content
