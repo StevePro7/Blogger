@@ -1,52 +1,283 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
->>03.aSetup<br/>
-
-<br /><br />
->>01.anINTRO<br/>
-In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
-<br /><br />
-Now both Apple and Google require apps + games be 64-bit compliant.  Apple will stop support for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to target minimum Android 9 (API level 28) or higher.
-<br /><br />
-All these factors mandate upgrades to our mobile games and rebuilt using latest version of MonoGame 3.7.1.
-<!--
-<a href="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s640/MonoGameLogo.png" width="98%" height="135" data-original-width="218" data-original-height="46" /></a>
--->
+In the previous <a href="http://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html">post</a>, we discussed various options to set up Ubuntu Linux.  Now let's install some software.
+<a href="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s1600/Linux.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s640/Linux.jpg" width="98%" height="225" /></a>
 <br />
 Let's check it out!
 <br /><br />
 
-
-
->>02.anPRE-Reqs<br/>
-<u>Pre-Requisites</u><br />
-Install the following software on Windows and Mac.  Install "Mobile development with .NET" for Xamarin.
-<table width="96%" border="1">
+<u>General</u><br />
+First, let's list some general purpose commands that can be applied + executed anywhere.  Launch Terminal:
+<table width="100%" border="1">
 <tr>
-<td valign="top">&nbsp;&nbsp;<b>Windows</b>&nbsp;&nbsp;&nbsp;[Android]</td>
-<td valign="top">&nbsp;&nbsp;<b>Mac Os/X</b>&nbsp;&nbsp;&nbsp;[iOS]</td>
+<td valign="top">&nbsp;<b>Command</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
 </tr>
 <tr>
-<td valign="top">
-<ul>
-<li>Install Android Studio</li>
-<li>Install Visual Studio 2017</li>
-<li>Install Visual Studio 2019</li>
-<li>Install MonoGame for Visual Studio</li>
-</ul>
-</td>
-<td valign="top">
-<ul>
-<li>Install Xcode 11.0</li>
-<li>Install Xcode Tools</li>
-<li>Install Visual Studio for Mac</li>
-<li>Install MonoGame for MacOS</li>
-</ul>
-</td>
+<td valign="top">&nbsp;hostname</td>
+<td valign="top">&nbsp;Confirm host computer name</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;whoami</td>
+<td valign="top">&nbsp;Confirm user executing command</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;sudo su</td>
+<td valign="top">&nbsp;Run as administrator</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;sudo apt-get update</td>
+<td valign="top">&nbsp;General all-purpose update</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;sudo apt-get -f install</td>
+<td valign="top">&nbsp;Install outstanding packages</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;sudo dpkg -i *.deb</td>
+<td valign="top">&nbsp;Install any Debian package</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;sudo tar -xvzf *.tar</td>
+<td valign="top">&nbsp;Extract tar ball [tape archive] file</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;sudo add-apt-repository *</td>
+<td valign="top">&nbsp;Add package to repository</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;sudo add-apt-repository --remove *</td>
+<td valign="top">&nbsp;Remove package repository</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;shutdown -r now</td>
+<td valign="top">&nbsp;Shuts down Ubuntu Linux</td>
 </tr>
 </table>
-Note: this post assumes you already have bundle identifiers setup as the games are already published.
+<br />
+
+<b>Java</b><br />
+By default, Java may not be installed but is a good idea to install because a lot software may be dependent.  Launch Terminal and enter the following commands:
+<br />
+<pre class="csharp" name="code">
+sudo apt install openjdk-11-jre-headless  # version 11.0.3+7-1ubuntu2~19.04.1, or
+sudo apt install default-jre              # version 2:1.11-71
+sudo apt install openjdk-8-jre-headless   # version 8u212-b03-0ubuntu1.19.04.2
+sudo apt install openjdk-12-jre-headless  # version 12.0.1+12-1
+sudo apt install openjdk-13-jre-headless  # version 13~13-0ubunt1
+</pre> 
+<br />
+Repeat if you would like to install javac but install JDK this time instead of JRE.  Enter these new commands:
+<br />
+<pre class="csharp" name="code">
+sudo apt install openjdk-11-jdk-headless  # version 11.0.3+7-1ubuntu2~19.04.1, or
+sudo apt install default-jdk              # version 2:1.11-71
+sudo apt install openjdk-8-jdk-headless   # version 8u212-b03-0ubuntu1.19.04.2
+sudo apt install ecj                      # version 3.16.0-1
+sudo apt install openjdk-12-jdk-headless  # version 12.0.1+12-1
+sudo apt install openjdk-13-jdk-headless  # version 13~13-0ubunt1
+</pre> 
+<br />
+
+<b>Various</b><br />
+Here is a list of general software applications that I believe are handy to have installed.  Launch Terminal:
+<pre class="csharp" name="code">
+sudo apt-get install git
+sudo apt-get install subversion
+sudo apt-get install curl
+sudo apt-get install python
+sudo apt-get install python3
+</pre> 
+<br />
+
+<b>Browser</b><br />
+<a href="https://www.google.com/chrome">Download</a> Google Chrome as default browser.  Save *.deb file in Downloads folder and install from Terminal:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+sudo dpkg -i google-chrome-stable_*.deb
+</pre>
+By default, certain packages may not be <a href="https://askubuntu.com/questions/760085/how-do-you-install-google-chrome-on-ubuntu-16-04">installed</a> for this software.  If this is true then enter the commands:
+<br />
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt-get install libgconf2-4
+sudo apt-get install libnss3-1d
+sudo apt-get install libxss1
+sudo apt-get -f install
+</pre> 
+<br />
+
+<u>Source Control</u><br />
+In the previous post, we setup a folder share and made it possible to copy + paste files across from host to virtual machine.  However, it may be easier to install source control client to simply pull + push files directly.
 <br /><br />
+<b>GitEye</b><br />
+<a href="https://www.collab.net/downloads/giteye-linux-64">Download</a> GitEye is available completely free but only includes very limited features.  Good for starting point:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+mkdir GitEye
+mv GitEye*.zip GitEye
+cd GitEye
+unzip GitEye*.zip
+rm GitEye*.zip
+./GitEye
+</pre> 
+<br />
+
+<b>SmartGit</b><br />
+<a href="https://www.syntevo.com/smartgit/download">Download</a> SmartGit as full-featured and similar product to SourceTree but it requires a commercial licence:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+tar -xzvf smartgit*.tar.gz
+rm smartgit*.tar.gz
+cd smartgit/bin
+./smartgit.sh
+</pre>
+<br />
+<b>GitKraken</b><br />
+<a href="https://www.gitkraken.com/download/linux-deb">Download</a> GitKraken as a great compromise.  This software is full-featured like SourceTree available for free:  Note: GitKraken can launch Terminal [a handy feature] but seems only from using Alt+T keyboard shortcut.
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+sudo dpkg -i gitkraken*.deb
+</pre> 
+<br />
+
+<u>IDEs</u><br />
+Now we'd like to build our own software so let's install various <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated</a> Development Environments [IDEs].
+<br /><br />
+
+<b>VS Code</b><br />
+<a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a> is a popular lightweight IDE available cross platform on Windows, Mac OS/X and Linux.  Install directly from <a href="https://wiki.ubuntu.com/SoftwareCenter">Ubuntu</a> Software.  Otherwise, launch the Terminal and enter the following commands:
+<br />
+<pre class="csharp" name="code">
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+
+sudo apt-get update
+sudo apt-get install code # or code-insiders
+</pre>
+Note: if there's an issue with Visual Studio Code install then try <i>sudo apt-get --fix-broken install</i> + try again.
+<br /><br />
+
+<br />
+<b>Geany</b><br />
+<a href="https://tecadmin.net/install-geany-ide-ubuntu">Geany</a> is a lightweight IDE using the GTK2 toolkit and may seem to be popular for <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> development on Linux.  Launch Terminal and enter the following commands:
+<br />
+<pre class="csharp" name="code">
+sudo add-apt-repository ppa:geany-dev/ppa
+sudo apt-get update
+sudo apt-get install geany geany-plugins-common
+</pre> 
+<br />
+
+<b>Code Blocks</b><br />
+<a href="https://www.dummies.com/programming/cpp/how-to-install-c-codeblocks-in-ubuntu-linux">Code Blocks</a> seems to be popular IDE for Sega Genesis development>  Install directly from <a href="https://wiki.ubuntu.com/SoftwareCenter">Ubuntu</a> Software.
+<br /><br />
+
+<br />
+<b>CLion</b><br />
+<a href="https://en.wikipedia.org/wiki/JetBrains#CLion">CLion</a> is a commercial IDE from JetBrains for C/C++ available cross-platform on Windows, Mac OS/X and Linux using CMake build system.  <a href="https://www.jetbrains.com/clion/download/#section=linux">Download</a> CLion.  Launch Terminal and enter these following commands:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+tar -xvzf CLion-*.tar.gz
+cd CLion*
+cd bin
+./clion.sh
+</pre> 
+<br />
+
+<b>Dotnet</b><br />
+Specifically .NET <a href="https://mohitgoyal.co/2018/09/22/install-dotnet-core-sdk-and-runtime-on-ubuntu-os">Core</a> is now open source and available cross platform on Windows, Mac OS/X and Linux!  Launch Terminal and enter the following commands:
+<br />
+<pre class="csharp" name="code">
+wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+# Install .NET Core Runtime
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install dotnet-hosting-2.0.6
+
+# Install the .NET SDK
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install dotnet-sdk-2.2
+
+# Verify installation
+dotnet --version
+dotnet --list-sdks
+dotnet --list-runtimes
+</pre>
+IMPORTANT<br />
+If you receive an error message similar to <i>Unable to locate package dotnet-sdk-2.2</i> then refer to <a href="https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/sdk-current">this</a> guide.
+<br /><br />
+
+<br />
+<u>Miscellaneous</u><br />
+After installing IDEs for C/C++ let's install a static code analysis debugging and profiling tool like <a href="http://valgrind.org/docs/manual/quick-start.html">Valgrind</a>:
+<br />
+<pre class="csharp" name="code">
+sudo apt install valgrind
+# Example "HelloWorld"
+cd ~/CLionProjects/HelloWorld/cmake-build-debug
+valgrind ./HelloWorld --lead-check=yes
+</pre> 
+<br />
+
+Also, if you would like to take a <a href="https://linuxconfig.org/how-to-take-a-screenshot-on-ubuntu-18-04-bionic-beaver-linux">screenshot</a> then use [Alt +] PrintScr to save in output ~/Pictures directory.
+<br /><br />
+
+<br />
+<u>Games</u><br />
+Finally, let's install some emulators in order to play + test 8-bit and 16-bit SEGA retro video games on Linux.
+<br /><br />
+
+<b>Kega Fusion</b><br />
+<a href="https://retrocdn.net/images/c/ca/Kega-fusion_3.63-2_i386.deb">Download</a> Kega Fusion as <a href="https://segaretro.org/Kega_Fusion">emulator</a> for general Sega retro video games.  Launch Terminal + run commands:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+sudo dpkg -i Kega-fusion_3.63-2_i386.deb
+sudo apt-get -f install
+</pre> 
+<br />
+
+<b>Gens GS</b><br />
+<a href="https://retrocdn.net/images/7/75/Gens_2.16.7_i386.deb">Download</a> Gens GS as <a href="https://segaretro.org/Gens/GS?rdfrom=%2F%2Finfo.sonicretro.org%2Findex.php%3Ftitle%3DGens%2FGS%26redirect%3Dno">emulator</a> for Sega Genesis retro video games.  Launch Terminal and run commands:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+sudo apt-get update
+sudo dpkg -i Gens_2.16.7_i386.deb
+sudo apt-get -f install
+</pre> 
+<br />
+
+<b>Emulicious</b><br />
+<a href="https://emulicious.net/downloads/#">Download</a> Emulicious as <a href="https://emulicious.net">emulator</a> for Sega retro video games with great debugger!  Launch Terminal + run:
+<br />
+<pre class="csharp" name="code">
+cd ~/Downloads
+mkdir Emulicious
+mv Emulicious.zip Emulicious
+cd Emulicious
+sudo unzip Emulicious.zip
+rm Emulicious.zip
+java -jar Emulicious.jar
+</pre> 
+<br />
+
+<b>Doom</b><br />
+Finally, there is an awesome <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ&t=2s">YouTube</a> video documenting how to setup Doom on Linux.  All notes found <a href="https://pastebin.com/T29s9Mss">here</a>!
+<br /><br />
+
+<br />
+<u>Summary</u><br />
+Now we have Ubuntu installed with a ton of Ubuntu software we are in a good spot to progress with Linux.  Being open source it is also possible to modify the Linux <a href="https://github.com/torvalds/linux">kernel</a> which would be a phenomenal next step!
 
 </span>
