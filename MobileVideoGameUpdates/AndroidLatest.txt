@@ -1,4 +1,15 @@
 Android Launch
 30/10/2019
 
+
 >>05.anAndroidLatest<br/>
+Currenlty, Android 10.0 (Q) is available although this API level 29 seems to be missing from Visual Studio Tools menu | Android | Android SDK Manager.  However, here is a workaround to circumvent the problem:
+<br /><br />
+
+Launch Android Studio.  Install Android 10 (API level 29) as above.  Ensure <i>android-29</i> exists in Android SDK "platforms" folder and <i>29.0.2</i> in "build-tools".  Launch Visual Studio 2019.  Update Android version in project:
+<!--
+<a href="https://4.bp.blogspot.com/-XicZgIrFJ4s/XbvrycxVplI/AAAAAAAAFzA/tNRqtb8f3E8o6EYiLuXgDohs19HV26yhQCLcBGAsYHQ/s1600/AndroidLatest.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-XicZgIrFJ4s/XbvrycxVplI/AAAAAAAAFzA/tNRqtb8f3E8o6EYiLuXgDohs19HV26yhQCLcBGAsYHQ/s640/AndroidLatest.png" width="98%" height="235" /></a>
+-->
+<br /><br />
+In fact, VS2019 does <b>not</b> have MonoGame project templates.  Therefore, the cleanest approach may be to create new MonoGame Project in VS2017.  Build + run to device.  Close, re-open + con't project in VS2019!
+<br /><br />
