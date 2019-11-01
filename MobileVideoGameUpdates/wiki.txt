@@ -1,14 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
->>99.anIMPORTANT<br/>
-<b>IMPORTANT</b><br/>
-If, for any reason, there are issues updating any IDEs mentioned here then simply Run as Administrator :)
-<br /><br />
-
-
-
-
->>01.anINTRO<br/>
+<!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
 Now both Apple and Google require apps + games be 64-bit compliant.  Apple will stop support for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to target minimum Android 9 (API level 28) or higher.
@@ -21,9 +13,7 @@ All these factors mandate upgrades to our mobile games and rebuilt using latest 
 Let's check it out!
 <br /><br />
 
-
-
->>02.anPRE-Reqs<br/>
+<!-- >>02.anPRE-Reqs<br/> -->
 <u>Pre-Requisites</u><br />
 Install the following software on Windows and Mac.  Install "Mobile development with .NET" for Xamarin.
 <table width="96%" border="1">
@@ -53,10 +43,12 @@ Install the following software on Windows and Mac.  Install "Mobile development 
 Note: this post assumes you already have bundle identifiers setup as the games are already published.
 <br /><br />
 
+IMPORTANT<br/>
+If, for any reason, there are issues updating any IDEs mentioned here then simply Run as Administrator.
+<br /><br />
 
-
->>03.anAndroidSetup<br/>
-
+<!-- >>03.anAndroidSetup<br/> -->
+<b>Android</b><br />
 On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
 <br /><br />
 Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
@@ -80,7 +72,8 @@ Actually, it may be easier to align Android SDK location in Android Studio to th
 Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
 <br /><br />
 
->>04.anAndroidLaunch<br/>
+<br />
+<!-- >>04.anAndroidLaunch<br/> -->
 Launch existing MonoGame Android project in Visual Studio 2017 e.g. 3D City.  Right click project.  Choose Properties.  Assume previous version 1.0.0 already exists on Google Play so upgrade Android version data:
 <br /><br />
 <i>Application</i><br />
@@ -157,7 +150,8 @@ Click the Advanced button.  <a href="https://stackoverflow.com/questions/5453746
 -->
 <br /><br />
 
->>05.anAndroidLatest<br/>
+<br />
+<!-- >>05.anAndroidLatest<br/> -->
 Currenlty, Android 10.0 (Q) is available although this API level 29 seems to be missing from Visual Studio Tools menu | Android | Android SDK Manager.  However, here is a workaround to circumvent the problem:
 <br /><br />
 
@@ -169,7 +163,9 @@ Launch Android Studio.  Install Android 10 (API level 29) as above.  Ensure <i>a
 In fact, VS2019 does <b>not</b> have MonoGame project templates.  Therefore, the cleanest approach may be to create new MonoGame Project in VS2017.  Build + run to device.  Close, re-open + con't project in VS2019.
 <br /><br />
 
->>07.MonoGamePipeline<br/>
+<br />
+<!-- >>07.MonoGamePipeline<br/> -->
+<u>Pipeline</u><br />
 Launch the MonoGame Pipeline tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
 <br /><br />
 
@@ -185,5 +181,7 @@ Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strang
 <i>Textures</i><br />
 Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
 <br /><br />
-
+IMPORTANT<br/>
+If you receive ContentLoadException then create new MonoGame project.  Import all existing code + content!
+<br /><br />
 </span>
