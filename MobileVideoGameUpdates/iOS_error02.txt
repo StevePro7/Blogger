@@ -1,0 +1,69 @@
+02/11/2019
+
+
+SOLVED...??
+For some reason there seems to be an issue with the following:
+<Byte, Vector2>
+<Byte, Rectangle>
+
+Therefore, if I change the key to int then everything works OK
+
+IMPORTANT
+If key is Byte but value is other types then still works OK
+e.g.
+IDictionary<Byte, Enemy>
+IDictionary<Byte, IList<Single>>
+
+
+02.
+=================================================================
+	Managed Stacktrace:
+=================================================================
+	  at <unknown> <0xffffffff>
+	  at System.Collections.Generic.GenericEqualityComparer`1:Equals <0x00027>
+	  at System.Collections.Generic.Dictionary`2:FindEntry <0x0036f>
+	  at System.Object:gsharedvt_out <0x000db>
+	  at System.Collections.Generic.Dictionary`2:get_Item <0x0009f>
+	  at System.Object:gsharedvt_in <0x000db>
+	  at WindowsGame.Managers.BorderManager:DrawTrees <0x0017f>
+	  at WindowsGame.Managers.BorderManager:DrawMenu <0x000b3>
+	  at WindowsGame.Screens.TitleScreen:Draw <0x001ef>
+	  at WindowsGame.Managers.ScreenManager:Draw <0x00397>
+	  at WindowsGame.MyGame:Draw <0x000db>
+	  at WindowsGame.AnGame:Draw <0x0006b>
+	  at Microsoft.Xna.Framework.Game:DoDraw <0x00137>
+	  at Microsoft.Xna.Framework.Game:Tick <0x00cdf>
+	  at Microsoft.Xna.Framework.iOSGamePlatform:Tick <0x001a3>
+	  at Microsoft.Xna.Framework.iOSGameView:DoTick <0x00067>
+	  at System.Object:runtime_invoke_dynamic <0x00103>
+	  at <unknown> <0xffffffff>
+	  at UIKit.UIApplication:UIApplicationMain <0x00007>
+	  at UIKit.UIApplication:Main <0x0002b>
+	  at UIKit.UIApplication:Main <0x00043>
+	  at WindowsGame.Program:Main <0x0007f>
+	  at System.Object:runtime_invoke_dynamic <0x00103>
+
+
+01.
+=================================================================
+	Managed Stacktrace:
+	  at System.Collections.Generic.Dictionary`2:FindEntry <0x00317>
+=================================================================
+	  at <unknown> <0xffffffff>
+	  at System.Collections.Generic.GenericEqualityComparer`1:Equals <0x0002f>
+	  at System.Object:gsharedvt_out <0x0007b>
+	  at System.Collections.Generic.Dictionary`2:get_Item <0x0007b>
+	  at System.Object:gsharedvt_in <0x0007b>
+	  at WindowsGame.Managers.BoardManager:GetVector2 <0x00177>
+	  at WindowsGame.Managers.BoardManager:GetCandyVector2 <0x000db>
+	  at WindowsGame.Screens.Menus.InstructScreen:Initialize <0x00103>
+	  at WindowsGame.Managers.ScreenManager:LoadContent <0x002bf>
+	  at WindowsGame.MyGame:LoadContentAsync <0x00fab>
+	  at WindowsGame.Managers.ThreadManager:BackgroundLoadContent <0x00077>
+	  at System.Threading.ThreadHelper:ThreadStart_Context <0x000cb>
+	  at System.Threading.ExecutionContext:RunInternal <0x001ef>
+	  at System.Threading.ExecutionContext:Run <0x00033>
+	  at System.Threading.ExecutionContext:Run <0x0005b>
+	  at System.Threading.ThreadHelper:ThreadStart <0x0003f>
+	  at System.Object:runtime_invoke_dynamic <0x000ef>
+=================================================================
