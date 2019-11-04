@@ -1,0 +1,38 @@
+iOS Issue
+02/11/2019
+
+
+On iOS, the latest version of MonoGame 3.7.1
+there seems to be an issue with the following code that worked OK on previous versions of MonoGame
+
+<pre class="csharp" name="code">
+IDictionary<Byte, Vector2> BoardBasePositions { get; }
+IDictionary<Byte, Rectangle> BoardRectangles { get; }
+
+Vector2 position = BoardBasePositions[key];
+
+public void Init()
+{
+  BoardBasePositions = new Dictionary<Int16, Vector2>();
+  BoardRectangles = new Dictionary<Int16, Rectangle>();
+
+  // hydrate the collections...
+}
+
+private Vector2 GetVector2(Byte key)
+{
+  // CRASH..!!
+  return BoardBasePositions[key];
+}
+
+</pre>
+
+This existing code for GetVector2() will crash!  Resulting in 
+
+Got a SIGABRT while executing native code. This usually indicates
+a fatal error in the mono runtime or one of the native libraries 
+used by your application.
+
+
+This ISSUE has been reported waiting to be fixed;
+in the interim a workaround to the problem is to simply declare the key as type Int16 instead of Byte
