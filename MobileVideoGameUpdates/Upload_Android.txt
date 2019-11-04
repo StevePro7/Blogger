@@ -1,0 +1,46 @@
+Upload Android
+04/11/2019
+
+
+TODO
+01.
+complete Google Play upload
+
+NOTE
+02.
+previously created signing identity from Keystore must be used to sign new build of an existing game.
+
+03.
+How to export Android keystore from one computer
+e.g. 3D City on Mac to old Win PC
+e.g. CK PROD on Win to new Win PC
+and also to upload to secure source control system
+
+
+
+BLOG
+Android Archive<br />
+Launch VS2019.  Open Android MonoGame project.  Attach Android device.  Select Release build configuration.  Clean and rebuild solution.  Right click project | Archive...  After the archive is generated choose Distribute...
+<br /><br />
+
+<i>Ad Hoc</i><br />
+Select distribution channel: Ad Hoc.  Select Signing Identity or Create Android Keystore.  Save APK.  Enter the password.  Open Folder.  Navigate to "signed-apks" subfolder.  Here is the signed APK that can be installed:
+<pre class="csharp" name="code">
+# Start | run | cmd
+# cd signed-apks
+adb devices -f install *.apk
+</pre>
+
+<i>Google Play</i><br />
+Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here.
+<br /><br />
+
+
+Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
+
+<br /><br />
+Note: the same signing identity from the Keystore must be used to sign a new build of an existing game.
+
+<br /><br />
+ can be created on-the-fly for Ad Hoc distributions, however, the same <br /><br />
+BLOG

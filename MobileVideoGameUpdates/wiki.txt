@@ -12,6 +12,8 @@ All these factors mandate upgrades to our mobile games to be rebuilt using lates
 <br />
 Let's check it out!
 <br /><br />
+TODO - TL;DR
+<br /><br />
 
 <!-- >>02.anPRE-Reqs<br/> -->
 <u>Pre-Requisites</u><br />
@@ -184,4 +186,27 @@ Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built te
 IMPORTANT<br/>
 If you receive ContentLoadException then create new MonoGame project.  Import all existing code + content!
 <br /><br />
+
+
+<!-- >>11.Upload_Android<br/> -->
+<br />
+Android Archive
+<br />
+Launch VS2019.  Open Android MonoGame project.  Attach Android device.  Select Release build configuration.  Clean and rebuild solution.  Right click project | Archive...  After the archive is generated choose Distribute...
+<br /><br />
+
+<i>Ad Hoc</i><br />
+Select distribution channel: Ad Hoc.  Select Signing Identity or Create Android Keystore.  Save APK.  Enter the password.  Open Folder.  Navigate to "signed-apks" subfolder.  Here is the signed APK that can be installed:
+<pre class="csharp" name="code">
+# Start | run | cmd
+# cd signed-apks
+adb devices -f install *.apk
+</pre>
+
+<i>Google Play</i><br />
+Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here.
+<br /><br />
+Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
+<br /><br />
+
 </span>
