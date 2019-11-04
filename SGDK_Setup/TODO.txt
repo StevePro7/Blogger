@@ -1,0 +1,36 @@
+TODO
+02/11/2019
+
+So I have a workable solution on this laptop although Remote Debugging doesn't seem to work...
+
+
+Here are some outstanding things to complete in order to document:
+
+
+Finalize version of SGDK to work with to do examples:
+
+Download source code for gens.exe to run locally
+
+Put gens.exe into C:\SEGA in order to debug via Eclipse
+
+Setup Eclipse - what version and standardize install process
+
+Document how to import VS2015 SGDK project in Eclipse + debug step thru C code via Eclipse
+
+Ideally have 3x ways to run MD code projects
+
+
+VS2015 makefile project
+VS2015 console project and mock SGDK similar to devKitSMS mocking so can F5 debug step thru code
+Eclipse programming setup and remote debugging
+
+
+NB: another option is CodeBlocks BUT won't be able to debug step thru code
+plus don't know how to you can build source code then build.bat to launch software in emulator
+
+
+VS2015
+could you create solution the add 3x projects
+1. console mode app
+2. make file
+3. static library where all the code lives?

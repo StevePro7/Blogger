@@ -1,0 +1,74 @@
+anNOTES
+02/11/2019
+
+Today I made a start at setting up the SGDK on the laptop
+
+
+https://github.com/Stephane-D/SGDK
+
+git clone https://github.com/Stephane-D/SGDK.git
+
+
+I actually copied what I had from home PC to
+C:\SGDK
+
+
+I bet this was the download from tag v1.34
+
+as outlined on 
+Retro Mike
+Develop Games using the Sega Genesis SDK and Visual Studio - Setup
+https://www.youtube.com/watch?v=Kx8__lr4Ao4
+
+
+
+
+Launch VS2015
+
+got this working
+copied old code from home PC
+C:\Steven\Personal\INSTALLATIONSEGA\SGDK\_codeTests\SDGK_test
+
+open SLN file
+
+Ctrl + Shift + B
+build
+
+Ctrl + 1
+launch in Fusion via build.bat
+
+
+IMPORTANT
+Must have reference to include file
+C:\SGDK\inc;$(IncludePath)
+
+
+right click project
+Properties
+VC=+ Directories
+
+
+IMPORTANT
+in order to F5 or Ctrl+F5 MUST have Remote Debugging set
+this ideally build + run out to emulator in one step
+
+instead of build then launch build.bat to run
+
+
+
+SUMMARY
+I git clone SGDK
+dumped contents directly into
+C:\SGDK
+
+I setup the 2x env vars [above]
+I open existing Make file projects in VS2015
+
+I build Ctrl + Shift + B
+I run 	Ctrl + 1
+
+
+
+Today I had success running the following programs
+
+
