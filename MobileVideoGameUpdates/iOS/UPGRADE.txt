@@ -1,0 +1,39 @@
+UPGRADE
+04/11/2019
+
+
+Pipeline
+do this first as is common to both Android and iOS
+
+
+ANDROID
+Upgrade
+At the time of this writing VS2019 does not have MonoGame project templates setup.
+
+Therefore, it may be easiest to launch VS2017.  Create new MonoGame Android project.
+Close VS2017 and open project in VS2019.
+
+Re-import all code and update Content as per Pipeline section
+
+Going forward, open MonoGame Android project in VS2019...
+
+
+iOS
+Upgrade
+At the time of this writing VS2019 does not have MonoGame project templates setup.
+
+Therefore, it may be easiest to launch VS2017.  Create new MonoGame iOS project.
+
+IMPORTANT
+Previously next step would be "Pair PC to Mac".  
+However, after upgrading all software VS2017 may prompt Mono Mismatch
+
+DO NOT click install here because doing so will cause Visual Studio for Mac to prompt Mono Framework MDK 
+
+Instead Close VS2017 and open project in VS2019.
+
+The first time you may be prompted Xamarin iOS mismatch - if this is the case then upgrade accordinlgy.
+
+Re-import all code and update Content as per Pipeline section
+
+Going forward, open MonoGame iOS project in VS2019...
