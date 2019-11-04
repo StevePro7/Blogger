@@ -1,5 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
+
+
 <!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -193,7 +196,7 @@ If you receive ContentLoadException then create new MonoGame project.  Import al
 <br />
 Android Archive
 <br />
-Launch VS2019.  Open Android MonoGame project.  Attach Android device.  Select Release build configuration.  Clean and rebuild solution.  Right click project | Archive...  After the archive is generated choose Distribute...
+Launch VS2019.  Open MonoGame Android project.  Attach Android device.  Select Release build configuration.  Clean and rebuild solution.  Right click project | Archive...  After the archive is generated choose Distribute...
 <br /><br />
 
 <i>Ad Hoc</i><br />
@@ -208,6 +211,40 @@ adb devices -f install *.apk
 Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here.
 <br /><br />
 Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
+<br /><br />
+
+
+<!-- Deployment -->
+iOS Archive<br />
+
+Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing...  Reference Deployment section here.
+<br /><br />
+
+Launch browser.  Sign in to iTunes Connect.  Select published app.  Click "+" Version or Platform | iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.
+<br /><br />
+
+Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password"
+
+<br /><br />
+Visual Studio for Mac | Archive for Publishing... | App Store | Upload.  Select existing provisioning profile generated with Distribution certificate.  Next.  Enter Apple ID and App Specific Password generated [above].  Next | Publish.  Choose file name | Save IPA
+<br /><br />
+Note: if prompted, enter the keychain password
+<br /><br />
+IMPORTANT: it seems that this new process streamlines and overrides previous upload via the Application Loader!!
+<br /><br />
+
+Otherwise could choose the other way but instead of choosing Upload, choose Export.  Produce the IPA and upload via the Application Loader as before:
+Launch Application Loader.  Enter Apple ID and App Specific Password generated [above].  Choose IPA file built.  Next.  
+<br /><br />
+
+Once build has completed processing you may select in iTunes Connect.  Save.  Complete the following questions:
+01. Export Compliance NO
+02. Advertising Identifier
+Does this app use the Advertising Identifier (IDFA)? NO
+Submit
+<br /><br />
+Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password". In the popup window enter, for example "SimpsonsTrivia". Apple will generate an app specific password. Use information to sign in to Application Loader. Click "Deliver Your App" | Choose. Navigate to + upload IPA file.
+
 <br /><br />
 
 </span>

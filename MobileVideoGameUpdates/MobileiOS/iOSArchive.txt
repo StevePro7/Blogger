@@ -1,0 +1,59 @@
+iOS Archive
+04/11/2019
+
+
+<!-- Deployment -->
+iOS Archive<br />
+
+Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing...  Reference Deployment section here.
+<br /><br />
+
+Launch browser.  Sign in to iTunes Connect.  Select published app.  Click "+" Version or Platform | iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.
+<br /><br />
+
+Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password"
+
+<br /><br />
+Visual Studio for Mac | Archive for Publishing... | App Store | Upload.  Select existing provisioning profile generated with Distribution certificate.  Next.  Enter Apple ID and App Specific Password generated [above].  Next | Publish.  Choose file name | Save IPA
+<br /><br />
+Note: if prompted, enter the keychain password
+<br /><br />
+IMPORTANT: it seems that this new process streamlines and overrides previous upload via the Application Loader!!
+<br /><br />
+
+Otherwise could choose the other way but instead of choosing Upload, choose Export.  Produce the IPA and upload via the Application Loader as before:
+Launch Application Loader.  Enter Apple ID and App Specific Password generated [above].  Choose IPA file built.  Next.  
+<br /><br />
+
+Once build has completed processing you may select in iTunes Connect.  Save.  Complete the following questions:
+01. Export Compliance NO
+02. Advertising Identifier
+Does this app use the Advertising Identifier (IDFA)? NO
+Submit
+<br /><br />
+Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password". In the popup window enter, for example "SimpsonsTrivia". Apple will generate an app specific password. Use information to sign in to Application Loader. Click "Deliver Your App" | Choose. Navigate to + upload IPA file.
+
+<br /><br />
+
+
+
+
+
+QUESTIONS
+Export Compliance
+Have you added or made changes to encryption features since your last submission of this app?
+Export laws require that products containing encryption must be properly authorized for export. Failure to comply could result in severe penalties. Learn more about export requirements.
+
+
+Yes
+
+No
+Advertising Identifier
+Does this app use the Advertising Identifier (IDFA)?
+The Advertising Identifier (IDFA) is a unique ID for each iOS device and is the only way to offer targeted ads. Users can choose to limit ad targeting on their iOS device.
+
+
+Yes
+
+No
+Ensure that you select the correct answer for Advertising Identifier (IDFA) usage. If your app does contain the IDFA and you select No, the binary will be permanently rejected and you will have to submit a different binary.
