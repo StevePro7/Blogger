@@ -1,8 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
-
-
 <!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -45,43 +42,72 @@ Reference previous instructions for Android and iOS ports.  This post assumes so
 </td>
 </tr>
 </table>
-Note: Check for Updates on ALL Visual Studio IDEs to get latest frameworks and dependencies.
-Note: this post assumes you already have bundle identifiers setup as the games are already published.
+Note: Check for updates on all Visual Studio IDEs to get latest the frameworks tools and dependencies.
 <br /><br />
 
-IMPORTANT<br/>
-If, for any reason, there are issues updating any IDEs mentioned here then simply Run as Administrator.
+<!-- >>07.MonoGamePipeline<br/> -->
+<u>Pipeline</u><br />
+Previous posts used older versions of MonoGame which meant the Content Pipeline was arguably not built correctly.  Upgrade to MonoGame 3.7 and build the Content Pipeline correctly using the Content.mgcb file.
+<br /><br />
+
+Launch the MonoGame Pipeline tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
+<br /><br />
+
+<i>Data</i><br />
+Import any ASCII text files or XML configuration files.  Set the Build Action in the Properties section to Copy.
+<br /><br />
+<i>Fonts</i><br />
+Typically import pre-built XNB binary files from previous games e.g. Emulogic.xnb.  Set Build Action to Copy.
+<br /><br />
+<i>Sound</i><br />
+Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strange as built sound effects.  Convert WAV files to MP3.  Set Build Action to Build.  Set Processor to Song for music otherwise set to Sound Effect.
+<br /><br />
+<i>Textures</i><br />
+Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
 <br /><br />
 
 <!-- >>03.anAndroidSetup<br/> -->
+<br />
 <b>Android</b><br />
 On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
 <br /><br />
 Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
 <table width="97%" border="1">
 <tr>
-<td valign="top">&nbsp;<b>Android Studio</b></td>
+<td valign="top">&nbsp;Android Studio</td>
 <td valign="top">&nbsp;%USERPROFILE%\AppData\Local\Android\Sdk</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<b>Visual Studio</b></td>
+<td valign="top">&nbsp;Visual Studio [<b>VS</b>]</td>
 <td valign="top">&nbsp;C:\Program Files (x86)\Android\android-sdk</td>
 </tr>
 </table>
 <br />
 
 Actually, it may be easier to align Android SDK location in Android Studio to that of Visual Studio because all Android game code will be built using MonoGame from Visual Studio.  Therefore, update Android SDK path:
-<!--
+<!-- -->
 <a href="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s1600/AndroidSDK.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s640/AndroidSDK.png" width="98%" height="380" /></a>
--->
+<!-- -->
 <br />
 Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
 <br /><br />
 
+
+<u>Upgrade</u><br />
+Currently VS2019 does <b>not</b> include MonoGame project templates.  Therefore, launch VS2017 and create new MonoGame Android project e.g. 3D City.  Close and re-open in VS2019.  The benefits to be explained shortly.
+<br /><br />
+Assume previous version 3D City 1.0.0 already exists on Google Play.  Import existing content per previous build under the Content folder as explained above.  Import existing code.  Right click project and Properties:
+<br /><br />
+
+
+<!-- OLD TODO DELETE
 <br />
-<!-- >>04.anAndroidLaunch<br/> -->
+ >>04.anAndroidLaunch<br/>
 Launch existing MonoGame Android project in Visual Studio 2017 e.g. 3D City.  Right click project.  Choose Properties.  Assume previous version 1.0.0 already exists on Google Play so upgrade Android version data:
 <br /><br />
+ -->
+
+
 <i>Application</i><br />
 Compile using Android version (Target Framework).  Choose Android 9.0 (Pie) as minimum Android version.
 <br /><br />
@@ -151,50 +177,25 @@ AndroidManifest.xml
 <br />
 <i>Application Options</i><br />
 Click the Advanced button.  <a href="https://stackoverflow.com/questions/54537469/targeting-64-bit-architectures-on-xamarin-android">Target</a> the following 2x Supported architectures: <b>armeabi-v7a</b> and <b>arm64-v8a</b>.
-<!--
+<!-- -->
 <a href="https://1.bp.blogspot.com/-rnCQZu252jo/XboDtXRGJAI/AAAAAAAAFyI/gTUVhxkeG4o3jXJFj245SVXv0Ru8yGRhgCLcBGAsYHQ/s1600/ABIs.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-rnCQZu252jo/XboDtXRGJAI/AAAAAAAAFyI/gTUVhxkeG4o3jXJFj245SVXv0Ru8yGRhgCLcBGAsYHQ/s640/ABIs.png" width="98%" height="360" /></a>
--->
+<!-- -->
 <br /><br />
 
-<br />
 <!-- >>05.anAndroidLatest<br/> -->
 Currenlty, Android 10.0 (Q) is available although this API level 29 seems to be missing from Visual Studio Tools menu | Android | Android SDK Manager.  However, here is a workaround to circumvent the problem:
 <br /><br />
 
 Launch Android Studio.  Install Android 10 (API level 29) as above.  Ensure <i>android-29</i> exists in Android SDK "platforms" folder and <i>29.0.2</i> in "build-tools".  Launch Visual Studio 2019.  Update Android version in project:
-<!--
+<!-- -->
 <a href="https://4.bp.blogspot.com/-XicZgIrFJ4s/XbvrycxVplI/AAAAAAAAFzA/tNRqtb8f3E8o6EYiLuXgDohs19HV26yhQCLcBGAsYHQ/s1600/AndroidLatest.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-XicZgIrFJ4s/XbvrycxVplI/AAAAAAAAFzA/tNRqtb8f3E8o6EYiLuXgDohs19HV26yhQCLcBGAsYHQ/s640/AndroidLatest.png" width="98%" height="235" /></a>
--->
-<br /><br />
-In fact, VS2019 does <b>not</b> have MonoGame project templates.  Therefore, the cleanest approach may be to create new MonoGame Project in VS2017.  Build + run to device.  Close, re-open + con't project in VS2019.
-<br /><br />
-
-<br />
-<!-- >>07.MonoGamePipeline<br/> -->
-<u>Pipeline</u><br />
-Launch the MonoGame Pipeline tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
-<br /><br />
-
-<i>Data</i><br />
-Import any ASCII text files or XML configuration files.  Set the Build Action in the Properties section to Copy.
-<br /><br />
-<i>Fonts</i><br />
-Typically import pre-built XNB binary files from previous games e.g. Emulogic.xnb.  Set Build Action to Copy.
-<br /><br />
-<i>Sound</i><br />
-Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strange as built sound effects.  Convert WAV files to MP3.  Set Build Action to Build.  Set Processor to Song for music otherwise set to Sound Effect.
-<br /><br />
-<i>Textures</i><br />
-Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
-<br /><br />
-IMPORTANT<br/>
-If you receive ContentLoadException then create new MonoGame project.  Import all existing code + content!
+<!-- -->
 <br /><br />
 
 
 <!-- >>11.Upload_Android<br/> -->
-<br />
-Android Archive
+<!-- Android Archive -->
+<u>Upload</u>
 <br />
 Launch VS2019.  Open MonoGame Android project.  Attach Android device.  Select Release build configuration.  Clean and rebuild solution.  Right click project | Archive...  After the archive is generated choose Distribute...
 <br /><br />

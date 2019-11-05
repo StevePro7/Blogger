@@ -18,3 +18,30 @@ Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strang
 Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
 <br /><br />
 
+
+
+05/11/2019
+<!-- >>07.MonoGamePipeline<br/> -->
+<u>Pipeline</u><br />
+Previous posts used older versions of MonoGame which meant the Content Pipeline was arguably not built correctly.  Upgrade to MonoGame 3.7 and build the Content Pipeline correctly using the Content.mgcb file.
+<br /><br />
+
+Launch the MonoGame Pipeline tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
+<br /><br />
+
+<i>Data</i><br />
+Import any ASCII text files or XML configuration files.  Set the Build Action in the Properties section to Copy.
+<br /><br />
+<i>Fonts</i><br />
+Typically import pre-built XNB binary files from previous games e.g. Emulogic.xnb.  Set Build Action to Copy.
+<br /><br />
+<i>Sound</i><br />
+Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strange as built sound effects.  Convert WAV files to MP3.  Set Build Action to Build.  Set Processor to Song for music otherwise set to Sound Effect.
+<br /><br />
+<i>Textures</i><br />
+Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
+<br /><br />
+
+IMPORTANT<br/>
+If you receive ContentLoadException then create new MonoGame project.  Import all existing code + content!
+<br /><br />
