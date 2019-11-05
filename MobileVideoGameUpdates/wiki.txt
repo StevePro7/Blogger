@@ -1,6 +1,51 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
+<br />
+<u>Upload</u>
+<br />
+
+Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing.  After the archive is generated choose Sign and Distribute...
+<br /><br />
+
+<i>Ad Hoc</i><br />
+Select distribution channel: Ad Hoc.  Choose provisioning profile | Publish | Save IPA file | Reveal in Finder.  Launch Xcode | Window | Devices + Simulators.  Select iOS device.  Click "+".  Navigate and open IPA file.
+<br /><br />
+
+<i>App Store</i><br />
+Launch browser.  Sign in to <a href="https://itunesconnect.apple.com">iTunes</a> Connect.  Select published app e.g. 3D City.  Click "+" Version or Platform.  Choose iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.  Save data.
+<br /><br />
+
+Sign in <a href="https://appleid.apple.com/#!&page=signin">Apple ID</a> web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password".  In the popup window enter, for example "3DCity" | Create.  Apple will generate a new app specific password.  There are now 2x options to upload IPA file to Apple:
+<br /><br />
+
+1. Upload<br />
+Select distribution channel: App Store | Upload.  Choose provisioning profile.  Enter Apple ID and App Specific Password.  Next | Publish. Choose file name | Save IPA.  This process should upload build to iTunes Connect.
+<br /><br />
+TODO : do I want to add AppStoreConnect.png pic here...??
+<br /><br />
+
+2. Export.<br />
+Select distribution channel: App Store | Export.  Choose provisioning profile.  Next | Publish.  Choose file name | Save IPA.  Launch Application Loader.  Enter Apple ID and App Specific Password.  Choose IPA file built.  Next.  This process should upload build to iTunes Connect.
+<br /><br />
+
+IMPORTANT<br />
+For more information Reference Deployment section here. [Simpsons Trivia iOS port]
+<br /><br />
+
+Finally, once build has completed processing, select in iTunes Connect.  Save.  Complete the following questions info:
+01. Export Compliance NO
+02. Advertising Identifier
+Does this app use the Advertising Identifier (IDFA)? NO
+Submit
+<br /><br />
+
+
+
+
+
+<br /><br />
+
 <!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -239,14 +284,32 @@ TODO export keystore Note: previously created signing identity from Keystore mus
 <br /><br />
 
 
+
 <br />
 <b>Apple</b>
 <br />
-<!-- Deployment -->
-iOS Archive<br />
+TODO INTRO about updates to Apple e.g. Apple will stop support for 32-bit on iOS 11.0... plus the last update I did for screen resolution??  Or was it just because I hadn't updated app coming up to 2yrs??
 
+<br /><br />
+
+<u>Upgrade</u><br />
+Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio.  Instead, close and re-open in VS2019.
+<br /><br />
+TODO "Pair to Mac" in VS2019 IMPORTANT If you are prompted to upgrade Xamarin iOS then ensure you do so both Windows and Mac aligned
+<br /><br />
+Assume previous version 3D City 1.0.0 already exists on the App Store. Import existing content per previous build under the Content folder as explained above. Import existing code. Right click project and Properties:
+<br /><br />
+
+Project Properties<br />
+Info.plist<br />
+ISSUE<br />
+http://community.monogame.net/t/monogame-ios-idictionary-byte-t-crash/11952
+<br /><br />
+
+<br />
 <u>Upload</u>
 <br />
+
 Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing...  Reference Deployment section here.
 <br /><br />
 
@@ -276,5 +339,7 @@ Finally, once build has completed processing, select in iTunes Connect.  Save.  
 Does this app use the Advertising Identifier (IDFA)? NO
 Submit
 <br /><br />
+
+
 
 </span>
