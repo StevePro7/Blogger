@@ -1,0 +1,407 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="http://steveproxna.blogspot.com/2018/08/simpsons-trivia-windows-port.html">post</a>, we introduced Simpsons Trivia: a simple quiz game for the Sega Master System.  Here we outlined tasks to port game to Windows using <a href="http://www.monogame.net">MonoGame</a>.  Now we would like to port game to Android.
+<a href="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s640/MonoGameLogo.png" width="98%" height="135" data-original-width="218" data-original-height="46" /></a>
+<br />
+Let's check it out!
+<br /><br />
+<u>Pre-Requisites</u><br />
+This post extends the Candy Kid Android <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">port</a> which assumes <a href="http://www.monogame.net/downloads">MonoGame</a>, <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK</a> + <a href="https://developer.android.com/studio">Android SDK</a> are installed.
+<br /><br />
+<u>Setup</u><br />
+Download and install Visual Studio 2017.  Install "Mobile development with .NET" for Xamarin development.
+<a href="https://1.bp.blogspot.com/-YlJKL3isDbg/W_PJ_471bII/AAAAAAAAE_w/uRtR6pRQyrIHADAy_pF0fw_fpOoJfcXQwCLcBGAs/s1600/00_VS2017.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-YlJKL3isDbg/W_PJ_471bII/AAAAAAAAE_w/uRtR6pRQyrIHADAy_pF0fw_fpOoJfcXQwCLcBGAs/s640/00_VS2017.png" width="98%" height="214" data-original-width="839" data-original-height="280" /></a>
+<br />
+<br />
+Launch Visual Studio 2017.  Configure JDK and Android SDK.  Tools | Options | Xamarin | Android Settings:
+<a href="https://3.bp.blogspot.com/-K5PdvVoWOwo/W_PKMSzSa3I/AAAAAAAAE_0/W47KB4nZNfU8l6M82Pp21qzPzDAOVGLEwCLcBGAs/s1600/00_Xamarin.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-K5PdvVoWOwo/W_PKMSzSa3I/AAAAAAAAE_0/W47KB4nZNfU8l6M82Pp21qzPzDAOVGLEwCLcBGAs/s640/00_Xamarin.png" width="98%" height="373" data-original-width="744" data-original-height="434" /></a>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Type</b></td>
+<td valign="top">&nbsp;<b>Location</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Java Development Kit Location</td>
+<td valign="top">&nbsp;C:\Program Files\Java\jdk1.8.0_172</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Android SDK Location</td>
+<td valign="top">&nbsp;C:\Program Files (x86)\Android\android-sdk</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Android NDK Location</td>
+<td valign="top">&nbsp;C:\ProgramData\Microsoft\AndroidNDK\android-ndk-r11c</td>
+</tr>
+</table>
+<br />
+<b>Development</b><br />
+<i>AND Game Client</i><br />
+Visual Studio 2017:  Create new project.  New Project | Visual C# | MonoGame | MonoGame Android Project.
+<a href="https://2.bp.blogspot.com/-UoYc-DeZ1c0/W_PLwlpdTlI/AAAAAAAAFAI/5fgfVcpeq9ERRsYhbRm-tlOqTgemzaI6wCLcBGAs/s1600/01_AND_Project.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-UoYc-DeZ1c0/W_PLwlpdTlI/AAAAAAAAFAI/5fgfVcpeq9ERRsYhbRm-tlOqTgemzaI6wCLcBGAs/s640/01_AND_Project.png" width="98%" height="444" data-original-width="941" data-original-height="653" /></a>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Name</td>
+<td valign="top">&nbsp;SimpsonsTrivia.AND</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location</td>
+<td valign="top">&nbsp;C:\SVN\SimpsonsTrivia</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Solution name</td>
+<td valign="top">&nbsp;SimpsonsTrivia.AND</td>
+</tr>
+</table>
+Download code sample <b><a href="https://github.com/SteveProXNA/SimpsonsTrivia/tree/master/SimpsonsTrivia.AND">here</a></b>.
+<br /><br />
+<u>Checklist</u><br />
+Here is a checklist of tasks to complete in order to port game from <a href="http://steveproxna.blogspot.com/2018/08/simpsons-trivia-windows-port.html">Windows</a> to Android using MonoGame:
+<ul>
+<li>Configure project properties
+<li>Build Android Manifest file
+<li>Update project references
+<li>Update nuget packages
+<li>Configure SVN Externals
+<li>Import Assets content
+<li>Import Resources
+<li>Update client files
+</ul>
+<br />
+<i>Configure project properties</i><br />
+As of August 1, 2018 Google Play requires new apps to target at least Android 8.0 (API level 26) to <a href="https://developer.android.com/distribute/best-practices/develop/target-sdk">meet</a> the minimum target API level requirement.  Right click SimpsonsTrivia.AND project | Properties.  Application tab.  Ensure "Compile using Android version: (Target Framework)" is set to, at a minimum, Android 8.0 (Oreo).
+<a href="https://3.bp.blogspot.com/-vRe764owV8I/W_UbxwlI6lI/AAAAAAAAFAc/iNPSF6OuBGo9Muf1TKyJQfHnzBrgYUdLgCLcBGAs/s1600/AndroidAPI.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-vRe764owV8I/W_UbxwlI6lI/AAAAAAAAFAc/iNPSF6OuBGo9Muf1TKyJQfHnzBrgYUdLgCLcBGAs/s640/AndroidAPI.png" width="98%" height="215" data-original-width="850" data-original-height="285" /></a>
+<br />
+If Android 8.0 (Oreo) not installed then launch <a href="https://developer.android.com/studio">Android Studio</a>.  Tools | SDK Manager.  Download API level 26.  Note the Android SDK location and copy "platforms" folder to C:\Program Files (x86)\Android\android-sdk.
+<br /><br />
+<i>Build Android Manifest file</i><br />
+Right click SimpsonsTrivia.AND project | Properties.  Android Manifest tab.  Click "No AndroidManifest.xml"
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Element</b></td>
+<td valign="top">&nbsp;<b>Attribute</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application name</td>
+<td valign="top">&nbsp;Simpsons Trivia</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:label</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Package name</td>
+<td valign="top">&nbsp;com.steveproxna.simpsons</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;package</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application icon</td>
+<td valign="top">&nbsp;@drawable/Icon</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:icon</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version number</td>
+<td valign="top">&nbsp;1</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionCode</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version name</td>
+<td valign="top">&nbsp;1.0.0</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionName</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Minimum Android version</td>
+<td valign="top">&nbsp;Android 8.0 (API Level 26 - Oreo)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:minSdkVersion</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Target Android version</td>
+<td valign="top">&nbsp;Android 8.0 (API Level 26 - Oreo)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:targetSdkVersion</td>
+</tr>
+</table>
+IMPORTANT
+<br />
+If there is an integer in the bundle identifier then Google will prepend an "x" e.g. 3dcity becomes "x3dcity"
+<br /><br />
+<i>Update project references</i><br />
+Changes to Android version (Target Framework) on the Application tab [above] will update Mono.Android.dll reference.  Note, it may be necessary to change OpenTK-1.0 reference to <a href="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v2.3\OpenTK.dll">OpenTK</a> for compatibility reasons.  
+<br /><br />
+<i>Update nuget packages</i><br />
+It may also be necessary to downgrade MonoGame.Framework to 3.4.0.459 in order to load Content from the Assets parent folder and play sound effects.  Right click References node and Manage NuGet Packages.  Change MonoGame version.  Install Portable Ninject package too as Ninject is required as an <a href="http://steveproxna.blogspot.com/2011/03/xna-and-ioc-container.html">IoC Container</a>.
+<a href="https://4.bp.blogspot.com/-T_s4n4Yl-E8/W_PJQIgDfdI/AAAAAAAAE_o/Oj_uoWbLk6AkEYsJzi37VE13RhsuymlsACLcBGAs/s1600/Packages.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-T_s4n4Yl-E8/W_PJQIgDfdI/AAAAAAAAE_o/Oj_uoWbLk6AkEYsJzi37VE13RhsuymlsACLcBGAs/s640/Packages.png" width="98%" height="149" data-original-width="990" data-original-height="231" /></a>
+<br /><br />
+<i>Configure SVN Externals</i><br />
+Follow instructions to setup <a href="http://steveproxna.blogspot.com/2018/07/simpsons-trivia-xna-port.html">SVN Externals</a> and use shared Data content plus Common + Master source code:
+<br />
+DATA<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;AND</td>
+<td valign="top" colspan="2">&nbsp;<b>Folder :</b>&nbsp;&nbsp;C:\SVN\SimpsonsTrivia\SimpsonsTrivia.AND\SimpsonsTrivia.AND\Assets
+<br />&nbsp;<b>Action :</b>&nbsp;&nbsp;Right click "Content" folder
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA/SimpsonsTrivia.XNAContent/Data</td>
+</tr>
+</table>
+<br />
+CODE<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;AND</td>
+<td valign="top" colspan="2">&nbsp;<b>Folder :</b>&nbsp;&nbsp;C:\SVN\SimpsonsTrivia\SimpsonsTrivia.AND
+<br />&nbsp;<b>Action :</b>&nbsp;&nbsp;Right click "SimpsonsTrivia.AND" folder
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA.Library/Common</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA.Library/Master</td>
+</tr>
+</table>
+<br />
+<i>Import Assets content</i><br />
+Manually import game content and set file properties.  Refer to Candy Kid Android <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">port</a> for more information:
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Folder</b></td>
+<td valign="top">&nbsp;<b>Type</b></td>
+<td valign="top">&nbsp;<b>XNB</b></td>
+<td valign="top">&nbsp;<b>Build Action</b></td>
+<td valign="top">&nbsp;<b>Copy to Output Directory</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Data</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Fonts</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;Yes</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sound</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Textures</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+</table>
+<br />
+<i>Import Resources</i><br />
+Replace default Icon and Splash images located in Resources / Drawable folder with custom images:
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;Icon.png</td><td valign="top">&nbsp;72x72</td></tr>
+<tr><td valign="top">&nbsp;Splash.png</td><td valign="top">&nbsp;800x480</td></tr>
+</table>
+<br />
+Navigate to <a href="https://makeappicon.com/">makeappicon</a>.  Upload generic icon image that represents game.  Best results use 1536 x 1536 image.  After processing, create the following sub folders beneath the Resources parent folder and import:
+<table width="100%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Folder</b></td>
+<td valign="top" width="20%">&nbsp;<b>Dimension</b></td>
+<td valign="top" width="5%">&nbsp;</td>
+<td valign="top" width="20%">&nbsp;<b>Folder</b></td>
+<td valign="top" width="20%">&nbsp;<b>Dimension</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;mipmap-hdpi</td>
+<td valign="top">&nbsp;72 x 72</td>
+<td valign="top">&nbsp;</td>
+<td valign="top">&nbsp;mipmap-xhdpi</td>
+<td valign="top">&nbsp;96 x 96</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;mipmap-ldpi</td>
+<td valign="top">&nbsp;36 x 36</td>
+<td valign="top">&nbsp;</td>
+<td valign="top">&nbsp;mipmap-xxhdpi</td>
+<td valign="top">&nbsp;144 x 144</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;mipmap-mdpi</td>
+<td valign="top">&nbsp;48 x 48</td>
+<td valign="top">&nbsp;</td>
+<td valign="top">&nbsp;mipmap-xxxhdpi</td>
+<td valign="top">&nbsp;192 x 192</td>
+</tr>
+</table>
+<br />
+Delete default Strings.xml file as not needed here.  Update the default Styles.xml file for fullscreen splash:
+<pre class="csharp" name="code">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+ &lt;style name="Theme.Splash" parent="@android:style/Theme.NoTitleBar.Fullscreen"&gt;
+  &lt;item name="android:windowBackground"&gt;@drawable/splash&lt;/item&gt;
+  &lt;item name="android:windowFullscreen"&gt;true&lt;/item&gt;
+  &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+  &lt;item name="android:windowIsFloating"&gt;false&lt;/item&gt;
+ &lt;/style&gt;
+&lt;/resources&gt;
+</pre>
+<br />
+<i>Update client files</i><br />
+Finally, delete default Game1.cs code file.  Rename Activity1.cs to SplashActivity.cs + add the following code:
+<pre class="csharp" name="code">
+[Android.App.Activity(Label = "Simpsons Trivia"
+  , MainLauncher = true, NoHistory = true, Icon = "@drawable/icon"
+  , Theme = "@style/Theme.Splash", AlwaysRetainTaskState = true
+  , ScreenOrientation = Android.Content.PM.ScreenOrientation.SensorLandscape)]
+public class SplashActivity : Android.App.Activity
+{
+  protected override void OnCreate(Android.OS.Bundle bundle)
+  {
+    base.OnCreate(bundle);
+    StartActivity(typeof(GameActivity));
+  }
+}
+</pre>
+<br />
+Next, add GameActivity.cs.  Add the following code to take advantage of the new <a href="https://developer.android.com/training/system-ui/immersive">fullscreen</a> Immersive mode:
+<pre class="csharp" name="code">
+using Android.Content.PM;
+using Android.Views;
+[Android.App.Activity(Label = "Simpsons Trivia"
+  , NoHistory = true, Icon = "@drawable/icon"
+  , Theme = "@style/Theme.Splash", AlwaysRetainTaskState = true
+  , LaunchMode = Android.Content.PM.LaunchMode.SingleInstance
+  , ScreenOrientation = ScreenOrientation.SensorLandscape
+  , ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
+public class GameActivity : Microsoft.Xna.Framework.AndroidGameActivity
+{
+  protected override void OnCreate(Android.OS.Bundle bundle)
+  {
+    base.OnCreate(bundle);
+    var g = new WindowsGame.Common.AnGame();
+    Android.Views.View view = (Android.Views.View)g.Services.GetService(typeof(Android.Views.View));
+    if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Kitkat)
+    {
+      view.SystemUiVisibility = (Android.Views.StatusBarVisibility)(
+        SystemUiFlags.LayoutStable | SystemUiFlags.LayoutHideNavigation |
+        SystemUiFlags.LayoutFullscreen | SystemUiFlags.HideNavigation |
+        SystemUiFlags.Fullscreen | SystemUiFlags.ImmersiveSticky);
+    }
+    SetContentView(view);
+    g.Run();
+  }
+}
+</pre>
+<br />
+Also, to prevent annoying landscape <i>flipping</i> during game play set display orientation to landscape left only:
+<pre class="csharp" name="code">
+//AnGame.cs
+graphics = new GraphicsDeviceManager(this) {SupportedOrientations = DisplayOrientation.LandscapeLeft};
+</pre>
+<br />
+Update AndroidManifest.xml.  Add "android.max_aspect" at 2:1 value to ensure immersive mode accordingly:
+<pre class="csharp" name="code">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+ package="com.steveproxna.simpsons" 
+ android:versionCode="1" 
+ android:versionName="1.0.0" 
+ android:installLocation="auto"&gt;
+ &lt;uses-sdk android:minSdkVersion="26" android:targetSdkVersion="26" /&gt;
+ &lt;application android:label="Simpsons Trivia" android:icon="@drawable/Icon"&gt;
+  &lt;meta-data android:name="android.max_aspect" android:value="2.1" /&gt;
+ &lt;/application&gt;
+&lt;/manifest&gt;
+</pre>
+<br />
+IMPORTANT
+<br />
+If 2x app icons appear on device then ensure there is one instance of <i>MainLauncher=true</i> only in an Activity!
+<br /><br />
+<b>Deployment</b><br />
+Despite the fact that you are able to complete all game development on Windows PC using Visual Studio 2017, it may actually be easier to complete Android deployment on the Mac using Visual Studio for Mac.
+<br /><br />
+Launch the Terminal, checkout the source code and open SimpsonsTrivia.AND.sln in Visual Studio for Mac.  Right click project | Options | Build | Android Build | Advanced.  Ensure 3x Supported ABIs are checked:
+
+<a href="https://3.bp.blogspot.com/-LLuWhTSxUx0/W_PE0rqGmaI/AAAAAAAAE_M/hrtsszCYQgkitsyptn7WgCCcFzmIL0WDgCLcBGAs/s1600/Screenshot%2B2018-11-12%2Bat%2B12.11.49.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-LLuWhTSxUx0/W_PE0rqGmaI/AAAAAAAAE_M/hrtsszCYQgkitsyptn7WgCCcFzmIL0WDgCLcBGAs/s640/Screenshot%2B2018-11-12%2Bat%2B12.11.49.png" width="98% height="468" data-original-width="1600" data-original-height="1169" /></a>
+<br />
+Connect Android device.  Launch Terminal and enter <i>adb devices</i> to ensure Android device is detected in the list of devices attached.  In Visual Studio ensure device selected.  Right click project | Archive for Publishing.
+<a href="https://3.bp.blogspot.com/-7zoOjXLtM6o/W_PFs8paeGI/AAAAAAAAE_c/BWPJqKf1hs4_sBbjb8a_ZoKb_uUD4HuuACLcBGAs/s1600/Screen%2BShot%2B2018-11-12%2Bat%2B19.45.50.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-7zoOjXLtM6o/W_PFs8paeGI/AAAAAAAAE_c/BWPJqKf1hs4_sBbjb8a_ZoKb_uUD4HuuACLcBGAs/s640/Screen%2BShot%2B2018-11-12%2Bat%2B19.45.50.png" width="98%" height="437" data-original-width="916" data-original-height="626" /></a>
+<br />
+Click Sign and Distribute...  There are 2x Android Distribution channels: Ad Hoc and Google Play.  Choose Ad Hoc to save to disk and test locally while Google Play will upload to the Google Play store available for sale.
+<br /><br />
+During Google Play deployment you may be prompted to create a new project in the "API access" tab linked to your Google Play Developer account in which you must create an OAuth client and enter the ID + Secret:
+<a href="https://1.bp.blogspot.com/-n4zaD-R-TdA/W_PFVRrEnCI/AAAAAAAAE_U/oG8Qt_Rk5uERdomD5vlGUhyPcCvI2yKMwCLcBGAs/s1600/Screen%2BShot%2B2018-11-12%2Bat%2B19.50.59.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-n4zaD-R-TdA/W_PFVRrEnCI/AAAAAAAAE_U/oG8Qt_Rk5uERdomD5vlGUhyPcCvI2yKMwCLcBGAs/s640/Screen%2BShot%2B2018-11-12%2Bat%2B19.50.59.png" width="98%" height="490" data-original-width="614" data-original-height="470" /></a>
+<br />
+Sign in to your Google Developer account.  Navigate to <a href="https://play.google.com/apps/publish">play.google.com/apps/publish</a> | Settings | API access.  Create OAuth client.  View in Google Developers Console.  Download JSON and extract the Client ID + Secret.
+<br /><br />
+<b>Publication</b><br />
+Complete the Google Play deployment to sign APK binary ready for upload.  In Google Play Developer <a href="https://play.google.com/apps/publish">console</a> Create Application.  Enter all relevant details.  Create promotional images and upload to Store listing section:
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Type</b></td>
+<td valign="top">&nbsp;<b>Dimensions</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Hi-res icon</td>
+<td valign="top">&nbsp;512 x 512</td>
+<td valign="top">&nbsp;32-bit PNG (with alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Feature Graphic</td>
+<td valign="top">&nbsp;1024 x 500</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Promo Graphic</td>
+<td valign="top">&nbsp;180 x 120</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;TV Banner</td>
+<td valign="top">&nbsp;1280 x 720</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Daydream 360 degree stereoscopic image</td>
+<td valign="top">&nbsp;4096 x 4096</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+</table>
+NOTE: <a href="http://resizeimage.net/">resizeimage.net</a> is a great online tool to help resize the same generic image for different resolutions.
+<br /><br />
+VIDEO<br />
+Produce a YouTube video to showcase the game: Launch <a href="https://www.techsmith.com/store/camtasia">Camtasia</a> Studio.  Disconnect webcam if connected.  Choose Record screen.  In popup | click Audio button.  You should see the following message about No audio: <i>No audio input sources were found, pls verify that your audio devices are installed and plugged in correctly.</i>
+<br /><br />
+Plug black cable from microphone into headphone jack.  Shouldn't need to unplug speaker cable from audio jack.  Click Audio drop down | Click Microphone Real Tech [visible] to enable.  Now record screen as before.
+<br /><br />
+COPPA<br />
+Ensure the game is <a href="https://en.wikipedia.org/wiki/Children%27s_Online_Privacy_Protection_Act">COPPA</a>
+ compliant by completing the "Primarily Child-Detected" section under the Store Presence | Pricing & Distribution section otherwise the game could be unpublished from Google Play store.
+<br />
+Finally, upload signed APK binary from deployment completion to Google Play and rollout Production release!
+<br /><br />
+<u>Summary</u><br />
+That concludes the Simpsons Trivia port to Android. The next post will focus on Simpsons Trivia port to <a href="http://steveproxna.blogspot.com/2018/11/simpsons-trivia-ios-port.html">iOS</a>.
+</span>

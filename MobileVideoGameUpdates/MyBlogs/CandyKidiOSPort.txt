@@ -1,0 +1,324 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="https://steveproxna.blogspot.ie/2015/08/candy-kid-android-port.html">post</a>, we introduced Candy Kid: a simple maze chase video game re-written in XNA 4.0.
+<br />
+We outlined the tasks to port Candy Kid to <a href="https://play.google.com/store/apps/details?id=com.steveproxna.candykid">Android</a> platform using <a href="https://www.gamasutra.com/view/feature/192209/from_xna_to_monogame.php?print=1">MonoGame</a>.  Now we will focus on <a href="https://itunes.apple.com/app/retro-candy-kid/id1055478836">iOS</a>.
+<a href="https://4.bp.blogspot.com/-3di0Oxi9fMY/VcHj28p2JUI/AAAAAAAADkU/5GN8_BoVdxw/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-3di0Oxi9fMY/VcHj28p2JUI/AAAAAAAADkU/5GN8_BoVdxw/s640/MonoGameLogo.png" width="98%" /></a>
+<br /><br />
+Let's check it out! 
+<br /><br />
+<u>Setup</u><br />
+This post assumes you have Mac OS/X and XCode installed.  Also, that you have an Apple Developer account and relevant <a href="https://escoz.com/blog/demystifying-ios-certificates-and-provisioning-files">Certificate</a>(s) and Provisioning Profiles installed to deploy code to iOS devices.
+<br /><br />
+<b>MonoGame</b><br />
+Download and install <a href="https://www.monogame.net/releases/v3.4/MonoGame.MacOS.pkg">MonoGame</a> for MacOS.  <a href="https://jaquadro.com/2013/09/monogame-hello-world-on-mac-os-x-and-xamarin-studio">Here</a> is tutorial to create cross platform MonoGame.
+<br /><br />
+<b>Xamarin Studio</b><br />
+Download and install <a href="https://xamarin.com/download">Xamarin Studio</a>.  Setup an account; a trial version can be used just to get started!
+<br />
+Launch Xamarin Studio | Click Login.  Enter your email + password and click the "Create Account" link.
+<br /><br />
+From here you will be prompted to create a Xamarin account: enter name, email address and password.  Check "Start 30-day Xamarin trial immediately".  Click Accept.  Log in to Xamarin Studio to activate a/c.
+<br /><br />
+Choose File menu | New | Solution.  Expand Other | Miscellaneous | MonoGame iPhone/iPad Application.
+<a href="https://3.bp.blogspot.com/-EtnsWdR5rwA/VcHgAWuOWMI/AAAAAAAADjY/GIsRlT0XUGk/s1600/Application.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-EtnsWdR5rwA/VcHgAWuOWMI/AAAAAAAADjY/GIsRlT0XUGk/s640/Application.png" width="98%" /></a>
+<br />
+Project Name: CandyKid.iOS.  Choose project Location.  Click Create button.  Update changes to Main.cs
+<pre class="csharp" name="code">
+using System;
+using Foundation;
+using UIKit;
+
+namespace WindowsGame
+{
+  [Register ("AppDelegate")]
+  class Program : UIApplicationDelegate 
+  {
+    private WindowsGame.AnGame game;
+
+    public override void FinishedLaunching (UIApplication app)
+    {
+      game = new WindowsGame.AnGame();
+      game.Run();
+    }
+
+    static void Main (string [] args)
+    {
+      UIApplication.Main (args,null,"AppDelegate");
+    }
+  }
+}
+</pre>
+Before writing any new code or porting any existing, ensure the following tasks are completed: 
+<ul>
+<li>Rename Game1.cs to AnGame.cs
+<li>Rename all references from Game1 to AnGame
+<li>Use default root namespace of WindowsGame
+<li>Delete Default.png and GameThumbnail.png
+</ul>
+Build solution.  Error: <i>Entitlements.plist template 'Entitlements.plist' not found</i>
+<br />
+Right click CandyKid.iOS project | Options | Build | iOS Bundle Signing.  Remove "Entitlements.plist"
+<a href="https://1.bp.blogspot.com/-c8pcS5egIMg/VcHVleSvYuI/AAAAAAAADh4/KuYverQuI1c/s1600/Entitlements.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-c8pcS5egIMg/VcHVleSvYuI/AAAAAAAADh4/KuYverQuI1c/s640/Entitlements.png" width="98%" /></a>
+<br />
+Build solution.  Error: <i>The minimum deployment for Unified application is 5.1.1, current target is '4.2'</i>
+<br />
+Right click CandyKid.iOS project | Options | Build | iOS Application.  Change Deployment Target to 5.2.
+<a href="https://2.bp.blogspot.com/-fgAd5I8b9K0/VcHV_aSyv9I/AAAAAAAADiA/Iog2NUtD1vY/s1600/DeploymentTarget.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-fgAd5I8b9K0/VcHV_aSyv9I/AAAAAAAADiA/Iog2NUtD1vY/s640/DeploymentTarget.png" width="98%" /></a>
+<br />
+Rebuild solution fine.  Attach iOS device.  Click Play button.  The default template code should deploy ok.
+<br /><br />
+<b>Libraries</b><br />
+Candy Kid references the following libraries: <a href="https://ninject.org">Ninject</a> for <a href="https://steveproxna.blogspot.co.uk/2011/03/xna-and-ioc-container.html">IoC Container</a> and Xml.Linq for Serialization. 
+<br />
+Right click References | Edit References...  "All" tab | Scroll to bottom.  Check "System.Xml.Linq".  OK.
+<a href="https://1.bp.blogspot.com/-p2NaCJcIQpw/VcHVSN6Y8LI/AAAAAAAADhw/2s1PRq-uboo/s1600/SystemXmlLinq.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-p2NaCJcIQpw/VcHVSN6Y8LI/AAAAAAAADhw/2s1PRq-uboo/s640/SystemXmlLinq.png" width="98%" /></a>
+<br /><br />
+<b>Packages</b><br />
+Right click Packages folder.  Right click "MonoGame.Framework.iOS" node.  Choose Update as necessary.
+<br /><br />
+Update: at the time of this writing the latest MonoGame.Framework.iOS package is version 3.4.0.459.
+<br />
+However, if you would like to target <a href="https://en.wikipedia.org/wiki/IOS_9">iOS 9.0</a> then you can manually download version 3.5.0.628 <a href="https://teamcity.monogame.net/viewType.html?buildTypeId=MonoGame_DevelopMac">here</a>.
+<br /><br />
+Right click Packages folder | Add Packages...  Enter "Portable Ninject" into Search bar on top right.
+<br />
+Select "Ninject for Portable Class Libraries" | Add Package.  Portable Ninject reference also added.
+<a href="https://2.bp.blogspot.com/-rvsMgGTcLgM/VcHUQRWs66I/AAAAAAAADhg/iJO6wxTPnXY/s1600/NinjectPackage.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-rvsMgGTcLgM/VcHUQRWs66I/AAAAAAAADhg/iJO6wxTPnXY/s640/NinjectPackage.png" width="98%" /></a>
+<br /><br />
+<b>Project Properties</b><br />
+Right click CandyKid.iOS project. Choose Options.  Ensure the following options are set on sub tabs:
+<br /><br />
+<i>iOS Application</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Application Name</td><td valign="top">&nbsp;Candy Kid</td></tr>
+<tr><td valign="top">&nbsp;Bundle Identifier</td><td valign="top">&nbsp;<i>Enter bundle identifier</i></td></tr>
+<tr><td valign="top">&nbsp;Version</td><td valign="top">&nbsp;1.0.0</td></tr>
+<tr><td valign="top">&nbsp;Build</td><td valign="top">&nbsp;1.0.0</td></tr>
+<tr><td valign="top">&nbsp;Devices</td><td valign="top">&nbsp;Universal</td></tr>
+<tr><td valign="top">&nbsp;Deployment Target</td><td valign="top">&nbsp;5.2</td></tr>
+<tr><td valign="top">&nbsp;Device Orientation</td><td valign="top">&nbsp;Landscape 
+Left | Landscape Right</td></tr>
+<tr><td valign="top">&nbsp;Status Bar Style</td><td valign="top">&nbsp;Hide during application launch</td></tr>
+</table>
+Also, update AssemblyInfo.cs file under Properties folder. Synchronize "1.0.0" as the AssemblyVersion.
+<br /><br />
+<i>Compiler</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Define Symbols</td><td valign="top">&nbsp;IOS</td></tr>
+</table>
+Repeat all settings for both Debug and Release build configurations! 
+<br /><br />
+<b>Code</b><br />
+Import all C#/.NET code from original XNA 4.0 project. Here are some options to <a href="https://www.redbitdev.com/exiting-ios-app-with-xamarin-ios">exit</a> game on iOS:
+<pre class="csharp" name="code">
+// Option #1. P/Invoke exit().
+#if IOS
+  [DllImport("__Internal", EntryPoint = "exit")]
+  public static extern void exit(int status);
+
+  exit(0);
+#endif
+
+// Option #2. NSThread.exit().
+#if IOS
+  Foundation.NSThread.exit();
+#endif
+
+// Option #3. Throw an exception.
+#if IOS
+  throw new System.DivideByZeroException();
+#endif
+</pre>
+Also, if you'd like to upsell full version of your game to unlock then <a href="https://www.packtpub.com/books/content/code-sharing-between-ios-and-android">open</a> the url in the native browser:
+<pre class="csharp" name="code">
+#if IOS
+  string url = @"Enter URL to full version of game";
+  UIKit.UIApplication.SharedApplication.OpenUrl(Foundation.NSUrl.FromString(url));
+#endif
+</pre>
+<b>Content</b><br />
+MonoGame iPhone/iPad Application templates add a "Content" folder as default location for all Content.
+<br />
+Right click "Content" folder | Add New Folder. Candy Kid uses the 4x following subfolders (listed below): 
+<br /><br />
+<i>Data</i>
+<br />
+Contains flat TXT + XML data files to be consumed by the game. Do not need to be built as XNB files! 
+<br />
+Right click each data file | Properties | Build action: Content | Copy to output directory: Copy if newer
+<a href="https://3.bp.blogspot.com/-GYzLJL3XbNc/VcHZ8MxRgzI/AAAAAAAADi4/nQi9BbGoEbE/s1600/BuildProperties01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-GYzLJL3XbNc/VcHZ8MxRgzI/AAAAAAAADi4/nQi9BbGoEbE/s640/BuildProperties01.png" width="98%" /></a>
+<br />
+<i>Fonts</i>
+<br />
+Font XNB files may need to be rebuilt for Mac OS/X using the MonoGame Pipeline; instructions below:
+<br />
+Right click each font file | Properties | Build action: Content | Copy to output directory: Copy if newer
+<br /><br />
+<i>Sound</i>
+<br />
+Sound effect XNB files may need to be rebuilt for Mac OS/X using the MonoGame Pipeline; see below:
+<br />
+Right click sound effect | Properties | Build action: Content | Copy to output directory: Copy if newer
+<br /><br />
+Song source MP3 files can usually be used as original format; should not need be rebuilt for Mac OS/X.
+<br />
+Right click song file | Properties | Build action: BundleResource | Copy to output directory: Do not copy
+<a href="https://4.bp.blogspot.com/-DO3vxnGxeIw/VcHbsTrLxJI/AAAAAAAADjM/PVLCqtMw4wg/s1600/BuildProperties02.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-DO3vxnGxeIw/VcHbsTrLxJI/AAAAAAAADjM/PVLCqtMw4wg/s640/BuildProperties02.png" width="98%" /></a>
+<br />
+Note: there may be issues MP3 songs on low-end devices: MediaPlayer API may cause game to crash!
+<br />
+Also, it may be required to use alias with MediaPlayer API; for example, you may need to write code:
+<pre class="csharp" name="code">
+using Microsoft.Xna.Framework.Media;
+using MediaPlayerX = Microsoft.Xna.Framework.Media.MediaPlayer;
+
+public class SoundManager
+{
+  public void StartMusic()
+  {
+    if (MediaState.Playing != MediaPlayerX.State)
+    {
+      MediaPlayerX.Play(Assets.Song);
+      MediaPlayerX.IsRepeating = true;
+    }
+  }
+  public void PauseMusic()
+  {
+    if (MediaState.Playing == MediaPlayerX.State)
+    {
+      MediaPlayerX.Pause();
+    }
+  }
+  public void ResumeMusic()
+  {
+    if (MediaState.Paused == MediaPlayerX.State)
+    {
+      MediaPlayerX.Resume();
+    }
+  }
+  public void StopMusic()
+  {
+    if (MediaState.Playing == MediaPlayerX.State)
+    {
+      MediaPlayerX.Stop();
+    }
+  }
+}
+</pre>
+Finally, it has been noted that the MediaPlayer.Play(Song) API may cause <a href="https://gamedev.stackexchange.com/questions/20313/eliminate-delay-between-looping-xna-songs">delay</a> when looping MP3 songs;
+<br />
+Alternative: replace MediaPlayer(Song) with SoundEffectInstance, however XNB file will be much larger!
+<br /><br />
+<i>Textures</i>
+<br />
+Copy all source texture images, for example: BMP, JPG, PNG files from the original XNA game project.
+<br />
+Right click texture | Properties | Build action: BundleResource | Copy to output directory: Do not copy
+<br /><br />
+<b>Resources</b><br />
+Update all relevant Universal Icons, <a href="https://developer.xamarin.com/guides/ios/application_fundamentals/working_with_images/launch-screens">Launch Images</a> and iTunes Artwork for iOS device compatibility.
+<br />
+Right click CandyKid.iOS project. Choose Options | iOS Application | Set all icons and images here:
+<br /><br />
+<i>App Icons</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;iPhone</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;57x57</td><td valign="top">&nbsp;Icon.png</td></tr>
+<tr><td valign="top">&nbsp;iPhone @2x</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;114x114</td><td valign="top">&nbsp;Icon@2x.png</td></tr>
+<tr><td valign="top">&nbsp;iPhone @2x</td><td valign="top">&nbsp;iOS 7</td>
+<td valign="top">&nbsp;120x120</td><td valign="top">&nbsp;Icon-60@2x.png</td></tr>
+<tr><td valign="top">&nbsp;iPad</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;72x72</td><td valign="top">&nbsp;Icon-72.png</td></tr>
+<tr><td valign="top">&nbsp;iPad @2x</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;144x144</td><td valign="top">&nbsp;Icon-72@2x.png</td></tr>
+<tr><td valign="top">&nbsp;iPad</td><td valign="top">&nbsp;iOS 7</td>
+<td valign="top">&nbsp;76x76</td><td valign="top">&nbsp;Icon-76.png</td></tr>
+<tr><td valign="top">&nbsp;iPad @2x</td><td valign="top">&nbsp;iOS 7</td>
+<td valign="top">&nbsp;152x152</td><td valign="top">&nbsp;Icon-76@2x.png</td></tr>
+</table>
+<br />
+<i>Spotlight & Settings Icons</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;iPhone Spotlight</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;29x29</td><td valign="top">&nbsp;Icon-Small.png</td></tr>
+<tr><td valign="top">&nbsp;iPhone Spotlight @2x</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;58x58</td><td valign="top">&nbsp;Icon-Small@2x.png</td></tr>
+<tr><td valign="top">&nbsp;iPad Spotlight</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;50x50</td><td valign="top">&nbsp;Icon-Small-50.png</td></tr>
+<tr><td valign="top">&nbsp;iPad Spotlight @2x</td><td valign="top">&nbsp;iOS 5,6</td>
+<td valign="top">&nbsp;100x100</td><td valign="top">&nbsp;Icon-Small-50@2x.png</td></tr>
+<tr><td valign="top">&nbsp;Spotlight</td><td valign="top">&nbsp;iOS 7</td>
+<td valign="top">&nbsp;40x40</td><td valign="top">&nbsp;Icon-Small-40.png</td></tr>
+<tr><td valign="top">&nbsp;Spotlight @2x</td><td valign="top">&nbsp;iOS 7</td>
+<td valign="top">&nbsp;80x80</td><td valign="top">&nbsp;Icon-Small-40@2x.png</td></tr>
+</table>
+<br />
+<i>iPhone Launch Images</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Standard</td><td valign="top">&nbsp;320x480</td><td valign="top">&nbsp;Default.png</td></tr>
+<tr><td valign="top">&nbsp;Retina (3.5-inch)</td><td valign="top">&nbsp;640x960</td><td valign="top">&nbsp;Default.png</td></tr>
+<tr><td valign="top">&nbsp;Retina (4.0-inch)</td><td valign="top">&nbsp;640x1136</td><td valign="top">&nbsp;Default-568h@2x.png</td></tr>
+</table>
+Important: if <a href="https://community.monogame.net/t/not-correct-bounds-size-on-iphone5-always-480x320/591">Retina</a> (4.0-inch) launch image is not set then iPhone 5 resolution will not be supported!
+<br /><br />
+<i>iPad Launch Images</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Portait</td><td valign="top">&nbsp;768x1024</td><td valign="top">&nbsp;Default-Portrait.png</td></tr>
+<tr><td valign="top">&nbsp;Landscape</td><td valign="top">&nbsp;1024x768</td><td valign="top">&nbsp;Default-Landscape.png</td></tr>
+<tr><td valign="top">&nbsp;Retina Portait</td><td valign="top">&nbsp;1536x2048</td><td valign="top">&nbsp;Default-Portrait@2x.png</td></tr>
+<tr><td valign="top">&nbsp;Retina Landscape</td><td valign="top">&nbsp;2048x1536</td><td valign="top">&nbsp;Default-Landscape@2x.png</td></tr>
+</table>
+<br />
+<i>iTunes Artwork</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Standard</td><td valign="top">&nbsp;512x512</td>
+<td valign="top">&nbsp;iTunesArtwork.png</td></tr>
+<tr><td valign="top">&nbsp;Retina</td><td valign="top">&nbsp;1024x1024</td>
+<td valign="top">&nbsp;iTunesArtwork@2x.png</td></tr>
+</table>
+<br />
+<b>MonoGame Pipeline</b><br />
+If you require MonoGame to build platform specific XNB content files then use the MonoGame Pipeline
+<br />
+Choose Finder | Applications | Pipeline.  MonoGame Pipeline launches. Choose File | New. Save project. 
+<br /><br />
+Right click project | Add | Existing Item. Add an existing content file e.g. Emulogic.spritefont | Open.
+<br />
+Right click file | Rebuild.  An exception may be thrown but the XNB file is still available in bin folder.
+<br /><br />
+Right click project | Add | Existing Item. Add an existing content file e.g. Celebrate.wav file | Open.
+<br />
+Right click file | Rebuild.  Assuming Pipeline is installed correctly, the XNB file available in bin folder.
+<br /><br />
+<i>Access Denied</i><br />
+When using MonoGame Pipeline tool, you may receive <a href="https://community.monogame.net/t/error-loading-a-song-via-content-pipeline-os-x/2703">Access Denied</a> error, especially with MP3 files.
+<br />
+This may be because the ffmpeg binary (and ffprobe binary) needs executable permissions to be set.
+<br /><br />
+Launch Terminal window to manually change executable permissions.  Type the following (as root):
+<br />
+cd /Applications/Pipeline.app/Contents/MonoBundle
+<br />
+chmod +x ffmpeg
+<br />
+chmod +x ffprobe
+<br /><br />
+<u>Deployment</u><br />
+Attach iOS device to Mac OS/X. Xamarin Studio, click arrow next to build configuration | Select device.
+<br />
+Click Play button.  iOS device launches game as "Evaluation Software".  Build will expire within 24 hours.
+<br /><br />
+Alternative: right click CandyKid.iOS project | Archive for Publishing.  Click Sign and Distribute button.
+<br />
+Select iOS Distribution Channel as "AdHoc" | Next.  Select Signing Identity and Provisioning Profile.
+<a href="https://1.bp.blogspot.com/-aocAyMRgsKc/Vf7_58LxDeI/AAAAAAAADlE/z61j-UH-sHc/s1600/Publish01.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-aocAyMRgsKc/Vf7_58LxDeI/AAAAAAAADlE/z61j-UH-sHc/s640/Publish01.png" width="98%" /></a>
+<br />
+Choose Next to Publish as Ad Hoc.  Click Publish button.  Choose Location | Save.  Now reveal in Finder.
+<br />
+Double click IPA binary file.  iTunes launches ok.  Select device | Apps | Candy Kid.  Click Install | Apply.
+<a href="https://2.bp.blogspot.com/-HN0nizRdKC8/VcHTTaJryfI/AAAAAAAADhQ/qmlDu8McwkI/s1600/Publish02.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-HN0nizRdKC8/VcHTTaJryfI/AAAAAAAADhQ/qmlDu8McwkI/s640/Publish02.png" width="98%" /></a>
+<br />
+<u>Summary</u><br />
+That concludes the Candy Kid port to iOS platform.  Outstanding: Candy Kid published on <a href="https://itunes.apple.com/app/retro-candy-kid/id1055478836">iOS</a> / <a href="https://play.google.com/store/apps/details?id=com.steveproxna.candykid">Android</a>!
+</span>

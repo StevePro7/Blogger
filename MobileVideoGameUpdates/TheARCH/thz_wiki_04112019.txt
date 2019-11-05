@@ -1,0 +1,250 @@
+<span style="font-family:verdana;font-size:85%;">
+
+
+
+
+<!-- >>01.anINTRO<br/> -->
+In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
+<br /><br />
+Now both Apple and Google require apps + games be 64-bit compliant.  Apple will stop support for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to target minimum Android 9 (API level 28) or higher.
+<br /><br />
+All these factors mandate upgrades to our mobile games to be rebuilt using latest version of MonoGame 3.7.
+<!--
+<a href="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s640/MonoGameLogo.png" width="98%" height="135" data-original-width="218" data-original-height="46" /></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+TODO - TL;DR
+<br /><br />
+
+<!-- >>02.anPRE-Reqs<br/> -->
+<u>Pre-Requisites</u><br />
+Reference previous instructions for Android and iOS ports.  This post assumes software already published.  Install the following software on Windows and Mac.  Install "Mobile development with .NET" for Xamarin.
+<table width="96%" border="1">
+<tr>
+<td valign="top">&nbsp;&nbsp;<b>Windows</b>&nbsp;&nbsp;&nbsp;[Android]</td>
+<td valign="top">&nbsp;&nbsp;<b>Mac Os/X</b>&nbsp;&nbsp;&nbsp;[iOS]</td>
+</tr>
+<tr>
+<td valign="top">
+<ul>
+<li>Install Android Studio</li>
+<li>Install Visual Studio 2017</li>
+<li>Install Visual Studio 2019</li>
+<li>Install MonoGame for Visual Studio</li>
+</ul>
+</td>
+<td valign="top">
+<ul>
+<li>Install Xcode 11.2</li>
+<li>Install Xcode Tools</li>
+<li>Install Visual Studio for Mac</li>
+<li>Install MonoGame for MacOS</li>
+</ul>
+</td>
+</tr>
+</table>
+Note: Check for Updates on ALL Visual Studio IDEs to get latest frameworks and dependencies.
+Note: this post assumes you already have bundle identifiers setup as the games are already published.
+<br /><br />
+
+IMPORTANT<br/>
+If, for any reason, there are issues updating any IDEs mentioned here then simply Run as Administrator.
+<br /><br />
+
+<!-- >>03.anAndroidSetup<br/> -->
+<b>Android</b><br />
+On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
+<br /><br />
+Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
+<table width="97%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Android Studio</b></td>
+<td valign="top">&nbsp;%USERPROFILE%\AppData\Local\Android\Sdk</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Visual Studio</b></td>
+<td valign="top">&nbsp;C:\Program Files (x86)\Android\android-sdk</td>
+</tr>
+</table>
+<br />
+
+Actually, it may be easier to align Android SDK location in Android Studio to that of Visual Studio because all Android game code will be built using MonoGame from Visual Studio.  Therefore, update Android SDK path:
+<!--
+<a href="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s1600/AndroidSDK.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s640/AndroidSDK.png" width="98%" height="380" /></a>
+-->
+<br />
+Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
+<br /><br />
+
+<br />
+<!-- >>04.anAndroidLaunch<br/> -->
+Launch existing MonoGame Android project in Visual Studio 2017 e.g. 3D City.  Right click project.  Choose Properties.  Assume previous version 1.0.0 already exists on Google Play so upgrade Android version data:
+<br /><br />
+<i>Application</i><br />
+Compile using Android version (Target Framework).  Choose Android 9.0 (Pie) as minimum Android version.
+<br /><br />
+<i>Application Manifest</i><br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Element</b></td>
+<td valign="top">&nbsp;<b>Attribute</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application name</td>
+<td valign="top">&nbsp;3D City</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:label</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Package name</td>
+<td valign="top">&nbsp;com.steveproxna.x3dcity</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;package</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application icon</td>
+<td valign="top">&nbsp;@drawable/Icon</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:icon</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version number</td>
+<td valign="top">&nbsp;2</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionCode</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version name</td>
+<td valign="top">&nbsp;1.1.0</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionName</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Minimum Android version</td>
+<td valign="top">&nbsp;Android 9.0 (API Level 28 - Pie)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:minSdkVersion</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Target Android version</td>
+<td valign="top">&nbsp;Android 9.0 (API Level 28 - Pie)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:targetSdkVersion</td>
+</tr>
+</table>
+<br />
+AndroidManifest.xml
+<br />
+<pre class="csharp" name="code">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest package="com.steveproxna.x3dcity" android:versionCode="2" android:versionName="1.1.0"&gt;
+  &lt;uses-sdk android:minSdkVersion="28" android:targetSdkVersion="28" /"&gt;
+  &lt;application android:label="3D City" android:icon="@drawable/Icon"&gt;
+    &lt;meta-data android:name="android.max_aspect" android:value="2.1" /&gt;
+  &lt;/application&gt;
+&lt;/manifest&gt;
+</pre>
+<br />
+<i>Application Options</i><br />
+Click the Advanced button.  <a href="https://stackoverflow.com/questions/54537469/targeting-64-bit-architectures-on-xamarin-android">Target</a> the following 2x Supported architectures: <b>armeabi-v7a</b> and <b>arm64-v8a</b>.
+<!--
+<a href="https://1.bp.blogspot.com/-rnCQZu252jo/XboDtXRGJAI/AAAAAAAAFyI/gTUVhxkeG4o3jXJFj245SVXv0Ru8yGRhgCLcBGAsYHQ/s1600/ABIs.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-rnCQZu252jo/XboDtXRGJAI/AAAAAAAAFyI/gTUVhxkeG4o3jXJFj245SVXv0Ru8yGRhgCLcBGAsYHQ/s640/ABIs.png" width="98%" height="360" /></a>
+-->
+<br /><br />
+
+<br />
+<!-- >>05.anAndroidLatest<br/> -->
+Currenlty, Android 10.0 (Q) is available although this API level 29 seems to be missing from Visual Studio Tools menu | Android | Android SDK Manager.  However, here is a workaround to circumvent the problem:
+<br /><br />
+
+Launch Android Studio.  Install Android 10 (API level 29) as above.  Ensure <i>android-29</i> exists in Android SDK "platforms" folder and <i>29.0.2</i> in "build-tools".  Launch Visual Studio 2019.  Update Android version in project:
+<!--
+<a href="https://4.bp.blogspot.com/-XicZgIrFJ4s/XbvrycxVplI/AAAAAAAAFzA/tNRqtb8f3E8o6EYiLuXgDohs19HV26yhQCLcBGAsYHQ/s1600/AndroidLatest.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-XicZgIrFJ4s/XbvrycxVplI/AAAAAAAAFzA/tNRqtb8f3E8o6EYiLuXgDohs19HV26yhQCLcBGAsYHQ/s640/AndroidLatest.png" width="98%" height="235" /></a>
+-->
+<br /><br />
+In fact, VS2019 does <b>not</b> have MonoGame project templates.  Therefore, the cleanest approach may be to create new MonoGame Project in VS2017.  Build + run to device.  Close, re-open + con't project in VS2019.
+<br /><br />
+
+<br />
+<!-- >>07.MonoGamePipeline<br/> -->
+<u>Pipeline</u><br />
+Launch the MonoGame Pipeline tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
+<br /><br />
+
+<i>Data</i><br />
+Import any ASCII text files or XML configuration files.  Set the Build Action in the Properties section to Copy.
+<br /><br />
+<i>Fonts</i><br />
+Typically import pre-built XNB binary files from previous games e.g. Emulogic.xnb.  Set Build Action to Copy.
+<br /><br />
+<i>Sound</i><br />
+Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strange as built sound effects.  Convert WAV files to MP3.  Set Build Action to Build.  Set Processor to Song for music otherwise set to Sound Effect.
+<br /><br />
+<i>Textures</i><br />
+Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
+<br /><br />
+IMPORTANT<br/>
+If you receive ContentLoadException then create new MonoGame project.  Import all existing code + content!
+<br /><br />
+
+
+<!-- >>11.Upload_Android<br/> -->
+<br />
+Android Archive
+<br />
+Launch VS2019.  Open MonoGame Android project.  Attach Android device.  Select Release build configuration.  Clean and rebuild solution.  Right click project | Archive...  After the archive is generated choose Distribute...
+<br /><br />
+
+<i>Ad Hoc</i><br />
+Select distribution channel: Ad Hoc.  Select Signing Identity or Create Android Keystore.  Save APK.  Enter the password.  Open Folder.  Navigate to "signed-apks" subfolder.  Here is the signed APK that can be installed:
+<pre class="csharp" name="code">
+# Start | run | cmd
+# cd signed-apks
+adb devices -f install *.apk
+</pre>
+
+<i>Google Play</i><br />
+Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here.
+<br /><br />
+Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
+<br /><br />
+
+
+<!-- Deployment -->
+iOS Archive<br />
+
+Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing...  Reference Deployment section here.
+<br /><br />
+
+Launch browser.  Sign in to iTunes Connect.  Select published app.  Click "+" Version or Platform | iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.
+<br /><br />
+
+Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password"
+
+<br /><br />
+Visual Studio for Mac | Archive for Publishing... | App Store | Upload.  Select existing provisioning profile generated with Distribution certificate.  Next.  Enter Apple ID and App Specific Password generated [above].  Next | Publish.  Choose file name | Save IPA
+<br /><br />
+Note: if prompted, enter the keychain password
+<br /><br />
+IMPORTANT: it seems that this new process streamlines and overrides previous upload via the Application Loader!!
+<br /><br />
+
+Otherwise could choose the other way but instead of choosing Upload, choose Export.  Produce the IPA and upload via the Application Loader as before:
+Launch Application Loader.  Enter Apple ID and App Specific Password generated [above].  Choose IPA file built.  Next.  
+<br /><br />
+
+Once build has completed processing you may select in iTunes Connect.  Save.  Complete the following questions:
+01. Export Compliance NO
+02. Advertising Identifier
+Does this app use the Advertising Identifier (IDFA)? NO
+Submit
+<br /><br />
+Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password". In the popup window enter, for example "SimpsonsTrivia". Apple will generate an app specific password. Use information to sign in to Application Loader. Click "Deliver Your App" | Choose. Navigate to + upload IPA file.
+
+<br /><br />
+
+</span>

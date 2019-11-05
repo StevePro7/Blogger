@@ -1,0 +1,2576 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="./SimpsonsTriviaAndroidPort_files/2549344219-widget_css_bundle.css" rel="stylesheet" type="text/css">
+
+<meta content="blogger" name="generator">
+<link href="http://steveproxna.blogspot.com/favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="SteveProXNA - Atom" href="http://steveproxna.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="SteveProXNA - RSS" href="http://steveproxna.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="SteveProXNA - Atom" href="https://www.blogger.com/feeds/8584570627780730363/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="SteveProXNA - Atom" href="http://steveproxna.blogspot.com/feeds/3803834019557826210/comments/default">
+<!--Can't find substitution for tag [blog.ieCssRetrofitLinks]-->
+<link href="./SimpsonsTriviaAndroidPort_files/MonoGameLogo.png" rel="image_src">
+<meta content="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html" property="og:url">
+<meta content="Simpsons Trivia Android Port" property="og:title">
+<meta content=" In the previous post , we introduced Simpsons Trivia: a simple quiz game for the Sega Master System.  Here we outlined tasks to port game t..." property="og:description">
+<meta content="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/w1200-h630-p-k-no-nu/MonoGameLogo.png" property="og:image">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+
+<meta content="en" http-equiv="Content-Language">
+<meta content="stevepro studios, steveproxna, xna, indie game, development, .net, xbox, xbox360, zune, windows phone 7, app hub" name="keywords">
+<meta content="Professional Video Games Programmer and XNA-based Indie" name="description">
+<meta content="SteveProXNA" name="author">
+<meta content="sH1b51bZei0v9HCGK5pfFMUPaQ4-HjSGu1Vn8VZI3LY" name="google-site-verification">
+<title>SteveProXNA: Simpsons Trivia Android Port</title>
+<style id="page-skin-1" type="text/css"><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Minima Black
+Designer: Douglas Bowman
+URL:      www.stopdesign.com
+Date:     26 Feb 2004
+Updated by: Blogger Team
+----------------------------------------------- */
+/* START */
+.dp-highlighter
+{
+font-family: "Consolas", "Monaco", "Courier New", Courier, monospace;
+font-size: 12px;
+background-color: #E7E5DC;
+width: 99%;
+overflow: auto;
+margin: 18px 0 18px 0 !important;
+padding-top: 1px; /* adds a little border on top when controls are hidden */
+}
+/* clear styles */
+.dp-highlighter ol,
+.dp-highlighter ol li,
+.dp-highlighter ol li span
+{
+margin: 0;
+padding: 0;
+border: none;
+}
+.dp-highlighter a,
+.dp-highlighter a:hover
+{
+background: none;
+border: none;
+padding: 0;
+margin: 0;
+}
+.dp-highlighter .bar
+{
+padding-left: 45px;
+}
+.dp-highlighter.collapsed .bar,
+.dp-highlighter.nogutter .bar
+{
+padding-left: 0px;
+}
+.dp-highlighter ol
+{
+list-style: decimal; /* for ie */
+background-color: #fff;
+margin: 0px 0px 1px 45px !important; /* 1px bottom margin seems to fix occasional Firefox scrolling */
+padding: 0px;
+color: #5C5C5C;
+}
+.dp-highlighter.nogutter ol,
+.dp-highlighter.nogutter ol li
+{
+list-style: none !important;
+margin-left: 0px !important;
+}
+.dp-highlighter ol li,
+.dp-highlighter .columns div
+{
+list-style: decimal-leading-zero; /* better look for others, override cascade from OL */
+list-style-position: outside !important;
+border-left: 3px solid #6CE26C;
+background-color: #F8F8F8;
+color: #5C5C5C;
+padding: 0 3px 0 10px !important;
+margin: 0 !important;
+line-height: 14px;
+}
+.dp-highlighter.nogutter ol li,
+.dp-highlighter.nogutter .columns div
+{
+border: 0;
+}
+.dp-highlighter .columns
+{
+background-color: #F8F8F8;
+color: gray;
+overflow: hidden;
+width: 100%;
+}
+.dp-highlighter .columns div
+{
+padding-bottom: 5px;
+}
+.dp-highlighter ol li.alt
+{
+background-color: #FFF;
+color: inherit;
+}
+.dp-highlighter ol li span
+{
+color: black;
+background-color: inherit;
+}
+/* Adjust some properties when collapsed */
+.dp-highlighter.collapsed ol
+{
+margin: 0px;
+}
+.dp-highlighter.collapsed ol li
+{
+display: none;
+}
+/* Additional modifications when in print-view */
+.dp-highlighter.printing
+{
+border: none;
+}
+.dp-highlighter.printing .tools
+{
+display: none !important;
+}
+.dp-highlighter.printing li
+{
+display: list-item !important;
+}
+/* Styles for the tools */
+.dp-highlighter .tools
+{
+padding: 3px 8px 3px 10px;
+font: 9px Verdana, Geneva, Arial, Helvetica, sans-serif;
+color: silver;
+background-color: #f8f8f8;
+padding-bottom: 10px;
+border-left: 3px solid #6CE26C;
+}
+.dp-highlighter.nogutter .tools
+{
+border-left: 0;
+}
+.dp-highlighter.collapsed .tools
+{
+border-bottom: 0;
+}
+.dp-highlighter .tools a
+{
+font-size: 9px;
+color: #a0a0a0;
+background-color: inherit;
+text-decoration: none;
+margin-right: 10px;
+}
+.dp-highlighter .tools a:hover
+{
+color: red;
+background-color: inherit;
+text-decoration: underline;
+}
+/* About dialog styles */
+.dp-about { background-color: #fff; color: #333; margin: 0px; padding: 0px; }
+.dp-about table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
+.dp-about td { padding: 10px; vertical-align: top; }
+.dp-about .copy { border-bottom: 1px solid #ACA899; height: 95%; }
+.dp-about .title { color: red; background-color: inherit; font-weight: bold; }
+.dp-about .para { margin: 0 0 4px 0; }
+.dp-about .footer { background-color: #ECEADB; color: #333; border-top: 1px solid #fff; text-align: right; }
+.dp-about .close { font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; background-color: #ECEADB; color: #333; width: 60px; height: 22px; }
+/* Language specific styles */
+.dp-highlighter .comment, .dp-highlighter .comments { color: #008200; background-color: inherit; }
+.dp-highlighter .string { color: blue; background-color: inherit; }
+.dp-highlighter .keyword { color: #069; font-weight: bold; background-color: inherit; }
+.dp-highlighter .preprocessor { color: gray; background-color: inherit; }
+/* END */
+/* Variable definitions
+====================
+<Variable name="bgcolor" description="Page Background Color"
+type="color" default="#000">
+<Variable name="textcolor" description="Text Color"
+type="color" default="#ccc">
+<Variable name="linkcolor" description="Link Color"
+type="color" default="#9ad">
+<Variable name="pagetitlecolor" description="Blog Title Color"
+type="color" default="#ccc">
+<Variable name="descriptioncolor" description="Blog Description Color"
+type="color" default="#777">
+<Variable name="titlecolor" description="Post Title Color"
+type="color" default="#ad9">
+<Variable name="bordercolor" description="Border Color"
+type="color" default="#333">
+<Variable name="sidebarcolor" description="Sidebar Title Color"
+type="color" default="#777">
+<Variable name="sidebartextcolor" description="Sidebar Text Color"
+type="color" default="#999">
+<Variable name="visitedlinkcolor" description="Visited Link Color"
+type="color" default="#a7a">
+<Variable name="bodyfont" description="Text Font"
+type="font" default="normal normal 100% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif">
+<Variable name="headerfont" description="Sidebar Title Font"
+type="font"
+default="normal bold 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif">
+<Variable name="pagetitlefont" description="Blog Title Font"
+type="font"
+default="normal bold 200% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif">
+<Variable name="descriptionfont" description="Blog Description Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Verdana, Sans-serif">
+<Variable name="postfooterfont" description="Post Footer Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="startSide" description="Start side in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="End side in blog language"
+type="automatic" default="right">
+*/
+/* Use this with templates/template-twocol.html */
+body {
+background:#000000;
+margin:0;
+color:#cccccc;
+font: x-small "Trebuchet MS", Trebuchet, Verdana, Sans-serif;
+font-size/* */:/**/small;
+font-size: /**/small;
+text-align: center;
+}
+a:link {
+color:#99aadd;
+text-decoration:none;
+}
+a:visited {
+color:#aa77aa;
+text-decoration:none;
+}
+a:hover {
+color:#aadd99;
+text-decoration:underline;
+}
+a img {
+border-width:0;
+}
+/* Header
+-----------------------------------------------
+*/
+#header-wrapper {
+width:860px;
+margin:0 auto 10px;
+border:1px solid #333333;
+}
+#header-inner {
+background-position: center;
+margin-left: auto;
+margin-right: auto;
+}
+#header {
+margin: 5px;
+border: 1px solid #333333;
+text-align: center;
+color:#cccccc;
+}
+#header h1 {
+margin:5px 5px 0;
+padding:15px 20px .25em;
+line-height:1.2em;
+text-transform:uppercase;
+letter-spacing:.2em;
+font: normal bold 200% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif;
+}
+#header a {
+color:#cccccc;
+text-decoration:none;
+}
+#header a:hover {
+color:#cccccc;
+}
+#header .description {
+margin:0 5px 5px;
+padding:0 20px 15px;
+max-width:700px;
+text-transform:uppercase;
+letter-spacing:.2em;
+line-height: 1.4em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Verdana, Sans-serif;
+color: #777777;
+}
+#header img {
+margin-left: auto;
+margin-right: auto;
+}
+/* Outer-Wrapper
+----------------------------------------------- */
+#outer-wrapper {
+width: 860px;
+margin:0 auto;
+padding:10px;
+text-align:left;
+font: normal normal 100% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif;
+}
+#main-wrapper {
+width: 610px;
+float: left;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+width: 220px;
+float: right;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2 {
+margin:1.5em 0 .75em;
+font:normal bold 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color:#777777;
+}
+/* Posts
+-----------------------------------------------
+*/
+h2.date-header {
+margin:1.5em 0 .5em;
+}
+.post {
+margin:.5em 0 1.5em;
+border-bottom:1px dotted #333333;
+padding-bottom:1.5em;
+}
+.post h3 {
+margin:.25em 0 0;
+padding:0 0 4px;
+font-size:140%;
+font-weight:normal;
+line-height:1.4em;
+color:#aadd99;
+}
+.post h3 a, .post h3 a:visited, .post h3 strong {
+display:block;
+text-decoration:none;
+color:#aadd99;
+font-weight:bold;
+}
+.post h3 strong, .post h3 a:hover {
+color:#cccccc;
+}
+.post-body {
+margin:0 0 .75em;
+line-height:1.6em;
+}
+.post-body blockquote {
+line-height:1.3em;
+}
+.post-footer {
+margin: .75em 0;
+color:#777777;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+line-height: 1.4em;
+}
+.comment-link {
+margin-left:.6em;
+}
+.post img {
+padding:4px;
+border:1px solid #333333;
+}
+.post blockquote {
+margin:1em 20px;
+}
+.post blockquote p {
+margin:.75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin:1em 0;
+font-weight: bold;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color: #777777;
+}
+#comments-block {
+margin:1em 0 1.5em;
+line-height:1.6em;
+}
+#comments-block .comment-author {
+margin:.5em 0;
+}
+#comments-block .comment-body {
+margin:.25em 0 0;
+}
+#comments-block .comment-footer {
+margin:-.25em 0 2em;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.1em;
+}
+#comments-block .comment-body p {
+margin:0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar {
+color: #999999;
+line-height: 1.5em;
+}
+.sidebar ul {
+list-style:none;
+margin:0 0 0;
+padding:0 0 0;
+}
+.sidebar li {
+margin:0;
+padding-top:0;
+padding-right:0;
+padding-bottom:.25em;
+padding-left:15px;
+text-indent:-15px;
+line-height:1.5em;
+}
+.sidebar .widget, .main .widget {
+border-bottom:1px dotted #333333;
+margin:0 0 1.5em;
+padding:0 0 1.5em;
+}
+.main .Blog {
+border-bottom-width: 0;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #333333;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #777777;
+font-weight: bold;
+line-height: 1.6em;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+.profile-link {
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+text-transform: uppercase;
+letter-spacing: .1em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+width:860px;
+clear:both;
+margin:0 auto;
+padding-top:15px;
+line-height: 1.6em;
+text-transform:uppercase;
+letter-spacing:.1em;
+text-align: center;
+}
+
+--></style>
+<script src="./SimpsonsTriviaAndroidPort_files/cb=gapi.loaded_3" async=""></script><script src="./SimpsonsTriviaAndroidPort_files/osd.js.download"></script><script src="./SimpsonsTriviaAndroidPort_files/cb=gapi.loaded_2" async=""></script><script id="twitter-wjs" src="./SimpsonsTriviaAndroidPort_files/widgets.js.download"></script><script src="./SimpsonsTriviaAndroidPort_files/f(5).txt" id="google_shimpl"></script><script src="./SimpsonsTriviaAndroidPort_files/cb=gapi.loaded_1" async=""></script><script src="./SimpsonsTriviaAndroidPort_files/cb=gapi.loaded_0" async=""></script><script src="./SimpsonsTriviaAndroidPort_files/in.js.download" type="text/javascript"></script><style type="text/css">.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q{display:block!important;border:1px solid #cdcfd2!important;background-color:#fff!important;color:#373a3d!important;width:100vw!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-24GeGuJgk9LrMLp7qVvlyz{background:#6a7e89!important;color:#fff!important;padding:10px!important;font-size:18px!important;font-family:sans-serif!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-KVjdulkCFfUZps29EbgAC{background:#f3f6f8!important;border-bottom:1px solid #cdcfd2!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-KVjdulkCFfUZps29EbgAC>*{margin-right:10px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1OeZ2PQ98oAp6Vc5mMc6V5{list-style:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-vCwYmWF_l83ScZBrGnRoi,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1OeZ2PQ98oAp6Vc5mMc6V5{margin:0!important;padding:0!important;width:100%!important;display:block!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-vCwYmWF_l83ScZBrGnRoi:not(:last-child){border-bottom:1px solid #cdcfd2!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1XQZkb-FlHWABUp4_uShaZ{color:inherit!important;cursor:pointer!important;width:100%!important;display:inline-block!important;margin:10px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1XTzMvb2XKitWz0mFLlyyp{margin:5px!important;display:block!important;width:auto!important;white-space:pre!important;overflow-x:scroll!important;background:inherit!important;color:inherit!important;font-family:monospace}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1XTzMvb2XKitWz0mFLlyyp:not(.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-39QUvFFn5B7GMcqMQkOXZ3){display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-295DY3nO0DbJWMsOqmjCli{background:#f5f5f5!important;color:#5a5a5a!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1aQZwu6CUzAf2zUcI7tg0Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-295DY3nO0DbJWMsOqmjCli{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-38EPFyKXMtoP12rPlmrHxs{background:#e6f7ff!important;color:#006097!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3W4ZnQjhoGfT1gTNcqRXdi .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-38EPFyKXMtoP12rPlmrHxs{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-HGYnfzlmgOZ-l7eANhQe_{background:#fff3ea!important;color:#993a00!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-24e52A11B1UIErbKHtBmqc .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-HGYnfzlmgOZ-l7eANhQe_{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-jji74ZzulHScD0OAD_G7h{background:#fef2f1!important;color:#b10823!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-28jAOA7cDee-95LvwGsOP- .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-jji74ZzulHScD0OAD_G7h{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu{background-color:#0073b1!important;border:0!important;border-radius:2px!important;box-sizing:border-box!important;color:#fff!important;cursor:pointer!important;display:inline-block!important;font-family:-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif!important;font-weight:600!important;overflow:hidden!important;outline-width:2px!important;position:relative!important;text-align:center!important;text-decoration:none!important;vertical-align:middle!important;white-space:nowrap!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu:disabled{cursor:not-allowed!important;opacity:.7!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu:not(:disabled):not(.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy):hover{background-color:#006097!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu:not(:disabled):not(.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy):active{background-color:#004b7c!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy{background-color:#fff!important;color:#0073b1!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,.3)!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy:not(:disabled):hover{color:#006097!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy:not(:disabled):active{color:#004b7c!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon{display:inline-block!important;height:100%!important;vertical-align:top!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon>svg{pointer-events:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr{font-size:10px!important;height:16px!important;line-height:16px!important;padding:0 6px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr>xdoor-icon{margin-left:-6px!important;margin-right:3px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr>xdoor-icon>svg{height:16px!important;width:16px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-6px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6{font-size:11px!important;height:20px!important;line-height:20px!important;padding:0 7px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6>xdoor-icon,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon{margin-left:-7px!important;margin-right:3.5px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6>xdoor-icon>svg,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon>svg{height:20px!important;width:20px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-7px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG{font-size:14px!important;height:24px!important;line-height:24px!important;padding:0 12px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG>xdoor-icon{margin-left:-12px!important;margin-right:6px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG>xdoor-icon>svg{height:24px!important;width:24px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-12px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q{font-size:16px!important;height:32px!important;line-height:32px!important;padding:0 16px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q>xdoor-icon{margin-left:-16px!important;margin-right:8px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q>xdoor-icon>svg{height:32px!important;width:32px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-16px!important}</style><script data-counter="top" data-url="http://steveproxna.blogspot.com/" type="in/share"></script>
+<script src="./SimpsonsTriviaAndroidPort_files/plusone.js.download" type="text/javascript" gapi_processed="true"> {lang: 'en-US'} </script>
+<link href="./SimpsonsTriviaAndroidPort_files/authorization.css" media="all" onload="if(media!=&#39;all&#39;)media=&#39;all&#39;" rel="stylesheet"><noscript><link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=8584570627780730363&amp;zx=0863c457-e66f-4dcd-99be-00ef1d6c8897' rel='stylesheet'/></noscript>
+
+<script type="text/javascript" language="javascript">
+  // Supply ads personalization default for EEA readers
+  // See https://www.blogger.com/go/adspersonalization
+  adsbygoogle = window.adsbygoogle || [];
+  if (typeof adsbygoogle.requestNonPersonalizedAds === 'undefined') {
+    adsbygoogle.requestNonPersonalizedAds = 1;
+  }
+</script>
+
+
+<script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/f(6).txt"></script><link rel="preload" href="./SimpsonsTriviaAndroidPort_files/f(7).txt" as="script"><script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/f(7).txt"></script><link rel="preload" href="./SimpsonsTriviaAndroidPort_files/f(8).txt" as="script"><script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/f(8).txt"></script><link rel="preload" href="./SimpsonsTriviaAndroidPort_files/f(5).txt" as="script"><style>.gc-bubbleDefault{background-color:transparent !important;text-align:left;padding:0 !important;margin:0 !important;border:0 !important;table-layout:auto !important}.gc-reset{background-color:transparent !important;border:0 !important;padding:0 !important;margin:0 !important;text-align:left}.pls-bubbleTop{border-bottom:1px solid #ccc !important}.pls-topTail,.pls-vertShimLeft,.pls-contentLeft{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif) !important}.pls-topTail{background-repeat:repeat-x !important;background-position:bottom !important}.pls-vertShim{background-color:#fff !important;text-align:right}.tbl-grey .pls-vertShim{background-color:#f5f5f5 !important}.pls-vertShimLeft{background-repeat:repeat-y !important;background-position:right !important;height:4px}.pls-vertShimRight{height:4px}.pls-confirm-container .pls-vertShim{background-color:#fff3c2 !important}.pls-contentWrap{background-color:#fff !important;position:relative !important;vertical-align:top}.pls-contentLeft{background-repeat:repeat-y;background-position:right;vertical-align:top}.pls-dropRight{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropR_3.png) !important;background-repeat:repeat-y !important;vertical-align:top}.pls-vert,.pls-tailleft,.pls-dropTR .pls-dropBR,.pls-dropBL,.pls-vert img{vertical-align:top}.pls-dropBottom{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropB_3.png) !important;background-repeat:repeat-x !important;width:100%;vertical-align:top}.pls-topLeft{background:inherit !important;text-align:right;vertical-align:bottom}.pls-topRight{background:inherit !important;text-align:left;vertical-align:bottom}.pls-bottomLeft{background:inherit !important;text-align:right}.pls-bottomRight{background:inherit !important;text-align:left;vertical-align:top}.pls-tailtop,.pls-tailright,.pls-tailbottom,.pls-tailleft{display:none;position:relative}.pls-tailbottom,.pls-tailtop,.pls-tailright,.pls-tailleft,.pls-dropTR,.pls-dropBR,.pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite_3.png) !important;background-repeat:no-repeat}.tbl-grey .pls-tailbottom,.tbl-grey .pls-tailtop,.tbl-grey .pls-tailright,.tbl-grey .pls-tailleft,.tbl-grey .pls-dropTR,.tbl-grey .pls-dropBR,.tbl-grey .pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite-grey.png) !important}.pls-tailbottom{background-position:-23px 0}.pls-confirm-container .pls-tailbottom{background-position:-23px -10px}.pls-tailtop{background-position:-19px -20px}.pls-tailright{background-position:0 0}.pls-tailleft{background-position:-10px 0}.pls-tailtop{vertical-align:top}.gc-bubbleDefault td{line-height:0;font-size:0}.pls-topLeft img,.pls-topRight img,.pls-tailbottom{vertical-align:bottom}.pls-bottomLeft img,.bubbleDropTR,.pls-dropBottomL img,.pls-dropBottom img,.pls-dropBottomR img,.pls-bottomLeft{vertical-align:top}.pls-dropTR{background-position:0 -22px}.pls-dropBR{background-position:0 -27px}.pls-dropBL{background-position:0 -16px}.pls-spacertop,.pls-spacerright,.pls-spacerbottom,.pls-spacerleft{position:static !important}.pls-spinner{bottom:0;position:absolute;left:0;margin:auto;right:0;top:0} </style><script async="" src="./SimpsonsTriviaAndroidPort_files/lazy.min.js.download"></script><script charset="utf-8" src="./SimpsonsTriviaAndroidPort_files/moment_timeline_tweet.f41b02dcb58512d8e9f6d4178eb28452.js.download"></script><script charset="utf-8" src="./SimpsonsTriviaAndroidPort_files/timeline.0a7b4db67eacd23e35c5ce02e6ea3470.js.download"></script></head>
+<body>
+<div class="navbar section" id="navbar"><div class="widget Navbar" data-version="1" id="Navbar1"><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<div id="navbar-iframe-container"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="" tabindex="0" vspace="0" width="100%" id="navbar-iframe" name="navbar-iframe" src="./SimpsonsTriviaAndroidPort_files/navbar.html"></iframe></div>
+<script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/plusone.js(1).download" gapi_processed="true"></script>
+<script type="text/javascript">
+      gapi.load("gapi.iframes:gapi.iframes.style.bubble", function() {
+        if (gapi.iframes && gapi.iframes.getContext) {
+          gapi.iframes.getContext().openChild({
+              url: 'https://www.blogger.com/navbar.g?targetBlogID\x3d8584570627780730363\x26blogName\x3dSteveProXNA\x26publishMode\x3dPUBLISH_MODE_BLOGSPOT\x26navbarType\x3dLIGHT\x26layoutType\x3dLAYOUTS\x26searchRoot\x3dhttps://steveproxna.blogspot.com/search\x26blogLocale\x3den\x26v\x3d2\x26homepageUrl\x3dhttp://steveproxna.blogspot.com/\x26targetPostID\x3d3803834019557826210\x26blogPostOrPageUrl\x3dhttp://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html\x26vt\x3d5400440009446089092',
+              where: document.getElementById("navbar-iframe-container"),
+              id: "navbar-iframe"
+          });
+        }
+      });
+    </script><script type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top_exp.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</script>
+</div></div>
+<div id="outer-wrapper"><div id="wrap2">
+<!-- skip links for text browsers -->
+<span id="skiplinks" style="display:none;">
+<a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html#main">skip to main </a> |
+      <a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html#sidebar">skip to sidebar</a>
+</span>
+<div id="header-wrapper">
+<div class="header section" id="header"><div class="widget Header" data-version="1" id="Header1">
+<div id="header-inner">
+<a href="http://steveproxna.blogspot.com/" style="display: block">
+<img alt="SteveProXNA" height="140px; " id="Header1_headerimg" src="./SimpsonsTriviaAndroidPort_files/SteveProBLOG.jpg" style="display: block" width="526px; ">
+</a>
+</div>
+</div></div>
+</div>
+<div id="content-wrapper">
+<div id="crosscol-wrapper" style="text-align:center">
+<div class="crosscol no-items section" id="crosscol"></div>
+</div>
+<div id="main-wrapper">
+<div class="main section" id="main"><div class="widget Blog" data-version="1" id="Blog1">
+<div class="blog-posts hfeed">
+<!--Can't find substitution for tag [defaultAdStart]-->
+<h2 class="date-header">Saturday, September 15, 2018</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="3803834019557826210"></a>
+<h3 class="post-title entry-title">
+<a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html">Simpsons Trivia Android Port</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="http://steveproxna.blogspot.com/2018/08/simpsons-trivia-windows-port.html">post</a>, we introduced Simpsons Trivia: a simple quiz game for the Sega Master System.  Here we outlined tasks to port game to Windows using <a href="http://www.monogame.net/">MonoGame</a>.  Now we would like to port game to Android.
+<a href="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s1600/MonoGameLogo.png" imageanchor="1"><img border="0" data-original-height="46" data-original-width="218" height="135" src="./SimpsonsTriviaAndroidPort_files/MonoGameLogo.png" width="98%"></a>
+<br>
+Let's check it out!
+<br><br>
+<u>Pre-Requisites</u><br>
+This post extends the Candy Kid Android <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">port</a> which assumes <a href="http://www.monogame.net/downloads">MonoGame</a>, <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK</a> + <a href="https://developer.android.com/studio">Android SDK</a> are installed.
+<br><br>
+<u>Setup</u><br>
+Download and install Visual Studio 2017.  Install "Mobile development with .NET" for Xamarin development.
+<a href="https://1.bp.blogspot.com/-YlJKL3isDbg/W_PJ_471bII/AAAAAAAAE_w/uRtR6pRQyrIHADAy_pF0fw_fpOoJfcXQwCLcBGAs/s1600/00_VS2017.png" imageanchor="1"><img border="0" data-original-height="280" data-original-width="839" height="214" src="./SimpsonsTriviaAndroidPort_files/00_VS2017.png" width="98%"></a>
+<br>
+<br>
+Launch Visual Studio 2017.  Configure JDK and Android SDK.  Tools | Options | Xamarin | Android Settings:
+<a href="https://3.bp.blogspot.com/-K5PdvVoWOwo/W_PKMSzSa3I/AAAAAAAAE_0/W47KB4nZNfU8l6M82Pp21qzPzDAOVGLEwCLcBGAs/s1600/00_Xamarin.png" imageanchor="1"><img border="0" data-original-height="434" data-original-width="744" height="373" src="./SimpsonsTriviaAndroidPort_files/00_Xamarin.png" width="98%"></a>
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top">&nbsp;<b>Type</b></td>
+<td valign="top">&nbsp;<b>Location</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Java Development Kit Location</td>
+<td valign="top">&nbsp;C:\Program Files\Java\jdk1.8.0_172</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Android SDK Location</td>
+<td valign="top">&nbsp;C:\Program Files (x86)\Android\android-sdk</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Android NDK Location</td>
+<td valign="top">&nbsp;C:\ProgramData\Microsoft\AndroidNDK\android-ndk-r11c</td>
+</tr>
+</tbody></table>
+<br>
+<b>Development</b><br>
+<i>AND Game Client</i><br>
+Visual Studio 2017:  Create new project.  New Project | Visual C# | MonoGame | MonoGame Android Project.
+<a href="https://2.bp.blogspot.com/-UoYc-DeZ1c0/W_PLwlpdTlI/AAAAAAAAFAI/5fgfVcpeq9ERRsYhbRm-tlOqTgemzaI6wCLcBGAs/s1600/01_AND_Project.png" imageanchor="1"><img border="0" data-original-height="653" data-original-width="941" height="444" src="./SimpsonsTriviaAndroidPort_files/01_AND_Project.png" width="98%"></a>
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Name</td>
+<td valign="top">&nbsp;SimpsonsTrivia.AND</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location</td>
+<td valign="top">&nbsp;C:\SVN\SimpsonsTrivia</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Solution name</td>
+<td valign="top">&nbsp;SimpsonsTrivia.AND</td>
+</tr>
+</tbody></table>
+Download code sample <b><a href="https://github.com/SteveProXNA/SimpsonsTrivia/tree/master/SimpsonsTrivia.AND">here</a></b>.
+<br><br>
+<u>Checklist</u><br>
+Here is a checklist of tasks to complete in order to port game from <a href="http://steveproxna.blogspot.com/2018/08/simpsons-trivia-windows-port.html">Windows</a> to Android using MonoGame:
+<ul>
+<li>Configure project properties
+</li><li>Build Android Manifest file
+</li><li>Update project references
+</li><li>Update nuget packages
+</li><li>Configure SVN Externals
+</li><li>Import Assets content
+</li><li>Import Resources
+</li><li>Update client files
+</li></ul>
+<br>
+<i>Configure project properties</i><br>
+As of August 1, 2018 Google Play requires new apps to target at least Android 8.0 (API level 26) to <a href="https://developer.android.com/distribute/best-practices/develop/target-sdk">meet</a> the minimum target API level requirement.  Right click SimpsonsTrivia.AND project | Properties.  Application tab.  Ensure "Compile using Android version: (Target Framework)" is set to, at a minimum, Android 8.0 (Oreo).
+<a href="https://3.bp.blogspot.com/-vRe764owV8I/W_UbxwlI6lI/AAAAAAAAFAc/iNPSF6OuBGo9Muf1TKyJQfHnzBrgYUdLgCLcBGAs/s1600/AndroidAPI.png" imageanchor="1"><img border="0" data-original-height="285" data-original-width="850" height="215" src="./SimpsonsTriviaAndroidPort_files/AndroidAPI.png" width="98%"></a>
+<br>
+If Android 8.0 (Oreo) not installed then launch <a href="https://developer.android.com/studio">Android Studio</a>.  Tools | SDK Manager.  Download API level 26.  Note the Android SDK location and copy "platforms" folder to C:\Program Files (x86)\Android\android-sdk.
+<br><br>
+<i>Build Android Manifest file</i><br>
+Right click SimpsonsTrivia.AND project | Properties.  Android Manifest tab.  Click "No AndroidManifest.xml"
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Element</b></td>
+<td valign="top">&nbsp;<b>Attribute</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application name</td>
+<td valign="top">&nbsp;Simpsons Trivia</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:label</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Package name</td>
+<td valign="top">&nbsp;com.steveproxna.simpsons</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;package</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Application icon</td>
+<td valign="top">&nbsp;@drawable/Icon</td>
+<td valign="top">&nbsp;application</td>
+<td valign="top">&nbsp;android:icon</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version number</td>
+<td valign="top">&nbsp;1</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionCode</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Version name</td>
+<td valign="top">&nbsp;1.0.0</td>
+<td valign="top">&nbsp;manifest</td>
+<td valign="top">&nbsp;android:versionName</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Minimum Android version</td>
+<td valign="top">&nbsp;Android 8.0 (API Level 26 - Oreo)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:minSdkVersion</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Target Android version</td>
+<td valign="top">&nbsp;Android 8.0 (API Level 26 - Oreo)</td>
+<td valign="top">&nbsp;uses-sdk</td>
+<td valign="top">&nbsp;android:targetSdkVersion</td>
+</tr>
+</tbody></table>
+IMPORTANT
+<br>
+If there is an integer in the bundle identifier then Google will prepend an "x" e.g. 3dcity becomes "x3dcity"
+<br><br>
+<i>Update project references</i><br>
+Changes to Android version (Target Framework) on the Application tab [above] will update Mono.Android.dll reference.  Note, it may be necessary to change OpenTK-1.0 reference to <a href="file:///C:/Program%20Files%20(x86)/Microsoft%20Visual%20Studio/2017/Community/Common7/IDE/ReferenceAssemblies/Microsoft/Framework/MonoAndroid/v2.3/OpenTK.dll">OpenTK</a> for compatibility reasons.  
+<br><br>
+<i>Update nuget packages</i><br>
+It may also be necessary to downgrade MonoGame.Framework to 3.4.0.459 in order to load Content from the Assets parent folder and play sound effects.  Right click References node and Manage NuGet Packages.  Change MonoGame version.  Install Portable Ninject package too as Ninject is required as an <a href="http://steveproxna.blogspot.com/2011/03/xna-and-ioc-container.html">IoC Container</a>.
+<a href="https://4.bp.blogspot.com/-T_s4n4Yl-E8/W_PJQIgDfdI/AAAAAAAAE_o/Oj_uoWbLk6AkEYsJzi37VE13RhsuymlsACLcBGAs/s1600/Packages.png" imageanchor="1"><img border="0" data-original-height="231" data-original-width="990" height="149" src="./SimpsonsTriviaAndroidPort_files/Packages.png" width="98%"></a>
+<br><br>
+<i>Configure SVN Externals</i><br>
+Follow instructions to setup <a href="http://steveproxna.blogspot.com/2018/07/simpsons-trivia-xna-port.html">SVN Externals</a> and use shared Data content plus Common + Master source code:
+<br>
+DATA<br>
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top">&nbsp;AND</td>
+<td valign="top" colspan="2">&nbsp;<b>Folder :</b>&nbsp;&nbsp;C:\SVN\SimpsonsTrivia\SimpsonsTrivia.AND\SimpsonsTrivia.AND\Assets
+<br>&nbsp;<b>Action :</b>&nbsp;&nbsp;Right click "Content" folder
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA/SimpsonsTrivia.XNAContent/Data</td>
+</tr>
+</tbody></table>
+<br>
+CODE<br>
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top">&nbsp;AND</td>
+<td valign="top" colspan="2">&nbsp;<b>Folder :</b>&nbsp;&nbsp;C:\SVN\SimpsonsTrivia\SimpsonsTrivia.AND
+<br>&nbsp;<b>Action :</b>&nbsp;&nbsp;Right click "SimpsonsTrivia.AND" folder
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA.Library/Common</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA.Library/Master</td>
+</tr>
+</tbody></table>
+<br>
+<i>Import Assets content</i><br>
+Manually import game content and set file properties.  Refer to Candy Kid Android <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">port</a> for more information:
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top">&nbsp;<b>Folder</b></td>
+<td valign="top">&nbsp;<b>Type</b></td>
+<td valign="top">&nbsp;<b>XNB</b></td>
+<td valign="top">&nbsp;<b>Build Action</b></td>
+<td valign="top">&nbsp;<b>Copy to Output Directory</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Data</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Fonts</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;Yes</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sound</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Textures</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;AndroidAsset</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+</tbody></table>
+<br>
+<i>Import Resources</i><br>
+Replace default Icon and Splash images located in Resources / Drawable folder with custom images:
+<table width="100%" border="1">
+<tbody><tr><td valign="top">&nbsp;Icon.png</td><td valign="top">&nbsp;72x72</td></tr>
+<tr><td valign="top">&nbsp;Splash.png</td><td valign="top">&nbsp;800x480</td></tr>
+</tbody></table>
+<br>
+Navigate to <a href="https://makeappicon.com/">makeappicon</a>.  Upload generic icon image that represents game.  Best results use 1536 x 1536 image.  After processing, create the following sub folders beneath the Resources parent folder and import:
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top" width="20%">&nbsp;<b>Folder</b></td>
+<td valign="top" width="20%">&nbsp;<b>Dimension</b></td>
+<td valign="top" width="5%">&nbsp;</td>
+<td valign="top" width="20%">&nbsp;<b>Folder</b></td>
+<td valign="top" width="20%">&nbsp;<b>Dimension</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;mipmap-hdpi</td>
+<td valign="top">&nbsp;72 x 72</td>
+<td valign="top">&nbsp;</td>
+<td valign="top">&nbsp;mipmap-xhdpi</td>
+<td valign="top">&nbsp;96 x 96</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;mipmap-ldpi</td>
+<td valign="top">&nbsp;36 x 36</td>
+<td valign="top">&nbsp;</td>
+<td valign="top">&nbsp;mipmap-xxhdpi</td>
+<td valign="top">&nbsp;144 x 144</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;mipmap-mdpi</td>
+<td valign="top">&nbsp;48 x 48</td>
+<td valign="top">&nbsp;</td>
+<td valign="top">&nbsp;mipmap-xxxhdpi</td>
+<td valign="top">&nbsp;192 x 192</td>
+</tr>
+</tbody></table>
+<br>
+Delete default Strings.xml file as not needed here.  Update the default Styles.xml file for fullscreen splash:
+<pre class="csharp" name="code">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+ &lt;style name="Theme.Splash" parent="@android:style/Theme.NoTitleBar.Fullscreen"&gt;
+  &lt;item name="android:windowBackground"&gt;@drawable/splash&lt;/item&gt;
+  &lt;item name="android:windowFullscreen"&gt;true&lt;/item&gt;
+  &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+  &lt;item name="android:windowIsFloating"&gt;false&lt;/item&gt;
+ &lt;/style&gt;
+&lt;/resources&gt;
+</pre>
+<br>
+<i>Update client files</i><br>
+Finally, delete default Game1.cs code file.  Rename Activity1.cs to SplashActivity.cs + add the following code:
+<pre class="csharp" name="code">[Android.App.Activity(Label = "Simpsons Trivia"
+  , MainLauncher = true, NoHistory = true, Icon = "@drawable/icon"
+  , Theme = "@style/Theme.Splash", AlwaysRetainTaskState = true
+  , ScreenOrientation = Android.Content.PM.ScreenOrientation.SensorLandscape)]
+public class SplashActivity : Android.App.Activity
+{
+  protected override void OnCreate(Android.OS.Bundle bundle)
+  {
+    base.OnCreate(bundle);
+    StartActivity(typeof(GameActivity));
+  }
+}
+</pre>
+<br>
+Next, add GameActivity.cs.  Add the following code to take advantage of the new <a href="https://developer.android.com/training/system-ui/immersive">fullscreen</a> Immersive mode:
+<pre class="csharp" name="code">using Android.Content.PM;
+using Android.Views;
+[Android.App.Activity(Label = "Simpsons Trivia"
+  , NoHistory = true, Icon = "@drawable/icon"
+  , Theme = "@style/Theme.Splash", AlwaysRetainTaskState = true
+  , LaunchMode = Android.Content.PM.LaunchMode.SingleInstance
+  , ScreenOrientation = ScreenOrientation.SensorLandscape
+  , ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
+public class GameActivity : Microsoft.Xna.Framework.AndroidGameActivity
+{
+  protected override void OnCreate(Android.OS.Bundle bundle)
+  {
+    base.OnCreate(bundle);
+    var g = new WindowsGame.Common.AnGame();
+    Android.Views.View view = (Android.Views.View)g.Services.GetService(typeof(Android.Views.View));
+    if (Android.OS.Build.VERSION.SdkInt &gt;= Android.OS.BuildVersionCodes.Kitkat)
+    {
+      view.SystemUiVisibility = (Android.Views.StatusBarVisibility)(
+        SystemUiFlags.LayoutStable | SystemUiFlags.LayoutHideNavigation |
+        SystemUiFlags.LayoutFullscreen | SystemUiFlags.HideNavigation |
+        SystemUiFlags.Fullscreen | SystemUiFlags.ImmersiveSticky);
+    }
+    SetContentView(view);
+    g.Run();
+  }
+}
+</pre>
+<br>
+Also, to prevent annoying landscape <i>flipping</i> during game play set display orientation to landscape left only:
+<pre class="csharp" name="code">//AnGame.cs
+graphics = new GraphicsDeviceManager(this) {SupportedOrientations = DisplayOrientation.LandscapeLeft};
+</pre>
+<br>
+Update AndroidManifest.xml.  Add "android.max_aspect" at 2:1 value to ensure immersive mode accordingly:
+<pre class="csharp" name="code">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+ package="com.steveproxna.simpsons" 
+ android:versionCode="1" 
+ android:versionName="1.0.0" 
+ android:installLocation="auto"&gt;
+ &lt;uses-sdk android:minSdkVersion="26" android:targetSdkVersion="26" /&gt;
+ &lt;application android:label="Simpsons Trivia" android:icon="@drawable/Icon"&gt;
+  &lt;meta-data android:name="android.max_aspect" android:value="2.1" /&gt;
+ &lt;/application&gt;
+&lt;/manifest&gt;
+</pre>
+<br>
+IMPORTANT
+<br>
+If 2x app icons appear on device then ensure there is one instance of <i>MainLauncher=true</i> only in an Activity!
+<br><br>
+<b>Deployment</b><br>
+Despite the fact that you are able to complete all game development on Windows PC using Visual Studio 2017, it may actually be easier to complete Android deployment on the Mac using Visual Studio for Mac.
+<br><br>
+Launch the Terminal, checkout the source code and open SimpsonsTrivia.AND.sln in Visual Studio for Mac.  Right click project | Options | Build | Android Build | Advanced.  Ensure 3x Supported ABIs are checked:
+
+<a href="https://3.bp.blogspot.com/-LLuWhTSxUx0/W_PE0rqGmaI/AAAAAAAAE_M/hrtsszCYQgkitsyptn7WgCCcFzmIL0WDgCLcBGAs/s1600/Screenshot%2B2018-11-12%2Bat%2B12.11.49.png" imageanchor="1"><img border="0" src="./SimpsonsTriviaAndroidPort_files/Screenshot 2018-11-12 at 12.11.49.png" width="98% height="></a>
+<br>
+Connect Android device.  Launch Terminal and enter <i>adb devices</i> to ensure Android device is detected in the list of devices attached.  In Visual Studio ensure device selected.  Right click project | Archive for Publishing.
+<a href="https://3.bp.blogspot.com/-7zoOjXLtM6o/W_PFs8paeGI/AAAAAAAAE_c/BWPJqKf1hs4_sBbjb8a_ZoKb_uUD4HuuACLcBGAs/s1600/Screen%2BShot%2B2018-11-12%2Bat%2B19.45.50.png" imageanchor="1"><img border="0" data-original-height="626" data-original-width="916" height="437" src="./SimpsonsTriviaAndroidPort_files/Screen Shot 2018-11-12 at 19.45.50.png" width="98%"></a>
+<br>
+Click Sign and Distribute...  There are 2x Android Distribution channels: Ad Hoc and Google Play.  Choose Ad Hoc to save to disk and test locally while Google Play will upload to the Google Play store available for sale.
+<br><br>
+During Google Play deployment you may be prompted to create a new project in the "API access" tab linked to your Google Play Developer account in which you must create an OAuth client and enter the ID + Secret:
+<a href="https://1.bp.blogspot.com/-n4zaD-R-TdA/W_PFVRrEnCI/AAAAAAAAE_U/oG8Qt_Rk5uERdomD5vlGUhyPcCvI2yKMwCLcBGAs/s1600/Screen%2BShot%2B2018-11-12%2Bat%2B19.50.59.png" imageanchor="1"><img border="0" data-original-height="470" data-original-width="614" height="490" src="./SimpsonsTriviaAndroidPort_files/Screen Shot 2018-11-12 at 19.50.59.png" width="98%"></a>
+<br>
+Sign in to your Google Developer account.  Navigate to <a href="https://play.google.com/apps/publish">play.google.com/apps/publish</a> | Settings | API access.  Create OAuth client.  View in Google Developers Console.  Download JSON and extract the Client ID + Secret.
+<br><br>
+<b>Publication</b><br>
+Complete the Google Play deployment to sign APK binary ready for upload.  In Google Play Developer <a href="https://play.google.com/apps/publish">console</a> Create Application.  Enter all relevant details.  Create promotional images and upload to Store listing section:
+<table width="100%" border="1">
+<tbody><tr>
+<td valign="top">&nbsp;<b>Type</b></td>
+<td valign="top">&nbsp;<b>Dimensions</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Hi-res icon</td>
+<td valign="top">&nbsp;512 x 512</td>
+<td valign="top">&nbsp;32-bit PNG (with alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Feature Graphic</td>
+<td valign="top">&nbsp;1024 x 500</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Promo Graphic</td>
+<td valign="top">&nbsp;180 x 120</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;TV Banner</td>
+<td valign="top">&nbsp;1280 x 720</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Daydream 360 degree stereoscopic image</td>
+<td valign="top">&nbsp;4096 x 4096</td>
+<td valign="top">&nbsp;JPG or 24-bit PNG (no alpha)</td>
+</tr>
+</tbody></table>
+NOTE: <a href="http://resizeimage.net/">resizeimage.net</a> is a great online tool to help resize the same generic image for different resolutions.
+<br><br>
+VIDEO<br>
+Produce a YouTube video to showcase the game: Launch <a href="https://www.techsmith.com/store/camtasia">Camtasia</a> Studio.  Disconnect webcam if connected.  Choose Record screen.  In popup | click Audio button.  You should see the following message about No audio: <i>No audio input sources were found, pls verify that your audio devices are installed and plugged in correctly.</i>
+<br><br>
+Plug black cable from microphone into headphone jack.  Shouldn't need to unplug speaker cable from audio jack.  Click Audio drop down | Click Microphone Real Tech [visible] to enable.  Now record screen as before.
+<br><br>
+COPPA<br>
+Ensure the game is <a href="https://en.wikipedia.org/wiki/Children%27s_Online_Privacy_Protection_Act">COPPA</a>
+ compliant by completing the "Primarily Child-Detected" section under the Store Presence | Pricing &amp; Distribution section otherwise the game could be unpublished from Google Play store.
+<br>
+Finally, upload signed APK binary from deployment completion to Google Play and rollout Production release!
+<br><br>
+<u>Summary</u><br>
+That concludes the Simpsons Trivia port to Android. The next post will focus on Simpsons Trivia port to <a href="http://steveproxna.blogspot.com/2018/11/simpsons-trivia-ios-port.html">iOS</a>.
+</span>
+<div class="post-share-buttons">
+<a class="goog-inline-block share-button sb-email" href="https://www.blogger.com/share-post.g?blogID=8584570627780730363&amp;postID=3803834019557826210&amp;target=email" target="_blank" title="Email This"><span class="share-button-link-text">Email This</span></a><a class="goog-inline-block share-button sb-blog" href="https://www.blogger.com/share-post.g?blogID=8584570627780730363&amp;postID=3803834019557826210&amp;target=blog" onclick="window.open(this.href, &quot;_blank&quot;, &quot;height=270,width=475&quot;); return false;" target="_blank" title="BlogThis!"><span class="share-button-link-text">BlogThis!</span></a><a class="goog-inline-block share-button sb-twitter" href="https://www.blogger.com/share-post.g?blogID=8584570627780730363&amp;postID=3803834019557826210&amp;target=twitter" target="_blank" title="Share to Twitter"><span class="share-button-link-text">Share to Twitter</span></a><a class="goog-inline-block share-button sb-facebook" href="https://www.blogger.com/share-post.g?blogID=8584570627780730363&amp;postID=3803834019557826210&amp;target=facebook" onclick="window.open(this.href, &quot;_blank&quot;, &quot;height=430,width=640&quot;); return false;" target="_blank" title="Share to Facebook"><span class="share-button-link-text">Share to Facebook</span></a><a class="goog-inline-block share-button sb-pinterest" href="https://www.blogger.com/share-post.g?blogID=8584570627780730363&amp;postID=3803834019557826210&amp;target=pinterest" target="_blank" title="Share to Pinterest"><span class="share-button-link-text">Share to Pinterest</span></a>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">SteveProXNA</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html" rel="bookmark" title="permanent link"><abbr class="published" title="2018-09-15T00:32:00-07:00">12:32 AM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-230519790">
+<a href="https://www.blogger.com/post-edit.g?blogID=8584570627780730363&amp;postID=3803834019557826210&amp;from=pencil" title="Edit Post">
+<img alt="" class="icon-action" height="18" src="./SimpsonsTriviaAndroidPort_files/icon18_edit_allbkg.gif" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://steveproxna.blogspot.com/search/label/MonoGame" rel="tag">MonoGame</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>1 comment:</h4>
+<div id="Blog1_comments-block-wrapper">
+<dl class="avatar-comment-indent" id="comments-block">
+<dt class="comment-author " id="c6333440583323480459">
+<a name="c6333440583323480459"></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="https://www.blogger.com/profile/07336279424350585335" target="" rel="nofollow" onclick="" class="avatar-hovercard" id="av-6333440583323480459-07336279424350585335"><img src="./SimpsonsTriviaAndroidPort_files/unnamed.png" width="35" height="35" alt="" title="ahihi">
+
+</a></span></div>
+<a href="https://www.blogger.com/profile/07336279424350585335" rel="nofollow">ahihi</a>
+said...
+</dt>
+<dd class="comment-body" id="Blog1_cmt-6333440583323480459">
+<p>
+Useful article, thank you for sharing the article!!!<br><br>Website: <a href="http://search.wi.gov/cpp/help/urlstatusgo.html?url=https://bloggiaidap247.com/" rel="nofollow">bloggiaidap247.com</a> giúp bạn giải đáp <a href="http://search.wi.gov/cpp/help/urlstatusgo.html?url=https://bloggiaidap247.com/p/tu-nugu-flop-pak-bias-bash-idol-support-vocal-icharts-trong-kpop-la-gi.html" rel="nofollow">bash là gì</a> hay <a href="http://search.wi.gov/cpp/help/urlstatusgo.html?url=https://bloggiaidap247.com/tags/bash-idol-la-gi" rel="nofollow">bash idol là gì</a> và nhiều thông tin hữu ích
+</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html?showComment=1569834069404#c6333440583323480459" title="comment permalink">
+September 30, 2019 at 2:01 AM
+</a>
+<span class="item-control blog-admin pid-1531989044">
+<a class="comment-delete" href="https://www.blogger.com/delete-comment.g?blogID=8584570627780730363&amp;postID=6333440583323480459" title="Delete Comment">
+<img src="./SimpsonsTriviaAndroidPort_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+</dl>
+</div>
+<p class="comment-footer">
+</p><div class="comment-form">
+<a name="comment-form"></a>
+<h4 id="comment-post-message">Post a Comment</h4>
+<p>
+</p>
+<a href="https://www.blogger.com/comment-iframe.g?blogID=8584570627780730363&amp;postID=3803834019557826210&amp;blogspotRpcToken=7062882" id="comment-editor-src"></a>
+<iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-from-post" frameborder="0" height="410px" id="comment-editor" name="comment-editor" src="./SimpsonsTriviaAndroidPort_files/comment-iframe.html" width="100%"></iframe>
+<script src="./SimpsonsTriviaAndroidPort_files/3962873971-comment_from_post_iframe.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+      BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html');
+    </script>
+</div>
+<p></p>
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container">
+</div>
+</div>
+</div>
+<!--Can't find substitution for tag [defaultAdEnd]-->
+<div class="inline-ad">
+<script type="text/javascript"><!--
+google_ad_client="pub-7462372955735639";
+google_ad_host="pub-1556223355139109";
+google_ad_width=300;
+google_ad_height=250;
+google_ad_format="300x250_as";
+google_ad_type="text_image";
+google_ad_host_channel="0001+S0009+L0007";
+google_color_border="000000";
+google_color_bg="000000";
+google_color_link="AADD99";
+google_color_url="CCCCCC";
+google_color_text="CCCCCC";
+//--></script>
+<script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/f(9).txt">
+</script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" src="./SimpsonsTriviaAndroidPort_files/saved_resource(2).html"></iframe></ins></ins>
+</div>
+<!--Can't find substitution for tag [adStart]-->
+<!--Can't find substitution for tag [adEnd]-->
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-newer-link">
+<a class="blog-pager-newer-link" href="http://steveproxna.blogspot.com/2018/11/simpsons-trivia-ios-port.html" id="Blog1_blog-pager-newer-link" title="Newer Post">Newer Post</a>
+</span>
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://steveproxna.blogspot.com/2018/08/simpsons-trivia-windows-port.html" id="Blog1_blog-pager-older-link" title="Older Post">Older Post</a>
+</span>
+<a class="home-link" href="http://steveproxna.blogspot.com/">Home</a>
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Subscribe to:
+<a class="feed-link" href="http://steveproxna.blogspot.com/feeds/3803834019557826210/comments/default?alt=rss" target="_blank" type="application/rss+xml">Post Comments (RSS)</a>
+</div>
+</div>
+</div></div>
+</div>
+<div id="sidebar-wrapper">
+<div class="sidebar section" id="sidebar"><div class="widget AdSense" data-version="1" id="AdSense1">
+<div class="widget-content">
+<script type="text/javascript"><!--
+google_ad_client="pub-7462372955735639";
+google_ad_host="pub-1556223355139109";
+google_ad_width=200;
+google_ad_height=200;
+google_ad_format="200x200_as";
+google_ad_type="text_image";
+google_ad_host_channel="0001+S0006+L0001";
+google_color_border="000000";
+google_color_bg="000000";
+google_color_link="777777";
+google_color_url="99AADD";
+google_color_text="999999";
+//--></script>
+<script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/f(9).txt">
+</script><ins id="aswift_1_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent;" data-overlap-observer-io="false"><ins id="aswift_1_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent;"><iframe width="200" height="200" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:200px;height:200px;" src="./SimpsonsTriviaAndroidPort_files/saved_resource(3).html"></iframe></ins></ins>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8584570627780730363&amp;widgetType=AdSense&amp;widgetId=AdSense1&amp;action=editWidget&amp;sectionId=sidebar" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;AdSense1&quot;));" rel="nofollow" target="configAdSense1" title="Edit">
+<img alt="" height="18" src="./SimpsonsTriviaAndroidPort_files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget HTML" data-version="1" id="HTML2">
+<h2 class="title">Twitter</h2>
+<div class="widget-content">
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 520px; height: 600px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="profile:SteveProXNA" title="Twitter Timeline" src="./SimpsonsTriviaAndroidPort_files/saved_resource(4).html"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8584570627780730363&amp;widgetType=HTML&amp;widgetId=HTML2&amp;action=editWidget&amp;sectionId=sidebar" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;HTML2&quot;));" rel="nofollow" target="configHTML2" title="Edit">
+<img alt="" height="18" src="./SimpsonsTriviaAndroidPort_files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Label" data-version="1" id="Label1">
+<h2>Tag Cloud</h2>
+<div class="widget-content cloud-label-widget-content">
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Agile">Agile</a>
+<span class="label-count" dir="ltr">(5)</span>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/App%20Hub">App Hub</a>
+<span class="label-count" dir="ltr">(2)</span>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Candy%20Kid">Candy Kid</a>
+<span class="label-count" dir="ltr">(6)</span>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Cpp">Cpp</a>
+<span class="label-count" dir="ltr">(2)</span>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Data">Data</a>
+<span class="label-count" dir="ltr">(4)</span>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Design">Design</a>
+<span class="label-count" dir="ltr">(4)</span>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/devkitSMS">devkitSMS</a>
+<span class="label-count" dir="ltr">(4)</span>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Henway">Henway</a>
+<span class="label-count" dir="ltr">(2)</span>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Linux">Linux</a>
+<span class="label-count" dir="ltr">(2)</span>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/MonoGame">MonoGame</a>
+<span class="label-count" dir="ltr">(6)</span>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Performance">Performance</a>
+<span class="label-count" dir="ltr">(2)</span>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Quality">Quality</a>
+<span class="label-count" dir="ltr">(2)</span>
+</span>
+<span class="label-size label-size-5">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Retrospective">Retrospective</a>
+<span class="label-count" dir="ltr">(10)</span>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Sega">Sega</a>
+<span class="label-count" dir="ltr">(6)</span>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/SMS">SMS</a>
+<span class="label-count" dir="ltr">(3)</span>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Source%20Control">Source Control</a>
+<span class="label-count" dir="ltr">(3)</span>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/Unity3D">Unity3D</a>
+<span class="label-count" dir="ltr">(5)</span>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/XNA">XNA</a>
+<span class="label-count" dir="ltr">(6)</span>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://steveproxna.blogspot.com/search/label/z88dk">z88dk</a>
+<span class="label-count" dir="ltr">(2)</span>
+</span>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8584570627780730363&amp;widgetType=Label&amp;widgetId=Label1&amp;action=editWidget&amp;sectionId=sidebar" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;Label1&quot;));" rel="nofollow" target="configLabel1" title="Edit">
+<img alt="" height="18" src="./SimpsonsTriviaAndroidPort_files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget BlogArchive" data-version="1" id="BlogArchive1">
+<h2>Blog Archive</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2019/">
+2019
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2019/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2019/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2019/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2019/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2019/04/">
+April
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2019/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">
+
+        ▼&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/">
+2018
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">
+
+        ▼&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html">Simpsons Trivia Android Port</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/03/">
+March
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2018/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2017/">
+2017
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2017/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2017/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2017/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2017/03/">
+March
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2017/02/">
+February
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2017/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/">
+2016
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/06/">
+June
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/03/">
+March
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2016/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/">
+2015
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2015/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/">
+2014
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/06/">
+June
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2014/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2013/">
+2013
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2013/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2013/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2013/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2013/06/">
+June
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2013/02/">
+February
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2013/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2012/">
+2012
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2012/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2012/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2012/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2012/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2012/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2011/">
+2011
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2011/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2011/04/">
+April
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2011/03/">
+March
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2011/02/">
+February
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2011/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2010/">
+2010
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2010/12/">
+December
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2010/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2010/04/">
+April
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2010/03/">
+March
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2010/02/">
+February
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2010/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2009/">
+2009
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2009/12/">
+December
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2009/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2009/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2009/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://steveproxna.blogspot.com/2009/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8584570627780730363&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget&amp;sectionId=sidebar" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;BlogArchive1&quot;));" rel="nofollow" target="configBlogArchive1" title="Edit">
+<img alt="" height="18" src="./SimpsonsTriviaAndroidPort_files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget Profile" data-version="1" id="Profile1">
+<h2>About Me</h2>
+<div class="widget-content">
+<a href="https://www.blogger.com/profile/05686319865051961347"><img alt="My photo" class="profile-img" height="80" src="./SimpsonsTriviaAndroidPort_files/SteveProXNA.jpg" width="80"></a>
+<dl class="profile-datablock">
+<dt class="profile-data">
+<a class="profile-name-link g-profile" href="https://www.blogger.com/profile/05686319865051961347" rel="author" style="background-image: url(//www.blogger.com/img/logo-16.png);" data-gapiscan="true" data-onload="true" data-gapiattached="true">
+SteveProXNA
+</a>
+</dt>
+<dd class="profile-textblock">Professional Video Games Programmer and XNA-based Indie</dd>
+</dl>
+<a class="profile-link" href="https://www.blogger.com/profile/05686319865051961347" rel="author">View my complete profile</a>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8584570627780730363&amp;widgetType=Profile&amp;widgetId=Profile1&amp;action=editWidget&amp;sectionId=sidebar" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;Profile1&quot;));" rel="nofollow" target="configProfile1" title="Edit">
+<img alt="" height="18" src="./SimpsonsTriviaAndroidPort_files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget Followers" data-version="1" id="Followers1">
+<h2 class="title">Followers</h2>
+<div class="widget-content">
+<div id="Followers1-wrapper">
+<div style="margin-right:2px;">
+<div><script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/plusone.js(1).download" gapi_processed="true"></script>
+<div id="followers-iframe-container"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="" tabindex="0" vspace="0" width="100%" id="I0_1572941162937" name="I0_1572941162937" src="./SimpsonsTriviaAndroidPort_files/followers.html"></iframe></div>
+<script type="text/javascript">
+    window.followersIframe = null;
+    function followersIframeOpen(url) {
+      gapi.load("gapi.iframes", function() {
+        if (gapi.iframes && gapi.iframes.getContext) {
+          window.followersIframe = gapi.iframes.getContext().openChild({
+            url: url,
+            where: document.getElementById("followers-iframe-container"),
+            messageHandlersFilter: gapi.iframes.CROSS_ORIGIN_IFRAMES_FILTER,
+            messageHandlers: {
+              '_ready': function(obj) {
+                window.followersIframe.getIframeEl().height = obj.height;
+              },
+              'reset': function() {
+                window.followersIframe.close();
+                followersIframeOpen("https://www.blogger.com/followers.g?blogID\x3d8584570627780730363\x26colors\x3dCgt0cmFuc3BhcmVudBILdHJhbnNwYXJlbnQaByM5OTk5OTkiByM5OWFhZGQqByMwMDAwMDAyByNhYWRkOTk6ByM5OTk5OTlCByM5OWFhZGRKByM3Nzc3NzdSByM5OWFhZGRaC3RyYW5zcGFyZW50\x26pageSize\x3d21\x26postID\x3d3803834019557826210\x26origin\x3dhttp://steveproxna.blogspot.com/");
+              },
+              'open': function(url) {
+                window.followersIframe.close();
+                followersIframeOpen(url);
+              },
+              'blogger-ping': function() {
+              }
+            }
+          });
+        }
+      });
+    }
+    followersIframeOpen("https://www.blogger.com/followers.g?blogID\x3d8584570627780730363\x26colors\x3dCgt0cmFuc3BhcmVudBILdHJhbnNwYXJlbnQaByM5OTk5OTkiByM5OWFhZGQqByMwMDAwMDAyByNhYWRkOTk6ByM5OTk5OTlCByM5OWFhZGRKByM3Nzc3NzdSByM5OWFhZGRaC3RyYW5zcGFyZW50\x26pageSize\x3d21\x26postID\x3d3803834019557826210\x26origin\x3dhttp://steveproxna.blogspot.com/");
+  </script></div>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8584570627780730363&amp;widgetType=Followers&amp;widgetId=Followers1&amp;action=editWidget&amp;sectionId=sidebar" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;Followers1&quot;));" rel="nofollow" target="configFollowers1" title="Edit">
+<img alt="" height="18" src="./SimpsonsTriviaAndroidPort_files/icon18_wrench_allbkg.png" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class="clear">&nbsp;</div>
+</div>
+<!-- end content-wrapper -->
+<div id="footer-wrapper">
+<div class="footer no-items section" id="footer"></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./SimpsonsTriviaAndroidPort_files/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12397220-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<script src="./SimpsonsTriviaAndroidPort_files/plusone.js(1).download" type="text/javascript" gapi_processed="true"></script>
+<!--It is your responsibility to notify your visitors about cookies used and data collected on your blog. Blogger makes a standard notification available for you to use on your blog, and you can customise it or replace it with your own notice. See http://www.blogger.com/go/cookiechoices for more details.-->
+<script defer="" src="./SimpsonsTriviaAndroidPort_files/cookienotice.js.download"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(event) {
+      window.cookieChoices && cookieChoices.showCookieConsentBar && cookieChoices.showCookieConsentBar(
+          (window.cookieOptions && cookieOptions.msg) || 'This site uses cookies from Google to deliver its services and to analyse traffic. Your IP address and user agent are shared with Google, together with performance and security metrics, to ensure quality of service, generate usage statistics and to detect and address abuse.',
+          (window.cookieOptions && cookieOptions.close) || 'Ok',
+          (window.cookieOptions && cookieOptions.learn) || 'Learn more',
+          (window.cookieOptions && cookieOptions.link) || 'https://www.blogger.com/go/blogspot-cookies');
+    });
+  </script>
+
+<script type="text/javascript" src="./SimpsonsTriviaAndroidPort_files/1068551213-widgets.js.download"></script>
+<script type="text/javascript">
+window['__wavt'] = 'AOuZoY5Kh-6O7YofHaeMQv0vEga6Rwxngw:1572941163089';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d8584570627780730363','//steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html','8584570627780730363');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '8584570627780730363', 'title': 'SteveProXNA', 'url': 'http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html', 'canonicalUrl': 'http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html', 'homepageUrl': 'http://steveproxna.blogspot.com/', 'searchUrl': 'http://steveproxna.blogspot.com/search', 'canonicalHomepageUrl': 'http://steveproxna.blogspot.com/', 'blogspotFaviconUrl': 'http://steveproxna.blogspot.com/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'en', 'localeUnderscoreDelimited': 'en', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22SteveProXNA - Atom\x22 href\x3d\x22http://steveproxna.blogspot.com/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22SteveProXNA - RSS\x22 href\x3d\x22http://steveproxna.blogspot.com/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22SteveProXNA - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/8584570627780730363/posts/default\x22 /\x3e\n\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22SteveProXNA - Atom\x22 href\x3d\x22http://steveproxna.blogspot.com/feeds/3803834019557826210/comments/default\x22 /\x3e\n', 'meTag': '', 'adsenseClientId': 'ca-pub-7462372955735639', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': true, 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/f0afbe282c6be645', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Get link', 'key': 'link', 'shareMessage': 'Get link', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Share to Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Share to Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Share to Pinterest', 'target': 'pinterest'}, {'name': 'Email', 'key': 'email', 'shareMessage': 'Email', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27en\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Read more', 'pageType': 'item', 'postId': '3803834019557826210', 'postImageThumbnailUrl': 'https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s72-c/MonoGameLogo.png', 'postImageUrl': 'https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s640/MonoGameLogo.png', 'pageName': 'Simpsons Trivia Android Port', 'pageTitle': 'SteveProXNA: Simpsons Trivia Android Port'}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Edit', 'linkCopiedToClipboard': 'Link copied to clipboard!', 'ok': 'Ok', 'postLink': 'Post Link'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Custom', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'Simpsons Trivia Android Port', 'description': ' In the previous post , we introduced Simpsons Trivia: a simple quiz game for the Sega Master System.  Here we outlined tasks to port game t...', 'featuredImage': 'https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s640/MonoGameLogo.png', 'url': 'http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html', 'type': 'item', 'isSingleItem': true, 'isMultipleItems': false, 'isError': false, 'isPage': false, 'isPost': true, 'isHomepage': false, 'isArchive': false, 'isLabelSearch': false, 'postId': 3803834019557826210}}]);
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar', document.getElementById('Navbar1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': 'https://www.blogger.com/static/v1/jsbin/3421882774-lbx.js', 'lightboxCssUrl': 'https://www.blogger.com/static/v1/v-css/368954415-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AdSenseView', new _WidgetInfo('AdSense1', 'sidebar', document.getElementById('AdSense1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML2', 'sidebar', document.getElementById('HTML2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label1', 'sidebar', document.getElementById('Label1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar', document.getElementById('BlogArchive1'), {'languageDirection': 'ltr', 'loadingMessage': 'Loading\x26hellip;'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar', document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_FollowersView', new _WidgetInfo('Followers1', 'sidebar', document.getElementById('Followers1'), {}, 'displayModeFull'));
+</script>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./SimpsonsTriviaAndroidPort_files/widget_iframe.2d991e3dfc9abb2549972ce8b64c5d85.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="google_osd_static_frame_8332814590711" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./SimpsonsTriviaAndroidPort_files/saved_resource(5).html"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./SimpsonsTriviaAndroidPort_files/saved_resource(6).html"></iframe></body><iframe id="google_esf" name="google_esf" src="./SimpsonsTriviaAndroidPort_files/zrt_lookup.html" data-ad-client="ca-pub-7462372955735639" style="display: none;"></iframe></html>

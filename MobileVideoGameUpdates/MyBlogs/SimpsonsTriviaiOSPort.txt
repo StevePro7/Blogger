@@ -1,0 +1,386 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html">post</a>, we introduced Simpsons Trivia: a simple quiz game for the Sega Master System.  Here we outlined tasks to port original game to Android using <a href="http://www.monogame.net">MonoGame</a>.  Now we would like to port game to iOS.
+<a href="https://2.bp.blogspot.com/-K_Wbm9NOk8I/W_gFoLYUfjI/AAAAAAAAFBA/5-OTvIJ55f4ueE9vftrfboiCoHonm7gEwCLcBGAs/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-K_Wbm9NOk8I/W_gFoLYUfjI/AAAAAAAAFBA/5-OTvIJ55f4ueE9vftrfboiCoHonm7gEwCLcBGAs/s640/MonoGameLogo.png" width="98%" height="135" data-original-width="218" data-original-height="46" /></a>
+<br />
+Let's check it out!
+<br /><br />
+<u>Pre-Requisites</u><br />
+This post extends Candy Kid iOS <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">port</a> which assumes <a href="http://www.monogame.net/downloads">MonoGame</a> and Apple certificates + profiles installed.  Although Visual Studio now integrates iOS templates for development Mac is still required for deployment.
+<br /><br />
+<u>Setup</u><br />
+Download and install Visual Studio 2017.  Install "Mobile development with .NET" for Xamarin development.
+<a href="https://3.bp.blogspot.com/-k4xz2bzWzQo/W_gGj7ptIOI/AAAAAAAAFBQ/wH0CqLvI46odO46wi-baoV9La2imaEzngCLcBGAs/s1600/00_VS2017.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-k4xz2bzWzQo/W_gGj7ptIOI/AAAAAAAAFBQ/wH0CqLvI46odO46wi-baoV9La2imaEzngCLcBGAs/s640/00_VS2017.png" width="98%" height="214" data-original-width="839" data-original-height="280" /></a>
+<br />
+Launch Visual Studio 2017.  Tools | Options | Xamarin.  Configure Apple Accounts.  Click "<a href="https://docs.microsoft.com/en-us/xamarin/ios/get-started/installation/windows/connecting-to-mac">Pair to Mac</a>".  Click "Add Mac" in popup and enter Mac name or IP address.  Enter login details to connect.  Verify iOS Settings.
+<a href="https://1.bp.blogspot.com/-QpchJccA4TM/W_gG04r22KI/AAAAAAAAFBY/rQW-hG58pu0zrKvfNYJnDFZWPThdUZVQgCLcBGAs/s1600/PairToMac.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-QpchJccA4TM/W_gG04r22KI/AAAAAAAAFBY/rQW-hG58pu0zrKvfNYJnDFZWPThdUZVQgCLcBGAs/s640/PairToMac.png" width="98%" height="348" data-original-width="796" data-original-height="433" /></a>
+<br />
+IMPORTANT
+<br />
+Ensure Username entered matches Current User on Mac e.g. "Steven Boland" and matching login password.  If unable to connect using Mac name then ensure Xamarin SDK version compatible on Visual Studio for Mac.
+<br /><br />
+<b>Development</b><br />
+<i>IOS Game Client</i><br />
+Visual Studio 2017: Create new project. New Project | Visual C# | MonoGame | MonoGame iOS Project.
+<a href="https://3.bp.blogspot.com/-PVz-jQUZ7eQ/W_gHE-vDjyI/AAAAAAAAFBg/-r9eXbWFE5QibEvrY6nvm6m4P9RAuTgwgCLcBGAs/s1600/01_IOS_Project.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-PVz-jQUZ7eQ/W_gHE-vDjyI/AAAAAAAAFBg/-r9eXbWFE5QibEvrY6nvm6m4P9RAuTgwgCLcBGAs/s640/01_IOS_Project.png" width="98%" height="444" data-original-width="941" data-original-height="653" /></a>
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Key</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Name</td>
+<td valign="top">&nbsp;SimpsonsTrivia.IOS</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location</td>
+<td valign="top">&nbsp;C:\SVN\SimpsonsTrivia</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Solution name</td>
+<td valign="top">&nbsp;SimpsonsTrivia.IOS</td>
+</tr>
+</table>
+Download code sample <b><a href="https://github.com/SteveProXNA/SimpsonsTrivia/tree/master/SimpsonsTrivia.IOS">here</a></b>.
+<br /><br />
+<u>Checklist</u><br />
+Here is a checklist of tasks to complete in order to port game from <a href="http://steveproxna.blogspot.com/2018/08/simpsons-trivia-windows-port.html">Windows</a> to iOS using MonoGame:
+<ul>
+<li>Configure project administration
+<li>Generate AppIconSet assets
+<li>Update Info plist config file
+<li>Update project references
+<li>Update nuget packages
+<li>Configure SVN Externals
+<li>Import Assets content
+<li>Update client files
+</ul>
+<br />
+<i>Configure project administration</i><br />
+Sign in to your Apple <a href="http://developer.apple.com">developer</a> account | Certificates, Identifiers & Profiles.  Ensure certificates are valid.  Identifiers | App IDs click "+" to create new bundle identifier.  Create corresponding Provisioning Profiles.
+<br /><br />
+On the Mac, launch Visual Studio for Mac.  Visual Studio Community | Preferences... | Publishing | Apple Developer Accounts.  Click "+" to sign in.  View Details...  and choose "Download All Profiles" in the popup.
+<br /><br />
+<br />
+<i>Generate AppIconSet assets</i><br />
+Navigate to <a href="https://makeappicon.com">makeappicon</a>. Upload generic icon image that represents game. Best results use 1536 x 1536 image. After processing, download generated ZIP file and extract.  Expand ios folder | AppIcon.appiconset.
+<br /><br />
+On the Mac, launch Visual Studio for Mac.  Open SimpsonsTrivia.IOS.sln.  Double click Info.plist file.  Next to iPhone icons | Sources click "Migrate to Asset Catalog"  This auto-generates AppIcon plus Assets.xcassets.
+<br /><br />
+Double click Assets.xcassets to launch AppIcon.  Click each icon + open each corresponding icon accordingly:
+<a href="https://3.bp.blogspot.com/-0nc6fajzCDI/W_lWug54mxI/AAAAAAAAFBs/FNRinrZi00MbOzJ8Hv0rdy00Q4-RvuZSACLcBGAs/s1600/Screen%2BShot%2B2018-11-21%2Bat%2B20.17.25.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-0nc6fajzCDI/W_lWug54mxI/AAAAAAAAFBs/FNRinrZi00MbOzJ8Hv0rdy00Q4-RvuZSACLcBGAs/s640/Screen%2BShot%2B2018-11-21%2Bat%2B20.17.25.png" width="98%" height="632" data-original-width="895" data-original-height="884" /></a>
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Location</b></td>
+<td valign="top">&nbsp;<b>Version</b></td>
+<td valign="top">&nbsp;<b>Size</b></td>
+<td valign="top">&nbsp;<b>Ratio</b></td>
+<td valign="top">&nbsp;<b>Dimension</b></td>
+<td valign="top">&nbsp;<b>Filename</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPhone Notification</td>
+<td valign="top">&nbsp;iOS 7-12</td>
+<td valign="top">&nbsp;20pt</td>
+<td valign="top">&nbsp;2x</td>
+<td valign="top">&nbsp;40 x 40</td>
+<td valign="top">&nbsp;Icon-App-20x20@2x</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPhone Notification</td>
+<td valign="top">&nbsp;iOS 7-12</td>
+<td valign="top">&nbsp;20pt</td>
+<td valign="top">&nbsp;3x</td>
+<td valign="top">&nbsp;60 x 60</td>
+<td valign="top">&nbsp;Icon-App-20x20@3x</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPhone Spotlight</td>
+<td valign="top">&nbsp;iOS 5-12</td>
+<td valign="top">&nbsp;29pt</td>
+<td valign="top">&nbsp;2x</td>
+<td valign="top">&nbsp;58 x 58</td>
+<td valign="top">&nbsp;Icon-App-29x29@2x</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPhone Spotlight</td>
+<td valign="top">&nbsp;iOS 5-12</td>
+<td valign="top">&nbsp;29pt</td><td valign="top">&nbsp;3x</td>
+<td valign="top">&nbsp;87 x 87</td>
+<td valign="top">&nbsp;Icon-App-29x29@3x</td>
+</tr>
+<tr><td valign="top">&nbsp;iPhone Spotlight</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;40pt</td><td valign="top">&nbsp;2x</td><td valign="top">&nbsp;80 x 80</td><td valign="top">&nbsp;Icon-App-40x40@2x</td></tr>
+<tr><td valign="top">&nbsp;iPhone Spotlight</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;40pt</td><td valign="top">&nbsp;3x</td><td valign="top">&nbsp;120 x 120</td><td valign="top">&nbsp;Icon-App-40x40@3x</td></tr>
+<tr><td valign="top">&nbsp;iPhone App</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;60pt</td><td valign="top">&nbsp;2x</td><td valign="top">&nbsp;120 x 120</td><td valign="top">&nbsp;Icon-App-60x60@2x</td></tr>
+<tr><td valign="top">&nbsp;iPhone App</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;60pt</td><td valign="top">&nbsp;3x</td><td valign="top">&nbsp;180 x 180</td><td valign="top">&nbsp;Icon-App-60x60@3x</td></tr>
+<tr><td valign="top">&nbsp;iPad Notification</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;20pt</td><td valign="top">&nbsp;1x</td><td valign="top">&nbsp;20 x 20</td><td valign="top">&nbsp;Icon-App-20x20@1x</td></tr>
+<tr><td valign="top">&nbsp;iPad Notification</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;40pt</td><td valign="top">&nbsp;2x</td><td valign="top">&nbsp;40 x 40</td><td valign="top">&nbsp;Icon-App-40x40@1x</td></tr>
+<tr><td valign="top">&nbsp;iPad Settings</td><td valign="top">&nbsp;iOS 5-12</td><td valign="top">&nbsp;29pt</td><td valign="top">&nbsp;1x</td><td valign="top">&nbsp;29 x 29</td><td valign="top">&nbsp;Icon-App-29x29@1x</td></tr>
+<tr><td valign="top">&nbsp;iPad Settings</td><td valign="top">&nbsp;iOS 5-12</td><td valign="top">&nbsp;29pt</td><td valign="top">&nbsp;2x</td><td valign="top">&nbsp;58 x 58</td><td valign="top">&nbsp;Icon-App-29x29@2x</td></tr>
+<tr><td valign="top">&nbsp;iPad Spotlight</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;40pt</td><td valign="top">&nbsp;1x</td><td valign="top">&nbsp;40 x 40</td><td valign="top">&nbsp;Icon-App-40x40@1x</td></tr>
+<tr><td valign="top">&nbsp;iPad Spotlight</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;40pt</td><td valign="top">&nbsp;2x</td><td valign="top">&nbsp;80 x 80</td><td valign="top">&nbsp;Icon-App-40x40@2x</td></tr>
+<tr><td valign="top">&nbsp;iPad App</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;76pt</td><td valign="top">&nbsp;1x</td><td valign="top">&nbsp;76 x 76</td><td valign="top">&nbsp;Icon-App-76x76@1x</td></tr>
+<tr><td valign="top">&nbsp;iPad App</td><td valign="top">&nbsp;iOS 7-12</td><td valign="top">&nbsp;76pt</td><td valign="top">&nbsp;2x</td><td valign="top">&nbsp;152 x 152</td><td valign="top">&nbsp;Icon-App-76x76@2x</td></tr>
+<tr><td valign="top">&nbsp;iPad Pro App</td><td valign="top">&nbsp;iOS 9-12</td><td valign="top">&nbsp;83.5pt</td><td valign="top">&nbsp;2x</td><td valign="top">&nbsp;167 x 167</td><td valign="top">&nbsp;Icon-App-83.5x83.5@2x</td></tr>
+<tr><td valign="top">&nbsp;App Store</td><td valign="top">&nbsp;iOS</td><td valign="top">&nbsp;1024pt</td><td valign="top">&nbsp;1x</td><td valign="top">&nbsp;1024 x 1024</td><td valign="top">&nbsp;ItunesArtwork@2x</td></tr>
+</table>
+Finally, import the 3x iTunesArtwork.png files to the project as these will also be used in the Info.plist file.
+<br /><br />
+<i>Update Info plist config file</i><br />
+On the Mac, with SimpsonsTrivia.IOS still open.  Double click Info.plist.  Manually enter the relevant project information.  Scroll down to iTunes Artwork and click placeholders for the iTunes artwork.  Import both files:
+<a href="https://1.bp.blogspot.com/-BIGJEfJ6UGw/W_lZDztG4YI/AAAAAAAAFB4/60RzwZB4g0ox7f7ulM1kxKmOZNSgsRjZACLcBGAs/s1600/Screen%2BShot%2B2018-11-21%2Bat%2B20.22.30.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-BIGJEfJ6UGw/W_lZDztG4YI/AAAAAAAAFB4/60RzwZB4g0ox7f7ulM1kxKmOZNSgsRjZACLcBGAs/s640/Screen%2BShot%2B2018-11-21%2Bat%2B20.22.30.png" width="98%" height="640" data-original-width="922" data-original-height="1210" /></a>
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CFBundleName</td>
+<td valign="top">&nbsp;Simpsons Trivia</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CFBundleDisplayName</td>
+<td valign="top">&nbsp;Simpsons Trivia</td>
+</tr>
+<tr><td valign="top">&nbsp;CFBundleIdentifier</td>
+<td valign="top">&nbsp;com.steveproxna.simpsons</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CFBundleVersion</td><td valign="top">&nbsp;1.0.0</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CFBundleShortVersionString</td>
+<td valign="top">&nbsp;1.0</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;MinimumOSVersion</td>
+<td valign="top">&nbsp;7.0</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UISupportedInterfaceOrientations</td>
+<td valign="top">&nbsp;UIInterfaceOrientationLandscapeLeft</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UIStatusBarHidden</td>
+<td valign="top">&nbsp;true</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UIRequiresFullScreen</td>
+<td valign="top">&nbsp;true</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UIDeviceFamily</td>
+<td valign="top">&nbsp;1, 2</td>
+</tr>
+<tr><td valign="top">&nbsp;XSAppIconAssets</td>
+<td valign="top">&nbsp;Assets.xcassets/AppIcon.appiconset</td>
+</tr>
+</table>
+<pre class="csharp" name="code">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+  &lt;key&gt;CFBundleName&lt;/key&gt;
+  &lt;string&gt;Simpsons Trivia&lt;/string&gt;
+  &lt;key&gt;CFBundleDisplayName&lt;/key&gt;
+  &lt;string&gt;Simpsons Trivia&lt;/string&gt;
+  &lt;key&gt;CFBundleIdentifier&lt;/key&gt;
+  &lt;string&gt;com.steveproxna.simpsons&lt;/string&gt;
+  &lt;key&gt;CFBundleVersion&lt;/key&gt;
+  &lt;string&gt;1.0.0&lt;/string&gt;
+  &lt;key&gt;CFBundleShortVersionString&lt;/key&gt;
+  &lt;string&gt;1.0&lt;/string&gt;
+  &lt;key&gt;MinimumOSVersion&lt;/key&gt;
+  &lt;string&gt;7.0&lt;/string&gt;
+  &lt;key&gt;UISupportedInterfaceOrientations&lt;/key&gt;
+  &lt;array&gt;
+    &lt;string&gt;UIInterfaceOrientationLandscapeLeft&lt;/string&gt;
+  &lt;/array&gt;
+  &lt;key&gt;UIStatusBarHidden&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;UIRequiresFullScreen&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;UIDeviceFamily&lt;/key&gt;
+  &lt;array&gt;
+    &lt;integer&gt;1&lt;/integer&gt;
+    &lt;integer&gt;2&lt;/integer&gt;
+  &lt;/array&gt;
+  &lt;key&gt;XSAppIconAssets&lt;/key&gt;
+  &lt;string&gt;Assets.xcassets/AppIcon.appiconset&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</pre>
+NOTE: if the AppIcon magically disappears then it is always possible to edit Info.plist file by hand.
+<br /><br />
+<i>Update project references</i><br />
+Add reference to <a href="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\System.Xml.Linq.dll">System.Xml.Linq</a> as required by the game engine for any Serialization of custom XML files.
+<br /><br />
+<i>Update nuget packages</i><br />
+It may be necessary to downgrade to MonoGame.Framework to 3.5.1.1679 in order to load Content from the Content parent folder and play sound effects.  Right click References node | Manage NuGet Packages.  Search for MonoGame.Framework.  Also, install Portable Ninject package as Ninject is required as the <a href="http://steveproxna.blogspot.com/2011/03/xna-and-ioc-container.html">IoC Container</a>.
+<a href="https://3.bp.blogspot.com/-lhwLNtl_vyA/W_XIiSmd5pI/AAAAAAAAFAo/xWEeA3bOSysH9GKHGFHESGv0xvy8USlVACLcBGAs/s1600/Packages.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-lhwLNtl_vyA/W_XIiSmd5pI/AAAAAAAAFAo/xWEeA3bOSysH9GKHGFHESGv0xvy8USlVACLcBGAs/s640/Packages.png" width="98%" height="152" data-original-width="970" data-original-height="230" /></a>
+<br /><br />
+<i>Configure SVN Externals</i><br />
+Follow instructions to setup <a href="http://steveproxna.blogspot.com/2018/07/simpsons-trivia-xna-port.html">SVN Externals</a> and use shared Data content plus Common + Master source code.
+<br />
+DATA<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;IOS</td>
+<td valign="top" colspan="2">&nbsp;<b>Folder :</b>&nbsp;&nbsp;C:\SVN\SimpsonsTrivia\SimpsonsTrivia.IOS\SimpsonsTrivia.IOS
+<br />&nbsp;<b>Action :</b>&nbsp;&nbsp;Right click "Content" folder
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA/SimpsonsTrivia.XNAContent/Data</td>
+</tr>
+</table>
+<br />
+CODE<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;IOS</td>
+<td valign="top" colspan="2">&nbsp;<b>Folder :</b>&nbsp;&nbsp;C:\SVN\SimpsonsTrivia\SimpsonsTrivia.IOS
+<br />&nbsp;<b>Action :</b>&nbsp;&nbsp;Right click "SimpsonsTrivia.IOS" folder
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA.Library/Common</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;URL</td>
+<td valign="top">&nbsp;http://build/svn/SimpsonsTrivia/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA.Library/Master</td>
+</tr>
+</table>
+<br />
+<i>Import Assets content</i><br />
+Manually import game content and set file properties.  Refer to Candy Kid iOS <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">port</a> for more information:
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Folder</b></td>
+<td valign="top">&nbsp;<b>Type</b></td>
+<td valign="top">&nbsp;<b>XNB</b></td>
+<td valign="top">&nbsp;<b>Build Action</b></td>
+<td valign="top">&nbsp;<b>Copy to Output Directory</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Data</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;Content</td>
+<td valign="top">&nbsp;Copy if newer</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Fonts</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;Yes</td>
+<td valign="top">&nbsp;Content</td>
+<td valign="top">&nbsp;Copy if newer</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sound</td>
+<td valign="top">&nbsp;Wav</td>
+<td valign="top">&nbsp;Yes</td>
+<td valign="top">&nbsp;Content</td>
+<td valign="top">&nbsp;Copy if newer</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sound</td>
+<td valign="top">&nbsp;Mp3</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;Content</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Textures</td>
+<td valign="top">&nbsp;All</td>
+<td valign="top">&nbsp;No</td>
+<td valign="top">&nbsp;BundleResource</td>
+<td valign="top">&nbsp;Do not copy</td>
+</tr>
+</table>
+<br />
+<i>Update client files</i><br />
+Finally, delete default Game1.cs code file.  Delete Default.png and GameThumbnail.png images as these not required.
+Import iTunesArtwork@1x iTunesArtwork@2x iTunesArtwork@3x PNG [above] if not already done.
+<br /><br />
+Refer to Candy Kid iOS <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">port</a> as reference to exit game code sample on iOS and to MediaPlayer workaround.  Also, to prevent annoying landscape <i>flipping</i> during game play set display orientation to landscape left only:
+<pre class="csharp" name="code">
+//AnGame.cs
+graphics = new GraphicsDeviceManager(this) {SupportedOrientations = DisplayOrientation.LandscapeLeft};
+</pre>
+<br />
+<b>Deployment</b><br />
+Despite the fact that you are able to complete all game development on Windows PC using Visual Studio 2017, it may actually be easier to complete the iOS deployment on the Mac using Visual Studio for Mac.
+<br /><br />
+Launch the Terminal, checkout the source code and open SimpsonsTrivia.IOS.sln in Visual Studio for Mac.  Right click project | Options | Build | iOS Build.  Ensure that all 3x supported architectures are selected:
+<a href="https://2.bp.blogspot.com/-PHEkpYsVlhA/W_liB6apORI/AAAAAAAAFCE/57-sDZ0_EHoapL3-HJOYXxcSLV5TzYmRgCLcBGAs/s1600/Screenshot%2B2018-11-12%2Bat%2B12.15.20.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-PHEkpYsVlhA/W_liB6apORI/AAAAAAAAFCE/57-sDZ0_EHoapL3-HJOYXxcSLV5TzYmRgCLcBGAs/s640/Screenshot%2B2018-11-12%2Bat%2B12.15.20.png" width="98%" height="483" data-original-width="1600" data-original-height="1207" /></a>
+<br />
+Connect iOS device.  In Visual Studio ensure device selected.  Right click project | Archive for Publishing.
+<a href="https://4.bp.blogspot.com/-uxslT5zKyss/W_liXVU-1sI/AAAAAAAAFCM/eA1yFp1KQ5gpy4-hP2VoSBECbd2a3tJbACLcBGAs/s1600/Screen%2BShot%2B2018-11-12%2Bat%2B20.05.21.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-uxslT5zKyss/W_liXVU-1sI/AAAAAAAAFCM/eA1yFp1KQ5gpy4-hP2VoSBECbd2a3tJbACLcBGAs/s640/Screen%2BShot%2B2018-11-12%2Bat%2B20.05.21.png" width="98%" height="430" data-original-width="923" data-original-height="620" /></a>
+<br />
+Click Sign and Distribute...  Here, there are 3x iOS Distribution channels: Ad Hoc, App Store and Enterprise.  Choose Ad Hoc to save to disk and test locally while App Store will upload IPA to the store available for sale.
+<br /><br />
+The App Store deployment will prompt you to select signing identity and provisioning profile created earlier.    Note: Enterprise is not valid here!
+<br /><br />
+<br />
+<i>Ad Hoc</i><br />
+If you'd like to deploy test the IPA build to iOS device before uploading to App Store then follow these steps:
+<br />
+Choose Ad hoc [Save to disk].  Choose provisioning profile | Publish | Save IPA file | Reveal in Finder.  Launch Xcode | Window | Devices and Simulators.  Select connected iOS device.  Click "+".  Navigate + open IPA file.
+<br /><br />
+<br />
+<i>App Store</i><br />
+Choose App Store [Save to disk and open Application Loader].  Previously, Application Loader simply required Apple developer account credentials to be entered.  Now, Apple requires app specific password to be created:
+<br /><br />
+Sign in <a href="https://appleid.apple.com/account/manage">Apple ID</a> web site.  In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password".  In the popup window enter, for example "SimpsonsTrivia".  Apple will generate an app specific password.  Use information to sign in to Application Loader.  Click "Deliver Your App" | Choose.  Navigate to + upload IPA file.
+<br /><br />
+<br />
+<b>Publication</b><br />
+Complete the App Store deployment to sign IPA binary ready for upload.  In iTunes Connect click the "+" to create New App.  Enter all relevant details.  Create promotional images and upload to App Previews section:
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Device</b></td>
+<td valign="top">&nbsp;<b>Policy</b></td>
+<td valign="top">&nbsp;<b>Image</b></td>
+<td valign="top">&nbsp;<b>Video</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPhone 6.5" Display</td>
+<td valign="top">&nbsp;Optional</td>
+<td valign="top">&nbsp;2688 x 1242</td>
+<td valign="top">&nbsp;1920 x 886</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPhone 5.5" Display</td>
+<td valign="top">&nbsp;Mandatory</td>
+<td valign="top">&nbsp;2208 x 1242</td>
+<td valign="top">&nbsp;1920 x 1080</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPad Pro (3rd Gen) 12.9" Display</td>
+<td valign="top">&nbsp;Optional</td>
+<td valign="top">&nbsp;2732 x 2048</td>
+<td valign="top">&nbsp;1600 x 1200</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;iPad Pro (2nd Gen) 12.9" Display</td>
+<td valign="top">&nbsp;Mandatory</td>
+<td valign="top">&nbsp;2732 x 2048</td>
+<td valign="top">&nbsp;1200 x 900</td>
+</tr>
+</table>
+NOTE: <a href="http://resizeimage.net/">resizeimage.net</a> is a great online tool to help resize the same generic image for different resolutions. 
+<br /><br />
+VIDEO<br />
+Produce a YouTube video to showcase the game.  Use My Movie Maker to resize video to dimensions [above]:
+<br />
+Launch My Movie Maker.  Open MP4 file.  Choose "Save movie" drop down | Create custom setting.  Enter the dimensions.  For height > 1080px try <a href="https://video.online-convert.com/convert-to-mp4">Online Convert</a>: e.g. Screen size to 1600 x 1200 and fame rate: 30fps.
+<br /><br />
+REVIEW<br />
+Once published, if app is "Waiting in Review" for weeks then you have the option to <a href="https://developer.apple.com/contact/app-store/?topic=expedite">expedite</a> this process.  Contact Apple and choose 
+ I would like to "request an expedited app review".  Enter all information + Send.
+<br /><br />
+<u>Summary</u><br />
+That concludes the Simpsons Trivia port to iOS.  These blog posts set the foundation for the next video game!
+</span>

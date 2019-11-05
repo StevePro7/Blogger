@@ -1,0 +1,247 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="http://steveproxna.blogspot.co.uk/2015/05/candy-kid-video-game.html">post</a>, we introduced Candy Kid: a simple maze chase video game re-written in XNA 4.0.
+<br />
+The game targets <a href="https://en.wikipedia.org/wiki/Windows_Phone_7">WP7</a> by default but we would like to port to other mobile platforms e.g. <a href="https://itunes.apple.com/app/retro-candy-kid/id1055478836">iOS</a> / <a href="https://play.google.com/store/apps/details?id=com.steveproxna.candykid">Android</a>.
+<br /><br />
+<a href="http://www.gamasutra.com/view/feature/192209/from_xna_to_monogame.php?print=1">MonoGame</a> implements XNA 4.0 API and can be used to port C#/.NET code: On Windows PC, MonoGame integrates directly in Visual Studio 2012.  On Mac OS/X, MonoGame integrates well with Xamarin Studio.
+<table width="97%" border="1"><tr><td valign="top">&nbsp;<b>Machine</b>&nbsp;</td><td valign="top">&nbsp;<b>Platform</b>&nbsp;</td><td valign="top">&nbsp;<b>IDE</b>&nbsp;</td><td valign="top">&nbsp;<b>Framework</b>&nbsp;</td><td valign="top">&nbsp;<b>Language</b>&nbsp;</td></tr><tr><td valign="top">&nbsp;Windows PC</td><td valign="top">&nbsp;WP7</td><td valign="top">&nbsp;Visual Studio 2010</td><td valign="top">&nbsp;XNA 4.0</td><td valign="top">&nbsp;C#/.NET</td></tr><tr><td valign="top">&nbsp;Windows PC</td><td valign="top">&nbsp;Android</td><td valign="top">&nbsp;Visual Studio 2012</td><td valign="top">&nbsp;MonoGame</td><td valign="top">&nbsp;C#/.NET</td></tr><tr><td valign="top">&nbsp;Mac OS/X</td><td valign="top">&nbsp;iOS</td><td valign="top">&nbsp;Xamarin Studio</td><td valign="top">&nbsp;MonoGame</td><td valign="top">&nbsp;C#/.NET</td></tr></table>
+<br />
+This post outlines the main tasks to port Candy Kid to Android platform; the next post will focus on iOS.
+<a href="http://4.bp.blogspot.com/-3di0Oxi9fMY/VcHj28p2JUI/AAAAAAAADkU/5GN8_BoVdxw/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-3di0Oxi9fMY/VcHj28p2JUI/AAAAAAAADkU/5GN8_BoVdxw/s640/MonoGameLogo.png" width="98%" /></a>
+<br /><br />
+Let's check it out! 
+<br /><br />
+<u>Setup</u><br />
+This post assumes you have the <a href="http://developer.android.com/sdk/index.html">Android SDK</a> installed and C:\Android\sdk\platform-tools\ added to the Windows PC Environment path.  Also, all Android devices should be setup for <a href="http://developer.android.com/tools/extras/oem-usb.html#InstallingDriver">USB Debugging</a> enabled.
+<br /><br />
+<b>MonoGame</b><br />
+Download and install <a href="http://www.monogame.net/releases/v3.4/MonoGameSetup.exe">MonoGame</a> for Visual Studio.  <a href="http://www.plungeinteractive.com/blog/2012/12/19/getting-started-with-monogame-for-android-on-windows">Here</a> is tutorial to create cross platform MonoGame.
+<br /><br />
+<b>Xamarin Studio</b><br />
+Download and install <a href="http://xamarin.com/download">Xamarin Studio</a>.  Setup an account; a trial version can be used just to get started!
+<br />
+Launch Xamarin Studio | Click Login.  Enter your email + password and click the "Create Account" link.
+<br /><br />
+From here you will be prompted to create a Xamarin account: enter name, email address and password.  Check "Start 30-day Xamarin trial immediately".  Click Accept.  Log in to Xamarin Studio to activate a/c.
+<br /><br />
+<b>Visual Studio</b><br />
+Launch Visual Studio 2012.  File | New | Project.  Expand Templates | Visual C# | MonoGame.
+<br />
+Choose MonoGame Android Project.  Name: CandyKid.Android.  Choose project Location.  OK.
+<a href="http://2.bp.blogspot.com/-N117WzBHtrg/VcHhc9QMg_I/AAAAAAAADjk/ydji_bTObNc/s1600/01-MonoGameProject.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-N117WzBHtrg/VcHhc9QMg_I/AAAAAAAADjk/ydji_bTObNc/s640/01-MonoGameProject.png" width="98%" /></a>
+<br />
+Build solution.  Error: <i>Your app is too large to be developed with Xamarin Android Starter edition.</i>
+<br />
+Choose Begin a Trial from popup.  Xamarin then activates the trial version.  Rebuild solution fine.
+<br /><br />
+Before writing any new code or porting any existing, ensure the following tasks are completed:
+<ul>
+<li>Rename Game1.cs to AnGame.cs
+<li>Rename all references from Game1 to AnGame
+<li>Use default root namespace of WindowsGame
+<li>Update Activity1.cs to construct new AnGame
+<li>Update Activity attribute: set Label="Candy Kid"
+</ul>
+<b>Libraries</b><br />
+Candy Kid references the following libraries: <a href="http://ninject.org">Ninject</a> for <a href="http://steveproxna.blogspot.co.uk/2011/03/xna-and-ioc-container.html">IoC Container</a> and Xml.Linq for Serialization.
+<br />
+Note: MonoGame Android Project should automatically add reference to System.Xml.Linq by default.
+<br /><br />
+In Visual Studio 2012, right click CandyKid.Android project References | Manage NuGet Packages
+<br />
+Enter "Portable Ninject" into Search bar top right | Select "Ninject for Portable Class Libraries"
+<a href="http://4.bp.blogspot.com/-pBaUy5--mfE/VcHiDWotePI/AAAAAAAADj0/2wAQYIGK-EU/s1600/02-PortableNinject.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-pBaUy5--mfE/VcHiDWotePI/AAAAAAAADj0/2wAQYIGK-EU/s640/02-PortableNinject.png" width="98%" /></a>
+<br />
+Click Install button
+<br /><br />
+<b>Project Properties</b><br />
+Right click CandyKid.Android project.  Choose Properties.  Ensure the following options are set on tabs:
+<br /><br />
+<i>Application</i>
+<a href="http://2.bp.blogspot.com/-Q2JBZmrNaA0/VcHiVqJpLAI/AAAAAAAADj8/o3EtT_1KrRo/s1600/03-ApplicationTab.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-Q2JBZmrNaA0/VcHiVqJpLAI/AAAAAAAADj8/o3EtT_1KrRo/s640/03-ApplicationTab.png" width="98%" /></a>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Assembly Name</td><td valign="top">&nbsp;WindowsGame</td></tr>
+<tr><td valign="top">&nbsp;Default namespace</td><td valign="top">&nbsp;WindowsGame</td></tr>
+<tr><td valign="top">&nbsp;Compile using Android version</td><td valign="top">&nbsp;API Level 17 (Xamarin.Android v4.2 Support)</td></tr>
+<tr><td valign="top">&nbsp;Minimum Android to target</td><td valign="top">&nbsp;Use Compile using SDK version</td></tr>
+<tr><td valign="top">&nbsp;Target Android version</td><td valign="top">&nbsp;Use Compile using SDK version</td></tr>
+</table>
+<br />
+<i>Android Manifest</i>
+<a href="http://1.bp.blogspot.com/-MOOf5zEQpoA/VcHjEy4xJVI/AAAAAAAADkM/k9gMZI0LGHw/s1600/04-AndroidManifest.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-MOOf5zEQpoA/VcHjEy4xJVI/AAAAAAAADkM/k9gMZI0LGHw/s640/04-AndroidManifest.png" width="98%" /></a>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Application name</td><td valign="top">&nbsp;Candy Kid</td></tr>
+<tr><td valign="top">&nbsp;Package name</td><td valign="top">&nbsp;<i>Enter bundle identifier</i></td></tr>
+<tr><td valign="top">&nbsp;Application icon</td><td valign="top">&nbsp;@drawable/Icon</td></tr>
+<tr><td valign="top">&nbsp;Version number</td><td valign="top">&nbsp;1</td></tr>
+<tr><td valign="top">&nbsp;Version name</td><td valign="top">&nbsp;1.0.0</td></tr>
+</table>
+<br />
+Version number is the Version code on the <a href="https://play.google.com/apps/publish">Google Play</a> Developer console.  This value must be unique.
+<br />
+Version name is the build version.  This value does not need to be unique but it's best practice to do so.
+<br /><br />
+Why?  Because Version name is visible on the Google Play Store whereas Version code is not (internal).
+<br />
+Also, update AssemblyInfo.cs file under Properties folder.  Synchronize "1.0.0" as the AssemblyVersion.
+<br /><br />
+<i>Build</i>
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Conditional compilation symbmols</td><td valign="top">&nbsp;ANDROID</td></tr>
+</table>
+Repeat all settings for both Debug and Release build configurations!
+<br /><br />
+<i>Xamarin Studio</i><br />
+Note: if you are using Xamarin Studio to build and deploy then make subtle Project Properties changes:
+<br /><br />
+Right click Project | Options | Build section | General | Set Target framework: Android 4.2 (Jelly Bean).
+<br />
+At the time of this writing, Android 4.2 (Jelly Bean) is the lowest API version that will build and deploy.
+<a href="http://4.bp.blogspot.com/-VNRa9YaDolM/VjuRQqY_IYI/AAAAAAAADoU/jvyi8yCtHDE/s1600/BuildGeneral.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-VNRa9YaDolM/VjuRQqY_IYI/AAAAAAAADoU/jvyi8yCtHDE/s640/BuildGeneral.jpg" width="98%" /></a>
+<br />
+Also, right click Project | Options | Build section | Android Application.  Set the following Android versions:
+<br />
+Minimum: Android 2.3 (API level 10) and also Target: Automatic - use target framework version (API 17)
+<a href="http://2.bp.blogspot.com/-ZG3DNqjOeYE/VjuRy8g9DZI/AAAAAAAADoc/Dj1W2-7H9ns/s1600/AndroidApplication.jpg" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-ZG3DNqjOeYE/VjuRy8g9DZI/AAAAAAAADoc/Dj1W2-7H9ns/s640/AndroidApplication.jpg" width="98%" /></a>
+<br /><br />
+<b>Code</b><br />
+Import all C#/.NET code from original XNA 4.0 project.  When game exits, ensure this code is added:
+<br />
+Otherwise Android process will not be killed when you <a href="http://forums.xamarin.com/discussion/18156/how-to-close-my-app">close</a> the game and therefore cannot re-launch.
+<pre class="csharp" name="code">
+#if ANDROID
+  Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+  System.Environment.Exit(0);
+#endif
+</pre>
+Also, if you'd like to upsell full version of your game to unlock then <a href="https://www.packtpub.com/books/content/code-sharing-between-ios-and-android">open</a> the url in the native browser:
+<pre class="csharp" name="code">
+#if ANDROID
+  string url = @"Enter URL to full version of game";
+  var intent = new Android.Content.Intent(Android.Content.Intent.ActionView, Android.Net.Uri.Parse(url));
+
+  intent.SetFlags(Android.Content.ActivityFlags.NewTask);
+  Android.App.Application.Context.StartActivity(intent);
+#endif
+</pre>
+Finally, you may like to <a href="http://developer.xamarin.com/guides/android/user_interface/creating_a_splash_screen">create</a> a splash screen activity as the main launcher to override default activity.
+<br />
+The benefit of this is that as soon as the player taps the game icon, the splash launches immediately.
+<br /><br />
+Therefore, add the following file: SplashActivity.cs:
+<pre class="csharp" name="code">
+[Android.App.Activity(
+  Label = "Candy Kid",
+  MainLauncher = true,
+  NoHistory = true,
+  Icon = "@drawable/icon",
+  Theme = "@style/Theme.Splash",
+  AlwaysRetainTaskState = true,
+  LaunchMode = Android.Content.PM.LaunchMode.SingleInstance
+)]
+public class SplashActivity : Android.App.Activity
+{
+  protected override void OnCreate(Android.OS.Bundle bundle)
+  {
+    base.OnCreate(bundle);
+    StartActivity(typeof(Activity1));
+  }
+}
+</pre>
+Update the default Activity1.cs file accordingly:
+<pre class="csharp" name="code">
+[Android.App.Activity(
+  Label = "Candy Kid",
+  NoHistory = true,
+  Icon = "@drawable/icon",
+  Theme = "@style/Theme.Splash",
+  AlwaysRetainTaskState = true,
+  LaunchMode = Android.Content.PM.LaunchMode.SingleInstance,
+  ScreenOrientation = Android.Content.PM.ScreenOrientation.SensorLandscape
+)]
+public class Activity1 : Microsoft.Xna.Framework.AndroidGameActivity
+{
+  protected override void OnCreate(Android.OS.Bundle bundle)
+  {
+    base.OnCreate(bundle);
+    var g = new AnGame();
+    SetContentView((Android.Views.View)g.Services.GetService(typeof(Android.Views.View)));
+    g.Run();
+  }
+}
+</pre>
+<b>Content</b><br />
+MonoGame Android Project templates add both an "Assets" folder and a "Content" folder by default.
+<br />
+However, all <a href="http://stackoverflow.com/questions/16755348/monogame-content-load-file-not-found-exception">Content</a> must live in "Content" subfolder under "Assets" when RootDirectory="Content";
+<br /><br />
+Right click "Assets" folder | Add New Folder | "Content".  Candy Kid uses the 4x following  subfolders:
+<br /><br />
+<i>Data</i><br />
+Contains flat TXT + XML data files to be consumed by the game.  Do not need to be built as XNB files!
+<br />
+Right click data file | Properties | Build Action: AndroidAsset | Copy to Output Directory: Do not copy
+<a href="http://3.bp.blogspot.com/-YEFXyICP5RI/VcHhjyQtu3I/AAAAAAAADjs/JUGcKZX1-RA/s1600/07-BuildProperties.png" imageanchor="1" ><img border="0" src="http://3.bp.blogspot.com/-YEFXyICP5RI/VcHhjyQtu3I/AAAAAAAADjs/JUGcKZX1-RA/s640/07-BuildProperties.png" width="98%" /></a>
+<br />
+<i>Fonts</i><br />
+Copy output from content pipeline XNB file built from spritefont file in the original XNA game project.
+<br />
+Right click font file | Properties | Build Action: AndroidAsset | Copy to Output Directory: Do not copy
+<br /><br />
+<i>Sound</i><br />
+Copy source MP3 files for Songs and WAV files for Sound Effects from the original XNA game project.
+<br />
+Right click sound file | Properties | Build Action: AndroidAsset | Copy to Output Directory: Do not copy
+<br /><br />
+<i>Textures</i><br />
+Copy all source texture images, for example: BMP, JPG, PNG files from the original XNA game project.
+<br />
+Right click texture | Properties | Build Action: AndroidAsset | Copy to Output Directory: Do not copy
+<br /><br />
+<b>Resources</b><br />
+Replace default Icon and Splash images located in Resources / Drawable folder with custom images:
+<table width="97%" border="1">
+<tr><td valign="top">&nbsp;Icon.png</td><td valign="top">&nbsp;72x72</td></tr>
+<tr><td valign="top">&nbsp;Splash.png</td><td valign="top">&nbsp;800x480</td></tr>
+</table>
+<br />
+<b>MonoGame Pipeline</b><br />
+If you require MonoGame to build platform specific XNB content files then use the MonoGame Pipeline:
+<br />
+Start | run | Type MonoGame Pipeline.  MonoGame Pipeline launches.  Choose File | New.  Save project. 
+<br /><br />
+Right click project | Add | Existing Item.  Add an existing content file e.g. Emulogic.spritefont | Open.
+<br />
+Choose "Copy the file to the directory" | OK.  Right click file | Rebuild.  XNB file available in bin folder!
+<br /><br />
+<u>Deployment</u><br />
+Attach Android device to Windows PC.  Choose Start | Run | cmd.  Type "adb devices" shows device listed.
+<br /><br />
+In Visual Studio 2012, select Android device from drop down list next to "Play" button.  Hit F5 to Start.
+<br />
+Android device launches game as <i>Built with evaluation software (this build will only work for 24 hours)</i>
+<br /><br />
+Alternative: switch to Release build Configuration.  Right click project | Export Android Package (.apk)
+<br />
+Start | run | cmd.  Navigate to bin / Release folder.  Type "adb install <i>Package</i>-Signed.apk" to install.
+<br /><br />
+Note: install "standard" .apk file generates Failure [INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION]
+<br /><br />
+<u>Deployment II</u><br />
+Attach Android device to Mac OS/X. Xamarin Studio, click arrow next to build configuration for device.
+<br />
+Click Play button.  Android device launches game as "Evaluation Software".  Build expires within 24hrs.
+<br /><br />
+Alternative: right click CandyKid.Android project | Archive for Publishing.  Click Sign + Distribute button.
+<br />
+Select Android Distribution Channel as "AdHoc" | Next.  Create a New Key or Import an Existing Key.
+<a href="http://2.bp.blogspot.com/-N6cRz8KeONI/VnhT-TA2n-I/AAAAAAAADq4/bQXfM3iKgZA/s1600/Publish01.jpg" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-N6cRz8KeONI/VnhT-TA2n-I/AAAAAAAADq4/bQXfM3iKgZA/s640/Publish01.jpg" width="98%" /></a>
+<br />
+Choose Next to Publish as Ad Hoc.  Click Publish button.  Choose Location | Save.  Enter the key password.
+<br />
+Launch terminal window.  Navigate to the saved folder. Type "adb install Package-Signed.apk" to install.
+<a href="http://1.bp.blogspot.com/-vlwzeFPBkMY/VofiZUbSW4I/AAAAAAAADr4/njikE3gTBC0/s1600/Publish02.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-vlwzeFPBkMY/VofiZUbSW4I/AAAAAAAADr4/njikE3gTBC0/s640/Publish02.png" width="98%" /></a>
+<br /><br />
+<u>Summary</u><br />
+That concludes the Candy Kid port to <a href="https://play.google.com/store/apps/details?id=com.steveproxna.candykid">Android</a> platform.  The next <a href="http://steveproxna.blogspot.co.uk/2015/09/candy-kid-ios-port.html">post</a> will focus on Candy Kid port to <a href="https://itunes.apple.com/app/retro-candy-kid/id1055478836">iOS</a>.
+</span>
