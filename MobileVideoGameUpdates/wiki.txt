@@ -1,5 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
 <!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -68,7 +69,7 @@ Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built te
 
 <!-- >>03.anAndroidSetup<br/> -->
 <br />
-<b>Android</b><br />
+<b>Google</b><br />
 On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
 <br /><br />
 Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
@@ -208,44 +209,51 @@ Select distribution channel: Ad Hoc.  Select Signing Identity or Create Android 
 adb devices -f install *.apk
 </pre>
 
+<br />
 <i>Google Play</i><br />
-Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here.
-<br /><br />
-Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
+Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here:
+<a href="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s1600/03.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s640/03.png" width="98%" height="380" /></a>
+
+TODO export keystore Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
 <br /><br />
 
 
+<br />
+<b>Apple</b>
+<br />
 <!-- Deployment -->
 iOS Archive<br />
 
+<u>Upload</u>
+<br />
 Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing...  Reference Deployment section here.
 <br /><br />
 
-Launch browser.  Sign in to iTunes Connect.  Select published app.  Click "+" Version or Platform | iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.
+<i>Ad Hoc</i><br />
+Select distribution channel: Ad Hoc.  Choose provisioning profile | Publish | Save IPA file | Reveal in Finder.  Launch Xcode | Window | Devices + Simulators.  Select iOS device.  Click "+".  Navigate and open IPA file.
 <br /><br />
 
-Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password"
-
-<br /><br />
-Visual Studio for Mac | Archive for Publishing... | App Store | Upload.  Select existing provisioning profile generated with Distribution certificate.  Next.  Enter Apple ID and App Specific Password generated [above].  Next | Publish.  Choose file name | Save IPA
-<br /><br />
-Note: if prompted, enter the keychain password
-<br /><br />
-IMPORTANT: it seems that this new process streamlines and overrides previous upload via the Application Loader!!
+<i>App Store</i><br />
+Launch browser.  Sign in to iTunes Connect.  Select published app e.g. 3D City.  Click "+" Version or Platform.  Choose iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.  Save data.
 <br /><br />
 
-Otherwise could choose the other way but instead of choosing Upload, choose Export.  Produce the IPA and upload via the Application Loader as before:
-Launch Application Loader.  Enter Apple ID and App Specific Password generated [above].  Choose IPA file built.  Next.  
+Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password".  Navigate back to Launch Visual Studio for Mac.  There are 2x options to archive and upload IPA file to Apple:
+<br /><br />
+1. Upload<br />
+Select distribution channel: App Store | Upload.  Choose provisioning profile.  Enter Apple ID and App Specific Password.  Next | Publish. Choose file name | Save IPA.  This process should upload build to iTunes Connect.
 <br /><br />
 
-Once build has completed processing you may select in iTunes Connect.  Save.  Complete the following questions:
+2. Export.<br />
+<i><b>
+Select distribution channel: App Store | Export.  Choose provisioning profile.  Next | Publish.  Choose file name | Save IPA.  Launch Application Loader.  Enter Apple ID and App Specific Password.  Choose IPA file built.  Next.  This process should upload build to iTunes Connect.
+</b></i>
+<br /><br />
+
+Finally, once build has completed processing, select in iTunes Connect.  Save.  Complete the following questions info:
 01. Export Compliance NO
 02. Advertising Identifier
 Does this app use the Advertising Identifier (IDFA)? NO
 Submit
-<br /><br />
-Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password". In the popup window enter, for example "SimpsonsTrivia". Apple will generate an app specific password. Use information to sign in to Application Loader. Click "Deliver Your App" | Choose. Navigate to + upload IPA file.
-
 <br /><br />
 
 </span>
