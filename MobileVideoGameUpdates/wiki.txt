@@ -1,53 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
-<br />
-<u>Upload</u>
-<br />
-
-Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing.  After the archive is generated choose Sign and Distribute...
-<br /><br />
-
-<i>Ad Hoc</i><br />
-Select distribution channel: Ad Hoc.  Choose provisioning profile | Publish | Save IPA file | Reveal in Finder.  Launch Xcode | Window | Devices + Simulators.  Select iOS device.  Click "+".  Navigate and open IPA file.
-<br /><br />
-
-<i>App Store</i><br />
-Launch browser.  Sign in to <a href="https://itunesconnect.apple.com">iTunes</a> Connect.  Select published app e.g. 3D City.  Click "+" Version or Platform.  Choose iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.  Save data.
-<br /><br />
-
-Sign in <a href="https://appleid.apple.com/#!&page=signin">Apple ID</a> web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password".  In the popup window enter, for example "3DCity" | Create.  Apple will generate a new app specific password.  There are now 2x options to upload IPA file to Apple:
-<br /><br />
-
-1. Upload<br />
-Select distribution channel: App Store | Upload.  Choose provisioning profile.  Enter Apple ID and App Specific Password.  Next | Publish. Choose file name | Save IPA.  This process should upload build to iTunes Connect.
-<br /><br />
-TODO : do I want to add AppStoreConnect.png pic here...??
-<br /><br />
-
-2. Export.<br />
-Select distribution channel: App Store | Export.  Choose provisioning profile.  Next | Publish.  Choose file name | Save IPA.  Launch Application Loader.  Enter Apple ID and App Specific Password.  Choose IPA file built.  Next.  This process should upload build to iTunes Connect.
-<br /><br />
-Select distribution channel: App Store | Export.  Choose provisioning profile.  Next | Publish.  Choose file name | Save IPA.  Launch Application Loader.  Enter Apple ID and App Specific Password.  Choose IPA file built.  Next.  This process should upload build to iTunes Connect.
-<br /><br />
-
-IMPORTANT<br />
-For more information Reference Deployment section here. [Simpsons Trivia iOS port]
-<br /><br />
-
-Finally, once build has completed processing, select in iTunes Connect.  Save.  Complete the following questions info:
-01. Export Compliance NO
-02. Advertising Identifier
-Does this app use the Advertising Identifier (IDFA)? NO
-Submit
-<br /><br />
-
-
-
-
-
-<br /><br />
-
 <!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
@@ -312,27 +265,28 @@ http://community.monogame.net/t/monogame-ios-idictionary-byte-t-crash/11952
 <u>Upload</u>
 <br />
 
-Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing...  Reference Deployment section here.
+Launch Visual Studio for Mac.  Open MonoGame iOS project.  Attach iOS device.  Select Release configuration.  Clean and rebuild solution.  Right click project | Archive for Publishing.  After the archive is generated choose Sign and Distribute...
 <br /><br />
 
 <i>Ad Hoc</i><br />
 Select distribution channel: Ad Hoc.  Choose provisioning profile | Publish | Save IPA file | Reveal in Finder.  Launch Xcode | Window | Devices + Simulators.  Select iOS device.  Click "+".  Navigate and open IPA file.
 <br /><br />
 
+<br />
 <i>App Store</i><br />
-Launch browser.  Sign in to iTunes Connect.  Select published app e.g. 3D City.  Click "+" Version or Platform.  Choose iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.  Save data.
+Launch browser.  Sign in to <a href="https://itunesconnect.apple.com">iTunes</a> Connect.  Select published app e.g. 3D City.  Click "+" Version or Platform.  Choose iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.  Save data.
 <br /><br />
 
-Sign in Apple ID web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password".  Navigate back to Launch Visual Studio for Mac.  There are 2x options to archive and upload IPA file to Apple:
+Sign in <a href="https://appleid.apple.com/#!&page=signin">Apple ID</a> web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password".  In the popup window enter, for example "3DCity" | Create.  Apple will generate a new app specific password.
 <br /><br />
-1. Upload<br />
+
 Select distribution channel: App Store | Upload.  Choose provisioning profile.  Enter Apple ID and App Specific Password.  Next | Publish. Choose file name | Save IPA.  This process should upload build to iTunes Connect.
 <br /><br />
+TODO : do I want to add AppStoreConnect.png pic here...??
+<br /><br />
 
-2. Export.<br />
-<i><b>
-Select distribution channel: App Store | Export.  Choose provisioning profile.  Next | Publish.  Choose file name | Save IPA.  Launch Application Loader.  Enter Apple ID and App Specific Password.  Choose IPA file built.  Next.  This process should upload build to iTunes Connect.
-</b></i>
+IMPORTANT<br />
+For more background information Reference Deployment section here. [Simpsons Trivia iOS port]
 <br /><br />
 
 Finally, once build has completed processing, select in iTunes Connect.  Save.  Complete the following questions info:
@@ -341,6 +295,7 @@ Finally, once build has completed processing, select in iTunes Connect.  Save.  
 Does this app use the Advertising Identifier (IDFA)? NO
 Submit
 <br /><br />
+
 
 
 
