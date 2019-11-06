@@ -1,5 +1,20 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
+TROUBLESHOOTING<br />
+If you receive any of the following crashes while attempting to run latest iOS build on device then read on:
+<br /><br />
+<i>Got a SIGABRT while executing native code.  This usually indicates a fatal error in the mono runtime used</i><br />
+For some strange reason the following code with IDictionary&lt;Byte, T&gt; worked previously but now crashes.
+<pre class="csharp" name="code">
+private IDictionary&lt;Byte, Vector2&gt; BasePositions { get; private set; }
+private IDictionary&lt;Byte, Rectangle&gt; BasePositions { get; private set; }
+</pre>
+Fortunately, there is a workaround to this issue: simply use the Int16 type as the key instead of type Byte.
+<br />
+
+<br /><br />
+
 <!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">Android</a> and <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">iOS</a>.  In 2018, we built <a href="http://steveproxna.blogspot.com/2019/08/3d-city-code-complete-ii.html">3D City</a> "Shoot 'em up" using similar process.
 <br /><br />
