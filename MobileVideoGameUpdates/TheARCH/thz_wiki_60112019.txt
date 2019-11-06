@@ -1,11 +1,12 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
 <!-- >>01.anINTRO<br/> -->
-In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">Android</a> and <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">iOS</a>.  In 2018, we built <a href="http://steveproxna.blogspot.com/2019/08/3d-city-code-complete-ii.html">3D City</a> "Shoot 'em up" using similar process.
+In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on iOS and Android.  In 2018, we built 3D City "Shoot 'em up" using similar process.
 <br /><br />
-Now both Google and Apple require apps + games be 64-bit compliant.  Apple will stop support for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to target minimum Android 9 (API level 28) or higher.
+Now both Apple and Google require apps + games be 64-bit compliant.  Apple will stop support for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to target minimum Android 9 (API level 28) or higher.
 <br /><br />
-All these factors mandate upgrades to our mobile games to be rebuilt using latest version of <a href="http://community.monogame.net/t/monogame-3-7-1-release/11173">MonoGame</a> 3.7.
+All these factors mandate upgrades to our mobile games to be rebuilt using latest version of MonoGame 3.7.
 <!--
 <a href="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s640/MonoGameLogo.png" width="98%" height="135" data-original-width="218" data-original-height="46" /></a>
 -->
@@ -14,17 +15,27 @@ Let's check it out!
 <br /><br />
 
 TL;DR<br />
-Too Long; Didn't Read
-<ol>
-<li>Install all pre-requisite software on Windows + Mac.  Check for updates to get latest dependencies</li>
-<li>Launch Android + iOS projects.  Update all settings to increment build version numbers and codes</li>
-<li>Rebuild + upload the updated binaries to relevant online stores then tag all archived source code</li>
-</ol>
-
+Too Long; Don't Read
 <br />
+<table width="96%" border="1">
+<tr>
+<td valign="top">
+&nbsp;1. Install all pre-requisite software on Windows and Mac<br />
+&nbsp;2. Check for updates to get latest builds of all software<br />
+&nbsp;3. Launch Android and iOS projects nad update all settings<br />
+</td>
+<td valign="top">
+&nbsp;4. Increment all build version numbers and version codes<br />
+&nbsp;5. Rebuild and archive updated binaries to relevant stores<br />
+&nbsp;6. Tag updated source code and binaries into repositories<br />
+</td>
+</tr>
+</table>
+<br />
+
 <!-- >>02.anPRE-Reqs<br/> -->
 <u>Pre-Requisites</u><br />
-Reference previous instructions for <a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html">Android</a> and <a href="http://steveproxna.blogspot.com/2018/11/simpsons-trivia-ios-port.html">iOS</a> ports.  This post assumes software already published.  Install the following software on Windows and Mac.  Install "Mobile development with .NET" for Xamarin.
+Reference previous instructions for Android and iOS ports.  This post assumes software already published.  Install the following software on Windows and Mac.  Install "Mobile development with .NET" for Xamarin.
 <table width="96%" border="1">
 <tr>
 <td valign="top">&nbsp;&nbsp;<b>Windows</b>&nbsp;&nbsp;&nbsp;[Android]</td>
@@ -33,18 +44,18 @@ Reference previous instructions for <a href="http://steveproxna.blogspot.com/201
 <tr>
 <td valign="top">
 <ul>
-<li>Install <a href="https://developer.android.com/studio">Android Studio</a></li>
-<li>Install <a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202017&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio</a> 2017</li>
-<li>Install <a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16">Visual Studio</a> 2019</li>
-<li>Install <a href="https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/MonoGameSetup.exe">MonoGame</a>for Visual Studio</li>
+<li>Install Android Studio</li>
+<li>Install Visual Studio 2017</li>
+<li>Install Visual Studio 2019</li>
+<li>Install MonoGame for Visual Studio</li>
 </ul>
 </td>
 <td valign="top">
 <ul>
-<li>Install <a href="https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_11.2/Xcode_11.2.xip">Xcode</a> 11.2</li>
-<li>Install <a href="https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_11/Command_Line_Tools_for_Xcode_11.dmg">Xcode</a> Tools</li>
-<li>Install <a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio-mac/?sku=communitymac&rel=16">Visual Studio</a> for Mac</li>
-<li>Install <a href="https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/MonoGame.pkg">MonoGame</a> for MacOS</li>
+<li>Install Xcode 11.2</li>
+<li>Install Xcode Tools</li>
+<li>Install Visual Studio for Mac</li>
+<li>Install MonoGame for MacOS</li>
 </ul>
 </td>
 </tr>
@@ -53,7 +64,7 @@ Note: Check for updates on all Visual Studio IDEs to get latest the frameworks t
 <br /><br />
 
 IMPORTANT<br/>
-If, for any reason, there are issues updating any IDEs mentioned here then simply Run as <a href="https://stackoverflow.com/questions/43042032/android-studio-fails-to-install-update-error-failed-to-read-or-create-install">Administrator</a>.
+If, for any reason, there are issues updating any IDEs mentioned here then simply Run as Administrator.
 <br /><br />
 
 <!-- >>07.MonoGamePipeline<br/> -->
@@ -71,10 +82,10 @@ Import any ASCII text files or XML configuration files.  Set the Build Action in
 Typically import pre-built XNB binary files from previous games e.g. Emulogic.xnb.  Set Build Action to Copy.
 <br /><br />
 <i>Sound</i><br />
-Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strange as built sound effects.  <a href="https://online-audio-converter.com">Convert</a> WAV files to MP3.  Set Build Action to Build.  Set Processor to Song for music otherwise set to Sound Effect.
+Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strange as built sound effects.  Convert WAV files to MP3.  Set Build Action to Build.  Set Processor to Song for music otherwise set to Sound Effect.
 <br /><br />
 <i>Textures</i><br />
-Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  <a href="https://jpg2png.com">Convert</a> JPG files to PNG.  Also, <a href="https://www.zamzar.com/convert/bmp-to-png">convert</a> BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
+Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  Convert JPG files to PNG.  Also, convert BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
 <br /><br />
 
 <!-- >>03.anAndroidSetup<br/> -->
@@ -96,11 +107,9 @@ Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  
 <br />
 
 Actually, it may be easier to align Android SDK location in Android Studio to that of Visual Studio because all Android game code will be built using MonoGame from Visual Studio.  Therefore, update Android SDK path:
-
 <!-- -->
-<a href="https://2.bp.blogspot.com/-xF13tHxzGZg/XcKIFZZYpCI/AAAAAAAAF1Y/dKGXBtRcwfUQoJ_v-qMrmx9Kj8Pzxc2swCLcBGAsYHQ/s1600/AndroidSDK.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-xF13tHxzGZg/XcKIFZZYpCI/AAAAAAAAF1Y/dKGXBtRcwfUQoJ_v-qMrmx9Kj8Pzxc2swCLcBGAsYHQ/s640/AndroidSDK.png" width="98%" height="380" /></a>
+<a href="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s1600/AndroidSDK.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-1wpmV7gFQ2M/Xbl-q2npoRI/AAAAAAAAFx8/9SRdxeDSiZk_UAsgsvZR12DVFF1IR5EvwCLcBGAsYHQ/s640/AndroidSDK.png" width="98%" height="380" /></a>
 <!-- -->
-
 <br />
 Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
 <br /><br />
@@ -111,6 +120,14 @@ Currently VS2019 does <b>not</b> include MonoGame project templates.  Therefore,
 <br /><br />
 Assume previous version 3D City 1.0.0 already exists on Google Play.  Import existing content per previous build under the Content folder as explained above.  Import existing code.  Right click project and Properties:
 <br /><br />
+
+
+<!-- OLD TODO DELETE
+<br />
+ >>04.anAndroidLaunch<br/>
+Launch existing MonoGame Android project in Visual Studio 2017 e.g. 3D City.  Right click project.  Choose Properties.  Assume previous version 1.0.0 already exists on Google Play so upgrade Android version data:
+<br /><br />
+ -->
 
 
 <i>Application</i><br />
@@ -188,7 +205,7 @@ Click the Advanced button.  <a href="https://stackoverflow.com/questions/5453746
 <br /><br />
 
 <!-- >>05.anAndroidLatest<br/> -->
-Currenlty, Android 10.0 (Q) is available although this API level 29 seems to be missing from Visual Studio Tools menu | Android | Android SDK Manager.  However, here is a workaround to <a href="https://superuser.com/questions/1447005/cant-update-android-sdk-build-tools-in-visual-studio-2019">circumvent</a> the problem:
+Currenlty, Android 10.0 (Q) is available although this API level 29 seems to be missing from Visual Studio Tools menu | Android | Android SDK Manager.  However, here is a workaround to circumvent the problem:
 <br /><br />
 
 Launch Android Studio.  Install Android 10 (API level 29) as above.  Ensure <i>android-29</i> exists in Android SDK "platforms" folder and <i>29.0.2</i> in "build-tools".  Launch Visual Studio 2019.  Update Android version in project:
@@ -218,8 +235,7 @@ adb devices -f install *.apk
 Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here:
 <a href="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s1600/03.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s640/03.png" width="98%" height="380" /></a>
 
-TODO<br />
-Export keystore Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
+TODO export keystore Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
 <br /><br />
 
 
@@ -227,16 +243,14 @@ Export keystore Note: previously created signing identity from Keystore must be 
 <br />
 <b>Apple</b>
 <br />
-TODO<br />
-INTRO about updates to Apple e.g. Apple will stop support for 32-bit on iOS 11.0... plus the last update I did for screen resolution??  Or was it just because I hadn't updated app coming up to 2yrs??
+TODO INTRO about updates to Apple e.g. Apple will stop support for 32-bit on iOS 11.0... plus the last update I did for screen resolution??  Or was it just because I hadn't updated app coming up to 2yrs??
 
 <br /><br />
 
 <u>Upgrade</u><br />
 Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio.  Instead, close and re-open in VS2019.
 <br /><br />
-TODO<br />
- "Pair to Mac" in VS2019 IMPORTANT If you are prompted to upgrade Xamarin iOS then ensure you do so both Windows and Mac aligned
+TODO "Pair to Mac" in VS2019 IMPORTANT If you are prompted to upgrade Xamarin iOS then ensure you do so both Windows and Mac aligned
 <br /><br />
 Assume previous version 3D City 1.0.0 already exists on the App Store. Import existing content per previous build under the Content folder as explained above. Import existing code. Right click project and Properties:
 <br /><br />
@@ -268,8 +282,7 @@ Sign in <a href="https://appleid.apple.com/#!&page=signin">Apple ID</a> web site
 
 Select distribution channel: App Store | Upload.  Choose provisioning profile.  Enter Apple ID and App Specific Password.  Next | Publish. Choose file name | Save IPA.  This process should upload build to iTunes Connect.
 <br /><br />
-TODO<br />
-Do I want to add AppStoreConnect.png pic here...??
+TODO : do I want to add AppStoreConnect.png pic here...??
 <br /><br />
 
 IMPORTANT<br />
@@ -284,6 +297,6 @@ Submit
 <br /><br />
 
 
-TODO<br />
-Summary - now setup for other MonoGame features e.g. 3D graphics: models + shaders not only Windows but mobile too
+
+
 </span>
