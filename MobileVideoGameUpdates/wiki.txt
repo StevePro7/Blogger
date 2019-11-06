@@ -1,24 +1,10 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
-TROUBLESHOOTING<br />
-If you receive any of the following crashes while attempting to run latest iOS build on device then read on:
-<br /><br />
-<i>Got a SIGABRT while executing native code.  This usually indicates a fatal error in the mono runtime used</i><br />
-For some strange reason the following code with IDictionary&lt;Byte, T&gt; worked previously but now crashes.
-<pre class="csharp" name="code">
-private IDictionary&lt;Byte, Vector2&gt; BasePositions { get; private set; }
-private IDictionary&lt;Byte, Rectangle&gt; BasePositions { get; private set; }
-</pre>
-Fortunately, there is a workaround to this issue: simply use the Int16 type as the key instead of type Byte.
-<br />
-
-<br /><br />
-
 <!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">Android</a> and <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">iOS</a>.  In 2018, we built <a href="http://steveproxna.blogspot.com/2019/08/3d-city-code-complete-ii.html">3D City</a> "Shoot 'em up" using similar process.
 <br /><br />
-Now both Google and Apple require apps + games be 64-bit compliant.  Apple will stop <a href="https://www.macworld.com/article/3163248/the-future-of-ios-is-64-bit-only-apple-to-stop-support-of-32-bit-apps.html">support</a> for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to target <a href="https://android-developers.googleblog.com/2019/02/expanding-target-api-level-requirements.html">minimum</a> Android 9 (API level 28) or higher.
+Now both Google and Apple require apps + games be 64-bit compliant.  Apple will stop <a href="https://www.macworld.com/article/3163248/the-future-of-ios-is-64-bit-only-apple-to-stop-support-of-32-bit-apps.html">support</a> for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to <a href="https://android-developers.googleblog.com/2019/02/expanding-target-api-level-requirements.html">target</a> minimum Android 9 (API level 28) or higher.
 <br /><br />
 All these factors mandate upgrades to our mobile games to be rebuilt using latest version of <a href="http://community.monogame.net/t/monogame-3-7-1-release/11173">MonoGame</a> 3.7.
 <!--
@@ -95,7 +81,7 @@ Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built te
 <!-- >>03.anAndroidSetup<br/> -->
 <br />
 <b>Google</b><br />
-On November 1, 2019 apps + games on Google Play required to target Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
+On November 1, 2019 apps + games on Google Play required to <a href="https://android-developers.googleblog.com/2019/02/expanding-target-api-level-requirements.html">target</a> Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
 <br /><br />
 Therefore, install Android 9 (API level 28) or higher.  Launch Android Studio.  File | Settings... | Appearance and Behavior | System Settings | Android SDK.  Note default location may be different from Visual Studio:
 <table width="97%" border="1">
@@ -260,28 +246,79 @@ Here is a good overall guide for <a href="https://docs.microsoft.com/en-us/xamar
 <br />
 <b>Apple</b>
 <br />
-TODO<br />
-INTRO about updates to Apple e.g. Apple will stop support for 32-bit on iOS 11.0... plus the last update I did for screen resolution??  Or was it just because I hadn't updated app coming up to 2yrs??
-TODO<br />
-Remember to add teh picture about Xcode 11.2 on developer.apple.com and the PIC
+Apple will stop <a href="https://www.macworld.com/article/3163248/the-future-of-ios-is-64-bit-only-apple-to-stop-support-of-32-bit-apps.html">support</a> for 32-bit apps on iOS 11.0.  Therefore, any 32-bit apps will need to be upgraded to 64-bit.  Also, Apple may require paid apps be upgraded within every two years to remain on the App Store.
+
+<br /><br />
+Sign in <a href="https://developer.apple.com">developer</a>.apple.com.  Ensure all developer provisioning profiles use certificates for Xcode 11 or later:
+<a href="https://1.bp.blogspot.com/-jY3mjAatmMk/XcMczxa2HhI/AAAAAAAAF1w/itxG8Ntli1c7PZZgOuHgyriGTkTCVGQ8gCLcBGAsYHQ/s1600/Profiles.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-jY3mjAatmMk/XcMczxa2HhI/AAAAAAAAF1w/itxG8Ntli1c7PZZgOuHgyriGTkTCVGQ8gCLcBGAsYHQ/s640/Profiles.png" width="98%" height="420" /></a>
+
 <br /><br />
 
 <u>Upgrade</u><br />
-Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio.  Instead, close and re-open in VS2019.
+Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio and will corrupt Visual Studio for Mac.  
+<a href="https://1.bp.blogspot.com/-i2x-ExDEczs/XcMiBovpHuI/AAAAAAAAF18/fcdM83rA7FIPDCIrNblopqxOw2buWLswACLcBGAsYHQ/s1600/MonoMismatch.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-i2x-ExDEczs/XcMiBovpHuI/AAAAAAAAF18/fcdM83rA7FIPDCIrNblopqxOw2buWLswACLcBGAsYHQ/s640/MonoMismatch.png" width="98%" height="480" /></a>
+
 <br /><br />
-TODO<br />
- "Pair to Mac" in VS2019 IMPORTANT If you are prompted to upgrade Xamarin iOS then ensure you do so both Windows and Mac aligned
+
+Instead, close and re-open in VS2019.  Note: if prompted to install and update Xamarin.iOS then that is OK.
+<a href="https://1.bp.blogspot.com/--E9DyDeyThc/XcMjbIK4QqI/AAAAAAAAF2I/C0NdtNLpNBU7p-kMNJOz5ow9ZQs0Wo6igCLcBGAsYHQ/s1600/Xamarin.iOS.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/--E9DyDeyThc/XcMjbIK4QqI/AAAAAAAAF2I/C0NdtNLpNBU7p-kMNJOz5ow9ZQs0Wo6igCLcBGAsYHQ/s640/Xamarin.iOS.png" width="98%" height="480" /></a>
+
 <br /><br />
+
 Assume previous version 3D City 1.0.0 already exists on the App Store. Import existing content per previous build under the Content folder as explained above. Import existing code. Right click project and Properties:
+
+<a href="https://3.bp.blogspot.com/-ZdnxkakKSFY/XcMlQFPVKOI/AAAAAAAAF2U/kpNSurCdWGcm2RxQolwdo2R8cIDpf5D1gCLcBGAsYHQ/s1600/iOSbuild.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZdnxkakKSFY/XcMlQFPVKOI/AAAAAAAAF2U/kpNSurCdWGcm2RxQolwdo2R8cIDpf5D1gCLcBGAsYHQ/s640/iOSbuild.png" width="98%" height="374" /></a>
+
 <br /><br />
 
-Project Properties<br />
-Info.plist<br />
-TODO ISSUE this will go into the TROUBLESHOOTING section<br />
-http://community.monogame.net/t/monogame-ios-idictionary-byte-t-crash/11952
+<i>Info.plist</i><br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CFBundleName</td>
+<td valign="top">&nbsp;3D City</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CFBundleDisplayName</td>
+<td valign="top">&nbsp;3D City</td>
+</tr>
+<tr><td valign="top">&nbsp;CFBundleIdentifier</td>
+<td valign="top">&nbsp;com.steveproxna.3dcity</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CFBundleVersion</td>
+<td valign="top">&nbsp;1.1.0</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CFBundleShortVersionString</td>
+<td valign="top">&nbsp;1.1</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;MinimumOSVersion</td>
+<td valign="top">&nbsp;7.0</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UISupportedInterfaceOrientations</td>
+<td valign="top">&nbsp;UIInterfaceOrientationLandscapeLeft</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UIStatusBarHidden</td>
+<td valign="top">&nbsp;true</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UIRequiresFullScreen</td>
+<td valign="top">&nbsp;true</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;UIDeviceFamily</td>
+<td valign="top">&nbsp;1, 2</td>
+</tr>
+<tr><td valign="top">&nbsp;XSAppIconAssets</td>
+<td valign="top">&nbsp;Assets.xcassets/AppIcon.appiconset</td>
+</tr>
+</table>
+
 <br /><br />
 
-<br />
 <u>Upload</u>
 <br />
 
@@ -323,6 +360,33 @@ Finally once build has completed processing select it in iTunes Connect.  Save. 
 <br /><br />
 
 TROUBLESHOOTING<br />
+If you receive any of the following crashes while attempting to run latest iOS build on device then read on:
+<br /><br />
+<i>Got a SIGABRT while executing native code.  This usually indicates a fatal error in the mono runtime used</i><br />
+For some strange reason the following code with IDictionary&lt;Byte, T&gt; worked previously but now crashes.  Fortunately, there is a workaround to this <a href="http://community.monogame.net/t/monogame-ios-idictionary-byte-t-crash/11952">issue</a>: simply use the Int16 type as the key instead of type Byte.
+<pre class="csharp" name="code">
+// This code will crash on iOS device!
+private IDictionary&lt;Byte, Vector2&gt; BasePositions { get; private set; }
+private IDictionary&lt;Byte, Rectangle&gt; BasePositions { get; private set; }
+
+// This code will work without crash.
+private IDictionary&lt;Int16, Vector2&gt; BasePositions { get; private set; }
+private IDictionary&lt;Int16, Rectangle&gt; BasePositions { get; private set; }
+</pre>
+
+<br /><br />
+
+<i>Microsoft.Xna.Framework.Content.ContentLoadException: 'The content file was not found.'</i><br />
+This general exception can occur when MonoGame project has not built the Content as described above i.e. New MonoGame project using version 3.7.  Open Content.mgcb.  Add all content relative to this content file.
+<br /><br />
+Also, I believe it helps to fully qualify Content path and remove default code to set Content RootDirectory:
+<pre class="csharp" name="code">
+// Delete or comment out default code.
+// Content.RootDirectory = "Content";
+
+// Fully qualify path to load content e.g. Image.png
+Texture2D image = Content.Load<Texture2D>("Content/Textures/Image");
+</pre>
 
 <br /><br />
 
