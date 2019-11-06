@@ -218,18 +218,37 @@ adb devices -f install *.apk
 Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here:
 <a href="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s1600/03.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s640/03.png" width="98%" height="380" /></a>
 
-TODO<br />
-Export keystore Note: previously created signing identity from Keystore must be used to sign new build of an existing game.
+<br /><br />
+TROUBLESHOOTING<br />
+If you receive any of the following 403 errors while attempting to upload latest Android build then read on:
+<br /><br />
+<i>This release is not <a href="https://stackoverflow.com/questions/56026974/xamarin-this-release-is-not-compliant-with-the-google-play-64-bit-requirement">compliant</a> with the Google Play 64-bit requirement</i><br />
+This can occur if you have not selected <b>arm64-v8a</b> in the Android project properties Application Options.  If after selecting arm64-v8a you receive NoAudioHardwareException then must upgrade MonoGame to 3.7.1.
 <br /><br />
 
+<i>The apk must be <a href="https://stackoverflow.com/questions/4843212/the-apk-must-be-signed-with-the-same-certificates-as-the-previous-version">signed</a> with the same certificates as the previous version</i><br />
+This can occur when you have signed previous Android build using keystore typically on different computer.  <a href="https://stackoverflow.com/questions/45341810/how-to-export-android-studio-certificate-or-keystore-from-another-pc">Export</a> Android keystore as needed and ensure critical information like keystore alias and password are safe.
+<br /><br />
+Here is a good overall guide for <a href="https://docs.microsoft.com/en-us/xamarin/android/deploy-test/signing/keystore-signature?tabs=windows">finding</a> the Android keystore.  Below is quick summary for all configurations:
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Windows</td>
+<td valign="top">&nbsp;%USERPROFILE%\AppData\Local\Xamarin\Mono for Android\Keystore\<i>alias</i>\<i>alias</i>.keystore</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Mac OS/X&nbsp;</td>
+<td valign="top">&nbsp;$HOME/Library/Developer/Xamarin/Keystore/<i>alias</i>/<i>alias</i>.keystore</td>
+</tr>
+</table>
 
-
+<br />
 <br />
 <b>Apple</b>
 <br />
 TODO<br />
 INTRO about updates to Apple e.g. Apple will stop support for 32-bit on iOS 11.0... plus the last update I did for screen resolution??  Or was it just because I hadn't updated app coming up to 2yrs??
-
+TODO<br />
+Remember to add teh picture about Xcode 11.2 on developer.apple.com and the PIC
 <br /><br />
 
 <u>Upgrade</u><br />
@@ -243,7 +262,7 @@ Assume previous version 3D City 1.0.0 already exists on the App Store. Import ex
 
 Project Properties<br />
 Info.plist<br />
-ISSUE<br />
+TODO ISSUE this will go into the TROUBLESHOOTING section<br />
 http://community.monogame.net/t/monogame-ios-idictionary-byte-t-crash/11952
 <br /><br />
 
@@ -267,22 +286,30 @@ Sign in <a href="https://appleid.apple.com/#!&page=signin">Apple ID</a> web site
 <br /><br />
 
 Select distribution channel: App Store | Upload.  Choose provisioning profile.  Enter Apple ID and App Specific Password.  Next | Publish. Choose file name | Save IPA.  This process should upload build to iTunes Connect.
+<a href="https://3.bp.blogspot.com/-ZdZSJP91mCE/XcLHBT1I-YI/AAAAAAAAF1k/K7aZxvFwwpU-ANjpEhK6dZz6Wbdu28p8wCLcBGAsYHQ/s1600/AppStoreConnect.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZdZSJP91mCE/XcLHBT1I-YI/AAAAAAAAF1k/K7aZxvFwwpU-ANjpEhK6dZz6Wbdu28p8wCLcBGAsYHQ/s640/AppStoreConnect.png" width="98%" height="480" /></a>
+
 <br /><br />
-TODO<br />
-Do I want to add AppStoreConnect.png pic here...??
+Finally once build has completed processing select it in iTunes Connect.  Save.  Complete following questions:
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Export Compliance<br />
+&nbsp;Have you added or made changes to encryption features since your last submission of this app?
+</td>
+<td valign="top">&nbsp;NO&nbsp;</td>
+</tr
+<tr>
+<td valign="top">&nbsp;Advertising Identifier<br />
+&nbsp;Does this app use the Advertising Identifier (IDFA)?
+</td>
+<td valign="top">&nbsp;NO&nbsp;</td>
+</tr>
+</table>
+
 <br /><br />
 
-IMPORTANT<br />
-For more background information Reference Deployment section here. [Simpsons Trivia iOS port]
-<br /><br />
+TROUBLESHOOTING<br />
 
-Finally, once build has completed processing, select in iTunes Connect.  Save.  Complete the following questions info:
-01. Export Compliance NO
-02. Advertising Identifier
-Does this app use the Advertising Identifier (IDFA)? NO
-Submit
 <br /><br />
-
 
 TODO<br />
 Summary - now setup for other MonoGame features e.g. 3D graphics: models + shaders not only Windows but mobile too
