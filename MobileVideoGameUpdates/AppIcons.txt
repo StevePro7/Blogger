@@ -1,0 +1,44 @@
+AppIcons
+07/11/2019
+
+SORTED out why I could not see App icon on "desktop" for fresh build:
+
+
+Reference
+https://forums.xamarin.com/discussion/126052/workaround-for-the-ios-app-icon-not-appearing-bug
+
+
+In the old days I had all the App Icons under the Resources folder
+but this is not correct - maybe it was the old way of doing things
+
+
+However, must put the AppIcons beneath Assets.xcassets folder under the root
+But there seems to be inconsistency between Windows + Mac
+
+When you create new MonoGame iOS project ther eis no AppIcon folder
+but when you open the Info.plist file you can choose "Migrate to Asset Catalog"
+
+However, there seems to be inconsistency between Windows + Mac:
+Windows creates "Media.xcassets" parent folder for the AppIcon.appiconset
+MacOS/X creates "Assets.xcassets" parent folder for the AppIcon.appiconset
+
+Therefore, it seems to be the best thing to do this:
+Create new MG iOS project on Windows in VS2017
+Do not pair to Mac
+Close VS2017
+Check in basic project files setup
+Open in Visual Studio for Mac
+Launch Info.plist
+iPhone Icons
+click "Migrate to Assets Catalog"
+this action will create Assets.xcassets beneather the root folder
+By default it will take the GameThumbnail.png file and move into AppIcon.appiconset sub-folder beneath Assets.xcassets 
+Check in
+Open in VS2019
+continue import code + content
+
+Note: if you'd like to change the name of the default GameThumbnail.png file to something like Icon.png
+then open Contents.json in AppIcon.appiconset and change name to the GameThumbnail.png to Icon.png here
+
+IMPORTANT
+If you choose to open Info.plist in VS2019 and ""Migrate to Assets Catalog" in the Visual Assets tab then VS2019 will create "Media.xcassets" NOT "Assets.xcassets" which may cause issue when you archive the iOS build on the Mac.  By following the order above then this workaround should display the app icon when built on either Windows or Mac to iOS device.
