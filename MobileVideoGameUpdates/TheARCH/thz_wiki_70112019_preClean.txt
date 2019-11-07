@@ -1,13 +1,15 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
+<!-- >>01.anINTRO<br/> -->
 In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">Android</a> and <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">iOS</a>.  In 2018, we built <a href="http://steveproxna.blogspot.com/2019/08/3d-city-code-complete-ii.html">3D City</a> "Shoot 'em up" using similar process.
 <br /><br />
 Now both Google and Apple require apps + games be 64-bit compliant.  Apple will stop <a href="https://www.macworld.com/article/3163248/the-future-of-ios-is-64-bit-only-apple-to-stop-support-of-32-bit-apps.html">support</a> for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to <a href="https://android-developers.googleblog.com/2019/02/expanding-target-api-level-requirements.html">target</a> minimum Android 9 (API level 28) or higher.
 <br /><br />
 All these factors mandate upgrades to our mobile games to be rebuilt using latest version of <a href="http://community.monogame.net/t/monogame-3-7-1-release/11173">MonoGame</a> 3.7.
-<!-- -->
+<!--
 <a href="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s1600/MonoGameLogo.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-tYCZkldtDpo/W_PLhz6aiHI/AAAAAAAAFAE/zSJDEyAnbe4QGULpI5_sfa-AH0IKXrCFgCLcBGAs/s640/MonoGameLogo.png" width="98%" height="135" data-original-width="218" data-original-height="46" /></a>
-<!-- -->
+-->
 <br />
 Let's check it out!
 <br /><br />
@@ -21,6 +23,7 @@ Too Long; Didn't Read
 </ol>
 
 <br />
+<!-- >>02.anPRE-Reqs<br/> -->
 <u>Pre-Requisites</u><br />
 Reference previous instructions for <a href="http://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html">Android</a> and <a href="http://steveproxna.blogspot.com/2018/11/simpsons-trivia-ios-port.html">iOS</a> ports.  This post assumes software already published.  Install the following software on Windows and Mac.  Install "Mobile development with .NET" for Xamarin.
 <table width="96%" border="1">
@@ -54,11 +57,12 @@ IMPORTANT<br/>
 If, for any reason, there are issues updating any IDEs mentioned here then simply Run as <a href="https://stackoverflow.com/questions/43042032/android-studio-fails-to-install-update-error-failed-to-read-or-create-install">Administrator</a>.
 <br /><br />
 
+<!-- >>07.MonoGamePipeline<br/> -->
 <u>Pipeline</u><br />
-Previous posts used older versions of MonoGame which meant the Content Pipeline was arguably not built correctly.  Upgrade to <a href="http://community.monogame.net/t/monogame-3-7-1-release/11173">MonoGame</a> 3.7 and build the Content Pipeline correctly using the Content.mgcb file.
+Previous posts used older versions of MonoGame which meant the Content Pipeline was arguably not built correctly.  Upgrade to MonoGame 3.7 and build the Content Pipeline correctly using the Content.mgcb file.
 <br /><br />
 
-Launch the MonoGame <a href="http://rbwhitaker.wikidot.com/monogame-managing-content">Pipeline</a> tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
+Launch the MonoGame Pipeline tool.  Navigate to project Content folder.  Open Content.mgcb.  Click Content root node.  Under Properties select relevant Platform.  Create following folders and add content accordingly:
 <br /><br />
 
 <i>Data</i><br />
@@ -74,6 +78,7 @@ Import <b>all</b> music and sound effects as MP3.  Some WAV files sounded strang
 Import <b>all</b> 2D images as PNG.  Some JPG files rendered strange as built textures.  <a href="https://jpg2png.com">Convert</a> JPG files to PNG.  Also, <a href="https://www.zamzar.com/convert/bmp-to-png">convert</a> BMP files to PNG.  Set Build Action to Build.  Set Processor to Texture for all imported images.
 <br /><br />
 
+<!-- >>03.anAndroidSetup<br/> -->
 <br />
 <b>Google</b><br />
 On November 1, 2019 apps + games on Google Play required to <a href="https://android-developers.googleblog.com/2019/02/expanding-target-api-level-requirements.html">target</a> Android 9 (API level 28) or higher. After this date, Google Play Console will prevent any APK updates submitted with targetSdkVersion < 28.
@@ -98,14 +103,14 @@ Actually, it may be easier to align Android SDK location in Android Studio to th
 <!-- -->
 
 <br />
-Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b><a href="https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility">adb</a></b> at cmd prompt.
+Ensure SDK Tools are also installed.  Verify SDK Platforms installed in "platforms" sub-folder and SDK Tools installed in "build-tools".  Finally, add "platform-tools" folder to System %PATH% to use <b>adb</b> at cmd prompt.
 <br /><br />
 
 
 <u>Upgrade</u><br />
 Currently VS2019 does <b>not</b> include MonoGame project templates.  Therefore, launch VS2017 and create new MonoGame Android project e.g. 3D City.  Close and re-open in VS2019.  The benefits to be explained shortly.
 <br /><br />
-Assume previous version <a href="https://github.com/SteveProXNA/3Dcity/tree/master/3Dcity.AND">3D City</a> 1.0.0 already exists on <a href="https://play.google.com/store/apps/details?id=com.steveproxna.x3dcity">Google Play</a>.  Import existing content per previous build under the Content folder as explained above.  Import existing code.  Right click project and Properties:
+Assume previous version 3D City 1.0.0 already exists on Google Play.  Import existing content per previous build under the Content folder as explained above.  Import existing code.  Right click project and Properties:
 <br /><br />
 
 
@@ -183,6 +188,7 @@ Click the Advanced button.  <a href="https://stackoverflow.com/questions/5453746
 <!-- -->
 <br /><br />
 
+<!-- >>05.anAndroidLatest<br/> -->
 Currenlty, Android 10.0 (Q) is available although this API level 29 seems to be missing from Visual Studio Tools menu | Android | Android SDK Manager.  However, here is a workaround to <a href="https://superuser.com/questions/1447005/cant-update-android-sdk-build-tools-in-visual-studio-2019">circumvent</a> the problem:
 <br /><br />
 
@@ -192,6 +198,9 @@ Launch Android Studio.  Install Android 10 (API level 29) as above.  Ensure <i>a
 <!-- -->
 <br /><br />
 
+
+<!-- >>11.Upload_Android<br/> -->
+<!-- Android Archive -->
 <u>Upload</u>
 <br />
 Launch VS2019.  Open MonoGame Android project.  Attach Android device.  Select Release build configuration.  Clean and rebuild solution.  Right click project | Archive...  After the archive is generated choose Distribute...
@@ -207,17 +216,15 @@ adb devices -f install *.apk
 
 <br />
 <i>Google Play</i><br />
-Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to <a href="https://play.google.com/apps/publish">Google Play</a> | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here:
-<!-- -->
+Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to Google Play | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here:
 <a href="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s1600/03.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-TCLLgQBqe60/XcFtXEf1IMI/AAAAAAAAF1M/m0JlDu3mgw0uOMdu34W3SrU1HQQ7LtBEQCLcBGAsYHQ/s640/03.png" width="98%" height="380" /></a>
-<!-- -->
+
 <br /><br />
 TROUBLESHOOTING<br />
 If you receive any of the following 403 errors while attempting to upload latest Android build then read on:
 <br /><br />
 <i>This release is not <a href="https://stackoverflow.com/questions/56026974/xamarin-this-release-is-not-compliant-with-the-google-play-64-bit-requirement">compliant</a> with the Google Play 64-bit requirement</i><br />
-This can occur if you have not selected <b>arm64-v8a</b> in the Android project properties Application Options.  If after selecting arm64-v8a you receive NoAudioHardwareException then must upgrade <a href="http://community.monogame.net/t/monogame-3-7-1-release/11173">MonoGame</a>
- to 3.7.1.
+This can occur if you have not selected <b>arm64-v8a</b> in the Android project properties Application Options.  If after selecting arm64-v8a you receive NoAudioHardwareException then must upgrade MonoGame to 3.7.1.
 <br /><br />
 
 <i>The apk must be <a href="https://stackoverflow.com/questions/4843212/the-apk-must-be-signed-with-the-same-certificates-as-the-previous-version">signed</a> with the same certificates as the previous version</i><br />
@@ -243,28 +250,25 @@ Apple will stop <a href="https://www.macworld.com/article/3163248/the-future-of-
 
 <br /><br />
 Sign in <a href="https://developer.apple.com">developer</a>.apple.com.  Ensure all developer provisioning profiles use certificates for Xcode 11 or later:
-<!-- -->
 <a href="https://1.bp.blogspot.com/-jY3mjAatmMk/XcMczxa2HhI/AAAAAAAAF1w/itxG8Ntli1c7PZZgOuHgyriGTkTCVGQ8gCLcBGAsYHQ/s1600/Profiles.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-jY3mjAatmMk/XcMczxa2HhI/AAAAAAAAF1w/itxG8Ntli1c7PZZgOuHgyriGTkTCVGQ8gCLcBGAsYHQ/s640/Profiles.png" width="98%" height="420" /></a>
-<!-- -->
+
 <br /><br />
 
 <u>Upgrade</u><br />
-Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio and will corrupt Visual Studio for Mac.
-<!-- -->
+Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio and will corrupt Visual Studio for Mac.  
 <a href="https://1.bp.blogspot.com/-i2x-ExDEczs/XcMiBovpHuI/AAAAAAAAF18/fcdM83rA7FIPDCIrNblopqxOw2buWLswACLcBGAsYHQ/s1600/MonoMismatch.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-i2x-ExDEczs/XcMiBovpHuI/AAAAAAAAF18/fcdM83rA7FIPDCIrNblopqxOw2buWLswACLcBGAsYHQ/s640/MonoMismatch.png" width="98%" height="480" /></a>
-<!-- -->
+
 <br /><br />
 
 Instead, close and re-open in VS2019.  Note: if prompted to install and update Xamarin.iOS then that is OK.
-<!-- -->
 <a href="https://1.bp.blogspot.com/--E9DyDeyThc/XcMjbIK4QqI/AAAAAAAAF2I/C0NdtNLpNBU7p-kMNJOz5ow9ZQs0Wo6igCLcBGAsYHQ/s1600/Xamarin.iOS.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/--E9DyDeyThc/XcMjbIK4QqI/AAAAAAAAF2I/C0NdtNLpNBU7p-kMNJOz5ow9ZQs0Wo6igCLcBGAsYHQ/s640/Xamarin.iOS.png" width="98%" height="480" /></a>
-<!-- -->
+
 <br /><br />
 
-Assume previous version <a href="https://github.com/SteveProXNA/3Dcity/tree/master/3Dcity.IOS">3D City</a> 1.0.0 already exists on the <a href="https://apps.apple.com/us/app/retro-3d-city/id1441775916">App Store</a>. Import existing content per previous build under the Content folder as explained above. Import existing code. Right click project and Properties:
-<!-- -->
+Assume previous version 3D City 1.0.0 already exists on the App Store. Import existing content per previous build under the Content folder as explained above. Import existing code. Right click project and Properties:
+
 <a href="https://3.bp.blogspot.com/-ZdnxkakKSFY/XcMlQFPVKOI/AAAAAAAAF2U/kpNSurCdWGcm2RxQolwdo2R8cIDpf5D1gCLcBGAsYHQ/s1600/iOSbuild.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZdnxkakKSFY/XcMlQFPVKOI/AAAAAAAAF2U/kpNSurCdWGcm2RxQolwdo2R8cIDpf5D1gCLcBGAsYHQ/s640/iOSbuild.png" width="98%" height="374" /></a>
-<!-- -->
+
 <br /><br />
 
 <i>Info.plist</i><br />
@@ -327,16 +331,15 @@ Select distribution channel: Ad Hoc.  Choose provisioning profile | Publish | Sa
 
 <br />
 <i>App Store</i><br />
-Launch browser.  Sign in to <a href="https://itunesconnect.apple.com">iTunes Connect</a>.  Select published app e.g. 3D City.  Click "+" Version or Platform.  Choose iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.  Save data.
+Launch browser.  Sign in to <a href="https://itunesconnect.apple.com">iTunes</a> Connect.  Select published app e.g. 3D City.  Click "+" Version or Platform.  Choose iOS.  Enter new Store Version Number | Create.  Enter "What's New in this Version" text.  Save data.
 <br /><br />
 
 Sign in <a href="https://appleid.apple.com/#!&page=signin">Apple ID</a> web site. In Security section under "APP-SPECIFIC PASSWORDS" click "Generate Password".  In the popup window enter, for example "3DCity" | Create.  Apple will generate a new app specific password.
 <br /><br />
 
 Select distribution channel: App Store | Upload.  Choose provisioning profile.  Enter Apple ID and App Specific Password.  Next | Publish. Choose file name | Save IPA.  This process should upload build to iTunes Connect.
-<!-- -->
 <a href="https://3.bp.blogspot.com/-ZdZSJP91mCE/XcLHBT1I-YI/AAAAAAAAF1k/K7aZxvFwwpU-ANjpEhK6dZz6Wbdu28p8wCLcBGAsYHQ/s1600/AppStoreConnect.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZdZSJP91mCE/XcLHBT1I-YI/AAAAAAAAF1k/K7aZxvFwwpU-ANjpEhK6dZz6Wbdu28p8wCLcBGAsYHQ/s640/AppStoreConnect.png" width="98%" height="480" /></a>
-<!-- -->
+
 <br /><br />
 Finally once build has completed processing select it in iTunes Connect.  Save.  Complete following questions:
 <table width="99%" border="1">
