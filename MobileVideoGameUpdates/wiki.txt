@@ -176,6 +176,7 @@ AndroidManifest.xml
 &lt;/manifest&gt;
 </pre>
 <br />
+
 <i>Application Options</i><br />
 Click the Advanced button.  <a href="https://stackoverflow.com/questions/54537469/targeting-64-bit-architectures-on-xamarin-android">Target</a> the following 2x Supported architectures: <b>armeabi-v7a</b> and <b>arm64-v8a</b>.
 <!-- -->
@@ -204,8 +205,8 @@ Select distribution channel: Ad Hoc.  Select Signing Identity or Create Android 
 # cd signed-apks
 adb devices -f install *.apk
 </pre>
-
 <br />
+
 <i>Google Play</i><br />
 Select distribution channel: Google Play.  Select Signing Identity.  Continue.  Click "+".  Login to <a href="https://play.google.com/apps/publish">Google Play</a> | Settings | API access.  Select existing OAuth client.  Download JSON and extract the Client ID + Secret here:
 <!-- -->
@@ -243,6 +244,7 @@ cd %USERPROFILE%\AppData\Local\Xamarin\Mono for Android\Keystore\alias
 keytool -list -v -keystore alias.keystore
 </pre>
 <br />
+
 <br />
 <b>Apple</b>
 <br />
@@ -349,7 +351,7 @@ Finally once build has completed processing select it in iTunes Connect.  Save. 
 &nbsp;Have you added or made changes to encryption features since your last submission of this app?
 </td>
 <td valign="top"><br />&nbsp;NO&nbsp;</td>
-</tr
+</tr>
 <tr>
 <td valign="top">&nbsp;Advertising Identifier<br />
 &nbsp;Does this app use the Advertising Identifier (IDFA)?
@@ -374,8 +376,7 @@ private IDictionary&lt;Byte, Rectangle&gt; BasePositions { get; private set; }
 private IDictionary&lt;Int16, Vector2&gt; BasePositions { get; private set; }
 private IDictionary&lt;Int16, Rectangle&gt; BasePositions { get; private set; }
 </pre>
-
-<br /><br />
+<br />
 
 <i>Microsoft.Xna.Framework.Content.ContentLoadException: 'The content file was not found.'</i><br />
 This general exception can occur when MonoGame project has not built the Content as described above i.e. New MonoGame project using version 3.7.  Open Content.mgcb.  Add all content relative to this content file.
@@ -384,12 +385,10 @@ Also, I believe it helps to fully qualify Content path and remove default code t
 <pre class="csharp" name="code">
 // Delete or comment out default code.
 // Content.RootDirectory = "Content";
-
 // Fully qualify path to load content e.g. Image.png
 Texture2D image = Content.Load<Texture2D>("Content/Textures/Image");
 </pre>
-
-<br /><br />
+<br />
 
 <u>Summary</u><br />
 To summarize, all games built in the past using MonoGame were 2D.  However, now that all frameworks tools and dependencies are upgraded with latest MonoGame installed using correct build pipeline then we are in a good position to assemble 3D graphics and games on Windows deployed to Android and iOS cross platform!
