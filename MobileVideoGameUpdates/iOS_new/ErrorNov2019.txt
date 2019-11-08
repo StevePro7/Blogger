@@ -1,0 +1,34 @@
+ERROR Tue, 5th Nov 2019
+08/11/2019
+
+I think I know what is going on RE: latest error:
+Mon 4th Nov	CK Prod
+Tue 5th Nov	3D City
+I uploaded these 2x OK
+but CK Free didn't upload because of the AppIcon issue
+then after I updated that I got the error on upload
+
+So I downgraded Visual Studio for Mac to match the current version of Xamarin iOS
+13.6.0.12
+
+Now both Windows and Mac match but no matter what I tried it wouldn't upload
+I tried the Application Loader and still no joy
+
+Fri, 8th Nov
+I saw in VS2019 that you can right click | Archive and have option to save IPA
+on VS for Mac don't have this option anymore
+so I tried that - save Distribution version of IPA, copy to Mac and try to upload via Application Loader
+
+Here is where I got the second error msg which gave more info and "seems" to have solved the puzzle
+Xcode 11.2 builds deprecated Tue 5th Nov which is when I saw the error the very next day!  Wed 6th Nov
+
+Fortunately the solution should be to upgrade Xcode to 11.2.1 and retry
+NB: I may need to get compatible version of Xamarin iOS...??
+
+
+REFERENCE
+https://stackoverflow.com/questions/58657087/after-upgrading-to-xcode-11-2-from-xcode-11-1-app-crashes-due-to-uitextlayoutv
+
+Xcode 11.2.1 GM seed
+https://developer.apple.com/download
+https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_11.2.1_GM_Seed/Xcode_11.2.1_GM_Seed.xip
