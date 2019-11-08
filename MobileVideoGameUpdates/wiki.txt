@@ -236,6 +236,13 @@ Here is a good overall guide for <a href="https://docs.microsoft.com/en-us/xamar
 </table>
 
 <br />
+Don’t forget to <a href="https://medium.com/thirddev/dont-forget-to-backup-your-keystore-file-if-you-re-publishing-apps-to-google-play-store-ad798465cd9b">backup</a> your keystore file!  Here is how to <a href="https://stackoverflow.com/questions/28034899/how-to-retrieve-key-alias-and-key-password-for-signed-apk-in-android-studiomigr">retrieve</a> the alias and do not forget the password:
+<pre class="csharp" name="code">
+# Search for Alias name in the output from the following command
+cd %USERPROFILE%\AppData\Local\Xamarin\Mono for Android\Keystore\alias
+keytool -list -v -keystore alias.keystore
+</pre>
+<br />
 <br />
 <b>Apple</b>
 <br />
@@ -249,16 +256,7 @@ Sign in <a href="https://developer.apple.com">developer</a>.apple.com.  Ensure a
 <br /><br />
 
 <u>Upgrade</u><br />
-Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio and will corrupt Visual Studio for Mac.
-<!-- -->
-<a href="https://1.bp.blogspot.com/-i2x-ExDEczs/XcMiBovpHuI/AAAAAAAAF18/fcdM83rA7FIPDCIrNblopqxOw2buWLswACLcBGAsYHQ/s1600/MonoMismatch.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-i2x-ExDEczs/XcMiBovpHuI/AAAAAAAAF18/fcdM83rA7FIPDCIrNblopqxOw2buWLswACLcBGAsYHQ/s640/MonoMismatch.png" width="98%" height="480" /></a>
-<!-- -->
-<br /><br />
-
-Instead, close and re-open in VS2019.  Note: if prompted to install and update Xamarin.iOS then that is OK.
-<!-- -->
-<a href="https://1.bp.blogspot.com/--E9DyDeyThc/XcMjbIK4QqI/AAAAAAAAF2I/C0NdtNLpNBU7p-kMNJOz5ow9ZQs0Wo6igCLcBGAsYHQ/s1600/Xamarin.iOS.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/--E9DyDeyThc/XcMjbIK4QqI/AAAAAAAAF2I/C0NdtNLpNBU7p-kMNJOz5ow9ZQs0Wo6igCLcBGAsYHQ/s640/Xamarin.iOS.png" width="98%" height="480" /></a>
-<!-- -->
+Currently VS2019 does <b>not</b> include MonoGame project templates. Therefore, launch VS2017 and create new MonoGame iOS project e.g. 3D City.  However, do NOT click "Pair to Mac" here because you may be prompted to install Mono version incompatible with this version of Visual Studio.  Instead, close and re-open in VS2019.
 <br /><br />
 
 Assume previous version <a href="https://github.com/SteveProXNA/3Dcity/tree/master/3Dcity.IOS">3D City</a> 1.0.0 already exists on the <a href="https://apps.apple.com/us/app/retro-3d-city/id1441775916">App Store</a>. Import existing content per previous build under the Content folder as explained above. Import existing code. Right click project and Properties:
@@ -313,8 +311,14 @@ Assume previous version <a href="https://github.com/SteveProXNA/3Dcity/tree/mast
 </tr>
 </table>
 
+<br />
+IMPORTANT<br/>
+Currently there seems to be inconsistency with AppIcon assets creation on Windows and Mac.  Therefore, launch MonoGame iOS project in Visual Studio for Mac.  Open Info.plist | Click "Use Asset Catalog" here.
+<br /><br />
+This action creates the AppIcon.appiconset under Assets.xcassets folder whereas Windows creates under Media.xcassets which means App icon may not <a href="https://forums.xamarin.com/discussion/126052/workaround-for-the-ios-app-icon-not-appearing-bug">appear</a> on iOS device!  Also, ensure Content.json is correct.
 <br /><br />
 
+<br />
 <u>Upload</u>
 <br />
 
