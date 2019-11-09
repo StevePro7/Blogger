@@ -1,0 +1,26 @@
+ERROR Tue, 5th Nov 2019
+09/11/2019
+
+Upgrade Xcode 11.2.1 last night and retried
+got new error Screenshot 2019-11-08 at 23.12.14.png
+
+Today I tried the preview channel on VS for Mac and retry
+got the same error again...
+
+There must be some Xamarin iOS compatibility needed to align hot fix to Xcode 11.2.1..>??
+
+
+Failed to parse altool output Failed to parse PList data type 
+Configuring logging INFO 
+
+App Store Connect (Application Loader) publishing failed - Failed to parse altool output
+https://forums.xamarin.com/discussion/172296/app-store-connect-application-loader-publishing-failed-failed-to-parse-altool-output
+
+SOLVED!!
+I followed this advise and seemed to work OK
+Changing my app's version number fixed it...!!
+
+
+Finally, will have to add screen shot for 
+iPad Pro (3rd Gen)
+12.9" Display
