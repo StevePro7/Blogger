@@ -39,7 +39,7 @@ Reference previous instructions for <a href="http://steveproxna.blogspot.com/201
 </td>
 <td valign="top">
 <ul>
-<li>Install <a href="https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_11.2.1_GM_Seed/Xcode_11.2.1_GM_Seed.xip">Xcode</a> 11.2.1</li>
+<li>Install <a href="https://developer.apple.com/services-account/download?path=/Developer_Tools/Xcode_11.2/Xcode_11.2.xip">Xcode</a> 11.2</li>
 <li>Install <a href="https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_for_Xcode_11/Command_Line_Tools_for_Xcode_11.dmg">Xcode</a> Tools</li>
 <li>Install <a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio-mac/?sku=communitymac&rel=16">Visual Studio</a> for Mac</li>
 <li>Install <a href="https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/MonoGame.pkg">MonoGame</a> for MacOS</li>
@@ -360,17 +360,8 @@ Finally once build has completed processing select it in iTunes Connect.  Save. 
 </tr>
 </table>
 
-<br />
-IMPORTANT<br/>
-If you receive Publishing Failed error "Invalid Toolchain: You app was built with unsupported version of Xcode or SDK" then you must <a href="https://stackoverflow.com/questions/58657087/after-upgrading-to-xcode-11-2-from-xcode-11-1-app-crashes-due-to-uitextlayoutv">upgrade</a> to Xcode 11.2.1 because Apple deprecated Xcode 11.2 after Nov 5th 2019. 
-<br /><br />
-Right click MonoGame iOS project | Archive... | App Store | Save IPA file.  Upload on Mac Application Loader:<a href="https://1.bp.blogspot.com/-iS7G3hu_2OU/XclUKYKeSEI/AAAAAAAAF3I/SfckOLnJEWok671yW-T2Abwm_G3hVUkPwCLcBGAsYHQ/s1600/Deprecate.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-iS7G3hu_2OU/XclUKYKeSEI/AAAAAAAAF3I/SfckOLnJEWok671yW-T2Abwm_G3hVUkPwCLcBGAsYHQ/s640/Deprecate.png" width="98%" height="385" /></a>
 <br /><br />
 
-Also, if you receive Publishing Failed error "Failed to parse PList data type" then simply <a href="https://forums.xamarin.com/discussion/172296/app-store-connect-application-loader-publishing-failed-failed-to-parse-altool-output">increment</a> the build version number CFBundleVersion in Info.plist.  Align project properties.  Rebuild and upload to iTunes again.
-<br /><br />
-
-<br />
 TROUBLESHOOTING<br />
 If you receive any of the following crashes while attempting to run latest iOS build on device then read on:
 <br /><br />
