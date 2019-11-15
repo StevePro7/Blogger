@@ -1,6 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-In 2015, we built <a href="http://steveproxna.blogspot.com/2015/05/candy-kid-video-game.html">Candy Kid</a> as a simple maze chase video game on <a href="https://www.amazon.com/StevePro-Studios-Retro-Candy-Kid/dp/B017UXD4SE/qid=1447350289">Windows</a> PC using an older version of MonoGame published on <a href="https://play.google.com/store/apps/details?id=com.steveproxna.candykid">Android</a> and <a href="https://apps.apple.com/app/retro-candy-kid/id1055478836">iOS</a>.  In 2018, we built <a href="http://steveproxna.blogspot.com/2019/08/3d-city-code-complete-ii.html">3D City</a> "Shoot 'em up" using similar process.
+In 2015, we built Candy Kid as a simple maze chase video game on Windows PC using an older version of MonoGame published on <a href="http://steveproxna.blogspot.com/2015/08/candy-kid-android-port.html">Android</a> and <a href="http://steveproxna.blogspot.com/2015/09/candy-kid-ios-port.html">iOS</a>.  In 2018, we built <a href="http://steveproxna.blogspot.com/2019/08/3d-city-code-complete-ii.html">3D City</a> "Shoot 'em up" using similar process.
 <br /><br />
 Now both Google and Apple require apps + games be 64-bit compliant.  Apple will stop <a href="https://www.macworld.com/article/3163248/the-future-of-ios-is-64-bit-only-apple-to-stop-support-of-32-bit-apps.html">support</a> for 32-bit on iOS 11.0.  Plus, Google require updates on Google Play to <a href="https://android-developers.googleblog.com/2019/02/expanding-target-api-level-requirements.html">target</a> minimum Android 9 (API level 28) or higher.
 <br /><br />
@@ -34,7 +34,7 @@ Reference previous instructions for <a href="http://steveproxna.blogspot.com/201
 <li>Install <a href="https://developer.android.com/studio">Android Studio</a></li>
 <li>Install <a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202017&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio</a> 2017</li>
 <li>Install <a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16">Visual Studio</a> 2019</li>
-<li>Install <a href="https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/MonoGameSetup.exe">MonoGame</a> for Visual Studio</li>
+<li>Install <a href="https://github.com/MonoGame/MonoGame/releases/download/v3.7.1/MonoGameSetup.exe">MonoGame</a>for Visual Studio</li>
 </ul>
 </td>
 <td valign="top">
@@ -385,7 +385,7 @@ private IDictionary&lt;Int16, Rectangle&gt; BasePositions { get; private set; }
 </pre>
 <br />
 
-<i>Microsoft.Xna.Framework.Content.<a href="https://stackoverflow.com/questions/16467207/contentloadexception-in-monogame">ContentLoadException</a>: 'The content file was not found.'</i><br />
+<i>Microsoft.Xna.Framework.Content.ContentLoadException: 'The content file was not found.'</i><br />
 This general exception can occur when MonoGame project has not built the Content as described above i.e. New MonoGame project using version 3.7.  Open Content.mgcb.  Add all content relative to this content file.
 <br /><br />
 Also, I believe it helps to fully qualify Content path and remove default code to set Content RootDirectory:
