@@ -1,0 +1,128 @@
+WP8
+01/12/2018
+
+06-WP8error.png
+D:\Steven\XNA\BlogNEW\_STblog00\02_ST_WIN_port\images
+
+DEP6100 : The following unexpected error occurred during bootstrapping stage 'Connecting to the device 'A6BAF594-9315-40C3-AD16-F5B8A425A7AB'.': 
+2>ObjectDisposedException - 0x80131622
+
+PROMISING
+https://forums.hololens.com/discussion/238/dep6100-the-following-unexpected-error-occurred-during-bootstrapping-stage
+
+
+
+Go to "Turn Windows features on or off"
+Remove Hyper-V
+Restart
+Reinstall Hyper-V
+Restart
+You're a go :)
+
+3
+down vote
+I had a similar issue with Windows Phone 10 Preview Emulator under Visual Studio 2015 RC. The solution was:
+
+Go to "Turn Windows features on or off"
+Remove Hyper-V
+Restart
+Reinstall Hyper-V
+Restart
+You're a go :)
+
+GOOGLE
+wp8 virtual disk system limitation virtual disk must be uncompressed and unencreypted and must not be sparse
+
+https://forum.xda-developers.com/windows-phone-8/help/windows-phone-emulator-started-vs-t2982716
+XDE.exe /name "Emulator 8.1 WVGA 4 inch(RU).admin"  
+
+
+https://stackoverflow.com/questions/13159947/windows-phone-8-emulator-cant-connect-to-the-internet
+Start | run | Hyper V Manager
+Virtual Switch Manager
+
+Windows Phone Emulator Internal Switch
+Remove
+
+but when re-run the example it is automatically re-added
+
+
+
+GOOGLE
+wp8 windows phone emulator is unable to create a differencing disk
+
+https://stackoverflow.com/questions/26773036/windows-phone-emulator-is-unable-to-create-a-differencing-disk
+
+Access is Denied
+"C:\Program Files (x86)\Microsoft XDE\8.0\xde.exe" /vhd "C:\ Program Files (x86)\Microsoft SDKs\Windows Phone\v8.1\Emulation\Images\flash.vhd " /name WP8-SDK
+
+
+
+https://stackoverflow.com/questions/26773036/windows-phone-emulator-is-unable-to-create-a-differencing-disk
+Uncompressed
+
+
+C:\ProgramData\Microsoft\XDE
+
+
+XDE app can't run
+https://www.youtube.com/watch?v=Oryzlo07cwQ
+
+Start | run
+User Account Control
+Notify 2nd from top
+
+Start | run
+Local Security Policy
+Local Policies
+Security Options
+
+BEFORE
+User Account Control: Admin Approval		Disabled
+User Account Control: Allow UIAccess		Disabled
+
+set them both to Enabled
+the other one was already enabled
+User Account Control: Run all administrators in Admin...
+
+
+
+TRY THIS
+
+https://stackoverflow.com/questions/35902795/wp8-emulator-not-running-on-windows-10
+Recently i encounter the same problem, it turns out that you have to install windows phone 8.1 sdk in order to run windows phone 8 app unter windows 10. Surprised ?... me neither :D
+
+https://www.microsoft.com/en-us/download/confirmation.aspx?id=43719
+https://www.microsoft.com/en-us/download/details.aspx?id=43719
+
+
+Uncompress folder
+C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.1\Emulation\Images
+
+Windows Phone Emulator is unable to verify that the virtual machine is running
+
+
+INTERESTING
+Is xde.exe meant to be this one here
+C:\Program Files (x86)\Microsoft XDE\8.1\
+
+"C:\Program Files (x86)\Microsoft XDE\8.1\xde.exe" /vhd "C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.1\Emulation\Images\flash.vhd" /name WP8-SDK
+
+
+THIS WORKS!
+Start | run | cmd
+cd "C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.1\Emulation\Images"
+xde.exe /vhd flash.vhd /name WP8-SDK
+
+xde.exe /vhd flash.vhd /name "Emulator 8.1 1080P 6 inch.test"
+
+got the same "compressed error" that pointed to AppData specifically here:
+C:\Users\TEST\AppData\Local\Microsoft\XDE
+
+Right click XDE folder | Properties | Advanced and unchecked "Compress"
+cmd line works now
+xde.exe /vhd flash.vhd /name "Emulator 8.1 1080P 6 inch.test"
+
+Final note:
+If F5 from VS2015 and still get the original "differencing" error the launch Hyper V Manager
+Connect to the emulator manually first then retry and error should go away because the emulator is running

@@ -1,0 +1,59 @@
+MethodWork
+27/11/2018
+
+
+Get old FBX file and convert with Autodesk
+somehow it does folder structure
+
+Models\ship.fbx
+ship_tex.tga
+
+
+REFERENCE
+https://www.youtube.com/watch?v=rDMWXpKUYSo
+
+
+WINDOWS build
+VS2015
+Create new MonoGame Windows project
+
+Right click Content/Content.mgcb
+Open with
+Navigate to MonoGame Pipeline
+MonoGamePipeline
+"C:\Program Files (x86)\MSBuild\MonoGame\v3.0\Tools\Pipeline.exe"
+
+Double click Content/Content.mgcb
+Create Models folder
+Add existing ship_tex.tga
+Add existing ship.fbx	under "Models"
+Build
+Close
+
+Update Game1.cs
+Content.RootDirectory = "Content";
+model = Content.Load<Model>("Models/ship");
+
+Run and works
+
+OR can do
+
+//Content.RootDirectory = "Content";
+model = Content.Load<Model>("Content/Models/ship");
+
+
+ANDROID repeat process and it works but does not render texture on 3D model
+this seemed to work but only seem to need to set the texture [NOT enabled]
+http://community.monogame.net/t/problem-with-3d-objects-textures/2474/12
+
+//http://community.monogame.net/t/problem-with-3d-objects-textures/2474/12
+e.Texture = image;
+//e.TextureEnabled = true;
+e.EnableDefaultLighting();
+
+
+
+IOS repeat process but get Unhandled Exception
+System.ArgumentException: elementcount is not the right size
+elementCount sizeof(T) is 32768 but data size is 65536
+Parameter name: elementCount

@@ -1,0 +1,37 @@
+
+While it's possible to get corresponding build, there may be Hyper V Manager issues on some Windows PCs:
+
+PIC
+
+Windows Phone Emulator is unable to create a differencing disk: A virtual disk support provider for the specified file was not found.
+
+https://stackoverflow.com/questions/26773036/windows-phone-emulator-is-unable-to-create-a-differencing-disk
+
+All the information in this web page helped me
+
+Although all the references to location for XDE.exe was not correct
+C:\Program Files (x86)\Microsoft XDE\8.0\xde.exe
+Access is Denied
+
+Instead XDE.exe was installed here for me
+C:\Program Files (x86)\Microsoft XDE\8.1\xde.exe
+
+
+
+UNCHECK "Compress contents to save disk space" on the following following
+C:\ Program Files (x86)\Microsoft SDKs\Windows Phone\v8.1\Emulation\Images
+
+Rerun
+This lead to the second error and had to repeat the UNCHECK but on this folder
+C:\Users\TEST\AppData\Local\Microsoft\XDE
+
+Now it worked OK
+
+NB: did not need to "Turn on/off features for Hyper V Manager
+or remove existing switch here:
+
+Start | run | Hyper V Manager
+Virtual Switch Manager
+
+Windows Phone Emulator Internal Switch
+Remove
