@@ -25,3 +25,21 @@ this works on
 Windows
 Android
 iOS
+
+
+Interesting:
+could convert FBX
+then I renamed ship__cv1 to ship
+plus revert the code 
+and it works
+i.e.
+loads model OK
+
+Do NOT use ship__cv1 if you rename as won't work on Android or iOS
+works on Windows tho'...??
+
+
+Finally, let Autodesk rename the file
+i.e. don't try and copy over itself
+e.g. source dir == dest dir with same filename
+otherwise will get error "Not enough parameters"
