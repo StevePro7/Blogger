@@ -1,0 +1,39 @@
+Create WIN
+15/12/2018
+
+Launch VS2017
+New project
+C#
+MonoGame
+MonoGame Windows Project
+
+Content
+convert FBX	todo	Autodesk FBX Converter x64 2013
+convert fx	todo	conditional compilation
+Rebuild content pipeline
+mcgb
+Import all 
+
+
+CONTENT
+Import all files except VSI
+
+fx
+and "if" statements MUST be explicit for mobile
+e.g.
+change this
+	if (TextureEnabled)
+to this
+	if (TextureEnabled == true)
+
+OR this
+change this
+	if (!TextureEnabled)
+to this
+	if (TextureEnabled == true)
+	{
+	}
+	else
+	{
+		// ...
+	}	
