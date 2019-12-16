@@ -24,6 +24,24 @@ Too Long; Didn't Read
 Reference previous instructions to setup all pre-requisite software.  This includes Windows, Android and iOS.  Here we will import 3D models and custom shaders all built on Windows then deployed to Android and iOS.
 <br /><br />
 
-<u>Pre-Requisites</u><br />
+<u>Windows</u><br />
+<pre class="csharp" name="code">
+//http://www.monogame.net/documentation/?page=Custom_Effects
+#if OPENGL
+	#define VS_SHADERMODEL vs_3_0
+	#define PS_SHADERMODEL ps_3_0
+#else
+	#define VS_SHADERMODEL vs_4_0_level_9_1
+	#define PS_SHADERMODEL ps_4_0_level_9_1
+#endif
 
+technique Technique1
+{
+    pass Pass1
+    {
+		VertexShader = compile VS_SHADERMODEL VertexShaderFunction();
+		PixelShader = compile PS_SHADERMODEL PixelShaderFunction();
+    }
+}
+</pre> 
 </span>
