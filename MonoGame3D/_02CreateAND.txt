@@ -34,3 +34,21 @@ Andriod Options
 Advanced
 armeabi-v7
 arm64-v8a
+
+
+
+ERROR
+ADB0030 Mono.AndroidTools.RequiresUninstallException
+
+Error ADB0030: Mono.AndroidTools.RequiresUninstallException: The installed package is incompatible. Please manually uninstall and try again.
+
+This happened when installing later version of program did not uninstall cleanly
+
+
+Solution
+https://stackoverflow.com/questions/44735522/cant-deploy-to-real-android-device-xamarin
+
+adb uninstall com.steveproxna.x3dcity
+Success
+
+Now can re-install
