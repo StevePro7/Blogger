@@ -1,0 +1,226 @@
+Intro Kubernetes
+05/04/2020
+
+Introduction to Kubernetes
+https://www.youtube.com/watch?v=DiWzujzol70
+
+K8s is one of the most popular tools for managing containerized applications
+
+
+OVERVIEW
+An open source system for automating deployment, scaling and management of 
+containerized applications
+
+Host-centric infrastructure
+vs.
+Container-centric infrastructure
+
+
+Containers
+all applications run within their own isolated mini environments
+away from each other and the underlying OS
+
+Container-centric infrastructure
+
+
+TERMINOLOGY
+
+POD
+where an application is deployed
+contains resources specific to an application
+e.g. file storage
+
+all applications in a pod share the same IP address and port space
+think of a pod as the logical host and as the atomic unit of deployment + scheduling
+in a Kubernetes cluster
+
+
+NODE
+node is a physical or virtual machine in the cluster and runs one or more pod
+each running pod with the same definition is called a replica
+a pod can be instantiated more than once to improve application scalability in the cluster
+
+K8s cluster is made up of one or more nodes along w/ special component called the Master
+Master responsible for scheduling + maintaining the desired state of the cluster
+
+
+What is desired state?
+what applications [workloads] you want to run, what container images they use, the number or replicas
+what network and disk resources they want to make available etc.
+
+master compares the current state of the cluster to the desired state and if they differ the
+master makes any necessary adjustments until the desired state is once again reached
+
+
+SOFTWARE
+minikube
+tool for running Kubernetes cluster locally
+here minikube "is" Kubernetes
+
+Mac OS/X
+brew cask install minikube
+
+
+first step to deploying a containerized application is the application
+
+/*
+Download and install node.js
+https://nodejs.org/en/download
+
+
+Node
+machine that runs one or more pods
+
+
+Cluster made up of one or more nodes
+*/
+
+Minikube requires virtualization software in order to run
+Minikube is tool for running Kubernetes cluster locally
+for the purposes of this demo 
+Minikube "is" Kubernetes
+
+INSTALL
+https://github.com/kubernetes/minikube
+brew cask install minikube
+
+Example
+https://github.com/makotogo/developerWorks/tree/master/kubernetes
+
+IMPORTANT
+I changed the port to 8888
+
+
+05/04/2020
+Terminal
+cd ~/GithubX/makotogo/developerWorks/kubernetes
+node k8sdemo
+
+
+browser
+http://localhost:8888
+
+
+CONTAINERize the toy application
+
+Dockerfile
+FROM node:6.11.4
+EXPOSE 8888
+COPY k8sdemo.js .
+CMD node k8sdemo.js
+
+
+
+But first
+minikube start
+
+minikube runs inside Virtual Box inside its own VM
+must make sure that Docker uses the internal registry on minikube's VM by executing this command
+
+eval $(minikube docker-env)
+
+otherwise Docker will use the local registry on your machine which is not accessible from
+the VM in which minikube is running
+
+docker build -t k8sdemo:v1 .
+
+This will create the image "k8sdemo" with tag "v1"
+and store in the Docker registry of the minikube host VM
+
+when deploying the image to minikube you'll reference that tag "v1" explicitly
+
+
+REVIEW
+installed requisite software
+tested + containerized an application
+started local kubernetes cluster minikube
+
+
+TERMINAL
+minikube start
+(base) SteveProIMac:.kube stevepro$ minikube start
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+^NGetting VM IP address...
+Moving files into cluster...
+Setting up certs...
+Connecting to cluster...
+Setting up kubeconfig...
+Starting cluster components...
+Kubectl is now configured to use the cluster.
+Loading cached images from config file.
+(base) SteveProIMac:.kube stevepro$ 
+
+
+kubectl get services
+NAME         TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+k8sdemo      LoadBalancer   10.109.15.61   <pending>     8787:31172/TCP   21h
+kubernetes   ClusterIP      10.96.0.1      <none>        443/TCP          325d
+
+
+kubectl get nodes			
+minikube
+
+
+kubectl get pods
+(base) SteveProIMac:~ stevepro$ kubectl get pods
+NAME                      READY   STATUS    RESTARTS   AGE
+k8sdemo-95f65c559-jchmx   1/1     Running   4          325d
+k8sdemo-95f65c559-n5cl5   1/1     Running   2          232d
+
+
+TERMINAL
+now deploy the containerized application to minikube
+kubectl run k8sdemo --image=k8sdemo:v1 --port=8888
+
+now application is running in its own pod
+
+kubectl create k8sdemo2 --image=k8sdemo:v1 --port=8888
+
+
+Pod is like mini host with its own IP address + port space
+when K8s starts a pod it's isolated in its own network - so how do we interact with the app?
+
+A.
+proxy
+
+New terminal
+kubectl proxy --port 8888
+
+
+COULDN't get this working
+i.e. to cat output from k8sdemo.js on terminal from the proxy
+and from the browser I just see a list of /api paths via localhost:8888
+
+
+KUBECTL
+kubectl get deployments
+kubectl get pods
+kubectl describe pods
+
+
+minikube dashboard
+
+TERMINAL
+04/04/2020
+localhost
+
+git clone https://github.com/makotogo/developerWorks/tree/master/kubernetes
+
+cd makotogo/developerWorks/kubernetes
+
+node k8sdemo
+
+minikube dashboard
+
+
+
+Not accessible from the outside world
+therefore must expose as a service
+
+https://kubernetes.io/docs/tutorials/hello-minikube
+
+kubectl get services
+
+
+kubectl expose deployment hello-node --type=LoadBalancer --port=8888

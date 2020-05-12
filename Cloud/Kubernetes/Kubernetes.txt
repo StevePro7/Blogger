@@ -1,0 +1,68 @@
+Kubernetes
+16/05/2019
+
+
+An open source system for automating deployment, scaling and management of 
+containerized applications
+
+Containers
+all applications run within their own isolated mini environments
+away from each other and the underlying OS
+
+Container-centric infrastructure
+
+
+Download and install node.js
+https://nodejs.org/en/download
+
+
+PODS
+application is deployed
+logical host
+
+
+Node
+machine that runs one or more pods
+
+
+Cluster made up of one or more nodes
+
+
+Minikube requires virtualization software in order to run
+Minikube is tool for running Kubernetes cluster locally
+for the purposes of this demo 
+Minikube "is" Kubernetes
+
+INSTALL
+https://github.com/kubernetes/minikube
+brew cask install minikube
+
+Example
+https://github.com/makotogo/developerWorks/tree/master/kubernetes
+
+
+
+
+TERMINAL
+04/04/2020
+localhost
+
+git clone https://github.com/makotogo/developerWorks/tree/master/kubernetes
+
+cd makotogo/developerWorks/kubernetes
+
+node k8sdemo
+
+minikube dashboard
+
+
+
+Not accessible from the outside world
+therefore must expose as a service
+
+https://kubernetes.io/docs/tutorials/hello-minikube
+
+kubectl get services
+
+
+kubectl expose deployment hello-node --type=LoadBalancer --port=8888
