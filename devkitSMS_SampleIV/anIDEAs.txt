@@ -36,3 +36,18 @@ Max out 32KB const...!!
 summary so why give Sega Genesis SGDK a go
 
 plus awesome homebrew community [like SMSPower??]
+
+
+NASTY bug
+Devkitsms blog buffer overrun
+
+
+Bank switching
+Ie group all content in same bank for level or boss
+
+
+Fixed bank to store all static content
+
+
+Bit masking to store more info in byte
+E.g. level byte store no. Directions hi byte n type of tile in low byte n collision
