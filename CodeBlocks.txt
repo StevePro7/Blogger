@@ -1,0 +1,42 @@
+Code Blocks
+16/05/2020
+
+Here is how I created Code Blocks project file on Linux
+to use for the cross platform C++ code from Effective Modern C++ repo
+
+first setup the folder structure for the project you are extending
+e.g.
+E:\GitHub\StevePro7\EffectiveModernCpp\Chap00_Introduction\00-Intro\Src
+
+Create folders
+00-Intro
+
+
+Launch Linux via Dropbox	Ubuntu 19.10
+Launch Code Blocks
+
+File | New | Project...
+Console application
+C++
+
+Project title			Lin
+Folder to create		/home/stevepro/Steven/Temp/00-Intro/Lin
+Project filename		Item
+Resulting filename		/home/stevepro/Steven/Temp/00-Intro/Lin/Item.cbp
+
+Next
+leave all defaults as is
+
+Finish
+
+
+Finally, copy the Src folder under 00-Intro
+
+back in Code Blocks right click "Lin" project
+Add files...
+..\Src\Item.cpp
+
+right click original main.cpp
+Remove file from project
+
+Build + run
