@@ -40,3 +40,32 @@ right click original main.cpp
 Remove file from project
 
 Build + run
+
+
+
+19/05/2020
+How to Install C++ Code::Blocks in Ubuntu Linux
+https://www.dummies.com/programming/cpp/how-to-install-c-codeblocks-in-ubuntu-linux
+
+
+
+Getting errors in EffectiveModernC++ on Linux
+e.g.
+01-Item01
+
+but this is because they don't seem to be included in the gcc GNU project C and C++ compiler
+
+Reference:
+http://man7.org/linux/man-pages/man1/gcc.1.html
+
+ERROR
+linux code blocks error could not convert {} from <brace enclosed initialiser list to std::initializer_list<int>
+
+check out Linux man page
+http://man7.org/linux/man-pages/man1/gcc.1.html
+
+-fdeduce-init-list
+Enable deduction of a template type parameter as
+"std::initializer_list" from a brace-enclosed initializer list,
+...
+This option is deprecated, and may be removed in a future version of G++.
