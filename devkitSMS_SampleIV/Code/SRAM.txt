@@ -1,0 +1,100 @@
+SRAM
+21/05/2020
+
+Reference:
+https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures
+
+output.sms
+E:\GitHub\StevePro7\CandyKidSMSgraphics\GraphicsDraw\15_SRAM\dev
+
+
+// Reference:
+// https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures
+
+
+lib
+SMSlib.h
+/* SRAM access is as easy as accessing an array of char */
+__at (0x8000) unsigned char SMS_SRAM[];
+
+
+tmp
+SMSlib.h
+/* SRAM access is as easy as accessing an array of char */
+/*__at (0x8000)*/unsigned char SMS_SRAM[ 256 ];
+
+
+dev
+storage_object.h
+typedef struct tag_struct_storage_object
+{
+	unsigned long Magic;
+	unsigned long save_high_score;
+//	...
+	unsigned char terminal;
+}
+
+
+
+storage_manager.c
+#define MAGIC			0xACE0B004
+#define FINAL			0xFF
+
+// Global variable.
+struct_storage_object global_savegame_object;
+
+unsigned char engine_storage_manager_available()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	unsigned char foundMagic;
+
+	devkit_SMS_enableSRAM();
+	foundMagic = MAGIC == savegame->Magic;
+	devkit_SMS_disableSRAM();
+	return foundMagic;
+}
+
+void engine_storage_manager_read()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
+
+	devkit_SMS_enableSRAM();
+	st->state_object_high_score = savegame->save_high_score;
+///	...
+	devkit_SMS_disableSRAM();
+}
+
+
+void engine_storage_manager_write()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
+
+	devkit_SMS_enableSRAM();
+	savegame->Magic = MAGIC;
+	savegame->save_high_score = st->state_object_high_score;
+///	...
+	savegame->terminal = FINAL;
+	devkit_SMS_disableSRAM();
+}
+
+
+void engine_storage_manager_erase()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+
+	devkit_SMS_enableSRAM();
+	savegame->Magic = 0x00000000;
+	savegame->save_high_score = DEF_HI_SCORE;
+///	...
+	savegame->terminal = FINAL;
+	devkit_SMS_disableSRAM();
+}
+
+
+Github.com/SteveProXNA
+https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h
+https://github.com/SteveProXNA/CandyKidSMS/blob/master/tmp/SMSlib.h
+https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/object/storage_object.h
+https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/storage_manager.c

@@ -1,0 +1,88 @@
+InputManager
+21/05/2020
+
+Previously PE input_manager was bloated interface
+
+
+OLD
+input_manager.h
+
+// Public method.
+void engine_input_manager_update();
+
+// Public methods HOLD.
+unsigned char engine_input_manager_hold_up();
+unsigned char engine_input_manager_hold_down();
+unsigned char engine_input_manager_hold_left();
+unsigned char engine_input_manager_hold_right();
+unsigned char engine_input_manager_hold_fire1();
+unsigned char engine_input_manager_hold_fire2();
+
+// Public methods MOVE.
+unsigned char engine_input_manager_move_up();
+unsigned char engine_input_manager_move_down();
+unsigned char engine_input_manager_move_left();
+unsigned char engine_input_manager_move_right();
+unsigned char engine_input_manager_move_fire1();
+unsigned char engine_input_manager_move_fire2();
+
+
+Why?
+Scott Meyers Effective C++ 
+"Make interfaces easy to use correctly and hard to use incorrectly."
+
+Reference:
+https://www.aristeia.com/Papers/IEEE_Software_JulAug_2004_revised.htm
+
+
+However, for SMS programming and only 32767 bytes in main 32KB ROM this tends to bloat
+Therefore, make interface leaner and inject the input you want to detect as an argument
+
+
+// NEW
+input_manager.c
+
+#include "input_manager.h"
+#include "..\devkit\_sms_manager.h"
+
+static unsigned int curr_joypad1 = 0;
+static unsigned int prev_joypad1 = 0;
+
+// Public method.
+void engine_input_manager_update()
+{
+	prev_joypad1 = curr_joypad1;
+	curr_joypad1 = devkit_SMS_getKeysStatus();
+}
+
+// Public methods HOLD.
+unsigned char engine_input_manager_hold( unsigned char data )
+{
+	return curr_joypad1 & data && !( prev_joypad1 & data );
+}
+
+unsigned char engine_input_manager_move( unsigned char data )
+{
+	return curr_joypad1 & data;
+}
+
+
+and now call injecting the input detect as required
+unsigned char input = engine_input_manager_hold( input_type_fire1 );
+
+
+COMPARE old + new prototypes
+E:\GitHub\StevePro7\CandyKidSMSgraphics\GraphicsDraw\20_Input01\dev
+
+OLD	1A87	bytes
+NEW	1A00	bytes
+87 bytes saved
+
+
+Github.com/SteveProXNA
+
+OLD
+https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h
+
+NEW
+https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/input_manager.c

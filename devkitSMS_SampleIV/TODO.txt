@@ -1,0 +1,44 @@
+TODO
+21/05/2020
+
+
+
+Sample programs:
+
+01.
+Astro Force print out stuff via print() command not use "font" mgr?
+
+
+02.
+replace my screen_manager array of function pointers for
+load
+update
+
+but put them in the fixedbank.c
+
+similar to Astro Force array of function pointers
+
+
+Will this work?
+Will this move the big bulk "switch" statement out of main 32KB ROM and into the fixed bank?
+
+Basically does this approach save any bytes?
+
+
+03.
+What were the 2x APIs that I used that we not ported to z88dk
+I know PSGresume() was one of them
+
+
+E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk
+script is here
+
+_link.bat
+E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk\dev\scripts
+
+
+04.
+Debugging works now after working with Calindro
+
+output.map
+output.sms

@@ -1,0 +1,49 @@
+z88dk
+21/05/2020
+
+E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk02\dev\scripts>zcc
+zcc - Frontend for the z88dk Cross-C Compiler - v13913-9abd768-20190119
+
+
+
+Here is where I exposed the 2x missing APIs that I would use in Candy Kid
+
+
+E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk02\dev\devkit
+
+
+e.g.
+devkit.bat
+E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk02\dev\scripts
+
+
+_link.bat
+E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk02\dev\scripts
+
+
+
+Error at file '_sms_manager.c' line 664: symbol '_SMS_VDPFlags' not defined
+Error at file '_snd_manager.c' line 312: symbol '_PSGResume' not defined
+Errors in source file E:\z88dk\lib\config\\..\..\\libsrc\_DEVELOPMENT\target\sms\sms_crt.asm:
+Error at file '_sms_manager.c' line 664: symbol '_SMS_VDPFlags' not defined
+Error at file '_snd_manager.c' line 312: symbol '_PSGResume' not defined
+
+
+
+SUMARY
+'_SMS_VDPFlags' not defined
+'_PSGResume' not defined
+
+
+SMS_VDPFlags used for fast sprite collision detection
+
+
+PSGResume()
+used on Continue screen and choose "YES" and the music resumes when play resumes also
+
+
+Therefore, unfortunately would not be able to use z88dk
+
+
+Do I add:
+for some strange reason the screen was black anyway despite the fact that the debugger was working hard

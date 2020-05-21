@@ -1,0 +1,62 @@
+CollisionManager
+21/05/2020
+
+Fast vs. slow
+
+
+Fast collision
+utilise sprite overlap bit set by hardware
+
+Slow collision
+if overlap then detection will not be zero i.e. 0x20 then iterate all enemy sprites
+and if find overlap btwn player and enemy then quit with collision entity set.
+
+
+play_screen.c
+// Kid collide with Candy Mama?
+gamer_collision = devkit_isCollisionDetected();
+
+// Fast.
+if ( 0 != gamer_collision )
+{
+	// Slow.
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( go->posnX > eo->posnX )	{ dx = go->posnX - eo->posnX; }
+		else				{ dx = eo->posnX - go->posnX; }
+
+		if( go->posnY > eo->posnY )	{ dy = go->posnY - eo->posnY; }
+		else				{ dy = eo->posnY - go->posnY; }
+
+		if( dx <= distance && dy <= distance )
+		{
+			gamer_collision = enemy;
+			break;
+		}
+	}
+}
+
+
+
+_sms_manager.c
+unsigned char devkit_isCollisionDetected()
+{
+	return ( SMS_VDPFlags & VDPFLAG_SPRITECOLLISION );
+}
+
+
+IMPORTANT
+lib
+SMSlib.h
+extern volatile unsigned char SMS_VDPFlags;
+#define VDPFLAG_SPRITECOLLISION 0x20
+
+tmp
+SMSlib.h
+/*extern volatile*/unsigned char SMS_VDPFlags;
+#define VDPFLAG_SPRITECOLLISION 0x20
+
+
+Github.com/SteveProXNA
+https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/devkit/_sms_manager.c
