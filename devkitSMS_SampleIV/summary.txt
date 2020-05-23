@@ -1,0 +1,34 @@
+Summary
+22/05/2020
+
+
+Blog + Summary will point to fact that struggled to "cope" with 32KB ROM hard limit
+
+Mention techniques tried to strip down size
+e.g.
+fixedbank
+
+Therefore, during dev cycle re-wrote a couple of times when maxing out ROM limit
+
+so at one point tried to switch to z88dk as heard from eruiz that can reduce size
+
+TODO
+get the quote from previous blog
+
+
+
+But when I went to do this code wouldn't build 'cos version of z88dk was missing 2x APIs that I need
+'_SMS_VDPFlags' not defined
+'_PSGResume' not defined
+
+
+Acknowledge that there is some code bloat in Candy Kid?
+i.e. repeat esp main loop
+
+
+Ultimately to ship this game changed build.bat to use -size instead of -speed
+
+
+To summarize maybe 32 KB ROM not enough and time to explore beyond 8-bit and enter the 16-bit world
+i.e.
+"upgrade" from SMS to Sega Mega Drive

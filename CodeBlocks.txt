@@ -69,3 +69,21 @@ Enable deduction of a template type parameter as
 "std::initializer_list" from a brace-enclosed initializer list,
 ...
 This option is deprecated, and may be removed in a future version of G++.
+
+
+23/05/2020
+Effective Modern C++ git repo
+was getting build errors Chap07
+
+code blocks linux undefined reference to pthread_create
+
+Reference
+http://forums.codeblocks.org/index.php?topic=3628.0
+
+Codeblocks
+Settings
+Linker settings
+Link libraries
+Add
+pthread
+OK
