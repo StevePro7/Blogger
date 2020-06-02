@@ -1,0 +1,14 @@
+Build script size
+02/06/2020
+
+BEFORE
+sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 main.c
+
+AFTER
+sdcc -c -mz80 --opt-code-size --peep-file peep-rules.txt --std-c99 main.c
+
+
+Segue as to running out of 32KB ROM had to resort to using --opt-code-size [SDCC] compiler flag instead of 
+[previous] -mz80 --opt-code-speed
+
+Fortunately, the main logic per game play frame was not too CPU intensive in order to require maximal speed
