@@ -1,15 +1,20 @@
-In 2013, we checked out Sega Console Programming with goal to build retro game in Z80 assembler for the Sega Master System.  However, the process to write Z80 assembly language from scratch seemed daunting.
+
+<u>Emulicious</u><br />
+In 2013, we checked out <a href="http://steveproxna.blogspot.ie/2013/09/sega-console-programming.html">Sega Console Programming</a> with goal to build retro game in Z80 assembler for the Sega Master System.  However, the process to write Z80 assembly language from scratch seemed daunting.
 
 <br /><br />
-In 2019, since collaborating with Calindro, we now have the opportunity to understand relationship between C source code and the generated Z80 assembly: Emulicious will decorate Z80 code in the debugger with its corresponding C function!
+In 2019, since collaborating with <a href="http://www.smspower.org/forums/member6944">Calindro</a>, we now have the opportunity to understand relationship between C source code and the generated Z80 assembly: <a href="https://emulicious.net">Emulicious</a> will decorate Z80 code in the debugger with its corresponding C function!
 
 <br /><br />
 Launch Emulicious. Tools menu | ensure "Reopen Tools" option is checked. Launch the debugger. File menu | ensure "Load Sources automatically" is checked + Run menu | ensure "Suspend On Open" is checked.  Close
 
-<br /><br />
-Ensure the output.map file is <b>not</b> deleted in build script.  E.g. both output.sms and output.map are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
+<a href="https://3.bp.blogspot.com/-fkOzJSV7b3I/XtaVckohaQI/AAAAAAAAGL4/K71AKqFw2t4dyX2xFPbediWFTegZpfITACLcBGAsYHQ/s1600/emulicious01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-fkOzJSV7b3I/XtaVckohaQI/AAAAAAAAGL4/K71AKqFw2t4dyX2xFPbediWFTegZpfITACLcBGAsYHQ/s640/emulicious01.png" width="98%" /></a>
+
+<br />
+Ensure the <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.map">output.map</a> file is <b>not</b> deleted in build script.  E.g. both <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.sms">output.sms</a> and output.map are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
 
 <br /><br />
-Example<br />
-Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigate there.  Ctrl+click any function name to navigate + inspect Z80 assembly code built for that function.  Click Alt+Left to navigate back.  Nice! 
+<i>Example</i><br />
+Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigate there.  Ctrl+click any function name to navigate + inspect Z80 assembly code built for that function.  Click Alt+Left to navigate back.  Nice!
 
+<a href="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s1600/emulicious02.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s640/emulicious02.png" width="98%" /></a>
