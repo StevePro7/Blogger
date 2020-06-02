@@ -1,0 +1,63 @@
+Emulicious
+02/06/2020
+
+In 2013, we checked out Sega Console Programming with the ultimate goal to build retro game in Z80 assembler to target the Master System.
+At first, the process to write Z80 assembly language from scratch for the SMS seemed very daunting so we chose to write 
+game code in C and use z88dk the the devkitSMS.  [setup LINKS]
+
+However, we would still like to understand the relationship between C source code and Z80 assembly generated from the compiler.
+After collaborating with Calindro an update was made to Emulicious that decorates generated Z80 assembly in the debugger with the corresponding C function.
+
+
+First, launch Emulicious. Tools menu | ensure the "Reopen Tools" option is checked. Launch the debugger. File menu | ensure "Load Sources automatically" is checked.  Run menu | ensure "Suspend On Open" is checked.  Close Emulicious. 
+
+Update the build script | ensure the corresponding map file is not deleted.  For example both output.sms and output.map are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
+
+
+Search for main function.
+Ctrl + F | Find "_main"  Ctrl+click "main" to navigate to main function.  Ctrl+click any function written in C source code to navigate to function and inspect the Z80 assembly code built for said function.  Now we are able to get a better understanding on what machine code the SDCC compiler generates for C source code functions built.  Click Alt+Left to navigate back.
+
+
+
+
+BLOG
+In 2013, we checked out Sega Console Programming with goal to build retro game in Z80 assembler for the Sega Master System.  However, the process to write Z80 assembly language from scratch seemed daunting.
+
+<br /><br />
+In 2019, since collaborating with Calindro, we now have the opportunity to understand relationship between C source code and the generated Z80 assembly: Emulicious will decorate Z80 code in the debugger with its corresponding C function!
+
+<br /><br />
+Launch Emulicious. Tools menu | ensure "Reopen Tools" option is checked. Launch the debugger. File menu | ensure "Load Sources automatically" is checked + Run menu | ensure "Suspend On Open" is checked.  Close
+
+<br /><br />
+Ensure the output.map file is <b>not</b> deleted in build script.  E.g. both output.sms and output.map are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
+
+<br /><br />
+Example<br />
+Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigate there.  Ctrl+click any function name to navigate + inspect Z80 assembly code built for that function.  Click Alt+Left to navigate back.  Nice! 
+
+<br /><br />
+<br /><br />
+Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigate to main function.  Ctrl+click any function to navigate and inspect Z80 assembly code built for said function.  Click Alt+Left to navigate back.  Nice! 
+
+<br /><br />
+Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigate to main function.  Ctrl+click any function written in C source code to navigate to function and inspect the Z80 assembly code built for said function.  
+
+
+<br /><br />
+<br /><br />
+Update build script.  Ensure the output.map file is <b>not</b> deleted.  E.g. both output.sms and output.map are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
+
+
+Now we are able to get a better understanding on what machine code the SDCC compiler generates for C source code functions built.  Click Alt+Left to navigate back.
+
+Update build script.  Ensure the output.map file is <b>not</b> deleted.  For example both output.sms and output.map are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
+
+
+<br /><br />
+Since collaborating with Calindro, Now we have the opportunity to better understand relationship between C source code and Z80 assembly generated from the compiler.  After collaborating with Calindro an update was made to Emulicious that decorates generated Z80 assembly in the debugger with the corresponding C function.
+<br /><br />
+
+In 2013, we checked out Sega Console Programming with the ultimate goal to build retro game in Z80 assembler to target the Master System.  At first, the process to write Z80 assembly language from scratch for the SMS seemed very daunting so we chose to write 
+game code in C and use z88dk the the devkitSMS.
+<br /><br />
