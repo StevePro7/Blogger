@@ -3,12 +3,14 @@ Fixed Bank
 
 
 <b>Fixed Bank</b><br />
-In 2017, Astro Force by eruiz00 gave great example on how to store static data in fixedbank.c to scale out more game content and bank switch on-the-fly without consuming the precious 32KB ROM for game code.  
+In 2017, <a href="http://www.smspower.org/Homebrew/AstroForce-SMS">Astro Force</a> by <a href="http://www.smspower.org/forums/member10267">eruiz00</a> gave great example on how to store static data in <a href="https://github.com/kusfo/astroforce/blob/master/fixedbank.c">fixedbank.c</a> to scale out more game content and bank switch on-the-fly without consuming the precious 32KB ROM for game code.  
 
 <br /><br />
-Candy Kid attempts to replicate this strategy, unfortunately still hitting 32KB capacity for game code.  Next step could be store function pointer arrays in fixedbank.c like Astro Force to conserve more precious bytes!
-
+Candy Kid attempts to replicate this strategy, unfortunately still hitting 32KB capacity for game code.  Next step could be store function pointer arrays in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/banks/fixedbank.c">fixedbank.c</a> like Astro Force to conserve more precious bytes!
 <br /><br />
+
+
+OLD
 Candy Kid attempts to replicate this strategy.  Unfortunately, the game still hit 32KB capacity.  The next step could be perhaps store the array(s) of function pointers in fixedbank.c to conserve more precious bytes.
 
 <br /><br />
