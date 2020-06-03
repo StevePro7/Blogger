@@ -1,32 +1,37 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
-<b>Input</b><br />
-The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had a clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that "Easy to use correctly" and "Hard to use incorrectly".  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
+<b>Collision</b><br />
+Leverage the built-in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">SMS_VDPFlags</a> for fast sprite collision detection.  If value equals 0x20 then at least two sprites have collided then implement slow(er) collision detection by checking if sprite rectangle(s) intersect:
 <br /><br />
-<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/input_manager.c">input_manager.c</a>
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
 <pre class="csharp" name="code">
-#include "input_manager.h"
-#include "..\devkit\_sms_manager.h"
+// Kid collide with Candy Mama?
+gamer_collision = devkit_isCollisionDetected();
 
-static unsigned int curr_joypad1 = 0;
-static unsigned int prev_joypad1 = 0;
+// Fast.
+if ( 0 != gamer_collision )
+{
+	// Slow.
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( go->posnX > eo->posnX )	{ dx = go->posnX - eo->posnX; }
+		else				{ dx = eo->posnX - go->posnX; }
 
-// Public methods.
-void engine_input_manager_update()
-{
-	prev_joypad1 = curr_joypad1;
-	curr_joypad1 = devkit_SMS_getKeysStatus();
-}
-unsigned char engine_input_manager_hold( unsigned char data )
-{
-	return curr_joypad1 & data && !( prev_joypad1 & data );
-}
-unsigned char engine_input_manager_move( unsigned char data )
-{
-	return curr_joypad1 & data;
+		if( go->posnY > eo->posnY )	{ dy = go->posnY - eo->posnY; }
+		else				{ dy = eo->posnY - go->posnY; }
+
+		if( dx <= distance && dy <= distance )
+		{
+			gamer_collision = enemy;
+			break;
+		}
+	}
 }
 </pre>
+
+
 <br /><br />
 
 In <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">2017</a>, we checked out <a href="https://github.com/sverx/devkitSMS">devkitsms</a> to setup productive development environment to build 8-bit retro video games for the Sega Master System (<a href="http://en.wikipedia.org/wiki/Master_System">SMS</a>).  In <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">2019</a>, we improved build process to develop <a href="https://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>.
@@ -88,6 +93,12 @@ Persisting important data like Hi Scores and player settings across game session
 
 <b>Input</b><br />
 The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had a clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that "Easy to use correctly" and "Hard to use incorrectly".  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
+<br />TODO add more stuff<br />
+<br /><br />
+
+
+<b>Collision</b><br />
+Leverage the built-in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">SMS_VDPFlags</a> for fast sprite collision detection.  If value equals 0x20 then at least two sprites have collided then implement slow(er) collision detection by checking if sprite rectangle(s) intersect:
 <br />TODO add more stuff<br />
 <br /><br />
 

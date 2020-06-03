@@ -1,0 +1,33 @@
+<b>Input</b><br />
+The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had a clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that "Easy to use correctly" and "Hard to use incorrectly".  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
+<br /><br />
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/input_manager.c">input_manager.c</a>
+<pre class="csharp" name="code">
+#include "input_manager.h"
+#include "..\devkit\_sms_manager.h"
+
+static unsigned int curr_joypad1 = 0;
+static unsigned int prev_joypad1 = 0;
+
+// Public methods.
+void engine_input_manager_update()
+{
+	prev_joypad1 = curr_joypad1;
+	curr_joypad1 = devkit_SMS_getKeysStatus();
+}
+unsigned char engine_input_manager_hold( unsigned char data )
+{
+	return curr_joypad1 & data && !( prev_joypad1 & data );
+}
+unsigned char engine_input_manager_move( unsigned char data )
+{
+	return curr_joypad1 & data;
+}
+</pre>
+
+
+
+
+
+The previous input manager had a clean interface  that "Easy to use correctly" and "Hard to use incorrectly".  However, this suffered from code bloat + additional costly bytes.  Therefore, inject for a simpler interface:
+<br /><br />
