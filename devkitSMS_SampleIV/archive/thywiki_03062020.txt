@@ -1,64 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
-<b>SRAM</b><br />
-Persisting important data like Hi Scores and player settings across game sessions makes for better gaming experience.  Here is the Candy Kid implementation with <a href="https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures">SRAM support</a> currently included in the devkitSMS:
-<br /><br />
-<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/storage_manager.c">storage_manager.c</a>
-<pre class="csharp" name="code">
-#define MAGIC			0xACE0B004
-#define FINAL			0xFF
-
-// Global variable.
-struct_storage_object global_savegame_object;
-
-unsigned char engine_storage_manager_available()
-{
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-	unsigned char foundMagic;
-
-	devkit_SMS_enableSRAM();
-	foundMagic = MAGIC == savegame->Magic;
-	devkit_SMS_disableSRAM();
-	return foundMagic;
-}
-void engine_storage_manager_read()
-{
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-	struct_state_object *st = &global_state_object;
-
-	devkit_SMS_enableSRAM();
-	st->state_object_high_score = savegame->save_high_score;
-//	...
-	devkit_SMS_disableSRAM();
-}
-void engine_storage_manager_write()
-{
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-	struct_state_object *st = &global_state_object;
-
-	devkit_SMS_enableSRAM();
-	savegame->Magic = MAGIC;
-	savegame->save_high_score = st->state_object_high_score;
-//	...
-	savegame->terminal = FINAL;
-	devkit_SMS_disableSRAM();
-}
-void engine_storage_manager_erase()
-{
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-
-	devkit_SMS_enableSRAM();
-	savegame->Magic = 0x00000000;
-	savegame->save_high_score = DEF_HI_SCORE;
-//	...
-	savegame->terminal = FINAL;
-	devkit_SMS_disableSRAM();
-}
-</pre>
-
-<br /><br />
-
 In <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">2017</a>, we checked out <a href="https://github.com/sverx/devkitSMS">devkitsms</a> to setup productive development environment to build 8-bit retro video games for the Sega Master System (<a href="http://en.wikipedia.org/wiki/Master_System">SMS</a>).  In <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">2019</a>, we improved build process to develop <a href="https://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>.
 
 <br /><br />
@@ -109,10 +50,5 @@ Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigat
 <!--
 <a href="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s1600/emulicious02.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s640/emulicious02.png" width="98%" /></a>
 -->
-<br /><br />
-
-<b>SRAM</b><br />
-Persisting important data like Hi Scores and player settings across game sessions makes for better gaming experience.  Here is the Candy Kid implementation with <a href="https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures">SRAM support</a> currently included in the devkitSMS:
 
 </span>
-
