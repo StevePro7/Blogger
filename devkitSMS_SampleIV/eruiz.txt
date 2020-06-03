@@ -1,0 +1,25 @@
+eruiz
+01/06/2020
+
+
+
+http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html
+
+
+Recently, eruiz00 has shared the source code for Galactic Revenge. This game uses an up-to-date version of z88dk with devkitSMS [instead of sdcc] as the libraries are optimized in ASM + produce smaller object code.
+
+Therefore, 3D City and future games could be written using z88dk with devkitSMS without graphics glitches!
+
+
+
+Email from eruiz
+Sat Apr 28, 2018 9:23 am
+
+
+Let's see ... Z88DK is SDCC plus an additional optimizer. If you don't use the optimizer it is the same as SDCC. What happens is that the SMSLib and PSGLib are optimized in asm, and they go MUCH faster than those of Sverx for SDCC (or at least, they did).
+
+In addition, Z88DK produces a much smaller code that, together with allowing you to compress code and decompress it at the startup of the rom in the data section, allows you to extract between an additional 4 and 5 kb, compared to SDCC. That is the main attraction for me.
+
+The truth is that it has been a great job the last year. 4 games! Let's see the fifth. The problem is that I try to improve the above and it is getting complicated. I am studying a little assembler to see if we can make the different one.
+
+Cheers!

@@ -2,20 +2,18 @@ TODO
 02/06/2020
 
 complete checklist
-
+command design pattern
+z88dk tidy up all refs
 
 
 21/05/2020
-
-
-
 Sample programs:
 
-01.
+01.	DONE		i.e. not doing!
 Astro Force print out stuff via print() command not use "font" mgr?
 
 
-02.
+02.	DONE
 replace my screen_manager array of function pointers for
 load
 update
@@ -31,10 +29,12 @@ Will this move the big bulk "switch" statement out of main 32KB ROM and into the
 Basically does this approach save any bytes?
 
 
-03.
+03.	DONE
 What were the 2x APIs that I used that we not ported to z88dk
 I know PSGresume() was one of them
 
+'_SMS_VDPFlags' not defined
+'_PSGResume' not defined
 
 E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk
 script is here
@@ -43,7 +43,7 @@ _link.bat
 E:\Steven\INSTALLATIONSEGA\z88dk2\CandyKidSMS_z88dk\dev\scripts
 
 
-04.
+04.	DONE
 Debugging works now after working with Calindro
 
 output.map
