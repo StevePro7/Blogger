@@ -56,19 +56,116 @@ Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigat
 
 <b>SRAM</b><br />
 Persisting important data like Hi Scores and player settings across game sessions makes for better gaming experience.  Here is the Candy Kid implementation with <a href="https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures">SRAM support</a> currently included in the devkitSMS:
-<br />TODO add more stuff<br />
+<!--
+<br /><br />
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/storage_manager.c">storage_manager.c</a>
+<pre class="csharp" name="code">
+#define MAGIC			0xACE0B004
+#define FINAL			0xFF
+
+// Global variable.
+struct_storage_object global_savegame_object;
+
+unsigned char engine_storage_manager_available()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	unsigned char foundMagic;
+
+	devkit_SMS_enableSRAM();
+	foundMagic = MAGIC == savegame->Magic;
+	devkit_SMS_disableSRAM();
+	return foundMagic;
+}
+void engine_storage_manager_read()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
+
+	devkit_SMS_enableSRAM();
+	st->state_object_high_score = savegame->save_high_score;
+//	...
+	devkit_SMS_disableSRAM();
+}
+void engine_storage_manager_write()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
+
+	devkit_SMS_enableSRAM();
+	savegame->Magic = MAGIC;
+	savegame->save_high_score = st->state_object_high_score;
+//	...
+	savegame->terminal = FINAL;
+	devkit_SMS_disableSRAM();
+}
+void engine_storage_manager_erase()
+{
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+
+	devkit_SMS_enableSRAM();
+	savegame->Magic = 0x00000000;
+	savegame->save_high_score = DEF_HI_SCORE;
+//	...
+	savegame->terminal = FINAL;
+	devkit_SMS_disableSRAM();
+}
+</pre>
+-->
 <br /><br />
 
 <b>Input</b><br />
 The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had a clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that "Easy to use correctly" and "Hard to use incorrectly".  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
-<br />TODO add more stuff<br />
+<!--
+<br /><br />
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/input_manager.c">input_manager.c</a>
+<pre class="csharp" name="code">
+#include "input_manager.h"
+#include "..\devkit\_sms_manager.h"
+
+static unsigned int curr_joypad1 = 0;
+static unsigned int prev_joypad1 = 0;
+
+// Public methods.
+void engine_input_manager_update()
+{
+	prev_joypad1 = curr_joypad1;
+	curr_joypad1 = devkit_SMS_getKeysStatus();
+}
+unsigned char engine_input_manager_hold( unsigned char data )
+{
+	return curr_joypad1 & data && !( prev_joypad1 & data );
+}
+unsigned char engine_input_manager_move( unsigned char data )
+{
+	return curr_joypad1 & data;
+}
+</pre>
+-->
 <br /><br />
 
 
 <b>Collision</b><br />
 Leverage the built-in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">SMS_VDPFlags</a> for fast sprite collision detection.  If value equals 0x20 then at least two sprites have collided then implement slow(er) collision detection by checking if sprite rectangle(s) intersect:
-<br />TODO add more stuff<br />
 <br /><br />
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
+<pre class="csharp" name="code">
+gamer_collision = devkit_isCollisionDetected();
+if ( 0 != gamer_collision )				// Fast.
+{							// Slow.
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( go->posnX > eo->posnX )		{ dx = go->posnX - eo->posnX; }
+		else					{ dx = eo->posnX - go->posnX; }
+
+		if( go->posnY > eo->posnY )		{ dy = go->posnY - eo->posnY; }
+		else					{ dy = eo->posnY - go->posnY; }
+
+		if( dx <= distance && dy <= distance )	{ gamer_collision = enemy; break; }
+	}
+}
+</pre>
+<br />
 
 
 <b>Buffer Overflow</b><br />
@@ -83,8 +180,8 @@ Candy Kid attempts to replicate this strategy, unfortunately still hitting 32KB 
 <br /><br />
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/banks/fixedbank.c">fixedbank.c</a>
 <pre class="csharp" name="code">
-const unsigned char boss_object_speed[] = { 1, 1, 2, 1, 1, 1, 3, 3, 1, 1, 1, 1 };
-const unsigned char boss_object_delay[] = { 2, 2, 3, 1, 1, 1, 2, 2, 3, 3, 2, 2 };
+const unsigned char bossX_object_speed[] = { 1, 1, 2, 1, 1, 1, 3, 3, 1, 1, 1, 1 };
+const unsigned char bossX_object_delay[] = { 2, 2, 3, 1, 1, 1, 2, 2, 3, 3, 2, 2 };
 const unsigned char enemy_object_image[] = { 0, 2, 4, 12, 14, 16, 24, 26, 28, 36, 38, 40 };
 const unsigned char enemy_object_speed[] = { 2, 3, 1, 3, 2, 1, 3, 2, 1, 1, 2, 3 };
 const unsigned char enemy_object_delay[] = { 3, 3, 1, 2, 3, 1, 2, 1, 2, 2, 3, 3 };
@@ -97,7 +194,7 @@ const unsigned char gamer_object_speed[] = { 1, 2, 3, 3 };
 const unsigned char gamer_object_delay[] = { 1, 1, 2, 1 };
 // TODO potentially include function pointer arrays here also!
 </pre>
-<br /><br />
+<br />
 
 <b>Build Script</b><br />
 In previous projects our <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/build.bat">build.bat</a> file had always used SDCC compiler switch to favor code speed.  However, as Candy Kid was struggling to stay within 32KB ROM limit, unfortunately was necessary to favor code size:

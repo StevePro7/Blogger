@@ -3,6 +3,27 @@ Leverage the built-in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/m
 <br /><br />
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
 <pre class="csharp" name="code">
+gamer_collision = devkit_isCollisionDetected();
+if ( 0 != gamer_collision )				// Fast.
+{							// Slow.
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( go->posnX > eo->posnX )		{ dx = go->posnX - eo->posnX; }
+		else					{ dx = eo->posnX - go->posnX; }
+
+		if( go->posnY > eo->posnY )		{ dy = go->posnY - eo->posnY; }
+		else					{ dy = eo->posnY - go->posnY; }
+
+		if( dx <= distance && dy <= distance )	{ gamer_collision = enemy; break; }
+	}
+}
+</pre>
+
+
+
+OLD
+<pre class="csharp" name="code">
 // Kid collide with Candy Mama?
 gamer_collision = devkit_isCollisionDetected();
 
