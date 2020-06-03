@@ -1,3 +1,6 @@
-Buffer overrun
-02/06/2020
+Buffer overflow
+03/06/2020
 
+Buffer overflow [or overrun] is an anomaly where writing data to a buffer overruns the buffer's boundary and overwrites adjacent memory.  These can be one of the worst programming bugs ever!
+
+In Candy Kid, the player can be killed by any one of the three Candy Mama enemies; actors 0-2.  But Kid can also be killed a death tree "actor" 4.  When Kid is killed we reset the "kill" enemy and initially we reset enemy "4" on death tree which meant a buffer overflow for the enemy array!
