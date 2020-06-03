@@ -37,6 +37,11 @@ typedef struct tag_struct_storage_object
 
 
 storage_manager.c
+https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/storage_manager.c
+
+<pre class="csharp" name="code">
+</pre>
+
 #define MAGIC			0xACE0B004
 #define FINAL			0xFF
 
@@ -61,7 +66,7 @@ void engine_storage_manager_read()
 
 	devkit_SMS_enableSRAM();
 	st->state_object_high_score = savegame->save_high_score;
-///	...
+//	...
 	devkit_SMS_disableSRAM();
 }
 
@@ -74,7 +79,7 @@ void engine_storage_manager_write()
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
 	savegame->save_high_score = st->state_object_high_score;
-///	...
+//	...
 	savegame->terminal = FINAL;
 	devkit_SMS_disableSRAM();
 }
@@ -87,7 +92,7 @@ void engine_storage_manager_erase()
 	devkit_SMS_enableSRAM();
 	savegame->Magic = 0x00000000;
 	savegame->save_high_score = DEF_HI_SCORE;
-///	...
+//	...
 	savegame->terminal = FINAL;
 	devkit_SMS_disableSRAM();
 }
@@ -98,3 +103,31 @@ https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h
 https://github.com/SteveProXNA/CandyKidSMS/blob/master/tmp/SMSlib.h
 https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/object/storage_object.h
 https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/storage_manager.c
+
+
+
+INTRO
+03/06/2020
+Persisting important data like hi scores, player settings, checkpoints, game settings etc makes for a better user experience and is actually very simple to implement with the current version of the devkitSMS includes SRAM support
+
+The current version of the devkitSMS includes SRAM support which is awesome for persisting important game data across console game play sessions like hi scores, player settings, checkpoints and game play progress.  
+
+I believe persisting player settings makes for a better user experience and is actually very simple to implement
+
+sverx has a simple example here
+https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures
+
+However, here is the version used in Candy Kid which uses the new debug integration support:
+
+
+https://whatis.techtarget.com/definition/SRAM-static-random-access-memory
+
+
+https://books.google.ie/books?id=wZnpAgAAQBAJ&pg=PA209&lpg=PA209&dq=what+is+sram+8-bit+consoles&source=bl&ots=ih3MR7IXDw&sig=ACfU3U1qZ82gimXErjybCq2UdnUFghB45w&hl=en&sa=X&ved=2ahUKEwiGkbrwweXpAhXTtXEKHXI9DEIQ6AEwDHoECBAQAQ#v=onepage&q=what%20is%20sram%208-bit%20consoles&f=false
+
+
+https://books.google.ie/books?id=GBXqCAAAQBAJ&pg=PA308&lpg=PA308&dq=what+is+sram+8-bit+consoles&source=bl&ots=veJ4c71wvO&sig=ACfU3U1nN-zuN6edTmtgsjkByHBKp8UOZw&hl=en&sa=X&ved=2ahUKEwiGkbrwweXpAhXTtXEKHXI9DEIQ6AEwD3oECAkQAQ#v=onepage&q=what%20is%20sram%208-bit%20consoles&f=false
+
+
+Embedded Operating Systems: A Practical Approach
+https://books.google.ie/books?id=M7HBBAAAQBAJ&pg=PA172&lpg=PA172&dq=what+is+sram+8-bit+consoles&source=bl&ots=OZ-1YCI3kZ&sig=ACfU3U0AiNMbWNZ_a4eZAUhyy8jRJEN-dQ&hl=en&sa=X&ved=2ahUKEwiGkbrwweXpAhXTtXEKHXI9DEIQ6AEwEXoECAgQAQ#v=onepage&q=what%20is%20sram%208-bit%20consoles&f=false
