@@ -10,11 +10,12 @@ SRAM
 
 
 32KB ROM
-fixedbank
+
 Command Mgr
-Input Mgr
-Function Pointer array	=> fixedbank
-build script
+Input Mgr					mention costly bytes
+//Function Pointer array	=> fixedbank
+fixedbank			hit 32KB capacity... 	conserve more precious bytes
+build script		
 
 
 SUMMARY

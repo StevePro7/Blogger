@@ -12,3 +12,12 @@ Segue as to running out of 32KB ROM had to resort to using --opt-code-size [SDCC
 [previous] -mz80 --opt-code-speed
 
 Fortunately, the main logic per game play frame was not too CPU intensive in order to require maximal speed
+
+
+
+
+<b>Build Script</b><br />
+In previous projects our build.bat file had always use SDCC compiler switch to favor code speed.  However, as Candy Kid was hitting the 32KB ROM capacity it was necessary to favor code size.
+<br /><br />
+In previous projects our build.bat file had always use SDCC compiler switch to favor code speed.  However, as Candy Kid was struggling to stay within the 32KB ROM limit, unfortunately it was necessary to favor code size.
+<br /><br />

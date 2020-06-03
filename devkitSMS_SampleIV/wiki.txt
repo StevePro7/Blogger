@@ -1,6 +1,14 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<b>Fixed Bank</b><br />
+<b>Build Script</b><br />
+In previous projects our <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/build.bat">build.bat</a> file had always used SDCC compiler switch to favor code speed.  However, as Candy Kid was struggling to stay within 32KB ROM limit, unfortunately was necessary to favor code size:
+<br /><br />
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/build.bat">build.bat</a>
+<pre class="csharp" name="code">
+sdcc -c -mz80 --opt-code-size --peep-file peep-rules.txt --std-c99 main.c
+</pre>
+
+<br /><br />
 
 <br /><br />
 
