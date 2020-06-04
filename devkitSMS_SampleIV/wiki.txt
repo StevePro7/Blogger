@@ -52,6 +52,71 @@ Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigat
 -->
 <br /><br />
 
+<b>Levels</b><br />
+In 2018, <a href="http://www.smspower.org/Homebrew/DuckslayerAdventures-SMS">Duckslayer Adventures</a> by <a href="http://www.smspower.org/forums/member601">haroldoop</a> gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing:
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%">
+<table width="100%">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>KEY</b></td>
+<td valign="top" width="40%">&nbsp;<b>VALUE</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;0</td>
+<td valign="top" width="40%">&nbsp;Blank</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;1</td>
+<td valign="top" width="40%">&nbsp;Trees</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;2</td>
+<td valign="top" width="40%">&nbsp;Candy</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;3</td>
+<td valign="top" width="40%">&nbsp;BonusA</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;4</td>
+<td valign="top" width="40%">&nbsp;BonusB</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;5</td>
+<td valign="top" width="40%">&nbsp;BonusC</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;6</td>
+<td valign="top" width="40%">&nbsp;BonusD</td>
+</tr>
+</table>
+</td>
+<td valign="top" width="20%" >
+<pre class="csharp" name="code">
+&nbsp;&nbsp;// Level0101
+&nbsp;&nbsp;3000000004
+&nbsp;&nbsp;0002222000
+&nbsp;&nbsp;0000000000
+&nbsp;&nbsp;0211111120
+&nbsp;&nbsp;0210110120
+&nbsp;&nbsp;0210110120
+&nbsp;&nbsp;0211111120
+&nbsp;&nbsp;0000000000
+&nbsp;&nbsp;0002222000
+&nbsp;&nbsp;5000000006
+</pre>
+</td>
+<td valign="top" width="60%">
+<a href="https://4.bp.blogspot.com/-FpiXReMwg0c/Xsbjvhv9iQI/AAAAAAAAGLc/IFmNAOA2gTMLq2y2e56yx87CHu_92tVgQCLcBGAsYHQ/s1600/Level0101.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-FpiXReMwg0c/Xsbjvhv9iQI/AAAAAAAAGLc/IFmNAOA2gTMLq2y2e56yx87CHu_92tVgQCLcBGAsYHQ/s640/Level0101.png" width="95%" /></a>
+</td>
+</tr>
+</table>
+<br />
+-->
+<br /><br />
+
 <b>SRAM</b><br />
 Persisting important data like Hi Scores and player settings across game sessions makes for better gaming experience.  Here is the Candy Kid implementation with <a href="https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures">SRAM support</a> currently included in the devkitSMS:
 <!--
