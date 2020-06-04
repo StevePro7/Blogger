@@ -1,4 +1,48 @@
 Summary
+04/06/2020
+
+Summary
+To summarize, 
+To summarize, five years of SMS development have learnt lots blah blah blah
+
+but after five years [game like Candy Kid] 32KB ROM capacity
+
+due to time constraints need opportunity to refactor code bloat and duplication in order to safely stay withn 32KB ROM game code limit
+
+Future:
+could explore other options:
+
+01.
+build game code in Z80 assembly directly for complete control of byte code output
+and at the start in 2013 this was an ultimate goal
+
+02.
+refactor and streamline existing C functions to be more generic and data driven
+implement more function pointer arrays that can be move to fixed bank to converse bytes
+
+03.
+investigate more the possibility of using z88dk with devkitSMS and focus only on using supported APIs
+//switch from zcc compiler using z88dk
+
+
+04.
+Upgrade from 8-bit Sega Master System to 16-bit Sega Mega Drive and bypass the 32KB ROM hard limit altogether!
+https://segaretro.org/Sega_Mega_Drive
+
+
+The final option is an interesting one.  Much like how the Sega Master System has the devkitSMS to support homebrew development using C language the SGDK has 
+
+Similar to the devkitSMS for the SMS the SGDK [] 
+
+Similar to the SMS has the devkitSMS the Sega Mega Drive has the SGDK
+to support homebrew development also using C language
+
+It would be interesting to see if [ideas + techniques used during] the five years of [SMS 8-bit] retro development could TRANSFER "transition" to 16-bit
+
+be implemented
+be re-used
+
+
 22/05/2020
 
 
