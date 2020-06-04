@@ -1,3 +1,35 @@
 CommandMgr
 03/06/2020
 
+<b>Command Pattern</b><br />
+In 2009, we implemented the Command Design pattern to record sprite movement in Henway to playback for debugging and demo modes.  Therefore, we would also like to implement the Command Design pattern for Candy Kid.  The motivation here is record enemy movement for reinforcement learning in Video Games.
+<br /><br />
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/command_manager.h">command_manager.h</a>
+<pre class="csharp" name="code">
+void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned char args );
+void engine_command_manager_execute( unsigned int frame );
+</pre>
+
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
+<pre class="csharp" name="code">
+void screen_play_screen_update( unsigned char *screen_type )
+{
+	// Implement logic to boost and move Candy Kid gamer.
+	engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+	engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+
+	// Implement logic to boost and move Candy Mama enemies.
+	engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
+	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+
+	// Execute all commands for this frame.
+	//engine_command_manager_execute( frame );
+}
+</pre>
+
+
+
+OLD
+
+In 2009, we implemented the Command Design pattern to record sprite movement in Henway to playback for debugging and demo modes.  Therefore, we would also like to implement the Command Design pattern for Candy Kid.  The motivation could be to record enemy movement for reinforcement learning in Video Games.
+<br /><br />

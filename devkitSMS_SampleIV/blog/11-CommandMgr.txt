@@ -1,0 +1,39 @@
+<b>Command Pattern</b><br />
+In 2009, we implemented the <a href="http://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command Design</a> pattern to record sprite movement in <a href="http://steveproxna.blogspot.com/2009/09/first-game-completion.html">Henway</a> to playback for debugging and demo modes.  Therefore, we would also like to implement the Command Design pattern for Candy Kid.  The motivation here is record enemy movement for <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning</a> in Video Games.
+<br /><br />
+
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/command_manager.h">command_manager.h</a>
+<pre class="csharp" name="code">
+void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned char args );
+void engine_command_manager_execute( unsigned int frame );
+</pre>
+
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
+<pre class="csharp" name="code">
+void screen_play_screen_update( unsigned char *screen_type )
+{
+	// Implement logic to boost and move Candy Kid gamer.
+	engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+	engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+
+	// Implement logic to boost and move Candy Mama enemies.
+	engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
+	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+
+	// Execute all commands for this frame.
+	//engine_command_manager_execute( frame );
+}
+</pre>
+
+Rather than boost and move actors directly from game events we add these as commands to an array and execute them accordingly.  However, even with storing 255 commands this quickly added to 1KB memory!
+<br /><br />
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/command_manager.c">command_manager.c</a>
+<pre class="csharp" name="code">
+#define MAX_FRAMES	255
+static unsigned int command_object_frames[ MAX_FRAMES ];
+static unsigned char command_object_cmds[ MAX_FRAMES ];
+static unsigned char command_object_args[ MAX_FRAMES ];
+</pre>
+
+Unfortunately, due to competition time constraints and hitting 32KB capacity for game code the Command Design pattern was not fully implemented.  Next steps: code refactor and perhaps storing less commands.
+<br /><br />
