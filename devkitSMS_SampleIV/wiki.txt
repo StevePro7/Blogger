@@ -1,9 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
 
-In <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">2017</a>, we checked out <a href="https://github.com/sverx/devkitSMS">devkitsms</a> to setup productive development environment to build 8-bit retro video games for the Sega Master System (<a href="http://en.wikipedia.org/wiki/Master_System">SMS</a>).  In <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">2019</a>, we improved build process to develop <a href="https://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>.
+In <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">2017</a>, we checked out <a href="https://github.com/sverx/devkitSMS">devkitsms</a> to setup productive development environment to build 8-bit retro video games for the Sega Master System (<a href="http://en.wikipedia.org/wiki/Master_System">SMS</a>).  In <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">2019</a>, we improved build process to develop <a href="https://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>.
 
 <br /><br />
-Though after five years of SMS development we would like to connect more <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> with the underlying <a href="http://en.wikipedia.org/wiki/Zilog_Z80#Z80_assembly_language">Z80 assembly</a> code.  Look for opportunities to consolidate 8-bit retro game development to build <a href="https://www.smspower.org/Homebrew/CandyKid-SMS">Candy Kid</a>!
+Though after five years of SMS development we would like to connect more the <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> with underlying <a href="http://en.wikipedia.org/wiki/Zilog_Z80#Z80_assembly_language">Z80 assembly</a> code.  Look for opportunities to consolidate 8-bit retro game development to build <a href="https://www.smspower.org/Homebrew/CandyKid-SMS">Candy Kid</a>!
 
 <!--
 <a href="https://3.bp.blogspot.com/-zT9aLBPp0Wk/Xpi6uVGyT1I/AAAAAAAAGH8/9LcVK5jl8aY-ltvqiMaA5n3jI9VZA6vYgCLcBGAsYHQ/s1600/01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-zT9aLBPp0Wk/Xpi6uVGyT1I/AAAAAAAAGH8/9LcVK5jl8aY-ltvqiMaA5n3jI9VZA6vYgCLcBGAsYHQ/s640/01.png" width="98%" height="526" /></a>
@@ -14,7 +14,7 @@ Let's check it out!
 <br /><br />
 
 <u>Game</u><br />
-<a href="https://www.smspower.org/Scans/SegaComputer-Magazine-Issue02?gallerypage=17">Candy Kid</a> video game was originally programmed by Grandstand Leisure from New Zealand in September 1984.  The game written in BASIC on the Sega SC-3000.  Thanks to the awesome SMS Power! community Candy Kid is available on Sega Master System in <a href="http://www.smspower.org/Competitions/Coding-2020">2020</a> Coding Competition.  Download source code <b><a href="https://github.com/SteveProXNA/CandyKidSMS">here</a></b>.
+<a href="https://www.smspower.org/Scans/SegaComputer-Magazine-Issue02?gallerypage=17">Candy Kid</a> video game was originally programmed by Grandstand Leisure from New Zealand in September 1984.  The game written in <a href="http://en.wikipedia.org/wiki/BASIC">BASIC</a> on the Sega SC-3000.  Thanks to the awesome SMS Power! community Candy Kid is available on Sega Master System in <a href="http://www.smspower.org/Competitions/Coding-2020">2020</a> Coding Competition.  Download source code <b><a href="https://github.com/SteveProXNA/CandyKidSMS">here</a></b>.
 <br /><br />
 
 <u>Software</u><br />
@@ -42,7 +42,7 @@ Launch Emulicious. Tools menu | ensure "Reopen Tools" option is checked. Launch 
 <a href="https://3.bp.blogspot.com/-fkOzJSV7b3I/XtaVckohaQI/AAAAAAAAGL4/K71AKqFw2t4dyX2xFPbediWFTegZpfITACLcBGAsYHQ/s1600/emulicious01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-fkOzJSV7b3I/XtaVckohaQI/AAAAAAAAGL4/K71AKqFw2t4dyX2xFPbediWFTegZpfITACLcBGAsYHQ/s640/emulicious01.png" width="98%" /></a>
 -->
 <br />
-Ensure the <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.map">output.map</a> file is <b>not</b> deleted in build script.  E.g. both <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.sms">output.sms</a> and output.map are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
+Ensure the <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.map">output.map</a> file is <b>not</b> deleted in build script.  E.g. both <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.sms">output.sms</a> and <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.map">output.map</a> are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
 
 <br /><br />
 <i>Example</i><br />
@@ -177,7 +177,7 @@ void engine_storage_manager_erase()
 <br /><br />
 
 <b>Input</b><br />
-The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had a clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that "Easy to use correctly" and "Hard to use incorrectly".  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
+The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that's "Easy to use correctly" and "Hard to use incorrectly".  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
 <!--
 <br /><br />
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/input_manager.c">input_manager.c</a>
@@ -275,7 +275,7 @@ sdcc -c -mz80 --opt-code-size --peep-file peep-rules.txt --std-c99 main.c
 -->
 
 <b>Command Pattern</b><br />
-In 2009, we implemented the <a href="http://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command Design</a> pattern to record sprite movement in <a href="http://steveproxna.blogspot.com/2009/09/first-game-completion.html">Henway</a> to playback for debugging and demo modes.  Therefore, we would also like to implement the Command Design pattern for Candy Kid.  The motivation here is record enemy movement for <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning</a> in Video Games.
+In 2009, we implemented the <a href="http://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command Design</a> pattern to record sprite movement in <a href="http://steveproxna.blogspot.com/2009/09/first-game-completion.html">Henway</a> to playback for debugging and demo modes.  Therefore, we would also like to implement the Command Design pattern for Candy Kid.  The motivation here is record enemy movement for <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning</a> in video games.
 
 <br /><br />
 <!--
@@ -303,7 +303,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 </pre>
 -->
 
-Rather than boost and move actors directly from game events we add these as commands to an array and execute them accordingly.  However, even with storing 255 commands this quickly added to 1KB memory!
+Rather than boost and move actors directly from game events we add these as commands to an array and execute them accordingly.  However, even when storing 255 commands this quickly added to 1KB memory!
 <br /><br />
 
 <!--
@@ -319,7 +319,7 @@ Unfortunately, due to competition time constraints and hitting 32KB capacity for
 <br /><br />
 
 <b>z88dk</b><br />
-In 2016, <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">3D City</a> was built using an old version of the <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> which worked on emulators but real Master System hardware experienced graphics glitches.  Subsequently, the updated version of z88dk integrates devkitSMS which also works on real hardware.  In fact, this is how <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a> was built by <a href="http://www.smspower.org/forums/member10267">eruiz00</a> because the libraries are optimized in assembly language and produce smaller object code.
+In 2016, <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">3D City</a> was built using an old version of the <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> which worked on emulators but real Master System hardware experienced graphics glitches.  Subsequently, the updated version of z88dk integrates devkitSMS which also works on real hardware.  In fact, this is how <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a> was built by <a href="http://www.smspower.org/forums/member10267">eruiz00</a>.  This was preferred because the libraries are optimized in assembly language and produce smaller object code.
 
 <br /><br />
 
