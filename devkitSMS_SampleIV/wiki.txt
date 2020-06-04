@@ -318,4 +318,35 @@ static unsigned char command_object_args[ MAX_FRAMES ];
 Unfortunately, due to competition time constraints and hitting 32KB capacity for game code the Command Design pattern was not fully implemented.  Next steps: code refactor and perhaps storing less commands.
 <br /><br />
 
+<b>z88dk</b><br />
+In 2016, <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">3D City</a> was built using an old version of the <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> which worked on emulators but real Master System hardware experienced graphics glitches.  Subsequently, the updated version of z88dk integrates devkitSMS which also works on real hardware.  In fact, this is how <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a> was built by <a href="http://www.smspower.org/forums/member10267">eruiz00</a> because the libraries are optimized in assembly language and produce smaller object code.
+
+<br /><br />
+
+Therefore, this seemed a promising option for Candy Kid especially late in the development cycle when the game hit 32KB capacity for game code.  Unfortunately, z88dk does not support the following two APIs used:
+<!--
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+&nbsp;<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">SMSlib.h</a>
+</td>
+<td valign="top">
+&nbsp;extern volatile unsigned char SMS_VDPFlags;
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/PSGlib.h">PSGlib.h</a>
+</td>
+<td valign="top">
+&nbsp;void PSGResume (void);
+</pre>
+</td>
+</tr>
+</table>
+-->
+
+<br /><br />
+
 </span>

@@ -13,13 +13,3 @@ currently all of my code here is in the main ROM and the Z80 assembly produced i
 
 
 02.
-Recently, eruiz00 has shared the source code for Galactic Revenge. This game uses an up-to-date version of z88dk with devkitSMS [instead of sdcc] as the libraries are optimized in ASM + produce smaller object code.
-
-Therefore, 3D City and future games could be written using z88dk with devkitSMS without graphics glitches
-
-
-BUT this doesn't work for me!
-revisit a test that I did during Candy Kid SDLC - there were 2x z88dk APIs that I use missing
-e.g.
-PSGresume()
-// what was the other one??

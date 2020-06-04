@@ -1,4 +1,11 @@
 z88dk
+04/06/2020
+
+In 2016, 3D City was built using an older version of the z88dk which worked on emulators but real Sega Master System hardware experienced graphics glitches.  Subsequently, updated versions of z88dk integrates devkitSMS which works on real hardware
+
+
+
+
 03/06/2020
 
 eruiz wrote Galactic Revenge using devkitSMS and z88dk
@@ -6,3 +13,53 @@ produced smaller object code
 
 
 However, could not get this to work because 2x APIs that Candy Kid uses
+
+
+
+devkitSMS Sample II
+Recently, eruiz00 has shared the source code for Galactic Revenge. This game uses an up-to-date version of z88dk with devkitSMS [instead of sdcc] as the libraries are optimized in ASM + produce smaller object code.
+
+Therefore, 3D City and future games could be written using z88dk with devkitSMS without graphics glitches
+
+
+BUT this doesn't work for me!
+revisit a test that I did during Candy Kid SDLC - there were 2x z88dk APIs that I use missing
+e.g.
+PSGresume()
+SMS_VDPFlags
+
+
+
+In 2016, 3D City was built using an old version of the z88dk which worked on emulators but real Master System hardware experienced graphics glitches.  Subsequently, the updated version of z88dk integrates devkitSMS which also works on real hardware.  In fact, this is how Galactic Revenge was built by eruiz00 because the libraries are optimized in assembly language and produce smaller object code.
+
+<br /><br />
+
+Therefore, this seemed a promising option for Candy Kid especially late in the development cycle when the game hit 32KB capacity for game code.  Unfortunately, z88dk does not support the following two APIs used:
+
+
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+&nbsp;<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">SMSlib.h</a>
+</td>
+<td valign="top">
+&nbsp;extern volatile unsigned char SMS_VDPFlags;
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/PSGlib.h">PSGlib.h</a>
+</td>
+<td valign="top">
+void PSGResume (void);
+</pre>
+</td>
+</tr>
+</table>
+
+<br /><br />
+
+
+Therefore, this seemed a promising option for Candy Kid especially late in the development cycle when the game was hitting the 32KB capacity for game code.  Unfortunately, z88dk does not support the following two APIs used in Candy Kid:
+<br /><br />
