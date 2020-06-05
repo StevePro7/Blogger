@@ -1,24 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Summary</u><br />
-To summarize, the development process to build Candy Kid, like all previous SMS projects, has been very educational + has provided numerous opportunities to collaborate more with the SMS Power! community.
-<br /><br />
-However, the biggest challenge in completing Candy Kid was to stay within the 32KB ROM game code limit.  Here is a short list of current + future options:
-
-<ul>
-<li>Build game code in Z80 assembly directly for complete control of the machine code byte output</li>
-<li>Refactor duplicate code to store generic code in function pointer arrays accessible by fixed bank</li>
-<li>Integrate z88dk and devkitSMS that produces smaller object code by only using supported APIs</li>
-<li>Upgrade from 8-bit Master System to 16-bit Mega Drive and bypass 32KB hard limit altogether</li>
-</ul>
-<br />
-
-In fact, the final option is the most unique: much like how the Sega Master System has the devkitSMS to support homebrew game development using C language the, Sega Mega Drive has the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.  Therefore, would be interesting to transition many Sega Retro Gaming ideas developed from 8-bit onward to 16-bit!
-<br /><br />
-
-<br /><br />
-<br /><br />
-
 In <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">2017</a>, we checked out <a href="https://github.com/sverx/devkitSMS">devkitsms</a> to setup productive development environment to build 8-bit retro video games for the Sega Master System (<a href="http://en.wikipedia.org/wiki/Master_System">SMS</a>).  In <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">2019</a>, we improved build process to develop <a href="https://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>.
 
 <br /><br />
@@ -200,15 +181,31 @@ void engine_storage_manager_read()
 
  devkit_SMS_enableSRAM();
  st->state_object_high_score = savegame->save_high_score;
+// ...
  devkit_SMS_disableSRAM();
 }
 void engine_storage_manager_write()
 {
-// Repeat similar but with savegame->Magic = MAGIC;
+ struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+ struct_state_object *st = &global_state_object;
+
+ devkit_SMS_enableSRAM();
+ savegame->Magic = MAGIC;
+ savegame->save_high_score = st->state_object_high_score;
+// ...
+ savegame->terminal = FINAL;
+ devkit_SMS_disableSRAM();
 }
 void engine_storage_manager_erase()
 {
-// Repeat similar but with savegame->Magic = 0x00000000;
+ struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+
+ devkit_SMS_enableSRAM();
+ savegame->Magic = 0x00000000;
+ savegame->save_high_score = DEF_HI_SCORE;
+// ...
+ savegame->terminal = FINAL;
+ devkit_SMS_disableSRAM();
 }
 </pre>
 <br />
@@ -345,7 +342,7 @@ Unfortunately, due to competition time constraints and hitting 32KB capacity for
 
 <br />
 <b>z88dk</b><br />
-In 2016, <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">3D City</a> was built using an old version of the <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> which worked on emulators but real Master System hardware experienced graphics glitches.  Subsequently, the updated version of z88dk integrates devkitSMS which also works on real hardware.  In fact, this is how <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a> was built by <a href="http://www.smspower.org/forums/member10267">eruiz00</a>.  This was preferred because the libraries are optimized in assembly language and produce smaller object code.
+In 2016, <a href="http://steveproxna.blogspot.com/2016/03/3dcity-code-complete.html">3D City</a> was built using an old version of the <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> which worked on emulators but real Master System hardware experienced graphics glitches.  Subsequently, the updated version of z88dk integrates devkitSMS which also works on real hardware.  In fact, this is how <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a> was built by <a href="http://www.smspower.org/forums/member10267">eruiz00</a>.  This was preferred because the libraries are optimized in assembly language and produce smaller object code.
 
 <br /><br />
 
@@ -362,7 +359,7 @@ Therefore, this seemed a promising option for Candy Kid especially late in the d
 </tr>
 <tr>
 <td valign="top">
-<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/PSGlib.h">PSGlib.h</a>
+&nbsp;<a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/PSGlib.h">PSGlib.h</a>
 </td>
 <td valign="top">
 &nbsp;void PSGResume (void);
@@ -374,4 +371,17 @@ Therefore, this seemed a promising option for Candy Kid especially late in the d
 <br /><br />
 
 <u>Summary</u><br />
+To summarize, the development process to build Candy Kid, like all previous SMS projects, has been very educational + has provided numerous opportunities to collaborate more with the SMS Power! community.
+<br /><br />
+However, the biggest challenge in completing Candy Kid was to stay within the 32KB ROM game code limit.  Here is a short list of current + future options:
+
+<ul>
+<li>Build game code in Z80 assembly directly for complete control of the machine code byte output</li>
+<li>Refactor duplicate code to store generic code in function pointer arrays accessible by fixed bank</li>
+<li>Integrate z88dk and devkitSMS that produces smaller object code by only using supported APIs</li>
+<li>Upgrade from 8-bit Master System to 16-bit Mega Drive and bypass 32KB hard limit altogether</li>
+</ul>
+<br />
+
+In fact, the final option is the most unique: much like how the Sega Master System has the devkitSMS to support homebrew game development using C language the, Sega Mega Drive has the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.  Therefore, would be interesting to transition many Sega Retro Gaming ideas developed from 8-bit onward to 16-bit!
 </span>
