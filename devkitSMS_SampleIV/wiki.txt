@@ -5,9 +5,9 @@ In <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.
 <br /><br />
 Though after five years of SMS development we would like to connect more the <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> with underlying <a href="http://en.wikipedia.org/wiki/Zilog_Z80#Z80_assembly_language">Z80 assembly</a> code.  Look for opportunities to consolidate 8-bit retro game development to build <a href="https://www.smspower.org/Homebrew/CandyKid-SMS">Candy Kid</a>!
 
-<!--
+<!-- -->
 <a href="https://3.bp.blogspot.com/-zT9aLBPp0Wk/Xpi6uVGyT1I/AAAAAAAAGH8/9LcVK5jl8aY-ltvqiMaA5n3jI9VZA6vYgCLcBGAsYHQ/s1600/01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-zT9aLBPp0Wk/Xpi6uVGyT1I/AAAAAAAAGH8/9LcVK5jl8aY-ltvqiMaA5n3jI9VZA6vYgCLcBGAsYHQ/s640/01.png" width="98%" height="526" /></a>
--->
+<!-- -->
 <br />
 
 Let's check it out!
@@ -41,18 +41,18 @@ In 2019, since collaborating with <a href="http://www.smspower.org/forums/member
 
 <br /><br />
 Launch Emulicious. Tools menu | ensure "Reopen Tools" option is checked. Launch the debugger. File menu | ensure "Load Sources automatically" is checked + Run menu | ensure "Suspend On Open" is checked.  Close
-<!--
+<!-- -->
 <a href="https://3.bp.blogspot.com/-fkOzJSV7b3I/XtaVckohaQI/AAAAAAAAGL4/K71AKqFw2t4dyX2xFPbediWFTegZpfITACLcBGAsYHQ/s1600/emulicious01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-fkOzJSV7b3I/XtaVckohaQI/AAAAAAAAGL4/K71AKqFw2t4dyX2xFPbediWFTegZpfITACLcBGAsYHQ/s640/emulicious01.png" width="98%" /></a>
--->
+<!-- -->
 <br />
 Ensure the <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.map">output.map</a> file is <b>not</b> deleted in build script.  E.g. both <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.sms">output.sms</a> and <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/output.map">output.map</a> are built and loaded into Emulicious.  The output.map maps C source code functions to the underlying Z80 assembly code.
 
 <br /><br />
 <i>Example</i><br />
 Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigate there.  Ctrl+click any function name to navigate + inspect Z80 assembly code built for that function.  Click Alt+Left to navigate back.  Nice!
-<!--
+<!-- -->
 <a href="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s1600/emulicious02.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s640/emulicious02.png" width="98%" /></a>
--->
+<!-- -->
 <br /><br />
 
 <u>Coding</u><br />
@@ -62,7 +62,7 @@ The following coding changes and enhancements have been made throughout Candy Ki
 <b>Collision</b><br />
 Leverage the built-in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">SMS_VDPFlags</a> for fast sprite collision detection.  If value equals 0x20 then at least two sprites have collided then implement slow(er) collision detection by checking if sprite rectangle(s) intersect:
 <br /><br />
-<!--
+<!-- -->
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
 <pre class="csharp" name="code">
 gamer_collision = devkit_isCollisionDetected();
@@ -82,11 +82,13 @@ if ( 0 != gamer_collision )				// Fast.
 }
 </pre>
 <br />
--->
+<!--
+<br />
+ -->
 
 <b>Levels</b><br />
 In 2018, <a href="http://www.smspower.org/Homebrew/DuckslayerAdventures-SMS">Duckslayer Adventures</a> by <a href="http://www.smspower.org/forums/member601">haroldoop</a> gave a great example of how levels could be stored externally in text files then converted into byte arrays using folder2c.  The byte arrays are then interpreted for drawing:
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top" width="20%">
@@ -146,12 +148,13 @@ In 2018, <a href="http://www.smspower.org/Homebrew/DuckslayerAdventures-SMS">Duc
 </tr>
 </table>
 <br />
+<!-- 
+<br />
 -->
-<br /><br />
 
 <b>SRAM</b><br />
 Persisting important data like Hi Scores and player settings across game sessions makes for better gaming experience.  Here is the Candy Kid implementation with <a href="https://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures">SRAM support</a> currently included in the devkitSMS:
-<!--
+<!-- -->
 <br /><br />
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/storage_manager.c">storage_manager.c</a>
 <pre class="csharp" name="code">
@@ -205,20 +208,24 @@ void engine_storage_manager_erase()
 	devkit_SMS_disableSRAM();
 }
 </pre>
--->
-<br /><br />
+<br />
+<!--
+<br />
+ -->
+
 
 <u>Debugging</u><br />
 <a href="https://en.wikipedia.org/wiki/Buffer_overflow">Buffer overflow</a> [or overrun] is an anomaly where writing data to buffer overruns the buffer's boundary and overwrites adjacent memory.  In Candy Kid, the player can be killed by any one of the three Mama enemies; Actors 0-2.  But Kid can also be killed by death tree ie "actor" 4.  When Kid is killed we initially reset the "kill" enemy unconditionally.  Thus if killed by death tree enemy "4" would be reset hence a buffer overrun occurs!  Big thanks to <a href="http://www.smspower.org/forums/member6944">Calindro</a> + <a href="https://www.smspower.org/forums/member7198">sverx</a> for helping debug this issue.  The solution is to check enemy kill before reset.
 <br /><br />
 
+<br />
 <u>Capacity</u><br />
 The following challenges were encountered with 32KB ROM game code capacity during development cycle:
 <br /><br />
 
 <b>Input</b><br />
 The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that's "Easy to use correctly" and "Hard to use incorrectly"  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
-<!--
+<!-- -->
 <br /><br />
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/input_manager.c">input_manager.c</a>
 <pre class="csharp" name="code">
@@ -243,8 +250,10 @@ unsigned char engine_input_manager_move( unsigned char data )
 	return curr_joypad1 & data;
 }
 </pre>
+<br />
+<!-- 
+<br />
 -->
-<br /><br />
 
 <b>Banks</b><br />
 In 2017, <a href="http://www.smspower.org/Homebrew/AstroForce-SMS">Astro Force</a> by <a href="http://www.smspower.org/forums/member10267">eruiz00</a> gave great example on how to store static data in <a href="https://github.com/kusfo/astroforce/blob/master/fixedbank.c">fixedbank.c</a> to scale out more game content and bank switch on-the-fly without consuming the precious 32KB ROM for game code.  
@@ -252,7 +261,7 @@ In 2017, <a href="http://www.smspower.org/Homebrew/AstroForce-SMS">Astro Force</
 <br /><br />
 Candy Kid attempts to replicate this strategy, unfortunately still hitting 32KB capacity for game code.  Next step could be store function pointer arrays in fixedbank.c like Astro Force to conserve more precious bytes!
 <br /><br />
-<!--
+<!-- -->
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/banks/fixedbank.c">fixedbank.c</a>
 <pre class="csharp" name="code">
 const unsigned char bossX_object_speed[] = { 1, 1, 2, 1, 1, 1, 3, 3, 1, 1, 1, 1 };
@@ -270,25 +279,28 @@ const unsigned char gamer_object_delay[] = { 1, 1, 2, 1 };
 // TODO potentially include function pointer arrays here also!
 </pre>
 <br />
+<!-- 
+<br />
 -->
 
 <b>Build</b><br />
 In previous projects our <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/build.bat">build.bat</a> file had always used SDCC compiler switch to favor code speed.  However, as Candy Kid was struggling to stay within 32KB ROM limit, unfortunately was necessary to favor code size:
 <br /><br />
-<!--
+<!-- -->
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/build.bat">build.bat</a>
 <pre class="csharp" name="code">
 sdcc -c -mz80 --opt-code-size --peep-file peep-rules.txt --std-c99 main.c
 </pre>
-
-<br /><br />
+<br />
+<!-- 
+<br />
 -->
 
 <b>Command</b><br />
 In 2009, we implemented the <a href="http://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command Design</a> pattern to record sprite movement in <a href="http://steveproxna.blogspot.com/2009/09/first-game-completion.html">Henway</a> to playback for debugging and demo modes.  Therefore, we would also like to implement the Command Design pattern for Candy Kid.  The motivation here is record enemy movement for <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning</a> in video games.
 
 <br /><br />
-<!--
+<!-- -->
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/command_manager.h">command_manager.h</a>
 <pre class="csharp" name="code">
 void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned char args );
@@ -308,15 +320,15 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 
 	// Execute all commands for this frame.
-	//engine_command_manager_execute( frame );
+	engine_command_manager_execute( frame );
 }
 </pre>
--->
+<!-- -->
 
 Rather than boost and move actors directly from game events we add these as commands to an array and execute them accordingly.  However, even when storing 255 commands this quickly added to 1KB memory!
 <br /><br />
 
-<!--
+<!-- -->
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/command_manager.c">command_manager.c</a>
 <pre class="csharp" name="code">
 #define MAX_FRAMES	255
@@ -324,7 +336,7 @@ static unsigned int command_object_frames[ MAX_FRAMES ];
 static unsigned char command_object_cmds[ MAX_FRAMES ];
 static unsigned char command_object_args[ MAX_FRAMES ];
 </pre>
--->
+<!-- -->
 Unfortunately, due to competition time constraints and hitting 32KB capacity for game code the Command Design pattern was not fully implemented.  Next steps: code refactor and perhaps storing less commands.
 <br /><br />
 
@@ -334,7 +346,7 @@ In 2016, <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMS
 <br /><br />
 
 Therefore, this seemed a promising option for Candy Kid especially late in the development cycle when the game hit 32KB capacity for game code.  Unfortunately, z88dk does not support the following two APIs used:
-<!--
+<!-- -->
 <table width="98%" border="1">
 <tr>
 <td valign="top">
@@ -355,7 +367,7 @@ Therefore, this seemed a promising option for Candy Kid especially late in the d
 </td>
 </tr>
 </table>
--->
+<!-- -->
 
 <br /><br />
 
