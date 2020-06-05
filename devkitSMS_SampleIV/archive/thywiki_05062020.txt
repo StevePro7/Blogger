@@ -26,10 +26,7 @@ Note: ensure you have downloaded and installed the <a href="https://github.com/s
 <br />
 Here is a checklist of tasks to complete in order to try and improve the existing development environment:
 <ul>
-<li>1. Emulation		Emulicious</li>
-<li>2. Coding		multi</li>
-<li>3. Debugging		Buffer overflow</li>
-<li>4. Capacity		multi</li>
+<li>TODO - must complete checklist!</li>
 </ul>
 
 <br />
@@ -54,6 +51,12 @@ Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigat
 <a href="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s1600/emulicious02.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-aIDQ5wzWFKE/XtaV4Iz0vXI/AAAAAAAAGMA/d7zmYe29S78eFgYDnaSi_dJedEL9a4qzgCLcBGAsYHQ/s640/emulicious02.png" width="98%" /></a>
 -->
 <br /><br />
+
+<u>Overflow</u><br />
+<a href="https://en.wikipedia.org/wiki/Buffer_overflow">Buffer overflow</a> [or overrun] is an anomaly where writing data to buffer overruns the buffer's boundary and overwrites adjacent memory.  In Candy Kid, the player can be killed by any one of the three Mama enemies; Actors 0-2.  But Kid can also be killed by death tree ie "actor" 4.  When Kid is killed we initially reset the "kill" enemy unconditionally.  Thus if killed by death tree enemy "4" would be reset hence a buffer overrun occurs!  Big thanks to <a href="http://www.smspower.org/forums/member6944">Calindro</a> + <a href="https://www.smspower.org/forums/member7198">sverx</a> for helping debug this issue.  The solution is to check enemy kill before reset.
+<br /><br />
+
+
 
 <u>Coding</u><br />
 TODO Various code architectural updates...
@@ -208,10 +211,6 @@ void engine_storage_manager_erase()
 -->
 <br /><br />
 
-<u>Debugging</u><br />
-<a href="https://en.wikipedia.org/wiki/Buffer_overflow">Buffer overflow</a> [or overrun] is an anomaly where writing data to buffer overruns the buffer's boundary and overwrites adjacent memory.  In Candy Kid, the player can be killed by any one of the three Mama enemies; Actors 0-2.  But Kid can also be killed by death tree ie "actor" 4.  When Kid is killed we initially reset the "kill" enemy unconditionally.  Thus if killed by death tree enemy "4" would be reset hence a buffer overrun occurs!  Big thanks to <a href="http://www.smspower.org/forums/member6944">Calindro</a> + <a href="https://www.smspower.org/forums/member7198">sverx</a> for helping debug this issue.  The solution is to check enemy kill before reset.
-<br /><br />
-
 <u>Capacity</u><br />
 TODO last section struggling to stay within 32KB ROM capacity...
 <br /><br />
@@ -246,6 +245,7 @@ unsigned char engine_input_manager_move( unsigned char data )
 -->
 <br /><br />
 
+
 <b>Banks</b><br />
 In 2017, <a href="http://www.smspower.org/Homebrew/AstroForce-SMS">Astro Force</a> by <a href="http://www.smspower.org/forums/member10267">eruiz00</a> gave great example on how to store static data in <a href="https://github.com/kusfo/astroforce/blob/master/fixedbank.c">fixedbank.c</a> to scale out more game content and bank switch on-the-fly without consuming the precious 32KB ROM for game code.  
 
@@ -271,6 +271,8 @@ const unsigned char gamer_object_delay[] = { 1, 1, 2, 1 };
 </pre>
 <br />
 -->
+
+
 
 <b>Build</b><br />
 In previous projects our <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/build.bat">build.bat</a> file had always used SDCC compiler switch to favor code speed.  However, as Candy Kid was struggling to stay within 32KB ROM limit, unfortunately was necessary to favor code size:
