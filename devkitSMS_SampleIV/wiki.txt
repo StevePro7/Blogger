@@ -1,5 +1,35 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Summary</u><br />
+To summarize, the development process to build Candy Kid, like all previous SMS projects, has been very educational.  It has provided numerous opportunities to collaborate more with the SMS Power! community.
+<br /><br />
+However, the biggest challenge in completing Candy Kid was to stay within the 32KB ROM game code limit.  Here is a short list of the options:
+
+<ul>
+<li>Build game code in Z80 assembly directly for complete control of the machine code byte output</li>
+<li>Refactor duplicate code to store generic code in function pointer arrays accessible by fixed bank</li>
+<li>Integrate z88dk and devkitSMS that produces smaller object code by only using supported APIs</li>
+<li>Upgrade from 8-bit Master System to 16-bit Mega Drive and bypass 32KB hard limit altogether!</li>
+</ul>
+<br />
+
+In fact, the final option is the most unique: much like how the Sega Master System has the devkitSMS to support homebrew game development using C language the, Sega Mega Drive has the SGDK.  Therefore, would be interesting to transition many Sega Retro Gaming ideas developed from 8-bit onward to 16-bit.
+<br /><br />
+
+In fact, the final option is the most unique: much like how the Sega Master System has the devkitSMS to support homebrew game development using C language the, Sega Mega Drive has the SGDK.  Therefore, would be interesting transition many Sega Retro Gaming ideas developed from 8-bit upward to 16-bit!
+<br /><br />
+
+In fact the final option is an interesting one.  Much like how the Sega Master System has the devkitSMS to support homebrew game development using C language the Sega Mega Drive has the SGDK.  Todo: transition these ideas to 16-bit!
+<br /><br />
+
+In fact the final option is an interesting one.  Much like how the Sega Master System has the devkitSMS to support homebrew development in C the Sega Mega Drive has the SGDK.
+<br /><br />
+
+In fact the final option is an interesting one.  Much like how the Sega Master System has the devkitSMS to support homebrew game development using C language the Sega Mega Drive has the SGDK.
+<br /><br />
+
+<br /><br />
+
 In <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">2017</a>, we checked out <a href="https://github.com/sverx/devkitSMS">devkitsms</a> to setup productive development environment to build 8-bit retro video games for the Sega Master System (<a href="http://en.wikipedia.org/wiki/Master_System">SMS</a>).  In <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">2019</a>, we improved build process to develop <a href="https://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>.
 
 <br /><br />
@@ -66,19 +96,19 @@ Leverage the built-in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/m
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
 <pre class="csharp" name="code">
 gamer_collision = devkit_isCollisionDetected();
-if ( 0 != gamer_collision )				// Fast.
-{							// Slow.
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	{
-		eo = &global_enemy_objects[ enemy ];
-		if( go->posnX > eo->posnX )		{ dx = go->posnX - eo->posnX; }
-		else					{ dx = eo->posnX - go->posnX; }
+if ( 0 != gamer_collision )    // Fast.
+{       // Slow.
+ for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+ {
+  eo = &global_enemy_objects[ enemy ];
+  if( go->posnX > eo->posnX )  { dx = go->posnX - eo->posnX; }
+  else     { dx = eo->posnX - go->posnX; }
 
-		if( go->posnY > eo->posnY )		{ dy = go->posnY - eo->posnY; }
-		else					{ dy = eo->posnY - go->posnY; }
+  if( go->posnY > eo->posnY )  { dy = go->posnY - eo->posnY; }
+  else     { dy = eo->posnY - go->posnY; }
 
-		if( dx <= distance && dy <= distance )	{ gamer_collision = enemy; break; }
-	}
+  if( dx <= distance && dy <= distance ) { gamer_collision = enemy; break; }
+ }
 }
 </pre>
 <br />
@@ -158,38 +188,38 @@ Persisting important data like Hi Scores and player settings across game session
 <br /><br />
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/storage_manager.c">storage_manager.c</a>
 <pre class="csharp" name="code">
-#define MAGIC			0xACE0B004
-#define FINAL			0xFF
+#define MAGIC   0xACE0B004
+#define FINAL   0xFF
 
 // Global variable.
 struct_storage_object global_savegame_object;
 
 unsigned char engine_storage_manager_available()
 {
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-	unsigned char foundMagic;
+ struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+ unsigned char foundMagic;
 
-	devkit_SMS_enableSRAM();
-	foundMagic = MAGIC == savegame->Magic;
-	devkit_SMS_disableSRAM();
-	return foundMagic;
+ devkit_SMS_enableSRAM();
+ foundMagic = MAGIC == savegame->Magic;
+ devkit_SMS_disableSRAM();
+ return foundMagic;
 }
 void engine_storage_manager_read()
 {
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-	struct_state_object *st = &global_state_object;
+ struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+ struct_state_object *st = &global_state_object;
 
-	devkit_SMS_enableSRAM();
-	st->state_object_high_score = savegame->save_high_score;
-	devkit_SMS_disableSRAM();
+ devkit_SMS_enableSRAM();
+ st->state_object_high_score = savegame->save_high_score;
+ devkit_SMS_disableSRAM();
 }
 void engine_storage_manager_write()
 {
-//	Repeat similar but with savegame->Magic = MAGIC;
+// Repeat similar but with savegame->Magic = MAGIC;
 }
 void engine_storage_manager_erase()
 {
-//	Repeat similar but with savegame->Magic = 0x00000000;
+// Repeat similar but with savegame->Magic = 0x00000000;
 }
 </pre>
 <br />
@@ -222,16 +252,16 @@ static unsigned int prev_joypad1 = 0;
 // Public methods.
 void engine_input_manager_update()
 {
-	prev_joypad1 = curr_joypad1;
-	curr_joypad1 = devkit_SMS_getKeysStatus();
+ prev_joypad1 = curr_joypad1;
+ curr_joypad1 = devkit_SMS_getKeysStatus();
 }
 unsigned char engine_input_manager_hold( unsigned char data )
 {
-	return curr_joypad1 & data && !( prev_joypad1 & data );
+ return curr_joypad1 & data && !( prev_joypad1 & data );
 }
 unsigned char engine_input_manager_move( unsigned char data )
 {
-	return curr_joypad1 & data;
+ return curr_joypad1 & data;
 }
 </pre>
 <br />
@@ -295,16 +325,16 @@ void engine_command_manager_execute( unsigned int frame );
 <pre class="csharp" name="code">
 void screen_play_screen_update( unsigned char *screen_type )
 {
-	// Implement logic to boost and move Candy Kid gamer.
-	engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
-	engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+ // Implement logic to boost and move Candy Kid gamer.
+ engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+ engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 
-	// Implement logic to boost and move Candy Mama enemies.
-	engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
-	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+ // Implement logic to boost and move Candy Mama enemies.
+ engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
+ engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 
-	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
+ // Execute all commands for this frame.
+ engine_command_manager_execute( frame );
 }
 </pre>
 <!-- -->
@@ -315,7 +345,7 @@ Rather than boost and move actors directly from game events we add these as comm
 <!-- -->
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/command_manager.c">command_manager.c</a>
 <pre class="csharp" name="code">
-#define MAX_FRAMES	255
+#define MAX_FRAMES 255
 static unsigned int command_object_frames[ MAX_FRAMES ];
 static unsigned char command_object_cmds[ MAX_FRAMES ];
 static unsigned char command_object_args[ MAX_FRAMES ];
