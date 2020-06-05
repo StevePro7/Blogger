@@ -47,19 +47,19 @@ Leverage the built-in <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/m
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/screen/play_screen.c">play_screen.c</a>
 <pre class="csharp" name="code">
 gamer_collision = devkit_isCollisionDetected();
-if ( 0 != gamer_collision )    // Fast.
-{       // Slow.
- for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
- {
-  eo = &global_enemy_objects[ enemy ];
-  if( go->posnX > eo->posnX )  { dx = go->posnX - eo->posnX; }
-  else     { dx = eo->posnX - go->posnX; }
+if ( 0 != gamer_collision )             // Fast.
+{                                       // Slow.
+    for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+    {
+        eo = &global_enemy_objects[ enemy ];
+        if( go->posnX > eo->posnX )     { dx = go->posnX - eo->posnX; }
+        else                            { dx = eo->posnX - go->posnX; }
 
-  if( go->posnY > eo->posnY )  { dy = go->posnY - eo->posnY; }
-  else     { dy = eo->posnY - go->posnY; }
+        if( go->posnY > eo->posnY )     { dy = go->posnY - eo->posnY; }
+        else                            { dy = eo->posnY - go->posnY; }
 
-  if( dx <= distance && dy <= distance ) { gamer_collision = enemy; break; }
- }
+        if( dx <= distance && dy <= distance ) { gamer_collision = enemy; break; }
+    }
 }
 </pre>
 <br />
@@ -137,46 +137,46 @@ struct_storage_object global_savegame_object;
 
 unsigned char engine_storage_manager_available()
 {
- struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
- unsigned char foundMagic;
+    struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+    unsigned char foundMagic;
 
- devkit_SMS_enableSRAM();
- foundMagic = MAGIC == savegame->Magic;
- devkit_SMS_disableSRAM();
- return foundMagic;
+    devkit_SMS_enableSRAM();
+    foundMagic = MAGIC == savegame->Magic;
+    devkit_SMS_disableSRAM();
+    return foundMagic;
 }
 void engine_storage_manager_read()
 {
- struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
- struct_state_object *st = &global_state_object;
+    struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+    struct_state_object *st = &global_state_object;
 
- devkit_SMS_enableSRAM();
- st->state_object_high_score = savegame->save_high_score;
-// ...
- devkit_SMS_disableSRAM();
+    devkit_SMS_enableSRAM();
+    st->state_object_high_score = savegame->save_high_score;
+//  ...
+    devkit_SMS_disableSRAM();
 }
 void engine_storage_manager_write()
 {
- struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
- struct_state_object *st = &global_state_object;
+    struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+    struct_state_object *st = &global_state_object;
 
- devkit_SMS_enableSRAM();
- savegame->Magic = MAGIC;
- savegame->save_high_score = st->state_object_high_score;
-// ...
- savegame->terminal = FINAL;
- devkit_SMS_disableSRAM();
+    devkit_SMS_enableSRAM();
+    savegame->Magic = MAGIC;
+    savegame->save_high_score = st->state_object_high_score;
+//  ...
+    savegame->terminal = FINAL;
+    devkit_SMS_disableSRAM();
 }
 void engine_storage_manager_erase()
 {
- struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+    struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
 
- devkit_SMS_enableSRAM();
- savegame->Magic = 0x00000000;
- savegame->save_high_score = DEF_HI_SCORE;
-// ...
- savegame->terminal = FINAL;
- devkit_SMS_disableSRAM();
+    devkit_SMS_enableSRAM();
+    savegame->Magic = 0x00000000;
+    savegame->save_high_score = DEF_HI_SCORE;
+//  ...
+    savegame->terminal = FINAL;
+    devkit_SMS_disableSRAM();
 }
 </pre>
 <br />
@@ -202,16 +202,16 @@ static unsigned int prev_joypad1 = 0;
 // Public methods.
 void engine_input_manager_update()
 {
- prev_joypad1 = curr_joypad1;
- curr_joypad1 = devkit_SMS_getKeysStatus();
+    prev_joypad1 = curr_joypad1;
+    curr_joypad1 = devkit_SMS_getKeysStatus();
 }
 unsigned char engine_input_manager_hold( unsigned char data )
 {
- return curr_joypad1 & data && !( prev_joypad1 & data );
+    return curr_joypad1 & data && !( prev_joypad1 & data );
 }
 unsigned char engine_input_manager_move( unsigned char data )
 {
- return curr_joypad1 & data;
+    return curr_joypad1 & data;
 }
 </pre>
 <br />
@@ -257,16 +257,16 @@ void engine_command_manager_execute( unsigned int frame );
 <pre class="csharp" name="code">
 void screen_play_screen_update( unsigned char *screen_type )
 {
- // Implement logic to boost and move Candy Kid gamer.
- engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
- engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+    // Implement logic to boost and move Candy Kid gamer.
+    engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+    engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 
- // Implement logic to boost and move Candy Mama enemies.
- engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
- engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+    // Implement logic to boost and move Candy Mama enemies.
+    engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
+    engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 
- // Execute all commands for this frame.
- engine_command_manager_execute( frame );
+    // Execute all commands for this frame.
+    engine_command_manager_execute( frame );
 }
 </pre>
 Rather than boost and move actors directly from game events we add these as commands to an array and execute them accordingly.  However, even when storing 255 commands this quickly added to 1KB memory!
