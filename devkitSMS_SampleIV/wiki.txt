@@ -181,31 +181,15 @@ void engine_storage_manager_read()
 
 	devkit_SMS_enableSRAM();
 	st->state_object_high_score = savegame->save_high_score;
-//	...
 	devkit_SMS_disableSRAM();
 }
 void engine_storage_manager_write()
 {
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-	struct_state_object *st = &global_state_object;
-
-	devkit_SMS_enableSRAM();
-	savegame->Magic = MAGIC;
-	savegame->save_high_score = st->state_object_high_score;
-//	...
-	savegame->terminal = FINAL;
-	devkit_SMS_disableSRAM();
+//	Repeat similar but with savegame->Magic = MAGIC;
 }
 void engine_storage_manager_erase()
 {
-	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
-
-	devkit_SMS_enableSRAM();
-	savegame->Magic = 0x00000000;
-	savegame->save_high_score = DEF_HI_SCORE;
-//	...
-	savegame->terminal = FINAL;
-	devkit_SMS_disableSRAM();
+//	Repeat similar but with savegame->Magic = 0x00000000;
 }
 </pre>
 <br />
@@ -340,6 +324,7 @@ static unsigned char command_object_args[ MAX_FRAMES ];
 Unfortunately, due to competition time constraints and hitting 32KB capacity for game code the Command Design pattern was not fully implemented.  Next steps: code refactor and perhaps storing less commands.
 <br /><br />
 
+<br />
 <b>z88dk</b><br />
 In 2016, <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/lib/SMSlib.h">3D City</a> was built using an old version of the <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> which worked on emulators but real Master System hardware experienced graphics glitches.  Subsequently, the updated version of z88dk integrates devkitSMS which also works on real hardware.  In fact, this is how <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a> was built by <a href="http://www.smspower.org/forums/member10267">eruiz00</a>.  This was preferred because the libraries are optimized in assembly language and produce smaller object code.
 
