@@ -56,7 +56,7 @@ Search for main function.  Ctrl + F | Find "_main"  Ctrl+click "main" to navigat
 <br /><br />
 
 <u>Coding</u><br />
-The following coding changes + enhancements have been made throughout Candy Kid development cycle:
+The following coding changes and enhancements have been made throughout Candy Kid development cycle:
 <br /><br />
 
 <b>Collision</b><br />
@@ -213,11 +213,11 @@ void engine_storage_manager_erase()
 <br /><br />
 
 <u>Capacity</u><br />
-TODO last section struggling to stay within 32KB ROM capacity...
+The following challenges were encountered with 32KB ROM game code capacity during development cycle:
 <br /><br />
 
 <b>Input</b><br />
-The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that's "Easy to use correctly" and "Hard to use incorrectly".  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
+The previous <a href="https://github.com/SteveProXNA/PlatformExplorerSMS/blob/master/dev/source/input_manager.h">input</a> manager had clean <a href="https://www.haroldserrano.com/blog/c-tip-12-make-interfaces-easy-to-use-correctly-and-hard-to-use-incorrectly">interface</a> that's "Easy to use correctly" and "Hard to use incorrectly"  But this suffered from code bloat + additional costly bytes.  Therefore, inject key test for simpler interface:
 <!--
 <br /><br />
 <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/dev/engine/input_manager.c">input_manager.c</a>
