@@ -1,0 +1,80 @@
+Awesome Setup
+06/06/2020
+
+Today I look to setup SGDK development identical to devkitSMS development!!
+
+
+I got basic working prototype here:
+E:\Steven\XNA\SGDK\steveproXNA
+
+
+01.
+tmp folder
+my fake setup originates here:
+E:\GitHub\StevePro7\SGDKtest
+
+this needs the following folders:
+inc
+res
+
+font.h needs libres.h
+but this is fake so I just copy libres.h to "inc" folder for simplicity
+
+
+02.
+lib folder
+actually didn't need to do this
+i.e. copy <genesis.h> into lib
+
+#include <genesis.h>
+
+
+03.
+BUILD
+
+AA
+I wanted to suppress all the output from the make file
+so instead of this
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+do this
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen > NUL
+
+
+References
+https://social.technet.microsoft.com/Forums/windows/en-US/66e60961-439d-47e9-8879-d75434ef7bb8/how-do-i-suppress-output-from-a-batch-file?forum=w7itprogeneral
+https://stackoverflow.com/questions/1262708/suppress-command-line-output
+
+
+BB
+when code often get this warning
+main.c: In function 'main':
+main.c:9:3: warning: implicit declaration of function 'VDP_drawText' [-Wimplicit-function-declaration]
+   VDP_drawText( "Hello Adriana", x, y + 1 );
+   ^~~~~~~~~~~~
+main.c:17:3: warning: implicit declaration of function 'VDP_waitVSync' [-Wimplicit-function-declaration]
+   VDP_waitVSync();
+   ^~~~~~~~~~~~~
+
+Here is how to suppress that
+But did need to add the following to suppress "implicit function declaration" generated from SGDK make build
+
+#ifdef _CONSOLE
+#include "..\tmp\genesis.h"
+#else
+#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
+#endif
+
+
+Reference
+https://stackoverflow.com/questions/55896653/gcc-how-to-stop-false-positive-warning-implicit-function-declaration-for-functio
+
+
+IMPORTANT
+last thing with this clean build setup I found that now I DON'T need to #include <genesis.h>
+if fact if I do then causes problems so don't bother - the above works so go with it
+
+
+Resources
+got stuck so went to SGDK wiki
+E:\Steven\XNA\SGDK\_codeTests\_sgdkSamples_03
