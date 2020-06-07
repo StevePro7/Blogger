@@ -1,0 +1,22 @@
+warnings
+07/06/2020
+
+
+For some strange reason sometimes build code w/o warnings but every now and then get those 2x pesky warnings:
+
+warning: extra tokens at end of #ifndef directove
+warning: ISO C99 requires whitespace after the macro name
+
+
+Therefore, I simply modified to get rid of the "\" and ".."
+i.e.
+change this from this to this
+
+BEFORE
+_E_\SGDK\VSTUDIO\_.._RES_LIBRES_H_
+
+AFTER
+_E_SGDK_VSTUDIO_RES_LIBRES_H_
+
+
+and the warnings now seem to "disappear"

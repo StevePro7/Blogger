@@ -1,0 +1,67 @@
+Stephane-D wiki tutorials
+07/06/2020
+
+https://github.com/Stephane-D/SGDK/wiki/Tuto-Introduction
+https://megacatstudios.com/blogs/press/sega-genesis-mega-drive-vdp-graphics-guide-v1-2a-03-14-17
+https://plutiedev.com/
+https://segaretro.org/images/a/a2/Genesis_Software_Manual.pdf
+
+
+https://github.com/Stephane-D/SGDK/wiki/Tuto-Hello-World
+tut1_HelloWorld
+
+
+https://github.com/Stephane-D/SGDK/wiki/Tuto-Background
+tut3_TilesBasic
+tut3_TilesBitmap
+
+
+https://github.com/Stephane-D/SGDK/wiki/Tuto-Sprites-%28old%29
+tut4_SpritesBasic
+
+
+https://github.com/Stephane-D/SGDK/wiki/Tuto-Maths
+
+
+SETUP
+VS2015 + make project
+https://www.youtube.com/watch?v=Kx8__lr4Ao4
+
+VS2015
+File | New project | Visual C++ | General | Makefile Project
+Name		Game
+Location	E:\Steven\XNA\SGDK\Stephane-D\Tut00
+create directory	UNCHECKED
+
+Build command line
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+
+Copy build.bat from other projects
+
+
+IMPORTANT
+if you build the project using build.bat from the command line then will produce out\rom.bin
+OK which you can launch in emulator
+
+However, in order to build from Ctrl+Shift+B using make build command in VS2015 you MUST add
+include directories so <genesis.h> will be detected correctly
+
+e.g.
+right click project
+Properties
+VC++ Directories
+Include Directories
+$(GDK_WIN)\inc;$(ProjectDir)res;$(IncludePath)
+
+
+NB: I think it is always a good idea to remove the additional x64 build configuration
+esp as MD is 16-bit only
+
+
+Update build.bat
+work out how to access fully qualified path to out\rom.bin
+via variable	%~dp0
+
+Reference:
+https://stackoverflow.com/questions/4419868/what-is-the-current-directory-in-a-batch-file
