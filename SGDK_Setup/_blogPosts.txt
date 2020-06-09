@@ -1,0 +1,103 @@
+Blog Posts
+09/06/2020
+
+
+SGDK SetupI
+Windows 10
+
+Intro
+SMS 8-bit onward to MD 16-bit
+may already have pre-reqs installed
+e.g.
+cygwin	gitbash
+gcc	make
+Fusion	emulator
+
+
+00.
+INSTALLATAION
+https://github.com/Stephane-D/SGDK/wiki/SGDK-Installation
+
+Setup
+%GDK%
+%GDK_WIN%
+
+Emulator
+gens
+
+
+EXAMPLE
+Hello World
+
+manual build
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+manual open ROM in emulator
+
+
+01.
+Code Blocks
+https://www.youtube.com/watch?v=cDEGpLxKDK0
+
+MatteusBeus
+How to setup to code for the Sega Genesis or Mega Drive using the SGDK | MatteusBeus
+
+reference
+https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-CodeBlocks
+
+
+02.
+Visual Studio Code
+https://www.ohsat.com/tutorial/megapong/megapong-1
+@ohsat_games
+https://twitter.com/ohsat_games
+Andrej
+
+
+02b.
+Visual Studio Code
+Genesis Code extension
+https://marketplace.visualstudio.com/items?itemName=zerasul.genesis-code
+
+
+03.
+Eclipse	local
+Stephane-D
+https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-Eclipse
+
+NB: you may have Eclipse already installed via devkitSMS
+dig up references
+
+
+04.
+Eclipse remote debugging SGDK code
+https://gendev.spritesmind.net/page-gdb.html
+
+
+SGDK SetupII
+Windows 10
+
+01.
+Visual Studio 2015
+Retro Mike
+https://www.youtube.com/watch?v=Kx8__lr4Ao4
+make project
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+
+02.
+Visual Studio 2015
+my interpretation of this with build.bat
+wired up to Ctrl+1
+
+
+03.
+Visual Studio 2015
+my interpretation of this with Remote Debugging
+Ctrl+F5 to build + run from VS2015
+
+
+04.
+Visual Studio 2015
+finally my interpretation of this like devkitSMS
+I have this half working - just need to get RES folder working example
