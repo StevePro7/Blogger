@@ -1,0 +1,14 @@
+Warnings
+11/06/2020
+
+
+01.
+sprintf
+https://www.ohsat.com/tutorial/megapong/megapong-8
+
+D:/apps/SGDK/src/string.c: In function 'sprintf.constprop':
+D:/apps/SGDK/src/string.c:648:5: warning: second parameter of 'va_start' not last named argument [-Wvarargs]
+
+Solution
+https://github.com/Stephane-D/SGDK/issues/133
+jaytagdamian commented 2 days ago
