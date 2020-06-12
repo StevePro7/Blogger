@@ -1,0 +1,73 @@
+Setup
+12/06/2020
+
+https://github.com/Stephane-D/SGDK
+
+https://www.ohsat.com/tutorial/megapong/megapong-1
+
+
+IMPORTANT
+I have lots of pre-reqs from SMS development that are probably used:
+e.g.
+cygwin
+git bash
+JAVA
+
+
+
+
+SGDK 1.51 (april 2020)
+https://github.com/Stephane-D/SGDK/releases
+https://github.com/Stephane-D/SGDK/releases/download/v1.51/sgdk151.7z
+
+
+UPDATE
+Actually prefer to git clone from master as the latest commits (Jun-2020) resolves this warning:
+
+https://github.com/Stephane-D/SGDK/issues/133
+
+
+
+Download SGDK zip and extract to
+C:\SGDK
+
+Move all files there
+
+
+Add 2x environment variables
+%GDK%		C:/SGDK
+%GDK_WIN%	C:\SGDK
+
+
+Start | run | cmd
+cd %GDK_WIN%
+%GDK_WIN%\bin\make -f %GDK_WIN%\makelib.gen
+
+
+IMPORTANT
+older version of SGDK	<= 1.41
+PLAN_A
+PLAN_B
+VDP_setTextPlan
+VDP_clearPlan
+
+
+newer version of SGDK
+BG_A
+BG_B
+VDP_setTextPlane
+VDP_clearPlane
+
+
+also IMPORTANT
+if you have an old version of SGDK but upgrade to new version
+and coding and you get old API listed in VS2015 intellisense
+then do the following
+
+Close VS2015
+Delete .vs folder
+re-open VS2015
+now old API should NOT appear in the intellisense list
+
+Reference:
+https://stackoverflow.com/questions/18289936/refreshing-the-auto-complete-intellisense-database-in-visual-studio
