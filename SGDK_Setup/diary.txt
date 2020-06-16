@@ -15,4 +15,14 @@ Tue, 09-Jun-2020	SGDK samples 4 + 5
 Wed, 10-Jun-2020	SGDK samples 6 + 8
 Thu, 11-Jun-2020	Day OFF	ohsat_games tutorials	Intro, MegaPong, MegaRunner
 Fri, 12-Jun-2020	Update latest SGDK master	work PC			make updates to code
-Sat, 13-Jun-2020	Update latest SGDK master	home PC			make updates to code
+Sat, 13-Jun-2020	Update latest SGDK master	home PC			make updates to code	refactor LIB
+Sun, 14-Jun-2020	Refactor SGDK lib complete	update sample code with SGDK lib refactor =>	works!
+
+Mon, 15-Jun-2020	Check JoyHandler works OK	Build static lib from *.c	Implement in tests w/ resources
+
+
+
+
+IMPORTANT
+when import resources and do initial build ensure that you are at the dev folder level NOT dev\res
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen

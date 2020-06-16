@@ -1,0 +1,94 @@
+SAMPLE
+16/06/2020
+
+
+
+Now that we have setup like devkitSMS let's do sample
+e.g.
+MegaPong
+
+Clone org. MegaPong
+Navigate to dev folder
+
+Build resources
+cd E:\Steven\XNA\SGDK\ohsat_games\11-MegaPong_NEW\dev
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+Copy lib folder across
+
+Launch Game.sln in VS2015
+Remove x64 build configuration
+
+Ensure C++ application project
+Make the following project changes
+
+
+01.
+General
+Output Directory		$(SolutionDir)..\bin\$(ConfigurationName)
+Intermediate Directory		$(SolutionDir)..\obj\$(ConfigurationName)
+
+
+02.
+C/C++ | General
+Additional Include Directories	$(SolutionDir)\..\lib;$(GDK_WIN)\inc;$(ProjectDir)res;$(IncludePath)
+
+
+03.
+Linker | General
+Additional Library Directories	$(SolutionDir)\..\lib
+
+
+04.
+Linker | Input
+Additional Dependencies		_genesis.lib
+
+
+
+RESOURCES
+Main.h
+#ifndef __MAIN__
+#define __MAIN__
+
+#ifdef _CONSOLE
+#include "_genesis.h"
+#else
+#include <genesis.h>
+#endif
+
+#include "resources.h"
+
+#endif//__MAIN__
+
+
+
+Update resources.c
+e.g.
+
+
+
+Now make the code changes to be compliant with both F5 + Ctrl+1
+
+Start off easy and strip out all code
+except enough to make Hello World
+
+then slowly add the code back in - the hardest part is constructing the resources!!
+
+
+e.g.
+VDP_setPalette( PAL1, bgtile.palette->data );
+
+bgtile will be NULL so inject data manually
+i.e.
+change this to this
+OLD
+VDP_setPalette( PAL1, bgtile.palette->data );	// OLD
+
+
+NEW
+	u16 *data = NULL;
+
+#ifndef _CONSOLE
+	data = bgtile.palette->data;
+#endif
+	VDP_setPalette( PAL1, data );
