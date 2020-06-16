@@ -2,10 +2,15 @@ SAMPLE
 16/06/2020
 
 
-
 Now that we have setup like devkitSMS let's do sample
 e.g.
 MegaPong
+
+Andrej @ ohsat_games
+https://twitter.com/ohsat_games
+
+Reference:
+https://github.com/And-0/MegaPong/blob/master/main.c
 
 Clone org. MegaPong
 Navigate to dev folder
@@ -92,3 +97,7 @@ NEW
 	data = bgtile.palette->data;
 #endif
 	VDP_setPalette( PAL1, data );
+
+
+cd E:\Steven\XNA\SGDK\ohsat_games\13-MegaGalaga_NEW\dev
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen | grep error
