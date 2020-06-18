@@ -1,0 +1,49 @@
+Tables
+18/06/2020
+
+
+01.
+Env vars
+
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%">
+<table width="100%">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>Variable</b></td>
+<td valign="top" width="40%">&nbsp;<b>Value</b></td>
+<td valign="top" width="40%">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;GDK</td>
+<td valign="top" width="40%">&nbsp;C:/SGDK</td>
+<td valign="top" width="40%">&nbsp;UNIX path format</td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;GDK_WIN</td>
+<td valign="top" width="40%">&nbsp;C:\SGDK</td>
+<td valign="top" width="40%">&nbsp;Windows path format</td>
+</tr>
+</table>
+
+
+
+
+02.
+HelloWorld
+
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="20%">
+<table width="100%">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>ACTION</b></td>
+<td valign="top" width="40%">&nbsp;<b>COMMAND</b></td>
+<td valign="top" width="40%">&nbsp;<b>OUTPUT</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">&nbsp;Compile</td>
+<td valign="top" width="40%">&nbsp;%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen</td>
+<td valign="top" width="40%">&nbsp;out\rom.bin</td>
+</tr>
+</table>

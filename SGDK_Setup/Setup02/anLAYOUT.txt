@@ -1,0 +1,284 @@
+anLAYOUT
+18/06/2020
+
+
+Reference:
+devkitSMS Programming Setup
+http://steveproxna.blogspot.com/2017/09
+
+Intro
+In 2013, we checked out Sega Retro Gaming
+
+Emphasis
+Make reference to devkitSMS Setup as some tools prev installed here are relevant to this Setup
+also have Java installed - below
+
+Emphasis a lot of the work that will be doing on SGDK follows on from lessons learnt devkitSMS
+
+
+PIC
+Let’s check it out!
+
+
+SGDK	underline
+https://github.com/Stephane-D/SGDK
+
+SGDK is a free development kit allowing to develop software in C language for the Sega Mega Drive.
+It contains the development library itself (with the code sources) and some custom tools used to compile resources.
+SGDK uses the GCC compiler (m68k-elf target) and the libgcc to generate ROM image. Binaries (GCC 6.3) are provided for Windows OS for convenience but you need to install it by yourself for others operating systems.
+Note that SGDK also requires Java (custom tools need it) so you need to have Java installed on your system.
+
+IMPORTANT
+mention JAVA
+
+Software
+Follow all instructions from the previous post: this documents how to setup the pre-requisite software
+
+
+Emulators	Fusion	gens			gens	TODO link
+C IDE Editor	Visual Studio 2015		TODO link
+Cross Compiler	gcc				TODO link
+Make files	cygwin
+
+
+Emulator
+previously SMS we used Fusion alot as also works for MD
+but may like to use gens KMod as seems more popular MD debugging facilities for SGDK development
+
+Download
+https://segaretro.org/Gens_KMod
+
+IMPORANT
+can download + build from source using VS2015
+https://bitbucket.org/SpritesMind/genskmod
+
+NB: 
+I have store gens.exe in "C:\SEGA\gens" folder similar to all other Sega resources
+as setup in this post
+http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html
+
+
+GCC
+may be already be installed if you have installed cygwin or Git Bash previously
+
+
+SGDK	bold
+Navigate to the SGDK repository on github. @MegadriveDev has full instructions here... 
+https://github.com/Stephane-D/SGDK/wiki/SGDK-Installation
+Following instruction
+
+https://github.com/Stephane-D/SGDK
+
+
+@MegadriveDev
+https://twitter.com/MegaDriveDEV
+Permanently stuck in #16bit world and obsessed in developing on my #Megadrive. Check out #SGDK, a free and open source  Sega Megadrive Development Kit
+
+
+
+Download the latest release from SGDK archive e.g. 1.51 or simply git clone the latest source code
+Extract into C:\SGDK
+
+Download 
+https://github.com/Stephane-D/SGDK/wiki/Download
+
+1.51
+https://github.com/Stephane-D/SGDK/releases/download/v1.51/sgdk151.7z
+
+clone
+https://github.com/Stephane-D/SGDK.git
+
+
+Add the following 2x environment variables
+System | Advanced system settings | Environment Variables
+
+Ref: 
+http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html
+
+
+Table 01	env vars
+Variable	Value	Description
+GDK		C:/SGDK	UNIX path format
+GDK_WIN		C:\SGDK	Windows path format
+
+
+Note: 
+Stephane-D advises to add the bin directory of SGDK to your PATH variable
+as *may* conflict if you previously have another GCC installation
+but I haven't found any issues to date
+
+
+PATH
+https://en.wikipedia.org/wiki/PATH_(variable)
+
+
+Verify everything is properly setting up by trying to compile the library typing this command
+
+Start | run | cmd
+%GDK_WIN%\bin\make -f %GDK_WIN%\makelib.gen
+
+Once complete you should obtain the following file
+%GDK%/lib/libmd.a
+
+
+Finally, here is some useful info on SGDK Usage
+https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage
+
+e.g.
+typical SGDK folder structure used by community
+
+
+Example
+As an example, let's write a simple program that prints "Hello World" using SGDK
+Create new directory: C:\HelloWorld.  Create main.c and enter the following code
+
+main.c
+#include <genesis.h>
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+
+	return 0;
+}
+
+
+
+Build
+Manually compile, link and execute the Hello program. Launch command prompt: Start | Run | cmd.
+
+
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+
+Change directory cd C:\HelloWorld. Next, execute the following 1x command (in bold):
+
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+
+
+Finally, type out\rom.bin. The Hello program should launch in the Fusion emulator.
+Congratulations! You have just written your first Mega Drive  program using SGDK.
+
+
+Automate
+Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+@echo off
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+out\rom.bin
+
+
+IDEs pre-requisites first
+e.g.
+
+01.
+Code Blocks
+matteusbeus
+https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-CodeBlocks
+
+YouTube
+How to setup to code for the Sega Genesis or Mega Drive using the SGDK | MatteusBeus
+https://www.youtube.com/watch?v=cDEGpLxKDK0
+matteusbeus
+https://www.youtube.com/channel/UC4KBnGlYvFFtjNnce5cQskw
+
+
+02.
+Eclipse
+https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-Eclipse
+
+advantage with Eclipse is that you have possibility to do
+Remote Debugging
+https://gendev.spritesmind.net/page-gdb.html
+Debug with Gens KMod
+
+PS:
+do I want to show my screen shots for remote debugging?
+
+
+03.
+Visual Studio Code
+Andrej @Ohsat Games
+https://twitter.com/ohsat_games
+
+https://www.ohsat.com/tutorial/megapong/megapong-2
+https://marketplace.visualstudio.com/items?itemName=zerasul.genesis-code
+
+
+04.
+Visual Studio
+Retro Mike
+
+Develop Games using the Sega Genesis SDK and Visual Studio - Setup
+https://www.youtube.com/watch?v=Kx8__lr4Ao4
+
+follow thru this video and take some screen shots...
+
+
+05.
+Visual Studio [pt.2]
+
+On Windows I prefer Visual Studio as de facto IDE navigation + intellisense
+e.g.
+http://steveproxna.blogspot.com/2017/09/
+
+here is how I setup VS2008 initially for SMS dev
+e.g.
+Write up Ctrl + 1 to integrate and launch build.bat script
+
+Also, I setup VC++ project NOT as a mkae file project [retro mike]
+soooo
+
+repeat Hello World above but setup as VC++ project
+Ctrl + 1 to build + run out to Fusion emu
+
+
+SUMMARY
+In 2019 upgrade from VS2008 to VS2015
+
+
+http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html
+
+
+The motivation here assumes a point where it is difficult / impossible to use Visual Studio 2008 on Windows PC. Plus Visual Studio 2015 has a cool feature to easily Toggle Header / Code files for increased productivity.
+
+
+Finally, the biggest limitation with this setup is that cannot debug step thru code
+Above can debug step thru SGDK code using Eclipse IDE but we like to treat SGDK as black box
+and only debug step thru own code that we are building / developing 
+
+We implemented a solution for SMS development so that we are able to use VS2015 to write C code
+and build, debug, run, step thru code with all devkit APIs stubbed out
+
+Therefore, we would like to implement this setup for SGDK dev also - this will be the next post
+
+[w/ Platform Explorer]
+
+
+Mention benefits :
+compile ANSI C code in VS using Ctrl + Shift + B to find compilation errors quicker
+dehugging facility - being able to debug step thru code is critical to find + fix bugs super fast
+
+
+AND this will be the intro to the next Setup II post
+
+
+
+Setup II
+intro
+
+setup library - subtly different from devkitSMS
+sgdk is more aligned with original header files in SGDK
+
+do simple hello world example
+take screen shots of ALL project properties etc
+
+then do simple example with "res" folder
+and corresponding *.c files for _CONSOLE
+
+
+do similar to devkitSMS Sample
+or MegaPong??
