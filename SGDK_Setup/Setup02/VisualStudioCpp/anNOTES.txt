@@ -1,0 +1,151 @@
+StevePro Studios
+21/06/2020
+
+
+PRE-REQ
+the custom SGDK library is built first
+
+e.g.
+Github
+SteveProXNA
+
+SGDKcode
+SGDK_Library
+lib folder
+
+
+Reference
+http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
+
+VS2015
+New Project
+Visual C++
+Win32 
+Win32 Project
+
+
+Reference
+http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
+Launch Visual Studio 2008. File | New | Project... | Visual C++ | Win32 | Win32 Project
+
+ Name:	 			HelloWorld
+ Location:	 		C:\
+ Create directory for solution	UNCHECKED
+
+
+OK
+Next
+
+
+Application Settings
+
+Application type:	 Console application
+Additional options:	 Empty project CHECKED
+
+
+After VC++ project is created close VS2015
+
+Create "dev" folder beneath C:\HelloWorld
+Move all files create here
+
+Copy "lib" folder from [above] Github \ SteveProXNA \ SGDKcode \ SGDK_Library
+to C:\HelloWorld
+
+re-open VS2015
+
+
+Add existing: main.c and build.bat.
+main.c
+
+
+
+#ifdef _CONSOLE
+#include "_genesis.h"
+#else
+#include <genesis.h>
+#endif
+
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+
+	return 0;
+}
+
+
+IMPORTANT
+make reference to Andrej @ ohsat games Compile.bat
+which I used as the basis for my build.bat
+
+NB: I rename mine to build.bat because I already had key short cut configured
+via SMS programming setup from the past...!!
+
+TODO
+include all the code for build.bat
+
+
+
+00.
+first remove x64 build configuration
+
+Right click project
+Properties
+
+Configuration Properties
+Configuration Manager
+Active solution platforms
+Edit
+x64
+Remove
+Close
+
+
+
+01.
+General
+
+Output Directory		$(SolutionDir)..\bin\$(ConfigurationName)
+Intermediate Directory		$(SolutionDir)..\obj\$(ConfigurationName)
+
+
+02.
+C/C++
+General
+Additional Include Directories
+$(SolutionDir)\..\lib;$(GDK_WIN)\inc;$(ProjectDir)res;$(IncludePath)
+
+
+03.
+Linker
+General
+Additional Library Directories
+$(SolutionDir)\..\lib
+
+
+04.
+Linker
+Input
+Additional Dependencies
+_genesis.lib;%(AdditionalDependencies)
+
+
+
+COMPILE	TODO - update this text better
+Ctrl + Shift + B
+
+this will now build the C code as ANSI-C
+F5 to debug step thru the code!
+
+Finally, Ctrl + 1 to run the binary
+
+
+
+Repeat process but do with "res" file
+and the corresponding resources.c for out compatibility
+
+
+Complete with MegaPong
