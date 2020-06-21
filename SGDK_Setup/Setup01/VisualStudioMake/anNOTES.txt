@@ -1,0 +1,101 @@
+Develop Games using the Sega Genesis SDK and Visual Studio - Setup
+21/06/2020
+
+https://www.youtube.com/watch?v=Kx8__lr4Ao4
+
+
+Reference
+http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
+
+VS2015
+New Project
+Visual C++
+General
+Makefile Project
+
+
+Reference
+http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
+Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project
+
+ Name:	 			HelloWorld
+ Location:	 		C:\
+ Create directory for solution	UNCHECKED
+
+
+
+Next
+
+
+Debug Configuration Settings
+
+Build command line:
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+
+
+Next
+
+Release Configuration Settings
+
+Same as debug  configuration CHECKED
+
+
+
+Create file
+main.c
+
+
+
+#include <genesis.h>
+
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+
+	return 0;
+}
+
+
+
+
+Right click project
+Properties
+
+Configuration Properties
+VC++ Directories
+Include Directories
+$(GDK_WIN)\inc;$(IncludePath)
+
+
+Ctrl + Shift + B
+
+Navigate to the out directory auto generated
+
+Open rom.bin in Fusion emulator
+
+
+AUTOMATE
+
+Add build.bat file on same level as main.c
+
+
+add the contents to build.bat
+
+C:\SEGA\Fusion\fusion.exe out\rom.bin
+::C:\SEGA\gens\gens.exe %~dp0\out\rom.bin
+
+
+after building the source code from Ctrl + Shift + B
+can now Ctrl + 1 to auto load the built ROM rom.bin
+
+
+Great simple code dev setup
+BUT
+
+Cannot F5 to debug step thru source code
+
+this will be the topic of next post
