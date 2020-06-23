@@ -1,5 +1,37 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
+<b>SGDK</b><br />
+Navigate to the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> repository on github: <a href="https://twitter.com/MegaDriveDEV">@MegadriveDev</a> has full instructions 
+<a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Installation">here</a>.  Download the latest release from SGDK archive e.g. <a href="https://github.com/Stephane-D/SGDK/releases/download/v1.51/sgdk151.7z">1.51</a> or simply git clone the latest source code.  Extract code into C:\SGDK.
+<br /><br />
+Setup the following environment variables for GDK + GDK_WIN to be used throughout SGDK development.  Add the following two environment variables: System | Advanced system settings | Environment Variables:
+
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Variable</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GDK</td>
+<td valign="top">&nbsp;C:/SGDK</td>
+<td valign="top">&nbsp;UNIX path format</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GDK_WIN</td>
+<td valign="top">&nbsp;C:\SGDK</td>
+<td valign="top">&nbsp;Windows path format</td>
+</tr>
+</table>
+<br />
+
+Next, Stephane advises to add the %GDK_WIN%\bin to your <a href="https://en.wikipedia.org/wiki/PATH_(variable)">PATH</a> variable being careful if you have another GCC installation as you may have conflicts.  I have multiple GCC installs but have not experienced any issues.
+<br /><br />
+
+
+
+
 TODO
 <br />
 In 2013, we checked out Sega Console Programming, specifically for the Sega Master System (SMS).
@@ -41,4 +73,5 @@ Here is a summary of some of the software to be installed:
 
 Gens KMod "gens" can also be built from <a href="https://bitbucket.org/SpritesMind/genskmod">source</a>.  Add gens.exe to Gens folder similar to Fusion in this <a href="http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html">post</a>.  Note: you may already have <a href="https://gcc.gnu.org/">gcc</a> configured on you computer if you previously installed cygwin or Git Bash
 
+<br /><br />
 </span>
