@@ -3,8 +3,61 @@
 
 <u>Example</u><br />
 As an example, let's write a simple program that prints "Hello World" using SGDK.  Create new directory: C:\HelloWorld.  Create main.c file + enter the following code similar to the Hello World tutorial program.
+<br /><br />
+
+main.c
+<!--
 <pre class="csharp" name="code">
-%GDK_WIN%\bin\make -f %GDK_WIN%\makelib.gen
+#include &lt;genesis.h&gt;
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+	return 0;
+}
+</pre>
+-->
+<br />
+
+<u>Build</u><br />
+Manually compile, link and execute the Hello World program. Launch command prompt: Start | Run | cmd.
+<!--
+<a href="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s1600/Compile.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s640/Compile.png" width="98%" height="295" /></a>
+-->
+<br /><br />
+Change directory cd C:\HelloWorld. Next, execute the following make command to produce the output ROM:
+
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ACTION</td>
+<td valign="top">&nbsp;COMMAND</td>
+<td valign="top">&nbsp;OUTPUT</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Compile</td>
+<td valign="top">&nbsp;%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen</td>
+<td valign="top">&nbsp;out\rom.bin</td>
+</tr>
+</table>
+<br />
+
+Finally, type <b> out\rom.bin</b>. The Hello World program should launch in the Fusion emulator.
+<br />
+Congratulations! You have just written your first Mega Drive  program using <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
+<!--
+<a href="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s1600/HelloWorld.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s640/HelloWorld.png" width="98%" height="526" /></a>
+-->
+<br /><br />
+
+<u>Automate</u><br />
+Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+<pre class="csharp" name="code">
+@echo off
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+out\rom.bin
 </pre>
 
 <br /><br />
@@ -81,8 +134,70 @@ Setup the following environment variables for GDK + GDK_WIN to be used throughou
 Next, Stephane advises to add the %GDK_WIN%\bin to your <a href="https://en.wikipedia.org/wiki/PATH_(variable)">PATH</a> variable being careful if you have another GCC installation as you may have conflicts.  I have multiple GCC installs but have not experienced any issues.
 <br /><br />
 
-Finally, generate the SGDK library <i>%GDK%/lib/libmd.a</i> by entering the following command Start | run | cmd
+Finally, generate the SGDK library <i>%GDK%/lib/libmd.a</i> by entering the following command Start | run | cmd.
 <pre class="csharp" name="code">
 %GDK_WIN%\bin\make -f %GDK_WIN%\makelib.gen
 </pre>
+<br />
+
+<u>Example</u><br />
+As an example, let's write a simple program that prints "Hello World" using SGDK.  Create new directory: C:\HelloWorld.  Create main.c file + enter the following code similar to the Hello World tutorial program.
+<br /><br />
+
+main.c
+<!--
+<pre class="csharp" name="code">
+#include &lt;genesis.h&gt;
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+	return 0;
+}
+</pre>
+-->
+<br />
+
+<u>Build</u><br />
+Manually compile, link and execute the Hello World program. Launch command prompt: Start | Run | cmd.
+<!--
+<a href="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s1600/Compile.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s640/Compile.png" width="98%" height="295" /></a>
+-->
+<br /><br />
+Change directory cd C:\HelloWorld. Next, execute the following make command to produce the output ROM:
+
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ACTION</td>
+<td valign="top">&nbsp;COMMAND</td>
+<td valign="top">&nbsp;OUTPUT</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Compile</td>
+<td valign="top">&nbsp;%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen</td>
+<td valign="top">&nbsp;out\rom.bin</td>
+</tr>
+</table>
+<br />
+
+Finally, type <b> out\rom.bin</b>. The Hello World program should launch in the Fusion emulator.
+<br />
+Congratulations! You have just written your first Mega Drive  program using <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
+<!--
+<a href="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s1600/HelloWorld.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s640/HelloWorld.png" width="98%" height="526" /></a>
+-->
+<br /><br />
+
+<u>Automate</u><br />
+Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+<pre class="csharp" name="code">
+@echo off
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+out\rom.bin
+</pre>
+
+<br /><br />
 </span>
