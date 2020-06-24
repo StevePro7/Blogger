@@ -54,3 +54,34 @@ Port number		6868
 
 Common tab
 Display in favorites menu	Debug
+
+
+Launch 
+
+
+
+briefly got remote debug working again!!
+
+Run
+run configuration
+
+IMPORTANT
+this rebuilds ROM in out directory
+must rebuilds the ROM otherwise debug won't work
+
+Launch gens emulator
+open out\rom.bin
+
+
+
+Debug
+Remote Debugging
+
+set breakpoint
+click debug icon
+
+gens emu
+Hit "Tab" to refresh
+
+Eclipse should now break at break point and you should be able to debug step thru source code
+[including SGDK code]
