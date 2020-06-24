@@ -35,6 +35,7 @@ Name			Remote Debugging
 Project			HelloWorld
 C/C++ Application	C:\HelloWorld\out\rom.out
 Disable auto build	CHECKED
+
 Ensure "Using GDB (DSF) Manual Remote Debugging Launcher" is selected
 
 
@@ -43,7 +44,7 @@ Stop on startup as: main	CHECKED
 
 Debugger options
 Main tab
-GDB debugger 		%GDK_WIN%\bin\gdb.exe
+GDB debugger 		C:SGDK\bin\gdb.exe
 GDB command line	.gdbinit
 
 Connection tab
