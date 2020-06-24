@@ -1,0 +1,141 @@
+<span style="font-family:verdana;font-size:85%;">
+
+TODO
+<br />
+In 2013, we checked out Sega Console Programming, specifically for the Sega Master System (SMS).
+5yrs development on SMS now would like to upgrade 8-bit to 16-bit for Sega Genesis 1988...
+Leverage all previous software installed for and dev setup from SMS to MD
+<!--
+<a href="https://3.bp.blogspot.com/-X-AkSpIuC0A/XvJRQ-EtB4I/AAAAAAAAGNo/CUNm2ZROwkEQX19cEpPSe7yKWWp6FV9OwCLcBGAsYHQ/s1600/sgdk.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-X-AkSpIuC0A/XvJRQ-EtB4I/AAAAAAAAGNo/CUNm2ZROwkEQX19cEpPSe7yKWWp6FV9OwCLcBGAsYHQ/s640/sgdk.png" width="98%" height="292" /></a>
+-->
+<br />
+Let’s check it out!
+<br /><br />
+<u>SGDK</u><br />
+The <a href="https://github.com/Stephane-D/SGDK">SGDK</a> is a free development kit allowing you to develop software in C language for the Sega Mega Drive.  Note that SGDK also requires <a href="https://www.java.com/en/download">Java</a> (custom tools need it) so you need to have Java installed on your system.
+<br /><br />
+<u>Software</u><br />
+Follow most instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a>: this documents how to setup some pre-requisite software.
+<br /><br />
+Here is a summary of some of the software to be installed:
+<table width="98%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;C IDE Editor</td><td valign="top">&nbsp;<a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202015&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio 2015</a></td></tr>
+<tr><td valign="top">&nbsp;Emulators</td><td valign="top">&nbsp<a href="https://retrocdn.net/images/6/6c/Fusion364.7z">Fusion</a>, <a href="https://retrocdn.net/images/4/43/Gens_KMod_v0.7.3.7z">Gens KMod</a></td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;Cross compiler</td><td valign="top">&nbsp;<a href="https://gcc.gnu.org/">GCC</a></td></tr>
+<tr><td valign="top">&nbsp;Make files</td><td valign="top">&nbsp;<a href="http://cygwin.com/install.html">Cygwin</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+
+Gens KMod "gens" can also be built from <a href="https://bitbucket.org/SpritesMind/genskmod">source</a>.  Add gens.exe to Gens folder similar to Fusion in this <a href="http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html">post</a>.  Note: you may already have <a href="https://gcc.gnu.org/">gcc</a> configured on you computer if you previously installed cygwin or Git Bash
+<a href="https://3.bp.blogspot.com/-xqoO9FUQ70I/XvJesqcylFI/AAAAAAAAGN8/GcJ-qx1dnBACpBO0jtSMzKZQOYDiC0YTQCLcBGAsYHQ/s1600/gcc_version.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-xqoO9FUQ70I/XvJesqcylFI/AAAAAAAAGN8/GcJ-qx1dnBACpBO0jtSMzKZQOYDiC0YTQCLcBGAsYHQ/s640/gcc_version.png" width="98%" height="154" /></a>
+
+<br /><br />
+
+<b>SGDK</b><br />
+Navigate to the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> repository on github: <a href="https://twitter.com/MegaDriveDEV">@MegadriveDev</a> has full instructions 
+<a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Installation">here</a>.  Download the latest release from SGDK archive e.g. <a href="https://github.com/Stephane-D/SGDK/releases/download/v1.51/sgdk151.7z">1.51</a> or simply git clone the latest source code.  Extract code into C:\SGDK.
+<br /><br />
+Setup the following environment variables for GDK + GDK_WIN to be used throughout SGDK development.  Add the following two environment variables: System | Advanced system settings | Environment Variables:
+
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Variable</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GDK</td>
+<td valign="top">&nbsp;C:/SGDK</td>
+<td valign="top">&nbsp;UNIX path format</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GDK_WIN</td>
+<td valign="top">&nbsp;C:\SGDK</td>
+<td valign="top">&nbsp;Windows path format</td>
+</tr>
+</table>
+<br />
+
+Next, Stephane advises to add the %GDK_WIN%\bin to your <a href="https://en.wikipedia.org/wiki/PATH_(variable)">PATH</a> variable being careful if you have another GCC installation as you may have conflicts.  I have multiple GCC installs but have not experienced any issues.
+<br /><br />
+
+Finally, generate the SGDK library <i>%GDK%/lib/libmd.a</i> by entering the following command Start | run | cmd.
+<pre class="csharp" name="code">
+%GDK_WIN%\bin\make -f %GDK_WIN%\makelib.gen
+</pre>
+<br />
+
+<u>Example</u><br />
+As an example, let's write a simple program that prints "Hello World" using SGDK.  Create new directory: C:\HelloWorld.  Create main.c file + enter the following code similar to the Hello World tutorial program.
+<br /><br />
+
+main.c
+<!--
+<pre class="csharp" name="code">
+#include &lt;genesis.h&gt;
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+	return 0;
+}
+</pre>
+-->
+<br />
+
+<u>Build</u><br />
+Manually compile, link and execute the Hello World program. Launch command prompt: Start | Run | cmd.
+<!--
+<a href="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s1600/Compile.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s640/Compile.png" width="98%" height="295" /></a>
+-->
+<br /><br />
+Change directory cd C:\HelloWorld. Next, execute the following make command to produce the output ROM:
+
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ACTION</td>
+<td valign="top">&nbsp;COMMAND</td>
+<td valign="top">&nbsp;OUTPUT</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Compile</td>
+<td valign="top">&nbsp;%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen</td>
+<td valign="top">&nbsp;out\rom.bin</td>
+</tr>
+</table>
+<br />
+
+Finally, type <b> out\rom.bin</b>. The Hello World program should launch in the Fusion emulator.
+<br />
+Congratulations! You have just written your first Mega Drive  program using <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
+<!--
+<a href="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s1600/HelloWorld.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s640/HelloWorld.png" width="98%" height="526" /></a>
+-->
+<br /><br />
+
+<u>Automate</u><br />
+Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+<pre class="csharp" name="code">
+@echo off
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+out\rom.bin
+</pre>
+
+<br /><br />
+</span>

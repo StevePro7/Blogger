@@ -1,0 +1,56 @@
+Eclipse remote debugging
+24/06/2020
+
+
+The next section assumes you have Eclipse 32-bit IDE installed
+http://www.eclipse.org/cdt/downloads.php
+
+Launch Eclipse
+
+
+
+e.g.
+E:\Steven\XNA\SGDK\_codeTests\SDGK_test04_Eclipse
+
+
+Follow all instructions HERE to setup an SGDK project using Eclipse IDE
+https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-Eclipse
+
+
+Remote debugging
+
+
+Follow all instructions HERE if you would like to remote debug from main.c source code in SGDK source code
+by configuring Remote Debugging
+
+https://gendev.spritesmind.net/page-gdb.html
+
+
+
+Run menu | Debug Configurations...
+C/C++ Remote Application | New Configuration
+
+Main tab
+Name			Remote Debugging
+Project			HelloWorld
+C/C++ Application	C:\HelloWorld\out\rom.out
+Disable auto build	CHECKED
+Ensure "Using GDB (DSF) Manual Remote Debugging Launcher" is selected
+
+
+Debugger tab
+Stop on startup as: main	CHECKED
+
+Debugger options
+Main tab
+GDB debugger 		%GDK_WIN%\bin\gdb.exe
+GDB command line	.gdbinit
+
+Connection tab
+Type			TCP
+Host name or IP address	localhost
+Port number		6868
+
+
+Common tab
+Display in favorites menu	Debug
