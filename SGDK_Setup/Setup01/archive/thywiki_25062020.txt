@@ -1,14 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Eclipse</u><br />
-Follow all instructions here to setup SGDK with Eclipse.  
-
-<br /><br />
-
-<u>Visual Studio 2015</u><br />
-
-<br /><br />
-
 TODO
 <br />
 In 2013, we checked out Sega Console Programming, specifically for the Sega Master System (SMS).
@@ -145,18 +136,6 @@ Let's automate the build process: create C:\HelloWorld\build.bat script file tha
 %GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
 out\rom.bin
 </pre>
-<br />
-<u>Code Blocks</u><br />
-Follow all instructions <a href="https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-CodeBlocks">here</a> to setup SGDK with CodeBlocks.  <a href="https://twitter.com/matteusbeus">@matteusbeus</a> has great <a href="https://www.youtube.com/watch?v=cDEGpLxKDK0">video</a> on how to setup SGDK using CodeBlocks also.  Checkout his <a href="https://www.youtube.com/channel/UC4KBnGlYvFFtjNnce5cQskw">YouTube</a> channel for other interesting videos with SGDK topics.
-<br /><br />
 
-<u>Visual Studio Code</u><br />
-<a href="https://twitter.com/ohsat_games">@ohsat_games</a> has a great <a href="https://www.ohsat.com/tutorial/megapong/megapong-2">tutorial</a> on how to setup SGDK using Visual Studio Code.  You can even <a href="https://marketplace.visualstudio.com/items?itemName=zerasul.genesis-code">install</a> the Genesis Code extension for code auto completion and to streamline the build process all from within the IDE.
-<br /><br />
-Further SGDK tutorials from @ohsat_games can be found <a href="https://www.ohsat.com/tutorial">here</a>.  All projects have a similar build batch script:
-<pre class="csharp" name="code">
-%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
-</pre>
-<br /><br />
 <br /><br />
 </span>
