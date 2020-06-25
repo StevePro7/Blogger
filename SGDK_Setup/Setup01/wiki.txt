@@ -1,15 +1,14 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
-
 <u>Visual Studio 2015</u><br />
-Retro Mike has a great video on how to setup SGDK using Visual Studio 2015.  Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project.  Enter the following in the Build command:
+<a href="https://www.youtube.com/channel/UCJkDjU_5xCeu5kQ2WE38izg">Retro Mike</a> has a great <a href="https://www.youtube.com/watch?v=Kx8__lr4Ao4">video</a> on how to setup SGDK using Visual Studio 2015.  Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project.  Enter the following in the Build command:
+<!--
 <a href="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="500" /></a>
 <br /><br />
 Enter the previous "Hello World" code as above.  Finally, update Project Properties VC++ Include Directories:
 <a href="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="434" /></a>
-<br /><br />
-Retro Mike has a great video on how to setup SGDK using Visual Studio 2015.  Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project.  In the Build command line text box enter the following:
+-->
+Press Ctrl + Shift + B to build source code and produce <b>out\rom.bin</b>.  Launch gens.exe and load ROM file!
 <br /><br />
 
 TODO
@@ -223,6 +222,15 @@ Further SGDK tutorials from @ohsat_games can be found <a href="https://www.ohsat
 <pre class="csharp" name="code">
 %GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
 </pre>
+<br />
+<u>Visual Studio 2015</u><br />
+<a href="https://www.youtube.com/channel/UCJkDjU_5xCeu5kQ2WE38izg">Retro Mike</a> has a great <a href="https://www.youtube.com/watch?v=Kx8__lr4Ao4">video</a> on how to setup SGDK using Visual Studio 2015.  Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project.  Enter the following in the Build command:
+<!--
+<a href="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="500" /></a>
 <br /><br />
+Enter the previous "Hello World" code as above.  Finally, update Project Properties VC++ Include Directories:
+<a href="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="434" /></a>
+-->
+Press Ctrl + Shift + B to build source code and produce <b>out\rom.bin</b>.  Launch gens.exe and load ROM file!
 <br /><br />
 </span>
