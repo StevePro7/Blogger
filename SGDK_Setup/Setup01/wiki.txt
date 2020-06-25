@@ -1,12 +1,15 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Eclipse</u><br />
-Follow all instructions here to setup SGDK with Eclipse.  
 
-<br /><br />
 
 <u>Visual Studio 2015</u><br />
-
+Retro Mike has a great video on how to setup SGDK using Visual Studio 2015.  Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project.  Enter the following in the Build command:
+<a href="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="500" /></a>
+<br /><br />
+Enter the previous "Hello World" code as above.  Finally, update Project Properties VC++ Include Directories:
+<a href="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="434" /></a>
+<br /><br />
+Retro Mike has a great video on how to setup SGDK using Visual Studio 2015.  Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project.  In the Build command line text box enter the following:
 <br /><br />
 
 TODO
@@ -148,6 +151,69 @@ out\rom.bin
 <br />
 <u>Code Blocks</u><br />
 Follow all instructions <a href="https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-CodeBlocks">here</a> to setup SGDK with CodeBlocks.  <a href="https://twitter.com/matteusbeus">@matteusbeus</a> has great <a href="https://www.youtube.com/watch?v=cDEGpLxKDK0">video</a> on how to setup SGDK using CodeBlocks also.  Checkout his <a href="https://www.youtube.com/channel/UC4KBnGlYvFFtjNnce5cQskw">YouTube</a> channel for other interesting videos with SGDK topics.
+<br /><br />
+
+
+<u>Eclipse</u><br />
+Follow all instructions <a href="https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-Eclipse">here</a> to setup SGDK with Eclipse.  <a href="https://twitter.com/spritesmind">@SpritesMind</a> has a great tutorial on how to remote debug SGDK code using Gens KMod with Eclipse also.  Follow all instructions <a href="https://gendev.spritesmind.net/page-gdb.html">here</a> to complete debug setup:
+<br /><br />
+Launch Eclipse.  Choose Run menu | Debug Configurations | C/C++ Remote Application | New Configuration
+<!--
+<a href="https://4.bp.blogspot.com/-KdUp8LjuSPg/XvT-Dm4r3wI/AAAAAAAAGOw/oX3uTDGeK0w1xIQB9ULbQdyPDmOl3VVQgCLcBGAsYHQ/s1600/Eclipse01.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-KdUp8LjuSPg/XvT-Dm4r3wI/AAAAAAAAGOw/oX3uTDGeK0w1xIQB9ULbQdyPDmOl3VVQgCLcBGAsYHQ/s640/Eclipse01.png" width="98%" height="374" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Name</td>
+<td valign=top>&nbsp;Remote Debugging</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Project</td>
+<td valign=top>&nbsp;HelloWorld</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;C/C++ Application</td>
+<td valign=top>&nbsp;C:\HelloWorld\out\rom.out</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Disable auto build</td>
+<td valign=top>&nbsp;CHECKED</td>
+</tr>
+</table>
+IMPORTANT ensure "Using GDB (DSF) Manual Remote Debugging Launcher" is preferred launcher selected!
+<br /><br />
+
+<a href="https://3.bp.blogspot.com/-v5o3gv0ao7U/XvT-sUgMjgI/AAAAAAAAGO4/GFUeylZZKmIucXw-beR-A7-T6yEDKSysgCLcBGAsYHQ/s1600/Eclipse02.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-v5o3gv0ao7U/XvT-sUgMjgI/AAAAAAAAGO4/GFUeylZZKmIucXw-beR-A7-T6yEDKSysgCLcBGAsYHQ/s640/Eclipse02.png" width="98%" height="454" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Stop on startup as: main</td>
+<td valign=top>&nbsp;CHECKED</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;GDB debugger</td>
+<td valign=top>&nbsp;C:SGDK\bin\gdb.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;GDB command line</td>
+<td valign=top>&nbsp;.gdbinit</td>
+</tr>
+</table>
+<br />
+<a href="https://4.bp.blogspot.com/-7dYKzkXxTPk/XvUA6Sjeg0I/AAAAAAAAGPE/h4so7eKNliM5N27crGV8qzdQWN2L3-XvgCLcBGAsYHQ/s1600/Eclipse03.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-7dYKzkXxTPk/XvUA6Sjeg0I/AAAAAAAAGPE/h4so7eKNliM5N27crGV8qzdQWN2L3-XvgCLcBGAsYHQ/s640/Eclipse03.png" width="98%" height="345" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Type</td>
+<td valign=top>&nbsp;TCP</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Host name or IP address</td>
+<td valign=top>&nbsp;localhost</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Port number</td>
+<td valign=top>&nbsp;6868</td>
+</tr>
+</table>
+-->
+Build project.  Load rom.bin in gens.  Set breakpoints.  Click debug.  Hit Tab in gens to refresh + debug code!
 <br /><br />
 
 <u>Visual Studio Code</u><br />

@@ -1,19 +1,56 @@
 Tables
 24/06/2020
 
-
 01.
-Env vars
-
-
-<table width="98%" border="1">
+<table width="99%" border="1">
 <tr>
-<td valign="top">&nbsp;<b>Key</b></td>
-<td valign="top">&nbsp;<b>Value</b></td>
+<td valign=top>&nbsp;Name</td>
+<td valign=top>&nbsp;Remote Debugging</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;GDK</td>
-<td valign="top">&nbsp;C:/SGDK</td>
+<td valign=top>&nbsp;Project</td>
+<td valign=top>&nbsp;HelloWorld</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;C/C++ Application</td>
+<td valign=top>&nbsp;C:\HelloWorld\out\rom.out</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Disable auto build</td>
+<td valign=top>&nbsp;CHECKED</td>
 </tr>
 </table>
 
+
+02.
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Stop on startup as: main</td>
+<td valign=top>&nbsp;CHECKED</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;GDB debugger</td>
+<td valign=top>&nbsp;C:SGDK\bin\gdb.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;GDB command line</td>
+<td valign=top>&nbsp;.gdbinit</td>
+</tr>
+</table>
+
+
+03.
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Type</td>
+<td valign=top>&nbsp;TCP</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Host name or IP address</td>
+<td valign=top>&nbsp;localhost</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Port number</td>
+<td valign=top>&nbsp;6868</td>
+</tr>
+</table>
