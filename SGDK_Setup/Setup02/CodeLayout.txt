@@ -1,0 +1,170 @@
+codeLAYOUT
+26/06/2020
+
+ALL
+remove x64 build configuration!!
+
+
+00.
+Library
+
+
+IMPORTANT
+although we use our new way to debug step thru the C source code
+we still follow the same internal folder structure as preferred by SGDK devs
+e.g.
+https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage
+
+
+01.
+Hello World
+
+reference
+E:\GitHub\SteveProXNA\SGDKcode\SGDKwiki\Tut10_HelloWorld
+
+main.c
+build.bat
+
+
+IMPORTANT
+show screen shots x3
+Project Properties
+
+this will add references to include files and static library built [abouve]
+this is how we are able to debug step thru the source code!!
+
+
+Also, for our C++ console application there will auto-magically be set
+a conditional compilation preprocessor _CONSOLE that we can leverage for our custom
+stub code
+
+TODO
+do I want to get this picture??
+HelloWorld04b.png
+
+
+IMPORTANT
+Ctrl + Shift + B
+to build the ANSI-C code
+
+F5 to debug step thru
+NB: first time around you may need be prompted to naviagte to the *.c libary src code
+e.g.
+C:\GitHub\SteveProXNA\SGDKcode\SGDK_Library\Library\src
+
+
+If you have setup like SMS development
+then Ctrl + 1 to build + run the actual MD version out to emulator via build.bat script
+
+or you can simply double click build.bat or run from cmd prompt to streamline deploy
+
+
+02.
+Background Tiles
+
+reference
+E:\GitHub\SteveProXNA\SGDKcode\SGDKwiki\Tut31_TileBitmap
+
+best bet is to create new simple "Hello World" project
+
+update folder structure
+dev
+gfx
+lib
+
+
+cd dev
+create res folder | copy resource file | create resources.res file
+
+
+resources.res
+IMAGE moon "moon.bmp" 0
+
+
+Great breakdown and explanation of *.res files can be found here
+@ohsat_games
+https://www.ohsat.com/tutorial/megapong/megapong-3
+
+
+run build.bat script
+this action generates resources.h file in dev \ res
+
+import resources.h into VS2015
+
+resources.h
+extern const Image moon;
+
+
+cd gfx
+create res folder
+create new custom resources.c file
+
+resources.c
+#ifdef _CONSOLE
+#include "_genesis.h"
+const Image moon = { NULL, NULL, NULL };
+#endif
+
+import resources.c into VS2015
+
+IMPORTANT
+the resource.c is just a dummy implementation that we need in order to Ctrl + Shift + B
+the source code as ANSI-C and con't to debug step thru the source code!
+
+
+Finally, update main.c
+
+#ifdef _CONSOLE
+#include "_genesis.h"
+#else
+#include <genesis.h>
+#endif
+
+#include "resources.h"
+int main()
+{
+	u16 *data = NULL;
+
+	// get the palette data of moon
+#ifndef _CONSOLE
+	data = moon.palette->data;
+#endif
+
+	VDP_setPalette( PAL1, data );
+	VDP_drawImageEx( BG_A, &moon, TILE_ATTR_FULL( PAL1, 0, 0, 0, 1 ), 10, 5, 0, CPU );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+
+	return 0;
+}
+
+
+IMPORTANT
+we need to workaround the null reference when debug step thru code
+e.g.
+	// get the palette data of moon
+#ifndef _CONSOLE
+	data = moon.palette->data;
+#endif
+
+
+03 Splash
+splash.bmp
+
+Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len < 0 || off + len > b.length!
+https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt
+
+ImageUtil.java
+E:\SGDK\tools\commons\src\sgdk\tool
+
+587
+
+
+rescomp.jap
+cd dev \ res
+java -jar %GDK_WIN%\bin\rescomp.jar resources.res
+
+IndexOutOfBoundsException when reading indexed color BMP
+https://bugs.openjdk.java.net/browse/JDK-8182461

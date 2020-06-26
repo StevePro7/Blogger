@@ -1,0 +1,75 @@
+Resource error
+26/06/2020
+
+
+Initially I got an error with building resources
+because it seemed that my version of Java was out of data
+
+
+JAVA01.png
+
+Start | run | cmd
+java -version
+java version "1.8.0_25"
+Java(TM) SE Runtime Environment (build 1.8.0_25-b18)
+Java HotSpot(TM) 64-Bit Server VM (build 25.25-b02, mixed mode)
+
+javac 1.8.0_25
+
+
+03 Splash
+splash.bmp
+
+
+build the resource
+
+here are the guide lines
+https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt
+
+
+
+IMPORTANT
+if you get the following error then you may have an out-of-date version of Java
+e.g.
+upgrade to 12.0.2
+
+
+rescomp.jar
+cd dev \ res
+java -jar %GDK_WIN%\bin\rescomp.jar resources.res
+
+
+JAVA02.png
+
+C:\HelloWorld\dev\res>java -jar %GDK_WIN%\bin\rescomp.jar resources.res
+ResComp 2.75 - SGDK Resource Compiler - Copyright 2020 (Stephane Dallongeville)
+
+Resource: IMAGE splash "splash.bmp" 0
+--> executing plugin IMAGE...
+Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len < 0 || off + len > b.length!
+        at javax.imageio.stream.ImageInputStreamImpl.readFully(ImageInputStreamImpl.java:346)
+        at com.sun.imageio.plugins.bmp.BMPImageReader.read8Bit(BMPImageReader.java:1160)
+        at com.sun.imageio.plugins.bmp.BMPImageReader.read(BMPImageReader.java:923)
+        at javax.imageio.ImageIO.read(ImageIO.java:1448)
+        at javax.imageio.ImageIO.read(ImageIO.java:1308)
+        at sgdk.tool.ImageUtil.getBasicInfo(ImageUtil.java:587)
+        at sgdk.rescomp.resource.Image.<init>(Image.java:27)
+        at sgdk.rescomp.processor.ImageProcessor.execute(ImageProcessor.java:66)
+        at sgdk.rescomp.Compiler.execute(Compiler.java:577)
+        at sgdk.rescomp.Compiler.compile(Compiler.java:131)
+        at sgdk.rescomp.Launcher.main(Launcher.java:54)
+
+
+Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len < 0 || off + len > b.length!
+https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt
+
+
+
+rescomp.jar
+cd dev \ res
+java -jar %GDK_WIN%\bin\rescomp.jar resources.res
+
+IndexOutOfBoundsException when reading indexed color BMP
+https://bugs.openjdk.java.net/browse/JDK-8182461
+
+
