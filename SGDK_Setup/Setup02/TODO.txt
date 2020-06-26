@@ -9,3 +9,38 @@ additional pic
 
 HelloWorld04b.png
 E:\GitHub\StevePro7\Blogger\SGDK_Setup\Setup02\VisualStudioCpp
+
+
+Library
+don't forget to mention that I "merged" libres.h fron GDK_WIN\res folder into my "lib" folder
+that way do not need to have an additional #include
+
+
+Also with the original libres.h when I SGDK build against it
+ensure you do not get that weird error about the "foreign" characters
+e.g.
+was an older version of the SGDK so if you get the latest then shouldn't be an issue
+
+reference
+E:\GitHub\StevePro7\Blogger\SGDK_Setup\libres
+
+e.g.
+_E_\SGDK\VSTUDIO\_.._RES_LIBRES_H_
+
+
+Also warnings with sprintf
+soln upgrade to latest version 1.51 not sort but need to get master
+Warnings.txt
+E:\GitHub\StevePro7\Blogger\SGDK_Setup
+
+
+
+INPUT code sample
+01.
+most code uses
+Joy handler callback
+E:\GitHub\StevePro9\SGDK_Ideas\SGDK_Wiki\Tut20_Input\dev
+
+02.
+u16 value = JOY_readJoypad( JOY_1 );
+E:\GitHub\StevePro9\SGDK_Ideas\SGDK_Samples\sprite\dev
