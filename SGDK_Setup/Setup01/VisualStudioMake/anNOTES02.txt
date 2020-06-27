@@ -1,0 +1,50 @@
+Develop Games using the Sega Genesis SDK and Visual Studio - Setup
+21/06/2020
+
+Retro Mike
+VS2015
+
+change tact!
+
+setup via YouTube video
+
+Ctrl + Shift + B to build ROM
+manually open rom.bin in emulator
+
+Can partial automate this process
+by double click build.bat or run build.bat fron cmd prompt
+each time after rebuild code to auto launch newly built ROM into emulator
+
+
+OR
+can wire up Ctrl+1 from devkit Sample II as hot key to auto launch
+newly built ROM into emulator
+
+
+SUMMARY
+another option is to build code changes in VS2015 and auto launch in one process:
+Automate this process by setting up
+Remote Debugger
+
+E:\Steven\XNA\SGDK\_codeTests\SDGK_test03_VSremote
+
+
+TODO
+get pic
+
+
+//Can make changes and rebuild + launch
+
+This speeds things up but ultimately we'd like to replicate our build environment
+like devkitSMS
+
+so we can build source code in ASNI-C and F5 to debug step thru the ANSI-C code
+which just stubs out any calls to any Sega dev kit code [treat like black box]
+
+but also be able to build + auto launch code built from build bat script in one action
+e.g.
+Ctrl+1
+
+sim to what we achieved in devkitSMS prog'ging
+
+this will be the topic of the next post
