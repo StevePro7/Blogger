@@ -1,46 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Choose Finish.  Enter the previous "Hello World" code as above.  Finally, right click Project | Properties | VC++ Directories | Include Directories.  Enter the following in order to include SGDK header files: <i>$(GDK_WIN)\inc</i>
-
-<br /><br />
-Press Ctrl + Shift + B to build source code and produce <b>out\rom.bin</b>.  Launch gens.exe and load ROM file!  Alternatively, setup "Remote" debugging configuration in Visual Studio and Press Ctrl + F5 to build and run.
-<br /><br />
-TODO pic
-<br /><br />
-
-Right click Project | Properties | Debugging | Remote Windows Debugger.  Update in the following properties:
-<table width="99%" border="1">
-<tr>
-<td valign=top>&nbsp;Remote Command</td>
-<td valign=top>&nbsp;C:\SEGA\Fusion\Fusion.exe</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Remote Command Arguments</td>
-<td valign=top>&nbsp;out\rom.bin</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Connection</td>
-<td valign=top>&nbsp;Remote with no authentication</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Debugger Type</td>
-<td valign=top>&nbsp;Native Only</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Attach</td>
-<td valign=top>&nbsp;Yes</td>
-</tr>
-</table>
-<br /><br /><br /><br />
-
-<u>Summary</u><br />
-To summarize, there are multiple IDE setups available to use the SGDK.  However, despite VS2015 being the most applicable to our previous devkitSMS process, we're still not able to debug step thru the C source code.
-<br /><br />
-
-Ultimately, we would like to build + debug step thru the C source code during SGDK development whilst also being able to build + run the ROM output file all from in Visual Studio.  This will be the topic of the next post.
-<br /><br />
-
-<br /><br />
 In 2013, we checked out <a href="http://steveproxna.blogspot.com/2013/06/sega-retro-gaming.html">Sega Retro Gaming</a>, specifically 8-bit hardware manufactured by Sega such as the <a href="http://en.wikipedia.org/wiki/SG-1000">SG-1000</a>, <a href="http://en.wikipedia.org/wiki/SG-1000#SC-3000">SC-3000</a> and <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.  Now, we turn our attention to the 16-bit Mega Drive [Genesis].
 <br /><br />
 
@@ -267,6 +226,43 @@ Choose Next.  Enter the following Build command: <i>%GDK_WIN%\bin\make -f %GDK_W
 Enter the previous "Hello World" code as above.  Finally, update Project Properties VC++ Include Directories:
 <a href="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="434" /></a>
 <!-- -->
-Press Ctrl + Shift + B to build source code and produce <b>out\rom.bin</b>.  Launch gens.exe and load ROM file!
 <br /><br />
+Choose Finish.  Enter the previous "Hello World" code as above.  Finally, right click Project | Properties | VC++ Directories | Include Directories.  Enter the following in order to include SGDK header files: <i>$(GDK_WIN)\inc</i>
+<a href="https://2.bp.blogspot.com/-dZEdDzi3vY4/XvdgtcyFdvI/AAAAAAAAGP8/HvJVoIvQ9EEk7Dsfqe_EcRM8E375Drt7ACLcBGAsYHQ/s1600/VS2015_Include.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-dZEdDzi3vY4/XvdgtcyFdvI/AAAAAAAAGP8/HvJVoIvQ9EEk7Dsfqe_EcRM8E375Drt7ACLcBGAsYHQ/s640/VS2015_Include.png" width="98%" height="424" /></a>
+<br /><br />
+Press Ctrl + Shift + B to build source code and produce <b>out\rom.bin</b>.  Launch gens.exe and load ROM file!  Alternatively, setup "Remote" debugging configuration in Visual Studio and Press Ctrl + F5 to build and run.
+<a href="https://2.bp.blogspot.com/-qHkLGZP5dK4/Xvdg1xf70lI/AAAAAAAAGQA/iA9bgREgBG80mhr_gB58aAGNY6JJfzz4QCLcBGAsYHQ/s1600/VS2015_Remote.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-qHkLGZP5dK4/Xvdg1xf70lI/AAAAAAAAGQA/iA9bgREgBG80mhr_gB58aAGNY6JJfzz4QCLcBGAsYHQ/s640/VS2015_Remote.png" width="98%" height="424" /></a>
+<br /><br />
+
+Right click Project | Properties | Debugging | Remote Windows Debugger.  Update in the following properties:
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Remote Command</td>
+<td valign=top>&nbsp;C:\SEGA\Fusion\Fusion.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Remote Command Arguments</td>
+<td valign=top>&nbsp;out\rom.bin</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Connection</td>
+<td valign=top>&nbsp;Remote with no authentication</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Debugger Type</td>
+<td valign=top>&nbsp;Native Only</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Attach</td>
+<td valign=top>&nbsp;Yes</td>
+</tr>
+</table>
+<br /><br />
+
+<u>Summary</u><br />
+To summarize, there are multiple IDE setups available to use the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.  However, despite VS2015 being the most applicable to our previous <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS</a> process, we're still not able to debug step thru the C source code.
+<br /><br />
+
+Ultimately, we would like to build + debug step thru the C source code during SGDK development whilst also being able to build + run the ROM output file all from in Visual Studio.  This will be the topic of the next post.
+
 </span>
