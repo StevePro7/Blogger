@@ -1,19 +1,37 @@
 <span style="font-family:verdana;font-size:85%;">
 
 Choose Finish.  Enter the previous "Hello World" code as above.  Finally, right click Project | Properties | VC++ Directories | Include Directories.  Enter the following in order to include SGDK header files: <i>$(GDK_WIN)\inc</i>
-<br /><br />
-
-Choose Finish.  Enter the previous "Hello World" code as above.  Finally, right click Project | Properties | VC++ Directories | Include Directories.  Enter the following: <i>$(GDK_WIN)\inc</i>.  This will include all SGDK header files.
-<br /><br />
-TODO Hello world include
-<br /><br />
-update Project Properties VC++ Include Directories:
 
 <br /><br />
 Press Ctrl + Shift + B to build source code and produce <b>out\rom.bin</b>.  Launch gens.exe and load ROM file!  Alternatively, setup "Remote" debugging configuration in Visual Studio and Press Ctrl + F5 to build and run.
 <br /><br />
 TODO pic
 <br /><br />
+
+Right click Project | Properties | Debugging | Remote Windows Debugger.  Update in the following properties:
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Remote Command</td>
+<td valign=top>&nbsp;C:\SEGA\Fusion\Fusion.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Remote Command Arguments</td>
+<td valign=top>&nbsp;out\rom.bin</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Connection</td>
+<td valign=top>&nbsp;Remote with no authentication</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Debugger Type</td>
+<td valign=top>&nbsp;Native Only</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Attach</td>
+<td valign=top>&nbsp;Yes</td>
+</tr>
+</table>
+<br /><br /><br /><br />
 
 <u>Summary</u><br />
 To summarize, there are multiple IDE setups available to use the SGDK.  However, despite VS2015 being the most applicable to our previous devkitSMS process, we're still not able to debug step thru the C source code.
