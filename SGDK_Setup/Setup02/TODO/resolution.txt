@@ -1,0 +1,54 @@
+resolution
+28/06/2020
+
+
+
+Add code sample to confirm default resolution
+320x224
+
+
+Add code to update the resolution
+
+e.g.
+224 => 240
+
+
+vdp.h
+
+
+
+https://segaretro.org/Resolution
+
+320x224 pixels in NTSC regions
+320×240 pixels in PAL regions
+
+
+
+Fusion
+Options menu | Country
+USA	NTSC	320x224
+JAP	NTSC	320x224
+EUR	PAL	320x224	default	but can change height to 240	320x240
+
+
+SUMMARY
+
+Width
+ALL 3x countries can render 320 [default] and 256 if necc.
+
+Height
+First 2x countries USA + JAP can render 224 height [default] only
+but only EUR can set height to 240 and it works
+
+
+VDP_getScreenHeight();
+
+
+VDP_setScreenHeight224();
+VDP_setScreenHeight240();
+
+VDP_getScreenWidth();
+VDP_setScreenWidth256();
+VDP_setScreenWidth320();
+
+
