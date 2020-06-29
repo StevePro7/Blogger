@@ -4,45 +4,71 @@
 Create folder C:\HelloWorld.  Copy new SGDK custom library <b>lib</b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
 <br /><br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
-<!--
+<!-- 
 <a href="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s1600/HelloWorld00.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s640/HelloWorld00.png" width="98%" height="353" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Name:</td>
+<td valign="top" width="50%">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\HelloWorld\dev</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Create directory for solution</td>
+<td valign="top" width="50%">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+OK
+<br /><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Application type:</td>
+<td valign="top" width="50%">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Additional options:</td>
+<td valign="top" width="50%">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+Finish
 -->
 <br /><br />
-TODO add 2x tables as per http://steveproxna.blogspot.com/2017/11/
-<br /><br />
-
 First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
 <br /><br />
 
-Complete the following changes to 
-
-Right click Project | Properties | Configuration Properties 
-
-
 Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
-<!--
+<br />
+<!-- -->
 <a href="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s1600/HelloWorld01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s640/HelloWorld01.png" width="98%" height="407" /></a>
--->
-<br /><br />
-TODO add 1x tables with the key / value pairs
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Output Directorytype:</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\bin\$(ConfigurationName)</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Intermediate Directory:</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\obj\$(ConfigurationName)</td>
+</tr>
+</table>
 <br />
-$(SolutionDir)..\bin\$(ConfigurationName)
-<br />
-$(SolutionDir)..\obj\$(ConfigurationName)
-<br /><br />
 
 Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
-<br /><br />
-$(SolutionDir)\..\lib;$(ProjectDir)\inc;$(ProjectDir)\res;$(GDK_WIN)\inc;$(IncludePath)
+<br />
+<a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="385" /></a>
+<br />
+<i>$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</i>
 <br /><br />
 
-Right click Project | Properties | Configuration Properties | Linker | General.  Set Additional Library Directories:
+Right click Project | Properties | Configuration Properties | Linker | General | Additional Library Directories:
 <br /><br />
-$(SolutionDir)\..\lib
+
+<i>$(SolutionDir)..\lib</i>
 <br /><br />
 Right click Project | Properties | Configuration Properties | Linker | Input.  Set Additional Dependencies:
 <br /><br />
-_genesis.lib;%(AdditionalDependencies)
+<i>_genesis.lib;%(AdditionalDependencies)</i>
 <br /><br />
 
 
