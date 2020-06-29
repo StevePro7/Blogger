@@ -54,23 +54,23 @@ usage
 
 <table width="98%" border="1">
 <tr>
-<td valign=top>&nbsp;inc</td>
+<td valign=top>&nbsp;inc&nbsp;</td>
 <td valign=top>&nbsp;include files</td>
 <td valign=top>&nbsp;*.h [C include file] or *.inc [assembly include file]</td>
 </tr>
 <tr>
-<td valign=top>&nbsp;out</td>
+<td valign=top>&nbsp;out&nbsp;</td>
 <td valign=top>&nbsp;output files</td>
-<td valign=top>&nbsp;will be created automatically by makefile when SGDK project is built</td>
+<td valign=top>&nbsp;<b>rom.bin</b> to be created automatically by makefile when SGDK project is built</td>
 </tr>
 <tr>
-<td valign=top>&nbsp;res</td>
+<td valign=top>&nbsp;res&nbsp;</td>
 <td valign=top>&nbsp;resource files</td>
 <td valign=top>&nbsp;*.res [resource definition file compiled by rescomp tool see bin/rescomp.txt]</td>
 </tr>
 <tr>
-<td valign=top>&nbsp;src</td>
+<td valign=top>&nbsp;src&nbsp;</td>
 <td valign=top>&nbsp;source files</td>
-<td valign=top>&nbsp;*.c [C source file], *.s [68000 source file] or *.s80 [Z80 source file]</td>
+<td valign=top>&nbsp;*.c [C source file], *.s [68000 asm source file] or *.s80 [Z80 asm source file]</td>
 </tr>
 </table>
