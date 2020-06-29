@@ -1,29 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Usage</u><br />
-SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a generic makefile to compile project. In order to be properly recognized by the makefile you need to organize your project folder structure as following: Project root add sub folders: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
-<table width="98%" border="1">
-<tr>
-<td valign=top>&nbsp;inc&nbsp;</td>
-<td valign=top>&nbsp;include files</td>
-<td valign=top>&nbsp;*.h [C include file] or *.inc [assembly include file]</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;out&nbsp;</td>
-<td valign=top>&nbsp;output files</td>
-<td valign=top>&nbsp;<b>rom.bin</b> to be created automatically by makefile when SGDK project is built</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;res&nbsp;</td>
-<td valign=top>&nbsp;resource files</td>
-<td valign=top>&nbsp;*.res [resource definition file compiled by rescomp tool see bin/rescomp.txt]</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;src&nbsp;</td>
-<td valign=top>&nbsp;source files</td>
-<td valign=top>&nbsp;*.c [C source file], *.s [68000 asm source file] or *.s80 [Z80 asm source file]</td>
-</tr>
-</table>
+<u>Hello World</u><br />
+
 
 <br /><br />
 
@@ -59,10 +37,29 @@ Finally, implement each header file function as stub function in each translatio
 <br /><br />
 
 <u>Usage</u><br />
-talk about the project layout e.g. inc, out, res, src before doing first demo "Hello World"
-
-<br /><br />
-
+SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a generic makefile to compile project. In order to be properly recognized by the makefile you need to organize your project folder structure as following: Project root add sub folders: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
+<table width="97%" border="1">
+<tr>
+<td valign=top>&nbsp;inc&nbsp;</td>
+<td valign=top>&nbsp;include files</td>
+<td valign=top>&nbsp;*.h [C include file] or *.inc [assembly include file]</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;out&nbsp;</td>
+<td valign=top>&nbsp;output files</td>
+<td valign=top>&nbsp;<b>rom.bin</b> to be created automatically by makefile when SGDK project is built</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;res&nbsp;</td>
+<td valign=top>&nbsp;resource files</td>
+<td valign=top>&nbsp;*.res [resource definition file compiled by rescomp tool see bin/rescomp.txt]</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;src&nbsp;</td>
+<td valign=top>&nbsp;source files</td>
+<td valign=top>&nbsp;*.c [C source file], *.s [68000 asm source file] or *.s80 [Z80 asm source file]</td>
+</tr>
+</table>
 <br /><br />
 
 
