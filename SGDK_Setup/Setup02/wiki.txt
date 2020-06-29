@@ -2,10 +2,20 @@
 
 <u>Hello World</u><br />
 Create folder C:\HelloWorld.  Copy new SGDK custom library <b>lib</b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
-
+<br /><br />
+Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
+<!--
+<a href="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s1600/HelloWorld00.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s640/HelloWorld00.png" width="98%" height="353" /></a>
+-->
+<br /><br />
+TODO add 2x tables as per http://steveproxna.blogspot.com/2017/11/
 <br /><br />
 
+First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
+<br /><br />
 
+.  Update Output + Intermediate directories:
+Right click Project | Properties | Configuration Properties | General.  Update Output + Intermediate directories:
 <br /><br />
 
 In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The SGDK is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
