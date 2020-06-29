@@ -93,20 +93,55 @@ Right click Project | Properties | Configuration Properties | Linker | Input.  S
 -->
 <br /><br />
 Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  Press F7 to build solution.  Pressing F5 will now debug step through C source code!  The final solution should look like this:
-<a href="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s1600/HelloWorld05.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s640/HelloWorld05.png" width="98%" height="387" /></a>
-<br />
 <!--
-<br />
+<a href="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s1600/HelloWorld05.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s640/HelloWorld05.png" width="98%" height="387" /></a>
 -->
+<br />
+<br />
+
 IMPORTANT<br />
-The first time you F5 debug step through C source code you may be prompted to navigate to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b> directory.  
+The first time you F5 debug step through C source code you may be prompted to navigate to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b> directory.
+<br /><br />
+TODO MAIN.H<br />
+<pre class="csharp" name="code">
+#ifndef __MAIN__
+#define __MAIN__
+#ifdef _CONSOLE
+#include "_genesis.h"
+#else
+#include &lt;genesis.h&gt;
+#endif
+#endif//__MAIN__
+</pre>
+TODO MAIN.C<br />
+<pre class="csharp" name="code">
+#include "main.h"
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+	return 0;
+}
+</pre>
+TODO BUILD.BAT<br />
+<pre class="csharp" name="code">
+@echo off
+cls
+echo Building...
+
+:: Build
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen &gt; NUL
+
+:: Run
+C:\SEGA\gens\gens.exe %~dp0\out\rom.bin
+</pre>
+Follow this post to connect build.bat to Ctrl + 1 keyboard shortcut.  Press Ctrl + 1 to build and launch ROM.  Congratulations! You have just written your first Mega Drive program using the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
+<a href="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s1600/HelloWorld.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s640/HelloWorld.png" width="98%" height="526" /></a>
 <br /><br />
 
-
-Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  Press F7 to build solution.  Press F5 to debug step through C source code.  Press Ctrl + 1 to execute built.bat as per this post.
-
-<br /><br />
-Congratulations! You have just written your first Mega Drive program using SGDK
 
 <br /><br />
 Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  Press F7 to build solution.  Press F5 to debug step through the C source code.  Press Ctrl + 1 to execute built.bat as per this post.
