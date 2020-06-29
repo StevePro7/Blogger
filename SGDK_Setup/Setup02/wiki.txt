@@ -1,5 +1,13 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Usage</u><br />
+talk about the project layout e.g. inc, out, res, src before doing first demo "Hello World"
+
+<br /><br />
+
+
+<br /><br />
+
 In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The SGDK is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
 <br /><br />
 
@@ -32,30 +40,18 @@ Finally, implement each header file function as stub function in each translatio
 talk about the project layout e.g. inc, out, res, src before doing first demo "Hello World"
 
 <br /><br />
-TODO #2<br />
-In the previous post, we checked out SGDK Programming Setup. The SGDK ...
-
-SGDK Library<br />
-https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library
-<br /><br />
-First we must re-build the SGDK library to be compatible with out "needs"
-Launch Visual Studio 2015.  Create a blank solution.  Add C++ Console application and add C++ static library.
-
-
-Libary project : import all header files from %GDK_WIN%\inc.  Foreach header file create a corresponding *.c file and implement a stub for each function in the header file.  Build the library to produce the static library _genesis.lib and corresponding _genesis.pdb [for debugging information]  Copy the *.lib AND *.pdb to the lib folder
 
 <br /><br />
-Visual Studio 2015<br />
-Create folder C:\HelloWorld. Create subfolder "dev" and "lib"  Copy all contents of *.h library files _genesis.lib and _genesis.pdb to the lib folder
 
-Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project.  Console application | Empty project
+
+<br /><br />
 
 <br /><br />
 IMPORTANT<br />
 When you run the Hello World program for the first time and debug step thru the code you may be prompted by VS2015 to navigate to where the source *.c "stub" library files are
 
 <br /><br />
-Demo
+Demos
 <br /><br />
 
 
