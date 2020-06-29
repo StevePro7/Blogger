@@ -92,6 +92,8 @@ Right click Project | Properties | Configuration Properties | Linker | Input.  S
 </table>
 -->
 <br /><br />
+TODO Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  BELOW
+<br /><br />
 Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  Press F7 to build solution.  Pressing F5 will now debug step through C source code!  The final solution should look like this:
 <!--
 <a href="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s1600/HelloWorld05.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s640/HelloWorld05.png" width="98%" height="387" /></a>
@@ -101,7 +103,61 @@ Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resou
 
 IMPORTANT<br />
 The first time you F5 debug step through C source code you may be prompted to navigate to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b> directory.
+<br />
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;TODO main.h</td>
+<td>&nbsp;TODO main.c</td>
+</tr>
+
+<tr>
+
+<td>
+<table border="0">
+<tr>
+<td width="99%">
+<pre class="csharp" name="code">
+&nbsp;#ifndef __MAIN__
+&nbsp;#define __MAIN__
+
+&nbsp;#ifdef _CONSOLE
+&nbsp;  #include "_genesis.h"
+&nbsp;#else
+&nbsp;  #include &lt;genesis.h&gt;
+&nbsp;#endif
+
+&nbsp;#endif//__MAIN__
+</pre>
+</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#include "main.h"
+&nbsp;int main()
+&nbsp;{
+&nbsp;	VDP_drawText( "Hello Genny World!", 10, 13 );
+&nbsp;	while( 1 )
+&nbsp;	{
+&nbsp;		VDP_waitVSync();
+&nbsp;	}
+&nbsp;	return 0;
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+</td>
+
+</tr>
+</table>
 <br /><br />
+
 TODO MAIN.H<br />
 <pre class="csharp" name="code">
 #ifndef __MAIN__
