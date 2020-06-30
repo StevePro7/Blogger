@@ -1,7 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Hello World</u><br />
-Create folder C:\HelloWorld.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
+Create folder C:\HelloWorld.  Copy new SGDK custom library <b>lib</b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
 <br /><br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
 <!-- 
@@ -37,58 +37,6 @@ Finish
 <br /><br />
 First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
 <br /><br />
-
-Add the main.h source code to Header Files using the <i>inc</i> folder.  Add main.c to Source Files using <i>src</i> folder:
-<table width="99%" border="1">
-<tr>
-<td>&nbsp;TODO main.h</td>
-<td>&nbsp;TODO main.c</td>
-</tr>
-<tr>
-<td>
-<table border="0">
-<tr>
-<td width="99%">
-<pre class="csharp" name="code">
-&nbsp;#ifndef __MAIN__
-&nbsp;#define __MAIN__
-
-&nbsp;#ifdef _CONSOLE
-&nbsp;  #include "_genesis.h"
-&nbsp;#else
-&nbsp;  #include &lt;genesis.h&gt;
-&nbsp;#endif
-
-&nbsp;#endif//__MAIN__
-</pre>
-</td>
-</tr>
-</table>
-</td>
-<td>
-<table border="0">
-<tr>
-<td>
-<pre class="csharp" name="code">
-&nbsp;#include "main.h"
-&nbsp;int main()
-&nbsp;{
-&nbsp;	VDP_drawText( "Hello Genny World!", 10, 13 );
-&nbsp;	while( 1 )
-&nbsp;	{
-&nbsp;		VDP_waitVSync();
-&nbsp;	}
-&nbsp;	return 0;
-&nbsp;}
-</pre>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<br />
-
 Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
 <br />
 <!-- 
