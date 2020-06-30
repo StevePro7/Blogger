@@ -1,10 +1,32 @@
 <span style="font-family:verdana;font-size:85%;">
 
+stevepro update:
+<br /><br />
+Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  Press F7 to build solution.  Pressing F5 will now debug step through C source code!  The final solution should look like this:
+<!--
+<a href="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s1600/HelloWorld05.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s640/HelloWorld05.png" width="98%" height="387" /></a>
+-->
+<br />
+<br />
+
+IMPORTANT<br />
+The first time you F5 debug step through C source code you may be prompted to navigate to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b> directory.
+<br />
+<br />
+<!--<br />-->
+
+
+Follow this <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a> to connect build.bat to Ctrl + 1 keyboard shortcut.  Press Ctrl + 1 to build and launch ROM.  Congratulations! You have just written your first Mega Drive program using the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
+
+<br />
+<br />
+
+
 <u>Hello World</u><br />
 Create folder C:\HelloWorld.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
 <br /><br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
-<!-- 
+<!--  
 <a href="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s1600/HelloWorld00.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s640/HelloWorld00.png" width="98%" height="353" /></a>
 <table width="99%" border="1">
 <tr>
@@ -39,6 +61,8 @@ First, remove x64 build configuration!  Right click Solution | Properties.  Clic
 <br /><br />
 
 Add the main.h source code to Header Files using the <i>inc</i> folder.  Add main.c to Source Files using <i>src</i> folder:
+<br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;TODO main.h</td>
@@ -87,6 +111,7 @@ Add the main.h source code to Header Files using the <i>inc</i> folder.  Add mai
 </td>
 </tr>
 </table>
+-->
 <br />
 
 Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
@@ -144,7 +169,7 @@ Right click Project | Properties | Configuration Properties | Linker | Input.  S
 </table>
 -->
 <br /><br />
-TODO Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  BELOW
+stevepro update:
 <br /><br />
 Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  Press F7 to build solution.  Pressing F5 will now debug step through C source code!  The final solution should look like this:
 <!--
@@ -156,58 +181,7 @@ Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resou
 IMPORTANT<br />
 The first time you F5 debug step through C source code you may be prompted to navigate to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b> directory.
 <br />
-<table width="98%" border="1">
-<tr>
-<td>&nbsp;TODO main.h</td>
-<td>&nbsp;TODO main.c</td>
-</tr>
 
-<tr>
-
-<td>
-<table border="0">
-<tr>
-<td width="99%">
-<pre class="csharp" name="code">
-&nbsp;#ifndef __MAIN__
-&nbsp;#define __MAIN__
-
-&nbsp;#ifdef _CONSOLE
-&nbsp;  #include "_genesis.h"
-&nbsp;#else
-&nbsp;  #include &lt;genesis.h&gt;
-&nbsp;#endif
-
-&nbsp;#endif//__MAIN__
-</pre>
-</td>
-</tr>
-</table>
-</td>
-
-<td>
-<table border="0">
-<tr>
-<td>
-<pre class="csharp" name="code">
-&nbsp;#include "main.h"
-&nbsp;int main()
-&nbsp;{
-&nbsp;	VDP_drawText( "Hello Genny World!", 10, 13 );
-&nbsp;	while( 1 )
-&nbsp;	{
-&nbsp;		VDP_waitVSync();
-&nbsp;	}
-&nbsp;	return 0;
-&nbsp;}
-</pre>
-</td>
-</tr>
-</table>
-</td>
-
-</tr>
-</table>
 <br />
 <!--<br />-->
 
@@ -278,9 +252,156 @@ SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a gen
 <td valign=top>&nbsp;*.c [C source file], *.s [68000 asm source file] or *.s80 [Z80 asm source file]</td>
 </tr>
 </table>
+<br />
+<!--<br />-->
+
+<u>Hello World</u><br />
+Create folder C:\HelloWorld.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
+<br /><br />
+Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
+<!--  
+<a href="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s1600/HelloWorld00.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s640/HelloWorld00.png" width="98%" height="353" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Name:</td>
+<td valign="top" width="50%">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\HelloWorld\dev</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Create directory for solution</td>
+<td valign="top" width="50%">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+OK
+<br /><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Application type:</td>
+<td valign="top" width="50%">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Additional options:</td>
+<td valign="top" width="50%">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+Finish
+-->
+<br /><br />
+First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
 <br /><br />
 
+Add the main.h source code to Header Files using the <i>inc</i> folder.  Add main.c to Source Files using <i>src</i> folder:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;TODO main.h</td>
+<td>&nbsp;TODO main.c</td>
+</tr>
+<tr>
+<td>
+<table border="0">
+<tr>
+<td width="99%">
+<pre class="csharp" name="code">
+&nbsp;#ifndef __MAIN__
+&nbsp;#define __MAIN__
 
+&nbsp;#ifdef _CONSOLE
+&nbsp;  #include "_genesis.h"
+&nbsp;#else
+&nbsp;  #include &lt;genesis.h&gt;
+&nbsp;#endif
+
+&nbsp;#endif//__MAIN__
+</pre>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#include "main.h"
+&nbsp;int main()
+&nbsp;{
+&nbsp;	VDP_drawText( "Hello Genny World!", 10, 13 );
+&nbsp;	while( 1 )
+&nbsp;	{
+&nbsp;		VDP_waitVSync();
+&nbsp;	}
+&nbsp;	return 0;
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+-->
+<br />
+
+Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
+<br />
+<!--
+<a href="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s1600/HelloWorld01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s640/HelloWorld01.png" width="98%" height="407" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Output Directory:</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\bin\$(ConfigurationName)</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Intermediate Directory:</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\obj\$(ConfigurationName)</td>
+</tr>
+</table>
+-->
+<br />
+Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
+<br />
+<!-- 
+<a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="385" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Value:&nbsp;</td>
+<td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</td>
+</tr>
+</table>
+-->
+<br />
+Right click Project | Properties | Configuration Properties | Linker | General | Additional Library Directories:
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="385" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Value:&nbsp;</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\lib</td>
+</tr>
+</table>
+-->
+<br />
+Right click Project | Properties | Configuration Properties | Linker | Input.  Set the Additional Dependencies:
+<!--
+<br />
+<a href="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s1600/HelloWorld04.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s640/HelloWorld04.png" width="98%" height="407" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Value:&nbsp;</td>
+<td valign="top" width="50%">&nbsp;_genesis.lib;%(AdditionalDependencies)</td>
+</tr>
+</table>
+-->
+<br /><br />
 Demos
 <br /><br />
 
