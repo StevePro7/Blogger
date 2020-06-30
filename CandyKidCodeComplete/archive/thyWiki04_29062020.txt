@@ -1,0 +1,203 @@
+<span style="font-family:verdana;font-size:85%;">
+<a href="http://www.smspower.org/Scans/SegaComputer-Magazine-Issue02?gallerypage=17">Candy Kid</a> is a simple maze chase video game originally programmed by Grandstand Leisure from New Zealand in September 1984.  The game was written in <a href="http://en.wikipedia.org/wiki/BASIC">BASIC</a> programming language on Sega <a href="http://en.wikipedia.org/wiki/SG-1000#SC-3000">SC-3000</a>. 
+<br /><br />
+In 2015, <a href="http://steveproxna.blogspot.com/2015/05/candy-kid-video-game.html">Candy Kid</a> was re-written in C#/.NET and XNA for <a href="https://www.amazon.com/StevePro-Studios-Retro-Candy-Download/dp/B018WIUDZ8/qid=1449745287">Windows</a> PC and ported to <a href="https://itunes.apple.com/app/retro-candy-kid/id1055478836">iOS</a> / <a href="https://play.google.com/store/apps/details?id=com.steveproxna.candykid">Android</a> using MonoGame.  After finding the original source code on SMS Power!, Candy Kid was re-written again in 8-bit.
+<br /><br />
+Inspired from previous posts on <a href="http://steveproxna.blogspot.com/2013/09/sega-console-programming.html">Sega Console</a> Programming and devkitSMS Programming <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">Setup</a> + <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">Sample</a>, <b><a href="https://www.smspower.org/Homebrew/CandyKid-SMS">Candy Kid</a></b> is my fifth 8-bit video game written in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> assembler to target Sega Master System (SMS).
+<br />
+<a href="https://3.bp.blogspot.com/-zT9aLBPp0Wk/Xpi6uVGyT1I/AAAAAAAAGH8/9LcVK5jl8aY-ltvqiMaA5n3jI9VZA6vYgCLcBGAsYHQ/s1600/01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-zT9aLBPp0Wk/Xpi6uVGyT1I/AAAAAAAAGH8/9LcVK5jl8aY-ltvqiMaA5n3jI9VZA6vYgCLcBGAsYHQ/s640/01.png" width="98%" height="526" /></a>
+<br />
+Let's check it out!
+<br /><br />
+Note: previous titles published for the Master System include <a href="http://www.smspower.org/Homebrew/3DCity-SMS">3D City</a>, <a href="http://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> + <a href="https://www.smspower.org/Homebrew/PlatformExplorer-SMS">Platform Explorer</a>.
+<br />
+Download source code <b><a href="https://github.com/SteveProXNA/CandyKidSMS">here</a></b>.
+<br /><br />
+Sega Retro Gaming <a href="http://steveproxna.blogspot.com/2013/06/sega-retro-gaming.html">post</a> documents how to play video games like Candy Kid SMS using the <a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> emulator.
+<br />
+devkitSMS Programming Setup <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a> documents development environment required to build <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> source.
+<table width="100%">
+<tr>
+<td valign="top" width="40%">
+<a href="https://4.bp.blogspot.com/-IbDyu9oXk4Y/Xpi9uckwXcI/AAAAAAAAGII/LVp-fW5YdWMuyJGLmYUBQpFr_YlEBozsQCLcBGAsYHQ/s1600/05.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-IbDyu9oXk4Y/Xpi9uckwXcI/AAAAAAAAGII/LVp-fW5YdWMuyJGLmYUBQpFr_YlEBozsQCLcBGAsYHQ/s640/05.png" width="95%"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://1.bp.blogspot.com/-9-BnNusAyWE/Xpi-UOimdbI/AAAAAAAAGIQ/IEbp6XEDtz0LQKVlxpgAObDk6YqCQsdpACLcBGAsYHQ/s1600/06.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-9-BnNusAyWE/Xpi-UOimdbI/AAAAAAAAGIQ/IEbp6XEDtz0LQKVlxpgAObDk6YqCQsdpACLcBGAsYHQ/s640/06.png" width="95%"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://2.bp.blogspot.com/-lh-Dbw8UPyI/Xpi_JIBXj_I/AAAAAAAAGI0/H2X-GNWCr2gBrX57DHaQTaDejrzhbXQzACLcBGAsYHQ/s1600/07.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-lh-Dbw8UPyI/Xpi_JIBXj_I/AAAAAAAAGI0/H2X-GNWCr2gBrX57DHaQTaDejrzhbXQzACLcBGAsYHQ/s640/07.png" width="95%"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://2.bp.blogspot.com/-2yftrdVuQn4/Xpi---tUjeI/AAAAAAAAGIs/YMA7SRQaQeQoauAy13U8eHM_Uzp87dVwQCLcBGAsYHQ/s1600/08.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-2yftrdVuQn4/Xpi---tUjeI/AAAAAAAAGIs/YMA7SRQaQeQoauAy13U8eHM_Uzp87dVwQCLcBGAsYHQ/s640/08.png" width="95%"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://4.bp.blogspot.com/-_6VJZNOEjFk/Xpi-2lMrBGI/AAAAAAAAGIk/DZ0ioTMha0kmkNzGL_qkaqqYkXd03SmdgCLcBGAsYHQ/s1600/15.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-_6VJZNOEjFk/Xpi-2lMrBGI/AAAAAAAAGIk/DZ0ioTMha0kmkNzGL_qkaqqYkXd03SmdgCLcBGAsYHQ/s640/15.png" width="95%"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://4.bp.blogspot.com/-puylOcDq6E4/Xpi-uu-DhEI/AAAAAAAAGIg/6h80DKt-KYoFfpOfm-wqGpfP0BwoCXuxwCLcBGAsYHQ/s1600/11.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-puylOcDq6E4/Xpi-uu-DhEI/AAAAAAAAGIg/6h80DKt-KYoFfpOfm-wqGpfP0BwoCXuxwCLcBGAsYHQ/s640/11.png" width="95%"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://1.bp.blogspot.com/-cgGYSMz7Fk4/Xpi-maX_w2I/AAAAAAAAGIY/yG6OkoAlnOQLvJJhqkTENonih0CEa6mHwCLcBGAsYHQ/s1600/12.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-cgGYSMz7Fk4/Xpi-maX_w2I/AAAAAAAAGIY/yG6OkoAlnOQLvJJhqkTENonih0CEa6mHwCLcBGAsYHQ/s640/12.png" width="95%"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://2.bp.blogspot.com/-rU0yvWhQjlI/Xpi-dUS9lcI/AAAAAAAAGIU/G-lVSKSji44vxWuIJQ6pKcas4MY45VfiACLcBGAsYHQ/s1600/13.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-rU0yvWhQjlI/Xpi-dUS9lcI/AAAAAAAAGIU/G-lVSKSji44vxWuIJQ6pKcas4MY45VfiACLcBGAsYHQ/s640/13.png" width="95%"/></a>
+</td>
+</tr>
+</table>
+<br />
+<u>Instructions</u><br />
+Eat all the candy to pass each level. Eat all bonuses to maximize your score!
+The 3x Candy "Mama" enemies Pro / Adi / Suz have different passive and aggressive personalities and alternate between scatter and attack.
+<br /><br />
+<u>Tools</u>
+<br />
+Here are a list of Tools and frameworks that were used in the development of this project:
+<table width="82%" border="1">
+<tr>
+<td valign="top" width="30%">&nbsp;KEY</td>
+<td valign="top" width="70%">&nbsp;VALUE</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Programming</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/sverx/devkitSMS">devkitSMS</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Compiler</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://sourceforge.net/projects/sdcc/files/sdcc/3.6.0">sdcc 3.6</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Assembler</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.villehelin.com/wla.html">WLA-DX</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>IDE</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202015&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio 2015</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Languages</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Graphics</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/maxim-zhao/bmp2tile/releases/tag/v0.43">BMP2Tile 0.43</a> / <a href="https://www.gimp.org">GIMP 2</a> / <a href="https://www.getpaint.net">paint.net</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Music</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.smspower.org/Music/Mod2PSG2">Mod2PSG2</a> / <a href="https://github.com/sverx/PSGlib/blob/master/tools/vgm2psg.exe">vgm2psg</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Emulators</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://emulicious.net">Emulicious</a> / <a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> / <a href="http://www.smspower.org/meka">Meka</a></td>
+</tr>
+</table>
+<br />
+<u>ROM Hacking</u>
+<br />
+You can hack this ROM!  Download + dump <a href="https://github.com/SteveProXNA/CandyKidSMS/blob/master/CandyKid-2.0.sms">CandyKid</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<table width="96%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F</b></td>
+<td valign="top" width="20%">&nbsp;Debugger</td>
+<td valign="top" width="40%">&nbsp;Used to show debugging info for game.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables invincibility.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;FullBoost</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables maximum boost.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;Trees Type</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Show otherwise 2=Kill.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0053</b></td>
+<td valign="top" width="20%">&nbsp;Exits Type</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Open otherwise 2=Shut.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Difficulty</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Easy otherwise 2=Hard.</td>
+</tr
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0055</b></td>
+<td valign="top" width="20%">&nbsp;Game Speed</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Slow otherwise 2=Fast.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0056</b></td>
+<td valign="top" width="20%">&nbsp;World No.</td>
+<td valign="top" width="40%">&nbsp;Set start World no currently 1 to 10.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0057</b></td>
+<td valign="top" width="20%">&nbsp;Round No.</td>
+<td valign="top" width="40%">&nbsp;Set start Round no currently 1 to 10.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0058</b></td>
+<td valign="top" width="20%">&nbsp;Music Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Music to play otherwise silent.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0059</b></td>
+<td valign="top" width="20%">&nbsp;Sound Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Sound to play otherwise silent.</td>
+</tr>
+</table>
+<br />
+<u>Bonuses</u>
+<ul>
+<li>
+There are 4x different bonuses: 100 / 200 / 400 / 800 pts. Double bonus points after level 70.
+</li>
+<li>
+Player will receive extra 2,000 pts after eating all the candy and collecting all bonuses in level.
+</li>
+</ul>
+<br />
+<u>Cheats</u>
+<ul>
+<li>
+Press button 2 five times during Title screen and you'll be invincible each game this is actioned.
+</li>
+<li>
+Press and hold button 2 during game play to action Game Over and force quit out of the game.
+</li>
+<li>
+Press and hold button 2 on Splash screen to reset High score and all options previously saved.
+</li>
+</ul>
+<br />
+<u>Credits</u>
+<br />
+Extra special thanks goes to <a href="http://www.smspower.org/forums/member7198">sverx</a> for the devkitSMS.  Plus StevePro Studios would like to thank <a href="http://www.smspower.org/forums/member10267">eruiz00</a> and <a href="http://www.smspower.org/forums/member601">haroldoop</a> for sharing source code from SMS <a href="http://www.smspower.org/Homebrew/Index">Homebrew</a> projects.  Many ideas here were used in this project!
+<br /><br />
+
+<u>Promotion</u><br />
+Thanks to SMS Power! for making this <a href="https://www.youtube.com/watch?v=mTy2tEww-h8">video</a>.  Here is the official Candy Kid <a href="https://www.facebook.com/CandyKidVideoGame">Facebook</a> page and <a href="http://steveproxna.blogspot.com/search/label/Candy%20Kid">Blogger</a> label.
+<iframe width="98%" height="315" src="https://www.youtube.com/embed/Z3olTipRc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br /><br />
+<u>Summary</u><br />
+To summarize, <a href="http://steveproxna.blogspot.com/search/label/Candy%20Kid">Candy Kid</a> has had a very interesting journey after first appearing on the Sega <a href="http://www.smspower.org/Scans/SegaComputer-Magazine-Issue02?gallerypage=17">SC-3000</a> in 1984 to being ported to <a href="https://www.amazon.com/StevePro-Studios-Retro-Candy-Download/dp/B018WIUDZ8/qid=1449745287">Windows</a> PC, <a href="https://itunes.apple.com/app/retro-candy-kid/id1055478836">iOS</a> + <a href="https://play.google.com/store/apps/details?id=com.steveproxna.candykid">Android</a> in 2015 and finally the Sega <a href="https://www.smspower.org/Homebrew/CandyKid-SMS">Master System</a> in 2020.
+<br /><br />
+In fact, after porting the original game in 2015 the ultimate <a href="http://steveproxna.blogspot.com/2015/05/candy-kid-video-game.html">goal</a> was always to eventually back port Candy Kid to the Master System.  Thanks to the awesome Indie game dev scene this goal has now been achieved!
+<br /><br />
+</span>
