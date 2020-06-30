@@ -4,7 +4,7 @@
 Create folder C:\HelloWorld.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
 <br /><br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
- 
+<!--  
 <a href="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s1600/HelloWorld00.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s640/HelloWorld00.png" width="98%" height="353" /></a>
 <table width="99%" border="1">
 <tr>
@@ -33,7 +33,7 @@ OK
 </tr>
 </table>
 Finish
-
+-->
 <br /><br />
 First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
 <br /><br />
@@ -91,7 +91,7 @@ Add the main.h source code to Header Files using the <i>inc</i> folder.  Add mai
 
 Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
 <br />
- 
+<!--
 <a href="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s1600/HelloWorld01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s640/HelloWorld01.png" width="98%" height="407" /></a>
 <table width="99%" border="1">
 <tr>
@@ -103,11 +103,11 @@ Right click Project | Properties | Configuration Properties | General.  Set Outp
 <td valign="top" width="50%">&nbsp;$(SolutionDir)..\obj\$(ConfigurationName)</td>
 </tr>
 </table>
-
+-->
 <br />
 Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
 <br />
- 
+<!-- 
 <a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="385" /></a>
 <br />
 <table width="99%" border="1">
@@ -116,11 +116,11 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 <td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</td>
 </tr>
 </table>
-
+-->
 <br />
 Right click Project | Properties | Configuration Properties | Linker | General | Additional Library Directories:
 <br />
-
+<!--
 <a href="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="385" /></a>
 <br />
 <table width="99%" border="1">
@@ -129,10 +129,10 @@ Right click Project | Properties | Configuration Properties | Linker | General |
 <td valign="top" width="50%">&nbsp;$(SolutionDir)..\lib</td>
 </tr>
 </table>
-
+-->
 <br />
 Right click Project | Properties | Configuration Properties | Linker | Input.  Set the Additional Dependencies:
-
+<!--
 <br />
 <a href="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s1600/HelloWorld04.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s640/HelloWorld04.png" width="98%" height="407" /></a>
 <br />
@@ -142,14 +142,14 @@ Right click Project | Properties | Configuration Properties | Linker | Input.  S
 <td valign="top" width="50%">&nbsp;_genesis.lib;%(AdditionalDependencies)</td>
 </tr>
 </table>
-
+-->
 <br /><br />
 TODO Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  BELOW
 <br /><br />
 Add main.h to Header Files.  Add main.c to Source Files.  Add build.bat to Resource Files.  Press F7 to build solution.  Pressing F5 will now debug step through C source code!  The final solution should look like this:
-
+<!--
 <a href="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s1600/HelloWorld05.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-4rOKC4tUOXA/XvpM5lYOs5I/AAAAAAAAGSc/E8MjGIlFSvoOOmsgsxKtxbwVUocDuCLpQCLcBGAsYHQ/s640/HelloWorld05.png" width="98%" height="387" /></a>
-
+-->
 <br />
 <br />
 
@@ -209,7 +209,7 @@ The first time you F5 debug step through C source code you may be prompted to na
 </tr>
 </table>
 <br />
-<br />
+<!--<br />-->
 
 
 Follow this <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a> to connect build.bat to Ctrl + 1 keyboard shortcut.  Press Ctrl + 1 to build and launch ROM.  Congratulations! You have just written your first Mega Drive program using the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
@@ -223,9 +223,9 @@ In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. 
 <br /><br />
 
 Using the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>, it is possible to write game code using the <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> rather than pure <a href="https://en.wikibooks.org/wiki/68000_Assembly">68000 assembly</a>. Therefore, we would now like to extend this knowledge and write more detailed programming sample code.
-
+<!--
 <a href="https://2.bp.blogspot.com/-ZsP4yKAHaUc/XvnRZiaYmNI/AAAAAAAAGQ0/UhAW8Sr_WC46PlbaC8m_gOmxg3L2jX_ugCLcBGAsYHQ/s1600/SonicRunning.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-ZsP4yKAHaUc/XvnRZiaYmNI/AAAAAAAAGQ0/UhAW8Sr_WC46PlbaC8m_gOmxg3L2jX_ugCLcBGAsYHQ/s640/SonicRunning.png" width="98%" height="509" /></a>
-
+-->
 Let's check it out!
 <br /><br />
 
@@ -240,16 +240,16 @@ Ultimately, we would like to build + debug step thru the C source code during SG
 <br /><br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project | Static Library:
 <br />
-
+<!--
 <a href="https://3.bp.blogspot.com/-CBkI0hlMYe0/Xvnb1L7Cv6I/AAAAAAAAGRA/wjbk_W5E4D0fxruktU47Ff_p0MUpDoJIQCLcBGAsYHQ/s1600/StaticLibrary.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-CBkI0hlMYe0/Xvnb1L7Cv6I/AAAAAAAAGRA/wjbk_W5E4D0fxruktU47Ff_p0MUpDoJIQCLcBGAsYHQ/s640/StaticLibrary.png" width="98%" height="500" /></a>
-
+-->
 <br />
 
 Create two folders <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> and <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b>.  Copy all SGDK header files from <i>%GDK_WIN%\inc</i> and <i>%GDK_WIN%\res</i> beneath the <b>lib</b> folder.  For each header file create corresponding translation unit [*.c] file to the <b>src</b> folder.
 <br />
-
+<!--
 <a href="https://3.bp.blogspot.com/-2fjiNwbtafI/Xvnb9vaZmXI/AAAAAAAAGRE/9xKyqZgITJYOJj9qTQsDF5gCIM-QeMk5ACLcBGAsYHQ/s1600/LibraryLayout.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-2fjiNwbtafI/Xvnb9vaZmXI/AAAAAAAAGRE/9xKyqZgITJYOJj9qTQsDF5gCIM-QeMk5ACLcBGAsYHQ/s640/LibraryLayout.png" width="98%" height="210" /></a>
-
+-->
 <br />
 Finally, implement each header file function as stub function in each translation unit.  Build custom library.  Copy <i>_genesis.lib</i> and <i>_genesis.pdb</i> binaries to the <b>lib</b> folder.  This will be used to link sample source code.  Download custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library">here</a></b>.
 <br /><br />
