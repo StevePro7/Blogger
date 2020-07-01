@@ -23,6 +23,7 @@ main.h
 </pre>
 <br />
 Create folder <b>gfx</b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i>resources.c</i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
+<br />
 resources.h
 <pre class="csharp" name="code">
 #ifdef _CONSOLE
@@ -30,6 +31,31 @@ resources.h
   const Image moon = { NULL, NULL, NULL };
 #endif
 </pre>
+<br />
+Update main.c to render image.  Leverage conditional compilation to inject resource palette data at runtime:
+<br />
+main.c
+<pre class="csharp" name="code">
+#include "main.h"
+int main()
+{
+	u16 *data = NULL;
+#ifndef _CONSOLE
+	data = moon.palette->data;
+#endif
+	VDP_setPalette( PAL1, data );
+	VDP_drawImageEx( BG_A, &moon, TILE_ATTR_FULL( PAL1, 0, 0, 0, 1 ), 10, 5, 0, CPU );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+	return 0;
+}
+</pre>
+
+<br />
+
+Finally, add code to render image.  Leverage conditional compilation statement to inject resource palette data at runtime
 <br /><br />
  with the following code to prevent linker errors when recompiling code.
 <br /><br />
