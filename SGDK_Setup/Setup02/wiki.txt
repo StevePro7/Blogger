@@ -8,7 +8,7 @@ Change directory to <b>res</b> folder under <i>dev</i> folder.  Copy resource he
 <br />
 resources.res
 <pre class="csharp" name="code">
-IMAGE moon "moon.bmp" 0
+IMAGE splash "splash.bmp" 0
 </pre>
 <br />
 Next execute build.bat script to compile resource and generate corresponding header file e.g. <i>resources.h</i>.  In Visual Studio add resources.h to Header Files.  Update main.h to include new resources.h header file in code:
@@ -22,13 +22,16 @@ main.h
 #endif//__MAIN__
 </pre>
 <br />
+IMPORTANT<br />
+If resources.h does not auto generate or the contents do not change then delete the <b>out</b> folder try again!
+<br /><br />
 Create folder <b>gfx</b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i>resources.c</i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
 <br />
-resources.h
+resources.c
 <pre class="csharp" name="code">
 #ifdef _CONSOLE
   #include "_genesis.h"
-  const Image moon = { NULL, NULL, NULL };
+  const Image splash = { NULL, NULL, NULL };
 #endif
 </pre>
 <br />
