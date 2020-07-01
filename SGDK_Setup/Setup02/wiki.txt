@@ -6,13 +6,16 @@ Import all resources into your project as media files that your game will use su
 
 Change directory to <b>res</b> folder under <i>dev</i> folder.  Copy resource here.  Create resources.res here for example:
 <br />
+<!--
 resources.res
 <pre class="csharp" name="code">
 IMAGE splash "splash.bmp" 0
 </pre>
+-->
 <br />
 Next execute build.bat script to compile resource and generate corresponding header file e.g. <i>resources.h</i>.  In Visual Studio add resources.h to Header Files.  Update main.h to include new resources.h header file in code:
 <br />
+<!--
 main.h
 <pre class="csharp" name="code">
 #ifndef __MAIN__
@@ -21,12 +24,15 @@ main.h
 #include "resources.h"
 #endif//__MAIN__
 </pre>
+-->
 <br />
 IMPORTANT<br />
 If resources.h does not auto generate or the contents do not change then delete the <b>out</b> folder try again!
 <br /><br />
 Create folder <b>gfx</b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i>resources.c</i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
+
 <br />
+<!--
 resources.c
 <pre class="csharp" name="code">
 #ifdef _CONSOLE
@@ -34,8 +40,10 @@ resources.c
   const Image splash = { NULL, NULL, NULL };
 #endif
 </pre>
+-->
 <br />
 Update main.c to render image.  Leverage conditional compilation to inject resource palette data at runtime:
+<!--
 <br />
 main.c
 <pre class="csharp" name="code">
@@ -55,14 +63,17 @@ int main()
 	return 0;
 }
 </pre>
+-->
 <br />
 
 Press F5 to build + debug step through C source code.  Press Ctrl + 1 to build + run the new ROM output file.
+<!--
 <br />
 <a href="https://1.bp.blogspot.com/-U6aydUeWgc4/Xvzuxk6kkjI/AAAAAAAAGTA/9knDMXTnTPMn-2ySKWLVGMDgjabgmuv4ACLcBGAsYHQ/s1600/HelloResources00.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-U6aydUeWgc4/Xvzuxk6kkjI/AAAAAAAAGTA/9knDMXTnTPMn-2ySKWLVGMDgjabgmuv4ACLcBGAsYHQ/s640/HelloResources00.png" width="98%" height="525" /></a>
+<br />
+-->
 
-<br /><br />
-
+<br />
 <br /><br />
 TODO Java error - not up-to-date and u16 *data = NULL #if _CONSOLE leverage the conditional compilation statement!!
 <br /><br />
