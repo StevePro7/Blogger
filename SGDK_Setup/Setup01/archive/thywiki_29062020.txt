@@ -1,0 +1,268 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In 2013, we checked out <a href="http://steveproxna.blogspot.com/2013/06/sega-retro-gaming.html">Sega Retro Gaming</a>, specifically 8-bit hardware manufactured by Sega such as the <a href="http://en.wikipedia.org/wiki/SG-1000">SG-1000</a>, <a href="http://en.wikipedia.org/wiki/SG-1000#SC-3000">SC-3000</a> and Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a>.  Now, we turn our attention to the 16-bit <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a> [Genesis].
+<br /><br />
+
+In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit game code for the Master System.  As we upgrade to the 16-bit MD we would like to replicate this process now using Sega Genesis Dev Kit [<a href="https://github.com/Stephane-D/SGDK">SGDK</a>].
+
+<a href="https://3.bp.blogspot.com/-X-AkSpIuC0A/XvJRQ-EtB4I/AAAAAAAAGNo/CUNm2ZROwkEQX19cEpPSe7yKWWp6FV9OwCLcBGAsYHQ/s1600/sgdk.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-X-AkSpIuC0A/XvJRQ-EtB4I/AAAAAAAAGNo/CUNm2ZROwkEQX19cEpPSe7yKWWp6FV9OwCLcBGAsYHQ/s640/sgdk.png" width="98%" height="292" /></a>
+<!-- -->
+<br />
+Let’s check it out!
+<br /><br />
+<u>SGDK</u><br />
+The <a href="https://github.com/Stephane-D/SGDK">SGDK</a> is a free development kit allowing you to develop software in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> for the Sega Mega Drive.  Note that SGDK also requires <a href="https://www.java.com/en/download">Java</a> (custom tools need it) so you need to have Java installed on your system.
+<br /><br />
+IMPORTANT<br />
+Ensure an up-to-date version of Java is installed, e.g. version "12.0.2" 2019-07-16 otherwise builds may fail!
+<br /><br />
+
+<u>Software</u><br />
+Follow most instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a>: this documents how to setup some pre-requisite software.
+<br /><br />
+Here is a summary of some of the software to be installed:
+<table width="98%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;C IDE Editor</td><td valign="top">&nbsp;<a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202015&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio 2015</a></td></tr>
+<tr><td valign="top">&nbsp;Emulators</td><td valign="top">&nbsp<a href="https://retrocdn.net/images/6/6c/Fusion364.7z">Fusion</a>, <a href="https://retrocdn.net/images/4/43/Gens_KMod_v0.7.3.7z">Gens KMod</a></td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;Cross compiler</td><td valign="top">&nbsp;<a href="https://gcc.gnu.org/">GCC</a></td></tr>
+<tr><td valign="top">&nbsp;Make files</td><td valign="top">&nbsp;<a href="http://cygwin.com/install.html">Cygwin</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+
+Gens KMod "gens" can also be built from <a href="https://bitbucket.org/SpritesMind/genskmod">source</a>.  Add gens.exe to Gens folder similar to Fusion in this <a href="http://steveproxna.blogspot.com/2018/03/devkitsms-programming-sample-ii.html">post</a>.  Note: you may already have <a href="https://gcc.gnu.org/">gcc</a> configured on you computer if you previously installed cygwin or Git Bash
+<a href="https://3.bp.blogspot.com/-xqoO9FUQ70I/XvJesqcylFI/AAAAAAAAGN8/GcJ-qx1dnBACpBO0jtSMzKZQOYDiC0YTQCLcBGAsYHQ/s1600/gcc_version.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-xqoO9FUQ70I/XvJesqcylFI/AAAAAAAAGN8/GcJ-qx1dnBACpBO0jtSMzKZQOYDiC0YTQCLcBGAsYHQ/s640/gcc_version.png" width="98%" height="154" /></a>
+
+<br /><br />
+
+<b>SGDK</b><br />
+Navigate to the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> repository on github: <a href="https://twitter.com/MegaDriveDEV">@MegadriveDev</a> has full instructions 
+<a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Installation">here</a>.  Download the latest release from SGDK archive e.g. <a href="https://github.com/Stephane-D/SGDK/releases/download/v1.51/sgdk151.7z">1.51</a> or simply git clone the latest source code.  Extract code into C:\SGDK.
+<br /><br />
+Setup the following environment variables for GDK + GDK_WIN to be used throughout SGDK development.  Add the following two environment variables: System | Advanced system settings | Environment Variables:
+
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Variable</b></td>
+<td valign="top">&nbsp;<b>Value</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GDK</td>
+<td valign="top">&nbsp;C:/SGDK</td>
+<td valign="top">&nbsp;UNIX path format</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GDK_WIN</td>
+<td valign="top">&nbsp;C:\SGDK</td>
+<td valign="top">&nbsp;Windows path format</td>
+</tr>
+</table>
+<br />
+
+Next, Stephane advises to add the %GDK_WIN%\bin to your <a href="https://en.wikipedia.org/wiki/PATH_(variable)">PATH</a> variable being careful if you have another GCC installation as you may have conflicts.  I have multiple GCC installs but have not experienced any issues.
+<br /><br />
+
+Finally, generate the SGDK library <i>%GDK%/lib/libmd.a</i> by entering the following command Start | run | cmd.
+<pre class="csharp" name="code">
+%GDK_WIN%\bin\make -f %GDK_WIN%\makelib.gen
+</pre>
+<br />
+
+<u>Example</u><br />
+As an example, let's write a simple program that prints "Hello World" using SGDK.  Create new directory: C:\HelloWorld.  Create main.c file + enter the following code similar to the Hello World tutorial program.
+<br /><br />
+
+main.c
+<!-- -->
+<pre class="csharp" name="code">
+#include &lt;genesis.h&gt;
+int main()
+{
+	VDP_drawText( "Hello Genny World!", 10, 13 );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+	return 0;
+}
+</pre>
+<!-- -->
+<br />
+
+<u>Build</u><br />
+Manually compile, link and execute the Hello World program. Launch command prompt: Start | Run | cmd.
+<!-- -->
+<a href="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s1600/Compile.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-I8SQ9RnDROc/XvJj5YW9SYI/AAAAAAAAGOQ/tphVPfiOojwsnwpUt88UVlQgQJULU0t5gCLcBGAsYHQ/s640/Compile.png" width="98%" height="295" /></a>
+<!-- -->
+<br /><br />
+Change directory cd C:\HelloWorld. Next, execute the following make command to produce the output ROM:
+
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ACTION</td>
+<td valign="top">&nbsp;COMMAND</td>
+<td valign="top">&nbsp;OUTPUT</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Compile</td>
+<td valign="top">&nbsp;%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen</td>
+<td valign="top">&nbsp;out\rom.bin</td>
+</tr>
+</table>
+<br />
+
+Finally, type <b> out\rom.bin</b>. The Hello World program should launch in the Fusion emulator.
+<br />
+Congratulations! You have just written your first Mega Drive program using the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
+<!-- -->
+<a href="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s1600/HelloWorld.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s640/HelloWorld.png" width="98%" height="526" /></a>
+<!-- -->
+<br /><br />
+
+<u>Automate</u><br />
+Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+<pre class="csharp" name="code">
+@echo off
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+out\rom.bin
+</pre>
+<br />
+<u>Code Blocks</u><br />
+Follow all instructions <a href="https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-CodeBlocks">here</a> to setup SGDK with CodeBlocks.  <a href="https://twitter.com/matteusbeus">@matteusbeus</a> has great <a href="https://www.youtube.com/watch?v=cDEGpLxKDK0">video</a> on how to setup SGDK using CodeBlocks also.  Check out his <a href="https://www.youtube.com/channel/UC4KBnGlYvFFtjNnce5cQskw">YouTube</a> channel for other interesting videos with SGDK topics.
+<br /><br />
+
+
+<u>Eclipse</u><br />
+Follow all instructions <a href="https://github.com/Stephane-D/SGDK/wiki/Setup-SGDK-with-Eclipse">here</a> to setup SGDK with Eclipse.  <a href="https://twitter.com/spritesmind">@SpritesMind</a> has a great tutorial on how to remote debug SGDK code using Gens KMod with Eclipse also.  Follow all instructions <a href="https://gendev.spritesmind.net/page-gdb.html">here</a> to complete debug setup:
+<br /><br />
+Launch Eclipse.  Choose Run menu | Debug Configurations | C/C++ Remote Application | New Configuration
+<!-- -->
+<a href="https://4.bp.blogspot.com/-KdUp8LjuSPg/XvT-Dm4r3wI/AAAAAAAAGOw/oX3uTDGeK0w1xIQB9ULbQdyPDmOl3VVQgCLcBGAsYHQ/s1600/Eclipse01.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-KdUp8LjuSPg/XvT-Dm4r3wI/AAAAAAAAGOw/oX3uTDGeK0w1xIQB9ULbQdyPDmOl3VVQgCLcBGAsYHQ/s640/Eclipse01.png" width="98%" height="374" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Name</td>
+<td valign=top>&nbsp;Remote Debugging</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Project</td>
+<td valign=top>&nbsp;HelloWorld</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;C/C++ Application</td>
+<td valign=top>&nbsp;C:\HelloWorld\out\rom.out</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Disable auto build</td>
+<td valign=top>&nbsp;CHECKED</td>
+</tr>
+</table>
+IMPORTANT ensure "Using GDB (DSF) Manual Remote Debugging Launcher" is preferred launcher selected!
+<br /><br />
+
+<a href="https://3.bp.blogspot.com/-v5o3gv0ao7U/XvT-sUgMjgI/AAAAAAAAGO4/GFUeylZZKmIucXw-beR-A7-T6yEDKSysgCLcBGAsYHQ/s1600/Eclipse02.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-v5o3gv0ao7U/XvT-sUgMjgI/AAAAAAAAGO4/GFUeylZZKmIucXw-beR-A7-T6yEDKSysgCLcBGAsYHQ/s640/Eclipse02.png" width="98%" height="454" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Stop on startup as: main</td>
+<td valign=top>&nbsp;CHECKED</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;GDB debugger</td>
+<td valign=top>&nbsp;C:SGDK\bin\gdb.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;GDB command line</td>
+<td valign=top>&nbsp;.gdbinit</td>
+</tr>
+</table>
+<br />
+<a href="https://4.bp.blogspot.com/-7dYKzkXxTPk/XvUA6Sjeg0I/AAAAAAAAGPE/h4so7eKNliM5N27crGV8qzdQWN2L3-XvgCLcBGAsYHQ/s1600/Eclipse03.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-7dYKzkXxTPk/XvUA6Sjeg0I/AAAAAAAAGPE/h4so7eKNliM5N27crGV8qzdQWN2L3-XvgCLcBGAsYHQ/s640/Eclipse03.png" width="98%" height="345" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Type</td>
+<td valign=top>&nbsp;TCP</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Host name or IP address</td>
+<td valign=top>&nbsp;localhost</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Port number</td>
+<td valign=top>&nbsp;6868</td>
+</tr>
+</table>
+<!-- -->
+Build project.  Load rom.bin in gens.  Set breakpoints.  Click debug.  Hit Tab in gens to refresh + debug code!
+<br /><br />
+
+<u>Visual Studio Code</u><br />
+<a href="https://twitter.com/ohsat_games">@ohsat_games</a> has a great <a href="https://www.ohsat.com/tutorial/megapong/megapong-2">tutorial</a> on how to setup SGDK using Visual Studio Code.  You can even <a href="https://marketplace.visualstudio.com/items?itemName=zerasul.genesis-code">install</a> the Genesis Code extension for code auto completion and to streamline the build process all from within the IDE.
+<br /><br />
+Further SGDK tutorials from @ohsat_games can be found <a href="https://www.ohsat.com/tutorial">here</a>.  All projects have a similar build batch script:
+<pre class="csharp" name="code">
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+</pre>
+<br />
+<u>Visual Studio 2015</u><br />
+<a href="https://www.youtube.com/channel/UCJkDjU_5xCeu5kQ2WE38izg">Retro Mike</a> has a great <a href="https://www.youtube.com/watch?v=Kx8__lr4Ao4">video</a> on how to setup SGDK using Visual Studio 2015.  Launch Visual Studio 2015. File | New | Project... | Visual C++ | General | Makefile Project.  Enter the following name + location info:
+<a href="https://1.bp.blogspot.com/-532z8W7jqrg/XvdZN4FjXnI/AAAAAAAAGPw/8l7eo1y1AxMS4Qf-ML-7D2m7pxHGgb7kQCLcBGAsYHQ/s1600/HelloWorld01.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-532z8W7jqrg/XvdZN4FjXnI/AAAAAAAAGPw/8l7eo1y1AxMS4Qf-ML-7D2m7pxHGgb7kQCLcBGAsYHQ/s640/HelloWorld01.png" width="98%" height="460" /></a>
+<br /><br />
+Choose Next.  Enter the following Build command: <i>%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen</i>
+<!-- -->
+<a href="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-oX2x9w7U9L4/XvUEXW5JZmI/AAAAAAAAGPQ/kjT9F-U50Fw8YF4EtSmlA0w_zam2QLmTwCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="500" /></a>
+<br /><br />
+Enter the previous "Hello World" code as above.  Finally, update Project Properties VC++ Include Directories:
+<a href="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-IFOrKms4nQA/XvUE7Ck89bI/AAAAAAAAGPY/k_RPjfiKef0G2-RVVnXvZsS2no5KcMijACLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="434" /></a>
+<!-- -->
+<br /><br />
+Choose Finish.  Enter the previous "Hello World" code as above.  Finally, right click Project | Properties | VC++ Directories | Include Directories.  Enter the following in order to include SGDK header files: <i>$(GDK_WIN)\inc</i>
+<a href="https://2.bp.blogspot.com/-dZEdDzi3vY4/XvdgtcyFdvI/AAAAAAAAGP8/HvJVoIvQ9EEk7Dsfqe_EcRM8E375Drt7ACLcBGAsYHQ/s1600/VS2015_Include.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-dZEdDzi3vY4/XvdgtcyFdvI/AAAAAAAAGP8/HvJVoIvQ9EEk7Dsfqe_EcRM8E375Drt7ACLcBGAsYHQ/s640/VS2015_Include.png" width="98%" height="424" /></a>
+<br /><br />
+Press Ctrl + Shift + B to build source code and produce <b>out\rom.bin</b>.  Launch gens.exe and load ROM file!  Alternatively, setup "Remote" debugging configuration in Visual Studio and Press Ctrl + F5 to build and run.
+<a href="https://2.bp.blogspot.com/-qHkLGZP5dK4/Xvdg1xf70lI/AAAAAAAAGQA/iA9bgREgBG80mhr_gB58aAGNY6JJfzz4QCLcBGAsYHQ/s1600/VS2015_Remote.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-qHkLGZP5dK4/Xvdg1xf70lI/AAAAAAAAGQA/iA9bgREgBG80mhr_gB58aAGNY6JJfzz4QCLcBGAsYHQ/s640/VS2015_Remote.png" width="98%" height="424" /></a>
+<br /><br />
+
+Right click Project | Properties | Debugging | Remote Windows Debugger.  Update in the following properties:
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Remote Command</td>
+<td valign=top>&nbsp;C:\SEGA\Fusion\Fusion.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Remote Command Arguments</td>
+<td valign=top>&nbsp;out\rom.bin</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Connection</td>
+<td valign=top>&nbsp;Remote with no authentication</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Debugger Type</td>
+<td valign=top>&nbsp;Native Only</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Attach</td>
+<td valign=top>&nbsp;Yes</td>
+</tr>
+</table>
+<br /><br />
+
+<u>Summary</u><br />
+To summarize, there are multiple IDE setups available to use the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.  However, despite VS2015 being the most applicable to our previous <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS</a> process, we're still not able to debug step thru the C source code.
+<br /><br />
+
+Ultimately, we would like to build + debug step thru the C source code during SGDK development whilst also being able to build + run the ROM output file all from in Visual Studio.  This will be the topic of the next <a href="TODO">post</a>.
+
+</span>

@@ -1,7 +1,50 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Hello Resources</u><br />
+Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  Clone the "Hello World" project and follow these steps;
 <br /><br />
 
+Change directory to <b>res</b> folder under <i>dev</i> folder.  Copy resource here.  Create resources.res here for example:
+<br />
+resources.res
+<pre class="csharp" name="code">
+IMAGE moon "moon.bmp" 0
+</pre>
+<br />
+Next execute build.bat script to compile resource and generate corresponding header file e.g. <i>resources.h</i>.  In Visual Studio add resources.h to Header Files.  Update main.h to include new resources.h header file in code:
+<br />
+main.h
+<pre class="csharp" name="code">
+#ifndef __MAIN__
+#define __MAIN__
+// ...
+#include "resources.h"
+#endif//__MAIN__
+</pre>
+<br />
+Create folder <b>gfx</b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i>resources.c</i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
+resources.h
+<pre class="csharp" name="code">
+#ifdef _CONSOLE
+  #include "_genesis.h"
+  const Image moon = { NULL, NULL, NULL };
+#endif
+</pre>
+<br /><br />
+ with the following code to prevent linker errors when recompiling code.
+<br /><br />
+
+Create folder <b>gfx</b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add a dummy corresponding translation unit <i>resources.c</i> under <i>res</i> sub folder with the following code to prevent linker errors when recompiling code.
+<br /><br />
+TODO Java error - not up-to-date and u16 *data = NULL #if _CONSOLE leverage the conditional compilation statement!!
+<br /><br />
+All resources are compiled by rescomp tool.  See here for more resource information
+https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt
+therefore MUST have up-to-date version of JAVA to compile resources otherwise may see following error:
+<br /><br />
+
+
+<br /><br />
 In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The SGDK is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
 <br /><br />
 
