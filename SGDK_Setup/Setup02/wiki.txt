@@ -1,23 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-REMEMBER<br />
-More information about all SGDK resources found <a href="https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt">here</a>.  Also, compile resources directly using this command:
-<pre class="csharp" name="code">
-cd C:\HelloWorld\dev\res
-java -jar %GDK_WIN%\bin\rescomp.jar resources.res
-</pre>
-<br />
-IMPORTANT<br />
-Ensure an up-to-date version of Java is installed, e.g. version "12.0.2" 2019-07-16 otherwise builds may fail!
-<br />
-<i>
-Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len < 0 || off + len > b.length!
-</i>
-<br />
-<a href="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s1600/Java_ResComp.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s640/Java_ResComp.png" width="98%" height="266" /></a>
-<br />
-
-
 <br /><br />
 
 In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The SGDK is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
@@ -360,6 +342,7 @@ Press F5 to build + debug step through C source code.  Press Ctrl + 1 to build +
 <br />
 
 <br />
+
 REMEMBER<br />
 More information about all SGDK resources found <a href="https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt">here</a>.  Also, compile resources directly using this command:
 <pre class="csharp" name="code">
@@ -367,9 +350,13 @@ cd C:\HelloWorld\dev\res
 java -jar %GDK_WIN%\bin\rescomp.jar resources.res
 </pre>
 <br />
-
 Ensure an up-to-date version of Java is installed, e.g. version "12.0.2" 2019-07-16 otherwise builds may fail!
+<br />
+<i>
+Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len < 0 || off + len > b.length!
+</i>
 <br />
 <a href="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s1600/Java_ResComp.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s640/Java_ResComp.png" width="98%" height="266" /></a>
 <br />
+
 </span>
