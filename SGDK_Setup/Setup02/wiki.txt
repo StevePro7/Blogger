@@ -10,85 +10,11 @@ java -jar %GDK_WIN%\bin\rescomp.jar resources.res
 IMPORTANT<br />
 Ensure an up-to-date version of Java is installed, e.g. version "12.0.2" 2019-07-16 otherwise builds may fail!
 <br />
+<i>
+Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len < 0 || off + len > b.length!
+</i>
+<br />
 <a href="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s1600/Java_ResComp.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s640/Java_ResComp.png" width="98%" height="266" /></a>
-<br />
-
-
-<br /><br />
-
-<u>Hello Resources</u><br />
-Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  Clone the "Hello World" project and follow these steps;
-<br /><br />
-
-Change directory to <b>res</b> folder under <i>dev</i> folder.  Copy resource here.  Create resources.res here for example:
-<br />
-<!--
-resources.res
-<pre class="csharp" name="code">
-IMAGE splash "splash.bmp" 0
-</pre>
--->
-<br />
-Next execute build.bat script to compile resource and generate corresponding header file e.g. <i>resources.h</i>.  In Visual Studio add resources.h to Header Files.  Update main.h to include new resources.h header file in code:
-<br />
-<!--
-main.h
-<pre class="csharp" name="code">
-#ifndef __MAIN__
-#define __MAIN__
-// ...
-#include "resources.h"
-#endif//__MAIN__
-</pre>
--->
-<br />
-IMPORTANT<br />
-If resources.h does not auto generate or the contents do not change then delete <b>out</b> folder and try again!
-<br /><br />
-Create folder <b>gfx</b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i>resources.c</i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
-
-<br />
-<!--
-resources.c
-<pre class="csharp" name="code">
-#ifdef _CONSOLE
-  #include "_genesis.h"
-  const Image splash = { NULL, NULL, NULL };
-#endif
-</pre>
--->
-<br />
-Update main.c to render image.  Leverage conditional compilation to inject resource palette data at runtime:
-<!--
-<br />
-main.c
-<pre class="csharp" name="code">
-#include "main.h"
-int main()
-{
-	u16 *data = NULL;
-#ifndef _CONSOLE
-	data = moon.palette->data;
-#endif
-	VDP_setPalette( PAL1, data );
-	VDP_drawImageEx( BG_A, &moon, TILE_ATTR_FULL( PAL1, 0, 0, 0, 1 ), 10, 5, 0, CPU );
-	while( 1 )
-	{
-		VDP_waitVSync();
-	}
-	return 0;
-}
-</pre>
--->
-<br />
-
-Press F5 to build + debug step through C source code.  Press Ctrl + 1 to build + run the new ROM output file.
-<!--
-<br />
-<a href="https://1.bp.blogspot.com/-U6aydUeWgc4/Xvzuxk6kkjI/AAAAAAAAGTA/9knDMXTnTPMn-2ySKWLVGMDgjabgmuv4ACLcBGAsYHQ/s1600/HelloResources00.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-U6aydUeWgc4/Xvzuxk6kkjI/AAAAAAAAGTA/9knDMXTnTPMn-2ySKWLVGMDgjabgmuv4ACLcBGAsYHQ/s640/HelloResources00.png" width="98%" height="525" /></a>
-<br />
--->
-
 <br />
 
 
