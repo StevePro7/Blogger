@@ -5,12 +5,11 @@
 Here is a short list of issues found when installing SGDK, setting up custom library + building new projects:
 <br /><br />
 
-<b>sprintf</b><br />
-If you have downloaded an older version of SGDK then you may get <a href="https://github.com/Stephane-D/SGDK/issues/133">error</a> <i>Varargs warning on sprintf</i>.  The solution is git clone latest master as the fix is only available through direct repository content not in <a href="https://github.com/Stephane-D/SGDK/releases/tag/v1.51">1.51</a>.
-<br /><br />
-If you have downloaded an older version of SGDK then you may get error <i>Varargs warning on sprintf</i>.  The solution here is to simply git clone the latest master source code as the fix is only available through direct repository content (not in SGDK 1.51).
+<b>Input</b><br />
+Input problemsn
 <br /><br />
 
+<br /><br />
 In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The SGDK is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
 <br /><br />
 
@@ -367,5 +366,23 @@ Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len <
 <br />
 <a href="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s1600/Java_ResComp.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s640/Java_ResComp.png" width="98%" height="266" /></a>
 <br />
+<br />
 
+<u>Troubleshooting</u><br />
+Here is a short list of issues found when installing SGDK, setting up custom library + building new projects:
+<br /><br />
+
+<b>sprintf</b><br />
+If you have downloaded an older version of SGDK then you may get <a href="https://github.com/Stephane-D/SGDK/issues/133">error</a> <i>Varargs warning on sprintf</i>.  The solution is git clone latest master as the fix is only available through direct repository content not in <a href="https://github.com/Stephane-D/SGDK/releases/tag/v1.51">1.51</a>.
+<br /><br />
+<b>libres</b><br />
+If you have downloaded an older version of SGDK then you may get <a href="https://github.com/Stephane-D/SGDK/blob/master/res/libres.h">libres</a> warning.  Again upgrade to latest!
+<br />
+<!--
+<a href="https://4.bp.blogspot.com/-EEKOyZP0M70/Xv4ysoghjyI/AAAAAAAAGTc/ci-TexpuQ4cGgTIoAf3r11W1UCDG3RvdwCLcBGAsYHQ/s1600/libres.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-EEKOyZP0M70/Xv4ysoghjyI/AAAAAAAAGTc/ci-TexpuQ4cGgTIoAf3r11W1UCDG3RvdwCLcBGAsYHQ/s640/libres.png" width="98%" height="187" /></a>
+-->
+<br />
+
+<b>Input</b><br />
+fdsfsdfd
 </span>
