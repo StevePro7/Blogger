@@ -63,7 +63,7 @@ SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a gen
 <!-- --><br /><!-- -->
 
 <u>Hello World</u><br />
-Create folder C:\HelloWorld.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b>dev</b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
+Create folder C:\<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld">HelloWorld</a>.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
 <br /><br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
 <!-- -->  
@@ -222,7 +222,7 @@ IMPORTANT<br />
 The first time you F5 debug step through C source code you may be prompted to navigate to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b> directory.
 <br /><br />
 
-Add the following build.bat script to the <b><a href="TODO">dev</a></b> folder to automate process to build + run the ROM output file:
+Add the following <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/01-HelloWorld/dev/build.bat">build.bat</a> script to the <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b> folder to automate process to build + run the ROM output file:
 <!-- -->
 <pre class="csharp" name="code">
 @echo off
@@ -274,7 +274,7 @@ Congratulations! You have just written your first Mega Drive program using the <
 <br /><br />
 
 <u>Hello Resources</u><br />
-Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  Clone the "Hello World" project and follow these steps;
+Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/02-HelloResources">Clone</a> the "Hello World" project and follow these steps;
 <br /><br />
 
 Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/02-HelloResources/dev/res">res</a></b> folder under <i>dev</i> folder.  Copy <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/splash.bmp">resource</a> here.  Create <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.res">resources.res</a> here for example:
