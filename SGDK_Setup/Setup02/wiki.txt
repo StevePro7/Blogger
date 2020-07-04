@@ -277,19 +277,19 @@ Congratulations! You have just written your first Mega Drive program using the <
 Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  Clone the "Hello World" project and follow these steps;
 <br /><br />
 
-Change directory to <b>res</b> folder under <i>dev</i> folder.  Copy resource here.  Create resources.res here for example:
+Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/02-HelloResources/dev/res">res</a></b> folder under <i>dev</i> folder.  Copy <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/splash.bmp">resource</a> here.  Create <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.res">resources.res</a> here for example:
 <br />
 <!-- -->
-resources.res
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.res">resources.res</a>
 <pre class="csharp" name="code">
 IMAGE splash "splash.bmp" 0
 </pre>
 <!-- -->
 <br />
-Next execute build.bat script to compile resource and generate corresponding header file e.g. <i>resources.h</i>.  In Visual Studio add resources.h to Header Files.  Update main.h to include new resources.h header file in code:
+Next execute <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/build.bat">build.bat</a> script to compile resource and generate corresponding header file e.g. <i><a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.h">resources.h</a></i>.  In Visual Studio add resources.h to Header Files.  Update <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/inc/main.h">main.h</a> to include new resources.h header file in code:
 <br />
 <!-- -->
-main.h
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/inc/main.h">main.h</a>
 <pre class="csharp" name="code">
 #ifndef __MAIN__
 #define __MAIN__
@@ -302,11 +302,11 @@ main.h
 IMPORTANT<br />
 If resources.h does not auto generate or the contents do not change then delete the <b>out</b> folder try again!
 <br /><br />
-Create folder <b>gfx</b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i>resources.c</i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
+Create folder <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/02-HelloResources/gfx">gfx</a></b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i><a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/gfx/res/resources.c">resources.c</a></i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
 
 <br />
 <!-- -->
-resources.c
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/gfx/res/resources.c">resources.c</a>
 <pre class="csharp" name="code">
 #ifdef _CONSOLE
   #include "_genesis.h"
@@ -315,10 +315,10 @@ resources.c
 </pre>
 <!-- -->
 <br />
-Update main.c to render image.  Leverage conditional compilation to inject resource palette data at runtime:
+Update <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/src/main.c">main.c</a> to render image.  Leverage conditional compilation to inject resource palette data at runtime:
 <!-- -->
 <br />
-main.c
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/src/main.c">main.c</a>
 <pre class="csharp" name="code">
 #include "main.h"
 int main()
