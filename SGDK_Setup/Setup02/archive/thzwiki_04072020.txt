@@ -1,0 +1,580 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The <a href="https://github.com/Stephane-D/SGDK">SGDK</a> is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
+<br /><br />
+
+Using the SGDK, it is possible to write game code using the <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> rather than pure <a href="https://en.wikibooks.org/wiki/68000_Assembly">68000 assembly</a>. Therefore, we would now like to extend this knowledge and write more detailed programming sample code.
+<!-- -->
+<a href="https://2.bp.blogspot.com/-ZsP4yKAHaUc/XvnRZiaYmNI/AAAAAAAAGQ0/UhAW8Sr_WC46PlbaC8m_gOmxg3L2jX_ugCLcBGAsYHQ/s1600/SonicRunning.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-ZsP4yKAHaUc/XvnRZiaYmNI/AAAAAAAAGQ0/UhAW8Sr_WC46PlbaC8m_gOmxg3L2jX_ugCLcBGAsYHQ/s640/SonicRunning.png" width="98%" height="509" /></a>
+<!-- -->
+Let's check it out!
+<br /><br />
+
+<u>Software</u><br />
+Follow all instructions from the previous <a href="TODO">post</a>: this documents how to setup the pre-requisite software.
+<br />
+Note: ensure you have downloaded and installed the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> and the GNU Compiler Collection [<a href="https://gcc.gnu.org/">GCC</a>].
+<br /><br />
+
+<u>Library</u><br />
+Ultimately, we would like to build + debug step thru the C source code during SGDK development from in Visual Studio.  Therefore, we need to build custom version of SGDK library to replace functions with stubs.
+<br /><br />
+Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project | Static Library:
+<br />
+<!-- -->
+<a href="https://3.bp.blogspot.com/-CBkI0hlMYe0/Xvnb1L7Cv6I/AAAAAAAAGRA/wjbk_W5E4D0fxruktU47Ff_p0MUpDoJIQCLcBGAsYHQ/s1600/StaticLibrary.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-CBkI0hlMYe0/Xvnb1L7Cv6I/AAAAAAAAGRA/wjbk_W5E4D0fxruktU47Ff_p0MUpDoJIQCLcBGAsYHQ/s640/StaticLibrary.png" width="98%" height="500" /></a>
+<!-- -->
+<br />
+
+Create two folders <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> and <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b>.  Copy all SGDK header files from <i>%GDK_WIN%\inc</i> and <i>%GDK_WIN%\res</i> beneath the <b>lib</b> folder.  For each header file create corresponding translation unit [*.c] file to the <b>src</b> folder.
+<br />
+<!-- -->
+<a href="https://3.bp.blogspot.com/-2fjiNwbtafI/Xvnb9vaZmXI/AAAAAAAAGRE/9xKyqZgITJYOJj9qTQsDF5gCIM-QeMk5ACLcBGAsYHQ/s1600/LibraryLayout.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-2fjiNwbtafI/Xvnb9vaZmXI/AAAAAAAAGRE/9xKyqZgITJYOJj9qTQsDF5gCIM-QeMk5ACLcBGAsYHQ/s640/LibraryLayout.png" width="98%" height="210" /></a>
+<!-- -->
+<br />
+Finally, implement each header file function as stub function in each translation unit.  Build custom library.  Copy <i>_genesis.lib</i> and <i>_genesis.pdb</i> binaries to the <b>lib</b> folder.  This will be used to link sample source code.  Download custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library">here</a></b>.
+<br /><br />
+
+<u>Usage</u><br />
+SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a generic makefile to compile project. In order to be properly recognized by the makefile you need to organize your project folder structure as following: Project root add sub folders: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
+<table width="97%" border="1">
+<tr>
+<td valign=top>&nbsp;inc&nbsp;</td>
+<td valign=top>&nbsp;include files</td>
+<td valign=top>&nbsp;*.h [C include file] or *.inc [assembly include file]</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;out&nbsp;</td>
+<td valign=top>&nbsp;output files</td>
+<td valign=top>&nbsp;<b>rom.bin</b> to be created automatically by makefile when SGDK project is built</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;res&nbsp;</td>
+<td valign=top>&nbsp;resource files</td>
+<td valign=top>&nbsp;*.res [resource definition file compiled by rescomp tool see bin/<a href="https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt">rescomp.txt</a>]</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;src&nbsp;</td>
+<td valign=top>&nbsp;source files</td>
+<td valign=top>&nbsp;*.c [C source file], *.s [68000 asm source file] or *.s80 [Z80 asm source file]</td>
+</tr>
+</table>
+<br />
+<!-- --><br /><!-- -->
+
+<u>Hello World</u><br />
+Create folder C:\<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld">HelloWorld</a>.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
+<br /><br />
+Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
+<!-- -->  
+<a href="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s1600/HelloWorld00.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s640/HelloWorld00.png" width="98%" height="353" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Name:</td>
+<td valign="top" width="50%">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\HelloWorld\dev</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Create directory for solution</td>
+<td valign="top" width="50%">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+OK
+<br /><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Application type:</td>
+<td valign="top" width="50%">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Additional options:</td>
+<td valign="top" width="50%">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+Finish
+<!-- -->
+<br /><br />
+First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
+<br /><br />
+
+Add the <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/01-HelloWorld/dev/inc/main.h">main.h</a> source code to Header Files using the <i>inc</i> folder.  Add <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev/src">main.c</a> to Source Files using <i>src</i> folder:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/01-HelloWorld/dev/inc/main.h">main.h</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev/src/main.c">main.c</a></td>
+</tr>
+<tr>
+<td>
+<table border="0">
+<tr>
+<td width="99%">
+<pre class="csharp" name="code">
+&nbsp;#ifndef __MAIN__
+&nbsp;#define __MAIN__
+
+&nbsp;#ifdef _CONSOLE
+&nbsp;  #include "_genesis.h"
+&nbsp;#else
+&nbsp;  #include &lt;genesis.h&gt;
+&nbsp;#endif
+
+&nbsp;#endif//__MAIN__
+</pre>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#include "main.h"
+&nbsp;int main()
+&nbsp;{
+&nbsp;	VDP_drawText( "Hello Genny World!", 10, 13 );
+&nbsp;	while( 1 )
+&nbsp;	{
+&nbsp;		VDP_waitVSync();
+&nbsp;	}
+&nbsp;	return 0;
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<!-- -->
+
+Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
+<br />
+<!-- -->
+<a href="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s1600/HelloWorld01.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s640/HelloWorld01.png" width="98%" height="407" /></a>
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Output Directory:</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\bin\$(ConfigurationName)</td>
+</tr>
+<tr>
+<td valign="top" width="50%">&nbsp;Intermediate Directory:</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\obj\$(ConfigurationName)</td>
+</tr>
+</table>
+<br />
+<!-- -->
+
+Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
+<br />
+<!-- --> 
+<a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" height="385" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Value:&nbsp;</td>
+<td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</td>
+</tr>
+</table>
+<br />
+<!-- -->
+
+Right click Project | Properties | Configuration Properties | Linker | General | Additional Library Directories:
+<br />
+<!-- -->
+<a href="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s1600/HelloWorld03.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s640/HelloWorld03.png" width="98%" height="385" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Value:&nbsp;</td>
+<td valign="top" width="50%">&nbsp;$(SolutionDir)..\lib</td>
+</tr>
+</table>
+<br />
+<!-- -->
+
+Right click Project | Properties | Configuration Properties | Linker | Input.  Set the Additional Dependencies:
+<!-- -->
+<br />
+<a href="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s1600/HelloWorld04.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s640/HelloWorld04.png" width="98%" height="407" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">&nbsp;Value:&nbsp;</td>
+<td valign="top" width="50%">&nbsp;_genesis.lib;%(AdditionalDependencies)</td>
+</tr>
+</table>
+
+<!--
+<br />
+<br />
+-->
+
+Press Ctrl + Shift + B of [F7] to build source code.  Pressing F5 will now debug step through C source code!
+<br /><br />
+IMPORTANT<br />
+The first time you F5 debug step through C source code you may be prompted to navigate to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b> directory.
+<br /><br />
+
+Add the following <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/01-HelloWorld/dev/build.bat">build.bat</a> script to the <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b> folder to automate process to build + run the ROM output file:
+<!-- -->
+<pre class="csharp" name="code">
+@echo off
+cls
+echo Building...
+
+:: Time build START
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
+
+:: Build
+%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen > NUL
+
+:: Time build -END-
+set _time=%time: =0%
+set /a _hours=100%_time:~0,2%%%100,_min=100%_time:~3,2%%%100,_sec=100%_time:~6,2%%%100,_cs=%_time:~9,2%
+set /a _duration=_hours*60*60*100+_min*60*100+_sec*100+_cs-_started
+set /a _hours=_duration/60/60/100,_min=100+_duration/60/100%%60,_sec=100+(_duration/100%%60%%60),_cs=100+_duration%%100
+echo.
+echo Time taken: %_sec:~-2%.%_cs:~-2% secs
+echo.
+
+:: Run
+C:\SEGA\Fusion\fusion.exe out\rom.bin
+::C:\SEGA\gens\gens.exe %~dp0\out\rom.bin
+</pre>
+<!-- -->
+Here we <a href="https://stackoverflow.com/questions/673523/how-do-i-measure-execution-time-of-a-command-on-the-windows-command-line">measure</a> the build execution time.  Also, <a href="https://social.technet.microsoft.com/Forums/windows/en-US/66e60961-439d-47e9-8879-d75434ef7bb8/how-do-i-suppress-output-from-a-batch-file?forum=w7itprogeneral">suppress</a> the output of the build script to keep things clean.
+The final solution should look like this:
+<!-- -->
+
+<a href="https://1.bp.blogspot.com/-UeRKe8LPiU8/XwCQCc2TbDI/AAAAAAAAGUI/88ijNiK_lMoUgwPJ_m4zoCBhFZca_5IpACLcBGAsYHQ/s1600/HelloWorld05.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-UeRKe8LPiU8/XwCQCc2TbDI/AAAAAAAAGUI/88ijNiK_lMoUgwPJ_m4zoCBhFZca_5IpACLcBGAsYHQ/s640/HelloWorld05.png" width="98%" height="387" /></a>
+<!-- -->
+
+<br />
+<!-- 
+<br />
+-->
+
+<!-- -->
+
+In Visual Studio, add the build.bat script to Resource Files.  Connect the build.bat script to Ctrl + 1 keyboard shortcut as per this <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a>.  Press Ctrl + 1 to build + run the ROM output file all from within Visual Studio 2015.
+<br /><br />
+Congratulations! You have just written your first Mega Drive program using the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>.
+<!-- -->
+<a href="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s1600/HelloWorld.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-P0e9rENeVP4/XvJmH5Y9a9I/AAAAAAAAGOc/Lr8C8B0HodY6lr6r5weLS25HmphxfROVwCLcBGAsYHQ/s640/HelloWorld.png" width="98%" height="526" /></a>
+<!-- -->
+<br /><br />
+
+<u>Hello Resources</u><br />
+Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/02-HelloResources">Clone</a> the "Hello World" project and follow these steps;
+<br /><br />
+
+Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/02-HelloResources/dev/res">res</a></b> folder under <i>dev</i> folder.  Copy <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/splash.bmp">resource</a> here.  Create <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.res">resources.res</a> here for example:
+<br />
+<!-- -->
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.res">resources.res</a>
+<pre class="csharp" name="code">
+IMAGE splash "splash.bmp" 0
+</pre>
+<!-- -->
+<br />
+Next execute <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/build.bat">build.bat</a> script to compile resource and generate corresponding header file e.g. <i><a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.h">resources.h</a></i>.  In Visual Studio add resources.h to Header Files.  Update <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/inc/main.h">main.h</a> to include new resources.h header file in code:
+<br />
+<!-- -->
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/inc/main.h">main.h</a>
+<pre class="csharp" name="code">
+#ifndef __MAIN__
+#define __MAIN__
+// ...
+#include "resources.h"
+#endif//__MAIN__
+</pre>
+<!-- -->
+<br />
+IMPORTANT<br />
+If resources.h does not auto generate or the contents do not change then delete the <b>out</b> folder try again!
+<br /><br />
+Create folder <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/02-HelloResources/gfx">gfx</a></b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit <i><a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/gfx/res/resources.c">resources.c</a></i> under <i>res</i> sub folder.  In Visual Studio add resources.c to Source Files with following code:
+
+<br />
+<!-- -->
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/gfx/res/resources.c">resources.c</a>
+<pre class="csharp" name="code">
+#ifdef _CONSOLE
+  #include "_genesis.h"
+  const Image splash = { NULL, NULL, NULL };
+#endif
+</pre>
+<!-- -->
+<br />
+Update <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/src/main.c">main.c</a> to render image.  Leverage conditional compilation to inject resource palette data at runtime:
+<!-- -->
+<br />
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/src/main.c">main.c</a>
+<pre class="csharp" name="code">
+#include "main.h"
+int main()
+{
+	u16 *data = NULL;
+#ifndef _CONSOLE
+	data = splash.palette->data;
+#endif
+	VDP_setPalette( PAL1, data );
+	VDP_drawImageEx( BG_A, &splash, TILE_ATTR_FULL( PAL1, 0, 0, 0, 1 ), 4, 2, 0, CPU );
+	while( 1 )
+	{
+		VDP_waitVSync();
+	}
+	return 0;
+}
+</pre>
+<!-- -->
+<br />
+
+Press F5 to build + debug step through C source code.  Press Ctrl + 1 to build + run the new ROM output file.
+<!-- -->
+<br />
+<a href="https://1.bp.blogspot.com/-U6aydUeWgc4/Xvzuxk6kkjI/AAAAAAAAGTA/9knDMXTnTPMn-2ySKWLVGMDgjabgmuv4ACLcBGAsYHQ/s1600/HelloResources00.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-U6aydUeWgc4/Xvzuxk6kkjI/AAAAAAAAGTA/9knDMXTnTPMn-2ySKWLVGMDgjabgmuv4ACLcBGAsYHQ/s640/HelloResources00.png" width="98%" height="525" /></a>
+<!-- 
+
+-->
+<br />
+<br />
+
+REMEMBER<br />
+More information about all SGDK resources found <a href="https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt">here</a>.  Also, compile resources directly using this command:
+<pre class="csharp" name="code">
+cd C:\HelloWorld\dev\res
+java -jar %GDK_WIN%\bin\rescomp.jar resources.res
+</pre>
+<br />
+Ensure an up-to-date version of Java is installed, e.g. version "12.0.2" 2019-07-16 otherwise builds may fail!
+<br />
+<i>
+Exception in thread "main" java.lang.IndexOutOfBoundsException: off < 0 || len < 0 || off + len > b.length!
+</i>
+<br />
+<a href="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s1600/Java_ResComp.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-Cp6BGDE-S5E/Xv3zr2FtOPI/AAAAAAAAGTM/Xe1uZ3oEK6QPWqBU2Ons5oQlHNlmOPHZQCLcBGAsYHQ/s640/Java_ResComp.png" width="98%" height="266" /></a>
+<br />
+<br />
+
+<u>Troubleshooting</u><br />
+Here is a short list of issues found when installing SGDK, setting up custom library + building new projects:
+<br /><br />
+
+<b>sprintf</b><br />
+If you have downloaded an older version of SGDK then you may get <a href="https://github.com/Stephane-D/SGDK/issues/133">error</a> <i>Varargs warning on sprintf</i>.  The solution is git clone latest master as the fix is only available through direct repository content not in <a href="https://github.com/Stephane-D/SGDK/releases/tag/v1.51">1.51</a>.
+<br /><br />
+<b>libres</b><br />
+If you have downloaded an older version of SGDK then you may get <a href="https://github.com/Stephane-D/SGDK/blob/master/res/libres.h">libres</a> warning.  Again upgrade to latest!
+<br />
+<!-- -->
+<a href="https://4.bp.blogspot.com/-EEKOyZP0M70/Xv4ysoghjyI/AAAAAAAAGTc/ci-TexpuQ4cGgTIoAf3r11W1UCDG3RvdwCLcBGAsYHQ/s1600/libres.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-EEKOyZP0M70/Xv4ysoghjyI/AAAAAAAAGTc/ci-TexpuQ4cGgTIoAf3r11W1UCDG3RvdwCLcBGAsYHQ/s640/libres.png" width="98%" height="187" /></a>
+<!-- -->
+<br />
+<br />
+<b>Input</b><br />
+Launch <a href="https://segaretro.org/Gens_KMod">Gens KMod</a> and define keys choosing Option menu | Joypads | Redefine Keys.  However, some older builds of "gens" may crash while redefining keys.  If this happens then build gens from <a href="https://bitbucket.org/SpritesMind/genskmod">source</a> and redefine keys there.  Afterwards copy Gens.cfg + GensKMod.cfg from bin directory to directory where gens.exe lives.  PS: don't forget to choose Graphics menu in Gens KMod emulator then Render | Double.
+<br /><br />
+
+<br />
+<u>Code Samples</u><br />
+Here are links to some <a href="https://github.com/Stephane-D/SGDK/wiki">Wiki</a> code currently in Sega Genesis development kit built using our custom library:
+<table width="98%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut10_HelloWorld">Hello World</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Hello-World">Hello World</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut20_Input">Input</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Input">Input</a></td>
+</td>
+</tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut30_TilesBasic">Tile Basic</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Background">Tile Basic</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut31_TileBitmap">Tile Bitmap</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Background">Tile Bitmap</a></td>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+
+Here are links to all <a href="https://www.ohsat.com/tutorial">Tutorials</a> currently hosted at Ohsat Games website and built using our custom library:
+<table width="98%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/01-MegaPong">Mega Pong</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/megapong/megapong-1">Mega Pong</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/02-MegaRunner">Mega Runner</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/megarunner/megarunner-1">Mega Runner</a></td>
+</td>
+</tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/03-MegaGalaga">Mega Galaga</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/megalaga/megalaga-1">Mega Galaga</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/04-Miscellaneous">Miscellaneous</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/mdmisc/creating-graphics-for-md">Miscellaneous</a></td>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+
+Here are links to all samples included in the Sega Genesis development kit built using our custom library:
+<table width="98%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/astrofra">astrofra</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/astrofra/starfield_donut">astrofra</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/bench">bench</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/cube_flat">cube_flat</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/cube_flat">cube_flat</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/cube_flat">cube_flat</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/hs_effect">hs_effect</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/hs_effect">hs_effect</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/image">image</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/image">image</a></td>
+</tr>
+
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/joytest">joytest</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/joytest">joytest</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/partic">partic</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/partic">partic</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/sound">sound</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/sound">sound</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/sprite">sprite</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/sprite">sprite</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/xgmplayer">xgmplayer</a></td>
+<td valign=top>&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/xgmplayer">xgmplayer</a></td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+<br />
+
+<br />
+<u>68000 assembly</u><br />
+The SGDK <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/bench">bench</a> code sample has an example of inline 68000 assembly with <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKsamples/bench/dev/src/math_test_a.s">math_test_a.s</a>.  However, there is an <a href="https://gendev.spritesmind.net/forum">active</a> thriving community that focuses Sega Genesis development in pure 68000 assembly by default!
+<br /><br />
+Some notable resources include:
+<br />
+
+<table width="99%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+
+<tr>
+<td valign=top>&nbsp;Matt Philips </td>
+<td valign=top>&nbsp;<a href="https://blog.bigevilcorporation.co.uk">Mega Drive Tutorials</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Matt Philips </td>
+<td valign=top>&nbsp;<a href="https://github.com/BigEvilCorporation/megadrive_samples">Mega Drive Code Samples</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Hugues Johnson</td>
+<td valign=top>&nbsp;<a href="https://huguesjohnson.com/programming">Genesis Programming</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Nameless Algorithm</td>
+<td valign=top>&nbsp;<a href="https://namelessalgorithm.com/genesis">Genesis Development</a></td>
+</tr>
+
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+
+<tr>
+<td valign=top>&nbsp;Wiki Books</td>
+<td valign=top>&nbsp;<a href="https://en.wikibooks.org/wiki/Genesis_Programming">Genesis Programming Info</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;mode5.net</td>
+<td valign=top>&nbsp;<a href="https://mode5.net/Tutorials.html">Genesis Programming Tutorials</a></td>
+</tr> 
+<tr>
+<td valign=top>&nbsp;Markey Jester</td>
+<td valign=top>&nbsp;<a href="http://mrjester.hapisan.com/04_MC68">Motorola 68000 Starter Tutorial</a></td>
+</tr>
+<tr>
+<td valign=top>&nbsp;ChibiAkumas</td>
+<td valign=top>&nbsp;<a href="https://www.chibiakumas.com/68000/genesis.php">68000 Assembly Programming</a></td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+<br />
+
+<br />
+<u>Summary</u><br />
+Armed with all this knowledge, we are now in an excellent position to build complete video games for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a> that should be able to execute on real 16-bit hardware using C language and the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>!
+
+</span>
