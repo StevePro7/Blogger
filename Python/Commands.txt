@@ -1,0 +1,65 @@
+Commands
+07/07/2020
+
+01.
+Start | run | cmd
+
+02.
+Start | run | Powershell
+
+03.
+
+Start | WSL
+which python
+where python
+python --version
+
+which pip
+where pip
+pip --version
+
+
+WSL
+python --version
+python3.7.6
+
+cd /usr/bin/
+ls -l | grep python3.7
+python
+stevepro@IRD0819R90VB10V:/usr/bin$ python
+Python 3.7.6 (default, Dec 19 2019, 23:50:13)
+[GCC 7.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+
+
+06/07/2020
+
+
+python --version
+pip --version
+
+where python
+where pip
+
+Blurb about Python2.7 dead so always use Python3.7
+e.g.
+here is how I modified default
+
+anNOTES.txt
+C:\Steven\Setup\Python
+
+
+
+python -m pip install XYZ_module
+
+
+pip install -r requirements.txt
+pip install -r requirements.txt
+
+
+Install package
+e.g.
+
+C:\Azure2\Darwin
+pip install etl/.
