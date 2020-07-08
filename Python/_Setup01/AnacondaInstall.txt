@@ -1,0 +1,93 @@
+Anacond install
+08/07/2020
+
+
+https://docs.anaconda.com/anaconda/install/windows
+https://www.anaconda.com/download/#windows
+
+
+https://docs.anaconda.com/anaconda/install/mac-os
+https://www.anaconda.com/downloads#macos
+
+
+https://docs.anaconda.com/anaconda/install/linux
+https://www.anaconda.com/download/#linux
+
+
+Click 64-Bit (x86) Installer (522 MB)
+https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+
+check if 64-bit to install
+lscpu
+https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit
+
+
+cd
+cd Downloads
+sha256sum Anaconda3-2020.02-Linux-x86_64.sh
+
+
+bash ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh
+
+For consistency with Mac I installed Aanaconda here
+/anaconda3
+
+
+IMPORTANT
+I had to sudo su first!
+
+
+
+After install launch Anaconda navigator
+https://groups.google.com/a/continuum.io/forum/#!topic/anaconda/R0xZt0ioBl8
+
+source ~/anaconda*/bin/activate root
+and then
+anaconda-navigator
+
+
+PyCharm
+Set Python Anaconda by default
+/anaconda/bin/python3
+
+
+Pycharm
+Settings
+Project Interpreter
+Show All...
+Click +
+
+
+Add new System Interpreter but simply change the location to
+/anaconda3/bin/python3
+
+
+Here are suggestions how to create desktop icon as cannot add Anaconda to dock
+https://askubuntu.com/questions/1017284/cant-create-anaconda-shortcut-to-launch-from-desktop-on-ubuntu-17-10
+
+
+Now that Anaconda is install update the ~/.bashrc aliases
+
+alias python=/anaconda3/bin/python
+alias pip=/anaconda3/bin/pip
+
+
+
+DESKTOP
+[Desktop Entry]
+Type=Application
+Name=Anaconda
+Exec=anaconda-navigator
+Terminal=false
+Icon=/anaconda3/lib/python3.7/site-packages/anaconda_navigator/static/images/anaconda-icon-256x256.png
+
+
+Search for Anaconda does not work
+so try this:
+
+sudo echo "PATH=$PATH:/anaconda3/bin" >> /etc/environment
+
+
+Restart
+this works in the sense that if I type "Anaconda" in the bottom right the desktop icon is now detected
+but I still can't right click and add to favorites
