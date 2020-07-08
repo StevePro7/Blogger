@@ -46,3 +46,33 @@ just update the ~/.bashrc file
 
 echo "alias python=python3" >> ~/.bashrc
 echo "alias pip=pip3" >> ~/.bashrc
+
+
+
+WINDOWS
+finally I try to setup python default to python3 on Anaconda
+check out PATH
+
+Before Anaconda entries on User I have
+C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32
+
+
+C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32\Scripts\
+C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32\
+
+
+So I only have the 4x Anaconda entries
+C:\Users\TEST.000\Anaconda3
+C:\Users\TEST.000\Anaconda3\Scripts
+C:\Users\TEST.000\Anaconda3\libs
+C:\Users\TEST.000\Anaconda3\Library\bin
+
+
+Now checkout
+Start | run | cmd
+
+C:\Users\TEST.000>python --version
+Python 3.7.3
+
+C:\Users\TEST.000>pip --version
+pip 20.0.2 from C:\Users\TEST.000\Anaconda3\lib\site-packages\pip (python 3.7)
