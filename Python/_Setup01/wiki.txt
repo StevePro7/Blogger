@@ -1,84 +1,16 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Install Anaconda</u><br />
-Follow instructions to install open source Python distribution Anaconda for Windows and Mac OS/X and Linux
-<br />
-<!--
-<table width="99%" border="1">
-<tr>
-<td valign=top>&nbsp;SYSTEM</td>
-<td valign=top>&nbsp;LOCATION</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Windows</td>
-<td valign=top>&nbsp;%USERPROFILE%\Anaconda3</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Mac OS/X</td>
-<td valign=top>&nbsp;/anaconda3</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Linux</td>
-<td valign=top>&nbsp;/anaconda3</td>
-</tr>
-</table>
--->
-<br />
-<b>Windows</b><br />
-Add the following four environment variables: System | Advanced system settings | Environment Variables:
-<br />
-<!--
-<table width="99%" border="1">
-<tr>
-<td valign=top>&nbsp;%USERPROFILE%\Anaconda3</td>
-<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\libs</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\Scripts</td>
-<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\Library\bin</td>
-</tr>
-</table>
--->
-<br />
-<b>Mac OS/X</b><br />
-Follow all prompts from the install wizard.  Anaconda should install at /anaconda3 by default with aliases set.
+<u>Install PyCharm</u><br />
+PyCharm is an integrated development environment used specifically for Python.  Install PyCharm during the Anaconda install or from navigator.  Otherwise install PyCharm for Windows and Mac OS/X and Linux directly.
 <br /><br />
-<b>Linux</b><br />
-Launch terminal as root user.  Type <i>bash ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh</i>.  For consistency with the Mac set install location to <i>/anaconda3</i>.  After install launch Anaconda navigator.  Enter the following:
-<br />
-<!--
-<pre class="csharp" name="code">
-&nbsp;source ~/anaconda*/bin/activate root
-&nbsp;anaconda-navigator
-</pre>
--->
-<br />
-Update your <i>~/.bashrc</i> file as necessary to prefer Anaconda Python especially for data science AI + ML work.
-<br />
-<!--
-<pre class="csharp" name="code">
-&nbsp;alias python=/anaconda3/bin/python
-&nbsp;alias pip=/anaconda3/bin/pip
-</pre>
--->
-<br />
-Finally, create Anaconda desktop shortcut: create the following <i>Anaconda.desktop</i> at <i>/usr/share/applications/</i>  Add the text below.  Enter <i>sudo echo "PATH=$PATH:/anaconda3/bin" >> /etc/environment</i> at the terminal.
+PyCharm is an integrated development environment used specifically for Python.  Install PyCharm during Anaconda install or Anaconda navigator.  Alternatively install PyCharm for Windows and Mac OS/X and Linux
 <br /><br />
-<!--
-<i>Anaconda.desktop</i>
-<pre class="csharp" name="code">
-[Desktop Entry]
-Type=Application
-Name=Anaconda
-Exec=anaconda-navigator
-Terminal=false
-Icon=/anaconda3/lib/python3.7/site-packages/anaconda_navigator/static/images/anaconda-icon-256x256.png
-</pre>
--->
-Restart Linux.  From settings type "Anaconda" to prompt Anaconda Navigator + resume projects from there.
+it here for Win
+While installing Anaconda there should be an option to install
+PyCharm for
+Windows and Mac OS/X and Linux
+<br /><br />
 
-<br /><br />
-PyCharm
 
 <br /><br />
 Python is an interpreted high-level and general purpose programming language.  Python 2.0 was released in 2000 but officially discontinued in 2020.  Python 3.x is now the preferred version for most projects e.g. v3.7.
