@@ -11,7 +11,7 @@ Follow instructions to install open source Python distribution Anaconda for Wind
 </tr>
 <tr>
 <td valign=top>&nbsp;Windows</td>
-<td valign=top>&nbsp;%USERPROFILE%/Anaconda3</td>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3</td>
 </tr>
 <tr>
 <td valign=top>&nbsp;Mac OS/X</td>
@@ -24,18 +24,34 @@ Follow instructions to install open source Python distribution Anaconda for Wind
 </table>
 -->
 <br />
+<b>Windows</b><br />
+Add the following four environment variables: System | Advanced system settings | Environment Variables:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3</td>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\libs</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\Scripts</td>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\Library\bin</td>
+</tr>
+</table>
+-->
+<br />
+
 <b>Linux</b><br />
 Launch terminal as root user.  Type <i>bash ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh</i>.  For consistency with the Mac set install location to <i>/anaconda3</i>.  After install launch Anaconda navigator.  Enter the following:
 <br />
-Launch terminal as root user.  Type <i>bash ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh</i>.  For consistency with Mac OS/X set install location to <i>/anaconda3</i>.  After install launch Anaconda navigator.  Enter like this:
-<br />
+<!--
 <pre class="csharp" name="code">
 &nbsp;source ~/anaconda*/bin/activate root
 &nbsp;anaconda-navigator
 </pre>
-
+-->
 <br />
-
+asfsdfsdfa
 <br /><br />
 Python is an interpreted high-level and general purpose programming language.  Python 2.0 was released in 2000 but officially discontinued in 2020.  Python 3.x is now the preferred version for most projects e.g. v3.7.
 <br /><br />
