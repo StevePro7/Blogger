@@ -3,16 +3,35 @@
 <u>Install PyCharm</u><br />
 PyCharm is an integrated development environment used specifically for Python.  Install PyCharm during the Anaconda install or from navigator.  Otherwise install PyCharm for Windows and Mac OS/X and Linux directly.
 <br /><br />
-PyCharm is an integrated development environment used specifically for Python.  Install PyCharm during Anaconda install or Anaconda navigator.  Alternatively install PyCharm for Windows and Mac OS/X and Linux
-<br /><br />
-it here for Win
-While installing Anaconda there should be an option to install
-PyCharm for
-Windows and Mac OS/X and Linux
+Launch PyCharm.  Create New Project.  Set the base interpreter to match the Python location for Anaconda.  Otherwise File | Settings | Project Interpreter.  Click cog | Show All | Click "+" | Conda Environment | OK:
+<br />
+<!--
+<table width="97%" border="1">
+<tr>
+<td valign=top>&nbsp;SYSTEM</td>
+<td valign=top>&nbsp;LOCATION</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\python.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Mac OS/X</td>
+<td valign=top>&nbsp;/anaconda3/bin/python</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Linux</td>
+<td valign=top>&nbsp;/anaconda3/bin/python</td>
+</tr>
+</table>
+-->
+<br />
+<b>Plugins</b><br />
+File | Settings | Plugins.  Install pylint as a code analysis tool that follows the recommended PEP8 style guide.  Restart IDE.  Pylint is handy tool to check Python code especially for developers used to static code compiler!
 <br /><br />
 
-
 <br /><br />
+
 Python is an interpreted high-level and general purpose programming language.  Python 2.0 was released in 2000 but officially discontinued in 2020.  Python 3.x is now the preferred version for most projects e.g. v3.7.
 <br /><br />
 Python is commonly used in artificial intelligence and machine learning projects with the help of libraries like TensorFlow, Keras, Pytorch and Scikit-learn.  There is also open source Python distribution Anaconda used for data science and machine learning applications that aims to simplify package management and deployment.
@@ -24,6 +43,7 @@ Python is commonly used in artificial intelligence and machine learning projects
 <br />
 Let's check it out!
 <br />
+
 <br /><br />
 <u>Install Python</u><br />
 Install Python on Windows, Mac OS/X and Linux.  Install pip as the de facto standard package-management system.  Install Anaconda for future AI projects.  Finally, install + configure an IDE for Python programming.
@@ -63,8 +83,8 @@ Python is installed by default on most Linux systems.  Launch terminal + type <i
 </tr>
 </table>
 -->
-<br />
-<br />
+
+<br /><br />
 <u>Install Anaconda</u><br />
 Follow instructions to install open source Python distribution Anaconda for Windows and Mac OS/X and Linux
 <br />
@@ -142,7 +162,37 @@ Icon=/anaconda3/lib/python3.7/site-packages/anaconda_navigator/static/images/ana
 -->
 Restart Linux.  From settings type "Anaconda" to prompt Anaconda Navigator + resume projects from there.
 <br />
+
 <br /><br />
-<u>Install Python</u><br />
+<u>Install PyCharm</u><br />
+PyCharm is an integrated development environment used specifically for Python.  Install PyCharm during the Anaconda install or from navigator.  Otherwise install PyCharm for Windows and Mac OS/X and Linux directly.
+<br /><br />
+Launch PyCharm.  Create New Project.  Set the base interpreter to match the Python location for Anaconda.  Otherwise File | Settings | Project Interpreter.  Click cog | Show All | Click "+" | Conda Environment | OK:
+<br />
+<!--
+<table width="97%" border="1">
+<tr>
+<td valign=top>&nbsp;SYSTEM</td>
+<td valign=top>&nbsp;LOCATION</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\python.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Mac OS/X</td>
+<td valign=top>&nbsp;/anaconda3/bin/python</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Linux</td>
+<td valign=top>&nbsp;/anaconda3/bin/python</td>
+</tr>
+</table>
+-->
+<br />
+<b>Plugins</b><br />
+File | Settings | Plugins.  Install pylint as a code analysis tool that follows the recommended PEP8 style guide.  Restart IDE.  Pylint is handy tool to check Python code especially for developers used to static code compiler!
+<br /><br />
+
 
 </span>
