@@ -24,5 +24,16 @@ Python is installed by default on most Mac OS/X systems.  Launch terminal + type
 Python is installed by default on most Linux systems.  Launch terminal + type <i>python</i>.  However you may also need to install <i>pip</i>.  Update your <i>~/.bashrc</i> file as necessary to use Python 3.x by default instead of Python 2.
 <br /><br />
 Python is installed by default on most Linux systems.  Launch terminal + type <i>python</i>.  However you may also need to install <i>pip</i>.  Also, you may need to update your <i>~/.bashrc</i> file to use Python 3 by default instead of Python 2.
-<br /><br />
+<pre class="csharp" name="code">
+sudo apt install python3-pip
+
+# Ubuntu linux unable to locate package python-pip
+sudo apt-get install software-properties-common
+sudo apt-add-repository universe
+sudo apt-get update
+sudo apt-get install python3-pip
+
+# Upgrade PIP
+python -m pip install --upgrade pip
+</pre>
 </span>
