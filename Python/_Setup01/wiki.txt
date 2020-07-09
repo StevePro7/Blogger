@@ -21,13 +21,40 @@ Follow instructions here how to install Python 3 on Windows.  Download latest ve
 Python is installed by default on most Mac OS/X systems.  Launch terminal + type <i>python</i> and <i>pip</i> to confirm.
 <br /><br />
 <b>Linux</b><br />
-Python is installed by default on most Linux systems.  Launch terminal + type <i>python</i>.  However you may also need to install <i>pip</i>.  Update your <i>~/.bashrc</i> file as necessary to use Python 3.x by default instead of Python 2.
+Python is installed by default on most Linux systems.  Launch terminal + type <i>python</i>.  However you may also need to install <i>pip</i>.  Update your <i>~/.bashrc</i> file as necessary to use Python 3.7 by default instead of Python 2.
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Install + Update + Aliases Python3</td>
+<td valign=top>&nbsp;Ubuntu Linux unable to locate package python-pip</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;sudo apt install python3-pip
+&nbsp;python -m pip install --upgrade pip
+&nbsp;echo "alias python=python3" >> ~/.bashrc
+&nbsp;echo "alias pip=pip3" >> ~/.bashrc
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;sudo apt-get install software-properties-common
+&nbsp;sudo apt-add-repository universe
+&nbsp;sudo apt-get update
+&nbsp;sudo apt-get install python3-pip
+</pre
+</td>
+</tr>
+</table>
+
+<br />
+sdfasdfsadf
 <br /><br />
-Python is installed by default on most Linux systems.  Launch terminal + type <i>python</i>.  However you may also need to install <i>pip</i>.  Also, you may need to update your <i>~/.bashrc</i> file to use Python 3 by default instead of Python 2.
 <pre class="csharp" name="code">
 sudo apt install python3-pip
 
-# Ubuntu linux unable to locate package python-pip
+# Ubuntu Linux unable to locate package python-pip
 sudo apt-get install software-properties-common
 sudo apt-add-repository universe
 sudo apt-get update
@@ -35,5 +62,7 @@ sudo apt-get install python3-pip
 
 # Upgrade PIP
 python -m pip install --upgrade pip
+
+# Upgrade PIP
 </pre>
 </span>

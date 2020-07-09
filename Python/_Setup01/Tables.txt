@@ -1,0 +1,24 @@
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Install + Update + Aliases Python3</td>
+<td valign=top>&nbsp;Ubuntu Linux unable to locate package python-pip</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;sudo apt install python3-pip
+&nbsp;python -m pip install --upgrade pip
+&nbsp;echo "alias python=python3" >> ~/.bashrc
+&nbsp;echo "alias pip=pip3" >> ~/.bashrc
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;sudo apt-get install software-properties-common
+&nbsp;sudo apt-add-repository universe
+&nbsp;sudo apt-get update
+&nbsp;sudo apt-get install python3-pip
+</pre
+</td>
+</tr>
+</table>
