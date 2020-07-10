@@ -1,0 +1,97 @@
+code 02
+10/07/2020
+
+VS Code install
+install Python plugin
+
+
+https://github.com/StevePro7/PythonSetup
+
+Start | run | cmd
+mkdir C:\HelloVScode
+
+
+code .
+
+New file
+HelloWorld.py
+
+Select Python Interpreter
+%USERPROFILE%\Anaconda3\python
+
+
+Run and Debug
+To customize Run and Debug create a launch.json file
+
+
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+
+https://github.com/microsoft/vscode-python/issues/4550
+
+
+
+VS Code
+use in conjunction with Code Runner extension plugin
+esp. on Linux
+
+Ctrl + Alt + N
+
+IMPORTANT
+first time use Code Runner MUST hit F1 and Run Code
+then can use Ctrl + Alt + N subsequent times after
+
+
+Linux
+VScode
+
+Terminal
+bash
+Ctrl + Alt + N
+
+Output
+Code
+
+
+Linux + Mac
+bash
+
+creates conda env
+
+
+https://code.visualstudio.com/docs/python/environments
+
+
+Tutorial
+https://code.visualstudio.com/docs/python/python-tutorial
+
+ModuleNotFoundError
+python3 -m pip install matplotlib
+
+
+TODO
+settings.json
+D:\Steven\Python\_notes
+
+
+Attempt to make settings.json file cross platform
+https://stackoverflow.com/questions/53653083/how-to-correctly-set-pythonpath-for-visual-studio-code
+
+{
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.pythonPath": "C:/Users/TEST.000/Anaconda3/python.exe"
+}
+
+Reference
+https://binx.io/blog/2020/03/05/setting-python-source-folders-vscode
+
+
+
+
+Windows global settings.json
+
+settings.json
+C:\Users\TEST.000\AppData\Roaming\Code\User
+
+i.e.
+%APPDATA%\Code\User
