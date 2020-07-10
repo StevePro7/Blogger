@@ -1,0 +1,26 @@
+code
+10/07/2020
+
+
+https://github.com/StevePro7/PythonSetup
+
+
+Launch PyCharm
+
+Create New Project
+
+Location		C:\HelloPyCharm
+New environment using 	Virtualenv
+Location		C:\HelloPyCharm\venv
+Base interpreter	%USERPROFILE%\Anaconda3\python.exe
+
+
+venv
+A virtual environment [venv] is a Python environment such that the Python interpreter, libraries and scripts installed into it are isolated from those installed in other virtual environments
+
+https://stackoverflow.com/questions/41972261/what-is-a-virtualenv-and-why-should-i-use-one
+
+//virtualenv [venv] are lightweight, self-contained Python installattions
+
+virtualenv [venv] avoids the need to install Python packages globally
+When a venv is active pip will install packages within the environment which does not affect the base Python installation
