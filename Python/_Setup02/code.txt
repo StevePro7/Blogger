@@ -106,5 +106,19 @@ Was this because I installed Python from Windows Store that time?
 https://stackoverflow.com/questions/56974927/permission-denied-trying-to-run-python-on-windows-10
 
 
-Rename
-C:\Users\TEST.000\AppData\Local\Programs\xPython
+Seems the problem is this folder
+c/Users/TEST.000/AppData/Local/Microsoft/WindowsApps
+
+maps here
+C:\Program Files\WindowsApps
+
+which does in fact not have permission to open
+even as Admin via Windows Explorer
+
+believe this is all messed up because I installed Python via the Windows Store
+
+c/Users/TEST.000/AppData/Local/Microsoft/WindowsApps
+
+python3
+launches Windows Store!
+also had Ubuntu there
