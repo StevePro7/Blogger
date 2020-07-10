@@ -24,3 +24,18 @@ https://stackoverflow.com/questions/41972261/what-is-a-virtualenv-and-why-should
 
 virtualenv [venv] avoids the need to install Python packages globally
 When a venv is active pip will install packages within the environment which does not affect the base Python installation
+
+
+import numpy
+
+C:\HelloPyCharm\venv\Scripts\python.exe C:/HelloPyCharm/HelloWorld.py
+Traceback (most recent call last):
+  File "C:/HelloPyCharm/HelloWorld.py", line 1, in <module>
+    import numpy
+ModuleNotFoundError: No module named 'numpy'
+
+Process finished with exit code 1
+
+
+Terminal
+python -m pip install numpy
