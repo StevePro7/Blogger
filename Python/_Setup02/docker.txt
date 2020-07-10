@@ -1,0 +1,42 @@
+docker
+10/07/2020
+
+docker installed Community Edition on Windows and Mac OS/X
+so cmd prompt + terminal works OK
+
+I can't remember how but WSL works on Home PC
+docker images
+docker ps
+
+
+but on Linux
+
+docker images
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/images/json: dial unix /var/run/docker.sock: connect: permission denied
+
+
+docker ps
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: connect: permission denied
+
+
+
+https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
+
+https://docs.docker.com/engine/install/linux-postinstall
+
+
+Try steps
+
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+
+
+log out
+log in
+
+
+Now docker works!!
+
+
+docker imags
+docker ps
