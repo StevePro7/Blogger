@@ -1,0 +1,29 @@
+TODO
+11/07/2020
+
+
+Was trying to setup and run examples of ML on Linux
+e.g.
+D:\Bitbucket\SteveProXNA\actionstuff\Python\ML
+
+
+I setup requirements.txt
+but when tried to install tensorflow
+
+I got error:
+python -m pip install tensorflow errno 28 no space left on device
+
+Reference
+https://forum.manjaro.org/t/error-out-of-space-while-installing-tensorflow/128736/5
+
+If I have the turns out the same error then this is not disk but RAM issue
+i.e.
+tensorflow huge and tries to download all into RAM
+
+recommend
+export TMPDIR=/some_directory_plenty_space/
+
+OR
+https://stackoverflow.com/questions/40755610/ioerror-errno-28-no-space-left-on-device-while-installing-tensorflow
+
+d
