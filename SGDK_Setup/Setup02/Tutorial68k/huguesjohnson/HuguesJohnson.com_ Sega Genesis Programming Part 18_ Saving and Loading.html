@@ -1,0 +1,590 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 18: Saving and Loading</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Saving and Loading" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 18: saving &amp; loading</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/fade/">&lt;- Sega Genesis Programming Part 17: Fade-In/Fade-Out</a>
+        </div>
+        <div class="col">
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/6button/">Sega Genesis Programming Part 19: 6 Button Controllers -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">What this will probably cover</p>
+
+<p>Let me get this out of the way first...</p>
+
+<p>The basic logistics of reading &amp; writing save data is covered very well here: <a href="https://plutiedev.com/saving-sram">https://plutiedev.com/saving-sram</a>. Go read that, it's quick.</p>
+
+<p>I'll use this time to instead talk about a few things specific to how I added saving &amp; loading to <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a> like:
+<ul>
+<li>Initializing SRAM</li>
+<li>Saving the game state</li>
+<li>Loading the game state</li>
+<li>Looking up and drawing the save game title</li>
+</ul>
+</p>
+
+<p>When this is all done we should have a save option on the game's status screen with a semi-friendly confirmation message like this:</p>
+
+<p><img src="statusscreendialog.png" alt="Status screen with save dialog" class="img-fluid d-block mx-auto"/></p>
+
+<p>Also a load screen that looks remarkably similar. Let's get started...</p>
+
+</div>
+
+<p class="lead">Initializing SRAM</p>
+
+<div class="container-fluid">
+
+<p>When the Genesis starts up the SRAM is either empty or filled with garbage. It would be bad to try and load a save game from it. When the game starts let's check if the SRAM has been initialized by looking for a value waaay at the end. If that value isn't found we'll write it and also mark the start of each save record with $7FFF to indicate it is empty. I'm spacing the save games out by $2000 which can be adjusted to your liking.</p>
+
+<div class="well">
+<p>SRAM_START=$200001&nbsp;;&nbsp;SRAM&nbsp;start&nbsp;address</p>
+<p>SRAM_END=$20FFFF&nbsp;;&nbsp;SRAM&nbsp;end&nbsp;address</p>
+<p>SRAM_LOCK=$A130F1&nbsp;;&nbsp;address&nbsp;of&nbsp;lock&nbsp;bit</p>
+<p>SRAM_INIT_CHECK=$20FFFE&nbsp;;&nbsp;address&nbsp;to&nbsp;check&nbsp;if&nbsp;SRAM&nbsp;is&nbsp;initialized</p>
+<p>SAVE_SIZE=$2000&nbsp;;&nbsp;max&nbsp;size&nbsp;of&nbsp;a&nbsp;save&nbsp;game&nbsp;slot</p>
+<p>[...]</p>
+<p>InitSRAM:</p>
+<p>&nbsp;move.w&nbsp;#$2700,sr&nbsp;&nbsp;;&nbsp;disable&nbsp;interrupts</p>
+<p>&nbsp;move.b&nbsp;#1,(SRAM_LOCK)&nbsp;;&nbsp;unlock&nbsp;SRAM</p>
+<p>&nbsp;lea&nbsp;(MEM_TEMP_SPACE),a4&nbsp;;&nbsp;point&nbsp;a4&nbsp;to&nbsp;temp&nbsp;space</p>
+<p>&nbsp;clr&nbsp;d6&nbsp;;&nbsp;just&nbsp;being&nbsp;paranoid</p>
+<p>&nbsp;move.w&nbsp;#$0004,d6&nbsp;;&nbsp</p>;4&nbsp;save&nbsp;slots,&nbsp;init&nbsp;check&nbsp;is&nbsp;after&nbsp;the&nbsp;last</p>
+<p>&nbsp;mulu.w&nbsp;#SAVE_SIZE,d6&nbsp;;&nbsp;copy&nbsp;by&nbsp;save&nbsp;size</p>
+<p>&nbsp;lea&nbsp;(SRAM_START),a5&nbsp;;&nbsp;point&nbsp;a5&nbsp;to&nbsp;the&nbsp;start&nbsp;of&nbsp;SRAM</p>
+<p>&nbsp;adda.l&nbsp;d6,a5&nbsp;;&nbsp;move&nbsp;to&nbsp;offset&nbsp;location</p>
+<p>&nbsp;move.b&nbsp;(a5),(a4)&nbsp;;&nbsp;write&nbsp;byte&nbsp;to&nbsp;temp&nbsp;space</p>
+<p>&nbsp;addq.l&nbsp;#1,a4&nbsp;;&nbsp;advance&nbsp;write&nbsp;byte</p>
+<p>&nbsp;addq.l&nbsp;#2,a5&nbsp;;&nbsp;advance&nbsp;read&nbsp;byte</p>
+<p>&nbsp;move.b&nbsp;(a5),(a4)&nbsp;;&nbsp;write&nbsp;next&nbsp;byte&nbsp;to&nbsp;temp&nbsp;space</p>
+<p>&nbsp;move.l&nbsp;(MEM_TEMP_SPACE),d7&nbsp;;&nbsp;copy&nbsp;temp&nbsp;value&nbsp;to&nbsp;d7</p>
+<p>&nbsp;swap&nbsp;d7&nbsp;;&nbsp;swap&nbsp;d7</p>
+<p>&nbsp;cmpi.w&nbsp;#$8989,d7&nbsp;;&nbsp;test&nbsp;if&nbsp;it&nbsp;matches&nbsp;the&nbsp;expected&nbsp;init&nbsp;value</p>
+<p>&nbsp;beq.s&nbsp;ExitInitSRAM&nbsp;;&nbsp;branch&nbsp;if&nbsp;it&nbsp;does</p>
+<p>&nbsp;;&nbsp;write&nbsp;init&nbsp;data</p>
+<p>&nbsp;lea&nbsp;(SRAM_START),a5&nbsp;;&nbsp;point&nbsp;a5&nbsp;to&nbsp;the&nbsp;start&nbsp;of&nbsp;SRAM</p>
+<p>&nbsp;adda.l&nbsp;d6,a5&nbsp;;&nbsp;move&nbsp;to&nbsp;offset&nbsp;location</p>
+<p>&nbsp;move.b&nbsp;#$89,(a5)&nbsp;;&nbsp;first&nbsp;half&nbsp;of&nbsp;word</p>
+<p>&nbsp;addq.l&nbsp;&nbsp;#2,a5&nbsp;;&nbsp;advance&nbsp;write&nbsp;byte</p>
+<p>&nbsp;move.b&nbsp;#$89,(a5)&nbsp;;&nbsp;second&nbsp;half&nbsp;of&nbsp;word</p>
+<p>&nbsp;;&nbsp;initialize&nbsp;the&nbsp;four&nbsp;save&nbsp;slots</p>
+<p>&nbsp;move.w&nbsp;#$0003,d7&nbsp;;&nbsp;four&nbsp;save&nbsp;slots&nbsp;to&nbsp;loop&nbsp;through</p>
+<p>&nbsp;clr.l&nbsp;d6&nbsp;;&nbsp;just&nbsp;being&nbsp;paranoid&nbsp;again</p>
+<p>InitSRAMLoop:</p>
+<p>&nbsp;move.w&nbsp;d7,d6&nbsp;;&nbsp;copy&nbsp;d7&nbsp;to&nbsp;d6</p>
+<p>&nbsp;mulu.w&nbsp;#SAVE_SIZE,d6&nbsp;;&nbsp;copy&nbsp;by&nbsp;save&nbsp;size</p>
+<p>&nbsp;lea&nbsp;(SRAM_START),a5&nbsp;;&nbsp;point&nbsp;a5&nbsp;to&nbsp;the&nbsp;start&nbsp;of&nbsp;SRAM</p>
+<p>&nbsp;adda.l&nbsp;d6,a5&nbsp;;&nbsp;move&nbsp;to&nbsp;offset&nbsp;location</p>
+<p>&nbsp;move.b&nbsp;#$7F,(a5)&nbsp;;&nbsp;first&nbsp;half&nbsp;of&nbsp;word</p>
+<p>&nbsp;addq.l&nbsp;&nbsp;#2,a5&nbsp;;&nbsp;advance&nbsp;write&nbsp;byte</p>
+<p>&nbsp;move.b&nbsp;#$FF,(a5)&nbsp;;&nbsp;second&nbsp;half&nbsp;of&nbsp;word</p>
+<p>&nbsp;dbf&nbsp;d7,InitSRAMLoop&nbsp;;&nbsp;loop</p>
+<p>ExitInitSRAM:</p>
+<p>&nbsp;move.b&nbsp;#0,(SRAM_LOCK)&nbsp;;&nbsp;lock&nbsp;SRAM</p>
+<p>&nbsp;move.w&nbsp;#$2000,sr&nbsp;&nbsp;;&nbsp;re-enable&nbsp;interrupts</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>Let's fire up a hex editor to verify this worked. Here's the initialization value:</p>
+
+<p><img src="hex89.png" alt="Initialized SRAM" class="img-fluid d-block mx-auto"/></p>
+
+<p>And here's a save record:</p>
+
+<p><img src="hex7fff.png" alt="Empty save state" class="img-fluid d-block mx-auto"/></p>
+
+<p>To go along with this, we need a subroutine to lookup if a save slot is empty. This takes a parameter in d7 and returns the first value found for that save slot number in d6. Some day I will learn to pass parameters and return values the right way.</p>
+
+<div class="well">
+<p>SaveGameLookup:</p>
+<p>&nbsp;move.w&nbsp;#$2700,sr&nbsp;;&nbsp;disable&nbsp;interrupts</p>
+<p>&nbsp;move.b&nbsp;&nbsp;#1,(SRAM_LOCK)&nbsp;;&nbsp;unlock&nbsp;SRAM</p>
+<p>&nbsp;lea&nbsp;(MEM_TEMP_SPACE),a4&nbsp;;&nbsp;point&nbsp;a4&nbsp;to&nbsp;temp&nbsp;space</p>
+<p>&nbsp;mulu.w&nbsp;#SAVE_SIZE,d7&nbsp;;&nbsp;d7&nbsp;should&nbsp;have&nbsp;the&nbsp;save&nbsp;slot&nbsp;number</p>
+<p>&nbsp;lea&nbsp;(SRAM_START),a5&nbsp;;&nbsp;point&nbsp;a5&nbsp;to&nbsp;start&nbsp;of&nbsp;SRAM</p>
+<p>&nbsp;adda.l&nbsp;d7,a5&nbsp;;&nbsp;move&nbsp;to&nbsp;offset&nbsp;location</p>
+<p>&nbsp;move.b&nbsp;(a5),(a4)&nbsp;;&nbsp;write&nbsp;byte&nbsp;to&nbsp;temp&nbsp;space</p>
+<p>&nbsp;addq.l&nbsp;#1,a4&nbsp;;&nbsp;advance&nbsp;write&nbsp;byte</p>
+<p>&nbsp;addq.l&nbsp;#2,a5&nbsp;;&nbsp;advance&nbsp;read&nbsp;byte</p>
+<p>&nbsp;move.b&nbsp;(a5),(a4)&nbsp;;&nbsp;write&nbsp;next&nbsp;byte&nbsp;to&nbsp;temp&nbsp;space</p>
+<p>&nbsp;move.b&nbsp;&nbsp;#0,(SRAM_LOCK)&nbsp;&nbsp;&nbsp;;&nbsp;lock&nbsp;SRAM</p>
+<p>&nbsp;move.l&nbsp;(MEM_TEMP_SPACE),d6&nbsp;;&nbsp;copy&nbsp;temp&nbsp;value&nbsp;to&nbsp;d6</p>
+<p>&nbsp;swap&nbsp;d6&nbsp;;&nbsp;swap&nbsp;to&nbsp;low&nbsp;word</p>
+<p>&nbsp;move.w&nbsp;#$2000,sr&nbsp;&nbsp;;&nbsp;re-enable&nbsp;interrupts</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p class="lead">Saving Game State</p>
+
+<p>I took a simple path here:
+<ol>
+<li>Re-organize the memory map so all the things I'd want to save are grouped together</li>
+<li>Point to the first address of this group</li>
+<li>Loop until everything is written</li>
+</ol>
+</p>
+
+<p>The memory map then starts with the current objective (more on why later) and continues until the active scene ID is reached. The scene concept is introduced back in: <a href="https://huguesjohnson.com/programming/genesis/scenes-dialogs/">https://huguesjohnson.com/programming/genesis/scenes-dialogs/</a>. I don't need to save all the information about the scene because it can be reloaded based on the ID.</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>;&nbsp;game&nbsp;state</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>;&nbsp;MEM_OBJECTIVE&nbsp;is&nbsp;first&nbsp;because&nbsp;it's&nbsp;used&nbsp;for&nbsp;save&nbsp;game&nbsp;title&nbsp;</p>
+<p>MEM_OBJECTIVE=$FFFF0026&nbsp;;&nbsp;which&nbsp;text&nbsp;to&nbsp;show&nbsp;on&nbsp;objectives</p>
+<p>MEM_GAME_STATE=$FFFF0028&nbsp;;&nbsp;used&nbsp;to&nbsp;control&nbsp;the&nbsp;main&nbsp;loop&nbsp;flow</p>
+<p>[...]</p>
+<p>MEM_ACTIVE_SCENE_ID=$FFFF013E&nbsp;;&nbsp;ID&nbsp;of&nbsp;the&nbsp;active&nbsp;scene</p>
+<p>MEM_ACTIVE_SCENE_EXIT_S=$FFFF0140&nbsp;;&nbsp;south&nbsp;exit&nbsp;of&nbsp;active&nbsp;scene</p>
+<p>[...]</p>
+<p>SAVE_GAME_START=MEM_OBJECTIVE&nbsp;;&nbsp;start&nbsp;location&nbsp;of&nbsp;save&nbsp;game&nbsp;data</p>
+<p>SAVE_GAME_END=MEM_ACTIVE_SCENE_EXIT_S&nbsp;;&nbsp;end&nbsp;location&nbsp;of&nbsp;save&nbsp;game&nbsp;data</p>
+<p>SAVE_DATA_LENGTH=SAVE_GAME_END-SAVE_GAME_START</p>
+
+</div>
+
+<p>It's just a simple loop then to save the game state.</p>
+
+<div class="well">
+<p>SaveGame:</p>
+<p>&nbsp;;&nbsp;compute&nbsp;which&nbsp;save&nbsp;slot&nbsp;to&nbsp;use</p>
+<p>&nbsp;clr.l&nbsp;d7&nbsp;;&nbsp;just&nbsp;being&nbsp;paranoid</p>
+<p>&nbsp;move.w&nbsp;(MEM_MENU_SELECTION),d7&nbsp;;&nbsp;copy&nbsp;menu&nbsp;selection&nbsp;to&nbsp;d7</p>
+<p>&nbsp;mulu.w&nbsp;#SAVE_SIZE,d7&nbsp;;&nbsp;copy&nbsp;by&nbsp;save&nbsp;size</p>
+<p>&nbsp;lea&nbsp;(SRAM_START),a5&nbsp;;&nbsp;point&nbsp;a5&nbsp;to&nbsp;the&nbsp;start&nbsp;of&nbsp;SRAM</p>
+<p>&nbsp;adda.w&nbsp;d7,a5&nbsp;;&nbsp;move&nbsp;to&nbsp;offset&nbsp;location</p>
+<p>&nbsp;move.b&nbsp;#1,(SRAM_LOCK)&nbsp;;&nbsp;unlock&nbsp;SRAM</p>
+<p>&nbsp;lea&nbsp;(SAVE_GAME_START),a4&nbsp;;&nbsp;point&nbsp;to&nbsp;start&nbsp;of&nbsp;game&nbsp;state</p>
+<p>&nbsp;move.w&nbsp;#SAVE_DATA_LENGTH,d7&nbsp;;&nbsp;size&nbsp;of&nbsp;data&nbsp;to&nbsp;read</p>
+<p>SaveLoop:</p>
+<p>&nbsp;move.b&nbsp;(a4),(a5)&nbsp;;&nbsp;write&nbsp;byte&nbsp;to&nbsp;SRAM</p>
+<p>&nbsp;addq.l&nbsp;&nbsp;#1,a4&nbsp;;&nbsp;advance&nbsp;read&nbsp;byte</p>
+<p>&nbsp;addq.l&nbsp;&nbsp;#2,a5&nbsp;;&nbsp;advance&nbsp;write&nbsp;byte</p>
+<p>&nbsp;dbf&nbsp;d7,SaveLoop&nbsp;;&nbsp;loop</p>
+<p>SaveLoopEnd:</p>
+<p>&nbsp;move.b&nbsp;#0,(SRAM_LOCK)&nbsp;;&nbsp;lock&nbsp;SRAM</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>I got lazy and assumed the address at MEM_MENU_SELECTION would always have a number from 0-3, which it always should. That will be true until I decide to create some kind of zany auto-save feature.</p>
+
+<p class="lead">Loading Game State</p>
+
+<p>Loading is the same logic as saving only copying from SRAM to regular memory.</p>
+
+<div class="well">
+<p>LoadGame:</p>
+<p>&nbsp;;&nbsp;compute&nbsp;which&nbsp;save&nbsp;slot&nbsp;to&nbsp;use</p>
+<p>&nbsp;clr.l&nbsp;d7&nbsp;;&nbsp;just&nbsp;being&nbsp;paranoid</p>
+<p>&nbsp;move.w&nbsp;(MEM_MENU_SELECTION),d7&nbsp;;&nbsp;copy&nbsp;menu&nbsp;selection&nbsp;to&nbsp;d7</p>
+<p>&nbsp;mulu.w&nbsp;#SAVE_SIZE,d7&nbsp;;&nbsp;copy&nbsp;by&nbsp;save&nbsp;size</p>
+<p>&nbsp;lea&nbsp;(SRAM_START),a5&nbsp;;&nbsp;point&nbsp;a5&nbsp;to&nbsp;the&nbsp;start&nbsp;of&nbsp;SRAM</p>
+<p>&nbsp;adda.w&nbsp;d7,a5&nbsp;;&nbsp;move&nbsp;to&nbsp;offset&nbsp;location</p>
+<p>&nbsp;move.b&nbsp;#1,(SRAM_LOCK)&nbsp;;&nbsp;unlock&nbsp;SRAM</p>
+<p>&nbsp;lea&nbsp;(SAVE_GAME_START),a4&nbsp;;&nbsp;point&nbsp;to&nbsp;start&nbsp;of&nbsp;game&nbsp;state</p>
+<p>&nbsp;move.w&nbsp;#SAVE_DATA_LENGTH,d7&nbsp;;&nbsp;size&nbsp;of&nbsp;data&nbsp;to&nbsp;read</p>
+<p>LoadLoop:</p>
+<p>&nbsp;move.b&nbsp;(a5),(a4)&nbsp;;&nbsp;read&nbsp;byte&nbsp;from&nbsp;SRAM</p>
+<p>&nbsp;addq.l&nbsp;&nbsp;#1,a4&nbsp;;&nbsp;advance&nbsp;write&nbsp;byte</p>
+<p>&nbsp;addq.l&nbsp;&nbsp;#2,a5&nbsp;;&nbsp;advance&nbsp;read&nbsp;byte</p>
+<p>&nbsp;dbf&nbsp;d7,LoadLoop&nbsp;;&nbsp;loop</p>
+<p>LoadLoopEnd:</p>
+<p>&nbsp;move.b&nbsp;#0,(SRAM_LOCK)&nbsp;;&nbsp;lock&nbsp;SRAM</p>
+<p>&nbsp;;&nbsp;the&nbsp;game&nbsp;is&nbsp;saved&nbsp;from&nbsp;the&nbsp;status&nbsp;screen,&nbsp;need&nbsp;to&nbsp;clear&nbsp;that</p>
+<p>&nbsp;move.l&nbsp;(MEM_GAME_STATE),d7&nbsp;;&nbsp;copy&nbsp;current&nbsp;game&nbsp;state&nbsp;to&nbsp;d7</p>
+<p>&nbsp;bclr.l&nbsp;#STATE_FLAG_STATUS_SCREEN,d7&nbsp;;&nbsp;update&nbsp;game&nbsp;state</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_GAME_STATE)&nbsp;;&nbsp;save&nbsp;updated&nbsp;game&nbsp;state</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>The last game state update is needed because saving always happens on the status screen. When the game is re-loaded I assume the player doesn't want to land on the status screen so it's cleared.</p>
+
+<p class="lead">Title Lookup</p>
+
+<p>Save games need to have a title so players can tell them apart. At the start we have save and load screens with empty text:</p>
+
+<p><img src="emptyscreens.png" alt="Screens with used save slots" class="img-fluid d-block mx-auto"/></p>
+
+<p>There were two options:
+<ol>
+<li>Let the player pick a name (a lot of work)</li>
+<li>Use some attribute from the game state to build the title (less work)</li>
+</ol>
+</p>
+
+<p>You already know which I picked.</p>
+
+<p><img src="screens.png" alt="Screens with used save slots" class="img-fluid d-block mx-auto"/></p>
+
+<p>Look at those beautiful save game titles. They're just a simple lookup based on the player's current objective. On the status screen (the picture on the left) there's some text with a hint that changes throughout the game. The same mechanism that determines the help text can be used for save titles.</p>
+
+<p>There's already a list of 16 objectives, all we need to add is a lookup table and of course the actual text.</p>
+
+<div class="well">
+<p>OBJECTIVE_D0_O0=$0000</p>
+<p>OBJECTIVE_D1_O0=$0001</p>
+<p>[...]</p>
+<p>OBJECTIVE_D6_O2=$0010</p>
+<p>MAX_OBJECTIVE=OBJECTIVE_D6_O2</p>
+<p>[...]</p>
+<p>SaveGameTitles:</p>
+<p>&nbsp;dc.l&nbsp;SaveGameTitleD0O0</p>
+<p>&nbsp;dc.l&nbsp;SaveGameTitleD1O0</p>
+<p>[...]</p>
+<p>SaveGameTitleD0O0:</p>
+<p>&nbsp;dc.b&nbsp;&quot;November&nbsp;19&nbsp;(Evening)&quot;,ETX</p>
+<p>SaveGameTitleD1O0:</p>
+<p>&nbsp;dc.b&nbsp;&quot;November&nbsp;24&nbsp;(Day)&quot;,ETX</p>
+<p>[...]</p>
+</div>
+
+<p>Now let's update the main game loop to react to the load menu being selected:</p>
+
+<div class="well">
+<p>MainGameLoop:</p>
+<p>[...]</p>
+<p>&nbsp;;&nbsp;test&nbsp;if&nbsp;load&nbsp;screen&nbsp;is&nbsp;showing</p>
+<p>&nbsp;btst.l&nbsp;#STATE_FLAG_LOAD_MENU,d7&nbsp;;&nbsp;test&nbsp;game&nbsp;state</p>
+<p>&nbsp;bne.w&nbsp;ProcessLoadScreen</p>
+<p>[...]</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_MENU_SELECTION)&nbsp;;&nbsp;clear&nbsp;menu&nbsp;selection</p>
+<p>&nbsp;bset.l&nbsp;#STATE_FLAG_LOAD_MENU,d7&nbsp;;&nbsp;set&nbsp;debug&nbsp;menu&nbsp;flag</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_GAME_STATE)&nbsp;;&nbsp;save&nbsp;updated&nbsp;game&nbsp;state</p>
+<p>&nbsp;lea&nbsp;SceneLoad,a6&nbsp;;&nbsp;address&nbsp;of&nbsp;the&nbsp;scene&nbsp;for&nbsp;the&nbsp;debug&nbsp;menu</p>
+<p>&nbsp;bsr.w&nbsp;LoadScene&nbsp;;&nbsp;branch&nbsp;to&nbsp;LoadScene&nbsp;subroutine</p>
+<p>&nbsp;bsr.w&nbsp;LoadPlayerSprite&nbsp;;&nbsp;load&nbsp;the&nbsp;player&nbsp;sprite&nbsp;(also&nbsp;loads&nbsp;sprite&nbsp;0)</p>
+<p>&nbsp;bsr.w&nbsp;BuildLoadScreen&nbsp;;&nbsp;builds&nbsp;the&nbsp;text&nbsp;on&nbsp;the&nbsp;screen</p>
+<p>&nbsp;bsr.w&nbsp;FadeIn&nbsp;;&nbsp;fade&nbsp;in&nbsp;to&nbsp;the&nbsp;new&nbsp;scene</p>
+<p>&nbsp;bra.w&nbsp;MainGameLoop&nbsp;;&nbsp;return&nbsp;to&nbsp;start&nbsp;of&nbsp;game&nbsp;loop</p>
+
+</div>
+
+<p>To draw the names of the save games, we need a constant to track the write location:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>;&nbsp;load&nbsp;screen&nbsp;settings</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>LOAD_SCREEN_SAVE0_VDP=VDP_VRAM_WRITE_B+$07800000+$00140000</p>
+</div>
+
+<p>Now when we build the load screen, we need to look at all four save slots and determine if they have a valid game. That's where the $7FFF initialization value comes into play. It needs to be something larger than MAX_OBJECTIVE and I will never make a game long enough to have 32,767 objectives. Once we have a valid save game we then lookup the text and draw it.</p>
+
+<div class="well">
+
+<p>BuildLoadScreen:</p>
+<p>&nbsp;move.w&nbsp;#$2700,sr&nbsp;&nbsp;;&nbsp;disable&nbsp;interrupts</p>
+<p>&nbsp;move.w&nbsp;#$0003,d5&nbsp;;&nbsp;three&nbsp;save&nbsp;slots</p>
+<p>BuildLoadScreenLoop:</p>
+<p>&nbsp;move.w&nbsp;d5,d7&nbsp;;&nbsp;d7&nbsp;gets&nbsp;modified&nbsp;by&nbsp;SaveGameLookup</p>
+<p>&nbsp;bsr.w&nbsp;SaveGameLookup&nbsp;;&nbsp;get&nbsp;save&nbsp;title&nbsp;into&nbsp;d6</p>
+<p>&nbsp;cmpi.w&nbsp;#MAX_OBJECTIVE,d6&nbsp;;&nbsp;is&nbsp;this&nbsp;>&nbsp;MAX_OBJECTIVE?</p>
+<p>&nbsp;bgt&nbsp;.empty</p>
+<p>&nbsp;;&nbsp;lookup&nbsp;text</p>
+<p>&nbsp;mulu.w&nbsp;#LWORD_SIZE,d6&nbsp;;&nbsp;multiply&nbsp;by&nbsp;LWORD_SIZE&nbsp;to&nbsp;get&nbsp;offset</p>
+<p>&nbsp;lea&nbsp;SaveGameTitles,a5&nbsp;;&nbsp;point&nbsp;a5&nbsp;to&nbsp;the&nbsp;lookup&nbsp;table</p>
+<p>&nbsp;adda.l&nbsp;d6,a5&nbsp;;&nbsp;move&nbsp;to&nbsp;offset</p>
+<p>&nbsp;move.l&nbsp;(a5),a0&nbsp;;&nbsp;point&nbsp;a0&nbsp;to&nbsp;the&nbsp;first&nbsp;character</p>
+<p>&nbsp;bra.s&nbsp;.buildtext</p>
+<p>.empty</p>
+<p>&nbsp;lea&nbsp;StatusScreenEmptySave,a0&nbsp;;&nbsp;use&nbsp;text&nbsp;for&nbsp;empty&nbsp;save&nbsp;slot</p>
+<p>.buildtext</p>
+<p>&nbsp;move.l&nbsp;#LOAD_SCREEN_SAVE0_VDP,d7&nbsp;;&nbsp;point&nbsp;d7&nbsp;to&nbsp;first&nbsp;line</p>
+<p>&nbsp;clr&nbsp;d6&nbsp;;&nbsp;lazy&nbsp;way&nbsp;to&nbsp;prevent&nbsp;various&nbsp;bugs</p>
+<p>&nbsp;move.w&nbsp;#$0080,d6&nbsp;;&nbsp;using&nbsp;d6&nbsp;to&nbsp;compute&nbsp;row</p>
+<p>&nbsp;mulu.w&nbsp;d5,d6&nbsp;;&nbsp;multiply&nbsp;by&nbsp;current&nbsp;save&nbsp;slot</p>
+<p>&nbsp;swap&nbsp;d6&nbsp;;&nbsp;move&nbsp;to&nbsp;high&nbsp;word</p>
+<p>&nbsp;add.l&nbsp;d6,d7&nbsp;;&nbsp;add&nbsp;offset&nbsp;to&nbsp;d7</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_DIALOG_VDP)</p>
+<p>DrawSaveTitleLoop:</p>
+<p>&nbsp;clr&nbsp;d6&nbsp;;&nbsp;lazy&nbsp;way&nbsp;to&nbsp;prevent&nbsp;various&nbsp;bugs</p>
+<p>&nbsp;move.b&nbsp;(a0)+,d6&nbsp;;&nbsp;copy&nbsp;current&nbsp;character&nbsp;to&nbsp;d6</p>
+<p>&nbsp;cmpi.b&nbsp;#ETX,d6&nbsp;;&nbsp;is&nbsp;this&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;text?</p>
+<p>&nbsp;beq.s&nbsp;DrawSaveTitleLoopExit&nbsp;;&nbsp;end&nbsp;of&nbsp;text,&nbsp;move&nbsp;on</p>
+<p>&nbsp;;&nbsp;update&nbsp;d6&nbsp;to&nbsp;point&nbsp;to&nbsp;the&nbsp;tile&nbsp;ID</p>
+<p>&nbsp;sub.w&nbsp;#$20,d6&nbsp;;&nbsp;subtract&nbsp;32&nbsp;to&nbsp;get&nbsp;the&nbsp;character&nbsp;index</p>
+<p>&nbsp;add.w&nbsp;#DIALOG_BASE_TILE_LOW+%1000000000000000,d6&nbsp;;&nbsp;add&nbsp;the&nbsp;base&nbsp;tile</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_VDP),(VDP_CONTROL)&nbsp;;&nbsp;set&nbsp;VDP&nbsp;address</p>
+<p>&nbsp;move.w&nbsp;&nbsp;d6,(VDP_DATA)&nbsp;;&nbsp;copy&nbsp;the&nbsp;character&nbsp;to&nbsp;VDP</p>
+<p>&nbsp;;&nbsp;draw&nbsp;the&nbsp;next&nbsp;character</p>
+<p>&nbsp;add.l&nbsp;#$00020000,(MEM_DIALOG_VDP)&nbsp;;&nbsp;move&nbsp;to&nbsp;the&nbsp;next&nbsp;column</p>
+<p>&nbsp;bra.w&nbsp;DrawSaveTitleLoop&nbsp;;&nbsp;loop&nbsp;until&nbsp;ETX</p>
+<p>DrawSaveTitleLoopExit:</p>
+<p>&nbsp;dbf&nbsp;d5,BuildLoadScreenLoop&nbsp;;&nbsp;loop</p>
+<p>ExitBuildLoadScreen:</p>
+<p>&nbsp;move.w&nbsp;#$2000,sr&nbsp;;&nbsp;re-enable&nbsp;interrupts</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>This last part is handling the selection cursor while the load menu is showing and re-loading the scene when a save game is chosen.</p>
+
+<div class="well">
+
+<p>ProcessLoadScreen:</p>
+<p>&nbsp;;&nbsp;process&nbsp;b&nbsp;press</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_PRESSED),d6&nbsp;;&nbsp;copy&nbsp;pressed&nbsp;buttons&nbsp;to&nbsp;d6</p>
+<p>&nbsp;andi.b&nbsp;#BUTTON_B_PRESSED,d6&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;start&nbsp;button&nbsp;was&nbsp;pressed</p>
+<p>&nbsp;beq.s&nbsp;ProcessLoadScreenTestStart&nbsp;;&nbsp;b&nbsp;not&nbsp;pressed,&nbsp;branch</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_MENU_SELECTION)&nbsp;;&nbsp;prevents&nbsp;a&nbsp;bug&nbsp;on&nbsp;the&nbsp;title&nbsp;screen</p>
+<p>&nbsp;bra.w&nbsp;NewGame&nbsp;;&nbsp;kick-off&nbsp;new&nbsp;game&nbsp;out&nbsp;of&nbsp;laziness</p>
+<p>ProcessLoadScreenTestStart:</p>
+<p>&nbsp;;&nbsp;process&nbsp;start&nbsp;press</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_PRESSED),d6&nbsp;;&nbsp;copy&nbsp;pressed&nbsp;buttons&nbsp;to&nbsp;d6</p>
+<p>&nbsp;andi.b&nbsp;#BUTTON_START_PRESSED,d6&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;start&nbsp;button&nbsp;was&nbsp;pressed</p>
+<p>&nbsp;beq.s&nbsp;ProcessLoadScreenTestDpad&nbsp;;&nbsp;start&nbsp;not&nbsp;pressed,&nbsp;branch</p>
+<p>&nbsp;;&nbsp;make&nbsp;sure&nbsp;this&nbsp;is&nbsp;a&nbsp;valid&nbsp;save&nbsp;game</p>
+<p>&nbsp;move.w&nbsp;(MEM_MENU_SELECTION),d7&nbsp;;&nbsp;lookup&nbsp;if&nbsp;this&nbsp;is&nbsp;a&nbsp;valid&nbsp;save&nbsp;slot</p>
+<p>&nbsp;bsr.w&nbsp;SaveGameLookup&nbsp;;&nbsp;get&nbsp;save&nbsp;title&nbsp;into&nbsp;d6</p>
+<p>&nbsp;cmpi.w&nbsp;#MAX_OBJECTIVE,d6&nbsp;;&nbsp;is&nbsp;this&nbsp;>&nbsp;MAX_OBJECTIVE?</p>
+<p>&nbsp;bgt.w&nbsp;ExitProcessProcessLoadScreen&nbsp;;&nbsp;exit&nbsp;if&nbsp;bad&nbsp;save&nbsp;game</p>
+<p>&nbsp;;---------------------------------------------------------------------------&nbsp;</p>
+<p>&nbsp;;&nbsp;load&nbsp;game&nbsp;</p>
+<p>&nbsp;;---------------------------------------------------------------------------&nbsp;</p>
+<p>&nbsp;bsr.w&nbsp;LoadGame&nbsp;;&nbsp;load&nbsp;the&nbsp;game&nbsp;from&nbsp;SRAM</p>
+<p>&nbsp;;&nbsp;reload&nbsp;scene</p>
+<p>&nbsp;clr.l&nbsp;d7&nbsp;;&nbsp;just&nbsp;being&nbsp;paranoid</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTIVE_SCENE_ID),d7&nbsp;;&nbsp;copy&nbsp;scene&nbsp;ID&nbsp;to&nbsp;load&nbsp;to&nbsp;d7</p>
+<p>&nbsp;mulu.w&nbsp;#$4,d7&nbsp;;&nbsp;multiply&nbsp;by&nbsp;4&nbsp;to&nbsp;get&nbsp;offset&nbsp;in&nbsp;scene&nbsp;definition&nbsp;table</p>
+<p>&nbsp;lea&nbsp;SceneDefinitionTable,a6&nbsp;;&nbsp;point&nbsp;a6&nbsp;to&nbsp;the&nbsp;scene&nbsp;definition&nbsp;table</p>
+<p>&nbsp;adda.l&nbsp;d7,a6&nbsp;;&nbsp;add&nbsp;offset</p>
+<p>&nbsp;move.l&nbsp;(a6),a6&nbsp;;&nbsp;have&nbsp;a6&nbsp;point&nbsp;to&nbsp;the&nbsp;value&nbsp;at&nbsp;a6</p>
+<p>&nbsp;bsr.w&nbsp;LoadScene&nbsp;;&nbsp;branch&nbsp;to&nbsp;LoadScene&nbsp;subroutine</p>
+<p>&nbsp;bsr.w&nbsp;LoadPlayerSprite&nbsp;;&nbsp;load&nbsp;the&nbsp;player&nbsp;sprite</p>
+<p>&nbsp;bsr.w&nbsp;FixSprites&nbsp;;&nbsp;move&nbsp;player&nbsp;sprite&nbsp;and&nbsp;reset&nbsp;sprite&nbsp;links</p>
+<p>&nbsp;bsr.w&nbsp;FadeIn&nbsp;;&nbsp;fade&nbsp;in&nbsp;to&nbsp;the&nbsp;new&nbsp;scene</p>
+<p>&nbsp;bra.w&nbsp;MainGameLoop&nbsp;;&nbsp;return&nbsp;to&nbsp;start&nbsp;of&nbsp;game&nbsp;loop&nbsp;</p>
+<p>ProcessLoadScreenTestDpad:</p>
+<p>&nbsp;;&nbsp;process&nbsp;dpad&nbsp;press</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_PRESSED),d6&nbsp;;&nbsp;copy&nbsp;pressed&nbsp;buttons&nbsp;to&nbsp;d6</p>
+<p>&nbsp;andi.b&nbsp;#BUTTON_UP_PRESSED,d6&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;up&nbsp;button&nbsp;was&nbsp;pressed</p>
+<p>&nbsp;bne.s&nbsp;ProcessLoadScreenDecrementSelector&nbsp;;&nbsp;up&nbsp;pressed,&nbsp;branch</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_PRESSED),d6&nbsp;;&nbsp;copy&nbsp;pressed&nbsp;buttons&nbsp;to&nbsp;d6</p>
+<p>&nbsp;andi.b&nbsp;#BUTTON_DOWN_PRESSED,d6&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;down&nbsp;button&nbsp;was&nbsp;pressed</p>
+<p>&nbsp;bne.s&nbsp;ProcessLoadScreenIncrementSelector&nbsp;;&nbsp;down&nbsp;pressed,&nbsp;branch</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_PRESSED),d6&nbsp;;&nbsp;copy&nbsp;pressed&nbsp;buttons&nbsp;to&nbsp;d6</p>
+<p>&nbsp;andi.b&nbsp;#BUTTON_LEFT_PRESSED,d6&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;left&nbsp;button&nbsp;was&nbsp;pressed</p>
+<p>&nbsp;bne.s&nbsp;ProcessLoadScreenDecrementSelector&nbsp;;&nbsp;left&nbsp;pressed,&nbsp;branch</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_PRESSED),d6&nbsp;;&nbsp;copy&nbsp;pressed&nbsp;buttons&nbsp;to&nbsp;d6</p>
+<p>&nbsp;andi.b&nbsp;#BUTTON_RIGHT_PRESSED,d6&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;right&nbsp;button&nbsp;was&nbsp;pressed</p>
+<p>&nbsp;bne.s&nbsp;ProcessLoadScreenIncrementSelector&nbsp;;&nbsp;right&nbsp;pressed,&nbsp;branch</p>
+<p>&nbsp;bra.w&nbsp;ProcessLoadScreenMoveSelector</p>
+<p>ProcessLoadScreenIncrementSelector:</p>
+<p>&nbsp;cmpi.w&nbsp;#$003,(MEM_MENU_SELECTION)</p>
+<p>&nbsp;bne.s&nbsp;.1</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_MENU_SELECTION)</p>
+<p>&nbsp;bra.w&nbsp;ProcessLoadScreenMoveSelector</p>
+<p>.1</p>
+<p>&nbsp;add.w&nbsp;#$0001,(MEM_MENU_SELECTION)</p>
+<p>&nbsp;bra.w&nbsp;ProcessLoadScreenMoveSelector</p>
+<p>ProcessLoadScreenDecrementSelector:</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,(MEM_MENU_SELECTION)</p>
+<p>&nbsp;bne.s&nbsp;.1</p>
+<p>&nbsp;move.w&nbsp;#$003,(MEM_MENU_SELECTION)</p>
+<p>&nbsp;bra.w&nbsp;ProcessLoadScreenMoveSelector</p>
+<p>.1</p>
+<p>&nbsp;sub.w&nbsp;#$0001,(MEM_MENU_SELECTION)</p>
+<p>&nbsp;bra.w&nbsp;ProcessLoadScreenMoveSelector</p>
+<p>ProcessLoadScreenMoveSelector:</p>
+<p>&nbsp;;&nbsp;move&nbsp;selector&nbsp;sprite&nbsp;based&nbsp;on&nbsp;menu&nbsp;selection</p>
+<p>&nbsp;move.w&nbsp;(MEM_MENU_SELECTION),d7&nbsp;;&nbsp;copy&nbsp;current&nbsp;value&nbsp;to&nbsp;d7</p>
+<p>&nbsp;mulu.w&nbsp;#$0008,d7&nbsp;;&nbsp;rows&nbsp;are&nbsp;8&nbsp;apart</p>
+<p>&nbsp;add.w&nbsp;#$00F8,d7&nbsp;;&nbsp;first&nbsp;row&nbsp;is&nbsp;F8</p>
+<p>&nbsp;move.l&nbsp;#VDP_VRAM_WRITE_SPRITE,d6&nbsp;;&nbsp;add&nbsp;to&nbsp;sprite&nbsp;table&nbsp;address</p>
+<p>&nbsp;move.l&nbsp;d6,(VDP_CONTROL)&nbsp;;&nbsp;set&nbsp;write&nbsp;location&nbsp;in&nbsp;VDP</p>
+<p>&nbsp;move.w&nbsp;d7,(VDP_DATA)&nbsp;;&nbsp;copy&nbsp;the&nbsp;new&nbsp;y-coordinate</p>
+<p>&nbsp;add.l&nbsp;#$00060000,d6&nbsp;;&nbsp;move&nbsp;to&nbsp;x-coordinate</p>
+<p>&nbsp;move.l&nbsp;d6,(VDP_CONTROL)&nbsp;;&nbsp;set&nbsp;write&nbsp;location&nbsp;in&nbsp;VDP</p>
+<p>&nbsp;move.w&nbsp;#$00C8,(VDP_DATA)&nbsp;;&nbsp;copy&nbsp;the&nbsp;new&nbsp;x-coordinate</p>
+<p>ExitProcessProcessLoadScreen:</p>
+<p>&nbsp;bra.w&nbsp;MainGameLoop</p>
+</div>
+
+<p>The status screen with the save game box uses the same logic.</p>
+
+<p>This took me a whopping two evenings to code because 99% of it is stuff I've already done (lookup tables, drawing text based on objective, moving a selector through a menu). The only new stuff was the SRAM interaction and that was simple, not really different than copying data from one memory location to another.</p>
+
+<p class="lead">What's Next?</p>
+
+<p>I think it would be kind of neat to get to 20 Genesis programming articles but this will be the last one for a while. I've said that at the end of the last 2-3 also. I'm basically out of things to add to Retail Clerk '89. I'd like to release a &quot;final&quot; demo around Black Friday 2019 and then try something new. Between now and then I mostly want to expand the story a little. So until next time, thanks for reading these articles.</p>
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/fade/">&lt;- Sega Genesis Programming Part 17: Fade-In/Fade-Out</a>
+        </div>
+        <div class="col">
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/6button/">Sega Genesis Programming Part 19: 6 Button Controllers -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/game-state/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesispause.png" alt="Sega Genesis Programming Part 8: Game State and Pausing"></p><p>Sega Genesis Programming Part 8: Game State and Pausing</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesispalettetilegen.png" alt="Sega Genesis Programming Part 20: Palette and Tile Generation"></p><p>Sega Genesis Programming Part 20: Palette and Tile Generation</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

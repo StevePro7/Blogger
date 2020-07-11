@@ -1,0 +1,450 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 16: Scripted Events</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 16: Scripted Events" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 16: scripted events</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/inventory/">&lt;- Sega Genesis Programming Part 15: Inventory</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/fade/">Part 17: Fade-In/Fade-Out -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Scripted events</p>
+
+<p>One of the last capabilities needed for this little demo is scripted event processing. A &quot;scripted event&quot; being a time in the game when the player loses control of their sprite and it, or an NPC sprite, walks along a fixed pattern while potentially saying a few lines of dialog. Just about every RPG does this at some point. The first 18 hours of Final Fantasy IV are mostly this as I recall.</p>
+
+<p>I'm being a little careful here because I don't want to directly rip-off how this was done in Phantasy Star III. I obviously know exactly how it's implemented there since I wrote an editor for it:</p>
+
+<p><img src="https://huguesjohnson.com/aridia/images/v25/scripted-event-movement.png" alt="Aridia - scripted event editing" class="img-fluid d-block mx-auto"/></p>
+
+<p>General game concepts aren't subject to copyright but specific implementations are. I wrote my code from scratch but have to admit some concepts carried over like storing the script as a series of pairs where one half of the pair is a direction and the other half is a number of steps. There aren't a lot of other ways to tackle this problem.</p>
+
+<p>I suppose most modern games use algorithms like &quot;walk to this point&quot; or &quot;walk to this object&quot;. Neither of those would be super-easy to code on the Genesis. OK, &quot;walk to this point&quot; is easy if there are no objects in the way. If you have to figure out how to walk around objects it's a tad more difficult. With the approach I'm using the sprite will walk along a known clear path to a destination. If the player, or another sprite, is in the way we can work around that (this will be explained a little farther down). Freezing all other sprite movement during a scripted event makes life easier of course.</p>
+
+<p>One difference between what I came up with and Phantasy Star III is in my implementation the sprite ID is stored with the scripted event. That might be something I regret later because presumably they had a good reason to not do that. I think it will be helpful if/when I want to extend this to store multiple sprite movements in the same event. The dialog pointers are also handled differently. I am storing the full address of the text location and Phantasy Star III uses relative addresses. Perhaps later on I'll run into a massive problem that makes me realize why they chose that.</p>
+
+<p>Enough talking, let's get on to the implementation...</p>
+
+<p class="lead">The code</p>
+
+<p>First off there are a couple new variables. One tracks the address of the scripted event being run. This is incremented each time a step in the event changes. The next variable stores the current action which will either be a direction or value indicating a dialog should be displayed. The third variable is used when the action is a direction, it tracks how many steps the sprite still needs to move. The last variable tracks which sprite is moving.</p>
+
+<div class="well">
+<p>MEM_SCRIPTED_EVENT_ADDR=$FFFF002C ; pointer to scripted event running</p>
+<p>MEM_SCRIPTED_EVENT_ACTION=$FFFF0030 ; current scripted event action</p>
+<p>MEM_SCRIPTED_EVENT_STEPS=$FFFF0032 ; steps remaining in current action</p>
+<p>MEM_SCRIPTED_SPRITE_ADDR=$FFFF0034 ; which sprite to move</p>
+</div>
+
+<p>Since we're going to test movement and dialog, we need some dummy text:</p>
+
+<div class="well">
+<p>DialogTextTestScriptIntro:</p>
+<p>&nbsp;dc.b &quot;Testing scripted event&quot;,LF</p>
+<p>&nbsp;dc.b &quot;processing...&quot;,ETX</p>
+<p>DialogTextTestScript0:</p>
+<p>&nbsp;dc.b &quot;`Some dialog after&quot;,LF</p>
+<p>&nbsp;dc.b &quot;walking around a bit.'&quot;,ETX</p>
+<p>DialogTextTestScript1:</p>
+<p>&nbsp;dc.b &quot;`I guess I'm done&quot;,LF</p>
+<p>&nbsp;dc.b &quot;walking for now.'&quot;,ETX</p>
+</div>
+
+<p>The data for the scripted event is, as previously mentioned, just a set of key-values. In this demo the sprite will walk in a couple directions and say a couple lines. I'm keeping it simple just to prove it works:</p>
+
+<div class="well">
+<p>SCRIPTED_EVENT_END=$FFFF</p>
+<p>SCRIPTED_EVENT_DIALOG=$EEEE</p>
+<p>[...]</p>
+<p>ScriptedEventTest0:</p>
+<p>&nbsp;dc.w $0002 ; NPC0</p>
+<p>&nbsp;dc.w SCRIPTED_EVENT_DIALOG</p>
+<p>&nbsp;dc.l DialogTextTestScriptIntro</p>
+<p>&nbsp;dc.w DIRECTION_DOWN</p>
+<p>&nbsp;dc.w $0008</p>
+<p>&nbsp;dc.w DIRECTION_LEFT</p>
+<p>&nbsp;dc.w $0010</p>
+<p>&nbsp;dc.w SCRIPTED_EVENT_DIALOG</p>
+<p>&nbsp;dc.l DialogTextTestScript0</p>
+<p>&nbsp;dc.w DIRECTION_LEFT</p>
+<p>&nbsp;dc.w $0010</p>
+<p>&nbsp;dc.w DIRECTION_UP</p>
+<p>&nbsp;dc.w $0020</p>
+<p>&nbsp;dc.w SCRIPTED_EVENT_DIALOG</p>
+<p>&nbsp;dc.l DialogTextTestScript1</p>
+<p>&nbsp;dc.w SCRIPTED_EVENT_END</p>
+</div>
+
+<p>The directions were chosen to avoid colliding with the player sprite. If the player is standing to the left of the NPC the 8 steps down will walk past them. If the player is standing below the NPC, the NPC will appear to stand still for a second then start walking left. In reality they're blocked from walking down and once those 8 blocked steps are complete they move to the next step.</p>
+
+<p>I'm temporarily hijacking the response to talking to the first NPC to test this out:</p>
+
+<div class="well">
+<p>Day00Scene00Action01: ; ACTION_USE_TALK</p>
+<p>&nbsp;move.l (MEM_DAY_EVENT_FLAGS),d7 ; copy event flags for the day to d7</p>
+<p>&nbsp;move.w (MEM_ACTION_TARGET_OBJID),d6 ; copy action target to d6</p>
+<p>&nbsp;cmpi.w #OBJ_NPC_DANI,d6 ; test target</p>
+<p>&nbsp;bne.s .2 ; branch to next NPC</p>
+<p>&nbsp;;----------------------------</p>
+<p>&nbsp;; handle dialog with NPC Dani</p>
+<p>&nbsp;;----------------------------</p>
+<p>&nbsp;btst.l #$1,d7 ; test if flag 1 is set</p>
+<p>&nbsp;bne .1 ; branch if it is</p>
+<p>&nbsp;bset.l #$1,d7 ; set flag 1</p>
+<p>&nbsp;move.l d7,(MEM_DAY_EVENT_FLAGS) ; save updated event flags for the day</p>
+<p>&nbsp;lea DialogTextDaniScene0Day0Flag0,a6 ; load dialog text</p>
+<p>;**************************</p>
+<p>; TESTING SCRIPTED MOVEMENT</p>
+<p>;**************************</p>
+<p>&nbsp;lea ScriptedEventTest0,a6</p>
+<p>&nbsp;bsr.w QueueScriptedEvent </p>
+<p>&nbsp;rts</p>
+<p>;******************************</p>
+<p>; END TESTING SCRIPTED MOVEMENT</p>
+<p>;******************************</p>
+<p>&nbsp;bra.s .5 ; branch to setup dialog display</p>
+<p>[...]</p>
+<p>.5</p>
+<p>&nbsp;move.l a6,MEM_DIALOG_TEXT ; copy address to MEM_DIALOG_TEXT</p>
+<p>ExitDay00Scene00Action01:</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>That last snippet calls a new subroutine - QueueScriptedEvent. This sets up everything so the event starts next time the main loop is executed. It does so by setting a state flag, saving the address of the sprite to move, and loading the first action into memory:</p>
+
+<div class="well">
+<p>; a6 = address of event to queue</p>
+<p>; a5 and d7 are modified</p>
+<p>QueueScriptedEvent:</p>
+<p>&nbsp;;---------------</p>
+<p>&nbsp;; set state flag</p>
+<p>&nbsp;;---------------</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bset.l #STATE_FLAG_SCRIPTED_EVENT,d7 ; set the scripted event flag</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; save it back</p>
+<p>&nbsp;;---------------------------------------</p>
+<p>&nbsp;; determine which sprite this applies to</p>
+<p>&nbsp;;---------------------------------------</p>
+<p>&nbsp;move.w (a6)+,d7 ; copy to d7 for next operations</p>
+<p>&nbsp;cmpi.w #$0000,d7 ; this the player sprite?</p>
+<p>&nbsp;bne.s .1 ; branch if not player</p>
+<p>&nbsp;lea MEM_PLAYER_SPRITE_ID,a5 ; point a5 to player</p>
+<p>&nbsp;bra.s .2 ; branch</p>
+<p>.1</p>
+<p>&nbsp;subq #$0002,d7 ; decrement to account for 0 indexing & sprite zero</p>
+<p>&nbsp;lea MEM_NPC0_SPRITE_ID,a5 ; point a5 to first NPC </p>
+<p>&nbsp;mulu.w #NPC_RECORD_SIZE,d7 ; multiply to get offset</p>
+<p>&nbsp;adda.w d7,a5 ; move to NPC being modified</p>
+<p>.2</p>
+<p>&nbsp;move.l a5,(MEM_SCRIPTED_SPRITE_ADDR) ; save address</p>
+<p>&nbsp;;---------------------</p>
+<p>&nbsp;; setup scripted event</p>
+<p>&nbsp;;---------------------</p>
+<p>&nbsp;move.w (a6)+,(MEM_SCRIPTED_EVENT_ACTION) ; save first action</p>
+<p>&nbsp;move.l a6,(MEM_SCRIPTED_EVENT_ADDR) ; save address of first step</p>
+<p>&nbsp;; set steps to 0 to trigger next action start in main loop</p>
+<p>&nbsp;move.w #$0000,(MEM_SCRIPTED_EVENT_STEPS)</p>
+<p>ExitQueueScriptedEvent:</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>In the main loop we now need to test if a scripted event is running. If so we need to determine whether to start the first/the next step in the event or continue running the current one. Player input is only read when the dialog is displaying (except for pause/unpause which trumps all other game states).</p>
+
+<div class="well">
+<p>[...]</p>
+<p>TestScriptedEvent:</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;btst.l #STATE_FLAG_SCRIPTED_EVENT,d7 ; test game state</p>
+<p>&nbsp;beq.w TestDialog ; not in a scripted event, move to next test</p>
+<p>&nbsp;btst.l #STATE_FLAG_DIALOG,d7 ; test if we need to wait for a dialog</p>
+<p>&nbsp;bne.w TestDialogUpdateFrequency ; wait for dialog interaction to finish</p>
+<p>&nbsp;;-------------------------------------------------------------------</p>
+<p>&nbsp;; dialog is not displaying, test if it is time to start a new action</p>
+<p>&nbsp;;-------------------------------------------------------------------</p>
+<p>&nbsp;cmpi.w #$0000,(MEM_SCRIPTED_EVENT_STEPS) ; test if 0</p>
+<p>&nbsp;beq.s NextScriptedEventAction ; if 0 then start next action</p>
+<p>&nbsp;;---------------------------</p>
+<p>&nbsp;; continue moving the sprite</p>
+<p>&nbsp;;---------------------------</p>
+<p>&nbsp;cmpi.w #SPRITE_MOVE_FREQUENCY,(MEM_FRAME_COUNTER); is it time to move?</p>
+<p>&nbsp;blt.w MainGameLoopEnd ; exit if it's not time to move</p>
+<p>&nbsp;move.w #$0000,(MEM_FRAME_COUNTER) ; reset counter to 0</p>
+<p>ScriptedEventMoveSprite:</p>
+<p>&nbsp;subq #$1,(MEM_SCRIPTED_EVENT_STEPS) ; decrement step counter</p>
+<p>&nbsp;move.l (MEM_SCRIPTED_SPRITE_ADDR),a6 ; point a6 to sprite to move</p>
+<p>&nbsp;bsr.w MoveSprite ; branch to MoveSprite</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+<p>NextScriptedEventAction:</p>
+<p>&nbsp;move.l (MEM_SCRIPTED_SPRITE_ADDR),a6 ; point a6 to sprite</p>
+<p>&nbsp;bsr.w StopSprite ; stop moving the sprite</p>
+<p>&nbsp;move.l (MEM_SCRIPTED_EVENT_ADDR),a6 ; point a6 to next step</p>
+<p>&nbsp;move.w (MEM_SCRIPTED_EVENT_ACTION),d7 ; copy action to d7</p>
+<p>&nbsp;cmpi.w #SCRIPTED_EVENT_END,d7 ; are we at the end?</p>
+<p>&nbsp;beq.s ScriptedEventEnd ; if so branch</p>
+<p>&nbsp;cmpi.w #SCRIPTED_EVENT_DIALOG,d7 ; display a dialog?</p>
+<p>&nbsp;beq.s ScriptedEventDialog ; if so branch</p>
+<p>&nbsp;;------------------------</p>
+<p>&nbsp;; start moving the sprite</p>
+<p>&nbsp;;------------------------</p>
+<p>&nbsp;move.l (MEM_SCRIPTED_SPRITE_ADDR),a5 ; point a5 to sprite to update</p>
+<p>&nbsp;; copy direction to sprite direction </p>
+<p>&nbsp;adda.w #STRUCT_SPRITE_DIRECTION,a5 ; move to direction</p>
+<p>&nbsp;move.w (MEM_SCRIPTED_EVENT_ACTION),(a5) ; copy action to direction</p>
+<p>&nbsp;move.w (a6)+,(MEM_SCRIPTED_EVENT_STEPS) ; copy steps in action</p>
+<p>&nbsp;; save state of scripted event and loop back to main</p>
+<p>&nbsp;move.w (a6)+,(MEM_SCRIPTED_EVENT_ACTION) ; save next action</p>
+<p>&nbsp;move.l a6,(MEM_SCRIPTED_EVENT_ADDR) ; save address of next step</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+<p>ScriptedEventEnd:</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bclr.l #STATE_FLAG_SCRIPTED_EVENT,d7 ; clear the scripted event flag</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; save it back</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+<p>ScriptedEventDialog:</p>
+<p>&nbsp;move.l (a6)+,(MEM_DIALOG_TEXT) ; copy value at a6 to MEM_DIALOG_TEXT</p>
+<p>&nbsp;move.w (a6)+,(MEM_SCRIPTED_EVENT_ACTION) ; save next action</p>
+<p>&nbsp;move.l a6,(MEM_SCRIPTED_EVENT_ADDR) ; save address of next step</p>
+<p>&nbsp;move.w #$0000,(MEM_SCRIPTED_EVENT_STEPS) ; reset step counter</p>
+<p>&nbsp;; set dialog flags to display the dialog</p>
+<p>&nbsp;move.l (MEM_DIALOG_FLAGS),d7 ; copy current dialog state to d7</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_OPENING,d7 ; change state to opening</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_STYLE_SIMPLE_TEXT,d7 ; set style to overworld menu</p>
+<p>&nbsp;move.l d7,(MEM_DIALOG_FLAGS) ; save changes made to the game state</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG,d7 ; set the dialog bit</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; copy game state back to d7</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+<p>[...]</p>
+</div>
+
+<p>This was not much code in the end. I was sort of expecting it to be a little bigger. Maybe it doesn't work? Let's find out...</p>
+
+<p class="lead">Results</p>
+
+<p>First the player talks to the NPC and a dialog is displayed:</p>
+
+<p><img src="step1.png" alt="Step 1 - dialog" class="img-fluid d-block mx-auto"/></p>
+
+<p>Then the NPC starts walking left:</p>
+
+<p><img src="step2.png" alt="Step 2 - walking" class="img-fluid d-block mx-auto"/></p>
+
+<p>Now they talk again, accidentally covering themselves in the process:</p>
+
+<p><img src="step3.png" alt="Step 3 - second dialog" class="img-fluid d-block mx-auto"/></p>
+
+<p>After that dialog closes they resume walking:</p>
+
+<p><img src="step4.png" alt="Step 4 - more walking" class="img-fluid d-block mx-auto"/></p>
+
+<p>Then they say their last line and stop walking:</p>
+
+
+<p><img src="step5.png" alt="Step 5 - ending dialog" class="img-fluid d-block mx-auto"/></p>
+
+<p>So there it is, one of the last pieces needed for this short demo idea.</p>
+
+
+<p class="lead">What's next?</p>
+
+<p>Looking at the &quot;plan&quot; from <a href="https://huguesjohnson.com/programming/genesis/scene-npcs/">four articles ago</a>:
+
+<p><del>1) <del>Dialog between characters - meaning an NPC says something to you and you respond. Maybe you respond with more dialog, maybe you give them an item. That leads to...</del> </p>
+<p><del>2) Inventory management - along with basic stuff like taking and giving items.</del></p>
+<p><del>3) Game event tracking - we need a way to say &quot;if [X] happened and you talk to character [Y] then do [Z]&quot;, I'll probably over-complicate this.</del> I won't call this 100% complete but it's functional enough.</p>
+<p><del>4) Scripted sprite movements - if the ultimate goal is to get a customer to leave a store then there needs to be an animation where they walk away.</del></p>
+<p><del>5) Adding & removing NPCs from the current scene - the one NPC is hard-coded, there needs to be a way to move NPCs in and out of scenes.</del> The removing part hasn't been needed yet but it's small. I should have done it in this article but didn't.</p>
+<p>6) To make this look like a real demo I should really create a title screen and ending message.</p>
+<p>7) Dozens of things I didn't think of that will all be painful to work out.</p>
+
+<p>With all the basic mechanics minimally functional this will be my last article for a while. Scripting out the rest of the demo won't be too rough but it will take me some time to create new artwork &amp; music for a title screen. Plus I think I want to add one more NPC to the mix which means more art. None of these additions warrant a new article.</p>
+
+<p>Once this demo is behind me I'll (probably) go to work on adding new scenes and characters. It seems like a good time to start a project page for this on my site too which will also be time consuming. Part 17 of this series, if there is one, won't appear until there's a new feature I need to add. I'd like to add a full-screen menu but that's really just an expansion on the dialog idea so that won't be next. Eventually I'll likely need data compression for images and collision data. That seems article-worthy. If I get around to adding a password or save feature that would also warrant a new article. Both of these are quite a while away. Given the amount of free time I have to work on this it could easily be a year.</p>
+
+<p>It's possible that I'll write another Genesis programming article that's completely unrelated to this one. Like one day when I'm suffering from a poor attention span I try to figure out some random thing. There's also a small chance that I'll post a tutorial explaining how to do various visual effects I accidentally implemented over the past year.</p>
+
+<p>So until next time, thanks for reading these. I hope they've been a little educational for you, they definitely have been for me.</p>
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/inventory/">&lt;- Sega Genesis Programming Part 15: Inventory</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/fade/">Part 17: Fade-In/Fade-Out -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/save-load/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissaveload.png" alt="Sega Genesis Programming Part 18: Saving and Loading"></p><p>Sega Genesis Programming Part 18: Saving &amp; Loading</p></a></div>
+
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesispalettetilegen.png" alt="Sega Genesis Programming Part 20: Palette and Tile Generation"></p><p>Sega Genesis Programming Part 20: Palette and Tile Generation</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

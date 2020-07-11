@@ -1,0 +1,362 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 8: Game State and Pausing</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 8: Game State and Pausing" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 8: game state and pausing</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/npcs/">&lt;- Part 7: NPC Sprites</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/objects/">Part 9: Object List -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Obligatory Cleanup Section</p>
+
+<p>Each of these articles seems to start with a section where I cleanup baggage from previous iterations. In this round I'm doing some prep work to get this into a place where I'm comfortable uploading it to GitHub. This is nowhere near close to even being 1% complete but there are some issues I had to address before I was comfortable creating a project for it.</p>
+
+<p>There are a lot of hobby projects that borrow assets, often heavily, from commercial games. People put a few years of part-time work into a game only for it to end with a take down letter. I'd hate to spend a couple hours a week on this project for the next 50 or so years just to receive a take down letter at the nursing home. In an attempt to prevent this I had to modify the sprites and music.</p>
+
+<p>The two sprites I created were more or less direct copies of sprites from Phantasy Star II. I spent a little time adjusting them so they were more distinct. The challenge is I wanted to create sprites with real-world human proportions and with 16x32 to work with there aren't many options. The biggest changes I made were to the eyes, shoulder slope, and making the head slightly less exaggerated.</p>
+
+<p>There was one other change to the female sprite I made after an observation from my oldest daughter. She recently got hooked on Final Fantasy X, enough so that recently started the sequel. It wasn't long into the game before she wondered why Yuna, the lead character, ran around with her arms looking all dainty.</p>
+
+<p><img src="yuna.png" alt="Yuna running" class="img-fluid d-block mx-auto"/></p>
+
+<p>My initial reaction was to rationalize this design choice. &quot;<i>No it's not a sexist portrayal of women, actually it's about eth.. ok, you're right.&quot;</i>  I've never once seen a woman walk around with her arms like that. It's a completely absurd and unjustifiable rendition. This was a character who in the previous game was single-handedly capable of defeating the final boss (not the actual final boss that you can't lose to but the one before). Now she's journeying the world and, in a flip of typical video game roles, trying to save the lead male character from the previous game. In spite of this she runs around like an antiquated stereotype.</p>
+
+<p>This floppy female arm thing goes back a while. At least to the late 80s because it's the default style for female sprites in Phantasy Star II. As a result my initial sprite carried over this look.</p>
+
+<p><img src="femalesprite.png" alt="Original female sprite" class="img-fluid d-block mx-auto"/></p>
+
+<p>So I fixed this so she now has arms positioned like a real person. The new sprites aren't radically different but they're different enough to move on.</p>
+
+<p><img src="newsprites.png" alt="New sprites" class="img-fluid d-block mx-auto"/></p>
+
+<p>The other part I had to cleanup was the music. The background music I've been using is based on an .xm file that was free to download but not free to use in other projects. So in keeping with the setting of the game, 1989 holiday shopping season, I butchered a public domain Christmas song for the new background. </p>
+
+<p>I have no musical training or skills whatsoever. When I was a kid, like 10-11ish, I figured out how to read sheet music and convert it to Apple II sounds. I had a lot of free time and curiosity back then. My father would have preferred if I played Little League instead of sitting in front of a computer add day but which one is paying the bills now?</p>
+
+<p>Armed with some sheet music, and a copy of <a href="https://www.milkytracker.org/">MilkyTracker</a>, I painfully transcribed a short song to a series of notes. <a href="https://www.youtube.com/watch?v=N2s04YYO0Wg">These tutorials</a> were a great help to get started. </p>
+
+<p><img src="milkytracker.png" alt="MilkyTracker" class="img-fluid d-block mx-auto"/></p>
+
+<p>The end result only slightly resembles the source song but more importantly, it sounds like a real song. Not a good song, but something that sounds like RPG shop music. I'm sure you're familiar with the perky music that plays in the background of shops all over the virtual universe. It sounds fine until about the 10th loop then you're sick of it. Next time around I'll have to expand it to something longer.</p>
+
+<p>Now that I have a non-copyright-infringing song I need to fix something else from very early on...</p>
+
+<p class="lead">Loading Instruments</p>
+
+<p>A couple months ago I hooked up the <a href="https://github.com/sikthehedgehog/Echo">Echo sound engine</a> to this tiny demo. Once I heard music playing I declared victory and moved on. The mistake that wasn't obvious to me at the time was I failed to load all the included instruments. I was so happy to just get it working at all that I skipped the rest of the setup. Echo includes 20 instruments and you need to load the ones you want to use.</p>
+
+<p>Here's where I ran into an exciting new problem. The samples for loading Echo instruments wouldn't compile in <a href="https://sun.hasenbraten.de/vasm/">vasm</a>. The author of Echo noted that they used asm68k to build it. Although there are a couple tools called asm68k, in the Genesis programming community this <i>typically</i> refers to asm68k.exe in the leaked Psygnosis development kit. When I started this crazy idea I tried this kit out and got it working just fine in FreeDOS and MS-DOS, the latter of which is almost certainly what it was designed for. I decided against using it because I was concerned about the legality of it. It's unlikely that Sony, who I believe owns all the Psygnosis assets, would decide to care about 25 year-old build tools. However, they could theoretically decide to crackdown on distribution of them at any time for any reason.</p>
+
+<p>As far as I can tell there are some differences between the Psygnosis asm68k and vasm in how they handle relocation. I'm still not remotely close to being an expert on 68000 assembly so I'm not entirely sure what the difference is but here's an example...</p>
+
+<p>In the Echo samples instruments are loaded like this:</p>
+
+<div class="well">
+<p>Echo_ListEntry macro addr</p>
+<p>&nbsp;dc.b $80|((addr)>>8&$7F) ; High byte of address</p>
+<p>&nbsp;dc.b (addr)&$FF ; Low byte of address</p>
+<p>&nbsp;dc.b ((addr)>>15&$7F)|((addr)>>16&$80) ; Bank number</p>
+<p>endm</p>
+<p>[...]</p>
+<p>PointerList:</p>
+<p>Echo_ListEntry Instr_PSGFlat ; $00 [PSG] Flat PSG instrument</p>
+<p>[...]</p>
+<p>Instr_PSGFlat:</p>
+<p>dc.b $FE,$00,$FF</p>
+</div>
+
+<p>In the vasm this produces an error:</p>
+
+<div class="well">
+<p><b>illegal relocation</b></p>
+<p>$80|((addr)>>8&$7F)</p>
+</div>
+
+<p>This could be some kind of ordering issue where vasm is applying the macro first but since the label doesn't have an address yet it can't continue. If the label already had an address then maybe it would be fine. Perhaps Psygnosis asm68k handles these in the opposite order as vasm. After some trial and error I resolved this in a very not elegant way by hard-coding the instrument addresses:</p>
+
+<div class="well">
+<p>ROM_ADDR_INSTRUMENTS=$80000</p>
+<p>[...]</p>
+<p>INSTR_00=ROM_ADDR_INSTRUMENTS</p>
+<p>INSTR_01=INSTR_00+(Instr_00_End-Instr_00_Start)</p>
+<p>[...]</p>
+
+<p>EchoPointerList:</p>
+<p>&nbsp;Echo_ListEntry INSTR_00 ; $00 [PSG] Flat PSG instrument</p>
+<p>[...]</p>
+<p>&nbsp;org ROM_ADDR_INSTRUMENTS</p>
+<p>[...]</p>
+<p>Instr_00_Start:</p>
+<p>&nbsp;dc.b $FE,$00,$FF</p>
+<p>Instr_00_End:</p>
+</div>
+
+<p>What I'm doing here is hard-coding where addresses are in the ROM. Right now my little demo is nowhere near this large so there's not a chance of the main program or graphics colliding. From there I'm setting the address of each instrument based on the size of the instrument before it. The Echo_ListEntry macro now compiles happily. After doing this the instruments are loading and even sound pretty nice. I'm mostly using the MIDI piano instrument right now, as I get a little better creating background music I'll experiment with the others.</p>
+
+<p>Also, I think I finally fixed sprite collision detection for real this time, no code samples for this because the fix turned out to be mostly tweaking a couple values.</p>
+
+<p>As for things that are still problems... </p>
+
+<p>Sprite draw order: This might have something to do with the sprite link field which I don't completely understand. The documentation on it is a little head-spinning. The brute-force approach to this would be breaking the sprites into two sprites that occupy the high & low planes. I don't want to take that route yet though so I need to spend time researching this further.</p>
+
+<p class="lead">Game State &amp; Pausing</p>
+
+<p>It's time to implement something new again. I started on a rather large bit of work, opening and closing dialogs that display text based on what the player sprite is facing, and decided to break that into a few smaller pieces. It's been a while since I posted something and didn't want to keep that trend going.</p>
+
+<p>Introducing dialogs, menu screens, maps, and so on requires updating the main game loop to be aware of what state the game is in. I think the next few additions I make will be around managing the transition between game states.</p>
+
+<p><img src="game-state-transitions.png" alt="Game state transitions" class="img-fluid d-block mx-auto"/></p>
+
+<p>In this article we're going to build out the initial plumbing for this. Since the breakneck action in this game is too much for most to handle, let's implement pausing first. We'll start by adding some game state flags and a memory location to track it.</p>
+
+<div class="well">
+<p>; game states</p>
+<p>STATE_FLAG_PAUSED=$F ; game is paused</p>
+<p>STATE_FLAG_EXPLORING=$0 ; player is controlling the sprite on the map</p>
+<p>STATE_FLAG_DIALOG=$1 ; player is interacting with a dialog</p>
+<p>[...]</p>
+<p>InitGameState:</p>
+<p>&nbsp;move.l #$00000000,d0</p>
+<p>&nbsp;bset.l #STATE_FLAG_EXPLORING,d0</p>
+<p>&nbsp;move.l d0,(MEM_GAME_STATE)</p>
+</div>
+
+<p>In its simplest form pausing is just a matter of checking a flag and doing nothing if it is set. We should also pause and resume the new background music because it would be odd not too. We'll go a little further and also change the palette to grayscale just because I think it's nifty when games do that.</p>
+
+<div class="well">
+<p>MainGameLoop:</p>
+<p>&nbsp;bsr.w WaitVBlank ; wait for vblank to complete</p>
+<p>&nbsp;addq #$1,(MEM_MAINLOOP_COUNTER) ; increment counter</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; pause/unpause</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;move.b (MEM_CONTROL_PRESSED),d6 ; copy pressed buttons to d6</p>
+<p>&nbsp;andi.w #BUTTON_START_PRESSED,d6 ; test if the start button was pressed</p>
+<p>&nbsp;beq.s TestPause ; start button is not pressed test if still paused</p>
+<p>&nbsp;move.w #$2700,sr ; disable interrupts while changing the pause state</p>
+<p>&nbsp;; clear MEM_CONTROL_PRESSED to prevent pause state from flipping in loop</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED)</p>
+<p>&nbsp;btst.l #STATE_FLAG_PAUSED,d7 ; is the paused bit set?</p>
+<p>&nbsp;bne.s Unpause ; if so branch to unpause </p>
+<p>Pause:</p>
+<p>&nbsp;bset.l #STATE_FLAG_PAUSED,d7 ; set the paused bit</p>
+<p>&nbsp;; flip to paused palette</p>
+<p>&nbsp;bsr Echo_StopBGM ; pause the background music</p>
+<p>&nbsp;lea PaletteStoreAPaused,a0 ; address of the starting palette to a0</p>
+<p>&nbsp;move.w #$0004,d0 ; number of palettes to load</p>
+<p>&nbsp;bsr.w LoadPalettes ; branch to LoadPalettes subroutine</p>
+<p>&nbsp;bra.s UpdatePause ; save the paused state</p>
+<p>Unpause:</p>
+<p>&nbsp;bclr.l #STATE_FLAG_PAUSED,d7 ; clear the paused bit</p>
+<p>&nbsp;bsr Echo_ResumeBGM ; unpause the background music</p>
+<p>&nbsp;; revert to normal palette</p>
+<p>&nbsp;lea PaletteStoreA,a0 ; address of the starting palette to a0</p>
+<p>&nbsp;move.w #$0004,d0 ; number of palettes to load</p>
+<p>&nbsp;bsr.w LoadPalettes ; branch to LoadPalettes subroutine</p>
+<p>UpdatePause:</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; save the new paused state</p>
+<p>&nbsp;move.w #$2000,sr ; re-enable interrupts</p>
+<p>TestPause:</p>
+<p>&nbsp;btst.l #STATE_FLAG_PAUSED,d7 ; test if paused</p>
+<p>&nbsp;beq.s TestExploring ; not paused, branch to update sprites</p>
+<p>&nbsp;bra.w MainGameLoop ; paused, return to start of game loop</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; determine if sprites need to be moved and move them</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>TestExploring:</p>
+<p>&nbsp;btst.l #STATE_FLAG_EXPLORING,d7 ; test game state</p>
+<p>&nbsp;beq.w MainGameLoopEnd ; not exploring, branch to next test</p>
+<p>MainGameLoopUpdateSprites:</p>
+<p>[...]</p>
+</div>
+
+<p>This is what everything looks like when it's paused:</p>
+
+<p><img src="paused.png" alt="Paused game" class="img-fluid d-block mx-auto"/></p>
+
+<p>I know this isn't the most impressive bit of work but with all the fixes I worked in, I'm mostly happy where this is at. Next time around I'm planning to start on interacting with objects via dialogs, and perhaps finally getting the sprite overlap fixed.</p>
+
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/npcs/">&lt;- Part 7: NPC Sprites</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/objects/">Part 9: Object List -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/spritelist/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisspritelist.png" alt="Sega Genesis Programming Part 10: Sprite Link List"></p><p>Sega Genesis Programming Part 10: Sprite Link List</p></a></div>
+
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/save-load/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissaveload.png" alt="Sega Genesis Programming Part 18: Saving and Loading"></p><p>Sega Genesis Programming Part 18: Saving &amp; Loading</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

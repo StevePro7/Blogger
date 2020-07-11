@@ -1,0 +1,352 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 1: Palettes</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 1: Palettes" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 1: palettes</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col">
+			&nbsp;
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/tiles-sprites/">Part 2: Tiles &amp; Sprites -&gt;</a>
+		</div>
+	</div>
+
+<p class="lead blog-description">Why am I doing this?</p>
+
+<p>If you poke around this site you'll notice I like to try out random programming ideas like <a href="https://huguesjohnson.com/programming/c-sharp/random-maze-2-objects/">building randomly generated mazes in C#</a>, <a href="https://huguesjohnson.com/programming/android-sprite-walker-demo/">messing around with Android sprites</a>, or <a href="https://huguesjohnson.com/programming/atari-2600-basic/">trying to do anything in Atari 2600 BASIC</a>. Those were all fun but none really satisfied my urge for some old-school programming. You can make games that look old-school in C# or Java but you can't really say you did &quot;old-school&quot; programming with them. I'm talking about dealing with low-level instructions and registers or about racking your brain to trim a couple instructions or bytes out of a program. Real old-school programming.</p>
+<p>It's something I've been thinking about for a while -  maybe because I enjoy mental anguish, maybe to satisfy some 30 year-old dream of writing console games, or maybe because I just want to learn something new. Whatever twisted psychological reason is behind it, I decided to try programming a Sega Genesis game.</p>
+<p>There are C compilers for the Genesis but I'm going the assembler route because from what I've read that's the preferred method. On older consoles your code often needs to be highly optimized which makes assembler the way to go. The last time I touched assembler was December 1998 when I finished the final project for a class. That was X86 assembler which isn't all that similar to 68K. If I follow-through on this it will be like going back to school. </p>
+<p>I'm going to take this slow and tackle one thing at a time. This article will cover one specific topic, depending how far I get with this crazy idea I may post others.</p>
+<p>
+My plan of attack for learning how to program a Sega Genesis goes something like:
+<ol>
+<li>Build a Sega Genesis development environment</li>
+<li>Just get a ROM to compile and boot</li>
+<li>Load up a few palettes</li>
+<li>Load up some scenery</li>
+<li>Add a sprite that can be controlled with the d-pad</li>
+<li>Play some music</li>
+<li>Figure out some minimal game demo</li>
+</ol>
+Most of the this article is going to be about #2 but let's talk about #1 a little. At this point I've given up on Windows, not out of some grudge against Microsoft but because I think it peaked with Windows 7 and is kind of a mess to use today. Maybe I'll save that rant for a future article where I compare how to do simple tasks in Windows 95 vs Windows 10.</p>
+<p>Anyway, at the time of this writing I'm running Ubuntu 14.04 64-bit. Linux was released in 1991 and didn't become popular (relatively speaking) until after the Sega Genesis was abandoned. As such there aren't exactly a lot of Sega Genesis development tools for Linux. Most of the tools floating around are for DOS but there are some for Windows, there are various ways to run them Linux. Here's what I tried:</p>
+<p><b>68K assembler included on a 3.5&quot; floppy with a college textbook on 68000 assembly I bought on eBay for $3</b> - I ran this in FreeDOS virtual machine and it worked great. I also tried it in DOSBox and it crashed, not the application but DOSBox itself. I'm not too surprised, DOSBox likely hasn't been tested for it. DOSBox also isn't intended as a way to do development so it may lack emulation of some instructions needed to do so. Anyway, despite how great this worked it's kind of miserable to work with the editor in FreeDOS (although it's better than the MS-DOS equivalent).</p>
+<p><b>Psygnosis development kit</b> - This is floating around on various sites and I'm not sure whether it's legal to use it. I don't think they released it to public domain but also aren't sending people distributing it takedown notices. This also runs on DOS and has the advantage of including Sega CD development tools. This also ran perfectly in FreeDOS and MS-DOS (which I randomly decided to try). It also caused DOSBox to crash.</p>
+<p><b><a href="https://www.easy68k.com/">EASy68K</a></b> - This is my recommendation for Windows users. I installed this in a Windows 2000 virtual machine (the one I keep around for whenever I have to do VB6 work) and it ran just fine. The UI is very friendly and being on Windows means you can run Gens KMod which makes debugging a little easier. At some point if I continue playing around with Genesis programming I may find the Linux version of Gens to be inadequate.</p>
+<p>Here's a random screenshot that demonstrates it's possible to compile a Genesis game in EASy68K:</p>
+<p><img src="easy68k.png" alt="Easy86K" class="img-fluid d-block mx-auto"/></p>
+<p>All three of these might run great in WINE, I didn't try because I decided to pursue a pure Linux solution and stumbled across <a href="https://sun.hasenbraten.de/vasm/">VASM</a>.</p>
+<p>Like a lot of Linux development tools this is a &quot;build it yourself&quot; solution, it's really easy though. Just download the package and run make with Makefile.68k. That produces files called vasmm68k_mot and vobjdump, move them to /usr/local/bin. Now you can run it with a command-line like: <b>vasmm68k_mot -o OUTPUT.bin -Fbin -no-opt -nosym SOURCE.X68</b></p>
+<p>With some command-line changes you can also produce Amiga 500 executables which is kind of neat. You can also play around with the optimizations if you have time, I decided to just disable all for simplicity.</p>
+<p>Alright, so at this point I have a working assembler and can get a Genesis game to build and run. There's a lot of boilerplate code you need just to get a game to start. I'm not covering that here but the source code I post will include it along with references to where I got it from.</p> 
+<p>With the first two steps out of the way it's on to try loading a few palettes. I spent a bunch of time learning how palettes work when making Aridia. The Genesis VDP stores 4 palettes of 16 colors for a maximum of 64 distinct on-screen colors. Once you factor in transparency it's usually slightly lower than 64 in a real game. The palette entries have an R (red), G (green), and B (blue) value that's combined into one 16-bit number. The R, G, and B values can range from 0-7 so only 12-bits are actually used. It's just like how RGB colors work, only there are 8^3 (512) total combinations instead of 256^3 (16,777,216).</p>
+<p>For me to visualize colors I have to start with the 16-bit RGB value and then take it down to the nearest 9-bit RGB value. Maybe because the 68k uses big-endian numbers, Genesis palettes are really BGR meaning the blue value is stored first, then green, then red.</p> 
+<p>So, as a random example - rgb(160,128,144) converts to a binary as 10100000 10000000 10010000. Flipping the b and g values and dropping off the last 4 bits gets us 1001 1000 1010. Putting those all together into a single binary number 100110001010 which converts to a hex value of 098A. 098A is what we send to the VDP to get the color rgb(160,128,144) loaded.</p>
+<p>Apologies if that explanation was confusing.</p>
+<p>Anyway... there are a lot of tutorials out there and this one isn't necessarily any better, it's possibly worse. I had varying degrees of success with these other tutorials though. Perhaps different assemblers use slightly different syntaxes so the examples provided didn't work in my configuration. The closest I got with any of them was one that loaded palette data but the colors were all off. So I went on to figure this out from scratch.</p> 
+<p>Initially I went with a brute force approach:</p>
+<div class="well">
+<p>move.w	#$0F0F,($00C00000)	; rgb(240,000,240) => 1111 0000 1111 => 0F0F</p>
+<p>move.w	#$0115,($00C00000)	; rgb(080,048,032) => 0010 0011 0101 => 0115</p>
+<p>move.w	#$0356,($00C00000)	; rgb(096,080,048) => 0011 0101 0110 => 0356</p>
+<p>move.w	#$0139,($00C00000)	; rgb(144,096,016) => 0001 0011 1001 => 0139</p>
+<p>[...]</p>
+</div>
+<p>What's going on here is pretty simple - color values are being fed directly into the VDP control port. That's obviously not sustainable for a real program so what we need is a subroutine that loads palettes stored in the ROM.</p>
+<p>The first step is, well, storing palettes in the ROM. We need to pick 64 colors, let's go with a four seasons theme for these palettes. As in, imagine there was a game with some background scenery that looked like different times of the year. We'll structure the palettes like this:</p>
+<div class="well">
+<p>;---------------------------------------------------------------------</p>
+<p>; seasonal background palettes</p>
+<p>; entry 0 = transparency color</p>
+<p>; entries 1-3 = tree bark colors</p>
+<p>; entries 4-5 = evergreen tree needle colors</p>
+<p>; entries 6-9 = leaf colors</p>
+<p>; entries 10-12 = ground colors</p>
+<p>; entries 13-15 = colors for other scenery</p>
+<p>;---------------------------------------------------------------------</p>
+</div>
+<p>For spring we want colors that resemble budding trees maybe with white or pink flowers for accent:</p>
+<div class="well">
+<p>PaletteSpring:</p>
+<p>dc.w	$0F0F	; rgb(240,000,240) => 1111 0000 1111 => 0F0F</p>
+<p>dc.w	$0115	; rgb(080,048,032) => 0010 0011 0101 => 0115</p>
+<p>dc.w	$0356	; rgb(096,080,048) => 0011 0101 0110 => 0356</p>
+<p>dc.w	$0139	; rgb(144,096,016) => 0001 0011 1001 => 0139</p>
+<p>dc.w	$0031	; rgb(016,048,000) => 0000 0011 0001 => 0031</p>
+<p>dc.w	$0033	; rgb(048,048,000) => 0000 0011 0011 => 0033</p>
+<p>dc.w	$0785	; rgb(112,128,032) => 0111 1000 0101 => 0785</p>
+<p>dc.w	$05CD	; rgb(208,192,080) => 0101 1100 1101 => 05CD</p>
+<p>dc.w	$0A9D	; rgb(208,144,160) => 1010 1001 1101 => 0A9D</p>
+<p>dc.w	$0EEE	; rgb(224,224,224) => 1110 1110 1110 => 0EEE</p>
+<p>dc.w	$0154	; rgb(064,080,016) => 0001 0101 0100 => 0154</p>
+<p>dc.w	$04EE	; rgb(224,224,080) => 0100 1110 1110 => 04EE</p>
+<p>dc.w	$098A	; rgb(160,128,144) => 1001 1000 1010 => 098A</p>
+<p>dc.w	$0743	; rgb(048,064,112) => 0111 0100 0011 => 0743</p>
+<p>dc.w	$0F95	; rgb(080,144,240) => 1111 1001 0101 => 0F95</p>
+<p>dc.w	$079A	; rgb(160,144,112) => 0111 1001 1010 => 079A</p>
+</div>
+<p>Summer will be very green with some yellowish flowers, this is really the least scenic of the seasons:</p>
+<div class="well">
+<p>PaletteSummer:</p>
+<p>dc.w	$0F0F	; rgb(240,000,240) => 1111 0000 1111 => 0F0F</p>
+<p>dc.w	$0115	; rgb(080,048,032) => 0010 0011 0101 => 0115</p>
+<p>dc.w	$0356	; rgb(096,080,048) => 0011 0101 0110 => 0356</p>
+<p>dc.w	$0139	; rgb(144,096,016) => 0001 0011 1001 => 0139</p>
+<p>dc.w	$0031	; rgb(016,048,000) => 0000 0011 0001 => 0031</p>
+<p>dc.w	$0033	; rgb(048,048,000) => 0000 0011 0011 => 0033</p>
+<p>dc.w	$0485	; rgb(112,128,064) => 0100 1000 0101 => 0485</p>
+<p>dc.w	$0145	; rgb(084,064,016) => 0001 0100 0101 => 0145</p>
+<p>dc.w	$0488	; rgb(128,128,064) => 0100 1000 1000 => 0488</p>
+<p>dc.w	$03CC	; rgb(192,192,048) => 0011 1100 1100 => 03CC</p>
+<p>dc.w	$0165	; rgb(080,096,016) => 0001 0110 0101 => 0165</p>
+<p>dc.w	$0142	; rgb(032,064,016) => 0001 0100 0010 => 0142</p>
+<p>dc.w	$04EE	; rgb(224,224,064) => 0100 1110 1110 => 04EE</p>
+<p>dc.w	$034E	; rgb(224,064,048) => 0011 0100 1110 => 034E</p>
+<p>dc.w	$056D	; rgb(208,096,080) => 0101 0110 1101 => 056D</p>
+<p>dc.w	$0899	; rgb(144,144,128) => 1000 1001 1001 => 0899</p>
+</div>
+<p>Fall has so many different shades of brown, yellow, and red with a hint of green:</p>
+<div class="well">
+<p>PaletteFall:
+<p>dc.w	$0F0F	; rgb(240,000,240) => 1111 0000 1111 => 0F0F</p>
+<p>dc.w	$0115	; rgb(080,048,032) => 0010 0011 0101 => 0115</p>
+<p>dc.w	$0356	; rgb(096,080,048) => 0011 0101 0110 => 0356</p>
+<p>dc.w	$0139	; rgb(144,096,016) => 0001 0011 1001 => 0139</p>
+<p>dc.w	$0031	; rgb(016,048,000) => 0000 0011 0001 => 0031</p>
+<p>dc.w	$0033	; rgb(048,048,000) => 0000 0011 0011 => 0033</p>
+<p>dc.w	$0238	; rgb(128,048,032) => 0010 0011 1000 => 0238</p>
+<p>dc.w	$034D	; rgb(208,064,048) => 0011 0100 1101 => 034D</p>
+<p>dc.w	$029E	; rgb(224,144,032) => 0010 1001 1110 => 029E</p>
+<p>dc.w	$04EF	; rgb(240,224,064) => 0100 1110 1111 => 04EF</p>
+<p>dc.w	$059A	; rgb(160,144,080) => 0101 1001 1010 => 059A</p>
+<p>dc.w	$07BA	; rgb(160,176,112) => 0111 1011 1010 => 07BA</p>
+<p>dc.w	$029D	; rgb(208,144,032) => 0010 1001 1101 => 029D</p>
+<p>dc.w	$045F	; rgb(240,080,064) => 0100 0101 1111 => 045F</p>
+<p>dc.w	$03CF	; rgb(240,192,048) => 0011 1100 1111 => 03CF</p>
+<p>dc.w	$0DEE	; rgb(224,224,208) => 1101 1110 1110 => 0DEE</p>
+</div>
+<p>And for winter we'll have different shades of snow with a couple evergreens mixed in:</p>
+<div class="well">
+<p>PaletteWinter:</p>
+<p>dc.w	$0F0F	; rgb(240,000,240) => 1111 0000 1111 => 0F0F</p>
+<p>dc.w	$0115	; rgb(080,048,032) => 0010 0011 0101 => 0115</p>
+<p>dc.w	$0356	; rgb(096,080,048) => 0011 0101 0110 => 0356</p>
+<p>dc.w	$0139	; rgb(144,096,016) => 0001 0011 1001 => 0139</p>
+<p>dc.w	$0031	; rgb(016,048,000) => 0000 0011 0001 => 0031</p>
+<p>dc.w	$0033	; rgb(048,048,000) => 0000 0011 0011 => 0033</p>
+<p>dc.w	$0FEE	; rgb(224,224,240) => 1111 1110 1110 => 0FEE</p>
+<p>dc.w	$0FED	; rgb(208,224,240) => 1111 1110 1101 => 0FED</p>
+<p>dc.w	$0FEC	; rgb(192,224,240) => 1111 1110 1100 => 0FEC</p>
+<p>dc.w	$0ECD	; rgb(208,192,224) => 1110 1100 1101 => 0ECD</p>
+<p>dc.w	$0FFF	; rgb(240,240,240) => 1111 1111 1111 => 0FFF</p>
+<p>dc.w	$0EED	; rgb(208,224,224) => 1110 1110 1101 => 0EED</p>
+<p>dc.w	$0ABB	; rgb(176,176,160) => 1010 1011 1011 => 0ABB</p>
+<p>dc.w	$0358	; rgb(128,080,048) => 0011 0101 1000 => 0358</p>
+<p>dc.w	$0345	; rgb(080,064,048) => 0011 0100 0101 => 0345</p>
+<p>dc.w	$0DCC	; rgb(192,192,208) => 1101 1100 1100 => 0DCC</p>
+</div>
+<p>Now we're going to create a subroutine to load palettes. It will need the starting address of the first palette to load, which it will look for in a0. It will also need the number of palettes to load which it will look for in d0.</p>
+<div class="well">
+<p>;---------------------------------------------------------------------</p>
+<p>; LoadPalette</p>
+<p>; a0 = address of first palette to load</p>
+<p>; d0 = number of palettes to load (1-4)</p>
+<p>;---------------------------------------------------------------------</p>
+<p>LoadPalette:</p>
+<p>&nbsp;&nbsp;move.l	#$C0000000,($00C00004) ; set up VDP write to CRAM</p>
+<p>&nbsp;&nbsp;mulu	#$10,d0	; multiply number of palettes by 16</p>
+<p>&nbsp;&nbsp;sub.w	#$01,d0	; subtrack 1 since the loop counts to 0</p>
+<p>LoadPaletteLoop:</p>
+<p>&nbsp;&nbsp;move.w	(a0)+,($00C00000)	; write the palette data</p>
+<p>&nbsp;&nbsp;dbf	d0,LoadPaletteLoop		; decrement value of d0 and loop if not 0</p>
+<p>&nbsp;&nbsp;rts</p>
+</p>
+</div>
+<p>Now need to call it, let's load all four palettes:</p>
+<div class="well">
+<p>;setup call to LoadPalette</p>
+<p>lea	PaletteSpring,a0	; address of the starting palette to a0</p>
+<p>move.w #$04,d0			; number of palettes to load</p>
+<p>jsr	LoadPalette</p>
+</div>
+<p>If everything works the VDP should contain palettes that look like this:</p>
+<p><img src="vdp.png" alt="Palettes" class="img-fluid d-block mx-auto"/></p>
+<p>It can also be called to load some non-sequential palettes:</p>
+<div class="well">
+<p>;setup call to LoadPalette</p>
+<p>lea	PaletteSpring,a0	; address of the starting palette to a0</p>
+<p>move.w #$01,d0			; number of palettes to load</p>
+<p>jsr	LoadPalette</p>
+<p>;setup call to LoadPalette</p>
+<p>lea	PaletteWinter,a0	; address of the starting palette to a0</p>
+<p>move.w #$01,d0			; number of palettes to load</p>
+<p>jsr	LoadPalette</p>
+</div>
+<p>This is amazing thing about Genesis programming... it took several hours to write and debug just a couple of lines. This is such a small amount of code but there's a lot of satisfaction from producing it. Assuming I keep at this, I hope the next few trials feel the same way.</p>
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+	<div class="row">
+		<div class="col">
+			&nbsp;
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/tiles-sprites/">Part 2: Tiles &amp; Sprites -&gt;</a>
+		</div>
+	</div>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/fade/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisfade.png" alt="Sega Genesis Programming Part 17: Fade-In/Fade-Out"></p><p>Sega Genesis Programming Part 17: Fade-In/Fade-Out</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesispalettetilegen.png" alt="Sega Genesis Programming Part 20: Palette and Tile Generation"></p><p>Sega Genesis Programming Part 20: Palette and Tile Generation</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>

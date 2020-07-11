@@ -1,0 +1,344 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 21: VDP Sprite Collision</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="VDP Sprite Collision" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 21: vdp sprite collision</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/">&lt;- Sega Genesis Programming Part 20: Palette and Tile Generation</a>
+        </div>
+        <div class="col">
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/4way/">Part 22: 4 Way Play -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Still Learning</p>
+
+<p>Sometime recently I decided to continue on with this journey to learn Genesis programming by developing another demo. This isn't an official announcement but it's almost certainly going to be called Retail Clerk '90 and is (obviously) a sequel to <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>.</p>
+
+<p>As I noted <a href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/">last time</a> I'm not trying to make a good demo (mission accomplished by the way), I'm really interested in all the meta stuff around it. When I'm done I hope to have a generic-ish game framework and some code generation tools. If I pull that off then building for multiple platforms is my stretch goal. I haven't decided which platforms exactly, only that they need to be something that was still viable in 1990.</p>
+
+<p>Along the way I'm trying to learn as much about the Sega Genesis hardware as I can. Today I feel like trying out a debatably useless feature - <b>the VDP sprite collision flag</b>. The Genesis VDP has a feature that tells you whether two sprites have collided recently. Technically it's something like &quot;flag that indicates any sprites have non-transparent overlapping pixels&quot; but let's stick with the shorter description.</p>
+
+<p>I assume this is something fairly well documented:</p>
+
+<p><img src="google.png" alt="Google results for Sega Genesis sprite collision" class="img-fluid d-block mx-auto"/></p>
+
+<p>I AM SO INCREDIBLY SCREWED!</p>
+
+<p>Note to Google - I am not an expert on anything.</p>
+
+<p>OK, so I guess we'll look into this via some trial and error.</p>
+
+<p>Just to backtrack for a minute... <a href="https://huguesjohnson.com/programming/genesis/collision-detection/">I wrote sprite collision detection a while ago</a>, was unhappy with the results, and removed it. In that article I used a collision map that was updated every time a sprite moved. The final implementation made it kind of hard to move around the map and I scrapped it. Instead I opted for this Persona 5 like experience where you simply walk through anyone in your way. I had not played Persona 5 yet though. The first time I played it was after I came up with the rough story line for Retail Clerk '90. Among the various things I wanted to try was building a very (very) simple bonding system inspired by Trails of Cold Steel / Tokyo Xanadu. I heard those were based off Persona so I gave it a whirl.</p>
+
+<p>It turns out they are not similar games at all. Persona &amp; Trails are both turn-based RPGs with character-specific bonding events and that's about all they have in common. The battle system are completely different, I'm partial to the Trails one but won't argue with people who prefer Persona's. The function and purpose of the bonding systems aren't comparable really. In Trails it's used to explore the backstory of characters you find interesting. There might be some slight stat increases along the way. In Persona the bonding system doubles as a way to gain new abilities. It's a core part of developing your character vs a collection of side-stories. I don't see them as being much alike at all. Tokyo Xanadu has roughly the same setting as Persona 5 (and 1000 other RPGs or anime series) with even less in common otherwise. The extremely crude thing I'm thinking of building is closer to the Trails games.</p>
+
+<p>One thing I found interesting in Persona 5 is how you hear conversations by walking next to people. That's what got me thinking about sprite collision detection again. Like would it be possible for NPCs to say something to you as you walked by or even change direction to face you? Of course it's possible, the question is whether using the VDP collision flag is a good way to do it?</p>
+
+<p>According to Sega's documentation you can query the VDP control port for VDP status. It returns a word with the bits defined as:
+<ul>
+<li>Bit 0: 1 = PAL, 0 = NTSC</li>
+<li>Bit 1: 1 = DMA busy</li>
+<li>Bit 2: 1 = hblank in progress</li>
+<li>Bit 3: 1 = vblank in progress (note: I've found this to have inconsistent results between real hardware and various emulators)</li>
+<li>Bit 4: used if in interlace mode, 1 = odd frame, 0 = even frame</li>
+<li>Bit 5: 1 = sprite collision occurred</li>
+<li>Bit 6: 1 = sprite overflow occurred</li>
+<li>Bit 7: 1 = vertical interrupt occurred</li>
+<li>Bit 8: 1 = write FIFO full</li>
+<li>Bit 9: 1 = write FIFO empty</li>
+<li>Bits A-F: unused</li>
+</ul>
+</p>
+
+<p>As I started poking around with this, I found there's a Schrödinger's cat problem where the value of the VDP control changes after you read it. Let's say that during each vblank you do this:</p>
+
+<div class="well">
+<p>VDP_CONTROL=$00C00004</p>
+<p>MEM_DEBUG_1=$FFFF0000</p>
+<p>MEM_DEBUG_2=$FFFF0002</p>
+<p>[...]</p>
+<p>VBlank:</p>
+<p>&nbsp;move.w (VDP_CONTROL),(MEM_DEBUG_1)</p>
+<p>&nbsp;and.w #%0000001111111111,(MEM_DEBUG_1)</p>
+<p>&nbsp;move.w (VDP_CONTROL),(MEM_DEBUG_2)</p>
+<p>&nbsp;and.w #%0000001111111111,(MEM_DEBUG_2)</p>
+</div>
+
+<p>You might expect that those consecutive reads produce the same value, they do not. Let's start with a scene where no sprites are colliding:</p>
+
+<p><img src="nocollision-screen.png" alt="No sprite collision" class="img-fluid d-block mx-auto"/></p>
+
+<p>This is also your sneak preview of a Retail Clerk '90 lead character (there are two again). Let's see what the VDP values are:</p>
+
+<p><img src="nocollision-debug.png" alt="No sprite collision - debug" class="img-fluid d-block mx-auto"/></p>
+
+<p>So after a read it changed from:</p>
+
+<p>000000 10 1000 1000</p>
+
+<p>to:</p>
+
+<p>000000 01 1000 1000</p>
+
+<p>Bits 8 and 9 flipped, why? No clue. Not the point of this article to find out either. Let's see how it looks if two sprites are overlapping:</p>
+
+<p><img src="collision-screen.png" alt="Sprite collision" class="img-fluid d-block mx-auto"/></p>
+
+<p>And the values are:</p>
+
+<p><img src="collision-debug.png" alt="Sprite collision - debug" class="img-fluid d-block mx-auto"/></p>
+
+<p>So after a read it changed from:</p>
+
+<p>000000 01 1010 1000</p>
+
+<p>to:</p>
+
+<p>000000 10 1000 1000</p>
+
+<p>Bits 8 and 9 flipped again, in the other direction. The more interesting thing for now is how bit 5 changed after being read. If you're going to rely on this bit to tell you a collision happened you better read it before doing anything else in that frame.</p>
+
+<p>OK, we at least know it's possible to find out if a collision occurred from the VDP. Let's try this thing out. </p>
+
+
+<p class="lead">Putting Things Together</p>
+
+<p>First we'll add a few more sprites to the scene:</p>
+
+<p><img src="moresprites.png" alt="Scene with more sprites" class="img-fluid d-block mx-auto"/></p>
+
+<p>Now two constants for memory addresses we'll be using. One to store the VDP status read and another to store the sprite ID the player sprite is overlapping with. The values here are not important.</p>
+
+<div class="well">
+<p>MEM_VDP_STATUS=$FFFF03C4</p>
+<p>MEM_SPRITE_OVERLAP_ID=$FFFF03C6</p>
+</div>
+
+<p>Two quick noteworthy things:
+<ol>
+<li>I only care about the player sprite overlapping with another sprite. I will not be checking for NPC sprite overlaps.</li>
+<li>The sprite collision flag is set on every frame where there is a collision (or so it seems). The ID of the last sprite colliding with the player sprite is saved to avoid firing the same event repeatedly. </li>
+</ol>
+</p>
+
+<p>From here there's a lot of code from Retail Clerk '89 (<a href="https://github.com/huguesjohnson/RetailClerk89">https://github.com/huguesjohnson/RetailClerk89</a>) that is reusable.</p>
+
+<div class="well">
+<p>[...]</p>
+<p>move.w (VDP_CONTROL),(MEM_VDP_STATUS) ; save vdp status</p>
+<p>and.w #%0000000000100000,(MEM_VDP_STATUS) ; clear the bits we don't care about</p>
+<p>beq.s CarryOn ; exit if no vdp collision flag</p>
+<p>bsr.w BuildNPCObjectList ; update the location of NPCs</p>
+<p>bsr.w FindActionTarget ; find the target of the player's action</p>
+<p>cmpi.w #OBJ_NOTHING,(MEM_ACTION_TARGET_OBJID) ; is the target nothing?</p>
+<p>beq.s NoCollisionActionTarget ; branch if no target</p>
+<p>; compare the sprite ids	</p>
+<p>move.w (MEM_ACTION_TARGET_OBJID),d0</p>
+<p>move.w (MEM_SPRITE_OVERLAP_ID),d1</p>
+<p>cmp.w d0,d1</p>
+<p>beq.s CarryOn ; if they are the same then exit</p>
+<p>move.w d0,(MEM_SPRITE_OVERLAP_ID) ; save id of sprite for next time through</p>
+<p>; treating this like the player pressed the A button for the purposes of this demo</p>
+<p>move.w #ACTION_INTERACT,(MEM_ACTION_ID) ; setup call to ProcessAction</p>
+<p>bsr.w ProcessAction ; call ProcessAction</p>
+<p>bra.s CarryOn ; exit</p>
+<p>NoCollisionActionTarget:</p>
+<p>move.w #$0000,(MEM_SPRITE_OVERLAP_ID) ; clear the overlap id</p>
+<p>CarryOn:</p>
+<p>[...]</p>
+</div>
+
+<p>Again the code is deceptively small because of things that already work:
+<ul>
+<li><a href="https://github.com/huguesjohnson/RetailClerk89/blob/master/src/sub_BuildNPCObjectList.X68">BuildNPCObjectList</a>: stores the x/y position of npc sprites into a table of objects in the scene</li>
+<li><a href="https://github.com/huguesjohnson/RetailClerk89/blob/master/src/sub_FindActionTarget.X68">FindActionTarget</a>: looks through the aforementioned table to see what object the player is facing</li>
+<li><a href="https://github.com/huguesjohnson/RetailClerk89/blob/master/src/sub_ProcessAction.X68">ProcessAction</a>: figures out what to do when the player interacts with something</li>
+</ul>
+</p>
+
+<p>Now when the player first hits a sprite there's a dialog. The dialog doesn't display as they pass through. It returns after they stop colliding and start colliding again:</p>
+
+<p><img src="demo1.png" alt="Demo screens of interaction on sprite collision" class="img-fluid d-block mx-auto"/></p>
+
+<p>It works for all the other sprites in the scene too:</p>
+
+<p><img src="demo2.png" alt="More demo screens of interaction on sprite collision" class="img-fluid d-block mx-auto"/></p>
+
+<p>So that's neat. This works about how I expect and took a very small amount of new code to implement. I will probably not use this in the final game demo but it's good to know I can. The behavior demo'd here can be accomplished without ever checking the VDP sprite collision flag. The only way it helps is by indicating whether it's worth checking at all.</p>
+
+<p class="lead">What's Next?</p>
+
+<p>I guess if I'm actually serious about making a Retail Clerk '90 I should just do that. I'm still sort of curious about how to support the Team Player and/or 4 Way Play. I have some bad trivia game ideas that I'd like to try someday. So if I write another Genesis programming article, and I'm sure I will, then something about supporting 4 players seems likely. Knowing me, the next one will be something completely different though.</p>
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/">&lt;- Sega Genesis Programming Part 20: Palette and Tile Generation</a>
+        </div>
+        <div class="col">
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/4way/">Part 22: 4 Way Play -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/collision-detection/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesiscollision.png" alt="Sega Genesis Programming Part 5: Collision Detection"></p><p>Sega Genesis Programming Part 5: Collision Detection</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/actiontable/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisactiontable.png" alt="Sega Genesis Programming Part 13: Action Table"></p><p>Sega Genesis Programming Part 13: Action Table</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

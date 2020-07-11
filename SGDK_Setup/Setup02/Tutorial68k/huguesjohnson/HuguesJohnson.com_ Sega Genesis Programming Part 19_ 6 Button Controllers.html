@@ -1,0 +1,464 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 19: 6 Button Controllers</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="6 Button Controllers" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 19: 6 button controllers</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/save-load/">&lt;- Sega Genesis Programming Part 18: Saving &amp; Loading</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/">Part 20: Palette and Tile Generation -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">On to the next chapter</p>
+
+
+<p>I recently finished this little Sega Genesis demo game called <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>. It's not especially fun but I'm not sure that was ever my reason for making it. It lacks 6 button support simply because the game only needs 3 buttons. Really it only needed 2 if I knew what I was doing before I started on it. Still, the X/Y/Z buttons could just mimic their A/B/C counterparts. That would have been kind of neat.</p>
+<p>After looking into it I found that supporting 6 buttons isn't as easy as it sounds. It's not rocket science but it's not just testing the controller input for a couple extra values. So that's all this article & demo will be about - <b>reading all 6 (really 8) buttons on a Genesis controller</b>. As an extra bonus we'll try to detect whether a 6 or 3 button controller is attached.</p>
+<p>I have a secondary goal - determining whether any part of the <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a> code is reusable in other projects. In case I decide to do another full-blown Genesis game I'd like to have a library of code that solves common problems. Not an engine or a framework, just a random pile of minimally useful code. You could even say <b><u>I</u></b>t's <b><u>D</u></b>efinitely not a <b><u>G</u></b>enesis <b><u>A</u></b>dventure <b><u>F</u></b>ramework. I guess that means the code for this little 6 button demo is a bit larger than it needs to be.</p>
+<p>The first thing I learned from this demo is that I really didn't understand how Genesis controllers communicated with the base unit. I found some sample code that worked and called it a day. At the end of writing this demo that copy 'n paste code was largely replaced.</p>
+<p>I never even stopped to think about what the 9 pins on the Genesis controller even mean. I've always been more of a software guy than a hardware guy. After reading several different sources, some with conflicting information, here's what I think the 9 pins on the Genesis controller port mean: </p>
+
+<p><img src="pins.png" alt="Sega Genesis controller pins" class="img-fluid d-block mx-auto"/></p>
+
+<p>So there are 7 pins that transmit binary data. Since the base Genesis controller has 8 buttons that means Sega had to account for handling >7 buttons from the beginning. This is done by sending data out over cycles. The &quot;TH&quot; pin serves as the toggle here. Flipping it from low to high initiates another read cycle. There are 9 cycles supported but really only the first 7 are used. For a 3 button controller game only the first two cycles are needed. So you flip bit 7 to initiate another read cycle. After a short delay the controller flips back to cycle 0 so you better get what you need quickly.</p>
+
+<p>There are many variations of this chart available, including from leaked Sega development manuals. I created one because I'm not very smart and needed a dumbed-down version to help me understand this:</p>
+
+<p><img src="cycles.png" alt="Sega Genesis controller cycles" class="img-fluid d-block mx-auto"/></p>
+
+<p>Yeah, I know, this is just a spreadsheet view of the previous image. You really just came here to see code I bet. Alright, let's get to it..</p>
+
+<p>I'll skip all the stuff to create the layout, you can download the full source somewhere on this page.</p>
+
+<p>Let's start with some constants we'll need:</p>
+
+<div class="well">
+<p>CTRL_1_DATA=$00A10003</p>
+<p>CTRL_1_CONTROL=$00A10009</p>
+<p>MEM_CONTROL_1_6BUTTON=$FFFF000A</p>
+<p>MEM_CONTROL_HELD=$FFFF000C</p>
+<p>MEM_CONTROL_PRESSED=$FFFF000E</p>
+<p>MEM_CONTROL_6_HELD=$FFFF0010</p>
+<p>MEM_CONTROL_6_PRESSED=$FFFF0012</p>
+<p>MEM_DEBUG_CYCLE1_INIT=$FFFF0020</p>
+<p>MEM_DEBUG_CYCLE2_INIT=$FFFF0022</p>
+<p>MEM_DEBUG_CYCLE3_INIT=$FFFF0024</p>
+<p>MEM_DEBUG_CYCLE4_INIT=$FFFF0026</p>
+<p>MEM_DEBUG_CYCLE5_INIT=$FFFF0028</p>
+<p>MEM_DEBUG_CYCLE6_INIT=$FFFF002A</p>
+<p>MEM_DEBUG_CYCLE7_INIT=$FFFF002C</p>
+<p>MEM_DEBUG_CYCLE8_INIT=$FFFF002E</p>
+<p>MEM_DEBUG_CYCLE9_INIT=$FFFF0030</p>
+<p>MEM_DEBUG_CYCLE1_VBLANK=$FFFF0032</p>
+<p>MEM_DEBUG_CYCLE2_VBLANK=$FFFF0034</p>
+<p>MEM_DEBUG_CYCLE3_VBLANK=$FFFF0036</p>
+<p>MEM_DEBUG_CYCLE4_VBLANK=$FFFF0038</p>
+<p>MEM_DEBUG_CYCLE5_VBLANK=$FFFF003A</p>
+<p>MEM_DEBUG_CYCLE6_VBLANK=$FFFF003C</p>
+<p>MEM_DEBUG_CYCLE7_VBLANK=$FFFF003E</p>
+<p>MEM_DEBUG_CYCLE8_VBLANK=$FFFF0040</p>
+<p>MEM_DEBUG_CYCLE9_VBLANK=$FFFF0042</p>
+</div>
+
+<p>Right after the Genesis starts let's see what type of controller is connected. This is needed because if a 3 button controller is connected we should skip reading everything after cycle 2.</p>
+
+<div class="well">
+<p>InitController:</p>
+<p>&nbsp;move.b&nbsp;#$40,(CTRL_1_CONTROL)</p>
+<p>&nbsp;lea&nbsp;CTRL_1_DATA,a0&nbsp;;&nbsp;load&nbsp;address&nbsp;to&nbsp;read&nbsp;controller&nbsp;1&nbsp;data</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;1&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE1_INIT)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;2&nbsp;+&nbsp;TH&nbsp;low</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;(a0),d0</p>
+<p>&nbsp;move.b&nbsp;#$00,(a0)</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE2_INIT)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;3&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE3_INIT)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;4&nbsp;+&nbsp;TH&nbsp;low</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;#$00,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;low</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE4_INIT)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;5&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;---------------------------------&nbsp;</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;high</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE5_INIT)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;6&nbsp;+&nbsp;TH&nbsp;low</p>
+<p>&nbsp;;&nbsp;6&nbsp;button&nbsp;id&nbsp;is&nbsp;in&nbsp;counter&nbsp;6</p>
+<p>&nbsp;;---------------------------------&nbsp;</p>
+<p>&nbsp;move.b&nbsp;#$00,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;low</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),d0&nbsp;;&nbsp;copy&nbsp;controller&nbsp;data&nbsp;to&nbsp;d0</p>
+<p>&nbsp;move.b&nbsp;d0,(MEM_DEBUG_CYCLE6_INIT)</p>
+<p>&nbsp;cmpi.b&nbsp;#%00110011,d0&nbsp;;&nbsp;00110011&nbsp;=&nbsp;3&nbsp;button&nbsp;controller</p>
+<p>&nbsp;beq.s&nbsp;.1</p>
+<p>&nbsp;move.b&nbsp;#%111111,(MEM_CONTROL_1_6BUTTON)</p>
+<p>.1</p>
+<p>&nbsp;[and&nbsp;so&nbsp;on&nbsp;for&nbsp;7-9]</p>
+</div>
+
+<p>And now here's the new code to read the joypad. This is executed during vblank. It now is a bit different than the original sample I found a few years ago.</p>
+
+<div class="well">
+<p>ReadJoypad:</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;1&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;high</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),d0&nbsp;;&nbsp;get&nbsp;joypad&nbsp;data&nbsp;-&nbsp;C/B/Dpad</p>
+<p>&nbsp;move.b&nbsp;d0,(MEM_DEBUG_CYCLE1_VBLANK)</p>
+<p>&nbsp;andi.b&nbsp;#%00111111,d0&nbsp;;&nbsp;C/B/Dpad&nbsp;in&nbsp;low&nbsp;6&nbsp;bits</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;2&nbsp;+&nbsp;TH&nbsp;low</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;#$00,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;low</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),d1&nbsp;;&nbsp;get&nbsp;joypad&nbsp;data&nbsp;-&nbsp;Start/A</p>
+<p>&nbsp;move.b&nbsp;d1,(MEM_DEBUG_CYCLE2_VBLANK)</p>
+<p>&nbsp;lsl.b&nbsp;#2,d1&nbsp;;&nbsp;shift&nbsp;them&nbsp;so&nbsp;they&nbsp;are&nbsp;at&nbsp;the&nbsp;2&nbsp;highest&nbsp;bits</p>
+<p>&nbsp;andi.b&nbsp;#%11000000,d1&nbsp;;&nbsp;Start/A&nbsp;in&nbsp;high&nbsp;2&nbsp;bits&nbsp;-&nbsp;clear&nbsp;others</p>
+<p>&nbsp;or.b&nbsp;d1,d0&nbsp;;&nbsp;merge&nbsp;values&nbsp;from&nbsp;both&nbsp;registers</p>
+<p>&nbsp;not.b&nbsp;d0&nbsp;;&nbsp;flip&nbsp;bits&nbsp;so&nbsp;0&nbsp;means&nbsp;not&nbsp;pressed,&nbsp;and&nbsp;1&nbsp;means&nbsp;pressed</p>
+<p>&nbsp;move.b&nbsp;d0,d1&nbsp;;&nbsp;copy&nbsp;current&nbsp;buttons&nbsp;to&nbsp;d1</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_HELD),d2&nbsp;;&nbsp;copy&nbsp;the&nbsp;last&nbsp;previously&nbsp;read&nbsp;buttons</p>
+<p>&nbsp;eor.b&nbsp;d2,d0&nbsp;;&nbsp;flip&nbsp;buttons&nbsp;being&nbsp;pressed&nbsp;now</p>
+<p>&nbsp;move.b&nbsp;d1,(MEM_CONTROL_HELD)&nbsp;;&nbsp;store&nbsp;held&nbsp;buttons</p>
+<p>&nbsp;and.b&nbsp;d1,d0&nbsp;;&nbsp;AND&nbsp;with&nbsp;current&nbsp;buttons</p>
+<p>&nbsp;move.b&nbsp;d0,(MEM_CONTROL_PRESSED)&nbsp;;&nbsp;store&nbsp;pressed&nbsp;buttons</p>
+<p>&nbsp;;&nbsp;if&nbsp;this&nbsp;is&nbsp;a&nbsp;3&nbsp;button&nbsp;controller&nbsp;skip&nbsp;the&nbsp;remaining&nbsp;steps</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_1_6BUTTON),d0&nbsp;;&nbsp;save&nbsp;the&nbsp;value</p>
+<p>&nbsp;tst.b&nbsp;d0&nbsp;;&nbsp;is&nbsp;this&nbsp;zero?</p>
+<p>&nbsp;beq.w&nbsp;ExitReadJoypad&nbsp;;&nbsp;zero&nbsp;means&nbsp;3&nbsp;button&nbsp;controller</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;3&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;high</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE3_VBLANK)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;4&nbsp;+&nbsp;TH&nbsp;low</p>
+<p>&nbsp;;---------------------------------&nbsp;</p>
+<p>&nbsp;move.b&nbsp;#$00,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;low</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE4_VBLANK)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;5&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;---------------------------------&nbsp;</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;high</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE5_VBLANK)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;6&nbsp;+&nbsp;TH&nbsp;low</p>
+<p>&nbsp;;---------------------------------&nbsp;</p>
+<p>&nbsp;move.b&nbsp;#$00,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;low</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE6_VBLANK)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;7&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;---------------------------------&nbsp;</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;high</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),d0&nbsp;;&nbsp;get&nbsp;joypad&nbsp;data&nbsp;-&nbsp;x/y/z/mode</p>
+<p>&nbsp;move.b&nbsp;d0,(MEM_DEBUG_CYCLE7_VBLANK)</p>
+<p>&nbsp;not.b&nbsp;d0&nbsp;&nbsp;;&nbsp;flip&nbsp;bits&nbsp;so&nbsp;0&nbsp;means&nbsp;not&nbsp;pressed,&nbsp;and&nbsp;1&nbsp;means&nbsp;pressed</p>
+<p>&nbsp;and.b&nbsp;#%00001111,d0&nbsp;;&nbsp;x/y/z/mode&nbsp;are&nbsp;in&nbsp;lowest&nbsp;4&nbsp;bits</p>
+<p>&nbsp;move.b&nbsp;d0,d1&nbsp;;&nbsp;copy&nbsp;current&nbsp;buttons&nbsp;to&nbsp;d1</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_6_HELD),d2&nbsp;;&nbsp;copy&nbsp;the&nbsp;last&nbsp;previously&nbsp;read&nbsp;buttons</p>
+<p>&nbsp;eor.b&nbsp;d2,d0&nbsp;;&nbsp;flip&nbsp;buttons&nbsp;being&nbsp;pressed&nbsp;now</p>
+<p>&nbsp;move.b&nbsp;d1,(MEM_CONTROL_6_HELD)&nbsp;;&nbsp;store&nbsp;held&nbsp;buttons</p>
+<p>&nbsp;and.b&nbsp;d1,d0&nbsp;;&nbsp;AND&nbsp;with&nbsp;current&nbsp;buttons</p>
+<p>&nbsp;move.b&nbsp;d0,(MEM_CONTROL_6_PRESSED)&nbsp;;&nbsp;store&nbsp;pressed&nbsp;buttons</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;8&nbsp;+&nbsp;TH&nbsp;low</p>
+<p>&nbsp;;&nbsp;just&nbsp;for&nbsp;demo&nbsp;purposes&nbsp;-&nbsp;not&nbsp;needed</p>
+<p>&nbsp;;---------------------------------&nbsp;</p>
+<p>&nbsp;move.b&nbsp;#$00,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;low</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE8_VBLANK)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;set&nbsp;counter&nbsp;to&nbsp;9&nbsp;+&nbsp;TH&nbsp;high</p>
+<p>&nbsp;;&nbsp;just&nbsp;for&nbsp;demo&nbsp;purposes&nbsp;-&nbsp;not&nbsp;needed</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;high</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),(MEM_DEBUG_CYCLE9_VBLANK)</p>
+<p>&nbsp;;---------------------------------</p>
+<p>&nbsp;;&nbsp;done&nbsp;reading&nbsp;controller</p>
+<p>&nbsp;;---------------------------------</p>
+<p>ExitReadJoypad:</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Here's what the final product looks like:</p>
+
+<p><img src="6ButtonControllerDemo.png" alt="6 button controller test" class="img-fluid d-block mx-auto"/></p>
+
+<p>It's handy for verifying what exactly is sent during each cycle - see what I mean:</p>
+
+<div class="row">
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-u.png" alt="Pins - up"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-d.png" alt="Pins - down"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-l.png" alt="Pins - left"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-r.png" alt="Pins - right"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-s.png" alt="Pins - start"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-m.png" alt="Pins - mode"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-a.png" alt="Pins - A"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-b.png" alt="Pins - B"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-c.png" alt="Pins - C"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-x.png" alt="Pins - X"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-y.png" alt="Pins - Y"></p></p></div>
+
+<div class="col-md-4"><p><img class="img-fluid" src="pins-z.png" alt="Pins - Z"></p></p></div>
+
+</div>
+
+<p>Please note - the red boxes were added for illustrative purposes and don't appear in the demo ROM.</p>
+
+<p>After testing this with various things, here's a chart I'm calling &quot;why Sega Genesis programming will turn you into a crazy person&quot;:</p>
+
+<p><img src="ControllerDebug.png" alt="Controller debug" class="img-fluid d-block mx-auto"/></p>
+
+
+<p>The part that's really messing with my mind is how reading the controller during initialization (shortly after passing the Genesis &quot;security&quot; step) produces different results than reading it during vblank. Trust me, I tried to rule out that I was doing something wrong. I tried copying &amp; pasting identical code into both places and got the same result.</p>
+
+<p>Cycles 4,6,8 just flat-out produce different results for 6 button controllers at very-near-startup vs during normal game play. Since 3 button controllers don't behave this way it must be something different in the 6 button hardware. I know that the mode button must be pressed during startup to flip the controller into 3 button mode. It doesn't flip it every time it's pressed, I'm sure this confused people badly. I have to assume then that during this brief period the 6 button controller is in a different state.</p>
+
+<p>There are two other important things this illustrates:</p>
+
+<p>1) Gens is a fun emulator and all that stuff. It's fast and will run any crazy thing you throw at it. Anecdotally I've never built a test ROM it won't run. The tradeoff to this is it's not an especially accurate emulator.</p>
+
+<p>2) The mode button can be used like a regular button but you risk having issues on clone systems. I get it. Some clone systems have hardwired 6 button controllers and need to be compatible with the small assortment of games that break with them. Rather than include a mode button, which might be confusing to non-hardcore-Genesis-people, they implemented a novel solution. They made the mode button constantly pressed. It's an interesting workaround. So games explicitly looking for the mode button would find it I guess? That's not really how the mode button is intended to work, it's meant to be detected by the controller hardware and not game software. How could a game that predates 6 button controllers be expected to look for it? There are no commercial games that use mode like a regular button so nothing breaks. I'm just not sure this makes anything <i>work</i> either.</p>
+
+
+
+<p class="lead">What's Next?</p>
+
+
+<p>I think next I'll try to decipher Team Player support. I own two of them so maybe I'll really lose my mind and try to figure out how 8-player support might work.</p>
+
+
+
+<p class="lead">Download</p>
+
+<p><a href="6ButtonControllerDemo.zip">Demo ROM</a> - this turned out to be pretty handy for testing controller configuration on emulators</p>
+<p><a href="6ButtonControllerDemo-src.zip">Source code</a> - at least until I move it to Github</p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/save-load/">&lt;- Sega Genesis Programming Part 18: Saving &amp; Loading</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/">Part 20: Palette and Tile Generation -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+
+
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/tiles-sprites/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissprites.png" alt="Sega Genesis Programming Part 2: Tiles and Sprites"></p><p>Sega Genesis Programming Part 2: Tiles and Sprites</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesispalettetilegen.png" alt="Sega Genesis Programming Part 20: Palette and Tile Generation"></p><p>Sega Genesis Programming Part 20: Palette and Tile Generation</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

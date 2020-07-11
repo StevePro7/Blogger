@@ -1,0 +1,724 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 15: Inventory</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 15: Inventory" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 15: inventory</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/selections/">&lt;- Sega Genesis Programming Part 14: Selections</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scripted-events/">Part 16: Scripted Events -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Goals</p>
+
+<p>This little article has significantly fewer pictures than the previous one, sorry if that disappoints/bores you. There are almost 500 lines of code in here if that does anything for you.</p>
+
+<p>Today we'll be adding inventory management to the demo, this includes:</p>
+
+<p>1) Adding &amp; removing items from the player's inventory</p>
+
+<p>2) Displaying a give/take dialog where the player can choose items</p>
+
+<p>3) Responding to a selection from the previous step</p>
+
+<p>Alright, let's get going...</p>
+
+<p class="lead">Inventory management</p>
+
+<p>First off is defining the maximum number of items the player can carry. This is small for two reasons: laziness. Well, mostly laziness. I was going to add an excuse that it makes the game more realistic if the player can't carry 99 potions but I assume most of you would see through that.</p>
+
+<div class="well">
+<p>MAX_ITEMS=$04&nbsp;; maximum number of items the player can carry</p>
+</div>
+
+<p>Next is reserving some places in memory to store the item list:</p>
+
+<div class="well">
+<p>;-----------------</p>
+<p>; player inventory</p>
+<p>;-----------------</p>
+<p>MEM_PLAYER_ITEM_COUNT=$FFFF002C ; how many items the player is holding</p>
+<p>MEM_PLAYER_ITEMS=$FFFF002E ; item list</p>
+</div>
+
+<p>Now we need the basic add &amp; remove subroutines. Add is first for hopefully obvious reasons:</p>
+
+<div class="well">
+<p>;---------------------------------------</p>
+<p>; adds an item to the player's inventory </p>
+<p>; d7 = item to add</p>
+<p>; d6 is modified by this subroutine</p>
+<p>; a1 is modified by this subroutine</p>
+<p>;---------------------------------------</p>
+<p>AddItem:</p>
+<p>&nbsp;move.w&nbsp;(MEM_PLAYER_ITEM_COUNT),d6&nbsp;; copy current item count to d6</p>
+<p>&nbsp;cmpi.w&nbsp;#MAX_ITEMS,d6&nbsp;; check if inventory is full </p>
+<p>&nbsp;bge.s&nbsp;ExitAddItem&nbsp;; branch if already at the limit</p>
+<p>&nbsp;addq&nbsp;#$1,(MEM_PLAYER_ITEM_COUNT)&nbsp;; increment item count</p>
+<p>&nbsp;mulu.w&nbsp;#WORD_SIZE,d6&nbsp;; find index of location to write the item</p>
+<p>&nbsp;lea MEM_PLAYER_ITEMS,a1&nbsp;; point to start of item list</p>
+<p>&nbsp;move.w&nbsp;d7,(a1,d6)&nbsp;; copy the item&nbsp;</p>
+<p>ExitAddItem:</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Before we can remove an item we need a subroutine to determine if the player is carrying it in the first place. &quot;Remove by index&quot; is an easy enough subroutine to add but not as useful. There are a dozen scenarios where removing an item by item ID makes sense. Anyway, this subroutine checks if the player has an item and if so returns the index. -1 (FFFF) is returned if the item is not found.</p>
+
+<div class="well">
+<p>;---------------------------------------------------</p>
+<p>; tests if the player has an item</p>
+<p>; d7 = item to look for</p>
+<p>; d6 will have index of item if found, otherwise FFFF</p>
+<p>; d5 is modified by this subroutine</p>
+<p>; a1 is modified by this subroutine</p>
+<p>;-----------------------------------------------------</p>
+<p>HasItem:</p>
+<p>&nbsp;move.w&nbsp;(MEM_PLAYER_ITEM_COUNT),d6&nbsp;; copy item count to d6</p>
+<p>&nbsp;tst.w&nbsp;d6&nbsp;; test if item count is zero</p>
+<p>&nbsp;beq.s&nbsp;HasItemNotFound&nbsp;; item count is zero, return FFFF and exit</p>
+<p>&nbsp;subq&nbsp;#$1,d6&nbsp;; decrement for zero-based list</p>
+<p>&nbsp;move.w&nbsp;d6,d5&nbsp;; copy item count to d5</p>
+<p>&nbsp;mulu.w&nbsp;#WORD_SIZE,d5&nbsp;; multiply to get the index of the last item</p>
+<p>&nbsp;lea MEM_PLAYER_ITEMS,a1&nbsp;; point to start of item list</p>
+<p>&nbsp;adda.l&nbsp;d5,a1&nbsp;; move a1 to last item in the list</p>
+<p>HasItemLoop:</p>
+<p>&nbsp;cmp.w&nbsp;(a1),d7&nbsp;; test if this is the item we're looking for</p>
+<p>&nbsp;beq.s&nbsp;ExitHasItem&nbsp;; branch if it is</p>
+<p>&nbsp;suba.l&nbsp;#WORD_SIZE,a1&nbsp;; move to next item</p>
+<p>&nbsp;dbra&nbsp;d6,HasItemLoop&nbsp;; loop to the end of the list</p>
+<p>HasItemNotFound:</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,d6&nbsp;; set FFFF as the return value</p>
+<p>ExitHasItem:</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>Last is the subroutine to remove an item, which calls the previous subroutine:</p>
+
+<div class="well">
+<p>;--------------------------------------------</p>
+<p>; removes an item from the player's inventory</p>
+<p>; d7 = item to remove</p>
+<p>; d5 and d6 are modified by this subroutine</p>
+<p>; a1 is modified by this subroutine</p>
+<p>;--------------------------------------------</p>
+<p>RemoveItem:</p>
+<p>&nbsp;bsr.w&nbsp;HasItem&nbsp;; test if the item is in the inventory</p>
+<p>&nbsp;cmpi.w&nbsp;#$FFFF,d6&nbsp;; test if the item was found</p>
+<p>&nbsp;beq.s&nbsp;ExitRemoveItem&nbsp;; exit if it was not</p>
+<p>&nbsp;subq&nbsp;#$1,(MEM_PLAYER_ITEM_COUNT)&nbsp;; decrement item count</p>
+<p>&nbsp;move.w&nbsp;d6,d5&nbsp;; copy item index to d5</p>
+<p>&nbsp;mulu.w&nbsp;#WORD_SIZE,d5&nbsp;; multiply to get the index of the removed item</p>
+<p>&nbsp;lea MEM_PLAYER_ITEMS,a1&nbsp;; point to start of item list</p>
+<p>&nbsp;adda.l&nbsp;d5,a1&nbsp;; move a1 to the removed item</p>
+<p>&nbsp;move.w&nbsp;#$0000,(a1)&nbsp;; clear removed item</p>
+<p>&nbsp;move.w&nbsp;(MEM_PLAYER_ITEM_COUNT),d5&nbsp;; copy item count to d5</p>
+<p>&nbsp;sub.w&nbsp;d6,d5&nbsp;; subtract item index from count to get loop control</p>
+<p>&nbsp;beq.s&nbsp;ExitRemoveItem&nbsp;; exit if the only item in inventory was removed</p>
+<p>RemoveItemLoop:</p>
+<p>&nbsp;move.w&nbsp;(WORD_SIZE,a1),(a1)&nbsp;; copy item +1 to current item</p>
+<p>&nbsp;adda.l&nbsp;#WORD_SIZE,a1&nbsp;; move to next item</p>
+<p>&nbsp;move.w&nbsp;#$0000,(a1)&nbsp;; clear item slot&nbsp;</p>
+<p>&nbsp;dbra&nbsp;d5,RemoveItemLoop&nbsp;; loop to next item</p>
+<p>ExitRemoveItem:</p>
+<p>&nbsp;rts </p>
+
+</div>
+
+<p>With the basic plumbing out of the way we can move on to the slightly more difficult part...</p>
+
+<p class="lead">Item dialog</p>
+
+<p>In previous articles we built dialogs with two and three selections. We now need a dialog that displays four selections. This magical number is based on the number of items in the player's inventory. Although it could page to fit more if needed. It will also be used when the player selects &quot;Take&quot; from the A button menu to present them with a list of items to choose. Also, I think it will be helpful at some point to have a dialog that gives the player four choices. Like in a battle it could show options like: Fight, Item, Defend, or Wet Pants.</p>
+
+<p>Step one is adding some new dialog flags and renaming a couple others:</p>
+
+<div class="well">
+<p>DIALOG_FLAG_STYLE_ITEM_MENU=$15&nbsp;; item menu dialog</p>
+<p>DIALOG_FLAG_STYLE_MENU=$16&nbsp;; overworld menu style dialog</p>
+<p>DIALOG_FLAG_STYLE_TEXT_4CHOICE=$17&nbsp;; dialog has text with selection at the end</p>
+<p>DIALOG_FLAG_STYLE_TEXT_2CHOICE=$18&nbsp;; dialog has text with selection at the end </p>
+</div>
+
+<p>DIALOG_FLAG_STYLE_TEXT_4CHOICE is used mostly when the selector sprite is moved. DIALOG_FLAG_STYLE_ITEM_MENU tells the ProcessDialog subroutine to draw a list of items. It also changes the values set when the dialog is closed.</p>
+
+<p>For ProcessDialog to handle items we need three new variables. We need a pointer to a list of items, a counter of where we are in drawing that list, and also a place to store the item selected.</p>
+
+<div class="well">
+<p>MEM_ACTIVE_ITEM=$FFFF001A&nbsp;; item that is currently being used</p>
+<p>[...]</p>
+<p>MEM_DIALOG_ITEM_LIST=$FFFF0046&nbsp;; pointer to location of item list to display</p>
+<p>MEM_DIALOG_ITEM_INDEX=$FFFF004A&nbsp;; track which item in the list is being drawn </p>
+</div>
+
+<p>The nice thing about MEM_DIALOG_ITEM_LIST is that it can either point to an address in the ROM or in memory so it can be used to display static items or what the player is currently carrying.</p>
+
+<p>Now we need some items. Since the player starts off close to the magazine rack, and I'm incredibly lazy, the first items will be magazines. This requires creating some item IDs, names for the items, and a lookup table for the names:</p>
+
+<div class="well">
+<p>;-----------------------------------</p>
+<p>; items</p>
+<p>;-----------------------------------</p>
+<p>OBJ_ITEM_BASE=$3000</p>
+<p>OBJ_ITEM_NOTHING=OBJ_ITEM_BASE</p>
+<p>OBJ_ITEM_MAG_GAMEPRO=OBJ_ITEM_BASE+1</p>
+<p>OBJ_ITEM_MAG_EGM=OBJ_ITEM_BASE+2</p>
+<p>OBJ_ITEM_MAG_ANTIC=OBJ_ITEM_BASE+3</p>
+<p>OBJ_ITEM_MAG_ANALOG=OBJ_ITEM_BASE+4</p>
+<p>[...]</p>
+<p>ItemNameNothing:</p>
+<p>&nbsp;dc.b&nbsp;&quot;Nothing&quot;,ITEMNAMEEND</p>
+<p></p>
+<p>ItemNameMagGamePro:</p>
+<p>&nbsp;dc.b&nbsp;&quot;GamePro&quot;,ITEMNAMEEND</p>
+<p></p>
+<p>ItemNameMagEGM:</p>
+<p>&nbsp;dc.b&nbsp;&quot;EGM&quot;,ITEMNAMEEND</p>
+<p></p>
+<p>ItemNameMagAntic:</p>
+<p>&nbsp;dc.b&nbsp;&quot;Antic&quot;,ITEMNAMEEND</p>
+<p></p>
+<p>ItemNameMagAnalog:</p>
+<p>&nbsp;dc.b&nbsp;&quot;Analog&quot;,ITEMNAMEEND</p>
+<p>[...]</p>
+<p>ItemNameTable:</p>
+<p>&nbsp;;OBJ_ITEM_NOTHING</p>
+<p>&nbsp;dc.l&nbsp;ItemNameNothing</p>
+<p>&nbsp;;OBJ_ITEM_MAG_GAMEPRO</p>
+<p>&nbsp;dc.l&nbsp;ItemNameMagGamePro</p>
+<p>&nbsp;;OBJ_ITEM_MAG_EGM</p>
+<p>&nbsp;dc.l&nbsp;ItemNameMagEGM</p>
+<p>&nbsp;;OBJ_ITEM_MAG_ANTIC</p>
+<p>&nbsp;dc.l&nbsp;ItemNameMagAntic</p>
+<p>&nbsp;;OBJ_ITEM_MAG_ANALOG</p>
+<p>&nbsp;dc.l&nbsp;ItemNameMagAnalog</p>
+</div>
+
+<p>We also need a list that will be referenced in ProcessDialog. I guess I should figure out how to store this in the scene definition or something. For now it's hard-coded in some random spot:</p>
+
+<div class="well">
+<p>ItemListVBMagazine:</p>
+<p>&nbsp;dc.w&nbsp;OBJ_ITEM_MAG_GAMEPRO</p>
+<p>&nbsp;dc.w&nbsp;OBJ_ITEM_MAG_EGM</p>
+<p>&nbsp;dc.w&nbsp;OBJ_ITEM_MAG_ANTIC</p>
+<p>&nbsp;dc.w&nbsp;OBJ_ITEM_MAG_ANALOG</p>
+</div>
+
+<p>Here's some new text that will come up later. ITEMNAMESTART is a new constant that will be used to tell ProcessDialog to draw the next item in the list.</p>
+
+<div class="well">
+<p>ItemMenu:</p>
+<p>&nbsp;dc.b&nbsp;&quot;{&quot;,ITEMNAMESTART</p>
+<p>;-------------------------</p>
+<p>; take menus and messages</p>
+<p>;-------------------------</p>
+<p>TakeMenuFull:</p>
+<p>&nbsp;dc.b&nbsp;&quot;You can't carry any&quot;,LF</p>
+<p>&nbsp;dc.b&nbsp;&quot;more items.&quot;,ETX</p>
+<p>TakeMenuMagazines:</p>
+<p>&nbsp;dc.b&nbsp;&quot;Which magazine do you&quot;,LF</p>
+<p>&nbsp;dc.b&nbsp;&quot;want to take?        ^&quot;,FF</p>
+<p>&nbsp;dc.b&nbsp;&quot;{&quot;,ITEMNAMESTART</p>
+<p>TakeMagazinesOption0:</p>
+<p>&nbsp;dc.b&nbsp;&quot;You selected option 0.&quot;,ETX</p>
+<p>TakeMagazinesOption1:</p>
+<p>&nbsp;dc.b&nbsp;&quot;You selected option 1.&quot;,ETX</p>
+<p>TakeMagazinesOption2:</p>
+<p>&nbsp;dc.b&nbsp;&quot;You selected option 2.&quot;,ETX</p>
+<p>TakeMagazinesOption3:</p>
+<p>&nbsp;dc.b&nbsp;&quot;You selected option 3.&quot;,ETX</p> 
+</div>
+
+<p>ProcessDialog is doing the most complicated work, and it's not terribly complicated at all. When it encouters the ITEMNAMESTART character it looks up the name of the next item and sets it as the next text to draw. When it encounters the ITEMNAMEEND character it determines whether there are more items to draw. If so it resets the text back to ItemMenu, otherwise it moves to the next dialog state.</p>
+
+<div class="well">
+<p>ProcessDialogTextDrawing:</p>
+<p>[...]</p>
+<p>TestItemNameStart:</p>
+<p>&nbsp;cmpi.b&nbsp;#ITEMNAMESTART,d6&nbsp;; start of an item name?</p>
+<p>&nbsp;bne.s&nbsp;TestItemNameEnd&nbsp;; not the ITEMNAMESTART character, next test</p>
+<p>&nbsp;;------------------------------------------</p>
+<p>&nbsp;; build text for next item name in the list</p>
+<p>&nbsp;;------------------------------------------</p>
+<p>&nbsp;; lookup the object ID for the next item&nbsp;</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_ITEM_LIST),a6&nbsp;; copy address of item list to a6</p>
+<p>&nbsp;move.w&nbsp;(MEM_DIALOG_ITEM_INDEX),d6&nbsp;; copy current item index to d6</p>
+<p>&nbsp;mulu.w&nbsp;#WORD_SIZE,d6&nbsp;; multiply by WORD_SIZE to get the offset</p>
+<p>&nbsp;adda.l&nbsp;d6,a6&nbsp;; add offset</p>
+<p>&nbsp;move.w&nbsp;(a6),d6&nbsp;; copy item ID to d6</p>
+<p>&nbsp;andi.w&nbsp;#$0FFF,d6&nbsp;; clear the base value</p>
+<p>&nbsp;; object ID is in d6 now, find the address for the text</p>
+<p>&nbsp;mulu.w&nbsp;#LWORD_SIZE,d6&nbsp;; multiply by LWORD_SIZE to get the offset</p>
+<p>&nbsp;lea&nbsp;ItemNameTable,a6&nbsp;; point a6 to item name table</p>
+<p>&nbsp;adda.l&nbsp;d6,a6&nbsp;; add offset</p>
+<p>&nbsp;move.l&nbsp;(a6),(MEM_DIALOG_TEXT)&nbsp;; copy value at a6 to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bra.w&nbsp;ExitProcessDialog&nbsp;; exit</p>
+<p>TestItemNameEnd:</p>
+<p>&nbsp;cmpi.b&nbsp;#ITEMNAMEEND,d6&nbsp;; end of an item name?</p>
+<p>&nbsp;bne.s&nbsp;TestLF&nbsp;; not the ITEMNAMEEND character, next test</p>
+<p>&nbsp;;---------------------------------------------</p>
+<p>&nbsp;; determine if there are more items to display</p>
+<p>&nbsp;;---------------------------------------------</p>
+<p>&nbsp;addq&nbsp;#$1,(MEM_DIALOG_ITEM_INDEX) ; increment item name</p>
+<p>&nbsp;cmpi.w&nbsp;#MAX_ITEMS,(MEM_DIALOG_ITEM_INDEX)&nbsp;; at max items?</p>
+<p>&nbsp;bge.s&nbsp;ProcessDialogTextEnd&nbsp;; branch if at max items</p>
+<p>&nbsp;; test if the next item is OBJ_ITEM_NOTHING</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_ITEM_LIST),a6&nbsp;; copy address of item list to a6</p>
+<p>&nbsp;move.w&nbsp;(MEM_DIALOG_ITEM_INDEX),d6&nbsp;; copy current item index to d6</p>
+<p>&nbsp;mulu.w&nbsp;#WORD_SIZE,d6&nbsp;; multiply by WORD_SIZE to get the offset</p>
+<p>&nbsp;adda.l&nbsp;d6,a6&nbsp;; add offset</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_ITEM_NOTHING,(a6)&nbsp;; test if value at a6 = OBJ_ITEM_NOTHING</p>
+<p>&nbsp;beq.s&nbsp;ProcessDialogTextEnd&nbsp;; branch if next item is OBJ_ITEM_NOTHING</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,(a6)&nbsp;; test if value at a6 = 0000</p>
+<p>&nbsp;beq.s&nbsp;ProcessDialogTextEnd&nbsp;; branch if next item is OBJ_ITEM_NOTHING</p>
+<p>&nbsp;;----------------------------</p>
+<p>&nbsp;; setup to draw the next item</p>
+<p>&nbsp;;----------------------------</p>
+<p>&nbsp;lea&nbsp;ItemMenu,a6&nbsp;; point a6 to the item menu text</p>
+<p>&nbsp;move.l&nbsp;a6,(MEM_DIALOG_TEXT)&nbsp;; copy a6 to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bsr.w&nbsp;SetItemMenuDrawLocation&nbsp;; set the draw location of the next item</p>
+ &nbsp;bra.w&nbsp;ExitProcessDialog </p>
+<p>[...]</p>
+
+</div>
+
+<p>There's also some work to set where the next item name should be drawn in the dialog.</p>
+
+<div class="well">
+<p>SetItemMenuDrawLocation:</p>
+<p>&nbsp;move.w&nbsp;(MEM_DIALOG_ITEM_INDEX),d6&nbsp;; copy index of current item to d6</p>
+<p>&nbsp;;test for 0001</p>
+<p>&nbsp;cmpi.w&nbsp;#$0001,d6&nbsp;; is it one?</p>
+<p>&nbsp;bne.s&nbsp;.1&nbsp;; branch if not</p>
+<p>&nbsp;; move down 2 rows</p>
+<p>&nbsp;move.l&nbsp;#(VDP_VRAM_WRITE_A+DIALOG_ROWCOL+$01020000),(MEM_DIALOG_VPD)</p>
+<p>&nbsp;bra.s&nbsp;ExitSetItemMenuDrawLocation&nbsp;; exit</p>
+<p>.1&nbsp;; test for 0002</p>
+<p>&nbsp;cmpi.w&nbsp;#$0002,d6&nbsp;; is it two?</p>
+<p>&nbsp;bne.s&nbsp;.2&nbsp;; branch if not</p>
+<p>&nbsp;; move down 1 row</p>
+<p>&nbsp;move.l&nbsp;#(VDP_VRAM_WRITE_A+DIALOG_ROWCOL+$00980000),(MEM_DIALOG_VPD)</p>
+<p>&nbsp;bra.s&nbsp;ExitSetItemMenuDrawLocation&nbsp;; exit</p>
+<p>.2&nbsp;; test for 0003</p>
+<p>&nbsp;cmpi.w&nbsp;#$0003,d6&nbsp;; is it theee?</p>
+<p>&nbsp;bne.s&nbsp;ExitSetItemMenuDrawLocation&nbsp;; exit if not</p>
+<p>&nbsp;; move down 1 row and column</p>
+<p>&nbsp;move.l&nbsp;#(VDP_VRAM_WRITE_A+DIALOG_ROWCOL+$01180000),(MEM_DIALOG_VPD)</p>
+<p>ExitSetItemMenuDrawLocation:</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Moving the selector sprite needs to account for the new four choice style. It also needs to account for the possibility that there might only be 1-3 items in the list.</p>
+
+<div class="well">
+<p>FourChoiceLeftRight:</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_STYLE_ITEM_MENU,d7&nbsp;; test if this is an item menu</p>
+<p>&nbsp;beq.s&nbsp;.1&nbsp;; not an item menu, branch</p>
+<p>&nbsp;; MEM_DIALOG_ITEM_INDEX has the total number of items in dialog +1</p>
+<p>&nbsp;cmpi.w&nbsp;#$0002,(MEM_DIALOG_ITEM_INDEX)&nbsp;; are there 2 or fewer items?</p>
+<p>&nbsp;ble.s&nbsp;ExitFourChoiceLeftRight&nbsp;; exit if 2 or fewer</p>
+<p>&nbsp;; there are 3 or 4 items, 4 items is fine</p>
+<p>&nbsp;cmpi.w&nbsp;#$0004,(MEM_DIALOG_ITEM_INDEX)&nbsp;; are there 4 items?</p>
+<p>&nbsp;bge.s&nbsp;.1&nbsp;; if so continue</p>
+<p>&nbsp;; three items is the only possibility now</p>
+<p>&nbsp;cmpi.w&nbsp;#$0001,(MEM_MENU_SELECTION)&nbsp;; is the 2nd item selected?</p>
+<p>&nbsp;beq.s&nbsp;ExitFourChoiceLeftRight&nbsp;; if so exit</p>
+<p>.1</p>
+<p>&nbsp;cmpi.w&nbsp;#$0002,(MEM_MENU_SELECTION)&nbsp;; test if <2</p>
+<p>&nbsp;blt.s&nbsp;.2&nbsp;; MEM_MENU_SELECTION is > 2</p>
+<p>&nbsp;subq&nbsp;#$0002,(MEM_MENU_SELECTION)&nbsp;; subtract 2 to rollover</p>
+<p>&nbsp;bra.s&nbsp;ExitFourChoiceLeftRight&nbsp;; exit</p>
+<p>.2</p>
+<p>&nbsp;addq&nbsp;#$0002,(MEM_MENU_SELECTION)&nbsp;; add 2 to move right</p>
+<p>ExitFourChoiceLeftRight:</p>
+<p>&nbsp;rts</p>
+<p>FourChoiceUpDown:</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_STYLE_ITEM_MENU,d7&nbsp;; test if this is an item menu</p>
+<p>&nbsp;beq.s&nbsp;.1&nbsp;; not an item menu, branch</p>
+<p>&nbsp;; MEM_DIALOG_ITEM_INDEX has the total number of items in dialog +1</p>
+<p>&nbsp;cmpi.w&nbsp;#$0001,(MEM_DIALOG_ITEM_INDEX)&nbsp;; is there only 1 item?</p>
+<p>&nbsp;beq.s&nbsp;ExitFourChoiceFourChoiceUpDown&nbsp;; exit if only 1 item</p>
+<p>&nbsp;; there are 3 or 4 items, 4 items is fine</p>
+<p>&nbsp;cmpi.w&nbsp;#$0004,(MEM_DIALOG_ITEM_INDEX)&nbsp;; are there 4 items?</p>
+<p>&nbsp;bge.s&nbsp;.1&nbsp;; if so continue</p>
+<p>&nbsp;; three items is the only possibility now</p>
+<p>&nbsp;cmpi.w&nbsp;#$0002,(MEM_MENU_SELECTION)&nbsp;; is the 3rd item selected?</p>
+<p>&nbsp;beq.s&nbsp;ExitFourChoiceFourChoiceUpDown&nbsp;; if so exit</p>
+<p>.1</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,(MEM_MENU_SELECTION)&nbsp;; test if 0</p>
+<p>&nbsp;beq.s&nbsp;FourChoiceUpDownAdd&nbsp;; MEM_MENU_SELECTION is 0</p>
+<p>&nbsp;cmpi.w&nbsp;#$0002,(MEM_MENU_SELECTION)&nbsp;; test if 2</p>
+<p>&nbsp;beq.s&nbsp;FourChoiceUpDownAdd&nbsp;; MEM_MENU_SELECTION is 2</p>
+<p>&nbsp;subq&nbsp;#$0001,(MEM_MENU_SELECTION)&nbsp;; subtract 1 to rollover</p>
+<p>&nbsp;bra.s&nbsp;ExitFourChoiceFourChoiceUpDown&nbsp;; exit</p>
+<p>FourChoiceUpDownAdd:</p>
+<p>&nbsp;addq&nbsp;#$0001,(MEM_MENU_SELECTION)&nbsp;; add 2 to move down</p>
+<p>ExitFourChoiceFourChoiceUpDown: </p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>When the player confirms a menu selection there's a little new work to determine if this is an item list and if so to store the selected item.</p>
+
+<div class="well">
+
+<p>ConfirmMenuSelection:</p>
+<p>[...]</p>
+<p>ConfirmMenuSelection4Choice:</p>
+<p>&nbsp;move.w&nbsp;(MEM_MENU_SELECTION),(MEM_MENU_RESPONSE)&nbsp;; selection->response</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_STYLE_ITEM_MENU,d7&nbsp;; test if this is an item menu</p>
+<p>&nbsp;beq.s&nbsp;ExitConfirmMenuSelection&nbsp;; not an item menu, branch</p>
+<p>&nbsp;; store selected item in MEM_ACTIVE_ITEM&nbsp;</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_ITEM_LIST),a6&nbsp;; copy address of item list to a6</p>
+<p>&nbsp;move.w&nbsp;(MEM_MENU_SELECTION),d6&nbsp;; copy current item index to d6</p>
+<p>&nbsp;mulu.w&nbsp;#WORD_SIZE,d6&nbsp;; multiply by WORD_SIZE to get the offset</p>
+<p>&nbsp;adda.l&nbsp;d6,a6&nbsp;; add offset</p>
+<p>&nbsp;move.w&nbsp;(a6),(MEM_ACTIVE_ITEM)&nbsp;; copy item ID to d6 </p>
+<p>[...]</p>
+
+</div>
+
+<p>The end result is this little dialog showing a list of items:</p>
+
+<p><img src="item-menu.png" alt="Item menu" class="img-fluid d-block mx-auto"/></p>
+
+<p>That was fun, OK not a lot of fun to debug but overall this wasn't too bad. Let's wrap this up by...</p>
+
+<p class="lead">Responding to item selections</p>
+
+<p>The ProcessAction subroutine was previously built to handle forwarding actions to the appropriate day/scene/action handler. One (of possibly many) flaws with this approach is there are some actions that don't change based on the day &amp; scene. Giving an item is one of them, or at least the initial act of displaying the list of items to give. There needs to be a default handler for this, it needs to be smart enough to determine if the player is trying to open the Give menu or has just selected an item in it. That's pretty easy to sort out:</p>
+
+<div class="well">
+
+<p>ProcessAction:</p>
+<p>&nbsp;bsr.w&nbsp;ResetDialog&nbsp;; reset the dialog</p>
+<p>&nbsp;; ----------------------------------------</p>
+<p>&nbsp;; test if a default handler should be used</p>
+<p>&nbsp;; ----------------------------------------</p>
+<p>&nbsp;cmpi.w&nbsp;#ACTION_TAKE_GIVE,(MEM_ACTION_ID)&nbsp;; test if this is a give action</p>
+<p>&nbsp;bne.s&nbsp;ProcessActionBuildActionTableOffset&nbsp;; not give action, branch</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTION_TARGET_OBJID),d7&nbsp;; copy action target to d7</p>
+<p>&nbsp;andi.w&nbsp;#OBJ_NPC_BASE,d7&nbsp;; and against base npc ID</p>
+<p>&nbsp;beq.s&nbsp;.1&nbsp;; target is not an NPC</p>
+<p>&nbsp;; --------------------------------------------</p>
+<p>&nbsp;; default handler for giving an item to an NPC</p>
+<p>&nbsp;; --------------------------------------------</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,(MEM_ACTIVE_ITEM)&nbsp;; test if there is an active item</p>
+<p>&nbsp;bne.s&nbsp;ProcessActionBuildActionTableOffset&nbsp;; responding to a give menu</p>
+<p>&nbsp;bsr.w&nbsp;DefaultActionGive&nbsp;; otherwise launch default action</p>
+<p>&nbsp;bra.s&nbsp;ExitProcessAction&nbsp;; exit</p>
+<p>.1&nbsp;; test if target is scenery</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTION_TARGET_OBJID),d7&nbsp;; copy action target to d7</p>
+<p>&nbsp;andi.w&nbsp;#OBJ_SCENE_BASE,d7&nbsp;; and against base npc ID</p>
+<p>&nbsp;beq.s&nbsp;ProcessActionBuildActionTableOffset&nbsp;; target is not scenery</p>
+<p>&nbsp;cmpi.w&nbsp;#MAX_ITEMS,(MEM_PLAYER_ITEM_COUNT)&nbsp;; carrying max items?</p>
+<p>&nbsp;bne.s&nbsp;ProcessActionBuildActionTableOffset&nbsp;; branch if < max</p>
+<p>&nbsp;bsr.w&nbsp;DefaultActionInventoryFull&nbsp;; launch default action</p>
+<p>&nbsp;bra.s&nbsp;ExitProcessAction&nbsp;; exit</p>
+<p>ProcessActionBuildActionTableOffset:</p>
+<p>&nbsp;bsr.w&nbsp;BuildActionTableOffset&nbsp;; build action table offset</p>
+<p>&nbsp;lea&nbsp;ActionTable,a5&nbsp;; point to action table</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTION_TABLE_OFFSET),a5&nbsp;; move to offset location</p>
+<p>&nbsp;move.l&nbsp;(a5),a6&nbsp;; a5 has the address of the subroutine to jump to</p>
+<p>&nbsp;jsr&nbsp;(a6)&nbsp;; jump to location of code to process this event</p>
+<p>ExitProcessAction:</p>
+<p>&nbsp;move.l&nbsp;(MEM_GAME_STATE),d7&nbsp;; copy current game state to d7</p>
+<p>&nbsp;bclr.l&nbsp;#STATE_FLAG_ACTION,d7 ; clear action flag</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_GAME_STATE)&nbsp;; save it back</p>
+<p>&nbsp;rts </p>
+
+</div>
+
+<p>The default Give action then displays the menu or a message saying the player doesn't have any items. As a bonus, there's also a message if a player tries to take an item when their inventory is full.</p>
+
+<div class="well">
+<p>;--------------------------------------------------------------------</p>
+<p>; builds the give menu or displays message if the player has no items</p>
+<p>;--------------------------------------------------------------------</p>
+<p>DefaultActionGive:</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,(MEM_PLAYER_ITEM_COUNT)&nbsp;; is item count 0?</p>
+<p>&nbsp;beq.s&nbsp;DefaultActionGiveNoItems&nbsp;; branch if 0</p>
+<p>&nbsp;lea&nbsp;ItemMenu,a6&nbsp;; load dialog text</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;lea&nbsp;MEM_PLAYER_ITEMS,a6&nbsp;; load item list</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_ITEM_LIST&nbsp;; copy address to MEM_DIALOG_ITEM_LIST</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_FLAGS),d7&nbsp;; copy dialog flags to d7</p>
+<p>&nbsp;bset.l&nbsp;#DIALOG_FLAG_STYLE_TEXT_4CHOICE,d7&nbsp;; set text choice flag</p>
+<p>&nbsp;bset.l&nbsp;#DIALOG_FLAG_STYLE_ITEM_MENU,d7&nbsp;; set item menu flag</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_DIALOG_FLAGS)&nbsp;; save updated dialog flags</p>
+<p>&nbsp;bra.s&nbsp;ExitDefaultActionGive&nbsp;; exit</p>
+<p>DefaultActionGiveNoItems:</p>
+<p>&nbsp;lea&nbsp;DialogTextNoItems,a6&nbsp;; load dialog text</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>ExitDefaultActionGive:</p>
+<p>&nbsp;rts</p>
+
+<p>;-------------------------------------------------------</p>
+<p>; displays a message if the player can't hold more items</p>
+<p>;-------------------------------------------------------</p>
+<p>DefaultActionInventoryFull:</p>
+<p>&nbsp;lea&nbsp;TakeMenuFull,a6&nbsp;; load dialog text</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>ExitDefaultActionInventoryFull:</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>In the action script there are two ways we can respond to a Give/Take action. We can look at the selected index in the dialog and display a message. This code example does that. Another option is responding based on the item ID that was selected. This is more useful in 99% of cases but I coded the other one first (and again am lazy). This also shows how to handle giving an item to an NPC. </p>
+
+<div class="well">
+<p>Day00Scene00Action02:&nbsp;; ACTION_TAKE_GIVE</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTION_TARGET_OBJID),d6&nbsp;; copy action target to d6</p>
+<p>&nbsp;andi.w&nbsp;#OBJ_SCENE_BASE,d6&nbsp;; and against base scene ID</p>
+<p>&nbsp;beq.w&nbsp;Day00Scene00Action02DefaultGive&nbsp;; not scenery</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTION_TARGET_OBJID),d6&nbsp;; copy action target to d6</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_SCENE_VB_MAGS,d6&nbsp;; is the magazine rack the target?</p>
+<p>&nbsp;bne.w&nbsp;Day00Scene00Action02DefaultTake&nbsp;; not the magazine rack, branch</p>
+<p>&nbsp;; check if we are coming back from a take menu or need to open one&nbsp;</p>
+<p>&nbsp;cmpi.w&nbsp;#DIALOG_NO_RESPONSE,(MEM_MENU_RESPONSE)&nbsp;; test response</p>
+<p>&nbsp;beq.s&nbsp;.5&nbsp;; branch if no response</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,(MEM_MENU_RESPONSE)&nbsp;; test response</p>
+<p>&nbsp;bne.s&nbsp;.1</p>
+<p>&nbsp;lea&nbsp;TakeMagazinesOption0,a6&nbsp;; load dialog text</p>
+<p>&nbsp;bra.s&nbsp;.4</p>
+<p>.1</p>
+<p>&nbsp;cmpi.w&nbsp;#$0001,(MEM_MENU_RESPONSE)&nbsp;; test response</p>
+<p>&nbsp;bne.s&nbsp;.2</p>
+<p>&nbsp;lea&nbsp;TakeMagazinesOption1,a6&nbsp;; load dialog text</p>
+<p>&nbsp;bra.s&nbsp;.4</p>
+<p>.2</p>
+<p>&nbsp;cmpi.w&nbsp;#$0002,(MEM_MENU_RESPONSE)&nbsp;; test response</p>
+<p>&nbsp;bne.s&nbsp;.3</p>
+<p>&nbsp;lea&nbsp;TakeMagazinesOption2,a6&nbsp;; load dialog text</p>
+<p>&nbsp;bra.s&nbsp;.4</p>
+<p>.3</p>
+<p>&nbsp;cmpi.w&nbsp;#$0003,(MEM_MENU_RESPONSE)&nbsp;; test response</p>
+<p>&nbsp;bne.s&nbsp;.3</p>
+<p>&nbsp;lea&nbsp;TakeMagazinesOption3,a6&nbsp;; load dialog text</p>
+<p>.4</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_FLAGS),d7&nbsp;; copy dialog flags to d7</p>
+<p>&nbsp;bclr.l&nbsp;#DIALOG_FLAG_STYLE_TEXT_4CHOICE,d7&nbsp;; set text choice flag</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_DIALOG_FLAGS)&nbsp;; save updated dialog flags</p>
+<p>&nbsp;bra.s&nbsp;ExitDay00Scene00Action02</p>
+<p>.5</p> 
+<p>&nbsp;lea&nbsp;TakeMenuMagazines,a6&nbsp;; load dialog text</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;lea&nbsp;ItemListVBMagazine,a6&nbsp;; load item list</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_ITEM_LIST&nbsp;; copy address to MEM_DIALOG_ITEM_LIST</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_FLAGS),d7&nbsp;; copy dialog flags to d7</p>
+<p>&nbsp;bset.l&nbsp;#DIALOG_FLAG_STYLE_TEXT_4CHOICE,d7&nbsp;; set text choice flag</p>
+<p>&nbsp;bset.l&nbsp;#DIALOG_FLAG_STYLE_ITEM_MENU,d7&nbsp;; set item menu flag</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_DIALOG_FLAGS)&nbsp;; save updated dialog flags</p>
+<p>&nbsp;bra.s&nbsp;ExitDay00Scene00Action02</p>
+<p>Day00Scene00Action02DefaultTake:</p>
+<p>&nbsp;lea&nbsp;DialogTextCantTake,a6&nbsp;; load dialog text</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bra.s&nbsp;ExitDay00Scene00Action02</p>
+<p>Day00Scene00Action02DefaultGive:</p>
+<p>&nbsp;lea&nbsp;DialogTextNothingHappens,a6&nbsp;; load dialog text</p>
+<p>&nbsp;move.l&nbsp;a6,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>ExitDay00Scene00Action02:</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>And the end result is this exciting message:</p>
+
+
+<p><img src="selection.png" alt="Responding to a selection" class="img-fluid d-block mx-auto"/></p>
+
+<p>With just a little work items can be added to all the shelves and racks. We can also have the NPCs respond to items you show them. This is all part of the overall game plan for a one-room demo. This seems like a good enough time as any to check in on that...</p>
+
+<p class="lead">What's next?</p>
+
+<p>Looking at the &quot;plan&quot; from <a href="https://huguesjohnson.com/programming/genesis/scene-npcs/">three articles ago</a>:
+
+<p><del>1) <del>Dialog between characters - meaning an NPC says something to you and you respond. Maybe you respond with more dialog, maybe you give them an item. That leads to...</del> </p>
+<p><del>2) Inventory management - along with basic stuff like taking and giving items.</del></p>
+<p><del>3) Game event tracking - we need a way to say &quot;if [X] happened and you talk to character [Y] then do [Z]&quot;, I'll probably over-complicate this.</del> I won't call this 100% complete but it's functional enough.</p>
+<p>4) Scripted sprite movements - if the ultimate goal is to get a customer to leave a store then there needs to be an animation where they walk away.</p>
+<p><del>5) Adding & removing NPCs from the current scene - the one NPC is hard-coded, there needs to be a way to move NPCs in and out of scenes.</del> The removing part hasn't been needed yet but it's small and will be addressed with #4.</p>
+<p>6) To make this look like a real demo I should really create a title screen and ending message.</p>
+<p>7) Dozens of things I didn't think of that will all be painful to work out.</p>
+
+<p>Next round will be scripted sprite movements, along with removing NPCs from the scene. Of course adding more items and NPC dialog needs to happen along the way too.</p>
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/selections/">&lt;- Sega Genesis Programming Part 14: Selections</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scripted-events/">Part 16: Scripted Events -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/scene-npcs/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisscenenpcs.png" alt="Sega Genesis Programming Part 12: Scenes and NPCs"></p><p>Sega Genesis Programming Part 12: Scenes &amp; NPCs</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/save-load/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissaveload.png" alt="Sega Genesis Programming Part 18: Saving and Loading"></p><p>Sega Genesis Programming Part 18: Saving &amp; Loading</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

@@ -1,0 +1,751 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 20: Palette and Tile Generation</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Palette and Tile Generation" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 20: palette and tile generation</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/6button/">&lt;- Sega Genesis Programming Part 19: 6 Button Controllers</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/collision-vdp/">Part 21: vdp sprite collision -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">This was never about making a game</p>
+
+<p>Please note, this isn't really about Genesis programming all that much. It's about some tools I'm working on to make Genesis programming easier. If you just want to see some beautiful assembly code then please check out the other articles in this series.</p>
+
+<p>I've been thinking about writing a sequel to <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a> lately. I have a ballpark story in mind and some new lead characters. I'm doing this even though it's possible no one ever played <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>. I've done zero to promote it outside of posting it here. This limits the potential audience to people who randomly stumble across this page. I know I could change that but it's not important to me.</p>
+
+<p>I'm largely making the &quot;no one played it&quot; assumption based on not receiving any hate mail. I expected at least one person to complain that this free demo that I charged them nothing for caused them deep emotional trauma. I'm very disappointed in you internet.</p>
+
+<p>So why would I make a sequel to a game nobody played? It's simple, my point isn't making a game anyone wants to play. A game demo is just a consequence of my real goals:</p>
+<p>1) Learn to program at least one 90s console in assembly.</p>
+<p>2) Build a general game engine like thing to play casual adventure games.</p>
+<p>3) Build tooling to generate stuff for this game engine like thing.</p>
+
+<p>I attempted parts 2 &amp; 3 around 15 years ago and failed. It's OK, your first attempt at anything should fail. That first time I came up with some grand over-engineered engine design. I then tried to fit a game demo around it. It went badly and I lost interest in the project. The second time I started with a game idea and built things as I needed them, it went a bit better. I accomplished goal #1 and like 50% of goal #2. Now it's time to work on #3...</p>
+
+<p>The first thing I want to build is a way to generate palette and tile data from PNG images. Bitmap and GIF are fine too, anything that's lossless and supports a fixed color palette. One of the most monotonous things about building <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a> was creating tiles and the patterns to draw them on the screen. I'd prefer to point to an image and have some code figure all that out for me.</p>
+
+<p>Let's try this out by converting this scene from Ys II to the Genesis:</p>
+
+<p><img src="scene-dialog.png" alt="Dialog from Ys II" class="img-fluid d-block mx-auto"/></p>
+
+<p>Oh, spoiler alert maybe. I guess you can't really tell what's going on in this scene from a >30 year-old game anyway.</p>
+
+<p>This is from the TurboGrafx-16 CD version which means it has more colors than what the Genesis can support. Sort of, I'll get to it soon. This is good because &quot;match to nearest color in palette&quot; is a feature I want to build.</p>
+
+<p>The full image only has 41 colors:</p>
+
+<p><img src="scene-dialog-colormap.png" alt="Dialog from Ys II - colormap" class="img-fluid d-block mx-auto"/></p>
+
+<p>The Genesis can do 41 colors but is limited to 15 per palette (accounting for transparency). That makes decomposing this into layers a little tricky. Let's do the easy ones first.</p>
+
+<p>Here's the frame which we'll draw in scroll B low:</p>
+
+<p><img src="palette0-scroll-b-low-colormap.png" alt="Frame" class="img-fluid d-block mx-auto"/></p>
+
+<p>Then we have the floor and walls which will also go in scroll B low:</p>
+
+<p><img src="palette1-scroll-b-low-colormap.png" alt="Floor and walls" class="img-fluid d-block mx-auto"/></p>
+
+<p>The image overlay will go in scroll A high:</p>
+
+<p><img src="palette3-scroll-a-high-colormap.png" alt="Overlay" class="img-fluid d-block mx-auto"/></p>
+
+<p>So we have 3 layers and 3 palettes. Everything's fine so far. Now let's look at the sprites:</p>
+
+<p><img src="palette2-scroll-a-low-colormap.png" alt="Sprites" class="img-fluid d-block mx-auto"/></p>
+
+<p>I'm not an expert on the technical aspects of the TurboGrafx-16, maybe in the future, but I vaguely understand that each sprite can have a unique palette. This is why in a game like Ys the villagers all have colorful outfits. So we're going to have to merge a couple similar colors unfortunately. This doesn't bode well for a Ys I&amp;II port to the Sega CD either.</p>
+
+<p>Yeah, OK, so this leaves us with the following 4 palettes to create:</p>
+
+<p><img src="palette0-scroll-b-low-palette.png" alt="Palette 0" class="img-fluid d-block mx-auto"/></p>
+
+<p><img src="palette1-scroll-b-low-palette.png" alt="Palette 1" class="img-fluid d-block mx-auto"/></p>
+
+<p><img src="palette2-scroll-a-low-palette.png" alt="Palette 2" class="img-fluid d-block mx-auto"/></p>
+
+<p><img src="palette3-scroll-a-high-palette.png" alt="Palette 3" class="img-fluid d-block mx-auto"/></p>
+
+<p>Reminder: entry 0 of palette 0 is the background color, entry 0 of the other palettes is the transparency color.</p>
+
+<p class="lead">Code</p>
+
+<p>A quick recap of what we need to build:</p>
+
+<p>1) Something to extract a 16 color Genesis palette from an image, preferably one that is only 16 colors to begin with</p>
+
+<p>2) Something to convert an image into a set of the unique 8x8 tiles used to create it</p>
+
+<p>3) Something to map each color in these tiles to the nearest color in a 16 color Genesis palette</p>
+
+<p>4) Something to produce a pattern that maps the 8x8 tiles to the order they appear in the original image</p>
+
+<p>Let's start with the code to extract Genesis palettes from an image. This code takes a map of image file paths -> destination ASM files:</p>
+
+<div class="well">
+<p>public&nbsp;abstract&nbsp;class&nbsp;ExtractPalette{</p>
+<p>&nbsp;private&nbsp;final&nbsp;static&nbsp;String&nbsp;newLine=System.lineSeparator();</p>
+<p>public&nbsp;static&nbsp;void&nbsp;extract(String&nbsp;basePath,Map<String,String>&nbsp;sourceDestinationMap,String&nbsp;includeFilePath){</p>
+<p>&nbsp;FileWriter&nbsp;paletteWriter=null;</p>
+<p>&nbsp;FileWriter&nbsp;includeWriter=null;</p>
+<p>&nbsp;try{</p>
+<p>&nbsp;&nbsp;includeFilePath=basePath+includeFilePath;</p>
+<p>&nbsp;&nbsp;includeWriter=new&nbsp;FileWriter(includeFilePath);</p>
+<p>&nbsp;&nbsp;for(Map.Entry&lt;String,String&gt;&nbsp;entry:sourceDestinationMap.entrySet()){</p>
+<p>&nbsp;&nbsp;String&nbsp;sourceFilePath=basePath+entry.getKey();</p>
+<p>&nbsp;&nbsp;String&nbsp;outputFilePath=basePath+entry.getValue();</p>
+<p>&nbsp;&nbsp;paletteWriter=new&nbsp;FileWriter(outputFilePath);</p>
+<p>&nbsp;&nbsp;File&nbsp;sourceFile=new&nbsp;File(sourceFilePath);</p>
+<p>&nbsp;&nbsp;BufferedImage&nbsp;image=ImageIO.read(sourceFile);</p>
+<p>&nbsp;&nbsp;int&nbsp;width=image.getWidth();</p>
+<p>&nbsp;&nbsp;int&nbsp;height=image.getHeight();</p>
+<p>&nbsp;&nbsp;ArrayList&lt;String&gt;&nbsp;colors=new&nbsp;ArrayList&lt;String&gt;();</p>
+<p>&nbsp;&nbsp;for(int&nbsp;row=0;row&lt;height;row++){</p>
+<p>&nbsp;&nbsp;&nbsp;for(int&nbsp;col=0;col&lt;width;col++){</p>
+<p>&nbsp;&nbsp;&nbsp;int&nbsp;color=image.getRGB(col,row);&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;String&nbsp;hexString=Integer.toHexString(color);</p>
+<p>&nbsp;&nbsp;&nbsp;String&nbsp;genesisRGBStr=ColorUtils.rgbStringToGenesisRgbString(hexString);</p>
+<p>&nbsp;&nbsp;&nbsp;int&nbsp;index=colors.indexOf(genesisRGBStr);</p>
+<p>&nbsp;&nbsp;&nbsp;if(index&lt;0){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;colors.add(genesisRGBStr);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(colors.size()&gt;16){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;throw(new&nbsp;Exception("More&nbsp;than&nbsp;16&nbsp;colors&nbsp;found&nbsp;in:&nbsp;"+entry.getKey()));</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}else{</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer&nbsp;line=new&nbsp;StringBuffer();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;line.append("\tdc.w\t%");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;line.append(genesisRGBStr);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;line.append("&nbsp;;&nbsp;~");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;line.append(hexString);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;line.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;paletteWriter.write(line.toString());</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;int&nbsp;size=colors.size();</p>
+<p>&nbsp;&nbsp;if(size&lt;16){</p>
+<p>&nbsp;&nbsp;&nbsp;for(int&nbsp;i=size;i&lt;16;i++){</p>
+<p>&nbsp;&nbsp;&nbsp;paletteWriter.write("\tdc.w\t%0000000000000000");</p>
+<p>&nbsp;&nbsp;&nbsp;paletteWriter.write(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;paletteWriter.flush();</p>
+<p>&nbsp;&nbsp;paletteWriter.close();</p>
+<p>&nbsp;&nbsp;//update&nbsp;the&nbsp;include&nbsp;file</p>
+<p>&nbsp;&nbsp;String&nbsp;includePathRel=PathResolver.getRelativePath(includeFilePath,outputFilePath);</p>
+<p>&nbsp;&nbsp;if(includePathRel.startsWith("..")){</p>
+<p>&nbsp;&nbsp;&nbsp;includePathRel=includePathRel.substring(3);</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;StringBuffer&nbsp;includeString=new&nbsp;StringBuffer();</p>
+<p>&nbsp;&nbsp;String&nbsp;label="Palette"+includePathRel.substring(includePathRel.lastIndexOf(File.separator)+1,includePathRel.lastIndexOf('.'));</p>
+<p>&nbsp;&nbsp;includeString.append(label);</p>
+<p>&nbsp;&nbsp;includeString.append(":");</p>
+<p>&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;includeString.append("\tinclude&nbsp;'");</p>
+<p>&nbsp;&nbsp;includeString.append(includePathRel);</p>
+<p>&nbsp;&nbsp;includeString.append("'");</p>
+<p>&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;includeWriter.write(includeString.toString());</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;includeWriter.flush();</p>
+<p>&nbsp;&nbsp;includeWriter.close();</p>
+<p>&nbsp;}catch(Exception&nbsp;x){</p>
+<p>&nbsp;&nbsp;x.printStackTrace();&nbsp;&nbsp;</p>
+<p>&nbsp;}finally{</p>
+<p>&nbsp;&nbsp;try{if(paletteWriter!=null){paletteWriter.flush();&nbsp;paletteWriter.close();}}catch(Exception&nbsp;x){&nbsp;}</p>
+<p>&nbsp;&nbsp;try{if(includeWriter!=null){includeWriter.flush();&nbsp;includeWriter.close();}}catch(Exception&nbsp;x){&nbsp;}</p>
+<p>&nbsp;}&nbsp;</p>
+<p>&nbsp;}</p>
+<p>}</p>
+</div>
+
+<p>I guess this code would be handy too:</p>
+
+<div class="well">
+<p>public&nbsp;static&nbsp;String&nbsp;rgbStringToGenesisRgbString(String&nbsp;rgb){</p>
+<p>&nbsp;&nbsp;StringBuilder&nbsp;grgb=new&nbsp;StringBuilder();</p>
+<p>&nbsp;&nbsp;//ffrrggbb</p>
+<p>&nbsp;&nbsp;//01234567</p>
+<p>&nbsp;&nbsp;grgb.append("0000");</p>
+<p>&nbsp;&nbsp;//BBB</p>
+<p>&nbsp;&nbsp;grgb.append(hexStringToGenesisRgb(rgb.substring(6,8)));</p>
+<p>&nbsp;&nbsp;grgb.append("0");</p>
+<p>&nbsp;&nbsp;//GGG</p>
+<p>&nbsp;&nbsp;grgb.append(hexStringToGenesisRgb(rgb.substring(4,6)));</p>
+<p>&nbsp;&nbsp;grgb.append("0");</p>
+<p>&nbsp;&nbsp;//RRR</p>
+<p>&nbsp;&nbsp;grgb.append(hexStringToGenesisRgb(rgb.substring(2,4)));</p>
+<p>&nbsp;&nbsp;grgb.append("0");</p>
+<p>&nbsp;&nbsp;return(grgb.toString());</p>
+<p>}</p>
+<p>[...]</p>
+<p>public&nbsp;static&nbsp;String&nbsp;hexStringToGenesisRgb(String&nbsp;hexString){</p>
+<p>&nbsp;&nbsp;int i=Integer.parseInt(hexString,16);</p>
+<p>&nbsp;&nbsp;i=i/32;</p>
+<p>&nbsp;&nbsp;String b=Integer.toBinaryString(i);</p>
+<p>&nbsp;&nbsp;if(b.length()&gt;3){b=b.substring(0,3);return(b);}</p>
+<p>&nbsp;&nbsp;if(b.length()==2){b="0"+b;return(b);}</p>
+<p>&nbsp;&nbsp;if(b.length()==1){b="00"+b;return(b);}</p>
+<p>&nbsp;&nbsp;if(b.length()==0){return("000");}</p>
+<p>&nbsp;&nbsp;return(b);</p>
+<p>}</p>
+</div>
+
+<p>That gives us a palette file that looks like:</p>
+
+<div class="well">
+<p>&nbsp;dc.w&nbsp;%0000111000001110&nbsp;;&nbsp;~ffff00ff</p>
+<p>&nbsp;dc.w&nbsp;%0000000000000000&nbsp;;&nbsp;~ff000000</p>
+<p>&nbsp;dc.w&nbsp;%0000100000000000&nbsp;;&nbsp;~ff000094</p>
+<p>&nbsp;dc.w&nbsp;%0000111000000000&nbsp;;&nbsp;~ff0000ff</p>
+<p>&nbsp;dc.w&nbsp;%0000000000000110&nbsp;;&nbsp;~ff6b0000</p>
+<p>&nbsp;dc.w&nbsp;%0000000000001000&nbsp;;&nbsp;~ff940000</p>
+<p>&nbsp;dc.w&nbsp;%0000001000100010&nbsp;;&nbsp;~ff212421</p>
+<p>&nbsp;dc.w&nbsp;%0000111000100000&nbsp;;&nbsp;~ff0024ff</p>
+<p>&nbsp;dc.w&nbsp;%0000000000001100&nbsp;;&nbsp;~ffd60000</p>
+<p>&nbsp;dc.w&nbsp;%0000110001000000&nbsp;;&nbsp;~ff0049d6</p>
+<p>&nbsp;dc.w&nbsp;%0000111001100000&nbsp;;&nbsp;~ff006dff</p>
+<p>&nbsp;dc.w&nbsp;%0000111010000000&nbsp;;&nbsp;~ff0092ff</p>
+<p>&nbsp;dc.w&nbsp;%0000111010100000&nbsp;;&nbsp;~ff00b2ff</p>
+<p>&nbsp;dc.w&nbsp;%0000010010001100&nbsp;;&nbsp;~ffd6924a</p>
+<p>&nbsp;dc.w&nbsp;%0000011010101110&nbsp;;&nbsp;~ffffb26b</p>
+<p>&nbsp;dc.w&nbsp;%0000111011100100&nbsp;;&nbsp;~ff4afbff</p>
+</div>
+
+<p>And an include file we need to compile this thing later:</p>
+
+<div class="well">
+<p>Palettepalette0:</p>
+<p>&nbsp;include&nbsp;'palettes/palette0.X68'</p>
+<p>Palettepalette1:</p>
+<p>&nbsp;include&nbsp;'palettes/palette1.X68'</p>
+<p>Palettepalette2:</p>
+<p>&nbsp;include&nbsp;'palettes/palette2.X68'</p>
+<p>Palettepalette3:</p>
+<p>&nbsp;include&nbsp;'palettes/palette3.X68'</p>
+</div>
+
+<p>This next part is going to be a little tough to understand because I won't explain it well. We are going to generate the tiles and also the patterns. By &quot;pattern&quot; I mean - &quot;what order to draw the tiles relative to the first tile in the set&quot;. Think of it sort of like this - you have a set of tiles numbered 0 to X. The pattern tells you what order to draw the tiles to recreate the original image. Each tile is an 8x8 array of numbers between 0-15 where 0-15 corresponds to a color in the palette.</p>
+
+<p>I know, not a good explanation. Here's the code to do it all:</p>
+
+<div class="well">
+<p>public&nbsp;class&nbsp;TilesetParameters&nbsp;implements&nbsp;Serializable{</p>
+<p>&nbsp;private&nbsp;static&nbsp;final&nbsp;long&nbsp;serialVersionUID=666L;</p>
+<p>&nbsp;public&nbsp;TilesetDefinition[]&nbsp;tilesets;</p>
+<p>&nbsp;public&nbsp;String&nbsp;tileIncludeFilePath;</p>
+<p>&nbsp;public&nbsp;String&nbsp;patternIncludeFilePath;</p>
+<p>}</p>
+<p>[...]</p>
+<p>public&nbsp;class&nbsp;TilesetDefinition&nbsp;implements&nbsp;Serializable{</p>
+<p>&nbsp;private&nbsp;static&nbsp;final&nbsp;long&nbsp;serialVersionUID=666L;</p>
+<p>&nbsp;public&nbsp;String&nbsp;name;</p>
+<p>&nbsp;public&nbsp;String&nbsp;palettePath;</p>
+<p>&nbsp;public&nbsp;String&nbsp;sourceFilePath;</p>
+<p>&nbsp;public&nbsp;String&nbsp;destinationFilePath;</p>
+<p>&nbsp;public&nbsp;String&nbsp;allowDuplicateTiles;</p>
+<p>&nbsp;public&nbsp;String&nbsp;patternFilePath;</p>
+<p>}</p>
+<p>[...]</p>
+<p>public&nbsp;class&nbsp;BuildTiles{</p>
+<p>&nbsp;private&nbsp;final&nbsp;static&nbsp;String&nbsp;newLine=System.lineSeparator();</p>
+<p>&nbsp;public&nbsp;static&nbsp;void&nbsp;build(String&nbsp;basePath,TilesetParameters&nbsp;tiles){</p>
+<p>&nbsp;&nbsp;FileWriter&nbsp;tileIncludeWriter=null;</p>
+<p>&nbsp;&nbsp;FileWriter&nbsp;tileWriter=null;</p>
+<p>&nbsp;&nbsp;FileWriter&nbsp;patternWriter=null;</p>
+<p>&nbsp;&nbsp;FileWriter&nbsp;patternIncludeWriter=null;</p>
+<p>&nbsp;&nbsp;try{</p>
+<p>&nbsp;&nbsp;&nbsp;//setup&nbsp;include&nbsp;writers</p>
+<p>&nbsp;&nbsp;&nbsp;String&nbsp;tileIncludeFilePath=basePath+tiles.tileIncludeFilePath;</p>
+<p>&nbsp;&nbsp;&nbsp;tileIncludeWriter=new&nbsp;FileWriter(tileIncludeFilePath);</p>
+<p>&nbsp;&nbsp;&nbsp;String&nbsp;patternIncludeFilePath=basePath+tiles.patternIncludeFilePath;</p>
+<p>&nbsp;&nbsp;&nbsp;patternIncludeWriter=new&nbsp;FileWriter(patternIncludeFilePath);</p>
+<p>&nbsp;&nbsp;&nbsp;//loop&nbsp;through&nbsp;all&nbsp;tilesets</p>
+<p>&nbsp;&nbsp;&nbsp;for(int&nbsp;i=0;i&lt;tiles.tilesets.length;i++){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;allowDuplicateTiles=false;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if((tiles.tilesets[i].allowDuplicateTiles!=null)&&(tiles.tilesets[i].allowDuplicateTiles.equalsIgnoreCase("TRUE"))){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;allowDuplicateTiles=true;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;createPattern=false;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if((tiles.tilesets[i].patternFilePath!=null)&&(!tiles.tilesets[i].patternFilePath.isBlank())){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createPattern=true;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//read&nbsp;colors&nbsp;from&nbsp;the&nbsp;palette</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;String&gt;&nbsp;colors=new&nbsp;ArrayList<String>();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;BufferedReader&nbsp;reader=null;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;reader=new&nbsp;BufferedReader(new&nbsp;FileReader(basePath+tiles.tilesets[i].palettePath));</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;currentLine;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;while((currentLine=reader.readLine())!=null){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors.add(ColorUtils.genesisRgbStringToHexString(currentLine));</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;reader.close();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//setup&nbsp;the&nbsp;tilewriter</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;tileOutputPath=basePath+tiles.tilesets[i].destinationFilePath;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;tileWriter=new&nbsp;FileWriter(tileOutputPath);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//setup&nbsp;the&nbsp;patternwriter</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;patternOutputPath=null;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(createPattern){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternOutputPath=basePath+tiles.tilesets[i].patternFilePath;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter=new&nbsp;FileWriter(patternOutputPath);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//read&nbsp;the&nbsp;source&nbsp;file</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;sourceFilePath=basePath+tiles.tilesets[i].sourceFilePath;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;File&nbsp;sourceFile=new&nbsp;File(sourceFilePath);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;BufferedImage&nbsp;image=ImageIO.read(sourceFile);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//get&nbsp;&&nbsp;test&nbsp;image&nbsp;width</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;width=image.getWidth();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(width%8!=0){throw(new&nbsp;Exception("Image&nbsp;width&nbsp;must&nbsp;be&nbsp;a&nbsp;multiple&nbsp;of&nbsp;8"));}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//get&nbsp;&&nbsp;test&nbsp;image&nbsp;height</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;height=image.getHeight();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(height%8!=0){throw(new&nbsp;Exception("Image&nbsp;width&nbsp;must&nbsp;be&nbsp;a&nbsp;multiple&nbsp;of&nbsp;8"));}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(createPattern){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;rowCount=height/8;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.write("\tdc.w\t$"+Integer.toHexString(rowCount-1).toUpperCase()+"\t;&nbsp;"+rowCount+"&nbsp;rows");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.write(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;colCount=width/8;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.write("\tdc.w\t$"+Integer.toHexString(colCount-1).toUpperCase()+"\t;&nbsp;"+colCount+"&nbsp;columns");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.write(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;Tile8x8&gt;&nbsp;uniqueTiles=new&nbsp;ArrayList<Tile8x8>();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//loop&nbsp;through&nbsp;all&nbsp;the&nbsp;pixels&nbsp;and&nbsp;filter&nbsp;out&nbsp;duplicate&nbsp;tiles</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;row=0;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;while(row&lt;height){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;col=0;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(col&lt;width){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tile8x8&nbsp;tile8x8=new&nbsp;Tile8x8();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//loop&nbsp;through&nbsp;each&nbsp;pixel&nbsp;of&nbsp;the&nbsp;next&nbsp;8x8&nbsp;cell</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;x=col;x&lt;(col+8);x++){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;y=row;y&lt;(row+8);y++){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;color=image.getRGB(x,y);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;hexString=Integer.toHexString(color);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;index=ColorUtils.findNearestColor(colors,hexString);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//yes,&nbsp;these&nbsp;are&nbsp;getting&nbsp;transposed&nbsp;on&nbsp;purpose</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tile8x8.pixels[y-row][x-col]=index;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;tileIndex=-1;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;addTile=allowDuplicateTiles;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!addTile){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tileIndex=uniqueTiles.indexOf(tile8x8);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addTile=tileIndex<0;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(addTile){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uniqueTiles.add(tile8x8);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tileIndex=uniqueTiles.size()-1;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;indexStr="\t;&nbsp;"+Integer.toHexString(tileIndex).toUpperCase();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tileWriter.write(indexStr);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tileWriter.write(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tileWriter.write(tile8x8.toAsmLines());</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tileWriter.write(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(createPattern){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.write("\tdc.w\t"+Integer.toHexString(tileIndex).toUpperCase());</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.write(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col+=8;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row+=8;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//update&nbsp;the&nbsp;include&nbsp;files</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;includePathRel=PathResolver.getRelativePath(tileIncludeFilePath,tileOutputPath);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(includePathRel.startsWith("..")){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includePathRel=includePathRel.substring(3);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer&nbsp;includeString=new&nbsp;StringBuffer();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(tiles.tilesets[i].name);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append("TilesStart:");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append("\tinclude&nbsp;'");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(includePathRel);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append("'");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(tiles.tilesets[i].name);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append("TilesEnd:");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;tileIncludeWriter.write(includeString.toString());</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//close&nbsp;the&nbsp;tile&nbsp;writer</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;tileWriter.flush();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;tileWriter.close();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(createPattern){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includePathRel=PathResolver.getRelativePath(patternIncludeFilePath,patternOutputPath);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(includePathRel.startsWith("..")){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includePathRel=includePathRel.substring(3);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString=new&nbsp;StringBuffer();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append("Pattern");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(tiles.tilesets[i].name);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(":");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append("\tinclude&nbsp;'");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(includePathRel);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append("'");</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeString.append(newLine);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternIncludeWriter.write(includeString.toString());</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//close&nbsp;the&nbsp;pattern&nbsp;writer</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.flush();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patternWriter.close();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;}catch(Exception&nbsp;x){</p>
+<p>&nbsp;&nbsp;&nbsp;x.printStackTrace();</p>
+<p>&nbsp;&nbsp;}finally{</p>
+<p>&nbsp;&nbsp;&nbsp;try{if(tileIncludeWriter!=null){tileIncludeWriter.flush();tileIncludeWriter.close();}}catch(Exception&nbsp;x){&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;try{if(patternIncludeWriter!=null){patternIncludeWriter.flush();patternIncludeWriter.close();}}catch(Exception&nbsp;x){&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;try{if(tileWriter!=null){tileWriter.flush();tileWriter.close();}}catch(Exception&nbsp;x){&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;try{if(patternWriter!=null){patternWriter.flush();patternWriter.close();}}catch(Exception&nbsp;x){&nbsp;}</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;}</p>
+<p>}</p>
+</div>
+
+<p>Here's some other code I should have included earlier:</p>
+
+<div class="well">
+<p>&nbsp;public&nbsp;static&nbsp;String&nbsp;genesisRgbStringToHexString(String&nbsp;genRgb){</p>
+<p>&nbsp;&nbsp;Color&nbsp;c=genesisRgbStringToColor(genRgb);</p>
+<p>&nbsp;&nbsp;return(Integer.toHexString(c.getRGB()));</p>
+<p>&nbsp;}</p>
+<p>&nbsp;public&nbsp;static&nbsp;Color&nbsp;genesisRgbStringToColor(String&nbsp;genRgb){</p>
+<p>&nbsp;&nbsp;int&nbsp;start=genRgb.indexOf("%0000")+5;</p>
+<p>&nbsp;&nbsp;String&nbsp;bStr=genRgb.substring(start,start+3);</p>
+<p>&nbsp;&nbsp;String&nbsp;gStr=genRgb.substring(start+4,start+7);</p>
+<p>&nbsp;&nbsp;String&nbsp;rStr=genRgb.substring(start+8,start+11);</p>
+<p>&nbsp;&nbsp;int&nbsp;b=Integer.parseInt(bStr,2)<<5;</p>
+<p>&nbsp;&nbsp;int&nbsp;g=Integer.parseInt(gStr,2)<<5;</p>
+<p>&nbsp;&nbsp;int&nbsp;r=Integer.parseInt(rStr,2)<<5;</p>
+<p>&nbsp;&nbsp;return(new&nbsp;Color(r,g,b));</p>
+<p>&nbsp;}</p>
+[...]
+<p>&nbsp;public&nbsp;final&nbsp;static&nbsp;String&nbsp;getRelativePath(String&nbsp;absolutePath1,String&nbsp;absolutePath2){</p>
+<p>&nbsp;&nbsp;//&nbsp;verify&nbsp;input&nbsp;parameters</p>
+<p>&nbsp;&nbsp;if(absolutePath1==null){</p>
+<p>&nbsp;&nbsp;&nbsp;if(absolutePath2==null){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;return(null);</p>
+<p>&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;return(absolutePath2);</p>
+<p>&nbsp;&nbsp;}&nbsp;else&nbsp;if(absolutePath2==null){</p>
+<p>&nbsp;&nbsp;&nbsp;return(absolutePath1);</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;StringBuffer&nbsp;relativePath=new&nbsp;StringBuffer();</p>
+<p>&nbsp;&nbsp;StringTokenizer&nbsp;tokenizer1=new&nbsp;StringTokenizer(absolutePath1,File.separator);</p>
+<p>&nbsp;&nbsp;StringTokenizer&nbsp;tokenizer2=new&nbsp;StringTokenizer(absolutePath2,File.separator);</p>
+<p>&nbsp;&nbsp;//&nbsp;are&nbsp;there&nbsp;tokens?</p>
+<p>&nbsp;&nbsp;if(tokenizer1.hasMoreTokens()&&tokenizer2.hasMoreTokens()){</p>
+<p>&nbsp;&nbsp;&nbsp;//&nbsp;are&nbsp;the&nbsp;first&nbsp;tokens&nbsp;(drive&nbsp;letters)&nbsp;equal?</p>
+<p>&nbsp;&nbsp;&nbsp;String&nbsp;token1=tokenizer1.nextToken();</p>
+<p>&nbsp;&nbsp;&nbsp;String&nbsp;token2=tokenizer2.nextToken();</p>
+<p>&nbsp;&nbsp;&nbsp;if(token1.equals(token2)){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;parentCount=0;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;pathBroken=false;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;while(tokenizer1.hasMoreTokens()&&tokenizer2.hasMoreTokens()){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token1=tokenizer1.nextToken();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token2=tokenizer2.nextToken();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!token1.equals(token2)||pathBroken){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathBroken=true;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.append(File.separator);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.append(token2);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parentCount++;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;one&nbsp;or&nbsp;both&nbsp;are&nbsp;now&nbsp;out&nbsp;of&nbsp;tokens</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(tokenizer1.hasMoreTokens()){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parentCount+=tokenizer1.countTokens();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if(tokenizer2.hasMoreTokens()){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(tokenizer2.hasMoreTokens()){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.append(File.separator);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.append(tokenizer2.nextToken());</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;now&nbsp;append&nbsp;parent&nbsp;paths&nbsp;or&nbsp;self&nbsp;path</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(parentCount>0){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;index=0;index<parentCount-1;index++){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.insert(0,PARENT_PATH);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.insert(0,File.separator);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.insert(0,PARENT_PATH);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else{</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.insert(0,SELF_PATH);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;add&nbsp;a&nbsp;path&nbsp;separator&nbsp;to&nbsp;the&nbsp;end&nbsp;of&nbsp;this</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;if(absolutePath2.endsWith(File.separator)){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;relativePath.append(File.separator);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;}&nbsp;else{&nbsp;//&nbsp;need&nbsp;to&nbsp;return&nbsp;the&nbsp;absolute&nbsp;path</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;return(absolutePath2);</p>
+<p>&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;return(relativePath.toString());</p>
+<p>&nbsp;}</p>
+</div>
+
+<p>This is probably the most import piece of code in this whole thing - at least it has saved me the most time in converting images to tiles:</p>
+
+<div class="well">
+<p>&nbsp;public&nbsp;static&nbsp;int&nbsp;findNearestColor(ArrayList<String>&nbsp;colorList,String&nbsp;color){</p>
+<p>&nbsp;&nbsp;int&nbsp;index=colorList.indexOf(color);</p>
+<p>&nbsp;&nbsp;if(index&gt;-1){return(index);}</p>
+<p>&nbsp;&nbsp;int&nbsp;nearestColorIndex=0;&nbsp;//default&nbsp;to&nbsp;zero</p>
+<p>&nbsp;&nbsp;double&nbsp;nearestColorDistance=Math.sqrt((255^2)*3)+1D;</p>
+<p>&nbsp;&nbsp;for(int&nbsp;i=0;i&lt;colorList.size();i++){</p>
+<p>&nbsp;&nbsp;&nbsp;double&nbsp;distance=colorDistance(colorList.get(i),color);</p>
+<p>&nbsp;&nbsp;&nbsp;if(distance==0D){return(i);}&nbsp;//this&nbsp;probably&nbsp;can't&nbsp;happen</p>
+<p>&nbsp;&nbsp;&nbsp;if(distance&lt;nearestColorDistance){</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;nearestColorIndex=i;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;nearestColorDistance=distance;</p>
+<p>&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;return(nearestColorIndex);</p>
+<p>&nbsp;}</p>
+</div>
+
+<p>That gives us some tiles that look like:</p>
+
+<div class="well">
+<p>;&nbsp;0</p>
+<p>dc.l&nbsp;$04444444</p>
+<p>dc.l&nbsp;$40000000</p>
+<p>dc.l&nbsp;$45214412</p>
+<p>dc.l&nbsp;$42144644</p>
+<p>dc.l&nbsp;$42214664</p>
+<p>dc.l&nbsp;$45144611</p>
+<p>dc.l&nbsp;$45146166</p>
+<p>dc.l&nbsp;$45144644</p>
+<p>;&nbsp;1</p>
+<p>dc.l&nbsp;$44444444</p>
+<p>dc.l&nbsp;$00000000</p>
+<p>dc.l&nbsp;$22222222</p>
+<p>dc.l&nbsp;$55555554</p>
+<p>dc.l&nbsp;$15414411</p>
+<p>dc.l&nbsp;$64141122</p>
+<p>dc.l&nbsp;$66412255</p>
+<p>dc.l&nbsp;$46625555</p>
+<p>[...]</p>
+</div>
+
+<p>And some patterns that look like this:</p>
+
+<div class="well">
+<p>dc.w&nbsp;$4&nbsp;;&nbsp;5&nbsp;rows</p>
+<p>dc.w&nbsp;$1&nbsp;;&nbsp;2&nbsp;columns</p>
+<p>dc.w&nbsp;$0</p>
+<p>dc.w&nbsp;$1</p>
+<p>dc.w&nbsp;$2</p>
+<p>dc.w&nbsp;$3</p>
+<p>dc.w&nbsp;$4</p>
+<p>dc.w&nbsp;$5</p>
+<p>dc.w&nbsp;$6</p>
+<p>dc.w&nbsp;$7</p>
+<p>dc.w&nbsp;$8</p>
+<p>dc.w&nbsp;$9</p>
+</div>
+
+<p>And after everything is glued together we get this:</p>
+
+<p><img src="TileAndPaletteGenerationDemo_000.png" alt="Finished product" class="img-fluid d-block mx-auto"/></p>
+
+<p>Now we have a rough idea of what Ys Book I&amp;II would look like on the Sega Genesis. The colors look muted compared to the TurboGrafx-16 CD version. This is a 1:1 conversion and perhaps it could be made to look better if the image was optimized for the Genesis' palettes.</p>
+
+<p>Let's look at the original vs Genesis palettes to see how some very small differences lead to this - the TurboGrafx-16 palette is the top row of these:</p>
+
+<p><img src="palette0-compare.png" alt="Palette 0 comparison" class="img-fluid d-block mx-auto"/></p>
+
+<p><img src="palette1-compare.png" alt="Palette 1 comparison" class="img-fluid d-block mx-auto"/></p>
+
+<p><img src="palette2-compare.png" alt="Palette 2 comparison" class="img-fluid d-block mx-auto"/></p>
+
+<p><img src="palette3-compare.png" alt="Palette 3 comparison" class="img-fluid d-block mx-auto"/></p>
+
+<p class="lead">What's Next?</p>
+
+<p>There are a couple possible things I'll tackle next:</p>
+<p>1) Use these tools to freshen-up the appearance of the mall in <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a> for a sequel game.</p>
+<p>2) Use these to build a Myst-like game in a completely different setting.</p>
+<p>3) Grow bored of working with the Genesis and do something else.</p>
+<p>All three of these are equally likely options.</p>
+
+<p class="lead">Download</p>
+
+<p><a href="TileAndPaletteGenerationDemo.zip">Here's the demo ROM with a couple extra scenes and a little music</a>. It's a tad bloated because it's importing a lot of code used to build <a href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a> but only needs about 10% of it. This should run on any Genesis emulator and real hardware. It's not very exciting though.</p>
+
+<p><a href="src.zip">Here's the unfinished and likely buggy Java code.</a> The final Java build tools will be on <a rel="me" href="https://github.com/huguesjohnson">my GitHub page</a> eventually, likely but not definitely under a repository called RetailClerk90 when it exists.</p>
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/6button/">&lt;- Sega Genesis Programming Part 19: 6 Button Controllers</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/collision-vdp/">Part 21: vdp sprite collision -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/fade/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisfade.png" alt="Sega Genesis Programming Part 17: Fade-In/Fade-Out"></p><p>Sega Genesis Programming Part 17: Fade-In/Fade-Out</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/save-load/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissaveload.png" alt="Sega Genesis Programming Part 18: Saving and Loading"></p><p>Sega Genesis Programming Part 18: Saving &amp; Loading</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

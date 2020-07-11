@@ -1,0 +1,869 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 11: Scenes &amp; Dialogs</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 11: Scenes and Dialogs" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 11: scenes &amp; dialogs</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/spritelist/">&lt;- Part 10: Sprite Link List</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scene-npcs/">Part 12: Scenes &amp; NPCs -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">It all started with a cash register</p>
+
+<p>This is probably the longest Genesis programming article I've written and it's all because I wanted to add a simple piece of scenery. I decided the store looked a little bare and adding a cash register to the counter would spruce things up. I designed a hideously ugly register and started on the code to add it.</p>
+
+<p><img src="register.png" alt="The register" class="img-fluid"/></p>
+
+<p>There's the register now, mocking me for all the work it caused. Sure it looks like it's mocking the player sprite but really it's me on the receiving end. And not because the player sprite is meant to be an avatar of me, it's not, I'm much taller.</p>
+
+<p>In creating the register it occurred to me that I need to stop hard-coding all the scenery. At some point, maybe even soon, our little sprite will be able to leave the store and wander around a semi-authentic 1989 shopping mall. To do that we need some kind of general way to store &amp; draw locations in the mall. I opted for the term &quot;scene&quot; but &quot;location&quot;, &quot;place&quot;, and &quot;who cares already&quot; would be fine too.</p>
+
+<p>This led me down a wormhole of coding &amp; refactoring...</p>
+
+<p class="lead">Scene definition</p>
+
+<p>Scenes are a data structure that represent everything needed to draw a location. This includes:
+<ul>
+<li>Which tiles to load.</li>
+<li>Which palettes to load.</li>
+<li>What scenery to load. &quot;Scenery&quot; itself being a data structure that includes a pattern definition (rows, columns, repeat), base tile ID, which layer to draw to, and the coordinates to draw at.</li>
+<li>Objects in the location. See <a href="https://huguesjohnson.com/programming/genesis/objects/">part 9</a> for more on this.</li>
+<li>Collision data. See <a href="https://huguesjohnson.com/programming/genesis/collision-detection/">part 5</a> for more on this.</li>
+<li>What background music to play.</li>
+</ul>
+</p>
+
+<p>NPCs are not in this definition because I haven't decided how to handle moving them between stores. Any NPCs in a scene definition will always be loaded there. An alternate approach is applying rules based on the game state to determine which NPCs are in which location. I think I prefer the second option even though it's more work. An argument could also be made that objects and background music could change based on game state. I'm not even close to thinking about that yet.</p>
+
+<p>You might notice the scene is called &quot;SceneVB&quot;. This is because I'm tentatively calling the first store &quot;Video Buffet&quot;. It doesn't appear there's ever been a real store called that, for good reason I suppose.</p>
+
+<p>Here's the full definition for our first store:</p>
+
+<div class="well">
+
+<p>SceneVB:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; tiles</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; one tileset</p>
+<p>&nbsp;; tileset 0</p>
+<p>&nbsp;dc.l&nbsp;StoreTilesStart&nbsp;; start of scene tiles</p>
+<p>&nbsp;dc.l&nbsp;StoreTilesEnd&nbsp;; end of scene tiles</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; palettes</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;$0004&nbsp;; four palettes</p>
+<p>&nbsp;dc.l&nbsp;PaletteStoreA&nbsp;; start of first palette to load</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; scenery</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;$000A&nbsp;; scenery count</p>
+<p>&nbsp;; floor</p>
+<p>&nbsp;dc.l&nbsp;PatternFloorStart&nbsp;; location of pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 0000000000000001&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$0001&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$001F&nbsp;; repeat 32 times</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_B&nbsp;; initial drawing location</p>
+<p>&nbsp;; top shelf</p>
+<p>&nbsp;dc.l&nbsp;PatternShelvesHStart&nbsp;; location of pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 0000000000000101&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$0005&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 1, column 0 = 128 = 0080</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_B+$00800000&nbsp;; initial drawing location</p>
+<p>&nbsp;; middle shelf</p>
+<p>&nbsp;dc.l&nbsp;PatternShelvesMStart&nbsp;; location of pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 0010000000000101&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$2005&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 2, column 0 = 256 = 0100</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_B+$01000000&nbsp;; initial drawing location</p>
+<p>&nbsp;; low shelf</p>
+<p>&nbsp;dc.l&nbsp;PatternShelvesLStart&nbsp;; location of pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 0100000000000101&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$4005&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 3, column 0 = 256 = 0180</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_B+$01800000&nbsp;; initial drawing location</p>
+<p>&nbsp;; frame top</p>
+<p>&nbsp;dc.l&nbsp;PatternFrameTopStart&nbsp;; location of pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 1000000000000000&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$8000&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 3, column 0 = 256 = 0180</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_A&nbsp;; initial drawing location</p>
+<p>&nbsp;; frame side</p>
+<p>&nbsp;dc.l&nbsp;PatternFrameSideStart&nbsp;; location of pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 1000000000000000&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$8000&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0016&nbsp;; repeat 23 times</p>
+<p>&nbsp;; row 1, column 0 = 128 = 0080</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_A+$00800000&nbsp;; initial drawing location</p>
+<p>&nbsp;; store front</p>
+<p>&nbsp;dc.l&nbsp;PatternStoreFrontStart&nbsp;; location of first pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 1000000000001100&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$800C&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 24, column 0 = 3072 = C00</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_A+$0C000000&nbsp;; initial drawing location</p>
+<p>&nbsp;; counter - low front</p>
+<p>&nbsp;dc.l&nbsp;PatternCounterLowStart&nbsp;; location of first pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 0010000000100001&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$2021&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 10, column 7 = 51C</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_A+$051C0000&nbsp;; initial drawing location</p>
+<p>&nbsp;; counter - low side</p>
+<p>&nbsp;dc.l&nbsp;PatternCounterLowSideStart&nbsp;; location of first pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 0010000000110001&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$2031&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 3, column 12 = 432 = 1B0</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_B+$01B00000&nbsp;; initial drawing location</p>
+<p>&nbsp;; counter - top</p>
+<p>&nbsp;dc.l&nbsp;PatternCounterHighStart&nbsp;; location of first pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 1010000000110001&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$A031&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 7, column 28 = 39C</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_A+$039C0000&nbsp;; initial drawing location</p>
+<p>&nbsp;; register</p>
+<p>&nbsp;dc.l&nbsp;PatternRegisterStart&nbsp;; location of first pattern to load</p>
+<p>&nbsp;; pccvhnnnnnnnnnnn</p>
+<p>&nbsp;; 1110000000111011&nbsp;</p>
+<p>&nbsp;dc.w&nbsp;$E03B&nbsp;; base pattern</p>
+<p>&nbsp;dc.w&nbsp;$0000&nbsp;; no repeat</p>
+<p>&nbsp;; row 6, column 44 = 330</p>
+<p>&nbsp;dc.l&nbsp;VDP_VRAM_WRITE_A+$03300000&nbsp;; initial drawing location</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; objects</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;OBJ_LIST_LENGTH-1&nbsp;; object count</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; word0=Object ID (0-65535)</p>
+<p>&nbsp;; word1[0-8]=x0 (0-511)</p>
+<p>&nbsp;; word1[9-15]=width (0-127)</p>
+<p>&nbsp;; word2[0-8]=y0 (0-512)</p>
+<p>&nbsp;; word2[9-15]=height (0-127)</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;OBJ_SCENE_VB_8BIT</p>
+<p>&nbsp;; x0=136 width=106 = 1101010 010001000 = D488</p>
+<p>&nbsp;dc.w&nbsp;$D488</p>
+<p>&nbsp;; y0=136 height=26 = 0011010 010001000 = 3488</p>
+<p>&nbsp;dc.w&nbsp;$3488</p>
+<p>&nbsp;dc.w&nbsp;OBJ_SCENE_VB_8BIT</p>
+<p>&nbsp;; x0=242 width=79 = 1001111 011110010  = 9EF2</p>
+<p>&nbsp;dc.w&nbsp;$9EF2</p>
+<p>&nbsp;; y0=136 height=26 = 0011010 010001000  = 3488</p>
+<p>&nbsp;dc.w&nbsp;$3488</p>
+<p>&nbsp;dc.w&nbsp;OBJ_SCENE_VB_8BIT</p>
+<p>&nbsp;; x0=351 width=90 = 1011010 101011111 = B55F</p>
+<p>&nbsp;dc.w&nbsp;$B55F</p>
+<p>&nbsp;; y0=136 height=26 = 0011010 010001000 = 3488</p>
+<p>&nbsp;dc.w&nbsp;$3488</p>
+<p>&nbsp;dc.w&nbsp;OBJ_SCENE_VB_MAGS</p>
+<p>&nbsp;; x0=240 width=114 = 1110010 011110000 = E4F0</p>
+<p>&nbsp;dc.w&nbsp;$E4F0</p>
+<p>&nbsp;; y0=224 height=32 = 0100000 011100000 = 40E0</p>
+<p>&nbsp;dc.w&nbsp;$40E0</p>
+<p>&nbsp;dc.w&nbsp;OBJ_SCENE_VB_COUNTER</p>
+<p>&nbsp;; x0=240 width=80 = 1010000 011110000 = A0F0</p>
+<p>&nbsp;dc.w&nbsp;$A0F0</p>
+<p>&nbsp;; y0=200 height=16 = 0010000 011001000  = 20C8</p>
+<p>&nbsp;dc.w&nbsp;$20C8</p>
+<p>&nbsp;dc.w&nbsp;OBJ_SCENE_VB_REGISTER</p>
+<p>&nbsp;; x0=320 width=16 = 0010000 101000000 = 2140</p>
+<p>&nbsp;dc.w&nbsp;$2140</p>
+<p>&nbsp;; y0=162 height=32 = 0100000 010100010 = 40A2</p>
+<p>&nbsp;dc.w&nbsp;$40A2</p>
+<p>&nbsp;dc.w&nbsp;OBJ_NOTHING</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;dc.w&nbsp;OBJ_NOTHING</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;dc.w&nbsp;OBJ_NOTHING</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;dc.w&nbsp;OBJ_NOTHING</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;dc.w&nbsp;$0000</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; collision data</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;DEFAULT_COLLISION_DATA_SIZE&nbsp;; collision data size</p>
+<p>&nbsp;dc.l&nbsp;MapStoreCollision&nbsp;; location of collision data</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; bgm</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.l&nbsp;BGM_Test&nbsp;; location of background music</p>
+
+</div>
+
+
+<p class="lead">Loading the scene</p>
+
+<p>With the definition out of the way we need a routine to load it. First off there's a little bit of planning required to determine where in memory things should be loaded. It's been ~20 years since I've done any programming that required manual memory management. It's not really as annoying as it sounds, maybe I'll regret this statement in some future article. For the moment let's reserve some blocks in the VDP memory for scene tiles, font tiles, and sprite tiles:</p>
+
+<div class="well">
+<p>SCENE_VDP=VDP_VRAM_WRITE&nbsp;&nbsp;&nbsp;; write location for scene tiles</p>
+<p>FONT_VDP=SCENE_VDP+$12000000&nbsp;&nbsp;; write location for font tiles</p>
+<p>SPRITE_VDP=SCENE_VDP+$20000000&nbsp;&nbsp;; write location for sprite tiles</p>
+</div>
+
+
+<p>The routine to load the scene largely pulls together code that was scattered throughout various places into one location:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>; LoadScene</p>
+<p>; Parameters</p>
+<p>; a6 = starting address of scene to load</p>
+<p>; other registers used</p>
+<p>; a0 & a1 are used to call other subroutines</p>
+<p>; assume that d0-d7 are used either by this subroutine or others it calls</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>LoadScene:</p>
+<p>&nbsp;move.w&nbsp;#$2700,sr&nbsp;&nbsp;; disable interrupts</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load tiles</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;(a6)+,d7&nbsp;; number of tilesets to load</p>
+<p>&nbsp;move.l&nbsp;#SCENE_VDP,d6&nbsp;; use d6 to track write location</p>
+<p>LoadSceneLoadTilesLoop:</p>
+<p>&nbsp;move.l&nbsp;(a6)+,d1&nbsp;; start address of tileset</p>
+<p>&nbsp;move.l&nbsp;(a6)+,d0&nbsp;; end address of tileset</p>
+<p>&nbsp;sub.l&nbsp;d1,d0&nbsp;; subtract the start address to get length</p>
+<p>&nbsp;move.l&nbsp;d0,d2&nbsp;; copy original value to increment write location later</p>
+<p>&nbsp;divu.w&nbsp;#$0004,d0&nbsp;; divide by 4 to setup call to LoadTiles</p>
+<p>&nbsp;movea.l&nbsp;d1,a0&nbsp;; set address of first tile to load</p>
+<p>&nbsp;move.l&nbsp;d6,d1&nbsp;; set initial write location</p>
+<p>&nbsp;bsr.w&nbsp;LoadTiles&nbsp;; branch to LoadTiles subroutine</p>
+<p>&nbsp;; increment write location for next tileset</p>
+<p>&nbsp;swap&nbsp;d2&nbsp;; d2 has the size of the last tileset, swap it to upper word</p>
+<p>&nbsp;add.l&nbsp;d2,d6&nbsp;; add to d6 to increment write location</p>
+<p>&nbsp;dbra d7,LoadSceneLoadTilesLoop&nbsp;; loop until all data is loaded</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load palettes</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;; setup call to LoadPalettes</p>
+<p>&nbsp;move.w&nbsp;(a6)+,d0&nbsp;; number of palettes to load</p>
+<p>&nbsp;movea.l&nbsp;(a6)+,a0&nbsp;; start address of palettes</p>
+<p>&nbsp;move.l&nbsp;#VDP_CRAM_WRITE,d1&nbsp;; initial write address</p>
+<p>&nbsp;bsr.w&nbsp;LoadPalettes&nbsp;; branch to LoadPalettes subroutine</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; draw the scenery</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;(a6)+,d7&nbsp;; number of tilesets to load</p>
+<p>LoadSceneDrawSceneryLoop:</p>
+<p>&nbsp;movea.l&nbsp;(a6)+,a0&nbsp;; start address of pattern</p>
+<p>&nbsp;move.w&nbsp;(a6)+,d0&nbsp;; base pattern</p>
+<p>&nbsp;move.w&nbsp;(a6)+,d1&nbsp;; repeat</p>
+<p>&nbsp;movea.l&nbsp;(a6)+,a1&nbsp;; initial drawing location</p>
+<p>&nbsp;bsr.w&nbsp;DrawTileset&nbsp;&nbsp;; branch to DrawTileset subroutine</p>
+<p>&nbsp;dbra d7,LoadSceneDrawSceneryLoop&nbsp;; loop until all data is loaded</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load objects</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;(a6)+,d7&nbsp;; number of objects to load</p>
+<p>&nbsp;lea&nbsp;MEM_OBJECT_LIST_OBJS,a0&nbsp;; address of object data</p>
+<p>LoadSceneLoadObjectsLoop:</p>
+<p>&nbsp;move.w&nbsp;(a6)+,(a0)+&nbsp;; word0 (object ID)</p>
+<p>&nbsp;move.w&nbsp;(a6)+,(a0)+&nbsp;; word1 (x+width)</p>
+<p>&nbsp;move.w&nbsp;(a6)+,(a0)+&nbsp;; word2 (y+height)</p>
+<p>&nbsp;dbra d7,LoadSceneLoadObjectsLoop&nbsp;; loop until all data is loaded</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load collision data</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;(a6)+,d7&nbsp;; size of collision data</p>
+<p>&nbsp;movea.l&nbsp;(a6)+,a0&nbsp;; start address of collision data</p>
+<p>&nbsp;lea&nbsp;MEM_COLLISION_DATA,a1&nbsp;; store destination memory location</p>
+<p>LoadSceneLoadMapCollisionLoop:</p>
+<p>&nbsp;move.l (a0)+,(a1)+</p>
+<p>&nbsp;dbra d7,LoadSceneLoadMapCollisionLoop</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; setup map </p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;#INIT_MAP_POSITION_X,(MEM_MAP_POSITION_X)&nbsp;; set map x-position</p>
+<p>&nbsp;move.w&nbsp;#INIT_MAP_POSITION_Y,(MEM_MAP_POSITION_Y)&nbsp;; set map y-position</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_FLAG_MAP_POSITION_CHANGED)&nbsp;; flag to reset the scroll</p>
+<p>&nbsp;bsr.w&nbsp;SetMapScroll&nbsp;; set the map position</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load & start the background music</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;movea.l&nbsp;(a6)+,a0&nbsp;; address of the BGM</p>
+<p>&nbsp;bsr Echo_PlayBGM</p>
+<p>&nbsp;move.w&nbsp;#$2000,sr&nbsp;&nbsp;; re-enable interrupts</p>
+<p>&nbsp;rts</p>
+
+</div>
+ 
+<p>You may have noticed that patterns now have a &quot;repeat&quot; option. This was originally added to support drawing the floor but was also handy for drawing the side frame. This means that DrawTileset needed a little refactoring:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>; DrawTileset</p>
+<p>; draws a set of tiles </p>
+<p>; Parameters</p>
+<p>; a0 = starting address of tileset</p>
+<p>; a1 = initial VRAM write address</p>
+<p>; d0 = base pattern (ID+palette+high/low) of first tile in the tileset</p>
+<p>; d1 = number of times to repeat the pattern</p>
+<p>; other registers used</p>
+<p>; a2 = used to reference current VRAM write address</p>
+<p>; d2 = number of rows in the tileset</p>
+<p>; d3 = number of columns in the tileset </p>
+<p>; d4 = used to store the VDP pattern </p>
+<p>; d5 = loop counter</p>
+<p>; d6 = loop counter</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>DrawTileset:</p>
+<p>&nbsp;move.w&nbsp;(a0)+,d2&nbsp;; store the number of rows</p>
+<p>&nbsp;move.w&nbsp;(a0)+,d3&nbsp;; store the number of columns</p>
+<p>DrawTilesetOuterLoop:</p>
+<p>&nbsp;movea.w&nbsp;a0,a2&nbsp;; reset a2 to starting address</p>
+<p>&nbsp;move.w&nbsp;d2,d5&nbsp;; reset d5 to store the number of rows to loop over</p>
+<p>DrawTilesetRowLoop:</p>
+<p>&nbsp;move.w&nbsp;d3,d6&nbsp;; reset d6 to store the number of columns to loop over</p>
+<p>&nbsp;move.l&nbsp;a1,(VDP_CONTROL)&nbsp;; set VDP address</p>
+<p>DrawTilesetColumnLoop:</p>
+<p>&nbsp;move.w&nbsp;(a2)+,d4&nbsp;; store the next tile index in d4</p>
+<p>&nbsp;add.w&nbsp;d0,d4&nbsp;; add base tile ID to tile index</p>
+<p>&nbsp;; draw the tile</p>
+<p>&nbsp;move.w  d4,(VDP_DATA)&nbsp;; copy the pattern to VPD</p>
+<p>&nbsp;dbf&nbsp;d6,DrawTilesetColumnLoop&nbsp;; decrement value of d6 (column) and loop </p>
+<p>&nbsp;adda.l&nbsp;#ROW_HEIGHT,a1&nbsp;; move to the next row</p>
+<p>&nbsp;dbf&nbsp;d5,DrawTilesetRowLoop&nbsp;; decrement value of d5 (row) and loop</p>
+<p>&nbsp;dbf&nbsp;d1,DrawTilesetOuterLoop&nbsp;; decrement value of d1 (repeat) and loop</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Loading a new scene in the main game code is now a really short bit-o-work:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load the initial scene</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;lea&nbsp;SceneVB,a6&nbsp;; address of the initial scene</p>
+<p>&nbsp;bsr.w&nbsp;LoadScene&nbsp;; branch to LoadScene subroutine</p>
+</div>
+
+<p>Despite all this new code we're really just in the exact place we left off only with an ugly cash register. Let's add something new...</p>
+
+<p class="lead">Dialog open/close animation</p>
+
+<p>Our little sprite needs some ability to interact with their environment. We stubbed out the basic mechanics of pressing the A button to look at stuff in <a href="https://huguesjohnson.com/programming/genesis/objects/">part 9</a> so now we need a dialog to display some text.</p>
+
+<p>We're going to build an animated dialog that expands and collapses. This is pretty much standard fare in most RPGs. Let's start with a few new constants:</p>
+
+
+<div class="well">
+<p>DIALOG_PATTERN_SIZE=$00C4&nbsp;; size of the dialog pattern</p>
+<p>DIALOG_BASE_TILE=$8090&nbsp;; base file for dialogs</p>
+<p>DIALOG_ROWCOL=$09900000&nbsp;; row 19 column 16=(128*19)+16=2448=990</p>
+<p>DIALOG_FRAME_COUNT=$000B&nbsp;; number of animation frames for dialogs</p>
+<p>DIALOG_UPDATE_FREQUENCY=$0002&nbsp;; how often to update dialog animation</p>
+<p>LF=$0A&nbsp;; '\n' - used to break text into multiple lines</p>
+<p>ETX=$03&nbsp;; end of text</p>
+</div>
+
+<p>These constants define the size of the dialog, the base tile in the dialog tileset, where to draw the dialog, how many frames of animation in the expand/collapse, and how often to update the animation.</p>
+
+<p>This is probably not optimal but I decided to create a pattern for each dialog animation frame:</p>
+<div class="well">
+
+<p>PatternDialogFrame0:</p>
+<p>&nbsp;dc.w&nbsp;$0003&nbsp;; 4 rows</p>
+<p>&nbsp;dc.w&nbsp;$0017&nbsp;; 24 columns</p>
+<p>&nbsp;; row 00</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>&nbsp;dc.w&nbsp;$60,$64,$64,$66</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>&nbsp;; row 01</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>&nbsp;dc.w&nbsp;$62,$00,$00,$63</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>&nbsp;; row 02</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>&nbsp;dc.w&nbsp;$62,$00,$00,$63</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>&nbsp;; row 03</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>&nbsp;dc.w&nbsp;$61,$65,$65,$67</p>
+<p>&nbsp;dc.w&nbsp;$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F,$5F</p>
+<p>[...]</p>
+<p>PatternDialogFrameA:</p>
+<p>&nbsp;dc.w&nbsp;$0003&nbsp;; 4 rows</p>
+<p>&nbsp;dc.w&nbsp;$0017&nbsp;; 24 columns</p>
+<p>&nbsp;; row 00</p>
+<p>&nbsp;dc.w&nbsp;$60,$64,$64,$64,$64,$64,$64,$64,$64,$64,$64,$64</p>
+<p>&nbsp;dc.w&nbsp;$64,$64,$64,$64,$64,$64,$64,$64,$64,$64,$64,$66</p>
+<p>&nbsp;; row 01</p>
+<p>&nbsp;dc.w&nbsp;$62,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</p>
+<p>&nbsp;dc.w&nbsp;$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$63</p>
+<p>&nbsp;; row 02</p>
+<p>&nbsp;dc.w&nbsp;$62,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</p>
+<p>&nbsp;dc.w&nbsp;$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$63</p>
+<p>&nbsp;; row 03</p>
+<p>&nbsp;dc.w&nbsp;$61,$65,$65,$65,$65,$65,$65,$65,$65,$65,$65,$65</p>
+<p>&nbsp;dc.w&nbsp;$65,$65,$65,$65,$65,$65,$65,$65,$65,$65,$65,$67</p>
+</div>
+
+<p>In the main loop we need to make a small adjustment to see if a dialog is either drawing or open. If it's drawing we need to wait it out, if it's not drawing we need to see if it's open to then figure out if a button was pressed to close it.</p>
+
+<div class="well">
+<p>MainGameLoop:</p>
+<p>[...]</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; determine if the player is opening or interacting with a dialog</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>TestDialog:</p>
+<p>&nbsp;move.l&nbsp;(MEM_GAME_STATE),d7&nbsp;; copy current game state to d7</p>
+<p>&nbsp;btst.l&nbsp;#STATE_FLAG_DIALOG,d7 ; test game state</p>
+<p>&nbsp;beq.w&nbsp;TestExploring&nbsp;; dialog not displaying, move to next test</p>
+<p>TestDialogUpdateFrequency:</p>
+<p>&nbsp;cmpi.w&nbsp;#DIALOG_UPDATE_FREQUENCY,(MEM_FRAME_COUNTER); is it time to update?</p>
+<p>&nbsp;blt.s&nbsp;TestDialogOpen&nbsp;; branch if it's not time to move</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_FRAME_COUNTER)&nbsp;; reset counter to 0</p>
+<p>&nbsp;bsr.w&nbsp;ProcessDialog&nbsp;; dialog is set, jump to process dialog sub-routine</p>
+<p>&nbsp;bra.w&nbsp;MainGameLoop&nbsp;; return to start of game loop</p>
+<p>TestDialogOpen:</p>
+<p>&nbsp;; if the dialog is open then update frequency is ignored</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_FLAGS),d7&nbsp;; copy current game state to d7</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_TEXT_OPEN,d7 ; test if the dialog is open</p>
+<p>&nbsp;beq.w&nbsp;MainGameLoop&nbsp;; dialog is not open, move to next test</p>
+<p>&nbsp;; else branch to process dialog</p>
+<p>&nbsp;bsr.w&nbsp;ProcessDialog&nbsp;; dialog is set, jump to process dialog sub-routine</p>
+<p>&nbsp;bra.w&nbsp;MainGameLoop&nbsp;; return to start of game loop</p>
+</div>
+
+<p>We now need to update the ProcessDialog routine written back in <a href="https://huguesjohnson.com/programming/genesis/objects/">part 9</a> to draw the dialog pattern based on the animation frame:</p>
+
+<div class="well">
+<p>ProcessDialog:</p>
+<p>&nbsp;move.w&nbsp;#$2700,sr&nbsp;; disable interrupts while managing dialogs</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_FLAGS),d7&nbsp;; copy current dialog state to d7</p>
+<p>ProcessDialogTestTextBuilt:</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_TEXT_BUILT,d7&nbsp;; test game state</p>
+<p>&nbsp;bne.s&nbsp;ProcessDialogTestOpening&nbsp;; text is built, move to next test</p>
+<p>[...]</p>
+<p>ProcessDialogTestOpening:</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_TEXT_OPENING,d7&nbsp;; test if the dialog is opening</p>
+<p>&nbsp;beq.s&nbsp;ProcessDialogTextDrawing&nbsp;; dialog is not opening, go to next test</p>
+<p>&nbsp;; dialog opening animation</p>
+<p>&nbsp;move.w&nbsp;d7,d6&nbsp;; copy low word with frame number</p>
+<p>&nbsp;mulu.w&nbsp;#DIALOG_PATTERN_SIZE,d6&nbsp;; multiply by size of dialog patterns</p>
+<p>&nbsp;movea.l&nbsp;#PatternDialogStart,a0&nbsp;; point a0 to start of dialog patterns</p>
+<p>&nbsp;adda.l&nbsp;d6,a0&nbsp;; increment to current frame</p>
+<p>&nbsp;move.w&nbsp;#DIALOG_BASE_TILE,d0&nbsp;; base pattern</p>
+<p>&nbsp;move.w&nbsp;#$0000,d1&nbsp;; repeat</p>
+<p>&nbsp;movea.l&nbsp;#(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),a1&nbsp;; initial drawing location</p>
+<p>&nbsp;bsr.w&nbsp;DrawTileset&nbsp;&nbsp;; branch to DrawTileset subroutine</p>
+<p>&nbsp;addq&nbsp;#$1,d7&nbsp;; increment frame number</p>
+<p>&nbsp;cmpi.w&nbsp;#DIALOG_FRAME_COUNT,d7&nbsp;; are we at the last frame?</p>
+<p>&nbsp;ble.w&nbsp;ExitProcessDialog ; not at the last frame, exit</p>
+<p>&nbsp;bclr.l&nbsp;#DIALOG_FLAG_TEXT_OPENING,d7&nbsp;; done opening, clear flag</p>
+<p>&nbsp;bset.l&nbsp;#DIALOG_FLAG_TEXT_DRAWING,d7&nbsp;; change state to text drawing</p>
+<p>&nbsp;; reset the drawing location for the dialog text</p>
+<p>&nbsp;move.l&nbsp;#(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD)&nbsp;; base address</p>
+<p>&nbsp;add.l&nbsp;#$00820000,(MEM_DIALOG_VPD)&nbsp;; add 132 to move 1 row and column</p>
+<p>&nbsp;bra.w&nbsp;ExitProcessDialog&nbsp;; exit</p>
+<p>ProcessDialogTextDrawing:</p>
+<p>[...covered in the next section...]</p>
+<p>ProcessDialogTestOpen:</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_TEXT_OPEN,d7&nbsp;; test if the dialog is open</p>
+<p>&nbsp;beq.s&nbsp;ProcessDialogTestClosing&nbsp;; dialog is not open, move to next test</p>
+<p>&nbsp;; wait until a button is pressed to clear the dialog</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_PRESSED),d6&nbsp;; copy pressed buttons to d6</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,d6&nbsp;; are any buttons pressed?</p>
+<p>&nbsp;beq.s&nbsp;ExitProcessDialog ; no buttons are pressed, exit</p>
+<p>&nbsp;bset.l&nbsp;#DIALOG_FLAG_TEXT_CLOSING,d7&nbsp;; set closing flag</p>
+<p>&nbsp;bclr.l&nbsp;#DIALOG_FLAG_TEXT_OPEN,d7&nbsp;; closing, clear open flag</p>
+<p>ProcessDialogTestClosing:</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_TEXT_CLOSING,d7&nbsp;; test if the dialog is opening</p>
+<p>&nbsp;beq.s&nbsp;ProcessDialogClearFlags&nbsp;; dialog is not closing, exit</p>
+<p>&nbsp;; dialog closing animation</p>
+<p>&nbsp;move.w&nbsp;d7,d6&nbsp;; copy low word with frame number</p>
+<p>&nbsp;subq&nbsp;#$1,d6&nbsp;; decrement frame number</p>
+<p>&nbsp;mulu.w&nbsp;#DIALOG_PATTERN_SIZE,d6&nbsp;; multiply by size of dialog patterns</p>
+<p>&nbsp;movea.l&nbsp;#PatternDialogClear,a0&nbsp;; point a0 to start of dialog patterns</p>
+<p>&nbsp;adda.l&nbsp;d6,a0&nbsp;; decrement to current frame</p>
+<p>&nbsp;move.w&nbsp;#DIALOG_BASE_TILE,d0&nbsp;; base pattern</p>
+<p>&nbsp;move.w&nbsp;#$0000,d1&nbsp;; repeat</p>
+<p>&nbsp;movea.l&nbsp;#(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),a1&nbsp;; initial drawing location</p>
+<p>&nbsp;bsr.w&nbsp;DrawTileset&nbsp;&nbsp;; branch to DrawTileset subroutine</p>
+<p>&nbsp;subq&nbsp;#$1,d7&nbsp;; decrement frame number</p>
+<p>&nbsp;cmpi.w&nbsp;#$0000,d7&nbsp;; are we at the last frame?</p>
+<p>&nbsp;bgt.s&nbsp;ExitProcessDialog ; not at the last frame, exit</p>
+<p>ProcessDialogClearFlags:&nbsp;; clear flags when done</p>
+<p>&nbsp;andi.l&nbsp;#$00000000,d7&nbsp;; clear all dialog flags</p>
+<p>&nbsp;; clear dialog bit on game state</p>
+<p>&nbsp;move.l&nbsp;(MEM_GAME_STATE),d6&nbsp;; copy current game state to d6</p>
+<p>&nbsp;bclr.l&nbsp;#STATE_FLAG_DIALOG,d6&nbsp;; clear the dialog bit</p>
+<p>&nbsp;move.l&nbsp;d6,(MEM_GAME_STATE)&nbsp;; copy it back</p>
+<p>ExitProcessDialog:</p>
+<p>&nbsp;move.l&nbsp;d7,(MEM_DIALOG_FLAGS)&nbsp;; save any changes made to the game state</p>
+<p>&nbsp;move.w&nbsp;#$2000,sr&nbsp;&nbsp;; re-enable interrupts</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>So after all this work we just have an empty dialog with a decent-looking fade-in/fade-out transition.</p>
+
+<p><img src="dialog-empty.gif" alt="Empty dialog" class="img-fluid"/></p>
+
+<p>I thought about taking a break and posting an article after getting this little bit working. Instead I fought my laziness and implemented text as well.</p>
+
+<p class="lead">Drawing text</p>
+
+<p>Before we can draw text we'll need a font. I played around with a couple original font ideas before I remembered that I had a perfectly nice looking font already created for a <a href="https://www.huguesjohnson.com/aridia/">Phantasy Star III ROM hack</a>. The only consistently positive feedback I receive on my PSIII ROM hacks is for the font. Too bad it's not mine.</p>
+
+<p>The font I'm using is the Deathwake font from here - <a href="https://www.zee-3.com/pickfordbros/archive/bitmapfonts.php">https://www.zee-3.com/pickfordbros/archive/bitmapfonts.php</a>. Their site says &quot;<i>Feel free to use any of these fonts for whatever purpose you see fit.</i>&quot; so I will. It has a really nice style to it and amazingly only uses a 6x6 grid for each character:</p>
+
+<p><img src="font.png" alt="Font" class="img-fluid"/></p>
+
+<p>The 6x6 part is important because with 8x8 tiles it means I don't have to do any work on spacing. The characters are all aligned bottom-right creating a 1px pad on the left and top edges.</p>
+
+<p>There are some characters included that likely won't ever be used like { } or `. I'm keeping those around as placeholders in case I need symbols in the dialogs at some later point. Like if I feel like putting a character that looks like a musical note in some text I'd overwrite { or whatever.</p>
+
+<p>Now we need to define some dialog text. Since I'm not very creative, the text is a really bland:</p>
+
+<div class="well">
+
+<p>DialogTextNothing:</p>
+<p>&nbsp;dc.b&nbsp;"There's nothing very"</p>
+<p>&nbsp;dc.b&nbsp;LF</p>
+<p>&nbsp;dc.b&nbsp;"interesting here."</p>
+<p>&nbsp;dc.b&nbsp;ETX</p>
+<p>&nbsp;align 2</p>
+<p>DialogText8Bit:</p>
+<p>&nbsp;dc.b&nbsp;"The shelves are lined"</p>
+<p>&nbsp;dc.b&nbsp;LF</p>
+<p>&nbsp;dc.b&nbsp;"with 8-bit games."</p>
+<p>&nbsp;dc.b&nbsp;ETX</p>
+<p>&nbsp;align 2</p>
+<p>DialogTextMags:</p>
+<p>&nbsp;dc.b&nbsp;"Below the counter are"</p>
+<p>&nbsp;dc.b&nbsp;LF</p>
+<p>&nbsp;dc.b&nbsp;"gaming magazines."</p>
+<p>&nbsp;dc.b&nbsp;ETX</p>
+<p>&nbsp;align 2</p>
+<p>DialogTextCounter:</p>
+<p>&nbsp;dc.b&nbsp;"The counter is empty."</p>
+<p>&nbsp;dc.b&nbsp;ETX</p>
+<p>&nbsp;align 2</p>
+<p>DialogTextRegister:</p>
+<p>&nbsp;dc.b&nbsp;"The register stares"</p>
+<p>&nbsp;dc.b&nbsp;LF</p>
+<p>&nbsp;dc.b&nbsp;"back at you blankly."</p>
+<p>&nbsp;dc.b&nbsp;ETX</p>
+<p>&nbsp;align 2</p>
+<p>DialogTextDani:</p>
+<p>&nbsp;dc.b&nbsp;"Dani: 'Isn't it time"</p>
+<p>&nbsp;dc.b&nbsp;LF</p>
+<p>&nbsp;dc.b&nbsp;"to close already?'"</p>
+<p>&nbsp;dc.b&nbsp;ETX</p>
+<p>&nbsp;align 2</p>
+
+</div>
+
+<p>Now we need a quick 'n dirty method to figure out what text to draw based on what the player is looking at. This is nowhere near elegant nor something I plan to build on, it's just a giant switch statement:</p>
+
+<div class="well">
+<p>; this demo iteration is just doing a brute force lookup by object id</p>
+<p>; future versions of this demo should add rules based on the game state</p>
+<p>BuildDialogText: ; note - d7 is used by the caller</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTION_TARGET_OBJID),d6&nbsp;; copy action target to d6</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_NOTHING,d6</p>
+<p>&nbsp;bne.s&nbsp;.1</p>
+<p>&nbsp;lea&nbsp;DialogTextNothing,a0</p>
+<p>&nbsp;bra.s&nbsp;ExitBuildDialogText</p>
+<p>.1</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_SCENE_VB_8BIT,d6</p>
+<p>&nbsp;bne.s&nbsp;.2</p>
+<p>&nbsp;lea&nbsp;DialogText8Bit,a0</p>
+<p>&nbsp;bra.s&nbsp;ExitBuildDialogText</p>
+<p>.2</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_SCENE_VB_MAGS,d6</p>
+<p>&nbsp;bne.s&nbsp;.3</p>
+<p>&nbsp;lea&nbsp;DialogTextMags,a0</p>
+<p>&nbsp;bra.s&nbsp;ExitBuildDialogText</p>
+<p>.3</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_SCENE_VB_COUNTER,d6</p>
+<p>&nbsp;bne.s&nbsp;.4</p>
+<p>&nbsp;lea&nbsp;DialogTextCounter,a0</p>
+<p>&nbsp;bra.s&nbsp;ExitBuildDialogText</p>
+<p>.4</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_SCENE_VB_REGISTER,d6</p>
+<p>&nbsp;bne.s&nbsp;.5</p>
+<p>&nbsp;lea&nbsp;DialogTextRegister,a0</p>
+<p>&nbsp;bra.s&nbsp;ExitBuildDialogText&nbsp;</p>
+<p>.5</p>
+<p>&nbsp;cmpi.w&nbsp;#OBJ_NPC_DANI,d6</p>
+<p>&nbsp;bne.s&nbsp;.6</p>
+<p>&nbsp;lea&nbsp;DialogTextDani,a0</p>
+<p>&nbsp;bra.s&nbsp;ExitBuildDialogText&nbsp;</p>
+<p>.6</p>
+<p>&nbsp;lea&nbsp;DialogTextNothing,a0</p>
+<p>ExitBuildDialogText:</p>
+<p>&nbsp;move.l&nbsp;a0,MEM_DIALOG_TEXT&nbsp;; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Drawing text is just like drawing any other pattern except we need to subtract 32 (20 hex) from the ASCII values to get the tile ID. Alternatively, the base tile in the pattern could be -32 but somehow that seems more complicated:</p>
+
+<div class="well">
+<p>ProcessDialog:</p>
+<p>[...]</p>
+<p>ProcessDialogTextDrawing:</p>
+<p>&nbsp;btst.l&nbsp;#DIALOG_FLAG_TEXT_DRAWING,d7&nbsp;; test if the dialog is opening</p>
+<p>&nbsp;beq.s&nbsp;ProcessDialogTestOpen&nbsp;; text is not drawing, go to next test</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_TEXT),a0&nbsp;; point a0 to the current character</p>
+<p>&nbsp;move.b&nbsp;(a0),d6&nbsp;; copy current character to d6</p>
+<p>&nbsp;cmpi.b&nbsp;#ETX,d6&nbsp;; is this the end of the text?</p>
+<p>&nbsp;beq.s&nbsp;ProcessDialogTextEnd&nbsp;; end of text</p>
+<p>&nbsp;cmpi.b&nbsp;#LF,d6&nbsp;; is this a new line character</p>
+<p>&nbsp;bne.s&nbsp;.1&nbsp;; not a new character</p>
+<p>&nbsp;move.l&nbsp;#(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD)&nbsp;; base address</p>
+<p>&nbsp;add.l&nbsp;#$01020000,(MEM_DIALOG_VPD)&nbsp;; add 258 to move 2 rows and column</p>
+<p>&nbsp;bra.s&nbsp;.2&nbsp;; go to increment text step</p>
+<p>.1</p>
+<p>&nbsp;; update d6 to point to the tile ID</p>
+<p>&nbsp;sub.w&nbsp;#$20,d6&nbsp;; subtract 32 to get the character index</p>
+<p>&nbsp;add.w&nbsp;#DIALOG_BASE_TILE,d6&nbsp;; add the base tile</p>
+<p>&nbsp;move.l&nbsp;(MEM_DIALOG_VPD),(VDP_CONTROL)&nbsp;; set VDP address</p>
+<p>&nbsp;move.w  d6,(VDP_DATA)&nbsp;; copy the character to VPD</p>
+<p>&nbsp;; draw the next character</p>
+<p>&nbsp;add.l&nbsp;#$00020000,(MEM_DIALOG_VPD)&nbsp;; move to the next column</p>
+<p>.2</p>
+<p>&nbsp;add.l&nbsp;#$0001,(MEM_DIALOG_TEXT)&nbsp;; move to the next character</p>
+<p>&nbsp;bra.w&nbsp;ExitProcessDialog</p>
+<p>ProcessDialogTextEnd:</p>
+<p>&nbsp;bclr.l&nbsp;#DIALOG_FLAG_TEXT_DRAWING,d7&nbsp;; done drawing, clear flag</p>
+<p>&nbsp;bset.l&nbsp;#DIALOG_FLAG_TEXT_OPEN,d7&nbsp;; change state to open when done</p>
+<p>ProcessDialogTestOpen:</p>
+<p>[...]</p>
+</div>
+
+<p>We now have an animated dialog that draws text:</p>
+
+<p><img src="dialog-text.gif" alt="Dialog with text" class="img-fluid"/></p>
+
+<p>Now our little sprite can look around at stuff, the brute force text lookup even works too:</p>
+
+<p>
+      <div class="row">
+        <div class="col-md-4"><img src="dialog-nothing.png" alt="Dialog looking at nothing" class="img-fluid"/></div>
+        <div class="col-md-4"><img src="dialog-counter.png" alt="Dialog looking at the counter" class="img-fluid"/></div>
+        <div class="col-md-4"><img src="dialog-games.png" alt="Dialog looking at games" class="img-fluid"/></div>
+      </div>
+</p>
+
+<p>
+      <div class="row">
+        <div class="col-md-4"><img src="dialog-register.png" alt="Dialog looking at the register" class="img-fluid"/></div>
+        <div class="col-md-4"><img src="dialog-magazines.png" alt="Dialog looking at the magazine rack" class="img-fluid"/></div>
+        <div class="col-md-4"><img src="dialog-npc.png" alt="Dialog looking at an NPC" class="img-fluid"/></div>
+      </div>
+</p>
+
+<p>I know this doesn't seem terribly exciting but I'm very happy to get this working. I'm not too far from having the basic plumbing in place to allow a player to freely explore the entire mall. I suppose scene transitions are going to be the next heap of work to figure out.</p>
+
+<p class="lead">New problems &amp; other stuff that needs fixin'</p>
+<ul>
+<li>The pause/unpause routine is hard coded to the palettes of the first store.</li>
+<li>The dialog can only display one page of text, need to write some code to have it scroll for longer conversations.</li>
+<li>NPC sprites should really face the player sprite when they're interacting.</li>
+<li>The store still needs more scenery.</li>
+</ul>
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/spritelist/">&lt;- Part 10: Sprite Link List</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scene-npcs/">Part 12: Scenes &amp; NPCs -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/collision-detection/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesiscollision.png" alt="Sega Genesis Programming Part 5: Collision Detection"></p><p>Sega Genesis Programming Part 5: Collision Detection</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/selections/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisselections.png" alt="Sega Genesis Programming Part 14: Selections"></p><p>Sega Genesis Programming Part 14: Selections</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

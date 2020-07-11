@@ -1,0 +1,405 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 17: Fade-In/Fade-Out</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 17: Fade-In/Fade-Out" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 17: fade-in/fade-out</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/scripted-events/">&lt;- Sega Genesis Programming Part 16: Scripted Events</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/save-load/">Part 18: Saving &amp; Loading -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Now where did we leave off?</p>
+
+<p>I've heard people say it's a bad practice to not put dates on articles. I used to and then one day just kinda stopped. I don't remember why. I think since most of my site is talking about old video stuff the published dates are unimportant. Does it really matter if some scans of a store catalog from 1992 were posted in 2008 or 2010?</p>
+
+<p>One consequence of this is readers have no idea it's been over a year since I last posted an article about my crazy Sega Genesis programming experiments. I doubt dates matter unless someone a decade from now claims I stole an article from them, even then I suspect web.archive.org can sort it all out. In the past year I've been working on expanding <a href="https://www.huguesjohnson.com/rc89/">my demo</a> to include a full &quot;overworld&quot; map. There's not much programming involved in that, just tedious (to me) tile creation and scene layouts.</p>
+
+<p>In between creating 20+ locations I managed to code up a couple interesting things. I updated sprite z-ordering for the 1,000th time. I never want to look at that again now so it's not going into an article. One neat thing I wrote over a weekend was palette fading.</p>
+
+<p>To recap, the demo I'm working on is set in a shopping mall in 1989. I wanted each store to have a distinct look which means they have 3 different palettes. The 4th palette is used for characters. 1 palette from each scene is used for the hallway preview. The hallways then have 1 palette of their own, with the other 2 reserved for store fronts.</p>
+
+<p><img src="example-scenes.png" alt="Example scenes" class="img-fluid d-block mx-auto"/></p>
+
+<p>I'm not sure if I'd call it a &quot;downside&quot; but one thing that results from this is the player can't continuously walk between scenes. Doing this would require all the scenes, or at least neighboring ones, to share common palettes. There also could be some wacky palette swapping alternative that I'm not smart enough to figure out. Lacking another idea, I have the entire scene transition when the player enters a new location. It's like entering a house in an RPG. In the first demos I just brute-force cut-over from one scene to the next. That looked tacky because graphics would pop-up like girders on Donkey Kong (you can use that reference to date this article if that's important to you). To make it look cooler I came up with some little fade-in &amp; fade-out effects.</p>
+
+<p class="lead">Planning it out</p>
+
+<p>Let's review how palettes work in the Sega Genesis.. the color RAM (CRAM) stores 4 sets of 16 color palettes. Each color is represented by a 16-bit word. To simplify, the CRAM is just a list of 64 16-bit words.</p>
+
+<p>The colors themselves are only 9-bit with 4 unused bits and some extra ones to turn shading on/off. I haven't played with shading so I can't explain how that works. The format of each color word is:</p>
+
+<div class="well">
+<p>FEDCBA9876543210</p>
+<p>0000BBBSGGGSRRRS</p>
+</div>
+
+<p>The leftmost bit in each BGR is the most significant - meaning 100 is brighter than 001. At first I thought fading was really easy - &quot;hey, just do an 'and 0000011001100110' to strip out the high bits then 'and 0000001000100010' and so on&quot; - it turns out that looks terrible, just see why:</p>
+
+<div class="well">
+<p>0000BBBSGGGSRRRS</p>
+<p>0000100000100100</p>
+<p>and&nbsp;0000011001100110</p>
+<p>--></p>
+<p>0000BBBSGGGSRRRS</p>
+<p>0000000000100100</p>
+</div>
+
+
+<p>This changes the palette from a predominantly blue color to a predominantly red color. Taking off the 2nd bit changes it to..</p>
+
+<div class="well">
+<p>0000BBBSGGGSRRRS</p>
+<p>0000000000100000</p>
+</div>
+
+<p>..which is dark green. So the transition looks awful - blueish to redish to green. What we really need to do is shift the intensity down equally so..</p>
+
+<div class="well">
+<p>0000BBBSGGGSRRRS</p>
+<p>0000100000100100</p>
+</div>
+
+<p>..changes to..</p>
+
+<div class="well">
+<p>0000BBBSGGGSRRRS</p>
+<p>0000010000000010</p>
+</div>
+
+<p>..so the colors are in the same balance. And the next right shift takes us to..</p>
+
+<div class="well">
+<p>0000BBBSGGGSRRRS</p>
+<p>0000001000000000</p>
+</div>
+
+<p>This gives us a nice fade-out from a bright predominantly blue color to a dull predominantly blue color then to a dark blue color. One more right shift turns the color black. Of course it's not that easy, every time we shift bits we risk overflowing colors. After two shifts the lowest bit of blue overflows into the highest bit of red for example. The full order of operations then goes like:</p>
+
+<div class="well">
+<p>0000BBBSGGGSRRRS</p>
+<p>0000111010100110</p>
+<p>lsr&nbsp;1</p>
+<p>--></p>
+<p>0000BBBSGGGSRRRS</p>
+<p>0000011101010011</p>
+<p>and&nbsp;0000111011101110</p>
+<p>--></p>
+<p>0000BBBSGGGSRRRS</p>
+<p>0000011001000010</p>
+<p>[repeat until 0000000000000000]</p>
+</div>
+
+<p>Fade-in is then a matter of doing this in reverse order.</p>
+
+
+<p>One other change I'm making is storing a copy of the scene palette in RAM. This is just because I found it easier to work off a copy in RAM than trying to manipulate the palettes in the CRAM directly. Also the whole &quot;update the CRAM directly&quot; thing works for fade-out but not fade-in. One way or another, fading-in needs a copy of the destination palette in RAM. Or at least I couldn't imagine another way.</p>
+
+<p class="lead">Setup</p>
+
+<p>Alright, let's get to writing this. First off we need a couple new constants. The first specifies how long (how many frames) to wait between fade transitions. Swapping palettes can happen in 1/60 of a second, if you want the player to see the effect you need to pause just a little bit. 3-4 frames looks alright, for debugging this value can be 0 or 16 or whatever. We also need a memory location to store the active palette. This needs to have enough room to store 64 words. The value used in this article is completely arbitrary. </p>
+
+<div class="well">
+<p>FADE_FRAME_DELAY=$0004&nbsp;;&nbsp;how&nbsp;many&nbsp;frames&nbsp;to&nbsp;wait&nbsp;between&nbsp;fade&nbsp;in/out</p>
+
+<p>MEM_SCENE_PALETTE=$FFFF01CA&nbsp;;&nbsp;storing&nbsp;for&nbsp;fade&nbsp;in/out</p>
+
+</div>
+
+<p>And there are a few constants you should already know and love by now:</p>
+
+<div class="well">
+<p>VDP_CRAM_WRITE=$C0000000</p>
+<p>VDP_DATA=$00C00000</p>
+<p>VDP_CONTROL=$00C00004</p>
+<p>VDP_STATUS_VBLANK=$0008</p>
+</div>
+
+<p>Another set of repeat material is code to wait for a vblank interrupt. WaitVBlank is used for the fade animation delay. WaitVBlankStart is used to update the CRAM while vblank is happening.</p>
+
+<div class="well">
+<p>WaitVBlank:</p>
+<p>&nbsp;bsr.w&nbsp;WaitVBlankStart&nbsp;;&nbsp;wait&nbsp;for&nbsp;vblank&nbsp;to&nbsp;start</p>
+<p>&nbsp;bsr.w&nbsp;WaitVBlankEnd&nbsp;;&nbsp;wait&nbsp;for&nbsp;vblank&nbsp;to&nbsp;end</p>
+<p>&nbsp;rts&nbsp;;&nbsp;exit</p>
+<p>WaitVBlankStart:</p>
+<p>&nbsp;move.w&nbsp;VDP_CONTROL,d0&nbsp;;&nbsp;copy&nbsp;VDP&nbsp;status&nbsp;to&nbsp;d0</p>
+<p>&nbsp;andi.w&nbsp;#VDP_STATUS_VBLANK,d0&nbsp;;&nbsp;check&nbsp;if&nbsp;the&nbsp;vblank&nbsp;status&nbsp;flag&nbsp;is&nbsp;set</p>
+<p>&nbsp;beq.s&nbsp;WaitVBlankStart&nbsp;;&nbsp;wait&nbsp;for&nbsp;vblank&nbsp;to&nbsp;complete</p>
+<p>&nbsp;rts&nbsp;;&nbsp;exit</p>
+<p>WaitVBlankEnd:</p>
+<p>&nbsp;move.w&nbsp;VDP_CONTROL,d0&nbsp;;&nbsp;copy&nbsp;VDP&nbsp;status&nbsp;to&nbsp;d0</p>
+<p>&nbsp;andi.w&nbsp;#VDP_STATUS_VBLANK,d0&nbsp;;&nbsp;check&nbsp;if&nbsp;the&nbsp;vblank&nbsp;status&nbsp;flag&nbsp;is&nbsp;set</p>
+<p>&nbsp;bne.s&nbsp;WaitVBlankEnd&nbsp;;&nbsp;wait&nbsp;for&nbsp;vblank&nbsp;to&nbsp;complete</p>
+<p>&nbsp;rts&nbsp;;&nbsp;exit</p>
+
+</div>
+
+<p>With all that out of the way it's time to start some new stuff..</p>
+
+<p class="lead">Fading the palettes</p>
+
+<p>I decided to tackle this with a set of three loops. The outer-most loop goes from 0 to 3 and is for each fade out sequence. The inner loop goes from 0 to 63 and iterates through each palette entry. I suppose it could use long words and be cut in half. Within the inner loop is another loop that applies the lsr+and instructions. The size of that loop varies based on which fade step we're in.</p>
+
+<div class="well">
+<p>&nbsp;move.w&nbsp;#$2700,sr&nbsp;&nbsp;;&nbsp;disable&nbsp;interrupts</p>
+<p>FadeOut:</p>
+<p>&nbsp;move.w&nbsp;#$0000,d3&nbsp;;&nbsp;d3&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;to&nbsp;loop</p>
+<p>FadeOutOuterLoop:</p>
+<p>&nbsp;move.w&nbsp;d3,d2&nbsp;;&nbsp;d2&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;lsr&nbsp;loop&nbsp;counter</p>
+<p>&nbsp;bsr.w&nbsp;FadeFrameDelay&nbsp;;&nbsp;fade&nbsp;in/out&nbsp;delay&nbsp;frames</p>
+<p>&nbsp;bsr.w&nbsp;WaitVBlankStart&nbsp;;&nbsp;wait&nbsp;to&nbsp;load&nbsp;palettes&nbsp;until&nbsp;VBlank&nbsp;starts</p>
+<p>&nbsp;move.l&nbsp;#VDP_CRAM_WRITE,(VDP_CONTROL)&nbsp;;&nbsp;set&nbsp;up&nbsp;VDP&nbsp;write&nbsp;to&nbsp;CRAM</p>
+<p>&nbsp;lea&nbsp;(MEM_SCENE_PALETTE),a0&nbsp;;&nbsp;point&nbsp;a0&nbsp;to&nbsp;the&nbsp;now&nbsp;previous&nbsp;scene&nbsp;palette</p>
+<p>&nbsp;move.w&nbsp;#$003F,d0&nbsp;;&nbsp;64&nbsp;words&nbsp;of&nbsp;palette&nbsp;data</p>
+<p>FadeOutInnerLoop:</p>
+<p>&nbsp;move.w&nbsp;(a0)+,d1&nbsp;;&nbsp;get&nbsp;the&nbsp;next&nbsp;palette&nbsp;entry</p>
+<p>FadeOutLsrLoop:</p>
+<p>&nbsp;lsr.w&nbsp;#$01,d1&nbsp;;&nbsp;shift&nbsp;bits&nbsp;to&nbsp;the&nbsp;right&nbsp;to&nbsp;decrease&nbsp;color&nbsp;intensity</p>
+<p>&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000BBBSGGGSRRRS</p>
+<p>&nbsp;and.w&nbsp;#%0000111011101110,d1&nbsp;;&nbsp;prevent&nbsp;color&nbsp;overflow</p>
+<p>&nbsp;dbf&nbsp;d2,FadeOutLsrLoop&nbsp;;&nbsp;loop&nbsp;until&nbsp;done&nbsp;shifting</p>
+<p>&nbsp;move.w&nbsp;d1,(VDP_DATA)&nbsp;;&nbsp;write&nbsp;the&nbsp;palette&nbsp;entry</p>
+<p>&nbsp;move.w&nbsp;d3,d2&nbsp;;&nbsp;reset&nbsp;d2</p>
+<p>&nbsp;dbf&nbsp;d0,FadeOutInnerLoop&nbsp;;&nbsp;decrement&nbsp;d0&nbsp;and&nbsp;loop</p>
+<p>&nbsp;addq&nbsp;#$0001,d3&nbsp;;&nbsp;increment&nbsp;d3</p>
+<p>&nbsp;cmpi.w&nbsp;#$0003,d3&nbsp;;&nbsp;loop&nbsp;for&nbsp;three&nbsp;shifts</p>
+<p>&nbsp;blt.s&nbsp;FadeOutOuterLoop&nbsp;;&nbsp;loop&nbsp;until&nbsp;fade&nbsp;is&nbsp;complete</p>
+<p>ExitFadeOut:</p>
+<p>&nbsp;rts&nbsp;;&nbsp;exit</p>
+<p>&nbsp;move.w&nbsp;#$2000,sr&nbsp;&nbsp;;&nbsp;re-enable&nbsp;interrupts</p>
+
+<p>&nbsp;</p>
+
+<p>FadeFrameDelay:</p>
+<p>&nbsp;move.w&nbsp;#FADE_FRAME_DELAY,d1&nbsp;;&nbsp;copy&nbsp;frame&nbsp;delay&nbsp;to&nbsp;d1</p>
+<p>FadeFrameDelayLoop:</p>
+<p>&nbsp;bsr.w&nbsp;WaitVBlank&nbsp;;&nbsp;force&nbsp;waiting&nbsp;for&nbsp;a&nbsp;frame</p>
+<p>&nbsp;dbf.w&nbsp;d1,FadeFrameDelayLoop&nbsp;;&nbsp;frame&nbsp;delay&nbsp;loop</p>
+<p>&nbsp;rts&nbsp;;&nbsp;exit</p>
+</div>
+
+<p>The end result looks pretty alright:</p>
+
+<p><img src="fade-out.png" alt="Fade-out" class="img-fluid d-block mx-auto"/></p>
+
+<p>The browns are a little redder than I'd like in the first fade but overall I'm happy with it. </p>
+
+<p>At the end of the fade out the screen is black. So fading in has one less step than fading out. Otherwise it's roughly the same:</p>
+
+<div class="well">
+<p>&nbsp;move.w&nbsp;#$2700,sr&nbsp;&nbsp;;&nbsp;disable&nbsp;interrupts</p>
+<p>FadeIn:</p>
+<p>&nbsp;move.w&nbsp;#$0002,d3&nbsp;;&nbsp;d3&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;to&nbsp;loop</p>
+<p>LoadSceneFadeInOuterLoop:</p>
+<p>&nbsp;move.w&nbsp;d3,d2&nbsp;;&nbsp;d2&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;lsr&nbsp;loop&nbsp;counter</p>
+<p>&nbsp;bsr.w&nbsp;FadeFrameDelay&nbsp;;&nbsp;fade&nbsp;in/out&nbsp;delay&nbsp;frames</p>
+<p>&nbsp;bsr.w&nbsp;WaitVBlankStart&nbsp;;&nbsp;wait&nbsp;to&nbsp;load&nbsp;palettes&nbsp;until&nbsp;VBlank&nbsp;starts</p>
+<p>&nbsp;move.l&nbsp;#VDP_CRAM_WRITE,(VDP_CONTROL)&nbsp;;&nbsp;set&nbsp;up&nbsp;VDP&nbsp;write&nbsp;to&nbsp;CRAM</p>
+<p>&nbsp;lea&nbsp;(MEM_SCENE_PALETTE),a0&nbsp;;&nbsp;point&nbsp;a0&nbsp;to&nbsp;the&nbsp;now&nbsp;previous&nbsp;scene&nbsp;palette</p>
+<p>&nbsp;move.w&nbsp;#$003F,d0&nbsp;;&nbsp;64&nbsp;words&nbsp;of&nbsp;palette&nbsp;data</p>
+<p>LoadSceneFadeInInnerLoop:</p>
+<p>&nbsp;move.w&nbsp;(a0)+,d1&nbsp;;&nbsp;get&nbsp;the&nbsp;next&nbsp;palette&nbsp;entry</p>
+<p>&nbsp;tst.w&nbsp;d3&nbsp;;&nbsp;is&nbsp;d3&nbsp;0?</p>
+<p>&nbsp;beq.s&nbsp;LoadSceneFadeInWritePaletteEntry;&nbsp;if&nbsp;d3&nbsp;is&nbsp;then&nbsp;then&nbsp;done&nbsp;fading</p>
+<p>LoadSceneFadeInLsrLoop:</p>
+<p>&nbsp;lsr.w&nbsp;#$01,d1&nbsp;;&nbsp;shift&nbsp;bits&nbsp;to&nbsp;the&nbsp;right&nbsp;to&nbsp;decrease&nbsp;color&nbsp;intensity</p>
+<p>&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000BBBSGGGSRRRS</p>
+<p>&nbsp;and.w&nbsp;#%0000111011101110,d1&nbsp;;&nbsp;prevent&nbsp;color&nbsp;overflow</p>
+<p>&nbsp;dbf&nbsp;d2,LoadSceneFadeInLsrLoop&nbsp;;&nbsp;loop&nbsp;until&nbsp;done&nbsp;shifting</p>
+<p>LoadSceneFadeInWritePaletteEntry:</p>
+<p>&nbsp;move.w&nbsp;d1,(VDP_DATA)&nbsp;;&nbsp;write&nbsp;the&nbsp;palette&nbsp;entry</p>
+<p>&nbsp;move.w&nbsp;d3,d2&nbsp;;&nbsp;reset&nbsp;d2</p>
+<p>&nbsp;dbf&nbsp;d0,LoadSceneFadeInInnerLoop&nbsp;;&nbsp;decrement&nbsp;d0&nbsp;and&nbsp;loop</p>
+<p>&nbsp;dbf&nbsp;d3,LoadSceneFadeInOuterLoop&nbsp;;&nbsp;decrement&nbsp;d3&nbsp;and&nbsp;loop</p>
+<p>ExitFadeIn:</p>
+<p>&nbsp;rts&nbsp;;&nbsp;exit</p>
+<p>&nbsp;move.w&nbsp;#$2000,sr&nbsp;&nbsp;;&nbsp;re-enable&nbsp;interrupts</p>
+</div>
+
+<p>Both of these effects could be optimized by someone smarter than me. Even I could probably sort it out in enough time. Since the purpose is to pause the game momentarily anyway I didn't consider performance to be a big concern. I could probably also figure out an elegant way for these to be one subroutine.</p>
+
+<p class="lead">Next time?</p>
+
+<p>After finishing this little article I'm going back to finish the next mostly stable demo for <a href="https://www.huguesjohnson.com/rc89/">Retail Clerk '89</a>. Then.. probably no new features for a little while. I need finish up the game script which will likely take me through the end of the year. There's a chance I'll write some kind of status screen thing which would be a cool thing to post an article about if it happens. Until then, or whatever I write next, thanks for taking the time to read these. See you in a year.</p>
+
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/scripted-events/">&lt;- Sega Genesis Programming Part 16: Scripted Events</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/save-load/">Part 18: Saving &amp; Loading -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/game-state/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesispause.png" alt="Sega Genesis Programming Part 8: Game State and Pausing"></p><p>Sega Genesis Programming Part 8: Game State and Pausing</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/palette-tile-generation/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesispalettetilegen.png" alt="Sega Genesis Programming Part 20: Palette and Tile Generation"></p><p>Sega Genesis Programming Part 20: Palette and Tile Generation</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

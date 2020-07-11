@@ -1,0 +1,829 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 14: Selections</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 4: Echo Sound Engine" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 14: selections</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+  
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/actiontable/">&lt;- Sega Genesis Programming Part 13: Action Table</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/inventory/">Part 15: Inventory -&gt;</a>
+
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Choosing a menu style</p>
+
+<p>In this installment I'm going to attempt to implement some really basic menus where the player can select stuff and then other stuff happens. I know, that's all very specific. The first step is figuring out what style of menus to implement.</p>
+
+<p>There are really two different menu questions... 1) What happens when the player interacts with a person or object (A button press)? and 2) What happens when the player opens the menu (C button press)? Right now I'm going to tackle the first one unless I'm especially productive.</p>
+
+<p>I'm going to start by looking at a few games that are inspirations for this crazy project. Phantasy Star II has obviously been a big inspiration so it's first on the list. In it, the player interacts with NPCs by walking up to them and pressing A. The C button opens the menu, selecting an item opens another menu and so on until the screen is covered:</p>
+
+
+<p><img src="ps2.png" alt="Phantasy Star II menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>The talking to NPCs part is fine but menu part is a little iffy. It's neat that the player is never taken off the overworld screen but it's easy to get lost in the menus. In this example there are three top level windows with active selections. Giving or using an item opens a fourth. It's kinda confusing.</p>
+
+<p>The next game in the series uses the A button to talk to NPCs and the C button now opens a full-screen menu:</p>
+
+<p><img src="ps3.png" alt="Phantasy Star III menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>I prefer this style even though it could require building character portraits which is something I'll be terrible at.</p>
+
+<p>Phantasy Star IV went back to a Phantasy Star II menu system but swapped the A and C buttons just to mess with people:</p>
+
+<p><img src="ps4.png" alt="Phantasy Star IV menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>The original Phantasy Star was a bit different. Walking into NPCs triggered a dialog screen. The menu took up the whole screen like Phantasy Star III but used a window system like II &amp; IV.</p>
+
+<p><img src="ps.png" alt="Phantasy Star menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>I really like having the current scene background in the menu. Phantasy Star III would look amazing if it did that instead of the monochrome background for example. This fits into the &quot;cool idea that's a bunch of work so I probably won't do it&quot; category. </p>
+
+<p>Jumping over to the Super Nintendo, Final Fantasy IV uses a system like Phantasy Star III with talk and menu buttons:</p>
+
+<p><img src="finalfantasy4.png" alt="Final Fantasy IV menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>Of course it's worked this way since the beginning of the series:</p>
+
+<p><img src="finalfantasy.png" alt="Final Fantasy menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>Earthbound isn't a huge inspiration other than the setting. At the risk of making new enemies, I found Earthbound to be a mostly aggravating game. Now some of that could be based on when I played it. My biggest complaint is all the repetitive grinding required to not get killed constantly. Phantasy Star II also suffers this problem. The difference is I played Phantasy Star II when it was new-ish and I had endless free time. I played Earthbound just a couple years ago. I bet if I played Phantasy Star II for the first time tomorrow I'd hate it.</p>
+
+<p>Anyway, the menus use a window style. Talking to people isn't automatic, it's one of the options on the menu if the player is facing someone:</p>
+
+<p><img src="earthbound.png" alt="Earthbound menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>Going back the Genesis (err... Sega CD) for a moment. Lunar: The Silver Star is a great game with a menu that's more style than function:</p>
+
+<p><img src="lunar.png" alt="Lunar: The Silver Star menus" class="img-fluid d-block mx-auto"/></p>
+
+<p>OK, so the last game we're going to look at is on the Super Nintendo and it's one of my favorites - Shadowrun. It handles this differently than every other game here. The one part that's similar is the full screen menu:</p>
+
+<p><img src="shadowrun-menu.png" alt="Shadowrun menu" class="img-fluid d-block mx-auto"/></p>
+
+<p>Interacting with characters and items is where it gets interesting. The player selects something on the screen and is presented with a menu of options. From there they choose what action to take. Examining an NPC shows some text while talking to them might show a quick response from them:</p>
+
+<p><img src="shadowrun-talkmenu.png" alt="Shadowrun talk menu" class="img-fluid d-block mx-auto"/></p>
+
+<p>More often, talking to an NPC opens a dialog where the player can ask about keywords learned throughout the game:</p>
+
+<p><img src="shadowrun-dialog.png" alt="Shadowrun dialog" class="img-fluid d-block mx-auto"/></p>
+
+<p>This is really what I'd like to build in the long run but I have to start smaller. Character portraits, keywords, and a more advanced script are all great but if I over-complicate this I'll never finish. So I'm going to start small and maybe build-up to something grander once I get the basics working.</p>
+
+<p>There are a few options to consider. One is showing a list of possible actions when the player presses A while facing an NPC:</p>
+
+<p><img src="option1.png" alt="Menu option #1" class="img-fluid d-block mx-auto"/></p>
+
+<p>When facing an object the options could be slightly different:</p>
+
+<p><img src="option2.png" alt="Menu option #2" class="img-fluid d-block mx-auto"/></p>
+
+<p>Pressing C could then open the menu:</p>
+
+<p><img src="option3.png" alt="Menu option #3" class="img-fluid d-block mx-auto"/></p>
+
+<p>Hmm... I don't like that idea. I'll build a real full-screen menu later.</p>
+
+<p>Another option is showing a brief object description above the options:</p>
+
+<p><img src="option4.png" alt="Menu option #4" class="img-fluid d-block mx-auto"/></p>
+
+<p>Here's how that would look with an NPC:</p>
+
+<p><img src="option5.png" alt="Menu option #5" class="img-fluid d-block mx-auto"/></p>
+
+<p>I'm leaning toward the last idea. There are some pros and cons, OK just one of each I can think of right now:</p>
+
+<p>Pro: One button press to access to all actions you can perform against stuff.</p>
+
+<p>Con: Two button presses to interact with stuff. It could be possible to just default to look or talk based on some rules.</p>
+
+<p>And last up is a slightly more advanced option to enable dialog between the player and an NPC. This is less sophisticated than Shadowrun but still gives the player a way to choose how they interact with NPCs.</p>
+
+<p><img src="option6.png" alt="Menu option #6" class="img-fluid d-block mx-auto"/></p>
+
+<p>I am also leaning toward building this because it's a simple interface to allow choices. Let's face it, every RPG/adventure game has a bit where the player talks to someone and it goes like &quot;<i>Here's this horrible problem I'm facing, can you help me?</i>&quot; followed by a yes/no option. Selecting &quot;yes&quot; advances the plot while selecting &quot;no&quot; gives the player a chance to go do other stuff before this new quest. It seems like something I'll need to have eventually anyway. This style of dialog could also be used for &quot;<i>There's a shiny red button here. Do you want to press it?</i>&quot;</p>
+
+<p>If these last two ideas are used then there are something like 3 different dialog modes:</p>
+
+<p>
+<table border="1">
+	<tr>
+		<td><b>Dialog mode</b></td>
+		<td><b>Usage</b></td>
+		<td><b>A/C button action</b></td>
+		<td><b>B button action</b></td>
+		<td><b>D-pad action</b></td>
+	</tr>
+	<tr>
+		<td>Simple text</td>
+		<td>Non-interactive messages</td>
+		<td>Advance dialog, close dialog when on last page</td>
+		<td>Advance dialog, close dialog when on last page</td>
+		<td>Advance dialog, close dialog when on last page</td>
+	</tr>
+	<tr>
+		<td>Text with choice</td>
+		<td>Interactive dialog</td>
+		<td>Advance dialog, select items when on last page</td>
+		<td>Advance dialog, cancel menu when on last page</td>
+		<td>Advance dialog, move between selections when on last page</td>
+	</tr>
+	<tr>
+		<td>Overworld menu</td>
+		<td>Interact with objects &amp; NPCs</td>
+		<td>Select items</td>
+		<td>Cancel menu</td>
+		<td>Move between selections</td>
+	</tr>
+</table>
+</p>
+
+<p>This doesn't seem all that difficult to tack on to the existing demo. I will likely regret this statement as I attempt to implement it...</p>
+
+<p class="lead">Showing the menu</p>
+
+<p>The first step to building interactive menus is just drawing them. Even before that let's define what our action codes are. The first three map to the buttons in the 'A' button menu. The captions on the menu change based on whether it's an NPC or object so these are mapping to the menu order. This makes life easier later. Also going back to the <a href="https://huguesjohnson.com/programming/genesis/actiontable/">last article</a>, limiting the number of actions limits the size of the action table which is good. The fourth action will be used for when the player responds to a &quot;yes/no&quot; type question.</p>
+
+<div class="well">
+<p>ACTION_LOOK=$0000 ; look at an object or NPC</p>
+<p>ACTION_USE_TALK=$0001 ; use an object or interact with an NPC</p>
+<p>ACTION_TAKE_GIVE=$0002 ; try to take an object or give an item to an NPC</p>
+<p>ACTION_RESPOND=$0003 ; respond to a selection in a conversation dialog</p>
+</div>
+
+<p>Next are some new dialog flags that effect how the dialog behaves. Three of these are based on the style of menu being shown while the last will be used to flag that the dialog should remain open until the player makes a selection.</p>
+
+<div class="well">
+<p>DIALOG_FLAG_STYLE_MENU=$17 ; overworld menu style dialog</p>
+<p>DIALOG_FLAG_STYLE_TEXT_CHOICE=$18 ; dialog has text with selection at the end</p>
+<p>DIALOG_FLAG_STYLE_SIMPLE_TEXT=$19 ; dialog is a simple text dialog</p>
+<p>DIALOG_FLAG_SELECTION_WAIT=$1A ; waiting for the player to make a selection </p>
+</div>
+
+<p>Now we need to create the text for the menus. The '{' character is being re-purposed to serve as an empty selector spot. Since '(', '{', '[', and '<' are all in the font it's not a big sacrifice.</p>
+
+<div class="well">
+<p>NPCMenu:</p>
+<p>&nbsp;dc.b &quot;{Look {Talk {Give&quot;,ETX</p>
+<p>ObjectMenu:</p>
+<p>&nbsp;dc.b &quot;{Look {Use {Take&quot;,ETX</p>
+</div>
+
+<p>The existing code that showed a general &quot;look/talk&quot; message will be replaced by a subroutine to show the selection dialog. This looks at the target object and references a lookup table to find the title of the menu.</p>
+
+<div class="well">
+<p>ShowSelectionDialog:</p>
+<p>&nbsp;move.w (MEM_ACTION_TARGET_OBJID),d7 ;move target object ID to d7</p>
+<p>&nbsp;andi.w #$0FFF,d7 ; clear the base value</p>
+<p>&nbsp;mulu.w #$4,d7 ; multiply by 4 to get the offset</p>
+<p>&nbsp;move.w (MEM_ACTION_TARGET_OBJID),d6 ; copy action target to d6</p>
+<p>&nbsp;andi.w #OBJ_SCENE_BASE,d6 ; and against OBJ_SCENE_BASE</p>
+<p>&nbsp;beq.s .1 ; if the result is zero then this is not scenery</p>
+<p>&nbsp;lea ObjectNameTable,a6 ; point to default object text table</p>
+<p>&nbsp;bra.s .2 branch to next step</p>
+<p>.1 ; target object is an NPC</p>
+<p>&nbsp;lea NPCNameTable,a6 ; point to default npc text table</p>
+<p>.2</p>
+<p>&nbsp;adda.l d7,a6 ;add offset</p>
+<p>&nbsp;move.l (a6),(MEM_DIALOG_TEXT) ; copy value at a6 to MEM_DIALOG_TEXT</p>
+<p>&nbsp;; set dialog flags to display the dialog</p>
+<p>&nbsp;move.l (MEM_DIALOG_FLAGS),d7 ; copy current dialog state to d7</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_OPENING,d7 ; change state to opening</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_STYLE_MENU,d7 ; set style to overworld menu</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_SELECTION_WAIT,d7 ; set flag to wait for selection</p>
+<p>&nbsp;move.l d7,(MEM_DIALOG_FLAGS) ; save changes made to the game state</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG,d7 ; set the dialog bit</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; copy game state back to d7</p>
+<p>&nbsp;move.w #$0000,(MEM_MENU_SELECTION) ; default to first menu selection</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Here are the lookup tables and their values:</p>
+
+<div class="well">
+<p>ObjectNameTable:</p>
+<p>&nbsp;dc.l $00000000</p>
+<p>&nbsp;; OBJ_SCENE_VB_8BIT</p>
+<p>&nbsp;dc.l ObjectName8Bit</p>
+<p>&nbsp;; OBJ_SCENE_VB_HARDWARE</p>
+<p>&nbsp;dc.l ObjectNameComputerHardware</p>
+<p>&nbsp;; OBJ_SCENE_VB_16BIT</p>
+<p>&nbsp;dc.l ObjectName16Bit</p>
+<p>&nbsp;; OBJ_SCENE_VB_MAGS</p>
+<p>&nbsp;dc.l ObjectNameMagazines</p>
+<p>&nbsp;; OBJ_SCENE_VB_COUNTER</p>
+<p>&nbsp;dc.l ObjectNameCounter</p>
+<p>&nbsp;; OBJ_SCENE_VB_REGISTER</p>
+<p>&nbsp;dc.l ObjectNameRegister</p>
+<p>NPCNameTable:</p>
+<p>&nbsp;dc.l $00000000</p>
+<p>&nbsp;; OBJ_NPC_DANI</p>
+<p>&nbsp;dc.l NPCNameDani</p>
+<p>&nbsp;; OBJ_NPC_MALE_SHOPPER0</p>
+<p>&nbsp;dc.l NPCNameMapperShopper0</p>
+<p>[...]</p>
+<p>ObjectName8Bit:</p>
+<p>&nbsp;dc.b &quot;Wall of 8-bit games&quot;,OBJMENU</p>
+<p>ObjectNameComputerHardware:</p>
+<p>&nbsp;dc.b &quot;Computer hardware&quot;,OBJMENU</p>
+<p>ObjectName16Bit:</p>
+<p>&nbsp;dc.b &quot;Rack of 16-bit games&quot;,OBJMENU</p>
+<p>ObjectNameMagazines:</p>
+<p>&nbsp;dc.b &quot;Magazine rack&quot;,OBJMENU</p>
+<p>ObjectNameCounter:</p>
+<p>&nbsp;dc.b &quot;Counter&quot;,OBJMENU</p>
+<p>ObjectNameRegister:</p>
+<p>&nbsp;dc.b &quot;Cash register&quot;,OBJMENU</p>
+<p>NPCNameDani:</p>
+<p>&nbsp;dc.b &quot;Dani (your sister)&quot;,NPCMENU</p>
+<p>NPCNameMapperShopper0:</p>
+<p>&nbsp;dc.b &quot;Business casual guy&quot;,NPCMENU</p>
+</div>
+
+<p>You're probably wondering? <i>What's the deal with those new OBJMENU and NPCMENU constants?</i> Those are used to tell the routine that draws the dialog that it's the end of the line and to insert a menu in the next line. That turned out to be a smaller change than I expected:</p>
+
+<div class="well">
+<p>ProcessDialogTextDrawing:</p>
+<p>[...]</p>
+<p>TestObjMenu:</p>
+<p>&nbsp;cmpi.b #OBJMENU,d6 ; draw the object menu?</p>
+<p>&nbsp;bne.s TestNPCMenu ; not the OBJMENU character, continue to next test</p>
+<p>&nbsp;move.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD) ; base address</p>
+<p>&nbsp;add.l #$01020000,(MEM_DIALOG_VPD) ; add 258 tomove 2 rows and column</p>
+<p>&nbsp;lea ObjectMenu,a6 ; load object menu text</p>
+<p>&nbsp;move.l a6,(MEM_DIALOG_TEXT) ; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bra.w ExitProcessDialog</p>
+<p>TestNPCMenu:</p>
+<p>&nbsp;cmpi.b #NPCMENU,d6 ; draw the npc menu?</p>
+<p>&nbsp;bne.s TestLF ; not the NPCMENU character, continue to next test</p>
+<p>&nbsp;move.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD) ; base address</p>
+<p>&nbsp;add.l #$01020000,(MEM_DIALOG_VPD) ; add 258 tomove 2 rows and column</p>
+<p>&nbsp;lea NPCMenu,a6 ; load npc menu text</p>
+<p>&nbsp;move.l a6,(MEM_DIALOG_TEXT) ; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bra.w ExitProcessDialog</p>
+<p>[...]</p>
+</div>
+
+<p>This gets us up to drawing an empty menu with a caption.</p>
+
+<p><img src="emptymenu.png" alt="Empty menu" class="img-fluid d-block mx-auto"/></p>
+
+<p>This isn't interesting enough to stop so let's continue with...</p>
+
+<p class="lead">Showing selections</p>
+
+<p>Now for the difficult part - actually selecting menu options. We need some sort of visual indicator for which menu item is selected. I was curious how Phantasy Star II did this and it turns out they used a high layer sprite:</p>
+
+<p><img src="ps2sprite.png" alt="Phantasy Star II menu sprite" class="img-fluid d-block mx-auto"/></p>
+
+<p>Hmm.. so a while back I created a off-screen &quot;sprite zero&quot; that exists only to get sprite ordering to work. Maybe I can re-purpose it to also act as a menu selector.</p>
+
+<p>So after creating an 8x8 pattern for sprite zero we need some code to move it around and hide it:</p>
+
+<div class="well">
+<p>MoveSelectorSprite: ; this also sets DIALOG_FLAG_SELECTION_WAIT if appropriate</p>
+<p>&nbsp;; store sprite x in d4, sprite y in d5</p>
+<p>&nbsp;move.w #$0000,d4 ; set to 0 by default</p>
+<p>&nbsp;move.w #$0000,d5 ; set to 0 by default</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_TEXT_CLOSING,d7 ; test if the dialog is closing</p>
+<p>&nbsp;bne.s .2 ; flag is set,move to update VDP section</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_STYLE_MENU,d7 ; test if this is a menu</p>
+<p>&nbsp;beq.s .1 ; flag is not set, try next test</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_SELECTION_WAIT,d7 ; set waiting for selection flag </p>
+<p>&nbsp;move.w #DIALOG_MENU_INIT_SELECTION_X,d4 ; x value</p>
+<p>&nbsp;; move x value based on which item is selected</p>
+<p>&nbsp;move.w #$0038,d6 ; the selections are 38 apart</p>
+<p>&nbsp;mulu.w (MEM_MENU_SELECTION),d6 ; multiply by selection number</p>
+<p>&nbsp;add.w d6,d4 ; add result to x</p>
+<p>&nbsp;move.w #DIALOG_MENU_INIT_SELECTION_Y,d5 ; y value</p>
+<p>&nbsp;addq #$8,d5 ; adjust for options being on 2nd row of dialog</p>
+<p>&nbsp;bra.s .2 ; move to update VDP section</p>
+<p>.1</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_STYLE_TEXT_CHOICE,d7 ; test if this is a menu</p>
+<p>&nbsp;beq.s .2 ; flag is not set, use default values</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_SELECTION_WAIT,d7 ; set waiting for selection flag </p>
+<p>&nbsp;move.w #DIALOG_MENU_INIT_SELECTION_X,d4 ; x value</p>
+<p>&nbsp;move.w #DIALOG_MENU_INIT_SELECTION_Y,d5 ; y value</p>
+<p>&nbsp;; move y value based on which item is selected</p>
+<p>&nbsp;move.w #$0008,d6 ; the selections are 8 apart</p>
+<p>&nbsp;mulu.w (MEM_MENU_SELECTION),d6 ; multiply by selection number</p>
+<p>&nbsp;add.w d6,d5 ; add result to y</p>
+<p>.2</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; update y</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;move.l #VDP_VRAM_WRITE_SPRITE,d6 ; add to sprite table address</p>
+<p>&nbsp;move.l d6,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w d5,(VDP_DATA) ; copy the new y-coordinate</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; update x</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;add.l #$00060000,d6 ;move to x-coordinate</p>
+<p>&nbsp;move.l d6,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w d4,(VDP_DATA) ; copy the new x-coordinate</p>
+<p>ExitMoveSelectorSprite:</p>
+<p>&nbsp;rts</p>
+<p>HideSelectorSprite:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; update y</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;move.l #VDP_VRAM_WRITE_SPRITE,d6 ; add to sprite table address</p>
+<p>&nbsp;move.l d6,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w #$0000,(VDP_DATA) ; copy the new y-coordinate</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; update x</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;add.l #$00060000,d6 ;move to x-coordinate</p>
+<p>&nbsp;move.l d6,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w #$0000,(VDP_DATA) ; copy the new x-coordinate</p>
+<p>ExitHideSelectorSprite:</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Also needed is code to increment &amp; decrement the selected menu item. This needs to work for both horizontal menus with three options and vertical choice menus with two options:</p>
+
+<div class="well">
+<p>IncrementMenuSelection:</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_STYLE_MENU,d7 ; test if this is a menu</p>
+<p>&nbsp;beq.s .2 ; flag is not set</p>
+<p>&nbsp;addq #$1,(MEM_MENU_SELECTION) ; increment menu selection</p>
+<p>&nbsp;cmpi.w #$0003,(MEM_MENU_SELECTION) ; at the last menu item?</p>
+<p>&nbsp;bge.s .1 ; at the last menu item, branch</p>
+<p>&nbsp;rts</p>
+<p>.1</p>
+<p>&nbsp;move.w #$0000,(MEM_MENU_SELECTION) ; rollover to first menu item</p>
+<p>&nbsp;rts</p>
+<p>.2 ; not DIALOG_FLAG_STYLE_MENU - must be DIALOG_FLAG_STYLE_TEXT_CHOICE</p>
+<p>&nbsp;addq #$1,(MEM_MENU_SELECTION) ; increment menu selection</p>
+<p>&nbsp;cmpi.w #$0002,(MEM_MENU_SELECTION) ; at the last menu item?</p>
+<p>&nbsp;bge.s .3 ; at the last menu item, branch</p>
+<p>&nbsp;rts</p>
+<p>.3</p>
+<p>&nbsp;move.w #$0000,(MEM_MENU_SELECTION) ; rollover to first menu item</p>
+<p>&nbsp;rts</p>
+<p>DecrementMenuSelection:</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_STYLE_MENU,d7 ; test if this is a menu</p>
+<p>&nbsp;beq.s .2 ; flag is not set</p>
+<p>&nbsp;cmpi.w #$0000,(MEM_MENU_SELECTION) ; at the first menu item?</p>
+<p>&nbsp;ble.s .1 ; at the first menu item, branch</p>
+<p>&nbsp;subq #$1,(MEM_MENU_SELECTION) ; decrement menu selection</p>
+<p>&nbsp;rts</p>
+<p>.1</p>
+<p>&nbsp;move.w #$0002,(MEM_MENU_SELECTION) ; rollover to first menu item</p>
+<p>&nbsp;rts</p>
+<p>.2 ; not DIALOG_FLAG_STYLE_MENU - must be DIALOG_FLAG_STYLE_TEXT_CHOICE</p>
+<p>&nbsp;cmpi.w #$0000,(MEM_MENU_SELECTION) ; at the first menu item?</p>
+<p>&nbsp;ble.s .3 ; at the first menu item, branch</p>
+<p>&nbsp;subq #$1,(MEM_MENU_SELECTION) ; decrement menu selection</p>
+<p>&nbsp;rts</p>
+<p>.3</p>
+<p>&nbsp;move.w #$0001,(MEM_MENU_SELECTION) ; rollover to first menu item</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Next up is calling these methods when a menu or choice is displaying. The d-pad should move the indicator, B should cancel out of the menu, while A &amp; C should accept the current selection.</p>
+
+<div class="well">
+<p>[...]
+<p>ProcessDialogTestButtonPress:</p>
+<p>&nbsp;; wait until a button is pressed to clear the dialog</p>
+<p>&nbsp;move.b (MEM_CONTROL_PRESSED),d6 ; copy pressed buttons to d6</p>
+<p>&nbsp;cmpi.w #$0000,d6 ; are any buttons pressed?</p>
+<p>&nbsp;beq.w ExitProcessDialog ; no buttons are pressed, exit</p>
+<p>&nbsp;; start button shouldn't close the dialog</p>
+<p>&nbsp;cmpi.w #BUTTON_START_PRESSED,d6 ; test if the start button is held</p>
+<p>&nbsp;beq.w ExitProcessDialog ; exit if start button is held</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_TEXT_NEW_PAGE,d7 ; test if there is another page </p>
+<p>&nbsp;beq.s .4 ; branch if new text page is not set</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; moving to a new page of text</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;add.l #$0001,(MEM_DIALOG_TEXT) ;move to the next character</p>
+<p>&nbsp;; reset the drawing location for the dialog text</p>
+<p>&nbsp;move.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD) ; base address</p>
+<p>&nbsp;add.l #$00820000,(MEM_DIALOG_VPD) ; add 132 tomove 1 row and column </p>
+<p>&nbsp;; clear out the dialog</p>
+<p>&nbsp;movea.l #PatternDialogFull,a0 ; point a0 to start of dialog patterns</p>
+<p>&nbsp;move.w #DIALOG_BASE_TILE,d0 ; base pattern</p>
+<p>&nbsp;move.w #$0000,d1 ; repeat</p>
+<p>&nbsp;movea.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),a1 ; initial drawing location</p>
+<p>&nbsp;bsr.w DrawTileset ; branch to DrawTileset subroutine</p>
+<p>&nbsp;; reset flags to force text to start re-drawing</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_DRAWING,d7 ; set drawing flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_TEXT_OPEN,d7 ; clear open flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_TEXT_NEW_PAGE,d7 ; clear new page flag</p>
+<p>&nbsp;bra.w ExitProcessDialog ; exit</p>
+<p>.4</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_SELECTION_WAIT,d7 ; test if waiting for selection </p>
+<p>&nbsp;beq.w ProcessDialogSetClosing ; branch if waiting selection flag not set</p>
+<p>&nbsp;cmpi.w #BUTTON_B_PRESSED,d6 ; is the b button pressed?</p>
+<p>&nbsp;beq.w ProcessDialogSetClosing ; close if b button is pressed</p>
+<p>&nbsp;cmpi.w #BUTTON_RIGHT_PRESSED,d6 ; is the right button pressed?</p>
+<p>&nbsp;bne.s .5 ; right is not pressed,move to next test</p>
+<p>&nbsp;bsr.w IncrementMenuSelection ; increment the menu selection</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED) ; clear pressed buttons</p>
+<p>&nbsp;bsr.w moveSelectorSprite ;move the selector sprite</p>
+<p>&nbsp;bra.w ExitProcessDialog ; exit</p>
+<p>.5 ; down</p>
+<p>&nbsp;cmpi.w #BUTTON_DOWN_PRESSED,d6 ; is the down button pressed?</p>
+<p>&nbsp;bne.s .6 ; down is not pressed,move to next test</p>
+<p>&nbsp;bsr.w IncrementMenuSelection ; increment the menu selection</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED) ; clear pressed buttons</p>
+<p>&nbsp;bsr.w moveSelectorSprite ;move the selector sprite</p>
+<p>&nbsp;bra.w ExitProcessDialog ; exit</p>
+<p>.6 ; left</p>
+<p>&nbsp;cmpi.w #BUTTON_LEFT_PRESSED,d6 ; is the left button pressed?</p>
+<p>&nbsp;bne.s .7 ; left is not pressed,move to next test</p>
+<p>&nbsp;bsr.w DecrementMenuSelection ; increment the menu selection</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED) ; clear pressed buttons</p>
+<p>&nbsp;bsr.w moveSelectorSprite ;move the selector sprite</p>
+<p>&nbsp;bra.w ExitProcessDialog ; exit</p>
+<p>.7 ; up</p>
+<p>&nbsp;cmpi.w #BUTTON_UP_PRESSED,d6 ; is the up button pressed?</p>
+<p>&nbsp;bne.s .8 ; up is not pressed,move to next test</p>
+<p>&nbsp;bsr.w DecrementMenuSelection ; increment the menu selection</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED) ; clear pressed buttons</p>
+<p>&nbsp;bsr.w moveSelectorSprite ;move the selector sprite</p>
+<p>&nbsp;bra.s ExitProcessDialog ; exit</p>
+<p>.8 ; a</p>
+<p>&nbsp;cmpi.w #BUTTON_A_PRESSED,d6 ; is the a button pressed?</p>
+<p>&nbsp;bne.s .9 ; a is not pressed,move to next test</p>
+<p>&nbsp;bsr.w ConfirmMenuSelection ; confirm the menu selection</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED) ; clear pressed buttons</p>
+<p>&nbsp;bra.s ExitProcessDialog ; exit</p>
+<p>.9 ; c</p>
+<p>&nbsp;cmpi.w #BUTTON_C_PRESSED,d6 ; is the c button pressed?</p>
+<p>&nbsp;bne.s ExitProcessDialog ; c is not pressed, exit</p>
+<p>&nbsp;bsr.w ConfirmMenuSelection ; confirm the menu selection</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED) ; clear pressed buttons</p>
+<p>&nbsp;bra.s ExitProcessDialog ; exit</p>
+<p>[...]</p>
+</div>
+
+<p>I think that routine could be shortened a bit. Rather than tackle that now let's proceed to...</p>
+
+<p class="lead">Responding to selections</p>
+
+<p>When the A or C button is pressed the first thing that happens is calling a sub-routine that saves the selection and updates the dialog state:</p>
+
+<div class="well">
+
+<p>ConfirmMenuSelection:</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_STYLE_MENU,d7 ; test if this is a menu</p>
+<p>&nbsp;beq.s .1 ; flag is not set</p>
+<p>&nbsp;move.w (MEM_MENU_SELECTION),(MEM_ACTION_ID) ; selection->action</p>
+<p>&nbsp;bra.s ExitConfirmMenuSelection ; exit</p>
+<p>.1 ; not DIALOG_FLAG_STYLE_MENU - must be DIALOG_FLAG_STYLE_TEXT_CHOICE</p>
+<p>&nbsp;move.w #ACTION_RESPOND,(MEM_ACTION_ID) ; action is respond</p>
+<p>&nbsp;move.w (MEM_MENU_SELECTION),(MEM_MENU_RESPONSE) ; selection->response</p>
+<p>ExitConfirmMenuSelection:</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d6	; copy current game state to d6</p>
+<p>&nbsp;bset.l #STATE_FLAG_ACTION,d6 ; clear the dialog bit</p>
+<p>&nbsp;move.l d6,(MEM_GAME_STATE) ; copy it back</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Back in the main loop, when STATE_FLAG_ACTION is set it redirects to a new routine that processes the queued action. This builds off the <a href="https://huguesjohnson.com/programming/genesis/actiontable/">last article</a> and adds code to clear the dialog so it can be reused:</p>
+
+<div class="well">
+<p>ProcessAction:</p>
+<p>&nbsp;bsr.w ResetDialog ; reset the dialog</p>
+<p>&nbsp;bsr.w BuildActionTableOffset ; build action table offset</p>
+<p>&nbsp;lea ActionTable,a5 ; point to action table</p>
+<p>&nbsp;adda.w (MEM_ACTION_TABLE_OFFSET),a5 ;move to offset location</p>
+<p>&nbsp;move.l (a5),a6 ; a5 has the address of the subroutine to jump to</p>
+<p>&nbsp;jsr (a6) ; jump to location of code to process this event</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bclr.l #STATE_FLAG_ACTION,d7 ; clear action flag</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; save it back</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>If the action that was just invoked needs the dialog it would look weird to close and re-open it. I'm having a hard time thinking of when an action <i>wouldn't</i> re-use the dialog. If the player did something and the dialog just closed with no message that would be really confusing. Although I suppose there are cases where the &quot;use&quot; command might fire off an animation or something. Anyway, reseting the dialog is a matter of switching flags so it stays open and starts re-drawing text at the top. </p>
+
+<div class="well">
+<p>; resets the dialog so new text can be drawn without closing & reopening</p>
+<p>ResetDialog:</p>
+<p>&nbsp;move.l (MEM_DIALOG_FLAGS),d7 ; copy current dialog state to d7</p>
+<p>&nbsp;; reset the drawing location for the dialog text</p>
+<p>&nbsp;move.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD) ; base address</p>
+<p>&nbsp;add.l #$00820000,(MEM_DIALOG_VPD) ; add 132 to move 1 row and column </p>
+<p>&nbsp;; clear out the dialog</p>
+<p>&nbsp;movea.l #PatternDialogFull,a0 ; point a0 to start of dialog patterns</p>
+<p>&nbsp;move.w #DIALOG_BASE_TILE,d0 ; base pattern</p>
+<p>&nbsp;move.w #$0000,d1 ; repeat</p>
+<p>&nbsp;movea.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),a1 ; initial drawing location</p>
+<p>&nbsp;bsr.w DrawTileset ; branch to DrawTileset subroutine</p>
+<p>&nbsp;; reset flags to force text to start re-drawing</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_DRAWING,d7 ; set text drawing flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_TEXT_OPEN,d7 ; clear open flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_TEXT_NEW_PAGE,d7 ; clear new page flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_STYLE_TEXT_CHOICE,d7 ; clear menu style choice flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_STYLE_MENU,d7 ; clear menu style flag</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_STYLE_SIMPLE_TEXT,d7 ; set simple text style flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_SELECTION_WAIT,d7 ; clear waiting for selection flag</p>
+<p>&nbsp;move.l d7,(MEM_DIALOG_FLAGS) ; copy game state back to d7</p>
+<p>&nbsp;move.w #$0000,(MEM_MENU_SELECTION) ; reset menu selection</p>
+<p>&nbsp;bsr.w HideSelectorSprite ; hide the selection icon</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Somewhere in this article you might be wondering &quot;<i>That's an awful lot of dialog flags, what is this dude thinking?</i>&quot; I think this whole dialog flag thing I'm doing is the direct result of doing Windows UI development for a couple decades. In the Windows world, and presumably similar GUIs, creating dialogs involves setting a bunch of flags then calling a show dialog routine. The dialog appearance &amp; behavior can change quite a bit based on the flag combinations. All that implementation logic is handled by Windows. I'm sort of copying that by creating one large method that handles all dialog behavior and is controlled by a set of dialog flags.</p>
+
+<p>The last steps are updating the action script and adding new text. In this iteration the player can talk to the shopper in the white shirt. At the end of that dialog the player is presented a choice. If the player selects either choice then they (a) receive a message based on the choice and (b) receive a different message next time they talk to the shopper.</p>
+
+<div class="well">
+<p>Day00Scene00Action01: ; ACTION_USE_TALK</p>
+<p>&nbsp;move.l (MEM_DAY_EVENT_FLAGS),d7 ; copy event flags for the day to d7</p>
+<p>&nbsp;move.w (MEM_ACTION_TARGET_OBJID),d6 ; copy action target to d6</p>
+<p>&nbsp;cmpi.w #OBJ_NPC_DANI,d6 ; test target</p>
+<p>&nbsp;bne.s .2 ; branch to next NPC</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; handle dialog with NPC Dani </p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;btst.l #$1,d7 ; test if flag 1 is set</p>
+<p>&nbsp;bne .1 ; branch if it is</p>
+<p>&nbsp;bset.l #$1,d7 ; set flag 1</p>
+<p>&nbsp;move.l d7,(MEM_DAY_EVENT_FLAGS) ; save updated event flags for the day</p>
+<p>&nbsp;lea DialogTextDaniScene0Day0Flag0,a6 ; load dialog text</p>
+<p>&nbsp;bra.s .5 ; branch to setup dialog display</p>
+<p>.1</p>
+<p>&nbsp;lea DialogTextDaniScene0Day0Flag1,a6 ; load dialog text</p>
+<p>&nbsp;bra.s .5 ; branch to setup dialog display</p>
+<p>.2</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; handle dialog with shopper </p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;cmpi.w #OBJ_NPC_MALE_SHOPPER0,d6 ; test target</p>
+<p>&nbsp;bne.s .4 ; branch to display default text</p>
+<p>&nbsp;btst.l #$2,d7 ; test if flag 2 is set</p>
+<p>&nbsp;bne .3 ; branch if it is set</p>
+<p>&nbsp;move.l (MEM_DIALOG_FLAGS),d7 ; copy dialog flags to d7</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_STYLE_TEXT_CHOICE,d7 ; set text choice flag</p>
+<p>&nbsp;move.l d7,(MEM_DIALOG_FLAGS) ; save updated dialog flags</p>
+<p>&nbsp;lea DialogTextMaleShopper0Scene0Day0Flag0,a6 ; load dialog text</p>
+<p>&nbsp;bra.s .5 ; branch to setup dialog display</p>
+<p>.3 ; flag 2 is set</p>
+<p>&nbsp;lea DialogTextMaleShopper0Scene0Day0Flag2,a6 ; load dialog text</p>
+<p>&nbsp;bra.s .5 ; branch to setup dialog display</p>
+<p>.4</p>
+<p>&nbsp;; default</p>
+<p>&nbsp;lea DialogTextNothingHappens,a6 ; load default text</p>
+<p>.5</p>
+<p>&nbsp;move.l a6,MEM_DIALOG_TEXT ; copy address to MEM_DIALOG_TEXT</p>
+<p>ExitDay00Scene00Action01:</p>
+<p>&nbsp;rts</p>
+<p>[...]</p>
+<p>Day00Scene00Action03: ; ACTION_RESPOND</p>
+<p>&nbsp;move.l (MEM_DAY_EVENT_FLAGS),d7 ; copy event flags for the day to d7</p>
+<p>&nbsp;move.w (MEM_ACTION_TARGET_OBJID),d6 ; copy action target to d6</p>
+<p>&nbsp;cmpi.w #OBJ_NPC_MALE_SHOPPER0,d6 ; test target</p>
+<p>&nbsp;bne.s .2 ; branch to display default text</p>
+<p>&nbsp;bset.l #$2,d7 ; set flag 2</p>
+<p>&nbsp;move.l d7,(MEM_DAY_EVENT_FLAGS) ; save the updated flags</p>
+<p>&nbsp;cmpi.w #$0000,(MEM_MENU_RESPONSE) ; is the menu selection 0?</p>
+<p>&nbsp;bne.s .1 ; branch if not equal to zero (there are only two options)</p>
+<p>&nbsp;lea DialogTextMaleShopper0Scene0Day0Flag0R0,a6 ; load response text</p>
+<p>&nbsp;move.l a6,MEM_DIALOG_TEXT ; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bra.s ExitDay00Scene00Action03 ; exit</p>
+<p>.1</p>
+<p>&nbsp;lea DialogTextMaleShopper0Scene0Day0Flag0R1,a6 ; load response text</p>
+<p>&nbsp;move.l a6,MEM_DIALOG_TEXT ; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bra.s ExitDay00Scene00Action03 ; exit</p>
+<p>.2</p>
+<p>&nbsp;lea DialogTextNothingHappens,a6 ; load default text</p>
+<p>&nbsp;move.l a6,MEM_DIALOG_TEXT ; copy address to MEM_DIALOG_TEXT</p>
+<p>ExitDay00Scene00Action03:</p>
+<p>&nbsp;bsr.w ResetDialog ; reset the dialog</p>
+<p>&nbsp;rts</p>
+<p>[...]</p>
+<p>DialogTextMaleShopper0Scene0Day0Flag0:</p>
+<p>&nbsp;; &quot;1234567890123456789012&quot;</p>
+<p>&nbsp;dc.b &quot;`Do you know if I have&quot;,LF</p>
+<p>&nbsp;dc.b &quot;a mouse on COM2 using^&quot;,FF</p>
+<p>&nbsp;dc.b &quot;IRQ3 can I hookup one&quot;,LF</p>
+<p>&nbsp;dc.b &quot;of these modems ^&quot;,FF</p>
+<p>&nbsp;dc.b &quot;on COM4 using IRQ4?'&quot;,LF</p>
+<p>&nbsp;dc.b &quot; ^&quot;,FF</p>
+<p>&nbsp;dc.b &quot;{Sure, why not?&quot;,LF</p>
+<p>&nbsp;dc.b &quot;{I make $3.35 an hour.&quot;,ETX</p>
+<p>DialogTextMaleShopper0Scene0Day0Flag0R0:</p>
+<p>&nbsp;; &quot;1234567890123456789012&quot;</p>
+<p>&nbsp;dc.b &quot;`You chose response&quot;,LF</p>
+<p>&nbsp;dc.b &quot;zero, neat.'&quot;,ETX</p>
+<p>DialogTextMaleShopper0Scene0Day0Flag0R1:</p>
+<p>&nbsp;; &quot;1234567890123456789012&quot;</p>
+<p>&nbsp;dc.b &quot;`You chose response&quot;,LF</p>
+<p>&nbsp;dc.b &quot;one, alright.'&quot;,ETX</p>
+<p>DialogTextMaleShopper0Scene0Day0Flag2:</p>
+<p>&nbsp;; &quot;1234567890123456789012&quot;</p>
+<p>&nbsp;dc.b &quot;`You're talking to me&quot;,LF</p>
+<p>&nbsp;dc.b &quot;again now.'&quot;,ETX</p>
+</div>
+
+<p>Time to test it all out by talking to the shopper:</p>
+
+<p><img src="dialog1_320.gif" alt="First dialog with NPC" class="img-fluid d-block mx-auto"/></p>
+
+<p>Pressing B at the selection dialog will cause this to repeat next time he's talked to. Pressing A or C changes the next dialog with him:</p>
+
+<p><img src="dialog2_320.gif" alt="Second dialog with NPC" class="img-fluid d-block mx-auto"/></p>
+
+<p>This was a little painful to get working the first time. You don't see the parts where I'm trying to debug why instead of the dialog a bunch of gibberish prints. However, having gone through this adding new dialog is now reasonably easy. The only tricky part is having to update things in multiple places: dialog text file, dialog table, and the action script which may need updates in multiple action handlers. I don't think there's an easy way to get around this. Perhaps in a couple months I'll think of a better way to handle actions.</p>
+
+<p class="lead">What's next?</p>
+
+<p>Let's go back to the &quot;plan&quot; from <a href="https://huguesjohnson.com/programming/genesis/scene-npcs/">two articles ago</a>:
+
+<p>1) <del>Dialog between characters - meaning an NPC says something to you and you respond. Maybe you respond with more dialog,</del> maybe you give them an item. That leads to... </p>
+<p>2) Inventory management - along with basic stuff like taking and giving items.</p>
+<p><del>3) Game event tracking - we need a way to say &quot;if [X] happened and you talk to character [Y] then do [Z]&quot;, I'll probably over-complicate this.</del> I won't call this 100% complete but it's functional enough.</p>
+<p>4) Scripted sprite movements - if the ultimate goal is to get a customer to leave a store then there needs to be an animation where they walk away.</p>
+<p><del>5) Adding & removing NPCs from the current scene - the one NPC is hard-coded, there needs to be a way to move NPCs in and out of scenes.</del> The removing part hasn't been needed yet but it's small and will be addressed with #4.</p>
+<p>6) To make this look like a real demo I should really create a title screen and ending message.</p>
+<p>7) Dozens of things I didn't think of that will all be painful to work out.</p>
+
+<p>Looks like inventory is next.</p>
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/actiontable/">&lt;- Sega Genesis Programming Part 13: Action Table</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/inventory/">Part 15: Inventory -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/scenes-dialogs/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisdialogs.png" alt="Sega Genesis Programming Part 11: Scenes and Dialogs"></p><p>Sega Genesis Programming Part 11: Scenes &amp; Dialogs</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/scripted-events/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisscriptedevents.png" alt="Sega Genesis Programming Part 16: Scripted Events"></p><p>Sega Genesis Programming Part 16: Scripted Events</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

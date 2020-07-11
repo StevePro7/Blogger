@@ -1,0 +1,530 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 10: Sprite Link List</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 10: Sprite Link List" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 10: sprite link list</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/objects/">&lt;- Part 9: Object List</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scenes-dialogs/">Part 11: Scenes &amp; Dialogs -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Sprite Link List</p>
+
+<p>If you've been reading this whole series then by now you should know that I end each article by speculating on what the next will cover. I then follow-up by doing something different. I'm keeping that trend alive once again. In the previous article I said I'd continue to ignore the sprite overlay problem that's been around for a while and instead implement dialogs. As you just guessed, I did exactly the opposite.</p>
+
+<p>I figured this sprite overlay issue was due to my complete lack of understanding about the sprite link list and that it would take a while to fix. I was half right, it turned out to be an easy fix.</p>
+
+<p>I was thinking of making this the intro to a larger piece but decided to make it it's own article because I found it difficult to find documentation on the sprite link list. Don't get me wrong, there's documentation around I just had a hard time deciphering it. That could be my own stupidly, I did flunk out of junior college after all, or maybe it was just hard to digest without a code example. Now poor unfortunate souls Googling for &quot;Sega Genesis sprite link list&quot; can browse to page 3 or 4 of the results and see an article with real code and stuff. I hope both of those people are happy.</p>
+
+<p>Let's start by explaining how this all works... First need to rewind back to the part where we loaded sprites. The Sega Genesis VPD has a region set aside for sprite data. There is an implicit data structure for sprite data that follows a format like:</p>
+
+<div class="well">
+<p>SPRITE_PLAYER_INIT_X=$0100 ; starting x location of player sprite</p>
+<p>SPRITE_PLAYER_INIT_Y=$0100 ; starting y location of player sprite</p>
+<p>SPRITE_NPC1_INIT_X=$0180 ; starting x location of player sprite</p>
+<p>SPRITE_NPC1_INIT_Y=$00E0 ; starting y location of player sprite</p>
+<p>[...]</p>
+<p>PlayerSpriteDefinition:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 0 = vertical coordinate</p>
+<p>&nbsp;; ---- --yy yyyy yyyy</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w SPRITE_PLAYER_INIT_Y</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 2 = size (00=8px,01=16px,11=32px)</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;----hhvv</p>
+<p>&nbsp;dc.b %00000111 ; width=16,height=32</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 3 = link field</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;-lllllll</p>
+<p>&nbsp;dc.b %00000001 ; 1</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 4 = priority, palette, flip, pattern</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;pccvhnnnnnnnnnnn</p>
+<p>&nbsp;dc.w %0110000000000101 ; priority=0,palette=2,vflip=0,hflip=0,pattern=5</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 6 = horizontal coordinate</p>
+<p>&nbsp;; ---- --yy yyyy yyyy</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w SPRITE_PLAYER_INIT_X</p>
+<p>NPCSprite1Definition:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 0 = vertical coordinate</p>
+<p>&nbsp;; ---- --yy yyyy yyyy</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w SPRITE_NPC1_INIT_Y</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 2 = size (00=8px,01=16px,11=32px)</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;----hhvv</p>
+<p>&nbsp;dc.b %00000111 ; width=16,height=32</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 3 = link field</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;-lllllll</p>
+<p>&nbsp;dc.b %00000000 ; 0</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 4 = priority, palette, flip, pattern</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;pccvhnnnnnnnnnnn</p>
+<p>&nbsp;dc.w %0110000001100101 ;priority=0,palette=2,vflip=0,hflip=0,pattern=65</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 6 = horizontal coordinate</p>
+<p>&nbsp;; ---- --yy yyyy yyyy</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w SPRITE_NPC1_INIT_X</p>
+</div>
+
+<p>When the Sega Genesis VPD draws these sprites sprites it starts with the first sprite (obviously) then goes to the sprite specified by the first sprite's link field and so on. The order the sprites are loaded does not control the draw order. So if you want to make a sprite draw over another you need to either (a) move it to the high sprite plane or (b) set the link field to the desired draw order. (b) is the better of these options because it allows the illusion of multiple sprite layers. Think of a game like Streets of Rage where there are 4-5 sprites that might vertically overlap each other.</p>
+
+<p>To implement this in my tiny demo-ish thing I first needed to add a &quot;sprite zero&quot; that is drawn off-screen. There might be a better way to do this but my thinking went like: <i>if the first sprite in the sprite table is always drawn first then neither the player nor an NPC can be that first sprite or it will always overlap the others</i>. This means I'll be limited to something like 59 on-screen characters at a time which won't be an issue. The other option is having an NPC in every area that hangs around the bottom edge and can never be overlapped. Maybe this is why some RPGs have a &quot;town greeter&quot; fixated by the entrance?</p>
+
+<p>Anyway, here's the new sprite definition:</p>
+
+<div class="well">
+<p>SpriteZeroDefinition:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 0 = vertical coordinate</p>
+<p>&nbsp;; ---- --yy yyyy yyyy</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w $0000</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 2 = size (00=8px,01=16px,11=32px)</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;----hhvv</p>
+<p>&nbsp;dc.b %00000000 ; width=8,height=8</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 3 = link field</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;-lllllll</p>
+<p>&nbsp;dc.b %00000001 ; 1</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 4 = priority, palette, flip, pattern</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;pccvhnnnnnnnnnnn</p>
+<p>&nbsp;dc.w %0110000000000000 ; priority=0,palette=0,vflip=0,hflip=0,pattern=0</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; index + 6 = horizontal coordinate</p>
+<p>&nbsp;; ---- --yy yyyy yyyy</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w $0000</p>
+</div>
+
+<p>So you don't have to hunt this code down in a previous tutorial, here's how sprites are loaded:</p>
+
+<div class="well">
+<p>VDP_VRAM_WRITE_SPRITE=$78000002</p>
+<p>VDP_CONTROL=$00C00004</p>
+<p>VDP_DATA=$00C00000</p>
+<p>[...]</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load and setup the sprites</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>LoadSprite:</p>
+<p>&nbsp;lea SpriteZeroDefinition,a0 ; store address of sprite definition</p>
+<p>&nbsp;move.w #$05,d0 ; 1 sprite = 2 longs, 3 sprites = (6-1)</p>
+<p>&nbsp;move.l #VDP_VRAM_WRITE_SPRITE,(VDP_CONTROL) ; set write location</p>
+<p>LoadSpriteLoop:</p>
+<p>&nbsp;move.l (a0)+,(VDP_DATA)</p>
+<p>&nbsp;dbra d0,LoadSpriteLoop</p>
+</div>
+
+<p>When sprites move we need to check if the player sprite has a higher Y value than the NPC sprite and reorder accordingly. </p>
+
+<p><img src="sprite-link-list.png" alt="Sprite link list" class="img-fluid d-block mx-auto"/>
+
+<p>The code to reorder these two sprites isn't complex:</p>
+
+<div class="well">
+<p>VDP_VRAM_WRITE_SPRITE=$78000002</p>
+<p>VDP_CONTROL=$00C00004</p>
+<p>VDP_DATA=$00C00000</p>
+<p>[...]</p>
+<p>MEM_PLAYER_SPRITE_Y=$00FF00018 ; virtual y position of the player</p>
+<p>MEM_NPC1_SPRITE_Y=$00FF00026; virtual y position of NPC1 sprite</p>
+<p>[...]</p>
+<p>OrderSprites:</p>
+<p>&nbsp;move.l #VDP_VRAM_WRITE_SPRITE,d5</p>
+<p>&nbsp;move.w (MEM_NPC1_SPRITE_Y),d6 ; copy NPC Y to d1</p>
+<p>&nbsp;cmp.w (MEM_PLAYER_SPRITE_Y),d6 ; test which is higher</p>
+<p>&nbsp;bge.s .1 ; branch if NPC Y > player Y</p>
+<p>&nbsp;; NPC Y < player Y -> sprite order is 0,1,2</p>
+<p>&nbsp;; sprite zero link field</p>
+<p>&nbsp;add.l #$00020000,d5 ; move to index 2</p>
+<p>&nbsp;move.w #$0700,d6 ; width=16,height=32 - TODO - derive or constant</p>
+<p>&nbsp;add.w (MEM_PLAYER_SPRITE_ID),d6 ; link to npc sprite id</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP (sprite[0] link)</p>
+<p>&nbsp;move.w d6,(VDP_DATA) ; store new sprite link field</p>
+<p>&nbsp;; player link field</p>
+<p>&nbsp;add.l #$00080000,d5 ; move to index 2 of next sprite</p>
+<p>&nbsp;move.w #$0700,d6 ; width=16,height=32 - TODO - derive or constant</p>
+<p>&nbsp;add.w (MEM_NPC1_SPRITE_ID),d6 ; link to npc sprite id</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP (sprite[0] link)</p>
+<p>&nbsp;move.w d6,(VDP_DATA) ; store new sprite link field</p>
+<p>&nbsp;; NPC1 link field</p>
+<p>&nbsp;add.l #$00080000,d5 ; move to index 2 of next sprite</p>
+<p>&nbsp;move.w #$0700,d6 ; width=16,height=32 - TODO - derive or constant</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP (sprite[0] link)</p>
+<p>&nbsp;move.w d6,(VDP_DATA) ; store new sprite link field</p>
+<p>&nbsp;rts</p>
+<p>.1 ; NPC Y > player Y -> sprite order is 0,2,1</p>
+<p>&nbsp;; sprite zero link field</p>
+<p>&nbsp;add.l #$00020000,d5 ; move to index 2</p>
+<p>&nbsp;move.w #$0700,d6 ; width=16,height=32 - TODO - derive or constant</p>
+<p>&nbsp;add.w (MEM_NPC1_SPRITE_ID),d6 ; link to npc sprite id</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP (sprite[0] link)</p>
+<p>&nbsp;move.w d6,(VDP_DATA) ; store new sprite link field</p>
+<p>&nbsp;; player link field</p>
+<p>&nbsp;add.l #$00080000,d5 ; move to index 2 of next sprite</p>
+<p>&nbsp;move.w #$0700,d6 ; width=16,height=32 - TODO - derive or constant</p>
+<p>&nbsp;add.w (MEM_NPC1_SPRITE_ID),d6 ; link to npc sprite id</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP (sprite[0] link)</p>
+<p>&nbsp;move.w d6,(VDP_DATA) ; store new sprite link field</p>
+<p>&nbsp;; NPC1 link field</p>
+<p>&nbsp;add.l #$00080000,d5 ; move to index 2 of next sprite</p>
+<p>&nbsp;move.w #$0700,d6 ; width=16,height=32 - TODO - derive or constant</p>
+<p>&nbsp;add.w (MEM_PLAYER_SPRITE_ID),d6 ; link to npc sprite id</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP (sprite[0] link)</p>
+<p>&nbsp;move.w d6,(VDP_DATA) ; store new sprite link field</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Now the sprites are layered as expected when they move around:</p>
+
+<p><img src="after.png" alt="Sprites after this change" class="img-fluid d-block mx-auto"/></p>
+
+<p>This is obviously a brute-force method that only works with these two specific sprites. To make this work for an arbitrary number of sprites we need an algorithm that works for N number of sprites. </p>
+
+<p><img src="sprite-link-list-nsprites.png" alt="Sprite link list for n sprites" class="img-fluid d-block mx-auto"/></p>
+
+<p>For the sake of simplicity let's assume we're dealing with an already sorted NPC list. Since we completely control the order that sprites are loaded this is totally doable. This becomes a tad more complicated if the player sprite has followers like the Phantasy Star games. It's now really clear to me why Square usually uses a single character sprite to represent the entire party. For this iteration let's also go with Square's approach of a single player sprite.</p>
+
+<p>Here's how I think this should work:</p>
+<p>1) NPCs are pre-sorted by descending Y value. The reason being that higher Y values correspond to being lower on the screen and therefore having higher priority.</p>
+<p>2) Starting with NPC[0], find the first NPC sprite with a lower Y value than the player sprite. Adjust the sprite links to insert the player sprite between this NPC and the one before it.</p>
+<p>3) &quot;Sprite zero&quot; will link to the last NPC unless the player sprite has a higher Y value.</p>
+
+<p><img src="n-sprite-initial.png" alt="Initial case" class="img-fluid d-block mx-auto"/></p>
+
+<p>We can optimize this a bit by checking the direction the player sprite is moving and then only moving up or down the sprite list accordingly. If the player is moving down (increasing Y value) then the algorithm should work like:</p>
+
+<p><img src="n-sprite-down.png" alt="Player sprite moves down" class="img-fluid d-block mx-auto"/></p>
+
+<p>We then need to account for the case when the sprite moves to the highest Y position of all sprites:</p>
+
+<p><img src="n-sprite-top.png" alt="Player sprite moves to highest Y position" class="img-fluid d-block mx-auto"/></p>
+
+<p>Likewise, when the player moves up (decreasing Y value) the algorithm should work like:</p>
+
+<p><img src="n-sprite-up.png" alt="Player sprite moves up" class="img-fluid d-block mx-auto"/></p>
+
+<p>So then we need to handle when the player becomes the lowest priority sprite:</p>
+
+<p><img src="n-sprite-lowest.png" alt="Player sprite moves to lowest Y position" class="img-fluid d-block mx-auto"/></p>
+
+<p>The problem with my thinking on this is it's only accounting for the player sprite. An actual implementation of this should work so when any sprite moves we can check if it's: </p>
+<p>(a) Now above the sprite it's linking to. </p>
+<p>(b) Now below the sprite linking to it</p>
+<p>Since the sprite list is a single linked list this is more than trivial to check. I suppose it's too late to ask the engineers at Sega to use a doubly-linked list. It's immediately obvious why this is a problem for (b), but even shifting a sprite up in the list hits this challenge:</p>
+
+<p><img src="shift-up.png" alt="Shift up" class="img-fluid d-block mx-auto"/></p>
+
+<p>Shifting down is easier in a trivial case but harder in a complex one:</p>
+
+<p><img src="shift-down.png" alt="Shift down" class="img-fluid d-block mx-auto"/></p>
+
+<p>I think I'll wait until I have more sprites to implement this... </p>
+
+<p class="lead">Other Notes</p>
+
+<p>The priority flag on the sprite didn't help with this problem at all. When I first looked at this I thought a really simple solution would be to set this flag to 1 for all sprites with a higher Y value than the player sprite. After reading a few different sources I was wrong in my understanding of the priority flag. It's used to determine which sprites are drawn when more than 20 are drawn on the same line. I doubt I'll hit this problem.</p>
+
+<p>It would be a fun exercise to implement quicksort in 68000 assembler but for now it's not necessary. It will be a while, possibly never, before I have more than 10 or so sprites walking around. For a list of 10 or fewer items the difference between this insertion sort like approach and quicksort isn't huge. This is especially true if the sprites are already loaded in sorted order which we can do. In this case, insertion sort is faster and we don't need to worry about the memory allocation required for quicksort. Also since we're not moving objects around, only updating pointers, we are better off sticking with in-place sorting algorithms even if they are less efficient on the CPU side.</p>
+
+<p class="lead">Bonus: Memory Map Generation</p>
+
+<p>Early on one slightly annoying thing was keeping track of the memory map. Part of the old-school programming experience is dealing with manual memory management. To help with this I created a giant list of constants to keep track of the memory map:</p>
+
+<div class="well">
+<p>MEM_DEBUG_1=$FF00000 ; general debug register</p>
+<p>MEM_DEBUG_2=$FF00002 ; general debug register</p>
+<p>MEM_VBLANKFLAG=$FF00004 ; indicates whether vblank in-progess</p>
+<p>MEM_VBLANK_COUNTER=$FF00006 ; incremented at vblank - used for debug & RNG</p>
+<p>[...]</p>
+<p>MEM_OBJECT_LIST_OBJS=$FF0004E ; list of objects in current map</p>
+<p>MEM_OBJECT_LIST_NPCS=$FF0008A ; list of npcs in current map</p>
+<p>MEM_COLLISION_DATA=$FF000C6 ; collision data for the current map</p>
+</div>
+
+<p>The address values are based on the address of the previous item plus the size (number of bytes) of the previous item. That's easy to track if nothing is ever moved or inserted in the middle or resized. To get around that I kept the values in a LibraOffice spreadsheet. That was convenient for a short time but I really didn't want to make LibraOffice part of the build tools so I converted that sheet to a CSV:</p>
+
+<div class="well">
+<p>MEM_DEBUG_1,2,general debug register</p>
+<p>MEM_DEBUG_2,2,general debug register</p>
+<p>MEM_VBLANKFLAG,2,indicates whether vblank in-progess</p>
+<p>MEM_VBLANK_COUNTER,2,incremented at vblank - used for debug & RNG</p>
+<p>[...]</p>
+<p>MEM_OBJECT_LIST_OBJS,60,list of objects in current map</p>
+<p>MEM_OBJECT_LIST_NPCS,60,list of npcs in current map</p>
+<p>MEM_COLLISION_DATA,256,collision data for the current map</p>
+</div>
+
+<p>And then wrote a small Java class to convert this to a list of constants the assembler can understand:</p>
+
+<div class="well">
+<p>public class CSVMemoryMap{</p>
+<p>&nbsp;private static final String newLine=System.lineSeparator();</p>
+<p>&nbsp;private static final String delimiter=&quot;,&quot;;</p>
+<p>&nbsp;public static void main(String[] args){</p>
+<p>&nbsp; String defaultBaseAddress=&quot;0FF00000&quot;;</p>
+<p>&nbsp; BufferedReader bufferedReader=null;</p>
+<p>&nbsp; OutputStreamWriter outputStreamWriter=null;</p>
+<p>&nbsp; int lineNumber=0;</p>
+<p>&nbsp; String currentLine=null;</p>
+<p>&nbsp; try{</p>
+<p>&nbsp;  if(args.length<2){</p>
+<p>&nbsp;   throw new Exception(&quot;Expecting two required arguments: sourcefile outputfile&quot;);</p>
+<p>&nbsp;  }</p>
+<p>&nbsp;  String sourceFile=args[0];</p>
+<p>&nbsp;  String outputFile=args[1];</p>
+<p>&nbsp;  String currentAddressHex=defaultBaseAddress;</p>
+<p>&nbsp;  if(args.length>2){</p>
+<p>&nbsp;   currentAddressHex=args[2];</p>
+<p>&nbsp;  }</p>
+<p>&nbsp;  int currentAddressInt=Integer.valueOf(currentAddressHex,16);</p>
+<p>&nbsp;  bufferedReader=new BufferedReader(new InputStreamReader(new FileInputStream(sourceFile)));</p>
+<p>&nbsp;  outputStreamWriter=new FileWriter(outputFile);</p>
+<p>&nbsp;  while((currentLine=bufferedReader.readLine())!=null){</p>
+<p>&nbsp;   lineNumber++;</p>
+<p>&nbsp;   String[] split=currentLine.split(&quot;,&quot;);</p>
+<p>&nbsp;   if(split.length!=3){</p>
+<p>&nbsp;    throw new Exception(&quot;Invalid length in line &quot;+lineNumber+&quot; expected 3 actual &quot;+split.length);</p>
+<p>&nbsp;   }</p>
+<p>&nbsp;   StringBuffer stringBuffer=new StringBuffer();</p>
+<p>&nbsp;   stringBuffer.append(split[0]);</p>
+<p>&nbsp;   stringBuffer.append(&quot;=$&quot;);</p>
+<p>&nbsp;   stringBuffer.append(Integer.toHexString(currentAddressInt).toUpperCase());</p>
+<p>&nbsp;   stringBuffer.append(&quot;\t; &quot;);</p>
+<p>&nbsp;   stringBuffer.append(split[2]);</p>
+<p>&nbsp;   stringBuffer.append(newLine);</p>
+<p>&nbsp;   outputStreamWriter.write(stringBuffer.toString());</p>
+<p>&nbsp;   int size=Integer.parseInt(split[1]);</p>
+<p>&nbsp;   currentAddressInt+=size;</p>
+<p>&nbsp;  }</p>
+<p>&nbsp; }</p>
+<p>&nbsp; catch(Exception x){</p>
+<p>&nbsp;  if(lineNumber>0){</p>
+<p>&nbsp;   System.out.println(&quot;Error in line: &quot;+lineNumber);</p>
+<p>&nbsp;  }</p>
+<p>&nbsp;  if(currentLine!=null){</p>
+<p>&nbsp;   System.out.println(&quot;Current line: &quot;+currentLine);</p>
+<p>&nbsp;  }</p>
+<p>&nbsp;  x.printStackTrace();</p>
+<p>&nbsp; }</p>
+<p>&nbsp; finally{</p>
+<p>&nbsp;  try{</p>
+<p>&nbsp;   if(bufferedReader!=null){</p>
+<p>&nbsp;    bufferedReader.close();</p>
+<p>&nbsp;   }</p>
+<p>&nbsp;  }</p>
+<p>&nbsp;  catch(Exception x){}</p>
+<p>&nbsp;  try{</p>
+<p>&nbsp;   if(outputStreamWriter!=null){</p>
+<p>&nbsp;    outputStreamWriter.flush();</p>
+<p>&nbsp;    outputStreamWriter.close();</p>
+<p>&nbsp;   }</p>
+<p>&nbsp;  }</p>
+<p>&nbsp;  catch(Exception x){}</p>
+<p>&nbsp; }</p>
+<p>&nbsp;}</p>
+<p>}</p>
+</div>
+
+<p>I figure I already have one build tool in Java, for the collision maps, so adding another doesn't introduce a new technology to the stack. Also I suspect I'll build quite a few other helpers like this over time.</p>
+
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/objects/">&lt;- Part 9: Object List</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scenes-dialogs/">Part 11: Scenes &amp; Dialogs -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/tiles-sprites/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissprites.png" alt="Sega Genesis Programming Part 2: Tiles and Sprites"></p><p>Sega Genesis Programming Part 2: Tiles and Sprites</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/scene-npcs/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisscenenpcs.png" alt="Sega Genesis Programming Part 12: Scenes and NPCs"></p><p>Sega Genesis Programming Part 12: Scenes &amp; NPCs</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

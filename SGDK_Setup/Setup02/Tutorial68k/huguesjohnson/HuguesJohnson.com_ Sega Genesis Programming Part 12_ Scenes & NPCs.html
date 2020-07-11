@@ -1,0 +1,606 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 12: Scenes &amp; NPCs</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 12: Scenes and NPCs" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 12: scenes &amp; npcs</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+<div class="container-fluid">
+  
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/scenes-dialogs/">&lt;- Part 11: Scenes &amp; Dialogs</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/actiontable/">Part 13: Action Table -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Future plans</p>
+
+<p>I'm at a bit of a crossroad. I'd really like to start adding new areas for our little sprite to explore but I also want to get all the basic game mechanics worked out. After a few seconds of thought it was obvious to me that the latter is the right priority. If I start adding new scenes I'll almost certainly have to rework them once I figure out how to handle NPCs and events. The more scenes I add the more re-work I'll have later.</p> 
+
+<p>So for the next few iterations I'll be working on completing a one-room demo. This will be a fully-functional, albeit extremely short, game. It will also serve as the &quot;tutorial level&quot; assuming I have enough patience to keep working on this.</p>
+
+<p>The plot of this demo is pretty simple: it's closing time at the mall and you have one customer who won't leave. You can't close your store until he's gone. Meanwhile your older sister, who's stuck giving you a ride home, is growing impatient. You have to figure out how to get this customer out of your store.</p>
+
+<p>Specifically, you have to get this guy out of the store:</p>
+
+<p><img src="newnpcpreview.png" alt="New NPC sprite" class="img-fluid"/></p>
+
+<p>He's not based off anyone in particular, just a generic 80s business casual guy who's feeling grumpy.</p>
+
+<p>The things that need to be built for this to happen are:</p>
+<p>1) Dialog between characters - meaning an NPC says something to you and you respond. Maybe you respond with more dialog, maybe you give them an item. That leads to... </p>
+<p>2) Inventory management - along with basic stuff like taking and giving items.</p>
+<p>3) Game event tracking - we need a way to say &quot;if [X] happened and you talk to character [Y] then do [Z]&quot;, I'll probably over-complicate this.</p>
+<p>4) Scripted sprite movements - if the ultimate goal is to get a customer to leave a store then there needs to be an animation where they walk away.</p>
+<p>5) Adding & removing NPCs from the current scene - the one NPC is hard-coded, there needs to be a way to move NPCs in and out of scenes.</p>
+<p>6) To make this look like a real demo I should really create a title screen and ending message.</p>
+<p>7) Dozens of things I didn't think of that will all be painful to work out.</p>
+
+<p>You might notice there's nothing called &quot;battles&quot;, that's because I'm unlikely to add them. If I end up building an entire story, and that only takes 5 minutes to play through, then perhaps I'll reconsider. Right now it's something that would chew up a lot of time.</p>
+
+<p>Speaking of time, one downside to building a one-room demo is it might be a year (or more) before there are any new locations. As I joked somewhere else in this series, at least I don't have to rush to get this out before Christmas 1994.</p>
+
+<p>Anyway, I'm trying to not make this a too ambitious project. My last attempt at something like this was roughly a decade ago and it failed for a number of reasons. Now with a different perspective I realize a major reason was trying to build out a massive framework first, rather than a series of small incremental working components. I suffered from a defect a lot of programmers have in which they try to solve general problems before specific ones. You end up with bloated &quot;frameworks&quot; that aren't very good at satisfying any real-world use case. I outgrew this way of thinking and now follow a process more like:</p>
+
+<p>1) What is the real problem that needs to be solved / thing that needs to be built?</p>
+<p>2) Write the minimal amount of code needed to solve the problem.</p>
+<p>3) Test, fix edge cases and wacky bugs.</p>
+<p>4) Refactor into something more modular when needed.</p>
+
+<p>This approach so far has been working out OK in this crazy experiment. In my old way of thinking I'd still be writing a massive event processor & game state manager without anything to show for it. Sure, I don't have an awful lot to show right now but at least I have something.</p>
+
+<p>I think the first item from this list I'll tackle is #5 - &quot;Adding & removing NPCs from the current scene&quot;. That's because, well, we need to add another NPC to the scene. Along the way I'm certain to encounter bits of #7 too.</p>
+
+<p class="lead">General NPC handling
+</p>
+
+<p>With the super-sophisticated process I outlined there are a lot of items stuck in step 3. One of them is managing NPCs. Let's kick-off this round with updating the main game loop to handle an arbitrary number of NPCs.</p>
+
+<p>There was already a data structure for the first NPC but there are a few additions needed:</p>
+
+<div class="well">
+<p>MEM_NPC0_SPRITE_ID=$FFFF003C ; sprite table id of NPC0 sprite</p>
+<p>MEM_NPC0_SPRITE_X=$FFFF003E ; virtual x position of NPC0 sprite</p>
+<p>MEM_NPC0_SPRITE_Y=$FFFF0040 ; virtual y position of NPC0 sprite</p>
+<p>MEM_NPC0_SPRITE_PATTERN_INDEX=$FFFF0042 ; index of pattern in VDP</p>
+<p>MEM_NPC0_SPRITE_DIRECTION=$FFFF0044 ; which direction NPC0 faces</p>
+<p>MEM_NPC0_SPRITE_FRAME=$FFFF0046 ; animation frame of NPC0 sprite</p>
+<p>MEM_NPC0_SPRITE_STEP_COUNTER=$FFFF0048 ; used to determine when to move</p>
+<p>MEM_NPC0_MOVEMENT_COUNTER=$FFFF004A ; used to determine how far to move</p>
+<p>MEM_NPC0_MOVE_FREQUENCY=$FFFF004C ; how often to move</p>
+<p>MEM_NPC0_MOVE_PATTERN=$FFFF004E ; movement pattern</p>
+<p>MEM_NPC0_MOVE_PATTERN_LENGTH=$FFFF0052 ; length of movement pattern</p>
+<p>MEM_NPC0_MOVE_INDEX=$FFFF0054 ; where the sprite is the movement pattern</p>
+<p>[repeat for N NPCs]</p>
+</div>
+
+<p>The new pattern index field is there to fix the first NPC having a hard-coded movement pattern. At some point this will help when scripted movements are implemented. The movement frequency field is there for a similar reason. The first NPC had this hard-coded and it looks goofy if all the sprites move at the same time. Eventually we'll also have sprites that never move and maybe even ones that pace around frantically. There are also some new constants which will be used to reference these fields:</p>
+
+<div class="well">
+<p>STRUCT_SPRITE_ID=$0</p>
+<p>STRUCT_SPRITE_X=$2</p>
+<p>STRUCT_SPRITE_Y=$4</p>
+<p>STRUCT_SPRITE_BASE_PATTERN=$6</p>
+<p>STRUCT_SPRITE_DIRECTION=$8</p>
+<p>STRUCT_SPRITE_FRAME=$A</p>
+<p>STRUCT_SPRITE_STEP_COUNTER=$C</p>
+<p>STRUCT_SPRITE_MOVEMENT_COUNTER=$E</p>
+<p>STRUCT_SPRITE_MOVE_FREQUENCY=$10</p>
+<p>STRUCT_SPRITE_MOVE_PATTERN=$12</p>
+<p>STRUCT_SPRITE_MOVE_PATTERN_LENGTH=$16</p>
+<p>STRUCT_SPRITE_MOVE_INDEX=$18</p>
+</div>
+
+<p>Ten or so articles ago we looked at sprite definitions. They contain things like the sprite size, pattern, and location. For NPCs we care about some of these fields, like the pattern, but not ones like the location because that will be set when they're loaded into a scene. This means we need a relatively light character definition that will be used when NPCs are loaded:</p>
+
+<div class="well">
+<p>CharacterDefinitionStart:</p>
+<p>; 00</p>
+<p>CharacterDefinitionPlayer:</p>
+<p>dc.l PlayerSpriteTilesStart</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; priority, palette, flip, pattern</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;pccvhnnnnnnnnnnn</p>
+<p>&nbsp;dc.w %0110000100000000 ; priority=0,palette=2,vflip=0,hflip=0,pattern=5</p>
+<p>CharacterDefinitionPlayerEnd:</p>
+<p>; 01</p>
+<p>CharacterDefinitionDani:</p>
+<p>&nbsp;dc.l NPCSpriteDaniTilesStart</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; priority, palette, flip, pattern</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;pccvhnnnnnnnnnnn</p>
+<p>&nbsp;dc.w %0110000101100000 ;priority=0,palette=2,vflip=0,hflip=0,pattern=160</p>
+<p>; 02</p>
+<p>CharacterDefinitionMaleShopper0:</p>
+<p>&nbsp;dc.l NPCSpriteMaleShopper0Start</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; priority, palette, flip, pattern</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;pccvhnnnnnnnnnnn</p>
+<p>&nbsp;dc.w %0110000111000000 ;priority=0,palette=2,vflip=0,hflip=0,pattern=1C0</p>
+
+</div>
+
+<p>Hmm.. looking at this I realized the pattern really needs to be set when the NPC is loaded into the scene because it's based on the order they're loaded (this might make sense later on in the article). Well, at least I have an exciting new problem to look into. Anyway getting back to things..</p>
+
+<p>Now the main game loop needs to be updated to iterate through all NPCs to determine when they should move:</p>
+
+<div class="well">
+<p>[...]</p>
+<p>MainGameLoopUpdateNPCSpritesLoop:</p>
+<p>&nbsp;cmpi.w #$0000,(STRUCT_SPRITE_MOVEMENT_COUNTER,a5) ; is the NPC moving?</p>
+<p>&nbsp;bne .2 ; if MOVEMENT_COUNTER > 0 then the sprite is moving</p>
+<p>&nbsp;; test if it's time for them to move again</p>
+<p>&nbsp;bsr.w PseudoRandomWord ; store a random number in d0</p>
+<p>&nbsp;and.w (STRUCT_SPRITE_MOVE_FREQUENCY,a5),d0 ; and against it</p>
+<p>&nbsp;cmp.w (STRUCT_SPRITE_MOVE_FREQUENCY,a5),d0 ; test </p>
+<p>&nbsp;bne.s MainGameLoopUpdateNPCSpritesLoopEnd ; not time to move</p>
+<p>&nbsp;move.w #NPC_SPRITE_MOVE_STEPS,(STRUCT_SPRITE_MOVEMENT_COUNTER,a5) ; reset</p>
+<p>&nbsp;; set the direction</p>
+<p>&nbsp;addq #$2,(STRUCT_SPRITE_MOVE_INDEX,a5) ; increment index of movement</p>
+<p>&nbsp;move.w (STRUCT_SPRITE_MOVE_PATTERN_LENGTH,a5),d6</p>
+<p>&nbsp;cmp.w (STRUCT_SPRITE_MOVE_INDEX,a5),d6 ; end of the array?</p>
+<p>&nbsp;bge.s .1 ; not at the end of the array</p>
+<p>&nbsp;move.w #$0000,(STRUCT_SPRITE_MOVE_INDEX,a5) ; reset to zero</p>
+<p>.1</p>
+<p>&nbsp;move.l (STRUCT_SPRITE_MOVE_PATTERN,a5),a6</p>
+<p>&nbsp;adda (STRUCT_SPRITE_MOVE_INDEX,a5),a6</p>
+<p>&nbsp;move.w (a6),(STRUCT_SPRITE_DIRECTION,a5)</p>
+<p>.2 ; decrement NPC movement counter and test if they should stop moving</p>
+<p>&nbsp;subq #$0001,(STRUCT_SPRITE_MOVEMENT_COUNTER,a5) ; decrement counter</p>
+<p>&nbsp;bne .3 ; if MOVEMENT_COUNTER=0 now then we need to stop the sprite</p>
+<p>&nbsp;move.l a5,a6 ; setup call to StopSprite</p>
+<p>&nbsp;bsr.w StopSprite ; stop the sprite</p>
+<p>&nbsp;bra.s MainGameLoopUpdateNPCSpritesLoopEnd ; done updating this sprite</p>
+<p>.3 ; move the NPC sprite</p>
+<p>&nbsp;move.l a5,a6 ; setup call to StopSprite</p>
+<p>&nbsp;bsr.w MoveSprite ; branch to move MoveSprite</p>
+<p>MainGameLoopUpdateNPCSpritesLoopEnd:</p>
+<p>&nbsp;; move to next NPC sprite</p>
+<p>&nbsp;adda.l #NPC_RECORD_SIZE,a5 ; increment a5</p>
+<p>&nbsp;; dbra doesn't work against a memory address</p>
+<p>&nbsp;subq #$1,(MEM_NPC_LOOP_COUNTER) ; decrement loop counter</p>
+<p>&nbsp;bgt.w MainGameLoopUpdateNPCSpritesLoop ; branch</p>
+<p>[...]</p>
+
+</div>
+
+<p>With more sprites on the screen we need to worry about the sprite link order again. I burnt a lot of time trying to write a routine that reordered all the sprites based on Y position until something occurred to me...</p>
+
+<p>In Phantasy Star 2 and 3, which are obviously major inspirations for me, they avoid reordering NPCs by never letting them overlap. Just look at how far apart they are:</p>
+
+<p><img src="ps23sprites.png" alt="Phantasy Star 2 and 3 sprites" class="img-fluid"/></p>
+
+<p>They totally punted on this problem and so will I. We don't really need to reorder all the sprites if the NPCs don't socialize. We only need to make sure the player sprite is in the right order relative to the NPCs. This means we can be lazy and:</p>
+
+<p>1) Load NPCs into the scene in Y-order (which we'll be doing shortly).</p> 
+<p>2) Only reorder sprites when the player Y position changes.</p>
+<p>3) To be slightly less lazy, track the player sprite links and only go through the effort of changing links when absolutely needed.</p>
+
+<div class="well">
+<p>MEM_SPRITE_Y_ORDER_CHANGED=$FFFF001C ; track if sprite order has changed</p>
+<p>MEM_PLAYER_SPRITE_LINK_TO=$FFFF0038 ; sprite ID the player sprite links to</p>
+<p>MEM_PLAYER_SPRITE_LINK_FROM=$FFFF003A ; sprite ID linked to the player sprite</p>
+<p>[...]</p>
+<p>MainGameLoopEnd:</p>
+<p>&nbsp;; test if sprites need to be reordered</p>
+<p>&nbsp;tst (MEM_SPRITE_Y_ORDER_CHANGED) ; has the sprite Y order changed?</p>
+<p>&nbsp;beq.w MainGameLoop ; hasn't changed, no need to order sprites</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;btst.l #STATE_FLAG_EXPLORING,d7 ; test game state</p>
+<p>&nbsp;beq.w MainGameLoop ; not exploring, no need to order sprites</p>
+<p>&nbsp;; else order sprites and loop</p>
+<p>&nbsp;bsr.w OrderSprites ; reorder the sprites</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+<p>[...]</p>
+<p>OrderSprites:</p>
+<p>&nbsp;tst (MEM_ACTIVE_NPC_COUNT) ; are there any NPC sprites?</p>
+<p>&nbsp;bne.w OrderSpritesTestNPC1 ; branch if there are NPCs to check</p>
+<p>&nbsp;; sprite zero link field</p>
+<p>&nbsp;move.w #$0000,d2 ; sprite ID 0 is the sprite to modify</p>
+<p>&nbsp;move.w (MEM_PLAYER_SPRITE_ID),d3 ; link to player sprite</p>
+<p>&nbsp;bsr.w SetSpriteLink ; set the link</p>
+<p>&nbsp;; player link field</p>
+<p>&nbsp;move.w (MEM_PLAYER_SPRITE_ID),d2 ; player sprite is the sprite to modify</p>
+<p>&nbsp;move.w #$0000,d3 ; link to sprite 0</p>
+<p>&nbsp;bsr.w SetSpriteLink ; set the link</p>
+<p>&nbsp;bra.w ExitOrderSprites ; exit subroutine</p>
+<p>OrderSpritesTestNPC1: ; test if player sprite is lowest priority</p>
+<p>&nbsp;move.w (MEM_NPC1_SPRITE_Y),d6 ; copy NPC Y to d6</p>
+<p>&nbsp;cmp.w (MEM_PLAYER_SPRITE_Y),d6 ; test which is higher</p>
+<p>&nbsp;ble.s OrderSpritesTestNPC0</p>
+<p>&nbsp;; test if the player sprite links are already correct</p>
+<p>&nbsp;cmp.w #$0000,(MEM_PLAYER_SPRITE_LINK_TO) ; check &quot;to&quot; link</p>
+<p>&nbsp;bne.s .1 ; links need to be set</p>
+<p>&nbsp;cmp.w #$0002,(MEM_PLAYER_SPRITE_LINK_FROM); check &quot;from&quot; link</p>
+<p>&nbsp;beq.w ExitOrderSprites ; exit if the links are already OK</p>
+<p>[...]</p>
+
+</div>
+
+<p>Somewhere along the way I wrote a little subroutine to set sprite links. This might be the most useful bit of code in this entire article:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>; SetSpriteLink</p>
+<p>; sets the sprite link field for a sprite</p>
+<p>; Parameters</p>
+<p>; d2 = ID of sprite to change</p>
+<p>; d3 = ID of sprite to link to</p>
+<p>; d5 is modified in this routine</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>SetSpriteLink:</p>
+<p>&nbsp;move.l #VDP_VRAM_WRITE_SPRITE,d5 ; start at base sprite vram address</p>
+<p>&nbsp;; workaround for lack of mulu.l on 68000</p>
+<p>&nbsp;mulu.w #$0008,d2 ; move to address of sprite to modify </p>
+<p>&nbsp;swap d2 ; move result to high word</p>
+<p>&nbsp;and.l $%11110000,d2 ; clear low word</p>
+<p>&nbsp;add.l d2,d5 ; add address of sprite to modify</p>
+<p>&nbsp;add.l #$00020000,d5 ; move to index 2</p>
+<p>&nbsp;add.w #SPRITE_DEF_WORD2_BASE,d3 ; add base value to link field in d3</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w d3,(VDP_DATA) ; store new sprite link field</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>Yes, I'm aware this is not the best way to pass parameters to subroutines. At some point I need to go back and fix this everywhere.</p>
+
+<p class="lead">Loading NPCs into scenes</p>
+
+<p>Now that multiple NPCs are supported there needs to be a way to load them into scenes. First off, let's setup a place to track which NPCs are in which location. This is pretty simple, it's just a list:</p>
+
+<div class="well">
+<p>MEM_NPC_LOCATIONS=$FFFF0018 ; table to track where NPCs are located</p>
+<p>[...]</p>
+<p>InitNPCLocations:</p>
+<p>&nbsp;lea MEM_NPC_LOCATIONS,a0</p>
+<p>&nbsp;move.w #$0102,(a0)+ ; location 00 - NPCs 0,1</p>
+<p>&nbsp;move.w #$0000,(a0)+ ; location 00 - NPCs 2,3</p>
+
+</div>
+
+<p>Next I decided to create &quot;NPC slots&quot; in the scene. These are areas that define the location of an NPC, how often they move, and what their movement pattern is. The reason I tied this to the scene rather than the NPC is because the scene contains the layout &amp; collision data. So an &quot;NPC slot&quot; is more like &quot;a region in the scene where an NPC can pace around without running into things or getting in the way&quot;. For example, this could be used to define a place where an NPC stood behind the counter and never moved. That seems like something I'm likely to need later. Here's where our now two NPCs can go in the first store:</p>
+
+<div class="well">
+<p>;---------------------------------------------------------------------------</p>
+<p>; NPC locations</p>
+<p>;---------------------------------------------------------------------------</p>
+<p>dc.w $0001 ; two npc slots</p>
+<p>; npc0</p>
+<p>dc.w $0180 ; starting x location of npc0</p>
+<p>dc.w $0110 ; starting y location of npc0</p>
+<p>dc.w DIRECTION_DOWN ; starting direction of npc0</p>
+<p>dc.w $A0F1 ; movement frequency of npc0</p>
+<p>dc.l RandomNPCMovement0Start ; location of movement pattern for npc0</p>
+<p>dc.w (RandomNPCMovement0End-RandomNPCMovement0Start-1) ; pattern length</p>
+<p>; npc1</p>
+<p>dc.w $00B0 ; starting x location of npc1</p>
+<p>dc.w $0100 ; starting y location of npc1</p>
+<p>dc.w DIRECTION_DOWN ; starting direction of npc1</p>
+<p>dc.w $0FF0 ; movement frequency of npc1</p>
+<p>dc.l RandomNPCMovement1Start ; location of movement pattern for npc1</p>
+<p>dc.w (RandomNPCMovement1End-RandomNPCMovement1Start-1) ; pattern length</p>
+</div>
+
+<p>Now we need to load NPCs when the scene is loaded. This requires looping through MEM_NPC_LOCATIONS to see which NPCs are in this scene and loading their tiles. My goal for this LoadScene subroutine is to do everything needed to get a scene ready. It means it's a large subroutine but it's only called when changing scenes so it's not going to effect gameplay.</p>
+
+<div class="well">
+<p>MEM_ACTIVE_NPC_COUNT=$FFFF00BE ; number of NPCs in the current scene</p>
+<p>NPC_LIST_LENGTH=$0004	; max items in the NPC list</p>
+<p>[...]</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; load NPCs</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>LoadSceneLoadNPCData:</p>
+<p>&nbsp;move.w (a6)+,d7 ; number of NPC slots in the scene</p>
+<p>&nbsp;move.w #$0002,d6 ; use d6 to track sprite ID</p>
+<p>&nbsp;lea MEM_NPC0_SPRITE_ID,a0 ; point a0 to the first NPC sprite</p>
+<p>&nbsp;cmpi.w #(NPC_LIST_LENGTH-1),d7 ; test to defend against my own stupidity</p>
+<p>&nbsp;bls.s LoadSceneLoadNPCDataLoop ; did I add more NPCs than supported?</p>
+<p>&nbsp;move.w #(NPC_LIST_LENGTH-1),d7 ; set d7 to the max possible NPCs</p>
+<p>LoadSceneLoadNPCDataLoop:</p>
+<p>&nbsp;move.w d6,(a0)+ ; ID</p>
+<p>&nbsp;move.w (a6)+,(a0)+ ; x</p>
+<p>&nbsp;move.w (a6)+,(a0)+ ; y</p>
+<p>&nbsp;move.w #$0000,(a0)+ ; pattern</p>
+<p>&nbsp;move.w (a6)+,(a0)+ ; direction</p>
+<p>&nbsp;move.w #$0000,(a0)+ ; frame</p>
+<p>&nbsp;move.w #$0000,(a0)+ ; step counter</p>
+<p>&nbsp; move.w #$0000,(a0)+ ; move counter</p>
+<p>&nbsp;move.w (a6)+,(a0)+ ; movement frequency</p>
+<p>&nbsp;move.l (a6)+,(a0)+ ; movement pattern</p>
+<p>&nbsp;move.w (a6)+,(a0)+ ; movement pattern length</p>
+<p>&nbsp;move.w #$0000,(a0)+ ; movement index</p>
+<p>&nbsp;addq #$1,d6 ; increment sprite ID</p>
+<p>&nbsp;dbra d7,LoadSceneLoadNPCDataLoop</p>
+<p>LoadSceneLoadNPCSprites:</p>
+<p>&nbsp;; lookup which NPCs sprites are in this scene and add them</p>
+<p>&nbsp;move.w #$0000,(MEM_ACTIVE_NPC_COUNT) ; reset active scene NPC count</p>
+<p>&nbsp;lea MEM_NPC_LOCATIONS,a1 ; point a1 to the start of the list</p>
+<p>&nbsp;move.w (MEM_ACTIVE_SCENE_ID),d5 ; copy active scene ID to d5</p>
+<p>&nbsp;mulu.w #NPC_LIST_LENGTH,d5 ; multiply by list length</p>
+<p>&nbsp;adda.w d5,a1 ; add result to a1 to move to npc list for active scene</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; setup loop control - 2 NPCs per word in MEM_NPC_LOCATIONS</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;move.w #(NPC_LIST_LENGTH-1)/2,d3 ; use d3 for loop control</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; loop through all NPCs in the scene and add their sprites</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;move.w #$0002,d2 ; use d2 to track sprite ID</p>
+<p>LoadSceneLoadNPCSpritesLoop:</p>
+<p>&nbsp;move.w (a1)+,d4 ; copy next NPC pair to d4</p>
+<p>&nbsp;move.w d4,d5 ; use d5 for first byte</p>
+<p>&nbsp;and.w #$FF00,d5 ; clear low byte </p>
+<p>&nbsp;beq.s .1 ; branch if the result of the and is zero</p>
+<p>&nbsp;lsr.w #$8,d5 ; shift upper word to lower</p>
+<p>&nbsp;jsr LoadNPC ; load this NPC sprite</p>
+<p>.1 ; second NPC in the pair</p>
+<p>&nbsp;move.w d4,d5 ; copy NPC pair to d5 again</p>
+<p>&nbsp;and.w #$00FF,d5 ; clear high byte</p>
+<p>&nbsp;beq.s .2 ; branch if the result of the and is zero</p>
+<p>&nbsp;jsr LoadNPC ; load this NPC sprite</p>
+<p>.2</p>
+<p>&nbsp;dbra d3,LoadSceneLoadNPCSpritesLoop ; loop</p>
+<p>&nbsp;; once all NPCs have been added, rebuild the object list</p>
+<p>&nbsp;bsr.w BuildNPCObjectList</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; setup to rebuild sprite order after loading new NPCs</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.w #$FFFF,(MEM_SPRITE_Y_ORDER_CHANGED) ; set to redraw sprite order</p>
+<p>&nbsp;move.w #$FFFF,(MEM_PLAYER_SPRITE_LINK_TO) ; player is linking to nothing</p>
+<p>&nbsp;move.w #$FFFF,(MEM_PLAYER_SPRITE_LINK_FROM) ; nothing links to player</p>
+<p>[...]</p>
+<p>LoadNPC:</p>
+<p>&nbsp;lea CharacterDefinitionStart,a2 ; point a2 to the character definition</p>
+<p>&nbsp;; d5 contains NPC ID</p>
+<p>&nbsp;mulu.w #CHARACTER_DEFINITION_SIZE,d5 ; multiply to get NPC def location</p>
+<p>&nbsp;adda.w d5,a2 ; increment a2 to the NPC definition</p>
+<p>&nbsp;lea MEM_NPC0_SPRITE_ID,a3 ; point a3 to the first NPC memory location</p>
+<p>&nbsp;move.w d2,d5 ; d2 has sprite ID, copy it to d5</p>
+<p>&nbsp;subq #$2,d5 ; decrement to account for player sprite & sprite 0</p>
+<p>&nbsp;mulu.w #NPC_RECORD_SIZE,d5 ; multiply to get location</p>
+<p>&nbsp;adda.w d5,a3 ; increment a3 to the NPC memory location</p>
+<p>&nbsp;; load the tiles</p>
+<p>&nbsp;move.w #SPRITE_TILESET_LWORDS,d0 ; number of tiles in a sprite tileset</p>
+<p>&nbsp;movea.l (a2)+,a0 ; set address of first tile to load</p>
+<p>&nbsp;; calculate VDP write address</p>
+<p>&nbsp;move.l d2,d1 ; copy sprite ID to d1</p>
+<p>&nbsp;subq #$1,d1 ; subtract 1 to account for sprite 0 having no tiles</p>
+<p>&nbsp;mulu #(SPRITE_TILESET_LWORDS*LWORD_SIZE),d1 ; multiply to get location</p>
+<p>&nbsp;swap d1 ; move to upper word</p>
+<p>&nbsp;add.l #SPRITE_VDP,d1 ; add base address</p>
+<p>&nbsp;; note - a0, d0, and d1 are modified by this call</p>
+<p>&nbsp;bsr.w LoadTiles ; branch to LoadTiles subroutine</p>
+<p>&nbsp;; update base pattern</p>
+<p>&nbsp;move.w (a2)+,(STRUCT_SPRITE_BASE_PATTERN,a3)</p>
+<p>&nbsp;; --------------------------------------------------------------------------</p>
+<p>&nbsp;; update x, y, and pattern in the sprite table</p>
+<p>&nbsp;; this could be optimized a bit to use fewer calculation</p>
+<p>&nbsp;; --------------------------------------------------------------------------</p>
+<p>&nbsp;; y</p>
+<p>&nbsp;move.l d2,d6 ; copy sprite ID to d1</p>
+<p>&nbsp;mulu.w #$08,d6 ; multiply sprite ID by 8 to get sprite array offset</p>
+<p>&nbsp;swap d6 ; move to upper word</p>
+<p>&nbsp;add.l #VDP_VRAM_WRITE_SPRITE,d6 ; add to sprite table address</p>
+<p>&nbsp;move.l d6,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w (STRUCT_SPRITE_Y,a3),(VDP_DATA) ; copy the new y-coordinate</p>
+<p>&nbsp;; x</p>
+<p>&nbsp;move.w d2,d6 ; store sprite ID in d6</p>
+<p>&nbsp;mulu.w #$08,d6 ; multiply sprite ID by 8 to get sprite array offset</p>
+<p>&nbsp;addq #STRUCT_SPRITEDEF_X,d6 ; move to x-coordinate</p>
+<p>&nbsp;swap d6 ; move to upper word</p>
+<p>&nbsp;add.l #VDP_VRAM_WRITE_SPRITE,d6 ; add to sprite table address</p>
+<p>&nbsp;move.l d6,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w (STRUCT_SPRITE_X,a3),(VDP_DATA) ; copy the new y-coordinate</p>
+<p>&nbsp;; pattern</p>
+<p>&nbsp;move.w d2,d6 ; store sprite ID in d6</p>
+<p>&nbsp;mulu.w #$08,d6 ; multiply sprite ID by 8 to get sprite array offset</p>
+<p>&nbsp;addq #STRUCT_SPRITEDEF_PATTERN,d6 ; move to x-coordinate</p>
+<p>&nbsp;swap d6 ; move to upper word</p>
+<p>&nbsp;add.l #VDP_VRAM_WRITE_SPRITE,d6 ; add to sprite table address</p>
+<p>&nbsp;move.l d6,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w (STRUCT_SPRITE_BASE_PATTERN,a3),(VDP_DATA) ; copy the new pattern</p>
+<p>&nbsp;; block the sprite's initial map positon</p>
+<p>&nbsp;move.l a6,a4 ; workaround caused by my lack of planning</p>
+<p>&nbsp;move.l a3,a6 ; setup call to FlipSpriteMapPosition</p>
+<p>&nbsp;; note - a3, d5, d6, and d7 are modified by this call</p>
+<p>&nbsp;bsr.w FlipSpriteMapPosition ; block the sprite's initial position</p>
+<p>&nbsp;move.l a4,a6 ; workaround caused by my lack of planning</p>
+<p>ExitLoadNPC:</p>
+<p>&nbsp;addq #$1,d2 ; increment sprite ID</p>
+<p>&nbsp;addq #$1,(MEM_ACTIVE_NPC_COUNT) ; increment active scene NPC count</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>After all this work, plus wiring-up some dialog, we have a new NPC pacing around that the player can look at. It's not too impressive but it's still progress.</p>
+
+<p><img src="newnpc.png" alt="New NPC" class="img-fluid"/></p>
+
+<p>Did I mention I added some new scenery too? Hopefully Sega won't send me a takedown notice over that box design. Also, I should find a real artist to help with this.</p>
+
+<p class="lead">What's next?</p>
+
+<p>There are a lot of little bugs to fix (as usual). I need to spend a little bit of time working through some of them. I think the next big piece of work will be the first item on the list that started this article (Dialog between characters). Tackling that will require a little work on the third item too (Game event tracking). I also might get distracted and go after something not on the list at all.</p>
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/scenes-dialogs/">&lt;- Part 11: Scenes &amp; Dialogs</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/actiontable/">Part 13: Action Table -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/spritelist/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisspritelist.png" alt="Sega Genesis Programming Part 10: Sprite Link List"></p><p>Sega Genesis Programming Part 10: Sprite Link List</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/selections/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisselections.png" alt="Sega Genesis Programming Part 14: Selections"></p><p>Sega Genesis Programming Part 14: Selections</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

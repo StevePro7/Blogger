@@ -1,0 +1,598 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 2: Tiles and Sprites</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 2: Tiles and Sprites" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 2: tiles and sprites</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/palettes/">&lt;- Part 1: Palettes</a>
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/animated-sprites/">Part 3: Sprite Animation -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+<p class="lead">Where we left off</p>
+
+<p>In the <a href="https://huguesjohnson.com/programming/genesis/palettes/">first article in this series</a>, and yes now that there are two it is a series, we covered the basics of building a Genesis game in Linux and loading palettes. In this section let's try loading a tile, a sprite, and using the controller to move the sprite around.</p>
+<p>I'm sort of pleasantly surprised to make it this far. I expected myself to get bored and/or frustrated after a couple hours. Quite the opposite, although occasionally frustrating, I've found this therapeutic. I finished graduate school 11 years ago and haven't tackled something that really made me think in a different way since then. Assembly is very simple yet very complex. The real motivation though is the dream of seeing something I create run on an old piece of video game hardware. I've wanted to do that since my first Intellivision around age 8-10. It took me way too long to follow-through on that.</p>
+<p>Anyway, back to the code. First things first, let's create some constants that we'll use throughout this example:</p>
+<div class="well">
+<p>;&nbsp;68k&nbsp;memory&nbsp;map</p>
+<p>CTRL_1_DATA=$00A10003</p>
+<p>CTRL_2_DATA=$00A10005</p>
+<p>CTRL_X_DATA=$00A10007</p>
+<p>CTRL_1_CONTROL=$00A10009</p>
+<p>CTRL_2_CONTROL=$00A1000B</p>
+<p>CTRL_X_control=$00A1000D</p>
+<p>REG_HWVERSION=$00A10001</p>
+<p>REG_TMS=$00A14000</p>
+<p>PSG_INPUT=$00C00011</p>
+<p>RAM_START=$00FF0000</p>
+<p>VDP_DATA=$00C00000</p>
+<p>VDP_CONTROL=$00C00004</p>
+<p>VDP_COUNTER=$00C00008</p>
+<p>Z80_ADDRESS_SPACE=$00A10000</p>
+<p>Z80_BUS=$00A11100</p>
+<p>Z80_RESET=$00A11200</p>
+<p>;&nbsp;VDP&nbsp;access&nbsp;modes</p>
+<p>VDP_CRAM_READ=$20000000</p>
+<p>VDP_CRAM_WRITE=$C0000000</p>
+<p>VDP_VRAM_READ=$00000000</p>
+<p>VDP_VRAM_WRITE=$40000000</p>
+<p>VDP_VSRAM_READ=$10000000</p>
+<p>VDP_VSRAM_WRITE=$14000000</p>
+<p>;&nbsp;buttons</p>
+<p>BUTTON_UP_PRESSED=$01</p>
+<p>BUTTON_DOWN_PRESSED=$02</p>
+<p>BUTTON_LEFT_PRESSED=$04</p>
+<p>BUTTON_RIGHT_PRESSED=$08</p>
+<p>BUTTON_B_PRESSED=$10</p>
+<p>BUTTON_C_PRESSED=$20</p>
+<p>BUTTON_A_PRESSED=$40</p>
+<p>BUTTON_START_PRESSED=$80</p>
+<p>;&nbsp;program-specific&nbsp;values</p>
+<p>MEM_VSYNCFLAG=$00FF00000&nbsp;;&nbsp;TODO&nbsp;-&nbsp;use&nbsp;a&nbsp;bit&nbsp;at&nbsp;this&nbsp;address&nbsp;instead</p>
+<p>MEM_VSYNC_COUNTER=$00FF00002</p>
+<p>MEM_DEBUG_MAINLOOP_COUNTER=$00FF00004</p>
+<p>MEM_CONTROL_HELD=$00FF0006</p>
+<p>MEM_CONTROL_PRESSED=$00FF0008</p>
+<p>MEM_SPRITE_X=$00FF000A</p>
+<p>MEM_SPRITE_Y=$00FF000C</p>
+<p>MEM_SPRITE_STEP_COUNTER=$00FF000E</p>
+</div>
+
+<p>The majority of these are standard values for any Genesis game, the last set are specific to this demo. This demo is obviously not optimized. For example the vsync flag is a word when it could be a single bit in a word that contained multiple flags.</p>
+
+<p class="lead">Tiles</p>
+
+<p>The first part of this series just loaded a few palettes against an uni-color background. Booooring. Let's create a slightly less boring tile. Getting into compressed graphics is at least a few experiments away so let's create an uncompressed one, which is really just a bitmap.</p>
+
+<div class="well">
+<p>GroundTileA:</p>
+<p>&nbsp;dc.l&nbsp;$AABBABCC</p>
+<p>&nbsp;dc.l&nbsp;$BAABBCCB</p>
+<p>&nbsp;dc.l&nbsp;$CBAABCBC</p>
+<p>&nbsp;dc.l&nbsp;$ACBAABAB</p>
+<p>&nbsp;dc.l&nbsp;$CCBBAAAB</p>
+<p>&nbsp;dc.l&nbsp;$CBAABCCB</p>
+<p>&nbsp;dc.l&nbsp;$BBABBCBA</p>
+<p>&nbsp;dc.l&nbsp;$BABBAABC</p>
+</div>
+
+<p>Now we need to load the tile into VDP memory. We'll do that by just copying it over bit-by-bit in a loop.</p>
+
+<div class="well">
+<p>LoadTiles:</p>
+<p>&nbsp;move.l&nbsp;#$40200000,(VDP_CONTROL)</p>
+<p>&nbsp;lea&nbsp;GroundTileA,a0&nbsp;;&nbsp;load&nbsp;address&nbsp;of&nbsp;first&nbsp;tile&nbsp;to&nbsp;a0</p>
+<p>&nbsp;move.l&nbsp;#$27,d0&nbsp;&nbsp;;&nbsp;(8&nbsp;x&nbsp;number&nbsp;of&nbsp;tiles&nbsp;to&nbsp;load)&nbsp;-&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>LoadTilesLoop:</p>
+<p>&nbsp;move.l&nbsp;(a0)+,(VDP_DATA)&nbsp;;&nbsp;move&nbsp;data&nbsp;to&nbsp;VDP&nbsp;&&nbsp;increment&nbsp;address</p>
+<p>&nbsp;dbra&nbsp;d0,LoadTilesLoop&nbsp;;&nbsp;loop&nbsp;until&nbsp;all&nbsp;data&nbsp;is&nbsp;loaded</p>
+
+</div>
+
+<p>Low let's fill the background, again in a loop, with our tile. We'll only use one palette from the previous demo. The documentation for the VPD pattern format is inline:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>FillBackground:</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>;&nbsp;Pattern&nbsp;notes</p>
+<p>;&nbsp;bits&nbsp;0-10&nbsp;=&nbsp;pattern&nbsp;number&nbsp;</p>
+<p>;&nbsp;bit&nbsp;11&nbsp;=&nbsp;horizontal&nbsp;reverse&nbsp;bit&nbsp;(1=reverse)</p>
+<p>;&nbsp;bit&nbsp;12&nbsp;=&nbsp;vertical&nbsp;reverse&nbsp;bit&nbsp;(1=reverse)</p>
+<p>;&nbsp;bit&nbsp;13&nbsp;=&nbsp;palette&nbsp;low&nbsp;bit</p>
+<p>;&nbsp;bit&nbsp;14&nbsp;=&nbsp;palette&nbsp;high&nbsp;bit</p>
+<p>;&nbsp;bit&nbsp;15&nbsp;=&nbsp;priority</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;#$0001,d0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;store&nbsp;tile&nbsp;pattern&nbsp;in&nbsp;d0</p>
+<p>&nbsp;move.l&nbsp;#$40000003,(VDP_CONTROL)&nbsp;;&nbsp;initial&nbsp;drawing&nbsp;location</p>
+<p>&nbsp;move.l&nbsp;#$6FF,d3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;how&nbsp;many&nbsp;tiles&nbsp;to&nbsp;draw&nbsp;(1792&nbsp;total)</p>
+<p>DrawTileLoop:</p>
+<p>&nbsp;move.w&nbsp;&nbsp;d0,(VDP_DATA)&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;the&nbsp;pattern&nbsp;to&nbsp;VPD</p>
+<p>&nbsp;dbra&nbsp;&nbsp;&nbsp;&nbsp;d3,DrawTileLoop&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;loop&nbsp;to&nbsp;next&nbsp;tile</p>
+</div>
+
+<p>By changing bit 14 of the pattern we can loop through all the palettes.</p>
+
+<div class="well">
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;&nbsp;draw&nbsp;the&nbsp;test&nbsp;tile&nbsp;with&nbsp;all&nbsp;four&nbsp;palettes</p>
+<p>&nbsp;;&nbsp;d0&nbsp;-&nbsp;tile&nbsp;pattern</p>
+<p>&nbsp;;&nbsp;d1-d3&nbsp;-&nbsp;loop&nbsp;control</p>
+<p>&nbsp;;&nbsp;d4&nbsp;-&nbsp;VDP&nbsp;drawing&nbsp;location</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;#$0001,d0&nbsp;&nbsp;;&nbsp;store&nbsp;tile&nbsp;pattern&nbsp;in&nbsp;d0</p>
+<p>&nbsp;move.l&nbsp;#$3,d1&nbsp;&nbsp;&nbsp;;&nbsp;looping&nbsp;through&nbsp;4&nbsp;palettes</p>
+<p>&nbsp;move.l&nbsp;#$40000003,d4&nbsp;;&nbsp;initial&nbsp;drawing&nbsp;location</p>
+<p>DrawTileLoop:</p>
+<p>&nbsp;move.l&nbsp;#$03,d2&nbsp;&nbsp;&nbsp;;&nbsp;drawing&nbsp;4&nbsp;rows&nbsp;of&nbsp;tiles</p>
+<p>&nbsp;move.l&nbsp;d4,(VDP_CONTROL);&nbsp;tell&nbsp;VDP&nbsp;contol&nbsp;where&nbsp;to&nbsp;start&nbsp;drawing</p>
+<p>DrawTileLoopA:</p>
+<p>&nbsp;move.l&nbsp;&nbsp;&nbsp;#$59,d3&nbsp;&nbsp;;&nbsp;how&nbsp;many&nbsp;tiles&nbsp;to&nbsp;draw&nbsp;-&nbsp;1</p>
+<p>DrawTileLoopB:</p>
+<p>&nbsp;move.w&nbsp;&nbsp;d0,(VDP_DATA)&nbsp;;&nbsp;copy&nbsp;the&nbsp;pattern&nbsp;to&nbsp;VPD</p>
+<p>&nbsp;dbra&nbsp;&nbsp;&nbsp;&nbsp;d3,DrawTileLoopB;&nbsp;loop&nbsp;to&nbsp;next&nbsp;tile</p>
+<p>&nbsp;dbra&nbsp;&nbsp;&nbsp;&nbsp;d2,DrawTileLoopA;&nbsp;loop&nbsp;to&nbsp;next&nbsp;</p>
+<p>&nbsp;add.l&nbsp;#$03000000,d4&nbsp;;&nbsp;increment&nbsp;the&nbsp;drawing&nbsp;location</p>
+<p>&nbsp;dbra&nbsp;&nbsp;&nbsp;&nbsp;d1,DrawTileLoop&nbsp;;&nbsp;loop&nbsp;back&nbsp;to&nbsp;the&nbsp;start</p>
+</div>
+
+
+<p><img src="tile-with-four-palettes.png" alt="Tile with four palettes" class="img-fluid d-block mx-auto"/></p>
+
+<p>With another modification to the pattern definition we can loop through each of the four planes.</p>
+
+<p><img src="tile-layers.png" alt="Toggling the layers" class="img-fluid d-block mx-auto"/></p>
+
+
+<p>That's neat but not really the main objective of this demo so let's move on to...</p>
+
+<p class="lead">Controller input</p>
+
+<p>If we want to move a sprite around we probably should start reading controller input. I can't claim authorship over this next snippet, something to this effect appears in every Genesis game that's published its source. This routine reads the input from the joypads and stores it in memory, it also differentiates a button being held vs just being pressed.</p>
+
+<div class="well">
+<p>ReadJoypads:</p>
+<p>&nbsp;lea&nbsp;CTRL_1_DATA,a0&nbsp;&nbsp;;&nbsp;load&nbsp;address&nbsp;to&nbsp;read&nbsp;controller&nbsp;1&nbsp;data</p>
+<p>&nbsp;lea&nbsp;MEM_CONTROL_HELD,a1&nbsp;;&nbsp;load&nbsp;address&nbsp;to&nbsp;write&nbsp;results&nbsp;of&nbsp;the&nbsp;read</p>
+<p>&nbsp;bsr.s&nbsp;ReadJoypad&nbsp;&nbsp;;&nbsp;read&nbsp;first&nbsp;joypad</p>
+<p>&nbsp;;&nbsp;code&nbsp;to&nbsp;read&nbsp;second&nbsp;joypad,&nbsp;not&nbsp;used&nbsp;for&nbsp;this&nbsp;demo&nbsp;</p>
+<p>&nbsp;;&nbsp;addq.w&nbsp;#2,a0&nbsp;&nbsp;;&nbsp;switch&nbsp;to&nbsp;second&nbsp;joypad&nbsp;data</p>
+<p>&nbsp;;&nbsp;bsr.s&nbsp;ReadJoypad&nbsp;&nbsp;;&nbsp;read&nbsp;second&nbsp;joypad</p>
+<p>&nbsp;rts</p>
+<p>ReadJoypad:</p>
+<p>&nbsp;move.b&nbsp;#0,(a0)&nbsp;&nbsp;;&nbsp;read&nbsp;joypad&nbsp;data&nbsp;port</p>
+<p>&nbsp;nop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),d1&nbsp;&nbsp;;&nbsp;get&nbsp;joypad&nbsp;data&nbsp;-&nbsp;Start/A</p>
+<p>&nbsp;lsl.w&nbsp;#2,d1&nbsp;&nbsp;;&nbsp;shift&nbsp;them&nbsp;so&nbsp;they&nbsp;are&nbsp;at&nbsp;the&nbsp;2&nbsp;highest&nbsp;bits</p>
+<p>&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;read&nbsp;joypad&nbsp;data&nbsp;port&nbsp;again</p>
+<p>&nbsp;nop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;nop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;move.b&nbsp;(a0),d0&nbsp;&nbsp;;&nbsp;get&nbsp;joypad&nbsp;data&nbsp;-&nbsp;C/B/Dpad</p>
+<p>&nbsp;andi.b&nbsp;#$3F,d0&nbsp;&nbsp;;&nbsp;C/B/Dpad&nbsp;in&nbsp;low&nbsp;6&nbsp;bits</p>
+<p>&nbsp;andi.b&nbsp;#$C0,d1&nbsp;&nbsp;;&nbsp;Start/A&nbsp;in&nbsp;high&nbsp;2&nbsp;bits</p>
+<p>&nbsp;or.b&nbsp;d1,d0&nbsp;&nbsp;;&nbsp;merge&nbsp;values&nbsp;from&nbsp;both&nbsp;registers</p>
+<p>&nbsp;not.b&nbsp;d0&nbsp;&nbsp;&nbsp;;&nbsp;revert&nbsp;bits&nbsp;so&nbsp;'0'&nbsp;means&nbsp;not&nbsp;pressed,&nbsp;and&nbsp;'1'&nbsp;pressed</p>
+<p>&nbsp;move.b&nbsp;(a1),d1&nbsp;&nbsp;;&nbsp;get&nbsp;previous&nbsp;joypad&nbsp;state</p>
+<p>&nbsp;eor.b&nbsp;d0,d1&nbsp;&nbsp;;&nbsp;toggle&nbsp;off&nbsp;buttons&nbsp;that&nbsp;are&nbsp;being&nbsp;held</p>
+<p>&nbsp;move.b&nbsp;d0,(a1)+&nbsp;;&nbsp;'joypad&nbsp;held'&nbsp;functionality&nbsp;</p>
+<p>&nbsp;and.b&nbsp;d0,d1</p>
+<p>&nbsp;move.b&nbsp;d1,(a1)+&nbsp;;&nbsp;'joypad&nbsp;pressed'&nbsp;functionality</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>In this demo let's read the joypads at every vsync event. I suppose there are reasons why someone would do this in the main loop or elsewhere, I'll probably find out the hard way later.</p>
+
+<div class="well">
+<p>VSync:</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_VSYNCFLAG)&nbsp;&nbsp;;&nbsp;flag&nbsp;that&nbsp;vsync&nbsp;is&nbsp;in-progress</p>
+<p>&nbsp;add.w&nbsp;&nbsp;&nbsp;#$0001,(MEM_VSYNC_COUNTER)&nbsp;;&nbsp;increment&nbsp;counter&nbsp;</p>
+<p>&nbsp;bsr.w&nbsp;ReadJoypads&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;read&nbsp;controllers</p>
+<p>&nbsp;;&nbsp;do&nbsp;other&nbsp;stuff&nbsp;here</p>
+<p>VSyncExit:</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_VSYNCFLAG)&nbsp;&nbsp;;&nbsp;flag&nbsp;that&nbsp;vsync&nbsp;is&nbsp;complete</p>
+<p>&nbsp;rte</p>
+</div>
+
+<p class="lead">Moving the sprite</p>
+
+<p>Let's create a 16x16 sprite and do to this lets' go with four sets of 8x8 tiles. Sorry but I'm not very artistic and this will definitely be a problem later.</p>
+<div class="well">
+<p>BoxSprite:
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+<p>&nbsp;dc.l&nbsp;$01111110</p>
+<p>&nbsp;dc.l&nbsp;$01000010</p>
+<p>&nbsp;dc.l&nbsp;$01000010</p>
+<p>&nbsp;dc.l&nbsp;$01000010</p>
+<p>&nbsp;dc.l&nbsp;$01000010</p>
+<p>&nbsp;dc.l&nbsp;$01111110</p>
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+<p>&nbsp;dc.l&nbsp;$02222220</p>
+<p>&nbsp;dc.l&nbsp;$02000020</p>
+<p>&nbsp;dc.l&nbsp;$02000020</p>
+<p>&nbsp;dc.l&nbsp;$02222220</p>
+<p>&nbsp;dc.l&nbsp;$02000020</p>
+<p>&nbsp;dc.l&nbsp;$02222220</p>
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+<p>&nbsp;dc.l&nbsp;$03333330</p>
+<p>&nbsp;dc.l&nbsp;$03300030</p>
+<p>&nbsp;dc.l&nbsp;$03030030</p>
+<p>&nbsp;dc.l&nbsp;$03003030</p>
+<p>&nbsp;dc.l&nbsp;$03000330</p>
+<p>&nbsp;dc.l&nbsp;$03333330</p>
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+<p>&nbsp;dc.l&nbsp;$04444440</p>
+<p>&nbsp;dc.l&nbsp;$04000440</p>
+<p>&nbsp;dc.l&nbsp;$04004040</p>
+<p>&nbsp;dc.l&nbsp;$04040040</p>
+<p>&nbsp;dc.l&nbsp;$04400040</p>
+<p>&nbsp;dc.l&nbsp;$04444440</p>
+<p>&nbsp;dc.l&nbsp;$00000000</p>
+</div>
+
+<p>Next we need to create a sprite definition. This took me a few tries to get right and in the <a href="GenTileSpriteTest.X68">source code</a> there are even more notes than in this code snippet. This definition, which is later loaded into the sprite table, contains things like starting position &amp; size.</p>
+
+<div class="well">
+<p>BoxSpriteDefinition:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;&nbsp;index&nbsp;+&nbsp;0&nbsp;=&nbsp;vertical&nbsp;coordinate</p>
+<p>&nbsp;;&nbsp;----&nbsp;--yy&nbsp;yyyy&nbsp;yyyy</p>
+<p>&nbsp;;&nbsp;0000&nbsp;0000&nbsp;1000&nbsp;0000&nbsp;->&nbsp;128</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;&nbsp;$0080</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;&nbsp;index&nbsp;+&nbsp;2&nbsp;=&nbsp;size</p>
+<p>&nbsp;;&nbsp;----&nbsp;hhvv</p>
+<p>&nbsp;;&nbsp;0000&nbsp;0101&nbsp;->&nbsp;width&nbsp;1&nbsp;cell,&nbsp;height&nbsp;1&nbsp;cell</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.b&nbsp;&nbsp;$05</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;&nbsp;index&nbsp;+&nbsp;3&nbsp;=&nbsp;link&nbsp;field</p>
+<p>&nbsp;;&nbsp;-lll&nbsp;llll</p>
+<p>&nbsp;;&nbsp;0000&nbsp;0000</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.b&nbsp;&nbsp;$00</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;&nbsp;index&nbsp;+&nbsp;4&nbsp;=&nbsp;priority,&nbsp;palette,&nbsp;flip,&nbsp;pattern</p>
+<p>&nbsp;;&nbsp;pccv&nbsp;hnnn&nbsp;nnnn&nbsp;nnnn</p>
+<p>&nbsp;;&nbsp;0010&nbsp;0000&nbsp;0000&nbsp;0010</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;&nbsp;$2002</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;;&nbsp;index&nbsp;+&nbsp;6&nbsp;=&nbsp;horizontal&nbsp;coordinate</p>
+<p>&nbsp;;&nbsp;----&nbsp;--yy&nbsp;yyyy&nbsp;yyyy</p>
+<p>&nbsp;;&nbsp;0000&nbsp;0000&nbsp;1000&nbsp;0000&nbsp;->&nbsp;128</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;dc.w&nbsp;&nbsp;$0080</p>
+</div>
+
+<p>Next we need to load the sprite into the VDP, which looks a lot like loading a tile.</p>
+
+<div class="well">
+<p>LoadSprite:</p>
+<p>&nbsp;lea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BoxSpriteDefinition,a0&nbsp;&nbsp;;&nbsp;store&nbsp;address&nbsp;of&nbsp;sprite&nbsp;definition</p>
+<p>&nbsp;move.w&nbsp;&nbsp;#$01,d0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;1&nbsp;sprite</p>
+<p>&nbsp;move.l&nbsp;#$60000003,(VDP_CONTROL)&nbsp;;&nbsp;set&nbsp;write&nbsp;location&nbsp;in&nbsp;VDP</p>
+<p>LoadSpriteLoop:</p>
+<p>&nbsp;move.l&nbsp;&nbsp;&nbsp;&nbsp;(a0)+,(VDP_DATA)</p>
+<p>&nbsp;move.l&nbsp;&nbsp;&nbsp;&nbsp;(a0)+,(VDP_DATA)</p>
+<p>&nbsp;dbra&nbsp;&nbsp;&nbsp;&nbsp;d0,LoadSpriteLoop</p>
+<p>;&nbsp;sprite&nbsp;initial&nbsp;position&nbsp;</p>
+<p>&nbsp;move.w&nbsp;#$0080,(MEM_SPRITE_X)&nbsp;;&nbsp;x=128</p>
+<p>&nbsp;move.w&nbsp;#$0080,(MEM_SPRITE_Y)&nbsp;;&nbsp;y=128</p>
+</div>
+
+<p>Now we need to move the sprite based on the controller input. This was started based off another tutorial (see link in code comments) and I added code to (a) test the direction being pressed (2) implemented a step counter so the sprite isn't moving faster than we can see (3) test for collision with the edge of the screen.</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>;&nbsp;MoveSprite</p>
+<p>;&nbsp;move&nbsp;the&nbsp;sprite&nbsp;around&nbsp;based&nbsp;on&nbsp;the&nbsp;controller&nbsp;input</p>
+<p>;&nbsp;d3&nbsp;-&nbsp;placeholder&nbsp;for&nbsp;controller&nbsp;input&nbsp;so&nbsp;operations&nbsp;aren't&nbsp;against&nbsp;memory</p>
+<p>;&nbsp;d4&nbsp;-&nbsp;used&nbsp;to&nbsp;store&nbsp;the&nbsp;sprite&nbsp;table&nbsp;destination</p>
+<p>;&nbsp;d5&nbsp;-&nbsp;used&nbsp;to&nbsp;store&nbsp;the&nbsp;sprite&nbsp;id</p>
+<p>;&nbsp;d6&nbsp;-&nbsp;used&nbsp;to&nbsp;increment/decrement&nbsp;sprite&nbsp;x,y</p>
+<p>;&nbsp;d7&nbsp;-&nbsp;used&nbsp;to&nbsp;perform&nbsp;various&nbsp;operations</p>
+<p>;&nbsp;some&nbsp;of&nbsp;this&nbsp;code&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;tutuorial&nbsp;at:</p>
+<p>;&nbsp;&nbsp;<a href="https://bigevilcorporation.co.uk/2012/04/24/sega-megadrive-6-scary-monsters-and-nice-sprites/">https://bigevilcorporation.co.uk/2012/04/24/sega-megadrive-6-scary-monsters-and-nice-sprites/</a></p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>MoveSprite:</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_HELD),d3&nbsp;;&nbsp;copy&nbsp;value&nbsp;of&nbsp;button&nbsp;held&nbsp;to&nbsp;d3</p>
+<p>&nbsp;move.b&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;button&nbsp;held&nbsp;value&nbsp;to&nbsp;d7&nbsp;for&nbsp;eor</p>
+<p>&nbsp;eor.w&nbsp;#$0000,d7&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;test&nbsp;if&nbsp;it&nbsp;is&nbsp;zero</p>
+<p>&nbsp;bne.w&nbsp;TestDirection&nbsp;&nbsp;&nbsp;;&nbsp;branch&nbsp;if&nbsp;a&nbsp;direction&nbsp;is&nbsp;being&nbsp;held</p>
+<p>NoDirection:</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_SPRITE_STEP_COUNTER)&nbsp;;&nbsp;nothing&nbsp;pressed,&nbsp;reset&nbsp;counter</p>
+<p>&nbsp;bsr.w&nbsp;ExitMoveSprite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;exit</p>
+<p>TestDirection:</p>
+<p>&nbsp;add.w&nbsp;&nbsp;&nbsp;#$0001,(MEM_SPRITE_STEP_COUNTER)&nbsp;;&nbsp;increment&nbsp;counter</p>
+<p>&nbsp;move.w&nbsp;(MEM_SPRITE_STEP_COUNTER),d7&nbsp;;&nbsp;copy&nbsp;counter&nbsp;to&nbsp;d7</p>
+<p>&nbsp;cmpi.w&nbsp;#$012C,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;once&nbsp;every&nbsp;5&nbsp;vsyncs</p>
+<p>&nbsp;bls.w&nbsp;ExitMoveSprite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;exit&nbsp;if&nbsp;it's&nbsp;not&nbsp;time&nbsp;to&nbsp;move</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_SPRITE_STEP_COUNTER);&nbsp;reset&nbsp;the&nbsp;step&nbsp;counter</p>
+<p>TestUp:</p>
+<p>&nbsp;move.b&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;button&nbsp;held&nbsp;value&nbsp;to&nbsp;d7&nbsp;for&nbsp;andi</p>
+<p>&nbsp;andi.w&nbsp;#BUTTON_UP_PRESSED,d7&nbsp;&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;right&nbsp;button&nbsp;is&nbsp;held</p>
+<p>&nbsp;beq.s&nbsp;TestDown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;branch&nbsp;if&nbsp;not</p>
+<p>MoveUp:</p>
+<p>&nbsp;move.w&nbsp;(MEM_SPRITE_Y),d6&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;current&nbsp;y&nbsp;position&nbsp;to&nbsp;d6</p>
+<p>&nbsp;cmpi.w&nbsp;#$0080,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;is&nbsp;the&nbsp;sprite&nbsp;at&nbsp;the&nbsp;top&nbsp;edge?</p>
+<p>&nbsp;ble.w&nbsp;TestRight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;if&nbsp;at&nbsp;the&nbsp;top&nbsp;edge&nbsp;don't&nbsp;move</p>
+<p>&nbsp;sub.w&nbsp;#$0001,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;decrement</p>
+<p>&nbsp;move.w&nbsp;d6,(MEM_SPRITE_Y)&nbsp;&nbsp;&nbsp;;&nbsp;save&nbsp;it&nbsp;back</p>
+<p>&nbsp;move.w&nbsp;#$00,d5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;id&nbsp;to&nbsp;d5</p>
+<p>&nbsp;move.w&nbsp;d5,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;ID&nbsp;to&nbsp;d4</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;mulu.w&nbsp;#$08,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;mult&nbsp;by&nbsp;8&nbsp;to&nbsp;get&nbsp;sprite&nbsp;array&nbsp;offset</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;swap&nbsp;d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;to&nbsp;upper&nbsp;word</p>
+<p>&nbsp;add.l&nbsp;#$60000003,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;add&nbsp;to&nbsp;sprite&nbsp;table&nbsp;address</p>
+<p>&nbsp;move.l&nbsp;d4,(VDP_CONTROL)&nbsp;&nbsp;&nbsp;;&nbsp;set&nbsp;write&nbsp;location&nbsp;in&nbsp;VDP</p>
+<p>&nbsp;move.w&nbsp;d6,(VDP_DATA)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;the&nbsp;new&nbsp;y-coordinate</p>
+<p>&nbsp;beq.s&nbsp;TestRight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;up&nbsp;&&nbsp;down&nbsp;can't&nbsp;be&nbsp;pressed&nbsp;together</p>
+<p>TestDown:</p>
+<p>&nbsp;move.b&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;button&nbsp;held&nbsp;value&nbsp;to&nbsp;d7&nbsp;for&nbsp;andi</p>
+<p>&nbsp;andi.w&nbsp;#BUTTON_DOWN_PRESSED,d7&nbsp;&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;right&nbsp;button&nbsp;is&nbsp;held</p>
+<p>&nbsp;beq.s&nbsp;TestRight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;branch&nbsp;if&nbsp;not</p>
+<p>MoveDown:</p>
+<p>&nbsp;move.w&nbsp;(MEM_SPRITE_Y),d6&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;current&nbsp;y&nbsp;position&nbsp;to&nbsp;d6</p>
+<p>&nbsp;cmpi.w&nbsp;#$0150,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;is&nbsp;the&nbsp;sprite&nbsp;at&nbsp;the&nbsp;bottom&nbsp;edge?</p>
+<p>&nbsp;bge.w&nbsp;TestRight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;if&nbsp;at&nbsp;the&nbsp;bottom&nbsp;edge&nbsp;don't&nbsp;move</p>
+<p>&nbsp;add.w&nbsp;#$0001,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;increment</p>
+<p>&nbsp;move.w&nbsp;d6,(MEM_SPRITE_Y)&nbsp;&nbsp;&nbsp;;&nbsp;save&nbsp;it&nbsp;back</p>
+<p>&nbsp;move.w&nbsp;#$00,d5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;id&nbsp;to&nbsp;d5</p>
+<p>&nbsp;move.w&nbsp;d5,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;ID&nbsp;to&nbsp;d4</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;mulu.w&nbsp;#$08,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;mult&nbsp;by&nbsp;8&nbsp;to&nbsp;get&nbsp;sprite&nbsp;array&nbsp;offset</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;swap&nbsp;d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;to&nbsp;upper&nbsp;word</p>
+<p>&nbsp;add.l&nbsp;#$60000003,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;add&nbsp;to&nbsp;sprite&nbsp;table&nbsp;address</p>
+<p>&nbsp;move.l&nbsp;d4,(VDP_CONTROL)&nbsp;&nbsp;&nbsp;;&nbsp;set&nbsp;write&nbsp;location&nbsp;in&nbsp;VDP</p>
+<p>&nbsp;move.w&nbsp;d6,(VDP_DATA)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;the&nbsp;new&nbsp;y-coordinate</p>
+<p>TestRight:</p>
+<p>&nbsp;move.b&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;button&nbsp;held&nbsp;value&nbsp;to&nbsp;d7&nbsp;for&nbsp;andi</p>
+<p>&nbsp;andi.w&nbsp;#BUTTON_RIGHT_PRESSED,d7&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;right&nbsp;button&nbsp;is&nbsp;held</p>
+<p>&nbsp;beq.s&nbsp;TestLeft&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;branch&nbsp;if&nbsp;not</p>
+<p>MoveRight:</p>
+<p>&nbsp;move.w&nbsp;(MEM_SPRITE_X),d6&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;current&nbsp;x&nbsp;position&nbsp;to&nbsp;d6</p>
+<p>&nbsp;cmpi.w&nbsp;#$01B0,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;is&nbsp;the&nbsp;sprite&nbsp;at&nbsp;the&nbsp;right&nbsp;edge?</p>
+<p>&nbsp;bge.w&nbsp;ExitMoveSprite&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;if&nbsp;at&nbsp;the&nbsp;right&nbsp;edge&nbsp;don't&nbsp;move</p>
+<p>&nbsp;add.w&nbsp;#$0001,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;increment</p>
+<p>&nbsp;move.w&nbsp;d6,(MEM_SPRITE_X)&nbsp;&nbsp;&nbsp;;&nbsp;save&nbsp;it&nbsp;back</p>
+<p>&nbsp;move.w&nbsp;#$00,d5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;id&nbsp;to&nbsp;d5</p>
+<p>&nbsp;move.w&nbsp;d5,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;ID&nbsp;to&nbsp;d4</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;mulu.w&nbsp;#$08,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;mult&nbsp;by&nbsp;8&nbsp;to&nbsp;get&nbsp;sprite&nbsp;array&nbsp;offset</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;add.b&nbsp;#$06,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;x-coordinate&nbsp;is&nbsp;at&nbsp;index&nbsp;6</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;swap&nbsp;d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;to&nbsp;upper&nbsp;word</p>
+<p>&nbsp;add.l&nbsp;#$60000003,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;add&nbsp;to&nbsp;sprite&nbsp;table&nbsp;address</p>
+<p>&nbsp;move.l&nbsp;d4,(VDP_CONTROL)&nbsp;&nbsp;&nbsp;;&nbsp;set&nbsp;write&nbsp;location&nbsp;in&nbsp;VDP</p>
+<p>&nbsp;move.w&nbsp;d6,(VDP_DATA)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;the&nbsp;new&nbsp;x-coordinate</p>
+<p>&nbsp;beq.s&nbsp;TestRight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;up&nbsp;&&nbsp;down&nbsp;can't&nbsp;be&nbsp;pressed&nbsp;together
+<p>TestLeft:</p>
+<p>&nbsp;move.b&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;button&nbsp;held&nbsp;value&nbsp;to&nbsp;d7&nbsp;for&nbsp;andi</p>
+<p>&nbsp;andi.w&nbsp;#BUTTON_LEFT_PRESSED,d7&nbsp;&nbsp;;&nbsp;test&nbsp;if&nbsp;the&nbsp;right&nbsp;button&nbsp;is&nbsp;held</p>
+<p>&nbsp;beq.s&nbsp;ExitMoveSprite&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;branch&nbsp;if&nbsp;not</p>
+<p>MoveLeft:</p>
+<p>&nbsp;move.w&nbsp;(MEM_SPRITE_X),d6&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;current&nbsp;x&nbsp;position&nbsp;to&nbsp;d6</p>
+<p>&nbsp;cmpi.w&nbsp;#$0080,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;is&nbsp;the&nbsp;sprite&nbsp;at&nbsp;the&nbsp;left&nbsp;edge?</p>
+<p>&nbsp;ble.w&nbsp;ExitMoveSprite&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;if&nbsp;at&nbsp;the&nbsp;left&nbsp;edge&nbsp;don't&nbsp;move</p>
+<p>&nbsp;sub.w&nbsp;#$0001,d6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;decrement</p>
+<p>&nbsp;move.w&nbsp;d6,(MEM_SPRITE_X)&nbsp;&nbsp;&nbsp;;&nbsp;save&nbsp;it&nbsp;back</p>
+<p>&nbsp;move.w&nbsp;#$00,d5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;id&nbsp;to&nbsp;d5</p>
+<p>&nbsp;move.w&nbsp;d5,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;sprite&nbsp;ID&nbsp;to&nbsp;d4</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;mulu.w&nbsp;#$08,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;mult&nbsp;by&nbsp;8&nbsp;to&nbsp;get&nbsp;sprite&nbsp;array&nbsp;offset</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;add.b&nbsp;#$06,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;x-coordinate&nbsp;is&nbsp;at&nbsp;index&nbsp;6</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;swap&nbsp;d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;move&nbsp;to&nbsp;upper&nbsp;word</p>
+<p>&nbsp;add.l&nbsp;#$60000003,d4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;add&nbsp;to&nbsp;sprite&nbsp;table&nbsp;address</p>
+<p>&nbsp;move.l&nbsp;d4,(VDP_CONTROL)&nbsp;&nbsp;&nbsp;;&nbsp;set&nbsp;write&nbsp;location&nbsp;in&nbsp;VDP</p>
+<p>&nbsp;move.w&nbsp;d6,(VDP_DATA)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;copy&nbsp;the&nbsp;new&nbsp;x-coordinate</p>
+<p>ExitMoveSprite:</p>
+<p>&nbsp;rts</p>
+</div>
+<p>Here's a picture of the not artistic sprite against a wintry background.</p>
+
+<p><img src="sprite.png" alt="Moving sprite" class="img-fluid d-block mx-auto"/></p>
+
+<p class="lead">Main game loop</p>
+
+<p>Last up, let's create a main game loop that waits for vsync to complete then moves the sprite around.</p>
+<p>Check it out, there's some duplicate code I need to clean-up. Well, let's just pretend I left it in on purpose to illustrate an &quot;example&quot; of how to check the controller input in the main loop instead.</p>
+
+<div class="well">
+<p>MainGameLoop:</p>
+<p>&nbsp;bsr.w&nbsp;WaitVSync</p>
+<p>&nbsp;add.w&nbsp;&nbsp;&nbsp;#$0001,(MEM_DEBUG_MAINLOOP_COUNTER)&nbsp;;debug&nbsp;code</p>
+<p>&nbsp;move.b&nbsp;(MEM_CONTROL_HELD),d7&nbsp;;&nbsp;copy&nbsp;value&nbsp;of&nbsp;button&nbsp;held&nbsp;to&nbsp;d7</p>
+<p>&nbsp;eor.w&nbsp;#$0000,d7&nbsp;&nbsp;;&nbsp;test&nbsp;if&nbsp;it&nbsp;is&nbsp;zero</p>
+<p>&nbsp;beq.s&nbsp;MainGameLoopEnd&nbsp;;&nbsp;branch&nbsp;if&nbsp;no&nbsp;directional&nbsp;button&nbsp;is&nbsp;being&nbsp;held</p>
+<p>&nbsp;bsr.w&nbsp;MoveSprite</p>
+<p>MainGameLoopEnd:</p>
+<p>&nbsp;bra.s&nbsp;MainGameLoop&nbsp;</p>
+<p>WaitVSync:</p>
+<p>&nbsp;move.w&nbsp;(MEM_VSYNCFLAG),d0&nbsp;;&nbsp;check&nbsp;if&nbsp;the&nbsp;vsync&nbsp;flag&nbsp;is&nbsp;set</p>
+<p>&nbsp;;&nbsp;do&nbsp;other&nbsp;stuff&nbsp;here</p>
+<p>&nbsp;dbra&nbsp;d0,WaitVSync;&nbsp;&nbsp;;&nbsp;wait&nbsp;for&nbsp;vsync&nbsp;to&nbsp;complete</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Now that I see this in web form, that dbra d0,WaitVSync is probably not the most efficient way to check if the vsync flag is zero. I guess in the next example I write that will be the first thing to clean-up.</p>
+
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+	<br>	
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/palettes/">&lt;- Part 1: Palettes</a>
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/animated-sprites/">Part 3: Sprite Animation -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/collision-detection/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesiscollision.png" alt="Sega Genesis Programming Part 5: Collision Detection"></p><p>Sega Genesis Programming Part 5: Collision Detection</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/spritelist/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisspritelist.png" alt="Sega Genesis Programming Part 10: Sprite Link List"></p><p>Sega Genesis Programming Part 10: Sprite Link List</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>

@@ -1,0 +1,513 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 13: Action Table</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 13: Action Table" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 13: action table</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/scene-npcs/">&lt;- Sega Genesis Programming Part 12: Scenes &amp; NPCs</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/selections/">Part 14: Selections -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Multi-page dialogs</p>
+
+<p>Let's skip the commentary and get right to work this time. One small change we need to make is enabling multi-page dialogs. This should have been done back when dialogs were first created but whatever. Let's start by adding a new dialog state flag and a new constant character:</p> 
+
+
+<div class="well">
+<p>DIALOG_FLAG_TEXT_BUILT=$1A ; set when text to display is built</p>
+<p>DIALOG_FLAG_TEXT_OPENING=$1B ; dialog is opening</p>
+<p>DIALOG_FLAG_TEXT_DRAWING=$1C ; dialog text is drawing</p>
+<p>DIALOG_FLAG_TEXT_OPEN=$1D ; dialog is open</p>
+<p>DIALOG_FLAG_TEXT_NEW_PAGE=$1E ; dialog text has another page</p>
+<p>DIALOG_FLAG_TEXT_CLOSING=$1F ; dialog is closing</p>
+<p>LF=$0A ; '\n' - used to break text into multiple lines</p>
+<p>FF=$0C ; form feed - used to break text into pages</p>
+<p>ETX=$03 ; end of text </p>
+</div>
+
+<p>Let's re-purpose the ^ character to act as a visual indicator there are more pages. We also need some dialog that goes on for more than one page:</p> 
+
+<div class="well">
+<p>dc.b "Dani: `Isn't it time"</p>
+<p>dc.b LF</p>
+<p>dc.b "to close already?    ^"</p>
+<p>dc.b FF</p>
+<p>dc.b "Get that guy out of"</p>
+<p>dc.b LF</p>
+<p>dc.b "here so we can leave.'"</p>
+<p>dc.b ETX</p>
+<p>align 2</p>
+</div>
+
+<p>Now the code to process dialogs needs to look for the FF character and draw the next page of text when the player hits a button:</p> 
+
+<div class="well">
+<p>[...]</p>
+<p>ProcessDialogTextDrawing:</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_TEXT_DRAWING,d7 ; test if the dialog is opening</p>
+<p>&nbsp;beq.w ProcessDialogTestOpen ; text is not drawing, go to next test</p>
+<p>&nbsp;move.l (MEM_DIALOG_TEXT),a0 ; point a0 to the current character</p>
+<p>&nbsp;move.b (a0),d6 ; copy current character to d6</p>
+<p>&nbsp;cmpi.b #ETX,d6 ; is this the end of the text?</p>
+<p>&nbsp;beq.s ProcessDialogTextEnd ; end of text</p>
+<p>&nbsp;cmpi.b #FF,d6 ; is there another page of text?</p>
+<p>&nbsp;bne.s .1 ; not the new page character, continue to next test</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_NEW_PAGE,d7 ; flag there is another page</p>
+<p>&nbsp;bra.s ProcessDialogTextEnd</p>
+<p>.1</p>
+<p>&nbsp;cmpi.b #LF,d6 ; is this a new line character</p>
+<p>&nbsp;bne.s .2 ; not a new character</p>
+<p>&nbsp;move.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD) ; base address</p>
+<p>&nbsp;add.l #$01020000,(MEM_DIALOG_VPD) ; add 258 to move 2 rows and column</p>
+<p>&nbsp;bra.s .3 ; go to increment text step</p>
+<p>.2</p>
+<p>&nbsp;; update d6 to point to the tile ID</p>
+<p>&nbsp;sub.w #$20,d6 ; subtract 32 to get the character index</p>
+<p>&nbsp;add.w #DIALOG_BASE_TILE,d6 ; add the base tile</p>
+<p>&nbsp;move.l (MEM_DIALOG_VPD),(VDP_CONTROL) ; set VDP address</p>
+<p>&nbsp;move.w  d6,(VDP_DATA) ; copy the character to VPD</p>
+<p>&nbsp;; draw the next character</p>
+<p>&nbsp;add.l #$00020000,(MEM_DIALOG_VPD) ; move to the next column</p>
+<p>.3</p>
+<p>&nbsp;add.l #$0001,(MEM_DIALOG_TEXT) ; move to the next character</p>
+<p>&nbsp;bra.w ExitProcessDialog</p>
+<p>ProcessDialogTextEnd:</p>
+<p>[...]</p>
+<p>ProcessDialogTestOpen:</p>
+<p>&nbsp;; wait until a button is pressed to clear the dialog</p>
+<p>&nbsp;move.b (MEM_CONTROL_PRESSED),d6 ; copy pressed buttons to d6</p>
+<p>&nbsp;cmpi.w #$0000,d6 ; are any buttons pressed?</p>
+<p>&nbsp;beq.w ExitProcessDialog ; no buttons are pressed, exit</p>
+<p>&nbsp;; start button shouldn't close the dialog</p>
+<p>&nbsp;andi.w #BUTTON_START_PRESSED,d6 ; test if the start button is held</p>
+<p>&nbsp;bne.w ExitProcessDialog   ; exit if start button is held</p>
+<p>&nbsp;btst.l #DIALOG_FLAG_TEXT_NEW_PAGE,d7 ; test if there is another page</p> 
+<p>&nbsp;beq.s .4 ; branch if new text page is not set</p>
+<p>&nbsp;;-----------------------------</p>
+<p>&nbsp;; moving to a new page of text</p>
+<p>&nbsp;;-----------------------------</p>
+<p>&nbsp;add.l #$0001,(MEM_DIALOG_TEXT) ; move to the next character</p>
+<p>&nbsp;; reset the drawing location for the dialog text</p>
+<p>&nbsp;move.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),(MEM_DIALOG_VPD) ; base address</p>
+<p>&nbsp;add.l #$00820000,(MEM_DIALOG_VPD) ; add 132 to move 1 row and column</p>
+<p>&nbsp;; clear out the dialog</p>
+<p>&nbsp;movea.l #PatternDialogFull,a0 ; point a0 to start of dialog patterns</p>
+<p>&nbsp;move.w #DIALOG_BASE_TILE,d0 ; base pattern</p>
+<p>&nbsp;move.w #$0000,d1 ; repeat</p>
+<p>&nbsp;movea.l #(VDP_VRAM_WRITE_A+DIALOG_ROWCOL),a1 ; initial drawing location</p>
+<p>&nbsp;bsr.w DrawTileset ; branch to DrawTileset subroutine</p>
+<p>&nbsp;; reset flags to force text to start re-drawing</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_DRAWING,d7 ; set drawing flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_TEXT_OPEN,d7 ; clear open flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_TEXT_NEW_PAGE,d7 ; clear new page flag</p>
+<p>&nbsp;bra.s ExitProcessDialog ; exit</p>
+<p>.4</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_CLOSING,d7 ; set closing flag</p>
+<p>&nbsp;bclr.l #DIALOG_FLAG_TEXT_OPEN,d7 ; closing, clear open flag</p>
+<p>ProcessDialogTestClosing: 
+<p>[...]
+</div>
+
+<p>Now we have a page of text with a little upside-down triangle thingy:</p> 
+
+<p><img src="multipage1.png" alt="Dialog page 1" class="img-fluid"/></p>
+
+<p>After pressing a button the next page displays. In theory this could support an endless number of pages. With limited screen real estate for text it just might have to.</p> 
+
+<p><img src="multipage2.png" alt="Dialog page 2" class="img-fluid"/></p>
+
+<p>That wasn't a whole lot of work so let's move on to something more painful.</p> 
+
+</div>
+
+<p class="lead">Action table</p>
+
+<div class="container-fluid">
+
+<p>For this to resemble a real demo we need a system to process actions. Something that figures out &quot;<i>if the player does [X] with thing [Y] then do [Z]&quot;</i>. This can't be too complex because there are memory and CPU limits to consider. So I'm going to start by trying a simple table approach.</p>
+
+<p>I don't have a full story for this game idea figured out yet. I'm trying to not get too far ahead of myself. I have a rough outline though and already know it will take place over a number of days. In each day the player will have access to stores (scenes) in the mall. The events that happen will be based on the day of the story.</p>
+
+<p>What I built to manage this is a table that maps a day/scene/action combination to the address of the code to handle it. I could have gone with just day+scene but (a) there was enough room to include the action in the lookup formula and (b) the first thing that would happen in the day/scene code was checking the action anyway.</p>
+
+<p>The action table will have a base address like $B0000 or $F0000. It doesn't matter so long as it's greater than a word and less than the maximum size of a Genesis cartridge. The table lookup values are then constrained to being a word in size. That creates a limit of 16,384 possible day/scene/action combinations. That won't be a problem because I'm having a hard enough time writing up a plot that has more than 10.</p>
+
+<p>The table search order is [DAY]->[SCENE]->[ACTION]. That makes the formula: (Day#*SceneCount*ActionCount*4)+(Scene#*ActionCount*4)+(Action#*4).The *4 part is because the table entries are addresses to code which are long values.</p>
+
+<p>Here's a picture that might make the design easier to digest:</p>
+
+<p><img src="actiontable.png" alt="Action table" class="img-fluid"/></p>
+
+<p>Hopefully this helps explain it a little. I barely understand how this works myself, it mostly came to me in a vision. The code to implement the table and lookup values goes like:</p>
+
+<div class="well">
+<p>ROM_ADDR_ACTION_TABLE=$B0000</p>
+<p>[...]</p>
+<p>;-------------</p>
+<p>; action table</p>
+<p>;-------------</p>
+<p>&nbsp;org ROM_ADDR_ACTION_TABLE</p>
+<p>ActionTable:</p>
+<p>&nbsp;dc.l Day00Scene00Action00</p>
+<p>[...]</p>
+<p>;----------------------------------------</p>
+<p>; compute offset for action table lookups</p>
+<p>;----------------------------------------</p>
+<p>BuildActionTableOffset:</p>
+<p>&nbsp;move.w MEM_DAY,d7</p>
+<p>&nbsp;mulu.w #SCENE_COUNT_X_ACTION_COUNT_X4,d7</p>
+<p>&nbsp;move.w d7,(MEM_ACTION_TABLE_OFFSET)</p>
+<p>&nbsp;move.w MEM_ACTIVE_SCENE_ID,d7</p>
+<p>&nbsp;mulu.w #ACTION_COUNT_X4,d7</p>
+<p>&nbsp;add.w d7,(MEM_ACTION_TABLE_OFFSET)</p>
+<p>&nbsp;move.w MEM_ACTION_ID,d7</p>
+<p>&nbsp;mulu.w #$4,d7</p>
+<p>&nbsp;add.w d7,(MEM_ACTION_TABLE_OFFSET)</p>
+<p>&nbsp;rts</p>
+<p>[...]</p>
+<p>TestAButtonPressed: ; test if the player pressed the A button</p>
+<p>&nbsp;move.b (MEM_CONTROL_PRESSED),d6 ; copy pressed buttons to d6</p>
+<p>&nbsp;andi.w #BUTTON_A_PRESSED,d6 ; test if the A button was pressed</p>
+<p>&nbsp;beq.w MainGameLoopUpdateSprites ; A button is not pressed</p>
+<p>&nbsp;;---------------------------------------------</p>
+<p>&nbsp;; build event table address and branch to code</p>
+<p>&nbsp;;---------------------------------------------</p>
+<p>&nbsp;; clear MEM_CONTROL_PRESSED to prevent state from flipping in loop</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED)</p>
+<p>&nbsp;bsr.w BuildNPCObjectList ; update the location of NPCs</p>
+<p>&nbsp;bsr.w FindActionTarget ; find the target of the player's action</p>
+<p>&nbsp;cmpi.w #OBJ_NOTHING,(MEM_ACTION_TARGET_OBJID) ; is the target nothing?</p>
+<p>&nbsp;beq.s NoActionTarget ; branch if no target</p>
+<p>&nbsp;bsr.w BuildActionTableOffset ; build action table offset</p>
+<p>&nbsp;lea ActionTable,a5 ; point to action table</p>
+<p>&nbsp;adda.w (MEM_ACTION_TABLE_OFFSET),a5 ; move to offset location</p>
+<p>&nbsp;move.l (a5),a6 ; a5 has the address of the subroutine to jump to</p>
+<p>&nbsp;jsr (a6) ; jump to location of code to process this event</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+<p>[...]</p>
+</div>
+
+<p>Here's a screenshot of me debugging the code if that's remotely interesting to anyone:</p>
+
+
+<p><img src="actiontabletest.png" alt="Action table test" class="img-fluid"/></p>
+
+<p>This seems like a really small bit of work but in reality it's going to make scripting out the rest of the demo much easier.</p>
+
+<p>Let's give this a quick test by changing an NPC's dialog after you talk to them. As you probably know, one rule of RPGs is you should keep talking to every NPC until they start to repeat themselves:</p>
+
+<div class="well">
+<p>DialogTextDaniScene0Day0Flag0:</p>
+<p>&nbsp;dc.b "Dani:`Isn't it time"</p>
+<p>&nbsp;dc.b LF</p>
+<p>&nbsp;dc.b "to close already?    ^"</p>
+<p>&nbsp;dc.b FF</p>
+<p>&nbsp;dc.b "Get that guy out of"</p>
+<p>&nbsp;dc.b LF</p>
+<p>&nbsp;dc.b "here so we can leave.'"</p>
+<p>&nbsp;dc.b ETX</p>
+<p>&nbsp;align 2</p>
+<p>DialogTextDaniScene0Day0Flag1:</p>
+<p>&nbsp;dc.b "Dani:`Maybe you should"</p>
+<p>&nbsp;dc.b LF</p>
+<p>&nbsp;dc.b "actually talk to him.^"</p>
+<p>&nbsp;dc.b FF</p>
+<p>&nbsp;dc.b "You know, do your job."</p>
+<p>&nbsp;dc.b ETX</p>
+<p>&nbsp;align 2</p>
+<p>[...]</p>
+<p>Day00Scene00Action00:</p>
+<p>&nbsp;move.l (MEM_DAY_EVENT_FLAGS),d7 ; copy event flags for the day to d7</p>
+<p>&nbsp;move.w (MEM_ACTION_TARGET_OBJID),d6 ; copy action target to d6</p>
+<p>&nbsp;cmpi.w #OBJ_NPC_DANI,d6 ; test target</p>
+<p>&nbsp;bne.s .2 ; branch to next NPC</p>
+<p>&nbsp;;----------------------------</p>
+<p>&nbsp;; handle dialog with NPC Dani</p>
+<p>&nbsp;;----------------------------</p>
+<p>&nbsp;btst.l #$1,d7 ; test if flag 1 is set</p>
+<p>&nbsp;bne .1 ; branch if not</p>
+<p>&nbsp;bset.l #$1,d7 ; set flag 1</p>
+<p>&nbsp;move.l d7,(MEM_DAY_EVENT_FLAGS) ; save updated event flags for the day</p>
+<p>&nbsp;lea DialogTextDaniScene0Day0Flag0,a6 ; load dialog text</p>
+<p>&nbsp;bra.s .4 ; branch to setup dialog display</p>
+<p>.1</p>
+<p>&nbsp;lea DialogTextDaniScene0Day0Flag1,a6 ; load dialog text</p>
+<p>&nbsp;bra.s .4 ; branch to setup dialog display</p>
+<p>.2</p>
+<p>&nbsp;cmpi.w #OBJ_NPC_MALE_SHOPPER0,d6 ; test target</p>
+<p>&nbsp;bne.s .3 ; branch to display default text</p>
+<p>&nbsp;lea DialogTextMaleShopper0,a6</p>
+<p>&nbsp;bra.s .4 ; branch to setup dialog display</p>
+<p>.3</p>
+<p>&nbsp;; default</p>
+<p>&nbsp;bsr.w ShowDefaultText</p>
+<p>&nbsp;bra.s ExitDay00Scene00Action00</p>
+<p>.4</p>
+<p>&nbsp;move.l a6,MEM_DIALOG_TEXT ; copy address to MEM_DIALOG_TEXT</p>
+<p>&nbsp;bsr.w SetDialogOpening ; set the dialog opening flags</p>
+<p>ExitDay00Scene00Action00:</p>
+<p>&nbsp;rts</p>
+</div>
+
+
+<p>And now the text changes after the first time you talk to your sister, how exciting:</p>
+
+<p><img src="alt-text.png" alt="Alternate text" class="img-fluid"/></p>
+
+
+<p>In time I may regret the choice of search order. For example, if there are 10 days in the story it seems wrong to have 10 different flows to handle looking at a piece of static scenery. So this crazy action table idea might work decently for interacting with NPCs but not for looking at scenery.</p>
+
+<p>The &quot;right&quot; flow might be closer to [ACTION]->[ACTION_ITEM]->[ACTION_TARGET] which then checks for day or scene specific rules and otherwise returns a default result. Since action targets could be items or NPCs that number gets big really fast. Let's say in theory this demo grows to a game with 10 days, 20 scenes, and 6 actions. Then the action table has something like ~1200 entries. That's a lot. But if there are 6 actions, 20 items that can be used, and 40 potential targets we're at nearly 5000 entries. Both of those numbers are incomprehensible to me at this point so expect this demo to evolve into something with ~5 days, ~20 scenes, and ~4 actions.</p>
+
+<p>Now that I think about it a bit more - it will be pain to not have default text for objects. So let's add that real quick:</p>
+
+<div class="well">
+<p>ROM_ADDR_DEFAULT_TEXT_TABLE=$AF000</p>
+<p>[...]</p>
+<p>;--------------------------</p>
+<p>; object default text table</p>
+<p>;--------------------------</p>
+<p>&nbsp;org ROM_ADDR_DEFAULT_TEXT_TABLE</p>
+<p>DefaultTextTable:</p>
+<p>&nbsp;; nothing</p>
+<p>&nbsp;dc.l DialogTextNothing</p>
+<p>&nbsp;; OBJ_SCENE_VB_8BIT</p>
+<p>&nbsp;dc.l DialogText8Bit</p>
+<p>&nbsp;; OBJ_SCENE_VB_HARDWARE</p>
+<p>&nbsp;dc.l DialogTextHardware</p>
+<p>&nbsp;; OBJ_SCENE_VB_16BIT</p>
+<p>&nbsp;dc.l DialogText16Bit</p>
+<p>&nbsp;; OBJ_SCENE_VB_MAGS</p>
+<p>&nbsp;dc.l DialogTextMags</p>
+<p>&nbsp;; OBJ_SCENE_VB_COUNTER</p>
+<p>&nbsp;dc.l DialogTextCounter</p>
+<p>&nbsp;; OBJ_SCENE_VB_REGISTER</p>
+<p>&nbsp;dc.l DialogTextRegister</p>
+<p>[...]</p>
+<p>ShowDefaultText:</p>
+<p>&nbsp;move.w (MEM_ACTION_TARGET_OBJID),d7 ; move target object ID to d7</p>
+<p>&nbsp;andi.w #$0FFF,d7 ; clear the base value</p>
+<p>&nbsp;mulu.w #$4,d7 ; multiply by 4 to get the offset</p>
+<p>&nbsp;lea DefaultTextTable,a6 ; point to default text table</p>
+<p>&nbsp;adda.l d7,a6 ; add offset</p>
+<p>&nbsp;move.l (a6),(MEM_DIALOG_TEXT) ; copy value at a6 to MEM_DIALOG_TEXT</p>
+<p>&nbsp;; set flags so the dialog displays next time through the main loop</p>
+<p>&nbsp;move.l (MEM_DIALOG_FLAGS),d7 ; copy current dialog state to d7</p>
+<p>&nbsp; bset.l #DIALOG_FLAG_TEXT_OPENING,d7 ; change state to opening</p>
+<p>&nbsp;move.l d7,(MEM_DIALOG_FLAGS) ; save changes made to the game state</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG,d7 ; set the dialog bit</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; copy game state back to d7</p>
+<p>&nbsp;rts</p>
+<p>[...]</p>
+<p>SetDialogOpening:</p>
+<p>&nbsp;; sets flags to display the dialog</p>
+<p>&nbsp;move.l (MEM_DIALOG_FLAGS),d7 ; copy current dialog state to d7</p>
+<p>&nbsp;bset.l #DIALOG_FLAG_TEXT_OPENING,d7 ; change state to opening</p>
+<p>&nbsp;move.l d7,(MEM_DIALOG_FLAGS) ; save changes made to the game state</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG,d7 ; set the dialog bit</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; copy game state back to d7</p>
+<p>&nbsp;rts</p>
+</div>
+
+
+
+<p class="lead">What's next?</p>
+
+<p>Let's go back to the &quot;plan&quot; from <a href="https://huguesjohnson.com/programming/genesis/scene-npcs/">the last article</a>:
+
+<p>1) Dialog between characters - meaning an NPC says something to you and you respond. Maybe you respond with more dialog, maybe you give them an item. That leads to... </p>
+<p>2) Inventory management - along with basic stuff like taking and giving items.</p>
+<p><del>3) Game event tracking - we need a way to say &quot;if [X] happened and you talk to character [Y] then do [Z]&quot;, I'll probably over-complicate this.</del> I won't call this 100% complete but it's functional enough.</p>
+<p>4) Scripted sprite movements - if the ultimate goal is to get a customer to leave a store then there needs to be an animation where they walk away.</p>
+<p><del>5) Adding & removing NPCs from the current scene - the one NPC is hard-coded, there needs to be a way to move NPCs in and out of scenes.</del> The removing part hasn't been needed yet but it's small and will be addressed with #4.</p>
+<p>6) To make this look like a real demo I should really create a title screen and ending message.</p>
+<p>7) Dozens of things I didn't think of that will all be painful to work out.</p>
+
+<p>So if our little sprite is going to have to show items to NPCs then next up we'll need an inventory system and menus with commands like &quot;take&quot; and whatnot. We also need a way for the player to select items in a dialog or menu. It probably makes sense to build that first. It sounds like some combination of #1 and #2 will be next.</p>
+
+
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/scene-npcs/">&lt;- Sega Genesis Programming Part 12: Scenes &amp; NPCs</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/selections/">Part 14: Selections -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/scripted-events/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisscriptedevents.png" alt="Sega Genesis Programming Part 16: Scripted Events"></p><p>Sega Genesis Programming Part 16: Scripted Events</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/save-load/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissaveload.png" alt="Sega Genesis Programming Part 18: Saving and Loading"></p><p>Sega Genesis Programming Part 18: Saving &amp; Loading</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

@@ -1,0 +1,932 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 7: NPC Sprites</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 7: NPC Sprites" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 7: npc sprites</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/vscroll/">&lt;- Part 6: Vertical Scrolling</a>
+		</div>
+		<div class="col">
+			&nbsp;
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/game-state/">Part 8: Game State &amp; Pausing -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+<p class="lead">Formalities</p>
+
+<p>I need to start by getting one thing out of the way.. previously the code to these Genesis programming experiments was released under a GPL license. I decided that's the wrong license for a Genesis game so all my original code is now under the MIT License. I'm not lawyer but I'm not even sure GPL can be used for a cartridge game running on proprietary hardware. For things like the <a href="https://github.com/sikthehedgehog/Echo">Echo Sound Engine</a> the original license text is retained as-is in the source files. I'm not interested in claiming someone else's work as my own.</p>
+<p>I started using GPL for all my projects out of frustration with the game editing community. Plenty of folks released cool free game editors but kept the source under lock &amp; key. I never understood why unless they're purposely trying to be unhelpful to others who are learning how to make tools. For a community built on modifying the works of others they were strangely resistant to having their own work modified. So I made my utilities, like <a href="https://huguesjohnson.com/hapsby.html">Hapsby</a> and <a href="https://huguesjohnson.com/aridia/">Aridia</a> GPL so anyone could re-use the source provided their project complied with GPL.</p>
+<p>Releasing this code under the MIT License lets people use it more or less however they like. I don't think this code is especially great but it may be helpful to someone. If you do use some of my code I'd appreciate credit but that's it.</p>
+<p>In the next iteration I'll probably get around to starting a Github project for this. There are a couple things I want to clean-up before then that I didn't get around to yet.</p>
+
+<p class="lead">Fixing Collision Testing</p>
+
+<p>I have a feeling that every one of these articles will start with me fixing horrible bugs from the previous one. Unfortunately I can't buy an O'Reilly book to learn this, it's all trial and error.</p>
+
+<p><img src="oreilly.png" alt="Not a real book" class="img-fluid d-block mx-auto"/></p>
+
+<p>There are a couple good getting started tutorials on the internet but I'm getting past what they can help with. Even worse, I'm at the point where I Google various Genesis programming questions and just end-up finding my own page. I'm nowhere near an expert on the subject so that should give some indication of how scarce good information is. This leads me to believe that back in the day Genesis developers either had a lot of help from Sega or were way smarter than me (likely both). Also, I'm only able to spend a couple hours a week on this so I guess I shouldn't compare myself to someone working 40-60 hours a week on a game for months. Whatever, moving on..</p>
+
+<p>One buggy bit I left around was a clipping issue in my collision detection routine. It was possible for the sprite to walk over/under things they shouldn't be able to.</p>
+
+<p><img src="clipping.png" alt="Clipping problems" class="img-fluid d-block mx-auto"/></p>
+
+<p>To troubleshoot this I borrowed a page from my <a href="https://huguesjohnson.com/programming/android-sprite-walker-demo/">Android SpriteWalker Demo</a> and created some debug tiles. Doing this made it obvious what was going on.. </p>
+
+<p><img src="clipping-debug.png" alt="Debugging clipping" class="img-fluid d-block mx-auto"/></p>
+
+<p>The sprite's (x,y) position is the top left corner. My first pass at collision detection looked at the sprite's (x,y) and the 8x8 column next to it. This works fine if the sprite always moves 8 pixels, like in the Phantasy Star games, but breaks if the spite can move freely. Of course, this is probably something I also debugged in that aforementioned Android demo. So much for learning from past mistakes.</p>
+
+<p>In the Phantasy Star games if the player just taps the controller their sprite will move 8 pixels, when holding a direction down the sprite always moves 8 pixels at a time and stops at some multiple of 8. This is the case for II and III at least, it's been a while since I played IV but I think the sprite motion is largely cloned from II. Using a fixed step makes collision detection a bit easier.</p>
+
+<p>I may go and change things so the sprite is locked into a virtual grid to make the collision detection routine simpler. At this point I can't say if the method I wrote will be a performance issue until I have more stuff going on in the demo. When I think about a game like Herzog Zwei though, where the game is managing two independent scrolling sections and dozens of sprites, it makes me suspect it will take a lot of bad code to slow things down.</p>
+
+<p>For now I'm going to keep plugging along with a system where the sprite can move fluidly around the map. This means updating the collision detection to check the left &amp; right edges of the sprite when moving vertically, and the top &amp; bottom edges when moving horizontally. </p>
+
+<p><img src="collision-tests.png" alt="Sprite collision tests" class="img-fluid d-block mx-auto"/></p>
+
+<p>Here's the updated collision detection code, you'll notice some code duplication and other badness that needs to be cleaned-up:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>; TestSpriteCollision</p>
+<p>; a6 = address of sprite info start</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>TestSpriteCollision:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>TestSpriteCollisionSetup:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; the setup section performs the following:</p>
+<p>&nbsp;; -clears the result from the previous subroutine call</p>
+<p>&nbsp;; -copies the sprite x position to d6, adjusts for scroll</p>
+<p>&nbsp;; -copies the sprite y position to d5, adjusts for scroll & collision point </p>
+<p>&nbsp;; -copies the sprite direction to d7</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_COLLISION_RESULT)&nbsp;; clear result</p>
+<p>&nbsp;; copy sprite x postion to d6, and adjust for scroll</p>
+<p>&nbsp;movea.l&nbsp;a6,a4&nbsp;&nbsp;&nbsp;; store address in a4 because it is manipulated</p>
+<p>&nbsp;adda.l&nbsp;#$2,a4&nbsp;&nbsp;&nbsp;; move to a4+2 -> SPRITE_X</p>
+<p>&nbsp;move.w&nbsp;(a4),d6&nbsp;&nbsp;&nbsp;; store sprite x in d6</p>
+<p>&nbsp;add.w&nbsp;(MEM_MAP_POSITION_X),d6&nbsp;; adjust for scroll</p>
+<p>&nbsp;; copy sprite y postion to d5, and adjust for scroll & collision point</p>
+<p>&nbsp;adda.l&nbsp;#$2,a4&nbsp;&nbsp;&nbsp;; move to a4+4 -> SPRITE_Y</p>
+<p>&nbsp;move.w&nbsp;(a4),d5&nbsp;&nbsp;&nbsp;; copy the sprite's y-position to d5</p>
+<p>&nbsp;add.w&nbsp;#SPRITE_COLLISION_Y,d5&nbsp;; test against collision box</p>
+<p>&nbsp;add.w&nbsp;(MEM_MAP_POSITION_Y),d5&nbsp;; adjust for scroll</p>
+<p>&nbsp;; copy sprite direction to d7</p>
+<p>&nbsp;adda.l&nbsp;#$4,a4&nbsp;&nbsp;&nbsp;; move to a4+8 -> SPRITE_DIRECTION</p>
+<p>&nbsp;move.w&nbsp;(a4),d7&nbsp;&nbsp;&nbsp;; store direction in d7</p>
+<p>TestSpriteVCollision:</p>
+<p>TestUpCollision:</p>
+<p>&nbsp;cmpi.w&nbsp;#DIRECTION_UP,d7&nbsp;; test if sprite is moving up</p>
+<p>&nbsp;bne.w&nbsp;TestDownCollision &nbsp;; branch if not</p>
+<p>TestUpCollisionLeftEdgeSetup:</p>
+<p>&nbsp;move.w&nbsp;d5,d3&nbsp;; copy y position to d3 because it is manipulated</p>
+<p>&nbsp;sub.w&nbsp;#SPRITE_COLLISION_UP,d3&nbsp;; test up from sprite</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d3&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is sprite on the left or right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;TestUpCollisionLeftEdge&nbsp;; check if crossing the boundary</p>
+<p>&nbsp;add.w&nbsp;#$0004,d3&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>TestUpCollisionLeftEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d3,a3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;move.w&nbsp;d6,d3&nbsp;; copy the sprite's x-position to d3 </p>
+<p>&nbsp;and.w&nbsp;#$00FF,d3 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d3 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word (easy68k.com/paulrsm/doc/trick68k.htm)</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d3&nbsp;; clear the upper word</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;TestUpCollisionRightEdgeSetup&nbsp;; no collision, test other side</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>&nbsp;bra.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; exit</p>
+<p>TestUpCollisionRightEdgeSetup:</p>
+<p>&nbsp;move.w&nbsp;d5,d3&nbsp;; copy y position to d3 because it is manipulated</p>
+<p>&nbsp;sub.w&nbsp;#SPRITE_COLLISION_UP,d3&nbsp;; test up from sprite</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d3&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;add.w&nbsp;#DEFAULT_SPRITE_WIDTH,d6&nbsp;; move to right edge of sprite</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is right half on right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;TestUpCollisionRightEdge&nbsp;; check if crossing the boundary</p>
+<p>&nbsp;add.w&nbsp;#$0004,d3&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>TestUpCollisionRightEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d3,a3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;move.w&nbsp;d6,d3&nbsp;; copy the sprite's x-position to d3</p>
+<p>&nbsp;and.w&nbsp;#$00FF,d3 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d3 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word (easy68k.com/paulrsm/doc/trick68k.htm)</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d3   &nbsp;; clear the upper word</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_COLLISION_RESULT)&nbsp;; clear result</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; no collision, exit</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>&nbsp;bra.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; exit</p>
+<p>TestDownCollision:</p>
+<p>&nbsp;cmpi.w&nbsp;#DIRECTION_DOWN,d7 &nbsp;&nbsp;; test if sprite is moving down</p>
+<p>&nbsp;bne.w&nbsp;TestSpriteHCollision&nbsp;; branch if not</p>
+<p>TestDownCollisionLeftEdgeSetup:</p>
+<p>&nbsp;move.w&nbsp;d5,d3&nbsp;; copy y position to d3 because it is manipulated</p>
+<p>&nbsp;add.w&nbsp;#SPRITE_COLLISION_DOWN,d3&nbsp;; test down from sprite</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d3&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is sprite on the left or right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;TestDownCollisionLeftEdge&nbsp;; check if crossing the boundary</p>
+<p>&nbsp;add.w&nbsp;#$0004,d3&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>TestDownCollisionLeftEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d3,a3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;move.w&nbsp;d6,d3&nbsp;; copy the sprite's x-position to d3 </p>
+<p>&nbsp;and.w&nbsp;#$00FF,d3 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d3 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word (easy68k.com/paulrsm/doc/trick68k.htm)</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d3   &nbsp;; clear the upper word</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;TestDownCollisionRightEdgeSetup&nbsp;; no collision, test other side</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>&nbsp;bra.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; exit</p>
+<p>TestDownCollisionRightEdgeSetup:</p>
+<p>&nbsp;move.w&nbsp;d5,d3&nbsp;; copy y position to d3 because it is manipulated</p>
+<p>&nbsp;add.w&nbsp;#SPRITE_COLLISION_DOWN,d3&nbsp;; test down from sprite</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d3&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;add.w&nbsp;#DEFAULT_SPRITE_WIDTH,d6&nbsp;; move to right edge of sprite</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is sprite on the left or right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;TestDownCollisionRightEdge&nbsp;; check if crossing the boundary</p>
+<p>&nbsp;add.w&nbsp;#$0004,d3&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>TestDownCollisionRightEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d3,a3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;move.w&nbsp;d6,d3&nbsp;; copy the sprite's x-position to d3</p>
+<p>&nbsp;and.w&nbsp;#$00FF,d3 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d3 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word (easy68k.com/paulrsm/doc/trick68k.htm)</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d3   &nbsp;; clear the upper word</p>
+<p>&nbsp;swap d3&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_COLLISION_RESULT)&nbsp;; clear result</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d3,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; no collision, exit</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>&nbsp;bra.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; exit</p>
+<p>TestSpriteHCollision:</p>
+<p>TestRightCollision:</p>
+<p>&nbsp;cmpi.w&nbsp;#DIRECTION_RIGHT,d7&nbsp;; test if sprite is moving right</p>
+<p>&nbsp;bne.w&nbsp;TestLeftCollision ; branch if not</p>
+<p>TestRightSetup:</p>
+<p>&nbsp;; d5 will have top edge, d3 will have bottom edge</p>
+<p>&nbsp;move.w&nbsp;d5,d3&nbsp;; copy y position to d3 to store bottom edge</p>
+<p>&nbsp;add.w&nbsp;#(DEFAULT_SPRITE_HEIGHT/2),d3&nbsp;; move d3 to the bottom edge</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d5&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d3&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;add.w&nbsp;#SPRITE_COLLISION_RIGHT,d6&nbsp;; test right from sprite</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is collision on left or right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;TestRightCollisionTopEdge ; left side, go directly to collision test</p>
+<p>&nbsp;add.w&nbsp;#$0004,d3&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>&nbsp;add.w&nbsp;#$0004,d5&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>TestRightCollisionTopEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d5,a3&nbsp;; move to row & col of top edge</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;;move.w&nbsp;d7,d3&nbsp;; copy the sprite's x-position to d3</p>
+<p>&nbsp;and.w&nbsp;#$00FF,d6 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d6 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word</p>
+<p>&nbsp;; credit to https://www.easy68k.com/paulrsm/doc/trick68k.htm for this trick</p>
+<p>&nbsp;swap d6&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d6   &nbsp;; clear the upper word</p>
+<p>&nbsp;swap d6&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_COLLISION_RESULT)&nbsp;; clear result</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d6,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;TestRightCollisionBottomEdge&nbsp;; no collision, check lower half</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>&nbsp;bra.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; exit</p>
+<p>TestRightCollisionBottomEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d3,a3&nbsp;; move to row & col of bottom edge</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d6,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;ExitTestSpriteCollision &nbsp;&nbsp;; no collision, exit</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>&nbsp;bra.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; exit</p>
+<p>TestLeftCollision:</p>
+<p>&nbsp;cmpi.w&nbsp;#DIRECTION_LEFT,d7&nbsp;; test if sprite is moving Left</p>
+<p>&nbsp;bne.w&nbsp;TestLeftCollision ; branch if not</p>
+<p>TestLeftCollisionSetup:</p>
+<p>&nbsp;; d5 will have top edge, d3 will have bottom edge</p>
+<p>&nbsp;move.w&nbsp;d5,d3&nbsp;; copy y position to d3 to store bottom edge</p>
+<p>&nbsp;add.w&nbsp;#(DEFAULT_SPRITE_HEIGHT/2),d3&nbsp;; move d3 to the bottom edge</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d5&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d3&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;sub.w&nbsp;#SPRITE_COLLISION_LEFT,d6&nbsp;; test left from sprite</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is collision on left or right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;TestLeftCollisionTopEdge ; left side, go directly to collision test</p>
+<p>&nbsp;add.w&nbsp;#$0004,d3&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>&nbsp;add.w&nbsp;#$0004,d5&nbsp;&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>TestLeftCollisionTopEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d5,a3&nbsp;; move to row & col of top edge</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;;move.w&nbsp;d7,d3&nbsp;; copy the sprite's x-position to d3</p>
+<p>&nbsp;and.w&nbsp;#$00FF,d6 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d6 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word</p>
+<p>&nbsp;; credit to https://www.easy68k.com/paulrsm/doc/trick68k.htm for this trick</p>
+<p>&nbsp;swap d6&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d6   &nbsp;; clear the upper word</p>
+<p>&nbsp;swap d6&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.w&nbsp;#$0000,(MEM_COLLISION_RESULT)&nbsp;; clear result</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d6,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;TestLeftCollisionBottomEdge&nbsp;; no collision, check lower half</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>&nbsp;bra.w&nbsp;ExitTestSpriteCollision&nbsp;&nbsp;&nbsp;; exit</p>
+<p>TestLeftCollisionBottomEdge:</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;d3,a3&nbsp;; move to row & col of bottom edge</p>
+<p>&nbsp;move.l&nbsp;(a3),MEM_COLLISION_MAP_ROW&nbsp;; copy row data to memory</p>
+<p>&nbsp;move.l&nbsp;MEM_COLLISION_MAP_ROW,d7&nbsp;&nbsp;; move map data to d7</p>
+<p>&nbsp;btst.l&nbsp;d6,d7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; test for collision</p>
+<p>&nbsp;beq.w&nbsp;ExitTestSpriteCollision &nbsp;&nbsp;; no collision, exit</p>
+<p>&nbsp;move.w&nbsp;#$FFFF,(MEM_COLLISION_RESULT)&nbsp;; collision is true, set result</p>
+<p>ExitTestSpriteCollision:</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>Again, yes this can likely be optimized quite a bit. On the bright side that annoying clipping issue is now fixed:</p>
+
+<p><img src="clipping-fixed.png" alt="Clipping fixed" class="img-fluid d-block mx-auto"/></p>
+
+<br/>
+
+<p class="lead">Fixing Sprite Animation</p>
+
+<p>The other thing annoying me was the sprite animation. My poor little sprite looked like he was having a seizure. There were two causes for this 1) I was updating the animation far too often 2) the animation frames didn't look like how an actual person walks.</p>
+
+<p>Let's start with the second of these issues. When the sprite was moving it was cycling through two frames.</p>
+
+<p><img src="2frames.png" alt="Two animation frames" class="img-fluid d-block mx-auto"/></p>
+
+<p>This created an effect that looked like galloping for horizontal movement and doing the twist for vertical movement. To look more natural, the sprite should move through tiles in an order like this:</p>
+
+<p><img src="4frames.png" alt="Four animation frames" class="img-fluid d-block mx-auto"/></p>
+
+
+<p>Rather than duplicating tiles I changed the order they're displayed. In the previous demos the sprite standing still is using frame 0 with frames 1 &amp; 2 alternating during movement. What I changed this to was 0,1,0,2. This work was done in the SetSpritePattern subroutine:</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>; SetSpritePattern</p>
+<p>; sets the pattern for a sprite based on its direction and frame</p>
+<p>; a6 = address of sprite info start</p>
+<p>; a6 is not modified in this subroutine</p>
+<p>; a5 is modified instead of a6 to avoid issues in MoveSprite</p>
+<p>; d5 is used to store the sprite id and compute the address table value</p>
+<p>; d6 is used to compute the sprite pattern </p>
+<p>; d7 is used for various operations</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>SetSpritePattern:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; a6 = SPRITE_ID</p>
+<p>&nbsp;; a6 + 2 = SPRITE_X</p>
+<p>&nbsp;; a6 + 4 = SPRITE_Y</p>
+<p>&nbsp;; a6 + 6 = SPRITE_PATTERN_INDEX</p>
+<p>&nbsp;; a6 + 8 = SPRITE_DIRECTION</p>
+<p>&nbsp;; a6 + A = SPRITE_FRAME</p>
+<p>&nbsp;; a6 + C = SPRITE_STEP_COUNTER</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; setup </p>
+<p>&nbsp;movea.l a6,a5 ; store address in a5 because it is manipulated</p>
+<p>&nbsp;move.w (a5),d5 ; copy sprite id to d5</p>
+<p>&nbsp;; test if it's time to update the animation frame and if so update it</p>
+<p>&nbsp;adda.l #$C,a5 ; move up to a5+C -> SPRITE_STEP_COUNTER</p>
+<p>&nbsp;addq #$1,(a5) ; increment counter</p>
+<p>&nbsp;cmpi.w #SPRITE_ANIMATION_STEPS,(a5); is it time to update animation frame?</p>
+<p>&nbsp;ble.s DrawSprite ; animation hasn't changed, draw the sprite </p>
+<p>IncrementSpriteFrame:</p>
+<p>&nbsp;move.w #$0000,(a5) ; reset SPRITE_STEP_COUNTER</p>
+<p>&nbsp;suba.l #$2,a5 ; move back to a5+A -> SPRITE_FRAME</p>
+<p>&nbsp;addq #$1,(a5) ; increment SPRITE_FRAME counter</p>
+<p>&nbsp;cmpi.w #SPRITE_FRAME_COUNT,(a5) ; do we need to loop back to the start?</p>
+<p>&nbsp;bls.w UpdateSpritePattern ; if not, go to animation</p>
+<p>&nbsp;; reset the frame</p>
+<p>&nbsp;move.w #$0000,(a5) ; toggle between frames while sprite is moving</p>
+<p>UpdateSpritePattern:</p>
+<p>&nbsp;movea.l a6,a5 ; store address in a5 because it is manipulated</p>
+<p>&nbsp;move.w (a5),d5 ; copy sprite id to d5</p>
+<p>&nbsp;mulu.w #$08,d5 ; multiply sprite ID by 8 to get sprite array offset</p>
+<p>&nbsp;; change the sprite pattern</p>
+<p>&nbsp;addq #$4,d5 ; palette and pattern is at index 4 in the sprite definition</p>
+<p>&nbsp;swap d5  ; move to upper word</p>
+<p>&nbsp;add.l #VDP_VRAM_WRITE_SPRITE,d5 ; add to sprite table address</p>
+<p>&nbsp;; set the pattern, pattern=(base pattern number)+(direction*24)+(frame*8)</p>
+<p>&nbsp;adda.l  #$6,a5 ; move to a6+6 -> SPRITE_PATTERN_INDEX</p>
+<p>&nbsp;move.w (a5),d6 ; start with base pattern in d6</p>
+<p>&nbsp;adda.l #$2,a5 ; move to a6+8 -> SPRITE_DIRECTION</p>
+<p>&nbsp;move.w (a5),d7 ; copy direction to d7</p>
+<p>&nbsp;mulu.w #$18,d7 ; multiply direction * 24</p>
+<p>&nbsp;add.w d7,d6  ; add result to d1</p>
+<p>&nbsp;adda.l #$2,a5 ; move to a6+A -> SPRITE_FRAME</p>
+<p>&nbsp;move.w (a5),d7 ; copy frame to d7</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; cycle between the frames </p>
+<p>&nbsp;; frame 0 = animation 0</p>
+<p>&nbsp;; frame 1 = animation 1</p>
+<p>&nbsp;; frame 2 = animation 0</p>
+<p>&nbsp;; frame 3 = animation 2</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;btst.l #$0,d7 ; test if the frame is even (0 or 2)</p>
+<p>&nbsp;bne.s .1</p>
+<p>&nbsp;; 0 or 2 logic</p>
+<p>&nbsp;moveq #$0,d7 ; zero out if 2, unnecessary 50% of the time of course</p>
+<p>&nbsp;bra.s .3 ; move to add step</p>
+<p>.1: ; 1 or 3 logic </p>
+<p>&nbsp;btst.l #$1,d7 ; test if the frame is 1 or 3</p>
+<p>&nbsp;bne.s .2 ; frame number is 3 </p>
+<p>&nbsp;; 3 logic</p>
+<p>&nbsp;moveq #$8,d7 ; set animation frame to 1*8</p>
+<p>&nbsp;bra.s .3 ; move to add step</p>
+<p>.2 ; 3 logic</p>
+<p>&nbsp;move.w #$0010,d7 ; set animation frame to 2*8</p>
+<p>.3: ; add (frame*8) to pattern</p>
+<p>&nbsp;add.w d7,d6  ; add result to d6</p>
+<p>&nbsp;add.w #$2000,d6 ; TODO compute value using palette id</p>
+<p>DrawSprite:</p>
+<p>&nbsp;move.l d5,(VDP_CONTROL) ; set write location in VDP</p>
+<p>&nbsp;move.w d6,(VDP_DATA)  ; write the new pattern</p>
+<p>ExitSetSpritePattern:</p>
+<p>&nbsp;rts</p>
+
+</div>
+
+<p>Fixing the animation timing took a couple of changes, the first was getting the movement frequency right. To prevent them from flying across the screen we don't want them to move on every frame (every vblank):</p>
+
+<div class="well">
+<p>MEM_FRAME_COUNTER=$00FF0000A</p>
+<p>[...]</p>
+<p>SPRITE_MOVE_FREQUENCY=$0001 ; how many frames to wait between sprite moves</p>
+<p>[...]</p>
+<p>VBlank:</p>
+<p>&nbsp;addq #$1,(MEM_FRAME_COUNTER) ; increment frame counter</p>
+<p>[...]</p>
+<p>MainGameLoop:</p>
+<p>&nbsp;bsr.w WaitVBlank ; wait for vblank to complete</p>
+<p>&nbsp;; test if it's time to move sprites</p>
+<p>&nbsp;cmpi.w #SPRITE_MOVE_FREQUENCY,(MEM_FRAME_COUNTER); is it time to move?</p>
+<p>&nbsp;bne.s MainGameLoopEnd ; exit if it's not time to move</p>
+<p>&nbsp;move.w #$0000,(MEM_FRAME_COUNTER) ; reset counter to 0</p>
+<p>&nbsp;bsr.w MovePlayer ; move the player sprite</p>
+<p>[...]</p>
+</div>
+
+<p>The other part of this fix was in SetSpritePattern, the whole method is above so here's the relevant part:</p>
+
+<div class="well">
+<p>SPRITE_ANIMATION_STEPS=$000A ; how many steps between animation frame changes</p>
+<p>[...]</p>
+<p>&nbsp;cmpi.w #SPRITE_ANIMATION_STEPS,(a5); is it time to update animation frame?</p>
+<p>&nbsp;ble.s DrawSprite ; animation hasn't changed, draw the sprite </p>
+<p>IncrementSpriteFrame:</p>
+<p>&nbsp;move.w #$0000,(a5) ; reset SPRITE_STEP_COUNTER</p>
+<p>[...]</p>
+</div>
+
+<p>What this does is throttle how often the animation frame changes. The sprite will keep their current animation frame for SPRITE_ANIMATION_STEPS and then toggle to the next one.</p>
+
+<p>The animation still isn't quite where I want it to be but it's enough of an improvement that I'm willing to move on. Maybe the next article will start with &quot;<i>OK, now I really think I fixed it for real this time, I'm super serious.</i>...&quot;</p>
+
+<br/>
+
+<p class="lead">NPC Sprites</p>
+
+<p>Alright, it's finally time to add some new features.</p>
+
+<p>Our store employee seems a little lonely, so I added a new sprite I'm tentatively calling &quot;1989 mall shopper&quot;. Try to not feel too inspired by that name. She is also modeled after a Phantasy Star II sprite which I'll eventually have to replace with a different style.</p>
+
+<p><img src="npc1.png" alt="Store with NPC" class="img-fluid d-block mx-auto"/></p>
+
+<p>Adding our shopper required creating the tiles &amp; a new sprite definition, both of which appear in a previous article (and will be in the source code at the bottom of the page).</p>
+
+<p>An NPC can't just stand around, unless they're one of those types that's blocking an entrance or something. We need to make them pace around like any self-respecting NPC would.</p>
+
+<p>To make things interesting let's have the NPC move at a pseudo-random interval. They could move on a fixed interval, like every 1-2 seconds, but by randomizing it things look a bit more natural. When more NPCs are added they also won't all move in unison either, which would look really weird. So we need a random number generator. The Sega Genesis doesn't have a built-in random number generator, we need to write one. I'm going to use the EOR of two counters for this. In previous articles I added a counter for each time the main loop executes and another for each vblank event. Under normal game play an EOR of the two would <b>look</b> pretty darn random. Someone running the game frame-by-frame in an emulator could easily generate any random of their choice.</p>
+
+<div class="well">
+<p>;-------------------------------------------------------------------------------</p>
+<p>; PseudoRandomWord</p>
+<p>; not random since on an emulator it would be easy to get predicable results</p>
+<p>; on normal game play the results should look pretty random  </p>
+<p>; d0 contains the result of the operation </p>
+<p>; d1 is used to compute the pseudo random number</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>PseudoRandomWord:</p>
+<p>&nbsp;move.w MEM_VBLANK_COUNTER,d0 ; copy vblank counter to d0</p>
+<p>&nbsp;move.w MEM_MAINLOOP_COUNTER,d1 ; copy main loop counter to d1</p>
+<p>&nbsp;eor.w d1,d0 ; eor them and store the result in d0</p>
+<p>&nbsp;rts ; return</p>
+</div>
+
+<p>I briefly debated having them move in a random direction each time but decided against it because over time the NPC would get stuck in a corner. So instead they'll act like an average RPG NPC and walk around a central point on the map, never straying far from it. Instead I created a fixed pattern of 16 steps they'll repeat:</p>
+
+<div class="well">
+<p>RandomNPCMovementStart:</p>
+<p>&nbsp;dc.w DIRECTION_RIGHT,DIRECTION_DOWN,DIRECTION_LEFT,DIRECTION_UP</p>
+<p>&nbsp;dc.w DIRECTION_DOWN,DIRECTION_RIGHT,DIRECTION_UP,DIRECTION_LEFT</p>
+<p>&nbsp;dc.w DIRECTION_UP,DIRECTION_RIGHT,DIRECTION_DOWN,DIRECTION_LEFT</p>
+<p>&nbsp;dc.w DIRECTION_LEFT,DIRECTION_DOWN,DIRECTION_RIGHT,DIRECTION_UP</p>
+<p>RandomNPCMovementEnd:</p>
+</div>
+
+<p>Next we're going to add some variables to keep track of our NPC. The data structure used for the player sprite will be replicated along with two new additions (bolded):</p>
+
+<div class="well">
+<p>MEM_NPC1_SPRITE_ID=$00FF0001E ; sprite table id of NPC1 sprite</p>
+<p>MEM_NPC1_SPRITE_X=$00FF00020 ; virtual x position of NPC1 sprite</p>
+<p>MEM_NPC1_SPRITE_Y=$00FF00022 ; virtual y position of NPC1 sprite</p>
+<p>MEM_NPC1_SPRITE_PATTERN_INDEX=$00FF00024 ; index of pattern in VDP</p>
+<p>MEM_NPC1_SPRITE_DIRECTION=$00FF00026 ; which direction NPC1 faces</p>
+<p>MEM_NPC1_SPRITE_FRAME=$00FF00028 ; animation frame of NPC1 sprite</p>
+<p>MEM_NPC1_SPRITE_STEP_COUNTER=$00FF0002A ; used to determine when to move</p>
+<p><b>MEM_NPC1_MOVEMENT_COUNTER=$00FF0002C ; used to determine how far to move</b></p>
+<p><b>MEM_NPC1_MOVEMENT_INDEX=$00FF0002E ; used to determine which direction to move</b></p>
+</div>
+
+<p>The purpose of MEM_NPC1_MOVEMENT_COUNTER is to store how many steps the NPC has left in their current movement. This will be reused later whenever I get around to scripted events, like an NPC entering the scene on a fixed path. MEM_NPC1_MOVEMENT_INDEX is a pointer to an address in RandomNPCMovementStart. Again, this will be useful for scripted events.</p>
+
+<p>Now we need to put this all together in the main game loop:</p>
+
+<div class="well">
+<p>MainGameLoop:</p>
+<p>[...]</p>
+<p>&nbsp;; test if it's time to move sprites</p>
+<p>&nbsp;cmpi.w #SPRITE_MOVE_FREQUENCY,(MEM_FRAME_COUNTER); is it time to move?</p>
+<p>&nbsp;bne.w MainGameLoopEnd ; exit if it's not time to move</p>
+<p>MainGameLoopUpdateSprites:</p>
+<p>&nbsp;; move the player sprite</p>
+<p>&nbsp;move.w #$0000,(MEM_FRAME_COUNTER) ; reset counter to 0</p>
+<p>&nbsp;bsr.w MovePlayer ; move the player sprite</p>
+<p>&nbsp;; move NPCs</p>
+<p>&nbsp;cmpi.w #$0000,(MEM_NPC1_MOVEMENT_COUNTER) ; is the NPC moving?</p>
+<p>&nbsp;bne .2 ; if MEM_NPC1_MOVEMENT_COUNTER > 0 then the sprite is moving</p>
+<p>&nbsp;; test if it's time for them to move again</p>
+<p>&nbsp;bsr.w PseudoRandomWord ; store a random number in d0</p>
+<p>&nbsp;and.w #SPRITE_NPC1_MOVE_TEST,d0 ; and d0 against SPRITE_NPC1_MOVE_TEST</p>
+<p>&nbsp;cmpi.w #SPRITE_NPC1_MOVE_TEST,d0 ; test if multiple </p>
+<p>&nbsp;bne.s MainGameLoopSetScroll ; not time to move, jump to next section</p>
+<p>&nbsp;move.w #SPRITE_ANIMATION_STEPS,(MEM_NPC1_MOVEMENT_COUNTER) ; reset counter</p>
+<p>&nbsp;; set the direction</p>
+<p>&nbsp;addq #$2,MEM_NPC1_MOVEMENT_INDEX ; increment index of sprite movement</p>
+<p>&nbsp;cmpi.w #$20,MEM_NPC1_MOVEMENT_INDEX ; are we at the end of the array?</p>
+<p>&nbsp;blt.s .1 ; not at the end of the array</p>
+<p>&nbsp;move.w #$0000,MEM_NPC1_MOVEMENT_INDEX ; reset to zero</p>
+<p>.1</p>
+<p>&nbsp;lea RandomNPCMovementStart,a6</p>
+<p>&nbsp;adda (MEM_NPC1_MOVEMENT_INDEX),a6</p>
+<p>&nbsp;move.w (a6),(MEM_NPC1_SPRITE_DIRECTION)</p>
+<p>.2 ; decrement NPC movement counter and test if they should stop moving</p>
+<p>&nbsp;subq #$0001,(MEM_NPC1_MOVEMENT_COUNTER) ; decrement counter</p>
+<p>&nbsp;bne .3 ; if MEM_NPC1_MOVEMENT_COUNTER=0 now then we need to stop the sprite</p>
+<p>&nbsp;lea (MEM_NPC1_SPRITE_ID),a6 ; setup call to StopSprite</p>
+<p>&nbsp;bsr.w StopSprite ; stop the sprite</p>
+<p>&nbsp;bra.s MainGameLoopSetScroll ; done updating sprites</p>
+<p>.3 ; move the NPC sprite</p>
+<p>&nbsp;lea (MEM_NPC1_SPRITE_ID),a6 ; setup call to MoveSprite</p>
+<p>&nbsp;bsr.w MoveSprite ; branch to move MoveSprite</p>
+<p>MainGameLoopSetScroll:</p>
+<p>[...]</p>
+<p>MainGameLoopEnd:</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+</div>
+
+<p>This is all great except for one glaring problem, complete lack of sprite collision detection.</p>
+
+<p><img src="no-collision-detection.png" alt="No sprite collision detection" class="img-fluid d-block mx-auto"/></p>
+
+<p class="lead">Sprite Collision Detection</p>
+
+<p>The Genesis contains hardware sprite collision detection. That's a great feature but it's also an after-the-fact notification. In the typical overhead RPG-ish game the characters can walk up to other sprites but not collide with them.</p>
+
+<p>The approach I'm going to try will be updating the collision data when a sprite moves. This means I won't have to rewrite the existing collision detection at least. This first step is copying the collision data into RAM, previously it was accessed from the ROM. This is something that's probably a good idea anyway for performance reasons:</p>
+
+<div class="well">
+<p>MEM_COLLISION_DATA=$00FF0003C ; collision data for the current map</p>
+<p>[...]</p>
+<p>LoadMapCollisionData:</p>
+<p>&nbsp;lea MapStoreCollision,a0 ; store address of collision data</p>
+<p>&nbsp;lea MEM_COLLISION_DATA,a1 ; store destination memory location</p>
+<p>&nbsp;move.w	#$7F,d0 ; 128 longs of collision data</p>
+<p>LoadMapCollisionLoop:</p>
+<p>&nbsp;move.l (a0)+,(a1)+</p>
+<p>&nbsp;dbra d0,LoadMapCollisionLoop</p>
+</div>
+
+<p>As previously noted, the sprites in this demo can move freely rather than from one fixed square to another. I might regret this decision later but for now this is the type of movement I'd prefer to have. The underlying collision map is a 512x512 grid composed of 8x8 tiles. As the sprite moves it needs to block &amp; clear collision data. If the collision box is the lower half of the sprite then the area the sprite is blocking looks like:</p>
+
+<p><img src="sprite-collision-tiles.png" alt="Sprite collision tiles" class="img-fluid d-block mx-auto"/></p>
+
+<p>The blue boxes are the top half of the sprite, the red is the lower half, and the darker gray represent the blocked map data.</p>
+
+<p>To make this work, we first need a routine to determine which cells of collision data need to be updated. Let's do that by storing of the four corners that the sprite collision zone occupies:</p>
+
+<div class="well">
+<p>MEM_ACTIVE_SPRITE_LEFT_COLUMN=$00FF00030&nbsp;; left column of active sprite</p>
+<p>MEM_ACTIVE_SPRITE_HIGH_LEFT=$00FF00032&nbsp;; high left row of active sprite</p>
+<p>MEM_ACTIVE_SPRITE_LOW_LEFT=$00FF00034&nbsp;; low left row of active sprite</p>
+<p>MEM_ACTIVE_SPRITE_RIGHT_COLUMN=$00FF00036&nbsp;; right column of active sprite</p>
+<p>MEM_ACTIVE_SPRITE_HIGH_RIGHT=$00FF00038&nbsp;; high right row of active sprite</p>
+<p>MEM_ACTIVE_SPRITE_LOW_RIGHT=$00FF0003A&nbsp;; low right row of active sprite</p>
+<p>[...]</p>
+<p>MAP_MID_X=$100</p>
+<p>[...]</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; SetActiveSpriteMapRowCol</p>
+<p>; sets values for:</p>
+<p>;&nbsp;MEM_ACTIVE_SPRITE_LEFT_COLUMN</p>
+<p>;&nbsp;MEM_ACTIVE_SPRITE_RIGHT_COLUMN</p>
+<p>;&nbsp;MEM_ACTIVE_SPRITE_HIGH_LEFT</p>
+<p>;&nbsp;MEM_ACTIVE_SPRITE_HIGH_RIGHT</p>
+<p>;&nbsp;MEM_ACTIVE_SPRITE_LOW_LEFT</p>
+<p>;&nbsp;MEM_ACTIVE_SPRITE_LOW_RIGHT</p>
+<p>; a6 = address of sprite info start</p>
+<p>; d6 is used to store x values</p>
+<p>; d5 is used to store y values</p>
+<p>; d7 is used for all other operations</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>SetActiveSpriteMapRowCol:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; a6 = SPRITE_ID</p>
+<p>&nbsp;; a6 + 2 = SPRITE_X</p>
+<p>&nbsp;; a6 + 4 = SPRITE_Y</p>
+<p>&nbsp;; a6 + 6 = SPRITE_PATTERN_INDEX</p>
+<p>&nbsp;; a6 + 8 = SPRITE_DIRECTION</p>
+<p>&nbsp;; a6 + A = SPRITE_FRAME</p>
+<p>&nbsp;; a6 + C = SPRITE_STEP_COUNTER</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>SetActiveSpriteLeftCol:</p>
+<p>&nbsp;; copy sprite x postion to d7 and adjust for scroll</p>
+<p>&nbsp;clr.l&nbsp;d7</p>
+<p>&nbsp;clr.l&nbsp;d6</p>
+<p>&nbsp;adda.l&nbsp;#$2,a6&nbsp;; move to a6+2 -> SPRITE_X</p>
+<p>&nbsp;move.w&nbsp;(a6),d7&nbsp;; store sprite x in d7</p>
+<p>&nbsp;add.w&nbsp;(MEM_MAP_POSITION_X),d7&nbsp;; adjust for scroll</p>
+<p>&nbsp;move.w&nbsp;d7,d6&nbsp;; copy to d6 for later use</p>
+<p>&nbsp;and.w&nbsp;#$00FF,d7 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d7 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word (easy68k.com/paulrsm/doc/trick68k.htm)</p>
+<p>&nbsp;swap d7&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d7&nbsp;; clear the upper word</p>
+<p>&nbsp;swap d7&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.w&nbsp;d7,(MEM_ACTIVE_SPRITE_LEFT_COLUMN)&nbsp;; copy left column value</p>
+<p>SetActiveSpriteLeftHighLow:</p>
+<p>&nbsp;; copy sprite y postion to d7 and adjust for scroll</p>
+<p>&nbsp;adda.l&nbsp;#$2,a6&nbsp;; move to a6+4 -> SPRITE_Y</p>
+<p>&nbsp;move.w&nbsp;(a6),d7&nbsp;; store sprite y in d7</p>
+<p>&nbsp;add.w&nbsp;(MEM_MAP_POSITION_Y),d7&nbsp;; adjust for scroll</p>
+<p>&nbsp;add.w&nbsp;#$18,d7&nbsp;; top edge of lower 1/4</p>
+<p>&nbsp;</p>
+<p>&nbsp;move.w&nbsp;d7,d5&nbsp;; copy the adjusted y value </p>
+<p>&nbsp;add.w&nbsp;#$08,d5&nbsp;; move d5 to bottom edge of lower 1/4</p>
+<p>&nbsp;; map the sprite y position to a column</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d7&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d5&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is column on the left or right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;.2&nbsp;; branch if on left side</p>
+<p>&nbsp;add.w&nbsp;#$0004,d7&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>&nbsp;add.w&nbsp;#$0004,d5&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>.2</p>
+<p>&nbsp;move.w&nbsp;d7,(MEM_ACTIVE_SPRITE_HIGH_LEFT)&nbsp;; copy high left value</p> 
+<p>&nbsp;move.w&nbsp;d5,(MEM_ACTIVE_SPRITE_LOW_LEFT)&nbsp;; copy low left value</p>
+<p>SetActiveSpriteRightCol:</p>
+<p>&nbsp;add.w&nbsp;#$10,d6&nbsp;; move d6 to right side of sprite</p>
+<p>&nbsp;move.w&nbsp;d6,d7&nbsp;; store sprite x in d7</p>
+<p>&nbsp;and.w&nbsp;#$00FF,d7 ; remove all bits over 255</p>
+<p>&nbsp;divu.w&nbsp;#$08,d7 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word (easy68k.com/paulrsm/doc/trick68k.htm)</p>
+<p>&nbsp;swap d7&nbsp;&nbsp;; swap upper and lower words</p>
+<p>&nbsp;clr.w d7&nbsp;; clear the upper word</p>
+<p>&nbsp;swap d7&nbsp;&nbsp;; swap back</p>
+<p>&nbsp;move.w&nbsp;d7,(MEM_ACTIVE_SPRITE_RIGHT_COLUMN)&nbsp;; copy left column value</p>
+<p>SetActiveSpriteRightHighLow:</p>
+<p>&nbsp;; copy sprite y postion to d7 and adjust for scroll</p>
+<p>&nbsp;move.w&nbsp;(a6),d7&nbsp;; store sprite y in d7</p>
+<p>&nbsp;add.w&nbsp;(MEM_MAP_POSITION_Y),d7&nbsp;; adjust for scroll</p>
+<p>&nbsp;add.w&nbsp;#$18,d7&nbsp;; top edge of lower 1/4</p>
+<p>&nbsp;move.w&nbsp;d7,d5&nbsp;; copy the adjusted y value </p>
+<p>&nbsp;add.w&nbsp;#$08,d5&nbsp;; move d5 to bottom edge of lower 1/4</p>
+<p>&nbsp;; map the sprite y position to a column</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d7&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;andi.b&nbsp;#%11111000,d5&nbsp;; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;cmpi.w&nbsp;#MAP_MID_X,d6&nbsp;; is column on the left or right side of the screen?</p>
+<p>&nbsp;blt.s&nbsp;.4&nbsp;; branch if on left side</p>
+<p>&nbsp;add.w&nbsp;#$0004,d7&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>&nbsp;add.w&nbsp;#$0004,d5&nbsp;; on the right side, use 2nd lword for the column</p>
+<p>.4</p>
+<p>&nbsp;move.w&nbsp;d7,(MEM_ACTIVE_SPRITE_HIGH_RIGHT)&nbsp;; copy high left value</p>
+<p>&nbsp;move.w&nbsp;d5,(MEM_ACTIVE_SPRITE_LOW_RIGHT)&nbsp;; copy low left value</p>
+<p>&nbsp;suba.l&nbsp;#$04,a6&nbsp;; move a6 back to SPRITE_ID</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Now we need a couple routines to block &amp; clear map data. These will be called from MoveSprite and StopSprite.</p>
+
+<div class="well">
+
+<p>;-------------------------------------------------------------------------------</p>
+<p>; Blocks the map data where a sprite is located</p>
+<p>; a6 = address of sprite info start</p>
+<p>; a3 is modified used to reference collision data</p>
+<p>; d6 is modified to temporarily store sprite row & column</p>
+<p>; d7 is modified to store & update map collision data</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>BlockSpriteMapPosition:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; a6 = SPRITE_ID</p>
+<p>&nbsp;; a6 + 2 = SPRITE_X</p>
+<p>&nbsp;; a6 + 4 = SPRITE_Y</p>
+<p>&nbsp;; a6 + 6 = SPRITE_PATTERN_INDEX</p>
+<p>&nbsp;; a6 + 8 = SPRITE_DIRECTION</p>
+<p>&nbsp;; a6 + A = SPRITE_FRAME</p>
+<p>&nbsp;; a6 + C = SPRITE_STEP_COUNTER</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;bsr.w&nbsp;SetActiveSpriteMapRowCol&nbsp;; set the active map position</p>
+<p>&nbsp;; left side</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTIVE_SPRITE_LEFT_COLUMN),d6&nbsp;; copy left column to d6</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_HIGH_LEFT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bset.l&nbsp;d6,d7&nbsp;; set map data to blocked</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_LOW_LEFT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bset.l&nbsp;d6,d7&nbsp;; set map data to blocked</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;; right side</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTIVE_SPRITE_RIGHT_COLUMN),d6&nbsp;; copy left column to d6</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_HIGH_RIGHT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bset.l&nbsp;d6,d7&nbsp;; set map data to blocked</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_LOW_RIGHT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bset.l&nbsp;d6,d7&nbsp;; set map data to blocked</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;rts</p>
+<p>&nbsp;</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; Clears the map data where a sprite is located</p>
+<p>; a6 = address of sprite info start</p>
+<p>; a3 is used to reference collision data</p>
+<p>; d6 is modified to temporarily store sprite row & column</p>
+<p>; d7 is modified to store & update map collision data</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>ClearSpriteMapPosition:</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;; a6 = SPRITE_ID</p>
+<p>&nbsp;; a6 + 2 = SPRITE_X</p>
+<p>&nbsp;; a6 + 4 = SPRITE_Y</p>
+<p>&nbsp;; a6 + 6 = SPRITE_PATTERN_INDEX</p>
+<p>&nbsp;; a6 + 8 = SPRITE_DIRECTION</p>
+<p>&nbsp;; a6 + A = SPRITE_FRAME</p>
+<p>&nbsp;; a6 + C = SPRITE_STEP_COUNTER</p>
+<p>&nbsp;;---------------------------------------------------------------------------</p>
+<p>&nbsp;bsr.w&nbsp;SetActiveSpriteMapRowCol&nbsp;; set the active map position</p>
+<p>&nbsp;; left side</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTIVE_SPRITE_LEFT_COLUMN),d6&nbsp;; copy left column to d6</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_HIGH_LEFT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bclr.l&nbsp;d6,d7&nbsp;; set map data back to zero</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_LOW_LEFT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bclr.l&nbsp;d6,d7&nbsp;; set map data back to zero</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;; right side</p>
+<p>&nbsp;move.w&nbsp;(MEM_ACTIVE_SPRITE_RIGHT_COLUMN),d6&nbsp;; copy left column to d6</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_HIGH_RIGHT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bclr.l&nbsp;d6,d7&nbsp;; set map data back to zero</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;lea&nbsp;&nbsp;MEM_COLLISION_DATA,a3&nbsp;; move start address of map data to a3</p>
+<p>&nbsp;adda.w&nbsp;(MEM_ACTIVE_SPRITE_LOW_RIGHT),a3 ; move to row</p>
+<p>&nbsp;move.l&nbsp;(a3),d7&nbsp;; copy row data to memory</p>
+<p>&nbsp;bclr.l&nbsp;d6,d7&nbsp;; set map data back to zero</p>
+<p>&nbsp;move.l&nbsp;d7,(a3)&nbsp;; save the map data back</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Now the sprites can't run into each other which is nice.</p>
+
+<p><img src="sprite-collision.png" alt="Sprite collision" class="img-fluid d-block mx-auto"/></p>
+
+<p>This all works well on the left, right, and lower sides. There's still something that's not quite right though...</p>
+
+<p class="lead">Still Funky</p>
+
+<p>The sprite overlap isn't working as I'd like. The player sprite is always super-imposed over the NPC sprite. That looks fine when the player walks across the lower half of the NPC but is awful when the walk across the top half:</p>
+
+<p><img src="sprite-overlap.png" alt="Sprite overlap" class="img-fluid d-block mx-auto"/></p>
+
+<p>The desired effect can best be seen in Phantasy Star II:</p>
+
+
+<p><img src="desired-effect.png" alt="Desired sprite overlap effect" class="img-fluid d-block mx-auto"/></p>
+
+<p>At first I thought this might have been accomplished by making each character two sprites - one occupying the high plane and one occupying the low plane. A quick look at a layer debugger immediately disproved this idea. Rather than debug this and not post anything for another month I'm doing to stop here and save this for next time...</p>
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+	<br>	
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/vscroll/">&lt;- Part 6: Vertical Scrolling</a>
+		</div>
+		<div class="col">
+			&nbsp;
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/game-state/">Part 8: Game State &amp; Pausing -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/collision-detection/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesiscollision.png" alt="Sega Genesis Programming Part 5: Collision Detection"></p><p>Sega Genesis Programming Part 5: Collision Detection</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/spritelist/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisspritelist.png" alt="Sega Genesis Programming Part 10: Sprite Link List"></p><p>Sega Genesis Programming Part 10: Sprite Link List</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>

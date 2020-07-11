@@ -1,0 +1,566 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 9: Object List</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 9: Object List" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 9: object list</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+ 
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/game-state/">&lt;- Part 8: Game State and Pausing</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/spritelist/">Part 10: Sprite Link List -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+<p class="lead">Where we left off</p>
+
+<p>After 8 articles we have a sprite that can walk around and bump into things while music is playing. We can even pause the game just in case this is too much action for people to handle. Now let's figure out how we're going to let our sprite interact with their environment.</p>
+
+<p>
+Let's get one thing out of the way first - in the last article I talked about fixing the sprite draw order in this one. I didn't do that. Perhaps I'll fix it next time, although it's more likely I'll continue to ignore it.
+</p>
+
+<p class="lead">Object list</p>
+
+<p>Before our sprite can interact with things in our little store we need to figure out how we want to model objects. The term &quot;objects&quot; is used to generically refer to anything in the room that isn't purely background scenery. NPCs are included in this umbrella.</p> 
+
+<p>The first part is figuring out how to store objects. Let's start by assuming all objects have a rectangle that defines their position and size. The reason is we need the ability to determine if a sprite is either looking at, or maybe even standing on, an object.
+</p>
+
+<p><img src="hit-test.png" alt="Hit test" class="img-fluid d-block mx-auto"/></p>
+
+<p>The map we created is 512x512, even though we're only using 320x224 of it. So we have a couple ways to store an object rectangle:</p>
+
+<p>Not compact:</p>
+<p>&nbsp;&nbsp;Word0=Object ID (0-65535)</p>
+<p>&nbsp;&nbsp;Word1=x0 (0-65535)</p>
+<p>&nbsp;&nbsp;Word2=y0 (0-65535)</p>
+<p>&nbsp;&nbsp;Word3=x1 (0-65535)</p>
+<p>&nbsp;&nbsp;Word4=y1 (0-65535)</p>
+
+<p>Compact:</p>
+<p>&nbsp;&nbsp;Word0=Object ID (0-65535)</p>
+<p>&nbsp;&nbsp;Word1[0-8]=x0 (0-511)</p>
+<p>&nbsp;&nbsp;Word1[9-15]=width (0-127)</p>
+<p>&nbsp;&nbsp;Word2[0-8]=y0 (0-512)</p>
+<p>&nbsp;&nbsp;Word2[9-15]=height (0-127)</p>
+
+<p>The 128x128 object size limit is not a huge issue because the display is 320x224, so one object can cover about a quarter of the screen. Objects that need to span more than that could be split into two objects with the same ID in the (unlikely) event they are needed.</p>
+
+<p>We'll also need to create an array to store all these objects. For the sake of this article, the object list has 20 entries with 10 reserved for items in the store and 10 reserved for NPCs. This is more than we'll use for a while. The reason for having a division between items and NPCs is account for NPC values changing as they move. We don't want to update the object list every time an NPC moves, that's just a waste of instructions. Instead we're going to build the NPC list when the player presses a button to interact with whatever they're looking at. For the sake of convenience we'll reserve a spot in the list for NPCs.</p>
+
+<p>Here are all the new constants created for this:</p>
+
+<div class="well">
+<p>MEM_ACTION_TARGET_OBJID=$00FF0004C ; action target object id</p>
+<p>MEM_OBJECT_LIST_OBJS=$00FF0004E ; list of objects in current map</p>
+<p>MEM_OBJECT_LIST_NPCS=$00FF0008A ; list of npcs in current map</p>
+<p>[...]</p>
+<p>; object list constants</p>
+<p>OBJ_LIST_LENGTH=$000A ; max of 10 items in the object list</p>
+<p>NPC_LIST_LENGTH=$000A ; max of 10 items in the NPC list</p>
+<p>OBJ_LIST_LOOP_CTRL=OBJ_LIST_LENGTH+NPC_LIST_LENGTH-1</p>
+<p>OBJ_LIST_STRUCT_SIZE=$0006	; size of the data structure for object list entries</p>
+<p>[...]</p>
+<p>; object IDs</p>
+<p>OBJ_NOTHING=$00000000</p>
+<p>;****************************************</p>
+<p>; scenery</p>
+<p>;****************************************</p>
+<p>OBJ_SCENE_VB_8BIT=$1000</p>
+<p>OBJ_SCENE_VB_HARDWARE=$1001</p>
+<p>OBJ_SCENE_VB_16BIT=$1002</p>
+<p>OBJ_SCENE_VB_MAGS=$1003</p>
+<p>OBJ_SCENE_VB_COUNTER=$1004</p>
+<p>OBJ_SCENE_VB_REGISTER=$1005</p>
+<p>;****************************************</p>
+<p>; NPCs</p>
+<p>;****************************************</p>
+<p>OBJ_NPC_DANI=$2000</p>
+</div>
+
+<p>Somewhere along the way I decided to name the NPC &quot;Dani&quot; which is short for &quot;Danielle&quot;. There's not much of a story behind that name. Since the game is set in 1989 I looked at popular baby names in the 60s and 70s to pick some names that were common around 1968-1972. I don't know where this zany experiment will go, but wherever that is will be a place where people have average names.</p>
+
+<p>Next we need to load the objects when the map is initialized. First let's look at the map and figure out where they should go:</p>
+
+<p><img src="objects.png" alt="Object layout" class="img-fluid d-block mx-auto"/></p>
+
+<p>The code to load them goes like:</p>
+
+<div class="well">
+<p>;----------------------------------------</p>
+<p>; setup map and object data</p>
+<p>;----------------------------------------</p>
+<p>InitMap:</p>
+<p>[...]</p>
+<p>LoadObjectData:</p>
+<p>&nbsp;lea MEM_OBJECT_LIST_OBJS,a0 ; store address of object data</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>&nbsp;; word0=Object ID (0-65535)</p>
+<p>&nbsp;; word1[0-8]=x0 (0-511)</p>
+<p>&nbsp;; word1[9-15]=width (0-127)</p>
+<p>&nbsp;; word2[0-8]=y0 (0-512)</p>
+<p>&nbsp;; word2[9-15]=height (0-127)</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>&nbsp;move.w #OBJ_SCENE_VB_8BIT,(a0)+</p>
+<p>&nbsp;; x0=136 width=106 = 1101010 010001000 = D488</p>
+<p>&nbsp;move.w #$D488,(a0)+</p>
+<p>&nbsp;; y0=136 height=26 = 0011010 010001000 = 3488</p>
+<p>&nbsp;move.w #$3488,(a0)+</p>
+<p>&nbsp;move.w #OBJ_SCENE_VB_HARDWARE,(a0)+</p>
+<p>&nbsp;; x0=242 width=79 = 1001111 011110010 = 9EF2</p>
+<p>&nbsp;move.w #$9EF2,(a0)+</p>
+<p>&nbsp;; y0=136 height=26 = 0011010 010001000 = 3488</p>
+<p>&nbsp;move.w #$3488,(a0)+</p>
+<p>&nbsp;move.w #OBJ_SCENE_VB_16BIT,(a0)+</p>
+<p>&nbsp;; x0=351 width=90 = 1011010 101011111 = B55F</p>
+<p>&nbsp;move.w #$B55F,(a0)+</p>
+<p>&nbsp;; y0=136 height=26 = 0011010 010001000 = 3488</p>
+<p>&nbsp;move.w #$3488,(a0)+</p>
+<p>&nbsp;move.w #OBJ_SCENE_VB_MAGS,(a0)+</p>
+<p>&nbsp;; x0=240 width=114 = 1110010 011110000 = E4F0</p>
+<p>&nbsp;move.w #$E4F0,(a0)+</p>
+<p>&nbsp;; y0=224 height=32 = 0100000 011100000 = 40E0</p>
+<p>&nbsp;move.w #$40E0,(a0)+</p>
+<p>&nbsp;move.w #OBJ_SCENE_VB_COUNTER,(a0)+</p>
+<p>&nbsp;; x0=240 width=80 = 1010000 011110000 = A0F0</p>
+<p>&nbsp;move.w #$A0F0,(a0)+</p>
+<p>&nbsp;; y0=200 height=16 = 0010000 011001000 = 20C8</p>
+<p>&nbsp;move.w #$20C8,(a0)+</p>
+<p>&nbsp;move.w #OBJ_SCENE_VB_REGISTER,(a0)+</p>
+<p>&nbsp;; x0=320 width=16 = 0010000 101000000 = 2140</p>
+<p>&nbsp;move.w #$2140,(a0)+</p>
+<p>&nbsp;; y0=162 height=32 = 0100000 010100010 = 40A2</p>
+<p>&nbsp;move.w #$40A2,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>LoadNPCData:</p>
+<p>&nbsp;bsr.w BuildNPCObjectList</p>
+
+</div>
+
+<p>Let's separate the code to update the NPC list because it needs to be called by another subroutine later on:</p>
+
+<div class="well">
+<p>BuildNPCObjectList: ; note - d6 and d7 are used by caller</p>
+<p>&nbsp;lea MEM_OBJECT_LIST_NPCS,a0 ; store address of object data</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>&nbsp;; word0=Object ID (0-65535)</p>
+<p>&nbsp;; word1[0-8]=x0 (0-511)</p>
+<p>&nbsp;; word1[9-15]=width (0-127)</p>
+<p>&nbsp;; word2[0-8]=y0 (0-512)</p>
+<p>&nbsp;; word2[9-15]=height (0-127)</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>&nbsp;move.w #OBJ_NPC_DANI,(a0)+</p>
+<p>&nbsp;move.w (MEM_NPC1_SPRITE_X),d5 ; store x position in d5</p>
+<p>&nbsp;subq #$0008,d5 ; buffer area around sprite</p>
+<p>&nbsp;add.w (MEM_MAP_POSITION_X),d5 ; adjust for map position</p>
+<p>&nbsp;or.w #%0100000000000000,d5 ; append sprite width+buffer to bits [9-15]</p>
+<p>&nbsp;move.w d5,(a0)+ ; store word 1</p>
+<p>&nbsp;move.w (MEM_NPC1_SPRITE_Y),d5 ; store y position in d5</p>
+<p>&nbsp;add.w (MEM_MAP_POSITION_Y),d5 ; adjust for map position</p>
+<p>&nbsp;subq #$0008,d5 ; buffer area around sprite</p>
+<p>&nbsp;or.w #%0110000000000000,d5 ; append sprite height+buffer to bits [9-15]</p>
+<p>&nbsp;move.w d5,(a0)+ ; store word 2</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;move.w #$0000,(a0)+</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p class="lead">Dialog processing stub</p>
+
+<p>What we need to build is code that:</p>
+
+<p>1) Responds to the A button press: The A button event should fire on the button press not button released. This is how all RPGs on the Genesis work, or at least all that I tried. It's also the recommendation in Sega's documentation that was sent to Genesis developers some 27 years ago.</p>
+
+<p>2) Stops moving the sprites: The A button press should override the direction keys. Control shouldn't be released back to the player until the mode is changed back to exploring.</p>
+
+<p>3) Determines what point on the map the player is looking at: This should be very similar to the code in MoveSprite that determines which cell the sprite is attempting to enter.</p>
+
+<p>4) Checks the object and NPC list to see what, if anything, the player is looking at: This will be a simple brute-force search of the list. If the list was longer we could think about sorting it by something like X or Y position for faster searching.
+
+<p>5) Releases control back to the player when another button is pressed: As usual I'm going to use the original Phantasy Star series as a reference, although most 16-bit RPGs work roughly the same way. In Phantasy Star II the player must press A, B, or C to close a non-interactive dialog. Phantasy Star III improves on this by allowing direction keys to also close a non-interactive dialog. So if you're talking to an NPC and want to move along you can press and hold a direction to close the dialog and start walking. Phantasy Star III gets criticised a lot in comparison to II but there are many things it just plain does better. Anyway, once the dialog is open any button press except Start should close it. Luckily in the last article the pause functionality was added to the beginning of the main game loop and it is handled before entering the code to process dialogs.</p> 
+
+<p>Based on how we expect dialogs to work in an RPG, the lifecycle is:</p>
+
+<p><img src="dialog-states.png" alt="Dialog states" class="img-fluid d-block mx-auto"/></p>
+
+<p>Putting this all into code, we first need to update the main loop to capture the A button press:</p>
+
+<div class="well">
+<p>MainGameLoop:</p>
+<p>[...]</p>
+<p>TestDialogOpened: ; test if the player is attempting to open a dialog</p>
+<p>&nbsp;move.b (MEM_CONTROL_PRESSED),d6 ; copy pressed buttons to d6</p>
+<p>&nbsp;andi.w #BUTTON_A_PRESSED,d6 ; test if the A button was pressed</p>
+<p>&nbsp;beq.s MainGameLoopUpdateSprites ; A button is not pressed</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG,d7 ; set the dialog bit</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; copy game state back to d7</p>
+<p>&nbsp;; clear MEM_CONTROL_PRESSED to prevent dialog state from flipping in loop</p>
+<p>&nbsp;move.w #$0000,(MEM_CONTROL_PRESSED)</p>
+<p>&nbsp;bra.w MainGameLoop ; return to start of game loop</p>
+<p>[...]</p>
+</div>
+
+<p>Now we need a stub for the dialog lifecycle. As you'll notice, there are a number of placeholders here:</p>
+
+<div class="well">
+
+<p>ProcessDialog:</p>
+<p>&nbsp;move.w #$2700,sr ; disable interrupts while managing dialogs</p>
+<p>&nbsp;move.l (MEM_GAME_STATE),d7 ; copy current game state to d7</p>
+<p>ProcessDialogTestTextBuilt:</p>
+<p>&nbsp;btst.l #STATE_FLAG_DIALOG_TEXT_BUILT,d7 ; test game state</p>
+<p>&nbsp;bne.s ProcessDialogTestOpening ; text is built, move to next test
+<p>&nbsp;bsr.w BuildNPCObjectList ; update the location of NPCs</p>
+<p>&nbsp;bsr.w FindActionTarget ; find the target of the player's action</p>
+<p>&nbsp;; TODO - implement text building</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG_TEXT_BUILT,d7 ; flag that text is built</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG_TEXT_OPENING,d7 ; change state to opening</p>
+<p>ProcessDialogTestOpening:</p>
+<p>&nbsp;btst.l #STATE_FLAG_DIALOG_TEXT_OPENING,d7 ; test if the dialog is opening</p>
+<p>&nbsp;bne.s ProcessDialogTestOpen ; dialog is not opening, move to next test</p>
+<p>&nbsp;; TODO - implement dialog opening animation</p>
+<p>&nbsp;bset.l #STATE_FLAG_DIALOG_TEXT_OPEN,d7 ; change state to open when done</p>
+<p>ProcessDialogTestOpen:</p>
+<p>&nbsp;btst.l #STATE_FLAG_DIALOG_TEXT_OPEN,d7 ; test if the dialog is opening</p>
+<p>&nbsp;bne.s ProcessDialogTestClosing ; dialog is not open, move to next test</p>
+<p>&nbsp;; wait until a button is pressed to clear the dialog</p>
+<p>&nbsp;move.b (MEM_CONTROL_PRESSED),d6 ; copy pressed buttons to d6</p>
+<p>&nbsp;cmpi.w #$0000,d6 ; are any buttons pressed?</p>
+<p>&nbsp;beq.s ExitProcessDialog ; no buttons are pressed, exit</p>
+<p>ProcessDialogTestClosing:</p>
+<p>&nbsp;btst.l #STATE_FLAG_DIALOG_TEXT_CLOSING,d7 ; test if the dialog is opening</p>
+<p>&nbsp;bne.s ProcessDialogClearFlags ; dialog is not closing, exit</p>
+<p>&nbsp;; TODO - implement dialog closing animation</p>
+<p>&nbsp;nop</p>
+<p>ProcessDialogClearFlags: ; clear flags when done</p>
+<p>&nbsp;bclr.l #STATE_FLAG_DIALOG,d7</p>
+<p>&nbsp;bclr.l #STATE_FLAG_DIALOG_TEXT_BUILT,d7</p>
+<p>&nbsp;bclr.l #STATE_FLAG_DIALOG_TEXT_CLOSING,d7</p>
+<p>ExitProcessDialog:</p>
+<p>&nbsp;move.l d7,(MEM_GAME_STATE) ; save any changes made to the game state</p>
+<p>&nbsp;move.w #$2000,sr ; re-enable interrupts</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>The last part is writing code to search for the target object based on what the player sprite is looking at:</p>
+
+<div class="well">
+<p>FindActionTarget: ; note - d6 and d7 are used by caller</p>
+<p>&nbsp;; d4 - store map adjusted player sprite x</p>
+<p>&nbsp;move.w (MEM_PLAYER_SPRITE_X),d4 ; move base sprite x</p>
+<p>&nbsp;add.w (MEM_MAP_POSITION_X),d4 ; adjust for map position</p>
+<p>&nbsp;; d5 - store map adjusted player sprite y</p>
+<p>&nbsp;move.w (MEM_PLAYER_SPRITE_Y),d5 ; move base sprite y</p>
+<p>&nbsp;add.w (MEM_MAP_POSITION_Y),d5 ; adjust for map position</p>
+<p>&nbsp;add.w #SPRITE_COLLISION_Y,d5 ; adjust for collision Y</p>
+<p>&nbsp;; determine what the player is looking at</p>
+<p>&nbsp;move.w (MEM_PLAYER_SPRITE_DIRECTION),d3 ; copy direction</p>
+<p>&nbsp;cmpi.w #DIRECTION_UP,d3 ; test if sprite is facing up</p>
+<p>&nbsp;bne.s .1 ; branch if not</p>
+<p>&nbsp;subq #SPRITE_COLLISION_UP,d5 ; adjust y</p>
+<p>&nbsp;bra.w .4 ; branch to object list search</p>
+<p>.1 ; down</p>
+<p>&nbsp;cmpi.w #DIRECTION_DOWN,d3 ; test if sprite is facing down</p>
+<p>&nbsp;bne.s .2 ; branch if not</p>
+<p>&nbsp;add.w #SPRITE_COLLISION_DOWN,d5 ; adjust y</p>
+<p>&nbsp;bra.w .4 ; branch to object list search</p>
+<p>.2 ; left</p>
+<p>&nbsp;cmpi.w #DIRECTION_LEFT,d3 ; test if sprite is facing left</p>
+<p>&nbsp;bne.s .3 ; branch if not</p>
+<p>&nbsp;subq #SPRITE_COLLISION_LEFT,d4 ; adjust x</p>
+<p>&nbsp;bra.w .4 ; branch to object list search</p>
+<p>.3 ; right</p>
+<p>&nbsp;cmpi.w #DIRECTION_RIGHT,d3 ; test if sprite is facing right</p>
+<p>&nbsp;bne.s .4 ; not reachable unless there's a bug in MovePlayer</p>
+<p>&nbsp;add.w #SPRITE_COLLISION_RIGHT,d4 ; adjust x</p>
+<p>.4</p>
+<p>&nbsp;; search object list </p>
+<p>&nbsp;lea MEM_OBJECT_LIST_OBJS,a0 ; point a0 to the object list</p>
+<p>&nbsp;move.w #OBJ_LIST_LOOP_CTRL,d3 ; use d3 for loop control</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>&nbsp;; hit test = ((htx>=x1)&&(htx<=x0))&&((hty>y0)&&(hty<y1))</p>
+<p>&nbsp;; where</p>
+<p>&nbsp;; htx = sprite x adjusted for map scroll</p>
+<p>&nbsp;; hty = sprite y adjusted for map scorll</p>
+<p>&nbsp;; x0 = right edge of object rect</p>
+<p>&nbsp;; x1 = left edge of object rect</p>
+<p>&nbsp;; y0 = bottom edge of object rect</p>
+<p>&nbsp;; y1 = top edge of object rect</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>FindActionTargetObjectLoop:</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>&nbsp;; a0 = word0=Object ID (0-65535)</p>
+<p>&nbsp;; a0+2 = word1[0-8]=x0 (0-511) word1[9-15]=width (0-127)</p>
+<p>&nbsp;; a0+4 = word2[0-8]=y0 (0-512) word2[9-15]=height (0-127)</p>
+<p>&nbsp;;--------------------------------------</p>
+<p>&nbsp;move.w (a0),(MEM_ACTION_TARGET_OBJID) ; copy the current object id</p>
+<p>&nbsp;cmpi.w #OBJ_NOTHING,(MEM_ACTION_TARGET_OBJID) ; looking at nothing?</p>
+<p>&nbsp;beq.w FindActionTargetObjectLoopDbra ; if so loop to next object</p>
+<p>&nbsp;; test if sprite x is between left and right edge</p>
+<p>&nbsp;move.w (2,a0),d2 ; copy word 1 (x and width)</p>
+<p>&nbsp;move.w d2,d1 ; use d1 for width</p>
+<p>&nbsp;and.w #%0000000111111111,d2 ; clear bits[9-15]</p>
+<p>&nbsp;cmp.w d2,d4 ; (htx>=x1)</p>
+<p>&nbsp;blt.w FindActionTargetObjectLoopDbra ; loop if sprite x < object left</p>
+<p>&nbsp;; need to shift 9 bits right</p>
+<p>&nbsp;lsr.w #$08,d1 ; shift 8</p>
+<p>&nbsp;lsr.w #$01,d1 ; shift 1 more</p>
+<p>&nbsp;add.w d1,d2 ; add width to left edge to get right edge</p>
+<p>&nbsp;cmp.w d2,d4 ; (htx<=x0)</p>
+<p>&nbsp;bgt.w FindActionTargetObjectLoopDbra ; loop if sprite x > object right</p>
+<p>&nbsp;; test if sprite y is between top and bottom edge</p>
+<p>&nbsp;move.w (4,a0),d2 ; copy word 2 (y and width)</p>
+<p>&nbsp;move.w d2,d1 ; use d1 for height</p>
+<p>&nbsp;and.w #%0000000111111111,d2 ; clear bits[9-15]</p>
+<p>&nbsp;cmp.w d2,d5 ; (hty>y0)</p>
+<p>&nbsp;blt.w FindActionTargetObjectLoopDbra ; loop if sprite y < object top</p>
+<p>&nbsp;; need to shift 9 bits right</p>
+<p>&nbsp;lsr.w #$08,d1 ; shift 8</p>
+<p>&nbsp;lsr.w #$01,d1 ; shift 1 more</p>
+<p>&nbsp;add.w d1,d2 ; add height to top edge to get bottom edge</p>
+<p>&nbsp;cmp.w d2,d5 ; (hty<y1)</p>
+<p>&nbsp;blt.w ExitFindActionTarget ; if last test passes then we have a hit</p>
+<p>FindActionTargetObjectLoopDbra:</p>
+<p>&nbsp;adda.w #OBJ_LIST_STRUCT_SIZE,a0 ; move to next object list entry</p>
+<p>&nbsp;dbra d3,FindActionTargetObjectLoop ; decrement and loop</p>
+<p>ActionTargetNotFound:</p>
+<p>&nbsp;move.w #OBJ_NOTHING,(MEM_ACTION_TARGET_OBJID) ; nothing by default</p>
+<p>ExitFindActionTarget:</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Since we haven't created the dialogs yet, the only way to see if this works is by checking if MEM_ACTION_TARGET_OBJID ($00FF0004C) is updated with the expected value:
+</p>
+
+<p><img src="mem-debug.png" alt="Memory debug" class="img-fluid d-block mx-auto"/></p>
+
+<p class="lead">What's next?</p>
+
+<p>
+The one really big thing that's missing from all this - a dialog that displays what the sprite is looking at. I think I'll save that for next time. I keep trying to bite off small chunks of code at time and dialogs will be the next chunk. Thinking through it there are a few things that need to happen:</p>
+
+<p>1) Creating a font.</p>
+
+<p>2) Some kind of rules to determine which string is displayed based on the object and other game variables.</p>
+
+<p>3) The actual drawing of the dialog. Having them pop-up instantly in one frame would look awful so there needs to be code to expand & collapse them.</p>
+
+<p>Sounds like we have something fun to work on next time...</p>
+
+
+<p class="lead">Download</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/game-state/">&lt;- Part 8: Game State and Pausing</a>
+        </div>
+        <div class="col">
+            &nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/spritelist/">Part 10: Sprite Link List -&gt;</a>
+        </div>
+    </div>
+    <br>
+
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/scenes-dialogs/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisdialogs.png" alt="Sega Genesis Programming Part 11: Scenes and Dialogs"></p><p>Sega Genesis Programming Part 11: Scenes &amp; Dialogs</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/save-load/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissaveload.png" alt="Sega Genesis Programming Part 18: Saving and Loading"></p><p>Sega Genesis Programming Part 18: Saving &amp; Loading</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

@@ -1,0 +1,589 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 3: Sprite Animation</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 3: Sprite Animation" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 3: sprite animation</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/tiles-sprites/">&lt;- Part 2: Tiles and Sprites</a>
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/echo/">Part 4: Echo Sound Engine -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+<p class="lead blog-description">Where we left off</p>
+
+<p>In <a href="https://huguesjohnson.com/programming/genesis/palettes/">part 1</a> of my attempt to learn Genesis programming I started with simply loading palettes. In <a href="https://huguesjohnson.com/programming/genesis/tiles-sprites/">part 2</a> I loaded up some tiles and created a very basic sprite. This article/tutorial will build on part 2 by making the background tiles a little more interesting and creating an animated sprite.</p>
+<p>I originally planned to tackle background music next but that's turning out to be a bigger effort than expected, and I expected it to be huge. There's source code to a few different Genesis sound drivers floating around the internet but they all come from decompiled games. I'm going to assume those are not legal to copy. When I take this one on again I'll start by seeing if there are some public domain sound drivers other developers have posted. If not, then it's going to be, well, interesting trying to figure that out.</p>
+<p><i>Note: After writing this I found the <a href="https://github.com/sikthehedgehog/Echo">Echo project</a> which I'll try out in a future article.</i>
+<p>So rather than flounder for a while I picked-up where I left off. The first thing I needed to figure out was a setting for this demo. I'm not sure where this Genesis programming experiment will go. I have about a dozen ideas but I'm trying to stay flexible. Most of my game programming experiments have died when I had a grand idea that was really big to implement and I lost steam halfway though. I'm combating it by not going after anything specific too early.</p>
+<p>I need a setting though. If I create an animated sprite it has to be moving around somewhere. In the first two articles I was going for something outdoorsy because it was a good excuse to test four different palettes. I'm going to move this demo inside because the outdoors implies a big open environment and I'm not anywhere near ready to tackle that. I'm also going to set it in a time when the Sega Genesis was new. By writing this in assembly I'm partially recreating the experience of an early Genesis developer so why not set the demo then too.</p> 
+<p>Let's combine those ideas and go with <b>shopping mall in 1989</b>. Again, I have no idea where this will all end up but that setting opens up room for a ton of possibilities.</p>
+<p>The first step in creating a mall is designing ugly mall store carpet. Let's go with a 2x2 pattern of carpet with a grayish, slightly stained, appearance. That requires four tiles:</p>
+
+<div class="well">
+<p>FloorTiles:</p>
+<p>dc.l $42424212</p>
+<p>dc.l $42444242</p>
+<p>dc.l $12424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $44424244</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42124242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $44424242</p>
+<p>dc.l $42422242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42434242</p>
+<p>dc.l $42424244</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424142</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424242</p>
+<p>dc.l $44424242</p>
+<p>dc.l $42424212</p>
+<p>dc.l $42424242</p>
+<p>dc.l $12424442</p>
+<p>dc.l $42424242</p>
+<p>dc.l $42424243</p>
+<p>dc.l $42424242</p>
+</div>
+
+<p>Next the routine to load the background tiles needs to be modified so it draws them in the 2x2 pattern. It needs to draw one row alternating between tiles 0 and 2, the next row alternating between tiles 1 and 3, then looping back 0 and 2, and so on.</p>
+
+<div class="well">
+<p>FillBackground:</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; Pattern notes</p>
+<p>; bits 0-10 = pattern number</p>
+<p>; bit 11 = horizontal reverse bit (1=reverse)</p>
+<p>; bit 12 = vertical reverse bit (1=reverse)</p>
+<p>; bit 13 = palette low bit</p>
+<p>; bit 14 = palette high bit</p>
+<p>; bit 15 = priority</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>move.w #$0001,d0 ; store tile pattern in d0</p>
+<p>move.b #%0011,d3 ; eor value used to toggle tiles</p>
+<p>move.l #$40000003,(VDP_CONTROL) ; initial drawing location</p>
+<p>move.w #$001F,d1 ; 32 rows</p>
+<p>DrawTileRowLoop:</p>
+<p>move.w #$003F,d2 ; 64 columns per row</p>
+<p>DrawTileColLoop:</p>
+<p>move.w d0,(VDP_DATA) ; copy the pattern to VPD</p>
+<p>eor.b d3,d0 ; flip between patterns</p>
+<p>dbra d2,DrawTileColLoop ; loop to next tile</p>
+<p>eor.b #%0010,d0 ; flip between tiles 1 and 3</p>
+<p>eor.b #%0100,d3 ; flip the flip pattern</p>
+<p>dbra d1,DrawTileRowLoop ; loop to next tile</p>
+</div>
+
+<p>Now that we have some horrible mall carpet we need &quot;dude working in a store in 1989&quot;. Since I'm lazy I'm using a model that looks a lot like the sprites from Phantasy Star II. I should change to use something from the public domain in the next iteration.</p>
+
+<p>I'm so lazy that I don't want to code the tiles for this dude by hand so I wrote a tile &amp; palette editor that generates 68k assembly code.</p>
+
+<p><img src="palette-code-gen.png" alt="Palette and tile code generator" class="img-fluid d-block mx-auto"/></p>
+
+<p><b><i>Note: I've since scraped this tool in favor of the ones here - <a href="https://github.com/huguesjohnson/RetailClerk89/tree/master/src/build-tools">https://github.com/huguesjohnson/RetailClerk89/tree/master/src/build-tools</a></i></b></p>
+
+<p>I realize there are dozens of perfectly good tile &amp; palette editors out there, including <a href="https://github.com/huguesjohnson/MDLib">ones I've written</a>, but I wanted something that produced source code rather than modified a ROM.</p>
+
+<p>After working with this tool for a while I produced animations for all four directions with two animation frames per direction. I won't post all the code here (it's available for download at the end), it all pretty much looks like:</p>
+
+<div class="well">
+<p>SpritePlayerDownFrameZero:</p>
+<p>;column 0 - row 0</p> 
+<p>dc.l $00000111</p>
+<p>dc.l $00001222</p>
+<p>dc.l $00012222</p>
+<p>dc.l $00122323</p>
+<p>dc.l $00122333</p>
+<p>dc.l $00123313</p>
+<p>dc.l $00123313</p>
+<p>dc.l $00011333</p>
+<p>;column 0 - row 1</p>
+<p>dc.l $00001333</p>
+<p>dc.l $00014133</p>
+<p>dc.l $00144C44</p>
+<p>dc.l $014444C4</p>
+<p>dc.l $0144144C</p>
+<p>dc.l $0144144C</p>
+<p>dc.l $0144144C</p>
+<p>dc.l $0144144C</p>
+<p>[...]</p>
+</div>
+
+<p>Although there's no struct keyword in assembly we can create a structure for storing information about sprites. We need this later on so sub-routines that manipulate sprites can be passed a starting address for the structure instead of setting data registers. There are only 7 data registers to work with in the Genesis so they're bad for passing around complex structures.</p>
+
+<p>Here's the structure for the player sprite:</p>
+
+<div class="well">
+<p>MEM_PLAYER_SPRITE_ID=$00FF000A ; sprite table id</p>
+<p>MEM_PLAYER_SPRITE_X=$00FF000C ; world x position of the player</p>
+<p>MEM_PLAYER_SPRITE_Y=$00FF000E ; world y position of the player</p>
+<p>MEM_PLAYER_SPRITE_PATTERN_INDEX=$00FF0010 ; index of pattern in VDP</p>
+<p>MEM_PLAYER_SPRITE_DIRECTION=$00FF0012 ; which direction the player faces</p>
+<p>MEM_PLAYER_SPRITE_FRAME=$00FF0014 ; animation frame of player sprite</p>
+<p>MEM_PLAYER_SPRITE_STEP_COUNTER=$00FF0016 ; used to determine when to move</p>
+</div>
+
+<p>I realize I could save memory by combining some of these into single words with high and low bytes. Right now I'm far more interested in ease of debugging. This can be refactored later. The Genesis sprite table already contains x and y values but those represent where the sprite is on the screen not in the virtual world. There's no scrolling in this demo yet but there has to be at some point so I need to track the virtual sprite location somewhere.</p>
+
+<p>Anyway, this creates a structure of:</p>
+
+<div class="well">
+<p>; aX = SPRITE_ID</p>
+<p>; aX + 2 = SPRITE_X</p>
+<p>; aX + 4 = SPRITE_Y</p>
+<p>; aX + 6 = SPRITE_PATTERN_INDEX</p>
+<p>; aX + 8 = SPRITE_DIRECTION</p>
+<p>; aX + A = SPRITE_FRAME</p>
+<p>; aX + C = SPRITE_STEP_COUNTER</p>
+</div>
+
+<p>The sub-routines to move the sprite will rely on a starting address and follow this structure.</p>
+
+<p>At some point I need to note that when I started this endeavor I based my code on this article: <a href="https://bigevilcorporation.co.uk/2012/05/05/sega-megadrive-8-animated-sprites/">https://bigevilcorporation.co.uk/2012/05/05/sega-megadrive-8-animated-sprites/</a></p>
+
+<p>It's a great tutorial and my initial code to animate the sprite was based on it. I changed the approach a bit though and my final product is different now.</p>
+
+<p>We're going to need a couple sub-routines to animate our mall employee. The first is one to set a sprite's pattern based on the direction and animation frame:</p>
+
+<div class="well">
+<p>SetSpritePattern:</p>
+<p>;---------------------------------------------------------------------------</p>
+<p>; a6 = SPRITE_ID</p>
+<p>;---------------------------------------------------------------------------</p>
+<p>; setup</p>
+<p>movea.l a6,a5 ; store address in a5 because it is manipulated</p>
+<p>move.w (a5),d5 ; copy sprite id to d5</p>
+<p>mulu.w #$08,d5 ; multiply sprite ID by 8 to get sprite array offset</p>
+<p>; change the sprite pattern</p>
+<p>add.b #$04,d5 ; palette and pattern is at index 4 in the sprite definition</p>
+<p>swap d5 ; move to upper word</p>
+<p>add.l #VRAM_SPRITE_TABLE,d5 ; add to sprite table address</p>
+<p>; set the pattern, pattern=(base pattern number)+(direction*24)+(frame*8)</p>
+<p>adda.l  #$6,a5 ; move to a6+6 -> SPRITE_PATTERN_INDEX</p>
+<p>move.w (a5),d6 ; start with base pattern in d6</p>
+<p>adda.l #$2,a5 ; move to a6+8 -> SPRITE_DIRECTION</p>
+<p>move.w (a5),d7 ; copy direction to d7</p>
+<p>mulu.w #$18,d7 ; multiply direction * 24</p>
+<p>add.w d7,d6 ; add result to d1</p>
+<p>adda.l #$2,a5 ; move to a6+A -> SPRITE_FRAME</p>
+<p>move.w (a5),d7 ; copy frame to d7</p>
+<p>mulu.w #$08,d7 ; multiply frame * 8 since there are 8 tiles per frame</p>
+<p>add.w d7,d6 ; add result to d6</p>
+<p>add.w #$2000,d6 ; add palette and other sprite info</p>
+<p>move.l d5,(VDP_CONTROL) ; set write location in VDP</p>
+<p>move.w d6,(VDP_DATA) ; write the new pattern</p>
+ExitSetSpritePattern:
+<p>rts
+</div>
+
+<p>This may seem backwards but before we move a sprite we need a method to stop a sprite, which really just resets their animation to the standing still frame.</p>
+
+<div class="well">
+<p>StopSprite:</p>
+<p>;---------------------------------------------------------------------------</p>
+<p>; a6 = SPRITE_ID</p>
+<p>;---------------------------------------------------------------------------</p>
+<p>; setup</p>
+<p>movea.l a6,a5 ; store address in a5 because it is manipulated</p>
+<p>move.w (a5),d5 ; copy sprite id to d5</p>
+<p>adda.l  #$A,a5 ; move to a5+A -> SPRITE_FRAME</p>
+<p>move.w #$0000,(a5) ; reset animation frame</p>
+<p>bsr.w SetSpritePattern ; branch to move SetSpritePattern</p>
+<p>EndStopSprite:</p>
+<p>rts</p>
+</div>
+
+<p>In <a href="https://huguesjohnson.com/programming/genesis/tiles-sprites/">the last article</a> we read the controller input and moved the sprite based on it. That was hardwired to the player sprite. We need to split that apart so the controller input sets the direction of the player and a separate method moves them. This is so NPC sprites can be moved through the same method.</p>
+
+<p>First let's map the input to the player sprite and decide whether they should start moving:</p>
+
+<div class="well">
+<p>DIRECTION_DOWN=$0000</p>
+<p>DIRECTION_UP=$0001</p>
+<p>DIRECTION_LEFT=$0002</p>
+<p>DIRECTION_RIGHT=$0003</p>
+<p>SPRITE_MOVE_FREQUENCY=$012C</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>; MovePlayer</p>
+<p>; moves the player sprite if a d-pad direction is being pressed</p>
+<p>; calls MoveSprite to actually move the sprite</p>
+<p>; d7 is used to test controller input</p>
+<p>; a6 is used to store the start address of the sprite info if there is movement</p>
+<p>;-------------------------------------------------------------------------------</p>
+<p>MovePlayer:</p>
+<p>move.b (MEM_CONTROL_HELD),d7 ; copy button held value to d7 for eor</p>
+<p>eor.w #$0000,d7 ; test if it is zero</p>
+<p>bne.w SetPlayerDirection ; branch if a direction is being held</p>
+<p>PlayerNotMoving:</p>
+<p>bra.w StopPlayerSprite ; reset the sprite frame</p>
+<p>SetPlayerDirection:</p>
+<p>; map key press to direction</p>
+<p>TestUpHeld:</p>
+<p>move.b (MEM_CONTROL_HELD),d7 ; copy button held value to d7 for andi</p>
+<p>andi.w #BUTTON_UP_PRESSED,d7 ; test if the up button is held</p>
+<p>beq.s TestDownHeld ; branch if not</p>
+<p>move.w #DIRECTION_UP,(MEM_PLAYER_SPRITE_DIRECTION) ; set direction</p>
+<p>bra.s MovePlayerSprite ; move the player sprite</p>
+<p>TestDownHeld:</p>
+<p>move.b (MEM_CONTROL_HELD),d7 ; copy button held value to d7 for andi</p>
+<p>andi.w #BUTTON_DOWN_PRESSED,d7 ; test if the down button is held</p>
+<p>beq.s TestLeftHeld ; branch if not</p>
+<p>move.w #DIRECTION_DOWN,(MEM_PLAYER_SPRITE_DIRECTION) ; set direction</p>
+<p>bra.s MovePlayerSprite ; move the player sprite</p>
+<p>TestLeftHeld:</p>
+<p>move.b (MEM_CONTROL_HELD),d7 ; copy button held value to d7 for andi</p>
+<p>andi.w #BUTTON_LEFT_PRESSED,d7 ; test if the left button is held</p>
+<p>beq.s TestRightHeld ; branch if not</p>
+<p>move.w #DIRECTION_LEFT,(MEM_PLAYER_SPRITE_DIRECTION) ; set direction</p>
+<p>bra.s MovePlayerSprite ; move the player sprite</p>
+<p>TestRightHeld:</p>
+<p>move.b (MEM_CONTROL_HELD),d7 ; copy button held value to d7 for andi</p>
+<p>andi.w #BUTTON_RIGHT_PRESSED,d7 ; test if the right button is held</p>
+<p>beq.s StopPlayerSprite ; non-directional button held</p>
+<p>move.w #DIRECTION_RIGHT,(MEM_PLAYER_SPRITE_DIRECTION) ; set direction</p>
+<p>MovePlayerSprite:</p>
+<p>add.w #$0001,(MEM_PLAYER_SPRITE_STEP_COUNTER) ; increment counter</p>
+<p>move.w (MEM_PLAYER_SPRITE_STEP_COUNTER),d7 ; copy counter to d7</p>
+<p>cmpi.w #SPRITE_MOVE_FREQUENCY,d7 ; is it time to move?</p>
+<p>bls.w EndMovePlayer ; exit if it's not time to move</p>
+<p>move.w #$0000,(MEM_PLAYER_SPRITE_STEP_COUNTER); reset the step counter</p>
+<p>lea (MEM_PLAYER_SPRITE_ID),a6 ; setup call to MoveSprite</p>
+<p>bsr.w MoveSprite ; branch to move MoveSprite </p>
+<p>bra.s EndMovePlayer ; exit</p>
+<p>StopPlayerSprite:</p>
+<p>lea (MEM_PLAYER_SPRITE_ID),a6 ; setup call to StopSprite</p>
+<p>bsr.w StopSprite ; reset the sprite frame</p>
+<p>EndMovePlayer:</p>
+<p>rts</p>
+</div>
+
+<p>There's probably some trickery I can pull to shorten that method a bit. My coding approach is always &quot;make it work then worry about making it better, or don't&quot;.</p>
+
+<p>Now we need the method to move a sprite while cycling through the animation frames, this could also probably be shortened:</p>
+
+<div class="well">
+<p>MoveSprite:</p>
+<p>;---------------------------------------------------------------------------</p>
+<p>; a6 = SPRITE_ID</p>
+<p>;---------------------------------------------------------------------------</p>
+<p>movea.l a6,a5 ; store address in a5 because it is manipulated</p>
+<p>adda.l #$8,a5 ; move to a5+8 -> SPRITE_DIRECTION</p>
+<p>move.w (a5),d7 ; store direction in a7</p>
+<p>TestUp:</p>
+<p>cmpi.w #DIRECTION_UP,d7 ; test for up</p>
+<p>bne.w TestDown ; branch if not</p>
+<p>MoveUp:</p>
+<p>suba.l #$4,a5 ; move back to a5+4 -> SPRITE_Y</p>
+<p>cmpi.w #$0081,(a5) ; is the sprite at the top edge?</p>
+<p>bge.w MoveUpIncFrame ; not at the top edge, keep moving</p>
+<p>bsr.w StopSprite ; at top edge, stop moving</p>
+<p>bra.w ExitMoveSprite ; at top edge, exit</p>
+<p>MoveUpIncFrame:</p>
+<p>sub.w #SPRITE_STEP_PIXELS,(a5) ; decrement SPRITE_Y</p>
+<p>adda.l #$6,a5 ; move up to a5+A -> SPRITE_FRAME</p>
+<p>add.w #$0001,(a5) ; increment counter</p>
+<p>move.w (a5),d7 ; copy current frame to d7</p>
+<p>cmpi.w #SPRITE_FRAME_COUNT,d7 ; do we need to loop back to the start?</p>
+<p>bls.w MoveUpAnimation ; if not, go to animation</p>
+<p>MoveUpResetFrame:</p>
+<p>move.w #$0001,(a5) ; toggle between frames 1&2 while moving</p>
+<p>MoveUpAnimation:</p>
+<p>; move the sprite in the sprite table</p>
+<p>move.w (a6),d7 ; copy sprite ID to d7</p>
+<p>mulu.w #$08,d7 ; mult by 8 to get sprite array offset</p>
+<p>swap d7 ; move to upper word</p>
+<p>add.l #VRAM_SPRITE_TABLE,d7 ; add to sprite table address</p>
+<p>move.l d7,(VDP_CONTROL) ; set write location in VDP</p>
+<p>; update the sprite animation </p>
+<p>suba.l #$6,a5 ; move back to a5+4 -> SPRITE_Y</p>
+<p>move.w (a5),(VDP_DATA) ; copy the new y-coordinate</p>
+<p>bsr.w SetSpritePattern ; set the new pattern for the sprite</p>
+<p>bra.w ExitMoveSprite ; only 4-direction movement in this demo</p>
+<p>TestDown:</p>
+<p>cmpi.w #DIRECTION_DOWN,d7 ; test for down</p>
+<p>bne.w TestRight ; branch if not</p>
+<p>MoveDown:</p>
+<p>suba.l #$4,a5 ; move back to a5+4 -> SPRITE_Y</p>
+<p>cmpi.w #$0140,(a5) ; is the sprite at the bottom edge?</p>
+<p>ble.w MoveDownIncFrame ; not at the bottom edge, keep moving</p>
+<p>bsr.w StopSprite ; at bottom edge, stop moving</p>
+<p>bra.w ExitMoveSprite ; at bottom edge, exit</p>
+<p>MoveDownIncFrame:</p>
+<p>add.w #SPRITE_STEP_PIXELS,(a5) ; increment SPRITE_Y</p>
+<p>adda.l #$6,a5 ; move up to a5+A -> SPRITE_FRAME</p>
+<p>add.w #$0001,(a5) ; increment counter</p>
+<p>move.w (a5),d7 ; copy current frame to d7</p>
+<p>cmpi.w #SPRITE_FRAME_COUNT,d7 ; do we need to loop back to the start?</p>
+<p>bls.w MoveDownAnimation ; if not, go to animation</p>
+<p>MoveDownResetFrame:</p>
+<p>move.w #$0001,(a5) ; toggle between frames 1&2 while moving</p>
+<p>MoveDownAnimation:</p>
+<p>; move the sprite in the sprite table</p>
+<p>move.w (a6),d7 ; copy sprite ID to d7</p>
+<p>mulu.w #$08,d7 ; mult by 8 to get sprite array offset</p>
+<p>swap d7 ; move to upper word</p>
+<p>add.l #VRAM_SPRITE_TABLE,d7 ; add to sprite table address</p>
+<p>move.l d7,(VDP_CONTROL) ; set write location in VDP</p>
+<p>; update the sprite animation </p>
+<p>suba.l #$6,a5 ; move back to a5+4 -> SPRITE_Y</p>
+<p>move.w (a5),(VDP_DATA) ; copy the new y-coordinate</p>
+<p>bsr.w SetSpritePattern ; set the new pattern for the sprite</p>
+<p>bra.w ExitMoveSprite ; only 4-direction movement in this demo</p>
+<p>TestRight:</p>
+<p>cmpi.w #DIRECTION_RIGHT,d7 ; test for right</p>
+<p>bne.w TestLeft ; branch if not</p>
+<p>MoveRight:</p>
+<p>suba.l #$6,a5 ; move back to a5+2 -> SPRITE_X</p>
+<p>cmpi.w #$01B0,(a5) ; is the sprite at the right edge?</p>
+<p>ble.w MoveRightIncFrame ; not at the right edge, keep moving</p>
+<p>bsr.w StopSprite ; at right edge, stop moving</p>
+<p>bra.w ExitMoveSprite ; at right edge, exit</p>
+<p>MoveRightIncFrame:</p>
+<p>add.w #SPRITE_STEP_PIXELS,(a5) ; increment SPRITE_Y</p>
+<p>adda.l #$8,a5 ; move up to a5+A -> SPRITE_FRAME</p>
+<p>add.w #$0001,(a5) ; increment counter</p>
+<p>move.w (a5),d7 ; copy current frame to d7</p>
+<p>cmpi.w #SPRITE_FRAME_COUNT,d7 ; do we need to loop back to the start?</p>
+<p>bls.w MoveRightAnimation ; if not, go to animation</p>
+<p>MoveRightResetFrame:</p>
+<p>move.w #$0001,(a5) ; toggle between frames 1&2 while moving</p>
+<p>MoveRightAnimation:</p>
+<p>; move the sprite in the sprite table</p>
+<p>move.w (a6),d7 ; copy sprite ID to d7</p>
+<p>mulu.w #$08,d7 ; mult by 8 to get sprite array offset</p>
+<p>add.b #$06,d7 ; x-coordinate is at index 6</p>
+<p>swap d7 ; move to upper word</p>
+<p>add.l #VRAM_SPRITE_TABLE,d7 ; add to sprite table address</p>
+<p>move.l d7,(VDP_CONTROL) ; set write location in VDP</p>
+<p>; update the sprite animation </p>
+<p>suba.l #$8,a5 ; move back to a5+2 -> SPRITE_X</p>
+<p>move.w (a5),(VDP_DATA) ; copy the new y-coordinate</p>
+<p>bsr.w SetSpritePattern ; set the new pattern for the sprite</p>
+<p>bra.w ExitMoveSprite ; only 4-direction movement in this demo</p>
+<p>TestLeft:</p>
+<p>cmpi.w #DIRECTION_LEFT,d7 ; test for left</p>
+<p>bne.w ExitMoveSprite ; branch if not</p>
+<p>MoveLeft:</p>
+<p>suba.l #$6,a5 ; move back to a5+2 -> SPRITE_X</p>
+<p>cmpi.w #$0081,(a5) ; is the sprite at the left edge?</p>
+<p>bge.w MoveLeftIncFrame ; not at the left edge, keep moving</p>
+<p>bsr.w StopSprite ; at left edge, stop moving</p>
+<p>bra.w ExitMoveSprite ; at left edge, exit</p>
+<p>MoveLeftIncFrame:</p>
+<p>sub.w #SPRITE_STEP_PIXELS,(a5) ; decrement SPRITE_Y</p>
+<p>adda.l #$8,a5 ; move up to a5+A -> SPRITE_FRAME</p>
+<p>add.w #$0001,(a5) ; increment counter</p>
+<p>move.w (a5),d7 ; copy current frame to d7</p>
+<p>cmpi.w #SPRITE_FRAME_COUNT,d7 ; do we need to loop back to the start?</p>
+<p>bls.w MoveLeftAnimation ; if not, go to animation</p>
+<p>MoveLeftResetFrame:</p>
+<p>move.w #$0001,(a5) ; toggle between frames 1&2 while moving</p>
+<p>MoveLeftAnimation:</p>
+<p>; move the sprite in the sprite table</p>
+<p>move.w (a6),d7 ; copy sprite ID to d7</p>
+<p>mulu.w #$08,d7 ; mult by 8 to get sprite array offset</p>
+<p>add.b #$06,d7 ; x-coordinate is at index 6</p>
+<p>swap d7 ; move to upper word</p>
+<p>add.l #VRAM_SPRITE_TABLE,d7 ; add to sprite table address</p>
+<p>move.l d7,(VDP_CONTROL) ; set write location in VDP</p>
+<p>; update the sprite animation </p>
+<p>suba.l #$8,a5 ; move back to a5+2 -> SPRITE_X</p>
+<p>move.w (a5),(VDP_DATA) ; copy the new y-coordinate</p>
+<p>bsr.w SetSpritePattern ; set the new pattern for the sprite</p>
+<p>ExitMoveSprite:</p>
+<p>rts</p>
+</div>
+
+<p>The end result isn't all that bad:</p>
+
+<p><img src="animated-sprite.png" alt="Animated sprite" class="img-fluid d-block mx-auto"/></p>
+
+<p>The only issue is the animation is really, really fast. The mall employee dude is moving his limbs faster than a hummingbird. So I guess the next bit of work will be fixing the sprite animation and probably switching to something based off public domain graphics.</p>
+
+<p>After that I'll either add some scenery and collision detection, or take a stab at music. It's also possible I'll try something completely different though.</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+	<br>	
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/tiles-sprites/">&lt;- Part 2: Tiles and Sprites</a>
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/echo/">Part 4: Echo Sound Engine -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/spritelist/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisspritelist.png" alt="Sega Genesis Programming Part 10: Sprite Link List"></p><p>Sega Genesis Programming Part 10: Sprite Link List</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/scene-npcs/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisscenenpcs.png" alt="Sega Genesis Programming Part 12: Scenes and NPCs"></p><p>Sega Genesis Programming Part 12: Scenes &amp; NPCs</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>

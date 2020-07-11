@@ -1,0 +1,324 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 22: 4 Way Play</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="4 Way Play" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 22: 4 way play</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/collision-vdp/">&lt;- Sega Genesis Programming Part 21: VDP Sprite Collision</a>
+        </div>
+        <div class="col">
+            <!--&nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scripted-events/">Part 16: Scripted Events -&gt;</a>-->
+        </div>
+    </div>
+    <br>
+
+<p class="lead">If at first you don't succeed, try something similar</p>
+
+<p>I've been spending some time during the quarantine of 2020 working on various small Sega Genesis technical demos. I'm specifically noting 2020 for the sake of future readers who might also be living in a reality show nightmare world. I have low expectations and am not confident we will learn anything from this experience.</p>
+
+<p>I'm a bad learner myself since I haven't made much progress in this time period. I started with a goal of creating an 8-player quiz-type game demo. I own two Team Players and a dozen controllers so it seemed like a good use of them. The Team Player is kind of a goofy device to program for. Sega must have given developers some sample code because trying brute-force to work with it is a bad idea. I got up to the dreaded point of &quot;<i>works on an emulator but not real hardware</i>&quot; before deciding to try something else.</p>
+
+<p>For reasons unknown to me I thought trying the 4 Way Play would possibly be easier. Since it uses both controller ports I naively assumed it must map controller 1&amp;2 to one port and 3&amp;4 to the other. Then it would be something easy like polling each port 3-6 times like you would a 6-button controller.</p>
+
+<p>That sounds logical and easy. I'm sure someone has figured this out already and documented it:</p>
+
+<p><img src="google.png" alt="Google results for Genesis 4 Way Play programming" class="img-fluid d-block mx-auto"/></p>
+
+<p>WHY!? I feel so sorry for anyone else searching for this that lands on my site.</p>
+
+<p>So yeah. I didn't find anything. I started by writing a diagnostic rom that tried various polling combinations. Here's one of the lovely screenshots from it:</p>
+
+<p><img src="diag.png" alt="Diagnostic rom" class="img-fluid d-block mx-auto"/></p>
+
+<p>You don't want to see the source code to this. It helped me track down some code that kind of worked which I could refine into code that actually worked. To my surprise it even works on real hardware. Let's get to it already...</p>
+
+<p>Minor note: I do not own a 4 Way Play but tested this code using a Team Player in 4 Way Play mode. Since the 4 Way Play does not fit every model of Sega Genesis I sort of assume the Team Player is what most would use for 4 Way Play games anyway.</p>
+
+<p>I'm going to start with the bit of code that I'm least sure about. I ran into some issues where the 4 Way Play wasn't sending back data until it was initialized. On a typical controller sending #$40 to the control port around startup does the trick, the 4 Way Play seems to need a little more fidgeting. I am not sure if all these steps are necessary, once I had something working I stopped messing with it. There are other combinations that seemed to work too. Someone better at this can figure out something better I'm sure.</p>
+
+<div class="well">
+<p>Init4Way:</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$40,(CTRL_1_CONTROL)</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$43,(CTRL_2_CONTROL)</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$7C,(CTRL_2_DATA)</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$7F,(CTRL_2_CONTROL)</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$7C,(CTRL_2_DATA)</p>
+<p>&nbsp;&nbsp;nop</p>
+<p>&nbsp;&nbsp;nop</p>
+</div>
+
+<p>Then during vblank let's cycle through each controller. What I found is that all 4 controllers are read through the controller 1 port. The controller 2 port is used to tell the 4 Way Play which controller to pipe through the controller 1 port. This is done by sending #$[0-3]C to the control 2 data port. This is a neat approach. You could in theory support as many controllers as you have time to read during vblank this way.</p>
+ 
+<div class="well">
+<p>;&nbsp;these&nbsp;values&nbsp;are&nbsp;totally&nbsp;arbitrary</p>
+<p>MEM_CONTROL_1_HELD=$FFFF1000</p>
+<p>MEM_CONTROL_1_PRESSED=$FFFF1002</p>
+<p>MEM_CONTROL_2_HELD=$FFFF1004</p>
+<p>MEM_CONTROL_2_PRESSED=$FFFF1006</p>
+<p>MEM_CONTROL_3_HELD=$FFFF1008</p>
+<p>MEM_CONTROL_3_PRESSED=$FFFF100A</p>
+<p>MEM_CONTROL_4_HELD=$FFFF100C</p>
+<p>MEM_CONTROL_4_PRESSED=$FFFF100E</p>
+<p>[...]</p>
+<p>VBlank:</p>
+<p>VBlankReadJoypads:</p>
+<p>&nbsp;&nbsp;bsr.w;&nbsp;Read4Way&nbsp;;&nbsp;read&nbsp;controllers</p>
+<p>VBlankExit:</p>
+<p>&nbsp;&nbsp;rte</p>
+<p>[...]</p>
+<p>Read4Way:
+<p>&nbsp;&nbsp;;&nbsp;point&nbsp;a0&nbsp;and&nbsp;a1&nbsp;to&nbsp;controllers</p>
+<p>&nbsp;&nbsp;lea&nbsp;(CTRL_1_DATA),a0</p>
+<p>&nbsp;&nbsp;lea&nbsp;(CTRL_2_DATA),a1</p>
+<p>&nbsp;&nbsp;;&nbsp;read&nbsp;controller&nbsp;1</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$0C,(a1)</p>
+<p>&nbsp;&nbsp;bsr.w&nbsp;ReadController</p>
+<p>&nbsp;&nbsp;move.b&nbsp;(MEM_CONTROL_1_HELD),d1</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_1_HELD)</p>
+<p>&nbsp;&nbsp;eor.b&nbsp;d1,d0</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_1_PRESSED)</p>
+<p>&nbsp;&nbsp;;&nbsp;read&nbsp;controller&nbsp;2</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$1C,(a1)</p>
+<p>&nbsp;&nbsp;bsr.w&nbsp;ReadController</p>
+<p>&nbsp;&nbsp;move.b&nbsp;(MEM_CONTROL_2_HELD),d1</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_2_HELD)</p>
+<p>&nbsp;&nbsp;eor.b&nbsp;d1,d0</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_2_PRESSED)</p>
+<p>&nbsp;&nbsp;;&nbsp;read&nbsp;controller&nbsp;3</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$2C,(a1)</p>
+<p>&nbsp;&nbsp;bsr.w&nbsp;ReadController</p>
+<p>&nbsp;&nbsp;move.b&nbsp;(MEM_CONTROL_3_HELD),d1</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_3_HELD)</p>
+<p>&nbsp;&nbsp;eor.b&nbsp;d1,d0</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_3_PRESSED)</p>
+<p>&nbsp;&nbsp;;&nbsp;read&nbsp;controller&nbsp;4</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$3C,(a1)</p>
+<p>&nbsp;&nbsp;bsr.w&nbsp;ReadController</p>
+<p>&nbsp;&nbsp;move.b&nbsp;(MEM_CONTROL_4_HELD),d1</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_4_HELD)</p>
+<p>&nbsp;&nbsp;eor.b&nbsp;d1,d0</p>
+<p>&nbsp;&nbsp;move.b&nbsp;d0,(MEM_CONTROL_4_PRESSED)</p>
+<p>&nbsp;&nbsp;rts</p>
+</div>
+
+<p>The part to actually read a controller isn't different than the standard 3-button read except for starting with TH low (TH high &amp; low is just barely explained in my <a href="https://huguesjohnson.com/programming/genesis/6button/">6 button tutorial</a>). With a little more experimenting I'd probably find you could start with TH high just as well. This is another case of quitting once I found something that worked.</p>
+
+<div class="well">
+<p>ReadController:</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$00,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;low</p>
+<p>&nbsp;&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;&nbsp;nop&nbsp;;&nbsp;bus&nbsp;synchronization</p>
+<p>&nbsp;&nbsp;move.b&nbsp;(a0),d0&nbsp;;&nbsp;d0&nbsp;has&nbsp;00SA0000</p>
+<p>&nbsp;&nbsp;move.b&nbsp;#$40,(a0)&nbsp;;&nbsp;set&nbsp;TH&nbsp;high</p>
+<p>&nbsp;&nbsp;lsl.b&nbsp;#$02,d0&nbsp;;&nbsp;d0&nbsp;is&nbsp;now&nbsp;SA000000</p>
+<p>&nbsp;&nbsp;andi.b&nbsp;#%11000000,d0&nbsp;;&nbsp;clear&nbsp;lowest&nbsp;6&nbsp;bits</p>
+<p>&nbsp;&nbsp;move.b&nbsp;(a0),d1&nbsp;;&nbsp;d1&nbsp;now&nbsp;has&nbsp;00BCRLDU</p>
+<p>&nbsp;&nbsp;andi.b&nbsp;#%00111111,d1&nbsp;;&nbsp;clear&nbsp;2&nbsp;highest&nbsp;bits</p>
+<p>&nbsp;&nbsp;or.b&nbsp;d1,d0&nbsp;;&nbsp;merge&nbsp;the&nbsp;two&nbsp;reads&nbsp;into&nbsp;d0</p>
+<p>&nbsp;&nbsp;;&nbsp;d0&nbsp;now&nbsp;has&nbsp;SABCRLDU</p>
+<p>&nbsp;&nbsp;not.b&nbsp;d0&nbsp;;&nbsp;flip&nbsp;bits&nbsp;so&nbsp;0&nbsp;means&nbsp;not&nbsp;pressed&nbsp;and&nbsp;1&nbsp;means&nbsp;pressed</p>
+<p>&nbsp;&nbsp;rts</p>
+
+</div>
+
+<p>Then I got lazy and decided not to write a real demo rom. I settled for a very ugly text screen that dumps the raw data.</p>
+
+<p><img src="demo.png" alt="Demo rom" class="img-fluid d-block mx-auto"/></p>
+
+<p>This demonstrates that the code works at the very least. It's otherwise not a very exciting game.</p>
+
+<p>Now, there is one good thing and one bad thing I ran into.</p>
+<p>Bad: I can't figure out any way to poll for X/Y/Z/Mode buttons. As far as I can tell they are not supported with the the 4 Way Play. They are supported with the Team Player though. Based on my hazy memories of working at a game store in the 90s, the 4 Way Play slightly pre-dated 6 button Genesis controllers. Also the 4 Way Play was an EA accessory for (mostly) sports games. I don't think they were especially concerned about 6 button support if it even was a thing yet.</p>
+<p>Good: This works fine with Atari 2600 controllers connected. The fire button is mapped to both A &amp; B buttons which makes sense since they are read through the same pin. The d-pad is working exactly as expected. This of course is how an Atari 2600 controller works in a normal Genesis control port. I was slightly worried it might break with a 4 Way Play. This is great news for anyone considering a 4 player quiz-type game with minimal controls. Or a 4 player Snafu clone, that would be nice.</p>
+
+<p class="lead">Download</p>
+
+<p><a href="4WayDebug.zip">Demo rom and source code</a></p>
+
+<p>It's doubtful I'll post this on Github unless I use it in a larger demo.</p>
+
+
+<p class="lead">What's Next?</p>
+
+<p>I'd like to go back and try to get a Team Player demo working. I'd also sort of like to quit stalling on building another full demo game. So either one of these or something completely different I guess.</p>
+
+    <br>    
+    <div class="row">
+        <div class="col">
+            <a class="float-left" href="https://huguesjohnson.com/programming/genesis/collision-vdp/">&lt;- Sega Genesis Programming Part 21: VDP Sprite Collision</a>
+        </div>
+        <div class="col">
+            <!--&nbsp;
+            <a class="float-right" href="https://huguesjohnson.com/programming/genesis/scripted-events/">Part 16: Scripted Events -&gt;</a>-->
+        </div>
+    </div>
+    <br>
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/6button/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesis6button.png" alt="Sega Genesis Programming Part 19: 6 Button Controllers"></p><p>Sega Genesis Programming Part 19: 6 Button Controllers</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/features/loser_phase/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/loser_phase.png" alt="My Loser Phase: Reflections on Video Game Retail from 1992-1997"></p><p>My Loser Phase: Reflections on Video Game Retail from 1992-1997</p></a></div>
+
+
+</div>
+
+<br clear="all"/>
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
+

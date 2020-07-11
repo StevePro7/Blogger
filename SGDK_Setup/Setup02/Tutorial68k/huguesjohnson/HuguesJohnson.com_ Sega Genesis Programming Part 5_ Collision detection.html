@@ -1,0 +1,607 @@
+<html>
+
+<head>
+<title>HuguesJohnson.com: Sega Genesis Programming Part 5: Collision detection</title>
+<!-- begin head includes -->
+
+<!-- 2020-05-20 11:40:55 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Hugues Johnson">
+<base target="_top">
+<link rel="icon" href="https://huguesjohnson.com/favicon.ico">
+<link href="https://www.huguesjohnson.com/rss/rss.xml" rel="alternate" title="RSS feed for all updates" type="application/rss+xml" />
+<!-- Apple icons -->
+<link rel="apple-touch-icon" href="https://huguesjohnson.com/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://huguesjohnson.com/images/apple-touch-icon_57x57.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://huguesjohnson.com/images/apple-touch-icon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://huguesjohnson.com/images/apple-touch-icon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://huguesjohnson.com/images/apple-touch-icon_152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://huguesjohnson.com/images/apple-touch-icon_167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://huguesjohnson.com/images/apple-touch-icon_180x180.png">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<script src="https://huguesjohnson.com/bootstrap/450/jquery-3.5.1.slim.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/popper.min.js"></script>
+<script src="https://huguesjohnson.com/bootstrap/450/js/bootstrap.min.js"></script>
+<link href="https://huguesjohnson.com/bootstrap/450/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap overrides -->
+<link href="https://huguesjohnson.com/bootstrap/450/bootstrap-override-2020-05-20.css" rel="stylesheet">
+<!-- end head includes -->
+</head>
+
+<body>
+
+<!-- begin navbar -->
+<nav class="navbar navbar-expand-md navbar-light p-0 sticky-top navbar-custom">
+    <a class="navbar-brand navbarurl" href="https://huguesjohnson.com/">HuguesJohnson.com</a>
+  <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Software</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/rc89/">Retail Clerk '89</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/narpassword/">NARPassword</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/debigulator.html">Debigulator</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/programming/">Programming Articles</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/archive.html">Archive</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Retro Gaming</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/features/">Features</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/scans/">Scans</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/guides/">Guides</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/game-hunter/">Game Hunter</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/collecting-apps.html">Collecting Apps</a>
+		    </div>
+		  </li>
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Game Hacking</a>
+		    <div class="dropdown-menu" aria-labelledby="dropdown01">
+		      <a class="dropdown-item" href="https://huguesjohnson.com/aridia/">Aridia</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/eisfrei/">Eisfrei</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/hapsby.html">Hapsby</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/power-ups/">Power-Ups</a>
+		      <a class="dropdown-item" href="https://huguesjohnson.com/falcom.html">Falcom Translations</a>
+		    </div>
+		  </li>
+        </ul>
+        <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+            	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://huguesjohnson.com/rss/rss.xml"><img border="0" src="https://huguesjohnson.com/images/feed-icon-16x16.gif" alt="Site RSS">&nbsp;Subscribe</a>
+                        <a rel="me" class="dropdown-item" href="https://www.linkedin.com/in/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/l-16x16.gif" alt="LinkedIn profile">&nbsp;LinkedIn</a>
+                        <a rel="me" class="dropdown-item" href="https://github.com/huguesjohnson"><img border="0" src="https://huguesjohnson.com/images/github-16x16.gif">&nbsp;GitHub</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/podcasts.html"><img border="0" src="https://huguesjohnson.com/images/podcast-16.png">&nbsp;Podcasts</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/links.html"><img border="0" src="https://huguesjohnson.com/images/link-16.png">&nbsp;Other Links</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/contact.html"><img border="0" src="https://huguesjohnson.com/images/mail-16x16.png">&nbsp;Contact</a>
+                        <a class="dropdown-item" href="https://huguesjohnson.com/bio.html"><img border="0" src="https://huguesjohnson.com/images/q16x16.png">&nbsp;About Me</a>
+                        <a class="dropdown-item" href="https://meloniejohnson.com/"><img border="0" src="https://huguesjohnson.com/images/mj16x16.png">&nbsp;Melonie Johnson</a></a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<div class="jumbotron jumbotron-fluid jumbotron-custom" style="background-image: url(https://huguesjohnson.com/images/banner/md.png)">
+  <div class="container">
+		<h1 class="blog-title"><img src="logo.png" alt="Sega Genesis Programming Part 5: Collision Detection" class="img-fluid" /></h1>
+  </div>
+</div>
+
+<!-- start breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-custom">
+    <li class="breadcrumb-item"><a href="https://huguesjohnson.com/">home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/software-index.html">software</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="https://huguesjohnson.com/programming/">programming articles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">sega genesis programming part 5: collision detection</li>
+  </ol>
+</nav>
+<!-- end breadcrumb -->
+
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/echo/">&lt;- Part 4: Echo Sound Engine</a>
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/vscroll/">Part 6: Vertical Scrolling -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+<p class="lead">The Plane, The Plane</p>
+
+
+<p>Over the course of the last four articles we've created some <a href="https://huguesjohnson.com/programming/genesis/palettes/">palettes</a>, <a href="https://huguesjohnson.com/programming/genesis/tiles-sprites/">background tiles</a>, a <a href="https://huguesjohnson.com/programming/genesis/animated-sprites/">sprite</a>, and played little <a href="https://huguesjohnson.com/programming/genesis/echo/">background music</a>. Along the way I made a few mistakes that need to be cleaned-up before trying something new.</p>
+
+<p>The first mistake I made was drawing the floor tiles to plane A instead of plane B. The reason is my brain said &quot;<i>A comes before B so it must be the lower plane</i>&quot;. In reality, plane A is drawn on top of plane B. The ordering of planes on the Sega Genesis goes like this:</p>
+
+<p><img src="GenesisPlanes.png" alt="Sega Genesis Planes" class="img-fluid d-block mx-auto"/></p>
+
+<p>When I went to fix this I found my next, slightly larger, mistake - I was drawing sprites on both the sprite plane and plane B. Since I was drawing the background to plane A it (literally) covered up this mistake.</p>
+
+<p>The reason for this error goes back to VDP initialization. There are 24 registers in the VDP (with some unused) that effect its behavior. There are four we'll look at today that impact what values are used for writing data to the VPD.</p>
+
+<p>Let's start by looking at how to write data to the VDP.</p>
+
+<div class="well">
+<p>VDP_CONTROL=$00C00004</p>
+<p>VDP_DATA=$00C00000</p>
+<p>VDP_VRAM_WRITE_A=$40000003</p>
+<p>VDP_VRAM_WRITE_B=$60000003</p>
+<p>VDP_VRAM_WRITE_SPRITE=$58000003</p>
+<p>VDP_VRAM_WRITE_WINDOW=$70000003</p>
+<p>[...]</p>
+<p>move.l #VDP_VRAM_WRITE_B,(VDP_CONTROL)</p>
+<p>move.w d0,(VDP_DATA)</p>
+</div>
+
+<p>Those two commands are saying &quot;<i>write the value in register d0 to the VDP at address 60000003.</i>&quot; Where did these magic constant values come from though? VDP_CONTROL &amp; VDP_DATA are easy enough to explain - that's what they are. The VDP_VRAM_WRITE ones are based on the VDP registers 2-5.</p>
+
+<p>The base write address for the VDP is 40000000 which in binary is:</p>
+
+<div class="well">
+<p>01000000000000000000000000000000</p>
+</div>
+
+<p>We have to set the write addresses for each plane by setting bits <font color="#0000FF">0-1</font> and <font color="#00FF00">27-29</font> in the long value sent to the VDP control port.</p>
+
+<div class="well">
+<p>01<font color="#00FF00"><i>000</i></font>0000000000000000000000000<font color="#0000FF"><i>00</i></font></p>
+</div>
+
+<p>I realize this is very non-intuitive, it gets worse.</p>
+
+
+<p>Now when we set the VDP registers we need to map seemingly random bits from those values to that long value to get the write address for each plane.</p>
+
+<div class="well">
+<p>VDPInitDataStart:</p>
+<p>[...]</p>
+<p>; Register 2: VRAM Address for Scroll A</p>
+<p>; bits 3-5 = bits 15-13 in the address of the pattern name table</p>
+<p>; 30 = 00<font color="#0000FF"><i>11</i></font><font color="#00FF00"><i>0</i></font>000 -> <font color="#0000FF"><i>11</i></font><font color="#00FF00"><i>0</i></font>0000000000000 -> </p>
+<p>; 01<font color="#00FF00"><i>0</i></font>000000000000000000000000000<font color="#0000FF"><i>11</i></font> -> 40000003</p>
+<p>dc.w	$8230</p>
+<p>&nbsp;</p>
+<p>; Register 3: VRAM Address for Window</p>
+<p>; bits 1-5 = bits 15-11 in the address of the pattern name table</p>
+<p>; 3E = 00<font color="#0000FF"><i>11</i></font><font color="#00FF00"><i>110</i></font>0 -> <font color="#0000FF"><i>11</i></font><font color="#00FF00"><i>110</i></font>00000000000 -> </p>
+<p>; 01<font color="#00FF00"><i>110</i></font>0000000000000000000000000<font color="#0000FF"><i>11</i></font> -> 70000003</p>
+<p>dc.w	$833E
+<p>&nbsp;</p>
+<p>; Register 4: VRAM Address for Scroll B</p>
+<p>; bits 0-2 = bits 15-13 in the address of the pattern name table</p>
+<p>; 07 = 00000<font color="#00FF00"><i>1</i></font><font color="#0000FF"><i>11</i></font> -> <font color="#0000FF"><i>11</i></font><font color="#00FF00"><i>1</i></font>0000000000000 -> </p>
+<p>; 01<font color="#00FF00"><i>1</i></font>000000000000000000000000000<font color="#0000FF"><i>11</i></font> -> 60000003</p>
+<p>dc.w	$8407</p>
+<p>&nbsp;	</p>
+<p>; Register 5: VRAM Address for Sprite Attributes</p>
+<p>; bits 0-6 = bits 15-9 in the address of the pattern name table</p>
+<p>; 6C = 0<font color="#0000FF"><i>11</i></font><font color="#00FF00">011</i></font>00 -> <font color="#0000FF"><i>11</i></font><font color="#00FF00"><i>011</i></font>00000000000 -> </p>
+<p>; 01<font color="#00FF00"><i>011</i></font>0000000000000000000000000<font color="#0000FF"><i>11</i></font> -> 58000003</p>
+<p>dc.w	$856C</p>
+<p>[...]</p>
+</div>
+
+<p>The reason for this goofiness is because the commands sent to the VDP control port, via a long number, aren't done with continuous values. They are instead laid out as:</p>
+
+<div class="well">
+<p>01<font color="#00FF00"><i>LLLLLLLLLLLLLL</i></font>00000000000000<font color="#0000FF"><i>HH</i></font></p>
+</div>
+
+<p>Where the Ls are the low bytes for the address and the Hs are the high bytes for the address. Why they didn't just use the entire upper word is a mystery to me, maybe it's documented somewhere I overlooked.</p>
+
+<p>After a couple minor updates everything is now drawing where it's supposed to:</p>
+
+<p><img src="ScrollB.png" alt="Background in scroll B" class="img-fluid d-block mx-auto"/></p>
+
+<p>With this all sorted out we can move on to...</p>
+
+
+<br/>
+
+<p class="lead">Adding scenery</p>
+
+<p>A sprite walking around some ugly carpet isn't all that interesting. Let's give them some scenery, since the setting is a mall in 1989 a store counter seems like an obvious thing to start with. The counter should have a region the sprite can walk behind where they're partially covered. Here's a rough design for the layout:</p>
+
+<p><img src="CounterDesign.png" alt="Counter design" class="img-fluid d-block mx-auto"/></p>
+
+<p>The end tiles could probably be one tile with some rotation going on but I'm trying to start simple and optimize later. Generally when writing any kind of software this is good advice. If you start off trying to implement some giant design pattern or waste time optimizing early on you'll just about never finish. I've seen a lot of projects die because the lead on it had a thought process like &quot;<i>I need to draw some background tiles so first I'll need to create an AbstractTileFactoryBuilder class, hmm, that's a little too concrete so let's start with writing our own AbstractFactoryBuilder interface and then create AbstractFactoryBuilderImpl which AbstractTileFactoryBuilder can extend...</i>&quot;</p>
+
+<p>Putting this rough design into the hastily written tile editor I made a couple articles ago produces a 32x32 tile set with two tiles to spare (technically one to spare since we need a blank tile):</p>
+
+<p><img src="CounterTiles.png" alt="Counter design" class="img-fluid d-block mx-auto"/></p>
+
+<p>I won't bore you with the code for each individual tile.</p>
+
+<p>The layout of the tiles is then:</p>
+
+<p><img src="TileLayout.png" alt="Tile layout" class="img-fluid d-block mx-auto"/></p>
+
+<p>Some of these tiles are going to be written to scroll A high and others scroll A low. That leaves us with two tile sets:</p>
+
+<div class="well">
+<p>PatternCounterLowStart:</p>
+<p>&nbsp;dc.w $3,$3,$3,$3,$3,$3,$D,$C</p>
+<p>&nbsp;dc.w $3,$3,$3,$3,$3,$3,$F,$E</p>
+<p>&nbsp;dc.w $3,$3,$3,$3,$3,$3,$F,$E</p>
+<p>&nbsp;dc.w $3,$3,$3,$3,$3,$3,$3,$3</p>
+<p>&nbsp;dc.w $1,$5,$5,$5,$5,$5,$5,$9</p>
+<p>&nbsp;dc.w $2,$6,$6,$6,$6,$6,$6,$A</p>
+<p>PatternCounterLowEnd:</p>
+<p>PatternCounterHighStart:</p>
+<p>&nbsp;dc.w $0,$4,$4,$4,$4,$4,$B,$8</p>
+<p>PatternCounterHighEnd:</p>
+</div>
+
+<p>What we need now is a subroutine that can translate a tile set to tiles. After a good deal of trial &amp; error I came up with this:</p>
+
+<div class="well">
+<p>VDP_DATA=$00C00000</p>
+<p>VDP_CONTROL=$00C00004</p>
+<p>ROW_HEIGHT=$800000</p>
+<p>[...]</p>
+<p>; DrawTileset</p>
+<p>; draws a set of tiles</p>
+<p>; Parameters</p>
+<p>; a1 = starting address of tileset</p>
+<p>; d0 = base pattern (ID+palette+high/low) of first tile in the tileset</p>
+<p>; d1 = number of rows in the tileset</p>
+<p>; d2 = number of columns in the tileset</p>
+<p>; d3 = initial VRAM write address</p>
+<p>; other registers used</p>
+<p>; d6 = loop counter</p>
+<p>; d7 = used to store the VDP pattern</p>
+<p>DrawTileset:</p>
+<p>DrawCounterRowLoop:</p>
+<p>&nbsp;move.w d2,d6 ; reset d6 to store the number of columns to loop over</p>
+<p>&nbsp;move.l d3,(VDP_CONTROL) ; set VDP address</p>
+<p>DrawCounterColumnLoop:</p>
+<p>&nbsp;move.w (a1)+,d7 ; store the next tile index in d7</p>
+<p>&nbsp;add.w d0,d7 ; add base tile ID to tile index</p>
+<p>&nbsp;; draw the tile</p>
+<p>&nbsp;move.w  d7,(VDP_DATA) ; copy the pattern to VPD</p>
+<p>&nbsp;dbf d6,DrawCounterColumnLoop ; decrement value of d6 (column) and loop</p>
+<p>&nbsp;add.l #ROW_HEIGHT,d3 ; move to the next row</p>
+<p>&nbsp;dbf d1,DrawCounterRowLoop ; decrement value of d1 (row) and loop until 0</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>Calling this new subroutine to draw the counter is the relatively easy part. We'll start with the low tiles:</p>
+
+<div class="well">
+<p>DrawCounter:</p>
+<p>&nbsp;; setup call to DrawTileset for low tiles</p>
+<p>&nbsp;lea PatternCounterLowStart,a1 ; store the low starting address in a1</p>
+<p>&nbsp;; tile 0 for the counter pattern should be at index 65h</p>
+<p>&nbsp;move.w #$0065,d0 ; store base tile ID in d0</p>
+<p>&nbsp;move.w #$0005,d1 ; 6 rows in the pattern - 1</p>
+<p>&nbsp;move.w #$0007,d2 ; 8 columns in the pattern - 1</p>
+<p>&nbsp;move.l #VDP_VRAM_WRITE_A,d3 ; initial address offset</p>
+<p>&nbsp;add.l #$00A00000,d3 ; initial address offset</p>
+<p>&nbsp;bsr.w DrawTileset ; branch to DrawTileset subroutine</p>
+</div>
+
+<p>So far this looks alright. I mean, my artwork skills are terrible but at least things are drawing where they're supposed to.</p>
+
+<p><img src="ScrollALow.png" alt="Counter - scroll A low" class="img-fluid d-block mx-auto"/></p>
+
+<p>Next let's draw the high plane tiles:</p>
+
+<div class="well">
+<p>&nbsp;; setup call to DrawTileset for high tiles</p>
+<p>&nbsp;lea PatternCounterHighStart,a1 ; store the high starting address in a2</p>
+<p>&nbsp;; tile 0 for the counter pattern should be at index 65h</p>
+<p>&nbsp;move.w #$8065,d0 ; store base tile ID in d0</p>
+<p>&nbsp;move.w #$0000,d1 ; 2 rows in the pattern - 1</p>
+<p>&nbsp;move.w #$0007,d2 ; 8 columns in the pattern - 1</p>
+<p>&nbsp;move.l #VDP_VRAM_WRITE_A,d3 ; initial address offset</p>
+<p>&nbsp;add.l #$02200000,d3 ; initial address offset</p>
+<p>&nbsp;bsr.w DrawTileset ; branch to DrawTileset subroutine</p>
+</div>
+
+<p>Now our little sprite can stand behind the counter.</p>
+
+<p><img src="CounterComplete.png" alt="Counter" class="img-fluid d-block mx-auto"/></p>
+
+<p>The problem is the sprite can also walk right through the counter, so I guess we need to implement some collision detection.</p>
+
+
+<br/>
+
+<p class="lead">Collision detection</p>
+
+<p>Let's start by creating a vector of collision data. The sprite plane is 512x512 and tiles are 8x8, that leaves us with a 64x64 grid to represent collision points on the map. This means we can use two long words (32-bit) to store collision points for each row in the map:</p>
+
+<p><img src="grid.png" alt="Collision detection data grid" class="img-fluid d-block mx-auto"/></p>
+
+<p>Again, I'm not thinking about optimization too much right now so maybe there's a more compact way to do this than a long string of 0s and 1s. The long words for each row need to mirror the collision points since 0 is the lowest bit and 31 is the highest. An example will probably make more sense..</p>
+
+<p>The collision data for our counter is:</p>
+
+<div class="well">
+<p>11111111111111110000000000000000 00000110000000000000000011111111</p>
+<p>11111111111111110000000000000000 00000110000000000000000011111111</p>
+<p>11111111111111110000000000000000 00000110000000000000000011111111</p>
+<p>11111111111111110000000000000001 11111110000000000000000011111111</p>
+<p>11111111111111110000000000000001 11111110000000000000000011111111</p>
+<p>11111111111111110000000000000001 11111110000000000000000011111111</p>
+</div>
+
+<p>The 1s are solid and 0s are open. The reason for the 1s around the edge are because I haven't implemented scrolling yet so they are off screen. The long words for these rows need to be stored with the bits reversed. The bits above are ordered left to right for readability. However, as numbers the leftmost digit is bit 31 and the rightmost is 0 so we need to flip them:</p>
+
+<div class="well">
+<p>; row 17 - 11111111111111110000000000000000 00000110000000000000000011111111</p>
+<p>dc.l $0000FFFF</p>
+<p>dc.l $FF000060</p>
+<p>; row 18 - 11111111111111110000000000000000 00000110000000000000000011111111</p>
+<p>dc.l $0000FFFF</p>
+<p>dc.l $FF000060</p>
+<p>; row 19 - 11111111111111110000000000000000 00000110000000000000000011111111</p>
+<p>dc.l $0000FFFF</p>
+<p>dc.l $FF000060</p>
+<p>; row 20 - 11111111111111110000000000000001 11111110000000000000000011111111</p>
+<p>dc.l $8000FFFF</p>
+<p>dc.l $FF00007F</p>
+<p>; row 21 - 11111111111111110000000000000001 11111110000000000000000011111111</p>
+<p>dc.l $8000FFFF</p>
+<p>dc.l $FF00007F</p>
+<p>; row 22 - 11111111111111110000000000000001 11111110000000000000000011111111</p>
+<p>dc.l $8000FFFF</p>
+<p>dc.l $FF00007F</p>
+</div>
+
+<p>The method to test for sprite collision against this map is a tad long so let's look at it in pieces. First is the basic setup of determining the collision point on the sprite and storing the direction they're moving. We already have some memory reserved from the <a href="https://huguesjohnson.com/programming/genesis/animated-sprites/">sprite animation</a> work. The collision point is just the lower left tile of the sprite:</p>
+
+<div class="well">
+<p>TestSpriteCollision:</p>
+<p>&nbsp;; a6 = SPRITE_ID</p>
+<p>&nbsp;; a6 + 2 = SPRITE_X</p>
+<p>&nbsp;; a6 + 4 = SPRITE_Y</p>
+<p>&nbsp;; a6 + 6 = SPRITE_PATTERN_INDEX</p>
+<p>&nbsp;; a6 + 8 = SPRITE_DIRECTION</p>
+<p>&nbsp;; a6 + A = SPRITE_FRAME</p>
+<p>&nbsp;; a6 + C = SPRITE_STEP_COUNTER</p>
+<p>&nbsp;movea.l a6,a4 ; store address in a4 because it is manipulated</p>
+<p>&nbsp;adda.l #$4,a4 ; move to a4+4 -> SPRITE_Y</p>
+<p>&nbsp;move.w (a4),d6 ; copy the sprite's y-position to d6</p>
+<p>&nbsp;add.w #$11,d6 ; sprites are 32px tall, test collision against lower half</p>
+<p>&nbsp;adda.l #$4,a4 ; move to a4+8 -> SPRITE_DIRECTION</p>
+<p>&nbsp;move.w (a4),d7 ; store direction in a7</p>
+</div>
+
+<p>Now we need to figure out which direction the sprite is moving to determine which bit of collision data to test. What we're trying to get out of this bit of code is the row of the collision data to look at:</p>
+
+<div class="well">
+<p>&nbsp;cmpi.w #DIRECTION_UP,d7 ; test if sprite is moving up</p>
+<p>&nbsp;bne.s TestDownCollision ; branch if not</p>
+<p>&nbsp;sub.w #$08,d6 ; sprite is moving up, test tile 1 up from sprite</p>
+<p>TestDownCollision:</p>
+<p>&nbsp;cmpi.w #DIRECTION_DOWN,d7 ; test if sprite is moving down</p>
+<p>&nbsp;bne.s TestSpriteCollisionRoundToRow ; branch if not</p>
+<p>&nbsp;add.w #$08,d6 ; sprite is moving down, test tile 1 down from sprite</p>
+<p>TestSpriteCollisionRoundToRow:</p>
+<p>&nbsp;andi.b #%11111000,d6 ; clear bits 0-2 to round to nearest power of 8</p>
+<p>&nbsp;suba.l #$6,a4   ; move back to a4+6 -> SPRITE_X</p>
+<p>&nbsp;cmpi.w #DIRECTION_RIGHT,d7 ; test if sprite is moving right</p>
+<p>&nbsp;bne.s TestLeftCollision ; branch if not</p>
+<p>&nbsp;move.w (a4),d7 ; d7 is no longer needed, copy sprite x to it</p>
+<p>&nbsp;add.w #$08,d7 ; sprite is moving right, test tile 1 right from sprite</p>
+<p>&nbsp;bra.s TestCollisionColumn ; sprite can't move both left & right</p>
+<p>TestLeftCollision:</p>
+<p>&nbsp;cmpi.w #DIRECTION_LEFT,d7 ; test if sprite is moving left</p>
+<p>&nbsp;bne.s NoHCollision ; branch if not</p>
+<p>&nbsp;move.w (a4),d7 ; d7 is no longer needed, copy sprite x to it</p>
+<p>&nbsp;sub.w #$08,d7 ; sprite is moving left, test tile 1 left from sprite</p>
+<p>&nbsp;bra.s TestCollisionColumn ; skip default copy of (a4) to d7</p>
+<p>NoHCollision:</p>
+<p>&nbsp;move.w (a4),d7 ; left & right flows store sprite x in d7</p>
+</div>
+
+<p>At this point we know the row of collision data, now we need the column. Since there are two columns of collision data per row we need to figure out whether the sprite is on the left or right side of the screen. Once we determine that we can test whether the row &amp; column that the sprite is moving into is open or solid.</p>
+
+<div class="well">
+<p>TestCollisionColumn:</p>
+<p>&nbsp;cmpi.w #$0100,d7 ; is sprite on the left or right side of the screen?</p>
+<p>&nbsp;blt.s TestMapCollision ; left side, go directly to collision test</p>
+<p>&nbsp;add.w #$0004,d6 ; on the right side, use 2nd lword for the row</p>
+<p>TestMapCollision:</p>
+<p>&nbsp;move.w d6,MEM_COLLISION_TEST ; copy d6 to collision test location</p>
+<p>&nbsp;lea  MapStoreCollision,a3 ; move address of map data to a3</p>
+<p>&nbsp;adda.w (MEM_COLLISION_TEST),a3 ; move to row & col</p>
+<p>&nbsp;move.l (a3),MEM_COLLISION_MAP_ROW ; copy row data to memory</p>
+<p>&nbsp;move.w d7,d6 ; copy the sprite's x-position to d6</p>
+<p>&nbsp;and.w #$00FF,d6 ; remove all bits over 255</p>
+<p>&nbsp;divu.w #$08,d6 ; divide by 8 to get index in map data</p>
+<p>&nbsp;; clear remainder from high word</p>
+<p>&nbsp;; credit to <a href="https://www.easy68k.com/paulrsm/doc/trick68k.htm">https://www.easy68k.com/paulrsm/doc/trick68k.htm</a> for this trick</p>
+<p>&nbsp;swap d6  ; swap upper and lower words</p>
+<p>&nbsp;clr.w d6 ; clear the upper word</p>
+<p>&nbsp;swap d6  ; swap back</p>
+<p>&nbsp;move.w #$0000,(MEM_COLLISION_RESULT) ; clear result</p>
+<p>&nbsp;move.l MEM_COLLISION_MAP_ROW,d7 ; move map data to d7</p>
+<p>&nbsp;btst.l d6,d7 ; test for collision</p>
+<p>&nbsp;beq.w ExitTestSpriteCollision ; no collision, exit</p>
+<p>&nbsp;move.w #$FFFF,(MEM_COLLISION_RESULT) ; collision is true, set result</p>
+<p>ExitTestSpriteCollision:</p>
+<p>&nbsp;rts</p>
+</div>
+
+<p>The last step is updating the MoveSprite subroutine created in the <a href="https://huguesjohnson.com/programming/genesis/animated-sprites/">sprite animation</a> article to call TestSpriteCollision:</p>
+
+
+<div class="well">
+<p>MoveSprite:</p>
+<p>&nbsp;movea.l a6,a5 ; store address in a5 because it is manipulated</p>
+<p>&nbsp;; collision detection</p>
+<p>&nbsp;bsr.w TestSpriteCollision ; branch to test sprite collision</p>
+<p>&nbsp;tst.w (MEM_COLLISION_RESULT) ; 0 = no collision</p>
+<p>&nbsp;beq.s NoCollision ; no collision, continue moving</p>
+<p>&nbsp;bsr.w StopSprite ; collision, stop moving</p>
+<p>&nbsp;bra.w ExitMoveSprite ; collision, exit</p>
+<p>NoCollision:</p>
+<p>&nbsp;adda.l #$8,a5 ; move to a5+8 -> SPRITE_DIRECTION</p>
+<p>&nbsp;move.w (a5),d7 ; store direction in a7</p>
+<p>[... existing code to move the sprite, minus the edge detection which is now part of TestSpriteCollision ...]</p>
+</div>
+
+<p>Now our sprite can walk up to the counter, I might tweak the map data a little so they can get closer:</p>
+
+<p><img src="CollisionUp.png" alt="Collision - up" class="img-fluid d-block mx-auto"/></p>
+
+<p>Hitting it from the left side is working fine:</p>
+
+<p><img src="CollisionLeft.png" alt="Collision - left" class="img-fluid d-block mx-auto"/></p>
+
+<p>The one issue is it's possible to squeeze into a place where the sprite's legs are drawn over the counter.</p>
+
+<p><img src="CollisionGlitch.png" alt="Collision glitch" class="img-fluid d-block mx-auto"/></p>
+
+<p>I don't think this is a flaw in the collision detection code. I think I need to make the counter bigger because the more I look at it the more I realize it's way too small. I don't know what I'm going to tackle next except that figuring out the scenery for the full store needs to be done soon.</p>
+
+
+<br/>
+
+<p class="lead">Now what?</p>
+
+
+<p>So at this point my Sega Genesis demo is roughly equivalent feature-wise to my <a href="https://huguesjohnson.com/programming/android-sprite-walker-demo/">Android SpriteWalker Demo</a>. They both have a player-controlled sprite moving around a simple location with music and collision detection. The Genesis version doesn't save the player state when the game quits and that might be fun to try next.</p>
+
+<p>Assuming I continue with my zany RPG ideas I have to choose whether to go with Android or Sega Genesis. I'm not going to write a 3rd demo on a different platform, it's going to be one of these two.</p>
+<p>There are a number of trade-offs to consider:</p>
+
+<p>
+<table width="100%" border="1">
+<tr>
+ <td width="34%">&nbsp;</td>
+ <td width="33%"><b>Android</b></td>
+ <td width="33%"><b>Sega Genesis</b></td>
+</tr>
+<tr>
+ <td width="34%"><b>Development Tools</b></td>
+ <td width="33%">Most of my experience is with Eclipse which works well for Android development. Google would prefer if everyone moved over to Android Studio which in my limited experience is only good at producing an endless stream of obtuse Gradle errors. <a href="https://huguesjohnson.com/narpassword/">I managed to build one application in Android Studio</a> and I still think it was an accident.</td>
+ <td width="33%">Effectively non-existent, to just build this tiny demo I had to write one development tool. If I continue this path I'll have to write a few more.</td>
+</tr>
+<tr>
+ <td width="34%"><b>Testing</b></td>
+ <td width="33%">If it runs on an emulator there's a 50% chance it will run on real hardware. For the few small applications I've written I think I spent the majority of my time figuring out why Environment.getExternalStorageDirectory() functions differently on some, but not all, Samsung phones.</td>
+ <td width="33%">If it runs on an emulator there's a 99% chance it will run on real hardware. If I continue this path I'll need to buy an over-priced flash cart but at least I only need to test on one piece of hardware. </td>
+</tr>
+<tr>
+ <td width="34%"><b>Community Support</b></td>
+ <td width="33%">Very large, active community of developers to work with. I've yet to find a problem that there wasn't a blog entry or StackOverflow topic containing the solution.</td>
+ <td width="33%">Tiny community of active developers, the couple I've interacted with are nice enough. Overall though this is a &quot;figure it out yourself&quot; endeavor.</td>
+</tr>
+<tr>
+ <td width="34%"><b>Audio Programming</b></td>
+ <td width="33%">Nearly zero effort, just find some public domain mp3s and play them.</td>
+ <td width="33%"><a href="https://huguesjohnson.com/programming/genesis/echo/">Converting public domain .xm files</a> is an option, not a great one but better than nothing.</td>
+</tr>
+<tr>
+ <td width="34%"><b>Platform Stability</b></td>
+ <td width="33%">I suspect one day all Android development will move to Go (or something else)</td>
+ <td width="33%">Obsolete, unsupported platforms are remarkably stable.</td>
+</tr>
+<tr>
+ <td width="34%"><b>Forward Compatibility</b></td>
+ <td width="33%">There are regular Android upgrades that sometimes (often) require code changes. It's expected that I'd have to update any Android application about once a year.</td>
+ <td width="33%">Obviously not an issue.</td>
+</tr>
+<tr>
+ <td width="34%"><b>Ability to Commercialize</b></td>
+ <td width="33%">There's practically no relationship between the quality of a mobile game and the amount of money it makes. I have no way to predict whether I could make a profitable game on Android.</td>
+ <td width="33%">I'm certain I could not make a profitable game on the Genesis so at least I won't be frustrated trying to figure out how to do it.</td>
+</tr>
+<tr>
+ <td width="34%"><b>Resume Padding</b></td>
+ <td width="33%">Being able to program for Android is a marketable, in-demand skill.</td>
+ <td width="33%">On the other hand, I'd much rather work for someone who was more impressed by the ability to program a Genesis.</td>
+</tr>
+<tr>
+ <td width="34%"><b>Fun</b></td>
+ <td width="33%">I feel like most of the time I've spent doing Android development involves (1) dealing with IDE errors (2) updating code because of a breaking change in a new release (3) figuring out how to make something run in both the latest version and any previous one (4) going insane trying to resolve device-specific problems. None of these issues are especially fun.</td>
+ <td width="33%">The Sega Genesis demo took about 10x longer to produce but was bizarrely more fun to work on. I don't know exactly how to put it, there's just something enjoyable (to me) about trying to figure out how to do simple things on the Genesis. Building any software is just an exercise in solving lots &amp; lots of simple problems. If I continue to take an incremental approach to writing a Genesis game I think I will continue having fun doing it.</td>
+</tr>
+</table>
+</p>
+
+<p>Right now the Genesis is definitely in the lead...</p>
+
+<p><a href="https://github.com/huguesjohnson/RetailClerk89">Download the latest source code on GitHub</a></p>
+
+	<br>	
+	<div class="row">
+		<div class="col">
+			<a class="float-left" href="https://huguesjohnson.com/programming/genesis/echo/">&lt;- Part 4: Echo Sound Engine</a>
+		</div>
+		<div class="col">
+			<a class="float-right" href="https://huguesjohnson.com/programming/genesis/vscroll/">Part 6: Vertical Scrolling -&gt;</a>
+		</div>
+	</div>
+	<br>
+
+
+
+<hr>
+
+<p class="lead blog-description">Related</p>
+
+<div class="row container">
+
+<div class="col-sm"><a href="https://huguesjohnson.com/rc89/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/rc89.png" alt="Retail Clerk '89"></p><p>Retail Clerk '89</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/tiles-sprites/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesissprites.png" alt="Sega Genesis Programming Part 2: Tiles and Sprites"></p><p>Sega Genesis Programming Part 2: Tiles and Sprites</p></a></div>
+
+<div class="col-sm"><a href="https://huguesjohnson.com/programming/genesis/spritelist/"><p><img class="img-thumbnail" src="https://huguesjohnson.com/images/related/genesisspritelist.png" alt="Sega Genesis Programming Part 10: Sprite Link List"></p><p>Sega Genesis Programming Part 10: Sprite Link List</p></a></div>
+
+</div>
+
+<br clear="all"/>
+
+
+
+
+<!-- begin share -->
+<!-- end share -->
+
+<!-- begin support -->
+
+<!-- end support -->
+
+<hr>
+
+<!-- begin footer -->
+      <footer>
+		<p>All source code and software on this site is distributed under <a href="https://opensource.org/licenses/MIT">The MIT License</a> (copyright 2000-2020 Hugues Johnson) unless otherwise noted. </p>
+		<p>All other content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> unless otherwise noted.</p>
+		<p>All opinions on this site reflect my personal views and do not represent views of my current, or any former, employer.</p>
+		<p>Site theme is based on <a href="https://getbootstrap.com">Bootstrap</a> licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">The MIT License</a>. Site font is Ubuntu licensed under <a href="https://font.ubuntu.com/ufl/ubuntu-font-licence-1.0.txt">Ubuntu Font License</a>. Navigation logo font is Audiowide licensed under <a href="https://scripts.sil.org/OFL">Open Font License</a>.</p>
+		<p>This site does not contain advertisements or sponsored content. I am not remotely interested in either so don't ask.</p>
+		<p>Privacy policy: I don't care even a little about who visits this site and make no attempt to track usage. The content delivery network I use happens to collect user agent and IP address but I never look at them. This site does not use cookies.</p>
+      </footer>
+<!-- end footer -->
+
+
+    </div><!-- /.container -->
+
+
+<!-- begin page end -->
+<!-- end page end -->
+
+</body>
+
+</html>
