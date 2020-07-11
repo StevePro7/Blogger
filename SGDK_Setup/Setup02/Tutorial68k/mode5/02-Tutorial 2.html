@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="SHORTCUT ICON" HREF="/m5 fav.png">
+<body text=white style="background-color:black">
+<title>Tutorial 2</title>
+<h2>Conditional statements</h2>
+<p>This tutorial builds on tutorial 1 by adding a conditional statement. Conditional statements are extremely powerful in controlling program execution, and there are many different ways to use them.</p>
+<p>Some conditions are: beq (branch if equal) bne (not equal) bgi (if higher) blo (if lower) bge (greater or equal) ble (lesser or equal). Conditional branches will often be preceded by a test (tst, btst) or compare (cmp, cmpi, cmpm, etc.) instruction. You will also need a target location for your branch.</p>
+</body>
+<h3>What is our goal?</h3>
+<p>Add a conditional statement to our previous program.</p>
+<h3>Let's start!</h3>
+<p>Open up that source.asm and go to that loop with the add instruction.</p>
+<img src="http://mode5.net/img/tut1_2.PNG" align=middle alt="Logo" style="width:268px;height:218px;">
+<p>We will be adding a cmpi.w (compare 16 bit word) instruction, and a beq (branch if equal) instruction. It's worth mentioning that you can't return from a conditional branch using an "RTS" instruction, as conditional branches don't push the program counter on to the stack.</p>
+<img src="http://mode5.net/img/tut2_1.PNG" align=middle alt="Logo" style="width:633px;height:175px;">
+<p>The code will now increment D1 each time D0 hits $100 (256 in decimal). You can verify this by running in Kmod Gens and viewing the 68k's registers. D0 will be counting up very quickly, and d1 will be counting up more slowly.</p>
+<a href="http://mode5.net/Tutorials.html">Go back to tutorials</a>
+</html>

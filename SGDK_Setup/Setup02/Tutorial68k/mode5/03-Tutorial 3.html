@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="SHORTCUT ICON" HREF="/m5 fav.png">
+<body text=white style="background-color:black">
+<title>Tutorial 3</title>
+<h2>Colors</h2>
+<p>In this tutorial, we will be making the Genesis display a solid color.</p>
+<a href="http://mode5.net/download/tutorial3.zip">The tutorial starter files.</a>
+<p></p>
+<a href="http://segaretro.org/Palette">Refer to this page for info on how Genesis colors work.</a>
+</body>
+<h3>What is our goal?</h3>
+<p>Display a solid color by changing the background color.</p>
+<h3>Let's start!</h3>
+<p>In the source.asm, you will see a some more included code.</p>
+<img src="http://mode5.net/img/tut3_2.PNG" align=middle alt="Logo" style="width:465px;height:346px;">
+<p>The "setup_vdp" routine sets up the VDP's registers, and makes it ready to work. The "clear_vram" routine clears everything in video memory. Don't assume any memory will already be empty. Clear it!</p>
+<p>The included "setup_vdp" routine makes this tutorial pretty easy. That routine will get the VDP ready to go, and leave it's data port in A4 and control port in A3. All you need to do is add two lines of code. "move.l #$C0000000,(a3)" writes that big number to the VDP control port, which tells the VDP that you want to write to the first slot of color memory. The "move.w #$00EE,(a4)" instruction tells the VDP to write the number $00EE (the color yellow) into memory. So, the first instruction is the where, and the second instruction is the what. The process is the same for all VDP reads and writes.</p>
+<img src="http://mode5.net/img/tut3_3.PNG" align=middle alt="Logo" style="width:285px;height:204px;">
+<p>Compile and run the program. If all goes well, you should see a solid yellow background.</p>
+<img src="http://mode5.net/img/tut3_1.PNG" align=middle alt="Logo" style="width:336px;height:298px;">
+<p></p>
+<a href="http://mode5.net/Tutorials.html">Go back to tutorials</a>
+</html>

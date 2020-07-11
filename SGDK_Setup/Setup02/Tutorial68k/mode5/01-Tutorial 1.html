@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="SHORTCUT ICON" HREF="/m5 fav.png">
+<body text=white style="background-color:black">
+<title>Tutorial 1</title>
+<h2>Your first running program</h2>
+<p>Most tutorials start with a "Hello World" program. Not this one. Hello World on the Genesis in ASM takes a lot more code and knowledge of the hardware compared to other computers. This is because the Genesis doesn't have any built in font, or method of drawing text on the screen.</p>
+<h3>What you will need:</h3>
+<a href="http://mode5.net/download/tutorial1.zip">The tutorial starter files.</a>
+<p></p>
+<a href="http://segaretro.org/Gens_KMod">Gens KMod</a>
+<p>A text editor such as notepad++. Notepad works too, but lacks syntax highlighting.</p>
+<a href="https://info.sonicretro.org/images/4/48/UserDefineLang-68000-Z80.zip">Z80 & 60K syntax highlighting plug-in (optional, for notepad++)</a>
+<p></p>
+<a href="http://info.sonicretro.org/SCHG:68000_Instruction_Set"> I would also recommend reading sonicretro's 68k instruction documentation.</a>
+</body>
+<h3>What is our goal?</h3>
+<p>Our goal is to make a running program, even if it doesn't do anything to show that it's running.</p>
+<h3>Let's start!</h3>
+<p>Start by opening up the "source.asm" in the .zip provided in your editor of choice.</p>
+<p>You will see a file header at the beginning of the file. You can ignore this for now. There is also some code to clear out the system registers and RAM. This can also be ignored for now. For now, we will be adding a single instruction in between the "loop:" label and the "bra loop" instruction. This is the loop that the program runs after it's finished with clearing the RAM and registers.</p>
+<img src="http://mode5.net/img/tut1_1.PNG" align=middle alt="Logo" style="width:313px;height:257px;">
+<p>We will be adding one simple instruction here. "add.l #$01,d0" (or any other data register). This increments data register zero by one every time the loop is run.</p>
+<img src="http://mode5.net/img/tut1_2.PNG" align=middle alt="Logo" style="width:268px;height:218px;">
+<p>Easy peasy! Now save the .asm, and double click the "make.bat" included in the .zip download. This will compile your program. If all goes well, it should spit out a file named "output.bin".</p>
+<p>Now, open up Kmod Gens and open up your newly compiled program. Once it's opened, you will only get a black screen. Go to the "CPU" tab in Gens, choose "debug", then "genesis", then click "Genesis - 68K". A window will come up and you should see the D0 register counting up very quickly.</p>
+<img src="http://mode5.net/img/tut1_3.PNG" align=middle alt="Logo" style="width:417px;height:377px;">
+<p>I know it's not much, but I want to start my tutorials as simple as possible. There is a lot you need to know before you get any sort of graphic or sound output.</p>
+<a href="http://mode5.net/Tutorials.html">Go back to tutorials</a>
+</html>
