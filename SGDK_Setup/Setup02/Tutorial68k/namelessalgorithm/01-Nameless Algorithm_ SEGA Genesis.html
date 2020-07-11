@@ -1,0 +1,504 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/vs2015.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="SEGA Genesis programming">
+    <meta name="keywords" content="SEGA,Genesis,MegaDrive,Programming,Assembler,Game development,Tutorial">
+    <meta name="author" content="Jakob Schmid">
+    <title>Nameless Algorithm: SEGA Genesis</title>
+
+    <!-- HTML include using JavaScript,
+       - see https://stackoverflow.com/a/9003363
+       - jQuery downloaded from https://jquery.com/download/
+       -->
+    <script src="/jquery-3.3.1.min.js" /></script>
+
+    <!-- commentbox.io -->
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
+    <!-- main site scripts -->
+    <script src='/nameless.js'> </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128449068-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128449068-2');
+    </script>
+
+</head>
+<body>
+    <div id="top_menu"> loading... </div> <!-- will be replaced by header.html -->
+    <div style='float:right'>
+	<a href='/genesis/'>All Genesis articles</a> | <a href='/'>Back to top</a>
+    </div>
+    <br style='clear:right' />
+<h1>SEGA Genesis: Building a ROM</h1>
+<p>This first article is focused on building a very simple ROM for the SEGA Genesis using assembly code. The ROM does a simple graphical effect, flickering the background color. Getting text on the screen is more complicated, so a proper 'Hello World' ROM will have to wait.</p>
+<h2>Genesis Hardware</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="model1.jpg" class='screenshot' />
+<div>SEGA Megadrive PAL Model 1</div>
+</div>
+<p>The SEGA Genesis had a Motorola 68000 CPU running at 7.6 MHz, a pretty fast processor for its time. It had very limited memory, only 64 KB main RAM and 64 KB Video RAM, half of what a decent home computer of the time would have, but that would be offset by the storage device being ROM cartridges with 512 KB - 8 MB, reducing any load time to almost zero.</p>
+<p>The Genesis had a secondary CPU, a Zilog Z80 running at 3.58 MHz with 8 KB RAM. The Z80 was a very popular CPU in the late 70s and early 80s, used in the ZX Spectrum, the MSX computers, the Sega Master System, and in arcade games such as Pac-Man, Galaga, Dig Dug, Xevious, and others.</p>
+<p>The Z80 was primarily used for controlling the audio chips, a Yamaha YM2612 FM chip which delivered 6 stereo FM channels and the Texas Instruments SN76489 Programmable Sound Generator (PSG), which has 3 square waves and a noise channel.</p>
+<p>For this article, we're going to focus on the Motorola 68000.</p>
+<h2>The Motorola 68000</h2>
+<div class='screenshot'>
+<img src="mc68000.jpg" class='screenshot' />
+<div>Motorola 68000</div>
+</div>
+<p>The Motorola 68000 is a 16/32-bit processor introduced in 1979. It was very popular in 80s computers, notably:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sun-1">The first Sun Microsystems workstation, Sun-1 (1982)</a>, the first generation of SunOS *nix workstations, funded by the Defense Advanced Research Projects Agency (DARPA).</li>
+<li><a href="https://en.wikipedia.org/wiki/Apple_Lisa">The Apple Lisa (1983)</a> and <a href="https://en.wikipedia.org/wiki/Macintosh_128K">the original Apple Macintosh (1984)</a>, the first Apple computers to have a graphical user interface.</li>
+<li><a href="https://en.wikipedia.org/wiki/Silicon_Graphics#IRIS_1000_series">The Silicon Graphics IRIS 1000 (1984)</a>, a computer for professional graphics production, featuring a 1024x1024 resolution, and custom 3D rendering hardware.</li>
+<li><a href="/amiga/">The Commodore Amiga (1985)</a>, a home computer known for its impressive graphics and 4-channel sampled sound, very popular in Europe.</li>
+<li><a href="https://en.wikipedia.org/wiki/Atari_ST">The Atari ST (1985)</a>, one of the most prominent computers used for home music production in the late 80s and early 90s.</li>
+<li><a href="https://en.wikipedia.org/wiki/X68000">The Sharp X68000 (1987)</a>, notable for its great Capcom arcade ports.</li>
+</ul>
+<p>It was also a popular CPU for arcade games:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/List_of_Sega_arcade_system_boards#Sega_System_16">Sega's arcade hardware platform, System 16 (1985)</a>, known for Shinobi, Golden Axe, Altered Beast.</li>
+<li><a href="https://en.wikipedia.org/wiki/CP_System_II">Capcom's arcade system, CP System II (1993)</a>, known for Super Street Fighter II, the Street Fighter Alpha series, Darkstalkers, and Marvel vs. Capcom.</li>
+<li><a href="https://en.wikipedia.org/wiki/Neo_Geo_(system)">SNK's 1990 arcade platform Neo Geo (1990)</a>, with games such as Metal Slug, Fatal Fury, King of Fighters, Samurai Shodown.</li>
+</ul>
+<p>For the 1988 Genesis, the MC68000 was an obvious choice, it was already a mainstay in home computers, and SEGA already used it their System 16 arcade hardware, presumably making it much easier to port arcade games to the home market. In fact, the Genesis architecture is very similar to the System 16, which also features a Z80, a Yamaha FM chip, and a standard resolution of around 320x224.</p>
+<p><a href="http://mrjester.hapisan.com/04_MC68/">Markey Jester's Motorola 68000 Beginner's Tutorial</a> is useful for learning MC68000 assembly code, the game development language of choice for game programmers.</p>
+<p>If you want to test out some 68000 instructions or debug your code, <a href="http://www.easy68k.com/">EASy68K</a> is really useful. It's an integrated development environment (IDE) that includes an editor, an assembler, and a debugger. It only emulates a 68000, no Genesis-specific stuff at all.</p>
+<h2>Tools</h2>
+<p>The only tool needed to create a ROM is an MC68000 assembler.
+The open source assembler <a href="http://sun.hasenbraten.de/vasm/">vasm</a> built with Motorola-style syntax works well for this purpose.</p>
+<p>Currently, there isn't a Windows binary download of vasm, so it is necessary to build it from source.
+It is distributed with a Makefile, which can be built with Visual Studio's <code>nmake</code> tool. To build it, start the Visual Studio 'Developer Command Prompt' and enter the directory containing the vasm source, and then execute these commands:</p>
+<pre><code class="language-dos">makedir obj_win32
+nmake -f Makefile.Win32 CPU=m68k SYNTAX=mot
+</code></pre>
+<p>This generates the executable <code>vasmm68k_mot_win32.exe</code>, which can be used to create a ROM file.</p>
+<p>We can test the assembler with a simple program:</p>
+<pre><code class="language-armasm">    move.w #7,d0
+</code></pre>
+<p>A single instruction that sets register D0 to the value 7.</p>
+<p>Assemble it using this command:</p>
+<pre><code class="language-dos">vasmm68k_mot_win32 -Fbin test.asm -o test.bin
+</code></pre>
+<p>The result is a 4 byte file <code>test.bin</code>:</p>
+<pre class='hxd'>
+<span class="offsetheader">Offset(h) 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F</span>
+<span class="offsetcol">00000000</span>  <span class="hexcol">30 3C 00 07                                    </span>  <span class="textcol">0&lt;..</span>
+</pre>
+<p class="generatorinfo">Generated by <a href="http://mh-nexus.de/hxd/" class="generatorlink">HxD</a></p>
+</body>
+</html>
+<h2>The Code</h2>
+<p>This ROM is a very simple example that flashes the background color and does nothing else. The main loop looks like this:</p>
+<pre><code class="language-armasm">__main
+    move.w  #0,d0                  ; d0 = 0
+    move.w  #$8F00,vdp_control     ; Graphics init code
+                                   ; (disable auto-increment)
+    move.l  #$C0000003,vdp_control ; Set up write to color 0
+loop
+    move.w  d0,vdp_data            ; Write color 0 value
+    add.w   #1,d0                  ; Modify color
+
+    move.w  #100,d1                ; Busy-wait a little while
+.wait                              ; by counting down from 100
+    dbra    d1,.wait
+
+    jmp     loop                   ; Goto loop
+</code></pre>
+<p>Note that <code>vdp_control</code> and <code>vdp_data</code> are constant addresses, used for memory-mapped I/O between the MC68000 and the VDP graphics processor. The color cycling is implemented by incrementing the <code>D0</code> register and writing that value to the <code>COLOR 0</code> memory of the VDP. This 16-bit value is interpreted as a 9-bit color value, selecting a color from 512 possible colors. The 16-bit value is interpreted like this:</p>
+<pre><code class="language-text">Bit #: FEDCBA9876543210
+Color: ....BBB.GGG.RRR.
+</code></pre>
+<p>So that's it - incrementing this 16-bit value will change the color and it will eventually wrap around to 0, starting over with the color black.</p>
+<p>Now, to make a functional ROM out of this program, we need the following extra stuff:</p>
+<ul>
+<li>A header with a list of addresses that specifies where the program and where a list of interrupt and error handler subroutines are located.</li>
+<li>A header with some text strings specifying ROM title and other metadata, a checksum that seems to be ignored by emulators, and some addresses specifying the start and end of ROM and RAM.</li>
+<li>Initialization code that ensures that the Genesis is in a consistent state when the ROM is booted.</li>
+</ul>
+<p>The following is <a href="minimal.asm">the assembly code for a very minimal functional ROM</a> containing the above main loop. The details of the initialization code is explained in a later article.</p>
+<pre><code class="language-armasm">; Minimal SEGA Genesis ROM by the Nameless Algorithm 2018-07-02
+; - http://namelessalgorithm.com/
+;
+; ROM HEADER
+; -------------------------------------------------------------
+rom_header:
+    dc.l   $00FFFFFE        ; Initial stack pointer value
+    dc.l   EntryPoint       ; Start of program
+    dc.l   ignore_handler   ; Bus error
+    dc.l   ignore_handler   ; Address error
+    dc.l   ignore_handler   ; Illegal instruction
+    dc.l   ignore_handler   ; Division by zero
+    dc.l   ignore_handler   ; CHK exception
+    dc.l   ignore_handler   ; TRAPV exception
+    dc.l   ignore_handler   ; Privilege violation
+    dc.l   ignore_handler   ; TRACE exception
+    dc.l   ignore_handler   ; Line-A emulator
+    dc.l   ignore_handler   ; Line-F emulator
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Spurious exception
+    dc.l   ignore_handler   ; IRQ level 1
+    dc.l   ignore_handler   ; IRQ level 2
+    dc.l   ignore_handler   ; IRQ level 3
+    dc.l   ignore_handler   ; IRQ level 4 (horiz. retrace int.)
+    dc.l   ignore_handler   ; IRQ level 5
+    dc.l   ignore_handler   ; IRQ level 6 (vert. retrace int.)
+    dc.l   ignore_handler   ; IRQ level 7
+    dc.l   ignore_handler   ; TRAP #00 exception
+    dc.l   ignore_handler   ; TRAP #01 exception
+    dc.l   ignore_handler   ; TRAP #02 exception
+    dc.l   ignore_handler   ; TRAP #03 exception
+    dc.l   ignore_handler   ; TRAP #04 exception
+    dc.l   ignore_handler   ; TRAP #05 exception
+    dc.l   ignore_handler   ; TRAP #06 exception
+    dc.l   ignore_handler   ; TRAP #07 exception
+    dc.l   ignore_handler   ; TRAP #08 exception
+    dc.l   ignore_handler   ; TRAP #09 exception
+    dc.l   ignore_handler   ; TRAP #10 exception
+    dc.l   ignore_handler   ; TRAP #11 exception
+    dc.l   ignore_handler   ; TRAP #12 exception
+    dc.l   ignore_handler   ; TRAP #13 exception
+    dc.l   ignore_handler   ; TRAP #14 exception
+    dc.l   ignore_handler   ; TRAP #15 exception
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    dc.l   ignore_handler   ; Unused (reserved)
+    
+    dc.b &quot;SEGA GENESIS    &quot; ; Console name
+    dc.b &quot;(C) NAMELESS    &quot; ; Copyrght holder and release date
+    dc.b &quot;VERY MINIMAL GENESIS CODE BY NAMELESS ALGORITHM   &quot;
+                                                 ; Domest. name
+    dc.b &quot;VERY MINIMAL GENESIS CODE BY NAMELESS ALGORITHM   &quot;
+                                                 ; Intern. name
+    dc.b &quot;2018-07-02    &quot;   ; Version number
+    dc.w $0000              ; Checksum
+    dc.b &quot;J               &quot; ; I/O support
+    dc.l $00000000          ; Start address of ROM
+    dc.l __end              ; End address of ROM
+    dc.l $00FF0000          ; Start address of RAM
+    dc.l $00FFFFFF          ; End address of RAM
+    dc.l $00000000          ; SRAM enabled
+    dc.l $00000000          ; Unused
+    dc.l $00000000          ; Start address of SRAM
+    dc.l $00000000          ; End address of SRAM
+    dc.l $00000000          ; Unused
+    dc.l $00000000          ; Unused
+    dc.b &quot;                                        &quot; ; Notes
+    dc.b &quot;JUE             &quot;                     ; Country codes
+        
+
+
+; CONSTANTS
+; -------------------------------------------------------------
+vdp_control     = $C00004 ; Memory mapped I/O
+vdp_data        = $C00000 ;
+
+
+
+; INIT
+; -------------------------------------------------------------
+EntryPoint:               ; Entry point addr. set in ROM header
+    move    #$2700,sr     ; disable interrupts
+
+
+; Skip clear RAM - we don't use it at all in this example
+
+; TMSS
+    move.b  $00A10001,d0  ; Move Megadrive hardware ver. to d0
+    andi.b  #$0F,d0       ; Version is stored in last four bits
+                          ;   so mask it with 0F
+    beq     @Skip         ; If version = 0, skip TMSS signature
+    move.l  #'SEGA',$00A14000 ; Move string &quot;SEGA&quot; to $A14000
+@Skip:
+
+; Z80
+    move.w  #$0100,$00A11100 ; Request access to the Z80 bus
+    move.w  #$0100,$00A11200 ; Hold the Z80 in a reset state
+@Wait:
+    btst    #$0,$00A11101    ; Check if we have access to
+    bne     @Wait            ;   the Z80 bus yet
+    move.l  #$00A00000,a1    ; Copy Z80 RAM address to a1
+    move.l  #$00C30000,(a1)  ; Copy data and increment the
+                             ;   source/dest addresses
+ 
+    move.w  #$0000,$00A11200 ; Release reset state
+    move.w  #$0000,$00A11100 ; Release control of bus
+ 
+; Initialize PSG to silence
+    ;move.l  #$9fbfdfff,$00C00011  ; silence
+
+; Initialising the VDP
+    move.l  #VDPRegisters,a0 ; Load address of register table
+    move.l  #$18,d0          ; 24 registers to write
+    move.l  #$00008000,d1    ; 'Set register 0' command
+                             ; (and clear the rest of d1 ready)
+ 
+@CopyVDP:
+    move.b  (a0)+,d1         ; Copy register value to d1
+    move.w  d1,$00C00004     ; Write command and value to
+                             ; VDP control port
+    add.w   #$0100,d1        ; Increment register #
+    dbra    d0,@CopyVDP
+
+; Ignore I/O ports - we don't use them
+    
+; Status register
+    move    #$2700,sr
+
+
+
+; MAIN PROGRAM
+; -------------------------------------------------------------
+__main
+    move.w  #0,d0
+    move.w  #$8F00,vdp_control     ; Set VDP autoincrement to
+                                   ; 2 words/write
+    move.l  #$C0000003,vdp_control ; Set up VDP to write to
+                                   ; CRAM address $0000
+loop
+    move.w  d0,vdp_data        ; black (BGR)
+    add.w   #1,d0
+    move.w  #100,d1
+.wait
+    dbra    d1,.wait
+    jmp     loop
+
+
+
+; EXCEPTION AND INTERRUPT HANDLERS
+; -------------------------------------------------------------
+    align 2 ; word-align code
+
+ignore_handler
+    rte ; return from exception (seems to restore PC)
+
+
+
+; VDP REGISTER INITIALIZATION
+; -------------------------------------------------------------
+; Code by Matt Philips
+; - https://bigevilcorporation.co.uk/2012/03/09
+;                          /sega-megadrive-3-awaking-the-beast/
+; - Explanations (albeit short explanations) of the VDP
+;   registers can be found in chapter 4 of the SEGA2 doc 
+
+    align 2 ; word-align code
+
+VDPRegisters:
+VDPReg0:   dc.b $14 ;  0: H interrupt on, palettes on
+VDPReg1:   dc.b $74 ;  1: V interrupt on, display on, DMA on,
+                    ;     Genesis mode on
+VDPReg2:   dc.b $30 ;  2: Pattern table for Scroll Plane A
+                    ;     at VRAM $C000
+                    ;     (bits 3-5 = bits 13-15)
+VDPReg3:   dc.b $00 ;  3: Pattern table for Window Plane
+                    ;     at VRAM $0000
+                    ;     (disabled) (bits 1-5 = bits 11-15)
+VDPReg4:   dc.b $07 ;  4: Pattern table for Scroll Plane B
+                    ;     at VRAM $E000
+                    ;     (bits 0-2 = bits 11-15)
+VDPReg5:   dc.b $78 ;  5: Sprite table at VRAM $F000
+                    ;     (bits 0-6 = bits 9-15)
+VDPReg6:   dc.b $00 ;  6: Unused
+VDPReg7:   dc.b $00 ;  7: Background colour - bit 0-3 = colour,
+                    ;     bits 4-5 = palette
+VDPReg8:   dc.b $00 ;  8: Unused
+VDPReg9:   dc.b $00 ;  9: Unused
+VDPRegA:   dc.b $FF ; 10: Frequency of Horiz. interrupt in
+                    ;     Rasters (number of lines travelled by
+                    ;     the beam)
+VDPRegB:   dc.b $00 ; 11: External interrupts off,
+                    ;     V scroll fullscreen,
+                    ;     H scroll fullscreen
+VDPRegC:   dc.b $81 ; 12: Shadows and highlights off,
+                    ;     interlace off,
+                    ;     H40 mode (320 x 224 screen res)
+VDPRegD:   dc.b $3F ; 13: Horiz. scroll table at VRAM $FC00
+                    ;     (bits 0-5)
+VDPRegE:   dc.b $00 ; 14: Unused
+VDPRegF:   dc.b $02 ; 15: Autoincrement 2 bytes
+VDPReg10:  dc.b $01 ; 16: Vert. scroll 32, Horiz. scroll 64
+VDPReg11:  dc.b $00 ; 17: Window Plane X pos 0 left
+                    ;    (pos in bits 0-4, left/right in bit 7)
+VDPReg12:  dc.b $00 ; 18: Window Plane Y pos 0 up
+                    ;    (pos in bits 0-4, up/down in bit 7)
+VDPReg13:  dc.b $FF ; 19: DMA length lo byte
+VDPReg14:  dc.b $FF ; 20: DMA length hi byte
+VDPReg15:  dc.b $00 ; 21: DMA source address lo byte
+VDPReg16:  dc.b $00 ; 22: DMA source address mid byte
+VDPReg17:  dc.b $80 ; 23: DMA source address hi byte,
+                    ;     memory-to-VRAM mode (bits 6-7)
+__end:
+</code></pre>
+<h2>Running the ROM</h2>
+<div class='screenshot'>
+<img src="screenshot.png" class='screenshot' />
+<div>Color Cycling</div>
+</div>
+<p>Building the ROM is as simple as assembling a raw binary file:</p>
+<pre><code class="language-bash">vasmm68k_mot_win32 -Fbin minimal.asm -o roms\minimal.gen 
+</code></pre>
+<p>Which results in <a href="minimal.gen">this ROM file</a>:</p>
+<pre class='hxd'>
+<span class="offsetheader">Offset(h) 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F</span>
+<span class="offsetcol">00000000</span>  <span class="hexcol">00 FF FF FE 00 00 02 04 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">.ÿÿþ.......œ...œ</span>
+<span class="offsetcol">00000010</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000020</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000030</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000040</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000050</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000060</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000070</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000080</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000090</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">000000A0</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">000000B0</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">000000C0</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">000000D0</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">000000E0</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">000000F0</span>  <span class="hexcol">00 00 02 9C 00 00 02 9C 00 00 02 9C 00 00 02 9C</span>  <span class="textcol">...œ...œ...œ...œ</span>
+<span class="offsetcol">00000100</span>  <span class="hexcol">53 45 47 41 20 47 45 4E 45 53 49 53 20 20 20 20</span>  <span class="textcol">SEGA GENESIS    </span>
+<span class="offsetcol">00000110</span>  <span class="hexcol">28 43 29 20 4E 41 4D 45 4C 45 53 53 20 20 20 20</span>  <span class="textcol">(C) NAMELESS    </span>
+<span class="offsetcol">00000120</span>  <span class="hexcol">56 45 52 59 20 4D 49 4E 49 4D 41 4C 20 47 45 4E</span>  <span class="textcol">VERY MINIMAL GEN</span>
+<span class="offsetcol">00000130</span>  <span class="hexcol">45 53 49 53 20 43 4F 44 45 20 42 59 20 4E 41 4D</span>  <span class="textcol">ESIS CODE BY NAM</span>
+<span class="offsetcol">00000140</span>  <span class="hexcol">45 4C 45 53 53 20 41 4C 47 4F 52 49 54 48 4D 20</span>  <span class="textcol">ELESS ALGORITHM </span>
+<span class="offsetcol">00000150</span>  <span class="hexcol">20 20 56 45 52 59 20 4D 49 4E 49 4D 41 4C 20 47</span>  <span class="textcol">  VERY MINIMAL G</span>
+<span class="offsetcol">00000160</span>  <span class="hexcol">45 4E 45 53 49 53 20 43 4F 44 45 20 42 59 20 4E</span>  <span class="textcol">ENESIS CODE BY N</span>
+<span class="offsetcol">00000170</span>  <span class="hexcol">41 4D 45 4C 45 53 53 20 41 4C 47 4F 52 49 54 48</span>  <span class="textcol">AMELESS ALGORITH</span>
+<span class="offsetcol">00000180</span>  <span class="hexcol">4D 20 20 20 32 30 31 38 2D 30 37 2D 30 32 20 20</span>  <span class="textcol">M   2018-07-02  </span>
+<span class="offsetcol">00000190</span>  <span class="hexcol">20 20 00 00 4A 20 20 20 20 20 20 20 20 20 20 20</span>  <span class="textcol">  ..J           </span>
+<span class="offsetcol">000001A0</span>  <span class="hexcol">20 20 20 20 00 00 00 00 00 00 02 B8 00 FF 00 00</span>  <span class="textcol">    .......¸.ÿ..</span>
+<span class="offsetcol">000001B0</span>  <span class="hexcol">00 FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</span>  <span class="textcol">.ÿÿÿ............</span>
+<span class="offsetcol">000001C0</span>  <span class="hexcol">00 00 00 00 00 00 00 00 00 00 00 00 20 20 20 20</span>  <span class="textcol">............    </span>
+<span class="offsetcol">000001D0</span>  <span class="hexcol">20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20</span>  <span class="textcol">                </span>
+<span class="offsetcol">000001E0</span>  <span class="hexcol">20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20</span>  <span class="textcol">                </span>
+<span class="offsetcol">000001F0</span>  <span class="hexcol">20 20 20 20 4A 55 45 20 20 20 20 20 20 20 20 20</span>  <span class="textcol">    JUE         </span>
+<span class="offsetcol">00000200</span>  <span class="hexcol">20 20 20 20 46 FC 27 00 10 39 00 A1 00 01 02 00</span>  <span class="textcol">    Fü'..9.¡....</span>
+<span class="offsetcol">00000210</span>  <span class="hexcol">00 0F 67 0A 23 FC 53 45 47 41 00 A1 40 00 33 FC</span>  <span class="textcol">..g.#üSEGA.¡@.3ü</span>
+<span class="offsetcol">00000220</span>  <span class="hexcol">01 00 00 A1 11 00 33 FC 01 00 00 A1 12 00 08 39</span>  <span class="textcol">...¡..3ü...¡...9</span>
+<span class="offsetcol">00000230</span>  <span class="hexcol">00 00 00 A1 11 01 66 F6 22 7C 00 A0 00 00 22 BC</span>  <span class="textcol">...¡..fö&quot;|. ..&quot;¼</span>
+<span class="offsetcol">00000240</span>  <span class="hexcol">00 C3 00 00 33 FC 00 00 00 A1 12 00 33 FC 00 00</span>  <span class="textcol">.Ã..3ü...¡..3ü..</span>
+<span class="offsetcol">00000250</span>  <span class="hexcol">00 A1 11 00 41 FA 00 4A 70 18 22 3C 00 00 80 00</span>  <span class="textcol">.¡..Aú.Jp.&quot;&lt;..€.</span>
+<span class="offsetcol">00000260</span>  <span class="hexcol">12 18 33 C1 00 C0 00 04 D2 7C 01 00 51 C8 FF F2</span>  <span class="textcol">..3Á.À..Ò|..QÈÿò</span>
+<span class="offsetcol">00000270</span>  <span class="hexcol">46 FC 27 00 30 3C 00 00 33 FC 8F 00 00 C0 00 04</span>  <span class="textcol">Fü'.0&lt;..3ü...À..</span>
+<span class="offsetcol">00000280</span>  <span class="hexcol">23 FC C0 00 00 03 00 C0 00 04 33 C0 00 C0 00 00</span>  <span class="textcol">#üÀ....À..3À.À..</span>
+<span class="offsetcol">00000290</span>  <span class="hexcol">52 40 32 3C 00 64 51 C9 FF FE 60 EE 4E 73 00 00</span>  <span class="textcol">R@2&lt;.dQÉÿþ`îNs..</span>
+<span class="offsetcol">000002A0</span>  <span class="hexcol">14 74 30 00 07 78 00 00 00 00 FF 00 81 3F 00 02</span>  <span class="textcol">.t0..x....ÿ..?..</span>
+<span class="offsetcol">000002B0</span>  <span class="hexcol">01 00 00 FF FF 00 00 80                        </span>  <span class="textcol">...ÿÿ..€</span>
+</pre>
+<p class="generatorinfo">Generated by <a href="http://mh-nexus.de/hxd/" class="generatorlink">HxD</a></p>
+<p>It can be run using the emulator <a href="https://mednafen.github.io/">mednafen</a>:</p>
+<pre><code class="language-text">mednafen minimal.gen 
+</code></pre>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="everdrive.jpg" class='screenshot' />
+<div>Running on a real SEGA Genesis</div>
+</div>
+<p>Testing the ROM on a real SEGA Genesis is also possible using the <a href="http://krikzz.com/store/home/44-mega-everdrive-v2.html">Mega EverDrive X5</a>, a cartridge that enables running any SEGA Genesis or even SEGA Master System ROM on a real SEGA Genesis console.</p>
+<h2>Debugging</h2>
+<p><a href="https://mednafen.github.io/">mednafen</a> can also be used for basic debugging.
+Starting mednafen from the command-line with the debugger enabled and paused on the first instruction can be done like this:</p>
+<pre><code class="language-bash">    mednafen -debugger.autostepmode 1 roms\test1.gen 
+</code></pre>
+<p>A few important mednafen debug commands:</p>
+<pre><code class="language-text">R                      Run
+S                      Step
+Up/Down, Page Up/Down  Navigate code
+Space                  Set breakpoint
+Alt+1                  CPU debugger view
+Alt+3                  Memory view
+</code></pre>
+<p>See <a href="https://mednafen.github.io/documentation/debugger.html">Mednafen Debugger Documentation</a>.</p>
+<p>If you want to inspect certain problems such as stack pointer corruption, you could instead try using the <a href="http://mamedev.org">MAME</a> debugger, which is more full-featured and shows all the registers.</p>
+<p>MAME Genesis debug command-line (pauses on first instruction):</p>
+<pre><code class="language-bash">mame64 genesis -debug -window -cart roms\test1.gen
+</code></pre>
+<p>A few MAME debugger hotkeys:</p>
+<pre><code class="language-text">F10     Step over
+F11     Step into
+Ctrl-M  Show memory
+</code></pre>
+<p>And commands:</p>
+<pre><code class="language-text">go [ADDR]  Run until reaching ADDR
+help       The most important command of all
+</code></pre>
+<p>Finally, for debugging the VDP graphics processor, it is recommended to use the <a href="http://aamirm.hacking-cult.org/www/regen.html">Regen emulator</a>. It is not stable, but it has a window that displays the VDP registers and video RAM contents, which is very useful for debugging graphics.</p>
+<h2>References</h2>
+<div class='screenshot'>
+<a href='http://tanglewoodgame.com'>
+<img src="tanglewood.png" class='screenshot' />
+</a>
+<div>Tanglewood</div>
+</div>
+<p>For the SEGA Genesis specifics, Matt Phillips's blog <a href="https://bigevilcorporation.co.uk/2012/03/23/sega-megadrive-4-hello-world/">bigevilcorporation.co.uk</a> was very helpful. He's working on a new Genesis game, Tanglewood, which looks like a very cool project.</p>
+<p>SGI and Sun workstations:</p>
+<ul>
+<li><a href="https://ohiostate.pressbooks.pub/graphicshistory/chapter/1-2-apollo-sun-sgi-2/">Computer Graphics and Computer Animation: a Retrospective Overview: Apollo / SGI / Sun</a></li>
+</ul>
+<p>Tools:</p>
+<ul>
+<li><a href="http://sun.hasenbraten.de/vasm/">vasm</a> - Open source multi-CPU assembler</li>
+</ul>
+<p>Emulators:</p>
+<ul>
+<li><a href="https://mednafen.github.io/">mednafen</a> - Great multi-system emulator, currently the most accurate PSX emulator</li>
+<li><a href="http://mamedev.org/">MAME</a> - Multi-system emulator, emulates thousands of systems</li>
+<li><a href="http://aamirm.hacking-cult.org/www/regen.html">Regen</a> - Genesis emulator, with great graphics debugging functionality</li>
+</ul>
+<p>Hardware</p>
+<ul>
+<li><a href="http://krikzz.com/store/home/44-mega-everdrive-v2.html">krikzz.com: Mega EverDrive X5</a> - SEGA Genesis / Mega Drive cartridge that allows running any ROM.</li>
+</ul>
+<p>Tutorials:</p>
+<ul>
+<li><a href="http://mrjester.hapisan.com/04_MC68/">MarkeyJester's Motorola 68000 Beginner's Tutorial</a> - Great MC68000 tutorial</li>
+<li><a href="https://darkdust.net/writings/megadrive">Marc's Realm: Programming the Sega MegaDrive</a> - SEGA MegaDrive programming info</li>
+<li><a href="https://bigevilcorporation.co.uk/2012/02/28/sega-megadrive-1-getting-started/">Big Evil Corporation: SEGA MegaDrive</a> - SEGA MegaDrive programming info by Matt Phillips</li>
+</ul>
+<p>General SEGA Genesis info:</p>
+<ul>
+<li><a href="https://segaretro.org/Category:Sega_Mega_Drive">SEGA Retro: Sega Mega Drive</a> - General information about the Genesis</li>
+</ul>
+<p>Motorola 68000:</p>
+<ul>
+<li><a href="https://emu-docs.org/CPU%2068k/68kpm.pdf">EMU-DOCS: Motorola 68000 Reference Manual</a> - Motorola 68000 Reference Manual (<a href="/genesis/downloads/mc68000.pdf">mirrored here</a>)</li>
+</ul>
+<div class="commentbox"></div>
+<hr>
+<pre>
+<span id='info'></span>
+</pre>
+</body>

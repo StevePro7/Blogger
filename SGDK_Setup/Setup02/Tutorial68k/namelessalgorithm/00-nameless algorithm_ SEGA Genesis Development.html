@@ -1,0 +1,190 @@
+<html>
+
+    <head>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="author" content="Nameless Algorithm">
+	<meta name="description" content="SEGA Genesis development blog with assembly code examples">
+	<meta name="keywords" content="SEGA,Genesis,Megadrive,gamedev,game development,assembly code,coding,programming,1980s,retro games">
+	<meta author="Nameless Algorithm">
+	<title>nameless algorithm: SEGA Genesis Development</title>
+	<style type="text/css">
+div.image { max-width:calc(33% - 10px); float: left; margin: 2px ; text-align: center }
+img.image { max-width: 100%; height: auto }
+	</style>
+
+	<!-- HTML include using JavaScript,
+	 - see https://stackoverflow.com/a/9003363
+	 - jQuery downloaded from https://jquery.com/download/
+	 -->
+	<script src="/jquery-3.3.1.min.js" /></script>
+
+	<!-- commentbox.io -->
+	<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
+	<!-- main site scripts -->
+	<script src='/nameless.js'> </script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128449068-2"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-128449068-2');
+	</script>
+
+
+    </head>
+
+    <body>
+	<div id="top_menu"> loading... </div> <!-- will be replaced by header.html -->
+
+	<h1>SEGA Genesis Development</h1>
+
+	<div class="screenshot"> <img class="screenshot" src='sega_genesis-console.jpg' /> SEGA Genesis </div>
+
+	The SEGA Genesis (US) / Mega Drive (everywhere else) was a 1988 game console, known for great arcade ports, FM sound, and impressive 2D graphics. It had a Motorola 68000 CPU, 64 KB main RAM, and 64 KB Video RAM. One of the most well-known games for the system is Sonic the Hedgehog, developed by SEGA and released in 1991. This page contains a series of articles about this hardware, including how to program for it, starting from the very basics.
+
+	<div class="project">
+	    <div class="project_text">
+		<a href="blog/genesis">
+		    <span class="project_title">SEGA Genesis: Building a ROM</span><br/>
+		</a>
+		<!--
+		<span class="status">status: done</span><br/>
+		-->
+		<span class="date"> 2017-06-11 </span><br/>
+		Getting started with SEGA Genesis development, and building a ROM that will run on an emulator.
+	    </div>
+	    <a href="blog/genesis">
+		<div class="screenshot"> <img class="screenshot" src='blog/genesis/model1.jpg' /> Genesis hardware </div>
+	    </a>
+	</div>
+
+	<div class="project">
+	    <div class="project_text">
+		<a href="blog/tiles">
+		    <span class="project_title">SEGA Genesis: Characters and Playfields</span><br/>
+		</a>
+		<!--
+		<span class="status">status: done </span><br/>
+		-->
+		<span class="date"> 2017-08-06 </span><br/>
+		A description of the basic building blocks of Genesis graphics, and how they are put together to form screen images. 8x8 16-color tiles are mapped to form playfields. A couple of games are analyzed, including some more advanced techniques, usable for rendering polygons.
+	    </div>
+	    <a href="blog/tiles">
+		<div class="screenshot"> <img class="screenshot" src='zombies.png' /> Tile graphics (Zombies Ate My Neighbours) </div>
+	    </a>
+	</div>
+
+	<div class="project">
+	    <div class="project_text">
+		<a href="blog/vdp">
+		    <span class="project_title">SEGA Genesis: Video Display Processor</span><br/>
+		</a>
+		<!--
+		<span class="status">status: done </span><br/>
+		-->
+		<span class="date"> 2017-08-01 </span><br/>
+		A SEGA Genesis graphics tutorial, that explains how to access the 'Video Display Processor' (VDP) graphics processor.
+	    </div>
+	    <a href="blog/vdp">
+		<div class="screenshot"> <img class="screenshot" src='blog/genesis/contra_sunset.gif' /> Contra: Hard Corps </div>
+	    </a>
+	</div>
+
+	<div class="project">
+	    <div class="project_text">
+		<a href="blog/text">
+		    <span class="project_title">SEGA Genesis: Printing Text</span><br/>
+		</a>
+		<!--
+		<span class="status">status: done </span><br/>
+		-->
+		<span class="date"> 2017-09-10 </span><br/>
+		Building on the previous entry, it is explained how the VDP can be used to output text to the screen. This includes creating a font, loading it to graphics memory, writing character indices to playfields, and wrapping it into a useful subroutine.
+	    </div>
+	    <a href="blog/text">
+		<div class="screenshot"> <img class="screenshot" src='blog/text/hello.png' /> Text output </div>
+	    </a>
+	</div>
+
+	<div class="project">
+	    <div class="project_text">
+		<a href="blog/scrolling">
+		    <span class="project_title">SEGA Genesis: Scrolling</span><br/>
+		</a>
+		<!--
+		<span class="status">status: unfinished </span><br/>
+		-->
+		<span class="date"> 2017-07-27 </span><br/>
+		The different scroll modes of the Genesis are covered, as well as code for simple full screen smooth scrolling.
+	    </div>
+	    <a href="blog/scrolling">
+		<div class="screenshot"> <img class="screenshot" src='blog/scrolling/thunder_force4.gif' /> Thunderforce 4 </div>
+	    </a>
+	</div>
+
+	<div class="project">
+	    <div class="project_text">
+		<a href="blog/structure">
+		    <span class="project_title">SEGA Genesis: Code Structure</span><br/>
+		</a>
+
+		<!--
+		<span class="status">status: done </span><br/>
+		-->
+		<span class="date"> 2018-07-16 </span><br/>
+		A few examples of assembly code structure is explored, including variables, arrays and structures, function calling conventions, and how to implement the State Pattern.
+	    </div>
+	    <a href="blog/structure">
+		<div class="screenshot"> <img class="screenshot" src='blog/structure/menu.png' /> Menu </div>
+	    </a>
+	</div>
+
+	<div class="project unfinished">
+	    <div class="project_text">
+		<a href="blog/init">
+		    <span class="project_title">SEGA Genesis: Initialization</span><br/>
+		</a>
+		<!--
+		<span class="status">status: unfinished </span><br/>
+		-->
+		<span class="date"> 2018-07-01 </span><br/>
+		A detailed look at a complete initialization.
+	    </div>
+	    <a href="blog/init">
+		<div class="screenshot"> <img class="screenshot" src='blog/structure/rom.jpg' /> Contra: Hard Corps ROM chip </div>
+	    </a>
+	</div>
+
+	<!--
+     <div class="project">
+     <a href="blog/2017-08-01-genesis-z80">
+     <div class="project_text"> asdf  </div>
+     <div class="screenshot"> <img class="screenshot" src='blog/2017-08-01-genesis-z80/z80emu.png' /> </div>
+     </a>
+     </div>
+     <div class="project">
+     <a href="blog/2017-08-02-genesis-sprites">
+     <div class="project_text"> asdf  </div>
+     <div class="screenshot"> <img class="screenshot" src='../genesis.png' /> </div>
+     </a>
+     </div>
+     <div class="project">
+     <a href="blog/2017-09-10-genesis-crash_handling">
+     <div class="project_text"> asdf  </div>
+     <div class="screenshot"> <img class="screenshot" src='blog/2017-09-10-genesis-crash_handling/crash.png' /> </div>
+     </a>
+     </div>
+	-->
+
+	<div id="footer"> loading... </div> <!-- will be replaced by footer.html -->
+
+    </body>
+</html>
+

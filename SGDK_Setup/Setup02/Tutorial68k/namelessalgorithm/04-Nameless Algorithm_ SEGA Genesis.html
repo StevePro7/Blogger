@@ -1,0 +1,249 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/vs2015.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="SEGA Genesis programming">
+    <meta name="keywords" content="SEGA,Genesis,MegaDrive,Programming,Assembler,Game development,Tutorial">
+    <meta name="author" content="Jakob Schmid">
+    <title>Nameless Algorithm: SEGA Genesis</title>
+
+    <!-- HTML include using JavaScript,
+       - see https://stackoverflow.com/a/9003363
+       - jQuery downloaded from https://jquery.com/download/
+       -->
+    <script src="/jquery-3.3.1.min.js" /></script>
+
+    <!-- commentbox.io -->
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
+    <!-- main site scripts -->
+    <script src='/nameless.js'> </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128449068-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128449068-2');
+    </script>
+
+</head>
+<body>
+    <div id="top_menu"> loading... </div> <!-- will be replaced by header.html -->
+    <div style='float:right'>
+	<a href='/genesis/'>All Genesis articles</a> | <a href='/'>Back to top</a>
+    </div>
+    <br style='clear:right' />
+<h1>SEGA Genesis: Printing Text</h1>
+<div class='screenshot' style="float:right;text-align:center">
+<img class='screenshot' src="ps4.png"/>
+<div class='caption'>Phantasy Star IV, Sega (1993)</div>
+</div>
+<p>In the SEGA Genesis 'Hello World' ROM I created in a previous post, I output some text to the screen. The text was rendered by loading font character data into video memory (VRAM) and then writing character indices into a playfield map. This post explains how this is done in detail. Please refer to my previous post for details on <em>characters</em> and <em>playfields</em>.</p>
+<p>Rendering text to the screen illustrates clearly how to use characters and playfield maps to render graphics on the Genesis, and even though the end result may not be particularly exciting, the techniques described here can be used to render any type of graphics. Text is a good place to start, as it can be used for debugging.</p>
+<br style='clear:both' />
+<h2>Loading Character Data</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img class='screenshot' src="characters.png"/>
+<div class='caption'>Character data</div>
+</div>
+<p>Matt Phillips had <a href="https://bigevilcorporation.co.uk/2012/03/23/sega-megadrive-4-hello-world/">a nice example of genesis character data</a>, and based on that example, I wrote a full font. Currently, it contains all the upper-case letters and numbers, along with a few useful symbols. The first character in the font is the empty whitespace character, which has the ASCII index <code>$20</code>, followed by <code>$21 '!'</code>, layed out sequentially all the way up to the underscore character <code>$5F '_'</code></p>
+<p>The character data is included directly in the code. As an example, here is the data for the character <code>$33 '3'</code>:</p>
+<pre><code class="language-armasm">characters:
+  dc.l $01111100 ; Every hex digit is a palette index
+  dc.l $11000110 ; for a pixel.
+  dc.l $00000110 ; Palette index 0 is black, and
+  dc.l $00011100 ; palette index 1 is white.
+  dc.l $00000110
+  dc.l $11000110
+  dc.l $01111100
+  dc.l $00000000
+</code></pre>
+<p>As explained in the previous post, all characters are 8x8 pixels, and each pixel is defined by a 4-bit value, indexing into a 16-color palette.</p>
+<p>The bitmap data must be copied to VRAM before it can be used. Character data can be located anywhere in VRAM, and is always addressed relative to VRAM offset <code>$0000</code>. My earlier post about the Genesis Video Display Processor (VDP) explained VRAM write operations in detail, but in short, I'm using this bit pattern to set up the VRAM write at <code>$0000</code>:</p>
+<pre><code class="language-text">    Bits    [BBAA AAAA AAAA AAAA 0000 0000 BBBB 00AA]
+    B order [10.. .... .... .... .... .... 5432 ....] oper. type
+    A order [..DC BA98 7654 3210 .... .... .... ..FE] address
+    -------------------------------------------------------------
+    VRAM Write (00 0001) to addr $0000 (0000 0000 0000 0000):
+            [01.. .... .... .... .... .... 0000 ....] oper. type
+            [0100 0000 0000 0000 .... .... 0000 ..00] VRAM address
+            [0100 0000 0000 0000 0000 0000 0000 0000] add zeroes
+      Hex:      4    0    0    0    0    0    0    0
+</code></pre>
+<p>I write this 32-bit command word to the VDP Control Port to set up the write to VRAM:</p>
+<pre><code class="language-armasm">vdp_control = $C00004
+  move.l #$40000000,vdp_control
+</code></pre>
+<p>And then write the bitmap data to the VDP Data Port:</p>
+<pre><code class="language-armasm">vdp_data    = $C00000
+  move.l #$01111100,vdp_data ; the first longword of the character '3'
+</code></pre>
+<p>To be able to write a loop that copies all the character data to VRAM, I set the auto-increment register in the VDP to 4 bytes/write operation (this was covered in the previous post about the VDP):</p>
+<pre><code class="language-armasm">  move.w #$8F04,vdp_control
+</code></pre>
+<p>Putting it all together, here is the full font loading code:</p>
+<pre><code class="language-armasm">load_font:
+  move.w #$8F04,vdp_control     ; VDP autoincr. 4 bytes/write
+  move.l #$40000000,vdp_control ; VDP write to VRAM address 0
+  lea    characters,a0          ; Load addr. of Characters to a0
+  move   #8*62,d0               ; 8 longwords per character,
+                                ; 62 characters in the font
+.Loop:
+  move.l (a0)+,vdp_data         ; Move data to VDP data port,
+                                ; increment source addr.
+  dbra d0,.Loop
+  rts
+</code></pre>
+<p>Now that our font is loaded, we should be able to write character indices to the playfield map and see a string of letters displayed.</p>
+<br style='clear:both' />
+<h2>Playfield Maps</h2>
+<p>The concept of playfield maps was explained in the previous post. In this section, I'll show how they are defined.</p>
+<p>A playfield map is a matrix of entries, each defining which character goes in which grid cell on the screen. Each playfield map entry is a 16-bit word with this pattern:</p>
+<pre><code class="language-text">[PCCV HIII IIII IIII]
+- P is priority (set to 0 for now)
+- C selects color palette
+- V enables vertical flip (0)
+- H enables horizontal flip (0)
+- I is an 11-bit character index:
+      [.... .A98 7654 3210]
+</code></pre>
+<p>If we don't use priority, use palette 0, and don't flip, we simply specify a character index as an 11-bit number between 0 and 2047.</p>
+<p>After loading the font data into VRAM, and the first character at <code>$0000</code> corresponds to ASCII character <code>$20 ' '</code>, we can take the ASCII value of a character and subtract <code>$20</code> to compute the character index. Say we have the register <code>A0</code> pointing to a string, and we want to compute the index of the first character, we can do something like this:</p>
+<pre><code class="language-armasm">  clr.w   d0          ; clear upper byte of D0
+  move.b  (a0),d0     ; set lower byte to value at string pointer A0
+  sub.b   #$20,d0     ; font starts at $20, subtract $20 from value
+</code></pre>
+<p>Now, <code>D0</code> has the character index for the first character, ready to write to the playfield map.</p>
+<p>I have now explained how to load font data and how playfield maps are defined. In the next section, we use this knowledge to actually show some text on the SEGA Genesis.</p>
+<h2>Printing Strings</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img class='screenshot' src="starflight.png"/>
+<div class='caption'>Starflight, Binary Systems (1991)</div>
+</div>
+<p>The goal I set out for myself was to implement a subroutine for printing text at any screen location:</p>
+<pre><code class="language-armasm">    print_at(text, text_length, x, y)
+</code></pre>
+<p>Where (x, y) denotes a character position on the screen, measured in playfield 8x8 grid cells. The visible part of the playfields are 40x28 characters, so we'll use character positions ranging from (0, 0) to (39, 27).</p>
+<p>To print a string to the screen, I went through these steps:</p>
+<ul>
+<li>Sending VDP command word to auto-increment VRAM access 2 bytes with every write</li>
+<li>Computing the byte offset in the playfield map from position x and y</li>
+<li>Generating VDP command word with the address of that offset</li>
+<li>Sending VDP command word, setting up a VRAM write to that address</li>
+<li>Writing character indices corresponding to letters in text string</li>
+</ul>
+<p>Before I set up the VRAM write, I tell the VDP to auto-increment the VRAM address with 2 bytes - the size of a playfield map entry - for every write. This was covered in detail in a previous post:</p>
+<pre><code class="language-armasm">vdp_control = $C00004
+  move.w      #$8F02,vdp_control  ; Set VDP autoincrement to 2 bytes
+</code></pre>
+<p>With that out of the way, I compute the playfield map offset. Even though the visual part of the playfields is 40 characters wide, the playfields themselves can be larger. In my example, playfields are 64 characters wide, and since each playfield map entry takes up 2 bytes, the offset corresponding to <code>(x, y)</code> can be computed like this:</p>
+<pre><code class="language-armasm">  ; d1: x
+  ; d2: y
+  ; d3: VRAM address
+  ; offset = (d1 + d2 * 64 chars/line) * 2 B/entry
+  ;        = d1 * 2 + d2 * 128 B
+  lsl.w   #1,d1       ; d1 *= 2
+  lsl.w   #7,d2       ; d2 *= 128
+  move.w  d1,d3       ; d3 = d1+d2
+  add.w   d2,d3
+</code></pre>
+<p>In my example, playfield map A is at VRAM address <code>$C000</code>, so we add that to <code>D3</code>:</p>
+<pre><code class="language-armasm">  add.w   #$C000,d3   ; playfield map base address
+</code></pre>
+<p>With the VRAM address in <code>D3</code>, I'll generate the VDP command word to write to that address. Until now, we have created VDP command words manually, as they have all had well-defined unchanging values. For the <code>print_at</code> subroutine to be able to write anywhere on the screen, we need to generate the command word dynamically in code. As shown earlier, the command word for writing to VRAM address <code>$0000</code> is <code>$40000000</code>. We start with this command word in <code>D4</code>:</p>
+<pre><code class="language-armasm">  move.l  #$40000000,d4
+</code></pre>
+<p>The VRAM address is split into two parts:</p>
+<pre><code class="language-text">[..DC BA98 7654 3210 .... .... .... ..FE]
+</code></pre>
+<p>I start with computing this part of the address:</p>
+<pre><code class="language-text">[.... .... .... .... .... .... .... ..FE]
+</code></pre>
+<p>Like this:</p>
+<pre><code class="language-armasm">  clr.l   d5                      ; 
+  move.w  d3,d5                   ; d5 = offset
+  and.w   #%1100000000000000,d5   ; d5 = 2 most significant bits of
+  lsr.w   #7,d5                   ;      offset shifted 14 bits right
+  lsr.w   #7,d5
+  or.l    d5,d4                   ; d4 |= d5
+</code></pre>
+<p>Next, we compute the other part of the address:</p>
+<pre><code class="language-text">[..DC BA98 7654 3210 .... .... .... ....]
+</code></pre>
+<p>Like so:</p>
+<pre><code class="language-armasm">  clr.l   d5                    ; 
+  move.w  d3,d5                 ; d5 = offset
+  and.w   #%0011111111111111,d5 ; d5 = 14 least sign. bits of
+  lsl.l   #8,d5                 ;      offset shifted 16 bits left
+  lsl.l   #8,d5                 ;
+  or.l    d5,d4                 ; d4 |= d5
+</code></pre>
+<p>Now, <code>D4</code> contains the VDP command word for writing to the correct VRAM address, and I can send it:</p>
+<pre><code class="language-armasm">  move.l      d4,vdp_control
+</code></pre>
+<p>We're almost there!</p>
+<p>Given our ASCII text string in <code>A0</code> and the number of characters in the text string in <code>D0</code>, we can write the character indices to the playfield map in VRAM, one at a time. As explained earlier, I subtract <code>$20</code> from the ASCII value to compute the character index:</p>
+<pre><code class="language-armasm">vdp_data = $C00000
+  sub.w   #1,d0       ; dbra branches if not -1, so we need to
+                        ; subtract 1 from the number of iterations
+.loop:
+  clr.w   d3          ; clear upper byte of D3
+  move.b  (a0)+,d3    ; set lower byte to value at string pointer (A0)
+                      ; and increment A0 to point to next character
+  sub.b   #$20,d3     ; font starts with ' ', subtract $20 from value
+  move.w  d3,vdp_data ; write to VDP
+  dbra    d0,.loop    ; and repeat D0 (text_length) times
+</code></pre>
+<p>Now, the implementation of <code>print_at</code> is complete. Let's see how it is called.</p>
+<h2>How to Call our Subroutine</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img class='screenshot' src="hello.png"/>
+<div class='caption'>Hello World</div>
+</div>
+<p>To set up our call to <code>print_at</code>, we'll assign some registers to the formal parameters:</p>
+<pre><code class="language-text">A0: text
+D0: text_length
+D1: x
+D2: y
+</code></pre>
+<p>Let's say we want to print <code>&quot;HELLO WORLD&quot;</code> at (14,12). We then set up our string:</p>
+<pre><code class="language-armasm">text:
+  dc.b &quot;HELLO WORLD&quot;
+text_end:
+</code></pre>
+<p>With the two labels, we can easily compute <code>text_length</code>:</p>
+<pre><code class="language-armasm">text_length = text_end - text
+</code></pre>
+<p>So, the full call to <code>print_at</code> looks like this:</p>
+<pre><code class="language-armasm">  ; print_at(text, text_length, x, y)
+  ;           A0       D0       D1 D2
+  ;
+  lea     text,a0             ; A0 = text
+  move.w  #text_end-text,d0   ; D0 = text_length
+  move.w  #14,d1              ; D1 = x position
+  move.w  #12,d2              ; D2 = y position
+  jsr     print_at            ; call subroutine
+</code></pre>
+<p>And we're done. Now we can go nuts with printing text all over the screen.</p>
+<div class='screenshot' style="float:right;text-align:center">
+<img class='screenshot' src="menu2.png"/>
+<div class='caption'>Test ROM menu with loads of text</div>
+</div>
+<br style='clear:both' />
+<h2>References</h2>
+<ul>
+<li><a href="https://emudocs.org/Genesis/sega2f.htm">emudocs.org: sega2.doc</a>: The original SEGA Genesis hardware documentation</li>
+<li><a href="https://bigevilcorporation.co.uk/2012/03/23/sega-megadrive-4-hello-world/">bigevilcorporation.co.uk: Sega Megadrive – 4: Hello, world!</a>: Matt Phillips' Hello World example</li>
+</ul>
+<div class="commentbox"></div>
+<hr>
+<pre>
+<span id='info'></span>
+</pre>
+</body>

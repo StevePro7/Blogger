@@ -1,0 +1,419 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/vs2015.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="SEGA Genesis programming">
+    <meta name="keywords" content="SEGA,Genesis,MegaDrive,Programming,Assembler,Game development,Tutorial">
+    <meta name="author" content="Jakob Schmid">
+    <title>Nameless Algorithm: SEGA Genesis</title>
+
+    <!-- HTML include using JavaScript,
+       - see https://stackoverflow.com/a/9003363
+       - jQuery downloaded from https://jquery.com/download/
+       -->
+    <script src="/jquery-3.3.1.min.js" /></script>
+
+    <!-- commentbox.io -->
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
+    <!-- main site scripts -->
+    <script src='/nameless.js'> </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128449068-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128449068-2');
+    </script>
+
+</head>
+<body>
+    <div id="top_menu"> loading... </div> <!-- will be replaced by header.html -->
+    <div style='float:right'>
+	<a href='/genesis/'>All Genesis articles</a> | <a href='/'>Back to top</a>
+    </div>
+    <br style='clear:right' />
+<h1>SEGA Genesis: Structure</h1>
+<p>Assembly language being lower level than other programming languages makes it very structurally open. It's an interesting language for a computer scientist to work with, as it's open for implementation of any existing or new programming paradigm.</p>
+<p>In the following, approaches to variables and types on the Genesis will be discussed, as well as subroutine calling conventions, and an example approach to implementing the State Pattern.</p>
+<h2>Variables</h2>
+<p>In assembly code, a variable can be represented by a register or a memory location. The Motorola 68000 has 15 normal registers <code>D0</code>-<code>D7</code> and <code>A0</code>-<code>A6</code> (<code>A7</code> is used as the stack pointer), which will work nicely for local variables in subroutines:</p>
+<pre><code class="language-armasm">    move.w    #$7,d0    ; int x = $7
+    move.w    #$F000,d1 ; int y = $F000
+    add.w     d0,d1     ; y += x
+    lea       str,a0    ; char *s = str
+    move.b    (a0),d2   ; char c = *s
+</code></pre>
+<p>Global variables are useful to represent the game state, and are most easily implemented using a fixed memory location. Here is one way to declare a variable in memory:</p>
+<pre><code class="language-armasm">; note: my_value will be a constant on a Genesis
+my_value:
+    ds.w    7 ; int my_value = 7
+</code></pre>
+<p>The variable will be located in memory next to the code, which should work fine on architectures where the program is loaded into RAM. However, when making a SEGA Genesis ROM, the code is located in read-only memory (ROM) on the cartridge. If <code>my_value</code> is in ROM, it can never be changed and will thus be constant.</p>
+<div class='screenshot' style="float:right">
+<img src="rom.jpg" style="width:320px"/>
+<div>Contra: Hard Corps ROM</div>
+</div>
+<p>If you want a mutable variable, you need to place it in RAM instead. A naive attempt could be to place it in address 0:</p>
+<pre><code class="language-armasm">; note: my_value will be a constant on a Genesis
+my_value = $00000000
+    move.w  #7,my_value  ; my_value = 7 ?
+</code></pre>
+<p>This would have worked if address 0 was in RAM on a Genesis, but it isn't.
+From <a href="https://emu-docs.org/Genesis/gen-hw.txt">Charles MacDonald's 'Sega Genesis hardware notes'</a> we can get a memory map of the Genesis, where it becomes clear that address 0 is in ROM:</p>
+<pre><code class="language-text">$000000-$3FFFFF : ROM
+$400000-$7FFFFF : Unused (1)
+$800000-$9FFFFF : Unused (2)
+$A00000-$A0FFFF : Z80 address space (3)
+$A10000-$A1001F : I/O
+$A10020-$BFFFFF : Internal registers and expansion (4)
+$C00000-$DFFFFF : VDP (5)
+$E00000-$FFFFFF : RAM (6)
+</code></pre>
+<p>Becase address 0 is in ROM, <code>my_value</code> in the above example is a constant. Our work RAM is in the address space <code>$E00000-$FFFFFF</code> (that's 2 MB). The Genesis only has 64 KB RAM (<code>$10000</code>), but the memory is repeated over and over again in the address space. We can just limit ourselves to using <code>$E00000-$E0FFFF</code>.</p>
+<p>So this works:</p>
+<pre><code class="language-armasm">my_value = $E00000
+    move.w  #7,my_value  ; my_value = 7
+</code></pre>
+<p>Using the RAM address space, we can build a memory map of global variables, accessible from any part of our program:</p>
+<pre><code class="language-armasm">mode  = $E00000    ; 2B
+xoff  = $E00002    ; 2B
+yoff  = $E00004    ; 2B
+str   = $E00006    ; 32B string
+input = $E00026    ; 1B
+</code></pre>
+<p>With this approach, avoiding variables overlapping in memory is done manually, and must be handled carefully to avoid variables overwriting each other.</p>
+<p>In the above example, I reserved 32 B for the <code>str</code> variable, which can be interpreted as an array of 32 single characters. Arrays are discussed in further detail in the upcoming section.</p>
+<h2>Arrays</h2>
+<p>Arrays is a key feature in most languages, and absolutely essential for game developement. MC68000 assembly code has no array concept, but arrays are easy to represent and can be accessed through constant indexes or pointers.</p>
+<p>Let's re-use the character array <code>str</code> from the previous section:</p>
+<pre><code class="language-armasm">str = $E00006        ; 32 B string
+                     ; in memory: $E00006 - $E00025
+</code></pre>
+<p>We can access any character using a constant index:</p>
+<pre><code class="language-armasm">    lea     str,a0
+    move.b  0(a0),d0 ; d0 = str[0]
+    move.b  1(a0),d1 ; d1 = str[1]
+</code></pre>
+<p>The addressing mode used here is called <code>Address register indirect with displacement</code>, the 'displacement' being the constant index in front of <code>(a0)</code>.</p>
+<p>An alternative is to not use displacement, but instead update the address register <code>a0</code>, known as pointer arithmetic:</p>
+<pre><code class="language-armasm">    lea     str,a0
+    move.b  (a0),d0  ; d0 = *str (str[0])
+    add.l   #1,a0    ; str++
+    move.b  (a0),d0  ; d0 = *str (str[1])
+</code></pre>
+<h2>Structures</h2>
+<div class='screenshot' style="float:right">
+<img src="thunderforce3.png" style="width:320px"/>
+<div>Lightening Force</div>
+</div>
+<p>The C language has the concept of a <em>structure</em>, a collection of variables that are closely related and next to each other in memory. The widely used concept of <em>classes</em> is an extension of the structure concept: a structure with an accompanying set of functions that all accept a pointer to a structure as their first argument. In high-level languages, this structure pointer (often called <code>this</code>) is usually automatically added to non-static functions as the first argument by the compiler, so programmers do not need to add it manually.</p>
+<p>The structure concept is useful in game programming, especially when dealing with large numbers of very similar objects, such as enemies or bullets.</p>
+<p>Any set of related variables could be considered an instance of a structure. So if we have a structure representing the position and velocity of an enemy in a game, we could have a structure like this:</p>
+<pre><code class="language-armasm">                   ; struct enemy
+enemy_x  = $E00100 ;   int16 x
+enemy_y  = $E00102 ;   int16 y
+enemy_dx = $E00104 ;   int16 dx
+enemy_dy = $E00106 ;   int16 dy
+</code></pre>
+<p>However, if we want more than one enemy at a time, it would be useful to have an <em>array of structures</em>. In the case of <code>enemy</code>, we could allocate a pool of <code>enemy</code> instances and update all of them every frame.</p>
+<h3>Array of Structures: Sequential Layout</h3>
+<p>An obvious way to store an array of enemy structs in memory would be sequentially, like this:</p>
+<pre><code class="language-text">Structure sequence
+
+enemy 0    enemy 1    enemy 2         enemy N
+base+$00   base+$08   base+$10        base+N*8
+x,y,dx,dy  x,y,dx,dy  x,y,dx,dy  ...  x,y,dx,dy
+</code></pre>
+<p>For this, we need to access the structs through a pointer to the beginning of a struct in memory and offsets that represent the different member variables:</p>
+<pre><code class="language-armasm">enemy_data  = $E00100 ; struct enemy [N], takes up N*8 B of memory
+offset_x    = 0       ;   int16 x
+offset_x    = 2       ;   int16 y
+offset_dx   = 4       ;   int16 dx
+offset_dy   = 6       ;   int16 dy
+STRUCT_SIZE = 8       ; sizeof(enemy)
+</code></pre>
+<p>If we consider this simple update routine:</p>
+<pre><code class="language-text">    for each enemy E
+        E.x += E.dx
+        E.y += E.dy
+</code></pre>
+<p>We could implement it like this:</p>
+<pre><code class="language-armasm">    lea     enemy_data,a0            ; i = 0; enemy e = data[i]
+
+    move.w  #N-1,d7
+.loop                                ; do
+    move.w  offset_dx(a0),d0         ;   e.x += e.dx
+    add.w   d0,offset_x(a0)          ;
+    move.w  offset_dy(a0),d0         ;   e.y += e.dy
+    add.w   d0,offset_y(a0)          ;
+    add.l   #STRUCT_SIZE,a0          ;   e = data[++i]
+    dbra    d7,.loop                 ; while (i &lt; COUNT)
+</code></pre>
+<p>Next, we will consider an alternative approach to the sequential structure layout.</p>
+<h3>Array of Structures: Member Arrays</h3>
+<p>As an alternative to the sequential memory layout, we could store arrays of each member of <code>enemy</code>:</p>
+<pre><code class="language-text">Member array
+
+enemy x: base+$00
+x0,x1,x2, ... xN
+    
+enemy y: base+N*2
+y0,y1,y2, ... yN
+
+enemy dx: base+(N+1)*2
+dx0,dx1,dx2, ... dxN
+    
+enemy dy: base+(N+2)*2
+dy0,dy1,dy2, ... dyN
+</code></pre>
+<p>The update algorithm:</p>
+<pre><code class="language-text">    for each enemy E
+        E.x += E.dx
+        E.y += E.dy
+</code></pre>
+<p>Could be implemented using the member array approach:</p>
+<pre><code class="language-armasm">    lea    enemy_x,a0  ; int16 *enemy_x_ptr  = enemy_x
+    lea    enemy_y,a1  ; int16 *enemy_y_ptr  = enemy_y
+    lea    enemy_dx,a2 ; int16 *enemy_dx_ptr = enemy_dx
+    lea    enemy_dy,a3 ; int16 *enemy_dy_ptr = enemy_dy
+
+    move.w #N-1,d0
+.loop                  ; do
+    add.w  (a2),a0     ;   (*enemy_x_ptr) += *enemy_dx_ptr
+    add.w  (a3),a1     ;   (*enemy_y_ptr) += *enemy_dy_ptr
+    add.l   #2,a0      ;   ++enemy_x_ptr
+    add.l   #2,a1      ;   ++enemy_y_ptr
+    add.l   #2,a2      ;   ++enemy_dx_ptr
+    add.l   #2,a3      ;   ++enemy_dy_ptr
+    dbra    d0,.loop   ; while (i &lt; COUNT)
+</code></pre>
+<h3>Performance Analysis</h3>
+<p>The CPU of the Genesis, the Motorola 68000, <em>does not have a cache</em>, caching was only present in the Motorola processors 68010 and newer, so performance on the 68000 only really depends on how many clock cycles a given algorithm uses. Unlike most newer CPUs, memory access patterns are not a factor.</p>
+<p>Let's first look at the sequential layout update routine:</p>
+<pre><code class="language-armasm">    lea     enemy_data,a0            ; i = 0; enemy e = data[i]
+
+    move.w  #N-1,d7
+.loop                                ; do
+    move.w  offset_dx(a0),d0         ;   e.x += e.dx
+    add.w   d0,offset_x(a0)          ;
+    move.w  offset_dy(a0),d0         ;   e.y += e.dy
+    add.w   d0,offset_y(a0)          ;
+    add.l   #STRUCT_SIZE,a0          ;   e = data[++i]
+    dbra    d7,.loop                 ; while (i &lt; COUNT)
+</code></pre>
+<p>Inside the loop, we have 3 different instructions, excluding the loop code itself:</p>
+<pre><code class="language-armasm">    move.w  d(An),Dn ; d(An) - Address register indirect, displacement
+                     ;   Dn  - Data register direct
+                     ;               - 12 cycles
+
+    add.w   Dn,d(An) ; Address operand calculations:
+                     ; add.w Dn,&lt;M&gt;  -  8 cycles
+                     ;   &lt;M&gt; = d(An) -  8 cycles
+                     ;                 ---------
+                     ;                 16 cycles
+
+    add.l   #,An     ; = ADDQ.L      -  8 cycles
+</code></pre>
+<p>See the <a href="https://wiki.neogeodev.org/index.php?title=68k_instructions_timings">Neo-Geo Development Wiki</a> for more on MC68000 instruction timing.</p>
+<p>Using this information, we know that the meat of the loop uses:</p>
+<pre><code class="language-armasm">    move.w  offset_dx(a0),d0  ;        12 cycles
+    add.w   d0,offset_x(a0)   ;        16 cycles
+    move.w  offset_dy(a0),d0  ;        12 cycles
+    add.w   d0,offset_y(a0)   ;        16 cycles
+    add.l   #STRUCT_SIZE,a0   ;         8 cycles
+                              ; ----------------
+                              ; total: 64 cycles
+</code></pre>
+<p>In total, the update algorithm takes <code>64 * N</code> cycles.</p>
+<p>If we compare that to the member array implementation:</p>
+<pre><code class="language-armasm">    lea    enemy_x,a0  ; int16 *enemy_x_ptr  = enemy_x
+    lea    enemy_y,a1  ; int16 *enemy_y_ptr  = enemy_y
+    lea    enemy_dx,a2 ; int16 *enemy_dx_ptr = enemy_dx
+    lea    enemy_dy,a3 ; int16 *enemy_dy_ptr = enemy_dy
+
+    move.w #N-1,d0
+.loop                  ; do
+    add.w  (a2),a0     ;   (*enemy_x_ptr) += *enemy_dx_ptr
+    add.w  (a3),a1     ;   (*enemy_y_ptr) += *enemy_dy_ptr
+    add.l   #2,a0      ;   ++enemy_x_ptr
+    add.l   #2,a1      ;   ++enemy_y_ptr
+    add.l   #2,a2      ;   ++enemy_dx_ptr
+    add.l   #2,a3      ;   ++enemy_dy_ptr
+    dbra    d0,.loop   ; while (i &lt; COUNT)
+</code></pre>
+<p>We have 2 different instructions, excluding the loop code itself:</p>
+<pre><code class="language-armasm">    add.w   (An),An ; Address operand calculations:
+                    ; add.w &lt;ea&gt;,An - 8 cycles
+                    ;   &lt;ea&gt; = (An) - 4 cycles
+                    ;                12 cycles
+    add.l   #,An    ; = ADDQ.L - 8 cycles
+</code></pre>
+<p>Now, we can calculate the total cycle count:</p>
+<pre><code class="language-armasm">    add.w  (a2),a0  ;        12 cycles
+    add.w  (a3),a1  ;        12 cycles
+    add.l   #2,a0   ;         8 cycles
+    add.l   #2,a1   ;         8 cycles
+    add.l   #2,a2   ;         8 cycles
+    add.l   #2,a3   ;         8 cycles
+                    ; ------------
+                    ; total: 56 cycles
+</code></pre>
+<p>In total, the update algorithm takes <code>56 * N</code> cycles, so in this case, the member array approach is somewhat faster. It is mainly due to avoiding the use of 'Address register indirect with displacement', which is a bit slow.</p>
+<h2>Function Calling Conventions</h2>
+<div class='screenshot' style="float:right">
+<img src="stack.jpg" style="width:320px"/>
+<div>The other guys just don't stack up</div>
+</div>
+<p>In many programming languages, parsing parameters into and out of functions and methods is hidden by the language implementation. For example, the formal parameters may be pushed onto the stack by the calling code before giving executing to the function body itself. In assembly code, you have to make these decisions yourself.</p>
+<p>The simplest implementation would be defining input and output registers for a function:</p>
+<pre><code class="language-text">result = Add(parameterA, parameterB)
+  D0             D0          D1
+</code></pre>
+<p>This function could be implemented like this:</p>
+<pre><code class="language-armasm">Add:
+    add.w   D1,D0
+    rts
+</code></pre>
+<p>And called like this:</p>
+<pre><code class="language-armasm">    ; D0 = Add(5,7)
+    move.w  #5,D0   ; parameterA = 5
+    move.w  #7,D1   ; parameterA = 7
+    jsr     Add
+</code></pre>
+<p>This works, as long as you're careful with which registers are overwritten by functions.</p>
+<p>However, when you have multiple levels of function calls, it goes bad almost immediately:</p>
+<pre><code class="language-armasm">Multiply:
+
+    move.w  d0,d2    ; Multiply destroys D2
+.loop:
+    add.w   d2,d0
+    dbra    d1,.loop
+    rts
+    ; result = Power( x, power )
+    ;   D0            D0   D1
+
+Power:
+    move.w  d1,d2    ; But D2 is also used by Power... Uh oh
+.loop:
+    move.w  d2,d0
+    jsr     Multiply ; When this is done, D2 is destroyed
+    dbra    d2,.loop ; argh
+
+    rts
+</code></pre>
+<p>To avoid problems, our function can save the state of the registers that will be overwritten onto the stack:</p>
+<pre><code class="language-armasm">Multiply:
+
+    move.l  d1,-(sp)  ; push D1 onto stack
+    move.l  d2,-(sp)  ; push D2 onto stack
+
+    move.w  d0,d2     ; destroys D2, but we already saved it
+.loop:
+    add.w   d2,d0
+    dbra    d1,.loop  ; here we subtract from D1
+
+    ; Restore D1 and D2 from the stack.
+    ; Since we pushed D1 before D2, we must pop them
+    ; in the opposite order:
+    move.l  (sp)+,d2  ; restore D2 from the stack
+    move.l  (sp)+,d1  ; restore D1 from the stack
+
+    rts
+</code></pre>
+<p>We can use the 'movem' instruction to save and restore multiple registers:</p>
+<pre><code class="language-armasm">    movem.l d1-d2,-(sp)     ; push d1, d2 to the stack
+    movem.l (sp)+,d1-d2     ; pop d2, d1 from the stack
+</code></pre>
+<p>If you don't wan't to figure out which registers are overwritten, you can save and restore all of them:</p>
+<pre><code class="language-armasm">    movem d0-d7/a0-a6,-(sp) ;    push all registers onto the stack
+    movem (sp)+,d0-d7/a0-a6 ; restore all registers from the stack
+</code></pre>
+<p>It's obviously faster to only push the ones you actually overwrite.</p>
+<h2>State Pattern</h2>
+<div class='screenshot' style="float:right">
+<img src="menu.png" style="width:100%"/>
+<div>My menu</div>
+</div>
+<p>I wanted to implement a State Pattern in 68000 assembly to make a menu structure. My first implementation is based on the way I would implement it in C#, like this:</p>
+<pre><code class="language-cs">delegate void StateMethod();
+
+void Test() {
+  StateMethod state = StateA;
+  state();
+}
+void StateA() { }
+void StateB() { }
+</code></pre>
+<p>The 68000 assembly version could look like this:</p>
+<pre><code class="language-armasm">state = $E00000            ; function ptr location
+   move.l  #StateA,state   ; state = StateA
+.loop;
+   move.l  state,a0        ; a0 = *(state)
+   jsr     (a0)            ; jumps to a0, call StateA
+   bra     .loop
+StateA:
+   rts
+StateA:
+   rts
+</code></pre>
+<p>I found an equivalent implementation in <a href="https://github.com/sonicretro/s1disasm/blob/master/sonic.asm">the disassembled code of Sonic the Hedgehog</a>, which was based on a jump table:</p>
+<pre><code class="language-armasm">MainGameLoop:
+		move.b	(v_gamemode).w,d0      ; load Game Mode
+		andi.w	#$1C,d0
+		jsr	GameModeArray(pc,d0.w) ; jump to apt location in ROM
+		bra.s	MainGameLoop
+GameModeArray:
+
+ptr_GM_Sega:	bra.w	GM_Sega		; Sega Screen ($00)
+ptr_GM_Title:	bra.w	GM_Title	; Title	Screen ($04)
+ptr_GM_Demo:	bra.w	GM_Level	; Demo Mode ($08)
+ptr_GM_Level:	bra.w	GM_Level	; Normal Level ($0C)
+ptr_GM_Special:	bra.w	GM_Special	; Special Stage	($10)
+ptr_GM_Cont:	bra.w	GM_Continue	; Continue Screen ($14)
+ptr_GM_Ending:	bra.w	GM_Ending	; End of game sequence ($18)
+ptr_GM_Credits:	bra.w	GM_Credits	; Credits ($1C)
+
+		rts	
+</code></pre>
+<p>Based on that, here is a jump table implementation of the state pattern:</p>
+<pre><code class="language-armasm">    move.w  #0,d0             ; function index = 0 (StateA)
+    lsl.w   #2,d0             ; d0 *= sizeof( function pointer ) = 4
+    jsr     DoState(pc,d0.w)  ; invoke jump table
+
+DoState:                      ; Jump table
+    bra.w     StateA          ; offset 0
+    bra.w     StateB          ; offset 4
+    rts                       ; this should never be reached
+StateA:
+    rts
+StateB:
+    rts
+</code></pre>
+<p>I ended up using the jump table, as adding new functions was trivial compared to assigning new function pointers.</p>
+<h2>References</h2>
+<!--https://computerarchive.org/files/comp/applications/amiga/manual/ProAsm%20-%20Manual-ENG.pdf
+Info about ProAsm ... has similar features to vasm and a way better manual.-->
+<ul>
+<li>
+<p><a href="https://wiki.neogeodev.org/index.php?title=68k_instructions_timings">Neo-Geo Development Wiki: 68K Instruction Timings</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sonicretro/s1disasm">Sonic Retro: Sonic the Hedgehog Disassembly</a></p>
+</li>
+<li>
+<p><a href="http://meseec.ce.rit.edu/eecc250-winter99/250-final-review.pdf">Dr. Muhammad Shaaban: Assembly Programming for Computer Engineers</a></p>
+</li>
+</ul>
+<div class="commentbox"></div>
+<hr>
+<pre>
+<span id='info'></span>
+</pre>
+</body>

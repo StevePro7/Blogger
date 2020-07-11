@@ -1,0 +1,111 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/vs2015.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="SEGA Genesis programming">
+    <meta name="keywords" content="SEGA,Genesis,MegaDrive,Programming,Assembler,Game development,Tutorial">
+    <meta name="author" content="Jakob Schmid">
+    <title>Nameless Algorithm: SEGA Genesis</title>
+
+    <!-- HTML include using JavaScript,
+       - see https://stackoverflow.com/a/9003363
+       - jQuery downloaded from https://jquery.com/download/
+       -->
+    <script src="/jquery-3.3.1.min.js" /></script>
+
+    <!-- commentbox.io -->
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
+    <!-- main site scripts -->
+    <script src='/nameless.js'> </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128449068-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128449068-2');
+    </script>
+
+</head>
+<body>
+    <div id="top_menu"> loading... </div> <!-- will be replaced by header.html -->
+    <div style='float:right'>
+	<a href='/genesis/'>All Genesis articles</a> | <a href='/'>Back to top</a>
+    </div>
+    <br style='clear:right' />
+<h1>SEGA Genesis: Characters and Playfields</h1>
+<p>In this post, I'll look into how graphics is rendered on the SEGA Genesis, focused on 'playfields'. I'll skip sprites for now, they will have to wait until a later post.</p>
+<p>I will describe the basic building blocks of Genesis graphics, and how they are put together to form screen images. Finally, I will investigate some more advanced techniques, usable for rendering polygons.</p>
+<h2>Characters</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="zombies.png" style="width:100%"/>
+<div class='caption'>Zombies Ate My Neighbours 8x8 characters</div>
+</div>
+<p>The graphics of the Genesis consist of two components: playfields and sprites. Playfields are used for levels and backgrounds, sprites for animated objects.</p>
+<p>Both playfields and sprites are composed of 8x8 pixel tiles called <strong>characters</strong>. Playfields consist entirely of characters, arranged in a 8x8 pixel grid. Sprites can be up to 64x64, but they are still comprised of a set of 8x8 characters next to each other.</p>
+<p>The characters are defined using 4 bits / pixel, the bits representing an index in a 16-color palette. The Video Display Processor (VDP) in the Genesis has dedicated color memory allowing for 4 different palettes at a time. Each palette color is defined using 9 bit, allowing for a total of 512 colors. These can modified at runtime to create effects such as color cycling or screen fades.</p>
+<p>So, every pixel on the screen comes from a 8x8 character using a 16 color palette. In the screenshot from 'Zombies Ate My Neighbours' (Lucasfilm Games, 1993) it can be seen that the background consists of repeated 8x8 characters.</p>
+<p>A single character takes up 32 bytes of video memory (VRAM):</p>
+<p><code>8*8 px * 4 bits/px = 256 bits = 32 B</code>.</p>
+<p>The VDP normally shows a total of 40x28 characters (320x224 pixels) on the screen.
+A full screen of characters takes up 35 KB VRAM:</p>
+<p><code>40*28 chars * 32 B/char = 35840 B = 35 KB</code></p>
+<p>Only two full screens worth of characters would take up more than the 64 KB VRAM available, not counting the memory needed for playfield maps and sprite maps.</p>
+<p>However, if each character can be reused multiple times, a screen could be represented by much less data. In this way, composing a screen of 8x8 repeated characters can be viewed as a form of <em>image compression</em>, since a screen image with repetitions can be represented by a smaller amount of memory than storing the pixel data directly. Conceptually, this technique is similar to playing music using a small set of short sampled waveforms together with a sequence determining which waveform to play when. The repeating nature of music can thus achieve a highly effective form of compression. This is the way a MOD replayer works.</p>
+<p>Apart from the characters themselves, the Genesis also needs to know which character goes where. That's where playfield maps come into the picture.</p>
+<br style='clear:both' />
+<h2>Playfield Maps</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="crude.png" style="width:100%"/>
+<div class='caption'>Crude Buster intro sequence</div>
+</div>
+<p><strong>Playfield maps</strong> are matrices that specify which character is shown at any given grid cell on the screen. The playfield maps consist of 16-bit values:</p>
+<ul>
+<li>An 11 bit character index that specifies which character to use</li>
+<li>2 bits selecting one of 4 color palettes</li>
+<li>2 bits enabling horizontal and vertical flipping</li>
+<li>1 priority bit</li>
+</ul>
+<p>An interesting feature of the VDP is that individual characters can use different palettes. This means that a single playfield can display 64 different colors:</p>
+<p><code>4 palettes * 16 colors/palette = 64 colors</code></p>
+<p>A simple example of a playfield map is an uncompressed full-screen image, where the playfield map simply indexes a sequence of characters stored contiguously in memory. Assuming that all characters use palette 0, and have no other bits set, the playfield map is a simple number sequence, e.g. (<code>$0000</code>, <code>$0001</code>, <code>$0002</code>, ...).</p>
+<p>I was scrounging through ROMs, staring at the VDP Debug window in the Regen emulator, trying to find a good example of an uncompressed image. I was very happy when I booted the 1992 Data East punch-fest 'Crude Buster', and saw the post-apocalyptic imagery from the intro sequence displayed directly in the VRAM memory dump! This is a happy coincidence due to the fullscreen image being 32 characters wide and the memory view being 16 characters wide, and the image not being compressed in VRAM.</p>
+<p>In the 'Crude Buster' image, the full contents of the VRAM is shown next to the screenshots. The character data starts from VRAM address <code>$0000</code> and takes up 512 tiles, 16 KB of video memory:</p>
+<p><code>512 * 32 B = 16384 B = 16 KB</code></p>
+<p>The playfield A map is located at <code>$C000</code>, and on closer inspection, it is not completely trivial, as the character indices alternate between the left half of the image starting from <code>$0000</code>, and the right half, starting from <code>$2000</code>. However, the scheme is simple enough that it can be understood without looking at the playfield map.</p>
+<br style='clear:both' />
+<div class='screenshot' style="float:right;text-align:center">
+<img src="f15-title.png" style="width:100%"/>
+<div class='caption'>F-15 Strike Eagle II title screen</div>
+</div>
+<p>Most games use a less obvious encoding of images, either for purposes of compression, or to break the limit of only having a 16 color palette. An example of the latter is the intro of the 1989 DOS flight simulator 'F-15 Strike Eagle II' by MPS Labs (MicroProse), ported to the Genesis in 1991. The game intro screen is an awesome image of an F-15, employing both playfield A and B layered on top of each other. The color 0 is transparent, allowing one playfield to show through the other.  Each playfield uses a different 16-color palette and the end result is a nice 32-color image.</p>
+<p>So, we've seen a few basic examples of how characters and playfields work on the Genesis, but certain types of graphics require a different approach. Particularly, the lack of direct access to a framebuffer makes polygonal graphics an interesting problem.</p>
+<br style='clear:both' />
+<h2>Wait, No Framebuffer?</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="f15-ingame.png" style="width:100%"/>
+<div class='caption'>F-15 Strike Eagle II screenshot and corresponding tiles</div>
+</div>
+<p>I stated earlier that every pixel on the screen comes from a 8x8 character. <em>The Genesis has no directly accessible framebuffer</em>, and thus, no direct access to pixels on the screen. This means that rendering polygons becomes a bit of a technical challenge with an interesting solution.</p>
+<p>One such solution is to render polygons into the characters in VRAM, and map them directly onto the playfield with a fixed playfield map. The cockpit view of 'F-15 Strike Eagle II' is an example of this technique, which can be seen in the image here. The  characters required for the main polygonal display fit into 16 KB of VRAM.</p>
+<p>However, in 'F-15 Strike Eagle II', the VRAM actually contains two separate complete polygonal character buffers, one starting around <code>$5400</code>, and another around <code>$9000</code>. This is very likely used for <em>double-buffered rendering</em>: one polygonal set of characters is being rendered to, while the other one is being displayed. Take a look at the two blocks of character data, you'll notice that they are slightly different, corresponding them being slightly offset in time.</p>
+<p>This example shows that rendering to character data in VRAM circumvents the limitation of not having direct access to a framebuffer.</p>
+<p>In the next post, I will explain how to write character data and control playfield maps from MC68000 assembly code, using text output as an example.</p>
+<br style='clear:both' />
+<h2>References</h2>
+<ul>
+<li><a href="http://segaretro.org/Regen">Regen emulator</a>: The emulator that provided the VRAM dumps in the images above.</li>
+<li><a href="https://emudocs.org/Genesis/sega2f.htm">emudocs.org: sega2.doc</a>: The original SEGA Genesis hardware documentation</li>
+</ul>
+<div class="commentbox"></div>
+<hr>
+<pre>
+<span id='info'></span>
+</pre>
+</body>

@@ -1,0 +1,194 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/vs2015.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="SEGA Genesis programming">
+    <meta name="keywords" content="SEGA,Genesis,MegaDrive,Programming,Assembler,Game development,Tutorial">
+    <meta name="author" content="Jakob Schmid">
+    <title>Nameless Algorithm: SEGA Genesis</title>
+
+    <!-- HTML include using JavaScript,
+       - see https://stackoverflow.com/a/9003363
+       - jQuery downloaded from https://jquery.com/download/
+       -->
+    <script src="/jquery-3.3.1.min.js" /></script>
+
+    <!-- commentbox.io -->
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
+    <!-- main site scripts -->
+    <script src='/nameless.js'> </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128449068-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128449068-2');
+    </script>
+
+</head>
+<body>
+    <div id="top_menu"> loading... </div> <!-- will be replaced by header.html -->
+    <div style='float:right'>
+	<a href='/genesis/'>All Genesis articles</a> | <a href='/'>Back to top</a>
+    </div>
+    <br style='clear:right' />
+<h1>SEGA Genesis: Scrolling</h1>
+<p>The SEGA Genesis has dedicated scrolling hardware, with different scroll modes. In this post, I'll show how to do vertically synchronized scrolling on the Genesis.</p>
+<div style="width:100%;text-align:center;margin-bottom:80px">
+<div class='' style="text-align:center;float:right;margin:20px">
+<img class='screenshot' src="thunder_force4.gif" />
+<div>Line scroll enables awesome parallax effects</div>
+</div>
+<div class='' style="text-align:center;float:right">
+<img class='screenshot' src="turrican.gif" />
+<div>Full screen scrolling in Mega Turrican</div>
+</div>
+</div>
+<h2>Scroll Modes</h2>
+<p>In general, scrolling is the result of changing an offset of some displayed graphics.</p>
+<p>The Genesis VDP has support for both vertical and horizontal scrolling, and they seem to be handled in different ways, but here I will only focus on horizontal scrolling. Horizontal scrolling can be performed in 3 different modes on the Genesis:</p>
+<ul>
+<li>Full screen scroll: The whole screen is scrolled uniformly</li>
+<li>Line scroll: Every line is scrolled differently according to a table</li>
+<li>Cell scroll: Every 8 lines is scrolled differently according to a table</li>
+</ul>
+<p>The full screen scroll is simple enough, every pixel is offset horizontally with the same amount (see the Mega Turrican GIF for an example). It only requires updating one number every frame, the offset.</p>
+<p>The line scroll is more powerful, as every line on the screen can be offset with a different value. This allows for some crazy pseudo-3D effects, like the parallax scrolling in Thunder Force IV.</p>
+<p>The cell scroll is similar to the line scroll, but instead of every line being offset with a potentially different value, the offsets are 8 lines apart, requiring less data to be updated every frame.</p>
+<br style="clear:both" />
+<h2>Full Screen Scrolling</h2>
+<p>Here follows an example of scrolling in full screen mode, incrementing a single horizontal scroll offset every frame. To do this, we:</p>
+<ul>
+<li>Set full screen scroll mode</li>
+<li>Set VRAM address of horizontal scroll offset</li>
+<li>Increment and update scroll offset every frame</li>
+</ul>
+<p>The two first items require setting up VDP registers.</p>
+<br style="clear:both" />
+<h2>Scroll Mode</h2>
+<p>The full screen scroll mode is located in VDP register $0B. It has a few bits that I'll ignore for this example, and just set the two horizontal scroll bits. They can have these binary values:</p>
+<pre><code class="language-text"> * `00`: Full screen scroll
+ * `11`: Line scroll
+ * `10`: Cell scroll
+</code></pre>
+<p>For this example, we want to enable 'Full screen scroll' and set all other bits to 0, which just yields a bit fat 0:</p>
+<pre><code class="language-text">    0000 0000
+</code></pre>
+<p>So, we end up with setting the VDP register <code>$0B</code> to <code>0</code>.
+As explained earlier, VDP registers are set using this bit pattern:</p>
+<pre><code class="language-text">    Bits    [10?R RRRR DDDD DDDD]
+    R order [...4 3210 .... ....] register
+    D order [.... .... 7654 3210] data
+    -------------------------------------------
+    VDP register $0B (0 1011) = $0 (0000 0000)
+    Bits: [10.. .... .... ....]
+          [10.0 1011 .... ....] register $0B
+          [10.0 1011 0000 0000] data
+          [1000 1011 0000 0000] add zeroes
+    Hex:      8    B    0    0
+</code></pre>
+<p>To set the horizontal scroll mode to full screen scroll, we end up with this line:</p>
+<pre><code class="language-armasm">    move.w #$8B00,vdp_control
+</code></pre>
+<p>Next, let's set the scroll offset.</p>
+<h2>Scroll Offset Address</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img class='screenshot' src="gynoug.png" style="width:320px"/>
+<div>Biomechanic monstrocity from Wings of Wor</div>
+</div>
+<p>The horizontal scroll offset is just a single number in our example, but could be a table with entries for each line, if we were using line scroll mode. We tell the VDP of where our number is located by writing the address to VDP register <code>$0D</code>.</p>
+<p>I arbitrarily picked the VRAM address <code>$D000</code>, so we want to 'set VDP register <code>$0D</code> = <code>$D000</code>'. Scroll tables addresses must be a multiple of <code>$400</code>, and is specified using only the 6 most significant bits:</p>
+<pre><code class="language-text">    Bits: [?MAA AAAA]
+    - ? is ignored (set to 0)
+    - M enables 128 KB mode (set to 0)
+    - A is bits 15-10 of the address
+</code></pre>
+<p>We start out with this:</p>
+<pre><code class="language-text">    [.0.. ....]
+</code></pre>
+<p>And our address <code>$D000</code>, which in binary is <code>1101000000000000</code>, is specified using the 6 most significant bits: <code>110100</code>. Like this:</p>
+<pre><code class="language-text">    [.011 0100]
+</code></pre>
+<p>Add a zero, and now we have our data byte:</p>
+<pre><code class="language-text">    [0011 0100]
+        3    4
+</code></pre>
+<p>We can now make the full command word:</p>
+<pre><code class="language-text">    Bits    [10?R RRRR DDDD DDDD]
+    R order [...4 3210 .... ....] register
+    D order [.... .... 7654 3210] data
+    -------------------------------------------
+    VDP register $0D (0 1101) = $34 (0011 0100)
+    Bits: [10.. .... .... ....]
+          [10.0 1101 .... ....] register $0D
+          [10.0 1101 0011 0100] data = $34
+          [1000 1101 0011 0100] add zeroes
+    Hex:      8    D    3    4
+</code></pre>
+<p>So, to set the scroll table address to <code>$D000</code>, we use:</p>
+<pre><code class="language-armasm">    move.w #$8D34,vdp_control
+</code></pre>
+<h2>Writing Scroll Table to VRAM</h2>
+<p>So far, all I did was update the VDP registers. In order to actually update the scroll offset, I have to update the contents of VRAM address <code>$D000</code>. We do this like explained in an earlier post:</p>
+<pre><code class="language-text">    Bits    [BBAA AAAA AAAA AAAA 0000 0000 BBBB 00AA]
+    B order [10.. .... .... .... .... .... 5432 ....] oper. type
+    A order [..DC BA98 7654 3210 .... .... .... ..FE] address
+    -------------------------------------------------------------
+    VRAM Write (00 0001) to addr $D000 (1101 0000 0000 0000):
+            [01.. .... .... .... .... .... 0000 ....] oper. type
+            [0101 0000 0000 0000 .... .... 0000 ..11] VRAM address
+            [0101 0000 0000 0000 0000 0000 0000 0011] add zeroes
+      Hex:      5    0    0    0    0    0    0    3
+</code></pre>
+<p>Now we have our 32-bit command word, and can write it to the VDP Control Port to set up our VRAM write:</p>
+<pre><code class="language-armasm">    vdp_control = $C00004
+    move.l #$50000003,vdp_control   ; Set up VDP write to VRAM address $D000
+</code></pre>
+<p>Now that the VRAM write operation is set up, we can write the scroll offset to <code>vdp_data</code>:</p>
+<pre><code class="language-armasm">    move.w #0,vdp_data            ; scroll offset = 0
+</code></pre>
+<h2>Smooth Scrolling</h2>
+<div class='screenshot' style="float:right">
+<img class='screenshot' src="demo.gif" />
+</div>
+<p>The final code was ridiculously short compared to the work that went into it:</p>
+<pre><code class="language-armasm">    vdp_control = $C00004
+    vdp_data    = $C00000
+  
+    initScrolling:
+        ; Full screen scroll mode
+        move.w #$8B00,vdp_control
+        ; Scroll data is in $D000
+        move.w #$8D43,vdp_control
+    
+    mainLoop:
+        ; do stuff...
+  
+        jsr WaitVBlankEnd
+    
+        ; Set up VDP write to VRAM address $D000
+        move.l #$50000003,vdp_control
+        move.w d4,vdp_data     ; write d4 to VDP
+        add.w  #1,d4        ; d4 (x scroll) += 1
+    
+        jmp MainLoop
+</code></pre>
+<h2>References</h2>
+<ul>
+<li><a href="https://emudocs.org/Genesis/Graphics/genvdp.txt">Sega Genesis VDP documentation</a></li>
+<li><a href="http://md.squee.co/VDP">Mega Drive Wiki:VDP</a></li>
+<li><a href="http://mrjester.hapisan.com/04_MC68/">Markey Jester's Motorola 68000 Beginner's Tutorial</a></li>
+</ul>
+<div class="commentbox"></div>
+<hr>
+<pre>
+<span id='info'></span>
+</pre>
+</body>

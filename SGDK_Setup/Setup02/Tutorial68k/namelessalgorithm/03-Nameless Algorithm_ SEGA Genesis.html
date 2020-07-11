@@ -1,0 +1,253 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="/lib/highlight/styles/vs2015.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="SEGA Genesis programming">
+    <meta name="keywords" content="SEGA,Genesis,MegaDrive,Programming,Assembler,Game development,Tutorial">
+    <meta name="author" content="Jakob Schmid">
+    <title>Nameless Algorithm: SEGA Genesis</title>
+
+    <!-- HTML include using JavaScript,
+       - see https://stackoverflow.com/a/9003363
+       - jQuery downloaded from https://jquery.com/download/
+       -->
+    <script src="/jquery-3.3.1.min.js" /></script>
+
+    <!-- commentbox.io -->
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
+    <!-- main site scripts -->
+    <script src='/nameless.js'> </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128449068-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128449068-2');
+    </script>
+
+</head>
+<body>
+    <div id="top_menu"> loading... </div> <!-- will be replaced by header.html -->
+    <div style='float:right'>
+	<a href='/genesis/'>All Genesis articles</a> | <a href='/'>Back to top</a>
+    </div>
+    <br style='clear:right' />
+<h1>SEGA Genesis: Video Display Processor</h1>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="vdp.jpg" class='screenshot' style="width:300px"/>
+<div>VDP chip</div>
+</div>
+<p>The graphics of the SEGA Genesis is handled by the Video Display Processor (VDP) chip. It has it's own 64 KB of dedicated Video RAM (VRAM), containing all graphics data including tiles, sprites, color palettes, and scrolling tables. This memory is separate from the 64 KB of main memory directly accessible from the Motorola 68000 CPU.</p>
+<p>The VDP is controlled through memory-mapped I/O, specifically these addresses:</p>
+<pre><code class="language-text">$C00004 VDP Control Port
+$C00000 VDP Data Port
+</code></pre>
+<p>All access to the VDP is provided through writing to these addresses.
+In this post, I will explain how to set the VDP registers and write data to VRAM.</p>
+<p>In the following, we'll use these constants instead of the raw addresses:</p>
+<pre><code class="language-text">vdp_control = $C00004
+vdp_data    = $C00000
+</code></pre>
+<p>Now, this post is going to be pretty dry, but hey, at least there are a few Golden Axe screenshots.</p>
+<br style="clear:both" />
+<h2>VDP Registers</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="goldenaxe.png" class='screenshot' style="width:75%"/>
+<div>VDP Registers in Golden Axe title</div>
+</div>
+<p>The VDP has a set of registers which, along with the contents of VRAM, determine its behaviour. The VDP registers are set up by writing a control word to the VDP Control Port (<code>$C00004</code>).</p>
+<p>Let's try an example:</p>
+<blockquote>
+<p>Set the address of Plane A (tilemap) to the VRAM address <code>$C000</code>.</p>
+</blockquote>
+<p>This is done by setting VDP register <code>$02</code>, 'Plane A Name Table Location' to <code>$C000</code>.</p>
+<p>VDP registers are set using this bit pattern:</p>
+<pre><code class="language-text">    Bits: [10?R RRRR DDDD DDDD]
+    - ? is ignored (just set to 0)
+    - R is VDP register select ($00-$1F). It has a 5-bit
+      register number, with the bits distributed like this:
+          [...4 3210 .... ....]
+    - D is data, an 8-bit number:
+          [.... .... 7654 3210]
+</code></pre>
+<p><code>R</code> is just going to be <code>$02</code>, but <code>D</code> is set using this bit pattern:</p>
+<pre><code class="language-text">    Bits: [?XAA A???]
+    - ? is ignored, set to 0
+    - A is the upper 3 bits of a 16-bit address
+    - X is used if 128 KB mode is enabled (we'll set it to 0)
+</code></pre>
+<p>Since we only specify the upper 3 bits of the VRAM address, it has to be a multiple of <code>$2000</code>. So, for the address <code>$C000</code>, we fill out the bit pattern. First, we set 128 KB mode off:</p>
+<pre>
+    [.0.. ....]
+</pre>
+<p>The address <code>$C000</code> written in binary is:</p>
+<pre>
+    1100 0000 0000 0000
+</pre>
+<p>The upper 3 bits are then <code>110</code>. We put them into the bit pattern:</p>
+<pre>
+    [.011 0...]
+</pre>
+<p>And fill out the ignored bits with 0s:</p>
+<pre>
+    [0011 0000]
+</pre>
+<p>And now we have our 'D' value, we can fill out the full VDP register bit pattern. We start out with these bits, required for setting VDP registers:</p>
+<pre>
+    [10.. .... .... ....]
+</pre>
+<p>Then, we set our register number ($02), which as a 5-bit binary number is 00010:</p>
+<pre>
+    [10.0 0010 .... ....]
+</pre>
+<p>Then, the data, which was <code>0011 0000</code>:</p>
+<pre>
+    [10.0 0010 0011 0000]
+</pre>
+<p>And the '?' is set to zero, and we get our final binary number:</p>
+<pre>
+    [1000 0010 0011 0000]
+</pre>
+<p>We can convert it to hexadecimal:</p>
+<pre>
+    [1000 1011 0011 0000]
+        8    B    3    0
+</pre>
+<p>So, we end up with <code>$8B30</code>. To set the VDP register <code>$02</code> to the value address <code>$C000</code>, we write this word to the VDP Control Port address <code>$C00004</code>:</p>
+<pre><code class="language-armasm">    move.w #$8B30,vdp_control ;  Plane A address = $C000
+</code></pre>
+<p>Doesn't look like much now, does it? Now that we know how to set the VDP registers, I take a look at writing to VRAM, and then we can start going nuts with the VDP!</p>
+<h2>Accessing VRAM</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="goldenaxeboss.png" class='screenshot' style="width:320px"/>
+<div>Death Bringer and his crew of douchebags</div>
+</div>
+<p>All access to the VRAM from the MC68000 is done through the VDP. To set up  a read or write, we should go through the following steps:</p>
+<ul>
+<li>First, we select our access type: if we're reading or writing.</li>
+<li>Then we select which part of VRAM we'll access: color palettes, vertical scrolling data, or general graphics memory.</li>
+<li>Access type and VRAM part together forms 'Operation Type'.</li>
+<li>Of course, we also need the VRAM address we want to access.</li>
+<li>Operation Type and VRAM address are packed into a 32-bit integer and written to the VDP Control Port.</li>
+<li>Then, we can start accessing VRAM from the VDP Data Port.</li>
+</ul>
+<p>Let's try this:</p>
+<blockquote>
+<p>Writing the 16-bit word <code>$0007</code> to VRAM address <code>$C000</code>.</p>
+</blockquote>
+<p>Building on the previous example, this would set the first tile index in the Plane A tile map to index 7. More on this in a later post.</p>
+<p>We still use the VDP Control Port, but instead of writing a 16-bit value, we now need a 32-bit command word, which is structured like this:</p>
+<pre><code class="language-text">    Bits: [BBAA AAAA AAAA AAAA 0000 0000 BBBB 00AA]
+    - 0 is always just 0
+    - A is destination address, in this order:
+          [..DC BA98 7654 3210 .... .... .... ..FE]
+    - B is Operation type, in this order:
+          [10.. .... .... .... .... .... 5432 ....]
+</code></pre>
+<p>Those bits are distributed in a pretty crazy way, we'll have to be careful to not make any mistakes.</p>
+<p>Let's start with the Operation Type. It takes the following values:</p>
+<pre><code class="language-text">    B = 000000: VRAM read  (normal VRAM)
+    B = 000001: VRAM write
+    B = 001000: CRAM read  (color palette RAM)
+    B = 000011: CRAM write
+    B = 000100: VSRAM read (vertical scroll RAM)
+    B = 000101: VSRAM write
+</code></pre>
+<p>We're not writing to color palette RAM or vertical scroll RAM, so we'll pick the normal 'VRAM write': <code>000001</code>. We distribute it according to the pattern shown earlier:</p>
+<pre><code class="language-text">[01.. .... .... .... .... .... 0000 ....]
+</code></pre>
+<p>We then take our address <code>$C000</code>, which in binary is <code>1100000000000000</code>, and, distribute it according to the bit pattern:</p>
+<pre><code class="language-text">[0100 0000 0000 0000 .... .... 0000 ..11]
+</code></pre>
+<p>And fill up with zeroes according to the pattern:</p>
+<pre><code class="language-text">[0100 0000 0000 0000 0000 0000 0000 0011]
+</code></pre>
+<p>We're done with the command word. In hexadecimal it's:</p>
+<pre><code class="language-text">[0100 0000 0000 0000 0000 0000 0000 0011]
+    4    0    0    0    0    0    0    3
+</code></pre>
+<p>We can now write it to the VDP Control Port to set up our VRAM write:</p>
+<pre><code class="language-armasm">move.l #$40000003,vdp_control ; VRAM write to address $C000
+</code></pre>
+<p>Now that the VRAM write operation is set up, we can write our data to the VDP Data Port:</p>
+<pre><code class="language-armasm">move.w #$0007,vdp_data        ; Write 7 to $C000
+</code></pre>
+<h2>Auto-increment</h2>
+<div class='screenshot' style="float:right;text-align:center">
+<img src="goldenaxe_box.jpg" class='screenshot' style="width:320px"/>
+<div>Ax=Battler with an axe that he will never use</div>
+</div>
+<p>To be able to write a loop that copies a sequence of data to VRAM, we can set up the auto-increment register in the VDP. When writing to the VRAM Data Port, the address written to is automatically incremented with this value. Thus, a single VRAM write command written to the VDP Control Port can be followed by several VDP Data Port writes.</p>
+<p>Let's make a VDP register set command for setting the auto-increment register <code>$0F</code>:</p>
+<pre>
+    Bits: [10?R RRRR DDDD DDDD]
+    - ? is ignored (just set to 0)
+    - R is VDP register select ($00-$1F). It has a 5-bit
+      register number, with the bits distributed like this:
+          [...4 3210 .... ....]
+    - D is data, an 8-bit number:
+          [.... .... 7654 3210]
+</pre>
+<p>We start with the standard bits for setting VDP registers:</p>
+<pre>
+    [10.. .... .... ....]
+</pre>
+<p>Auto-increment was VDP register <code>$0F</code>, <code>01111</code> in binary:</p>
+<pre>
+    [10.0 1111 .... ....]
+</pre>
+<p>The data is simply 8 bits signifying the auto-increment value, so if we use auto-increment = 4 as an example:</p>
+<pre>
+    [10.0 1111 0000 0100]
+</pre>
+<p>We get this:</p>
+<pre>
+    [1000 1111 0000 0100]
+        8    F    0    4
+</pre>
+<p>Written in assembly like this:</p>
+<pre><code class="language-armasm">    move.w #$8F04,vdp_control
+</code></pre>
+<p>So, to use everything in one snippet of code, here is an example of writing 256 32-bit longwords of data to VRAM address <code>$C000</code>:</p>
+<pre><code class="language-armasm">    move.w #$8F04,vdp_control     ; VDP autoincrement = 4
+    move.l #$40000003,vdp_control ; VRAM write to $C000
+    lea    my_data,a0
+    move.w #256,d0                ; 256 iterations
+.loop
+    move.l (a0)+,vdp_data         ; write *A0 and increment
+    dbra.w d0,.loop
+my_data:
+    dc.w  $FEDE, $ABE0, ...       ; 256 words of data
+</code></pre>
+<h2>Debugging the VDP</h2>
+<p>While working on <a href='/genesis/blog/scrolling/'>some scrolling code</a>, I encountered a VDP bug that was tricky to track down.
+I was trying to set the VDP register <code>$0D</code> (HScroll) to the value <code>$34</code>, and had accidentally written:</p>
+<pre><code class="language-armasm">    move.w #$8D43,vdp_control ; set VDP reg. $0D = $43
+</code></pre>
+<p>See the problem?</p>
+<p>It should have been this:</p>
+<pre><code class="language-armasm">    move.w #$8D34,vdp_control ; set VDP reg. $0D = $34
+</code></pre>
+<p>Debugging this using mednafen or MAME was difficult, and I ended up installing yet another Genesis emulator, Regen. It has a VDP debug view that was very informative, as it shows the values of all VDP registers. Now I could easily see that register <code>$0D</code> (shown as <code>#13</code>) was set to <code>$34</code> instead of <code>$43</code>.</p>
+<div class="big_screenshot" >
+<img src="vdp_debug.png" style="width:75%"/>
+</div>
+<p>In the next post, I'll take a look at the basic functionality of the VDP: characters and playfields.</p>
+<h2>References</h2>
+<ul>
+<li><a href="http://md.squee.co/VDP">MegaDrive Wiki: VDP</a></li>
+<li><a href="http://segaretro.org/Regen">Regen</a></li>
+</ul>
+<div class="commentbox"></div>
+<hr>
+<pre>
+<span id='info'></span>
+</pre>
+</body>
