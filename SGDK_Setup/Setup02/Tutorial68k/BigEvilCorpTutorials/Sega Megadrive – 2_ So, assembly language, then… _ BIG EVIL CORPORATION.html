@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Sega Megadrive &#8211; 2: So, assembly language, then&#8230; | BIG EVIL CORPORATION</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://blog.bigevilcorporation.co.uk/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="https://s0.wp.com/wp-content/themes/pub/trvl/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Ubuntu:r:latin,latin-ext"]}};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://s0.wp.com/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active .site-description{font-size:0.98rem;font-style:normal;font-weight:400;font-family:"Ubuntu",sans-serif}.wf-active .site-title{font-size:11.2rem;font-style:normal;font-weight:400}.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Ubuntu",sans-serif;font-size:70%;font-style:normal;font-weight:400}.wf-active h1{font-size:2.1rem;font-style:normal;font-weight:400}.wf-active h2{font-size:1.96rem;font-style:normal;font-weight:400}.wf-active h3{font-size:1.82rem;font-style:normal;font-weight:400}.wf-active h4{font-size:1.68rem;font-style:normal;font-weight:400}.wf-active h5{font-size:1.54rem;font-style:normal;font-weight:400}.wf-active h6{font-size:1.4rem;font-style:normal;font-weight:400}.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Ubuntu",sans-serif;font-style:normal;font-weight:400}.wf-active .format-image .entry-title, .wf-active .format-video .entry-title{font-size:2.1rem;font-style:normal;font-weight:400}.wf-active #reply-title{font-size:1.26rem;font-style:normal;font-weight:400}</style>
+<meta name="google-site-verification" content="S125yBGUHGezSvGkVZcFwIhtHE-CxDZ2bwOmsF5wrPo" />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9ibG9nLmJpZ2V2aWxjb3Jwb3JhdGlvbi5jby51aw%3D%3D"
+		+ "&wpcomid=18733217"
+		+ "&time=1594463065";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//bigevilcorp.wordpress.com' />
+<link rel='dns-prefetch' href='//s.pubmine.com' />
+<link rel='dns-prefetch' href='//x.bidswitch.net' />
+<link rel='dns-prefetch' href='//static.criteo.net' />
+<link rel='dns-prefetch' href='//ib.adnxs.com' />
+<link rel='dns-prefetch' href='//aax.amazon-adsystem.com' />
+<link rel='dns-prefetch' href='//bidder.criteo.com' />
+<link rel='dns-prefetch' href='//cas.criteo.com' />
+<link rel='dns-prefetch' href='//gum.criteo.com' />
+<link rel='dns-prefetch' href='//ads.pubmatic.com' />
+<link rel='dns-prefetch' href='//gads.pubmatic.com' />
+<link rel='dns-prefetch' href='//tpc.googlesyndication.com' />
+<link rel='dns-prefetch' href='//ad.doubleclick.net' />
+<link rel='dns-prefetch' href='//googleads.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//www.googletagservices.com' />
+<link rel='dns-prefetch' href='//cdn.switchadhub.com' />
+<link rel='dns-prefetch' href='//delivery.g.switchadhub.com' />
+<link rel='dns-prefetch' href='//delivery.swid.switchadhub.com' />
+<link rel='dns-prefetch' href='//a.teads.tv' />
+<link rel='dns-prefetch' href='//prebid.media.net' />
+<link rel='dns-prefetch' href='//adserver-us.adtech.advertising.com' />
+<link rel='dns-prefetch' href='//fastlane.rubiconproject.com' />
+<link rel='dns-prefetch' href='//prebid-server.rubiconproject.com' />
+<link rel='dns-prefetch' href='//hb-api.omnitagjs.com' />
+<link rel='dns-prefetch' href='//mtrx.go.sonobi.com' />
+<link rel='dns-prefetch' href='//apex.go.sonobi.com' />
+<link rel='dns-prefetch' href='//u.openx.net' />
+<link rel="alternate" type="application/rss+xml" title="BIG EVIL CORPORATION &raquo; Feed" href="https://blog.bigevilcorporation.co.uk/feed/" />
+<link rel="alternate" type="application/rss+xml" title="BIG EVIL CORPORATION &raquo; Comments Feed" href="https://blog.bigevilcorporation.co.uk/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="BIG EVIL CORPORATION &raquo; Sega Megadrive &#8211; 2: So, assembly language,&nbsp;then&#8230; Comments Feed" href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1582709031h&ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s0.wp.com/_static/??-eJydkt1SwyAQhV9IQpJaJ7lwfBYIK9IugWGXiXl7SaatmdaJjnccON/+IqcohjAyjCx9FhGzdSPJKQ7BC/IOYb5T1UD0JDeYxmC/wZCMMiQtBq3wwbtJkQAVgxExEN+pPQzdGUiegKMazmJVD/ar1+YiNSRbXhLIrjpUtdTZoVmKXnGdVJol8YzwhzArtcmu5pBZ2OTMf0MkxW609Av+nhEFOQYBxi3AZRyyOXZdf6zbXsYE3mV/Q/cDDuFSR1O1y1CMI75dip/ZzRKWcZZ7HxUvDl+qUoDgi20Pm5yxUJZdLJezYPjcR9avp3Vpj0hcm+SPkmvd+5t/bY79c922Tf1y+gKhzgyM?cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+</style>
+<style id='global-styles-inline-css'>
+:root {
+	--wp--preset--color--black: #000000;
+	--wp--preset--color--cyan-bluish-gray: #abb8c3;
+	--wp--preset--color--light-green-cyan: #7bdcb5;
+	--wp--preset--color--luminous-vivid-amber: #fcb900;
+	--wp--preset--color--luminous-vivid-orange: #ff6900;
+	--wp--preset--color--pale-cyan-blue: #8ed1fc;
+	--wp--preset--color--pale-pink: #f78da7;
+	--wp--preset--color--vivid-cyan-blue: #0693e3;
+	--wp--preset--color--vivid-green-cyan: #00d084;
+	--wp--preset--color--vivid-purple: #9b51e0;
+	--wp--preset--color--vivid-red: #cf2e2e;
+	--wp--preset--color--white: #ffffff;
+	--wp--preset--font-size--small: 13;
+	--wp--preset--font-size--normal: 16;
+	--wp--preset--font-size--medium: 20;
+	--wp--preset--font-size--large: 36;
+	--wp--preset--font-size--huge: 48;
+	--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);
+	--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);
+	--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);
+	--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);
+	--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);
+	--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);
+	--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);
+	--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);
+	--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);
+	--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);
+	--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);
+	--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);
+}
+
+</style>
+<link rel='stylesheet' id='all-css-2-1' href='https://s0.wp.com/_static/??-eJyFjEEOwjAMBD9EMEUqKgfEW9LgugEnjhKnFb8n3EBI5eb17gysyTiJilFBZwxYINURNC8MU/sXYLRU0ZDo7N3elbKDDabok/FnFapJXMnHAqu/ETYt1tbKw6Nhu4JiSGy1mf4KCMWwOKte4lcwE1uft9CMIwu1k6CtPuIbuoZL158P3ak/DsP9BTs8aHo=?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-3-1' href='https://s0.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035h&cssminify=yes' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-4-1' href='https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.css?m=1560469195h&cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link rel='stylesheet' id='all-css-6-1' href='https://s0.wp.com/_static/??-eJxti8sKgCAQAH8oW6IHdIi+xcR0Y3XFVfr96NAh6jQMzMCZlOFYbCwQqkpUHUaBxFLUThoziNcZo3vYGpEG/i9hg5oUseO3fKbibbACfgBHvGm6gzUs3Tj3UzcO/XRcZTE30g==?cssminify=yes' type='text/css' media='all' />
+<script>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??-eJx9jNsKgzAMQH9osSrr0Iexb/ESS6Rpu7aZ7O/Xge7Bh0EgJJxz1BaA3GRlxqTWMk/B+N5XtaaL+gcAk4lDxorJHfDkXUaXvyz7kSyCJIyDKb8SWvyZY4FgxZBLKqItsRmCT/l0na1DWcRaSJQRcKZMzuwx1eiu63Xd9ipEZBL+qS/CreQefG90f63btqlv6wdzkmDG'></script>
+<link rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1530132353h&cssminify=yes' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s0.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://bigevilcorp.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s0.wp.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Sega Megadrive &#8211; 1: Getting&nbsp;Started' href='https://blog.bigevilcorporation.co.uk/2012/02/28/sega-megadrive-1-getting-started/' />
+<link rel='next' title='Sega Megadrive &#8211; 3: Awaking the&nbsp;Beast' href='https://blog.bigevilcorporation.co.uk/2012/03/09/sega-megadrive-3-awaking-the-beast/' />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/" />
+<link rel='shortlink' href='https://wp.me/p1gBmF-Y' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fblog.bigevilcorporation.co.uk%2F2012%2F03%2F01%2Fsega-megadrive-2-so-assembly-language-then%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fblog.bigevilcorporation.co.uk%2F2012%2F03%2F01%2Fsega-megadrive-2-so-assembly-language-then%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sega Megadrive &#8211; 2: So, assembly language, then&#8230;" />
+<meta property="og:url" content="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/" />
+<meta property="og:description" content="I&#8217;ve been toying with the idea of learning an assembly language for some considerable time. I tried &#8211; and failed &#8211; to get to grips with 68k ASM on the Atari STe, but that was most…" />
+<meta property="article:published_time" content="2012-03-01T23:21:37+00:00" />
+<meta property="article:modified_time" content="2012-10-15T19:28:20+00:00" />
+<meta property="og:site_name" content="BIG EVIL CORPORATION" />
+<meta property="og:image" content="https://bigevilcorp.files.wordpress.com/2012/03/megadrive_thumb1.png" />
+<meta property="og:image:width" content="150" />
+<meta property="og:image:height" content="113" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:creator" content="@big_evil_corp" />
+<meta name="twitter:site" content="@big_evil_corp" />
+<meta name="twitter:text:title" content="Sega Megadrive &#8211; 2: So, assembly language,&nbsp;then&#8230;" />
+<meta name="twitter:image" content="https://bigevilcorp.files.wordpress.com/2012/03/megadrive_thumb1.png?w=144" />
+<meta name="twitter:card" content="summary" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/f56259df2aef345adebc420e48e5284b?s=32" sizes="16x16" />
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/f56259df2aef345adebc420e48e5284b?s=32" sizes="16x16" />
+<link rel="apple-touch-icon" href="https://secure.gravatar.com/blavatar/f56259df2aef345adebc420e48e5284b?s=114" />
+<link rel='openid.server' href='https://blog.bigevilcorporation.co.uk/?openidserver=1' />
+<link rel='openid.delegate' href='https://blog.bigevilcorporation.co.uk/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://blog.bigevilcorporation.co.uk/osd.xml" title="BIG EVIL CORPORATION" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="theme-color" content="#515151" />
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="BIG EVIL CORPORATION" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Winner of Highest Employee Turnover Award 1996" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://blog.bigevilcorporation.co.uk/feed/;icon-uri=https://secure.gravatar.com/blavatar/f56259df2aef345adebc420e48e5284b?s=16" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s0.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s0.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s0.wp.com/i/favicon.ico" /><meta name="description" content="I&#039;ve been toying with the idea of learning an assembly language for some considerable time. I tried - and failed - to get to grips with 68k ASM on the Atari STe, but that was mostly not being able to figure out how to get the DevPac IDE to stop crashing. Perhaps I had a&hellip;" />
+	<style type="text/css">
+			.site-title,
+		.site-description {
+			position: absolute;
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #515151; }
+</style>
+			<script type="text/javascript">
+
+			window.doNotSellCallback = function() {
+
+				var linkElements = [
+					'a[href="https://wordpress.com/?ref=footer_blog"]',
+					'a[href="https://wordpress.com/?ref=footer_website"]',
+					'a[href="https://wordpress.com/?ref=vertical_footer"]',
+					'a[href^="https://wordpress.com/?ref=footer_segment_"]',
+				].join(',');
+
+				var dnsLink = document.createElement( 'a' );
+				dnsLink.href = 'https://wordpress.com/advertising-program-optout';
+				dnsLink.classList.add( 'do-not-sell-link' );
+				dnsLink.rel = 'nofollow';
+				dnsLink.style.marginLeft = '0.5em';
+				dnsLink.textContent = 'Do Not Sell My Personal Information';
+
+				var creditLinks = document.querySelectorAll( linkElements );
+
+				if ( 0 === creditLinks.length ) {
+					return false;
+				}
+
+				Array.prototype.forEach.call( creditLinks, function( el ) {
+					el.insertAdjacentElement( 'afterend', dnsLink );
+				});
+
+				return true;
+			};
+
+		</script>
+				<script type="text/javascript">
+		function __ATA_CC() {var v = document.cookie.match('(^|;) ?personalized-ads-consent=([^;]*)(;|$)');return v ? 1 : 0;}
+		var __ATA_PP = { pt: 1, ht: 0, tn: 'trvl', amp: false, siteid: 8982, blogid: 18733217, consent: __ATA_CC() };
+		var __ATA = __ATA || {};
+		__ATA.cmd = __ATA.cmd || [];
+		__ATA.criteo = __ATA.criteo || {};
+		__ATA.criteo.cmd = __ATA.criteo.cmd || [];
+		</script>
+		<script type="text/javascript">
+		(function(){var g=Date.now||function(){return+new Date};function h(a,b){a:{for(var c=a.length,d="string"==typeof a?a.split(""):a,e=0;e<c;e++)if(e in d&&b.call(void 0,d[e],e,a)){b=e;break a}b=-1}return 0>b?null:"string"==typeof a?a.charAt(b):a[b]};function k(a,b,c){c=null!=c?"="+encodeURIComponent(String(c)):"";if(b+=c){c=a.indexOf("#");0>c&&(c=a.length);var d=a.indexOf("?");if(0>d||d>c){d=c;var e=""}else e=a.substring(d+1,c);a=[a.substr(0,d),e,a.substr(c)];c=a[1];a[1]=b?c?c+"&"+b:b:c;a=a[0]+(a[1]?"?"+a[1]:"")+a[2]}return a};var l=0;function m(a,b){var c=document.createElement("script");c.src=a;c.onload=function(){b&&b(void 0)};c.onerror=function(){b("error")};a=document.getElementsByTagName("head");var d;a&&0!==a.length?d=a[0]:d=document.documentElement;d.appendChild(c)}function n(a){var b=void 0===b?document.cookie:b;return(b=h(b.split("; "),function(c){return-1!=c.indexOf(a+"=")}))?b.split("=")[1]:""}function p(a){return"string"==typeof a&&0<a.length}
+		function r(a,b,c){b=void 0===b?"":b;c=void 0===c?".":c;var d=[];Object.keys(a).forEach(function(e){var f=a[e],q=typeof f;"object"==q&&null!=f||"function"==q?d.push(r(f,b+e+c)):null!==f&&void 0!==f&&(e=encodeURIComponent(b+e),d.push(e+"="+encodeURIComponent(f)))});return d.filter(p).join("&")}function t(a,b){a||((window.__ATA||{}).config=b.c,m(b.url))}var u=Math.floor(1E13*Math.random()),v=window.__ATA||{};window.__ATA=v;v.rid=u;v.createdAt=g();var w=window.__ATA||{},x="s.pubmine.com";
+		w&&w.serverDomain&&(x=w.serverDomain);var y="//"+x+"/conf",z=window.top===window,A=window.__ATA_PP&&window.__ATA_PP.gdpr_applies,B="boolean"===typeof A?Number(A):null,C=window.__ATA_PP||null,D=z?document.referrer?document.referrer:null:null,E=z?window.location.href:document.referrer?document.referrer:null,F,G=n("__ATA_tuuid");F=G?G:null;var H=window.innerWidth+"x"+window.innerHeight,I=n("usprivacy"),J=r({gdpr:B,pp:C,rid:u,src:D,ref:E,tuuid:F,vp:H,us_privacy:I?I:null},"",".");
+		(function(a){var b=void 0===b?"cb":b;l++;var c="callback__"+g().toString(36)+"_"+l.toString(36);a=k(a,b,c);window[c]=function(d){t(void 0,d)};m(a,function(d){d&&t(d)})})(y+"?"+J);}).call(this);
+		</script><link rel="amphtml" href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/amp/"><style type="text/css" id="custom-colors-css">body{background-color:#515151}pre{color:#515151}input[type=text],input[type=email],input[type=password],input[type=search],input[type=url],textarea{color:#515151}#infinite-handle span{color:#515151}.entry-title{border-color:#383838}</style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_gat._anonymizeIp']);
+	_gaq.push(['_setDomainName', 'none']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script>
+</head>
+
+<body class="post-template-default single single-post postid-60 single-format-standard custom-background customizer-styles-applied highlander-enabled highlander-dark">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-description">Winner of Highest Employee Turnover Award 1996</div>
+		<h1 class="site-title"><a href="https://blog.bigevilcorporation.co.uk/" title="BIG EVIL CORPORATION" rel="home">BIG EVIL CORPORATION</a></h1>
+
+				<a class="site-image" href="https://blog.bigevilcorporation.co.uk/" title="BIG EVIL CORPORATION" rel="home">
+			<img src="https://bigevilcorp.files.wordpress.com/2018/04/cropped-logo_bec__0005_main_white_945_430_slogan5.png" width="950" height="432" alt="" />
+		</a>
+			</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+<div id="primary" class="content-area">
+	<div id="content" class="site-content" role="main">
+
+		<nav role="navigation" id="nav-above" class="navigation-post">
+		<h1 class="screen-reader-text">Post navigation</h1>
+
+	
+		<div class="nav-previous"><a href="https://blog.bigevilcorporation.co.uk/2012/02/28/sega-megadrive-1-getting-started/" rel="prev"><span class="meta-nav">&laquo;</span> Sega Megadrive &#8211; 1: Getting&nbsp;Started</a></div>		<div class="nav-next"><a href="https://blog.bigevilcorporation.co.uk/2012/03/09/sega-megadrive-3-awaking-the-beast/" rel="next">Sega Megadrive &#8211; 3: Awaking the&nbsp;Beast <span class="meta-nav">&raquo;</span></a></div>
+	
+	</nav><!-- #nav-above -->
+	
+	
+		
+<article id="post-60" class="post-60 post type-post status-publish format-standard hentry category-sega-megadrive tag-development tag-games tag-genesis tag-megadrive tag-sega tag-videogames">
+	<header class="entry-header">
+		<h1 class="entry-title">Sega Megadrive &#8211; 2: So, assembly language,&nbsp;then&#8230;</h1>
+		<div class="entry-meta">
+			<a href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/" title="11:21 pm" rel="bookmark"><time class="entry-date" datetime="2012-03-01T23:21:37+00:00">March 1, 2012</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://blog.bigevilcorporation.co.uk/author/bigevilcorp/" title="View all posts by bigevilcorp" rel="author">bigevilcorp</a></span></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p><a href="https://bigevilcorp.files.wordpress.com/2012/03/megadrive_thumb1.png"><img data-attachment-id="136" data-permalink="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/megadrive_thumb/#main" data-orig-file="https://bigevilcorp.files.wordpress.com/2012/03/megadrive_thumb1.png" data-orig-size="150,113" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="megadrive_thumb" data-image-description="" data-medium-file="https://bigevilcorp.files.wordpress.com/2012/03/megadrive_thumb1.png?w=150" data-large-file="https://bigevilcorp.files.wordpress.com/2012/03/megadrive_thumb1.png?w=150" class="alignleft size-full wp-image-136" title="megadrive_thumb" alt="" src="https://bigevilcorp.files.wordpress.com/2012/03/megadrive_thumb1.png?w=690"   /></a>I&#8217;ve been toying with the idea of learning an assembly language for some considerable time. I tried &#8211; and failed &#8211; to get to grips with 68k ASM on the Atari STe, but that was mostly not being able to figure out how to get the DevPac IDE to stop crashing. Perhaps I had a bad disk, or not enough RAM in my STe (I think it was the measly 512k model). I&#8217;ve since given 68k a second shot, on the Megadrive, and this stuff is finally beginning to sink in. This post shows the things I&#8217;ve learned so far, some of the troubles I ran into, and some of things I still find confusing.</p>
+<p>I&#8217;ve already got 10 or so years (three of those professionally) of C and C++ programming under my belt, so I&#8217;ve had a good head start, and I&#8217;m hopeful that this won&#8217;t to be too tricky to learn. I&#8217;m already familiar with some of the more advanced concepts of programming, such as working with raw bytes, bitwise operations, address alignment, and the best types of coffee to buy to make coding sessions more productive. So, here goes&#8230;</p>
+<h3>68k Assembly &#8211; The Basics</h3>
+<p>One line of 68k assembly code equals one CPU instruction (called an <strong>opcode</strong>) plus its parameters, so it&#8217;s an almost bare-metal experience working directly with the hardware. It&#8217;s one step up from working with machine code directly. Therefore, the programs used to create binaries only <strong>assemble</strong> the code into CPU instructions, there&#8217;s no real compiling involved. Fortunately, that means assembling is really fast, and you know exactly what you&#8217;re getting. Unfortunately, that means you have to do all of the hard work yourself, there&#8217;s limited language &#8216;features&#8217; to help out &#8211; functions, enums, classes and structs, templates &#8211; just forget about them.</p>
+<p>The purpose of most opcodes is to perform an operation on one or more bytes of data. This could be to move bytes from one location to another, or perform some arithmetic on them. The CPU is incapable of performing most tasks on the data whilst it is in main RAM, instead it has its own localised storage spaces (physically on the chip) where data is temporarily stored so it can be manipulated. These spaces are called <strong>registers</strong>, and the 68000 has 16 of them. 8 of them are <strong>general purpose registers</strong> &#8211; this is where the majority of arithmetic work will be done. Each general purpose register is 32 bits in size. The other 8 are <strong>address registers</strong>, and are only used for storing addresses of main memory for fetching or returning data from it, so they&#8217;re basically pointers that are attached to the CPU.</p>
+<p>The general purpose registers have names <strong>d0 &#8211; d7</strong>, and the address registers <strong>a0 &#8211; a7</strong>. So, the fourth general purpose register is called d3, and the second address register is called a1. Some registers have aliases for ease of use. For example, a7 is commonly used as the stack pointer, and can also be referred to in code as &#8216;sp&#8217;.</p>
+<p>Opcodes can perform operations using data from varying sources &#8211; main memory, one or more registers, or an immediate value (an integer, hex value, or binary value). Here&#8217;s a few examples of the <strong>MOVE opcode</strong>, it takes the first parameter, and moves it to the register or address in the second parameter:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+ move.l #$10, d0   ; Moves the hex value 0x10 (decimal 16) to register d0
+ move.l #%0101, d0 ; Moves the binary value 0101 (decimal 5) to register d0
+ move.l #12, d0    ; Moves the decimal value 12 to register d0
+ move.l d1, d0     ; Moves the value stored in register d1 to register d0
+ move.l 0x8000, d0 ; Moves the value stored at address 0x8000 to register d0
+ move.l d0, 0x8000 ; Moves the value stored in register d0 to address 0x8000
+ move.l (a0), d0   ; Moves the value stored at the address in a0 to register d0
+ move.l d0, (a0)   ; Moves the value stored in register d0 to the address stored in register a0
+</pre>
+<p>The first three examples show how to move <strong>immediate values</strong> to a register, signified by the <strong>#</strong> symbol before the value. An immediate value can be a hex value (prefixed with either <strong>$</strong> or <strong>0x</strong>), a binary value (prefixed with <strong>%</strong>), or a decimal value (no prefix). So to specify the immediate hex value 12, use #$12 or #0x12, to specify the binary value 0011 use #%0011, or for the decimal value 128 use #128. Example 4 shows how to move the <strong>contents of a register </strong>to another, and examples 5 and 6 show how to move the <strong>contents stored at an address in main memory</strong> to a register, and vice versa. Examples 7 and 8 show the same thing, but that main memory address is stored in the register a0. The brackets around register (a0) specify that the <strong>value at the address stored in a0</strong> is to be moved, <strong>not the address itself</strong>, similar to the dereference operator in C/C++. Omitting the brackets would just move the address.</p>
+<p>Not all opcodes can deal with data from all sources. Some can only operate on data in registers, some may or may not be able to use immediate values, and only select few opcodes can deal with data straight from main memory. A list of all of the 68k&#8217;s opcodes, including details of their usage and which source/destination values are permitted, are in the <strong>68k Instruction Set</strong> PDF in the references section below.</p>
+<p>The <strong>.l</strong> after the opcode is the size of the operation, in this case moving a <strong>longword</strong> of data (4 bytes). Opcodes can operate on <strong>bytes (.b, 8 bits)</strong>, <strong>words (.w, 2 bytes)</strong> or <strong>longwords (.l, 4 bytes)</strong>. Not all opcodes can operate on all data sizes, I&#8217;ve been checking the Instruction Set for which sizes are supported.</p>
+<h3>A few opcodes</h3>
+<p>I&#8217;ve been doing this for three months, and so far I&#8217;ve only used about 10 opcodes. It&#8217;s impressive how simple low-level computing like this can be, and even more impressive looking at some of the amazing games created with so few building blocks. Here&#8217;s a small guide to some of the opcodes I&#8217;ve found to be most useful:</p>
+<h4>ADD, SUB, MUL, DIV</h4>
+<p>The four basic arithmetic opcodes &#8211; <strong>add, subtract, multiply</strong> and <strong>divide</strong>. Add does exactly what it says on the tin. It adds the value in the first parameter (immediate value or register contents) to the register in the second parameter, and stores the result in that register. There&#8217;s a couple of variants of it &#8211; ADDI means add immediate, which only adds an immediate value to the contents of a register, ADDA adds a value to an address (NOT the value stored at the address, just the address itself), ADDQ which can very quickly add small immediate values (1 &#8211; 8), and ADDX which I&#8217;ve yet to figure out. There&#8217;s several variants because some are more expensive than others. I haven&#8217;t yet done any real optimisation to my code, but I guess paying attention to these small differences in opcode variants would be a good start when I get round to it. If I only needed to add 4 to a value, ADDQ would be faster than ADDI, for example.</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+
+add.l #0x10, d1  ; Adds the value 0x10 to register d1, and stores the result in d1
+                 ; - longword size operation, so it uses all of the data in
+                 ; the register
+
+add.w d1, d2     ; Adds the contents of d1 to the contents of d2, and stores the
+                 ; result in d2 - word size operation, so the top two bytes of both
+                 ; registers are not referenced, and remain intact
+
+addq.b #0x5, d3  ; Quickly adds 5 to the value in d3, storing the result in d3
+                 ;  - byte size operation, so the upper three bytes are not
+                 ; referenced, and stay intact
+</pre>
+<p>The last example is of byte size, so if d3 contained 0x000000FF the result would become 0x00000004, and would NOT roll to 0x00000100. It would need to be a word or longword size operation to do that.</p>
+<p>MUL, SUB and DIV are used pretty much the same as ADD, and also have several variants. The Instruction Set doc shows each of their nuances and acceptable operation sizes.</p>
+<h4>CLR</h4>
+<p>CLR stands for <strong>clear</strong>. It sets a register (or data at an address), or part of a register depending on the operation size, to zero. It only takes one parameter, and that&#8217;s the register or address:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+clr.l d0     ; Clears the whole of d0
+clr.w (a0)   ; Clears the bottom word (2 bytes) of the data at the address in a0
+clr.b d0     ; Clears the bottom byte of d0, leaving the rest intact
+</pre>
+<h4>JMP</h4>
+<p>JMP means <strong>jump</strong>. It moves the program counter (the pointer to the current instruction) to another location, and continues executing. The address can be specified in hex, or more conveniently, using a label:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+SomeLabel:
+   jmp SomeLabel   ; An infinite loop!
+</pre>
+<h4>JSR and RTS</h4>
+<p>JSR means to <strong>jump to subroutine</strong>. It does the same as JMP, but stores the original address of the program counter (by pushing it to the stack) before jumping, so that it can return later. RTS, meaning <strong>return to subroutine</strong>, pops the original address from the stack and does the jump back:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+   move.l #0x8 d0   ; Do something useful
+   jsr Label        ; Jump to Label
+   move.l #0x12 d0  ; Will return here when RTS is called
+
+Label:
+   move.l #0x04, d0 ; Do something else
+   rts              ; Return back
+</pre>
+<h4>DBRA</h4>
+<p>This means <strong>decrement and branch</strong>. It does the same as a jump, but tests to see if a register is zero first. If that register is non-zero, it decrements that register by 1, and then branches. If the register is zero, it doesn&#8217;t branch, and just continues to the next line. It&#8217;s a common tool used for implementing loops:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+   move.b #0x6, d0 ; Looping round 7 iterations (includes the 0th iteration)
+
+Label:
+   add.l #0x1, d1  ; Add 1 do register d1
+   dbra d0, Label  ; Test to see if d0 is zero yet, and if not decrement it and
+                   ; jump back up to Label
+   clr.l d1        ; Loop has finished, clear d1
+</pre>
+<h4>CMP and Bcc</h4>
+<p>Bcc, meaning <strong>branch on condition</strong>, is a collection of various branch opcodes which only branch if the <strong>condition code</strong> of the <strong>status register</strong> adheres to some condition. The status register seems to be the state of the CPU after an operation, and each opcode leaves its condition code in a different state after execution, as a sort of return value. For example, the <strong>CMP</strong> opcode (meaning <strong>compare</strong>) will store the result of subtracting two values into the status register&#8217;s condition code. After that, the Bcc variant <strong>BEQ</strong> (<strong>branch if equal to zero</strong>) can test the result of that comparison, and branch or not based on it. It&#8217;s a common way to implement an IF statement.</p>
+<p>Here&#8217;s a demonstration of most of the above opcodes, including a CMP and BEQ. It&#8217;s a subroutine which counts the number of characters in a null-terminated string, by iterating through each byte and checking if it is 0, whilst keeping count of each iteration:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+GetStringLength:
+   clr.l d0          ; Clear d0, ready to begin counting
+
+   @FindTerm:
+   move.b (a0)+, d1  ; Move byte from address in a0 to d1, and then increment the address by 1 byte
+   cmp.b #0x0, d1    ; Test if byte is zero
+   beq.b @End        ; If byte was zero, branch to end
+   addq.l #0x1, d0   ; Increment counter
+   jmp @FindTerm     ; Jump back to FindTerm to loop round again
+
+   @End:
+   rts               ; End of search, return back. Result is in r0
+</pre>
+<p>Example usage:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+   move.l #StringAddr, a0  ; Move address of string to a0
+   jsr GetStringLength     ; Jump to the GetStringLength subroutine
+                           ; Length of string will now be stored in d0
+
+StringAddr:
+   dc.b &quot;HELLO WORLD&quot;, 0   ; A zero-terminated string
+</pre>
+<p>In the example, I&#8217;ve also introduced two new concepts. One is the <strong>+</strong> symbol after moving a value from (a0). This means <strong>post-increment</strong>; the address in a0 will be incremented by 1 byte after it has been read, similar to <strong>int a = b++</strong> in the C++ language. The second concept is the <strong>@</strong> symbol before the label <strong>FindTerm</strong>. This means the label is local &#8211; when referencing the label @FindTerm, it uses the address of the <strong>most recently defined @FindTerm</strong> label. This means you can have duplicate label names (<strong>loop</strong> could be a common name, perhaps) without any ambiguity.</p>
+<p>That&#8217;s it for now. It doesn&#8217;t look like much, but I&#8217;ve managed to get as far as drawing text and sprites with no other opcodes than the ones listed, so they&#8217;re pretty powerful. There&#8217;s a few others I&#8217;ve touched briefly, like ROL and ROR, which shift bits left or right, but they don&#8217;t become useful until dealing with VDP addresses.<br />
+<strong>Matt.</strong></p>
+<h4>References</h4>
+<ul>
+<li><a href="http://wpage.unina.it/rcanonic/didattica/ce1/docs/68000.pdf">The Motorola 68000 Instruction Set</a></li>
+<li><a href="http://birg.cs.wright.edu/ceg320/simulator/help_page.shtml">ASM68k help page</a></li>
+<li><a href="http://www.bitsavers.org/pdf/corvus/7100-03035_68000asmRef.pdf">ASM68k reference manual</a></li>
+</ul>
+<div id="atatags-370373-5f099359e42e5">
+        <script type="text/javascript">
+            __ATA.cmd.push(function() {
+                __ATA.initVideoSlot('atatags-370373-5f099359e42e5', {
+                    sectionId: '370373',
+                    format: 'inread'
+                });
+            });
+        </script>
+    </div>			<div id="atatags-26942-5f099359e4328"></div>
+			
+			<script>
+				__ATA.cmd.push(function() {
+					__ATA.initDynamicSlot({
+						id: 'atatags-26942-5f099359e4328',
+						location: 120,
+						formFactor: '001',
+						label: {
+							text: 'Advertisements',
+						},
+						creative: {
+							reportAd: {
+								text: 'Report this ad',
+							},
+							privacySettings: {
+								text: 'Privacy settings',
+							}
+						}
+					});
+				});
+			</script><div id="jp-post-flair" class="sharedaddy sharedaddy-dark sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-60" class="share-facebook sd-button share-icon" href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-60" class="share-twitter sd-button share-icon" href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-60" class="share-linkedin sd-button share-icon" href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-18733217-60-5f099359e4c28' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=18733217&amp;post_id=60&amp;origin=bigevilcorp.wordpress.com&amp;obj_id=18733217-60-5f099359e4c28&amp;domain=blog.bigevilcorporation.co.uk' data-name='like-post-frame-18733217-60-5f099359e4c28'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>			</div><!-- .entry-content -->
+
+	
+	<footer class="entry-meta">
+		This Post was posted in <a href="https://blog.bigevilcorporation.co.uk/category/game-development-challenge/sega-megadrive/" rel="category tag">Sega Megadrive</a> and tagged <a href="https://blog.bigevilcorporation.co.uk/tag/development/" rel="tag">development</a>, <a href="https://blog.bigevilcorporation.co.uk/tag/games/" rel="tag">games</a>, <a href="https://blog.bigevilcorporation.co.uk/tag/genesis/" rel="tag">genesis</a>, <a href="https://blog.bigevilcorporation.co.uk/tag/megadrive/" rel="tag">megadrive</a>, <a href="https://blog.bigevilcorporation.co.uk/tag/sega/" rel="tag">sega</a>, <a href="https://blog.bigevilcorporation.co.uk/tag/videogames/" rel="tag">videogames</a>. Bookmark the <a href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/" title="Permalink to Sega Megadrive &#8211; 2: So, assembly language,&nbsp;then&#8230;" rel="bookmark">permalink</a>.	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+		
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			4 thoughts on &ldquo;<span>Sega Megadrive &#8211; 2: So, assembly language,&nbsp;then&#8230;</span>&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-114" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-114" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/42a31cdd2e3141377da70ae70323918b?s=32&#038;d=retro&#038;r=G' class='avatar avatar-32' height='32' width='32' />						<b class="fn">DoNotWant</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/#comment-114">
+							<time datetime="2012-10-14T15:11:35+00:00">
+								October 14, 2012 at 3:11 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hey!<br />
+I just started reading the 68k reference manual, and it states<br />
+that there are 16 registers, d0-d7 and a0-a7, and that a7 is the sp. Is there a difference in the<br />
+Sega MD?</p>
+<p>Thanks!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class='comment-reply-link' href='/2012/03/01/sega-megadrive-2-so-assembly-language-then/?replytocom=114#respond' onclick='return addComment.moveForm("div-comment-114", "114", "respond", "60")'>Reply</a></div>			</article><!-- .comment-body -->
+		<ul class="children">
+		<li id="comment-115" class="comment byuser comment-author-bigevilcorp bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-115" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/2c2de1cc8907cb2974b60bfea0243eb9?s=32&#038;d=retro&#038;r=G' class='avatar avatar-32' height='32' width='32' />						<b class="fn"><a href='https://bigevilcorp.wordpress.com' rel='external nofollow ugc' class='url'>bigevilcorp</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/#comment-115">
+							<time datetime="2012-10-14T18:49:53+00:00">
+								October 14, 2012 at 6:49 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ah, that&#8217;s a mistake. Yes, A7 is the stack pointer, not D7. I&#8217;ll correct it. Thanks!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class='comment-reply-link' href='/2012/03/01/sega-megadrive-2-so-assembly-language-then/?replytocom=115#respond' onclick='return addComment.moveForm("div-comment-115", "115", "respond", "60")'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-1078" class="comment even thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-1078" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://i0.wp.com/graph.facebook.com/v2.2/1404392406256404/picture?q=type%3Dlarge&#038;resize=32%2C32' class='avatar avatar-32' height='32' width='32' />						<b class="fn"><a href='https://www.facebook.com/app_scoped_user_id/1404392406256404/' rel='external nofollow ugc' class='url'>Sparx Flye</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/#comment-1078">
+							<time datetime="2016-06-25T13:57:17+00:00">
+								June 25, 2016 at 1:57 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I&#8217;m new to all this and trying to get my head around the address registers. </p>
+<p> As the guide mentions bytes, words or longwords where one longword would be a registers maximum storage capacity but with bytes or words they fill from the right first to the left? Like 0001 0011 where the left is the &#8220;upper byte&#8221; </p>
+<p>Quoting &#8220;upper three bytes are not<br />
+                 ; referenced, and stay intact&#8221;</p>
+<p>So it sort of makes sense to me with the whole base2 thing why theres nothing that will fill 3 bytes (other than 3 separate bytes of data being pushed into the register?)</p>
+<p>But with address registers I was getting really confused with the whole putting a bracket around the address register (a0) to stop the actual address moving but just the value that address holds. I looked up the megadrive memory map, would range from 0000h to 1FFFh (RAM) or 0 to 8191 in decimal? I mean how do we assign values to addresses? do we have any control of the address the data goes to? If it is random, how do we know where it goes?</p>
+<p>So specifically what I can&#8217;t get my head around is this:</p>
+<p>&#8220;@FindTerm:<br />
+   move.b (a0)+, d1  ; Move byte from address in a0 to d1, and then increment the address by 1 byte&#8221;</p>
+<p>so @findterm is a label created for the conditional loop/ branch loop, sort of like creating an IF function where its searching for a specific value and either loops IF it doesnt find it or branches to the end label IF it does find it&#8230;</p>
+<p>And from what I can figure out each time it doesn&#8217;t find the value its after, it just searches the next address and loops until it finds the value it wants. What&#8217;s really doing my head in is the address registers i.e. why is there a byte in the address register a0? is a0 not just pointing to a RAM address that has data stored at that location? and how does this relate to the memory map of the megadrive mentioned? with only 8 address registers how is this enough to cover the entire amount of RAM? so that we know exactly where in RAM certain data is stored? and can then point to it using the address register? or is this restricted and the same RAM shared with the VDP (which i haven&#8217;t gotten to yet). Also what if the address register holds an entire 4 bytes and we just want to reference to one of them single bytes? Im guessing if you only want to store a byte or a word we lose the capacity to store the other 2 or 3 bytes in that register?</p>
+<p>Probably jumping way ahead of myself but I just want it to make 100% sense before I move on. TBH I even got confused when you said each register can hold a maximum of 32bits and a long word would fill a register which is 4 bytes but then I realised 32bits = 4 bytes 😛 </p>
+<p>finally does this mean each memory address stored in the register is 32bits/ 4bytes? Like the actual address data is what fills the a0 &#8211; a7 rather than the data AT the address filling that register? (which would just be a double up of that data) I think I&#8217;ve confused myself.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class='comment-reply-link' href='/2012/03/01/sega-megadrive-2-so-assembly-language-then/?replytocom=1078#respond' onclick='return addComment.moveForm("div-comment-1078", "1078", "respond", "60")'>Reply</a></div>			</article><!-- .comment-body -->
+		<ul class="children">
+		<li id="comment-1149" class="comment odd alt depth-2 highlander-comment">
+			<article id="div-comment-1149" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://i1.wp.com/pbs.twimg.com/profile_images/1933432668/Cover_Doom_Face_normal.JPG?resize=32%2C32' class='avatar avatar-32' height='32' width='32' />						<b class="fn"><a href='http://twitter.com/RyanfaeScotland' rel='external nofollow ugc' class='url'>RyanfaeScotland (@RyanfaeScotland)</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/#comment-1149">
+							<time datetime="2018-02-20T12:55:30+00:00">
+								February 20, 2018 at 12:55 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hey Sprax, did you figure this out yet? I can answer some of it from my memory, although don&#8217;t take this as gospel, it has been a while!</p>
+<p>I think some of the confusion lies around what the brackets mean in the instruction you mentioned. (A0)+ means look at the memory address A0 is pointing to, not the address in A0 itself.</p>
+<p>So imagine A0 is pointing to address 0000FF00 and you call<br />
+move.b (a0)+, d1 ;<br />
+The afterwards D1 will contain whatever value was stored at 0000FF00 and A0 will now point to 0000FF02, because of the + sign for post increment (Note since you are only moving a byte it might actually point to 0000FF01, but from memory I think it always uses even addresses, double check this part for sure!)</p>
+<p>So next you’d likely have some instruction that does a compare (CMP) and follows that up with a branch (BEQ) and finally a jump (JMP) back to @FindTerm if it hasn’t branched.</p>
+<p>This time round your move.b instruction will take the byte from 0000FF02 and put it in D0 and then increase the address pointed to by A0 to 0000FF04.</p>
+<p>Make sense?</p>
+<p>Hopefully this also explains how, with only 8 address registers, we can cover the entire amount of RAM; we just change the address each of the registers is pointing to when we want to read a specific spot. How you keep track of what location is storing what I have no idea! I guess labels is the way to go but I can still see it getting very messy when you have lots of things to store!</p>
+<p>I can’t remember much about the byte, word, longword thing and how it affects different parts, if you can’t find it in the documentation I recommend creating yourself a little test program and just experimenting with the debugger, you’ll learn a lot through experimentation.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class='comment-reply-link' href='/2012/03/01/sega-megadrive-2-so-assembly-language-then/?replytocom=1149#respond' onclick='return addComment.moveForm("div-comment-1149", "1149", "respond", "60")'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2012/03/01/sega-megadrive-2-so-assembly-language-then/#respond" style="display:none;">Cancel reply</a></small></h3>		<form action="https://blog.bigevilcorporation.co.uk/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+														
+
+
+						<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="a55fb3f9da" /><input type="hidden" name="_wp_http_referer" value="/2012/03/01/sega-megadrive-2-so-assembly-language-then/" />
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest" />
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity" class="comment_registration">
+	<div id="comment-form-nascar">
+		<p>Please log in using one of these methods to post your comment:</p>
+		<ul>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link"
+                   title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link"
+                   title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link"
+                   title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Gravatar" width="25" class="no-grav" />
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value="" /></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="WordPress.com Logo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" />
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong></strong>
+			You are commenting using your WordPress.com account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Google photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" />
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'googleplus' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60" ><path fill="#FFF" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z" /><path fill="#FFF" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z" /><path fill="#FFF" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z" /><path fill="#FFF" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z" /></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Twitter picture" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" />
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Facebook photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" />
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog"  style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+						<p class="form-submit">
+				<input name="submit" type="submit" id="comment-submit" value="Post Comment" />
+				<input type='hidden' name='comment_post_ID' value='60' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+			</p>
+			<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="3d05fb4fc7" /></p>
+<input type="hidden" name="genseq" value="1594463065" />
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="183"/></p>		</form>
+	</div><!-- #respond -->
+	<div style="clear: both"></div>
+</div><!-- #comments -->
+
+	
+	</div><!-- #content -->
+</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		
+		<div id="secondary" class="widget-area" role="complementary">
+		<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://blog.bigevilcorporation.co.uk/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><p>Found any of my posts helpful? Please consider buying me a beer :)</p>
+<pre>
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=BDFQ5W5JQE76W&amp;lc=GB&amp;item_name=Big%20Evil%20Corporation&amp;currency_code=GBP&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" alt="" /></a>
+</pre></div>
+		</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h1 class="widget-title">Recent Posts</h1>		<ul>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2018/08/05/tanglewood-release-date-announced/">TANGLEWOOD Release Date&nbsp;Announced</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2018/04/22/taming-the-atgames-flashback/">Taming the AtGames&nbsp;Flashback</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2018/04/18/taming-the-atgames-firecore/">Taming the AtGames Firecore &#8211; Part&nbsp;1</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2018/03/03/mega-drive-assembly-workshop-and-hello-world-sample/">Mega Drive Assembly Workshop and Hello World&nbsp;Sample</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2017/04/25/tanglewood-tech-demo-0-1-04-released/">TANGLEWOOD Tech Demo 0.1.04&nbsp;Released</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2016/11/13/tanglewood-back-us-on-kickstarter/">TANGLEWOOD: Back us on&nbsp;Kickstarter!</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2016/10/21/sega-mega-drive-assembly-programming-workshop-at-gamecity-festival/">SEGA Mega Drive Assembly Programming Workshop at GameCity&nbsp;Festival</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2016/08/21/tanglewood-tech-demo-0-0-11/">Tanglewood Tech Demo&nbsp;0.0.11</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2016/05/28/tanglewood-introducing-djakk-monsters/">Tanglewood: Introducing Djakk&nbsp;Monsters</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2016/01/12/tanglewood-colour-switching/">Tanglewood: Colour Switching</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2015/11/26/tanglewood-introducing-fuzzls/">Tanglewood: Introducing Fuzzls</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2015/11/18/tanglewood-introducing-nymn/">Tanglewood: Introducing Nymn</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2015/11/09/introducing-tanglewood-an-original-title-for-the-sega-mega-drive/">Introducing Tanglewood &#8211; an Original Title for the SEGA Mega&nbsp;Drive</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/09/03/sega-megadrive-10-sound-part-i-the-psg-chip/">Sega Megadrive – 10: Sound Part I &#8211; The PSG&nbsp;Chip</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/05/30/sega-megadrive-9-maps-and-scrolling-planes/">Sega Megadrive – 9: Maps and scrolling&nbsp;planes</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/05/05/sega-megadrive-8-animated-sprites/">Sega Megadrive &#8211; 8: Animated&nbsp;Sprites</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/04/30/sega-megadrive-7-gamepad-input-and-the-game-loop/">Sega Megadrive – 7: Gamepad Input and the Game&nbsp;Loop</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/04/24/sega-megadrive-6-scary-monsters-and-nice-sprites/">Sega Megadrive &#8211; 6: Scary Monsters and Nice&nbsp;Sprites</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/04/09/sega-megadrive-5-fonts-and-text/">Sega Megadrive &#8211; 5: Fonts and&nbsp;Text</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/03/23/sega-megadrive-4-hello-world/">Sega Megadrive &#8211; 4: Hello,&nbsp;world!</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/03/09/sega-megadrive-3-awaking-the-beast/">Sega Megadrive &#8211; 3: Awaking the&nbsp;Beast</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/03/01/sega-megadrive-2-so-assembly-language-then/" aria-current="page">Sega Megadrive &#8211; 2: So, assembly language,&nbsp;then&#8230;</a>
+									</li>
+											<li>
+					<a href="https://blog.bigevilcorporation.co.uk/2012/02/28/sega-megadrive-1-getting-started/">Sega Megadrive &#8211; 1: Getting&nbsp;Started</a>
+									</li>
+					</ul>
+		</aside></div><!-- #secondary -->
+
+		<div class="site-info">
+						<a href="https://wordpress.com/?ref=footer_website" rel="nofollow">Create a free website or blog at WordPress.com.</a>
+			
+					</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!--  -->
+<script src='//0.gravatar.com/js/gprofiles.js?ver=202028y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-42a31cdd2e3141377da70ae70323918b">
+	</div>
+	<div class="grofile-hash-map-2c2de1cc8907cb2974b60bfea0243eb9">
+	</div>
+	<div class="grofile-hash-map-546c6627d733f372eaca585ad4f6e846">
+	</div>
+	<div class="grofile-hash-map-e0ba3e0c7ea81988c30607143d684913">
+	</div>
+	</div>
+<script>
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/bigevilcorp.wordpress.com\/public.api\/connect\/?action=request&domain=blog.bigevilcorporation.co.uk","logoutURL":"https:\/\/bigevilcorp.wordpress.com\/wp-login.php?action=logout&_wpnonce=1715711aec","homeURL":"https:\/\/blog.bigevilcorporation.co.uk\/","postID":"60","gravDefault":"retro","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"1","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??/wp-content/js/jquery/jquery.autoresize.js,/wp-content/mu-plugins/highlander-comments/script.js?m=1573483029j'></script>
+		<!-- CCPA [start] -->
+		<script type="text/javascript">
+			( function () {
+
+				var setupPrivacy = function() {
+
+					document.addEventListener( 'DOMContentLoaded', function() {
+
+						// Minimal Mozilla Cookie library
+						// https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework
+						var cookieLib = window.cookieLib = {getItem:function(e){return e&&decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"+encodeURIComponent(e).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=\\s*([^;]*).*$)|^.*$"),"$1"))||null},setItem:function(e,o,n,t,r,i){if(!e||/^(?:expires|max\-age|path|domain|secure)$/i.test(e))return!1;var c="";if(n)switch(n.constructor){case Number:c=n===1/0?"; expires=Fri, 31 Dec 9999 23:59:59 GMT":"; max-age="+n;break;case String:c="; expires="+n;break;case Date:c="; expires="+n.toUTCString()}return"rootDomain"!==r&&".rootDomain"!==r||(r=(".rootDomain"===r?".":"")+document.location.hostname.split(".").slice(-2).join(".")),document.cookie=encodeURIComponent(e)+"="+encodeURIComponent(o)+c+(r?"; domain="+r:"")+(t?"; path="+t:"")+(i?"; secure":""),!0}};
+
+						var setDefaultOptInCookie = function() {
+							var value = '1YNN';
+							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
+							cookieLib.setItem( 'usprivacy', value, 365 * 24 * 60 * 60, '/', domain );
+						};
+
+						var setCcpaAppliesCookie = function( value ) {
+							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
+							cookieLib.setItem( 'ccpa_applies', value, 24 * 60 * 60, '/', domain );
+						}
+
+						var maybeCallDoNotSellCallback = function() {
+							if ( 'function' === typeof window.doNotSellCallback ) {
+								return window.doNotSellCallback();
+							}
+
+							return false;
+						}
+
+						var usprivacyCookie = cookieLib.getItem( 'usprivacy' );
+
+						if ( null !== usprivacyCookie ) {
+							maybeCallDoNotSellCallback();
+							return;
+						}
+
+						var ccpaCookie = cookieLib.getItem( 'ccpa_applies' );
+
+						if ( null === ccpaCookie ) {
+
+							var request = new XMLHttpRequest();
+							request.open( 'GET', 'https://public-api.wordpress.com/geo/', true );
+
+							request.onreadystatechange = function () {
+								if ( 4 === this.readyState ) {
+									if ( 200 === this.status ) {
+
+										var data = JSON.parse( this.response );
+										var ccpa_applies = data['region'] && data['region'].toLowerCase() === 'california';
+
+										setCcpaAppliesCookie( ccpa_applies );
+
+										if ( ccpa_applies ) {
+											if ( maybeCallDoNotSellCallback() ) {
+												setDefaultOptInCookie();
+											}
+										}
+									} else {
+										setCcpaAppliesCookie( true );
+										if ( maybeCallDoNotSellCallback() ) {
+											setDefaultOptInCookie();
+										}
+									}
+								}
+							};
+
+							request.send();
+						} else {
+							if ( ccpaCookie === 'true' ) {
+								if ( maybeCallDoNotSellCallback() ) {
+									setDefaultOptInCookie();
+								}
+							}
+						}
+					} );
+				};
+
+				if ( window.defQueue && defQueue.isLOHP && defQueue.isLOHP === 2020 ) {
+					defQueue.items.push( setupPrivacy );
+				} else {
+					setupPrivacy();
+				}
+
+			} )();
+		</script>
+
+		<!-- CCPA [end] -->
+					<script type="text/javascript">
+			( function( $ ) {
+				$( document.body ).on( 'post-load', function () {
+					if ( typeof __ATA.insertInlineAds === 'function' ) {
+						__ATA.insertInlineAds();
+					}
+				} );
+			} )( jQuery );
+			</script>
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" />
+				<input type="hidden" id="carousel-reblog-blog-id" value="18733217" />
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://blog.bigevilcorporation.co.uk" />
+				<input type="hidden" id="carousel-reblog-blog-title" value="BIG EVIL CORPORATION" />
+				<input type="hidden" id="carousel-reblog-post-url" value="" />
+				<input type="hidden" id="carousel-reblog-post-title" value="" />
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="f6ff5b75e8" /><input type="hidden" name="_wp_http_referer" value="/2012/03/01/sega-megadrive-2-so-assembly-language-then/" />		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/blog.bigevilcorporation.co.uk\/2012\/03\/01\/sega-megadrive-2-so-assembly-language-then\/":60};
+	</script>
+				<div class="widget widget_eu_cookie_law_widget"><div
+	class="hide-on-button ads-active"
+	data-hide-timeout="30"
+	data-consent-expiration="180"
+	id="eu-cookie-law"
+>
+	<form method="post">
+		<input type="submit" value="Close and accept" class="accept" />
+
+		Privacy &amp; Cookies: This site uses cookies. By continuing to use this website, you agree to their use. <br />
+To find out more, including how to control cookies, see here:
+		<a href="https://automattic.com/cookies" >
+			Cookie Policy		</a>
+ </form>
+</div>
+</div><script type='text/javascript' src='https://s0.wp.com/_static/??-eJzTLy/QTc7PK0nNK9EvyClNz8wr1i+uzCtJrMjITM/IAeKS1CJMEWP94uSizIISoOIM5/yiVL2sYh19yo1yKiotzgjISczMAxpon2traGpuYGRgYmlhmgUAFLxAeg=='></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "https://s0.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?m=1363304414h&amp;ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<link rel='stylesheet' id='all-css-0-3' href='https://s0.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel.css?m=1592560282h&cssminify=yes' type='text/css' media='all' />
+<script>
+var actionbardata = {"siteID":"18733217","siteName":"BIG EVIL CORPORATION","siteURL":"https:\/\/blog.bigevilcorporation.co.uk","icon":"<img alt='' src='https:\/\/secure.gravatar.com\/blavatar\/f56259df2aef345adebc420e48e5284b?s=50&d=https%3A%2F%2Fs0.wp.com%2Fi%2Flogo%2Fwpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/trvl","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fblog.bigevilcorporation.co.uk%2F2012%2F03%2F01%2Fsega-megadrive-2-so-assembly-language-then%2F&signup_flow=account&domain=blog.bigevilcorporation.co.uk","themeURL":"","xhrURL":"https:\/\/blog.bigevilcorporation.co.uk\/wp-admin\/admin-ajax.php","nonce":"edfa77072a","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"f003d4bede\" \/>","referer":"https:\/\/blog.bigevilcorporation.co.uk\/2012\/03\/01\/sega-megadrive-2-so-assembly-language-then\/","canFollow":"1","feedID":"88636393","statusMessage":"","customizeLink":"https:\/\/bigevilcorp.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fbigevilcorp.wordpress.com%2F2012%2F03%2F01%2Fsega-megadrive-2-so-assembly-language-then%2F","postID":"60","shortlink":"https:\/\/wp.me\/p1gBmF-Y","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/blog.bigevilcorporation.co.uk\/60","statsLink":"https:\/\/wordpress.com\/stats\/post\/60\/blog.bigevilcorporation.co.uk","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Trvl","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 60 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fblog.bigevilcorporation.co.uk%2F2012%2F03%2F01%2Fsega-megadrive-2-so-assembly-language-then%2F&signup_flow=account&domain=blog.bigevilcorporation.co.uk\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/blog.bigevilcorporation.co.uk\/wp-admin\/admin-ajax.php","nonce":"522e650199","display_exif":"1","display_comments":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"1","require_name_email":"1","login_url":"https:\/\/bigevilcorp.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fblog.bigevilcorporation.co.uk%2F2012%2F03%2F01%2Fsega-megadrive-2-so-assembly-language-then%2F","blog_id":"18733217","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<p id=\"jp-carousel-commenting-as\">You must be <a href=\"#\" class=\"jp-carousel-comment-login\">logged in<\/a> to post a comment.<\/p>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=18733217&v=wpcom&tz=0&user_id=0&subd=bigevilcorp","is_public":"1","reblog_enabled":""};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??-eJyVUu1OwzAMfCHSjKEh+IF4FJQlbus2X9hJy3h6XLRN2hhF/LJln893cfSclU2xQCx6YO1gQgv5oxn4Tl+2cuISgNl0cKM7vFegwzE0GCeE+U/YACUbOyoCxs8frKGq7GuHkbXHEVjLUIXeROeBrsGlBxGnc93rQpNfdvGIWXmMo2qTraxaPNvCaH11gheYTSEIg4jI/tAEjLdAGMQ2+2QcuN8wwXCKdEGxoq6t0RZMkVdsz+g6KKyhSjeNCMqbWRcI2ZsCV/UVHuNEk9obWjQWIMlUmoAIF+nn2j8ZCsnt1uSbb4PL0DlbQVtDqTLI4xx/xamwtmFEDlDUQ7PRb3IL3SYKK/jlD6vWGyTNvSGM3SnK0Gt4ud89b3ePm+3TdvgC55QpBg=='></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="//stats.wp.com/w.js?61" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'18733217','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'18733217','v':'wpcom','tz':'0','user_id':'0','post':'60','subd':'bigevilcorp'}]);
+_stq.push(['extra', {'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWtpP0NsWnVkPS9sL0ViLndld3BjNU01Unp2dX5PUG5ETDZpSEc5azIyUFQxai81PTVpR2RZRG9LTGFTOT9weUc2cFpdZUlRemo0eUljLiwlNFpOWl9yUVdWOG9PeSx4LW5MP0d5VExWb01ONFQ2YXhZc254VlAmTz1dL2ZxaXY/YVdzdmNRQkNBMjYxSFFzYlVvaVIzTHdMWm10NEd+TlNaYXxpWTguMVZHalk2dHQtdVplMXN8Kz9uL0guT1hMLS5aMyZnRER6UlprWmc3Znx8JSsyLmNkMmlnSVc3M041P0tbdX5uZS5iciw3a0c2YVtRNSxQ'}]);
+_stq.push([ 'clickTrackerInit', '18733217', '60' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+</body>
+</html>
