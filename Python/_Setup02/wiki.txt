@@ -12,6 +12,43 @@ VS Code is an integrated development environment with useful plugins for Python 
 <br /><br />
 Launch VS Code.  Install Python extension for Visual Studio Code.  Install other plugins for example Remote SSH to connect to Linux VM or Code Runner.  Install VS Code Insiders to try pre-release version of VS Code.
 <br /><br />
-Launch VS Code.  Install Python extension for Visual Studio Code.  Install any other plugin for example Remote SSH to connect to Linux data science VM or Code Runner.  Install VS Code Insiders to try pre-release version of VS Code.
-<br /><br />
+Update global settings.json file to your particular preferences.  Here are some common VS Code examples:
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign=top>&nbsp;SYSTEM</td>
+<td valign=top>&nbsp;LOCATION</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;%APPDATA%\Code\User\settings.json</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Mac OS/X</td>
+<td valign=top>&nbsp;~/Library/Application Support/Code/User/settings.json</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Linux</td>
+<td valign=top>&nbsp;~/.config/Code/User/settings.json</td>
+</tr>
+</table>
+<br />
+<i>settings.json</i>
+<pre class="csharp" name="code">
+{
+    "workbench.colorTheme": "Visual Studio Light",
+    "window.zoomLevel": 0,
+    "editor.trimAutoWhitespace": false,
+    "editor.renderIndentGuides": false,
+    "editor.roundedSelection": false,
+    "editor.suggestSelection": "first",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.jediEnabled": false,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.respectShebang": false,
+    "code-runner.runInTerminal": true,
+    "code-runner.defaultLanguage": "python3",
+}
+
+</pre>
 </span>

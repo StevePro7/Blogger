@@ -1,0 +1,41 @@
+{
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.respectShebang": false,
+    "code-runner.runInTerminal": true,
+    "code-runner.defaultLanguage": "python3",
+
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.jediEnabled": false,
+
+
+
+
+WIN
+"python.pythonPath": "%USERPROFILE%\Anaconda3\python.exe",
+
+"code-runner.executorMap": {
+        "python": "python.exe",
+        "python.pythonPath": "%USERPROFILE%\Anaconda3",
+    },
+
+
+
+MAC
+"python.pythonPath": "/anaconda3/bin/python",
+
+
+LIN
+    "python.pythonPath": "/anaconda3/bin/python",
+    "code-runner.executorMap": {
+        "python": "python",
+        "python.pythonPath": "/anaconda3/bin",
+
+
+"python.pythonPath": "/usr/bin/python3",
+
+
+
+
+    "code-runner.executorMap": {
+        "python": "python3",
+        "python.pythonPath": "/usr/bin/python3",
