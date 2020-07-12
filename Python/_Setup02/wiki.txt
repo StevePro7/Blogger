@@ -1,43 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Hello VS Code</u><br />
-Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Ctrl + Shift + P | Python: Select Interpreter.  This action creates .vscode/<b>settings.json</b>.
-<br /><br />
-However, in order to work cross platform, create "hidden" <b>.env</b> file at workspace folder level that is beneath "HelloVScode".  The <b>.env</b> file is NOT version controlled.  Add variable to store platform specific python paths:
-<br />
-<!--
-<table width="99%" border="1">
-<tr>
-<td valign=top>&nbsp;SYSTEM</td>
-<td valign=top>&nbsp;VARIABLE</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Windows</td>
-<td valign=top>&nbsp;PLATFORM_FOLDER=C:\\Users\\TEST.000\\Anaconda3\\python.exe</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Mac OS/X</td>
-<td valign=top>&nbsp;PLATFORM_FOLDER=/anaconda3/bin/python</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Linux</td>
-<td valign=top>&nbsp;PLATFORM_FOLDER=/anaconda3/bin/python</td>
-</tr>
-</table>
--->
-<br />
-Update project specific <b>settings.json</b> file to use environment variable rather than hardcoded Python path:
-<br />
-<!--
-<pre class="csharp" name="code">
-&nbsp;{
-    "python.envFile": "${workspaceFolder}/.env",
-    "python.pythonPath": "${env:WORKSPACE_FOLDER}",
-&nbsp;}
-</pre>
--->
-<br />
-Text more text...
 <br /><br />
 
 <br /><br />
@@ -131,6 +93,45 @@ Update global settings.json file to your particular preferences.  Here are some 
 </table>
 -->
 <br />
-More text goes here
+
+<u>Hello VS Code</u><br />
+Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Ctrl + Shift + P | Python: Select Interpreter.  This action creates .vscode/<b>settings.json</b>.
+<br /><br />
+However, in order to work cross platform, create "hidden" <b>.env</b> file at workspace folder level that is beneath "HelloVScode".  The <b>.env</b> file is NOT version controlled.  Add variable to store platform specific python paths:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;SYSTEM</td>
+<td valign=top>&nbsp;VARIABLE</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;PLATFORM_FOLDER=C:\\Users\\TEST.000\\Anaconda3\\python.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Mac OS/X</td>
+<td valign=top>&nbsp;PLATFORM_FOLDER=/anaconda3/bin/python</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Linux</td>
+<td valign=top>&nbsp;PLATFORM_FOLDER=/anaconda3/bin/python</td>
+</tr>
+</table>
+-->
+<br />
+Update project specific <b>settings.json</b> file to use environment variable rather than hardcoded Python path:
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.pythonPath": "${env:WORKSPACE_FOLDER}",
+&nbsp;}
+</pre>
+-->
+<br />
+Text more text...
+<br /><br />
 
 </span>
