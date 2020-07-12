@@ -11,13 +11,23 @@
 
 
 WIN
-"python.pythonPath": "%USERPROFILE%\Anaconda3\python.exe",
-
-"code-runner.executorMap": {
+{
+    "python.pythonPath": "%USERPROFILE%\Anaconda3\python.exe",
+    "code-runner.executorMap": {
         "python": "python.exe",
         "python.pythonPath": "%USERPROFILE%\Anaconda3",
     },
+}
 
+
+MAC + LIN
+{
+    "python.pythonPath": "/anaconda3/bin/python",
+    "code-runner.executorMap": {
+        "python": "python",
+        "python.pythonPath": "/anaconda3/bin",
+    },
+}
 
 
 MAC

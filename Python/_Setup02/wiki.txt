@@ -34,8 +34,11 @@ Update global settings.json file to your particular preferences.  Here are some 
 </table>
 <br />
 <i>settings.json</i>
+<table width="98%" border="1">
+<tr>
+<td valign=top>
 <pre class="csharp" name="code">
-{
+&nbsp;{
     "workbench.colorTheme": "Visual Studio Light",
     "window.zoomLevel": 0,
     "editor.trimAutoWhitespace": false,
@@ -48,7 +51,43 @@ Update global settings.json file to your particular preferences.  Here are some 
     "code-runner.respectShebang": false,
     "code-runner.runInTerminal": true,
     "code-runner.defaultLanguage": "python3",
-}
-
+&nbsp;}
 </pre>
+</td>
+</tr>
+</table>
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;Mac OS/X + Linux</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "%USERPROFILE%\Anaconda3\python.exe",
+    "code-runner.executorMap": {
+        "python": "python.exe",
+        "python.pythonPath": "%USERPROFILE%\Anaconda3",
+    },
+&nbsp;}
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "/anaconda3/bin/python",
+    "code-runner.executorMap": {
+        "python": "python",
+        "python.pythonPath": "/anaconda3/bin",
+    },
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+<br />
+More text goes here
+
 </span>

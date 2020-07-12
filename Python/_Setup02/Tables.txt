@@ -2,7 +2,7 @@ Tables
 12/07/2020
 
 01.
-VS Code global settings.json
+VS Code settings.json path
 
 <table width="99%" border="1">
 <tr>
@@ -24,3 +24,65 @@ VS Code global settings.json
 </table>
 
 
+02.
+generic settings.json
+
+<i>settings.json</i>
+<table width="98%" border="1">
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "workbench.colorTheme": "Visual Studio Light",
+    "window.zoomLevel": 0,
+    "editor.trimAutoWhitespace": false,
+    "editor.renderIndentGuides": false,
+    "editor.roundedSelection": false,
+    "editor.suggestSelection": "first",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.jediEnabled": false,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.respectShebang": false,
+    "code-runner.runInTerminal": true,
+    "code-runner.defaultLanguage": "python3",
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+
+
+
+03.
+specific settings.json
+
+<table width="98%" border="1">
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;Mac OS/X + Linux</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "%USERPROFILE%\Anaconda3\python.exe",
+    "code-runner.executorMap": {
+        "python": "python.exe",
+        "python.pythonPath": "%USERPROFILE%\Anaconda3",
+    },
+&nbsp;}
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "/anaconda3/bin/python",
+    "code-runner.executorMap": {
+        "python": "python",
+        "python.pythonPath": "/anaconda3/bin",
+    },
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
