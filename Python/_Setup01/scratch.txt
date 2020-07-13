@@ -1,0 +1,51 @@
+scratch
+13/07/2020
+  File "<stdin>", line 1, in <module>
+NameError: name 'x' is not defined
+>>> echo x
+  File "<stdin>", line 1
+    echo x
+         ^
+SyntaxError: invalid syntax
+>>> print('dd')
+dd
+>>> x = 7
+>>> print(x)
+7
+>>> pip install example_pkg/.
+  File "<stdin>", line 1
+    pip install example_pkg/.
+              ^
+SyntaxError: invalid syntax
+>>> import stackoverflow
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'stackoverflow'
+>>> from example_pkg import stackoverflow
+>>> print(a)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'a' is not defined
+>>> a = stackoverflow.hello()
+>>> print(a)
+7
+>>> exit()
+
+
+
+print(a)
+a = stackoverflow.hello()
+from example_pkg import stackoverflow
+from example_pkg import stackoverflow as sf
+a = stackoverflow.hello()
+print(a)
+
+
+fromP importM
+from Package	import Module
+
+cd C:\HelloPackage
+
+pip install example_pkg/.
+
+python -m unittest discover example_pkg
