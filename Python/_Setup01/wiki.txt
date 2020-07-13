@@ -1,5 +1,41 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Install PyCharm</u><br />
+PyCharm is an integrated development environment used specifically for Python.  Install PyCharm during the Anaconda install or from navigator.  Otherwise install PyCharm for Windows and Mac OS/X and Linux directly.
+<br /><br />
+Launch PyCharm.  Click "Configure" cog drop down | Settings.  Set the base interpreter to match the Python location for Anaconda.  Click cog | Show All | Click "+" | Virtualenv Environment.  Enter the following details:
+<br /><br />
+   to setup base Python interpreter.  Initially, there may be no Python project interpreter.  Click cog | Show All | Click "+" | Conda Environment | OK:
+<br /><br />
+
+Launch PyCharm.  Click "Configure" cog drop down | Settings to setup base Python interpreter.  Initially, there may be no Python project interpreter.  Click cog | Show All | Click "+" | Conda Environment | OK:
+<br /><br />
+
+<table width="97%" border="1">
+<tr>
+<td valign=top>&nbsp;SYSTEM</td>
+<td valign=top>&nbsp;LOCATION</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;%USERPROFILE%\Anaconda3\python.exe</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Mac OS/X</td>
+<td valign=top>&nbsp;/anaconda3/bin/python</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Linux</td>
+<td valign=top>&nbsp;/anaconda3/bin/python</td>
+</tr>
+</table>
+<br /><br />
+Create New Project.  Set the base interpreter to match the Python location for Anaconda.  Otherwise File | Settings | Project Interpreter.  Click cog | Show All | Click "+" | Conda Environment | OK:
+<br />
+
+
+Launch PyCharm.  Create New Project.  Set the base interpreter to match the Python location for Anaconda.  Otherwise File | Settings | Project Interpreter.  Click cog | Show All | Click "+" | Conda Environment | OK:
+<br />
 
 
 <br /><br />
