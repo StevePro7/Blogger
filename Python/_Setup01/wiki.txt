@@ -1,16 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Launch PyCharm.  Click "Configure" cog drop down | Settings.  Set the base interpreter to match the Python location for Anaconda.  Click cog | Show All | Click "+" | Virtualenv Environment.  Enter the following details:
-<br /><br />
-
-<b>Plugins</b><br />
-Configure cog | Plugins.  Install pylint as a code analysis tool that follows the recommended PEP8 style guide.  Restart IDE.  Pylint is handy tool to check Python code especially for developers used to static code compiler!
-<br /><br />
-
-File | Settings | Plugins.  Install pylint as a code analysis tool that follows the recommended PEP8 style guide.  Restart IDE.  Pylint is handy tool to check Python code especially for developers used to static code compiler!
-<br /><br />
-
-
 
 
 <u>Hello PyCharm</u><br />
@@ -43,14 +32,14 @@ Launch PyCharm terminal.  Enter <i>python -m pip install numpy</i> to install mo
 <br />
 Alternatively, execute <i>pip freeze</i> to dump all required modules for project into requirements.txt and install:
 <br />
+<!--
 <pre class="csharp" name="code">
 &nbsp;pip freeze > requirements.txt
 &nbsp;pip install -r requirements.txt
 </pre>
-
-
+-->
 <br />
-
+Text...
 <br /><br />
 
 Python is an interpreted high-level and general purpose programming language.  Python 2.0 was released in 2000 but officially discontinued in 2020.  Python 3.x is now the preferred version for most projects e.g. v3.7.
@@ -236,7 +225,7 @@ Launch PyCharm.  Click "Configure" cog drop down | Settings.  Set the base inter
 -->
 <br /><br />
 <b>Plugins</b><br />
-File | Settings | Plugins.  Install pylint as a code analysis tool that follows the recommended PEP8 style guide.  Restart IDE.  Pylint is handy tool to check Python code especially for developers used to static code compiler!
+Configure cog | Plugins.  Install pylint as a code analysis tool that follows the recommended PEP8 style guide.  Restart IDE.  Pylint is handy tool to check Python code especially for developers used to static code compiler!
 <br /><br />
 
 <b>Shortcuts</b><br />
@@ -274,4 +263,43 @@ Track active item in solution explorer similar to Visual Studio: Click cog to ri
 IMPORTANT<br />
 On Linux navigate may actually be Shift + Alt + arrow keys instead of Ctrl due to keymap shortcut conflicts!
 <br /><br />
+
+<br />
+<u>Hello PyCharm</u><br />
+Launch PyCharm.  Create New Project | "HelloPyCharm".  Enter the following details as Anaconda interpreter:
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-KfbkcmeHrCM/XwxP9OfU5fI/AAAAAAAAGVo/lxsYe6YcQMwekPCFDy3I_EiK8UvjcQp8wCLcBGAsYHQ/s1600/HelloPyCharm.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-KfbkcmeHrCM/XwxP9OfU5fI/AAAAAAAAGVo/lxsYe6YcQMwekPCFDy3I_EiK8UvjcQp8wCLcBGAsYHQ/s640/HelloPyCharm.png" width="98%" height="275" /></a>
+-->
+<br />
+PyCharm uses virtualenv tool to create an isolated Python environment.  Virtualenv creates <b>venv</b> folder in the current directory with Python executable files and a copy of pip to install other modules and packages.
+<br />
+<br />
+Create simple "HelloWorld.py".  Enter Python code <i>print('Hello World')</i>.  Right click file | Run ""HelloWorld".
+<br /><br />
+
+<b>Module Not Found</b><br />
+Update script | Import module not currently installed e.g. <i>import numpy</i>.  Run script: ModuleNotFoundError
+<br />
+<!--
+<a href="https://2.bp.blogspot.com/-47NAwDHvNHg/XwxYDoRuBLI/AAAAAAAAGV0/MesjsCUi-5Q1UKC2rczDZLAIfuboPycIACLcBGAsYHQ/s1600/ModuleNotFound.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-47NAwDHvNHg/XwxYDoRuBLI/AAAAAAAAGV0/MesjsCUi-5Q1UKC2rczDZLAIfuboPycIACLcBGAsYHQ/s640/ModuleNotFound.png" width="98%" height="200" /></a>
+<br />
+-->
+<br />
+Launch PyCharm terminal.  Enter <i>python -m pip install numpy</i> to install module.  Re-run script with success.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-W7yie3NEPBw/XwxY3_XQJII/AAAAAAAAGV8/u44wM87UqKcdJ3VuARlfExN_rhHF71YfgCLcBGAsYHQ/s1600/PipInstallModule.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-W7yie3NEPBw/XwxY3_XQJII/AAAAAAAAGV8/u44wM87UqKcdJ3VuARlfExN_rhHF71YfgCLcBGAsYHQ/s640/PipInstallModule.png" width="98%" height="225" /></a>
+<br />
+-->
+<br />
+Alternatively, execute <i>pip freeze</i> to dump all required modules for project into requirements.txt and install:
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;pip freeze > requirements.txt
+&nbsp;pip install -r requirements.txt
+</pre>
+-->
+<br />
 </span>
