@@ -4,6 +4,42 @@ TODO
 Jupyter Notebooks
 
 
+13/07/2020
+Fixed some bugs today so I need to remember:
+
+01.
+udpate code samples with [local] workspace "settings.json" file to NOT have 
+"python.pythonPath":
+
+because I think it is better to default to [global] user "settings.json"
+and leave rather than try to version control because I don't think this setting
+can be overridden per platform
+
+
+02.
+Mention Windows10 and Anaconda default Python interpreter
+but ensure that the Terminal is "conda" otherwise may get
+CommandNotFoundError
+
+e.g.
+CommandNotFoundError.txt
+E:\GitHub\StevePro7\Blogger\Python\_Setup02\VScode
+
+
+03.
+Code Runner
+must update how I got this working on Windows 10
+i.e.
+[global] user "settings.json"
+"python": "python.exe",
+
+NOT
+"python": "python3.exe",
+
+
+03b.
+replicate the similar configuration on the Mac OS/X
+
 
 11/07/2020
 Was trying to setup and run examples of ML on Linux

@@ -30,3 +30,15 @@ NEW
     },
 
 
+IMPORTANT
+I don't think that I have this configuration on the Mac OS/X
+
+settings.json
+~/Library/Application Support/Code/User/
+
+copy + paste the same configuration from Linux
+    "python.pythonPath": "%USERPROFILE%/Anaconda3/python.exe",
+    "code-runner.executorMap": {
+        "python": "python.exe",
+        "python.pythonPath": "%USERPROFILE%/Anaconda3",
+    },
