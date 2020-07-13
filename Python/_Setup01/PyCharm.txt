@@ -1,78 +1,29 @@
-Default Python => python3
+PyCharm shortcuts
 08/07/2020
 
 
-Reference
-pip02.txt
-D:\Bitbucket\SteveProXNA\actionstuff\Python
-
-https://opensource.com/article/19/5/python-3-default-mac
+Ctrl + F12
+Prompt popup to itemize all methods in class
+https://intellij-support.jetbrains.com/hc/en-us/community/posts/206597225-Is-there-a-dropdown-where-i-can-see-all-methods-of-the-class-
 
 
+Ctrl + Shift + N
+Prompt popup to search for text in all files
 
 
-https://stackoverflow.com/questions/41986507/unable-to-set-default-python-version-to-python3-in-ubuntu#:~:text=Steps%20to%20install%20Python3.,it%20as%20the%20default%20interpreter.&text=To%20change%20to%20python3%2C%20you,in%20terminal%20alias%20python%3Dpython3%20.&text=to%20go%20into%20the%20bashrc,file%20make%20the%20following%20change.
-
-
-
-Launch Ubuntu Linux
-Terminal
-
-BEFORE
-python	defaults to python2.7
-pip	not found
-
-python3	defaults to python3.8
-pip3	pip 20.07
-
-alias python=python3
-alias pip=pip3
-source ~/.bashrc
-
-
-Restart but didn't work
-
-
-Try this
-sudo apt-get install python-is-python3
-
-works for python but not pip
-python	python3
-pip	not found
-
-
-Try this
-just update the ~/.bashrc file
-
-echo "alias python=python3" >> ~/.bashrc
-echo "alias pip=pip3" >> ~/.bashrc
+Ctrl + Shift + I
+View definition of function of method in class
+https://www.jetbrains.com/help/pycharm/viewing-reference-information.html
 
 
 
-WINDOWS
-finally I try to setup python default to python3 on Anaconda
-check out PATH
-
-Before Anaconda entries on User I have
-C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32
+Ctrl + Click
+Click function to navigate to function definition
 
 
-C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32\Scripts\
-C:\Users\TEST.000\AppData\Local\Programs\Python\Python37-32\
+Ctrl + Alt + Left arrow
+Navigate backward to previous location
 
 
-So I only have the 4x Anaconda entries
-C:\Users\TEST.000\Anaconda3
-C:\Users\TEST.000\Anaconda3\Scripts
-C:\Users\TEST.000\Anaconda3\libs
-C:\Users\TEST.000\Anaconda3\Library\bin
-
-
-Now checkout
-Start | run | cmd
-
-C:\Users\TEST.000>python --version
-Python 3.7.3
-
-C:\Users\TEST.000>pip --version
-pip 20.0.2 from C:\Users\TEST.000\Anaconda3\lib\site-packages\pip (python 3.7)
+Ctrl + Alt + Right arrow
+Navigate forward to next location
