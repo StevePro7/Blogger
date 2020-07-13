@@ -1,0 +1,35 @@
+CommandNotFoundError
+13/07/2020
+
+
+settings.json
+C:\Users\TEST.000\AppData\Roaming\Code\User
+
+"python.pythonPath": "C:\\Users\\TEST.000\\Anaconda3",
+
+
+Run simple Python script in VS Code with Anaconda on Window10
+but get the error
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+If using 'conda activate' from a batch script, change your
+invocation to 'CALL conda.bat activate'.
+
+
+VS Code runs the script but then always tries to activate conda but fails
+$ conda activate base
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+If using 'conda activate' from a batch script, change your
+invocation to 'CALL conda.bat activate'.
+
+
+SOLUTION
+here is how I magically solved this problem...!!
+
+
+Terminal
+Click "+" to create new terminal
+default "Conda"
+
+F5 to debug script OR Ctrl+F5 to run script and now works OK without error!!

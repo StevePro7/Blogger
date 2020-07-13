@@ -1,0 +1,51 @@
+VS Code Insiders default user settings.json
+13/07/2020
+
+
+Location of user settings.json
+%USERPROFILE%\AppData\Roaming\Code - Insiders\User
+
+
+e.g.
+was using this crazy version of python
+%USERPROFILE%\AppData\Local\Continuum\anaconda3\envs\ClassTests\python.exe
+
+{
+    "workbench.colorTheme": "Default Light+",
+    "python.insidersChannel": "off",
+    "python.pythonPath": "%USERPROFILE%\\AppData\\Local\\Continuum\\anaconda3\\envs\\ClassTests\\python.exe",
+    "window.zoomLevel": 0,
+    "editor.fontSize": 12,
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.inheritEnv": false,
+    "vssolution.trackActiveItem": true,
+    "vssolution.showMode": "explorer",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "gauge.recommendedSettings.options": "Apply & Reload",
+    "remote.SSH.remotePlatform": {
+        "dev": "linux"
+    },
+    "docker.images.sortBy": "CreatedTime",
+}
+
+
+
+but I change to this
+
+{
+    "workbench.colorTheme": "Default Light+",
+    "python.insidersChannel": "off",
+    "python.pythonPath": "%USERPROFILE%\\AppData\\Local\\Continuum\\anaconda3\\python.exe",
+    "window.zoomLevel": 0,
+    "editor.fontSize": 12,
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.inheritEnv": false,
+    "vssolution.trackActiveItem": true,
+    "vssolution.showMode": "explorer",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "gauge.recommendedSettings.options": "Apply & Reload",
+    "remote.SSH.remotePlatform": {
+        "dev": "linux"
+    },
+    "docker.images.sortBy": "CreatedTime",
+}

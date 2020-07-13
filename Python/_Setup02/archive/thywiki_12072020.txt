@@ -71,10 +71,10 @@ Update global settings.json file to your particular preferences.  Here are some 
 <td valign=top>
 <pre class="csharp" name="code">
 &nbsp;{
-    "python.pythonPath": "%USERPROFILE%/Anaconda3/python.exe",
+    "python.pythonPath": "%USERPROFILE%\Anaconda3\python.exe",
     "code-runner.executorMap": {
         "python": "python.exe",
-        "python.pythonPath": "%USERPROFILE%/Anaconda3",
+        "python.pythonPath": "%USERPROFILE%\Anaconda3",
     },
 &nbsp;}
 </pre>
@@ -108,7 +108,7 @@ However, in order to work cross platform, create "hidden" <b>.env</b> file at wo
 </tr>
 <tr>
 <td valign=top>&nbsp;Windows</td>
-<td valign=top>&nbsp;PLATFORM_FOLDER=%USERPROFILE%/Anaconda3/python.exe</td>
+<td valign=top>&nbsp;PLATFORM_FOLDER=C:\\Users\\TEST.000\\Anaconda3\\python.exe</td>
 </tr>
 <tr>
 <td valign=top>&nbsp;Mac OS/X</td>

@@ -1,0 +1,32 @@
+CodeRunner
+13/07/2020
+
+
+settings.json
+C:\Users\TEST.000\AppData\Roaming\Code\User
+
+
+Initially, I couldn't get Code Runner working on Windows10
+Ctrl + Shift + N
+
+but the problem was that I had an incorrect entry in settings.json
+"code-runner.executorMap":
+
+python3.exe is the PROBLEM
+change this to python.exe and all good...!!
+
+
+OLD
+    "code-runner.executorMap": {
+        "python": "python3.exe",
+        "python.pythonPath": "C:\\Users\\TEST.000\\Anaconda3",
+    },
+
+
+NEW
+    "code-runner.executorMap": {
+        "python": "python.exe",
+        "python.pythonPath": "C:\\Users\\TEST.000\\Anaconda3",
+    },
+
+

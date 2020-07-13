@@ -1,0 +1,40 @@
+Env File
+13/07/2020
+
+https://code.visualstudio.com/docs/python/environments
+https://code.visualstudio.com/docs/python/python-tutorial
+
+
+User 		settings.json	GLOBAL
+%APPDATA%\Code\User\settings.json
+~/Library/Application Support/Code/User/settings.json
+~/.config/Code/User/settings.json
+
+
+Workspace	settings.json	LOCAL
+
+
+"python.pythonPath": "${env:WORKSPACE_FOLDER}",
+
+I think this is wrong because when I delete Win + Mac use the correct global
+user settings.json
+Linux seems to not care
+
+
+Preferences | Settings
+${workspaceFolder}/.env
+
+
+How to display values
+https://stackoverflow.com/questions/53485115/how-to-display-current-values-of-vs-codes-predefined-variables-such-as-work
+
+
+Apparently this works which is what I have
+https://stackoverflow.com/questions/53653083/how-to-correctly-set-pythonpath-for-visual-studio-code
+
+IMPORTANT
+reference
+https://binx.io/blog/2020/03/05/setting-python-source-folders-vscode
+
+
+So I think my best bet is to remove local "python.pythonPath" in workspace settings.json file and use global user settings.json
