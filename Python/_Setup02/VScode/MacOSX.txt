@@ -1,4 +1,65 @@
+~/Library/Application Support/Code/User/settings.json
+14/07/2020
+
+Issue with VS code + Code runner on Mac
+Ctrl + Alt + N	not work initially
+Windows + Alt + N	work instead
+
+
+OLD
 {
     "python.pythonPath": "/anaconda3",
     "workbench.colorTheme": "Visual Studio Light"
 }
+
+
+
+NEW
+{
+    "workbench.colorTheme": "Visual Studio Light",
+    "window.zoomLevel": 0,
+    "editor.trimAutoWhitespace": false,
+    "editor.renderIndentGuides": false,
+    "editor.roundedSelection": false,
+    "editor.suggestSelection": "first",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.jediEnabled": false,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.runInTerminal": false,
+    "code-runner.showExecutionMessage": false,
+    "code-runner.respectShebang": false,
+    "code-runner.defaultLanguage": "python3",
+    "python.pythonPath": "/anaconda3/bin/python",
+    "code-runner.executorMap": {
+        "python": "python",
+        "python.pythonPath": "/anaconda3/bin",
+    }
+}
+
+
+
+keybindings
+https://code.visualstudio.com/docs/getstarted/keybindings
+
+
+IMPORTANT
+on Mac if Ctrl + Alt + N is not working then modify 
+keybindings.json
+
+~/Library/Application Support/Code/User/keybindings.json
+
+change ctrl for cmd
+i.e.
+cmd+alt+n
+
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+alt+n",
+        "command": "code-runner.run"
+    },
+    {
+        "key": "cmd+alt+n",
+        "command": "-code-runner.run"
+    }
+]
