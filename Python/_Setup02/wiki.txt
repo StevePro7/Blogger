@@ -4,14 +4,17 @@
 Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
 <br /><br />
 
-CommandNotFoundError
-
-Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Debug Python script with F5 or Run as Ctrl + F5.
+<b>CommandNotFoundError</b><br />
+When running Python script using Anaconda you may get error <i>CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'</i>.  Terminal | Click "+" | Spawn new Terminal default "Conda".
 <br /><br />
 
-Enter simple Python code <i>print('Hello World')</i>.  Press F5 to debug Python script.  To customize Run and Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5 to debug.
-
+<b>Code Runner</b><br />
+Automate process by installing Code Runner plugin.  Press F1 | Run Code first time to set Output to "Code".  Ensure entries above in user <i>settings.json</i> for fast turnaround.  Press Ctrl + Alt + N for each subsequent run!
 <br /><br />
+
+Automate process by installing Code Runner plugin.  Press F1 | Run Code first time to Set Output to "Code".  Press Ctrl + Alt + N for each subsequent Python "run".  Ensure entries set in user settings.json above for fast 
+<br /><br />
+
 Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Debug Python script with F5 or Run as Ctrl + F5.
 <br /><br />
 Press F5 to debug or Ctrl+F5 to run script.
@@ -36,7 +39,7 @@ VS Code is an integrated development environment with useful plugins for Python 
 <br /><br />
 Launch VS Code.  Install Python extension for Visual Studio Code.  Install other plugins for example Remote SSH to connect to Linux VM or Code Runner.  Install VS Code Insiders to try pre-release version of VS Code.
 <br /><br />
-Update global settings.json file to your particular preferences.  Here are some common VS Code examples:
+Update global <i>settings.json</i> file to your particular preferences.  Here are some common VS Code examples:
 <br />
 <!--
 <table width="98%" border="1">
