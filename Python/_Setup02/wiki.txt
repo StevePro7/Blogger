@@ -1,28 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>IMPORTANT</u><br />
-On Mac OS/X if Ctrl + Alt + N does not work then you may have to swap Ctrl for Cmd in keybindings.json:
-<br />
-<!--
-<i>~/Library/Application Support/Code/User/keybindings.json</i>
-<pre class="csharp" name="code">
-// Place your key bindings in this file to override the defaultsauto[]
-[
-    {
-        "key": "cmd+alt+n",
-        "command": "code-runner.run"
-    },
-    {
-        "key": "cmd+alt+n",
-        "command": "-code-runner.run"
-    }
-]
-</pre>
--->
-<br />
-Test
-<br /><br />
-
 
 <br /><br />
 
@@ -134,6 +111,29 @@ When running Python script using Anaconda you may get error <i>CommandNotFoundEr
 
 <b>Code Runner</b><br />
 Automate process by installing Code Runner plugin.  Press F1 | Run Code first time to set Output to "Code".  Ensure entries above in user <i>settings.json</i> for fast turnaround.  Press Ctrl + Alt + N for each subsequent run!
+<br /><br />
+
+<u>IMPORTANT</u><br />
+On Mac OS/X if Ctrl + Alt + N does not work then you may have to swap Ctrl for Cmd in keybindings.json:
+<br />
+<!--
+<i>~/Library/Application Support/Code/User/keybindings.json</i>
+<pre class="csharp" name="code">
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+alt+n",
+        "command": "code-runner.run"
+    },
+    {
+        "key": "cmd+alt+n",
+        "command": "-code-runner.run"
+    }
+]
+</pre>
+-->
+<br />
+Test
 <br /><br />
 
 </span>
