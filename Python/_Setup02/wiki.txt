@@ -8,9 +8,6 @@ Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode
 Press Ctrl + Shift + P | Python: Select Interpreter.  If creates new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> then do not check python.pythonPath into source control when deploying cross platform.
 <br /><br />
 
-Press Ctrl + Shift + P | Python: Select Interpreter to create new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> but do not check python.pythonPath into source control when deploying cross platform.
-<br /><br />
-
 <b>CommandNotFoundError</b><br />
 When running Python script using Anaconda you may get error <i>CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'</i>.  Terminal | Click "+" | Spawn new Terminal default "Conda".
 <br /><br />
