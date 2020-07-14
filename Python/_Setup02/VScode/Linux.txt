@@ -7,3 +7,27 @@
     "code-runner.executorMap": {
         "python": "python3",
         "python.pythonPath": "/usr/bin/python3",
+
+
+
+IMPORTANT
+14/07/2020
+
+set python.pythonPath to Anaconda in user settings.json
+/Anacoda3/bin/python
+
+
+but VS Code does not seem to recognize this
+however can Ctrl + Shift + P to select Python interpreter
+although does NOT create workspace settings.json file
+
+Therefore, simply Ctrl + Shift + P to select Python interpreter
+on Linux and be done with it
+
+other platforms Win + Mac 
+Ctrl + Shift + P to select Python interpreter
+creates workspace settings.json file but we don't want to check in to source control
+
+therefore
+Win	leave global user settings.json python interpreter
+Mac	check global user settings.json python interpreter
