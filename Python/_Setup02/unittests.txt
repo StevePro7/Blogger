@@ -1,0 +1,90 @@
+unit tests
+14/07/2020
+
+
+Launch VS Code
+Terminal
+cd E:\Azure\Galileo-driver
+pip install driver/.
+python -m unittest discover driver
+
+
+Originally:
+Ran 0 test in 0.000s
+
+
+The issue was that I did NOT have __init__.py
+file in one of the directories!!
+
+
+Reference:
+https://www.youtube.com/watch?v=eLMytWtCxHM
+
+
+After I sorted this out it worked:
+
+python -m unittest discover driver
+Ran 1 test in 0.000s
+
+
+Also can now discover unit tests
+e.g.
+Ctrl + Shift + P
+Python: Discover Unit Tests
+
+and now there are decorators
+Run Test
+Debug Test
+
+
+But when I look up module I still get 
+
+ModuleNotFound error
+from driver.task.core._task import MyFoo
+
+
+Is this because I have PYTHONPATH setup?
+
+
+Reference
+https://stackoverflow.com/questions/56658553/module-not-found-error-in-vs-code-despite-the-fact-that-i-installed-it
+
+
+e.g.
+Terminal
+python
+from driver.task.core._task import MyFoo
+hi
+
+
+Reference
+PYTHONPATH
+https://stackoverflow.com/questions/19917492/how-can-i-use-a-python-script-in-the-command-line-without-cd-ing-to-its-director
+
+
+IMPORTANT
+Have I cracked it?
+
+similar experience to this:
+D:\Bitbucket\SteveProXNA\actionstuff\Python\unitests\DanTaylorVScode
+
+
+
+PyCharm
+Launch PyCharm
+open E:\Azure2\Galileo-driver
+
+Terminal
+cd E:\Azure2\Galileo-driver
+pip install driver/.
+python -m unittest discover driver
+
+
+
+Output
+Python Test Log
+to tail test output
+
+
+Alt + Left
+to go back
