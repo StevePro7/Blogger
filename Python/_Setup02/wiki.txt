@@ -1,21 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Hello VS Code</u><br />
-Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
-<br /><br />
-
-<u>IMPORTANT</u><br />
-Press Ctrl + Shift + P | Python: Select Interpreter.  If creates new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> then do not check python.pythonPath into source control when deploying cross platform.
-<br /><br />
-
-<b>CommandNotFoundError</b><br />
-When running Python script using Anaconda you may get error <i>CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'</i>.  Terminal | Click "+" | Spawn new Terminal default "Conda".
-<br /><br />
-
-<b>Code Runner</b><br />
-Automate process by installing Code Runner plugin.  Press F1 | Run Code first time to set Output to "Code".  Ensure entries above in user <i>settings.json</i> for fast turnaround.  Press Ctrl + Alt + N for each subsequent run!
-<br /><br />
-
 <br /><br />
 
 
@@ -27,7 +11,7 @@ In the previous post we checked out Python Setup Cheat Sheet to download and ins
 <a href="https://1.bp.blogspot.com/-1vbW7HNj1Xw/XwsUqeI21NI/AAAAAAAAGVQ/Z2ij0zajUa8tT2P8DwcvTlu74CsTwo8JgCLcBGAsYHQ/s1600/Anaconda.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-1vbW7HNj1Xw/XwsUqeI21NI/AAAAAAAAGVQ/Z2ij0zajUa8tT2P8DwcvTlu74CsTwo8JgCLcBGAsYHQ/s640/Anaconda.png" width="98%" height="200" /></a>
 -->
 <br />
-
+<br />
 <u>Install VS Code</u><br />
 VS Code is an integrated development environment with useful plugins for Python and Data Science.  Install VS Code from Anaconda navigator.  Otherwise install VS Code for Windows and Mac OS/X and Linux directly.
 <br /><br />
@@ -35,7 +19,7 @@ Launch VS Code.  Install Python extension for Visual Studio Code.  Install other
 <br /><br />
 Update global <i>settings.json</i> file to your particular preferences.  Here are some common VS Code examples:
 <br />
-<!-- -->
+<!--
 <table width="98%" border="1">
 <tr>
 <td valign=top>&nbsp;SYSTEM</td>
@@ -111,50 +95,23 @@ Note: VS Code Insiders location replace Code/User/settings.json with <b>Code - I
 </td>
 </tr>
 </table>
-<!-- -->
+-->
 <br />
-
+<br />
 <u>Hello VS Code</u><br />
-Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Ctrl + Shift + P | Python: Select Interpreter.  This action creates .vscode/<b>settings.json</b>.
+Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
 <br /><br />
-However, in order to work cross platform, create "hidden" <b>.env</b> file at workspace folder level that is beneath "HelloVScode".  The <b>.env</b> file is NOT version controlled.  Add variable to store platform specific python paths:
-<br />
-<!--
-<table width="99%" border="1">
-<tr>
-<td valign=top>&nbsp;SYSTEM</td>
-<td valign=top>&nbsp;VARIABLE</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Windows</td>
-<td valign=top>&nbsp;PLATFORM_FOLDER=%USERPROFILE%/Anaconda3/python.exe</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Mac OS/X</td>
-<td valign=top>&nbsp;PLATFORM_FOLDER=/anaconda3/bin/python</td>
-</tr>
-<tr>
-<td valign=top>&nbsp;Linux</td>
-<td valign=top>&nbsp;PLATFORM_FOLDER=/anaconda3/bin/python</td>
-</tr>
-</table>
--->
-<br />
-Update project specific <b>settings.json</b> file to use environment variable rather than hardcoded Python path:
-<br />
-<!--
-<pre class="csharp" name="code">
-&nbsp;{
-    "python.envFile": "${workspaceFolder}/.env",
-    "python.pythonPath": "${env:WORKSPACE_FOLDER}",
-&nbsp;}
-</pre>
--->
-<br />
-Enter simple Python code <i>print('Hello World')</i>.  Press F5 to debug Python script.  To customize Run and Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5 to debug.
+
+<u>IMPORTANT</u><br />
+Press Ctrl + Shift + P | Python: Select Interpreter.  If creates new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> then do not check python.pythonPath into source control when deploying cross platform.
 <br /><br />
-Automate process by installing Code Runner plugin.  Press Ctrl + Alt + N to iterate code + run Python script!
+
+<b>CommandNotFoundError</b><br />
+When running Python script using Anaconda you may get error <i>CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'</i>.  Terminal | Click "+" | Spawn new Terminal default "Conda".
 <br /><br />
+
+<b>Code Runner</b><br />
+Automate process by installing Code Runner plugin.  Press F1 | Run Code first time to set Output to "Code".  Ensure entries above in user <i>settings.json</i> for fast turnaround.  Press Ctrl + Alt + N for each subsequent run!
 <br /><br />
 
 </span>
