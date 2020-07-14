@@ -4,6 +4,11 @@
 Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
 <br /><br />
 
+<u>IMPORTANT</u><br />
+Press Ctrl + Shift + P | Python: Select Interpreter to create new workspace <i>settings.json</i> + override Python interpreter in user <i>settings.json</i> do not version control python.pythonPath esp. when deploying cross platform.
+<br /><br />
+Press Ctrl + Shift + P | Python: Select Interpreter to create new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> but do not check python.pythonPath into source control when deploying cross platform.
+<br /><br />
 <b>CommandNotFoundError</b><br />
 When running Python script using Anaconda you may get error <i>CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'</i>.  Terminal | Click "+" | Spawn new Terminal default "Conda".
 <br /><br />
