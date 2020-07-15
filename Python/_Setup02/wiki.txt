@@ -99,7 +99,7 @@ Note: VS Code Insiders location replace Code/User/settings.json with <b>Code - I
 Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
 <br /><br />
 
-<u>IMPORTANT</u><br />
+IMPORTANT<br />
 Press Ctrl + Shift + P | Python: Select Interpreter.  If creates new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> then do not check python.pythonPath into source control when deploying cross platform.
 <br /><br />
 
@@ -111,7 +111,7 @@ When running Python script using Anaconda you may get error <i>CommandNotFoundEr
 Automate process by installing <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> plugin.  Press F1 | Run Code first time to set Output to "Code".  Ensure entries above in user <i>settings.json</i> for fast turnaround.  Press Ctrl + Alt + N for each subsequent run!
 <br /><br />
 
-<u>IMPORTANT</u><br />
+IMPORTANT<br />
 On Mac OS/X if Ctrl + Alt + N does not work then you may have to swap Ctrl for Cmd in <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindings.json</a>:
 <br />
 <!--
@@ -131,7 +131,7 @@ On Mac OS/X if Ctrl + Alt + N does not work then you may have to swap Ctrl for C
 </pre>
 -->
 <br />
-
+<br />
 
 <u>Code Sample</u><br />
 Let's test drive develop a simple code sample as a Python module that could be deployed as Python package.
