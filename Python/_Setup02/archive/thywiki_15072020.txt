@@ -1,0 +1,140 @@
+<span style="font-family:verdana;font-size:85%;">
+
+
+In the previous post we checked out Python Setup Cheat Sheet to download and install Python and setup an integrated development environment for Python programming.  We installed open source Python distribution Anaconda used for data science.  Let's continue setup to build artificial intelligence + machine learning apps.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-1vbW7HNj1Xw/XwsUqeI21NI/AAAAAAAAGVQ/Z2ij0zajUa8tT2P8DwcvTlu74CsTwo8JgCLcBGAsYHQ/s1600/Anaconda.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-1vbW7HNj1Xw/XwsUqeI21NI/AAAAAAAAGVQ/Z2ij0zajUa8tT2P8DwcvTlu74CsTwo8JgCLcBGAsYHQ/s640/Anaconda.png" width="98%" height="200" /></a>
+-->
+<br />
+<br />
+<u>Install VS Code</u><br />
+<a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">VS Code</a> is an integrated development environment with useful plugins for Python and Data Science.  Install VS Code from Anaconda navigator.  Otherwise install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">Windows</a> and <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> and <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a> directly.
+<br /><br />
+Launch VS Code.  Install Python extension for Visual Studio Code.  Install other plugins for example <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote SSH</a> to connect to Linux VM or <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a>.  Install VS Code <a href="https://code.visualstudio.com/insiders">Insiders</a> to try pre-release version of VS Code.
+<br /><br />
+Update global <i><a href="https://code.visualstudio.com/docs/getstarted/settings">settings.json</a></i> file to your particular preferences.  Here are some common VS Code examples:
+<br />
+<!--
+<table width="98%" border="1">
+<tr>
+<td valign=top>&nbsp;SYSTEM</td>
+<td valign=top>&nbsp;LOCATION</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;%APPDATA%/Code/User/settings.json</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Mac OS/X</td>
+<td valign=top>&nbsp;~/Library/Application Support/Code/User/settings.json</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Linux</td>
+<td valign=top>&nbsp;~/.config/Code/User/settings.json</td>
+</tr>
+</table>
+Note: VS Code Insiders location replace Code/User/settings.json with <b>Code - Insiders</b>/User/settings.json
+<br />
+<br />
+<i>settings.json</i>
+<table width="98%" border="1">
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "workbench.colorTheme": "Visual Studio Light",
+    "window.zoomLevel": 0,
+    "editor.trimAutoWhitespace": false,
+    "editor.renderIndentGuides": false,
+    "editor.roundedSelection": false,
+    "editor.suggestSelection": "first",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.jediEnabled": false,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.runInTerminal": false,
+    "code-runner.showExecutionMessage": false,
+    "code-runner.respectShebang": false,
+    "code-runner.defaultLanguage": "python3",
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;Mac OS/X + Linux</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "%USERPROFILE%/Anaconda3/python.exe",
+    "code-runner.executorMap": {
+        "python": "python.exe",
+        "python.pythonPath": "%USERPROFILE%/Anaconda3",
+    },
+&nbsp;}
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "/anaconda3/bin/python",
+    "code-runner.executorMap": {
+        "python": "python",
+        "python.pythonPath": "/anaconda3/bin",
+    },
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+<br />
+<u>Hello VS Code</u><br />
+Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
+<br /><br />
+
+IMPORTANT<br />
+Press Ctrl + Shift + P | Python: Select Interpreter.  If creates new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> then do not check python.pythonPath into source control when deploying cross platform.
+<br /><br />
+
+<b>CommandNotFoundError</b><br />
+When running Python script using Anaconda you may get error <i>CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'</i>.  Terminal | Click "+" | Spawn new Terminal default "Conda".
+<br /><br />
+
+<b>Code Runner</b><br />
+Automate process by installing <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> plugin.  Press F1 | Run Code first time to set Output to "Code".  Ensure entries above in user <i>settings.json</i> for fast turnaround.  Press Ctrl + Alt + N for each subsequent run!
+<br /><br />
+
+IMPORTANT<br />
+On Mac OS/X if Ctrl + Alt + N does not work then you may have to swap Ctrl for Cmd in <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindings.json</a>:
+<br />
+<!--
+<i>~/Library/Application Support/Code/User/keybindings.json</i>
+<pre class="csharp" name="code">
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+alt+n",
+        "command": "code-runner.run"
+    },
+    {
+        "key": "cmd+alt+n",
+        "command": "-code-runner.run"
+    }
+]
+</pre>
+-->
+<br />
+<br />
+
+<u>Code Sample</u><br />
+Let's test drive develop a simple code sample as a Python module that could be deployed as Python package.
+<br /><br />
+<br /><br />
+</span>
