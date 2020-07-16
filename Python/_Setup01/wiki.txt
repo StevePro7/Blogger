@@ -1,9 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Finally, enter dependencies for requirements.txt file and setup.py e.g. <i>numpy</i>.  Install package at terminal:  
-<br /><br />
-Finally, update requirements.txt file and setup.py to be able to install package + dependencies e.g. <i>numpy</i>
-<br /><br />
+
 Launch PyCharm.  Create New Project | "PackagePyCharm".  Configure Python Anaconda interpreter above.  Right click PackagePyCharm project | New | Python Package | "MyPackage".  Create other top level folders.
 <br /><br />
 Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>.
@@ -359,8 +356,91 @@ Let's test drive develop a simple code sample as a Python module that could be d
 IMPORTANT<br />
 A module is a single Python script file whereas a <a href="https://packaging.python.org/tutorials/packaging-projects">package</a> is a collection of modules.  A package is a directory of Python modules containing an additional <i>__init__.py</i> file to distinguish from a directory of Python scripts.
 <br /><br />
-Launch PyCharm...
-<br /><br />
 
+Launch PyCharm.  Create New Project | "PackagePyCharm".  Configure Python Anaconda interpreter above.  Right click PackagePyCharm project | New | Python Package | "MyPackage".  Create other top level folders.
+<br /><br />
+Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>.
+<br />
+<!--
+<a href="https://2.bp.blogspot.com/-Iwg0rLMkhRo/XxBffNK619I/AAAAAAAAGW4/zZgi-WiCQ9o8ZepsdAkI6blYw4GgjI3ugCLcBGAsYHQ/s1600/PackagePyCharm.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-Iwg0rLMkhRo/XxBffNK619I/AAAAAAAAGW4/zZgi-WiCQ9o8ZepsdAkI6blYw4GgjI3ugCLcBGAsYHQ/s640/PackagePyCharm.png" width="98%" height="275" /></a>
+<br />
+
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;test_module.py</td>
+<td valign=top>&nbsp;module.py</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import unittest
+&nbsp;from MyPackage.src.module import add_one
+
+&nbsp;class TestSimple(unittest.TestCase):
+
+    def test_add_one(self):
+        result = add_one(5)
+        self.assertEqual(result, 6)
+
+&nbsp;if __name__ == '__main__':
+    unittest.main()
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;def add_one(number):
+    return number + 1
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+Right click inside <i>test_module.py</i> | Debug 'Unittests for test_module.py'.  Alternatively, Terminal command:
+<br />
+<a href="https://1.bp.blogspot.com/-XOoINMGrjZY/XxBpRpGxpCI/AAAAAAAAGXE/Ijku1Y1Ijd8IXqxywsYzuSkR0T-ROgPyQCLcBGAsYHQ/s1600/PyCharmUnittests.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-XOoINMGrjZY/XxBpRpGxpCI/AAAAAAAAGXE/Ijku1Y1Ijd8IXqxywsYzuSkR0T-ROgPyQCLcBGAsYHQ/s640/PyCharmUnittests.png" width="98%" height="275" /></a>
+<br />
+<i>python -m unittest discover MyPackage</i>
+<br /><br />
+IMPORTANT<br />
+If the Terminal reveals Run 0 tests then ensure package has <i>__init__.py</i> setup in every relevant sub folder.  Finally, enter dependencies for requirements.txt file and setup.py e.g. <i>numpy</i>.  Install package at terminal:  
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;setup.py</td>
+<td valign=top>&nbsp;requirements.txt</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import setuptools
+
+&nbsp;with open("README.md", "r") as fh:
+    LONG_DESCRIPTION = fh.read()
+
+&nbsp;setuptools.setup(
+    name='MyPackage',
+    version='0.1.2',
+    description="My test package.",
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    packages=setuptools.find_packages(),
+    install_requires=[
+        "numpy>=1.17.1",
+    ]
+&nbsp;)
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;numpy>=1.17.1
+</pre>
+</td>
+</tr>
+</table>
+<a href="https://1.bp.blogspot.com/-kBGm4X5LbCs/XxBvbXf4WtI/AAAAAAAAGXQ/QsGK9Ud9A2AdJugexaklRwtyOtFzTbylACLcBGAsYHQ/s1600/PyCharmPackage.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-kBGm4X5LbCs/XxBvbXf4WtI/AAAAAAAAGXQ/QsGK9Ud9A2AdJugexaklRwtyOtFzTbylACLcBGAsYHQ/s640/PyCharmPackage.png" width="98%" height="250" /></a>
+<br />
+<i>pip install MyPackage/.</i>
+<br />
 <br /><br />
 </span>
