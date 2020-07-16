@@ -4,6 +4,7 @@ Create folder "PackageVScode".  Launch VS Code.  File | Open Folder | PackageVSc
 <br /><br />
 Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>. 
 <br />
+<!--
 <a href="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s1600/VScodePackage.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s640/VScodePackage.png" width="98%" height="300" /></a>
 <br />
 <table width="99%" border="1">
@@ -35,6 +36,55 @@ Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>r
 </td>
 </tr>
 </table>
+-->
+<br />
+Add <i>launch.json</i> to <b>.vscode</b> folder.  Accept default to launch current Python file from integrated terminal:
+<br />
+launch.json
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+&nbsp;}
+</pre>
+-->
+<br />
+Open <i>test_module.py</i>.  Press F5 to debug.  Output <b>ModuleNotFoundError</b>: No module named 'MyPackage'.  In VS Code you must correctly set PYTHONPATH in order to debug step through and run local source code!
+<br /><br />
+Add <i>settings.json</i> to <b>.vscode</b> folder.  Configure Python source folders by configuring the env PYTHONPATH:
+<br />
+settings.json
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;{
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${env:PYTHONPATH};${workspaceFolder}"
+    },
+	"terminal.integrated.env.osx": {
+        "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}",
+    },
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}",
+    },
+    "python.envFile": "${workspaceFolder}/.env"
+    ]
+&nbsp;}
+</pre>
+-->
+<br />
+Finally, you must add the "hidden"<b>.env</b> file beneath "MyPackage" that sets workspace folder per platform:
+<br />
 
 <br /><br />
 In the previous post we checked out Python Setup Cheat Sheet to download and install Python and setup an integrated development environment for Python programming.  We installed open source Python distribution Anaconda used for data science.  Let's continue setup to build artificial intelligence + machine learning apps.
