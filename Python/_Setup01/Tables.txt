@@ -137,3 +137,40 @@ requirements.txt
 </td>
 </tr>
 </table>
+
+07.
+PyCharm package
+
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;setup.py</td>
+<td valign=top>&nbsp;requirements.txt</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import setuptools
+
+&nbsp;with open("README.md", "r") as fh:
+    LONG_DESCRIPTION = fh.read()
+
+&nbsp;setuptools.setup(
+    name='MyPackage',
+    version='0.1.2',
+    description="My test package.",
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    packages=setuptools.find_packages(),
+    install_requires=[
+        "numpy>=1.17.1",
+    ]
+&nbsp;)
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;numpy>=1.17.1
+</pre>
+</td>
+</tr>
+</table>

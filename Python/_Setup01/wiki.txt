@@ -36,7 +36,7 @@ Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>r
 </pre>
 </td>
 </tr>
-</tabl
+</table>
 -->
 <br />
 Right click inside <i>test_module.py</i> | Debug 'Unittests for test_module.py'.  Alternatively, Terminal command:
@@ -48,8 +48,43 @@ Right click inside <i>test_module.py</i> | Debug 'Unittests for test_module.py'.
 IMPORTANT<br />
 If the Terminal reveals Run 0 tests then ensure package has <i>__init__.py</i> setup in all the relevant sub folders.
 <br />
-If the Terminal reveals Run 0 tests then ensure package setup correct and <i>__init__.py</i> exists in all relevant sub folders.
 <br />
+
+Finally, update requirements.txt file and setup.py to be able to install package + dependencies e.g. <i>numpy</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;setup.py</td>
+<td valign=top>&nbsp;requirements.txt</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import setuptools
+
+&nbsp;with open("README.md", "r") as fh:
+    LONG_DESCRIPTION = fh.read()
+
+&nbsp;setuptools.setup(
+    name='MyPackage',
+    version='0.1.2',
+    description="My test package.",
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    packages=setuptools.find_packages(),
+    install_requires=[
+        "numpy>=1.17.1",
+    ]
+&nbsp;)
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;numpy>=1.17.1
+</pre>
+</td>
+</tr>
+</table>
 
 
 <br /><br />
