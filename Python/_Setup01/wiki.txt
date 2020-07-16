@@ -36,28 +36,16 @@ Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>r
 </td>
 </tr>
 </table>
+<br />
+Right click inside <i>test_module.py</i> | Debug 'Unittests for test_module.py'.  Alternatively, Terminal command:
+<br />
+<i>python -m unittest discover MyPackage
+<br />
 
-module.py<br />
-<pre class="csharp" name="code">
-def add_one(number):
-    return number + 1
-</pre>
-test_module.py<br />
-<pre class="csharp" name="code">
-import unittest
-from MyPackage.src.module import add_one
+<br />
 
-class TestSimple(unittest.TestCase):
 
-    def test_add_one(self):
-        result = add_one(5)
-        self.assertEqual(result, 6)
-
-if __name__ == '__main__':
-    unittest.main()
-</pre>
 <br /><br />
-
 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> is an interpreted high-level and general purpose programming language.  Python 2.0 was released in 2000 but officially discontinued in 2020.  Python 3.x is now the preferred version for most projects e.g. v3.7.
 <br /><br />
 Python is commonly used in artificial intelligence and machine learning projects with the help of libraries like <a href="https://en.wikipedia.org/wiki/TensorFlow">TensorFlow</a>, <a href="https://en.wikipedia.org/wiki/Keras">Keras</a>, <a href="https://en.wikipedia.org/wiki/PyTorch">Pytorch</a> and <a href="https://en.wikipedia.org/wiki/Scikit-learn">Scikit</a>-learn.  There is also open source Python distribution <a href="https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)">Anaconda</a> used for data science and machine learning applications that aims to simplify package management and deployment.
