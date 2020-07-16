@@ -284,6 +284,148 @@ IMPORTANT<br />
 A module is a single Python script file whereas a <a href="https://packaging.python.org/tutorials/packaging-projects">package</a> is a collection of modules.  A package is a directory of Python modules containing an additional <i>__init__.py</i> file to distinguish from a directory of Python scripts.
 <br /><br />
 
-Create folder "PackageVScode".  
+Create folder "PackageVScode".  Launch VS Code.  File | Open Folder | PackageVScode.  Create New Folder "MyPackage".  Create other top level folders, for example, Build + Docs etc.  Create hidden .vscode folder.
 <br /><br />
+Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>. 
+<br />
+<!--
+<a href="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s1600/VScodePackage.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s640/VScodePackage.png" width="98%" height="300" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;test_module.py</td>
+<td valign=top>&nbsp;module.py</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import unittest
+&nbsp;from MyPackage.src.module import add_one
+
+&nbsp;class TestSimple(unittest.TestCase):
+
+    def test_add_one(self):
+        result = add_one(5)
+        self.assertEqual(result, 6)
+
+&nbsp;if __name__ == '__main__':
+    unittest.main()
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;def add_one(number):
+    return number + 1
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+Add <i>launch.json</i> to <b>.vscode</b> folder.  Accept default to launch current Python file from integrated terminal:
+<br />
+launch.json
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+&nbsp;}
+</pre>
+-->
+<br />
+Open <i>test_module.py</i>.  Press F5 to debug.  Output <b>ModuleNotFoundError</b>: No module named 'MyPackage'.  In VS Code you must correctly set PYTHONPATH in order to debug step through and run local source code!
+<br /><br />
+Add <i>settings.json</i> to <b>.vscode</b> folder.  Configure Python source folders by configuring the env PYTHONPATH:
+<br />
+settings.json
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;{
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${env:PYTHONPATH};${workspaceFolder}"
+    },
+	"terminal.integrated.env.osx": {
+        "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}",
+    },
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}",
+    },
+    "python.envFile": "${workspaceFolder}/.env"
+    ]
+&nbsp;}
+</pre>
+-->
+<br />
+Finally, you must add "hidden"<b>.env</b> file beneath "PackageVScode" that sets workspace folder per platform:
+<br />
+<pre class="csharp" name="code">
+&nbsp;WORKSPACE_FOLDER=/Absolute/Path/to/MyPackage/
+&nbsp;PYTHONPATH=${WORKSPACE_FOLDER}
+</pre>
+<br />
+IMPORTANT<br />
+The "hidden"<b>.env</b> file "lives" locally to project and should NOT be checked into source code version control!  It may also be necessary to close VS Code and re-open after configuring <b>.env</b> file.  Windows must use "/".
+<br /><br />
+
+Now press F5 to debug test code or press Ctrl + Alt + N for Code Runner.  Alternatively, Terminal command:
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-kvbqnAvbS5s/XxC5YkU2nsI/AAAAAAAAGXo/R1XteNAEfmIkOWZRyFxF28cG9Eln0Bt4ACLcBGAsYHQ/s1600/VScodeUnittests.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-kvbqnAvbS5s/XxC5YkU2nsI/AAAAAAAAGXo/R1XteNAEfmIkOWZRyFxF28cG9Eln0Bt4ACLcBGAsYHQ/s640/VScodeUnittests.png" width="98%" height="194" /></a>
+<br />
+-->
+<i>python -m unittest discover MyPackage</i>
+<br /><br />
+IMPORTANT<br />
+If the Terminal reveals Run 0 tests then ensure package has <i>__init__.py</i> setup in every relevant sub folder.  Finally, enter dependencies for requirements.txt file and setup.py e.g. <i>numpy</i>.  Install package at terminal:  
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;setup.py</td>
+<td valign=top>&nbsp;requirements.txt</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import setuptools
+
+&nbsp;with open("README.md", "r") as fh:
+    LONG_DESCRIPTION = fh.read()
+
+&nbsp;setuptools.setup(
+    name='MyPackage',
+    version='0.1.2',
+    description="My test package.",
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    packages=setuptools.find_packages(),
+    install_requires=[
+        "numpy>=1.17.1",
+    ]
+&nbsp;)
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;numpy>=1.17.1
+</pre>
+</td>
+</tr>
+</table>
+<a href="https://4.bp.blogspot.com/-6C_lZq2Hyjw/XxC7fXqJaDI/AAAAAAAAGX0/ZBKSivjggy8N-KAgUBRKHmFiBUDuXEyNgCLcBGAsYHQ/s1600/VScodePackage.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-6C_lZq2Hyjw/XxC7fXqJaDI/AAAAAAAAGX0/ZBKSivjggy8N-KAgUBRKHmFiBUDuXEyNgCLcBGAsYHQ/s640/VScodePackage.png" width="98%" height="240" /></a>
+-->
+<i>pip install MyPackage/.</i>
+<br /><br />
+
 </span>
