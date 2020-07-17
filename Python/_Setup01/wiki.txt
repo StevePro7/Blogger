@@ -1,21 +1,10 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Finally, we could also replicate the unit test code directly on the REPL.  Select Terminal tab.  Enter commands:
-<br />
-<a href="https://2.bp.blogspot.com/-EdWxhh6W9lE/XxHKd1WcwRI/AAAAAAAAGYA/agOx-5H4NCAaKZAenkqAW8QhaxdNMBrjgCLcBGAsYHQ/s1600/PyCharmREPL.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-EdWxhh6W9lE/XxHKd1WcwRI/AAAAAAAAGYA/agOx-5H4NCAaKZAenkqAW8QhaxdNMBrjgCLcBGAsYHQ/s640/PyCharmREPL.png" width="98%" height="230" /></a>
-<br />
-
-<pre class="csharp" name="code">
-&nbsp;python
-&nbsp;>>> from MyPackage.src.module import add_one
-&nbsp;>>> result = add_one(5)
-&nbsp;>>> print(result)
-</pre>
-<br />
-
 <u>Code Linting</u><br />
+Linting highlights syntactical and stylistic problems in Python source code which helps identify and correct subtle programming errors.  In PyCharm, choose <a href="https://www.pylint.org">Pylint</a> tab and click Play button to list any errors in code.
 <br /><br />
-
+Alternatively, select Terminal and type specific linter like <i><a href="https://flake8.pycqa.org/en/latest">flake8</a></i> to check Python source code against <a href="https://www.python.org/dev/peps/pep-0008">PEP8</a> coding style programming errors.  If flake8 is not installed then simply type <i>pip install flake8</i> at Terminal.
+<br /><br />
 <br /><br />
 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> is an interpreted high-level and general purpose programming language.  Python 2.0 was released in 2000 but officially discontinued in 2020.  Python 3.x is now the preferred version for most projects e.g. v3.7.
 <br /><br />
