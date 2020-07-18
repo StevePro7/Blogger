@@ -1,12 +1,17 @@
 <span style="font-family:verdana;font-size:85%;">
+
 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> is an interpreted high-level and general purpose programming language.  Python 2.0 was released in 2000 but officially discontinued in 2020.  Python 3.x is now the preferred version for most projects e.g. v3.7.
 <br /><br />
 Python is commonly used in artificial intelligence and machine learning projects with the help of libraries like <a href="https://en.wikipedia.org/wiki/TensorFlow">TensorFlow</a>, <a href="https://en.wikipedia.org/wiki/Keras">Keras</a>, <a href="https://en.wikipedia.org/wiki/PyTorch">Pytorch</a> and <a href="https://en.wikipedia.org/wiki/Scikit-learn">Scikit</a>-learn.  There is also open source Python distribution <a href="https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)">Anaconda</a> used for data science and machine learning applications that aims to simplify package management and deployment.
+
 <br />
+<!--X-->
 <a href="https://3.bp.blogspot.com/-zsz7aH9QG5Y/XwcjVZwhYOI/AAAAAAAAGUk/eLx9ksWmn1kgzgF3hAsBd7TTOJ0kHhUlQCLcBGAsYHQ/s1600/Python-Image.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-zsz7aH9QG5Y/XwcjVZwhYOI/AAAAAAAAGUk/eLx9ksWmn1kgzgF3hAsBd7TTOJ0kHhUlQCLcBGAsYHQ/s640/Python-Image.jpg" width="98%" height="200" /></a>
+<!--Y-->
 <br />
 Let's check it out!
 <br />
+
 <br /><br />
 <u>Install Python</u><br />
 Install Python on Windows, Mac OS/X and Linux.  Install <a href="https://en.wikipedia.org/wiki/Pip_(package_manager)">pip</a> as the de facto standard package-management system.  Install Anaconda for future AI projects.  Finally, install + configure an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a> for Python programming.
@@ -20,6 +25,7 @@ Python is installed by default on most Mac OS/X systems.  Launch terminal + type
 <b>Linux</b><br />
 Python is installed by default on most Linux systems.  Launch terminal + type <i>python</i>.  However you may also need to install <i><a href="https://www.tecmint.com/install-pip-in-linux">pip</a></i>.  <a href="https://opensource.com/article/19/5/python-3-default-mac">Update</a> your <i>~/.bashrc</i> file as necessary to use Python 3.7 by default instead of Python 2.
 <br />
+<!--X-->
 <table width="99%" border="1">
 <tr>
 <td valign=top>&nbsp;Install + Update + Aliases Python3</td>
@@ -44,10 +50,12 @@ Python is installed by default on most Linux systems.  Launch terminal + type <i
 </td>
 </tr>
 </table>
+<!--Y-->
 <br />
 IMPORTANT<br />
 Verify which python version and which pip version are installed and location where these are both installed:
 <br />
+<!--X-->
 <table width="99%" border="1">
 <tr>
 <td valign=top>&nbsp;python --version</td>
@@ -58,11 +66,15 @@ Verify which python version and which pip version are installed and location whe
 <td valign=top>&nbsp;which pip</td>
 </tr>
 </table>
+<!--Y
 <br />
+-->
+
 <br /><br />
 <u>Install Anaconda</u><br />
 Follow instructions to install open source Python distribution Anaconda for <a href="https://docs.anaconda.com/anaconda/install/windows">Windows</a> and <a href="https://docs.anaconda.com/anaconda/install/mac-os">Mac OS/X</a> and <a href="https://docs.anaconda.com/anaconda/install/linux">Linux</a>
 <br />
+<!--X-->
 <table width="99%" border="1">
 <tr>
 <td valign=top>&nbsp;SYSTEM</td>
@@ -81,10 +93,12 @@ Follow instructions to install open source Python distribution Anaconda for <a h
 <td valign=top>&nbsp;/anaconda3</td>
 </tr>
 </table>
+<!--Y-->
 <br />
 <b>Windows</b><br />
 Add the following four environment variables: System | Advanced system settings | Environment Variables:
 <br />
+<!--X-->
 <table width="99%" border="1">
 <tr>
 <td valign=top>&nbsp;%USERPROFILE%\Anaconda3</td>
@@ -95,6 +109,7 @@ Add the following four environment variables: System | Advanced system settings 
 <td valign=top>&nbsp;%USERPROFILE%\Anaconda3\Library\bin</td>
 </tr>
 </table>
+<!--Y-->
 <br />
 <b>Mac OS/X</b><br />
 Follow all prompts from the install wizard.  Anaconda should install at /anaconda3 by default with aliases set.
@@ -102,20 +117,25 @@ Follow all prompts from the install wizard.  Anaconda should install at /anacond
 <b>Linux</b><br />
 Launch terminal as root user.  Type <i>bash ~/Downloads/Anaconda3-2020.02-Linux-x86_64.sh</i>.  For consistency with the Mac set install location to <i>/anaconda3</i>.  After install <a href="https://groups.google.com/a/continuum.io/forum/#!topic/anaconda/R0xZt0ioBl8">launch</a> Anaconda navigator.  Enter the following:
 <br />
+<!--X-->
 <pre class="csharp" name="code">
 &nbsp;source ~/anaconda*/bin/activate root
 &nbsp;anaconda-navigator
 </pre>
+<!--Y-->
 <br />
 Update your <i>~/.bashrc</i> file as necessary to prefer Anaconda Python especially for data science AI + ML work.
 <br />
+<!--X-->
 <pre class="csharp" name="code">
 &nbsp;alias python=/anaconda3/bin/python
 &nbsp;alias pip=/anaconda3/bin/pip
 </pre>
+<!--Y-->
 <br />
 Finally, create Anaconda desktop <a href="https://askubuntu.com/questions/1017284/cant-create-anaconda-shortcut-to-launch-from-desktop-on-ubuntu-17-10">shortcut</a>: create the following <i>Anaconda.desktop</i> at <i>/usr/share/applications/</i>  Add the text below.  Enter <i>sudo echo "PATH=$PATH:/anaconda3/bin" >> /etc/environment</i> at the terminal.
 <br /><br />
+<!--X-->
 <i>Anaconda.desktop</i>
 <pre class="csharp" name="code">
 [Desktop Entry]
@@ -125,6 +145,7 @@ Exec=anaconda-navigator
 Terminal=false
 Icon=/anaconda3/lib/python3.7/site-packages/anaconda_navigator/static/images/anaconda-icon-256x256.png
 </pre>
+<!--Y-->
 Restart Linux.  From settings type "Anaconda" to prompt Anaconda Navigator + resume projects from there.
 <br />
 <br />
@@ -132,10 +153,12 @@ IMPORTANT<br />
 Verify which Anaconda version is installed using <i>conda --version</i> command and where installed <i>where conda</i>.
 <br />
 <br /><br />
+
 <u>Install PyCharm</u><br />
 <a href="https://en.wikipedia.org/wiki/PyCharm">PyCharm</a> is an integrated development environment used specifically for Python.  Install PyCharm during the Anaconda install or from navigator.  Otherwise install PyCharm for <a href="https://www.jetbrains.com/pycharm/download/#section=windows">Windows</a> and <a href="https://www.jetbrains.com/pycharm/download/#section=mac">Mac OS/X</a> and <a href="https://www.jetbrains.com/pycharm/download/#section=linux">Linux</a> directly.
 <br /><br />
 Launch PyCharm.  Click "Configure" cog drop down | Settings.  Set the base interpreter to match the Python location for Anaconda.  Click cog | Show All | Click "+" | Virtualenv Environment.  Enter the following details:
+<!--X-->
 <br />
 <a href="https://4.bp.blogspot.com/-b7QB0JiKw3E/XwwvycZpY9I/AAAAAAAAGVc/imDRPBHbD5IvOpfAx5w-mSeLN6Mn8Z7EgCLcBGAsYHQ/s1600/PythonInterpreter.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-b7QB0JiKw3E/XwwvycZpY9I/AAAAAAAAGVc/imDRPBHbD5IvOpfAx5w-mSeLN6Mn8Z7EgCLcBGAsYHQ/s640/PythonInterpreter.png" width="98%" height="250" /></a>
 <br />
@@ -158,14 +181,18 @@ Launch PyCharm.  Click "Configure" cog drop down | Settings.  Set the base inter
 </tr>
 </table>
 <br />
+<!--Y
 <br />
 <br /><br />
+-->
 <b>Plugins</b><br />
 Configure cog | Plugins.  Install <a href="https://www.pylint.org">pylint</a> as a code analysis tool that follows the recommended <a href="https://www.python.org/dev/peps/pep-0008">PEP8</a> style guide.  Restart IDE.  Pylint is handy tool to check Python code especially for developers used to static code compiler!
 <br /><br />
+
 <b>Shortcuts</b><br />
 <a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File.  Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>.  Remember Rename files and folder is in the Refactor menu!
 <br />
+<!--X-->
 <table width="99%" border="1">
 <tr>
 <td valign=top>&nbsp;Ctrl + F12</td>
@@ -192,52 +219,67 @@ Configure cog | Plugins.  Install <a href="https://www.pylint.org">pylint</a> as
 <td valign=top>&nbsp;Navigate forwards to the next location</td>
 </tr>
 </table>
+<!--Y-->
 <br />
 IMPORTANT<br />
 On Linux <a href="https://stackoverflow.com/questions/48685449/intellij-navigate-back-shortcut-not-working">navigate</a>  may actually be Shift + Alt + arrow keys instead of Ctrl due to keymap shortcut conflicts!
 <br /><br />
+
 <br />
 <u>Hello PyCharm</u><br />
 Launch PyCharm.  Create New Project | "HelloPyCharm".  Enter the following details as Anaconda interpreter:
 <br />
+<!--X-->
 <a href="https://1.bp.blogspot.com/-KfbkcmeHrCM/XwxP9OfU5fI/AAAAAAAAGVo/lxsYe6YcQMwekPCFDy3I_EiK8UvjcQp8wCLcBGAsYHQ/s1600/HelloPyCharm.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-KfbkcmeHrCM/XwxP9OfU5fI/AAAAAAAAGVo/lxsYe6YcQMwekPCFDy3I_EiK8UvjcQp8wCLcBGAsYHQ/s640/HelloPyCharm.png" width="98%" height="275" /></a>
+<!--Y-->
 <br />
 PyCharm uses <a href="https://docs.python-guide.org/dev/virtualenvs">virtualenv</a> tool to create an isolated Python environment.  Virtualenv creates <b>venv</b> folder in the current directory with Python executable files and a copy of pip to install other modules and packages.
 <br />
 <br />
 Create simple "HelloWorld.py".  Enter Python code <i>print('Hello World')</i>.  Right click file | Run ""HelloWorld".
 <br /><br />
+
 <b>Module Not Found</b><br />
 Update script | Import module not currently installed e.g. <i>import numpy</i>.  Run script: ModuleNotFoundError
 <br />
+<!--X-->
 <a href="https://2.bp.blogspot.com/-47NAwDHvNHg/XwxYDoRuBLI/AAAAAAAAGV0/MesjsCUi-5Q1UKC2rczDZLAIfuboPycIACLcBGAsYHQ/s1600/ModuleNotFound.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-47NAwDHvNHg/XwxYDoRuBLI/AAAAAAAAGV0/MesjsCUi-5Q1UKC2rczDZLAIfuboPycIACLcBGAsYHQ/s640/ModuleNotFound.png" width="98%" height="200" /></a>
 <br />
+<!--Y-->
 <br />
 Launch PyCharm terminal.  Enter <i>python -m pip install numpy</i> to install module.  Re-run script with success.
 <br />
+<!--X-->
 <a href="https://1.bp.blogspot.com/-W7yie3NEPBw/XwxY3_XQJII/AAAAAAAAGV8/u44wM87UqKcdJ3VuARlfExN_rhHF71YfgCLcBGAsYHQ/s1600/PipInstallModule.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-W7yie3NEPBw/XwxY3_XQJII/AAAAAAAAGV8/u44wM87UqKcdJ3VuARlfExN_rhHF71YfgCLcBGAsYHQ/s640/PipInstallModule.png" width="98%" height="225" /></a>
 <br />
+<!--Y-->
 <br />
 Alternatively, execute <i><a href="https://pip.pypa.io/en/stable/reference/pip_freeze">pip freeze</a></i> to dump all required modules for project into <i>requirements.txt</i> and install:
 <br />
+<!--X-->
 <pre class="csharp" name="code">
 &nbsp;pip freeze > requirements.txt
 &nbsp;pip install -r requirements.txt
 </pre>
+<!--Y-->
 <br />
 <br />
 <u>Code Sample</u><br />
 Let's test drive develop a simple code sample as a Python module that could be deployed as Python package.
 <br /><br />
+
 IMPORTANT<br />
 A module is a single Python script file whereas a <a href="https://packaging.python.org/tutorials/packaging-projects">package</a> is a collection of modules.  A package is a directory of Python modules containing an additional <i>__init__.py</i> file to distinguish from a directory of Python scripts.
 <br /><br />
+
 Launch PyCharm.  Create New Project | "PackagePyCharm".  Configure Python Anaconda interpreter above.  Right click PackagePyCharm project | New | Python Package | "MyPackage".  Create other top level folders.
 <br /><br />
 Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>.
 <br />
+<!--X-->
 <a href="https://2.bp.blogspot.com/-Iwg0rLMkhRo/XxBffNK619I/AAAAAAAAGW4/zZgi-WiCQ9o8ZepsdAkI6blYw4GgjI3ugCLcBGAsYHQ/s1600/PackagePyCharm.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-Iwg0rLMkhRo/XxBffNK619I/AAAAAAAAGW4/zZgi-WiCQ9o8ZepsdAkI6blYw4GgjI3ugCLcBGAsYHQ/s640/PackagePyCharm.png" width="98%" height="275" /></a>
 <br />
+
 <table width="99%" border="1">
 <tr>
 <td valign=top>&nbsp;test_module.py</td>
@@ -267,6 +309,7 @@ Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>r
 </td>
 </tr>
 </table>
+<!--Y-->
 <br />
 Right click inside <i>test_module.py</i> | Debug 'Unittests for test_module.py'.  Alternatively, Terminal command:
 <br />
@@ -313,11 +356,13 @@ If the Terminal reveals Run 0 tests then ensure package has <i>__init__.py</i> s
 <a href="https://1.bp.blogspot.com/-kBGm4X5LbCs/XxBvbXf4WtI/AAAAAAAAGXQ/QsGK9Ud9A2AdJugexaklRwtyOtFzTbylACLcBGAsYHQ/s1600/PyCharmPackage.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-kBGm4X5LbCs/XxBvbXf4WtI/AAAAAAAAGXQ/QsGK9Ud9A2AdJugexaklRwtyOtFzTbylACLcBGAsYHQ/s640/PyCharmPackage.png" width="98%" height="250" /></a>
 <br />
 <i>pip install MyPackage/.</i>
+
 <br /><br />
 Finally, we could also replicate the unit test code directly on the <a href="https://codewith.mu/en/tutorials/1.0/repl">REPL</a>.  Select Terminal tab.  Enter commands:
 <br />
 <a href="https://2.bp.blogspot.com/-EdWxhh6W9lE/XxHKd1WcwRI/AAAAAAAAGYA/agOx-5H4NCAaKZAenkqAW8QhaxdNMBrjgCLcBGAsYHQ/s1600/PyCharmREPL.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-EdWxhh6W9lE/XxHKd1WcwRI/AAAAAAAAGYA/agOx-5H4NCAaKZAenkqAW8QhaxdNMBrjgCLcBGAsYHQ/s640/PyCharmREPL.png" width="98%" height="230" /></a>
 <br />
+
 <pre class="csharp" name="code">
 &nbsp;python
 &nbsp;>>> from MyPackage.src.module import add_one
@@ -325,12 +370,15 @@ Finally, we could also replicate the unit test code directly on the <a href="htt
 &nbsp;>>> print(result)
 </pre>
 <br />
+
 <u>Code Linting</u><br />
 Linting highlights syntactical and stylistic problems in Python source code which helps identify and correct subtle programming errors.  In PyCharm, choose <a href="https://www.pylint.org">Pylint</a> tab and click Play button to list any errors in code.
 <br /><br />
 Alternatively, select Terminal and type specific linter like <i><a href="https://flake8.pycqa.org/en/latest">flake8</a></i> to check Python source code against <a href="https://www.python.org/dev/peps/pep-0008">PEP8</a> coding style programming errors.  If flake8 is not installed then simply type <i>pip install flake8</i> at Terminal.
 <br /><br />
+
 <br />
 <u>Summary</u><br />
 To summarize, we have a simple setup for Python programming on Windows, Mac OS/X and Linux.  There is much to explore e.g. Python <a href="https://docs.python.org/3/whatsnew/3.8.html">3.8</a>.  However, we'd like to setup Python more for AI machine learning projects.  This will be topic of the next post.
+
 </span>
