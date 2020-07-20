@@ -1,0 +1,308 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<u>Code Linting</u><br />
+Linting highlights syntactical and stylistic problems in Python source code which helps identify and correct subtle programming errors...
+<br /><br />
+
+<br /><br />
+In the previous post we checked out Python Setup Cheat Sheet to download and install Python and setup an integrated development environment for Python programming.  We installed open source Python distribution Anaconda used for data science.  Let's continue setup to build artificial intelligence + machine learning apps.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-1vbW7HNj1Xw/XwsUqeI21NI/AAAAAAAAGVQ/Z2ij0zajUa8tT2P8DwcvTlu74CsTwo8JgCLcBGAsYHQ/s1600/Anaconda.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-1vbW7HNj1Xw/XwsUqeI21NI/AAAAAAAAGVQ/Z2ij0zajUa8tT2P8DwcvTlu74CsTwo8JgCLcBGAsYHQ/s640/Anaconda.png" width="98%" height="200" /></a>
+-->
+<br />
+<br />
+<u>Install VS Code</u><br />
+<a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">VS Code</a> is an integrated development environment with useful plugins for Python and Data Science.  Install VS Code from Anaconda navigator.  Otherwise install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">Windows</a> and <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> and <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a> directly.
+<br /><br />
+Launch VS Code.  Install Python extension for Visual Studio Code.  Install other plugins for example <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote SSH</a> to connect to Linux VM or <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a>.  Install VS Code <a href="https://code.visualstudio.com/insiders">Insiders</a> to try pre-release version of VS Code.
+<br /><br />
+Update global <i><a href="https://code.visualstudio.com/docs/getstarted/settings">settings.json</a></i> file to your particular preferences.  Here are some common VS Code examples:
+<br />
+<!--
+<table width="98%" border="1">
+<tr>
+<td valign=top>&nbsp;SYSTEM</td>
+<td valign=top>&nbsp;LOCATION</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;%APPDATA%/Code/User/settings.json</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Mac OS/X</td>
+<td valign=top>&nbsp;~/Library/Application Support/Code/User/settings.json</td>
+</tr>
+<tr>
+<td valign=top>&nbsp;Linux</td>
+<td valign=top>&nbsp;~/.config/Code/User/settings.json</td>
+</tr>
+</table>
+Note: VS Code Insiders location replace Code/User/settings.json with <b>Code - Insiders</b>/User/settings.json
+<br />
+<br />
+<i>settings.json</i>
+<table width="98%" border="1">
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "workbench.colorTheme": "Visual Studio Light",
+    "window.zoomLevel": 0,
+    "editor.trimAutoWhitespace": false,
+    "editor.renderIndentGuides": false,
+    "editor.roundedSelection": false,
+    "editor.suggestSelection": "first",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.jediEnabled": false,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.runInTerminal": false,
+    "code-runner.showExecutionMessage": false,
+    "code-runner.respectShebang": false,
+    "code-runner.defaultLanguage": "python3",
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;Mac OS/X + Linux</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "%USERPROFILE%/Anaconda3/python.exe",
+    "code-runner.executorMap": {
+        "python": "python.exe",
+        "python.pythonPath": "%USERPROFILE%/Anaconda3",
+    },
+&nbsp;}
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;{
+    "python.pythonPath": "/anaconda3/bin/python",
+    "code-runner.executorMap": {
+        "python": "python",
+        "python.pythonPath": "/anaconda3/bin",
+    },
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+<br />
+<u>Hello VS Code</u><br />
+Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
+<br /><br />
+
+IMPORTANT<br />
+Press Ctrl + Shift + P | Python: Select Interpreter.  If creates new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> then do not check python.pythonPath into source control when deploying cross platform.
+<br /><br />
+
+<b>CommandNotFoundError</b><br />
+When running Python script using Anaconda you may get error <i>CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'</i>.  Terminal | Click "+" | Spawn new Terminal default "Conda".
+<br /><br />
+
+<b>Code Runner</b><br />
+Automate process by installing <a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> plugin.  Press F1 | Run Code first time to set Output to "Code".  Ensure entries above in user <i>settings.json</i> for fast turnaround.  Press Ctrl + Alt + N for each subsequent run!
+<br /><br />
+
+IMPORTANT<br />
+On Mac OS/X if Ctrl + Alt + N does not work then you may have to swap Ctrl for Cmd in <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindings.json</a>:
+<br />
+<!--
+<i>~/Library/Application Support/Code/User/keybindings.json</i>
+<pre class="csharp" name="code">
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+alt+n",
+        "command": "code-runner.run"
+    },
+    {
+        "key": "cmd+alt+n",
+        "command": "-code-runner.run"
+    }
+]
+</pre>
+-->
+<br />
+<br />
+
+<u>Code Sample</u><br />
+Let's test drive develop a simple code sample as a Python module that could be deployed as Python package.
+<br /><br />
+IMPORTANT<br />
+A module is a single Python script file whereas a <a href="https://packaging.python.org/tutorials/packaging-projects">package</a> is a collection of modules.  A package is a directory of Python modules containing an additional <i>__init__.py</i> file to distinguish from a directory of Python scripts.
+<br /><br />
+
+Create folder "PackageVScode".  Launch VS Code.  File | Open Folder | PackageVScode.  Create New Folder "MyPackage".  Create other top level folders, for example, Build + Docs etc.  Create hidden .vscode folder.
+<br /><br />
+Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>. 
+<br />
+<!--
+<a href="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s1600/VScodePackage.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s640/VScodePackage.png" width="98%" height="300" /></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;test_module.py</td>
+<td valign=top>&nbsp;module.py</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import unittest
+&nbsp;from MyPackage.src.module import add_one
+
+&nbsp;class TestSimple(unittest.TestCase):
+
+    def test_add_one(self):
+        result = add_one(5)
+        self.assertEqual(result, 6)
+
+&nbsp;if __name__ == '__main__':
+    unittest.main()
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;def add_one(number):
+    return number + 1
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+Add <i>launch.json</i> to <b>.vscode</b> folder.  Accept default to launch current Python file from integrated terminal:
+<br />
+launch.json
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+&nbsp;}
+</pre>
+-->
+<br />
+Open <i>test_module.py</i>.  Press F5 to debug.  Output <b>ModuleNotFoundError</b>: No module named 'MyPackage'.  In VS Code you must correctly set PYTHONPATH in order to debug step through and run local source code!
+<br /><br />
+Add <i>settings.json</i> to <b>.vscode</b> folder.  Configure Python source folders by configuring the env PYTHONPATH:
+<br />
+settings.json
+<br />
+<!--
+<pre class="csharp" name="code">
+&nbsp;{
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${env:PYTHONPATH};${workspaceFolder}"
+    },
+	"terminal.integrated.env.osx": {
+        "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}",
+    },
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}",
+    },
+    "python.envFile": "${workspaceFolder}/.env"
+    ]
+&nbsp;}
+</pre>
+-->
+<br />
+Finally, you must add "hidden"<b>.env</b> file beneath "PackageVScode" that sets workspace folder per platform:
+<br />
+<pre class="csharp" name="code">
+&nbsp;WORKSPACE_FOLDER=/Absolute/Path/to/MyPackage/
+&nbsp;PYTHONPATH=${WORKSPACE_FOLDER}
+</pre>
+<br />
+IMPORTANT<br />
+The "hidden"<b>.env</b> file "lives" locally to project and should NOT be checked into source code version control!  It may also be necessary to close VS Code and re-open after configuring <b>.env</b> file.  Windows must use "/".
+<br /><br />
+
+Now press F5 to debug test code or press Ctrl + Alt + N for Code Runner.  Alternatively, Terminal command:
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-kvbqnAvbS5s/XxC5YkU2nsI/AAAAAAAAGXo/R1XteNAEfmIkOWZRyFxF28cG9Eln0Bt4ACLcBGAsYHQ/s1600/VScodeUnittests.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-kvbqnAvbS5s/XxC5YkU2nsI/AAAAAAAAGXo/R1XteNAEfmIkOWZRyFxF28cG9Eln0Bt4ACLcBGAsYHQ/s640/VScodeUnittests.png" width="98%" height="194" /></a>
+<br />
+-->
+<i>python -m unittest discover MyPackage</i>
+<br /><br />
+IMPORTANT<br />
+If the Terminal reveals Run 0 tests then ensure package has <i>__init__.py</i> setup in every relevant sub folder.  Finally, enter dependencies for requirements.txt file and setup.py e.g. <i>numpy</i>.  Install package at terminal:  
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;setup.py</td>
+<td valign=top>&nbsp;requirements.txt</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;import setuptools
+
+&nbsp;with open("README.md", "r") as fh:
+    LONG_DESCRIPTION = fh.read()
+
+&nbsp;setuptools.setup(
+    name='MyPackage',
+    version='0.1.2',
+    description="My test package.",
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    packages=setuptools.find_packages(),
+    install_requires=[
+        "numpy>=1.17.1",
+    ]
+&nbsp;)
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;numpy>=1.17.1
+</pre>
+</td>
+</tr>
+</table>
+<a href="https://4.bp.blogspot.com/-6C_lZq2Hyjw/XxC7fXqJaDI/AAAAAAAAGX0/ZBKSivjggy8N-KAgUBRKHmFiBUDuXEyNgCLcBGAsYHQ/s1600/VScodePackage.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-6C_lZq2Hyjw/XxC7fXqJaDI/AAAAAAAAGX0/ZBKSivjggy8N-KAgUBRKHmFiBUDuXEyNgCLcBGAsYHQ/s640/VScodePackage.png" width="98%" height="240" /></a>
+-->
+<i>pip install MyPackage/.</i>
+<br /><br />
+
+Finally, we could also replicate the unit test code directly on the <a href="https://codewith.mu/en/tutorials/1.0/repl">REPL</a>.  Select Terminal tab.  Enter commands:
+<br />
+<a href="https://2.bp.blogspot.com/-ZSMfqteiYP0/XxMiVbSHF7I/AAAAAAAAGYM/Gfn8c1E6yWcQeVjNb-NPIJ15YDZUg5VogCLcBGAsYHQ/s1600/VScodeREPL.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-ZSMfqteiYP0/XxMiVbSHF7I/AAAAAAAAGYM/Gfn8c1E6yWcQeVjNb-NPIJ15YDZUg5VogCLcBGAsYHQ/s640/VScodeREPL.png" width="98%" height="161" /></a>
+<br />
+
+<pre class="csharp" name="code">
+&nbsp;python
+&nbsp;>>> from MyPackage.src.module import add_one
+&nbsp;>>> result = add_one(5)
+&nbsp;>>> print(result)
+</pre>
+<br />
+
+<u>Code Linting</u><br />
+Linting highlights syntactical and stylistic problems in Python source code which helps identify and correct subtle programming errors...
+<br /><br />
+
+</span>
