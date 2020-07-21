@@ -1,10 +1,10 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Remote SSH</u><br />
-Often machine learning AI projects may require remote development in VS Code to use Windows to develop in a Linux-based environment.  Install Remote SSH to run and debug Linux-based applications on Windows.  Start | run | cmd.  <i>ssh username@linux_server</i>.  Enter passphrase.  Enter verification code if setup for MFA.
+Often machine learning AI projects may require <a href="https://code.visualstudio.com/blogs/2019/05/02/remote-development">remote</a> development in VS Code to use Windows to develop in a Linux-based environment.  Install Remote SSH to run and debug Linux-based applications on Windows.  Start | run | cmd.  <i>ssh username@linux_server</i>.  Enter passphrase.  Enter verification code if setup for MFA.
 <br /><br />
 <b>SSH Keys</b><br />
-Use SSH key authentication and setup SSH keys to connect local Windows host and remote Linux VM server.
+Use SSH key <a href="https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page">authentication</a> and setup SSH keys to connect local Windows host and remote Linux VM server.
 <br />
 <table width="99%" border="1">
 <tr>
@@ -47,7 +47,7 @@ Finally, configure <i>%USERPROFILE%\.ssh\config</i> file with Linux VM server in
 <br />
 
 <b>SSH Tunnel</b><br />
-Port forwarding via SSH Tunnel creates a secure connection between the local computer and remote machine through which services can be relayed.  SSH Tunnel is useful for transmitting data over encrypted connection.
+<a href="https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding">Port forwarding</a> via SSH Tunnel creates a secure connection between the local computer and remote machine through which services can be relayed.  SSH Tunnel is useful for transmitting data over encrypted connection.
 <br />
 <pre class="csharp" name="code">
 &nbsp;ssh -N -L localhost:8787:LoadBalancer_External-IP:8000 username@linux_server
@@ -64,7 +64,7 @@ The same technique can be uesd to access Jupyter Notebook on Linux VM server.  L
 <br />
 
 <b>WinSCP</b><br />
-Install WinSCP as popular SFTP client to navigate + copy files between local Windows and remote Linux VM.  Launch WinSCP.  Enter Host Name, Port number, User name, Password and verification code if setup for MFA.
+Install <a href="https://winscp.net/eng/download.php">WinSCP</a> as popular SFTP client to navigate + copy files between local Windows and remote Linux VM.  Launch WinSCP.  Enter Host Name, Port number, User name, Password and verification code if setup for MFA.
 <br /><br />
 
 <br /><br />
