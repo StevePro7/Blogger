@@ -1,8 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<b>Virtual Environment</b><br />
-Unlike PyCharm, VS Code does not automagically create an isolated Python environment for new projects.  Therefore, follow all instructions <a href="https://dev.to/idrisrampurawala/setting-up-python-workspace-in-visual-studio-code-vscode-149p">here</a> to setup and activate virtual environment for Python using VS Code.
-<br /><br />
 
 <br /><br />
 
@@ -109,6 +106,10 @@ Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode
 
 IMPORTANT<br />
 Press Ctrl + Shift + P | Python: Select Interpreter.  If creates new workspace <i>settings.json</i> + override Python interpreter user <i>settings.json</i> then do not check python.pythonPath into source control when deploying cross platform.
+<br /><br />
+
+<b>Virtual Environment</b><br />
+Unlike <a href="https://en.wikipedia.org/wiki/PyCharm">PyCharm</a>, VS Code does not automagically create an isolated Python environment for new projects.  Therefore, follow all instructions <a href="https://dev.to/idrisrampurawala/setting-up-python-workspace-in-visual-studio-code-vscode-149p">here</a> to setup and activate virtual environment for Python using VS Code.
 <br /><br />
 
 <b>CommandNotFoundError</b><br />
