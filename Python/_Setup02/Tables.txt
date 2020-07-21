@@ -111,3 +111,31 @@ platform specific python path
 <td valign=top>&nbsp;PLATFORM_FOLDER=/anaconda3/bin/python</td>
 </tr>
 </table>
+
+
+
+05.
+SSH keys
+
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;Linux</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;cd %USERPROFILE%
+&nbsp;cd .ssh
+&nbsp;ssh-keygen -C "username@emailaddress.com"
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;ssh username@linux_server
+&nbsp;cd ~/.ssh
+&nbsp;ssh-keygen -C "username@emailaddress.com"
+</pre>
+</td>
+</tr>
+</table>

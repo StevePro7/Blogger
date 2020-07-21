@@ -1,9 +1,70 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Remote SSH</u><br />
+Often machine learning AI projects may require remote development in VS Code to use Windows to develop in a Linux-based environment.  Install Remote SSH to run and debug Linux-based applications on Windows.  Start | run | cmd.  <i>ssh username@linux_server</i>.  Enter passphrase.  Enter verification code if setup for MFA.
+<br /><br />
+<b>SSH Keys</b><br />
+Use SSH key authentication and setup SSH keys to connect local Windows host and remote Linux VM server.
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;Linux</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;cd %USERPROFILE%
+&nbsp;cd .ssh
+&nbsp;ssh-keygen -C "username@emailaddress.com"
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;ssh username@linux_server
+&nbsp;cd ~/.ssh
+&nbsp;ssh-keygen -C "username@emailaddress.com"
+</pre>
+</td>
+</tr>
+</table>
 
+Windows
+<pre class="csharp" name="code">
+cd %USERPROFILE%
+cd .ssh
+ssh-keygen -C "username@emailaddress.com"
+</pre>
+<br />
+
+
+Linux
+<pre class="csharp" name="code">
+ssh username@linux_server
+cd ~/.ssh
+ssh-keygen -C "username@emailaddress.com"
+</pre>
+
+Dump the contents of id_rsa.pub file from local Windows host to authorized_keys file on Linux VM server:
+<br />
+<pre class="csharp" name="code">
+echo "contents_of_Windows_id_rsa.pub_file" >> authorized_keys
+cd ~/.ssh
+ssh-keygen -C "username@emailaddress.com"
+</pre>
+
+<br />
+<b>SSH Tunnel</b><br />
+
+<b>Notebooks</b><br />
+
+<b>Win SCP</b><br />
+Install Win SCP as popular SFTP client to navigate + copy files between local Windows and remote Linux VM.
 <br /><br />
 
+Install Win SCP as a popular SFTP client to copy + navigate files between Windows and Linux virtual machine.
 <br /><br />
+
 In the previous post we checked out Python Setup Cheat Sheet to download and install Python and setup an integrated development environment for Python programming.  We installed open source Python distribution Anaconda used for data science.  Let's continue setup to build artificial intelligence + machine learning apps.
 <br />
 <!--X-->
