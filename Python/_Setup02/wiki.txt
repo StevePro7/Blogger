@@ -3,11 +3,20 @@
 
 <b>SSH Tunnel</b><br />
 Port forwarding via SSH Tunnel creates a secure connection between the local computer and remote machine through which services can be relayed.  SSH Tunnel is useful for transmitting data over encrypted connection.
-<br /><br />
-Because the connection is encrypted SSH tunneling useful for transmitting data.
-<br /><br />
-
-Port forwarding via SSH Tunnel creates a secure connection between a local computer and remote machine through which services can be relayed.  Because the connection is encrypted SSH tunneling useful for transmitting data.
+<br />
+<pre class="csharp" name="code">
+&nbsp;ssh -N -L localhost:8787:LoadBalancer_External-IP:8000 username@linux_server
+</pre>
+<br />
+The same technique can be uesd to access Jupyter Notebook on Linux VM server.  Launch terminal and enter:
+<br />
+<pre class="csharp" name="code">
+&nbsp;ssh username@linux_server
+&nbsp;cd ~/
+&nbsp;jupyter notebook --no-browser --port=8889
+&nbsp;ssh -N -L localhost:8889:localhost:8889 username@linux_server
+</pre>
+<br />
 <br /><br />
 <b>Notebooks</b><br />
 
