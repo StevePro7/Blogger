@@ -371,8 +371,55 @@ Alternatively, select Terminal and type specific linter like <i><a href="https:/
 <u>Jupyter Notebooks</u><br />
 <a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/What%20is%20the%20Jupyter%20Notebook.html">Notebooks</a> are becoming the standard for prototyping and analysis for data scientists.  Many cloud providers and Anaconda navigator offer machine learning and deep learning services in the form of Jupyter notebooks.
 <br /><br />
-Launch Anaconda navigator | Choose Jupyter Notebook | Launch.  After the browser launches create a New | Python 3 | Jupyter notebook.  Follow <a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial">tutorial</a>.  Change browser from Google Chrome to Firefox if any issues!
+Launch Anaconda navigator | Choose Jupyter Notebook | Launch.  After the browser launches create a New | Python 3 | Jupyter notebook.  Follow <a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial">tutorial</a>.  Change browser from Google Chrome to Firefox if any issues!  Alternatively, create notebook in VS Code | Ctrl + Shift + P | Python: Create New Blank Jupyter Notebook.
 <br /><br />
-Alternatively, create notebook in VS Code | Ctrl + Shift + P | Python: Create New Blank Jupyter Notebook.
+
+<br />
+<u>Remote SSH</u><br />
+Often machine learning AI projects may require remote development in VS Code to use Windows to develop in a Linux-based environment.  Install Remote SSH to run and debug Linux-based applications on Windows.  Start | run | cmd.  <i>ssh username@linux_server</i>.  Enter passphrase.  Enter verification code if setup for MFA.
 <br /><br />
+<b>SSH Keys</b><br />
+Use SSH key authentication and setup SSH keys to connect local Windows host and remote Linux VM server.
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign=top>&nbsp;Windows</td>
+<td valign=top>&nbsp;Linux</td>
+</tr>
+<tr>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;cd %USERPROFILE%
+&nbsp;cd .ssh
+&nbsp;ssh-keygen -C "username@emailaddress.com"
+</pre>
+</td>
+<td valign=top>
+<pre class="csharp" name="code">
+&nbsp;ssh username@linux_server
+&nbsp;cd ~/.ssh
+&nbsp;ssh-keygen -C "username@emailaddress.com"
+</pre>
+</td>
+</tr>
+</table>
+<br />
+Dump the contents of id_rsa.pub file from local Windows host to authorized_keys file on Linux VM server:
+<br />
+<pre class="csharp" name="code">
+cd ~/.ssh
+echo "contents_of_Windows_id_rsa.pub_file" >> authorized_keys
+</pre>
+<br />
+Finally, configure <i>%USERPROFILE%\.ssh\config</i> file with Linux VM server information to alias connection.
+<br />
+<pre class="csharp" name="code">
+&nbsp;Host ENVIRONMENT
+     HostName linux_server
+     User username
+     IdentityFile ~/.ssh/id_rsa
+</pre>
+<br />
+
+<b>SSH Tunnel</b><br />
 </span>
