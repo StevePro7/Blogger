@@ -1,62 +1,21 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Remote SSH</u><br />
-Often machine learning AI projects may require remote development in VS Code to use Windows to develop in a Linux-based environment.  Install Remote SSH to run and debug Linux-based applications on Windows.  Start | run | cmd.  <i>ssh username@linux_server</i>.  Enter passphrase.  Enter verification code if setup for MFA.
-<br /><br />
-<b>SSH Keys</b><br />
-Use SSH key authentication and setup SSH keys to connect local Windows host and remote Linux VM server.
-<br />
-<table width="99%" border="1">
-<tr>
-<td valign=top>&nbsp;Windows</td>
-<td valign=top>&nbsp;Linux</td>
-</tr>
-<tr>
-<td valign=top>
-<pre class="csharp" name="code">
-&nbsp;cd %USERPROFILE%
-&nbsp;cd .ssh
-&nbsp;ssh-keygen -C "username@emailaddress.com"
-</pre>
-</td>
-<td valign=top>
-<pre class="csharp" name="code">
-&nbsp;ssh username@linux_server
-&nbsp;cd ~/.ssh
-&nbsp;ssh-keygen -C "username@emailaddress.com"
-</pre>
-</td>
-</tr>
-</table>
-<br />
-Dump the contents of id_rsa.pub file from local Windows host to authorized_keys file on Linux VM server:
-<br />
-<pre class="csharp" name="code">
-cd ~/.ssh
-echo "contents_of_Windows_id_rsa.pub_file" >> authorized_keys
-</pre>
-<br />
-Finally, configure <i>%USERPROFILE%\.ssh\config</i> file with Linux VM server information to alias connection.
-<br />
-<pre class="csharp" name="code">
-&nbsp;Host ENVIRONMENT
-     HostName linux_server
-     User username
-     IdentityFile ~/.ssh/id_rsa
-</pre>
-<br />
 
 <b>SSH Tunnel</b><br />
-TEST
+Port forwarding via SSH Tunnel creates a secure connection between the local computer and remote machine through which services can be relayed.  SSH Tunnel is useful for transmitting data over encrypted connection.
+<br /><br />
+Because the connection is encrypted SSH tunneling useful for transmitting data.
+<br /><br />
+
+Port forwarding via SSH Tunnel creates a secure connection between a local computer and remote machine through which services can be relayed.  Because the connection is encrypted SSH tunneling useful for transmitting data.
 <br /><br />
 <b>Notebooks</b><br />
 
 <br /><br />
-<b>Win SCP</b><br />
-Install Win SCP as popular SFTP client to navigate + copy files between local Windows and remote Linux VM.
+<b>WinSCP</b><br />
+Install WinSCP as popular SFTP client to navigate + copy files between local Windows and remote Linux VM.  Launch WinSCP.  Enter Host Name, Port number, User name, Password and verification code if setup for MFA.
 <br /><br />
 
-Install Win SCP as a popular SFTP client to copy + navigate files between Windows and Linux virtual machine.
 <br /><br />
 
 In the previous post we checked out Python Setup Cheat Sheet to download and install Python and setup an integrated development environment for Python programming.  We installed open source Python distribution Anaconda used for data science.  Let's continue setup to build artificial intelligence + machine learning apps.
