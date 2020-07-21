@@ -28,36 +28,30 @@ Use SSH key authentication and setup SSH keys to connect local Windows host and 
 </td>
 </tr>
 </table>
-
-Windows
-<pre class="csharp" name="code">
-cd %USERPROFILE%
-cd .ssh
-ssh-keygen -C "username@emailaddress.com"
-</pre>
 <br />
-
-
-Linux
-<pre class="csharp" name="code">
-ssh username@linux_server
-cd ~/.ssh
-ssh-keygen -C "username@emailaddress.com"
-</pre>
-
 Dump the contents of id_rsa.pub file from local Windows host to authorized_keys file on Linux VM server:
 <br />
 <pre class="csharp" name="code">
-echo "contents_of_Windows_id_rsa.pub_file" >> authorized_keys
 cd ~/.ssh
-ssh-keygen -C "username@emailaddress.com"
+echo "contents_of_Windows_id_rsa.pub_file" >> authorized_keys
 </pre>
-
 <br />
-<b>SSH Tunnel</b><br />
+Finally, configure <i>%USERPROFILE%\.ssh\config</i> file with Linux VM server information to alias connection.
+<br />
+<pre class="csharp" name="code">
+&nbsp;Host ENVIRONMENT
+     HostName linux_server
+     User username
+     IdentityFile ~/.ssh/id_rsa
+</pre>
+<br />
 
+<b>SSH Tunnel</b><br />
+TEST
+<br /><br />
 <b>Notebooks</b><br />
 
+<br /><br />
 <b>Win SCP</b><br />
 Install Win SCP as popular SFTP client to navigate + copy files between local Windows and remote Linux VM.
 <br /><br />
