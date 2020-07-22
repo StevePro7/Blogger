@@ -97,7 +97,7 @@ Note: VS Code Insiders location replace Code/User/settings.json with <b>Code - I
 <br />
 <br />
 <u>Hello VS Code</u><br />
-Create folder "HelloVScode".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "HelloWorld.py" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
+Create folder "<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/HelloVScode">HelloVScode</a>".  Launch VS Code.  File | Open Folder |  HelloVScode | Select Folder.  Create simple "<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/HelloVScode/hello_world.py">HelloWorld.py</a>" file.  Enter simple code <i>print('Hello World')</i>.  Press F5 to debug Python script.  Customize Run + Debug click "create a launch.json file".  Click Python File: Debug the currently active Python file.  Press F5.
 <br /><br />
 
 IMPORTANT<br />
@@ -145,17 +145,17 @@ IMPORTANT<br />
 A module is a single Python script file whereas a <a href="https://packaging.python.org/tutorials/packaging-projects">package</a> is a collection of modules.  A package is a directory of Python modules containing an additional <i>__init__.py</i> file to distinguish from a directory of Python scripts.
 <br /><br />
 
-Create folder "PackageVScode".  Launch VS Code.  File | Open Folder | PackageVScode.  Create New Folder "MyPackage".  Create other top level folders, for example, Build + Docs etc.  Create hidden .vscode folder.
+Create folder "<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PackageVScode">PackageVScode</a>".  Launch VS Code.  File | Open Folder | PackageVScode.  Create New Folder "MyPackage".  Create other top level folders, for example, Build + Docs etc.  Create hidden .vscode folder.
 <br /><br />
-Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>. 
+Create sub folders <b>src</b> and <b>tests</b> beneath "<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PackageVScode/MyPackage">MyPackage</a>".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>. 
 <br />
 <!--X-->
 <a href="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s1600/VScodePackage.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-HVEe0dx-n8w/XxCtjhAO7qI/AAAAAAAAGXc/TEUOL1F6ezAAmDCjjYaPldER9SDto6ClgCLcBGAsYHQ/s640/VScodePackage.png" width="98%" height="300" /></a>
 <br />
 <table width="99%" border="1">
 <tr>
-<td valign=top>&nbsp;test_module.py</td>
-<td valign=top>&nbsp;module.py</td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/MyPackage/tests/test_module.py">test_module.py</a></td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/MyPackage/src/module.py">module.py</a></td>
 </tr>
 <tr>
 <td valign=top>
@@ -185,7 +185,7 @@ Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>r
 <br />
 Add <i>launch.json</i> to <b>.vscode</b> folder.  Accept default to launch current Python file from integrated terminal:
 <br />
-launch.json
+<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/.vscode/launch.json">launch.json</a>
 <br />
 <!--X-->
 <pre class="csharp" name="code">
@@ -208,7 +208,7 @@ Open <i>test_module.py</i>.  Press F5 to debug.  Output <b>ModuleNotFoundError</
 <br /><br />
 Add <i>settings.json</i> to <b>.vscode</b> folder.  Configure Python source folders by configuring the env PYTHONPATH:
 <br />
-settings.json
+<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/.vscode/settings.json">settings.json</a>
 <br />
 <!--X-->
 <pre class="csharp" name="code">
@@ -228,7 +228,7 @@ settings.json
 </pre>
 <!--X-->
 <br />
-Finally, you must add "hidden"<b>.env</b> file beneath "PackageVScode" that sets workspace folder per platform:
+Finally, you must add "hidden"<b><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/.env">.env</a></b> file beneath "PackageVScode" that sets workspace folder per platform:
 <br />
 <pre class="csharp" name="code">
 &nbsp;WORKSPACE_FOLDER=/Absolute/Path/to/MyPackage/
@@ -253,8 +253,8 @@ If the Terminal reveals Run 0 tests then ensure package has <i>__init__.py</i> s
 <!--X-->
 <table width="99%" border="1">
 <tr>
-<td valign=top>&nbsp;setup.py</td>
-<td valign=top>&nbsp;requirements.txt</td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/MyPackage/setup.py">setup.py</a></td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/MyPackage/requirements.txt">requirements.txt</a></td>
 </tr>
 <tr>
 <td valign=top>
