@@ -195,14 +195,14 @@ On Linux <a href="https://stackoverflow.com/questions/48685449/intellij-navigate
 <br /><br />
 <br />
 <u>Hello PyCharm</u><br />
-Launch PyCharm.  Create New Project | "HelloPyCharm".  Enter the following details as Anaconda interpreter:
+Launch PyCharm.  Create New Project | "<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/HelloPyCharm">HelloPyCharm</a>".  Enter the following details as Anaconda interpreter:
 <br />
 <a href="https://1.bp.blogspot.com/-KfbkcmeHrCM/XwxP9OfU5fI/AAAAAAAAGVo/lxsYe6YcQMwekPCFDy3I_EiK8UvjcQp8wCLcBGAsYHQ/s1600/HelloPyCharm.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-KfbkcmeHrCM/XwxP9OfU5fI/AAAAAAAAGVo/lxsYe6YcQMwekPCFDy3I_EiK8UvjcQp8wCLcBGAsYHQ/s640/HelloPyCharm.png" width="98%" height="275" /></a>
 <br />
 PyCharm uses <a href="https://docs.python-guide.org/dev/virtualenvs">virtualenv</a> tool to create an isolated Python environment.  Virtualenv creates <b>venv</b> folder in the current directory with Python executable files and a copy of pip to install other modules and packages.
 <br />
 <br />
-Create simple "HelloWorld.py".  Enter Python code <i>print('Hello World')</i>.  Right click file | Run ""HelloWorld".
+Create simple "<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/HelloPyCharm/hello_world.py">HelloWorld.py</a>".  Enter Python code <i>print('Hello World')</i>.  Right click file | Run ""HelloWorld".
 <br /><br />
 <b>Module Not Found</b><br />
 Update script | Import module not currently installed e.g. <i>import numpy</i>.  Run script: ModuleNotFoundError
@@ -229,7 +229,7 @@ Let's test drive develop a simple code sample as a Python module that could be d
 IMPORTANT<br />
 A module is a single Python script file whereas a <a href="https://packaging.python.org/tutorials/packaging-projects">package</a> is a collection of modules.  A package is a directory of Python modules containing an additional <i>__init__.py</i> file to distinguish from a directory of Python scripts.
 <br /><br />
-Launch PyCharm.  Create New Project | "PackagePyCharm".  Configure Python Anaconda interpreter above.  Right click PackagePyCharm project | New | Python Package | "MyPackage".  Create other top level folders.
+Launch PyCharm.  Create New Project | "<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PackagePyCharm">PackagePyCharm</a>".  Configure Python Anaconda interpreter above.  Right click PackagePyCharm project | New | Python Package | "<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PackagePyCharm/MyPackage">MyPackage</a>".  Create other top level folders.
 <br /><br />
 Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>requirements.txt</i> file + <i>setup.py</i> beneath "MyPackage" also.  Finally, create <i>module.py</i> and <i>__init__.py</i> under <b>src</b> and <i>test_module.py</i> under <b>tests</b>.
 <br />
@@ -237,8 +237,8 @@ Create sub folders <b>src</b> and <b>tests</b> beneath "MyPackage".  Create <i>r
 <br />
 <table width="99%" border="1">
 <tr>
-<td valign=top>&nbsp;test_module.py</td>
-<td valign=top>&nbsp;module.py</td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackagePyCharm/MyPackage/tests/test_module.py">test_module.py</a></td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackagePyCharm/MyPackage/src/module.py">module.py</a></td>
 </tr>
 <tr>
 <td valign=top>
@@ -276,8 +276,8 @@ If the Terminal reveals Run 0 tests then ensure package has <i>__init__.py</i> s
 <br />
 <table width="99%" border="1">
 <tr>
-<td valign=top>&nbsp;setup.py</td>
-<td valign=top>&nbsp;requirements.txt</td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackagePyCharm/MyPackage/setup.py">setup.py</a></td>
+<td valign=top>&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackagePyCharm/MyPackage/requirements.txt">requirements.txt</a></td>
 </tr>
 <tr>
 <td valign=top>
