@@ -231,7 +231,7 @@ Add <i>settings.json</i> to <b>.vscode</b> folder.  Configure Python source fold
 Finally, you must add "hidden"<b><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PackageVScode/.env">.env</a></b> file beneath "PackageVScode" that sets workspace folder per platform:
 <br />
 <pre class="csharp" name="code">
-&nbsp;WORKSPACE_FOLDER=/Absolute/Path/to/PackageVScode/
+&nbsp;WORKSPACE_FOLDER=/Absolute/Path/to/MyPackage/
 &nbsp;PYTHONPATH=${WORKSPACE_FOLDER}
 </pre>
 <br />
