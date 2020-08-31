@@ -1,0 +1,46 @@
+Disassemble
+30/08/2020
+
+
+
+Today, I found a manual way to disassemble ROMs using Emulicious and build back
+so I could re-write manually to better understand how the games worked
+e.g.
+Flicky
+Transbot
+Wonderboy
+
+E:\Steven\INSTALLATIONSEGA\ROM_Sega\8-bit\Disassemble\Flicky03_SMS
+E:\Steven\INSTALLATIONSEGA\ROM_Sega\8-bit\Disassemble\TransBot02_ENG
+E:\Steven\INSTALLATIONSEGA\ROM_Sega\8-bit\Disassemble\WonderboyII
+
+
+Here is the basic method
+
+Load the original ROM into Emulicious
+Debugger
+
+Ctrl+A to select the entire code
+copy n' paste into Notepad++
+save
+
+for all the instances of:
+.incbin ...
+
+Emulicious will tell the start and end and how many bytes
+run the BinaryFileWrite program to extract the required bytes
+from the original ROM and save them into dat files
+then manually replace the old .incbin ... with new:
+e.g.
+.incbin ...
+.incbin "Flick.sms.data.99"
+
+Dump the Emulicious.asm into ConTeXT and re-assemble and re-run in emulators
+F9
+F10
+F11
+F12
+
+
+Reference:
+D:\Steven\_NET\VS2017\BinaryFileWrite\
