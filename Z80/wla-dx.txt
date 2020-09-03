@@ -1,0 +1,60 @@
+wla-dx
+03/09/2020
+
+Build WLA-DX from source and install on Ubuntu Linux
+
+Pre-reqs
+ensure that cmake is installed
+
+Launch Terminal
+cmake --version
+
+Must have at least v2,8.9
+
+
+Launch Linux
+cd ~/Github
+mkdir vhelin
+cd vhelin
+git clone https://github.com/vhelin/wla-dx.git
+
+cd wla-dx
+mkdir build && cd build			# Create building directory
+cmake ..				# Generate build system
+cmake --build . --config Release 	# Build it
+cmake -P cmake_install.cmake 		# Install it (optional)
+
+
+Reboot Linux
+now can access the following anywhere in the Terminal
+e.g.
+wla-z80
+wlalink
+
+
+Let's build Fairy Forest
+e.g.
+E:\Steven\INSTALLATIONSEGA\ROM_Sega2\_Homebrew\FairyForest-SMS-1.02
+
+
+MANUAL
+wla-z80 FairyForest.asm
+
+wlalink link_file.txt FairyForest.sms
+
+java -jar ~/Emulicious/Emulicious.jar FairyForest.sms
+
+
+
+AUTOMATE
+
+
+Compile.sh
+clear
+wla-z80 FairyForest.asm
+wlalink link_file.txt FairyForest.sms
+java -jar ~/SEGA/Emulicious/Emulicious.jar FairyForest.sms
+
+
+chmod +x Compile.sh
+./Compile.sh
