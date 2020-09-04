@@ -1,6 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-  
 In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The <a href="https://github.com/Stephane-D/SGDK">SGDK</a> is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
 <br /><br />
 
@@ -27,7 +26,7 @@ Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32
 <!-- -->
 <br />
 
-Create two folders <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> and <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b>.  Copy all SGDK header files from <i>%GDK_WIN%\inc</i> and <i>%GDK_WIN%\res</i> beneath the <b>lib</b> folder.  For each header file create corresponding translation unit [*.c] file in the <b>src</b> folder.
+Create two folders <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> and <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/src">src</a></b>.  Copy all SGDK header files from <i>%GDK_WIN%\inc</i> and <i>%GDK_WIN%\res</i> beneath the <b>lib</b> folder.  For each header file create corresponding translation unit [*.c] file to the <b>src</b> folder.
 <br />
 <!-- -->
 <a href="https://3.bp.blogspot.com/-2fjiNwbtafI/Xvnb9vaZmXI/AAAAAAAAGRE/9xKyqZgITJYOJj9qTQsDF5gCIM-QeMk5ACLcBGAsYHQ/s1600/LibraryLayout.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-2fjiNwbtafI/Xvnb9vaZmXI/AAAAAAAAGRE/9xKyqZgITJYOJj9qTQsDF5gCIM-QeMk5ACLcBGAsYHQ/s640/LibraryLayout.png" width="98%" height="210" /></a>
@@ -65,7 +64,6 @@ SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a gen
 
 <u>Hello World</u><br />
 Create folder C:\<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld">HelloWorld</a>.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder [above] here.  Create sub-folder: <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b>.  Change directory to <b>dev</b> folder and create the following sub-folders as indicated per Usage: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
-<a href="https://1.bp.blogspot.com/-EMlZvb6_a9k/X1H5DAZ6G7I/AAAAAAAAGZ8/EZz7DmYiEtQYiGTF7xQn-2YmBpe7b7y-ACLcBGAsYHQ/s701/HelloWorld06.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-EMlZvb6_a9k/X1H5DAZ6G7I/AAAAAAAAGZ8/EZz7DmYiEtQYiGTF7xQn-2YmBpe7b7y-ACLcBGAsYHQ/s600/HelloWorld06.png" width="98%" height="353" /></a>
 <br /><br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
 <!-- -->  
