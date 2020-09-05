@@ -1,0 +1,62 @@
+Mastering Machine Code notes
+05/09/2020
+
+Chp04
+Pg.39
+
+LD HL, 5C65		HL = 5C65
+
+LD HL, (5C65)		HL = PEEK(23653) + 256 * PEEK(23654)
+or			 L = PEEK(23653)
+			 H = PEEK(23654)
+
+
+POKE (5C65), HL		5C65 = 23653
+
+POKE 23653, HL - 256 * INT( HL / 256)
+POKE 23654, INT( HL / 256 )
+or
+POKE 23653, L		pq
+POKE 23654, H		pq + 1
+
+
+Pg.40
+SUB HL, DE		HL = HL - DE - carry
+
+no 	SUB HL, DE
+so 	LD A, 0		// set carry = 0
+	SBC HL, DE	HL = HL - DE [-carry = 0]
+
+
+LD A, (pq)		A = PEEK(pq)
+
+LD BC, (pq)		B = PEEK( pq + 1 )
+			C = PEEK( pq )
+
+LD (pq), A		POKE pq, A
+
+LD (pq), BC		POKE pq + 1, B
+			POKE pq,     C
+
+
+Pg.47
+Load blocks
+
+HL			source
+DE			destination
+BC			counter
+
+LDI			HL inc
+			DE inc
+			BC dec
+
+LDD			HL dec
+			DE dec
+			BC dec
+
+
+IMPORTANT
+no change to carry flag
+
+LDIR			con't until B=0
+LDDR			con't until B=0

@@ -1,0 +1,52 @@
+Mastering Machine Code notes
+05/09/2020
+
+MasteringMachineCodeOnYourZXSpectrum.pdf
+D:\Steven\BOOKS\Z80
+
+Pages are like 32/364
+
+Chp03
+Pg.32
+ADD	assign carry flag
+INC	doesn't affect carry flag
+
+
+SCF	Set Carry Flag
+CCF	Complement Carry Flag
+
+LD A, 0	carry = 0
+
+
+SUB A not SUB HL
+but
+SBC	SuBtract with Carry
+
+SUB B	A = A - B
+
+e.g.
+A = 5
+B = 3
+SUB B	A = 2		carry = 0
+
+but
+A = 3
+B = 5
+SUB B	A = 0xFE	carry = 1
+
+Can't SUB register pairs but
+can   SBC register pairs HL only
+
+
+SUB A, C
+A = A - C - carry
+
+
+IMPORTANT
+arithmetic changes carry flags but
+INC + DEC no not change carry flags
+
+
+Pg.39
+Brackets
+(HL)
