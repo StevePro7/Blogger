@@ -201,8 +201,7 @@ Select distribution channel: Ad Hoc.  Select Signing Identity or Create Android 
 <pre class="csharp" name="code">
 # Start | run | cmd
 # cd signed-apks
-# adb devices
-adb install -f *.apk
+adb devices -f install *.apk
 </pre>
 <br />
 
