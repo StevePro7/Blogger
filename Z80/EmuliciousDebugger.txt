@@ -1,0 +1,71 @@
+Emulicious Debugger
+05/09/2020
+
+
+Update Emulcious
+Launch Emulcious
+Tools menu | Remote Debugging | Enabled		CHECKED
+
+
+Launch VS Code
+Open main.asm
+Assemble
+main.asm
+main.sms
+main.sms.sym
+
+
+Run icon
+Launch in Emulcious...
+
+Press F5
+Start Debugging
+
+Press 'Enter' to confirm your input or 'Escape' to cancel
+Type
+main.sms
+
+
+May be prompted to accept Windows Firewall prompt
+Emulicious Debugger should open
+
+Hit debug
+Maybe need to F8 to resume to breakpoint
+File | Load Sources automatically		CHECKED
+
+In VS Code should hit breakpoint
+F10	step over
+F11	step into
+etc.
+
+
+
+launch.json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emulicious-debugger",
+            "request": "launch",
+            "name": "Launch in Emulicious",
+            "program": "${workspaceFolder}/${command:AskForProgramName}",
+            "port": 58870,
+            "stopOnEntry": true
+        }
+    ]
+}
+
+
+TROUBLESHOOTING
+
+01.
+If you get the following error then most like do NOT have Remote Debugging enabled!
+connect ECONNREFUSED 127.0.0.1:55870
+
+
+02.
+Access is Denied
+when press F5 and launch.json prompts for input and you press Enter w/o any name then you will get error Access Denied
