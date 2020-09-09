@@ -48,7 +48,7 @@ java -jar ~/Emulicious/Emulicious.jar FairyForest.sms
 
 AUTOMATE
 
-
+Linux
 Compile.sh
 clear
 wla-z80 FairyForest.asm
@@ -58,3 +58,18 @@ java -jar ~/SEGA/Emulicious/Emulicious.jar FairyForest.sms
 
 chmod +x Compile.sh
 ./Compile.sh
+
+
+Windows
+E:\Steven\Temp\12\_asmMulti\FairyForestSMS
+
+Compile.bat
+wla-z80 -o FairyForest.asm FairyForest.o
+wlalink -drvs link_file.txt FairyForest.sms
+java -jar C:\SEGA\Emulicious\emulicious.jar FairyForest.sms
+
+VSCode can right click Compile.bat | Run Code
+OR
+Ctrl + Alt + N				Run Code
+
+Believe must have Code Runner extension installed
