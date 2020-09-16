@@ -1,0 +1,103 @@
+Makefile
+16/09/2020
+
+
+e.g.
+E:\SGDK\makefile.gen
+
+
+https://opensource.com/article/18/8/what-how-makefile
+
+
+say_hello:
+	@echo "Hello World"
+
+
+Target		say_hello
+PreReqs		dependencies that follow target ":"
+Recipe		commands that build target
+Rule		all of these make rule
+
+e.g.
+RULE
+target: prerequisites
+<TAB> recipe
+
+
+.DEFAULT_GOAL := generate
+make
+runs generate and creates 10x files
+
+make clean
+cleans up
+
+
+all: say_hello generate
+
+make
+runs both targets
+
+
+.PHONY
+define all the targets that are not files
+
+
+Variables
+
+CC = gcc
+
+
+example
+E:\Steven\Temp\10\MyProject
+
+SRCS := $(wildcard *.c)
+$(wildcard)
+*.c
+all files with *.c extension will be stored in SRCS
+
+
+BINS := $(SRCS:%.c=%)
+substitution reference
+e.g.
+if SRCS has foo.c and bar.c then BINS will have foo and bar
+
+
+all: ${BINS}
+phony target all calls values in $(BINS) as individual targets
+
+
+Rule#1
+%: %.o
+ 	${CC} ${LINKERFLAG} $< -o $@
+for each target in $(BINS) e.g. foo and bar will expand
+
+foo: foo.o
+  	gcc -lm foo.o -o foo
+
+bar: bar.o
+  	gcc -lm bar.o -o bar
+
+
+Rule#2
+%.o: %.c
+	${CC} -c $<
+again will expand similarly
+
+foo.o: foo.c
+	gcc -c foo.c
+
+bar.o: bar.c
+	gcc -c bar.c
+
+
+
+Seven core automatic variables
+https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean
+
+$@:	target
+$%:	archive member spec
+$<:	first pre-req filename
+$?:	names of pre-reqa newer than target	separated by spaces
+$^:	pre-req filenames w/o duplicates	separated by spaces
+$+:	similar to $^ but w/  duplicates
+$*:	stem of target filename
