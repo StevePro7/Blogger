@@ -4,20 +4,22 @@
 Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> directories.  As projects expand, it makes sense to group common code together in its own folder.  Therefore, add subfolders and update the makefile.
 <br /><br />
   
-    Clone the "Hello Resources" project and follow these steps:  Build the initial project from the  build.bat script.  Create subfolders beneath <b>inc</b> and <b>src</b> directories e.g. engine and screen.  Add corresponding source code.
-  <br /><br />
+Clone the "Hello Resources" project and follow these steps:  Build the initial project from the  build.bat script.  Create subfolders beneath <b>inc</b> and <b>src</b> directories e.g. engine and screen.  Add corresponding source code.
+<br /><br />
   
-  TODO new pic
-  <br /><br />
+Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories: 
+  
+<br />
+TODO new pic
+<br /><br />
+  
+<i>$(SolutionDir)..\lib;$(ProjectDir)inc\engine;$(ProjectDir)inc\screen;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</i>
+<br /><br />
   
   
-  Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories: <i>$(SolutionDir)..\lib;$(ProjectDir)inc\engine;$(ProjectDir)inc\screen;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</i>
-    <br /><br />
-  
-  
-      Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\makefile.gen</i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entry per folder.
-  
-  makefile.gen
+Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\makefile.gen</i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entry per folder.
+
+makefile.gen
 <pre class="csharp" name="code">
 SRC_C= $(wildcard *.c)
 SRC_C+= $(wildcard $(SRC)/*.c)
@@ -27,21 +29,9 @@ SRC_C+= $(wildcard $(SRC)/screen/*.c)
 INCS= -I$(INCLUDE) -I$(INCLUDE)/engine -I$(INCLUDE)/screen -I$(SRC) -I$(RES) -I$(LIBINCLUDE) -I$(LIBRES)
 </pre>
   
-  For completeness strip out any unnecessary steps in the makefile  especially if you are not building *.s files!
-  <br /><br />
-  
-    Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\makefile.gen</i> to local <b>dev</b> folder.  Update makefile: Add new $(wildcard $(SRC)/ entry per folder.  Add new -I$(INCLUDE) entry per folder
-  <br /><br />
-  
-  
-  
-  
-  Clone the "Hello Resources" project and follow these steps:  Create necessary subfolders beneath <b>inc</b> and <b>src</b> directories e.g. engine and screen.
-  <br /><br />
-  
-  Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> directories.  As projects expand, it makes sense to group manager code together in its own folder, screen code together etc.
+For completeness strip out any unnecessary steps in the makefile  especially if you are not building *.s files!
 <br /><br />
-  
+<br /> 
 
 In the previous <a href="TODO">post</a>, we checked out SGDK Programming Setup. The <a href="https://github.com/Stephane-D/SGDK">SGDK</a> is a free development kit which provides code and tools to compile resources and support homebrew development for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a>.
 <br /><br />
