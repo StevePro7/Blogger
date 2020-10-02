@@ -1,10 +1,42 @@
 <span style="font-family: verdana; font-size: 85%;"><br />
 
   
-  Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> directories.  As projects expand, it makes sense to group common code together in its own folder.  Therefore, add subfolders and update the makefile.
+Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> directories.  As projects expand, it makes sense to group common code together in its own folder.  Therefore, add subfolders and update the makefile.
 <br /><br />
   
-  Clone the "Hello Resources" project and follow these steps:
+    Clone the "Hello Resources" project and follow these steps:  Build the initial project from the  build.bat script.  Create subfolders beneath <b>inc</b> and <b>src</b> directories e.g. engine and screen.  Add corresponding source code.
+  <br /><br />
+  
+  TODO new pic
+  <br /><br />
+  
+  
+  Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories: <i>$(SolutionDir)..\lib;$(ProjectDir)inc\engine;$(ProjectDir)inc\screen;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</i>
+    <br /><br />
+  
+  
+      Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\makefile.gen</i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entry per folder.
+  
+  makefile.gen
+<pre class="csharp" name="code">
+SRC_C= $(wildcard *.c)
+SRC_C+= $(wildcard $(SRC)/*.c)
+SRC_C+= $(wildcard $(SRC)/engine/*.c)
+SRC_C+= $(wildcard $(SRC)/screen/*.c)
+# ...
+INCS= -I$(INCLUDE) -I$(INCLUDE)/engine -I$(INCLUDE)/screen -I$(SRC) -I$(RES) -I$(LIBINCLUDE) -I$(LIBRES)
+</pre>
+  
+  For completeness strip out any unnecessary steps in the makefile  especially if you are not building *.s files!
+  <br /><br />
+  
+    Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\makefile.gen</i> to local <b>dev</b> folder.  Update makefile: Add new $(wildcard $(SRC)/ entry per folder.  Add new -I$(INCLUDE) entry per folder
+  <br /><br />
+  
+  
+  
+  
+  Clone the "Hello Resources" project and follow these steps:  Create necessary subfolders beneath <b>inc</b> and <b>src</b> directories e.g. engine and screen.
   <br /><br />
   
   Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> directories.  As projects expand, it makes sense to group manager code together in its own folder, screen code together etc.
@@ -125,7 +157,8 @@ Add the <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/0
 <table border="0">
 <tbody><tr>
 <td width="99%">
-<pre class="csharp" name="code">&nbsp;#ifndef __MAIN__
+<pre class="csharp" name="code">
+&nbsp;#ifndef __MAIN__
 &nbsp;#define __MAIN__
 
 &nbsp;#ifdef _CONSOLE
@@ -144,7 +177,8 @@ Add the <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/0
 <table border="0">
 <tbody><tr>
 <td>
-<pre class="csharp" name="code">&nbsp;#include "main.h"
+<pre class="csharp" name="code">
+&nbsp;#include "main.h"
 &nbsp;int main()
 &nbsp;{
 &nbsp;	VDP_drawText( "Hello Genny World!", 10, 13 );
@@ -232,7 +266,8 @@ The first time you F5 debug step through C source code you may be prompted to na
 
 Add the following <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/01-HelloWorld/dev/build.bat">build.bat</a> script to the <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b> folder to automate process to build + run the ROM output file:
 <!---->
-<pre class="csharp" name="code">@echo off
+<pre class="csharp" name="code">
+@echo off
 cls
 echo Building...
 
@@ -286,7 +321,8 @@ Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/mas
 <br />
 <!---->
 <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/res/resources.res">resources.res</a>
-<pre class="csharp" name="code">IMAGE splash "splash.bmp" 0
+<pre class="csharp" name="code">
+IMAGE splash "splash.bmp" 0
 </pre>
 <!---->
 <br />
@@ -294,7 +330,8 @@ Next execute <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKde
 <br />
 <!---->
 <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/inc/main.h">main.h</a>
-<pre class="csharp" name="code">#ifndef __MAIN__
+<pre class="csharp" name="code">
+#ifndef __MAIN__
 #define __MAIN__
 // ...
 #include "resources.h"
@@ -310,7 +347,8 @@ Create folder <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SG
 <br />
 <!---->
 <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/gfx/res/resources.c">resources.c</a>
-<pre class="csharp" name="code">#ifdef _CONSOLE
+<pre class="csharp" name="code">
+#ifdef _CONSOLE
   #include "_genesis.h"
   const Image splash = { NULL, NULL, NULL };
 #endif
@@ -321,7 +359,8 @@ Update <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02
 <!---->
 <br />
 <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/02-HelloResources/dev/src/main.c">main.c</a>
-<pre class="csharp" name="code">#include "main.h"
+<pre class="csharp" name="code">
+#include "main.h"
 int main()
 {
 	u16 *data = NULL;
@@ -350,7 +389,8 @@ Press F5 to build + debug step through C source code.  Press Ctrl + 1 to build +
 
 REMEMBER<br />
 More information about all SGDK resources found <a href="https://raw.githubusercontent.com/Stephane-D/SGDK/master/bin/rescomp.txt">here</a>.  Also, compile resources directly using this command:
-<pre class="csharp" name="code">cd C:\HelloWorld\dev\res
+<pre class="csharp" name="code">
+cd C:\HelloWorld\dev\res
 java -jar %GDK_WIN%\bin\rescomp.jar resources.res
 </pre>
 <br />
