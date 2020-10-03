@@ -1,4 +1,54 @@
 TODO
+03/10/2020
+
+Code
+E:\GitHub\SteveProXNA\SGDKcode\SGDKdemos\03-HelloFolders
+E:\GitHub\StevePro7\SGDK_Ideas\SGDK_MultiFolders\04-HelloResources
+E:\GitHub\StevePro7\SGDK_Ideas\SGDK_Demos\04-HelloFolders
+
+
+Clone "Hello Resources"
+Update resources as necc.
+i.e. replace old resources with new resources
+ensure there is resources and resources.res file updated
+build.bat to build new resources
+Update gfx / resources.c with new resources
+
+Launch VS2015 | open Game.sln
+Add new filters / folders and code
+Update project properties
+Build + debug step F5
+
+Finally, copy makefile.gen from %GDK_WIN% do dev folder
+Amend to include new folders e.g. engine + screen
+
+Update out folder e.g. "src" and manually create new folders
+e.g. engine + screen
+Update build.bat
+
+old
+::%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen > NUL
+
+new
+%GDK_WIN%\bin\make -f makefile.gen > NULL
+
+
+For completeness strip out any unnecessary steps in the makefile  especially if you are not building *.s files!
+
+
+
+
+03-HelloFolders
+Folders
+dev, inc, src
+engine
+screen
+
+Files
+makefile.gen
+
+
+
 01/07/2020
 <b><a href="TODO">dev</a></b>
 Hello World build.bat
