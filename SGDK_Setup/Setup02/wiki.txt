@@ -75,7 +75,7 @@ Finally, implement each header file function as stub function in each translatio
 <u>Usage</u><br />
 SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a generic makefile to compile projects. In order to be properly recognized by the makefile you need to organize your project folder structure as following: Project root add sub folders: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
 <table width="97%" border="1">
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;inc&nbsp;</td>
 <td valign="top">&nbsp;include files</td>
 <td valign="top">&nbsp;*.h [C include file] or *.inc [assembly include file]</td>
@@ -95,7 +95,7 @@ SGDK <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">uses</a> a gen
 <td valign="top">&nbsp;source files</td>
 <td valign="top">&nbsp;*.c [C source file], *.s [68000 asm source file] or *.s80 [Z80 asm source file]</td>
 </tr>
-</tbody></table>
+</table>
 <br />
 <!----><br /><!---->
 
@@ -107,7 +107,7 @@ Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32
 <!---->  
 <a href="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s1600/HelloWorld00.png"><img border="0" height="353" src="https://3.bp.blogspot.com/-P0Iu_D-4JkQ/Xvob28c26KI/AAAAAAAAGRY/Vmk8Ji63r2oI5ifnLoGxh4b2X447TRiVgCLcBGAsYHQ/s640/HelloWorld00.png" width="98%" /></a>
 <table width="99%" border="1">
-<tbody><tr>
+<tr>
 <td valign="top" width="33%">&nbsp;Name:</td>
 <td valign="top" width="66%">&nbsp;Game</td>
 </tr>
@@ -119,11 +119,11 @@ Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32
 <td valign="top" width="33%">&nbsp;Create directory for solution</td>
 <td valign="top" width="66%">&nbsp;UNCHECKED</td>
 </tr>
-</tbody></table>
+</table>
 OK
 <br /><br />
 <table width="99%" border="1">
-<tbody><tr>
+<tr>
 <td valign="top" width="33%">&nbsp;Application type:</td>
 <td valign="top" width="66%">&nbsp;Console application</td>
 </tr>
@@ -131,7 +131,7 @@ OK
 <td valign="top" width="33%">&nbsp;Additional options:</td>
 <td valign="top" width="66%">&nbsp;Empty project CHECKED</td>
 </tr>
-</tbody></table>
+</table>
 Finish
 <!---->
 <br /><br />
@@ -142,14 +142,14 @@ Add the <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/0
 <br />
 <!---->
 <table width="99%" border="1">
-<tbody><tr>
+<tr>
 <td>&nbsp;<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/01-HelloWorld/dev/inc/main.h">main.h</a></td>
 <td>&nbsp;<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev/src/main.c">main.c</a></td>
 </tr>
 <tr>
 <td>
 <table border="0">
-<tbody><tr>
+<tr>
 <td width="99%">
 <pre class="csharp" name="code">
 &nbsp;#ifndef __MAIN__
@@ -165,11 +165,11 @@ Add the <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/0
 </pre>
 </td>
 </tr>
-</tbody></table>
+</table>
 </td>
 <td>
 <table border="0">
-<tbody><tr>
+<tr>
 <td>
 <pre class="csharp" name="code">
 &nbsp;#include "main.h"
@@ -185,10 +185,10 @@ Add the <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/0
 </pre>
 </td>
 </tr>
-</tbody></table>
+</table>
 </td>
 </tr>
-</tbody></table>
+</table>
 <br />
 <!---->
 
@@ -197,7 +197,7 @@ Right click Project | Properties | Configuration Properties | General.  Set Outp
 <!---->
 <a href="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s1600/HelloWorld01.png"><img border="0" height="407" src="https://3.bp.blogspot.com/-ZfSOou2qH-k/XvoefTwA83I/AAAAAAAAGRk/-9yO3htI-BUFqO8tfu5T-Iy1oVM9f8J7ACLcBGAsYHQ/s640/HelloWorld01.png" width="98%" /></a>
 <table width="99%" border="1">
-<tbody><tr>
+<tr>
 <td valign="top" width="33%">&nbsp;Output Directory:</td>
 <td valign="top" width="66%">&nbsp;$(SolutionDir)..\bin\$(ConfigurationName)</td>
 </tr>
@@ -205,7 +205,7 @@ Right click Project | Properties | Configuration Properties | General.  Set Outp
 <td valign="top" width="33%">&nbsp;Intermediate Directory:</td>
 <td valign="top" width="66%">&nbsp;$(SolutionDir)..\obj\$(ConfigurationName)</td>
 </tr>
-</tbody></table>
+</table>
 <br />
 <!---->
 
@@ -215,11 +215,11 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 <a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png"><img border="0" height="385" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" /></a>
 <br />
 <table width="99%" border="1">
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;Value:&nbsp;</td>
 <td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</td>
 </tr>
-</tbody></table>
+</table>
 <br />
 <!---->
 
@@ -229,11 +229,11 @@ Right click Project | Properties | Configuration Properties | Linker | General |
 <a href="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s1600/HelloWorld03.png"><img border="0" height="385" src="https://1.bp.blogspot.com/-wy3n4AJTucM/XvpFjhEhnzI/AAAAAAAAGR8/FzBXImQWtDk0Svicsj6t9m-PNsy16SmdgCLcBGAsYHQ/s640/HelloWorld03.png" width="98%" /></a>
 <br />
 <table width="99%" border="1">
-<tbody><tr>
+<tr>
 <td valign="top" width="25%">&nbsp;Value:&nbsp;</td>
 <td valign="top" width="75%">&nbsp;$(SolutionDir)..\lib</td>
 </tr>
-</tbody></table>
+</table>
 <br />
 <!---->
 
@@ -243,11 +243,11 @@ Right click Project | Properties | Configuration Properties | Linker | Input.  S
 <a href="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s1600/HelloWorld04.png"><img border="0" height="407" src="https://3.bp.blogspot.com/-uaC87298LNQ/XvpHIdZA9fI/AAAAAAAAGSQ/3usG1yGRfvMXJRGQFPhzzdrxRwwI1gGSACLcBGAsYHQ/s640/HelloWorld04.png" width="98%" /></a>
 <br />
 <table width="99%"border="1">
-<tbody><tr>
+<tr>
 <td valign="top" width="25%">&nbsp;Value:&nbsp;</td>
 <td valign="top" width="75%">&nbsp;_genesis.lib;%(AdditionalDependencies)</td>
 </tr>
-</tbody></table>
+</table>
 
 <!--<br />
 <br />-->
@@ -421,31 +421,32 @@ Launch <a href="https://segaretro.org/Gens_KMod">Gens KMod</a> and define keys c
 <u>Code Samples</u><br />
 Here are links to some <a href="https://github.com/Stephane-D/SGDK/wiki">Wiki</a> code currently in Sega Genesis development kit built using our custom library:
 <table border="0">
-<tbody><tr>
+<tr>
 <td>
 <table border="1">
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut10_HelloWorld">Hello World</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Hello-World">Hello World</a></td>
 </tr>
 <tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut20_Input">Input</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Input">Input</a></td>
-</tr></tbody></table></td>
 </tr>
-</tbody></table>
-</span>
+</table></td>
+</tr>
+</table>
+
 &nbsp;
 
 <table border="1">
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut30_TilesBasic">Tile Basic</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Background">Tile Basic</a></td>
 </tr>
 <tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKwiki/Tut31_TileBitmap">Tile Bitmap</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/wiki/Tuto-Background">Tile Bitmap</a></td>
-</tr></tbody></table>
+</tr></table>
 
 
 
@@ -455,31 +456,31 @@ Here are links to some <a href="https://github.com/Stephane-D/SGDK/wiki">Wiki</a
 
 Here are links to all <a href="https://www.ohsat.com/tutorial">Tutorials</a> currently hosted at Ohsat Games website and built using our custom library:
 <table border="0">
-<tbody><tr>
+<tr>
 <td>
 <table border="1">
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/01-MegaPong">Mega Pong</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/megapong/megapong-1">Mega Pong</a></td>
 </tr>
 <tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/02-MegaRunner">Mega Runner</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/megarunner/megarunner-1">Mega Runner</a></td>
-</tr></tbody></table></td>
+</tr></table></td>
 </tr>
-</tbody></table>
+</table>
 
 &nbsp;
 
 <table border="1">
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/03-MegaGalaga">Mega Galaga</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/megalaga/megalaga-1">Mega Galaga</a></td>
 </tr>
 <tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKohsat_games/04-Miscellaneous">Miscellaneous</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://www.ohsat.com/tutorial/mdmisc/creating-graphics-for-md">Miscellaneous</a></td>
-</tr></tbody></table>
+</tr></table>
 
 
 
@@ -489,11 +490,11 @@ Here are links to all <a href="https://www.ohsat.com/tutorial">Tutorials</a> cur
 
 Here are links to all samples included in the Sega Genesis development kit built using our custom library:
 <table border="0">
-<tbody><tr>
+<tr>
 <td>
 <table border="1">
 
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/astrofra">astrofra</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/astrofra/starfield_donut">astrofra</a></td>
 </tr>
@@ -514,13 +515,13 @@ Here are links to all samples included in the Sega Genesis development kit built
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/image">image</a></td>
 </tr>
 
-</tbody></table>
+</table>
 </td>
 <td>&nbsp;</td>
 <td>
 <table border="1">
 
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKsamples/joytest">joytest</a></td>
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/joytest">joytest</a></td>
 </tr>
@@ -541,10 +542,10 @@ Here are links to all samples included in the Sega Genesis development kit built
 <td valign="top">&nbsp;SOURCE: <a href="https://github.com/Stephane-D/SGDK/tree/master/sample/xgmplayer">xgmplayer</a></td>
 </tr>
 
-</tbody></table>
+</table>
 </td>
 </tr>
-</tbody></table>
+</table>
 <br />
 
 <br />
@@ -555,11 +556,11 @@ Some notable resources include:
 <br />
 
 <table border="0">
-<tbody><tr>
+<tr>
 <td>
 <table border="1">
 
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;Matt Philips </td>
 <td valign="top">&nbsp;<a href="https://blog.bigevilcorporation.co.uk">Mega Drive Tutorials</a></td>
 </tr>
@@ -576,13 +577,13 @@ Some notable resources include:
 <td valign="top">&nbsp;<a href="https://namelessalgorithm.com/genesis">Genesis Development</a></td>
 </tr>
 
-</tbody></table>
+</table>
 </td>
 <td>&nbsp;</td>
 <td>
 <table border="1">
 
-<tbody><tr>
+<tr>
 <td valign="top">&nbsp;Wiki Books</td>
 <td valign="top">&nbsp;<a href="https://en.wikibooks.org/wiki/Genesis_Programming">Genesis Programming Info</a></td>
 </tr>
@@ -599,13 +600,14 @@ Some notable resources include:
 <td valign="top">&nbsp;<a href="https://www.chibiakumas.com/68000/genesis.php">68000 Assembly Programming</a></td>
 </tr>
 
-</tbody></table>
+</table>
 </td>
 </tr>
-</tbody></table>
+</table>
 <br />
 
 <br />
 <u>Summary</u><br />
 Armed with all this knowledge, we are now in an excellent position to build complete video games for the Sega <a href="https://segaretro.org/Sega_Mega_Drive">Mega Drive</a> that should be able to execute on real 16-bit hardware using C language and the <a href="https://github.com/Stephane-D/SGDK">SGDK</a>!
 
+</span>
