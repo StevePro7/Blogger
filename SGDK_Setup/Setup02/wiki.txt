@@ -422,6 +422,67 @@ Exception in thread "main" java.lang.IndexOutOfBoundsException: off &lt; 0 || le
 <br />
 <br />
 
+<u>Hello Folders</u><br />
+Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> directories.  As projects expand, it makes sense to group common code together in its own folder.  Therefore, add subfolders and update the makefile.
+<br /><br />
+
+<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders">Clone</a> the "Hello World" project and follow these steps: Update any resources similar to "Hello Resources".  Build initial project using the build.bat script to generate <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/dev/res/resources.h">resources.h</a>.  Add the <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders/gfx">gfx</a></b> folder and <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/gfx/res/resources.c">resources.c</a>
+  
+<br /><br /> 
+Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution:
+<!-- -->
+<a href="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s865/SolutionExplorer.png"><img border="0" width="98%" src="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s600/SolutionExplorer.png"/></a>
+
+Create corresponding engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders/dev/inc">inc</a></b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders/dev/src">src</a></b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
+  
+<br /><br />  
+Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
+<br />
+<!-- --> 
+<a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png"><img border="0" height="385" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" /></a>
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">&nbsp;Value:&nbsp;</td>
+<td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath);<br />&nbsp;$(ProjectDir)inc\engine;$(ProjectDir)inc\screen</td>
+</tr>
+</table>
+<br />
+   
+Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\<a href="https://github.com/Stephane-D/SGDK/blob/master/makefile.gen">makefile.gen</a></i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entries per folder.
+
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/dev/makefile.gen">makefile.gen</a>
+<pre class="csharp" name="code">
+SRC_C= $(wildcard *.c)
+SRC_C+= $(wildcard $(SRC)/*.c)
+SRC_C+= $(wildcard $(SRC)/engine/*.c)
+SRC_C+= $(wildcard $(SRC)/screen/*.c)
+:: ...
+INCS= -I$(INCLUDE) -I$(INCLUDE)/engine -I$(INCLUDE)/screen -I$(SRC) -I$(RES) -I$(LIBINCLUDE) -I$(LIBRES)
+:: ...
+pre-build:
+	$(MKDIR) -p $(SRC)/boot
+	$(MKDIR) -p out
+	$(MKDIR) -p out/res
+	$(MKDIR) -p out/src
+	$(MKDIR) -p out/src/engine
+	$(MKDIR) -p out/src/screen
+</pre>
+  
+<br />
+Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto %GDK_WIN% version.
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/dev/build.bat">build.bat</a>
+<pre class="csharp" name="code">
+:: Build
+::%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen > NUL
+%GDK_WIN%\bin\make -f makefile.gen > NUL
+</pre>
+
+For completeness, strip out any unnecessary steps in the makefile especially if you are not building *.s files!  If you remove pre-build step to speed up makefile build then don't forget to create <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders/dev/out">out</a></b> subfolders manually.
+
+<br /><br />
+<br />
+  
 <u>Troubleshooting</u><br />
 Here is a short list of issues found when installing SGDK, setting up custom library + building new projects:
 <br /><br />
