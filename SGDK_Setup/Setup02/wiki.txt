@@ -4,7 +4,7 @@
 Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> directories.  As projects expand, it makes sense to group common code together in its own folder.  Therefore, add subfolders and update the makefile.
 <br /><br />
 
-<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders">Clone</a> the "Hello World" project and follow these steps: Update any resources similar to "Hello Resources".  Build initial project using the build.bat script to generate resources.h.  Add the <b>gfx</b> folder and resources.c
+<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders">Clone</a> the "Hello World" project and follow these steps: Update any resources similar to "Hello Resources".  Build initial project using the build.bat script to generate <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/dev/res/resources.h">resources.h</a>.  Add the <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders/gfx">gfx</a></b> folder and <a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/gfx/res/resources.c">resources.c</a>
   
 <br /><br /> 
 Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution:
