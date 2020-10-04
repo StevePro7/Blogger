@@ -12,22 +12,7 @@ Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> 
 <br /><br />
 Create corresponding engine and screen subfolders beneath <b>inc</b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b>src</b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
   
-   <br /><br />   
-Change directory to dev folder.  Scale out engine and screen header file code in corresponding subfolders beneath <b>inc</b> folder.  Repeat for corresponding translation unit code beneath <b>src</b> folder.
-  <br /><br />  
-  
-Launch Visual Studio and include resource files as before.  Build project as run project as before.  Finally, we would like to scale out more code e.g. engine and screen code in nested subfolders
-  
-  <br /><br />
-  
-  Next, right click on Header Files and create
-  Create subfolders beneath <b>inc</b> and <b>src</b> directories e.g. engine and screen.  Add corresponding source code.
-<br /><br />
-  
-  
-<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders">Clone</a> the "Hello Resources" project and follow these steps:  Build the initial project from the  build.bat script.  Create subfolders beneath <b>inc</b> and <b>src</b> directories e.g. engine and screen.  Add corresponding source code.
-<br /><br />
-  
+<br /><br />  
 Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
 <br />
 <!-- --> 
