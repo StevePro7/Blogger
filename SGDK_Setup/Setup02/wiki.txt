@@ -11,7 +11,7 @@ Launch Visual Studio and include resource files as before.  Next, scale out engi
 <!-- -->
 <a href="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s865/SolutionExplorer.png"><img border="0" width="98%" src="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s600/SolutionExplorer.png"/></a>
 
-Create corresponding engine and screen subfolders beneath <b>inc</b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b>src</b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
+Create corresponding engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders/dev/inc">inc</a></b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders/dev/src">src</a></b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
   
 <br /><br />  
 Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
@@ -25,12 +25,11 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 <td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath);<br />&nbsp;$(ProjectDir)inc\engine;$(ProjectDir)inc\screen</td>
 </tr>
 </table>
-
 <br />
    
-Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\makefile.gen</i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entries per folder.
+Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\<a href="https://github.com/Stephane-D/SGDK/blob/master/makefile.gen">makefile.gen</a></i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entries per folder.
 
-makefile.gen
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/dev/makefile.gen">makefile.gen</a>
 <pre class="csharp" name="code">
 SRC_C= $(wildcard *.c)
 SRC_C+= $(wildcard $(SRC)/*.c)
@@ -50,7 +49,7 @@ pre-build:
   
 <br />
 Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto %GDK_WIN% version.
-build.bat
+<a href="https://github.com/SteveProXNA/SGDKcode/blob/master/SGDKdemos/03-HelloFolders/dev/build.bat">build.bat</a>
 <pre class="csharp" name="code">
 :: Build
 ::%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen > NUL
