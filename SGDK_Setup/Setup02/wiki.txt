@@ -7,9 +7,15 @@ Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> 
 <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/03-HelloFolders">Clone</a> the "Hello World" project and follow these steps: Update any resources similar to "Hello Resources".  Build initial project using the build.bat script to generate resources.h.  Add the <b>gfx</b> folder and resources.c
   
 <br /><br /> 
- Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution.
+ Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution:
+  
+  
+  <div class="separator" style="clear: both;">
+    
+    <a href="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s865/SolutionExplorer.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s600/SolutionExplorer.png"/></a>
+  
+  </div>
 
-<br /><br />
 Create corresponding engine and screen subfolders beneath <b>inc</b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b>src</b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
   
 <br /><br />  
