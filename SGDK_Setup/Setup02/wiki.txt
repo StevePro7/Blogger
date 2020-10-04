@@ -10,11 +10,9 @@ Up until now, there have been no nested folders in the <b>inc</b> or <b>src</b> 
  Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution:
   
   
-  <div class="separator" style="clear: both;">
     
-    <a href="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s865/SolutionExplorer.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s600/SolutionExplorer.png"/></a>
-  
-  </div>
+    <a href="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s865/SolutionExplorer.png"><img border="0" width="98%" src="https://1.bp.blogspot.com/-wJwXvPUTqN0/X3mWygaEW9I/AAAAAAAAGbk/42Zq-OFOwdI90kawj3rcVydQ9FWBNGcugCLcBGAsYHQ/s600/SolutionExplorer.png"/></a>
+
 
 Create corresponding engine and screen subfolders beneath <b>inc</b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b>src</b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
   
@@ -32,6 +30,8 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 </table>
 <br />
   
+  
+  <br /><br />
   
 Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\makefile.gen</i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entry per folder.
 
