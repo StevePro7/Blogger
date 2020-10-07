@@ -1,0 +1,70 @@
+https://tutorials.visualstudio.com/aspnet-container/publish?utm_source=aspnetstartpage
+07/10/2020
+
+
+VS2019
+F5 run as Docker
+docker exec -i 037a64ab4581d51b2fd5096516a07c3bd95f7ce93fa3391d547fdc765fc21d00 /bin/sh -c "if PID=$(pidof dotnet); then kill $PID; fi"
+
+
+https://localhost:32774/weatherforecast
+
+
+docker ps
+
+right click Project
+Publish
+
+01.
+Create App Service (Linux)
+HelloFirstContainer20201007185409
+https://hellofirstcontainer20201007185409.azurewebsites.net
+
+
+02.
+Docker container
+Azure Container registry
+create Azure Container registry
+
+right click publish
+creates Azure Container Registry
+HelloFirstContainer20201007190152
+
+Repositories
+hellofirstcontainer
+latest
+
+docker pull command
+docker pull hellofirstcontainer20201007190152.azurecr.io/hellofirstcontainer:latest
+
+docker ps
+<empty>
+
+docker images
+REPOSITORY                                                             TAG                 IMAGE ID            CREATED             SIZE
+hellofirstcontainer                                                    latest              b95d73ba2300        4 minutes ago       208MB
+hellofirstcontainer20201007190152.azurecr.io/hellofirstcontainer       latest              b95d73ba2300        4 minutes ago       208MB
+hellofirstcontainer20201007190152.azurecr.io:443/hellofirstcontainer   latest              b95d73ba2300        4 minutes ago       208MB
+
+
+RUN docker image
+hellofirstcontainer20201007190152.azurecr.io/hellofirstcontainer
+
+docker run -it --rm -p 8080:80 hellofirstcontainer20201007190152.azurecr.io/hellofirstcontainer:latest
+
+
+Reference:
+anONTES.txt
+D:\Bitbucket\SteveProXNA\actionstuff\Web\Docker\YouTube\01-ASPNETcontainer
+
+
+
+docker run -it --rm -p 8081:81 hellofirstcontainer20201007190152.azurecr.io/hellofirstcontainer:latest
+
+
+
+Try again but just as web site
+https://localhost:44330
+
+Site URL
+https://webapplication120201007194538.azurewebsites.net
