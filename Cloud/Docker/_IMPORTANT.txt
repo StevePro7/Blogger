@@ -41,3 +41,9 @@ http://localhost:7991/weatherforecast
 
 
 
+docker run -d -p 7991:80 stevencontainerregistry.azurecr.io/stevendocker:80
+
+
+docker run -d -p 7992:443 stevencontainerregistry.azurecr.io/stevendocker:80
+
+curl https://localhost:7992/weatherforecast
