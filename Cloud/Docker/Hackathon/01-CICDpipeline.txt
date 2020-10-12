@@ -10,3 +10,171 @@ Azure Pipeline
 
 
 Setting up Azure Services
+
+
+Don't have permission to do this remote so do locally
+Create resource group
+StevenCiCdGroup
+
+
+Setting up Azure Services
+Create Container Registry
+StevenContainerRegistry
+
+
+New Web API
+E:\GitHub\SteveProStudios\StevenDocker
+
+
+Creating your Dockerfile
+Dockerfile
+
+
+
+Writing Build Pipeline in Azure DevOps
+upload code to Azure DevOps
+
+Pipelines | Create Pipeline
+Azure Git repo
+
+Docker
+Build and push an image to Azure Container Registry
+
+
+Container registry
+StevenContainerRegistry
+
+Image Name
+stevendocker
+Dockerfile
+$(Build.SourcesDirectory)/CiCDContainer/Dockerfile
+
+
+Validate + configure
+
+
+Build pipeline
+
+portal.azure.com
+
+
+StevenCiCdGroup
+StevenContainerRegistry
+
+Repositories
+
+
+Creating Web App Container for running our Docker Image
+
+create web app for Container
+configure web app to use image from the repository
+
+
+Azure portal
+StevenCiCdGroup
+add resource
+Web App for Containers 
+
+
+Create Web Ap
+StevenWebAppNow
+
+Docker container
+Linux
+North Europe
+
+Premium V2 P1v2
+210 total ACU, 3.5 GB memory
+
+
+Docker
+Single container
+Quickstart
+
+
+Microsoft.Web-WebApp-Portal-356d4f22-957f
+
+
+BEFORE
+StevenCiCdGroup
+ASP-StevenCiCdGroup-9e51	App Service plan
+StevenContainerRegistry		Container registry
+
+
+Setting up your Release Pipeline
+Note we connect to the Container registry and repository for our Docker Image
+
+
+
+Artifact
+StevenDocker
+
+Stage
+Azure App Service Deploy
+
+App Service type
+Web App for Containers (Linux)
+
+App service name
+StevenWebAppNow
+
+Registry or Namespace
+StevenContainerRegistry
+
+Image
+stevendocker
+
+Tag
+latest
+
+
+Release pipeline
+
+AFTER
+StevenCiCdGroup
+ASP-StevenCiCdGroup-9e51	App Service plan
+StevenContainerRegistry		Container registry
+StevenWebAppNow			App Service
+
+
+
+docker pull image
+docker run container
+
+
+docker run connection refused
+https://pythonspeed.com/articles/docker-connection-refused
+
+
+
+VS Ccode
+right click imaege | run interactive
+
+docker run --rm -it  -p 443:443/tcp -p 80:80/tcp stevencontainerregistry.azurecr.io/stevendocker:80
+
+
+docker: Error response from daemon: Ports are not available: listen tcp 0.0.0.0:80: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+
+
+docker run -p 8000:8000 -it stevencontainerregistry.azurecr.io/stevendocker:79 -m http.server --bind 0.0.0.0
+
+
+
+https://stackoverflow.com/questions/37178824/how-do-i-find-the-docker-rest-api-url
+
+
+
+C:\WINDOWS\system32>docker images
+REPOSITORY                                        TAG                                              IMAGE ID            CREATED             SIZE
+stevencontainerregistry.azurecr.io/stevendocker   80                                               2937021cbba1        18 minutes ago      208MB
+stevencontainerregistry.azurecr.io/stevendocker   79                                               6ae8695eb1be        38 minutes ago      208MB
+
+
+IMPORTANT
+finally got this working!!
+docker run -d -p 7991:80 6ae8695eb1be
+curl http://localhost:7991/weatherforecast
+
+
+Reference
+https://stackify.com/a-start-to-finish-guide-to-docker-for-net/

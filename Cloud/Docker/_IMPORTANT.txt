@@ -1,0 +1,43 @@
+IMPORTANT
+12/10/2020
+
+01-CICDpipeline.txt
+E:\GitHub\StevePro7\Blogger\Cloud\Docker\Hackathon
+
+
+Finally got this working!!
+docker run -d -p 7991:80 6ae8695eb1be
+curl http://localhost:7991/weatherforecast
+
+
+Reference
+https://stackify.com/a-start-to-finish-guide-to-docker-for-net
+
+
+
+Summary
+pushed docker image to container registry and pulled to localhost
+I can run the docker image => container but I never know what the URL should be
+
+seems that you must set the TCP port and refrerence
+docker run -d -p 7991:80 <image-id>
+
+then curl or paste url in browser
+http://localhost:7991/weatherforecast
+
+
+e.g.
+docker images
+REPOSITORY                                        TAG                                              IMAGE ID            CREATED             SIZE
+stevencontainerregistry.azurecr.io/stevendocker   80                                               2937021cbba1        18 minutes ago      208MB
+stevencontainerregistry.azurecr.io/stevendocker   79                                               6ae8695eb1be        38 minutes ago      208MB
+
+
+curl http://localhost:7991/weatherforecast
+
+
+browser
+http://localhost:7991/weatherforecast
+
+
+
