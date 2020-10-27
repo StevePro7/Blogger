@@ -1,0 +1,30 @@
+Commands02
+27/10/2020
+
+Reference
+https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a
+
+01-DockerIntro.txt
+E:\GitHub\StevePro7\Blogger\Cloud\Docker\Medium
+
+
+docker build -t [image_name]:[tag] .
+docker run --name [container_name] [image_name]:[tag]
+docker logs -f [container_id_or_name]
+docker exec -it	[container_id_or_name] bash
+docker images
+docker ps
+docker ps -a
+docker stop [container_id_or_name]
+docker rm [container_id_or_name]
+docker rmi [image_id_or_name]
+
+
+docker build --help
+docker run --help
+
+
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+docker rmi $(docker images -qa)
+

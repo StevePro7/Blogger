@@ -1,0 +1,67 @@
+Docker Introduction — What You Need To Know To Start Creating Containers
+https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a
+
+27/10/2020
+
+
+Docker
+Computer program [software] that performs operating system level virtualization also known as containerization
+
+
+Docker
+popular tool that makes it easy to build, deploy and run applications using containers
+
+Containers allow us to package an application and all depenencies [libraries] and deploy as a single unit of software
+
+Adv
+application be run on any machine and have the same behavior
+
+
+OPEN SOURCE
+https://github.com/docker
+
+
+
+Docker is NOT a virtual machine
+A docker container, unlike a virtual machine, does not require or include a separate operating system
+Instead, the container relies on the kernel's operating system functionality and uses its resource isolation for
+CPU and memory, and separate namespaces to isolate the application's view of the operating system
+
+
+Because Docker container are simpler than virtual machines they are more lightweight and faster
+because we avoid the overhead of starting / stopping / maintaining VMs
+
+
+Documentation
+https://docs.docker.com
+
+
+Hello World
+$ docker run hello-world
+
+
+Docker Hub
+cloud based registry service which allows you to link to code repositories, build your images and test them,
+stores manually pushed images and links to Docker Cloud so you can deploy images to your hosts
+
+Docker Hub
+provides centralized resource for container image discovery, distribution and change management, user and team collaboration
+and workflow automation throughout the development pipeline
+
+
+EXAMPLE
+Python Flask application
+
+
+Dockerfile
+docker build -t flask_app:0.1 .
+docker run -d -p 5000:5000 flask_app:0.1
+
+curl http://localhost:5000
+
+
+docker stop <containerID>
+docker rm <containerID>
+docker rmi <imageID>
+e.g.
+docker rmi flask_app:0.1
