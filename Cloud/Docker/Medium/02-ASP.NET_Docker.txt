@@ -1,0 +1,168 @@
+Getting Started With ASP.NET Core & Docker — Guide for beginners
+https://medium.com/@teo.levy/getting-started-with-asp-net-core-docker-guide-for-beginners-d62af654881a
+
+27/10/2020
+
+
+ASP.NET Core
+much better container optimization
+image is much smaller than .NET Framework
+cross platform = deploy server apps to Linux Docker containers
+
+
+ASP.NET Core
+host on IIS, Nginx, Apache, Docker or self-host
+
+
+MVC
+Model		data
+View		UI
+Controller	orchestrate workflow
+
+
+Model binding
+automatically maps data from HTTP requests to action method parameters
+
+Model validation
+performs client-side and server-side validation
+
+
+
+Containers — Docker: Introduction
+
+
+Container
+idea of running multiple applications on single host
+
+similar to compute virtualization but instead of virtualizing server to create multiple operating systems
+containers offer more lightweight alternative by virtualizing operating system allowing multiple workloads on single host
+
+
+Docker
+open source project to automate deployment o fapplications as portable self sufficient containers that run in the cloud [or on premises]
+https://github.com/moby/moby
+
+Docker
+more efficient at sharing OS kernel and libraries thus more lightweight than Virtual Machines [VMs]
+
+
+VMs
+provide full process isolation for applications [as have full OS + full library per VM] but isolation comes at great cost
+[heavy, inefficient, expensive]
+
+
+Why docker?
+containers allow developer to package application with all dependent libraries and ship as one package
+
+
+EXAMPLE
+Windows download + install Docker
+Windows will prompt to enable Hyper-V and Containers windows features
+restart
+
+
+dotnet new mvc
+dotnet run
+localhost:5000
+localhost:5001
+
+
+Dockerfile
+FROM microsoft/dotnet:sdk AS build-env
+WORKDIR /app
+
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM microsoft/dotnet:aspnetcore-runtime
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "HelloWorld.dll"]
+
+
+Docker can build images automatically by reading instructions from Dockerfile
+
+Dockerfile
+textfile that contains all commands user could call on the command line to assemble an image
+
+
+FROM
+sets the baseImage
+must be first instruction in Dockerfile
+
+
+WORKDIR
+sets working directory for any subsequent ADD, COPY, CMD, ENTRYPOINT, or RUN instructions
+default dir is /app
+creates dir if not exist
+
+
+COPY
+copy files + folders from source to desh path in image filesystem
+
+
+RUN
+execute any commands on top of current image
+
+
+ENTRYPOINT
+configures container to be run as an executable
+set it to use the web app
+
+
+
+All instructions in Dockerfile
+https://docs.docker.com/engine/reference/builder
+ADD
+COPY
+ENV
+EXPOSE
+FROM
+LABEL
+STOPSIGNAL
+USER
+VOLUME
+WORKDIR
+ONBUILD (when combined with one of the supported instructions above)
+
+
+docker build -t helloworld .
+docker images
+
+
+docker run -d -p 8080:80 --name HelloWorld helloworld
+docker ps
+
+browser
+http://localhost:8080
+
+
+We can see the MVC web app dockerized running locally in port 8080!
+https://github.com/mateolevy/aspnetcore-docker-example
+
+
+ADDITIONAL
+https://docs.docker.com/get-started/overview
+https://docs.microsoft.com/en-us/dotnet/core/docker/build-container?tabs=windows
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/building-net-docker-images?view=aspnetcore-3.1
+https://medium.com/@chrislewisdev/optimizing-your-net-core-docker-image-size-with-multi-stage-builds-778c577121d
+https://blog.jetbrains.com/dotnet/2018/07/18/debugging-asp-net-core-apps-local-docker-container
+
+
+Debugging ASP.NET Core apps in a local Docker container
+https://blog.jetbrains.com/dotnet/2018/07/18/debugging-asp-net-core-apps-local-docker-container
+https://www.jetbrains.com/rider/eap?_ga=2.203053268.437300352.1603828895-728468761.1603828895
+
+
+https://devblogs.microsoft.com/dotnet/staying-up-to-date-with-net-container-images/?WT.mc_id=-blog-scottha
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker?view=aspnetcore-2.1
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices
+
+https://medium.com/@julitogtu/aspnetcore-and-docker-volume-44494f5cf326
+https://developers.redhat.com/blog/2016/02/24/10-things-to-avoid-in-docker-containers
