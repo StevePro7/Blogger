@@ -4,3 +4,56 @@ https://medium.com/@sproulelucas13/how-you-should-think-about-docker-containers-
 29/10/2020
 
 
+Distills Docker to three things:
+
+1. control groups
+2. namespaces
+3. chroot
+
+
+
+1. control groups	[cgroups]
+limits the amount of resources you want someone to be able to control in your container
+allows resources to be shared and managed
+
+Docker
+arch linux
+manage resource here
+/etc/security/limits.conf
+
+control how much RAM, storage, access to gpus etc.
+
+know where cgroup files are
+see how docker creates them
+
+
+2. namespaces
+if cgroups control what you can use then namespaces are what you can see
+
+namespaces
+control access to processes, mounts, networking and other things you see
+
+mainly focus on processes + networking 
+'cos processes on container are different from processes on your machine
+
+you are only in control of processes on that container
+
+
+3. chroot
+creating docker container you specify image so
+
+Chroot allows you to change the apparent root directory
+so we have
+file system
+control how much memory, storage, gpus and other hardware options using cgroups
+
+control processes, mounts and networking using namespaces
+
+change apparent root to be any linux filesystem be it ubuntu, opensue, redhat etc using chroot
+
+
+To summary
+docker abstracts linux cgroups, namespaces, chroot from us via containers
+
+
+chroot /path/to/file/you/want/to/be/the/apparent/root
