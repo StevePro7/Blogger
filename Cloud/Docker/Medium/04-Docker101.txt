@@ -1,0 +1,147 @@
+Docker 101: Fundamentals and Practice
+https://medium.com/free-code-camp/docker-101-fundamentals-and-practice-edb047b71a51
+
+29/10/2020
+
+
+Docker	wiki
+https://en.wikipedia.org/wiki/Docker_(software)
+
+Docker is a computer program that performs operating-system-level virtualization
+
+Docker is a platform for creating and running containers from images
+
+
+Images
+single files container all the dependencies and configurations required to run a program
+
+Comtainers
+instances of those images
+
+
+
+Part 1. "Hello, World!" from a Python image
+
+docker run --rm -it python:3 python
+
+
+--rm 	tells Docker Daemon to clean up container + remove file system after container exits
+-t	tells Docker to allocate a virtual terminal session within the container
+-i	interactive options which keeps STDIN open even if running in detached mode
+-d	detached mode
+
+
+python:3
+base image used for this container
+
+
+
+Part 2. Automated "Hello World!" from a Python image
+
+docker run --rm -it -v $(pwd):/src python:3 python /src/hello.py
+
+-v	tells Docker Daemon to start up a volume in our container
+
+
+Volumes
+best way to persist data in Docker
+want current directory $(pwd) to be added to our container in folder /src
+
+
+CHECK
+docker run --rm -it -v $(pwd):/src python:3 bash
+cd /src
+ls
+
+
+Part 3. Easiest "Hello, World!" possible from a Python image using Dockerfile
+
+# Dockerfile
+FROM python:3
+WORKDIR /src/app
+COPY . .
+CMD [ "python", "./hello.py" ]
+
+
+
+docker build -t hello .
+docker run hello
+
+
+
+Breaking it down
+FROM python:3 
+tells Docker to build our image from base image "python" version : 3
+
+
+WORKDIR /src/app
+sets working directory inside our container 
+used for commands like COPY or CMD
+
+
+COPY . .
+tells Docker to copy everything from our current folder (first .) and paste it on to our destination folder (/src/app)
+which our dest folder was set by WORKDIR i.e. second .
+
+
+If we omit WORKDIR then Dockerfile is:
+FROM python:3
+COPY . /src/app
+CMD ["python", "/src/app/hello.py"]
+
+
+last line CMD is default command when we run Docker container
+python ./hello.py
+
+
+
+Extending our base image
+if we need some dependency then use RUN command
+e.g.
+
+# Dockerfile
+FROM python:3
+# NEW LINE
+RUN pip3 install numpy
+
+WORKDIR /src/app
+COPY . .
+CMD [ "python", "./hello.py" ]
+
+
+RUN gives command to be executed by the container's terminal
+in real example you may use requirements.txt file
+i.e.
+RUN pip3 install -r requirements.txt
+
+
+Part 4. "Hello, World!" from a Nginx image using a long-lived detached container
+
+# Dockerfile
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+COPY . .
+
+
+docker build -t simple_nginx
+docker run -rm -d -p 8080:80 simple_nginx
+
+docker ps
+localhost:8080
+
+
+Breaking it down
+nginx:alpine
+base image = Nginx = open source reverse proxy sesrver for HTTP, HTTPS, SMTP, POP3, IMAP protocols
+plus load balancer, HTTP cache and web server
+
+
+docker build
+-d	detached mode which means run this container in the background
+	i.e. terminal back right away after docker run command		container still running
+
+-p	8080:80
+	map port 8080 from local machine to pop 90 inside the container without adding additional setting to nginx image
+	since 80 is standard port the nginx image exposed
+
+
