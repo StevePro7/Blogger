@@ -4,3 +4,28 @@ https://medium.com/rate-engineering/using-docker-containers-to-run-a-distributed
 29/10/2020
 
 
+Tip: The standard output of docker-compose up may hang occasionally, leaving you to think that the application is not responding. Hence, you can run containers detached with the -d flag and tail the container logs manually with docker-compose logs --follow [SERVICE...]
+
+
+
+
+Part I
+https://medium.com/rate-engineering/using-docker-containers-as-development-machines-4de8199fc662
+
+
+References
+Exclude folders from bind mounting — 
+https://stackoverflow.com/a/37898591/5832081
+
+Install dependencies to external cache — 
+https://stackoverflow.com/a/52092711/5832081
+
+Filesystem changes from host not triggering live reload in container — 
+https://stackoverflow.com/questions/4231243/inotify-with-nfs/52439741#52439741
+
+
+
+
+GOOD REFERENCES
+https://github.com/veggiemonk/awesome-docker
+https://docker-curriculum.com
