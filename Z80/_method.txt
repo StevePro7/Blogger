@@ -1,0 +1,23 @@
+method
+06/12/2020
+
+Launch VS
+Open top level folder that has all the asm / inc files and folders that comprise the source code
+
+But either in ConTEXT open only main.asm
+or on the cmd prompt navigate to main.asm
+
+and F9 to execute the Compile.bat script
+or on cmd prompt launch manually or type in the commands individually
+
+basically you want to assemble and link
+
+e.g.
+wla-z80 -o FairyForest.asm FairyForest.o
+wlalink -drvs link_file.txt FairyForest.sms
+
+
+Great example is on Linux as delves into this further:
+
+wla-dx.txt
+E:\GitHub\StevePro7\Blogger\Z80
