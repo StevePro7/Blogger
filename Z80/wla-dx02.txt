@@ -1,0 +1,84 @@
+wla-dx 02
+07/12/2020
+
+Source
+E:\Steven\INSTALLATIONSEGA\ROM_Sega3\MegaMan2-SMS-0.51\MegaMan2 0.5
+
+
+copy to mount
+E:\Steven\mount\_Code\MM2
+
+https://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html
+
+Finder
+Other locations
+
+ipconfig
+smb://192.168.1.221
+TEST
+WORKGROUP
+pwd
+
+
+copy files across
+cd /home/stevepro/Steven/Linux/_MM2/MM
+
+
+
+
+wla-z80 main.asm
+
+
+wlalink -drvs linkfile megaman2.sms
+
+
+java -jar ~/Emulicious/Emulicious.jar FairyForest.sms
+
+
+echo [objects]>linkfile
+echo object.o>>linkfile
+
+
+
+ERRORS
+wla-z80 main.asm
+
+case sensitive so had to rename folders
+songs
+maps
+
+and files
+openingMap.inc
+
+and had to use forward slash
+e.g.
+maps/openingMap.inc
+
+
+
+wla-z80 main.asm
+
+
+error
+wla-z80 -o main.asm objects.o
+
+
+echo [objects]>linkfile
+echo main.o>>linkfile
+
+wlalink linkfile steve.sms
+
+
+ERROR
+main.o
+gameplayMapsEngine.asm
+1086
+
+PARSE STACK
+Unresolved reference to "MegamanWalkingSpeed"
+
+
+CORRECT
+ld bc, \1 * MegamanWalkingSpeed
+
+search entire code base and cannot fine
