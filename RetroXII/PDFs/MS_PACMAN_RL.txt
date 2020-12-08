@@ -1,0 +1,146 @@
+MS_PACMAN_RL
+08/12/2020
+
+I. INTRODUCTION
+Reinforcement learning (RL) algorithms [1], [2] are attractive
+for learning to control an agent in different environments
+
+it still remains an issue how to deal effectively with
+large state spaces in order to obtain very good results with
+little training time.
+
+
+The simplicity of the game rules in combination
+with the complex strategies that are required to obtain a
+proper score, have made Ms. Pac-Man an interesting research
+topic in Artificial Intelligence
+
+
+ghost
+behaviour is stochastic
+
+stochastic
+having a random probability distribution or pattern that may be analysed statistically but may not be predicted precisely.
+
+
+This method of
+machine learning has yielded promising results with regards
+to artificial agents for games
+
+game strategies rely heavily on in-game positions
+
+Reinforcement learning was found to improve the
+performance of the neural network faster than evolutionary
+learning
+
+
+Contributions
+few higher-order inputs in order to capture
+the most important elements of the game
+
+the use of single neural networks with action-relative inputs allows for training 
+with only 7 neurons while the learned behavior is still very good
+
+these higher order relative inputs also allow for effective policy transfer to a different maze
+Ms Pac Man was not trained before
+
+
+(1) Is a neural network trained using Q-learning able to
+produce good playing behavior in the game of Ms. Pac-Man?
+(2) How can we construct higher-order inputs to describe the
+game states?
+(3) Does incorporating a single action neural
+network offer benefits over the use of multiple action neural
+networks?
+
+
+II FRAMEWORK
+
+III. REINFORCEMENT LEARNING
+Reinforcement learning systems consist of five main elements:
+a model of the environment,
+an agent,
+a policy,
+a reward function,
+a value function
+
+
+Here
+model	simulation representing the environment
+agent	neural network forms the decision making agent interacting with the environment
+policy	agent employs policy which defines how states are mapped to actions
+reward	reward fn maps each state into numeric value representing desirable transition to that state
+value	value fn defines expected return - expected discount reward for each state
+
+
+Policy
+core of RL system 'cos defines behavior of the agent
+
+Goal RL
+maximize total reward it receives in the long run
+
+goal of RL agent = seek state w/ highest value NOT highest reward
+
+
+t	time
+s(t)	state
+a(t)	action
+r(t)	reward after action a(t)
+
+Markov property
+RL system assume decision making availalbe in present state
+i.e. previous / history state = irrelevant to decide next action
+
+
+Q-learning was used as the RL algorithm
+specifies way in which immediate rewards should be used to learn the optimal value of a state
+
+
+alpha	learning rate
+gamma	discount factor
+
+The discount factor decides how distant rewards should be valued, when adjusting
+the Q-values. 
+
+The learning rate influences how strongly the Q-values are altered after each action.
+
+
+backpropagation algorithm 
+
+the Q-value of the state-action pair is updated by using
+this target value to train the neural network
+
+
+IV. STATE REPRESENTATION
+
+C. Pills
+The input algorithm that offers
+information about the position of pills makes use of this
+fact, by finding the shortest path to the closest pill for each
+direction. The algorithm will use breadth-first search (BFS)
+to find these paths
+
+If this does not yield immediate
+results, it will switch over to the A*-algorithm to find
+the shortest path to the pills
+
+
+V. EXPERIMENTS AND RESULTS
+
+VI. DISCUSSION
+
+The level of performance that was reached with the small
+amount of input shows that a neural network that was trained
+using reinforcement learning is able to produce highly competent
+playing behavior. This is confirmed by the data gathered
+during the test phases of the experiments. Single action networks
+showed to extend to unknown mazes very well, which
+is an important characteristic of competent playing behavior.
+
+
+The results of this paper lead the way to a new approach to reinforcement learning
+RL systems are often trained and tested on the same environment but the evidence in this paper shows that not all networks are capable of forming a generalized policy
+Using higher order relative inputs and a single action network, a RL system can be constructed that is able to perform well using very little input and is highly versatile.
+The learned policy generalized to other game environments and is independent of maze dimensions and characteristics.
+Future research could apply the ideas presented in this paper on different RL problems, specifically those with a small action space and a large state space - such as first person shooters [and racing games]
+--like DOOM
