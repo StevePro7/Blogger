@@ -1,7 +1,53 @@
 CoSeCiVi17_paper_14
+10/12/2020
+
+Video games are an interesting field of study for many Artificial Intelligence (AI) researchers,
+since they provide complex but controlled environments in which many AI techniques can be studied and tested
+
+for example: Pacman
+PacMan may seem simple compared to some other kinds of [video] games, its special features make it a perfect target
+for AI researchers
+
+Thge game is simple enough to be quickly understood and it does not require a very powerful machine to be run
+
+One approach to train automatic bots to play video games, like Pacman, is Reinforcement Learning (RL):
+RL algorithms learn policies that associate "good" actions to execute in different game states based
+on rewards obtained during the game simulation
+
+
+3.2 Reinforcement Learning
+RL tries to solve the problem of finding sequences of actions an agent should take in order to maximize some numerical reward.
+The agent is not told about what actions to take, but instead it has to discover which one returns the biggest reward in the long term by trial and error
+
+An RL agent interacts with the environment in discrete time steps, in each which it will receive a representation of such environment known as a state.
+
+The agent must choose then the best action to execute in the current state.  That action will lead it to a new state, and then the agent will receive a reward.  The goal of the agent is to maximuze total reward obtained during a simulation.
+Note that the optimal action might not be the one that maximizes the instant reward (greedy approach), but other action that allows to obtain a higher total reward during the simulation.
+
+
+6 Related work and conclusions
+Reinforcement Learning has also been used in other domains such as First Person Shooters [FPS]
+e.g.
+Lample, G., Chaplot, D.S.
+made a very successful research of this area using the FPS game Doom.
+
+Reference
+https://arxiv.org/pdf/1609.05521.pdf
+
+Lample, G., Chaplot, D.S.: Playing FPS games with deep reinforcement learning.
+In: Proceedings of the Thirty-First AAAI Conference on Artiicial Intelligence,
+February 4-9, 2017, San Francisco, California, USA. pp. 2140{2146 (2017)
+
+
+Today I download + open the source code in Android Studio
+https://github.com/kefik/MsPacMan-vs-Ghosts-AI
+
+Launch Android Studio
+Open project
+D:\Github\kefik\MsPacMan-vs-Ghosts-AI
+
+
 07/12/2020
-
-
 https://github.com/kefik/MsPacMan-vs-Ghosts-AI
 
 
