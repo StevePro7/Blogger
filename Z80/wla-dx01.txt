@@ -1,0 +1,90 @@
+wla-dx 01
+10/12/2020
+
+Build WLA-DX from source and install on Windows 10
+
+Pre-reqs
+ensure that cmake is installed
+
+Launch Terminal
+cmake --version
+
+Must have at least v2,8.9
+
+
+Launch WINDOWS
+cd ~/Github
+mkdir vhelin
+cd vhelin
+git clone https://github.com/vhelin/wla-dx.git
+
+cd wla-dx
+mkdir build && cd build			# Create building directory
+cmake ..				# Generate build system
+
+ERROR
+
+cmake --build . --config Release 	# Build it
+cmake -P cmake_install.cmake 		# Install it (optional)
+
+
+RELEASES
+https://github.com/vhelin/wla-dx/releases/tag/v9.11-fix-fix-fix
+
+
+
+Windows folder
+D:\Github\vhelin\wla-dx
+
+
+Launch VS2017
+open solution
+C:\Users\TEST.000\Downloads\wla-dx-9.11-fix-fix-fix\wla-dx-9.11-fix-fix-fix\windows
+
+build configuration
+Release
+x86
+
+there will now be new update versions in RElease folder
+
+wla-z80
+wlalink
+
+
+Copy here
+E:\wlaz80win32
+
+
+Update Compile.bat file to be compatible with the new files
+
+
+e.g.
+Compile.bat
+E:\wlaz80win32
+
+
+changes
+wla-z80		syntax changed to generate the corresponding main.asm object file
+wlalink		remove the -drvs flag as now no longer seems to be required
+
+
+
+Tried carracer
+and got error
+
+main.asm:1023: ERROR: Unknown symbol "titune".
+
+Reference
+https://www.smspower.org/forums/15239-GGASMDevelopmentProblemsWLADX
+
+
+I found the "solution" was to include an additional CR between the variables
+e.g.
+entile .include "assets\enemy (tiles).inc"
+
+plcras .include "assets\player_crashed (tiles).inc"
+
+
+
+LINUX
+is case sensitive
