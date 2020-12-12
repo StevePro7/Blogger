@@ -34,3 +34,12 @@ so simply add another space between the variable definitions and everything is t
 ALSO
 can disassemble and re-assemble as before using smsexamine and ConTEXT
 don't forget to include all the dat files with the main.asm
+
+
+
+03.
+Some games like AstroSwab may have an empty section
+which will call an error while assembling
+
+solution
+simply comment out that section
