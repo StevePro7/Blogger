@@ -1,0 +1,31 @@
+Porting Z80 games
+12/12/2020
+
+
+Now that all setup for z80 development in VS Code and have the latest wla-z80 + wlalink 
+setup on Windows and Linux can start to port some old Z80 code games
+
+IMPORTANT
+
+01.
+On Windows this is OK
+PlayerCar_Tiles:
+   .include "Race\PlayerCar_tiles.inc"
+
+but not on Linux
+so in order to be compatible on both systems
+prefer
+
+PlayerCar_Tiles:
+   .include "Race/PlayerCar_tiles.inc"
+
+
+
+02.
+Also not too sure of when and how the next one
+but I found that sometimes will get an error
+if the variables are too close together
+e.g.
+MegaMan
+
+so simply add another space between the variable definitions and everything is then fine
