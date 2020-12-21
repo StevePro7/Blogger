@@ -6,8 +6,12 @@ namespace Chp04
     {
         static void Main(string[] args)
         {
-            var manager = new MyManager();
+            const float gamma = 0.8f;
+            const int state = 3;
+
+            var manager = new MyManager(gamma, state);
             manager.Init("data.txt");
+            manager.Process();
 
             Console.WriteLine("Hello World!");
         }
