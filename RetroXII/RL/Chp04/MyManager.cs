@@ -13,10 +13,9 @@ namespace Chp04
         private int wide;
         private IList<int> choices;
 
-        public MyManager(float gamma, int state)
+        public MyManager(float gamma)
         {
             this.gamma = gamma;
-            this.state = state;
             choices = new List<int>();
         }
 
@@ -87,7 +86,11 @@ namespace Chp04
                     RMatrix[j][i] = result;
                 }
             }
+        }
 
+        public void SetState(int state)
+        {
+            this.state = state;
         }
 
         public int[][] QMatrix { get; private set; }
