@@ -1,0 +1,25 @@
+Resolution
+26/12/2020
+
+
+Android
+Samsung S9
+displayModeWidth = 2094
+displayModeHeight = 1080
+
+resolutionManager.LoadContent(true, 800, 480, false, 800, 480);
+
+
+iPhone
+displayModeWidth = 1704
+displayModeHeight = 960
+
+
+IMPORTANT
+this is the default
+
+graphics.PreferredBackBufferWidth = 800;
+graphics.PreferredBackBufferHeight = 480;
+
+but I add this esp. for mobile to prevent that annoying "flip"
+graphics = new GraphicsDeviceManager(this) { SupportedOrientations = DisplayOrientation.LandscapeLeft };
