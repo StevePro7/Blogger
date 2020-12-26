@@ -1,0 +1,28 @@
+MGFX error
+26/12/2020
+
+
+The mgfx effect if sof an older release of MonoGame and needs to be rebuilt
+
+D:\rSVN\3Dcity\3Dcity.AND
+
+e.g.
+Android build
+
+
+what happened is that the default AND project that I used for this
+already had a reference to MonoGame but was the latest at the time
+
+i.e.
+3.8.0.1641
+
+so I need to down grade to version
+3.7.1.189
+
+this is because I still had the older version of MonoGame installed
+i.e.
+3.7
+
+Control Panel
+MonoGame SDK
+3.7.1.189

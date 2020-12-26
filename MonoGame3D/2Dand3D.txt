@@ -1,0 +1,27 @@
+2D and 3D rendering
+26/12/2020
+
+
+References
+https://stackoverflow.com/questions/4449599/how-do-i-set-the-texture-sampler-state-in-xna-for-basiceffect
+https://www.nelsonhurst.com/xna-cheatsheet
+
+
+01.
+public void Begin(Microsoft.Xna.Framework.Graphics.SpriteSortMode sortMode, Microsoft.Xna.Framework.Graphics.BlendState blendState, Microsoft.Xna.Framework.Graphics.SamplerState samplerState, Microsoft.Xna.Framework.Graphics.DepthStencilState depthStencilState, Microsoft.Xna.Framework.Graphics.RasterizerState rasterizerState)
+
+02.
+public void Begin(Microsoft.Xna.Framework.Graphics.SpriteSortMode sortMode, Microsoft.Xna.Framework.Graphics.BlendState blendState, Microsoft.Xna.Framework.Graphics.SamplerState samplerState, Microsoft.Xna.Framework.Graphics.DepthStencilState depthStencilState, Microsoft.Xna.Framework.Graphics.RasterizerState rasterizerState, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.Matrix 
+
+
+e.g.
+combine
+
+spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullNone, null, resolutionManager.TransformationMatrix);
+
+objectManager.Draw();
+spriteBatch.End();
+
+
+EXAMPLE
+E:\Steven\XNA\MonoGame\3DcityBook01\SGBWin_04_PrimitiveObjects03\SGBWin_04_PrimitiveObjects\SGBWin_04_PrimitiveObjects\AnGame.cs
