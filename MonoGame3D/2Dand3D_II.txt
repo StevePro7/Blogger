@@ -1,0 +1,46 @@
+2D and 3D rendering part II
+27/12/2020
+
+
+Follow up from yesterday
+E:\Steven\XNA\MonoGame\3DcityBook01\3Dcity.AND_03
+E:\Steven\XNA\MonoGame\3DcityBook01\3Dcity.IOS_03
+E:\Steven\XNA\MonoGame\3DcityBook01\3Dcity.WIN_03
+
+
+Summary
+
+01.
+// Desktop.
+//resolutionManager.LoadContent(false, 800, 480, true, 800, 480);
+
+// Mobile.
+resolutionManager.LoadContent(true, 800, 480, false, 800, 480);
+
+
+02.
+resolutionManager.BeginDraw(Color.Black);
+objectManager.Draw();
+
+
+must have this
+remember may "pillar box" but this is necessary for the resolution MGR
+and the corresponding input MGR to be able to detect in the "joypad"
+
+if just have standard GraphicsDevice Clear() then may full screen
+but input detection will NOT work correctly!
+
+
+03.
+Prefer this otherwise 2D objects may not render correctly:
+spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, RasterizerState.CullNone, null, resolutionManager.TransformationMatrix);
+
+iconManager.Draw();
+spriteManager.Draw(valX1, -valY1, valX2, valY2);
+spriteBatch.DrawString(Assets.ArialFont, valX1.ToString(), new Vector2(20, 20), Color.Yellow);
+spriteBatch.DrawString(Assets.ArialFont, valY1.ToString(), new Vector2(20, 50), Color.Yellow);
+spriteBatch.DrawString(Assets.ArialFont, valX2.ToString(), new Vector2(610, 20), Color.Yellow);
+spriteBatch.DrawString(Assets.ArialFont, valY2.ToString(), new Vector2(610, 50), Color.Yellow);
+
+spriteBatch.End();
+
