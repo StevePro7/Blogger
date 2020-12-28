@@ -1,0 +1,118 @@
+PRBoomPlus
+28/12/2020
+
+source reference
+E:/Steven/INSTALLATION/Doom
+
+
+LINUX
+Today I got the code to run on Linux with debug step thru
+previously I got the code to build + run
+
+e.g.
+cd prboom-plus-2.5.1.3
+
+Configure
+./configure
+
+MAKE
+make
+
+RUN
+./src/prboom-plus
+
+
+But now do the following:
+
+Launch VS Code
+
+Open folder
+
+~/Doom/prboom-plus-2.5.1.3_VScode
+
+create "build.sh" file that simply has 1x instruction:
+MAKE
+make
+
+Dump this at the same level as the root folder
+prboom-plus-2.5.1.3_VScode
+
+chmod +x build.sh
+
+
+Now create the "hidden" .vscode folder at the root level
+
+.vscode
+tasks.json
+//launch.json
+
+
+tasks.json
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+    "windows": {
+        "command": "build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+
+
+Press F5 to prompt create launch.json
+
+keep what is auto generated for you but just change one entry:
+
+"program": "${workspaceFolder}/src/prbool-plus
+
+e.g.
+
+launch.json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/prboom-plus",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
+
+
+WINDOWS
+copy the code to Windows
+E:/GitHub/StevePro7/LinuxDoom/prboom-plus-2.5.1.3_VScode/prboom-plus-2.5.1.3
+
+Launch WSL
+Windows Subsystem for Linux
+
+cd /mnt/e
+cd GitHub/StevePro7/LinuxDoom/prboom-plus-2.5.1.3_VScode/prboom-plus-2.5.1.3
+./configure
+
+
+MAKE
+make
+fails because code cannot find SDL.h
