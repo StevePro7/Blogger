@@ -1,0 +1,68 @@
+wla-dx 03
+28/12/2020
+
+For completeness, installed wla-dx on the Mac
+
+here is how:
+
+Reference
+http://macappstore.org/wla-dx
+
+
+Mac OS/X
+Launch Terminal
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+
+
+prompt to install the latest Xcode tools
+Yes
+
+
+
+Error: 
+  homebrew-core is a shallow clone.
+To `brew update`, first run:
+  git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+This restriction has been made on GitHub's request because updating shallow
+clones is an extremely expensive operation due to the tree layout and traffic of
+Homebrew/homebrew-core and Homebrew/homebrew-cask. We don't do this for you
+automatically to avoid repeatedly performing an expensive unshallow operation in
+CI systems (which should instead be fixed to not use shallow clones). Sorry for
+the inconvenience!
+
+
+
+brew update --force
+ERROR
+
+
+sooo type the following:
+Terminal
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+
+
+Now
+brew update --force
+
+
+Finally
+brew install wla-dx
+
+
+Terminal
+the following commands will now work
+wla-z80
+wlalink
+
+
+
+Mac OS/X
+Launch VS Code
+
+I think that I have code runner installed so this is how you can auto run
+
+Windows key + Alt + N
+./build.sh
+
+I tried to F5 but the Emulicious debugger sort of stalls
+plus you need to have Emulicious running before F5 otherwise you will receive the "connection" error

@@ -1,0 +1,32 @@
+Github
+28/12/2020
+
+Now prefers to use OAth to connect Source Tree with github.com
+to automate code being pushed
+
+i.e.
+not store password in URL .git/config
+https://github.com/StevePro7/FlickySMS.git
+
+
+must connect Source Tree to github.com
+I had issue on the Mac
+
+so I tried
+Preferences
+Accounts
+
+Add
+OAth
+StevePro7
+Connect
+browser prompts to open Source Tree
+but when I push I get 403 authorization error
+
+In the end I simply removed the account
+Push
+
+prompt to enter password for StevePro7
+Pwd124
+
+now everything OK and automate works fine
