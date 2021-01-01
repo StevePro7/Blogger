@@ -1,0 +1,220 @@
+Reinforcement Q-Learning from Scratch in Python with OpenAI Gym
+https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym
+01/01/2021
+
+
+EXAMPLE
+Taxi	self driving cab
+
+State Space
+set of all possible situations our taxi could inhabit
+state should contain useful information the agent needs to make the right action
+
+
+Action Space
+the agent encounters one of the X states and it takes an action
+the action in our case can be to move in a direction or decide to pickup / dropoff 
+
+
+Implementation
+Open AI Gym
+https://gym.openai.com
+
+Gym is a toolkit for developing and comparing RL algorithms
+It supports teaching agents everything from walking to playing video games
+
+
+Open AI Gym provides the environment, you provide the algorithm
+You can write your agent using your existing numerical computation library
+e.g.
+TensorFlow
+Theano
+
+
+EXAMPLE
+https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym
+
+Gym interface
+need to install gym
+Jupyter notebook
+
+!pip install cmake 'gym[atari]' scipy
+
+earlier I simply did this at the cmd prompt
+
+python
+pip install gym
+
+
+import gym
+env = gym.make("Taxi-v2")
+
+
+env
+Environment
+Core gym interface which is the unified environment interface
+
+env.reset()		resets the environment and returns a random initial state
+env.step(action)	step the environment by one timestep
+
+
+observation		observations of the environment
+reward			if your action was beneficial or not
+done			indicates if we have successfully picked up and dropped off a passenger
+info			additional info suc as performance and latency for debugging purposes
+
+
+env.render()		renders one frame of the environmnet
+
+
+env.reset()   # reset environment to a new random state
+env.render()
+
+print('Action space {}'.format(env.action_space))
+print('State  space {}'.format(env.observation_space))
+
+Action space Discrete(6)
+State  space Discrete(500)
+
+
+
+Actions
+0 = south
+1 = north
+2 = east
+3 = west
+4 = pickup
+5 = dropoff
+
+
+States
+5×5×5×4=500 
+
+taxi location
+passenger location
+destination location
+
+
+RL will learn a mapping of states to the optimal action to perform in that state by exploration
+i.e.
+the agent explores the environment and takes actions based off rewards defined in the environment
+
+
+optimal action for each state is the action that has the highest cumulative long-term reward
+
+
+Reward table
+state	rows
+action	cols
+
+states X action matrix
+
+e.g.
+env.P[328]
+
+{0: [(1.0, 428, -1, False)],
+ 1: [(1.0, 228, -1, False)],
+ 2: [(1.0, 348, -1, False)],
+ 3: [(1.0, 328, -1, False)],
+ 4: [(1.0, 328, -10, False)],
+ 5: [(1.0, 328, -10, False)]}
+
+dictionary structure
+{action: [(probability, nextstate, reward, done)]}
+
+
+reward
+-1	penalty
+-10	fail to pickup / dropoff
+
+
+We are not learning from experience
+We can run over and over but it will never optimize
+Agent has no memory of which action was best for each state
+which is exactly what RL will do for us
+
+
+Enter Reinforcement Learning
+
+Q-learning
+lets the agent use the environment's rewards to learn
+over time the best action to take in a given state
+
+
+Q-values stored in Q-table store (state, action) combo
+
+Q-value for particular state-action combo is representative of the "quality" of an action taken from that state
+better Q-values imply better chances of getting greater rewards
+
+Q(state,action)←(1−α)Q(state,action)+α(reward+γmaxaQ(next state,all actions))
+
+
+alpha
+learning rate
+extent to which our Q-values are being updated in every iteration
+
+
+gamma
+discount factor
+determine how much importance we want to give to future rewards
+
+
+
+Q(state,action)←(1−α)Q(state,action)+α(reward+γmaxaQ(next state,all actions))
+
+assign / update Q-value of agent current state + action by first taking a weight (1−α) of old Q-value
+then add the learned value
+
+learned value is a combo of reward for taking the current action in the current state and the
+discounted maximum reward from the next state we will be in once we take the current action
+
+i.e.
+we are learning the proper action to take in the current state by looking at the reward
+for the current state / action combo and the max rewards for the next state
+
+
+Q-value of state-action pair = sum of instant reward and the discounted future reward
+[of thte resulting state]
+
+
+Q-table
+values are initialized to zero and then udpaetd during training to values
+that optimize the agent's traversal through the environment for maxiumum rewards
+
+
+Epsilon
+favor exploring action space further instead of just selecting the best learned Q-value action
+
+lower epsilon value results in episodes with more penalties because we are exploring more
+and making more random decisions
+
+
+
+ML
+Hyperparameters
+parameter whose value is used to control the learning process
+
+whereas other parameters are derived during training
+
+
+Hyperparameters and optimizations
+
+alpha	learning rate
+should decrease as you continue to gain a larger and larger knowledge base
+
+gamma
+as you get closer to the deadline, your preference for near-term reward should increas
+as you won't be around long enough to get the long-term reward
+ie
+gamma should decrease
+
+epsilon
+as we develop strategy, we have less need of exploration and more exploitation
+to get more utility from our policy, so as trials increase, epsilon should decrease
+
+
+
+
+FURTHER LEARNING:
+Practical Reinforcement Learning (Coursera)
+Reinforcement Learning: An Introduction by Richard S. Sutton
