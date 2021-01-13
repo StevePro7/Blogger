@@ -1,0 +1,132 @@
+Emulicious Debugger IMPORTANT
+13/01/2021
+
+Reference
+https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger
+
+
+Get program working with data files for incbin
+main.asm
+
+
+01.
+Launch Emulicious
+e.g.
+Emulicious.exe
+E:\SEGA\Emulicious
+
+Tools | Debugger
+
+Debugger window
+File | Load Sources automatically
+Navigate | Follow Current Instruction
+Run | Suspend On Open
+
+Tools | Remote Debugging | Enabled
+Tools | Reopen Tools
+
+
+02.
+Launch VS Code
+open folder
+open main.asm
+Set breakpoint(s)
+e.g.
+_START
+0000
+
+
+Click run icon on LHS
+Click link "create a launch.json file"
+from drop down choose "Emulicious Debugger"
+
+VS Code will auto-generate launch.json file beneath hidden .vscode folder
+
+modify launch.json slightly to launch the output binary generated on assembly
+e.g.
+output.sms
+
+
+launch.json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emulicious-debugger",
+            "request": "launch",
+            "name": "Launch in Emulicious",
+            "program": "${workspaceFolder}/output.sms",
+            "port": 58870,
+            "stopOnEntry": true
+        }
+    ]
+}
+
+
+
+Add the following tasks.json to automate the assembly of output binary
+output.sms
+
+
+tasks.json
+
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+    "osx": {
+        "command": "./build.sh"
+    },
+    "windows": {
+        "command": "build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+
+
+Press Ctrl+Shift+B to invoke tasks.json [default keyboard shortcut]
+and assemble output.sms
+
+Finally, press F5 to launch output.sms in Emulicious Debugger
+code will pause at the first break point in the external Emulicious Debugger window
+press F5 to "switch" to internal VS Code debugger and debug step thru ASM code!
+
+Enjoy the enhanced benefits of all the VS Code internal debugging
+e.g.
+Variables
+Watch
+Call Stack
+etc
+
+IMPORTANT
+remember VS Code will use Visual Studio type keyboard shortcuts
+e.g.
+Step Over	F10
+Step Into	F11
+Step Out	Shift+F11
+
+
+TODO
+Interaction btwn external debugger and internal
+e.g.
+Watchpoint
+
+I can't remember how I set this up : thru RAM external window
+but I don't know how to disable... need to find out
+OR
+just ignore
+
+
+TROUBLESHOOTING
+if you get the error 
+connect ECONNREFUSED 127.0.0.1:58870
+
+then this is most likely because you didn't not have Emulicious running
+before the debug session!
