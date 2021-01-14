@@ -1,20 +1,27 @@
-Emulicious Debugger IMPORTANT
-13/01/2021
+Emulicious Debugger IMPORTANT #02
+14/01/2021
 
 Reference
 https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger
+
+PRE-REQs
+assumes that you have Emulicious download + extract in the latest location
+
+Windows		C:\SEGA\Emulicious
+Mac OS/X	~/SEGA/Emulicious
+Linux		~/SEGA/Emulicious
 
 
 Get program working with data files for incbin
 main.asm
 
-WINDOWS
+MAC OS/X
 
 01.
 Launch Emulicious
-e.g.
-Emulicious.exe
-E:\SEGA\Emulicious
+
+Launch Terminal
+java -jar Emulicious.jar
 
 Tools | Debugger
 

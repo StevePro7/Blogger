@@ -1,0 +1,64 @@
+PREV  WORK
+14/01/2021
+
+
+https://steveproxna.blogspot.com/2013/09/sega-console-programming.html
+https://steveproxna.blogspot.com/2017/07/sega-master-everdrive.html
+
+
+AA	Setup
+01.
+HelloWorld assemble + debug step thru code using Meka Debugger
+awsome but no Step Out functionality, limited window size, no watch or call stack windows 
+
+advised that Emulicious is fuller featured, has improved debugging functionality
+and is generally the goto emulator for Sega Master System development
+[which we eventually setup in "Everdrive" blog post]
+
+
+02.
+wla-dx assembler version for the following utilities were old / outdated
+wla-z80		assembler
+wlalink		linker
+
+and were for Windows OS only - we would like to work cross platform on
+Win / Mac / Lin
+
+
+03.
+Advised that disassembler smsexamine was outdated and the built-in functionality
+for Emulicious disassembling functionality for Z80 ASM produced better output
+for when disassembling video game binaries and better understand / follow the code
+and ideally have integrated debugging support within an IDE during development
+
+
+Therefore, would like to combine all of these ideas:
+- upgrade wla-dx
+- setup better Z80 dev env
+- that is cross plat
+
+wla-dx00.txt
+wla-dx01.txt
+wla-dx02.txt
+wla-dx03.txt
+
+
+Hello World
+Ctrl+Shift+B	build + run from VS Code
+but no debugging support : next blog
+
+
+BB.	Sample
+disassemble video games to better understand
+open folder in VS Code
+build + run in VS Code
+
+TOOD
+check this method works for SG, SC and SMS
+
+
+finally debug step thru source ASM Code:
+use Emulicious Debugger in VS Code directly
+
+extra for experts:
+use these new found debugging skills to hack Flicky??
