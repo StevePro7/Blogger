@@ -1,0 +1,35 @@
+Emulicious Debugger IMPORTANT #03
+14/01/2021
+
+Reference
+https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger
+
+Attempt to debug step thru C source code using VS Code + Emulicious Debugger
+E:\Steven\INSTALLATIONSEGA\Z80\EmuliciousCdebugging\02_VScode
+
+
+Ctrl + Shift + B
+output.sms
+
+RE:
+Select the ROM file in VS Code and click on Run/Debug Editor Contents in top right corner.
+
+Click output.sms in VS Code LHS
+Click play button RHS
+
+
+
+
+ --debug to sdcc and the commandline flag -y to the linker. That will generate the required debug symbols in a *.cdb file
+http://fivedots.coe.psu.ac.th/~cj/masd/resources/sdcc-doc/SDCCUdoc-28.html
+
+https://sourceforge.net/p/sdcc/discussion/1864/thread/17401173
+
+
+PDF
+http://ecee.colorado.edu/~mcclurel/sdccman_3.6.0.pdf#page=89&zoom=100,113,76
+
+5.1.1 Compiling for Debugging
+The --debug option must be specified for all files for which debug information is to be generated. The compiler
+generates a .adb file for each of these files. The linker creates the .cdb file from the .adb files and the address
+information. This .cdb is used by the debugger.
