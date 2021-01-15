@@ -1,4 +1,72 @@
 Emulicious Debugger IMPORTANT #03
+15/01/2021
+
+
+SUMMARY
+update build.bat
+E:\Steven\INSTALLATIONSEGA\sdcc3\EmuliciousCdebugging\02_VScodeB
+
+Launch Emulicious
+Open folder in VS Code
+click output.sms
+click debug icon
+Now code breaks on C source code and can now debug step thru!
+
+OR
+ensure launch.json has entry to
+Launch in Emulicious
+and set startup program as
+${workspaceDirectory}/output.sms
+
+Press F5 and viola!
+
+
+
+UPDATE from Discord
+
+basxto
+there should be only one cdb file, which is named like the rom ihx-file
+the linker flag should be -y like it’s stated there
+if you do not directly call the linker and instead invoke it through sdcc, you have to tell sdcc that it’s a linker flag, so it would be -Wl-y in that case
+
+$ sdcc --help
+[…]
+  -W                        Pass through options to the pre-processor (p), assembler (a) or linker (l)
+[…]
+$ sdldz80
+[…]
+  -y   SDCDB Debug output as (out)file[.cdb]
+[…]
+
+--debug does not disable code optimization, you have to disable that separately
+
+
+sverx
+in my test it works by passing --debug both to the compiler and again to the linker
+
+sdcc --debug -o ./build/main.rel -c -mz80 --peep-file ../SMSlib/peep-rules.txt main.c
+sdcc --debug -o ./build/output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 ../crt0/crt0_sms.rel ../SMSlib/SMSlib.lib ./build/main.rel
+
+
+Calindro
+Where do you call the linker here?
+You call sdcc twice instead?
+
+sverx
+second call is the linker one
+yes! do you call a different tool to link? 
+
+I never called a different tool to link! sdcc -c to compile and you don't use -c if you don't compile
+
+Calindro
+I guess that's why Steve couldn't get it to work
+Presumably he follows your instructions so should pass --debug on both calls to sdcc
+
+sverx
+no idea, I never used any -y, just passing --debug to both the compile and the link call
+
+
+
 14/01/2021
 
 Reference
