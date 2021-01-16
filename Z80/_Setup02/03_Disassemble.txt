@@ -1,0 +1,59 @@
+03. disassemble
+16/01/2021
+
+
+However, we can disassemble "famous" SMS games using Emulicious
+and "extract" / generate the main.asm file [plus the data files]
+and repeat this process to better understand the original source code!
+
+
+Here is the process:
+find a game we would like to rebuild / debug step thru the original source code
+e.g.
+WonderBoy SMS
+
+Download ROM e.g. WonderBoy.sms
+Load in Emulicious
+Launch debugger
+Ctrl+A select all disassembled Z80 source code
+save into file e.g. WonderBoy.asm
+
+Run utility:
+configure 3x things:
+fileName:	e.g. WonderBoy
+copy 2x files to input folder
+WonderBoy.sms
+WonderBoy.asm
+
+Run utility.exe
+
+this will create output folder [if not exists]
+and copy original ASM file to generic main.asm
+and extract all the corresponding DAT files to be included via "incbin ..." statements
+
+Now complete process as before with HelloWorld, CarRacer,... MegaMan etc
+
+Create folder
+WonderBoySMS
+
+copy in the following files from HelloWorld [previous post]
+build.bat
+build.sh
+.vscode folder
+launch.json
+tasks.json
+
+finally copy the generated above 
+main.asm
+and the data folder with all corresponding DAT files
+
+01.
+Build, Link, Run
+Ctrl+Shift+B
+
+02.
+F5 to debug step thru the z80 source code
+
+Viola!
+you should be able to complete this process with hopefully pretty much any original SMS game
+with some exceptions e.g. Space Harrier

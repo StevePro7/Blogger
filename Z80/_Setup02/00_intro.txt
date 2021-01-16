@@ -1,0 +1,41 @@
+In the previous post
+blah blah blah
+
+
+Begin with Car Racer tutorial
+which goes in much depth to build an SMS game from scratch
+written in pure Z80 assebmly
+https://www.smspower.org/Articles/CreateARacingGame
+
+e.g.
+Sega Console Programming
+However, all assembly programming and machine code written thus far require a BASIC program driver; Cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!
+
+
+Launch VS Code
+Launch Emulicious
+
+Create folder
+CarRacerSMS
+copy in the following files from HelloWorld [previous post]
+build.bat
+build.sh
+.vscode folder
+launch.json
+tasks.json
+
+finally copy game code main.asm from 
+C:\Users\TEST.000\Downloads\Racer-SMS-2.00\Racer (classic)\Version 1.12
+to CarRacerSMS
+
+Follow along the tutorial to better understand what all the Z80 code does
+01.
+Build, Link, Run
+Ctrl+Shift+B
+
+02.
+F5 to debug step thru the z80 source code
+
+
+
+
