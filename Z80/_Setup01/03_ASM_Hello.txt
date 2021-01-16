@@ -1,12 +1,28 @@
-change ASM code to now be xplat:
+<span style="font-family:verdana;font-size:85%;"> 
 
-01.
-/ forward slash not back slash
-
-02.
-case sensitive
-
-03.
-wla-dx01
-error
-CR btwn variables
+<u>Hello World</u><br />
+Download and extract the obligatory "Hello World" to C:\HelloWorld OR ~/HelloWorld.  Rename file to main.asm.  Launch VS Code.  Open HelloWorld folder
+<br /><br />
+Some things to bear in mind while coding Z80 cross platform:
+<ol>
+  <li>01. / forward slash not back slash</li>
+  <li>02. case sensitive e.g. include files</li>
+  <li>03. wla-dx01 error CR btwn variables</li> 
+</ol>  
+<br /><br />
+  
+Add build.bat script to compile, link and run the code on Windows and corresponding build.sh file for Mac OS/X and Linux.  Don't forget to chmod +x build.sh
+  
+  <br /><br />
+  TODO add 2x tables for  build.bat AND  build.sh  BatchScripts.txt
+  <br /><br />
+  Finally, press Ctrl+Shift+B to execute build script.  The first time you will be promted to add tasks.json file
+  <br /><br />
+  Configure Build Task... | Create tasks.json file from template | Others.  This will create .vscode hidden file and tasks.json file
+  here
+  <br /><br />
+  TODO add 1x table with tasks.json file
+  
+  <br /><br />
+  Ctrl+Shift+B to compile, link and run output.sms!
+</span> 

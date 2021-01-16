@@ -1,0 +1,65 @@
+BatchScripts
+15/01/2021
+
+Put these 2x scripts side by side in a table
+like
+main.h
+main.c
+
+01.
+build.bat
+<pre class="csharp" name="code">
+@echo off
+cls
+
+if exist main.o del main.o
+
+echo Compile
+wla-z80 -o main.o main.asm 
+
+echo [objects] > linkfile
+echo main.o >> linkfile
+
+echo Link
+wlalink linkfile output.sms
+
+if exist output.sms.sym del output.sms.sym
+if exist main.o del main.o
+
+echo Run
+::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+output.sms
+</pre>
+
+
+02.
+build.sh
+TODO
+Dont forget to chmod +x build.sh
+<pre class="csharp" name="code">
+@echo off
+clear
+
+if [ -a main.o ]
+then
+    rm main.o
+fi
+
+echo Compile
+wla-z80 -o main.o main.asm 
+
+echo [objects] > linkfile
+echo main.o >> linkfile
+
+echo Link
+wlalink linkfile output.sms
+
+echo Run
+java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms 2> /dev/null
+output.sms
+
+if [ -a main.o ]
+then
+    rm main.o
+fi
+</pre>

@@ -1,0 +1,48 @@
+VS Code JSON files
+15/01/2021
+
+
+Put these 2x scripts side by side in a table
+like
+main.h
+main.c
+
+01.
+launch.json
+<pre class="csharp" name="code">
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emulicious-debugger",
+            "request": "launch",
+            "name": "Launch in Emulicious",
+            "program": "${workspaceFolder}/output.sms",
+            "port": 58870,
+            "stopOnEntry": true
+        }
+    ]
+}
+</pre>
+
+
+02.
+tasks.json
+<pre class="csharp" name="code">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+    "osx": {
+        "command": "./build.sh"
+    },
+    "windows": {
+        "command": "build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+</pre>
