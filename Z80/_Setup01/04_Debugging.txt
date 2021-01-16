@@ -1,0 +1,43 @@
+<span style="font-family:verdana;font-size:85%;"> 
+
+<u>Emulicious Debugger</u><br />
+The Z80 ASM development setup is iterative as it possible to write new code and build and run iteratively but eventually it may be necessary to debug step thru the Z80 souce code.  Enter the Emulicious Debugger.
+  <br /><br />
+  In VS Code search for + install Emulicious Debugger extension.  Click the run icon | create a launch.json file | Emulicious Debugger.  Accept most defaults except you want to enter "output.sms" as the start up program
+  e.g.
+    <br /><br />
+  launch.json
+  JsonFiles
+  <br /><br />
+  Launch Emulicious.  Download the latest version.  Configure Emulicious accordingly:
+<pre class="csharp" name="code">
+  Tools menu | Remote Debugging | Enabled | checked
+  Tools menu | Reopen Tools | checked
+  
+  Debugger window | File menu | Load Sources automatically
+  Debugger window | Navigate menu | Follow Current Instruction
+  Debugger window | Run menu | Suspend On Open
+</pre>
+  In VS Code open main.asm.  Set breakpoint(s).  Click output.sms in VS Code explorer.  Click the Debug File icon top right.  This action will launch external Emulicious Debugger.  Hit F5 to switch to internal Emulicious Debugger integrated directly within VS Code.  Use standard Visual Studio keyboard shortcuts F10, F11, Shift+F11 to Step Over, Into, Out of ASM souce code!  Monitor Variables | Registers, Watch variables etc.
+  <br /><br />
+  Alternatively, in main.asm | set breakpoint(s) and simply hit F5 to launch Emulicious Debugger also.  
+  
+  <br /><br />
+  For completeness, we would eventually like to better understand the relationship between SMS code written in C and the generated Z80 assembly code.  This is also possible with the Emulicious Debugger
+  <br /><br />
+  Follow the Hello World main.c program in devkitSMS Programming Setup.  Open HelloWorld folder in VS Code.  Modify build.bat script ever so slightly : basicall add --debug flag to the SDCC commands
+  e.g.
+  <pre class="csharp" name="code">
+  sdcc --debug -c -mz80 --std-sdcc99 main.c
+  sdcc --debug -mz80 --no-std-crt0 --data-loc 0xC000 -o output.ihx crt0_sms.rel main.rel SMSlib.lib
+  </pre>
+  Compile step will now add main.adb file.  Link step will now add output.cdb.  Include the 2x JSON files similar to above e.g. launch.json and tasks.json.  Ctrl + Shift + B to build output.sms.  In VS Code set break point(s).  As above, either click output.sms and Debug File OR simply F5.  this will launch the Emulicous Debugger externally.  Press F5 to advance to break point to switch to Emulicous Debugger internally within VS Code and debug step thru the C Code.
+  <br /><br />
+  Finally, in external Emulicous Debugger click any one of functions and view the generated compile Z80 asm code
+  // to better understand etc.
+  
+  
+  <br /><br />
+  TODO
+  E:\Steven\INSTALLATIONSEGA\sdcc3\EmuliciousCdebugging\02_VScodeB
+</span> 
