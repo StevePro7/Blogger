@@ -1,7 +1,32 @@
 <span style="font-family:verdana;font-size:85%;"> 
 <b>Assembler</b><br />
 Recommended is the WLA DX assembler.  Git clone the wla-dx repository and follow OS specific instructions.
+
 <br /><br />
-  
-  
+<u>Mac OS/X</u><br />
+Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Follow instructions HERE to install wla-dx on Mac OS/X
+
+<br /><br />  
+<pre class="csharp" name="code">
+Launch Terminal
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+Accept prompt to install the latest Xcode tools
+brew install wla-dx
+</pre>
+<br /><br />  
+IMPORTANT<br />
+During installation, I encountered the error
+<i>
+homebrew-core is a shallow clone. To `brew update`, first run:
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+</i>
+At the terminal, try brew update OR brew update --force.  If you continue to get errors then type:
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+
+Now, try again: type 
+<pre class="csharp" name="code">
+brew update --force
+brew install wla-dx
+</pre>
+The following commands should now work at the terminal: wla-z80 AND wlalink
 </span>

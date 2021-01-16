@@ -60,6 +60,64 @@ this will be the topic of the next post
 
 
 02.	SAMPLE
+follow on from previous post we have Z80 dev setup and can write / build Z80 code
+but we can't debug step thru ASM source.
+
+Enter Emulicious Debugger
+setup
+
+Debugging setup via Emulicious Debugger
+F5 
+setup process similar on Win, Mac, Lin
+- launch Emulicious Debugger
+- launch VS Code
+- open code folder at root main.asm
+- set breakpoint(s) in main.asm
+- F5
+- Emulicious [external] debugger breaks into ASM code
+- F5 to run to first breakpoint
+- Emulicious [internal] debugger "takes over" integrated directly from within VS Code
+- F10, F11, Shift+F1 to step over, step in, step out ASM source code
+- Benefits: Watch windows, Call Stack
+
+
+Add launch.json
+click output.sms and debug icon
+OR
+F5 to debug step thru example
+
+
+List programs that we can use to learn more Z80 code after Hello World
+e.g.
+Car Racer classic
+Car Racer rebooted
+Astroswab
+Digger Ball
+Fairy Forest
+MegaMan
+
+
+SUMMARY
+Sega Console Programming we disassembled some SMS games and re-assembled them
+to try and better learn from existing code bases Z80 programming
+
+we used smsexamine which unfortunately is outdate disassembler 
+and doesn't seem to be compatible with latest wla-dx
+
+no problem : let's use Emulicious again
+launch SMS game directly in Emulicious, copy + paste the disassembled code
+from the debugger window saved in to ASM file and use this utility to create
+the DAT files used for the incbin ... statements
+
+go thru example
+FlickySMS
+TransbotSMS
+WonderboySMS
+
+
+
+
+// OLD code
 disassemble existing 8-bit Z80 ROMs to get better understanding
 of larger code bases
 
