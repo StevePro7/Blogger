@@ -97,7 +97,7 @@ Fairy Forest
 MegaMan
 
 
-SUMMARY
+DISASSEMBLE
 Sega Console Programming we disassembled some SMS games and re-assembled them
 to try and better learn from existing code bases Z80 programming
 
@@ -114,6 +114,15 @@ FlickySMS
 TransbotSMS
 WonderboySMS
 
+
+SUMMARY
+end goal was to better understand relationship btwn C => ASM
+now with Emulicious Debugger you can also debug C source code written for SMS
+using the devkitSMS and debug step thru C source code and view the underlying ASM
+e.g.
+Hello World example on devkitSMS programming setup
+don't forget the compiler + linker switch
+--debug
 
 
 

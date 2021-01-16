@@ -1,7 +1,26 @@
 <span style="font-family:verdana;font-size:85%;"> 
 <b>Assembler</b><br />
 Recommended is the WLA DX assembler.  Git clone the wla-dx repository and follow OS specific instructions.
+
 <br /><br />
-  
-  
+<u>Linux</u><br />
+Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.
+
+<br /><br />  
+<pre class="csharp" name="code">
+Launch Terminal
+cmake --version
+cd ~/GitHub/vhelin
+git clone https://github.com/vhelin/wla-dx.git
+cd wla-dx
+mkdir build && cd build			# Create building directory
+cmake ..				# Generate build system
+cmake --build . --config Release 	# Build it
+cmake -P cmake_install.cmake 		# Install it (optional)
+</pre>
+
+Finally, reboot Linux. 
+  The following commands should now work at the terminal: wla-z80 AND wlalink
+<br /><br />  
+
 </span>
