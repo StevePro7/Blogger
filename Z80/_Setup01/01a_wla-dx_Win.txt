@@ -1,0 +1,38 @@
+<span style="font-family:verdana;font-size:85%;"> 
+<b>Assembler</b><br />
+Recommended is the WLA DX assembler.  Git clone the wla-dx repository and follow OS specific instructions.
+
+<br /><br />
+<u>Windows</u><br />
+Clone wla-dx repo to C:\GitHub\vhelin.  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Windows directly from Visual Studio 2017 from the windows folder.
+
+<br /><br />  
+<pre class="csharp" name="code">
+Start | run | cmd
+C:\GitHub\vhelin
+git clone https://github.com/vhelin/wla-dx.git
+cd C:\GitHub\vhelin\wla-dx\windows
+Launch WLA DX.sln in Visual Studio 2017
+Change build configuration to Release | x86
+Clean + Rebuild solution
+cd C:\GitHub\vhelin\wla-dx\windows\Release
+WLA DX compiler wla-z80.exe built
+WLA DX linker wlalink.exe built
+</pre>
+  <br /><br />
+If you have followed Sega Console Programming tutorial then you would have already have ConTEXT installed and the old WLA-DX binaries downloaded somewhere e.g. C:\wlaz80win32.  Copy the updated binaries wla-z80.exe and wlalink.exe to this location
+<br /><br />
+  
+  Also, you may like to tweak the original Compile.bat file extracted previously: as all main entry points for ASM code shall be main.asm we will align the object file main.o accordingly during wla-z80.exe compilation.  Finally, it seems that the -drvs wlalink.exe linker flag is now no longer required
+  
+Compile.bat
+  <pre class="csharp" name="code">
+echo Compile
+::"%WLAPATH%wla-z80.exe" -o %1 main.o
+  "%WLAPATH%wla-z80.exe" -o main.o %1
+  
+echo Link
+::"%WLAPATH%wlalink.exe" -drvs linkfile output.sms
+  "%WLAPATH%wlalink.exe"       linkfile output.sms
+</pre>
+</span>
