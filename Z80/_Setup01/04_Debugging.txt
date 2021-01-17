@@ -40,4 +40,15 @@ The Z80 ASM development setup is iterative as it possible to write new code and 
   <br /><br />
   TODO
   E:\Steven\INSTALLATIONSEGA\sdcc3\EmuliciousCdebugging\02_VScodeB
+
+TROUBLESHOOTING
+if you see the error popup "connect ECONNREFUSED 127.0.0:58870" then this is most likely because
+you do not have Emulicious running...
+
+If you see this error make sure that you are running Emulicious and that Remote Debugging is enabled.
+  <br /><br />
+
+IMPORTANT
+If in VS Code you F5 and the debugger does not break + debug step thru Emulicious Debugger internally then click output.sms and choose Debug File icon as this always seems to work
+afterwards you should be able to F5 to debug step thru on each subsequent run.
 </span> 
