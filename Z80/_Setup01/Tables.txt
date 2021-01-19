@@ -1,3 +1,6 @@
+01.
+BUILD batch scripts
+
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.bat">build.bat</a></td>
@@ -12,21 +15,13 @@
 &nbsp;@echo off
 &nbsp;cls
 
-&nbsp;if exist main.o del main.o
-
-&nbsp;echo Compile
 &nbsp;wla-z80 -o main.o main.asm 
 
 &nbsp;echo [objects] > linkfile
 &nbsp;echo main.o >> linkfile
 
-&nbsp;echo Link
 &nbsp;wlalink linkfile output.sms
 
-&nbsp;if exist output.sms.sym del output.sms.sym
-&nbsp;if exist main.o del main.o
-
-&nbsp;echo Run
 &nbsp;::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
 &nbsp;output.sms
 </pre>
@@ -42,23 +37,15 @@
 &nbsp;@echo off
 &nbsp;clear
 
-&nbsp;if [ -a main.o ]
-&nbsp;then
-&nbsp;    rm main.o
-&nbsp;fi
-
-&nbsp;echo Compile
 &nbsp;wla-z80 -o main.o main.asm
 
 &nbsp;echo [objects] > linkfile
 &nbsp;echo main.o >> linkfile
 
-&nbsp;echo Link
 &nbsp;wlalink linkfile output.sms
 
-&nbsp;echo Run
-&nbsp;java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms 2> /dev/null
-&nbsp;output.sms
+&nbsp;java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms
+&nbsp;::output.sms
 </pre>
 </td>
 </tr>
@@ -66,3 +53,7 @@
 </td>
 </tr>
 </table>
+
+
+
+02.
