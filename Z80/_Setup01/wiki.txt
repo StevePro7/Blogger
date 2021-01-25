@@ -13,6 +13,7 @@ TODO - format this ordered list better
 <br /><br />
 
 Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
+  <!--
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.bat">build.bat</a></td>
@@ -65,21 +66,32 @@ Add build.bat file to compile, link and run souce code on Windows and build.sh f
 </td>
 </tr>
 </table>
+  -->
+<br /><br />
 <br /><br />
   
-  
-Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X and Linux.  Launch Terminal.  Enter chmod +x build.sh for execute permissions.
-<br /><br />
-  
-Add build.bat to compile, link, run souce code on Windows and build.sh to compile, link, run souce code on Mac OS/X and Linux.  Don't forget to chmod +x build.sh
-<br /><br />
-  
-Add build.bat script to compile, link and run the code on Windows and corresponding build.sh file for Mac OS/X and Linux.  Don't forget to chmod +x build.sh
+Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b>.vscode</b> hidden folder and tasks.json file here.
   <br /><br />
+tasks.json
+<pre class="csharp" name="code">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+    "osx": {
+        "command": "./build.sh"
+    },
+    "windows": {
+        "command": "build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+</pre>
   
-  <br /><br />
-  TODO add 2x tables for  build.bat AND  build.sh  BatchScripts.txt
-  <br /><br />
   Finally, press Ctrl+Shift+B to execute build script.  The first time you will be promted to add tasks.json file
   <br /><br />
   Configure Build Task... | Create tasks.json file from template | Others.  This will create .vscode hidden file and tasks.json file
