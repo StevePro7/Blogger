@@ -8,17 +8,16 @@ Clone wla-dx repository to C:\GitHub\vhelin.  Instructions on GitHub describe ho
 
 <br /><br /> 
 <u>Mac OS/X</u><br />
-  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install brew as per instructions.  Then follow all instructions here to install wla-dx on Mac OS/X.
+Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install brew as per instructions.  Then follow all instructions here to install wla-dx on Mac OS/X.
 <br /><br />  
-Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Follow instructions HERE to install wla-dx on Mac OS/X
-<br /><br />  
+
+Launch Terminal.  Enter the following commands below.  Accept all prompts to install the latest Xcode tools:
 <pre class="csharp" name="code">
-Launch Terminal
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
 Accept prompt to install the latest Xcode tools
 brew install wla-dx
 </pre>
-<br /><br />  
+<br />
 IMPORTANT<br />
 During installation, I encountered the error
 <i>
