@@ -72,6 +72,7 @@ Add build.bat file to compile, link and run souce code on Windows and build.sh f
   
 Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b>.vscode</b> hidden folder and tasks.json file here.
   <br /><br />
+<!--
 tasks.json
 <pre class="csharp" name="code">
 {
@@ -91,7 +92,18 @@ tasks.json
     "group": {"kind": "build", "isDefault": true},
 }
 </pre>
+-->
+  Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!
+    <br /><br />
+    IMPORTANT<br />
   
+Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
+  
+    <br /><br />
+  
+Press Ctrl + Shift + B to execute build script.  Compile, link and run output.sms launched from Emulicious!  Build 
+  
+    <br /><br />
   Finally, press Ctrl+Shift+B to execute build script.  The first time you will be promted to add tasks.json file
   <br /><br />
   Configure Build Task... | Create tasks.json file from template | Others.  This will create .vscode hidden file and tasks.json file
