@@ -26,12 +26,13 @@ WLA DX linker wlalink.exe built
 
 If you have followed Sega Console Programming tutorial and you already have ConTEXT installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
 <br /><br />
-  
-If you have followed Sega Console Programming tutorial then you would have already have ConTEXT installed and the old WLA-DX binaries downloaded somewhere e.g. C:\wlaz80win32.  Copy the updated binaries wla-z80.exe and wlalink.exe to this location
+
+Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag is now no longer required.
 <br /><br />
-  
-  Also, you may like to tweak the original Compile.bat file extracted previously: as all main entry points for ASM code shall be main.asm we will align the object file main.o accordingly during wla-z80.exe compilation.  Finally, it seems that the -drvs wlalink.exe linker flag is now no longer required
-  
+
+    <!--
+  <br /><br />
+TODO - convert to ordered list table 
 Compile.bat
   <pre class="csharp" name="code">
 echo Compile
@@ -42,4 +43,5 @@ echo Link
 ::"%WLAPATH%wlalink.exe" -drvs linkfile output.sms
   "%WLAPATH%wlalink.exe"       linkfile output.sms
 </pre>
+-->
 </span>
