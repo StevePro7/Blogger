@@ -1,42 +1,46 @@
 <span style="font-family:verdana;font-size:85%;"> 
+<b>Assembler</b><br />
+Recommended is the WLA DX assembler.  Git clone the wla-dx repository and follow OS specific instructions.
 
-<u>Hello World</u><br />
-Download and extract the obligatory "Hello World" to C:\HelloWorld or ~/HelloWorld.  Rename file main.asm.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
-  <!--
-TODO - format this ordered list better  
-<ol>
-  <li>01. / forward slash not back slash</li>
-  <li>02. case sensitive e.g. include files</li>
-  <li>03. wla-dx01 error CR btwn variables</li> 
-</ol>
-  -->
 <br /><br />
+<u>Windows</u><br />
+Clone wla-dx repository to C:\GitHub\vhelin.  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Windows directly from Visual Studio 2017 from the wla-dx\windows folder.
 
-Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
-  <!--
 <table width="99%" border="1">
 <tr>
-<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.bat">build.bat</a></td>
-<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.sh">build.sh</a></td>
+<td>&nbsp;1. Start | run | cmd</td>
+<td>&nbsp;5. Launch WLA DX.sln in Visual Studio 2017</td>
 </tr>
+<tr>
+<td>&nbsp;2. cd C:\GitHub\vhelin</td>
+<td>&nbsp;6. Build solution as Release | x86 configuration</td>
+</tr>
+<tr>
+<td>&nbsp;3. git clone https://github.com/vhelin/wla-dx.git</td>
+<td>&nbsp;7. WLA DX compiler wla-z80.exe built</td>
+</tr>
+<tr>
+<td>&nbsp;4. cd C:\GitHub\vhelin\wla-dx\windows</td>
+<td>&nbsp;8. WLA DX linker wlalink.exe built</td>
+</tr>
+</table>
+<br />
+
+If you have followed Sega Console Programming tutorial and you already have ConTEXT installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
+<br /><br />
+
+Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag as now no longer required.
+
+<table width="99%" border="1">
 <tr>
 <td>
 <table border="0">
 <tr>
-<td width="99%">
+<td>
 <pre class="csharp" name="code">
-&nbsp;@echo off
-&nbsp;cls
-
-&nbsp;wla-z80 -o main.o main.asm 
-
-&nbsp;echo [objects] > linkfile
-&nbsp;echo main.o >> linkfile
-
-&nbsp;wlalink linkfile output.sms
-
-&nbsp;::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
-&nbsp;output.sms
+ echo Compile
+ ::"%WLAPATH%wla-z80.exe" -o %1 main.o
+   "%WLAPATH%wla-z80.exe" -o main.o %1
 </pre>
 </td>
 </tr>
@@ -47,18 +51,9 @@ Add build.bat file to compile, link and run souce code on Windows and build.sh f
 <tr>
 <td>
 <pre class="csharp" name="code">
-&nbsp;@echo off
-&nbsp;clear
-
-&nbsp;wla-z80 -o main.o main.asm
-
-&nbsp;echo [objects] > linkfile
-&nbsp;echo main.o >> linkfile
-
-&nbsp;wlalink linkfile output.sms
-
-&nbsp;java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms
-&nbsp;::output.sms
+ echo Link
+ ::"%WLAPATH%wlalink.exe" -drvs linkfile output.sms
+   "%WLAPATH%wlalink.exe"       linkfile output.sms
 </pre>
 </td>
 </tr>
@@ -66,56 +61,6 @@ Add build.bat file to compile, link and run souce code on Windows and build.sh f
 </td>
 </tr>
 </table>
-  -->
-<br /><br />
-<br /><br />
-  
-Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b>.vscode</b> hidden folder and tasks.json file here.
-  <br /><br />
-<!--
-tasks.json
-<pre class="csharp" name="code">
-{
-    "version": "2.0.0",
-    "label": "build",
-    "type": "shell",
-    "linux": {
-        "command": "./build.sh"
-    },
-    "osx": {
-        "command": "./build.sh"
-    },
-    "windows": {
-        "command": "build.bat"
-      },
-    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
-    "group": {"kind": "build", "isDefault": true},
-}
-</pre>
--->
-  Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!
-    <br /><br />
-    IMPORTANT<br />
-  
-Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
-  
-    <br /><br />
-  
-Press Ctrl + Shift + B to execute build script.  Compile, link and run output.sms launched from Emulicious!  Build 
-  
-    <br /><br />
-  Finally, press Ctrl+Shift+B to execute build script.  The first time you will be promted to add tasks.json file
-  <br /><br />
-  Configure Build Task... | Create tasks.json file from template | Others.  This will create .vscode hidden file and tasks.json file
-  here
-  <br /><br />
-  TODO add 1x table with tasks.json file
-  
-  <br /><br />
-  Ctrl+Shift+B to compile, link and run output.sms!
-  
-  <br /><br />
-  IMPORTANT<br />
-  build script assumes that you have downloaded and installed Emulicious emulator at location ~/SEGA/Emulicious
-  
-</span> 
+<br />
+
+</span>
