@@ -1,34 +1,24 @@
-<span style="font-family:verdana;font-size:85%;"> 
-<b>Assembler</b><br />
-Recommended is the WLA DX assembler.  Git clone the wla-dx repository and follow OS specific instructions.
+<span style="font-family:verdana;font-size:85%;">
 
+Visual Studio Code<br />
+Install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">Windows</a> + <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> + <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install the following extensions for Z80 ASM development:
 <br /><br />
-<u>Windows</u><br />
-Clone wla-dx repository to C:\GitHub\vhelin.  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Windows directly from Visual Studio 2017 from the wla-dx\windows folder.
-
-<br /><br /> 
-<u>Mac OS/X</u><br />
-Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install brew as per instructions.  Then follow all instructions here to install wla-dx on Mac OS/X.
-<br /><br />  
-
-<u>Linux</u><br />
-Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  After completion, launch Terminal and the commands wla-z80 and wlalink should work universally.
-<br /><br />
-<!--  
-TODO - convert to ordered list table
-<br /><br />
-Launch Terminal
+  <!--
+TODO redo as table with name + description
 <pre class="csharp" name="code">
-cmake --version
-cd ~/GitHub/vhelin
-git clone https://github.com/vhelin/wla-dx.git
-cd wla-dx
-mkdir build && cd build			# Create building directory
-cmake ..				# Generate build system
-cmake --build . --config Release 	# Build it
-cmake -P cmake_install.cmake 		# Install it (optional)
+ASM Code Lens
+Z80 Assembly
+Z80 Macro Assembler
+wla-dx
 </pre>
--->
+  -->
+Also, Bookmarks is useful VS Code extension to install especially to navigate large growing Z80 code bases.
+ <br /><br /> 
+PS: as per Bookmarks.txt
+the Book mark extension is handy to have to navigate around large /growing Z80 code bases
+right click code window and choose Bookmark | Toggle
+
+Ctrl + Alt + L
+navigate to the next bookmark
   
-<br /><br /> 
 </span>
