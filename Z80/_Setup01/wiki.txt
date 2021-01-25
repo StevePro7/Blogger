@@ -11,40 +11,10 @@ Clone wla-dx repository to C:\GitHub\vhelin.  Instructions on GitHub describe ho
 Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install brew as per instructions.  Then follow all instructions here to install wla-dx on Mac OS/X.
 <br /><br />  
 
-Launch Terminal.  Enter the following commands below.  Accept all prompts to install the latest Xcode tools:
-<pre class="csharp" name="code">
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
-Accept prompt to install the latest Xcode tools
-brew install wla-dx
-</pre>
-<br />
-IMPORTANT<br />
-During installation, you may encounter the following error:
-<i>homebrew-core is a shallow clone. To `brew update`, first run: git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
-</i>
-<br /><br />
-At the terminal, type brew update or brew update --force.  If you still get errors then type the following:
-<pre class="csharp" name="code">
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
-brew update --force
-brew install wla-dx
-</pre>
-<br />
-Finally, the following commands should now work at the terminal: wla-z80 AND wlalink
-<br />
-<br /><br />
-At the terminal, try brew update OR brew update --force.  If you continue to get errors then type:
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
-<br /><br />
-
-
-<br /><br />
-
-At the terminal, try brew update or brew update --force.  If you continue to get errors then type the following:
-<br /><br />
-
-
-Now, try again: type 
-
-The following commands should now work at the terminal: wla-z80 AND wlalink
+<u>Linux</u><br />
+Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  After completion, launch Terminal and the commands wla-z80 and wlalink should work universally.
+<br /><br /> 
+  
+Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  After completing the following steps, launch Terminal and the commands wla-z80 AND wlalink should work universally.
+<br /><br /> 
 </span>
