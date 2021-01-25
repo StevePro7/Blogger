@@ -19,18 +19,32 @@ brew install wla-dx
 </pre>
 <br />
 IMPORTANT<br />
-During installation, I encountered the error
-<i>
-homebrew-core is a shallow clone. To `brew update`, first run:
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+During installation, you may encounter the following error:
+<i>homebrew-core is a shallow clone. To `brew update`, first run: git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
 </i>
-At the terminal, try brew update OR brew update --force.  If you continue to get errors then type:
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
-
-Now, try again: type 
+<br /><br />
+At the terminal, type brew update or brew update --force.  If you still get errors then type the following:
 <pre class="csharp" name="code">
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
 brew update --force
 brew install wla-dx
 </pre>
+<br />
+Finally, the following commands should now work at the terminal: wla-z80 AND wlalink
+<br />
+<br /><br />
+At the terminal, try brew update OR brew update --force.  If you continue to get errors then type:
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+<br /><br />
+
+
+<br /><br />
+
+At the terminal, try brew update or brew update --force.  If you continue to get errors then type the following:
+<br /><br />
+
+
+Now, try again: type 
+
 The following commands should now work at the terminal: wla-z80 AND wlalink
 </span>
