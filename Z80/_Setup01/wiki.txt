@@ -12,7 +12,59 @@ TODO - format this ordered list better
   -->
 <br /><br />
 
-Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permissions using <b>chmod +x build.sh</b>.
+Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.bat">build.bat</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.sh">build.sh</a></td>
+</tr>
+<tr>
+<td>
+<table border="0">
+<tr>
+<td width="99%">
+<pre class="csharp" name="code">
+&nbsp;@echo off
+&nbsp;cls
+
+&nbsp;wla-z80 -o main.o main.asm 
+
+&nbsp;echo [objects] > linkfile
+&nbsp;echo main.o >> linkfile
+
+&nbsp;wlalink linkfile output.sms
+
+&nbsp;::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+&nbsp;output.sms
+</pre>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;@echo off
+&nbsp;clear
+
+&nbsp;wla-z80 -o main.o main.asm
+
+&nbsp;echo [objects] > linkfile
+&nbsp;echo main.o >> linkfile
+
+&nbsp;wlalink linkfile output.sms
+
+&nbsp;java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms
+&nbsp;::output.sms
+</pre>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 <br /><br />
   
   
