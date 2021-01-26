@@ -71,5 +71,53 @@ Also, tweak the original Compile.bat file as all main entry points will now be v
 </tr>
 </table>
 <br />
-<br />  
+<br /> 
+  
+<u>Mac OS/X</u><br />
+Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install brew as per instructions.  Then follow all instructions here to install wla-dx on Mac OS/X.
+<br /><br />  
+Launch Terminal.  Enter the following commands below.  Accept all prompts to install the latest Xcode tools:
+<pre class="csharp" name="code">
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+Accept prompt to install the latest Xcode tools
+brew install wla-dx
+</pre>
+<!--
+<a href="https://1.bp.blogspot.com/-gAw3mN_AScA/YBCTEgcu24I/AAAAAAAAGf0/E2WjOPVPohMbfh1jMWMrnJlihfp692cXgCLcBGAsYHQ/s711/macosx.png" imageanchor="1"><img alt="" border="0" width="98%" data-original-height="141" data-original-width="711" src="https://1.bp.blogspot.com/-gAw3mN_AScA/YBCTEgcu24I/AAAAAAAAGf0/E2WjOPVPohMbfh1jMWMrnJlihfp692cXgCLcBGAsYHQ/s600/macosx.png"/></a>
+-->
+IMPORTANT<br />
+During installation, you may encounter the following error:
+<i>homebrew-core is a shallow clone. To `brew update`, first run: git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+</i>
+<br /><br />
+At the terminal, type brew update or brew update --force.  If you still get errors then type the following:
+<pre class="csharp" name="code">
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+brew update --force
+brew install wla-dx
+</pre>
+<br />
+
+<u>Linux</u><br />
+Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  Launch Terminal | enter commands.  After completion, wla-z80 and wlalink should work universally.
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;1. cmake --version</td>
+<td>&nbsp;5. mkdir build && cd build</td>
+</tr>
+<tr>
+<td>&nbsp;2. cd ~/GitHub/vhelin</td>
+<td>&nbsp;6. cmake ..</td>
+</tr>
+<tr>
+<td>&nbsp;3. git clone https://github.com/vhelin/wla-dx.git</td>
+<td>&nbsp;7. cmake --build . --config Release</td>
+</tr>
+<tr>
+<td>&nbsp;4. cd ~/GitHub/vhelin/wla-dx</td>
+<td>&nbsp;8. cmake -P cmake_install.cmake</td>
+</tr>
+</table>
+<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s858/linux.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="164" data-original-width="858" src="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s600/linux.png"/></a></div>
+<br />
 </span>
