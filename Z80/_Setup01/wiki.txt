@@ -1,5 +1,7 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
+
+<br /><br />
 In 2013, we checked out Sega Console Programming to setup video game development environment for the Sega Master System: an 8-bit video game console based on the Z80 chip.  Here we used WLA-DX assembler.  Remember, original cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!  
 <br /><br /> 
 Now we would like to extend our game development environment to Windows and Mac OS/X and Linux for cross platform development and also add better support for automated builds with debugging functionality.
@@ -118,6 +120,124 @@ Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which d
 <td>&nbsp;8. cmake -P cmake_install.cmake</td>
 </tr>
 </table>
-<div class="separator" style="clear: both;"><a href="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s858/linux.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="164" data-original-width="858" src="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s600/linux.png"/></a></div>
+<!--
+<a href="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s858/linux.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="164" data-original-width="858" src="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s600/linux.png"/></a>
+-->
 <br />
+<br />
+<b>Visual Studio Code</b><br />
+Install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">Windows</a> + <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> + <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install the following extensions for Z80 ASM development:
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;ASM Code Lens</td>
+<td>&nbsp;Enables code lens, references, hover info, symbol renaming + assembler outline</td>
+</tr>
+<tr>
+<td>&nbsp;Z80 Assembly</td>
+<td>&nbsp;Z80 Assembly support for Visual Studio Code</td>
+</tr>
+<tr>
+<td>&nbsp;Z80 Macro Assembler</td>
+<td>&nbsp;Support for Z80 macro-assemblers in Visual Studio Code</td>
+</tr>
+<tr>
+<td>&nbsp;wla-dx</td>
+<td>&nbsp;VSCode language support for WLA-DX assembler</td>
+</tr>
+</table>  
+<br />
+<br /> 
+<u>Hello World</u><br />
+Download and extract the obligatory "Hello World" to C:\HelloWorld or ~/HelloWorld.  Rename file main.asm.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
+<ol>
+<li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
+<li>&nbsp;Ensure case sensitive folders + files are used at all times for include files</li>
+<li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
+</ol>
+<br />
+Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.bat">build.bat</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.sh">build.sh</a></td>
+</tr>
+<tr>
+<td>
+<table border="0">
+<tr>
+<td width="99%">
+<pre class="csharp" name="code">
+&nbsp;@echo off
+&nbsp;cls
+
+&nbsp;wla-z80 -o main.o main.asm 
+
+&nbsp;echo [objects] > linkfile
+&nbsp;echo main.o >> linkfile
+
+&nbsp;wlalink linkfile output.sms
+
+&nbsp;::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+&nbsp;output.sms
+</pre>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;@echo off
+&nbsp;clear
+
+&nbsp;wla-z80 -o main.o main.asm
+
+&nbsp;echo [objects] > linkfile
+&nbsp;echo main.o >> linkfile
+
+&nbsp;wlalink linkfile output.sms
+
+&nbsp;java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms
+&nbsp;::output.sms
+</pre>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+ -->
+<br />
+  
+Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b>.vscode</b> hidden folder and tasks.json file here.
+
+<!-- 
+tasks.json
+<pre class="csharp" name="code">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+    "osx": {
+        "command": "./build.sh"
+    },
+    "windows": {
+        "command": "build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+</pre>
+ -->
+Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!
+<br /><br />
+IMPORTANT<br />
+Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
+  
 </span>

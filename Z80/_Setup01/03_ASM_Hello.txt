@@ -2,14 +2,12 @@
 
 <u>Hello World</u><br />
 Download and extract the obligatory "Hello World" to C:\HelloWorld or ~/HelloWorld.  Rename file main.asm.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
-  <!--
-TODO - format this ordered list better  
 <ol>
-  <li>01. / forward slash not back slash</li>
-  <li>02. case sensitive e.g. include files</li>
-  <li>03. wla-dx01 error CR btwn variables</li> 
+<li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
+<li>&nbsp;Ensure case sensitive folders + files are used at all times for include files</li>
+<li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
 </ol>
-  -->
+
 <br /><br />
 
 Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
