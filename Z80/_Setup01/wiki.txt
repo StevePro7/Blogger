@@ -71,17 +71,9 @@ Fortunately, we can leverage the same launch.json and tasks.json files as before
 <br /><br />
   
 TROUBLESHOOTING<br />
-If you ever see the error popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious not launched
+If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious is not running.  Also, if F5 does not launch the debugger from VS Code then click output.sms and choose Debug File icon.
 <br /><br />
-If you see this error make sure that you are running Emulicious and that Remote Debugging is enabled.
-  <br /><br />
 
-IMPORTANT
-If in VS Code you F5 and the debugger does not break + debug step thru Emulicious Debugger internally then click output.sms and choose Debug File icon as this always seems to work
-afterwards you should be able to F5 to debug step thru on each subsequent run.
-
-<br /><br />
-<br /><br />
 
   
 </span>
