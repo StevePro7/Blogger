@@ -23,7 +23,7 @@ launch.json
 -->
 <br /><br />
 Launch Emulicious.  Configure the options below.  Open Tools menu | Debugger.  Configure these options also:
-  <table width="100%" border="1">
+<table width="100%" border="1">
 <tr>
 <td>&nbsp;Tools menu | Remote Debugging | Enabled | CHECK</td>
 <td>&nbsp;Debugger | File menu | Load Sources automatically</td>
@@ -33,10 +33,16 @@ Launch Emulicious.  Configure the options below.  Open Tools menu | Debugger.  C
 <td>&nbsp;Debugger | Run menu | Suspend On Open</td>
 </tr>
 </table>
+<br />
+In Visual Studio Code, open main.asm and set breakpoints.  Press F5.  Emulicious debugger should now break and debug step through Z80 assembly source code!  Access register variables, watch window, call stack etc.
 <br /><br />
-Launch Emulicious.  Configure the following options.  Open Tools menu | Debugger.  Configure these options also:
+
+  
+  Launch Emulicious.  Configure the following options.  Open Tools menu | Debugger.  Configure these options also:
 <br /><br />
-The Z80 ASM development setup is iterative as it possible to write new code and build and run iteratively but eventually it may be necessary to debug step thru the Z80 souce code.  Enter the Emulicious Debugger.
+The Z80 ASM development setup is iterative as it possible to write new code and build and run iteratively but eventually it may be necessary to debug step thru the Z80 souce code.  Enter the Emulicious Debugger.  
+  
+    <br /><br />
   <br /><br />
   In VS Code search for + install Emulicious Debugger extension.  Click the run icon | create a launch.json file | Emulicious Debugger.  Accept most defaults except you want to enter "output.sms" as the start up program
   e.g.
