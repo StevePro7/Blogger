@@ -1,22 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
   
-TROUBLESHOOTING<br />
-If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious is not running.  Also, if F5 does not launch the debugger from VS Code then click output.sms and choose Debug File icon.
-<br /><br />
-
-If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious is not running.  Also, if F5 does not launch the debugger from VS Code then right click output.sms and choose Debug File.
-<br /><br />
-
-
-In VS Code
-If in VS Code you F5 and the debugger does not break + debug step thru Emulicious Debugger internally then click output.sms and choose Debug File icon as this always seems to work
-afterwards you should be able to F5 to debug step thru on each subsequent run.
-  
-If you see this error make sure that you are running Emulicious and that Remote Debugging is enabled.
-  <br /><br />
-
-  
-  
 <u>Emulicious Debugger</u><br />
 Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install Emulicious Debugger extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete launch.json file accordingly:
 <!--
