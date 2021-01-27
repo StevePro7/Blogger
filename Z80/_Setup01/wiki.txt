@@ -1,4 +1,22 @@
-<span style="font-family:verdana;font-size:85%;"> 
+<span style="font-family:verdana;font-size:85%;">
+  
+TROUBLESHOOTING<br />
+If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious is not running.  Also, if F5 does not launch the debugger from VS Code then click output.sms and choose Debug File icon.
+<br /><br />
+
+If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious is not running.  Also, if F5 does not launch the debugger from VS Code then right click output.sms and choose Debug File.
+<br /><br />
+
+
+In VS Code
+If in VS Code you F5 and the debugger does not break + debug step thru Emulicious Debugger internally then click output.sms and choose Debug File icon as this always seems to work
+afterwards you should be able to F5 to debug step thru on each subsequent run.
+  
+If you see this error make sure that you are running Emulicious and that Remote Debugging is enabled.
+  <br /><br />
+
+  
+  
 <u>Emulicious Debugger</u><br />
 Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install Emulicious Debugger extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete launch.json file accordingly:
 <!--
@@ -47,39 +65,14 @@ Follow the Hello World main.c program in devkitSMS Programming Setup.  Open C:\H
 </pre>
 <br />
 Fortunately, we can leverage the same launch.json and tasks.json files as before.  Launch Emulicious | Press F5.  Emulicious debugger should now break and debug step through C source code!  In the external debugger navigate the Z80 assembly code wrapped in C functions via output.map to better understand C / Z80 code!
+<!--
+<a href="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s930/DebuggingSource.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="645" data-original-width="930" src="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s600/DebuggingSource.png"/></a>
+-->
 <br /><br />
   
-  
-  
-For completeness, in order to better understand  relationship between Sega Master System source code written in C and generated Z80 assembly code, let's debug step through Hello World program written in C using the devkitSMS.
-  <br /><br />
-  This is also possible with the Emulicious Debugger
-  <br /><br />
-  Follow the Hello World main.c program in devkitSMS Programming Setup.  Open HelloWorld folder in VS Code.  Modify build.bat script ever so slightly that is add <b>--debug</b> flag to the SDCC commands:
-
+TROUBLESHOOTING<br />
+If you ever see the error popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious not launched
 <br /><br />
-For completeness, we would eventually like to better understand the relationship between SMS code written in C and the generated Z80 assembly code.  This is also possible with the Emulicious Debugger
-  <br /><br />
-  Follow the Hello World main.c program in devkitSMS Programming Setup.  Open HelloWorld folder in VS Code.  Modify build.bat script ever so slightly : basicall add --debug flag to the SDCC commands
-  e.g.
-  <pre class="csharp" name="code">
-  sdcc --debug -c -mz80 --std-sdcc99 main.c
-  sdcc --debug -mz80 --no-std-crt0 --data-loc 0xC000 -o output.ihx crt0_sms.rel main.rel SMSlib.lib
-  </pre>
-  Compile step will now add main.adb file.  Link step will now add output.cdb.  Include the 2x JSON files similar to above e.g. launch.json and tasks.json.  Ctrl + Shift + B to build output.sms.  In VS Code set break point(s).  As above, either click output.sms and Debug File OR simply F5.  this will launch the Emulicous Debugger externally.  Press F5 to advance to break point to switch to Emulicous Debugger internally within VS Code and debug step thru the C Code.
-  <br /><br />
-  Finally, in external Emulicous Debugger click any one of functions and view the generated compile Z80 asm code
-  // to better understand etc.
-  
-  
-  <br /><br />
-  TODO
-  E:\Steven\INSTALLATIONSEGA\sdcc3\EmuliciousCdebugging\02_VScodeB
-
-TROUBLESHOOTING
-if you see the error popup "connect ECONNREFUSED 127.0.0:58870" then this is most likely because
-you do not have Emulicious running...
-
 If you see this error make sure that you are running Emulicious and that Remote Debugging is enabled.
   <br /><br />
 
