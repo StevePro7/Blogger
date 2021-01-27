@@ -127,19 +127,19 @@ Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repo to ~/GitHub/vhe
 Install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">Windows</a> + <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> + <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install the following extensions for Z80 ASM development:
 <table width="100%" border="1">
 <tr>
-<td>&nbsp;ASM Code Lens</td>
+<td>&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=maziac.asm-code-lens">ASM Code Lens</a></td>
 <td>&nbsp;Enables code lens, references, hover info, symbol renaming + assembler outline</td>
 </tr>
 <tr>
-<td>&nbsp;Z80 Assembly</td>
+<td>&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=Imanolea.z80-asm">Z80 Assembly</a></td>
 <td>&nbsp;Z80 Assembly support for Visual Studio Code</td>
 </tr>
 <tr>
-<td>&nbsp;Z80 Macro Assembler</td>
+<td>&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=mborik.z80-macroasm">Z80 Macro Assembler</a></td>
 <td>&nbsp;Support for Z80 macro-assemblers in Visual Studio Code</td>
 </tr>
 <tr>
-<td>&nbsp;wla-dx</td>
+<td>&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=KrocCamen.wla-dx-vscode&utm_source=VSCode.pro&utm_campaign=AhmadAwais">WLA-DX for VSCode</a></td>
 <td>&nbsp;VSCode language support for WLA-DX assembler</td>
 </tr>
 </table>  
@@ -293,9 +293,9 @@ Fortunately, we can leverage the same launch.json and tasks.json files as before
 <br /><br />
   
 TROUBLESHOOTING<br />
-If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious is not running.  Also, if F5 does not launch the debugger from VS Code then click output.sms and choose Debug File icon.
+If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious</a> is not running.  Also, if F5 does not launch the debugger from VS Code then click output.sms and choose Debug File icon.
 <br /><br />
 <br />
 <u>Summary</u><br />
-Now that we have a productive Z80 assembler development environment we are in a great spot to analyze existing Indie game projects directly from the SMS Power! Homebrew section and 8-bit commercial games!  This will be the topic of the next post.
+Now that we have a productive Z80 assembler development environment we are in a great spot to analyze existing Indie game projects directly from the SMS Power! <a href="https://www.smspower.org/Homebrew/Index">Homebrew</a> section and 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a>!  This will be the topic of the next post.
 </span>
