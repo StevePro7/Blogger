@@ -1,5 +1,244 @@
-<span style="font-family:verdana;font-size:85%;">
+<span style="font-family:verdana;font-size:85%;"> 
+
+In 2013, we checked out Sega Console Programming to setup video game development environment for the Sega Master System: an 8-bit video game console based on the Z80 chip.  Here we used WLA-DX assembler.  Remember, original cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!  
+<br /><br /> 
+Now we would like to extend our game development environment to Windows and Mac OS/X and Linux for cross platform development and also add better support for automated builds with debugging functionality.
+<!--
+<a href="https://1.bp.blogspot.com/-44q770Rl34g/YBCMbvaANvI/AAAAAAAAGfg/0zfCv2b-e2wcEhnjg9cngL7oZRDnLDzhACLcBGAsYHQ/s724/vhelin.png" imageanchor="1"><img alt="" border="0" width="98%" data-original-height="370" data-original-width="724" src="https://1.bp.blogspot.com/-44q770Rl34g/YBCMbvaANvI/AAAAAAAAGfg/0zfCv2b-e2wcEhnjg9cngL7oZRDnLDzhACLcBGAsYHQ/s600/vhelin.png"/></a>
+-->
+Let's check it out!
+<br /><br />
+
+<b>Assembler</b><br />
+Recommended is the WLA DX assembler.  Git clone the wla-dx repository and follow OS specific instructions.
+<br /><br />
+
+<u>Windows</u><br />
+Clone wla-dx repository to C:\GitHub\vhelin.  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Windows directly from Visual Studio 2017 from the wla-dx\windows folder.
+<br />
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;1. Start | run | cmd</td>
+<td>&nbsp;5. Launch WLA DX.sln in Visual Studio 2017</td>
+</tr>
+<tr>
+<td>&nbsp;2. cd C:\GitHub\vhelin</td>
+<td>&nbsp;6. Build solution as Release | x86 configuration</td>
+</tr>
+<tr>
+<td>&nbsp;3. git clone https://github.com/vhelin/wla-dx.git</td>
+<td>&nbsp;7. WLA DX compiler wla-z80.exe built</td>
+</tr>
+<tr>
+<td>&nbsp;4. cd C:\GitHub\vhelin\wla-dx\windows</td>
+<td>&nbsp;8. WLA DX linker wlalink.exe built</td>
+</tr>
+</table>
+<!--
+<a href="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s799/windows.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="183" data-original-width="799" src="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s600/windows.png"/></a>
+-->
+If you have followed Sega Console Programming tutorial and you already have ConTEXT installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
+<br /><br />
+Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag as now no longer required.
+<table width="99%" border="1">
+<tr>
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+ echo Compile
+ ::"%WLAPATH%wla-z80.exe" -o %1 main.o
+   "%WLAPATH%wla-z80.exe" -o main.o %1
+</pre>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+ echo Link
+ ::"%WLAPATH%wlalink.exe" -drvs linkfile output.sms
+   "%WLAPATH%wlalink.exe"       linkfile output.sms
+</pre>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<br /> 
   
+<u>Mac OS/X</u><br />
+Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install brew as per instructions.  Then follow all instructions here to install wla-dx on Mac OS/X.
+<br /><br />  
+Launch Terminal.  Enter the following commands below.  Accept all prompts to install the latest Xcode tools:
+<pre class="csharp" name="code">
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+Accept prompt to install the latest Xcode tools
+brew install wla-dx
+</pre>
+<!--
+<a href="https://1.bp.blogspot.com/-gAw3mN_AScA/YBCTEgcu24I/AAAAAAAAGf0/E2WjOPVPohMbfh1jMWMrnJlihfp692cXgCLcBGAsYHQ/s711/macosx.png" imageanchor="1"><img alt="" border="0" width="98%" data-original-height="141" data-original-width="711" src="https://1.bp.blogspot.com/-gAw3mN_AScA/YBCTEgcu24I/AAAAAAAAGf0/E2WjOPVPohMbfh1jMWMrnJlihfp692cXgCLcBGAsYHQ/s600/macosx.png"/></a>
+-->
+IMPORTANT<br />
+During installation, you may encounter the following error:
+<i>homebrew-core is a shallow clone. To `brew update`, first run: git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+</i>
+<br /><br />
+At the terminal, type brew update or brew update --force.  If you still get errors then type the following:
+<pre class="csharp" name="code">
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+brew update --force
+brew install wla-dx
+</pre>
+<br />
+
+<u>Linux</u><br />
+Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  Launch Terminal | enter commands.  After completion, wla-z80 and wlalink should work universally.
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;1. cmake --version</td>
+<td>&nbsp;5. mkdir build && cd build</td>
+</tr>
+<tr>
+<td>&nbsp;2. cd ~/GitHub/vhelin</td>
+<td>&nbsp;6. cmake ..</td>
+</tr>
+<tr>
+<td>&nbsp;3. git clone https://github.com/vhelin/wla-dx.git</td>
+<td>&nbsp;7. cmake --build . --config Release</td>
+</tr>
+<tr>
+<td>&nbsp;4. cd ~/GitHub/vhelin/wla-dx</td>
+<td>&nbsp;8. cmake -P cmake_install.cmake</td>
+</tr>
+</table>
+<!--
+<a href="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s858/linux.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="164" data-original-width="858" src="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s600/linux.png"/></a>
+-->
+<br />
+<br />
+<b>Visual Studio Code</b><br />
+Install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">Windows</a> + <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> + <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install the following extensions for Z80 ASM development:
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;ASM Code Lens</td>
+<td>&nbsp;Enables code lens, references, hover info, symbol renaming + assembler outline</td>
+</tr>
+<tr>
+<td>&nbsp;Z80 Assembly</td>
+<td>&nbsp;Z80 Assembly support for Visual Studio Code</td>
+</tr>
+<tr>
+<td>&nbsp;Z80 Macro Assembler</td>
+<td>&nbsp;Support for Z80 macro-assemblers in Visual Studio Code</td>
+</tr>
+<tr>
+<td>&nbsp;wla-dx</td>
+<td>&nbsp;VSCode language support for WLA-DX assembler</td>
+</tr>
+</table>  
+<br />
+<br /> 
+<u>Hello World</u><br />
+Download and extract the obligatory "Hello World" to C:\HelloWorld or ~/HelloWorld.  Rename file main.asm.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
+<ol>
+<li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
+<li>&nbsp;Ensure case sensitive folders + files are used at all times for include files</li>
+<li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
+</ol>
+<br />
+Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.bat">build.bat</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.sh">build.sh</a></td>
+</tr>
+<tr>
+<td>
+<table border="0">
+<tr>
+<td width="99%">
+<pre class="csharp" name="code">
+&nbsp;@echo off
+&nbsp;cls
+
+&nbsp;wla-z80 -o main.o main.asm 
+
+&nbsp;echo [objects] > linkfile
+&nbsp;echo main.o >> linkfile
+
+&nbsp;wlalink linkfile output.sms
+
+&nbsp;::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+&nbsp;output.sms
+</pre>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table border="0">
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;@echo off
+&nbsp;clear
+
+&nbsp;wla-z80 -o main.o main.asm
+
+&nbsp;echo [objects] > linkfile
+&nbsp;echo main.o >> linkfile
+
+&nbsp;wlalink linkfile output.sms
+
+&nbsp;java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms
+&nbsp;::output.sms
+</pre>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+ -->
+<br />
+  
+Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b>.vscode</b> hidden folder and tasks.json file here.
+
+<!-- 
+tasks.json
+<pre class="csharp" name="code">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+    "osx": {
+        "command": "./build.sh"
+    },
+    "windows": {
+        "command": "build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+</pre>
+ -->
+Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!
+<br /><br />
+IMPORTANT<br />
+Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
+
+<br /><br /><br>
 <u>Emulicious Debugger</u><br />
 Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install Emulicious Debugger extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete launch.json file accordingly:
 <!--
@@ -56,7 +295,7 @@ Fortunately, we can leverage the same launch.json and tasks.json files as before
 TROUBLESHOOTING<br />
 If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because Emulicious is not running.  Also, if F5 does not launch the debugger from VS Code then click output.sms and choose Debug File icon.
 <br /><br />
-
-
-  
+<br />
+<u>Summary</u><br />
+Now that we have a productive Z80 assembler development environment we are in a great spot to analyze existing Indie game projects directly from the SMS Power! Homebrew section and 8-bit commercial games!  This will be the topic of the next post.
 </span>
