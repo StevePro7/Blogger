@@ -1,6 +1,6 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-In 2013, we checked out Sega Console Programming to setup video game development environment for the Sega Master System: an 8-bit video game console based on the Z80 chip.  Here we used WLA-DX assembler.  Remember, original cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!  
+In 2013, we checked out <a href="http://steveproxna.blogspot.com/2013/09/sega-console-programming.html">Sega Console Programming</a> to setup video game development environment for the Sega Master System: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler.  Remember, original cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!  
 <br /><br /> 
 Now we would like to extend our game development environment to Windows and Mac OS/X and Linux for cross platform development and also add better support for automated builds with debugging functionality.
 <!--
@@ -10,11 +10,11 @@ Let's check it out!
 <br /><br />
 
 <b>Assembler</b><br />
-Recommended is the WLA DX assembler.  Git clone the wla-dx repository and follow OS specific instructions.
+Recommended is the <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler.  Git clone the <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repository and follow OS specific instructions.
 <br /><br />
 
 <u>Windows</u><br />
-Clone wla-dx repository to C:\GitHub\vhelin.  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Windows directly from Visual Studio 2017 from the wla-dx\windows folder.
+Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repository to C:\GitHub\vhelin.  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Windows directly from Visual Studio 2017 from the <a href="https://github.com/vhelin/wla-dx/tree/master/windows">wla-dx\windows</a> folder.
 <br />
 <table width="99%" border="1">
 <tr>
@@ -37,7 +37,7 @@ Clone wla-dx repository to C:\GitHub\vhelin.  Instructions on GitHub describe ho
 <!--
 <a href="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s799/windows.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="183" data-original-width="799" src="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s600/windows.png"/></a>
 -->
-If you have followed Sega Console Programming tutorial and you already have ConTEXT installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
+If you have followed Sega Console Programming tutorial and you already have <a href="http://www.contexteditor.org/downloads">ConTEXT</a> installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
 <br /><br />
 Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag as now no longer required.
 <table width="99%" border="1">
@@ -74,7 +74,7 @@ Also, tweak the original Compile.bat file as all main entry points will now be v
 <br /> 
   
 <u>Mac OS/X</u><br />
-Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install brew as per instructions.  Then follow all instructions here to install wla-dx on Mac OS/X.
+Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install <a href="https://brew.sh">brew</a> as per instructions.  Then follow all instructions <a href="http://macappstore.org/wla-dx">here</a> to install wla-dx on Mac OS/X.
 <br /><br />  
 Launch Terminal.  Enter the following commands below.  Accept all prompts to install the latest Xcode tools:
 <pre class="csharp" name="code">
@@ -99,7 +99,7 @@ brew install wla-dx
 <br />
 
 <u>Linux</u><br />
-Clone wla-dx repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  Launch Terminal | enter commands.  After completion, wla-z80 and wlalink should work universally.
+Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  Launch Terminal | enter commands.  After completion, wla-z80 and wlalink should work universally.
 <table width="100%" border="1">
 <tr>
 <td>&nbsp;1. cmake --version</td>
@@ -146,7 +146,7 @@ Install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">W
 <br />
 <br /> 
 <u>Hello World</u><br />
-Download and extract the obligatory "Hello World" to C:\HelloWorld or ~/HelloWorld.  Rename file main.asm.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
+Download and extract the obligatory "<a href="http://www.smspower.org/maxim/uploads/HowToProgram/helloworld.zip">Hello World</a>" to C:\HelloWorld or ~/HelloWorld.  Rename file main.asm.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
 <ol>
 <li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
 <li>&nbsp;Ensure case sensitive folders + files are used at all times for include files</li>
@@ -240,7 +240,7 @@ Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicio
 
 <br /><br /><br>
 <u>Emulicious Debugger</u><br />
-Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install Emulicious Debugger extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete launch.json file accordingly:
+Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a> extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete launch.json file accordingly:
 <!--
 <a href="https://1.bp.blogspot.com/-pYDXDM2hO8I/YBGkOwvJQRI/AAAAAAAAGgQ/NaBineBIvOMWhH6YGbvvJ21OIrz1-HGmQCLcBGAsYHQ/s897/EmuliciousDebugger.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="99%" data-original-height="489" data-original-width="897" src="https://1.bp.blogspot.com/-pYDXDM2hO8I/YBGkOwvJQRI/AAAAAAAAGgQ/NaBineBIvOMWhH6YGbvvJ21OIrz1-HGmQCLcBGAsYHQ/s600/EmuliciousDebugger.png"/></a>
 
