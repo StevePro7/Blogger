@@ -1,6 +1,7 @@
 TODO
 
 06/02/2021
+01.
 Exclude files from Explorer in Visual Studio Code
 
 GOOGLE
@@ -21,6 +22,28 @@ E.G.
 **/*.rel
 **/*.sym
 
+settings.json
+E:\GitHub\StevePro7\VanHalenASM\src\06-Basic\dev\.vscode
+
+
+02.
+Ctrl+Shift+B
+Terminal menu | Run Build Task...
+tasks.json
+
+If for some reason you get the following error complaining that build.bat is not a Powershell cmdlet
+
+the configure
+"windows": {
+        "command": "${workspaceFolder}/build.bat"
+      },
+
+
+
+
+build.bat : The term 'build.bat' is not recognized as the name of a cmdlet, function, script file, or 
+operable program. Check the spelling of the name, or if a path was included, verify that the path is 
+correct and try again.
 
 
 
