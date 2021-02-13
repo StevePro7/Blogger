@@ -1,6 +1,6 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-In 2013, we checked out <a href="http://steveproxna.blogspot.com/2013/09/sega-console-programming.html">Sega Console Programming</a> to setup video game development environment for the Sega Master System: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler.  Remember, original cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!  
+In 2013, we checked out <a href="http://steveproxna.blogspot.com/2013/09/sega-console-programming.html">Sega Console Programming</a> to setup video game development environment for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler.  Remember, original cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!  
 <br /><br /> 
 Now we would like to extend our game development environment to Windows and Mac OS/X and Linux for cross platform development and also add better support for automated builds with debugging functionality.
 
@@ -39,7 +39,7 @@ Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repository to C:\Git
 
 If you have followed <a href="http://steveproxna.blogspot.com/2014/09/z88dk-programming-setup.html">z88dk Programming Setup</a> tutorial and you already have <a href="http://www.contexteditor.org/downloads">ConTEXT</a> installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
 <br /><br />
-Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag as now no longer required.
+Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag is now no longer required.
 <table width="99%" border="1">
 <tr>
 <td>
@@ -279,7 +279,7 @@ In Visual Studio Code, open main.asm and set breakpoints.  Press F5.  Emulicious
 <br /><br />
 
 <u>Emulicious Debugger II</u><br />
-For completeness, to better understand relationship between Sega Master System source code written in C and Z80 assembly code, let's debug step through "Hello World" program written in C using the devkitSMS.
+For completeness, to better understand relationship between <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> source code written in C and Z80 assembly code, let's debug step through "Hello World" program written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
 <br /><br />
 Follow the Hello World main.c program in <a href="https://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a>.  Open C:\HelloWorld folder in VS Code.  Modify build.bat script ever so slightly that is add <b>--debug</b> flag to the SDCC commands for example:
 <pre class="csharp" name="code">
