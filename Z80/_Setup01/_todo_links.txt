@@ -1,0 +1,70 @@
+15/02/2021
+links to files to add once published on github
+
+BEFORE
+https://github.com/StevePro7/Z80test
+
+AFTER
+https://github.com/SteveProXNA/Z80_code
+
+
+00.
+Download and extract the obligatory
+main.asm
+<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/main.asm">main.asm</a>
+
+
+01.
+Add build.bat file
+and build.sh  file
+<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/build.bat">build.bat</a>
+<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/build.sh">build.sh</a>
+
+
+02.
+Create tasks.json file from template | Others
+.vscode
+<a href="https://github.com/StevePro7/Z80test/tree/main/01-Intro/HelloWorld/.vscode">.vscode</a>
+
+tasks.json
+<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/.vscode/tasks.json">tasks.json</a>
+
+
+03.
+Press Ctrl + Shift + B to execute build script => compile, link and run output.sms
+<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/output.sms">output.sms</a>
+
+
+04.
+Complete launch.json file accordingly:
+<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/.vscode/launch.json">launch.json</a>
+
+
+05.
+In Visual Studio Code, open main.asm
+<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/main.asm">main.asm</a>
+
+
+06.
+Follow the Hello World main.c
+<a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/main.c">main.c</a>
+
+
+Modify build.bat script ever so slightly
+<a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/build.bat">build.bat</a>
+
+
+Fortunately, we can leverage the same launch.json and tasks.json files
+<a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/.vscode/launch.json">launch.json</a>
+<a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/.vscode/tasks.json">tasks.json</a>
+
+
+wrapped in C functions via output.map
+<a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/output.map">output.map</a>
+
+
+07.
+Also, if F5 does not launch the debugger from VS Code then click output.sms
+<a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/output.sms">output.sms</a>
+
+

@@ -146,19 +146,19 @@ Install VS Code for <a href="https://code.visualstudio.com/docs/?dv=win64user">W
 <br />
 <br /> 
 <u>Hello World</u><br />
-Download and extract the obligatory "<a href="http://www.smspower.org/maxim/uploads/HowToProgram/helloworld.zip">Hello World</a>" to C:\HelloWorld or ~/HelloWorld.  Rename file <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/main.asm">main.asm</a>.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
+Download and extract the obligatory "<a href="http://www.smspower.org/maxim/uploads/HowToProgram/helloworld.zip">Hello World</a>" to C:\HelloWorld or ~/HelloWorld.  Rename file main.asm.  Launch VS Code.  Open HelloWorld folder.  Some things to remember when coding Z80 source cross platform:
 <ol>
 <li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
 <li>&nbsp;Ensure case sensitive folders + files are used at all times for include files</li>
 <li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
 </ol>
 <br />
-Add <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/build.bat">build.bat</a> file to compile, link and run souce code on Windows and <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/build.sh">build.sh</a> file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
+Add build.bat file to compile, link and run souce code on Windows and build.sh file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
 
 <table width="99%" border="1">
 <tr>
-<td>&nbsp;<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/build.bat">build.bat</a></td>
-<td>&nbsp;<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/build.sh">build.sh</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.bat">build.bat</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/TODO/build.sh">build.sh</a></td>
 </tr>
 <tr>
 <td>
@@ -176,8 +176,8 @@ Add <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/
 
 &nbsp;wlalink linkfile output.sms
 
-&nbsp;java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
-&nbsp;::output.sms
+&nbsp;::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+&nbsp;output.sms
 </pre>
 </td>
 </tr>
@@ -199,7 +199,7 @@ Add <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/
 &nbsp;wlalink linkfile output.sms
 
 &nbsp;java -jar ~/SEGA/Emulicious/Emulicious.jar output.sms
-&nbsp;#output.sms
+&nbsp;::output.sms
 </pre>
 </td>
 </tr>
@@ -210,10 +210,10 @@ Add <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/
  
 <br />
   
-Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b><a href="https://github.com/StevePro7/Z80test/tree/main/01-Intro/HelloWorld/.vscode">.vscode</a></b> hidden folder and <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/.vscode/tasks.json">tasks.json</a> file here.
+Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b>.vscode</b> hidden folder and tasks.json file here.
 
  
-<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/.vscode/tasks.json">tasks.json</a>
+tasks.json
 <pre class="csharp" name="code">
 {
     "version": "2.0.0",
@@ -233,18 +233,18 @@ Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.js
 }
 </pre>
 
-Press Ctrl + Shift + B to execute build script => compile, link and run <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/output.sms">output.sms</a> launched from Emulicious!
+Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!
 <br /><br />
 IMPORTANT<br />
 Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
 
 <br /><br /><br>
 <u>Emulicious Debugger</u><br />
-Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a> extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/.vscode/launch.json">launch.json</a> file accordingly:
+Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a> extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete launch.json file accordingly:
 
 <a href="https://1.bp.blogspot.com/-pYDXDM2hO8I/YBGkOwvJQRI/AAAAAAAAGgQ/NaBineBIvOMWhH6YGbvvJ21OIrz1-HGmQCLcBGAsYHQ/s897/EmuliciousDebugger.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="99%" data-original-height="489" data-original-width="897" src="https://1.bp.blogspot.com/-pYDXDM2hO8I/YBGkOwvJQRI/AAAAAAAAGgQ/NaBineBIvOMWhH6YGbvvJ21OIrz1-HGmQCLcBGAsYHQ/s600/EmuliciousDebugger.png"/></a>
 
-<a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/.vscode/launch.json">launch.json</a>
+launch.json
 <pre class="csharp" name="code">
 {
     "version": "0.2.0",
@@ -275,19 +275,19 @@ Launch Emulicious.  Configure the options below.  Open Tools menu | Debugger.  C
 </tr>
 </table>
 <br />
-In Visual Studio Code, open <a href="https://github.com/StevePro7/Z80test/blob/main/01-Intro/HelloWorld/main.asm">main.asm</a> and set breakpoints.  Press F5.  Emulicious debugger should now break and debug step through Z80 assembly source code!  Access register variables, watch window, call stack etc.
+In Visual Studio Code, open main.asm and set breakpoints.  Press F5.  Emulicious debugger should now break and debug step through Z80 assembly source code!  Access register variables, watch window, call stack etc.
 <br /><br />
 
 <u>Emulicious Debugger II</u><br />
 For completeness, to better understand relationship between <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> source code written in C and Z80 assembly code, let's debug step through "Hello World" program written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
 <br /><br />
-Follow the Hello World <a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/main.c">main.c</a> program in <a href="https://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a>.  Open C:\HelloWorld folder in VS Code.  Modify <a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/build.bat">build.bat</a> script ever so slightly that is add <b>--debug</b> flag to the SDCC commands for example:
+Follow the Hello World main.c program in <a href="https://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a>.  Open C:\HelloWorld folder in VS Code.  Modify build.bat script ever so slightly that is add <b>--debug</b> flag to the SDCC commands for example:
 <pre class="csharp" name="code">
   sdcc --debug -c -mz80 --std-sdcc99 main.c
   sdcc --debug -mz80 --no-std-crt0 --data-loc 0xC000 -o output.ihx crt0_sms.rel main.rel SMSlib.lib
 </pre>
 <br />
-Fortunately, we can leverage the same <a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/.vscode/launch.json">launch.json</a> and <a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/.vscode/tasks.json">tasks.json</a> files as before.  Launch Emulicious | Press F5.  Emulicious debugger should now break and debug step through C source code!  In the external debugger navigate the Z80 assembly code wrapped in C functions via <a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/output.map">output.map</a> to better understand C / Z80 code!
+Fortunately, we can leverage the same launch.json and tasks.json files as before.  Launch Emulicious | Press F5.  Emulicious debugger should now break and debug step through C source code!  In the external debugger navigate the Z80 assembly code wrapped in C functions via output.map to better understand C / Z80 code!
 
 <a href="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s930/DebuggingSource.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="645" data-original-width="930" src="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s600/DebuggingSource.png"/></a>
 
@@ -295,7 +295,7 @@ Fortunately, we can leverage the same <a href="https://github.com/StevePro7/Z80t
 <!--<br />-->
   
 TROUBLESHOOTING<br />
-If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious</a> is not running.  Also, if F5 does not launch the debugger from VS Code then click <a href="https://github.com/StevePro7/Z80test/blob/main/02-Outro/HelloWorld/output.sms">output.sms</a> and choose Debug File icon.
+If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious</a> is not running.  Also, if F5 does not launch the debugger from VS Code then click output.sms and choose Debug File icon.
 <br /><br />
 <br />
 <u>Summary</u><br />
