@@ -1,3 +1,11 @@
+Intro
+16/01/2021
+
+Intro</br>
+In the previous post we setup Z80 ASM dev env + simple Hello World program.  Now we'd like to build our own from scratch.  But first we need to build on Hello World and want to check out medium to large homebrew projects to gain better understanding how to achive this.  Also, disassemble commercial games written back in the day.  Finally, if too daunting then could always leverage 5yrs SMS dev using C + devkitSMS on SDCC to better understand compiled Z80 code generated in order to build Z80 asm project from scratch.
+
+
+OLD
 In the previous post
 blah blah blah
 
@@ -10,32 +18,5 @@ https://www.smspower.org/Articles/CreateARacingGame
 e.g.
 Sega Console Programming
 However, all assembly programming and machine code written thus far require a BASIC program driver; Cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!
-
-
-Launch VS Code
-Launch Emulicious
-
-Create folder
-CarRacerSMS
-copy in the following files from HelloWorld [previous post]
-build.bat
-build.sh
-.vscode folder
-launch.json
-tasks.json
-
-finally copy game code main.asm from 
-C:\Users\TEST.000\Downloads\Racer-SMS-2.00\Racer (classic)\Version 1.12
-to CarRacerSMS
-
-Follow along the tutorial to better understand what all the Z80 code does
-01.
-Build, Link, Run
-Ctrl+Shift+B
-
-02.
-F5 to debug step thru the z80 source code
-
-
 
 
