@@ -1,99 +1,28 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-<table width="100%" border="0">
-<tr>
-<td>
-<table width="100%" border="1">
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/CarRacer01">Car Racer [classic]</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/CarRacer02">Car Racer [reboot]</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/DiggerBall">Digger Ball</a></td>
-</tr>
-</table>
-</td>
-<td>&nbsp;</td>
-<td>
-<table width="100%" border="1">
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/FairyForest">Fairy Forest</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/Astroswab">Astroswab</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/MegaManII">Mega Man II</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-  
+Homebrew<br />
+After completing "Hello World" probably the next best place to look is the "Racing Game" tutorial on SMS Power! which has a very in depth tutorial on how to build your first game in Z80 assembly code on the Sega Master System.
 <br /><br />
-  
-<table width="100%" border="0">
-<tr>
-<td>
-<table width="100%" border="1">
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/AfterBurner">After Burner</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://github.com/TODO/AlienSyndrome">Alien Syndrome</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;SG-1000 / SC-3000</td>
-<td valign="top">&nbsp;<a href="https://TODO/CongoBongo">Congo Bongo</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;SG-1000 / SC-3000</td>
-<td valign="top">&nbsp;<a href="https://TODO/Flicky">Flicky</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://github.com/TODO/Golden Axe">Golden Axe</a></td>
-</tr>
-</table>
-</td>
-<td>&nbsp;</td>
-<td>
-<table width="100%" border="1">
-<tr>
-<td valign="top">&nbsp;SG-1000 / SC-3000</td>
-<td valign="top">&nbsp;<a href="https://TODO/MonacoGP">Monaco GP</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/OutRun">Out Run</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://github.com/TODO/Shinobi">Shinobi</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/Transbot">Transbot</a></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Sega Master System</td>
-<td valign="top">&nbsp;<a href="https://TODO/WonderBoy">Wonder Boy</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-  
+TODO links
 <br /><br />
+TODO copy the 3x bullet points from previous post and leverage the .vscode + 2x JSON config files + build scripts
+<br /><br />
+Create folder C:\CarRacer\classic.  Copy the following folder and files from Hello World [previous post]
+  .vscode => launch.json + tasks.json
+  build.bat + build.sh
+  bullet points
   
+Download source code.    Copy Assets folder to C:\CarRacer\classic.  Copy main.asm file from Racer (classic) folder Version 1.12 here.  Finally, Modify main.asm folder \ to / to be cross platform compatible.  Ctrl + Shift + B to build + run Car Racer classic
+<br /><br />
+Launch Emulicious.  Set break points.  Press F5 to debug step thru ASM code 
+  <br /><br />
+  Follow similar process for Car Racer (rebooted).  
+  Create folder C:\CarRacer\rebooted.  Copy the following folder and files from Hello World [previous post]
+  <br /><br />
+  Download source code.  Copy all assets folders that have *.inc files to C:\CarRacer\rebooted.  Copy main.asm file from Racer (rebooted) folder here.  Finally, Modify main.asm folder \ to / to be cross platform compatible.
+  
+  Ctrl + Shift + B to build + run Car Racer classic
+<br /><br />
+Launch Emulicious.  Set break points.  Press F5 to debug step thru ASM code 
+  <br /><br />
 </span>
