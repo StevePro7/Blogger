@@ -1,0 +1,28 @@
+<span style="font-family:verdana;font-size:85%;"> 
+
+Commercial Games<br />
+  After checkout homebrew games let's disassemble some commercial games to compare and constrast development 
+  e.g. Flicky for SG-1000
+  Create folder C:\Flicky
+  Copy the following folder and files from Hello World [previous post]
+  .vscode => launch.json + tasks.json
+  build.bat + build.sh
+  bullet points
+  Download ROM
+  Launch Emulicious
+  Open Flicky.sg ROM
+  Tools menu | Debugger.  In the Debugger window | Ctrl + A to select all disassembled code.  Save Flicky.asm
+  Use BinaryFileWrite utility to replace all the ".incbin ..." statements with actual binary data files
+  TODO => Rename Flicky.sg as Flicky.sms as UTIL only works with SMS file extension
+  Copy both Flicky.asm and Flicky.sms to bin/Debug/input folder
+  Update BinaryFileWrite.exe.config folder => set key="fileName" value to filename e.g. "Flicky"
+  Double click EXE to generate in output folder new "Flicky" folder and main.asm and data folder
+  Copy main.asm and data folder to C:\Flicky
+  Launch VS Code
+  Open folder C:\Flicky
+  Ctrl + Shift + B to build output.sms
+  Launch Emulicious
+  Press F5 to debug step thru code
+  Remember on Mac + Linux to chmod +x build.sh
+  <br /><br />
+</span>
