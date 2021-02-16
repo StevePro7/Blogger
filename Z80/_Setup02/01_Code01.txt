@@ -4,8 +4,21 @@
 In the previous post, we setup the obligatory "Hello World" program.  Now we would like to analyze some larger Z80 projects.  Checkout "Racing Game" article on SMS Power! which is an in depth coding tutorial.
 <br /><br />
 Create C:\CarRacerClassic or ~/CarRacerClassic.  Copy <b>.vscode</b> folder from previous post with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
-  
 <br /><br />
+Download source code.  Copy Assets folder to CarRacerClassic.  Copy main.asm file from Racer (classic) folder Version 1.12 here also.  Launch VS Code.  Some things to remember when coding Z80 source cross platform:
+<ol>
+<li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
+<li>&nbsp;Ensure case sensitive folders + files are used at all times for include files</li>
+<li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
+</ol>
+<br />
+<!--<br />-->
+Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!  Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
+<br /><br />
+  
+  Download source code.  Copy Assets folder beneath CarRacerClassic.  Copy main.asm file from Racer (classic) folder Version 1.12 here also.  Launch VS Code and open folder.  Some things to remember when coding Z80 source cross platform:
+<br /><br />
+  
 After completing "Hello World" probably the next best place to look is the "Racing Game" tutorial on SMS Power! which has a very in depth tutorial on how to build your first game in Z80 assembly code on the Sega Master System.
 <br /><br />
 TODO links
