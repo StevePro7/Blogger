@@ -1,7 +1,5 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-
-  <br /><br />
 <u>Homebrew Games</u><br />
 In the previous post, we setup the obligatory "Hello World" program.  Now we would like to analyze some larger Z80 projects.  Checkout "Racing Game" article on SMS Power! which is an in depth coding tutorial.
 <br /><br />
@@ -19,14 +17,14 @@ Download source code.  Copy Assets folder to CarRacerClassic.  Copy main.asm fil
 <!--<br />-->
 Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!  Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
 <br /><br />
-<!--<br />-->
+
 <b>Car Racer</b> (rebooted)<br />
 Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b>.vscode</b> folder from as above with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
 <br /><br />
 Download source code.  Copy all assets folders with *.inc files to CarRacerRebooted.  Copy main.asm file from Racer (rebooted) folder here also.  Launch VS Code.  Tweak Z80 assembly code as above to be cross platform.
 <br /><br />
 Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
-  
+<!--
 <table width="100%" border="0">
 <tr>
 <td>
@@ -80,19 +78,10 @@ Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat
 </td>
 </tr>
 </table>
+-->  
+<br />
+<!--<br />-->
   
-  <br /><br />
-  
-
-  
-  Ctrl + Shift + B to build + run Car Racer classic
-<br /><br />
-Launch Emulicious.  Set break points.  Press F5 to debug step thru ASM code 
-  <br /><br />
-  Finally, repeat this process to gain better understanding into other ASM homebrew projects
-  TODO add Tables.txt
-<br /><br />  
-<br /><br />
 IMPORTANT<br />
 For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
 <br /><br />
