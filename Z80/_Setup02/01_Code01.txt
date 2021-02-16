@@ -1,5 +1,9 @@
 <span style="font-family:verdana;font-size:85%;"> 
+IMPORTANT<br />
+  For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
+  <br /><br />
 
+  <br /><br />
 <u>Homebrew Games</u><br />
 In the previous post, we setup the obligatory "Hello World" program.  Now we would like to analyze some larger Z80 projects.  Checkout "Racing Game" article on SMS Power! which is an in depth coding tutorial.
 <br /><br />
@@ -14,23 +18,7 @@ Download source code.  Copy Assets folder to CarRacerClassic.  Copy main.asm fil
 <br />
 <!--<br />-->
 Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!  Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
-<br /><br />
-  
-  Download source code.  Copy Assets folder beneath CarRacerClassic.  Copy main.asm file from Racer (classic) folder Version 1.12 here also.  Launch VS Code and open folder.  Some things to remember when coding Z80 source cross platform:
-<br /><br />
-  
-After completing "Hello World" probably the next best place to look is the "Racing Game" tutorial on SMS Power! which has a very in depth tutorial on how to build your first game in Z80 assembly code on the Sega Master System.
-<br /><br />
-TODO links
-<br /><br />
-TODO copy the 3x bullet points from previous post and leverage the .vscode + 2x JSON config files + build scripts
-<br /><br />
-Create folder C:\CarRacer\classic.  Copy the following folder and files from Hello World [previous post]
-  .vscode => launch.json + tasks.json
-  build.bat + build.sh
-  bullet points
-  
-Download source code.    Copy Assets folder to C:\CarRacer\classic.  Copy main.asm file from Racer (classic) folder Version 1.12 here.  Finally, Modify main.asm folder \ to / to be cross platform compatible.  Ctrl + Shift + B to build + run Car Racer classic
+<br /><br />  
 <br /><br />
 Launch Emulicious.  Set break points.  Press F5 to debug step thru ASM code 
   <br /><br />
@@ -45,5 +33,8 @@ Launch Emulicious.  Set break points.  Press F5 to debug step thru ASM code
   <br /><br />
   Finally, repeat this process to gain better understanding into other ASM homebrew projects
   TODO add Tables.txt
+  <br /><br />
+  IMPORTANT<br />
+  For all examples here you can launch Emulicious separately and press F5 to debug step through code
   <br /><br />
 </span>
