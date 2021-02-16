@@ -1,12 +1,12 @@
 <span style="font-family:verdana;font-size:85%;"> 
-IMPORTANT<br />
-  For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
-  <br /><br />
+
 
   <br /><br />
 <u>Homebrew Games</u><br />
 In the previous post, we setup the obligatory "Hello World" program.  Now we would like to analyze some larger Z80 projects.  Checkout "Racing Game" article on SMS Power! which is an in depth coding tutorial.
 <br /><br />
+  
+<b>Car Racer</b> (classic)<br />
 Create C:\CarRacerClassic or ~/CarRacerClassic.  Copy <b>.vscode</b> folder from previous post with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
 <br /><br />
 Download source code.  Copy Assets folder to CarRacerClassic.  Copy main.asm file from Racer (classic) folder Version 1.12 here also.  Launch VS Code.  Some things to remember when coding Z80 source cross platform:
@@ -18,14 +18,18 @@ Download source code.  Copy Assets folder to CarRacerClassic.  Copy main.asm fil
 <br />
 <!--<br />-->
 Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!  Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
-<br /><br />  
 <br /><br />
-Launch Emulicious.  Set break points.  Press F5 to debug step thru ASM code 
-  <br /><br />
+<!--<br />-->
+<b>Car Racer</b> (rebooted)<br />
+Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b>.vscode</b> folder from as above with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
+<br /><br />
+Download source code.  Copy all assets folders with *.inc files to CarRacerRebooted.  Copy main.asm file from Racer (rebooted) folder here also.  Launch VS Code.  Tweak Z80 assembly code as above to be cross platform.
+<br /><br />
+  Finally, Modify main.asm folder \ to / to be cross platform compatible.
   Follow similar process for Car Racer (rebooted).  
   Create folder C:\CarRacer\rebooted.  Copy the following folder and files from Hello World [previous post]
   <br /><br />
-  Download source code.  Copy all assets folders that have *.inc files to C:\CarRacer\rebooted.  Copy main.asm file from Racer (rebooted) folder here.  Finally, Modify main.asm folder \ to / to be cross platform compatible.
+
   
   Ctrl + Shift + B to build + run Car Racer classic
 <br /><br />
@@ -33,8 +37,9 @@ Launch Emulicious.  Set break points.  Press F5 to debug step thru ASM code
   <br /><br />
   Finally, repeat this process to gain better understanding into other ASM homebrew projects
   TODO add Tables.txt
-  <br /><br />
-  IMPORTANT<br />
-  For all examples here you can launch Emulicious separately and press F5 to debug step through code
-  <br /><br />
+<br /><br />  
+<br /><br />
+IMPORTANT<br />
+For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
+<br /><br />
 </span>
