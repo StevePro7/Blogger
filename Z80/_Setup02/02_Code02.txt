@@ -11,7 +11,7 @@ Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | p
 <i>Utility</i><br />
 Download Binary-File-Write utility.  Copy both Transbot.asm and Transbot.sms files to input folder.  Update the config file | set key="fileName" value to "Transbot".  Run BinaryFileWrite.exe.  Copy output to Transbot folder.
 <br /><br />
-Launch VS Code.  Open Transbot folder.  All ".incbin" statements should now refer to binary data files.  
+Launch VS Code.  Open Transbot folder.  All ".incbin" statements should now refer to binary data files.  Press Ctrl + Shift + B to execute build script => compile, link and run.  Press F5 to debug step through Z80 code!
   
 <br /><br />
 Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save Transbot.asm.  Replace all ".incbin ..." references to DAT files using  Binary-File-Write utility.
