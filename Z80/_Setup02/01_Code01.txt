@@ -6,8 +6,11 @@ Now let us enhance this process to disassemble some commercial games built for t
 <b>Transbot</b><br />
 Create C:\Transbot or ~/Transbot folder.  Copy <b>.vscode</b> folder from above with launch.json and tasks.json files.  Copy build.bat + build.sh too.  Don't forget to grant execute permission chmod +x build.sh command.
 <br /><br />
-  
-Create C:\Transbot or ~/Transbot.  Copy <b>.vscode</b> folder from as above with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
+Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save Transbot.asm.  Replace all ".incbin ..." statements with *.DAT file references:
+  <br /><br />
+Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save Transbot.asm.  Replace all ".incbin ..." references to DAT files using  Binary-File-Write utility.
+  <br /><br />
+Download ROM.  Launch Emulicious | open ROM.  Tools menu | Debugger.    In Debugger window | Ctrl + A to select all disassembled code.  Save Transbot.asm.  Next, use the Binary-File-Write utility to replace all ".incbin ..." with DAT files.
   <br /><br />
   
   Copy <b>.vscode</b> folder from previous post with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
