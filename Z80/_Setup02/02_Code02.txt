@@ -12,37 +12,6 @@ Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | p
 Download Binary-File-Write utility.  Copy both Transbot.asm and Transbot.sms files to input folder.  Update the config file | set key="fileName" value to "Transbot".  Run BinaryFileWrite.exe.  Copy output to Transbot folder.
 <br /><br />
 Launch VS Code.  Open Transbot folder.  All ".incbin" statements should now refer to binary data files.  Press Ctrl + Shift + B to execute build script => compile, link and run.  Press F5 to debug step through Z80 code!
-  
 <br /><br />
-Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save Transbot.asm.  Replace all ".incbin ..." references to DAT files using  Binary-File-Write utility.
-  <br /><br />
-Download ROM.  Launch Emulicious | open ROM.  Tools menu | Debugger.    In Debugger window | Ctrl + A to select all disassembled code.  Save Transbot.asm.  Next, use the Binary-File-Write utility to replace all ".incbin ..." with DAT files.
-  <br /><br />
-  
-  Copy <b>.vscode</b> folder from previous post with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
-  <br /><br />
-  After checkout homebrew games let's disassemble some commercial games to compare and constrast development 
-  e.g. Flicky for SG-1000
-  Create folder C:\Flicky
-  Copy the following folder and files from Hello World [previous post]
-  .vscode => launch.json + tasks.json
-  build.bat + build.sh
-  bullet points
-  Download ROM
-  Launch Emulicious
-  Open Flicky.sg ROM
-  Tools menu | Debugger.  In the Debugger window | Ctrl + A to select all disassembled code.  Save Flicky.asm
-  Use BinaryFileWrite utility to replace all the ".incbin ..." statements with actual binary data files
-  TODO => Rename Flicky.sg as Flicky.sms as UTIL only works with SMS file extension
-  Copy both Flicky.asm and Flicky.sms to bin/Debug/input folder
-  Update BinaryFileWrite.exe.config folder => set key="fileName" value to filename e.g. "Flicky"
-  Double click EXE to generate in output folder new "Flicky" folder and main.asm and data folder
-  Copy main.asm and data folder to C:\Flicky
-  Launch VS Code
-  Open folder C:\Flicky
-  Ctrl + Shift + B to build output.sms
-  Launch Emulicious
-  Press F5 to debug step thru code
-  Remember on Mac + Linux to chmod +x build.sh
-  <br /><br />
+<b>Flicky</b><br />
 </span>
