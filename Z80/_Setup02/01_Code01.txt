@@ -1,48 +1,88 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-<u>Commercial Games</u><br />
-Now let us enhance this process to disassemble some commercial games built for the Sega Master System.  This way, we may gain insight into the early development process plus be able to hack original source code!
+<u>Homebrew Games</u><br />
+In the previous post, we setup the obligatory "Hello World" program.  Now we would like to analyze some larger Z80 projects.  Checkout "Racing Game" article on SMS Power! which is an in depth coding tutorial.
 <br /><br />
-<b>Transbot</b><br />
-Create C:\Transbot or ~/Transbot folder.  Copy <b>.vscode</b> folder from above with launch.json and tasks.json files.  Copy build.bat + build.sh too.  Don't forget to grant execute permission chmod +x build.sh command.
-<br /><br />
-Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save as Transbot.asm.  Update all ".incbin ..." statements using the following utility:
-<br /><br />
-Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save Transbot.asm.  Replace all ".incbin ..." statements with *.DAT file references:
-<br /><br />
-<i>Utility</i><br />
-Download Binary-File-Write utility.  Copy both Transbot.asm and Transbot.sms files to input folder.  Update the config file | set key="fileName" value to "Transbot".  Run BinaryFileWrite.exe.  Copy output to Transbot folder.
   
-  <br /><br />
-Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save Transbot.asm.  Replace all ".incbin ..." references to DAT files using  Binary-File-Write utility.
-  <br /><br />
-Download ROM.  Launch Emulicious | open ROM.  Tools menu | Debugger.    In Debugger window | Ctrl + A to select all disassembled code.  Save Transbot.asm.  Next, use the Binary-File-Write utility to replace all ".incbin ..." with DAT files.
-  <br /><br />
+<b>Car Racer</b> (classic)<br />
+Create C:\CarRacerClassic or ~/CarRacerClassic.  Copy <b>.vscode</b> folder from previous post with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
+<br /><br />
+Download source code.  Copy Assets folder to CarRacerClassic.  Copy main.asm file from Racer (classic) folder Version 1.12 here also.  Launch VS Code.  Some things to remember when coding Z80 source cross platform:
+<ol>
+<li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
+<li>&nbsp;Ensure case sensitive folders + files are used at all times for include files</li>
+<li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
+</ol>
+<br />
+<!--<br />-->
+Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!  Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
+<br /><br />
+
+<b>Car Racer</b> (rebooted)<br />
+Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b>.vscode</b> folder from above with launch.json and tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
+<br /><br />
+Download source code.  Copy all assets folders with *.inc files to CarRacerRebooted.  Copy main.asm file from Racer (rebooted) folder here also.  Launch VS Code.  Tweak Z80 assembly code as above to be cross platform.
+<br /><br />
+Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
+<!--
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/Astroswab">Astroswab</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/CarRacer01">Car Racer [classic]</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/CarRacer02">Car Racer [reboot]</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/DiggerBall">Digger Ball</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/DiggerChan">Digger Chan</a></td>
+</tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/FairyForest">Fairy Forest</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/Jetpac">Jetpac</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/KunKunAndKokoKun">KunKun & KokoKun</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/MegaManII">Mega Man II</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sega Master System</td>
+<td valign="top">&nbsp;<a href="https://TODO/Minesweeper">Minesweeper</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+-->  
+<br />
+<!--<br />-->
   
-  Copy <b>.vscode</b> folder from previous post with launch.json + tasks.json.  Copy build.bat + build.sh.  Don't forget to grant execute permission chmod +x build.sh command.
-  <br /><br />
-  After checkout homebrew games let's disassemble some commercial games to compare and constrast development 
-  e.g. Flicky for SG-1000
-  Create folder C:\Flicky
-  Copy the following folder and files from Hello World [previous post]
-  .vscode => launch.json + tasks.json
-  build.bat + build.sh
-  bullet points
-  Download ROM
-  Launch Emulicious
-  Open Flicky.sg ROM
-  Tools menu | Debugger.  In the Debugger window | Ctrl + A to select all disassembled code.  Save Flicky.asm
-  Use BinaryFileWrite utility to replace all the ".incbin ..." statements with actual binary data files
-  TODO => Rename Flicky.sg as Flicky.sms as UTIL only works with SMS file extension
-  Copy both Flicky.asm and Flicky.sms to bin/Debug/input folder
-  Update BinaryFileWrite.exe.config folder => set key="fileName" value to filename e.g. "Flicky"
-  Double click EXE to generate in output folder new "Flicky" folder and main.asm and data folder
-  Copy main.asm and data folder to C:\Flicky
-  Launch VS Code
-  Open folder C:\Flicky
-  Ctrl + Shift + B to build output.sms
-  Launch Emulicious
-  Press F5 to debug step thru code
-  Remember on Mac + Linux to chmod +x build.sh
-  <br /><br />
+IMPORTANT<br />
+For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
+<br /><br />
 </span>
