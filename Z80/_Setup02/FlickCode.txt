@@ -1,0 +1,19 @@
+<pre class="csharp" name="code">
+_LABEL_2AE_:	
+		xor a
+		ld (_RAM_C0E1_), a
+		ld hl, _DATA_2C3_
+		ld de, _RAM_C0E7_
+		ld bc, $0014
+		ldir
+		call _LABEL_207B_
+		jp _LABEL_2D7_
+	
+; Data from 2C3 to 2CA (8 bytes)	
+_DATA_2C3_:	
+	.db $01 $01 $00 $00 $0C $80 $00 $02
+	
+; Data from 2CB to 2D6 (12 bytes)	
+_DATA_2CB_:	
+	.dsb 12, $00
+</pre>
