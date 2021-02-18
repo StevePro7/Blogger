@@ -1,5 +1,21 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
+<u>Commercial Games</u><br />
+Now let us enhance this process to disassemble some commercial games built for the Sega Master System.  This way, we may gain insight into the early development process plus be able to hack original source code!
+<br /><br />
+<b>Transbot</b><br />
+Create C:\Transbot or ~/Transbot folder.  Copy <b>.vscode</b> folder from above with launch.json and tasks.json files.  Copy build.bat + build.sh too.  Don't forget to grant execute permission chmod +x build.sh command.
+<br /><br />
+Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save as Transbot.asm.  Update all ".incbin ..." statements using the following utility:
+<br /><br />
+<i>Utility</i><br />
+Download Binary-File-Write utility.  Copy both Transbot.asm and Transbot.sms files to input folder.  Update the config file | set key="fileName" value to "Transbot".  Run BinaryFileWrite.exe.  Copy output to Transbot folder.
+<br /><br />
+Launch VS Code.  Open Transbot folder.  All ".incbin" statements should now refer to binary data files.  Press Ctrl + Shift + B to execute build script => compile, link and run.  Press F5 to debug step through Z80 code!
+<br /><br />
+<b>Flicky</b><br />
+Create C:\Flicky or ~/Flicky folder.  Repeat entire process for Transbot as above but with Flicky.sg ROM.  Copy the <b>.vscode</b> folder with launch.json and tasks.json files plus build.bat and build.sh.  Retrive main.asm + data folder from utility.  Press Ctrl + Shift + B to execute build script + press F5 to debug step through Z80 code!
+<br /><br />
 <i>Hack</i><br />
 Use this new setup to hack the original source code!  For example, in Flicky you always start at level #1.  Wouudn't it be cool to start at any level?  Also, wouldn't it be cool to have infinite lives?  Let's check it out!
 <br /><br />
@@ -44,27 +60,6 @@ _LABEL_387_:
 -->
 <br />
 Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level; see RAM $C0E8 stores start level loaded from ROM $02C4!
-<br /><br />
-Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level to see RAM $C0E8 stores level count loaded from ROM $02C4
-<br /><br />
-<u>Commercial Games</u><br />
-Now let us enhance this process to disassemble some commercial games built for the Sega Master System.  This way, we may gain insight into the early development process plus be able to hack original source code!
-<br /><br />
-<b>Transbot</b><br />
-Create C:\Transbot or ~/Transbot folder.  Copy <b>.vscode</b> folder from above with launch.json and tasks.json files.  Copy build.bat + build.sh too.  Don't forget to grant execute permission chmod +x build.sh command.
-<br /><br />
-Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save as Transbot.asm.  Update all ".incbin ..." statements using the following utility:
-<br /><br />
-<i>Utility</i><br />
-Download Binary-File-Write utility.  Copy both Transbot.asm and Transbot.sms files to input folder.  Update the config file | set key="fileName" value to "Transbot".  Run BinaryFileWrite.exe.  Copy output to Transbot folder.
-<br /><br />
-Launch VS Code.  Open Transbot folder.  All ".incbin" statements should now refer to binary data files.  Press Ctrl + Shift + B to execute build script => compile, link and run.  Press F5 to debug step through Z80 code!
-<br /><br />
-<b>Flicky</b><br />
-Create C:\Flicky or ~/Flicky folder.  Repeat entire process for Transbot as above but with Flicky.sg ROM.  Copy the <b>.vscode</b> folder with launch.json and tasks.json files plus build.bat and build.sh.  Retrive main.asm + data folder from utility.  Press Ctrl + Shift + B to execute build script + press F5 to debug step through Z80 code!
-<br /><br />
-<i>Hack</i><br />
-Use this new setup to hack the original source code!  For example, in Flicky you always start at level #1.  Wouudn't it be cool to start at any level?  Also, wouldn't it be cool to have infinite lives?  Let's check it out!
 <br /><br />
 
 </span>
