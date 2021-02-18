@@ -3,11 +3,11 @@
 <i>Hack</i><br />
 Use this new setup to hack the original source code!  For example, in Flicky you always start at level #1.  Wouudn't it be cool to start at any level?  Also, wouldn't it be cool to have infinite lives?  Let's check it out!
 <br /><br />
-  Start level and lives count default values are hardcoded in ROM and loaded into RAM.  After debug stepping through Flicky source code we find a piece of code that loads 20x bytes of ROM into RAM on game start:
+Start level and lives count default values are hardcoded in ROM and loaded into RAM.  After debug stepping through Flicky source code we find a piece of code that loads 20x bytes of ROM into RAM on game start:
 <br />
 <!--
 <pre class="csharp" name="code">
-_LABEL_2AE_:	
+_LABEL_2AE_:
 		xor a
 		ld (_RAM_C0E1_), a
 		ld hl, _DATA_2C3_
@@ -29,7 +29,23 @@ _DATA_2CB_:
 <br />
 Bytes $02C3 and $02C4 default to $01; could either of these be start level #1?  Byte $02CA defaults to $02; could this be lives left?  The corresponding data is loaded in RAM at $C0E7, $C0E8 and $C0EE respectively.
 <br /><br />
-Start level and lives count default values are hardcoded in ROM and loaded into RAM.  After debug stepping through Flicky source code we find an interesting piece of code that loads 8x bytes of ROM into RAM on game commence
+Launch Emulicious.  Tools menu | Memory Editor | RAM.  Right click $C0E7 | Toggle Watchpoint.  Repeat for $C0E8 and $C0EE.  Resume code.  Play game and die!  The value at RAM $C0EE decreases from $02 to $01.
+<br />
+<!--  
+<pre class="csharp" name="code">
+_LABEL_387_:
+
+		ld a, (_RAM_C0EE_)
+		or a
+		jr z, +
+		dec a
+		ld (_RAM_C0EE_), a
+</pre>
+-->
+<br />
+Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level; see RAM $C0E8 stores start level loaded from ROM $02C4!
+<br /><br />
+Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level to see RAM $C0E8 stores level count loaded from ROM $02C4
 <br /><br />
 <u>Commercial Games</u><br />
 Now let us enhance this process to disassemble some commercial games built for the Sega Master System.  This way, we may gain insight into the early development process plus be able to hack original source code!

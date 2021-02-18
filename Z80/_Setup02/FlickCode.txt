@@ -17,3 +17,15 @@ _DATA_2C3_:
 _DATA_2CB_:	
 	.dsb 12, $00
 </pre>
+
+
+02.
+<pre class="csharp" name="code">
+_LABEL_387_:
+
+		ld a, (_RAM_C0EE_)
+		or a
+		jr z, +
+		dec a
+		ld (_RAM_C0EE_), a
+</pre>
