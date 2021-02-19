@@ -1,0 +1,48 @@
+Layout
+19/02/2021
+
+
+Build project in C using devkitSMS
+
+01.
+build output.sms WITHOUT output.map file
+get all the Z80 assembly code + re-assemble like previous post
+main.without_map.asm
+
+
+02.
+build output.sms WITH output.map
+do NOT attempt to re-assemble as this won't work
+however, this new main_with_map.asm will be used long term
+
+
+03.
+update / integrate the two main.*.asm files
+use main 01 as base and bring all mapped vars etc. from main 02
+into main 01
+keep rebuilding and compare built output matches original
+output.sms
+
+TODO
+utility x2	Comparison
+
+
+04.
+Modularize main.asm and split into multiple *.inc files
+replicate the original devkitSMS file structure
+manually disassemble some code not done even in output.map
+by this point you can be "done"
+but all code layout is in strict order as per original dump
+
+
+05.
+extra mile
+ideally want to wrap all code with free sections
+so they can "live" anywhere and not tied to strict layout
+[above]
+
+if get this working then in theory have complete game
+"written" from scratch in Z80 assembly
+as this is what you could have done from the get go!
+
+
