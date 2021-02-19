@@ -1,28 +1,20 @@
 <span style="font-family:verdana;font-size:85%;"> 
-
-Commercial Games<br />
-  After checkout homebrew games let's disassemble some commercial games to compare and constrast development 
-  e.g. Flicky for SG-1000
-  Create folder C:\Flicky
-  Copy the following folder and files from Hello World [previous post]
-  .vscode => launch.json + tasks.json
-  build.bat + build.sh
-  bullet points
-  Download ROM
-  Launch Emulicious
-  Open Flicky.sg ROM
-  Tools menu | Debugger.  In the Debugger window | Ctrl + A to select all disassembled code.  Save Flicky.asm
-  Use BinaryFileWrite utility to replace all the ".incbin ..." statements with actual binary data files
-  TODO => Rename Flicky.sg as Flicky.sms as UTIL only works with SMS file extension
-  Copy both Flicky.asm and Flicky.sms to bin/Debug/input folder
-  Update BinaryFileWrite.exe.config folder => set key="fileName" value to filename e.g. "Flicky"
-  Double click EXE to generate in output folder new "Flicky" folder and main.asm and data folder
-  Copy main.asm and data folder to C:\Flicky
-  Launch VS Code
-  Open folder C:\Flicky
-  Ctrl + Shift + B to build output.sms
-  Launch Emulicious
-  Press F5 to debug step thru code
-  Remember on Mac + Linux to chmod +x build.sh
+In the previous post, we checked out Z80 Programming Setup as video game development environment for the Sega Master System: an 8-bit video game console based on the Z80 chip.
+<br /><br />
+In the previous post, we checked out Z80 Programming Setup as video game development environment for the Sega Master System: an 8-bit video game console based on the Z80 chip.
+<br /><br />
+Let's check it out!
+<br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous post: this documents how to setup all the pre-requisite software.
+Note: ensure you have downloaded and installed WLA-DX assembler + Visual Studio Code cross platform.
+<br /><br />
+<u>Summary</u><br />
+Now that we have a productive Z80 assembler development environment we are in a great spot to analyze existing Indie game projects directly from the SMS Power! <a href="https://www.smspower.org/Homebrew/Index">Homebrew</a> section and 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a>!  This will be the topic of the next post.
+  
   <br /><br />
+<u>Homebrew Games</u><br />
+In the previous post, we setup the obligatory "Hello World" program.  Now we would like to analyze some larger Z80 projects.  Checkout "Racing Game" article on SMS Power! which is an in depth coding tutorial.
+<br /><br />
+  
 </span>
