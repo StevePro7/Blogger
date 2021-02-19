@@ -25,7 +25,7 @@ Download source code.  Copy Assets folder to CarRacerClassic.  Copy main.asm fil
 <li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
 </ol>
 <br />
-<!--<br />-->
+
 Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!  Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
 <br /><br />
 
@@ -35,7 +35,7 @@ Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b>.vscode</b> folder fr
 Download source code.  Copy all assets folders with *.inc files to CarRacerRebooted.  Copy main.asm file from Racer (rebooted) folder here also.  Launch VS Code.  Tweak Z80 assembly code as above to be cross platform.
 <br /><br />
 Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
-<!--
+
 <table width="100%" border="0">
 <tr>
 <td>
@@ -89,9 +89,9 @@ Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat
 </td>
 </tr>
 </table>
--->  
+  
 <br />
-<!--<br />-->
+
   
 IMPORTANT<br />
 For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
@@ -118,7 +118,7 @@ Use this new setup to hack the original source code!  For example, in Flicky you
 <br /><br />
 Start level and lives count default values are hardcoded in ROM and loaded into RAM.  After debug stepping through Flicky source code we find a piece of code that loads 20x bytes of ROM into RAM on game start:
 <br />
-<!--
+
 <pre class="csharp" name="code">
 _LABEL_2AE_:
 		xor a
@@ -138,13 +138,13 @@ _DATA_2C3_:
 _DATA_2CB_:	
 	.dsb 12, $00
 </pre>
--->
+
 <br />
 Bytes $02C3 and $02C4 default to $01; could either of these be start level #1?  Byte $02CA defaults to $02; could this be lives left?  The corresponding data is loaded in RAM at $C0E7, $C0E8 and $C0EE respectively.
 <br /><br />
 Launch Emulicious.  Tools menu | Memory Editor | RAM.  Right click $C0E7 | Toggle Watchpoint.  Repeat for $C0E8 and $C0EE.  Resume code.  Play game and die!  The value at RAM $C0EE decreases from $02 to $01.
 <br />
-<!--
+
 <pre class="csharp" name="code">
 _LABEL_387_:
 
@@ -154,13 +154,13 @@ _LABEL_387_:
 		dec a
 		ld (_RAM_C0EE_), a
 </pre>
--->
+
 <br />
 Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level; see RAM $C0E8 stores start level loaded from ROM $02C4!
 <br />
-<!--
+
 <a href="https://1.bp.blogspot.com/-7f-YXWf4ByE/YC5VhKIzltI/AAAAAAAAGhc/KcruhrOHS7gcDTuw2F-57M3DE6q1TPQAACLcBGAsYHQ/s635/FlickyHack.jpg"><img alt="" border="0" width="98%" data-original-height="411" data-original-width="635" src="https://1.bp.blogspot.com/-7f-YXWf4ByE/YC5VhKIzltI/AAAAAAAAGhc/KcruhrOHS7gcDTuw2F-57M3DE6q1TPQAACLcBGAsYHQ/s600/FlickyHack.jpg"/></a>
--->
+
 <br /> 
 
 <u>Summary</u><br />
