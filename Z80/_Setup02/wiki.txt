@@ -101,12 +101,12 @@ Now let us enhance this process to disassemble some commercial games built for t
 <b>Transbot</b><br />
 Create C:\Transbot or ~/Transbot folder.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode/tasks.json">tasks.json</a> files.  Copy <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/build.sh">build.sh</a> too.  Don't forget to grant execute permission chmod +x build.sh command.
 <br /><br />
-Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save as Transbot.asm.  Update all ".incbin ..." statements using the following utility:
+Download Transbot <a href="https://wowroms.com/en/roms/sega-master-system/transbot-europe/58090.html">ROM</a>.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save as Transbot.asm.  Update all ".incbin ..." statements using the following utility:
 <br /><br />
 <i>Utility</i><br />
-Download Binary-File-Write utility.  Copy both Transbot.asm and Transbot.sms files to input folder.  Update the config file | set key="fileName" value to "Transbot".  Run BinaryFileWrite.exe.  Copy output to Transbot folder.
+Download Binary-File-Write <a href="https://github.com/SteveProXNA/Z80code/tree/main/05-Utils/BinaryFileWrite">utility</a>.  Copy both <a href="https://github.com/SteveProXNA/Z80code/blob/main/05-Utils/BinaryFileWrite/input/TransBot.asm">TransBot.asm</a> and <a href="https://github.com/SteveProXNA/Z80code/blob/main/05-Utils/BinaryFileWrite/input/TransBot.sms">TransBot.sms</a> files to <a href="https://github.com/SteveProXNA/Z80code/tree/main/05-Utils/BinaryFileWrite/input">input</a> folder.  Update the config file | set key="fileName" value to "Transbot".  Run BinaryFileWrite.exe.  Copy output to <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot">Transbot</a> folder.
 <br /><br />
-Launch VS Code.  Open Transbot folder.  All prior ".incbin..." statements should now refer to binary data files.  Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
+Launch VS Code.  Open Transbot folder.  All prior ".incbin..." statements should now refer to binary <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/data">data</a> files.  Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
 <br />
 
 <table width="100%" border="0">
