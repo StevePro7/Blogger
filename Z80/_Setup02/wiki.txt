@@ -1,5 +1,4 @@
-<span style="font-family:verdana;font-size:85%;">
-  
+<span style="font-family:verdana;font-size:85%;"> 
 In the previous <a href="https://steveproxna.blogspot.com/2021/02/z80-programming-setup.html">post</a>, we checked out Z80 Programming Setup for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler for our development environment.
 <br /><br />
 Now that we are setup, we would like to analyze existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects for the Sega Master System and disassemble some classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.
@@ -13,11 +12,9 @@ Follow all instructions from the previous <a href="https://steveproxna.blogspot.
 Note: ensure you have downloaded and installed <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler + <a href="https://code.visualstudio.com">Visual Studio</a> Code cross platform.
 <br />
 <br />
-  
 <u>Homebrew Games</u><br />
 In the previous post, we setup the obligatory "<a href="http://www.smspower.org/maxim/uploads/HowToProgram/helloworld.zip">Hello World</a>" program.  Now we would like to analyze some larger Z80 projects.  Checkout "<a href="https://www.smspower.org/Articles/CreateARacingGame">Racing Game</a>" article on SMS Power! which is an in depth coding tutorial.
 <br /><br />
-  
 <b>Car Racer</b> (classic)<br />
 Create C:\CarRacerClassic or ~/CarRacerClassic.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/03-Codes/CarRacerClassic/.vscode">.vscode</a></b> folder from previous post with <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/.vscode/launch.json">launch.json</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/.vscode/tasks.json">tasks.json</a>.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/build.sh">build.sh</a>.  Don't forget to grant execute permission chmod +x build.sh command.
 <br />
@@ -30,10 +27,8 @@ Download <a href="https://www.smspower.org/uploads/Homebrew/Racer-SMS-2.00.zip">
 <li>&nbsp;Ensure carriage returns is used between variables to avoid wla-dx errors</li> 
 </ol>
 <br />
-
 Press Ctrl + Shift + B to execute build script => compile, link and run output.sms launched from Emulicious!  Assumption Emulicious installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
 <br /><br />
-
 <b>Car Racer</b> (rebooted)<br />
 Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/03-Codes/CarRacerRebooted/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/tasks.json">tasks.json</a>.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.sh">build.sh</a>.  Don't forget to grant execute permission chmod +x build.sh command.
 <br />
@@ -42,7 +37,6 @@ Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b><a href="https://gith
 Download <a href="https://www.smspower.org/uploads/Homebrew/Racer-SMS-2.00.zip">source</a> code.  Copy all assets folders with *.inc files to CarRacerRebooted.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/main.asm">main.asm</a> file from Racer (rebooted) folder here also.  Launch VS Code.  Tweak Z80 assembly code as above to be cross platform.
 <br /><br />
 Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
-
 <table width="100%" border="0">
 <tr>
 <td>
@@ -96,18 +90,18 @@ Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat
 </td>
 </tr>
 </table>
-
 <!--<br />-->
 IMPORTANT<br />
 For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
 <br /><br />
-  
 <u>Commercial Games</u><br />
 Now let us enhance this process to disassemble some commercial games built for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.  This way, we may gain insight into the early development process plus be able to hack original source code!
 <br /><br />
 <b>Transbot</b><br />
 Create C:\Transbot or ~/Transbot folder.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode/tasks.json">tasks.json</a> files.  Copy <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/build.sh">build.sh</a> too.  Don't forget to grant execute permission chmod +x build.sh command.
-<br /><br />
+<br />
+<a href="https://1.bp.blogspot.com/-ycDxNCVOrlA/YDFP6RaJXxI/AAAAAAAAGiE/1R4v4zCrGr0hpRiIGXt4UM7egQndo7iYwCLcBGAsYHQ/s620/Transbot.jpg"><img alt="" border="0" width="98%" data-original-height="412" data-original-width="620" src="https://1.bp.blogspot.com/-ycDxNCVOrlA/YDFP6RaJXxI/AAAAAAAAGiE/1R4v4zCrGr0hpRiIGXt4UM7egQndo7iYwCLcBGAsYHQ/s600/Transbot.jpg"/></a>
+<br />
 Download Transbot <a href="https://wowroms.com/en/roms/sega-master-system/transbot-europe/58090.html">ROM</a>.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save as Transbot.asm.  Update all ".incbin ..." statements using the following utility:
 <br /><br />
 <i>Utility</i><br />
@@ -115,7 +109,6 @@ Download Binary-File-Write <a href="https://github.com/SteveProXNA/Z80code/tree/
 <br /><br />
 Launch VS Code.  Open Transbot folder.  All prior ".incbin..." statements should now refer to binary <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/data">data</a> files.  Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
 <br />
-
 <table width="100%" border="0">
 <tr>
 <td>
@@ -169,12 +162,10 @@ Launch VS Code.  Open Transbot folder.  All prior ".incbin..." statements should
 </td>
 </tr>
 </table>
-
 <!--<br />-->
 IMPORTANT<br />
 For all examples: Launch Emulicious separately first.  In VS Code press F5 to debug step through Z80 code!
 <br /><br />
-
 <b>Flicky</b><br />
 Create C:\Flicky or ~/Flicky folder.  Repeat entire process for Transbot as above but with Flicky.sg <a href="https://www.emurom.net/us/emulation/sega-sg-1000-roms/detail-10372-flicky.html">ROM</a>.  Copy the <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/.vscode">.vscode</a></b> folder with <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/.vscode/tasks.json">tasks.json</a> files plus <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/build.bat">build.bat</a> and <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/build.sh">build.sh</a>.  Retrive <a href="https://github.com/SteveProXNA/Z80code/blob/main/04-Games/Flicky/main.asm">main.asm</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/04-Games/Flicky/data">data</a> folder from <a href="https://github.com/SteveProXNA/Z80code/tree/main/05-Utils/BinaryFileWrite">utility</a>.  Press Ctrl + Shift + B to execute build script + press F5 to debug step through Z80 code!
 <br /><br />
@@ -183,7 +174,6 @@ Use this new setup to hack the original source code!  For example, in Flicky you
 <br /><br />
 Start level and lives count default values are hardcoded in ROM and loaded into RAM.  After debug stepping through Flicky source code we find a piece of code that loads 20x bytes of ROM into RAM on game start:
 <br />
-
 <pre class="csharp" name="code">
 _LABEL_2AE_:
 		xor a
@@ -203,7 +193,6 @@ _DATA_2C3_:
 _DATA_2CB_:	
 	.dsb 12, $00
 </pre>
-
 <br />
 Bytes $02C3 and $02C4 default to $01; could either of these be start level #1?  Byte $02CA defaults to $02; could this be lives left?  The corresponding data is loaded in RAM at $C0E7, $C0E8 and $C0EE respectively.
 <br /><br />
@@ -218,15 +207,13 @@ _LABEL_387_:
 		dec a
 		ld (_RAM_C0EE_), a
 </pre>
-
 <br />
 Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level; see RAM $C0E8 stores start level loaded from ROM $02C4!
 <br />
 <a href="https://1.bp.blogspot.com/-7f-YXWf4ByE/YC5VhKIzltI/AAAAAAAAGhc/KcruhrOHS7gcDTuw2F-57M3DE6q1TPQAACLcBGAsYHQ/s635/FlickyHack.jpg"><img alt="" border="0" width="98%" data-original-height="411" data-original-width="635" src="https://1.bp.blogspot.com/-7f-YXWf4ByE/YC5VhKIzltI/AAAAAAAAGhc/KcruhrOHS7gcDTuw2F-57M3DE6q1TPQAACLcBGAsYHQ/s600/FlickyHack.jpg"/></a>
 <br /> <br /> 
 <u>Summary</u><br />
-Now that we have a productive Z80 assembler development environment and analyzed some larger projects to better understand the development process we are in a great spot to build our own projects from scratch.
+Now that we have a productive <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> assembler development environment and analyzed some larger projects to better understand the development process we are in a great spot to build our own projects from scratch.
 <br /><br />
-For completeness, we would still like to better understand relationship between Sega Master System source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and connect the underlying Z80 assembly code generated accordingly.  This will be the topic of the next post.
-
+For completeness, we would still like to better understand relationship between <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and connect the underlying Z80 assembly code generated accordingly.  This will be the topic of the next post.
 </span>
