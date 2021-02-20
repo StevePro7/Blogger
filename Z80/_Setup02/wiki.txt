@@ -169,7 +169,7 @@ For all examples: Launch Emulicious separately first.  In VS Code press F5 to de
 <br /><br />
 
 <b>Flicky</b><br />
-Create C:\Flicky or ~/Flicky folder.  Repeat entire process for Transbot as above but with Flicky.sg ROM.  Copy the <b>.vscode</b> folder with launch.json and tasks.json files plus build.bat and build.sh.  Retrive main.asm + data folder from utility.  Press Ctrl + Shift + B to execute build script + press F5 to debug step through Z80 code!
+Create C:\Flicky or ~/Flicky folder.  Repeat entire process for Transbot as above but with Flicky.sg <a href="https://www.emurom.net/us/emulation/sega-sg-1000-roms/detail-10372-flicky.html">ROM</a>.  Copy the <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/.vscode">.vscode</a></b> folder with <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/.vscode/tasks.json">tasks.json</a> files plus <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/build.bat">build.bat</a> and <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Flicky/build.sh">build.sh</a>.  Retrive <a href="https://github.com/SteveProXNA/Z80code/blob/main/04-Games/Flicky/main.asm">main.asm</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/04-Games/Flicky/data">data</a> folder from <a href="https://github.com/SteveProXNA/Z80code/tree/main/05-Utils/BinaryFileWrite">utility</a>.  Press Ctrl + Shift + B to execute build script + press F5 to debug step through Z80 code!
 <br /><br />
 <i>Hack</i><br />
 Use this new setup to hack the original source code!  For example, in Flicky you always start at level #1.  Wouudn't it be cool to start at any level?  Also, wouldn't it be cool to have infinite lives?  Let's check it out!
@@ -205,7 +205,6 @@ Launch Emulicious.  Tools menu | Memory Editor | RAM.  Right click $C0E7 | Toggl
 
 <pre class="csharp" name="code">
 _LABEL_387_:
-
 		ld a, (_RAM_C0EE_)
 		or a
 		jr z, +
@@ -221,6 +220,6 @@ Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the 
 <u>Summary</u><br />
 Now that we have a productive Z80 assembler development environment and analyzed some larger projects to better understand the development process we are in a great spot to build our own projects from scratch.
 <br /><br />
-For completeness, we would still like to better understand relationship between Sega Master System source code written in C using the devkitSMS and connect the underlying Z80 assembly code generated accordingly.  This will be the topic of the next post.
+For completeness, we would still like to better understand relationship between Sega Master System source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and connect the underlying Z80 assembly code generated accordingly.  This will be the topic of the next post.
 
 </span>
