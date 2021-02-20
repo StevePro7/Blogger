@@ -3,13 +3,16 @@
 In the previous <a href="https://steveproxna.blogspot.com/2021/02/z80-programming-setup.html">post</a>, we checked out Z80 Programming Setup for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler for our development environment.
 <br /><br />
 Now that we are setup, we would like to analyze existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects for the Sega Master System and disassemble some classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.
-<br /><br />
+<br />
+<a href="https://1.bp.blogspot.com/-hi--jGHq-AQ/YDFO501jDvI/AAAAAAAAGhs/ttLAdzN6X7gOlAdgHOIL1Wimou2FuAZUACLcBGAsYHQ/s622/MegaMan.jpg"><img alt="" border="0" width="98%" data-original-height="480" data-original-width="622" src="https://1.bp.blogspot.com/-hi--jGHq-AQ/YDFO501jDvI/AAAAAAAAGhs/ttLAdzN6X7gOlAdgHOIL1Wimou2FuAZUACLcBGAsYHQ/s600/MegaMan.jpg"/></a>
+<br />
 Let's check it out!
 <br /><br />
 <u>Software</u><br />
 Follow all instructions from the previous <a href="https://steveproxna.blogspot.com/2021/02/z80-programming-setup.html">post</a>: this documents how to setup all the pre-requisite software.
 Note: ensure you have downloaded and installed <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler + <a href="https://code.visualstudio.com">Visual Studio</a> Code cross platform.
-<br /><br />
+<br />
+<br />
   
 <u>Homebrew Games</u><br />
 In the previous post, we setup the obligatory "<a href="http://www.smspower.org/maxim/uploads/HowToProgram/helloworld.zip">Hello World</a>" program.  Now we would like to analyze some larger Z80 projects.  Checkout "<a href="https://www.smspower.org/Articles/CreateARacingGame">Racing Game</a>" article on SMS Power! which is an in depth coding tutorial.
@@ -17,7 +20,9 @@ In the previous post, we setup the obligatory "<a href="http://www.smspower.org/
   
 <b>Car Racer</b> (classic)<br />
 Create C:\CarRacerClassic or ~/CarRacerClassic.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/03-Codes/CarRacerClassic/.vscode">.vscode</a></b> folder from previous post with <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/.vscode/launch.json">launch.json</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/.vscode/tasks.json">tasks.json</a>.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/build.sh">build.sh</a>.  Don't forget to grant execute permission chmod +x build.sh command.
-<br /><br />
+<br />
+<a href="https://1.bp.blogspot.com/-vnKosL9IyDs/YDFPax6IpRI/AAAAAAAAGh0/sJqeETTQmpkD2bhckbpAH1r7L0ELILalACLcBGAsYHQ/s640/CarRacer01.jpg"><img alt="" border="0" width="98%" data-original-height="480" data-original-width="640" src="https://1.bp.blogspot.com/-vnKosL9IyDs/YDFPax6IpRI/AAAAAAAAGh0/sJqeETTQmpkD2bhckbpAH1r7L0ELILalACLcBGAsYHQ/s600/CarRacer01.jpg"/></a>
+<br />
 Download <a href="https://www.smspower.org/uploads/Homebrew/Racer-SMS-2.00.zip">source</a> code.  Copy <a href="https://github.com/SteveProXNA/Z80code/tree/main/03-Codes/CarRacerClassic/Assets">Assets</a> folder to CarRacerClassic.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/main.asm">main.asm</a> file from Racer (classic) folder Version 1.12 here also.  Launch VS Code.  Some things to remember when coding Z80 source cross platform:
 <ol>
 <li>&nbsp;Ensure forward slash "/" used at all times for cross platform development</li>
@@ -31,7 +36,9 @@ Press Ctrl + Shift + B to execute build script => compile, link and run output.s
 
 <b>Car Racer</b> (rebooted)<br />
 Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/03-Codes/CarRacerRebooted/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/tasks.json">tasks.json</a>.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.sh">build.sh</a>.  Don't forget to grant execute permission chmod +x build.sh command.
-<br /><br />
+<br />
+<a href="https://1.bp.blogspot.com/-zGI4TtuyvDg/YDFPplrk5iI/AAAAAAAAGh4/Di37DhOKkB8K7i-j6bN4xjPEqhaHmWU-QCLcBGAsYHQ/s640/CarRacer02.jpg"><img alt="" border="0" width="98%" data-original-height="412" data-original-width="640" src="https://1.bp.blogspot.com/-zGI4TtuyvDg/YDFPplrk5iI/AAAAAAAAGh4/Di37DhOKkB8K7i-j6bN4xjPEqhaHmWU-QCLcBGAsYHQ/s600/CarRacer02.jpg"/></a>
+<br />
 Download <a href="https://www.smspower.org/uploads/Homebrew/Racer-SMS-2.00.zip">source</a> code.  Copy all assets folders with *.inc files to CarRacerRebooted.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/main.asm">main.asm</a> file from Racer (rebooted) folder here also.  Launch VS Code.  Tweak Z80 assembly code as above to be cross platform.
 <br /><br />
 Press Ctrl + Shift + B to execute build script => compile, link and run!  Repeat process for all these projects:
