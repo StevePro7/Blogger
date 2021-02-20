@@ -96,10 +96,10 @@ For all examples: Launch Emulicious separately first.  In VS Code press F5 to de
 <br /><br />
   
 <u>Commercial Games</u><br />
-Now let us enhance this process to disassemble some commercial games built for the Sega Master System.  This way, we may gain insight into the early development process plus be able to hack original source code!
+Now let us enhance this process to disassemble some commercial games built for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.  This way, we may gain insight into the early development process plus be able to hack original source code!
 <br /><br />
 <b>Transbot</b><br />
-Create C:\Transbot or ~/Transbot folder.  Copy <b>.vscode</b> folder from above with launch.json and tasks.json files.  Copy build.bat + build.sh too.  Don't forget to grant execute permission chmod +x build.sh command.
+Create C:\Transbot or ~/Transbot folder.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/.vscode/tasks.json">tasks.json</a> files.  Copy <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/tree/main/04-Games/Transbot/build.sh">build.sh</a> too.  Don't forget to grant execute permission chmod +x build.sh command.
 <br /><br />
 Download Transbot ROM.  Launch Emulicious | Open ROM.  Tools menu | Debugger | press Ctrl + A to select all disassembled code.  Save as Transbot.asm.  Update all ".incbin ..." statements using the following utility:
 <br /><br />
