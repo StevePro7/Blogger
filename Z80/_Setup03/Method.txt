@@ -1,0 +1,91 @@
+Method
+22/02/2021
+
+Write game in C using devkitSMS with the SDCC
+build game to completion and build output.sms
+
+
+Step #1
+create folder C:\Step01
+Launch Emulicious
+copy output.sms to Step01 folder only
+i.e.
+do not copy output.map
+
+in Emulicious debugger
+Ctrl+A select all
+copy + paste + save into output.asm
+
+// may skip this in Step #1
+// copy output.sms and output.asm into BinaryFileWrite utility
+// produce main.asm
+
+
+Step #2
+create folder C:\Step02
+Launch Emulicious
+copy output.sms and output.map to Step02 folder
+
+in Emulicious debugger
+Ctrl+A select all
+copy + paste + save into output.asm
+
+
+Step #3
+create folder C:\Step03
+copy main.asm [+ data folder] from Step01 to Step03 folder
+merge the symbols generated from Step02 main.asm into Step03
+i.e.
+aa.
+replace labels like _RAM_C000_ to VDPBlank
+througout code base
+
+bb.
+replace labels like jp _LABEL_50B_ to jp _SMS_isr
+througout code base
+
+IMPORTANT
+all changes compare before and after any changes to ensure nothing broken!!
+
+
+Step #4
+create folder C:\Step04
+
+refactor boiler plate code into external files
+e.g.
+memory_manager.inc
+enum_manager.inc
+define_manager.inc
+
+IMPORTANT
+extract code into external "include" files BUT ensure that they inc statements are in the same order!
+e.g.
+.include "devkit/memory_manager.inc"
+
+
+Manually disassemble any code that is not disassembled by Emulicious
+e.g.
+_SMS_addSprite:
+http://www.z80.info/z80oplist.txt
+http://jgmalcolm.com/z80/opcodes/opcodesB
+
+
+Manually identify bytes that are data
+e.g.
+; Data from 7FC6 to 7FD1 (12 bytes)	
+___SMS__SDSC_name:	
+	; Hello World
+	.db $48 $65 $6C $6C $6F $20 $57 $6F $72 $6C $64 $00
+
+https://www.rapidtables.com/convert/number/hex-to-ascii.html
+
+
+Reference
+E:\GitHub\StevePro7\VanHalenSMS\asm
+
+
+EXAMPLE
+step thru code Hello World
+e.g.
+RGB()
+
