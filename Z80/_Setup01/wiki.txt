@@ -276,8 +276,9 @@ Launch <a href="https://emulicious.net">Emulicious</a>.  Configure the options b
 </table>
 <br />
 In Visual Studio Code, open <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/main.asm">main.asm</a> and set breakpoints.  Press F5.  Emulicious debugger should now break and debug step through Z80 assembly source code!  Access register variables, watch window, call stack etc.
-<br />
+
 <a href="https://1.bp.blogspot.com/-rO0-zP80kjE/YDy0q22KZQI/AAAAAAAAGi8/t0VcQS6TaEUB_dm1MUX7AZKnVv9Y-lzqACLcBGAsYHQ/s893/DebuggingVScode.png"><img alt="" border="0" width="98%" data-original-height="723" data-original-width="893" src="https://1.bp.blogspot.com/-rO0-zP80kjE/YDy0q22KZQI/AAAAAAAAGi8/t0VcQS6TaEUB_dm1MUX7AZKnVv9Y-lzqACLcBGAsYHQ/s600/DebuggingVScode.png"/></a>
+<br />
 <br />
 
 <u>Emulicious Debugger II</u><br />
@@ -291,10 +292,9 @@ Follow the Hello World <a href="https://github.com/SteveProXNA/Z80code/blob/main
 <br />
 Fortunately, we can leverage the same <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/.vscode/tasks.json">tasks.json</a> files as before.  Launch Emulicious | Press F5.  Emulicious debugger should now break and debug step through C source code!  In the external debugger navigate the Z80 assembly code wrapped in C functions via <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/output.map">output.map</a> to better understand C / Z80 code!
 
-<a href="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s930/DebuggingSource.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="645" data-original-width="930" src="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s600/DebuggingSource.png"/></a>
-
+<a href="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s930/DebuggingSource.png"><img alt="" border="0" width="98%" data-original-height="645" data-original-width="930" src="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s600/DebuggingSource.png"/></a>
 <br />
-<!--<br />-->
+<br />
   
 TROUBLESHOOTING<br />
 If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious</a> is not running.  Also, if F5 does not launch the debugger from VS Code then click <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/output.sms">output.sms</a> and choose Debug File icon.
