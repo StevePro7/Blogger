@@ -180,7 +180,11 @@ Create C:\Flicky or ~/Flicky folder.  Repeat entire process for Transbot as abov
 Use this new setup to hack the original source code!  For example, in Flicky you always start at level #1.  Wouudn't it be cool to start at any level?  Also, wouldn't it be cool to have infinite lives?  Let's check it out!
 <br /><br />
 Start level and lives count default values are hardcoded in ROM and loaded into RAM.  After debug stepping through Flicky source code we find a piece of code that loads 20x bytes of ROM into RAM on game start:
+<br /><br />
+Bytes $02C3 and $02C4 default to $01; could either of these be start level #1?  Byte $02CA defaults to $02; could this be lives left?  The corresponding data is loaded in RAM at $C0E7, $C0E8 and $C0EE respectively.
+<a href="https://1.bp.blogspot.com/-2SLpjX7GW58/YD0uYOAHpAI/AAAAAAAAGjU/Xccu47Z_N-gH9IYcgvP-Z2XSufTXmFpsACLcBGAsYHQ/s897/FlickySource.jpg"><img alt="" border="0" width="98%" data-original-height="733" data-original-width="897" src="https://1.bp.blogspot.com/-2SLpjX7GW58/YD0uYOAHpAI/AAAAAAAAGjU/Xccu47Z_N-gH9IYcgvP-Z2XSufTXmFpsACLcBGAsYHQ/s600/FlickySource.jpg"/></a>
 <br />
+<!--
 <pre class="csharp" name="code">
 _LABEL_2AE_:
 		xor a
@@ -200,9 +204,8 @@ _DATA_2C3_:
 _DATA_2CB_:	
 	.dsb 12, $00
 </pre>
+-->
 <br />
-Bytes $02C3 and $02C4 default to $01; could either of these be start level #1?  Byte $02CA defaults to $02; could this be lives left?  The corresponding data is loaded in RAM at $C0E7, $C0E8 and $C0EE respectively.
-<br /><br />
 Launch Emulicious.  Tools menu | Memory Editor | RAM.  Right click $C0E7 | Toggle Watchpoint.  Repeat for $C0E8 and $C0EE.  Resume code.  Play game and die!  The value at RAM $C0EE decreases from $02 to $01.
 
 <a href="https://1.bp.blogspot.com/-ojOkuIzmu1M/YD0rOoueDvI/AAAAAAAAGjM/MRZJLmupwvkrX8cM4H0RCaEZH4ItnqNAgCLcBGAsYHQ/s898/FlickyDebug.jpg"><img alt="" border="0" width="98%" data-original-height="675" data-original-width="898" src="https://1.bp.blogspot.com/-ojOkuIzmu1M/YD0rOoueDvI/AAAAAAAAGjM/MRZJLmupwvkrX8cM4H0RCaEZH4ItnqNAgCLcBGAsYHQ/s600/FlickyDebug.jpg"/></a>
