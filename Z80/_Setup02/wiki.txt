@@ -204,16 +204,10 @@ _DATA_2CB_:
 Bytes $02C3 and $02C4 default to $01; could either of these be start level #1?  Byte $02CA defaults to $02; could this be lives left?  The corresponding data is loaded in RAM at $C0E7, $C0E8 and $C0EE respectively.
 <br /><br />
 Launch Emulicious.  Tools menu | Memory Editor | RAM.  Right click $C0E7 | Toggle Watchpoint.  Repeat for $C0E8 and $C0EE.  Resume code.  Play game and die!  The value at RAM $C0EE decreases from $02 to $01.
-<br />
 
-<pre class="csharp" name="code">
-_LABEL_387_:
-		ld a, (_RAM_C0EE_)
-		or a
-		jr z, +
-		dec a
-		ld (_RAM_C0EE_), a
-</pre>
+<a href="https://1.bp.blogspot.com/-ojOkuIzmu1M/YD0rOoueDvI/AAAAAAAAGjM/MRZJLmupwvkrX8cM4H0RCaEZH4ItnqNAgCLcBGAsYHQ/s898/FlickyDebug.jpg"><img alt="" border="0" width="98%" data-original-height="675" data-original-width="898" src="https://1.bp.blogspot.com/-ojOkuIzmu1M/YD0rOoueDvI/AAAAAAAAGjM/MRZJLmupwvkrX8cM4H0RCaEZH4ItnqNAgCLcBGAsYHQ/s600/FlickyDebug.jpg"/></a>
+
+<br />
 <br />
 Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level; see RAM $C0E8 stores start level loaded from ROM $02C4!
 <br />
