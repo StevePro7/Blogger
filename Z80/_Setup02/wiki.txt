@@ -1,15 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
   
-<i>Debugging</i><br />
-Ensure Emulicious Debugger is installed with VS Code as per previous post.  Launch Emulicious externally.  Open main.asm and set breakpoints.  Press F5. Emulicious debugger should now break into Z80 assembly source code! Step through + investigate register variables, stackframes, access watch window, call stack:
-  
-<a href="https://1.bp.blogspot.com/-iArny3gygz4/YD0o_E3q-pI/AAAAAAAAGjE/PEs5YVG4yrAy2k7-5ULw0QYQEaKcbWhPACLcBGAsYHQ/s896/CarRacerDebug.jpg"><img alt="" border="0" width="98%" data-original-height="828" data-original-width="896" src="https://1.bp.blogspot.com/-iArny3gygz4/YD0o_E3q-pI/AAAAAAAAGjE/PEs5YVG4yrAy2k7-5ULw0QYQEaKcbWhPACLcBGAsYHQ/s600/CarRacerDebug.jpg"/></a>
-<br />
-<br />
-  
-Ensure Emulicious Debugger is installed with VS Code as per previous post.  Launch Emulicious externally.  Open main.asm and set breakpoints.  Press F5. Emulicious debugger should now break and debug step through Z80 assembly source code! Access register variables, watch window, call stack etc 
-<br /><br />
-  
 In the previous <a href="https://steveproxna.blogspot.com/2021/02/z80-programming-setup.html">post</a>, we checked out Z80 Programming Setup for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler for our development environment.
 <br /><br />
 Now that we are setup, we would like to analyze existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects for the Sega Master System and disassemble some classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.
@@ -40,7 +30,11 @@ Download <a href="https://www.smspower.org/uploads/Homebrew/Racer-SMS-2.00.zip">
 <br />
 Press Ctrl + Shift + B to execute build script => compile, link and run <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/output.sms">output.sms</a> launched from Emulicious!  Assumption <a href="https://emulicious.net">Emulicious</a> installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
 <br /><br />
-<i>Debugging</i><br />TODO
+<i>Debugging</i><br />
+Ensure Emulicious <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Debugger</a> is installed with VS Code as per previous post.  Launch Emulicious externally.  Open <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/main.asm">main.asm</a> and set breakpoints.  Press F5. Emulicious debugger should now break into Z80 assembly source code! Step through + investigate register variables, stackframes, access watch window, call stack:
+  
+<a href="https://1.bp.blogspot.com/-iArny3gygz4/YD0o_E3q-pI/AAAAAAAAGjE/PEs5YVG4yrAy2k7-5ULw0QYQEaKcbWhPACLcBGAsYHQ/s896/CarRacerDebug.jpg"><img alt="" border="0" width="98%" data-original-height="828" data-original-width="896" src="https://1.bp.blogspot.com/-iArny3gygz4/YD0o_E3q-pI/AAAAAAAAGjE/PEs5YVG4yrAy2k7-5ULw0QYQEaKcbWhPACLcBGAsYHQ/s600/CarRacerDebug.jpg"/></a>
+
 <br /><br />
 <b>Car Racer</b> (rebooted)<br />
 Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/03-Codes/CarRacerRebooted/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/tasks.json">tasks.json</a>.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.sh">build.sh</a>.  Don't forget to grant execute permission chmod +x build.sh command.
