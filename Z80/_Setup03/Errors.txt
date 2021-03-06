@@ -5,6 +5,7 @@ Errors
 So trying to rebuild from the project ground up
 E:\GitHub\StevePro7\VanHalenSMSII\asm\65
 
+01.
 but I get the wla-dx assembler error
 Compile
 Link
@@ -36,3 +37,16 @@ If you insert a space between the @ and the + operator, it assembles correctly. 
 
 which made me think that cannot use underscore
 so will take them all out and see what happens
+
+
+02.
+main.o: main.asm: INSERT_SECTIONS: No room for section "Content section" (20 bytes) in ROM bank 0.
+Run
+
+Reference
+https://github.com/vhelin/wla-dx/blob/master/wlalink/write.c
+
+/* FREE & SEMIFREE sections */
+fprintf(stderr, "%s: %s: INSERT_SECTIONS: No room for section \"%s\" (%d bytes) in ROM bank %d.\n", get_file_name(s->file_id),
+
+https://www.smspower.org/forums/14568-CreateAdventureGamesForTheSMSUsingTwine
