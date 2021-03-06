@@ -1,0 +1,19 @@
+Disassembly
+06/03/2021
+
+
+Breakthru today!
+couldn't understand why source code steps to a certain point and then
+break points become invalid and won't step and actually steps into
+disassembly
+
+Believe the reason is 
+Lmain.main$global_pause$1$55
+
+i.e.
+we use previous disassembled variable and this causes issues??
+either way when I change to $C000 everything is fine
+
+
+I still can't debug step thru all the code so I think the disassembly
+code that I borrowed is causing an issue!!
