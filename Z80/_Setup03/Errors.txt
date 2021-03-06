@@ -1,0 +1,38 @@
+Errors
+06/03/2021
+
+
+So trying to rebuild from the project ground up
+E:\GitHub\StevePro7\VanHalenSMSII\asm\65
+
+but I get the wla-dx assembler error
+Compile
+Link
+main.o: devkit/sms_manager.inc:592: FIX_REFERENCES: Reference to an unknown label "__divu8".
+Run
+
+
+I think this is because there is an underscore in the label name
+and that is not allowed??
+
+Referenced:
+GOOGLE
+wla-dx fix_references to an unknown label
+
+
+Stumble onto this page:
+https://githubmemory.com/@vhelin?page=4
+
+search for FIX_REFERENCES
+
+In 9.7b, this builds as expected with the label being correctly resolved.
+
+Starting in 9.11 you recieve the following error;
+
+FIX_REFERENCES: Reference to an unknown label "partialLabel_1"
+
+If you insert a space between the @ and the + operator, it assembles correctly. This leads me to believe there is a parsing error with the @ arg when evaluating macros.
+
+
+which made me think that cannot use underscore
+so will take them all out and see what happens
