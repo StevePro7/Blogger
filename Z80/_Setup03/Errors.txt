@@ -50,3 +50,16 @@ https://github.com/vhelin/wla-dx/blob/master/wlalink/write.c
 fprintf(stderr, "%s: %s: INSERT_SECTIONS: No room for section \"%s\" (%d bytes) in ROM bank %d.\n", get_file_name(s->file_id),
 
 https://www.smspower.org/forums/14568-CreateAdventureGamesForTheSMSUsingTwine
+
+
+03.
+Compile
+Link
+main.o: devkit/psg_manager.inc:508: FIX_REFERENCES: Too large distance (837 bytes from $c5c to $fa2 "LABEL_5B1_") for a relative 8-bit reference.
+Run
+E:\GitHub\StevePro7\VanHalenSMSII\asm\65>
+
+So I wrapped the caller function with the callee function
+e.g.
+PSGSFXStop
+LABEL_5B1_
