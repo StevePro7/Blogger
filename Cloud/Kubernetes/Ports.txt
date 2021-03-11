@@ -1,0 +1,35 @@
+Ports
+11/03/2021
+
+
+https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport
+
+
+Port
+exposes the K8s service on the specified port within the cluster
+other pods within the cluster can communicate with this server on the specified port
+
+
+TargetPort
+the port on which the service will send requests to that your Pod will be listening on
+you application in the container will need to be listening to this port also
+
+
+NodePort
+exposes a service externally to the cluster by means of the target nodes IP address and the NodePort
+default setting if the port field is not specified
+
+
+e.g.
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-clusterip
+spec:
+  type: NodePort
+  selector:
+    app: my-nginx
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 31000
