@@ -4,3 +4,154 @@ Method #02
 Reference:
 Method.txt
 E:\GitHub\StevePro7\VanHalenSMSII\asm
+
+
+00.
+Build entire game end-to-end using devkitSMS
+build output.sms => rename VanHalen.sms
+ensure output.map file is not deleted
+
+
+01.
+Create folder 01
+Copy VanHalen.sms to folder
+E:\GitHub\StevePro7\VanHalenSMSIII\asm\01
+Copy output.sms			//=> VanHalen.sms
+
+Launch Emulicious
+open output.sms
+F1	debugger
+
+Debugger
+Ctrl+A	select all
+copy n' paste into text editor | Save
+output.asm
+
+
+02.
+Create folder 02
+Copy VanHalen.sms to folder
+E:\GitHub\StevePro7\VanHalenSMSIII\asm\02
+Copy output.sms			//=> VanHalen.sms
+Copy output.map 		//=> VanHalen.map
+
+Launch Emulicious
+open output.sms
+F1	debugger
+
+Debugger
+Ctrl+A	select all
+copy n' paste into text editor | Save
+output.asm
+
+
+03.
+Based on 01
+copy folder 01 => 03
+E:\GitHub\StevePro7\VanHalenSMSIII\asm\03
+copy the following files from 01 to 03
+output.asm
+output.sms
+
+Follow instructions from previous post to build the DAT files
+Create .vscode folder with launch.json and tasks.json
+Copy build.bat and build.sh	don't forget to chmod +x build.sh
+
+TODO
+revise the instructions to get the data
+
+
+04
+Based on 02
+copy folder 02 => 04
+E:\GitHub\StevePro7\VanHalenSMSIII\asm\04
+copy the following files from 02 to 04
+output.asm
+output.sms
+
+Now
+copy the following files from 01 to 04
+.vscode	launch.json	tasks.json
+data folder
+main.asm
+
+Integrate
+now we need to edit main.asm and copy the labels from 02/output.asm into main.asm
+i.e.
+update main.asm
+merge
+04/output.asm
+04/main.asm
+
+e.g.
+_SMS_crt0_RST08
+_SMS_crt0_RST18
+
+_LABEL_38_:	
+		jp _SMS_isr
+
+_LABEL_66_:	
+		jp _SMS_nmi_isr
+
+_LABEL_70_:	
+
+
+_LABEL_20A_	_OUTI128
+
+call _LABEL_A5A_
+
+
+_LABEL_281_		_PSGStop:
+
+
+continue to copy from 04/output.asm into 04/main.asm until this block of code
+
+
+; Data from 7FF0 to 7FFF (16 bytes)	
+G$__SMS__SEGA_signature$0$0:	
+___SMS__SEGA_signature:	
+	.db $54 $4D $52 $20 $53 $45 $47 $41 $FF $FF $91 $AE $99 $99 $00 $4C
+
+
+Tidy up
+rename / remove duplicate labels
+
+e.g.
+G$engine_content_manager_load_ti
+
+
+Replace RAM variables
+e.g.
+Fscreen_manager$load_method$0$0
+$C02D
+
+Lmain.main$global_pause$1$55
+
+
+05.
+Create folder 05
+clone  folder 04
+E:\GitHub\StevePro7\VanHalenSMSIII\asm\05
+
+Refactor
+group chunks of code and copy out into *.inc files
+
+IMPORTANT
+with all changes made we will rebuild and recheck that the new output.sms is the same as the old output.sms file
+
+
+Extract all the banked content in to banks
+Extract all the baked in content e.g. gfx and psg into *.inc files
+
+
+Copy source from here as reference
+E:\GitHub\StevePro7\VanHalenSMSII\asm\62
+
+import enum_manager.inc
+pause_status db				    ; Lmain.main$global_pause$1$55 = $C000
+...
+PSGSFXSubstringRetAddr dw		    ; PSGSFXSubstringRetAddr = $C024
+
+Fscreen_manager$curr_screen_type = $C02B
+Fscreen_manager$next_screen_type = $C02C
+G$global_scroll_object$0$0 = $C045
