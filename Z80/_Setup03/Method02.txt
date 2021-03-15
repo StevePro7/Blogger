@@ -133,8 +133,10 @@ Create folder 05
 clone  folder 04
 E:\GitHub\StevePro7\VanHalenSMSIII\asm\05
 
-Refactor
-group chunks of code and copy out into *.inc files
+
+memory_manager
+define_manager
+enum_manager
 
 IMPORTANT
 with all changes made we will rebuild and recheck that the new output.sms is the same as the old output.sms file
@@ -155,3 +157,57 @@ PSGSFXSubstringRetAddr dw		    ; PSGSFXSubstringRetAddr = $C024
 Fscreen_manager$curr_screen_type = $C02B
 Fscreen_manager$next_screen_type = $C02C
 G$global_scroll_object$0$0 = $C045
+
+
+
+06.
+Create folder 06
+E:\GitHub\StevePro7\VanHalenSMSIII\asm\06
+
+Include banks
+include bank_manager.inc
+there is a few bytes difference
+
+delete data folder
+
+
+Refactor
+group chunks of code and copy out into *.inc files
+
+
+copy folders
+content
+devkit
+engine
+object
+screen
+
+IMPORTANT
+aa.
+* ensure none of the labels begin with underscore
+
+Why?
+because you will get the weird FIX_REFERENCES error
+
+
+bb.
+* ensure none of the labels have the org. disassembled $ in them
+
+Why?
+because you won't be able to debug step thru the source code
+
+
+Compare the old main.asm with the new and refactor code
+
+.sdsctag
+
+
+Add .sections
+con't to end
+
+FINAL BUILD
+E:\GitHub\StevePro7\VanHalenSMSII\asm\70
+
+
+Instructions.txt
+E:\GitHub\StevePro7\VanHalenSMS\asm
