@@ -1,26 +1,22 @@
 <span style="font-family:verdana;font-size:85%;">
-
-<b>Step #5</b><br />
-Launch Visual Studio Code.  Open Step03 foder.  Create sub-folders that replicate the original C source code structure e.g. banks, devkit, engine, object, screen.  Start from the top of main.asm and refactor as follows:
-<br /> <br />
   
-<i>.sdsctag</i><br />
-Begin with the <a href="https://www.smspower.org/Development/SDSCROMTagSpecification">.sdsctag</a> which includes the ROM build major . minor version, author, name and description:
+<i><a href="https://www.smspower.org/Development/SDSCROMTagSpecification">.sdsctag</a></i><br />
+Begin with the <a href="https://wla-dx.readthedocs.io/en/latest/asmdiv.html#sdsctag-1-0-dungeon-man-a-wild-dungeon-exploration-game-ville-helin">.sdsctag</a> which includes the ROM build major . minor version, author, name and description:
 <pre class="csharp" name="code">
 .sdsctag 1.0,"Van Halen","Van Halen Record Covers for the SMS Power! 2021 Competition","StevePro Studios"
 </pre>
 <br />
   
-<i>memory_manager.inc</i><br />
-Create memory_manager.inc beneath devkit folder.  Add .include to file.  Move all memory map code in here.  
-<br /> <br />
-  
-<i>enum_manager.inc</i><br />
-Create enum_manager.inc beneath devkit folder.  Add .include to file.  Move all .enum exports here.  Rename RAM enum references to actual variables used throughout the codebase.  Ensure RAM addresses are correct.
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/memory_manager.inc">memory_manager.inc</a></i><br />
+Create memory_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to file.  Move all memory map code in here.  
 <br /> <br />
 
-<i>define_manager.inc</i><br />
-Create define_manager.inc beneath devkit folder.  Add .include to this file.  Move all .define definitions here.
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/enum_manager.inc">enum_manager.inc</a></i><br />
+Create enum_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to file.  Move all .enum exports here.  Rename RAM enum references to actual variables used throughout the codebase.  Ensure RAM addresses are correct.
+<br /> <br />
+
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/define_manager.inc">define_manager.inc</a></i><br />
+Create define_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to this file.  Move all .define definitions here.
 <pre class="csharp" name="code">
 .define VDPControl $bf
 .define VDPData $be

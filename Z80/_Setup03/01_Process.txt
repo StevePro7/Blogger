@@ -1,23 +1,23 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <b>Step #1</b><br />
-Create Step01 folder | copy output.sms.  Launch Emulicious | open output.sms.  Tools | Debugger | Ctrl + A select all disassembled Z80 assembly code | Save Step01.asm.  Follow instructions from previous post using Binary-File-Write utility replace all instances of ".incbin ..." to refer to binary data files in the data folder.
+Create Temp01 folder | copy <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/dev/output.sms">output.sms</a>.  Launch <a href="https://emulicious.net">Emulicious</a> | open output.sms.  Tools | Debugger | Ctrl + A select all disassembled Z80 assembly code | Save Temp01.asm.  Follow instructions from previous post using Binary-File-Write <a href="https://github.com/SteveProXNA/Z80code/tree/main/05-Utils/BinaryFileWrite">utility</a> replace all instances of ".incbin ..." to refer to binary data files in the data folder.
 <br /> <br />
   
 <b>Step #2</b><br />
-Create Step02 folder | copy output.sms + output.map.  Launch Emulicious | open output.sms.  In Debugger | Ctrl + A to select all disassembled Z80 assembly code that now has devkitSMS symbols | Save Step02.asm. 
+Create Temp02 folder | copy <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/dev/output.sms">output.sms</a> + <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/dev/output.map">output.map</a>.  Launch Emulicious | open output.sms.  In Debugger | Ctrl + A to select all disassembled Z80 assembly code that now has devkitSMS symbols | Save Temp02.asm. 
 <br /> <br />
 
 <b>Step #3</b><br />
-Create Step03 folder.  Copy .vscode folder from above with launch.json and tasks.json. Copy build.bat and build.sh. Don't forget to grant execute permission chmod +x build.sh command.  Copy data folder above.
+Create <b><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm">asm</a></b> folder.  Copy <b><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/.vscode/tasks.json">tasks.json</a>. Copy <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/build.bat">build.bat</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/build.sh">build.sh</a>. Don't forget to grant execute permission chmod +x build.sh command.  Copy data folder above.
 <br /> <br />
   
 <b>Step #4</b><br />
-Merge Step01.asm with Step02.asm!  That is keep the structure of Step01.asm but replace all generic auto-generated labels from Step01 with specific labels and code from Step02.asm.  Save result file as main.asm.
+Merge Temp01.asm with Temp02.asm!  That is keep the structure of Temp01.asm but replace all generic auto-generated labels from Temp01 with specific labels and code from Temp02.asm.  Save result file as <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/main.asm">main.asm</a>.
 <br /><br />
 
 <b>Step #5</b><br />
-Launch Visual Studio Code.  Open Step03 foder.  Create sub-folders that replicate the original C source code structure e.g. banks, devkit, engine, object, screen.  Start from the top of main.asm and refactor as follows:
+Launch Visual Studio Code.  Open Temp03 foder.  Create sub-folders that replicate the original C source code structure e.g. <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/banks">banks</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a>.  Start from the top of <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/main.asm">main.asm</a> and refactor as follows:
 <br /> <br />
   
 </span>
