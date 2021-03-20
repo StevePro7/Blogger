@@ -13,12 +13,17 @@ Finally, wrap logical blocks of code as .section free and hardcoded address code
 <br /><br />
   
 <u>Opcodes</u><br />
+Manually disassemble code using the full Z80 <a href="http://www.z80.info/z80oplist.txt">Opcode</a> list or <a href="http://jgmalcolm.com/z80/opcodes/opcodesB">Opcodes</a> sorted by value.  Any byte data can be converted using the Hex to ASCII text converter.  Finally, here is a list of common opcodes regularly used:
+<br />
+TODO include common codes from Instructions.txt E:\GitHub\StevePro7\VanHalenSMS\asm
+<br /><br />
+  
 Manually disassemble code using the full Z80 <a href="http://www.z80.info/z80oplist.txt">Opcode</a> list or <a href="http://jgmalcolm.com/z80/opcodes/opcodesB">Opcodes</a> sorted by value.  Some common codes:
 <br />
 TODO include common codes from Instructions.txt E:\GitHub\StevePro7\VanHalenSMS\asm
-  
-<br /><br />  
+<br /><br />
+
 <u>Troubleshooting</u><br />
-  
+Ensure that labels do <b>not</b> begin with an underscore otherwise you may receive <a href="https://www.gitmemory.com/issue/vhelin/wla-dx/348/766459730">FIX_REFERENCES</a> error when assembling Z80 code with WLA-DX.  Also, ensure all disassembled labels, esp. labels with "<b>$</b>" are removed.  Otherwise when you debug step through Z80 source code breakpoints may skipped via disassembled code.  
 <br /><br />
 </span>
