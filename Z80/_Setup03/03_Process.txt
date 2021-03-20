@@ -1,5 +1,3 @@
-<span style="font-family:verdana;font-size:85%;">
-
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/content/out.inc">out.inc</a></i><br />
 Create <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/content">content</a> folder.  Create out.inc beneath content folder.  Add .include to file after the LABEL_70_ block.  Extract three OUT sections OUT128, OUT64 and OUT32 into out.inc.  Set the .ORG address at each section.
 <br /><br />
@@ -11,5 +9,3 @@ Create psg_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenD
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/devkit_manager.inc">devkit_manager.inc</a></i><br />
 Create devkit_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to file.  Extract all functions from SMS_init to SFX_CHANNELS2AND3 into devkit_manager.inc.  Ensure all RAM references replaced by enums as above.
 <br /><br />
-  
-</span>

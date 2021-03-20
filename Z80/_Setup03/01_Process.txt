@@ -1,5 +1,3 @@
-<span style="font-family:verdana;font-size:85%;">
-
 <b>Step #1</b><br />
 Create Temp01 folder | copy <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/dev/output.sms">output.sms</a>.  Launch <a href="https://emulicious.net">Emulicious</a> | open output.sms.  Tools | Debugger | Ctrl + A select all disassembled Z80 assembly code | Save Temp01.asm.  Follow instructions from previous post using Binary-File-Write <a href="https://github.com/SteveProXNA/Z80code/tree/main/05-Utils/BinaryFileWrite">utility</a> replace all instances of ".incbin ..." to refer to binary data files in the data folder.
 <br /> <br />
@@ -19,5 +17,3 @@ Merge Temp01.asm with Temp02.asm!  That is keep the structure of Temp01.asm but 
 <b>Step #5</b><br />
 Launch Visual Studio Code.  Open Temp03 foder.  Create sub-folders that replicate the original C source code structure e.g. <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/banks">banks</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a>.  Start from the top of <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/main.asm">main.asm</a> and refactor as follows:
 <br /> <br />
-  
-</span>
