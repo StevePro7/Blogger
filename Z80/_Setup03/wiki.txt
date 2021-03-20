@@ -1,18 +1,12 @@
 <span style="font-family:verdana;font-size:85%;">
 
 In the previous <a href="https://steveproxna.blogspot.com/2021/03/z80-programming-sample.html">post</a>, we checked out Z80 Programming Sample for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler for our development environment.
-<br /><br />
-  
-  Here we analyzed existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects and disassembled classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.  For completeness, we would like to connect source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and the underlying Z80 assembly code generated.
-  <br /><br />
-  
+<br /><br />  
 Here, we analyzed existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects and disassembled classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.  For completeness, we would now like to better understand the relationship between source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and the underlying Z80 assembly code.
-  <br /><br />
-  
-Now that we are setup, we would like to analyze existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects for the Sega Master System and disassemble some classic 8-bit commercial 
-  <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.
 <br />
-<a href="https://1.bp.blogspot.com/-hi--jGHq-AQ/YDFO501jDvI/AAAAAAAAGhs/ttLAdzN6X7gOlAdgHOIL1Wimou2FuAZUACLcBGAsYHQ/s622/MegaMan.jpg"><img alt="" border="0" width="98%" data-original-height="480" data-original-width="622" src="https://1.bp.blogspot.com/-hi--jGHq-AQ/YDFO501jDvI/AAAAAAAAGhs/ttLAdzN6X7gOlAdgHOIL1Wimou2FuAZUACLcBGAsYHQ/s600/MegaMan.jpg"/></a>
+<!--
+<a href="https://1.bp.blogspot.com/-jUvTBGAcOzQ/YFXYQpPUvYI/AAAAAAAAGkk/Xpu-Uh40wc4ncixSeGELZT8dTLNxdPCDACLcBGAsYHQ/s614/title.png" ><img alt="" border="0" width="98%" data-original-height="479" data-original-width="614" src="https://1.bp.blogspot.com/-jUvTBGAcOzQ/YFXYQpPUvYI/AAAAAAAAGkk/Xpu-Uh40wc4ncixSeGELZT8dTLNxdPCDACLcBGAsYHQ/s600/title.png"/></a>
+-->
 <br />
 Let's check it out!
 <br /><br />
