@@ -4,4 +4,19 @@
 Create devkit_manager.inc beneath devkit folder.  Add .include to file.  Extract all functions from SMS_init to SFX_CHANNELS2AND3 into devkit_manager.inc.  Ensure all RAM references replaced by enums as above.
 <br /><br />
   
+<i>engine</i><br />
+Create the following *_manager.inc files beneath engine folder: asm, audio, content, cursor, font, input, record, secreen, scroll, storage, timer.  Extract all code from main.asm to each corresponding engine file.
+<br /><br />
+
+<i>object</i><br />
+Create the following *_object.inc files beneath object folder: cursor, record.  Extract all code from main.asm to each corresponding object file.  Don't forget to add the corresponding .include statements in main.asm.
+<br /><br />
+  
+<i>screen</i><br />
+Create the following *_screen.inc files beneath screen folder: none, splash, title, scroll, select record.  Extract all code from main.asm to each corresponding screen file.  Add corresponding .include statements as above.
+<br /><br />
+  
+<i>content</i><br />
+Create gfx.inc and psg.inc files beneath content folder.  Extract all code from main.asm to each content file.
+<br /><br />
 </span>
