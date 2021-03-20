@@ -3,9 +3,21 @@
 <b>Step #1</b><br />
 Create Step01 folder | copy output.sms.  Launch Emulicious | open output.sms.  Tools | Debugger | Ctrl + A select all disassembled Z80 assembly code | Save Step01.asm.  Follow instructions from previous post using Binary-File-Write utility replace all instances of ".incbin ..." to refer to binary data files in the data folder.
 <br /> <br />
+  
 <b>Step #2</b><br />
 Create Step02 folder | copy output.sms + output.map.  Launch Emulicious | open output.sms.  In Debugger | Ctrl + A to select all disassembled Z80 assembly code that now has devkitSMS symbols | Save Step02.asm. 
 <br /> <br />
 
+<b>Step #3</b><br />
+Create Step03 folder.  Copy .vscode folder from above with launch.json and tasks.json. Copy build.bat and build.sh. Don't forget to grant execute permission chmod +x build.sh command.  Copy data folder above.
+<br /> <br />
+  
+<b>Step #4</b><br />
+Merge Step01.asm with Step02.asm!  That is keep the structure of Step01.asm but replace all generic auto-generated labels from Step01 with specific labels and code from Step02.asm.  Save result file as main.asm.
+<br /><br />
 
+<b>Step #5</b><br />
+Launch Visual Studio Code.  Open Step03 foder.  Create sub-folders that replicate the original C source code structure e.g. banks, devkit, engine, object, screen.  Start from the top of main.asm and refactor as follows:
+<br /> <br />
+  
 </span>
