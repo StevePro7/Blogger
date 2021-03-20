@@ -1,23 +1,24 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a></i><br />
-Create the following *_manager.inc files beneath engine folder: asm, audio, content, cursor, font, input, record, secreen, scroll, storage, timer.  Extract all code from main.asm to each corresponding engine file.
+Create the following *_manager.inc files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a> folder: <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/asm_manager.inc">asm</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/audio_manager.inc">audio</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/content_manager.inc">content</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/cursor_manager.inc">cursor</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/font_manager.inc">font</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/input_manager.inc">input</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/record_manager.inc">record</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/secreen_manager.inc">secreen</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/scroll_manager.inc">scroll</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/storage_manager.inc">storage</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/timer_manager.inc">timer</a>.  Extract all code from main.asm to each corresponding engine file.
 <br /><br />
 
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a></i><br />
-Create the following *_object.inc files beneath object folder: cursor, record.  Extract all code from main.asm to each corresponding object file.  Don't forget to add the corresponding .include statements in main.asm.
+Create the following *_object.inc files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a> folder: <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/object/cursor_object.inc">cursor</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/object/record_object.inc">record</a>.  Extract all code from main.asm to each corresponding object file.  Don't forget to add the corresponding .include statements in main.asm.
 <br /><br />
 
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a></i><br />
-Create the following *_screen.inc files beneath screen folder: none, splash, title, scroll, select record.  Extract all code from main.asm to each corresponding screen file.  Add corresponding .include statements as above.
+Create the following *_screen.inc files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a> folder: <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/none_screen.inc">none</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/splash_screen.inc">splash</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/title _screen.inc">title</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/scroll_screen.inc">scroll</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/select_screen.inc">select</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/record_screen.inc">record</a>.  Extract all code from main.asm to each corresponding screen file.  Add corresponding .include statements.
 <br /><br />
   
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/content">content</a></i><br />
-Create gfx.inc and psg.inc files beneath content folder.  Extract all code from main.asm to each content file.
+Create <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/content/gfx.inc">gfx.inc</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/content/psg.inc">psg.inc</a> files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/content">content</a> folder.  Extract all code from main.asm to each content file.
 <br /><br />
 
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/sms_manager.inc">sms_manager.inc</a></i><br />
-Create sms_manager.inc beneath devkit folder.  Add .include to file after all div functions.  Extract all functions from UNSAFE_SMS_copySpritestoSAT to SMS_loadPSGaidencompressedTiles into the sms_manager.inc file.
+Create sms_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a>
+ folder.  Add .include to file after all div functions.  Extract all functions from UNSAFE_SMS_copySpritestoSAT to SMS_loadPSGaidencompressedTiles into the sms_manager.inc file.
 <br /><br />
   
 </span>
