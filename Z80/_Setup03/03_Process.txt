@@ -9,4 +9,17 @@ Create define_manager.inc beneath devkit folder.  Add .include to this file.  Mo
 .define CRAMWrite $c000
 </pre>
 <br />
+  
+<i>out.inc</i><br />
+Create content folder.  Create out.inc beneath content folder.  Add .include to file after the LABEL_70_ block.  Extract three OUT sections OUT128, OUT64 and OUT32 into out.inc.  Set the .ORG address at each section.
+<br /><br />
+
+<i>psg_manager.inc</i><br />
+Create psg_manager.inc beneath devkit folder.  Add .include to file after the main loop block.  Extract all PSG functions from PSGStop to PSGSFXFrame into psg_manager.inc.  Ensure RAM references replaced by enums.
+<br /><br />
+  
+<i>devkit_manager.inc</i><br />
+Create devkit_manager.inc beneath devkit folder.  Add .include to file.  Extract all functions from SMS_init to SFX_CHANNELS2AND3 into devkit_manager.inc.  Ensure all RAM references replaced by enums as above.
+<br /><br />
+  
 </span>
