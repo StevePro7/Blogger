@@ -18,5 +18,14 @@ Create memory_manager.inc beneath devkit folder.  Add .include to file.  Move al
 <i>enum_manager.inc</i><br />
 Create enum_manager.inc beneath devkit folder.  Add .include to file.  Move all .enum exports here.  Rename RAM enum references to actual variables used throughout the codebase.  Ensure RAM addresses are correct.
 <br /> <br />
-  
+
+<i>define_manager.inc</i><br />
+Create define_manager.inc beneath devkit folder.  Add .include to this file.  Move all .define definitions here.
+<pre class="csharp" name="code">
+.define VDPControl $bf
+.define VDPData $be
+.define VRAMWrite $4000
+.define CRAMWrite $c000
+</pre>
+<br />
 </span>
