@@ -19,4 +19,9 @@ Create the following *_screen.inc files beneath screen folder: none, splash, tit
 <i>content</i><br />
 Create gfx.inc and psg.inc files beneath content folder.  Extract all code from main.asm to each content file.
 <br /><br />
+  
+<i>sms_manager.inc</i><br />
+Create sms_manager.inc beneath devkit folder.  Add .include to file after all div functions.  Extract all functions from UNSAFE_SMS_copySpritestoSAT to SMS_loadPSGaidencompressedTiles into the sms_manager.inc file.
+<br /><br />
+  
 </span>
