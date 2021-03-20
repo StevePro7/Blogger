@@ -19,6 +19,109 @@ Note: ensure you have downloaded and installed <a href="https://www.villehelin.c
 Build small <a href="https://github.com/SteveProXNA/VanHalenDemoSMS">demo</a> project in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> using the devkitSMS.  Follow the numerous posts from <a href="https://steveproxna.blogspot.com/search/label/devkitSMS">devkitSMS</a> category to completion.  Next, disassemble the output.  Refactor the underlying Z80 assembly code using this process:
 <br /> <br />
 
+<!-- 01_Process.txt -->
+<b>Step #1</b><br />
+Create Temp01 folder | copy <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/dev/output.sms">output.sms</a>.  Launch <a href="https://emulicious.net">Emulicious</a> | open output.sms.  Tools | Debugger | Ctrl + A select all disassembled Z80 assembly code | Save Temp01.asm.  Follow instructions from previous post using Binary-File-Write <a href="https://github.com/SteveProXNA/Z80code/tree/main/05-Utils/BinaryFileWrite">utility</a> replace all instances of ".incbin ..." to refer to binary data files in the data folder.
+<br /> <br />
+  
+<b>Step #2</b><br />
+Create Temp02 folder | copy <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/dev/output.sms">output.sms</a> + <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/dev/output.map">output.map</a>.  Launch Emulicious | open output.sms.  In Debugger | Ctrl + A to select all disassembled Z80 assembly code that now has devkitSMS symbols | Save Temp02.asm. 
+<br /> <br />
+
+<b>Step #3</b><br />
+Create <b><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm">asm</a></b> folder.  Copy <b><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/.vscode/tasks.json">tasks.json</a>. Copy <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/build.bat">build.bat</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/build.sh">build.sh</a>. Don't forget to grant execute permission chmod +x build.sh command.  Copy data folder above.
+<br /> <br />
+  
+<b>Step #4</b><br />
+Merge Temp01.asm with Temp02.asm!  That is keep the structure of Temp01.asm but replace all generic auto-generated labels from Temp01 with specific labels and code from Temp02.asm.  Save result file as <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/main.asm">main.asm</a>.
+<br /><br />
+
+<b>Step #5</b><br />
+Launch Visual Studio Code.  Open Temp03 foder.  Create sub-folders that replicate the original C source code structure e.g. <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/banks">banks</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a>.  Start from the top of <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/main.asm">main.asm</a> and refactor as follows:
+<br /> <br />
+
+<!-- 02_Process.txt -->
+<i><a href="https://www.smspower.org/Development/SDSCROMTagSpecification">.sdsctag</a></i><br />
+Begin with the <a href="https://wla-dx.readthedocs.io/en/latest/asmdiv.html#sdsctag-1-0-dungeon-man-a-wild-dungeon-exploration-game-ville-helin">.sdsctag</a> which includes the ROM build major . minor version, author, name and description:
+<pre class="csharp" name="code">
+.sdsctag 1.0,"Van Halen","Van Halen Record Covers for the SMS Power! 2021 Competition","StevePro Studios"
+</pre>
+<br />
+  
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/memory_manager.inc">memory_manager.inc</a></i><br />
+Create memory_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to file.  Move all memory map code in here.  
+<br /> <br />
+
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/enum_manager.inc">enum_manager.inc</a></i><br />
+Create enum_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to file.  Move all .enum exports here.  Rename RAM enum references to actual variables used throughout the codebase.  Ensure RAM addresses are correct.
+<br /> <br />
+
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/define_manager.inc">define_manager.inc</a></i><br />
+Create define_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to this file.  Move all .define definitions here.
+<pre class="csharp" name="code">
+.define VDPControl $bf
+.define VDPData $be
+.define VRAMWrite $4000
+.define CRAMWrite $c000
+</pre>
+<br />
+  
+<!-- 03_Process.txt -->
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/content/out.inc">out.inc</a></i><br />
+Create <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/content">content</a> folder.  Create out.inc beneath content folder.  Add .include to file after the LABEL_70_ block.  Extract three OUT sections OUT128, OUT64 and OUT32 into out.inc.  Set the .ORG address at each section.
+<br /><br />
+
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/psg_manager.inc">psg_manager.inc</a></i><br />
+Create psg_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to file after the main loop block.  Extract all PSG functions from PSGStop to PSGSFXFrame into psg_manager.inc.  Ensure RAM references replaced by enums.
+<br /><br />
+  
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/devkit_manager.inc">devkit_manager.inc</a></i><br />
+Create devkit_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a> folder.  Add .include to file.  Extract all functions from SMS_init to SFX_CHANNELS2AND3 into devkit_manager.inc.  Ensure all RAM references replaced by enums as above.
+<br /><br />  
+
+<!-- 04_Process.txt -->
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a></i><br />
+Create the following *_manager.inc files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a> folder: <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/asm_manager.inc">asm</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/audio_manager.inc">audio</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/content_manager.inc">content</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/cursor_manager.inc">cursor</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/font_manager.inc">font</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/input_manager.inc">input</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/record_manager.inc">record</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/secreen_manager.inc">secreen</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/scroll_manager.inc">scroll</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/storage_manager.inc">storage</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/timer_manager.inc">timer</a>.  Extract all code from main.asm to each corresponding engine file.
+<br /><br />
+
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a></i><br />
+Create the following *_object.inc files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a> folder: <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/object/cursor_object.inc">cursor</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/object/record_object.inc">record</a>.  Extract all code from main.asm to each corresponding object file.  Don't forget to add the corresponding .include statements in main.asm.
+<br /><br />
+
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a></i><br />
+Create the following *_screen.inc files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a> folder: <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/none_screen.inc">none</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/splash_screen.inc">splash</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/title _screen.inc">title</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/scroll_screen.inc">scroll</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/select_screen.inc">select</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen/record_screen.inc">record</a>.  Extract all code from main.asm to each corresponding screen file.  Add corresponding .include statements.
+<br /><br />
+  
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/content">content</a></i><br />
+Create <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/content/gfx.inc">gfx.inc</a> and <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/content/psg.inc">psg.inc</a> files beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/content">content</a> folder.  Extract all code from main.asm to each content file.
+<br /><br />
+
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/devkit/sms_manager.inc">sms_manager.inc</a></i><br />
+Create sms_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a>
+ folder.  Add .include to file after all div functions.  Extract all functions from UNSAFE_SMS_copySpritestoSAT to SMS_loadPSGaidencompressedTiles into the sms_manager.inc file.
+<br /><br />
+  
+<!-- 05_Process.txt -->
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/bank_manager.inc">bank_manager.inc</a></i><br />
+Create bank_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a>
+ folder.  Add .include to file as last line of main.asm.  Remove auto-generated data for SDSC and .incbin.  In banks_manager.inc update labels and set correct .incbin to banks resources.
+<br /><br />
+
+<u>Sections</u><br />
+Finally, wrap logical blocks of code as .section free and hardcoded address code as .section force for example $0000, $0038 and $0066.  Wrap banked code as .section free or superfree + ensure all BANK # has SLOT 2.
+<br /><br />
+  
+<u>Opcodes</u><br />
+Manually disassemble code using the full Z80 <a href="http://www.z80.info/z80oplist.txt">Opcode</a> list or <a href="http://jgmalcolm.com/z80/opcodes/opcodesB">Opcodes</a> sorted by value.  Any byte data can be converted using the Hex to ASCII text <a href="https://www.rapidtables.com/convert/number/hex-to-ascii.html">converter</a>.  Finally, here is a list of common opcodes regularly used:
+<br />
+<b>TODO include common codes from Instructions.txt E:\GitHub\StevePro7\VanHalenSMS\asm</b>
+<br /><br />
+
+
+<u>Troubleshooting</u><br />
+Ensure that labels do <b>not</b> begin with an underscore otherwise you may receive <a href="https://www.gitmemory.com/issue/vhelin/wla-dx/348/766459730">FIX_REFERENCES</a> error when assembling Z80 code with WLA-DX.  Also, ensure all disassembled labels, esp. labels with "<b>$</b>" are removed.  Otherwise when you debug step through Z80 source code breakpoints may skipped via disassembled code.  
+<br /><br />
+
 Download code sample <b><a href="https://github.com/SteveProXNA/VanHalenDemoSMS">here</a></b>.
 <br /> <br />
 <u>Summary</u><br />
