@@ -1,8 +1,10 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <b>Step #1</b><br />
-Create Step01 folder | copy output.sms.  Launch Emulicious | open output.sms.  Tools | Debugger.  Ctrl + A to select all disassembled Z80 assembly code | Save output.asm.  Follow instructions from previous post: using Binary-File-Write utility replace all instances of ".incbin ..." to refer to binary data files in the data folder.
-  
+Create Step01 folder | copy output.sms.  Launch Emulicious | open output.sms.  Tools | Debugger | Ctrl + A select all disassembled Z80 assembly code | Save Step01.asm.  Follow instructions from previous post using Binary-File-Write utility replace all instances of ".incbin ..." to refer to binary data files in the data folder.
+<br /> <br />
+<b>Step #2</b><br />
+Create Step02 folder | copy output.sms + output.map.  Launch Emulicious | open output.sms.  In Debugger | Ctrl + A to select all disassembled Z80 assembly code that now has devkitSMS symbols | Save Step02.asm. 
 <br /> <br />
 
 
