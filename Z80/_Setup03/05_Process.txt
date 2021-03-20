@@ -1,0 +1,24 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+<i>sms_manager.inc</i><br />
+Create sms_manager.inc beneath devkit folder.  Add .include to file after all div functions.  Extract all functions from UNSAFE_SMS_copySpritestoSAT to SMS_loadPSGaidencompressedTiles into the sms_manager.inc file.
+<br /><br />
+
+<i>bank_manager.inc</i><br />
+Create bank_manager.inc beneath engine folder.  Add .include to file as last line of main.asm.  Remove auto-generated data for SDSC and .incbin.  In banks_manager.inc update labels and set correct .incbin to banks resources.
+<br /><br />
+
+<u>Sections</u><br />
+Finally, wrap logical blocks of code as .section free and hardcoded address code as .section force for example $0000, $0038 and $0066.  Wrap banked code as .section free or superfree + ensure all BANK # has SLOT 2.
+<br /><br />
+  
+<u>Opcodes</u><br />
+Manually disassemble code using the full Z80 <a href="http://www.z80.info/z80oplist.txt">Opcode</a> list or <a href="http://jgmalcolm.com/z80/opcodes/opcodesB">Opcodes</a> sorted by value.  Some common codes:
+<br />
+TODO include common codes from Instructions.txt E:\GitHub\StevePro7\VanHalenSMS\asm
+  
+<br /><br />  
+<u>Troubleshooting</u><br />
+  
+<br /><br />
+</span>
