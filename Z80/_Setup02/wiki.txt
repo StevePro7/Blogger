@@ -1,5 +1,4 @@
 <span style="font-family:verdana;font-size:85%;">
-
 In the previous <a href="https://steveproxna.blogspot.com/2021/02/z80-programming-setup.html">post</a>, we checked out Z80 Programming Setup for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler for our development environment.
 <br /><br />
 Now that we are setup, we would like to analyze existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects for the Sega Master System and disassemble some classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.
@@ -32,9 +31,7 @@ Press Ctrl + Shift + B to execute build script => compile, link and run <a href=
 <br /><br />
 <i>Debugging</i><br />
 Launch Emulicious externally.  Ensure Emulicious <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Debugger</a> is installed with VS Code as per previous <a href="https://steveproxna.blogspot.com/2021/02/z80-programming-setup.html">post</a>.  Open <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerClassic/main.asm">main.asm</a> and set breakpoints.  Press F5. Emulicious debugger should now break into Z80 assembly source code! Step through + investigate register variables, stackframes, access watch window, call stack:
-  
 <a href="https://1.bp.blogspot.com/-iArny3gygz4/YD0o_E3q-pI/AAAAAAAAGjE/PEs5YVG4yrAy2k7-5ULw0QYQEaKcbWhPACLcBGAsYHQ/s896/CarRacerDebug.jpg"><img alt="" border="0" width="98%" data-original-height="828" data-original-width="896" src="https://1.bp.blogspot.com/-iArny3gygz4/YD0o_E3q-pI/AAAAAAAAGjE/PEs5YVG4yrAy2k7-5ULw0QYQEaKcbWhPACLcBGAsYHQ/s600/CarRacerDebug.jpg"/></a>
-
 <br /><br />
 <b>Car Racer</b> (rebooted)<br />
 Create C:\CarRacerRebooted or ~/CarRacerRebooted.  Copy <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/03-Codes/CarRacerRebooted/.vscode">.vscode</a></b> folder from above with <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/.vscode/tasks.json">tasks.json</a>.  Copy <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.bat">build.bat</a> + <a href="https://github.com/SteveProXNA/Z80code/blob/main/03-Codes/CarRacerRebooted/build.sh">build.sh</a>.  Don't forget to grant execute permission chmod +x build.sh command.
@@ -207,9 +204,7 @@ _DATA_2CB_:
 -->
 <br />
 Launch Emulicious.  Tools menu | Memory Editor | RAM.  Right click $C0E7 | Toggle Watchpoint.  Repeat for $C0E8 and $C0EE.  Resume code.  Play game and die!  The value at RAM $C0EE decreases from $02 to $01.
-
 <a href="https://1.bp.blogspot.com/-ojOkuIzmu1M/YD0rOoueDvI/AAAAAAAAGjM/MRZJLmupwvkrX8cM4H0RCaEZH4ItnqNAgCLcBGAsYHQ/s898/FlickyDebug.jpg"><img alt="" border="0" width="98%" data-original-height="675" data-original-width="898" src="https://1.bp.blogspot.com/-ojOkuIzmu1M/YD0rOoueDvI/AAAAAAAAGjM/MRZJLmupwvkrX8cM4H0RCaEZH4ItnqNAgCLcBGAsYHQ/s600/FlickyDebug.jpg"/></a>
-
 <br />
 <br />
 Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the original $02 with $FF for "infinite" lives.  Repeat process: complete level; see RAM $C0E8 stores start level loaded from ROM $02C4!
@@ -219,5 +214,5 @@ Therefore, RAM $C0EE stores the lives count loaded from ROM $02CA!  Replace the 
 <u>Summary</u><br />
 Now that we have a productive <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> assembler development environment and analyzed some larger projects to better understand the development process we are in a great spot to build our own projects from scratch.
 <br /><br />
-For completeness, we would still like to better understand relationship between <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and connect the underlying Z80 assembly code generated accordingly.  This will be the topic of the next post!
+For completeness, we would still like to better understand relationship between <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and connect the underlying Z80 assembly code generated accordingly.  This will be the topic of the next post.
 </span>
