@@ -1,18 +1,13 @@
 <span style="font-family:verdana;font-size:85%;"> 
-
 In 2013, we checked out <a href="http://steveproxna.blogspot.com/2013/09/sega-console-programming.html">Sega Console Programming</a> to setup video game development environment for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler.  Remember, original cartridge-based video games built for 8-bit Sega Retro Gaming consoles were written in pure assembly!  
 <br /><br /> 
 Now we would like to extend our game development environment to Windows and Mac OS/X and Linux for cross platform development and also add better support for automated builds with debugging functionality.
-
 <a href="https://1.bp.blogspot.com/-44q770Rl34g/YBCMbvaANvI/AAAAAAAAGfg/0zfCv2b-e2wcEhnjg9cngL7oZRDnLDzhACLcBGAsYHQ/s724/vhelin.png" imageanchor="1"><img alt="" border="0" width="98%" data-original-height="370" data-original-width="724" src="https://1.bp.blogspot.com/-44q770Rl34g/YBCMbvaANvI/AAAAAAAAGfg/0zfCv2b-e2wcEhnjg9cngL7oZRDnLDzhACLcBGAsYHQ/s600/vhelin.png"/></a>
-
 Let's check it out!
 <br /><br />
-
 <b>Assembler</b><br />
 Recommended is the <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler.  Git clone the <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repository and follow OS specific instructions.
 <br /><br />
-
 <u>Windows</u><br />
 Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repository to C:\GitHub\vhelin.  Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Windows directly from Visual Studio 2017 from the <a href="https://github.com/vhelin/wla-dx/tree/master/windows">wla-dx\windows</a> folder.
 <br />
@@ -34,9 +29,7 @@ Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repository to C:\Git
 <td>&nbsp;8. WLA DX linker wlalink.exe built</td>
 </tr>
 </table>
-
 <a href="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s799/windows.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="183" data-original-width="799" src="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s600/windows.png"/></a>
-
 If you have followed <a href="http://steveproxna.blogspot.com/2014/09/z88dk-programming-setup.html">z88dk Programming Setup</a> tutorial and you already have <a href="http://www.contexteditor.org/downloads">ConTEXT</a> installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
 <br /><br />
 Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag is now no longer required.
@@ -72,7 +65,6 @@ Also, tweak the original Compile.bat file as all main entry points will now be v
 </table>
 <br />
 <br /> 
-  
 <u>Mac OS/X</u><br />
 Instructions on GitHub describe how to build WLA-LX for Linux whereas WLA-DX can be built for Mac OS/X using brew.  Install <a href="https://brew.sh">brew</a> as per instructions.  Then follow all instructions <a href="http://macappstore.org/wla-dx">here</a> to install wla-dx on Mac OS/X.
 <br /><br />  
@@ -82,9 +74,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 Accept prompt to install the latest Xcode tools
 brew install wla-dx
 </pre>
-
 <a href="https://1.bp.blogspot.com/-gAw3mN_AScA/YBCTEgcu24I/AAAAAAAAGf0/E2WjOPVPohMbfh1jMWMrnJlihfp692cXgCLcBGAsYHQ/s711/macosx.png" imageanchor="1"><img alt="" border="0" width="98%" data-original-height="141" data-original-width="711" src="https://1.bp.blogspot.com/-gAw3mN_AScA/YBCTEgcu24I/AAAAAAAAGf0/E2WjOPVPohMbfh1jMWMrnJlihfp692cXgCLcBGAsYHQ/s600/macosx.png"/></a>
-
 IMPORTANT<br />
 During installation, you may encounter the following error:
 <i>homebrew-core is a shallow clone. To `brew update`, first run: git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
@@ -97,7 +87,6 @@ brew update --force
 brew install wla-dx
 </pre>
 <br />
-
 <u>Linux</u><br />
 Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repo to ~/GitHub/vhelin.  Follow all instructions on GitHub which describes how to build WLA-LX for Linux.  Launch Terminal | enter commands.  After completion, wla-z80 and wlalink should work universally.
 <table width="100%" border="1">
@@ -118,9 +107,7 @@ Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repo to ~/GitHub/vhe
 <td>&nbsp;8. cmake -P cmake_install.cmake</td>
 </tr>
 </table>
-
 <a href="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s858/linux.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="164" data-original-width="858" src="https://1.bp.blogspot.com/-Q4L1lkkwWjY/YBCUQ_CNjfI/AAAAAAAAGgA/tn8Ue2IkMA4tsLFCkedXUoOn3y45dvVfgCLcBGAsYHQ/s600/linux.png"/></a>
-
 <br />
 <br />
 <b>Visual Studio Code</b><br />
@@ -154,7 +141,6 @@ Download and extract the obligatory "<a href="http://www.smspower.org/maxim/uplo
 </ol>
 <br />
 Add <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/build.bat">build.bat</a> file to compile, link and run souce code on Windows and <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/build.sh">build.sh</a> file to compile, link and run souce code on Mac OS/X + Linux.  Don't forget to grant execute permission <b>chmod +x build.sh</b> command:
-
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/build.bat">build.bat</a></td>
@@ -207,12 +193,8 @@ Add <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorl
 </td>
 </tr>
 </table>
- 
-<br />
-  
+<br /> 
 Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.json file: Configure Build Task... Create tasks.json file from template | Others.  This will create <b><a href="https://github.com/SteveProXNA/Z80code/tree/main/01-Intro/HelloWorld/.vscode">.vscode</a></b> hidden folder and <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/.vscode/tasks.json">tasks.json</a> file here.
-
- 
 <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/.vscode/tasks.json">tasks.json</a>
 <pre class="csharp" name="code">
 {
@@ -232,18 +214,15 @@ Press Ctrl + Shift + B to execute build script.  If/when promted to add tasks.js
     "group": {"kind": "build", "isDefault": true},
 }
 </pre>
-
 Press Ctrl + Shift + B to execute build script => compile, link and run <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/output.sms">output.sms</a> launched from Emulicious!
 <br /><br />
 IMPORTANT<br />
 Assumption <a href="https://emulicious.net">Emulicious</a> installed C:\SEGA\Emulicious on Windows or ~/SEGA/Emulicious Mac OS/X + Linux.
-
-<br /><br /><br>
+<br /><br />
+<br>
 <u>Emulicious Debugger</u><br />
 Now that we are able to compile, link and run Z80 assembler directly within Visual Studio Code the final step is to configure debugging.  In VS Code, install <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a> extension.  Click the Run icon and "create a launch.json file".  Choose Emulicious Debugger from the drop down.  Complete <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/.vscode/launch.json">launch.json</a> file accordingly:
-
 <a href="https://1.bp.blogspot.com/-pYDXDM2hO8I/YBGkOwvJQRI/AAAAAAAAGgQ/NaBineBIvOMWhH6YGbvvJ21OIrz1-HGmQCLcBGAsYHQ/s897/EmuliciousDebugger.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="99%" data-original-height="489" data-original-width="897" src="https://1.bp.blogspot.com/-pYDXDM2hO8I/YBGkOwvJQRI/AAAAAAAAGgQ/NaBineBIvOMWhH6YGbvvJ21OIrz1-HGmQCLcBGAsYHQ/s600/EmuliciousDebugger.png"/></a>
-
 <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/.vscode/launch.json">launch.json</a>
 <pre class="csharp" name="code">
 {
@@ -260,7 +239,6 @@ Now that we are able to compile, link and run Z80 assembler directly within Visu
     ]
 }
 </pre>
-
 <br />
 <!--<br />-->
 Launch <a href="https://emulicious.net">Emulicious</a>.  Configure the options below.  Open Tools menu | Debugger.  Configure these options also:
@@ -276,11 +254,9 @@ Launch <a href="https://emulicious.net">Emulicious</a>.  Configure the options b
 </table>
 <br />
 In Visual Studio Code, open <a href="https://github.com/SteveProXNA/Z80code/blob/main/01-Intro/HelloWorld/main.asm">main.asm</a> and set breakpoints.  Press F5.  Emulicious debugger should now break and debug step through Z80 assembly source code!  Access register variables, watch window, call stack etc.
-
 <a href="https://1.bp.blogspot.com/-rO0-zP80kjE/YDy0q22KZQI/AAAAAAAAGi8/t0VcQS6TaEUB_dm1MUX7AZKnVv9Y-lzqACLcBGAsYHQ/s893/DebuggingVScode.png"><img alt="" border="0" width="98%" data-original-height="723" data-original-width="893" src="https://1.bp.blogspot.com/-rO0-zP80kjE/YDy0q22KZQI/AAAAAAAAGi8/t0VcQS6TaEUB_dm1MUX7AZKnVv9Y-lzqACLcBGAsYHQ/s600/DebuggingVScode.png"/></a>
 <br />
 <br />
-
 <u>Emulicious Debugger II</u><br />
 For completeness, to better understand relationship between <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> source code written in C and Z80 assembly code, let's debug step through "Hello World" program written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
 <br /><br />
@@ -291,11 +267,9 @@ Follow the Hello World <a href="https://github.com/SteveProXNA/Z80code/blob/main
 </pre>
 <br />
 Fortunately, we can leverage the same <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/.vscode/launch.json">launch.json</a> and <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/.vscode/tasks.json">tasks.json</a> files as before.  Launch Emulicious | Press F5.  Emulicious debugger should now break and debug step through C source code!  In the external debugger navigate the Z80 assembly code wrapped in C functions via <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/output.map">output.map</a> to better understand C / Z80 code!
-
 <a href="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s930/DebuggingSource.png"><img alt="" border="0" width="98%" data-original-height="645" data-original-width="930" src="https://1.bp.blogspot.com/-tjvgjntskXA/YBGw8eJ_OjI/AAAAAAAAGgc/D4V4ZBga3h88hmF9MK0PFSqQFqIiv1QPACLcBGAsYHQ/s600/DebuggingSource.png"/></a>
 <br />
 <br />
-  
 TROUBLESHOOTING<br />
 If you see popup "connect ECONNREFUSED 127.0.0:58870" then this is because <a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious</a> is not running.  Also, if F5 does not launch the debugger from VS Code then click <a href="https://github.com/SteveProXNA/Z80code/blob/main/02-Outro/HelloWorld/output.sms">output.sms</a> and choose Debug File icon.
 <br /><br />
