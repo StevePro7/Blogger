@@ -4,6 +4,7 @@ In the previous <a href="https://steveproxna.blogspot.com/2021/03/z80-programmin
 <br /><br />
 Here, we analyzed existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects and disassembled classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.  For completeness, we would now like to better understand this relationship between source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and the underlying Z80 assembly code.
 <br />
+<a href="https://1.bp.blogspot.com/-anKkBMyHzJs/YFcuaWEqLEI/AAAAAAAAGks/B5ruwIklE8AL1C2Z6Zsr35MNmu4EWul9QCLcBGAsYHQ/s639/select.png"><img alt="" border="0" width="98%" data-original-height="480" data-original-width="639" src="https://1.bp.blogspot.com/-anKkBMyHzJs/YFcuaWEqLEI/AAAAAAAAGks/B5ruwIklE8AL1C2Z6Zsr35MNmu4EWul9QCLcBGAsYHQ/s600/select.png"/></a>
 <!--
 <a href="https://1.bp.blogspot.com/-jUvTBGAcOzQ/YFXYQpPUvYI/AAAAAAAAGkk/Xpu-Uh40wc4ncixSeGELZT8dTLNxdPCDACLcBGAsYHQ/s614/title.png" ><img alt="" border="0" width="98%" data-original-height="479" data-original-width="614" src="https://1.bp.blogspot.com/-jUvTBGAcOzQ/YFXYQpPUvYI/AAAAAAAAGkk/Xpu-Uh40wc4ncixSeGELZT8dTLNxdPCDACLcBGAsYHQ/s600/title.png"/></a>
 -->
@@ -38,7 +39,9 @@ Merge Temp01.asm with Temp02.asm!  That is keep the structure of Temp01.asm but 
 
 <b>Step #5</b><br />
 Launch Visual Studio Code.  Open Temp03 foder.  Create sub-folders that replicate the original C source code structure e.g. <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/banks">banks</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/devkit">devkit</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/object">object</a>, <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/screen">screen</a>.  Start from the top of <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/main.asm">main.asm</a> and refactor as follows:
-<br /> <br />
+<br />
+<a href="https://1.bp.blogspot.com/-anKkBMyHzJs/YFcuaWEqLEI/AAAAAAAAGks/B5ruwIklE8AL1C2Z6Zsr35MNmu4EWul9QCLcBGAsYHQ/s639/select.png"><img alt="" border="0" width="98%" data-original-height="480" data-original-width="639" src="https://1.bp.blogspot.com/-anKkBMyHzJs/YFcuaWEqLEI/AAAAAAAAGks/B5ruwIklE8AL1C2Z6Zsr35MNmu4EWul9QCLcBGAsYHQ/s600/select.png"/></a>
+<br />
 
 <!-- 02_Process.txt -->
 <i><a href="https://www.smspower.org/Development/SDSCROMTagSpecification">.sdsctag</a></i><br />
