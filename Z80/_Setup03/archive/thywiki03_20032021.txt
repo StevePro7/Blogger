@@ -1,15 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Summary</u><br />
-Although Z80 programming for the Sega Master System may be very niche development style, it still attracts interest on <a href="https://www.smspower.org/forums/15794-AFewHintsOnCodingAMediumLargeSizedGameUsingWLADX">coding</a> medium / large sized games using <a href="https://www.villehelin.com/wla.html">WLA-DX</a> with further options for Z80 IDEs using <a href="https://dl.bintray.com/yuv422/EclipseZ80Editor">Eclipse</a> and other information on <a href="https://www.smspower.org/forums/17765-VisualStudioCodeForSMSDevelopment">Visual Studio</a> Code for SMS Development including sample SMS <a href="https://github.com/SavagePencil/SMSFramework">Framework</a> to test.
-<br /><br />
-Now that we have setup a productive <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> assembler development environment and better understand this relationship between source code written in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and the underlying Z80 assembly code, we are now finally in a great spot to build our own Z80 projects from scratch for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>!
-
-<br /><br />
-<br /><br />
-  
 In the previous <a href="https://steveproxna.blogspot.com/2021/03/z80-programming-sample.html">post</a>, we checked out Z80 Programming Sample for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler for our development environment.
-<br /><br />
+<br /><br />  
 Here, we analyzed existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects and disassembled classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.  For completeness, we would now like to better understand this relationship between source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and the underlying Z80 assembly code.
 <br />
 <!--
@@ -127,13 +119,11 @@ Manually disassemble code using the full Z80 <a href="http://www.z80.info/z80opl
 
 
 <u>Troubleshooting</u><br />
-Ensure that labels do <b>not</b> begin with an underscore otherwise you may receive <a href="https://www.gitmemory.com/issue/vhelin/wla-dx/348/766459730">FIX_REFERENCES</a> error when assembling Z80 code with <a href="https://www.villehelin.com/wla.html">WLA-DX</a>.  Also, ensure all disassembled labels, esp. labels with "<b>$</b>" are removed.  Otherwise when you debug step through Z80 source code breakpoints may skipped via disassembled code.  
+Ensure that labels do <b>not</b> begin with an underscore otherwise you may receive <a href="https://www.gitmemory.com/issue/vhelin/wla-dx/348/766459730">FIX_REFERENCES</a> error when assembling Z80 code with WLA-DX.  Also, ensure all disassembled labels, esp. labels with "<b>$</b>" are removed.  Otherwise when you debug step through Z80 source code breakpoints may skipped via disassembled code.  
 <br /><br />
 
 Download code sample <b><a href="https://github.com/SteveProXNA/VanHalenDemoSMS">here</a></b>.
 <br /> <br />
 <u>Summary</u><br />
-Although Z80 programming for the Sega Master System may be very niche development style, it still attracts interest on coding medium / large sized games using WLA-DX with further options for Z80 IDEs using Eclipse and other information on Visual Studio Code for SMS Development including sample SMS Framework to test.
-<br /><br />
 Now that we have setup a productive <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> assembler development environment and better understand this relationship between source code written in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and the underlying Z80 assembly code, we are now finally in a great spot to build our own Z80 projects from scratch for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>!
 </span>
