@@ -1,10 +1,15 @@
 <span style="font-family:verdana;font-size:85%;">
+<i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/bank_manager.inc">bank_manager.inc</a></i><br />
+Create bank_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a>
+ folder.  Add .include to file as last line of main.asm.  Remove auto-generated data for SDSC and .incbin.  In banks_manager.inc update labels + set .incbin to banks resources.
+<br />
+<br />
+<br />
   
 In the previous <a href="https://steveproxna.blogspot.com/2021/03/z80-programming-sample.html">post</a>, we checked out Z80 Programming Sample for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>: an 8-bit video game console based on the <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a> chip.  Here we used <a href="https://www.villehelin.com/wla.html">WLA-DX</a> assembler for our development environment.
 <br /><br />
 Here, we analyzed existing <a href="https://www.smspower.org/Homebrew/Index">Indie</a> game projects and disassembled classic 8-bit commercial <a href="https://coolrom.com.au/roms/mastersystem">games</a> to better understand the Z80 development process.  For completeness, we would now like to better understand this relationship between source code written in C using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and the underlying Z80 assembly code.
 <br />
-<a href="https://1.bp.blogspot.com/-VV33TbDDoRY/YFcw2pKxHPI/AAAAAAAAGk0/Mu791Hs2804DOYYJHA-rZwJRjnxnPHBGACLcBGAsYHQ/s639/record.png"><img alt="" border="0" width="98%" data-original-height="480" data-original-width="639" src="https://1.bp.blogspot.com/-VV33TbDDoRY/YFcw2pKxHPI/AAAAAAAAGk0/Mu791Hs2804DOYYJHA-rZwJRjnxnPHBGACLcBGAsYHQ/s600/record.png"/></a>
 <!--
 <a href="https://1.bp.blogspot.com/-jUvTBGAcOzQ/YFXYQpPUvYI/AAAAAAAAGkk/Xpu-Uh40wc4ncixSeGELZT8dTLNxdPCDACLcBGAsYHQ/s614/title.png" ><img alt="" border="0" width="98%" data-original-height="479" data-original-width="614" src="https://1.bp.blogspot.com/-jUvTBGAcOzQ/YFXYQpPUvYI/AAAAAAAAGkk/Xpu-Uh40wc4ncixSeGELZT8dTLNxdPCDACLcBGAsYHQ/s600/title.png"/></a>
 -->
@@ -107,7 +112,7 @@ Create sms_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenD
 <!-- 05_Process.txt -->
 <i><a href="https://github.com/SteveProXNA/VanHalenDemoSMS/blob/main/asm/engine/bank_manager.inc">bank_manager.inc</a></i><br />
 Create bank_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalenDemoSMS/tree/main/asm/engine">engine</a>
- folder.  Add .include to file as last line of main.asm.  Remove auto-generated data for SDSC and .incbin.  In banks_manager.inc update labels and set correct .incbin to banks resources.
+ folder.  Add .include to file as last line of main.asm.  Remove auto-generated data for SDSC and .incbin.  In banks_manager.inc update labels + set .incbin to banks resources.
 <br />
 <a href="https://1.bp.blogspot.com/-VV33TbDDoRY/YFcw2pKxHPI/AAAAAAAAGk0/Mu791Hs2804DOYYJHA-rZwJRjnxnPHBGACLcBGAsYHQ/s639/record.png"><img alt="" border="0" width="98%" data-original-height="480" data-original-width="639" src="https://1.bp.blogspot.com/-VV33TbDDoRY/YFcw2pKxHPI/AAAAAAAAGk0/Mu791Hs2804DOYYJHA-rZwJRjnxnPHBGACLcBGAsYHQ/s600/record.png"/></a>
 <br />
