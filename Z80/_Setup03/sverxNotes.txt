@@ -85,4 +85,28 @@ e.g. suggestion : define one ramsection for eash "module"
 
 
 Macros
+Create small macros for addressing small but common coding needs e.g.
+shifting or rotating the accumulator a given number of times
+.macro ASLA args shift
+.endm
+
+
 Compression
+https://www.smspower.org/Development/Compression
+Always consider applying compression to your assets e.g. 
+use PSGaiden compression as built-in option to BMP2Tile
+
+Music + SFX can be compressed once using psgcomp tool as
+PSGLib plays compressed files also
+
+RLE
+Run Length Encoding
+
+Maxim compressors include PuCrunch and aPLib
+https://www.smspower.org/maxim/SMSSoftware/Compressors
+
+
+efry
+WLA-DX Z80 IDE
+https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/mars1
+https://dl.bintray.com/yuv422/EclipseZ80Editor
