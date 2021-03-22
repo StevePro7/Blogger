@@ -110,3 +110,14 @@ efry
 WLA-DX Z80 IDE
 https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/mars1
 https://dl.bintray.com/yuv422/EclipseZ80Editor
+
+
+Calindro
+:label
+when the assembler encounters :label it replaces it with the bank number
+e.g. 
+if label is in bank 3 and you have
+ld a, :label
+
+then the assembler will replace the :label with 3 and the instruction becomes
+ld a, 3
