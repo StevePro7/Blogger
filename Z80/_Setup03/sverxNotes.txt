@@ -1,0 +1,88 @@
+sverxNotes
+22/03/2021
+
+https://www.smspower.org/forums/15794-AFewHintsOnCodingAMediumLargeSizedGameUsingWLADX
+
+
+Choose whether to page or not early
+Organize assets early
+
+
+Memory map
+.memorymap
+defaultslot 0
+slotsize $7ff0 ; ROM (won't page this)
+slot 0 $0000
+slotsize $0010 ; SEGA ROM header (won't page this too)
+slot 1 $7ff0
+slotsize $4000 ; ROM (... will page this!)
+slot 2 $8000
+slotsize $2000 ; RAM
+slot 3 $c000
+.endme
+
+.rombankmap
+bankstotal 8
+banksize $7ff0 ; 32 KB minus 16 bytes
+banks 1
+banksize $0010 ; 16 bytes, for SEGA ROM header
+banks 1
+banksize $4000 ; 16 KB (each)
+banks 6        ; 6 of them. Makes this 128 KB total
+.endro
+
+
+SECTIONS
+Use free sections for all code and data in ROM that will NOT be paged for
+dynamic placement of code and assets.  DON'T place in slot 2 instead use
+slot 0 or slot 1.  Also, LookUp Tables LUTs that are 256 byte align = faster
+.section "Divide by 5" align 256 free
+.ends
+
+Use superfree sections for all assets that will be paged out e.g.
+.bank 2 slot 2
+.org $0000
+.section "Title assets" superfree
+.ends
+
+
+Use force sections for all code that must reside at hard coded addresses e.g.
+.bank 0 slot 0
+.org $0000
+.section "boot" force
+.ends
+
+;IRQ
+.org $0038
+.section "Interrupt handler" force
+.ends
+
+.NMI
+.org $0066
+.section "Pause handler" force
+.ends
+
+
+Use semisubfree to tell WLA-DX allocate to place the section freely but entirely
+within a give region.  E.g. here ensures code placed in available spot within
+ROM first 1024 bytes
+
+;$0400 = 1,024
+.org $0400
+.section "Initialize mappers" semisubfree
+.ends
+
+
+RAMSECTION
+Also let WLA-DX allocate variables in RAM.  Avoid placing variables at fixed
+addresses and let ramsections work.  Define as many ramsections as you need
+e.g. suggestion : define one ramsection for eash "module"
+.ramsection "PSGlib variables" slot 3
+.ends
+
+.ramsection "system variables" slot 3
+.ends
+
+
+Macros
+Compression
