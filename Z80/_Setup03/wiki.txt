@@ -93,9 +93,56 @@ Create bank_manager.inc beneath <a href="https://github.com/SteveProXNA/VanHalen
 Finally, wrap logical blocks of code as .section free and hardcoded address code as .section force for example $0000, $0038 and $0066.  Wrap banked code as .section free or superfree + ensure all BANK # has SLOT 2.
 <br /><br />
 <u>Opcodes</u><br />
-Manually disassemble code using the full Z80 <a href="http://www.z80.info/z80oplist.txt">Opcode</a> list or <a href="http://jgmalcolm.com/z80/opcodes/opcodesB">Opcodes</a> sorted by value.  Any byte data can be converted using the Hex to ASCII text <a href="https://www.rapidtables.com/convert/number/hex-to-ascii.html">converter</a>.  Finally, here is a list of common opcodes regularly used:
+Manually disassemble code using the full Z80 <a href="http://www.z80.info/z80oplist.txt">Opcode</a> list or <a href="http://jgmalcolm.com/z80/opcodes/opcodesB">Opcodes</a> sorted by value.  Any byte data can be converted using the Hex to ASCII text <a href="https://www.rapidtables.com/convert/number/hex-to-ascii.html">converter</a>.  Finally, here is a list of common opcodes regularly found:
 <br />
-<b>TODO include common codes from Instructions.txt E:\GitHub\StevePro7\VanHalenSMS\asm</b>
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td>
+<td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td>
+<td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td>
+</tr>
+<tr>
+<td>&nbsp;$00</td><td>&nbsp;nop</td>
+<td>&nbsp;$C1</td><td>&nbsp;pop bc</td>
+<td>&nbsp;$18 nn</td><td>&nbsp;ld a, nn</td>
+</tr>
+<tr>
+<td>&nbsp;$C9</td><td>&nbsp;ret</td>
+<td>&nbsp;$D1</td><td>&nbsp;pop de</td>
+<td>&nbsp;$3E nn</td><td>&nbsp;ld a, nn</td>
+</tr>
+<tr>
+<td>&nbsp;$3C</td><td>&nbsp;inc a</td>
+<td>&nbsp;$E1</td><td>&nbsp;pop hl</td>
+<td>&nbsp;$DD $39</td><td>&nbsp;add ix, sp</td>
+</tr>
+<tr>
+<td>&nbsp;$3D</td><td>&nbsp;dec a</td>
+<td>&nbsp;$F1</td><td>&nbsp;pop af</td>
+<td>&nbsp;$DD $E1</td><td>&nbsp;pop ix</td>
+</tr>
+<tr>
+<td>&nbsp;$A7</td><td>&nbsp;and a</td>
+<td>&nbsp;$C5</td><td>&nbsp;push bc</td>
+<td>&nbsp;$DD $E5</td><td>&nbsp;push ix</td>
+</tr>
+<tr>
+<td>&nbsp;$AF</td><td>&nbsp;xor a</td>
+<td>&nbsp;$D5</td><td>&nbsp;push de</td>
+<td>&nbsp;$DD $F9</td><td>&nbsp;ld sp, ix</td>
+</tr>
+<tr>
+<td>&nbsp;$B7</td><td>&nbsp;or a</td>
+<td>&nbsp;$E5</td><td>&nbsp;push hl</td>
+<td>&nbsp;$C3 nnnn</td><td>&nbsp;jp &nnnn</td>
+</tr>
+<tr>
+<td>&nbsp;$BF</td><td>&nbsp;cp a</td>
+<td>&nbsp;$F5</td><td>&nbsp;push af</td>
+<td>&nbsp;$CD nnnn</td><td>&nbsp;call &nnnn</td>
+</tr>
+</table>  
+IMPORTANT: <b>nn</b> represents a one byte operand in table above whereas <b>nnnn</b> represents two bytes operand.
 <br /><br />
 <u>Troubleshooting</u><br />
 Ensure that labels do <b>not</b> begin with an underscore otherwise you may receive <a href="https://www.gitmemory.com/issue/vhelin/wla-dx/348/766459730">FIX_REFERENCES</a> error when assembling Z80 code with <a href="https://www.villehelin.com/wla.html">WLA-DX</a>.  Also, ensure all disassembled labels, esp. labels with "<b>$</b>" are removed.  Otherwise when you debug step through Z80 source code breakpoints may skipped via disassembled code.  
