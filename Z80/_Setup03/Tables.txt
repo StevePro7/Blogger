@@ -1,54 +1,53 @@
 OPCODES
 23/03/2021
 
+
 <table width="100%" border="1">
 <tr>
-<td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td><td>&nbsp;</td>
-<td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td><td>&nbsp;</td>
+<td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td>
+<td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td>
 <td>&nbsp;<b>Opcode</b></td><td>&nbsp;<b>Mnemonic</b></td>
 </tr>
 <tr>
-<td>&nbsp;$00</td><td>&nbsp;nop</td><td>&nbsp;</td>
-<td>&nbsp;$C1</td><td>&nbsp;pop bc</td><td>&nbsp;</td>
+<td>&nbsp;$00</td><td>&nbsp;nop</td>
+<td>&nbsp;$C1</td><td>&nbsp;pop bc</td>
 <td>&nbsp;$18 nn</td><td>&nbsp;ld a, nn</td>
 </tr>
 <tr>
-<td>&nbsp;$C9</td><td>&nbsp;ret</td><td>&nbsp;</td>
-<td>&nbsp;$D1</td><td>&nbsp;pop de</td><td>&nbsp;</td>
+<td>&nbsp;$C9</td><td>&nbsp;ret</td>
+<td>&nbsp;$D1</td><td>&nbsp;pop de</td>
 <td>&nbsp;$3E nn</td><td>&nbsp;ld a, nn</td>
 </tr>
 <tr>
-<td>&nbsp;$3C</td><td>&nbsp;inc a</td><td>&nbsp;</td>
-<td>&nbsp;$E1</td><td>&nbsp;pop hl</td><td>&nbsp;</td>
+<td>&nbsp;$3C</td><td>&nbsp;inc a</td>
+<td>&nbsp;$E1</td><td>&nbsp;pop hl</td>
 <td>&nbsp;$DD $39</td><td>&nbsp;add ix, sp</td>
 </tr>
 <tr>
-<td>&nbsp;$3D</td><td>&nbsp;dec a</td><td>&nbsp;</td>
-<td>&nbsp;$F1</td><td>&nbsp;pop af</td><td>&nbsp;</td>
+<td>&nbsp;$3D</td><td>&nbsp;dec a</td>
+<td>&nbsp;$F1</td><td>&nbsp;pop af</td>
 <td>&nbsp;$DD $E1</td><td>&nbsp;pop ix</td>
 </tr>
 <tr>
-<td>&nbsp;$A7</td><td>&nbsp;and a</td><td>&nbsp;</td>
-<td>&nbsp;$C5</td><td>&nbsp;push bc</td><td>&nbsp;</td>
+<td>&nbsp;$A7</td><td>&nbsp;and a</td>
+<td>&nbsp;$C5</td><td>&nbsp;push bc</td>
 <td>&nbsp;$DD $E5</td><td>&nbsp;push ix</td>
 </tr>
 <tr>
-<td>&nbsp;$AF</td><td>&nbsp;xor a</td><td>&nbsp;</td>
-<td>&nbsp;$D5</td><td>&nbsp;push de</td><td>&nbsp;</td>
+<td>&nbsp;$AF</td><td>&nbsp;xor a</td>
+<td>&nbsp;$D5</td><td>&nbsp;push de</td>
 <td>&nbsp;$DD $F9</td><td>&nbsp;ld sp, ix</td>
 </tr>
 <tr>
-<td>&nbsp;$B7</td><td>&nbsp;or a</td><td>&nbsp;</td>
-<td>&nbsp;$E5</td><td>&nbsp;push hl</td><td>&nbsp;</td>
+<td>&nbsp;$B7</td><td>&nbsp;or a</td>
+<td>&nbsp;$E5</td><td>&nbsp;push hl</td>
 <td>&nbsp;$C3 nnnn</td><td>&nbsp;jp &nnnn</td>
 </tr>
 <tr>
-<td>&nbsp;$BF</td><td>&nbsp;cp a</td><td>&nbsp;</td>
-<td>&nbsp;$F5</td><td>&nbsp;push af</td><td>&nbsp;</td>
+<td>&nbsp;$BF</td><td>&nbsp;cp a</td>
+<td>&nbsp;$F5</td><td>&nbsp;push af</td>
 <td>&nbsp;$CD nnnn</td><td>&nbsp;call &nnnn</td>
 </tr>
 </table>  
-
-
-
-
+IMPORTANT: <b>nn</b> represents a one byte operand in table above whereas <b>nnnn</b> represents two bytes operand.
+  
