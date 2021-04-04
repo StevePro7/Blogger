@@ -1,0 +1,40 @@
+Setup pcmenc
+02/04/2021
+
+Reference
+pcmenc.txt
+E:\Steven\INSTALLATIONSEGA\Tools\pcmenc_test
+
+
+MAXIM
+https://github.com/maxim-zhao/pcmenc
+
+
+Got binary here
+https://github.com/maxim-zhao/pcmenc/releases/tag/v0.3
+
+
+Copy into SDCC folder
+C:\Program Files\SDCC\bin
+
+
+EXAMPLE from kusfo
+https://github.com/kusfo/sms-fxsample
+
+e.g.
+pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 file.wav
+
+
+produces file.wav.pcmenc
+
+rename sega_8000.pcmenc
+copy into bank1 folder
+
+folder2c bank1 bank1
+
+
+
+References
+https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested
+https://www.smspower.org/forums/17097-HifiSamplePlayer
+https://www.msx.org/forum/development/msx-development/crystal-clean-pcm-8bit-samples-poor-psg?page=7
