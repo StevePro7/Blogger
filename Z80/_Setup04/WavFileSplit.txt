@@ -5,6 +5,51 @@ Launch Audacity
 Open WAV file
 
 
+At the bottom set property
+Start and Length of Selection
+e.g.
+0s	2s
+
+NB: set as 
+
+
+Ctrl + B
+Add label
+
+File | Export Multiple
+
+
+now should save multiple WAV files as per label selection
+
 
 refernce
 https://manual.audacityteam.org/man/splitting_a_recording_into_separate_tracks.html
+
+
+
+Try samples
+e.g.
+69780	1.5s
+
+0
+000069780
+000138560
+000209340
+
+
+TOO large
+want 1.5s
+
+Cannot select less than 1 second
+https://forum.audacityteam.org/viewtopic.php?t=66712
+
+
+Use samples
+e.g.
+
+1981
+01	 0	 50000
+02	 50000	100000
+03	100000	150000
+04	150000	190000
+05	190000	 30000
