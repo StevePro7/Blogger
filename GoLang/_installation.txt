@@ -70,3 +70,39 @@ now prompted to update + install all the Go tools
 
 
 LINUX
+go version
+1.13.8
+as I had previous version of GoLang then follow steps here
+
+https://golang.org/doc/install
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+
+https://golang.org/doc/install
+
+go version
+1.16.3
+
+
+Finally prompted to update VS Code on Linux
+download code_155.*.deb
+cd
+cd Downloads
+sudo dpkg -i code_155.*.deb
+
+
+Hello World
+Test
+go mod init stevepro
+
+package main
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World")
+}
+
+F5
+Go
+
+prompt to create launch.json file
+or run w/o debugging
