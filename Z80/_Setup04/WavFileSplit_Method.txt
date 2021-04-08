@@ -1,0 +1,97 @@
+Wav file split METHOD
+07/04/2021
+
+
+Srce	D:\Steven\VanHalen\_smsRiffs
+Dest	E:\Steven\Temp\WAV
+
+
+BAT files live here in Audacity dest
+E:\Steven\Temp\WAV
+
+01.
+delete.bat
+
+02.
+Launch Audacity
+Open WAV file
+e.g.
+RunningWithTheDevil.wav
+
+Selection start		samples
+Length CHECKED		samples
+
+4x labels at 50,000 samples by default
+e.g.
+Selection start		0	samples
+Length CHECKED		50000	samples
+
+Ctrl + B		01
+repeat for 		02, 03, 04
+
+File | Export Multiple
+E:\Steven\Temp\WAV
+Export | OK
+
+
+03.
+Convert
+riff.bat
+E:\Steven\Temp\WAV
+
+check sizes and repeat if *.pcmenc files too small < 16KB
+check sizes and repeat if *.pcmenc files too large > 16KB
+
+
+04.
+build bank
+Utility
+E:\GitHub\StevePro7\Z80test\76-Utils\SplitWAVpacking\bin\Debug
+
+shift.bat
+E:\Steven\Temp\WAV
+
+1978	bank 16
+
+test	16
+SplitWAVpacking.exe.config
+E:\GitHub\StevePro7\Z80test\76-Utils\SplitWAVpacking\bin\Debug
+
+
+cmd prompt
+SplitWAVpacking.exe
+cd E:\GitHub\StevePro7\Z80test\76-Utils\SplitWAVpacking\bin\Debug
+
+output generated here
+cd E:\GitHub\StevePro7\Z80test\76-Utils\SplitWAVpacking\bin\Debug\output
+
+
+05.
+test *.pcmenc
+E:\GitHub\StevePro7\Z80test\76-Utils\SplitWAVpacking\bin\Debug\output\test
+
+copy here
+E:\GitHub\StevePro7\VanHalenRiffTest\dev\banks
+
+re-run script
+
+build.bat
+E:\GitHub\StevePro7\VanHalenRiffTest\dev\scripts
+
+generate new bank*.h and bank*.c files
+build.bat
+
+test SMS file
+once OK then change config
+
+1978	16
+SplitWAVpacking.exe.config
+E:\GitHub\StevePro7\Z80test\76-Utils\SplitWAVpacking\bin\Debug
+
+RUN
+copy output
+e.g.
+from
+output\1978
+to
+E:\GitHub\StevePro7\VanHalenSMSIV\dev\banks
