@@ -2,6 +2,7 @@ Go installation
 17/03/2021
 
 
+WINDOWS
 https://golang.org/doc/install
 
 Download Go for Windows
@@ -30,3 +31,42 @@ check all the Go extensions that I have installed
 IMPORTANT
 Ctrl + Shift + P
 GoLang: Install / Update tools
+
+
+
+MAC
+GOPATH=/Users/stevepro/go
+
+which go
+go version
+1.9.2
+
+I tried the following but would not delete go
+https://stackoverflow.com/questions/42186003/how-to-uninstall-golang
+
+rm -rf /usr/local/go
+rm -rf $(echo $GOPATH)
+
+
+issue is that there is symbolic link
+/usr/local/go/
+
+to
+/usr/Celler/go/1.9.2
+so I had to delete 1.9.2 folder to "properly" uninstall go 1.9.2
+
+Clean
+https://golang.org/doc/install
+
+Mac
+logout + login
+
+go version
+1.16.3
+
+Launch VS Code
+go project
+now prompted to update + install all the Go tools
+
+
+LINUX
