@@ -1,0 +1,39 @@
+YouTube
+02/05/2021
+
+Introduction to Kubernetes
+https://www.youtube.com/watch?v=DiWzujzol70
+
+https://github.com/makotogo/developerWorks
+
+
+Linux
+cd ~/GithubX/makotogo/developerWorks/kubernetes
+node k8demo.js
+
+sudo apt install nodejs
+node k8demo.js
+
+launch browser
+localhost:8080
+
+
+01.
+build docker image
+Docker 
+docker build -t k8sdemo:v1 .
+
+
+02.
+run docker container
+
+
+minikube start
+eval $(minikube docker-env)
+
+
+kubectl run k8sdemo --image=k8sdemo:v1 -port=8080
+
+kubectl proxy --port=8080
+
+./test-k8sdemo.sh 8080
