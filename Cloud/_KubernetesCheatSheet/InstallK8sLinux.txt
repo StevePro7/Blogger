@@ -3,3 +3,84 @@ Linux Ubuntu install Kubernetes
 
 https://www.linuxtechi.com/install-kubernetes-k8s-on-ubuntu-20-04
 https://www.youtube.com/watch?v=UWg3ORRRF60
+
+
+Minikube
+https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support
+
+
+sudo apt install cpu-checker && sudo kvm-ok
+
+$ sudo kvm-ok
+INFO: /dev/kvm exists
+KVM acceleration can NOT be used
+
+sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
+    && sudo usermod -a -G libvirt $(whoami) \
+    && newgrp libvirt
+
+
+sudo virt-host-validate
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+    && sudo install kubectl /usr/local/bin && rm kubectl
+
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+    && sudo install docker-machine-driver-kvm2 /usr/local/bin/ && rm docker-machine-driver-kvm2
+
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+    && sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
+
+minikube version
+
+
+minikube dashboard
+Profile "minikube" not found. Run "minikube profile list" to view all profiles.
+To start a cluster, run: "minikube start"
+
+
+minikube start
+minikube v1.19.0 on Ubuntu 20.04 (vbox/amd64)
+Automatically selected the docker driver. Other choices: ssh, none
+
+Exiting due to RSRC_INSUFFICIENT_CORES: Requested cpu count 2 is greater than the available cpus of 1
+
+
+Virtual Box
+Ubuntu | Settings | Processor
+increase from 1 to 2
+
+
+
+minikube dashboard
+minikube start
+
+minikube dashboard
+
+
+minikube start
+😄  minikube v1.19.0 on Ubuntu 20.04 (vbox/amd64)
+✨  Automatically selected the docker driver
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+💾  Downloading Kubernetes v1.20.2 preload ...
+    > preloaded-images-k8s-v10-v1...: 491.71 MiB / 491.71 MiB  100.00% 4.16 MiB
+    > gcr.io/k8s-minikube/kicbase...: 357.67 MiB / 357.67 MiB  100.00% 2.34 MiB
+🔥  Creating docker container (CPUs=2, Memory=3000MB) ...
+🐳  Preparing Kubernetes v1.20.2 on Docker 20.10.5 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+
+minikube dashboard
+
+browser launches
+http://127.0.0.1:38979/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/node?namespace=default
