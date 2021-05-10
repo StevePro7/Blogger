@@ -1,4 +1,27 @@
 Github
+10/05/2021
+https://jarv.is/notes/how-to-pull-request-fork-github
+
+git clone https://github.com/SteveProXNA/go-etcd-lock.git
+
+git remote add --track master upstream https://github.com/SteveProXNA/go-etcd-lock.git
+git fetch upstream
+
+Create branch
+e.g.
+feature/fix_typo
+git checkout -b feature/fix_typo upstream/master
+
+
+git clone https://github.com/SteveProXNA/go-etcd-lock.git
+git remote add --track master upstream https://github.com/SteveProXNA/go-etcd-lock.git
+git fetch upstream
+
+
+did not push to my forked branch but to my fork master
+not sure why?
+
+
 07/03/2021
 
 Here is how to explicitly set the Git repo language
