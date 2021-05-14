@@ -106,3 +106,32 @@ Go
 
 prompt to create launch.json file
 or run w/o debugging
+
+
+LINUX II
+update
+
+VS Code prompts me to download + install a later version of Go
+Terminal
+go version
+go version go1.16.3 linux/amd64
+
+https://golang.org/doc/install?download=go1.16.4.linux-amd64.tar.gz
+Download Go for Linux
+
+cd ~/Downloads
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.4.linux-amd64.tar.gz
+
+export PATH=$PATH:/usr/local/go/bin
+go version
+
+However, I appended the following to the ~/.bashrc file
+export PATH=$PATH:/usr/local/go/bin
+
+
+I had issues because snap was installed so didn't not "update"
+not sure if this helped
+sudo snap remove go
+https://ubuntu-mate.community/t/how-to-completely-remove-snap/19395
+
+REboot
