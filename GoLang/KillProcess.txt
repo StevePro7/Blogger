@@ -1,0 +1,31 @@
+Kill Process
+06/06/2021
+
+
+IMPORTANT	
+running code sample from here that uses Echo package
+
+https://onexlab-io.medium.com/golang-postgres-gorm-echo-e2133eed295
+https://www.youtube.com/watch?v=c6ve5vYouFA
+github.com/oxlb/GoLangPostgresHelloWorld
+
+
+go run main.go
+curl http://localhost:1323
+
+
+Could NOT kill process in order to re-run program...!
+
+
+Solution:
+https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux
+
+
+fuser -k 1323/tcp
+
+
+this kills the Terminal that executed command
+go run main.go
+
+
+Therefore, can now re-run process again and again...!
