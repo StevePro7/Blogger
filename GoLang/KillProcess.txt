@@ -22,6 +22,7 @@ https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-pa
 
 
 fuser -k 1323/tcp
+fuser -k 8080/tcp
 
 
 this kills the Terminal that executed command
