@@ -3,3 +3,46 @@ RDP
 
 
 https://linuxconfig.org/ubuntu-20-04-remote-desktop-access-from-windows-10
+
+
+
+01.
+Try on Windows to Mac w/ Virtual Box and Ubuntu
+
+
+Ubuntu
+Terminal
+
+Step 1
+sudo apt install xrdp
+
+
+Step 2
+sudo systemctl enable --now xrdp
+
+
+Step 3
+sudo ufw allow from any to any port 3398 proto tcp
+sudo ufw allow from any to any port 3389 proto tcp
+
+
+Step 4
+Window 10
+RDP
+
+10.0.2.15
+192.168.122.1
+192.168.1.85
+stevepro
+SP4
+
+
+hostname
+hostnamectl
+stevepro-VirtualBox
+
+
+dnsdomainname
+https://www.cyberciti.biz/faq/find-my-linux-machine-name
+
+
