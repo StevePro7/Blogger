@@ -1,0 +1,25 @@
+TODO
+24/06/2021
+
+Begin to go thru some code exercises from the Golang book and make notes
+
+
+01.
+can "hide" unused vars or package imports so Save won't remove them until actually used
+can prepend _ for unused packages but can do for vars?	Need them
+
+
+02.
+REST API invoked concurrently
+how to test for concurrency by "load" up REST API?
+ensure there are no race conditions?
+
+
+03.
+how can get "threadID" equivalence of goroutine ID?
+they purposely don't have it but there must be some way to identify each goroutine by ID
+
+
+04.
+TESTING
+could not get unit tests and bench mark tests working - need to revise!
