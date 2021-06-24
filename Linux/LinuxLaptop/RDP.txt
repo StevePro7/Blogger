@@ -46,3 +46,70 @@ dnsdomainname
 https://www.cyberciti.biz/faq/find-my-linux-machine-name
 
 
+Alienware
+Blackscreen
+
+ubuntu linux xrdp black screen 20.04
+
+01.
+https://askubuntu.com/questions/1245020/xrdp-on-ubuntu-20-04
+
+sudo systemctl disable xrdp
+sudo systemctl stop xrdp
+
+1. Remove
+sudo apt purge xrdp
+sudo apt purge xserver-xorg-core
+sudo apt purge xserver-xorg-input-all
+sudo apt purge xorgxrdp
+
+
+2. Re-install
+sudo apt install xrdp
+sudo apt install xserver-xorg-core
+sudo apt install xserver-xorg-input-all
+sudo apt install xorgxrdp
+
+3. Reboot
+sudo reboot
+
+4. Firewall
+sudo ufw allow 3389
+sudo ufw allow from 192.168.1.25/24 to any port 3389
+
+
+DID NOT WORK
+echo "startxfce4" > ~/.xsession
+chmod +x ~/.xsession
+sudo systemctl restart xrdp.service
+
+
+sudo systemctl status xrdp           # display current xrdp status
+
+sudo systemctl start xrdp            # start xrdp service
+sudo systemctl stop xrdp             # stop xrdp service
+sudo systemctl restart xrdp          # restart xrdp service
+
+sudo systemctl enable xrdp           # enable xrdp on system start
+sudo systemctl disable xrdp          # disable xrdp on system start
+
+02.
+https://c-nergy.be/blog/?p=15978
+
+wget https://www.c-nergy.be/downloads/xrdp-installer-1.2.2.zip
+
+unzip xrdp-installer-1.2.2.zip 
+chmod +x  ~/Downloads/xrdp-installer-1.2.2.sh
+
+./xrdp-installer-1.2.2.sh
+./xrdp-installer-1.2.2.sh -r   
+
+
+wget https://www.c-nergy.be/downloads/xrdp-installer-1.2.2.zip
+unzip xrdp-installer-1.2.2.zip 
+bash xrdp-installer-1.2.2.sh
+
+
+LOGS
+cd /var/log
+cat xrdp.log
