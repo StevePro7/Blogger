@@ -1,0 +1,23 @@
+Concurrency
+26/06/2021
+
+
+https://medium.com/@mphuie/golang-concurrency-for-dummies-edf10b58f2ab
+
+<-
+channel operator
+
+
+c := make(chan bool)
+
+
+SEND
+c <- 42
+
+if the channel operator "<-" is on the RHS of the channel variable "c" then SEND 42 to the channel
+
+
+RECEIVE
+val := <-c
+
+if the channel operator "<-" is on the LHS of the channel variable "c" then RECEIVE from the channel
