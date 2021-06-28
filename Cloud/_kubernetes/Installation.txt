@@ -1,0 +1,67 @@
+Kubernetes installation
+28/06/2021
+
+
+DOCKER DESKTOP
+Windows
+//https://docs.docker.com/docker-for-windows/install
+Previous post	if you have Docker Desktop installed then ensure Kubernetes is Running
+
+
+Mac
+//https://docs.docker.com/docker-for-mac/install
+Previous post	if you have Docker Desktop installed then ensure Kubernetes is Running
+
+Alternatively install minikube
+brew cask install minikube
+
+Kubernetes.txt
+E:\GitHub\StevePro7\Blogger\Cloud\Docker01
+
+
+Linux
+Running Kubernetes locally on Linux with Minikube - now with Kubernetes 1.14 support
+https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support
+
+
+sudo apt install cpu-checker && sudo kvm-ok
+
+sudo kvm-ok
+INFO: /dev/kvm exists
+KVM acceleration can be used
+
+sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
+    && sudo usermod -a -G libvirt $(whoami) \
+    && newgrp libvirt
+
+
+sudo virt-host-validate
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+    && sudo install kubectl /usr/local/bin && rm kubectl
+
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+    && sudo install docker-machine-driver-kvm2 /usr/local/bin/ && rm docker-machine-driver-kvm2
+
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+    && sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
+
+minikube version
+
+minikube start
+
+
+
+01.
+NOT following this because is the full monty but at least install curl
+https://vitux.com/install-and-deploy-kubernetes-on-ubuntu
+sudo apt install curl
+
+
+02.
+How to Install Kubernetes (k8s) on Ubuntu 20.04 LTS Server
+https://www.linuxtechi.com/install-kubernetes-k8s-on-ubuntu-20-04
+also installs Calico
