@@ -1,0 +1,24 @@
+Kubernetes commands
+28/06/2021
+
+
+Terminal
+minikube start
+minikube dashboard
+
+
+kubectl apply  -f <file>.yaml
+kubectl delete -f <file>.yaml
+
+
+
+locally pulled images
+minikube start
+eval $(minikube docker-env)
+
+e.g.
+~\Github\DanWahlin\DockerAndKubernetesCourseCode\samples\deployments
+docker-compose build
+
+cd node-app
+kubectl apply -f node-app-v1.deployment.yml
