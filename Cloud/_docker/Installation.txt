@@ -29,6 +29,18 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 
+ERROR
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/json: dial unix /var/run/docker.sock: connect: permission denied
+
+https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
+https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke
+
+
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+su -s ${USER}
+docker run hello-world
+
 
 Create first application and docker [initial] commands follow here:
 https://medium.com/free-code-camp/a-beginners-guide-to-docker-how-to-create-your-first-docker-application-cc03de9b639f
