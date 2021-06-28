@@ -62,3 +62,7 @@ fuser -k 8080/tcp
 
 VOLUMES
 kubectl exec [pod-name] -it sh
+
+
+LOGS
+kubectl logs [pod-name]
