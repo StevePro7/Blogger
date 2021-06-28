@@ -7,6 +7,11 @@ minikube start
 minikube dashboard
 
 
+kubectl create -f <file>.yaml
+kubectl create -f <file>.yaml --save-config
+kubectl create -f <file>.yaml --dry-run --validate=true
+
+
 kubectl apply  -f <file>.yaml
 kubectl delete -f <file>.yaml
 
@@ -22,3 +27,38 @@ docker-compose build
 
 cd node-app
 kubectl apply -f node-app-v1.deployment.yml
+
+
+DEPLOYMENTS
+kubectl scale -f <file>.yaml --replicas=4
+
+
+SERVICES
+port forwarding
+# Listen on port 8080 locally and forward to port 80 in Pod
+kubectl port forward pod/[pod name] 8080:80
+# Listen on port 8080 locally and forward to Deployment's Pod
+kubectl port forward deployment/[deployment name] 8080
+# Listen on port 8080 locally and forward to Service's Pod
+kubectl port forward service/[service name] 8080
+
+OR	e.g. Example
+minikube service codingchallenge-service --url
+
+OR
+nginx-alpine-emptyDir.pod.yml
+~\Github\DanWahlin\DockerAndKubernetesCourseCode\samples\volumes
+
+kubectl port-forward nginx-alpine-volume 8080:80
+curl http://localhost:8080
+
+
+ERROR
+Unable to listen on port 8080: Listeners failed to create with the following errors: [unable to create listener: Error listen tcp4 127.0.0.1:8080: bind: address already in use unable to create listener: Error listen tcp6 [::1]:8080: bind: address already in use]
+error: unable to listen on any of the requested ports: [{8080 80}]
+
+fuser -k 8080/tcp
+
+
+VOLUMES
+kubectl exec [pod-name] -it sh
