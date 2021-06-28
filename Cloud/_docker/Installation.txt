@@ -38,8 +38,21 @@ https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-
 
 sudo groupadd docker
 sudo usermod -aG docker ${USER}
-su -s ${USER}
+
+REBOOT	do NOT log out and log back in
+docker images
+
 docker run hello-world
+docker images
+
+docker rmi <image_id>  -f
+docker rmi hello-world
+
+ERROR
+Error response from daemon: conflict: unable to delete d1165f221234 (must be forced) - image is being used by stopped container 63a8b5d79cea
+
+docker rmi hello-world -f
+docker rmi <image_id>  -f
 
 
 Create first application and docker [initial] commands follow here:
