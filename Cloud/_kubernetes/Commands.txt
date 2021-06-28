@@ -66,3 +66,12 @@ kubectl exec [pod-name] -it sh
 
 LOGS
 kubectl logs [pod-name]
+
+
+TODO
+delete all resources created by YAML files
+e.g.
+kubectl delete -f ./
+
+
+kubectl get deployments --all-namespaces
