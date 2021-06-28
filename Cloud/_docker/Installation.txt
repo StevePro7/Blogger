@@ -1,0 +1,34 @@
+Docker installation
+28/06/2021
+
+
+DOCKER DESKTOP
+Windows
+https://docs.docker.com/docker-for-windows/install
+
+Mac
+https://docs.docker.com/docker-for-mac/install
+
+
+Linux
+If you would like to install the equivalent to Docker Desktop on Linux then follow here
+https://docs.docker.com/engine/install
+
+and per distro for example Ubuntu
+https://docs.docker.com/engine/install/ubuntu
+
+
+However, if you would just like to install the simpler "stripped down" Docker Engine on Ubunutu then follow here
+https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
+
+
+sudo apt-get update
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+
+
+Create first application and docker [initial] commands follow here:
+https://medium.com/free-code-camp/a-beginners-guide-to-docker-how-to-create-your-first-docker-application-cc03de9b639f
