@@ -56,6 +56,19 @@ minikube start
 minikube dashboard
 
 
+ALIASES
+Reference:
+https://kubernetes.io/docs/reference/kubectl/cheatsheet
+
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+alias k='kubectl'
+complete -F __start_kubectl k
+alias kdr='kubectl --dry-run=client -o yaml'
+
+
+
 01.
 NOT following this because is the full monty but at least install curl
 https://vitux.com/install-and-deploy-kubernetes-on-ubuntu
