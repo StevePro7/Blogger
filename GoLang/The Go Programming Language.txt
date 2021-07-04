@@ -1,0 +1,420 @@
+Go Programming Language
+09/05/2021
+
+Source Code
+http://www.gopl.io
+https://github.com/adonovan/gopl.io
+https://github.com/adonovan/gopl.io/blob/master/ch13/bzip-print/bzip2.c
+
+
+D:\Github\adonovan\gopl.io
+
+
+Preface
+12
+Go suited for building infrastructure like
+networked servers and tools and systems
+for programmers but can be used in graphics
+mobile apps + machine learning
+
+
+14
+Go inspired by CSP
+Communicating Sequential Processes
+foundations of concurrency
+
+CSP program is a parallel composition of
+processes that have no shared state;
+the processes communicate and synchronize
+using channels
+
+
+15
+Go standard library useful to buid
+distributed applcations
+
+
+16
+concurrency in Go
+based on the idea of communicating sequential processes
+CSP embodied by goroutines and channels
+
+packages used to organize libraries
+module = collection of packaages
+
+unsafe package
+step around Go type system
+
+
+go get
+fetch / import package
+
+
+17
+export GOPATH=$HOME/gobook
+go get gopl.io/ch1/helloworld
+$GOPATH/bin/helloworld
+Hello
+
+go version
+go version go1.5 linux/amd64
+
+
+play.golang.org
+REPL
+read eval print loop
+
+tour.golang.org
+
+
+Go open source language
+golang.org
+golang.org/pkg
+
+
+
+Chp01.
+1
+go run helloworld.go
+
+go build helloworld.go
+./helloworld
+
+go get gopl.io/ch1/helloworld
+
+
+go packages
+package = one or more .go source files
+in a single directory thta define what
+the package does
+
+
+3
+go fmt
+
+go imports
+go get golang.org/x/tools/cmd/goimports
+
+
+4
+slice
+half open
+include first index but
+exclude  last index
+
+s[m:n]	m thru n-1
+
+command line args
+os.Args[1:len(os.Args)]
+OR
+os.Args[1:]
+
+
+7
+for range
+for idx, val := range os.Args[1:]
+
+for _, val := range os.Args[1:]
+when don't need index only value
+
+_
+blank identifier
+
+
+8
+strings immutable = garbage collection
+string concatentation
+use
+strings.Join
+strings.Join(os.Args[1:], " ")
+
+
+9
+map
+set of key / value pairs
+
+make
+creates an empty new map
+e.g.
+counts := make(map[string]int)
+
+
+bufio package
+helps make input and output efficient + convenient
+Scanner()
+
+
+10.
+printf conversions		verbs
+
+format outputters
+e.g.
+%d
+%s
+%v	value
+
+e.g.
+verb %v
+
+used by
+log.Printf
+fmt.Errorf
+fmt.Printf
+
+but
+fmt.Println
+formats as %v followed by newline
+
+
+11.
+file Open
+
+
+12.
+map
+reference to the data structure created by make
+
+ReadFile	io/ioutil
+strings.Split
+
+
+13
+high level functions
+bufio.Scanner
+ioutil.ReadFile
+ioutil.WriteFile
+
+use low level Read + Write methods of *os.File
+
+
+14
+constant
+must be number, string or boolean
+
+
+[]color.Color{...}
+composite literal
+compact notation for instantiating Go composite type
+from a sequence of element values
+
+
+15
+struct
+group of values call fields	different types
+collected together in a single object
+treated as a unit
+
+Fetch URL
+net
+Go package to send / recd info thru Internet
+low level network connections for concurrency features
+
+
+16
+net/http
+io/ioutil
+
+http.Get(url)
+
+
+17
+exercises
+io.Copy(dst src)
+strings.HasPrefix
+resp.Status
+
+
+Go support for concurrent programming
+via
+goroutines and channels
+
+
+fetch concurrent
+time = longest fetch time
+NOT
+sum of all fetch times
+
+18
+goroutine
+concurrent function execution
+
+channel
+communication mechanism that allows
+on goroutine to pass values of a specified type
+to another goroutine
+
+
+main	= goroutine
+
+go statement
+creates additional goroutines
+
+ch := make(chan string)
+make a single channel of strings
+
+start new goroutine to call fetch asynchronously
+to fetch URL using http.Get
+
+ch <- fmt.Sprintf("%.2fs %7d %s", secs, nbytes, url)
+send a summary line on the channel ch
+
+
+fmt.Print(<-ch)
+receive data from channel ch	and print contents
+
+
+when one goroutine send or recv on channel
+the goroutine blocks until another goroutine
+attempts the corresponding send or recv operation
+here the value is transferred and both goroutines
+proceed
+e.g.
+fetch send a value on the channel ch
+ch <- expression
+
+ch <- fmt.Sprintf(err)	// send to channel ch
+ch <- fmt.Sprintf("while reading %s: %v, url, err)
+ch <- fmt.Sprintf("%.2fs %7d %s", secs, nbytes, url)
+
+main recv all of them
+<-ch
+fmt.Println(<-ch)	// receive from channel ch
+
+
+REMEMBER
+send	when <- is to the rght of ch	ch<-
+recv	when <- is to the left of ch	<-ch
+
+
+19 web server
+http.HandleFunc
+http.ListenAndServe
+
+
+Request
+http.Request
+
+
+go run main.go
+go run main.go &		MacOS / Linux
+
+
+21
+web server runs the URL handler for each incoming
+request in a separate goroutine so that it can serve
+multiple requests simultaneously
+
+race condition
+when 2x concurrent requests try to update variable
+at the same time
+
+use Mutex [lock / unlock] when concurrently accessing
+shared variables
+
+
+22
+os.Stdout
+satisfy a common interface
+e.g.
+ioWriter
+
+can interchange whenever an output stream is needed
+
+01.
+handler := func(w http.ResponseWriter, r *http.Request) {
+	lissajous(w)
+}
+http.HandleFunc("/", handler)
+
+02.
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+	lissajous(w)
+})
+
+
+02.
+function literal
+anonymous function defined at its point of use
+
+
+
+22
+strconv.Atoi
+function converts string parameter to integer
+
+
+23
+switch
+doesn't fall thru like C
+but there is fallthrough statement!	rarely used
+
+
+24
+switch {
+}
+
+tagless switch
+
+
+Pointers
+values that contain the address of a variable
+
+& operator yields address of a variable
+* operator retrieves variable the pointer refers to
+NO pointer arithmetic
+
+
+Method
+function associated with a named type
+methods may be attached to almost any type
+
+
+Interfaces
+abstract types that treat different concrete types
+in the same way based on what methods they have
+NOT how they are represented or implmented
+
+
+Packages
+Go has extensive standard library of useful packages
+
+golang.org/pkg
+go doc
+e.g.
+go doc http.ListenAndServe
+
+
+Chp02.
+27
+25 keywords
+name case sensitive
+
+28
+unitptr
+complex
+rune
+
+
+Casing
+uppercase name	exported
+visible and accessible outside its own package
+
+Package names are always lower case
+
+
+larger the scope of a name the longer
+and more meaningful it should be
+
+usually prefer camel case
+acronyms stay consistent e.g. HTML or html
+
+
+declarations
+var
+const
+type
+func
+
+
+each file begins
+package definition
