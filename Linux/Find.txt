@@ -2,8 +2,22 @@ Find
 06/07/2021
 
 
+01.
 e.g. Envoy code base
 cd ~/GitHubX/Tigera/envoy
 
 find -L . -type f -name '*.cc'
 find -L . -type f -name '*.cc' -exec grep -Hni 'main(int' {} \;
+
+
+
+02.
+How can I find all of the distinct file extensions in a folder hierarchy?
+https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
+
+Linux
+find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
+
+Powershell
+cd D:\Github\tigera\operator
+dir -recurse | select-object extension -unique
