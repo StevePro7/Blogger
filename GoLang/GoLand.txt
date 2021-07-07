@@ -1,0 +1,166 @@
+GoLand
+07/07/2021
+
+
+Extend IDE.txt
+Installed GoLand
+
+
+Launch GoLand
+open Hello World
+
+
+Reference:
+https://www.jetbrains.com/help/go/configuring-goroot-and-gopath.html#navigate-to-go-sdk
+
+
+GOROOT is not defined
+images
+
+How do I know GOROOT?
+/usr/local/go
+
+Terminal
+go env
+GOROOT="/usr/local/go"
+
+GoLand
+Setup GOROOT
+<No SDK>
+click "+"
+Local
+/usr/local/go
+Go 1.16
+OK
+
+
+Go module is detected
+Integration is enabled
+
+
+IMPORTANT
+Can verify Go env vars all configured
+File | Settings... | Go | GOROOT
+File | Settings... | Go | GOPATH
+
+
+
+Theme
+LINUX
+File | Settings... | Appearance & Behavior | Appearance
+Theme IntelliJ Light
+
+WINDOWS
+same but can choose	Windows 10 Light
+
+Use custom font
+Linux		Ubuntu		15
+Windows		Segoe UI	12
+
+
+
+LINUX
+Create Hello World program
+Click Triangle
+RUN
+
+Compilation finished with exit code 0
+Compiled binary cannot be executed
+
+Terminal
+go build .
+does NOT produce executable
+go run .
+go run: cannot run non-main package
+
+SOLUTION?
+https://stackoverflow.com/questions/49454780/goland-ide-not-correctly-compiling-how-to-setup-correct-paths
+
+
+TODO
+F12 equivalent keyboard shortcut
+
+
+YouTube
+https://www.youtube.com/watch?v=AufkDPEI2qA
+
+
+WORKING
+I create new HelloWorld project from scratch on Linux and it worked
+e.g.
+cd ~/Steven/GoLang
+mkdir NewTest
+
+Launch GoLang
+New Project
+Location	~/Steven/GoLang/NewTest
+GOROOT		Go 1.16.5	/usr/local/go
+Index entire GOPATH		checked
+Create
+
+New file
+main.go
+
+enter code
+NOTE
+package NewTest
+
+when go to run this Goland will complain
+Run | Run...
+go build main.go
+
+accept defaults
+Run
+
+Configuration is still incorrect.  Do you want to edit it again?
+Continue
+
+Compilation finished with exit code 0
+Compiled binary cannot be executed
+
+change to
+package main
+
+NOW works OK
+
+
+ERRORS
+01.
+Go is not a go file
+Edit configuration
+
+BEFORE
+Files	/home/stevepro/Steven/GoLang/Test03
+
+AFTER
+Files	/home/stevepro/Steven/GoLang/Test03/main.go
+
+IMPORTANT
+Go tool arguments
+leave blank
+
+BEFORE	had -i
+when build will get message
+go build: -i flag is deprecated
+
+
+Finally check EditConfiguration
+this seems to be how to get all of this working
+
+i.e.
+Build + Run main executable
+
+Run kind		File
+Files			~/Steven/GoLang/Test/main.go
+Output directory
+
+Working directory	~/Steven/GoLang/Test
+Environment
+Go tool arguments
+Program arguments
+Module			Test
+
+
+Go settings
+GOROOT			Go 1.16.5 /usr/local/go
+GOPATH			~/go
