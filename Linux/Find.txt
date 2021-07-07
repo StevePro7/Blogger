@@ -1,0 +1,9 @@
+Find
+06/07/2021
+
+
+e.g. Envoy code base
+cd ~/GitHubX/Tigera/envoy
+
+find -L . -type f -name '*.cc'
+find -L . -type f -name '*.cc' -exec grep -Hni 'main(int' {} \;
