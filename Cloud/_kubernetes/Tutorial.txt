@@ -1,0 +1,29 @@
+Tutorial
+08/07/2021
+
+K8s interactive tutorial
+https://kubernetes.io/docs/tutorials/kubernetes-basics
+https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-interactive
+
+
+Module 3
+kubectl exec $POD_NAME -- env
+
+
+Modele 4
+kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}'
+
+curl $(minikube ip):$NODE_PORT
+
+kubectl get pods -l app=kubernetes-bootcamp
+
+kubectl label pods $POD_NAME version=v1
+
+Delete service but can still curl from pod
+i.e.
+inside cluster
+
+kubectl exec -it $POD_NAME -- curl localhost:8080
+
+
+Module 5
