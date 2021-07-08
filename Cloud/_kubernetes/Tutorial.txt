@@ -22,8 +22,13 @@ kubectl label pods $POD_NAME version=v1
 Delete service but can still curl from pod
 i.e.
 inside cluster
-
+`
 kubectl exec -it $POD_NAME -- curl localhost:8080
 
 
-Module 5
+Module 6
+kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v1
+
+kubectl rollout status deployments/kubernetes-bootcamp
+
+kubectl rollout undo deployments/kubernetes-bootcamp
