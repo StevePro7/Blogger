@@ -112,3 +112,70 @@ can toggle Favorites on bottom LHS | Breakpoints
 or
 Run | View Breakpoints... 
 edit, delete breakpoints etc from here 
+
+
+
+Settings
+Ctrl + Comma
+auto pops up the setting configuration window
+
+
+IMPORTANT
+Implement interface
+e.g.
+Chp13
+bzip2
+
+writer
+Cannot use 'w' (type *writer) as the type io.WriteCloserType does not implement 'io.WriteCloser' as some methods are missing:Write(p []byte) (n int, err error)Close() error
+
+click "writer"
+type writer struct
+
+Code menu | Implement Methods...
+Choose interface to implement:
+io.WriterCloser
+Enter
+
+interface stubs are generated
+error goes away!
+
+
+Typo
+Ctrl + Comma
+Settings | Editor | Inspections | Proofreading | Typo
+Profile:	Default IDE
+
+I only want spell check / typos for comments:
+Process code		Unchecked
+Process literals	Unchecked
+Process comments	CHECKED
+
+
+How do you know if a Type implements an interface?
+
+e.g.
+var _ io.Writer = new(bytes.Buffer)
+
+Reference:
+https://golangbyexample.com/go-check-if-type-implements-interface
+https://www.pixelstech.net/article/1588481241-How-to-check-whether-a-struct-implements-an-interface-in-GoLang
+
+I don't think there is any object browser like .NET that can do this for you
+
+
+Goland
+Enable module integration
+
+if, for some reason, you need a dependent Go module and you "go get" from the Terminal
+yet there are still errors in the Terminal then ensure that the following has been enabled
+Enable module integration
+
+Ctrl + Comma
+Go | Go Modules | Enable Go modules integration	CHECKED
+
+go mod tidy
+and now everything should work w/o any "Problems"
+
+Reference:
+https://stackoverflow.com/questions/64463967/go-mod-unresolved-dependency
