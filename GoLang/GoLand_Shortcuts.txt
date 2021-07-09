@@ -17,3 +17,66 @@ Always Select Opened File
 Project	top left
 cog
 Always Select Opened File	CHECKED
+
+
+09/07/2021
+
+Migrating to GoLand from a Code Editor: Tips & Tricks
+https://www.youtube.com/watch?v=GDHET-k4zz4
+
+HOWEVER
+I tried this manually
+
+Goland use VSCode keymap
+Settings... | Plugins| VSCode Keymap
+Settings... | Keymap | VSCode
+
+IMPORTANT
+must do both steps
+not sure if I have to close GoLand IDE and re-open??
+
+
+Reference
+https://plugins.jetbrains.com/plugin/12062-vscode-keymap
+
+now get all of
+F9, F10, F11
+Alt + Left
+
+but I lose the previos e.g. Ctrl + F12...!!
+
+Instead
+Ctrl + P
+file file	e.g. main.go
+Ctrl + R	same but recent files listed
+
+
+File structure
+Ctrl + F12		old that doesn't work now
+Ctrl + Shift + O	maybe just use this for now
+https://stackoverflow.com/questions/51217258/list-of-functions-in-a-file-in-goland
+
+
+IMPORTANT
+Navigate | File Path
+do NOT do this via keyboard shortcut e.g. VNC Viewer OR on keyboard
+as it "kills" Linux Ubuntu and forces reboot
+if want to use then simply do via Navigate menu
+
+
+F10
+F11
+Shift+F11	does not work VNC Viewer	must use icon!
+
+
+TODO
+No resume button
+does not seem to be keyboard shortcut for 	Resume
+
+
+When coding try Distraction Free mode
+to go full screen on one file at a time
+
+
+Git integration
+Must choose rollback to discard any non committed changes
