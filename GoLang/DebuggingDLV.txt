@@ -1,0 +1,43 @@
+Debugging
+12/07/2021
+
+
+dlv
+GoLand
+
+e.g.
+Launch GoLand
+Ctrl + P
+main.go
+~/GitHubX/ProjectCalico/kube-controllers/cmd/kube-controllers
+
+go build .
+./kube-controllers 
+
+OR
+dlv exec ./kube-controllers -- server --config conf/config.toml
+
+
+(dlv) q
+
+
+IMPORTANT
+this only seems to be able to execute via GoLand integrated Terminal
+i.e.
+if you try the following from standard Terminal OR VS Code terminal then you will get error
+
+dlv exec ./kube-controllers -- server --config conf/config.toml
+
+
+
+Command 'dlv' not found, did you mean:
+
+  command 'dll' from deb brickos (0.9.0.dfsg-12.2)
+  command 'lv' from deb lv (4.51-7)
+  command 'ddv' from deb ncbi-tools-x11 (6.1.20170106+dfsg1-8)
+  command 'dlg' from deb pccts (1.33MR33-6build1)
+  command 'delv' from deb bind9-dnsutils (1:9.16.1-0ubuntu2.8)
+  command 'dav' from deb dav-text (0.9.0-1)
+
+Try: sudo apt install <deb name>
+
