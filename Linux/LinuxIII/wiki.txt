@@ -21,6 +21,9 @@ If you are transitioning from Windows to Linux you may like to remote desktop fr
 <br /><br />
 
 <i>Windows</i><br />
+  Enter password | Check Remember password
+  <br /><br />
+  
   
 <i>Linux</i><br />
   instructions => https://www.youtube.com/watch?v=bLGLwGToFCg
@@ -59,7 +62,9 @@ Finally, after configuring x11vnc.service, enter the following commands to compl
 systemctl daemon-reload
 systemctl enable x11vnc.service
 systemctl start x11vnc.service
+
 systemctl status x11vnc.service
+ip addr | grep 192
 </pre>
 <br />
 IMPORTANT<br />
