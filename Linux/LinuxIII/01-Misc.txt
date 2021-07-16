@@ -1,7 +1,35 @@
-VNC
-16/07/2021
-
-
-01-Miscellaneous<br />
-<b>Terminal</b><br />
-Modify Terminal keyboard shortcuts for classic Copy and Paste functionality.  Launch Terminal | Preferences | Shortcuts | Edit.  Double click Shortcut Key next to Copy | enter Ctrl + C.  Repeat for Paste but enter Ctrl + V.
+01-Misc<br />
+<b>Miscellaneous</b><br />
+Here are some additional miscellaneous tasks that could be useful for consistent developer user experience.
+<br /><br />
+<i>Upgrade Ubuntu</i><br />
+As of the time of this writing Ubuntu 20.04 is available.  If you are operating an older version e.g. 18.04 then consider upgrading Ubuntu.  Ensure Software & Updates "Notify me of new Ubuntu version" is not set Never! 
+<pre class="csharp" name="code">
+sudo apt update && sudo apt upgrade
+sudo reboot command
+sudo apt install update-manager-core
+sudo do-release-upgrade
+sudo reboot
+lsb_release -a
+</pre>
+<br />
+<i>Account Icon</i><br />
+Initially, the account user will use default icon.  Consider changing via Settings | Users | Picture | Select File.
+<br /><br />
+<i>File Explorer</i><br />
+Launch File Explorer | Click "three lines" | Preferences | List View | Allow folders to be expanded [Tree Style]
+<br /><br />
+<i>Video Codecs</i><br />
+Initially, video file formats like mp4 may result in black screen.  If so then install all the Multimedia Codecs:
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt install ubuntu-restricted-extras
+</pre>
+<br />
+<i>Keyboard Shortcuts</i><br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Minimize all windows</td>
+<td valign="top">&nbsp;Ctrl + Alt + D</td>
+</tr>
+</table>
