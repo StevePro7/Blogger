@@ -27,12 +27,7 @@ If you are transitioning from Windows to Linux you may like to remote desktop fr
   
   
 <i>Linux</i><br />
-  instructions => https://www.youtube.com/watch?v=bLGLwGToFCg
-  <br />
-  Install => https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing
-  <br />
-  <br />
-Follow all instructions.  Change Ubuntu desktop manager from GNOME to LightDM.  Install X11VNC as service on Ubuntu.  Launch Terminal and enter the following.  When prompted, ensure you choose lightdm not gdm3:
+Follow all <a href="https://www.youtube.com/watch?v=bLGLwGToFCg">instructions</a>.  Change Ubuntu desktop manager from GNOME to LightDM.  <a href="https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing">Install</a> X11VNC as service on Ubuntu.  Launch Terminal and enter the following.  When prompted, ensure you choose lightdm not gdm3:
 <pre class="csharp" name="code">
 sudo apt-get update
 sudo apt-get install lightdm
