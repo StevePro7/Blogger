@@ -1,28 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
-04-Utilities<br />
-<b>Utilities</b><br />
-Remember some utilities may still need to be installed and configured from the Terminal.  Launch Terminal:  
-<pre class="csharp" name="code">
-sudo apt-get install git
-sudo apt-get install curl
-sudo apt-get install python3-pip
-</pre>
-<br />
-<i>Python</i><br />
-Update your ~/.bashrc file as necessary to use Python 3.7 by default instead of Python 2 as per this post.
-<pre class="csharp" name="code">
-cd ~/
-cp .bashrc .bashrc_bak
-echo "alias python=python3" >> ~/.bashrc
-echo "alias pip=pip3" >> ~/.bashrc
-</pre>
-<br />
-  
+
   <br /><br />
   
-  
-In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, a lot of software was installed from entering commands in the Terminal window.  Fortunately, a lot of software can be installed directly from Ubuntu Software instead.  Here is a list:
-  <br /><br />
   00-Intro<br />
 In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, we set up Ubuntu Linux and installed some initial software.  Now, let's continue setup.
 <!--
@@ -159,4 +138,24 @@ Launch Ubuntu Software.  Search for the following software applications listed b
 <br />
 IMPORTANT<br />
 If, for some reason you cannot search Code::Blocks in Application Manager then consider installing Add-ons.
+<br /><br />
+  
+04-Utilities<br />
+<b>Utilities</b><br />
+Remember some utilities may still need to be installed and configured from the Terminal.  Launch Terminal:  
+<pre class="csharp" name="code">
+sudo apt-get install git
+sudo apt-get install curl
+sudo apt-get install python3-pip
+</pre>
+<br />
+<i>Python</i><br />
+Update your ~/.bashrc file as necessary to use Python 3.7 by default instead of Python 2 as per this post.
+<pre class="csharp" name="code">
+cd ~/
+cp .bashrc .bashrc_bak
+echo "alias python='python3'" >> ~/.bashrc
+echo "alias pip='pip3'" >> ~/.bashrc
+</pre>
+<br />  
 </span>
