@@ -1,0 +1,18 @@
+04-Utilities<br />
+<b>Utilities</b><br />
+Remember some utilities may still need to be installed and configured from the Terminal.  Launch Terminal:  
+<pre class="csharp" name="code">
+sudo apt-get install git
+sudo apt-get install curl
+sudo apt-get install python3-pip
+</pre>
+<br />
+<i>Python</i><br />
+Update your ~/.bashrc file as necessary to use Python 3.7 by default instead of Python 2 as per this post.
+<pre class="csharp" name="code">
+cd ~/
+cp .bashrc .bashrc_bak
+echo "alias python=python3" >> ~/.bashrc
+echo "alias pip=pip3" >> ~/.bashrc
+</pre>
+<br />
