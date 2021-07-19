@@ -19,8 +19,8 @@ docker version
 docker images
 </pre>
 <br />
-The final commands may throw the following error while trying to connect to the Docker daemon socket:
-<br /><i>Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version: dial unix /var/run/docker.sock: connect: permission denied</i>
+The final 2x commands may throw the following error while trying to connect to the Docker daemon socket:
+<a href="https://1.bp.blogspot.com/-NqUFjxOxfRs/YPWcqhh4RaI/AAAAAAAAHHA/KgFrgo7xhWol5mZqnyF2yptMjAdcwEZigCLcBGAsYHQ/s745/01-InstallError.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-NqUFjxOxfRs/YPWcqhh4RaI/AAAAAAAAHHA/KgFrgo7xhWol5mZqnyF2yptMjAdcwEZigCLcBGAsYHQ/s600/01-InstallError.png"/></a>
 <br /><br />
 Here is one way to fix "Got permission denied while trying to connect to the Docker daemon socket" error:
 <pre class="csharp" name="code">
