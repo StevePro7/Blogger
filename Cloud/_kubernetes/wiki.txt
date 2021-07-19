@@ -1,4 +1,36 @@
 <span style="font-family:verdana;font-size:85%;">
+  
+<b>Linux</b><br />
+Here are instructions on how to get Kubernetes running locally on Ubuntu with Minikube and 1.14 support:
+<pre class="csharp" name="code">
+# Prerequisites
+sudo apt install cpu-checker && sudo kvm-ok
+sudo kvm-ok
+
+sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
+    && sudo usermod -a -G libvirt $(whoami) \
+    && newgrp libvirt
+    
+sudo virt-host-validate
+
+# kubectl (Kubernetes CLI) installation
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+    && sudo install kubectl /usr/local/bin && rm kubectl
+    
+# Minikube KVM driver installation
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+    && sudo install docker-machine-driver-kvm2 /usr/local/bin/ && rm docker-machine-driver-kvm
+    
+# Minikube installation
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+    && sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+    
+# Verify the Minikube installation
+minikube version
+minikube start
+</pre>
+<br /><br />
+
 TODO Introduction + image
 <!--
 -->
@@ -30,9 +62,10 @@ Here are some commonly used tools that can be installed to work with and manage 
 </table>
 -->
 <br />
-<u>Installation</u><br />
+<u>02-Installation</u><br />
   <br /><br />
-  TODO Windows + Mac OS/X
+  TODO Windows Docker Desktop
+  TODO Mac OS/X Docker Desktop and minikube
   <br /><br />
 
 <b>Linux</b><br />
