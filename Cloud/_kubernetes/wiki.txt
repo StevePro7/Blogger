@@ -1,5 +1,47 @@
 <span style="font-family:verdana;font-size:85%;">
   
+
+<br /><br />
+TODO minikube dashboard works on Mac + Linux but have to give full on versions for Windows
+
+<br /><br />
+TODO Introduction + image
+<!--
+-->
+<br />
+  Let's check it out!
+  <br /><br />
+<u>01-Tools</u><br />
+Here are some commonly used tools that can be installed to work with and manage Kubernetes clusters:
+<br />
+<!--
+<table width="97%" border="1">
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
+<td valign="top">&nbsp;Command-line used to run commands against Kubernetes clusters</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kind.sigs.k8s.io/docs"><b>kind</b></a></td>
+<td valign="top">&nbsp;Runs Kubernetes on your local computer inside Docker containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://minikube.sigs.k8s.io/docs"><b>minikube</b></a></td>
+<td valign="top">&nbsp;Runs a single-node Kubernetes cluster on your personal computer </td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm"><b>kubeadm</b></a>
+</td>
+<td valign="top">&nbsp;Used to create and manage and secure larger Kubernetes clusters</td>
+</tr>
+</table>
+-->
+<br />
+<u>02-Installation</u><br />
+  <br /><br />
+  TODO Windows Docker Desktop
+  TODO Mac OS/X Docker Desktop and minikube
+  <br /><br />
+
 <b>Linux</b><br />
 Here are instructions on how to get Kubernetes running locally on Ubuntu with Minikube using 1.14 support:
 <!--
@@ -45,49 +87,6 @@ alias k='kubectl'
 complete -F __start_kubectl k
 alias kdr='kubectl --dry-run=client -o yaml'
 </pre>
-
-  <br /><br />
-TODO minikube dashboard works on Mac + Linux but have to give full on versions for Windows
-
-<br /><br />
-TODO Introduction + image
-<!--
--->
-<br />
-  Let's check it out!
-  <br /><br />
-<u>01-Tools</u><br />
-Here are some commonly used tools that can be installed to work with and manage Kubernetes clusters:
-<br />
-<!--
-<table width="97%" border="1">
-<tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
-<td valign="top">&nbsp;Command-line used to run commands against Kubernetes clusters</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://kind.sigs.k8s.io/docs"><b>kind</b></a></td>
-<td valign="top">&nbsp;Runs Kubernetes on your local computer inside Docker containers</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://minikube.sigs.k8s.io/docs"><b>minikube</b></a></td>
-<td valign="top">&nbsp;Runs a single-node Kubernetes cluster on your personal computer </td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm"><b>kubeadm</b></a>
-</td>
-<td valign="top">&nbsp;Used to create and manage and secure larger Kubernetes clusters</td>
-</tr>
-</table>
--->
-<br />
-<u>02-Installation</u><br />
-  <br /><br />
-  TODO Windows Docker Desktop
-  TODO Mac OS/X Docker Desktop and minikube
-  <br /><br />
-
-<b>Linux</b><br />
 <br /><br />
 
 </span>
