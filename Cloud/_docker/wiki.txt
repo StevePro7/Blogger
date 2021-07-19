@@ -2,11 +2,33 @@
 TODO Introduction + image
   <br /><br />
   <u>Installation</u><br />
-Docker Engine is available on a variety of Linux platforms.  On Windows and Mac OS/X it is easiest to install Docker Desktop as a static binary installation.  Install Docker Engine as per Operating System instructions.
+Docker Engine is available on a variety of <a href="https://docs.docker.com/engine/install/#server">Linux</a> platforms.  On <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a> it is easiest to install Docker Desktop as a static binary installation.  <a href="https://docs.docker.com/engine/install">Install</a> Docker Engine as per Operating System instructions.
   <br /><br />
-  TODO installation blurb for Windows + Mac using Docker Desktop
+  TODO Windows + Mac OS/X
   <br /><br />
 
-  <b>Linux</b><br />
-  
+<b>Linux</b><br />
+Docker provides .deb + .rpm packages for various Linux distributions.  For example <a href="https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04">Install</a> Docker on Ubuntu:
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+docker version
+docker images
+</pre>
+<br />
+The final commands may throw the following error while trying to connect to the Docker daemon socket:
+<br /><i>Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version: dial unix /var/run/docker.sock: connect: permission denied</i>
+<br /><br />
+Here is one way to fix "Got permission denied while trying to connect to the Docker daemon socket" error:
+<pre class="csharp" name="code">
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+sudo reboot
+docker version
+docker images
+</pre>
+<br />
 </span>
