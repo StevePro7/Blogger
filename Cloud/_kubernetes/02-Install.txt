@@ -1,0 +1,45 @@
+<b>Linux</b><br />
+Here are instructions on how to get Kubernetes running locally on Ubuntu with Minikube using 1.14 support:
+<!--
+<pre class="csharp" name="code">
+# Prerequisites
+sudo apt install cpu-checker && sudo kvm-ok
+sudo kvm-ok
+
+sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
+    && sudo usermod -a -G libvirt $(whoami) \
+    && newgrp libvirt
+    
+sudo virt-host-validate
+
+# kubectl (Kubernetes CLI) installation
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+    && sudo install kubectl /usr/local/bin && rm kubectl
+    
+# Minikube KVM driver installation
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+    && sudo install docker-machine-driver-kvm2 /usr/local/bin/ && rm docker-machine-driver-kvm
+    
+# Minikube installation
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+    && sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+    
+# Verify the Minikube installation
+minikube version
+minikube start
+</pre>
+<a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
+-->
+<br /><br />
+IMPORTANT<br />
+Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">Cheat Sheet</a> and update ~/.bashrc to alias the kubectl command:
+<pre class="csharp" name="code">
+# Auto complete
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+# Alias kubectl
+alias k='kubectl'
+complete -F __start_kubectl k
+alias kdr='kubectl --dry-run=client -o yaml'
+</pre>
