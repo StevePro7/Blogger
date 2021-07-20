@@ -2,8 +2,18 @@
 
 
 <b>VS Code</b><br />
-Launch VS Code. 
+Create "HelloVSCode" folder at ~/go/src.  Launch VS Code.  Open folder [Ctrl+K, Ctrl+O] HelloVSCode folder.  New File | main.go.  Enter + save Hello World source code from package main above.  Launch new Terminal:
+<pre class="csharp" name="code">
+go mod init HelloVSCode
+go mod tidy
+
+go build .
+go run .
+</pre>
+Set breakpoint in main.go.  Run menu and choose either Start Debugging or Run without Debugging option.
 <br /><br />
+  
+<br />
 <b>GoLand</b><br />
 Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create.
 <br />
