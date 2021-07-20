@@ -5,8 +5,28 @@ TODO Introduction + image
 -->
 <br />
 Let's check it out!
+  
 <br /><br />
-<u>Installation</u><br />
+<u>02-IDEs</u><br />
+Now we'd like to build GoLang software so let's setup 2x main Integrated Development Environments IDEs:
+<!--
+<a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">VS Code</a> is de facto IDE with useful extensions although commercial offering <a href="https://en.everybodywiki.com/GoLand">GoLand</a> has better Intellisense.
+-->
+<br /><br />
+<b>VS Code</b><br />
+<a href="https://code.visualstudio.com">Visual Studio Code</a> is a popular lightweight IDE available cross platform on Windows, Mac OS/X and Linux.  Install VS Code and install the following plugins: Go, Go Doc, Go Outliner, Go Autotest + Go Test Explorer.
+<br /><br />
+TODO table here with Go plugin KEY and description as VAL
+<br /><br />
+Launch VS Code.  Press Ctrl + Shift + P.  Filter on "Go: Install".  Choose "Go: Install/Update Tools".  Select all.  Ok.  Also, if prompted "The "gopls" command is not available." bottom right then click Install to go get gopls.
+<br /><br />
+  Run "go get -v golang.org/x/tools/gopls" to install"
+<br /><br />
+<b>GoLand</b><br />
+  <a href="https://www.jetbrains.com/go">GoLand</a>
+<br /><br />
+  
+<u>01-Installation</u><br />
 <a href="https://golang.org/doc/install">Download</a> and install Go as per instructions for your target operating system.  Afterwards verify <b>go version</b>.
 <br /><br />
 <b>Windows</b><br />
