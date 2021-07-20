@@ -1,3 +1,41 @@
+<span style="font-family:verdana;font-size:85%;">
+
+  
+<b>GoLand</b><br />
+  <a href="https://www.jetbrains.com/go">GoLand</a>
+<br /><br />
+  
+  
+<u>00-Intro</u><br />
+TODO Introduction + image
+<!--
+-->
+<br />
+Let's check it out!
+<br /><br />  
+<u>01-Installation</u><br />
+<a href="https://golang.org/doc/install">Download</a> and install Go as per instructions for your target operating system.  Afterwards verify <b>go version</b>.
+<br /><br />
+<b>Windows</b><br />
+<a href="https://golang.org/dl/go1.16.6.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Mac OS/X</b><br />
+<a href="https://golang.org/dl/go1.16.6.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Linux</b><br />
+<a href="https://golang.org/dl/go1.16.6.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
+<br />
+<pre class="csharp" name="code">
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+</pre>
+<br />
+IMPORTANT<br />
+If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</b>.  Also, verify Go environment variables by entering <b>go env</b> at the Terminal prompt for all operating systems.
+<br /><br />
+
 <br />
 <u>02-IDEs</u><br />
 Now we'd like to build GoLang software so let's setup 2x main <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated</a> Development Environments IDEs:
@@ -26,3 +64,4 @@ TODO insert the Shortcuts table here!
 <i>Zoom In</i><br />
 Finally, you may like to Ctrl + "+" to <a href="https://stackoverflow.com/questions/36040857/visual-studio-code-change-font-size-for-file-explorer-tray/46344568">zoom</a> in on the Explorer and Terminal then reduce the Font Size to 12.  
 <br /><br />
+</span>
