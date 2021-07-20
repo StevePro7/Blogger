@@ -1,0 +1,15 @@
+<b>GoLand</b><br />
+Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create. 
+<br /><br />
+TODO tidy HelloGoLand.png and enter here.  TODO enter small table with configuration.
+<br /><br />
+New | Go file | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
+<pre class="csharp" name="code">
+go mod init awesomeProject
+go mod tidy
+</pre>
+<br />
+In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
+<br /><br />
+<i>Configurations</i><br />
+Track active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick search. Remember Rename files and folder is in the Refactor menu!
