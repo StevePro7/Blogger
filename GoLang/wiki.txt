@@ -1,55 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
-<b>VS Code</b><br />
-Create "HelloVSCode" folder at ~/go/src.  Launch VS Code.  Open folder [Ctrl+K, Ctrl+O] HelloVSCode folder.  New File | main.go.  Enter + save Hello World source code from package main above.  Launch new Terminal:
-<pre class="csharp" name="code">
-go mod init HelloVSCode
-go mod tidy
 
-go build .
-go run .
-</pre>
-Set breakpoint in main.go.  Run menu and choose either Start Debugging or Run without Debugging option.
-<br /><br />
-  
-<br />
-<b>GoLand</b><br />
-Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create.
-<br />
-<!--
-<a href="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s800/HelloGoLand.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s600/HelloGoLand.png"/></a>
-<table width="99%" border="1">
-<tr>
-<td valign="top">&nbsp;Location</td>
-<td valign="top">&nbsp;~/go/src/HelloGoLand</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;GOROOT</td>
-<td valign="top">&nbsp;Go 1.16.6 /usr/local/go</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Index entire GOPATH</td>
-<td valign="top">&nbsp;CHECKED</td>
-</tr>
-</table>
--->
-<br />
-New | Go file | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
-<pre class="csharp" name="code">
-go mod init HelloGoLand
-go mod tidy
-</pre>
-<br />
-In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
-<br /><br />
-<i>Configurations</i><br />
-<a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>. Remember Rename files and folder is in the Refactor menu.  Disable Typo In All Scopes: Settings | Editor | Inspections | Proofreading: Process code and Process literals.
-<br /><br />
-<i>Navigation</i><br />
-As code bases become larger use the Navigate | Bookmarks option to Toggle Bookmarks to navigate easier.
-  
-<br /><br />
 <u>00-Intro</u><br />
 TODO Introduction + image
 <!--
@@ -143,4 +95,53 @@ func main() {
 </pre>
 <br />
 -->
+  
+<b>VS Code</b><br />
+Create "HelloVSCode" folder at ~/go/src.  Launch VS Code.  Open folder [Ctrl+K, Ctrl+O] HelloVSCode folder.  New File | main.go.  Enter + save Hello World source code from package main above.  Launch new Terminal:
+<pre class="csharp" name="code">
+go mod init HelloVSCode
+go mod tidy
+
+go build .
+go run .
+</pre>
+Set breakpoint in main.go.  Run menu and choose either Start Debugging or Run without Debugging option.
+<br /><br />
+  
+<br />
+<b>GoLand</b><br />
+Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s800/HelloGoLand.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s600/HelloGoLand.png"/></a>
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Location</td>
+<td valign="top">&nbsp;~/go/src/HelloGoLand</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GOROOT</td>
+<td valign="top">&nbsp;Go 1.16.6 /usr/local/go</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Index entire GOPATH</td>
+<td valign="top">&nbsp;CHECKED</td>
+</tr>
+</table>
+-->
+<br />
+New | Go file | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
+<pre class="csharp" name="code">
+go mod init HelloGoLand
+go mod tidy
+</pre>
+<br />
+In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
+<br /><br />
+<i>Configurations</i><br />
+<a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>. Remember Rename files and folder is in the Refactor menu.  Disable Typo In All Scopes: Settings | Editor | Inspections | Proofreading: Process code and Process literals.
+<br /><br />
+<i>Navigation</i><br />
+As code bases become larger use the Navigate | Bookmarks option to Toggle Bookmarks to navigate easier.  
+<br /><br />
 </span>
