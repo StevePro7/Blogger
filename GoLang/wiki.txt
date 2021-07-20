@@ -16,6 +16,15 @@ Let's check it out!
 <a href="https://golang.org/dl/go1.16.6.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
 <br /><br />
 <b>Linux</b><br />
-
-
+<a href="https://golang.org/dl/go1.16.6.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
+<br />
+<pre class="csharp" name="code">
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+</pre>
+<br />
+IMPORTANT<br />
+If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</>.
 </span>

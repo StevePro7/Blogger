@@ -1,39 +1,21 @@
 <u>Installation</u><br />
-Docker Engine is available on a variety of <a href="https://docs.docker.com/engine/install/#server">Linux</a> platforms.  On <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a> it is easiest to install Docker Desktop as a static binary installation.  <a href="https://docs.docker.com/engine/install">Install</a> Docker Engine as per Operating System instructions.
-
-  <br /><br />
-  TODO Windows + Mac OS/X
-  <br /><br />
-
-<b>Linux</b><br />
-Docker provides .deb + .rpm packages for various Linux distributions.  For example <a href="https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04">Install</a> Docker on Ubuntu:
-<pre class="csharp" name="code">
-sudo apt-get update
-sudo apt-get remove docker docker-engine docker.io
-sudo apt install docker.io
-sudo systemctl start docker
-sudo systemctl enable docker
-docker version
-docker images
-</pre>
-<br />
-The final 2x commands may throw the following error while trying to connect to the Docker daemon socket:
-<!--
-<a href="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s745/01-InstallError.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s600/01-InstallError.png"/></a>
--->
+<a href="https://golang.org/doc/install">Download</a> and install Go as per instructions for your target operating system.  Afterwards verify <b>go version</b>.
 <br /><br />
-Here is one way to fix "Got permission denied while trying to connect to the Docker daemon socket" error:
+<b>Windows</b><br />
+<a href="https://golang.org/dl/go1.16.6.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Mac OS/X</b><br />
+<a href="https://golang.org/dl/go1.16.6.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Linux</b><br />
+<a href="https://golang.org/dl/go1.16.6.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
+<br />
 <pre class="csharp" name="code">
-sudo groupadd docker
-sudo usermod -aG docker ${USER}
-sudo reboot
-docker version
-docker images
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
 </pre>
 <br />
 IMPORTANT<br />
-You may also like to install docker-compose if you eventually execute multiple Dockerfiles [mentioned later]:
-<pre class="csharp" name="code">
-sudo apt install docker-compose
-</pre>
-<br /><br />
+If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</>.
