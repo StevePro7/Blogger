@@ -17,7 +17,11 @@ TODO table here with Go plugin KEY and description as VAL
 <br /><br />
 Launch VS Code.  Press Ctrl + Shift + P.  Filter on "Go: Install".  Choose "Go: Install/Update Tools".  Select all.  Ok.  Also, if prompted "The "gopls" command is not available." bottom right then click Install to go get gopls.
 <br /><br />
-  
+<i>Miscellaneous</i><br />
+Launch Terminal.  Drag tab headings to prefer following order: Terminal, Problems, Output, Debug Console.
+<br /><br />
+<i>Shortcuts</i><br />
+
 <br /><br />
 <b>GoLand</b><br />
   <a href="https://www.jetbrains.com/go">GoLand</a>
@@ -43,5 +47,5 @@ go version
 </pre>
 <br />
 IMPORTANT<br />
-If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</>.
+If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</b>.  Also, verify Go environment variables by entering <b>go env</b> at the Terminal prompt for all operating systems.
 </span>
