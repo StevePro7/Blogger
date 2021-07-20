@@ -1,0 +1,43 @@
+Example
+20/07/2021
+
+
+01.
+Launch VS Code
+
+main.go
+
+write Hello World
+
+set breakpoint
+F5
+
+Error
+Failed to continue: Check the debug console for details
+
+
+Terminal
+go build .
+go run .
+
+Error
+go: go.mod file not found in current directory or any parent directory; see 'go help modules'
+
+Terminal
+go mod init HelloWorld
+go mod tidy
+
+
+Now all the previous "failures" work
+e.g.
+
+F5
+debug step thru source code
+
+go build .
+go run .
+./HelloWorld
+
+
+02.
+Launch GoLand
