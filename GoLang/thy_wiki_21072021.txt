@@ -1,0 +1,147 @@
+<span style="font-family:verdana;font-size:85%;">
+
+
+
+<u>00-Intro</u><br />
+TODO Introduction + image
+<!--
+-->
+<br />
+Let's check it out!
+<br /><br />
+<u>01-Installation</u><br />
+<a href="https://golang.org/doc/install">Download</a> and install Go as per instructions for your target operating system.  Afterwards verify <b>go version</b>.
+<br /><br />
+<b>Windows</b><br />
+<a href="https://golang.org/dl/go1.16.6.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Mac OS/X</b><br />
+<a href="https://golang.org/dl/go1.16.6.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Linux</b><br />
+<a href="https://golang.org/dl/go1.16.6.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
+<br />
+<pre class="csharp" name="code">
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+</pre>
+<br />
+IMPORTANT<br />
+If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</b>.  Also, verify Go environment variables by entering <b>go env</b> at the Terminal prompt for all operating systems.
+<br /><br />
+
+<br />
+<u>02-IDEs</u><br />
+Now we'd like to build GoLang software so let's setup 2x main <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated</a> Development Environments IDEs:
+<br /><br />
+<b>VS Code</b><br />
+<a href="https://code.visualstudio.com">Visual Studio Code</a> is a popular lightweight IDE available cross platform on <a href="https://code.visualstudio.com/docs/?dv=win">Windows</a>, <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> and <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install VS Code and install the following plugins: Go, Go Doc, Go Outliner, Go Autotest + Go Test Explorer.
+<br /><br />
+TODO table here with Go plugin KEY and description as VAL
+<br /><br />
+Launch VS Code.  Press Ctrl + Shift + P.  Filter on "Go: Install".  Choose "Go: Install/Update Tools".  Select all.  Ok.  Also, if prompted "The "gopls" command is not available." bottom right then click Install to go get gopls.
+<br /><br />
+<i>Miscellaneous</i><br />
+Launch Terminal.  Drag tab headings to prefer following order: Terminal, Problems, Output, Debug Console.
+<br /><br />
+<i>Mappings</i><br />
+If you are transitioning from Windows to Linux you may like to <a href="https://github.com/microsoft/vscode/issues/84227">update</a> keyboard mappings for example Back to Alt + LeftArrow.  File | Preferences | Keyboard Shortcuts.  Filter "Go Back".  Click pencil.  Hit Alt + LeftArrow.
+<br /><br />
+Repeat process for Terminal: Copy Selection: File | Preferences | Keyboard Shortcuts.  Hit Ctrl + C and Enter.  Repeat process for Terminal: Paste into Active Terminal: File | Preferences | Keyboard Shortcuts.  Hit Ctrl + V.
+<br /><br />
+<i>Navigation</i><br />
+If you are transitioning from Visual Studio on Windows to VS Code then the Solution Explorer with folders being represented as folder icons not arrows may be more familiar.  Therefore, install <a href="https://code.visualstudio.com/blogs/2016/09/08/icon-themes">vscode-icons</a> plugin.  Also, as code bases become larger it can be handier to install the <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks">Bookmarks</a> plugin for easier navigation.  
+<br /><br />  
+<i>Shortcuts</i><br />
+TODO insert the Shortcuts table here!
+<br /><br />
+<i>Zoom In</i><br />
+Finally, you may like to Ctrl + "+" to <a href="https://stackoverflow.com/questions/36040857/visual-studio-code-change-font-size-for-file-explorer-tray/46344568">zoom</a> in on the Explorer and Terminal then reduce the Font Size to 12.  
+<br /><br />
+  
+<br />
+<!--<u>03-IDEs_02</u><br />-->
+<b>GoLand</b><br />
+<a href="https://www.jetbrains.com/go">GoLand</a> is a cross-platform Go Integrated Development Environment IDE on <a href="https://www.jetbrains.com/go/download/download-thanks.html?platform=windows">Windows</a>, <a href="https://www.jetbrains.com/go/download/download-thanks.html?platform=mac">Mac OS/X</a> and <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install GoLand and setup the following configurations as commercial alternative with better IDE Intellisense.
+<br /><br />
+<i>Configurations</i><br />
+Launch GoLand.  In the "Welcome to GoLand" popup choose Customize | Color theme | IntelliJ Light.  Next, choose All settings...  Expand Go tab at the top | GOROOT | Add SDK... <a href="https://www.jetbrains.com/help/go/configuring-goroot-and-gopath.html#navigate-to-go-sdk">Local</a> | Navigate to where <b>Go</b> was installed previously e.g. <b>/usr/local/go</b>.  Finally update GOPATH.  Click "+" select <b>~/go</b>. OK | Apply | OK.
+<br /><br />
+IMPORTANT<br />
+Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.  Also, in Go tab | <a href="https://stackoverflow.com/questions/64463967/go-mod-unresolved-dependency">Go Modules</a> ensure "Enable Go modules integration" is checked as may not be by default.
+<br /><br />
+<i>Mappings</i><br />
+<a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default GNOME to VSCode.  Now all VS Code shortcuts above will work in GoLand.
+<br /><br />
+IMPORTANT<br />
+Repeat process to map Keymap in other JetBrains IDE products e.g. <a href="https://en.wikipedia.org/wiki/PyCharm">PyCharm</a> to VS Code for consistency.
+<br /><br />
+  
+<br />
+<u>04-Example</u><br />
+Create the obligatory Hello World program in both VS Code and GoLand IDE to complete the configration:
+<br /><br />
+<!--
+<a href="https://play.golang.org">main.go</a>
+<pre class="csharp" name="code">
+package main
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World!")
+}
+</pre>
+<br />
+-->
+  
+<b>VS Code</b><br />
+Create "HelloVSCode" folder at ~/go/src.  Launch VS Code.  Open folder [Ctrl+K, Ctrl+O] HelloVSCode folder.  New File | main.go.  Enter + save Hello World source code from package main above.  Launch new Terminal:
+<pre class="csharp" name="code">
+go mod init HelloVSCode
+go mod tidy
+
+go build .
+go run .
+</pre>
+Set breakpoint in main.go.  Run menu and choose either Start Debugging or Run without Debugging option.
+<br /><br />
+  
+<br />
+<b>GoLand</b><br />
+Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s800/HelloGoLand.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s600/HelloGoLand.png"/></a>
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Location</td>
+<td valign="top">&nbsp;~/go/src/HelloGoLand</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GOROOT</td>
+<td valign="top">&nbsp;Go 1.16.6 /usr/local/go</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Index entire GOPATH</td>
+<td valign="top">&nbsp;CHECKED</td>
+</tr>
+</table>
+-->
+<br />
+New | Go file | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
+<pre class="csharp" name="code">
+go mod init HelloGoLand
+go mod tidy
+</pre>
+<br />
+In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
+<br /><br />
+<i>Configurations</i><br />
+<a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>. Remember Rename files and folder is in the Refactor menu.  Disable Typo In All Scopes: Settings | Editor | Inspections | Proofreading: Process code and Process literals.
+<br /><br />
+<i>Navigation</i><br />
+As code bases become larger use the Navigate | Bookmarks option to Toggle Bookmarks to navigate easier.  
+<br /><br />
+</span>
