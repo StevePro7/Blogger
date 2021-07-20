@@ -1,24 +1,11 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>04-Example</u><br />
-Create the obligatory Hello World program in both VS Code and GoLand IDE to complete the configration:
-<br /><br />
-<a href="https://play.golang.org">main.go</a>
-<pre class="csharp" name="code">
-package main
-import "fmt"
-
-func main() {
-	fmt.Println("Hello World!")
-}
-</pre>
-<br />
 
 <b>VS Code</b><br />
 Launch VS Code. 
 <br /><br />
 <b>GoLand</b><br />
-Launch GoLand. 
+Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create. 
 <br /><br />
 
 <u>00-Intro</u><br />
@@ -95,6 +82,23 @@ Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat f
 <a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default GNOME to VSCode.  Now all VS Code shortcuts above will work in GoLand.
 <br /><br />
 IMPORTANT<br />
-Repeat process to map Keymap in other JetBrains IDE products e.g. PyCharm to VS Code for consistency.
+Repeat process to map Keymap in other JetBrains IDE products e.g. <a href="https://en.wikipedia.org/wiki/PyCharm">PyCharm</a> to VS Code for consistency.
 <br /><br />
+  
+<br />
+<u>04-Example</u><br />
+Create the obligatory Hello World program in both VS Code and GoLand IDE to complete the configration:
+<br /><br />
+<!--
+<a href="https://play.golang.org">main.go</a>
+<pre class="csharp" name="code">
+package main
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World!")
+}
+</pre>
+<br />
+-->
 </span>
