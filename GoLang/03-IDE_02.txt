@@ -1,23 +1,16 @@
 <!--<u>03-IDEs_02</u><br />-->
 <b>GoLand</b><br />
+<a href="https://www.jetbrains.com/go">GoLand</a> is a cross-platform Go Integrated Development Environment IDE on <a href="https://www.jetbrains.com/go/download/download-thanks.html?platform=windows">Windows</a>, <a href="https://www.jetbrains.com/go/download/download-thanks.html?platform=mac">Mac OS/X</a> and <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install GoLand and setup the following configurations as commercial alternative with better IDE Intellisense.
 <br /><br />
-
-https://code.visualstudio.com/docs/?dv=win
-https://code.visualstudio.com/docs/?dv=osx
-https://code.visualstudio.com/docs/?dv=linux64_deb
-
-
-https://www.jetbrains.com/go/download/download-thanks.html?platform=windows
-
-
-https://www.jetbrains.com/go/download/download-thanks.html?platform=mac
-
-
-https://www.jetbrains.com/go/download/download-thanks.html?platform=linux
-
-
-VS Code
-is a popular lightweight IDE available cross platform on Windows, Mac OS/X and Linux
-
-GoLand
-is a cross-platform Go Integrated Development Environment on Windows, Mac OS/X and Linux
+<i>Configurations</i><br />
+Launch GoLand.  In the "Welcome to GoLand" popup choose Customize | Color theme | IntelliJ Light.  Next, choose All settings...  Expand Go tab at the top | GOROOT | Add SDK... <a href="https://www.jetbrains.com/help/go/configuring-goroot-and-gopath.html#navigate-to-go-sdk">Local</a> | Navigate to where <b>Go</b> was installed previously e.g. <b>/usr/local/go</b>.  Finally update GOPATH.  Click "+" select <b>~/go</b>. OK | Apply | OK.
+<br /><br />
+IMPORTANT<br />
+Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.
+<br /><br />
+<i>Mappings</i><br />
+<a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default GNOME to VSCode.  Now all VS Code shortcuts above will work in GoLand.
+<br /><br />
+IMPORTANT<br />
+Repeat process to map Keymap in other JetBrains IDE products e.g. <a href="https://en.wikipedia.org/wiki/PyCharm">PyCharm</a> to VS Code for consistency.
+<br /><br /
