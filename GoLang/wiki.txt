@@ -6,10 +6,25 @@ Launch VS Code.
 <br /><br />
 <b>GoLand</b><br />
 Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create.
+<br />
+<!--
 <a href="https://1.bp.blogspot.com/-TJ7pemB5cQA/YPcUxZIWqDI/AAAAAAAAHHw/G7_m_dzRtmoLYIcQNAS6BbuBSmAnoW_JQCLcBGAsYHQ/s800/HelloGoLand.png"><img alt="" border="0" width="98%"                                                                 src="https://1.bp.blogspot.com/-TJ7pemB5cQA/YPcUxZIWqDI/AAAAAAAAHHw/G7_m_dzRtmoLYIcQNAS6BbuBSmAnoW_JQCLcBGAsYHQ/s600/HelloGoLand.png"/></a>
-<br /><br />
-TODO tidy HelloGoLand.png and enter here.  TODO enter small table with configuration.
-<br /><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Location</td>
+<td valign="top">&nbsp;~/go/src/awesomeProject</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GOROOT</td>
+<td valign="top">&nbsp;Go 1.16.6 /usr/local/go</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Index entire GOPATH</td>
+<td valign="top">&nbsp;CHECKED</td>
+</tr>
+</table>
+-->
+<br />
 New | Go file | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
 <pre class="csharp" name="code">
 go mod init awesomeProject
@@ -19,11 +34,11 @@ go mod tidy
 In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
 <br /><br />
 <i>Configurations</i><br />
-<a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>. Remember Rename files and folder is in the Refactor menu!
+<a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>. Remember Rename files and folder is in the Refactor menu.  Disable Typo In All Scopes: Settings | Editor | Inspections | Proofreading: Process code and Process literals.
 <br /><br />
-IMPORTANT<br />
-Disable Typo In All Scopes: Settings | Editor | Inspections | Proofreading: Process code and Process literals.
-
+<i>Navigation</i><br />
+As code bases become larger use the Navigate | Bookmarks option to Toggle Bookmarks to navigate easier.
+  
 <br /><br />
 <u>00-Intro</u><br />
 TODO Introduction + image
@@ -93,7 +108,7 @@ Finally, you may like to Ctrl + "+" to <a href="https://stackoverflow.com/questi
 Launch GoLand.  In the "Welcome to GoLand" popup choose Customize | Color theme | IntelliJ Light.  Next, choose All settings...  Expand Go tab at the top | GOROOT | Add SDK... <a href="https://www.jetbrains.com/help/go/configuring-goroot-and-gopath.html#navigate-to-go-sdk">Local</a> | Navigate to where <b>Go</b> was installed previously e.g. <b>/usr/local/go</b>.  Finally update GOPATH.  Click "+" select <b>~/go</b>. OK | Apply | OK.
 <br /><br />
 IMPORTANT<br />
-Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.  Also, in Go tab | Go Modules ensure "Enable Go modules integration" is checked as may not be by default.
+Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.  Also, in Go tab | <a href="https://stackoverflow.com/questions/64463967/go-mod-unresolved-dependency">Go Modules</a> ensure "Enable Go modules integration" is checked as may not be by default.
 <br /><br />
 <i>Mappings</i><br />
 <a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default GNOME to VSCode.  Now all VS Code shortcuts above will work in GoLand.
