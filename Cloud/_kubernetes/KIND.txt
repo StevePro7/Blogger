@@ -1,0 +1,46 @@
+KinD
+21/07/2021
+
+SUMMARY
+Terminal
+go get sigs.k8s.io/kind
+
+add kind to $PATH
+gedit
+# KinD	Kubernetes in Docker
+export PATH="$PATH:~/go/bin/"
+
+sudo reboot
+
+Terminal
+kind create cluster
+kind delete cluster
+
+
+BOOK
+Kubernetes Up & Running
+
+Running Kubernetes in Docker
+Pg.30
+
+$ kind create cluster --wait 5m \
+$ export KUBECONFIG="$(kind get kubeconfig-path)"
+$ kubectl cluster-info
+$ kind delete cluster
+
+
+
+INSTALL
+https://kind.sigs.k8s.io
+
+Noticed that empty
+GO111MODULE= 
+go get sigs.k8s.io/kind@v0.11.1 
+kind create cluster
+
+
+go get sigs.k8s.io/kind
+
+
+kind create cluster
+kind delete cluster
