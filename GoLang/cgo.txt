@@ -1,0 +1,80 @@
+cgo
+21/07/2021
+
+https://pkg.go.dev/cmd/cgo
+
+https://riptutorial.com/go/example/21315/cgo--first-steps-tutorial
+
+
+https://karthikkaranth.me/blog/calling-c-code-from-go
+
+
+
+GOOD tutorial
+https://riptutorial.com/go/example/21315/cgo--first-steps-tutorial
+
+couldn't get working on Windows
+
+seemed only to work on Linux
+e.g.
+/home/stevepro/Steven/GoLang/cgo
+
+code the following
+hello.c
+main.go
+
+
+Terminal
+go install
+
+ERROR
+/usr/bin/ld: $WORK/b001/_x003.o: in function `HelloT':
+./hello.c:5: multiple definition of `HelloT'; $WORK/b001/_x002.o:/home/stevepro/Steven/GoLang/cgo/02-Test/hello.c:5: first defined here
+collect2: error: ld returned 1 exit status
+
+
+go run main.go
+go build main.go
+
+works
+
+
+However, if make change then afterwards does not take changes
+i.e.
+recompile
+hello.c
+afterwards
+
+
+
+https://groups.google.com/g/golang-nuts/c/O4RTszIyL7c?pli=1
+
+
+SOLUTION...??
+
+reference
+https://pkg.go.dev/cmd/cgo
+
+
+MUST include #cgo CFLAGS:
+e.g.
+
+// #cgo CFLAGS: -DPNG_DEBUG=1
+// #cgo amd64 386 CFLAGS: -DX86=1
+// #cgo LDFLAGS: -lpng
+// #include <png.h>
+import "C"
+
+
+NO
+this only worked once
+I think a bit like how when I changed the function signature it instantly
+changed but no further changes from after then...?
+
+
+Not a solution that scales but the only thing that seemed to work
+was if I toggled 0 to 1 and vice versa before each build or run
+
+// #cgo CFLAGS: -DPNG_DEBUG=0
+
+go run main.go
