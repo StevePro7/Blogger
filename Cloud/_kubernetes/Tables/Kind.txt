@@ -1,0 +1,22 @@
+<table width="96%" border="1">
+<tr>
+<td valign="top">
+<pre class="csharp" name="code">
+&nbsp;go get sigs.k8s.io/kind
+
+&nbsp;# Add KinD to $PATH in ~/.bashrc
+&nbsp;export PATH="$PATH:~/go/bin/"
+&nbsp;sudo reboot
+</pre>
+</td>
+<td valign="top">
+<pre class="csharp" name="code">
+&nbsp;# Create test and delete cluster
+&nbsp;kind create cluster --wait 5m \
+&nbsp;export KUBECONFIG="$(kind get kubeconfig-path)"
+&nbsp;kubectl cluster-info
+&nbsp;kind delete cluster
+</pre>
+</td>
+</tr>
+</table>
