@@ -1,24 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>04b-KinD Dashboard</u><br />
-Launch Terminal.  Enter the following commands to initiate and configure the KinD dashboard in the browser.
-<pre class="csharp" name="code">
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.1.0/aio/deploy/recommended.yaml
-kubectl get pod -n kubernetes-dashboard
-kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
 
-token=$(kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']==\
-'default')].data.token}"|base64 --decode)
-echo $token
-kubectl proxy
-</pre>
-<br />
-IMPORTANT<br />
-If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address already in use</i> then enter command: <b>sudo fuser -k 8001/tcp</b>
-<br /><br />
-Launch browser and enter the URL as per below.  Once prompted enter the service token above and click OK.
-<i>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy</i>
-<br /><br />    
 <u>03-MiniKube</u><br />
 TODO Single node Kubernetes cluster running on localhost...
 <br /><br />  
@@ -141,5 +123,28 @@ Launch Terminal.  Enter the following command to install KinD.  Export the path 
 </tr>
 </table>
 -->
+
+<br /><br />
+<u>04b-KinD Dashboard</u><br />
+Launch Terminal.  Enter the following commands to initiate and configure the KinD dashboard in the browser.
 <br />
+<!--
+<pre class="csharp" name="code">
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.1.0/aio/deploy/recommended.yaml
+kubectl get pod -n kubernetes-dashboard
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+
+token=$(kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']==\
+'default')].data.token}"|base64 --decode)
+echo $token
+kubectl proxy
+</pre>
+-->
+<br />
+IMPORTANT<br />
+If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address already in use</i> then enter command: <b>sudo fuser -k 8001/tcp</b>
+<br /><br />
+Launch browser and enter the URL as per below.  Once prompted enter the service token above and click OK.
+<i>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy</i>
+<br /><br />    
 </span>
