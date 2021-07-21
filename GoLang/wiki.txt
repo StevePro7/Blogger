@@ -1,9 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
   
-
-
   
-<a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Golang</a> is a statically typed and compiled programming language designed at Google.  Go plays a major role in Enterprises by developing highly scalable concurrent <a href="https://www.linkedin.com/pulse/power-up-your-cloud-computing-golang-reemi-shirsath">cloud</a> computing systems like <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> + Kubernetes.
+<a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Golang</a> is a statically typed and compiled programming language designed at Google.  Go plays a major role in Enterprises by developing highly scalable concurrent <a href="https://www.linkedin.com/pulse/power-up-your-cloud-computing-golang-reemi-shirsath">cloud</a> computing systems like <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> + <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a>.
 <br />
 <!--
 <a href="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s256/Gopher.jpg"><img alt="" border="0" width="98%" height="256" src="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s600/Gopher.jpg"/></a>
@@ -138,7 +136,7 @@ IMPORTANT<br />
 Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.  Also, in Go tab | <a href="https://stackoverflow.com/questions/64463967/go-mod-unresolved-dependency">Go Modules</a> ensure "Enable Go modules integration" is checked as may not be by default.
 <br /><br />
 <i>Mappings</i><br />
-<a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default GNOME to VSCode.  Now all VS Code shortcuts above will work in GoLand.
+<a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default value to VSCode.  Now all VS Code shortcuts above will work in GoLand.
 <br /><br />
 IMPORTANT<br />
 Repeat process to map Keymap in other JetBrains IDE products e.g. <a href="https://en.wikipedia.org/wiki/PyCharm">PyCharm</a> to VS Code for consistency.
