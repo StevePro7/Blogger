@@ -1,28 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-
-<u>03-MiniKube</u><br />
-TODO Single node Kubernetes cluster running on localhost...
-<br /><br />  
-  <u>04-KinD</u><br />
-Kubernetes in Docker [KinD] allows an approach to run a Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating at once instead of running everything in virtual machine.
-<br /><br />
-Launch Terminal.  Enter the following command to install KinD.  Export the path in ~/.bashrc and reboot:
-<br />
-<pre class="csharp" name="code">
-go get sigs.k8s.io/kind
-
-# Add KinD to $PATH in ~/.bashrc
-export PATH="$PATH:~/go/bin/"
-sudo reboot
-
-# Create test and delete cluster
-kind create cluster --wait 5m \
-export KUBECONFIG="$(kind get kubeconfig-path)"
-kubectl cluster-info
-kind delete cluster
-
-</pre>
-<br />
+  
 
 <br /><br />
 TODO minikube dashboard works on Mac + Linux but have to give full on versions for Windows
@@ -63,6 +40,7 @@ Here are some commonly used tools that can be installed to work with and manage 
   <br /><br />
   TODO Windows Docker Desktop
   TODO Mac OS/X Docker Desktop and minikube
+  <br /><br />
 
 <b>Linux</b><br />
 Here are instructions on how to get Kubernetes running locally on Ubuntu with Minikube using 1.14 support:
