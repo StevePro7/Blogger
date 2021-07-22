@@ -1,12 +1,75 @@
 LoginBlack
+22/07/2021
+
+REPEAT
+https://askubuntu.com/questions/149206/how-to-install-nvidia-run
+
+IMPORTANT
+I hit key shortcut and got black screen of death again today
+e.g.
+GoLand | Ctrl + Alt + F12
+
+so I went to repeat steps below but I got error doing this:
+e.g.
+login as recovery mode
+prompt
+OK	top	OK
+login
+
+Terminal
+sudo su
+cd Downloads
+./NVIDIA...run
+
+
+ERROR
+you appear to be running an x server
+
+
+SOLUTION
+https://askubuntu.com/questions/149206/how-to-install-nvidia-run
+
+
+What the problem is that I use lightdm for VNC Viewer [I think]
+so much drop down to terminal in Recovery mode and re-install manually
+
+reboot in Recovery Mode
+
+prompt
+OK	top	OK
+login
+
+stevepro
+SP4
+sudo service lightdm stop
+sudo init 3
+./NVIDIA...run
+sudo service lightdm start
+
+
+NOTE
+would have to repeat these steps on each kernel update
+sudo reboot
+
+Finally, ensure that Additional Drivers set to manually
+e.g.
+Additional Drivers tab
+NVIDIA
+Continue using a manually installed driver
+
+
+I *believe* I have to do this going forward as I replaced GNOME with lightdm
+in order to be able to use the VNC Viewer so continue using this config for now
+
+
+
 24/06/2021
-
-
 Go to Computer Dr
 login as recovery mode
 prompt
 continue
 
+sudo su
 ~/Downloads
 ./NVidia.run
 
