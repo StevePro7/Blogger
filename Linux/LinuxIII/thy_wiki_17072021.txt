@@ -1,28 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<i>Graphics Driver</i><br />
-If you attempt to login to Ubuntu 20.04 and are confronted with black screen [and blinking cursor] then you may need to re-install graphics drivers.  Instructions on how install the <a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux">NVIDIA</a> drivers for Ubuntu are here.
-<br /><br />
-However, you receive an error complaining that the X server is running then complete these recovery <a href="https://askubuntu.com/questions/149206/how-to-install-nvidia-run">steps</a>:
-<!--
-<i>ERROR: You appear to be running an X server; please exit X before installing</i>
--->
-<br /><br />
-  TODO cxomplete
-  <br /><br />
-Reboot computer in recovery mode | Login prompt | Enter username and password | Enter these commands
-<pre class="csharp" name="code">
-sudo service lightdm stop
-sudo init 3
-./NVIDIA...run
-sudo service lightdm start
-</pre>
-<br />
-  
-  TODO cxomplete
   <br /><br />
   
-00-Intro<br />
+  00-Intro<br />
 In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, we set up Ubuntu Linux and installed some initial software.  Now, let's continue setup.
 <!--
 <a href="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s1600/Linux.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s640/Linux.jpg" width="98%" height="225" /></a>
@@ -32,7 +12,7 @@ Let's check it out!
 <br /><br />
 
 01-Misc<br />
-<u>Miscellaneous</u><br />
+<b>Miscellaneous</b><br />
 Here are some additional miscellaneous tasks that could be useful for consistent developer user experience.
 <br /><br />
 <i>Upgrade Ubuntu</i><br />
@@ -60,27 +40,16 @@ sudo apt install ubuntu-restricted-extras
 </pre>
 <br />
 <i>Keyboard Shortcuts</i><br />
-<table width="99%" border="1">
+<table width="100%" border="1">
 <tr>
-<td valign="top">&nbsp;General</td>
-<td valign="top">&nbsp;Minimize all windows</td>  
+<td valign="top">&nbsp;Minimize all windows</td>
 <td valign="top">&nbsp;Ctrl + Alt + D</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;gedit</td>
-<td valign="top">&nbsp;Move prev tab</td>  
-<td valign="top">&nbsp;Ctrl + Alt + PgUp</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;gedit</td>
-<td valign="top">&nbsp;Move next tab</td>  
-<td valign="top">&nbsp;Ctrl + Alt + PgDown</td>
 </tr>
 </table> 
 <br /><br />
 
 02-VNC<br />
-<u>VNC Viewer</u><br />
+<b>VNC Viewer</b><br />
 If you are transitioning from Windows to Linux you may like to remote desktop from Windows to Linux box.
 <br /><br />
 <i>Linux</i><br />
@@ -133,7 +102,7 @@ When prompted choose Continue.  Enter password | Check Remember password.  Unfor
 <br /><br />
 
 03-Software<br />
-<u>Software</u><br />
+<b>Software</b><br />
 In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, a lot of software was installed from various commands entered in the Terminal window.  Fortunately, a lot of software can be installed directly from <a href="https://wiki.ubuntu.com/SoftwareCenter">Ubuntu</a> Software instead.  Here, an extended list.
 <br /><br />
 Launch Ubuntu Software.  Search for the following software applications listed below and install accordingly:
@@ -172,7 +141,7 @@ If, for some reason you cannot search Code::Blocks in Application Manager then c
 <br /><br />
   
 04-Utilities<br />
-<u>Utilities</u><br />
+<b>Utilities</b><br />
 Remember some utilities may still need to be installed and configured from the Terminal.  Launch Terminal:  
 <pre class="csharp" name="code">
 sudo apt-get install git
@@ -188,8 +157,5 @@ cp .bashrc .bashrc_bak
 echo "alias python='python3'" >> ~/.bashrc
 echo "alias pip='pip3'" >> ~/.bashrc
 </pre>
-<br /><br />
-05-Kernel<br />
-<u>Kernel</u><br />
-
+<br />  
 </span>
