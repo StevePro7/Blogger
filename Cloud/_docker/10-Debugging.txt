@@ -1,0 +1,32 @@
+01 Debugging
+31/07/2021
+
+00.
+GoLang10
+
+
+Reverse engineer Dockerfile built in GoLang02
+
+Update Dockerfile
+docker build -t golang_app:1.0 .
+docker images
+
+docker run --rm -d -p 5000:5000 golang_app:1.0
+docker ps
+
+
+Stop all running containers
+docker stop $(docker ps -a -q)
+
+
+Delete all images
+docker rmi $(docker images -q)
+
+
+
+Build Dockerfile up bit by bit
+docker inspect <container_id> | more
+docker inspect 65dd01bf087ab1b7986d785a3fa5708c84639492de328bc6075af51a6e79a5d1 | more
+
+"State": {
+            "Status": "exited",
