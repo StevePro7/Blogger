@@ -1,0 +1,35 @@
+02-VNC CAPS LOCK
+31/07/2021
+
+
+Every now and again I get Caps lock automatically on VNC Viewer
+remote Linux box e.g. laptop
+
+
+Not sure 100% how I got this "fixed" today but this helped
+
+On screen keyboard
+
+
+Settings
+Universal Access
+Typing | Screen Keyboard	ENABLED
+
+top left
+Bounce Keys			ENABLED
+Mouse  Keys			ENABLED
+
+
+Launch gedit
+start typing
+Onscreen keyboard pops up
+Hit ?123			toggle to numbers
+"mess" around
+ABC				toggle to letters
+con't typing
+magically toggles Upper case letters to lower case??
+
+
+References
+https://community.spiceworks.com/topic/197034-is-there-a-way-to-turn-caps-lock-off-remotely
+https://superuser.com/questions/828044/how-to-toggle-caps-lock-status-on-remote-windows-system

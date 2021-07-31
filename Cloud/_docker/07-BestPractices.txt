@@ -1,0 +1,47 @@
+07-Best Practices
+28/06/2021
+
+
+IMPORTANT
+A Dockerfile for a Go application could look like:
+
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices
+
+Multi-stage builds may look like this:
+https://docs.docker.com/develop/develop-images/multistage-build
+
+
+IMPORTANT
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+which I had in my Dockerfile
+D:\Bitbucket\SteveProXNA\codingchallenge\Personio_StevenBoland_CodingChallenge
+
+
+compare this example to what Docker "You're Doing Wrong" built for me
+
+#build stage
+FROM golang:alpine AS builder
+RUN apk add --no-cache git
+WORKDIR /go/src/app
+COPY . .
+RUN go get -d -v ./...
+RUN go build -o /go/bin/app -v ./...
+
+#final stage
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+COPY --from=builder /go/bin/app /app
+ENTRYPOINT /app
+LABEL Name=golang02 Version=0.0.1
+EXPOSE 5000
+
+
+
+Dockerfile commands
+
+
+https://www.docker.com/blog/how-to-build-and-test-your-docker-images-in-the-cloud-with-docker-hub
+
+CVE
+https://www.docker.com/blog/speed-up-your-development-flow-with-these-dockerfile-best-practices

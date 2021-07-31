@@ -14,7 +14,8 @@ OSError: [Errno 98] Address already in use
 
 netstat -tulnap | grep 5000
 sudo apt install net-tools
-sudo fuser 5000/tcp
+sudo fuser -k Port_Number/tcp
+sudo fuser -k 5000/tcp
 netstat -tulnap | grep 5000
 
 Reference:
