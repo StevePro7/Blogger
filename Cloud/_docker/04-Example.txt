@@ -1,0 +1,70 @@
+Example
+31/07/2021
+
+
+00.
+Flask00
+app.py
+pip install flask
+python app.py
+
+
+ERROR
+OSError: [Errno 98] Address already in use
+
+netstat -tulnap | grep 5000
+sudo apt install net-tools
+sudo fuser 5000/tcp
+netstat -tulnap | grep 5000
+
+Reference:
+https://stackoverflow.com/questions/750604/freeing-up-a-tcp-ip-port
+
+
+01.
+Docker Introduction — What You Need To Know To Start Creating Containers
+https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a
+
+Flask01
+app.py
+Dockerfile
+
+docker build -t flask_app:0.1 .
+docker images
+
+docker run -d -p 5000:5000 flask_app:0.1
+docker ps
+
+browser
+localhost:5000
+
+
+docker stop <container_id>
+docker rmi  <iamge_id>
+docker system prune -a
+
+
+02.
+Docker: You Are Doing it Wrong
+https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b
+
+Flask02
+app.py
+
+Automate build Dockerfile
+Ctrl + Shift + P
+Docker: Add Docker Files to Workspace
+Select Application Platform		Python Flask
+Choose the app's entry point		app.py
+What port does app listen on		5000
+Include optional Docker Compose file	No
+
+
+docker build -t flask_app:0.1 .
+docker images
+
+docker run -d -p 5000:5000 flask_app:0.1
+docker ps
+
+Terminal
+curl localhost:5000
