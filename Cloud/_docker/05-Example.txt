@@ -1,13 +1,22 @@
-04 Example
+05 Example
 31/07/2021
 
+Reference
+https://github.com/qorbani/docker-golang-hello-world
 
 00.
-Flask00
-app.py
-pip install flask
-python app.py
+GoLang00
 
+Terminal
+go mod init dockerexample
+
+app.go
+
+go get github.com/gorilla/mux
+go mod tidy
+
+go run main.go
+curl localhost:8080
 
 ERROR
 OSError: [Errno 98] Address already in use
@@ -21,18 +30,23 @@ Reference:
 https://stackoverflow.com/questions/750604/freeing-up-a-tcp-ip-port
 
 
+GitHub
+docker run -d -p 80:80 -e PORT=80 --name=hello-world qorbani/golang-hello-world
+
 01.
 Docker Introduction — What You Need To Know To Start Creating Containers
 https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a
 
-Flask01
-app.py
+/*
+GoLang01
+app.go
 Dockerfile
+https://github.com/qorbani/docker-golang-hello-world/blob/master/Dockerfile
 
-docker build -t flask_app:0.1 .
+docker build -t golang_app:0.1 .
 docker images
 
-docker run -d -p 5000:5000 flask_app:0.1
+docker run -d -p 5000:5000 golang_app:0.1
 docker ps
 
 browser
@@ -42,28 +56,30 @@ localhost:5000
 docker stop <container_id>
 docker rmi  <iamge_id> --force
 docker system prune -a
-
+*/
 
 02.
 Docker: You Are Doing it Wrong
 https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b
 
-Flask02
-app.py
+GoLang02
+app.go
+go.mod
+go.sum
 
 Automate build Dockerfile
 Ctrl + Shift + P
 Docker: Add Docker Files to Workspace
-Select Application Platform		Python Flask
-Choose the app's entry point		app.py
+Select Application Platform		Go
+//Choose the app's entry point		app.go
 What port does app listen on		5000
 Include optional Docker Compose file	No
 
 
-docker build -t flask_app:0.1 .
+docker build -t golang_app:0.2 .
 docker images
 
-docker run -d -p 5000:5000 flask_app:0.1
+docker run -d -p 5000:5000 golang_app:0.2
 docker ps
 
 Terminal
