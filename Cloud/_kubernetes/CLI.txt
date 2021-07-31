@@ -1,0 +1,51 @@
+CLI
+30/07/2019
+
+01.
+Azure
+az
+
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
+
+Terminal
+sudo apt-get update
+sudo apt-get install azure-cli
+
+
+02.
+Google
+gcloud
+gcloud init
+
+Reference
+https://geekflare.com/gcloud-installation-guide
+
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+sudo apt-get install apt-transport-https ca-certificates gnupg
+
+sudo apt-get install apt-transport-https ca-certificates gnupg
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+sudo apt-get update
+sudo apt-get install google-cloud-sdk
+
+
+IMPORTANT
+ran all of the commands but got an error the first time
+however if I re-ran and splite the last 2x commands out then it worked
+
+gcloud
+gcloud init
+gcloud survey
+
+
+
+03.
+AWS
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+
+But when I choose aws in Terminal I simply get prompted to do:
+
+sudo apt  install awscli
