@@ -1,0 +1,9 @@
+<u>Troubleshooting</u><br />
+If you receive <i>OSError: [Errno 98] Address already in use </i> [Port 5000] then execute the following commands:
+<pre class="csharp" name="code">
+netstat -tulnap | grep 5000
+sudo apt install net-tools
+sudo fuser -k 5000/tcp
+netstat -tulnap | grep 5000
+</pre>
+<br /><br />
