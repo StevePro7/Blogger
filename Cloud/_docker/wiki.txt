@@ -1,57 +1,38 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Example #1</u><br />
-Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">example</a> from scratch: build simple Flask application in Python and run on localhost in container:
-<table border="1" width="98%">
+<u>Example #2</u><br />
+Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but automate Dockerfile generation:
+  
+<table border="1" width="99%">
 <tr>
-<td width="50%">&nbsp;<b>app.py</b></td>
-<td width="50%">&nbsp;<b>Dockerfile</b></td>
+<td>&nbsp;<b><a href="https://github.com/qorbani/docker-golang-hello-world/blob/master/app.go">app.go</a></b></td>
 </tr>
 <tr>
-<td width="50%">
-<pre class="csharp" name="code">
-&nbsp;from flask import Flask
-&nbsp;
-&nbsp;app = Flask(__name__)
-&nbsp;@app.route("/")
-&nbsp;
-&nbsp;def hello():
-&nbsp;    return "Hello World!"
-&nbsp;
-&nbsp;if __name__ == "__main__":
-&nbsp;    app.run(debug=True, host="0.0.0.0")
-&nbsp;
-&nbsp;
-</pre>
-</td>
 <td>
 <pre class="csharp" name="code">
-&nbsp;# Inherit from the Python Docker image
-&nbsp;FROM python:3.7-slim
-&nbsp;# Install the Flask package via pip
-&nbsp;RUN pip install flask==1.0.2
-&nbsp;# Copy the source code to app folder
-&nbsp;COPY ./app.py /app/
-&nbsp;# Change the working directory
-&nbsp;WORKDIR /app/
-&nbsp;# Set "python" as the entry point
-&nbsp;ENTRYPOINT ["python"]
-&nbsp;# Set the command as the script name
-&nbsp;CMD ["app.py"]
+&nbsp;package main
+&nbsp;import (
+&nbsp;	"fmt"
+&nbsp;	"log"
+&nbsp;	"os"
+&nbsp;	"net/http"
+&nbsp;	"github.com/gorilla/mux"
+&nbsp;)
+&nbsp;func main() {
+&nbsp;	port := "5000"
+&nbsp;	r := mux.NewRouter()
+&nbsp;	r.HandleFunc("/", hello)
+&nbsp;	http.Handle("/", r)
+&nbsp;	fmt.Println("Starting up on " + port)
+&nbsp;	log.Fatal(http.ListenAndServe(":" + port, nil))
+&nbsp;}
+&nbsp;func hello(w http.ResponseWriter, req *http.Request) {
+&nbsp;	fmt.Fprintln(w, "Hello world!")
+&nbsp;}
 </pre>
 </td>
 </tr>
 </table>
-<br />
-Enter the following commands to build and run image as a container.  Navigate browser to localhost:5000.
-<pre class="csharp" name="code">
-docker build -t flask_app:0.1 .
-docker images
-docker run -d -p 5000:5000 flask_app:0.1
-docker ps
-</pre>
-  
- 
   <br /><br />
   
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
@@ -139,4 +120,57 @@ docker rmi $(docker images -qa) --force
 docker system prune -a
 </pre>
 <br />
+  
+<u>Example #2</u><br />
+Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">example</a> from scratch: build simple Hello application in Python and run on localhost in a container:
+<table border="1" width="98%">
+<tr>
+<td width="50%">&nbsp;<b>app.py</b></td>
+<td width="50%">&nbsp;<b>Dockerfile</b></td>
+</tr>
+<tr>
+<td width="50%">
+<pre class="csharp" name="code">
+&nbsp;from flask import Flask
+&nbsp;
+&nbsp;app = Flask(__name__)
+&nbsp;@app.route("/")
+&nbsp;
+&nbsp;def hello():
+&nbsp;    return "Hello World!"
+&nbsp;
+&nbsp;if __name__ == "__main__":
+&nbsp;    app.run(debug=True, host="0.0.0.0")
+&nbsp;
+&nbsp;
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;# Inherit from the Python Docker image
+&nbsp;FROM python:3.7-slim
+&nbsp;# Install the Flask package via pip
+&nbsp;RUN pip install flask==1.0.2
+&nbsp;# Copy the source code to app folder
+&nbsp;COPY ./app.py /app/
+&nbsp;# Change the working directory
+&nbsp;WORKDIR /app/
+&nbsp;# Set "python" as the entry point
+&nbsp;ENTRYPOINT ["python"]
+&nbsp;# Set the command as the script name
+&nbsp;CMD ["app.py"]
+</pre>
+</td>
+</tr>
+</table>
+<br />
+Enter the following commands to build and run image as a container.  Navigate browser to localhost:5000.
+<pre class="csharp" name="code">
+docker build -t flask_app:0.1 .
+docker images
+docker run -d -p 5000:5000 flask_app:0.1
+docker ps
+</pre>
+<br />
+ 
 </span>
