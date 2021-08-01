@@ -1,79 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Example #2</u><br />
-Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
-<br />
-<!--
-<table border="1" width="99%">
-<tr>
-<td>&nbsp;<b><a href="https://github.com/qorbani/docker-golang-hello-world/blob/master/app.go">app.go</a></b></td>
-</tr>
-<tr>
-<td>
-<pre class="csharp" name="code">
-&nbsp;package main
-&nbsp;import (
-&nbsp;	"fmt"
-&nbsp;	"log"
-&nbsp;	"os"
-&nbsp;	"net/http"
-&nbsp;	"github.com/gorilla/mux"
-&nbsp;)
-&nbsp;func main() {
-&nbsp;	port := "5000"
-&nbsp;	r := mux.NewRouter()
-&nbsp;	r.HandleFunc("/", hello)
-&nbsp;	http.Handle("/", r)
-&nbsp;	fmt.Println("Starting up on " + port)
-&nbsp;	log.Fatal(http.ListenAndServe(":" + port, nil))
-&nbsp;}
-&nbsp;func hello(w http.ResponseWriter, req *http.Request) {
-&nbsp;	fmt.Fprintln(w, "Hello world!")
-&nbsp;}
-</pre>
-</td>
-</tr>
-</table>
--->
-<br />
-Launch VS Code.  Open folder hosting app.go.  Install Docker extension.  Generate Dockerfile with the actions:
-<br />
-<ol>
-<li>Ctrl+Shift+P.  Choose Docker: Add Docker Files to Workspace...</li>
-<li>Select Application Platform.  Choose GoLang</li>
-<li>What port does app listen on?  Choose 5000</li>
-<li>Include optional Docker Compose files?  Select	No</li>
-</ol>
-<!--
-<table border="1" width="99%">
-<tr>
-<td>&nbsp;<b>Dockerfile</b></td>
-</tr>
-<tr>
-<td>
-<pre class="csharp" name="code">
-&nbsp;#build stage
-&nbsp;FROM golang:alpine AS builder
-&nbsp;RUN apk add --no-cache git
-&nbsp;WORKDIR /go/src/app
-&nbsp;COPY . .
-&nbsp;RUN go get -d -v ./...
-&nbsp;RUN go build -o /go/bin/app -v ./...
-&nbsp;
-&nbsp;#final stage
-&nbsp;FROM alpine:latest
-&nbsp;RUN apk --no-cache add ca-certificates
-&nbsp;COPY --from=builder /go/bin/app /app
-&nbsp;ENTRYPOINT /app
-&nbsp;LABEL Name=golang20 Version=0.0.1
-&nbsp;EXPOSE 5000
-</pre>
-</td>
-</tr>
-</table>
-<br />
--->
-In VS Code | Right click Dockerfile | Build Image
+In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.  Navigate browser to localhost:5000.  Notice in 
 <br /><br />
   
 IMPORTANT<br />
@@ -85,6 +13,7 @@ sudo fuser -k 5000/tcp
 netstat -tulnap | grep 5000
 </pre>
   <br /><br />
+  
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
 <!--
