@@ -1,11 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Hello World</u><br />
-The simplest way to pull down Docker image from the Docker Hub is to execute <b>docker run hello-world</b>.  
-<br />
-<a href="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s770/HelloWorld.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s600/HelloWorld.png"/></a>
-<br />
-  
+<u>Example #1</u><br />
+Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">example</a> from scratch: build simple Flask application in Python and run on localhost in container:
 <br /><br />
   
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
@@ -67,5 +63,30 @@ On brand new install on Docker there will be no Docker Images built or Docker Co
 <!--
 <a href="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s690/DockerEmpty.png"><img alt="" border="0" width="98%"src="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s600/DockerEmpty.png"/></a>
 -->
+<br />
+  
+<u>Hello World</u><br />
+The simplest way to pull down Docker image from the Docker Hub is to execute <b>docker run hello-world</b>.  
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s770/HelloWorld.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s600/HelloWorld.png"/></a>
+-->
+<br />
+  
+<u>Getting Started</u><br />
+Here is more information on Docker Orientation and <a href="https://docs.docker.com/get-started">setup</a> tutorial to build and run an image as a container:
+<br />
+<pre class="csharp" name="code">
+docker run -d -p 80:80 docker/getting-started
+docker images
+docker ps
+</pre>
+<br />
+Launch browser.  Enter http://localhost.  You'll now see the same content locally as the Getting Started page!  Afterwards cleanup.  Enter the following commands from the Terminal to stop container and remove image:
+<pre class="csharp" name="code">
+docker stop $(docker ps -q)
+docker rmi $(docker images -qa) --force
+docker system prune -a
+</pre>
 <br />
 </span>
