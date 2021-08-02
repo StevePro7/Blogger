@@ -1,0 +1,50 @@
+<u>ROM Hacking</u>
+<br />
+You can hack this ROM!  Download + dump <a href="https://github.com/SteveProXNA/VintageVanHalenMD/blob/main/VintageVanHalen-1.0.bin">VintageVanHalen</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<table width="96%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F</b></td>
+<td valign="top" width="20%">&nbsp;DelaySpeed</td>
+<td valign="top" width="40%">&nbsp;Used to speed through any game delay.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value always enables cheating.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;RiffSelect</td>
+<td valign="top" width="40%">&nbsp;Set the value to 2,3,4 index otherwise 1.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;DiffSelect</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Easy otherwise 2=Hard.</td>
+</tr>
+</table>
+<br />
+<a href="https://github.com/SteveProXNA/VintageVanHalenMD/blob/main/dev/src/engine/hack_manager.c">hack_manager.c</a>
+<pre class="csharp" name="code">
+#ifndef __HACK_MANAGER_H__
+#define __HACK_MANAGER_H__
+
+#define PEEK(addr)       (*(unsigned char *)(addr))
+#define POKE(addr, data) (*(unsigned char *)(addr) = (data))
+
+#define HACKER_START  0x004F
+void engine_hack_manager_load()
+{
+  struct_hack_object *ho = &global_hack_object;
+  ho->hack_delayspeed = PEEK( HACKER_START - 2 );        // 0x01DE Used to speed through any game delay.
+  ho->hack_invincible = PEEK( HACKER_START - 1 );        // 0x01DF Non-zero value enables always cheats.
+  ho->hack_riffselect = PEEK( HACKER_START + 1 );        // 0x01E0 Set value to 2,3,4 index otherwise 1.
+  ho->hack_diffselect = PEEK( HACKER_START + 2 );        // 0x01E1 Set value to 1=Easy otherwise 2=Hard.
+}
+#endif//__HACK_MANAGER_H__
+</pre>
