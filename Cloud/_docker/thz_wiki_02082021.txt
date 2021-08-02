@@ -1,7 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
-  
 <u>Registration</u><br />TODO in VS Code connect to Docker Hub account right click to Push | Pull image to registry + Inspect
 <br /><br />  
 <u>Debugging</u><br />
@@ -236,56 +234,4 @@ docker exec -it $(docker ps -q) /bin/sh
 </pre>
 <br />
 
-<u>Commands</u><br />
-Here is list of useful coomands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
-<br />
-<!--
-<table width="99%" border="1">
-<tr>
-<td valign="top">&nbsp;<b>Command</b></td>
-<td valign="top">&nbsp;<b>Description</b></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker build -t [image_name]:[tag] .</td>
-<td valign="top">&nbsp;Build a Docker image</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker run --name [container_name] [image_name]:[tag]</td>
-<td valign="top">&nbsp;Run a Docker container specifying a name</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker logs -f [container_id_or_name]</td>
-<td valign="top">&nbsp;Fetch the logs of a container</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker exec -it	[container_id_or_name] bash</td>
-<td valign="top">&nbsp;Run a command in a running container</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker images</td>
-<td valign="top">&nbsp;Show Docker images</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker ps</td>
-<td valign="top">&nbsp;Show running containers</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker ps -a</td>
-<td valign="top">&nbsp;Show all containers</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker stop $(docker ps -q)</td>
-<td valign="top">&nbsp;Stop all running containers</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker rm $(docker ps -aq)</td>
-<td valign="top">&nbsp;Remove all containers</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker rmi $(docker images -aq)</td>
-<td valign="top">&nbsp;Remove all images</td>
-</tr>
-</table>
--->
-<br />
 </span>

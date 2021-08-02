@@ -1,25 +1,46 @@
-<table width="98%" border="1">
+<table width="99%" border="1">
 <tr>
-<td valign="top">&nbsp;git branch</td>
-<td valign="top">&nbsp;Lets you create, list, rename, and delete branches.</td>
+<td valign="top">&nbsp;<b>Command</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
 </tr>
 <tr>
-<td valign="top">&nbsp;git checkout</td>
-<td valign="top">&nbsp;Lets you navigate between branches created by git branch.</td>
-</tr>
-<td valign="top">&nbsp;git merge</td>
-<td valign="top">&nbsp;Lets you integrate independent lines of development into a single branch.</td>
+<td valign="top">&nbsp;docker build -t [image_name]:[tag] .</td>
+<td valign="top">&nbsp;Build a Docker image</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;git rebase</td>
-<td valign="top">&nbsp;Process of moving branch to new base commit to maintain linear history.</td>
+<td valign="top">&nbsp;docker run --name [container_name] [image_name]:[tag]</td>
+<td valign="top">&nbsp;Run a Docker container specifying a name</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;git fetch</td>
-<td valign="top">&nbsp;Imports remote changes but does not integrate changes into local repo.</td>
+<td valign="top">&nbsp;docker logs -f [container_id_or_name]</td>
+<td valign="top">&nbsp;Fetch the logs of a container</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;git pull</td>
-<td valign="top">&nbsp;Equivalent to a git fetch followed by a git merge.  [<b>SVN Update</b>]</td>
+<td valign="top">&nbsp;docker exec -it	[container_id_or_name] bash</td>
+<td valign="top">&nbsp;Run a command in a running container</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker images</td>
+<td valign="top">&nbsp;Show Docker images</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker ps</td>
+<td valign="top">&nbsp;Show running containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker ps -a</td>
+<td valign="top">&nbsp;Show all containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker stop $(docker ps -q)</td>
+<td valign="top">&nbsp;Stop all running containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker rm $(docker ps -aq)</td>
+<td valign="top">&nbsp;Remove all containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker rmi $(docker images -aq)</td>
+<td valign="top">&nbsp;Remove all images</td>
 </tr>
 </table>
