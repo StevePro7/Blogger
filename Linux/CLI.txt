@@ -1,0 +1,75 @@
+Linux CLI tools
+03/08/2021
+
+
+00.
+Blogger
+Install golang
+
+01.
+Install kubectl, google-sdk, terraform, git, docker, aws-cli
+
+Pre-install
+- git
+- make
+
+Blogger`
+- docker
+- kubectl
+
+
+aws-cli
+sudo apt-get install awscli
+
+azure
+sudo apt install azure-cli
+
+
+google-sdk
+https://linuxhint.com/install-google-cloud-sdk-ubuntu
+https://cloud.google.com/sdk/docs/install#linux
+
+google-cloud-sdk-350.0.0-linux-x86_64.tar.gz
+cd ~/Downloads
+tar –xvzf google-cloud-sdk-350.0.0-linux-x86_64.tar.gz
+cd google-cloud-sdk
+./install.sh
+
+
+gcloud
+https://geekflare.com/gcloud-installation-guide
+
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+sudo apt-get install apt-transport-https ca-certificates gnupg
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+sudo apt-get update
+sudo apt-get install google-cloud-sdk
+
+gcloud -v
+
+
+terraform
+https://learn.hashicorp.com/tutorials/terraform/install-cli
+
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+sudo apt-get update 
+sudo apt-get install terraform
+
+
+
+helm
+https://helm.sh/docs/intro/install
+
+curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+sudo apt-get install apt-transport-https --yes
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
