@@ -24,6 +24,23 @@ sudo apt-get install awscli
 azure
 sudo apt install azure-cli
 
+UPDATE
+may not install the most up-to-date version of the azure-cli
+and may give an error
+ERROR
+azure complaining about az deployment
+Error az deployment: 'group' is not in the 'az deployment' command group.
+https://github.com/Azure/azure-cli/issues/13346
+
+Solution
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
+
+2.0
+
+Upgrade AZ-CLI
+2.27.0
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
 
 google-sdk
 https://linuxhint.com/install-google-cloud-sdk-ubuntu
