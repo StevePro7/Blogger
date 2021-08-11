@@ -1,0 +1,30 @@
+YouTube
+10/08/2021
+
+Eli the Computer Guys
+
+01.
+Linux Network Configuration
+https://www.youtube.com/watch?v=PEa1xopeufQ
+
+ifconfig
+dhclient
+sudo /etc/init.d/networking restart
+
+sudo /etc/networ/interfaces
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+
+DNS
+sudo /etc/resolv.conf
+nameserver 127.0.0.53
+options edns0 trust-ad
+search home
+
+hostname
+ping
+
+ufw
+ufw status
+ufw allow | deny
