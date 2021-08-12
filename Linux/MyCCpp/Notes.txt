@@ -1,0 +1,62 @@
+VS Code and C/C++
+12/08/2021
+
+01.	C
+Create folder		Test03
+Launch VS Code
+Open folder		Test03
+Terminal touch main.c	Write code
+
+Ctrl + Shift + B
+C/C++: gcc build active file
+compiler /usr/bin/gcc
+
+F5
+C++ (GBD/LLDB)
+Creates launch.json file	.vscode
+
+weird
+in the end I just copied what I had previously in Test01
+
+
+02.	C++
+Create folder		Test04
+Launch VS Code
+Open folder		Test04
+Terminal touch main.cc	Write code
+
+Ctrl + Shift + B
+C/C++: g++ build active file
+compiler /usr/bin/g++
+
+
+
+
+cc -c main.c
+cc main.o -o main
+main
+
+
+g++ -c main.c
+g++ main.o -o main
+main
+
+
+SUMMARY
+Ctrl + Shift + B	
+executes whatever is in tasks.json
+
+F5 / Ctrl+F5
+executes whatever is in launch.json
+
+
+We prefer
+
+launch.json
+"miDebuggerPath": "/usr/bin/gdb"
+
+
+tasks.json
+"command": "/usr/bin/gcc",
+"command": "/usr/bin/g++",
+
