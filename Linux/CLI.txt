@@ -21,6 +21,23 @@ Blogger`
 aws-cli
 sudo apt-get install awscli
 
+UPDATE
+may not install the most up-to-date version of the awscli
+instructions to install / update AWS CLI v2
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+
+sudo apt remove awscli
+Log out / log in
+
+# Install fresh v2.0
+cd ~/Downloads
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+aws-cli/2.2.28 Python/3.8.8 Linux/5.4.0-80-generic exe/x86_64.ubuntu.20 prompt/off
+
+
 azure
 sudo apt install azure-cli
 
