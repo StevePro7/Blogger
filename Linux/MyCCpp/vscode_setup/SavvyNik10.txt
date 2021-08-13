@@ -3,3 +3,62 @@ SavvyNik
 
 C++ Tutorial for Beginners #10: Debugging Makefile Project with Visual Studio Code IDE | (Linux GDB)
 https://www.youtube.com/watch?v=9VpiGwp8Vos
+
+
+Create new folder with just 2x files
+main.cpp
+Makefile
+
+Run and Debug
+create a launch json file
+C++ (GDB/LLDB)
+
+
+launch.json
+before
+"program": "enter program name, for example ${workspaceFolder}/a.out",
+after
+"program": "${workspaceFolder}/SimpleList",
+
+
+NB:
+I had this but he had that
+"cwd": "${fileDirname}",
+"cwd": "${workspaceFolder}",
+
+
+Ctrl + Shift + P
+Makefile
+C/C++ Make INIT Project
+Only C++ Project
+
+
+BEFORE
+CXXFLAGS = -std=c++11 -Wall
+
+AFTER
+CXXFLAGS = -std=c++11 -Wall -g
+
+
+-g
+compile with the debug symbols
+
+
+Test07
+Work flow
+Ctrl + Shift + B
+build via tasks.json
+which invokes make
+
+F5
+debug step thru the source code
+
+IMPORTANT
+you must build everytime after code changes before F5 debug
+to step thru the program
+
+otherwise build + run the program w/ any + all code changes
+F6
+
+F6
+C/C++ Compile Run
