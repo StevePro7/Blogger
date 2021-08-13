@@ -1,0 +1,52 @@
+SavvyNik
+13/08/2021
+
+02.
+C++ Tutorial for Beginners #2: Visual Studio Code - Makefile & Multi File Extension | 2021 | (Linux)
+https://www.youtube.com/watch?v=whQQF4kVjPY&list=RDCMUC3yaWWA9FF9OBog5U9ml68A&index=3
+
+
+Previous video installedd extensions
+C/C++
+Code Runner
+
+
+Now install
+C/C++ Makefile Project
+Adriano Markovic
+
+
+Command Palette
+Ctrl + Shift + P
+>make
+C/C++ Make INIT Project
+
+Only C Makefile
+Only C++ Makefile
+
+MODIFY
+APPNAME		SimpleList
+EXT		.cpp
+
+
+
+Makefile for 2x almost identical
+C Project
+Only C Makefile
+
+except diff
+SRCDIR = src
+OBJDIR = obj
+SRCDIR = .
+OBJDIR = .
+
+
+Difference btwn C and C++
+CC = gcc
+CXXFLAGS = -std=c11 -Wall
+EXT = .c	
+
+
+CC = g++
+CXXFLAGS = -std=c++11 -Wall
+EXT = .cpp
