@@ -9,7 +9,40 @@ Hussein Nasser
 Envoy config
 https://github.com/hnasr/javascript_playground/tree/master/envoy
 
+envoy --config-path tls2.yaml
 envoy --config-path tls2.yaml --concurrency 1
 
 source code
 D:\Github\hnasr\javascript_playground\envoy
+
+Linux
+cd ~/GitHubX/hnasr/javascript_playground/envoy
+
+
+
+envoy --config-path allbackend.yaml
+envoy --config-path app1app2split.yaml
+envoy --config-path blockadmin.yaml
+envoy --config-path http.yaml
+envoy --config-path tcp.yaml
+envoy --config-path tls.yaml
+
+
+ORG envoy source code
+https://github.com/envoyproxy/envoy
+
+
+When running locally on home laptop I got error
+complaining that the following runtime was not set
+overload.global_downstream_max_connections 
+
+just a warning but seemed to cause envoy to "die"
+had to logout and login again
+
+https://docs.openshift.com/container-platform/4.5/service_mesh/v1x/servicemesh-release-notes.html
+https://stackoverflow.com/questions/62905705/simple-grpc-envoy-configuration
+https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager
+https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/lds#configuration
+https://www.envoyproxy.io/docs/envoy/latest/configuration/best_practices/edge
+
+https://www.openpolicyagent.org/docs/latest/envoy-tutorial-standalone-envoy

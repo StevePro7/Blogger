@@ -21,3 +21,12 @@ find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
 Powershell
 cd D:\Github\tigera\operator
 dir -recurse | select-object extension -unique
+
+
+
+03.
+How to list all the files of file extension from a top-level directory recursively?
+find $PWD -type f -name "*.py"
+
+Reference:
+https://stackoverflow.com/questions/246215/how-can-i-generate-a-list-of-files-with-their-absolute-path-in-linux 
