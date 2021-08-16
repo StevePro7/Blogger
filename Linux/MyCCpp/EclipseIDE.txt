@@ -1,0 +1,36 @@
+Eclipse C/C++ IDE
+15/08/2021
+
+https://linuxconfig.org/eclipse-ide-for-c-c-developers-installation-on-ubuntu-20-04
+
+sudo apt install default-jre
+
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz
+
+eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz
+
+cd ~/Downloads
+//sudo tar xf eclipse-cpp-2019-12-R-linux-gtk-x86_64.tar.gz -C /opt
+sudo tar xf eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz -C /opt
+
+sudo ln -s /opt/eclipse/eclipse /usr/local/bin/
+
+eclipse
+
+OR
+
+sudo gedit /usr/share/applications/eclipse.desktop
+
+[Desktop Entry]
+Version = 2019‑12
+Type = Application
+Terminal = false
+Name = Eclipse C/C++
+Exec = /usr/local/bin/eclipse
+Icon = /opt/eclipse/icon.xpm
+Categories = Application;
+
+
+File  | Import | C/C++ | Existing Code as Makefile Project
+/home/stevepro/GitHubX/envoyproxy/envoy
+

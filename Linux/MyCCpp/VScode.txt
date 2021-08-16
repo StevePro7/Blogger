@@ -1,4 +1,21 @@
 VS Code extensions
+16/08/2021
+
+c_cpp_properties.json
+https://code.visualstudio.com/docs/cpp/c-cpp-properties-schema-reference
+
+e.g.
+Ctrl + Shift + P
+C/C++ Edit Configurations (JSON)
+
+ERROR
+vs code command disabled because C_Cpp_Intellisense disabled
+
+File | Preferences | Settings | C_Cpp: Intelli Sense Engine | Default
+IMPORTANT
+User | Extensions | C/C++ (11)	can be changed
+
+
 12/08/2021
 
 Launch VS Code
@@ -8,6 +25,17 @@ C/C++
 C++ Intellisense
 C/C++ Compile Run
 
+
+IMPORTANT
+https://stackoverflow.com/questions/53973777/vscode-no-such-file-or-directory-when-running-c-code
+
+c_cpp_properties.json 	used for intellisense
+tasks.json		used for compilation
+
+
+Setup article
+https://code.visualstudio.com/docs/cpp/config-msvc
+https://code.visualstudio.com/docs/cpp/cmake-linux
 
 
 

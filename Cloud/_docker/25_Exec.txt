@@ -1,0 +1,21 @@
+docker exec
+16/08/2021
+
+Docker Exec - How to Run a Command Inside a Docker Image or Container
+https://www.freecodecamp.org/news/docker-exec-how-to-run-a-command-inside-a-docker-image-or-container
+
+01. Image
+e.g.
+build Docker C++ Hello World image
+but run Docker image doesn't "hold" a container
+
+However, can run exec into the image and navigate
+e.g.
+docker run -it cpp_test:1.0 bash
+root@fca72cea7e50:/usr/src/cpp_test# ls -l
+
+./Test
+cat main.cpp
+
+
+This could be useful in Debugging
