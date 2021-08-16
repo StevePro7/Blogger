@@ -98,3 +98,106 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html
 
 A security group actus as a virtual firewall for your EC2 instances
 to control incoming and outgoing traffic
+
+When you launch an instance in a VPC you must specify a security group
+that's created for that VPC
+
+
+Elastic IP addresses
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+
+an elastic IP address is a static IPv4 address designed for dynamic cloud computing
+
+
+Virtual private clouds
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html
+
+VPC enables you to define a virtual network in your own logically isolated area with the AWS cloud
+known as a virtual private cloud.  You launch instances into your default VPC
+
+
+Amazon Elastic Block Store (Amazon EBS)
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html
+
+EBS provides block level storage volumes for use with EC2 instances
+EBS volumes behave like raw unformatted block devices
+mount these volumes as devices on your instances
+
+EBS volumes are attached to an instance and exposed as storage volumes that persist
+independently from the life of the instance
+
+Create a file system on top of these volumes or use them in any way you would use
+a block device e.g. hard disk drive
+
+EBS volumes are well suited for primary storage for file systems, databases or any
+applications that require fine granular updates and access to raw unformatted block level storage
+
+
+Amazon EC2 instance store
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html
+
+instance store is ideal for temporary storage of info that changes frequently
+
+
+
+Tutorial: Install a LAMP web server on Amazon Linux 2
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html
+
+we connect to the instance created above via ssh
+ssh -i /path/my-key-pair.pem my-instance-user-name@my-instance-public-dns-name
+
+sudo yum update -y
+sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+
+
+sudo apt-get update -y
+sudo apt install php
+
+cat /etc/system-release
+
+LAMP tutorial setup for Fedora so I did this one instead for Apache on Ubuntu
+https://phoenixnap.com/kb/how-to-install-apache-web-server-on-ubuntu-18-04
+
+
+Same for this one
+Tutorial: Configure SSL/TLS on Amazon Linux 2
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/SSL-on-amazon-linux-2.html
+
+
+What is Amazon VPC?
+https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html
+
+VPC is the networking layer for EC2
+
+VPC
+virtual network
+
+Subnet
+range of IP addresses for VPC
+
+Route table
+set of rules [routes] used to determine where network traffic is directed
+
+Internet gateway
+gateway you attach to VPC to enable communication btwn resources in VPC and the internet
+
+VPC endpoint
+enable private connect VPC to AWS services w/o requiring internet gateway,
+NAT device, VPN connection or AWS direct connect
+NB:
+instances in VPC do not require public IP addresses to communicate w/ resources in the service
+traffic btwn VPC and other service does not leave the Amazon network
+
+CIDR block
+Classless InterDomain Routing
+an internet protocol address allocation and route aggregation methodology
+
+
+Amazon CLI examples
+https://aws.amazon.com/cli
+
+aws ec2
+aws sns
+aws sqs
+aws autoscaling help
+aws s3 ls
