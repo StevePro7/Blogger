@@ -1,0 +1,100 @@
+AWS Study
+16/08/2021
+
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html
+
+
+Instances
+virutal computing environments
+
+AMI
+Amazon Machine Images
+bits for server incl. OS
+
+Instance Types
+CPU, memory, storage + networking capacity
+e.g.
+t2.micro
+
+Key Pairs
+instances login info
+
+Instance store volumes
+storage for temp data
+
+EBS
+Elastic Block Store	volumes
+
+Firewall
+protocols, ports, source IP addr for security groups
+
+Elastic IP address 
+
+VPC
+Virtual Private Cloud
+virtual networks logically isolated from rest of AWS clouse
+
+
+
+01.
+Set up to use Amazon EC2
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html
+
+Create key pair
+https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#CreateKeyPair:
+
+sp
+chmod 400 my-key-pair.pem
+
+
+sp
+stevepro-new-sg-oregon
+
+
+
+02.
+Tutorial: Get started with Amazon EC2 Linux instances
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html
+
+Status checks
+initializing
+
+Connect to your Linux instance using SSH
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
+
+ssh -i /path/my-key-pair.pem my-instance-user-name@my-instance-public-dns-name
+e.g.
+cd ~/Downloads
+
+Dashboard
+EC2 | Instances | Instance
+Connect
+SSH client
+command listed there to copy + paste into Terminal
+
+cd to where *.pem public / private key pair live
+cd ~/Downloads
+
+
+03.
+Instances and AMIs
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
+
+
+Instance Types
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
+
+Tags
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html
+
+
+Retrieve the public key from the private key
+ssh-keygen -y -f my-public-private-key.pem
+
+
+Amazon EC2 security groups for Linux instances
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html
+
+A security group actus as a virtual firewall for your EC2 instances
+to control incoming and outgoing traffic
