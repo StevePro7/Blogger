@@ -27,6 +27,8 @@ envoy --config-path http.yaml
 envoy --config-path tcp.yaml
 envoy --config-path tls.yaml
 
+envoy --config-path tcp.yaml --concurrency 1
+
 
 ORG envoy source code
 https://github.com/envoyproxy/envoy
