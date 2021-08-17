@@ -46,7 +46,9 @@ https://docs.bazel.build/versions/main/guide.html#--config
 Terminal
 cd ~/GitHubX/envoyproxy/envoy
 
+
 bazel test //test/...
+bazel test //test/common/....
 
 bazel build //source/exe:envoy-static
 bazel build //source/exe:envoy-static -c opt 
@@ -92,3 +94,13 @@ ERROR: /home/stevepro/.cache/bazel/_bazel_stevepro/05dd422585406544e30764ceb151d
 bazel build --config=remote-clang-libc++  //source/exe:envoy-static
 
 --config=remote-clang-libc++ or --config=docker-clang-libc++
+
+
+UPDATE
+search for error message:
+https://github.com/envoyproxy/envoy/issues/7082
+
+
+SUGGEST
+prefer gcc over clang
+bazel clean --expunge
