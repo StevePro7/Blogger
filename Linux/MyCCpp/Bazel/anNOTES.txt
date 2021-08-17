@@ -1,0 +1,155 @@
+anNOTES
+17/08/2021
+
+
+Driver
+trying to build envoy from source
+E:\GitHub\StevePro7\Blogger\Cloud\Envoy
+
+
+Tutorial
+https://docs.bazel.build/versions/main/tutorial/cpp.html
+
+
+GitHub example
+git clone https://github.com/bazelbuild/examples
+
+
+Common C++ Build Use Cases
+https://docs.bazel.build/versions/main/cpp-use-cases.html
+
+
+
+WORKSPACE
+Workspace directory
+holds project's source files and Bazel's build outputs
+
+BUILD
+tells Bazel how to build different parts of the project
+
+
+Package
+directory w/in workspace tha tcontains a BUILD file
+
+
+directory = Bazel workspace
+create empty WORKSPACE file
+
+
+Understand the BUILD file
+build rule
+tells Bazel how to build the desired outputs
+e.g.
+exe
+lib
+
+
+Target
+each instance of a build rule in the BUILD file
+
+
+
+EXAMPLE
+
+Stage1
+cd /home/stevepro/GitHubX/bazelbuild/examples/cpp-tutorial/stage1
+bazel build //main:hello-world
+
+
+target label
+//main:
+i.e.
+location of BUILD file relative to WORKSPACE
+
+hello-world
+target name in BUILD file
+
+
+bazel build //main:hello-world
+
+OUTPUT
+/home/stevepro/GitHubX/bazelbuild/examples/cpp-tutorial/stage1/bazel-bin
+
+
+Test binary
+bazel-bin/main/hello-world
+
+
+Review the dependency graph
+bazel query --notool_deps --noimplicit_deps "deps(//main:hello-world)" --output graph
+
+
+Browser
+http://www.webgraphviz.com
+
+digraph G {
+  "Welcome" -> "To"
+  "To" -> "Web"
+  "To" -> "GraphViz!"
+}
+
+
+
+PAUSE
+.vscode
+tasks.json
+
+{
+    "tasks": [
+        {
+            "label": "StevePro Building",
+            "type": "shell",
+            "command": "bazel build //main:hello-world",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        }
+    ],
+    "version": "2.0.0"
+}
+
+
+Ctrl + Shift + B
+bazel build //main:hello-world
+
+
+VS Code Bazel BUILD plugin
+https://marketplace.visualstudio.com/items?itemName=BazelBuild.vscode-bazel
+
+
+Installed extensions
+Bazel
+Bazel	marketplace.visualstudio.com/bazel-code
+bazel-stack-vscode
+
+vscode-starlark
+was prompted to install when tried to debug
+
+
+IMPORTANT
+https://github.com/bazelbuild/bazel/issues/2337
+
+if get this error then kill the process
+e.g.
+stevepro@Alienware:~/GitHubX/bazelbuild/examples/cpp-tutorial/stage1$ bazel versionBazelisk version: v1.10.1
+Another command (pid=70502) is running. Waiting for it to complete on the server (server_pid=45485)...
+kill -9 45485
+
+
+bazel build //main:hello-world -c dbg 
+
+
+Debugging Bazel
+https://bazel.build/basics/getting_started.html
+
+
+Debugging C++ in Visual Studio Code using gcc/gdb and Bazel
+https://www.youtube.com/watch?v=-TUogVOs1Qg
+
+source code
+https://github.com/ourarash/cpp-template
+
+
+could look at this?
+https://www.youtube.com/watch?v=JfOzsBi_irY
