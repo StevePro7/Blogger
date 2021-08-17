@@ -18,3 +18,77 @@ ERROR
 Ctrl + Shift + B
 fetching a bunch of stuff...
 
+
+
+
+Reference?
+not sure if this is what I am trying to do...?
+https://gitmemory.com/issue/envoyproxy/envoy/8394/536085779
+
+
+
+IMPORTANT
+https://github.com/envoyproxy/envoy/blob/main/bazel/README.md#linking-against-libc-on-linux
+
+Linux laptop
+Follow ordered points
+1.
+2.
+3.
+4.
+5.
+
+
+User Guid to Bazel
+https://docs.bazel.build/versions/main/guide.html#--config
+
+
+Terminal
+cd ~/GitHubX/envoyproxy/envoy
+
+bazel test //test/...
+
+bazel build //source/exe:envoy-static
+bazel build //source/exe:envoy-static -c opt 
+bazel build //source/exe:envoy-static -c dbg 
+
+
+
+
+ERRORS
+
+bazel build -c opt //source/exe:envoy-static
+
+
+go get -u github.com/bazelbuild/buildtools/buildifier
+
+BUILDIFIER_BIN
+
+
+go get -u github.com/bazelbuild/buildtools/buildozer
+
+
+bazel build //source/exe:envoy-static
+
+bazel build //source/exe:envoy-static --sandbox_debug
+
+
+-c opt for an optimized release build or -c dbg 
+
+
+bazel test //test/...
+
+ERROR: /home/stevepro/GitHubX/envoyproxy/envoy/test/mocks/server/BUILD:178:14: Compiling test/mocks/server/instance.cc failed: (Exit 1): gcc failed: error executing command /usr/bin/gcc -U_FORTIFY_SOURCE -fstack-protector -Wall -Wunused-but-set-parameter -Wno-free-nonheap-object -fno-omit-frame-pointer '-std=c++0x' -MD -MF ... (remaining 212 argument(s) skipped)
+
+
+
+bazel build --config=libc++ //source/exe:envoy-static
+
+ERROR: /home/stevepro/.cache/bazel/_bazel_stevepro/05dd422585406544e30764ceb151d6a1/external/com_google_cel_cpp/parser/BUILD:9:17: Compiling external/com_google_cel_cpp/parser/cel_grammar.cc/cel_grammar/CelBaseListener.cpp failed: (Exit 1): gcc failed: error executing command /usr/bin/gcc -U_FORTIFY_SOURCE -fstack-protector -Wall -Wunused-but-set-parameter -Wno-free-nonheap-object -fno-omit-frame-pointer '-stdlib=libc++' -MD -MF ... (remaining 30 argument(s) skipped)
+
+
+
+
+bazel build --config=remote-clang-libc++  //source/exe:envoy-static
+
+--config=remote-clang-libc++ or --config=docker-clang-libc++
