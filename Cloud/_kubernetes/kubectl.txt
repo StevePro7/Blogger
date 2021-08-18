@@ -1,0 +1,26 @@
+kubectl
+18/08/2021
+
+
+01.
+SB-KubernetesInformation-120720-1616
+D:\Steven\Personal\JOBS\UL\_Cdrive\Steven\wiki\SB
+
+~/.kube/config
+kubectl config get-contexts
+kubectl config use-context minikube
+
+
+
+02.	do I bother with this?
+MAC
+kubectl config use-context docker-desktop
+kubectl get all
+
+ERROR
+Error from server (InternalError): an error on the server ("") has prevented the request from succeedin
+
+https://wesley.sh/solving-kubectl-error-from-server-internalerror-an-error-on-the-server-has-prevented-the-request-from-succeeding
+
+kubectl config view
+user token was incorrect
