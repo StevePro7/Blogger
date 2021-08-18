@@ -180,7 +180,7 @@ Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</
 </table>
 -->
 <br />
-Launch VS Code.  Open folder hosting app.go.  Install Docker extension.  Generate Dockerfile with the actions:
+Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">extension</a>.  Generate Dockerfile with the actions:
 <br />
 <ol>
 <li>Ctrl+Shift+P.  Choose Docker: Add Docker Files to Workspace...</li>
@@ -231,6 +231,9 @@ docker exec -it $(docker ps -q) /bin/sh
 </pre>
 <br />
 
+<u>TODO Debugging</u><br />
+<br /><br />
+  
 <u>Commands</u><br />
 Here is list of useful coomands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
 <br />
@@ -285,12 +288,7 @@ Here is list of useful coomands.  Foreach command you can add the <b>--help</b> 
 <br />
 
 <u>Registration</u><br />
-Create an account on the Docker hub.  In VS Code | Docker extension | Registries | Connect Registry.  Enter case sensitive Docker credentials.  Right click Image | Push Image to registry | Pull Image from the registry.
-<br /><br />
-Finally, Docker extension can be used to Inspect Images and Containers, View Logs and Remove artefacts.
-<br /><br />
-  
-<u>TODO Debugging</u><br />
+Create an account on the Docker <a href="https://hub.docker.com">hub</a>.  In VS Code | Docker extension | Registries | Connect Registry.  Enter case sensitive Docker credentials.  Right click Image | Push Image to registry | Pull Image from the registry.
 <br /><br />
 
 <u>Summary</u><br />
