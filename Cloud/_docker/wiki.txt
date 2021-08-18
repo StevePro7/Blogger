@@ -92,7 +92,7 @@ docker system prune -a
 <u>Example #1</u><br />
 Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">example</a> from scratch: build simple Hello application in Python and run on localhost in a container:
 <br />
-<!--
+<!-- -->
 <table border="1" width="98%">
 <tr>
 <td width="50%">&nbsp;<b>app.py</b></td>
@@ -133,8 +133,9 @@ Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-y
 </td>
 </tr>
 </table>
--->
-<br />
+<!-- -->
+Follow <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices">best practices</a> for writing DockerFile as each FROM, RUN, COPY, CMD instruction creates one layer.
+<br /><br />
 Enter the following commands to build and run image as a container.  Navigate browser to localhost:5000.
 <pre class="csharp" name="code">
 docker build -t flask_app:0.1 .
@@ -143,7 +144,6 @@ docker run -d -p 5000:5000 flask_app:0.1
 docker ps
 </pre>
 <br />
-
 <u>Example #2</u><br />
 Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
 <br />
