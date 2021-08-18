@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Example",
+        //"type": "cppdbg",
+        "type": "lldb",
+        "MIMode": "gdb",
+        "program": "${workspaceFolder}/bazel-out/k8-dbg/bin/example",
+        "cwd": "${workspaceFolder}/bazel-out/k8-dbg/bin/example.runfiles/__main__/",
+        "request": "launch",
+        "args": [],
+        "stopAtEntry": false,
+        "preLaunchTask": "Build Example (Debug)",
+        "externalConsole": false,
+        "sourceMap": {
+          "/home/stevepro/.cache/bazel/_bazel_stevepro/e0f74370e4434bb6600b5911c20c3675/execroot/__main__": "${workspaceFolder}/"
+        },
+      },
+      {
+        "name": "Example2",
+        //"type": "cppdbg",
+        "type": "lldb",
+        "MIMode": "gdb",
+        "program": "${workspaceFolder}/bazel-out/k8-dbg/bin/example",
+        "cwd": "${workspaceFolder}/bazel-out/k8-dbg/bin/example.runfiles/__main__/",
+        "request": "launch",
+        "args": [],
+        "stopAtEntry": false,
+        "preLaunchTask": "Build Example (Debug)",
+        "externalConsole": false,
+        "sourceMap": {
+          "/home/stevepro/.cache/bazel/_bazel_stevepro/e0f74370e4434bb6600b5911c20c3675/execroot/__main__": "${workspaceFolder}/"
+        },
+      }
+    ]
+  }

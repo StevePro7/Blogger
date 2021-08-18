@@ -1,0 +1,117 @@
+Debugging
+18/08/2021
+
+
+Debugging C++ in Visual Studio Code using gcc/gdb and Bazel
+https://www.youtube.com/watch?v=-TUogVOs1Qg
+
+source code
+https://github.com/ourarash/cpp-template
+https://github.com/ourarash/gcc_debug_template
+
+
+VS Code
+UN Installed extensions
+Bazel
+Bazel	marketplace.visualstudio.com/bazel-code
+bazel-stack-vscode
+vscode-starlark
+
+
+
+https://www.youtube.com/watch?v=-TUogVOs1Qg
+
+Launch VS Code
+Install extension
+CodeLLDB
+
+
+01.
+Single C++ file using g++ and gdb
+https://github.com/ourarash/gcc_debug_template
+
+Debugging tab
+CodeLLDB
+
+
+g++ -g --std=c++11 fib.cpp -o fib
+
+
+tasks.json	Ctrl + Shift + B
+launch.json	F5
+
+
+02.	8:34
+Debugging using Bazel
+/home/stevepro/GitHubX/ourarash/cpp-template
+
+Debugging tab
+CodeLLDB
+
+Terminal
+cd ~/GitHubX/ourarash/cpp-template
+bazel  build --cxxopt='-std=c++11' src/main:main -c dbg
+
+main.cpp
+set breakpoints
+F5
+but does not break
+
+
+
+bazel run src/main:main
+bazel run src/main:main_logger
+bazel run --cxxopt='-std=c++17' -c opt src/benchmark/main_benchmark
+bazel run src/main:main_flags_absl
+
+bazel test tests:tests
+
+
+bazel build src/main:main_logger  -c dbg
+
+
+
+launch.json
+
+
+Terminal
+cd ~/GitHubX/ourarash/cpp-template
+bazel  build --cxxopt='-std=c++17' src/main:main -c dbg
+
+
+readlink -n bazel-cpp-template
+/home/stevepro/.cache/bazel/_bazel_stevepro/58e2bc2fecec3a7adefc173877c857f1/execroot/__main__
+
+WAS
+"/private/var/tmp/_bazel_ari/8b6cf68db0ea2d6ea3f9c3ed5620d651/execroot/__main__": "${workspaceFolder}/"
+NOW
+"/home/stevepro/.cache/bazel/_bazel_stevepro/58e2bc2fecec3a7adefc173877c857f1/execroot/__main__": "${workspaceFolder}/"
+
+
+
+Install lldb
+https://zoomadmin.com/HowToInstall/UbuntuPackage/lldb-3.9
+
+sudo apt-get update
+sudo apt install lldb
+
+
+ISSUE is that the guy in on Mac
+
+
+BLOGs
+https://stackoverflow.com/questions/56734812/debugging-with-bazel-in-visual-studio-code-with-ubuntu
+https://shanee.io/blog/2019/05/28/bazel-with-visual-studio-code/
+
+create
+Test10_BazelDebug
+Unable to open 'main.cpp': Unable to read file '/proc/self/cwd/main.cpp' (Error: Unable to resolve non-existing file '/proc/self/cwd/main.cpp').
+
+
+Tried from this but still not working
+https://stackoverflow.com/questions/60472084/vscode-unable-to-open-file-unable-to-read-file-message-when-clicking-on-an
+
+
+SUMMARY
+type	lldb	no complaints about non-existing file BUT doesn't not debug break
+type	ccpdbg	tries to break but complaints about non-existing 
