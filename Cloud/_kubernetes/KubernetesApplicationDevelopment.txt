@@ -210,6 +210,17 @@ k exec -it pod-with-sidecar -c sidecar-container /bin/sh
 Adapter pattern
 used to standardize and normalize application output or monitoring data for aggregation
 
+k apply -f adapter.yaml
+
+k exec -it pod-with-adapter -c app-container /bin/sh
+k exec -it pod-with-adapter -c adapter-container /bin/sh
+
+
 48
 Ambassador pattern
 useful way to connect containers with the outside world
+
+essentially a proxy that allows other containers to connect to a port on localhost
+while the ambassador container proxies these requests to the external world
+e.g.
+access database
