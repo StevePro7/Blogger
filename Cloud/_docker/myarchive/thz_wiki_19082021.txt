@@ -55,7 +55,7 @@ sudo apt install docker-compose
 <!--<br />-->
 
 <u>Definitions</u><br />
-When you <a href="https://www.youtube.com/watch?v=YFl2mCHdv24">learn</a> Docker, you find that <a href="https://www.codeproject.com/Articles/5298027/A-Brief-Docker-Overview">Docker</a> Images are simply templates used to build Docker Containers.  Docker Containers are small isolated environments which are runnable version of their Images.  Finally, the <a href="https://docs.docker.com/engine/reference/builder">Dockerfile</a> contains all the commands that specify how an Image should be built and Container should run.
+When you <a href="https://www.youtube.com/watch?v=YFl2mCHdv24">learn</a> Docker, you find that <a href="https://www.codeproject.com/Articles/5298027/A-Brief-Docker-Overview">Docker</a> Images are simply templates used to build Docker Containers.  Docker Containers are small isolated environments which are runnable version of their Images.  Finally, the Dockerfile contains all the commands that specify how an Image should be built and Container should run.
 <br /><br />
 On brand new install on Docker there will be no Docker Images built or Docker Containers running.  Verify:
 <br />
@@ -69,7 +69,6 @@ The simplest way to pull down Docker image from the Docker Hub is to execute <b>
 <br />
 <!--
 <a href="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s770/HelloWorld.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s600/HelloWorld.png"/></a>
-<br />
 -->
 <br />
   
@@ -148,7 +147,7 @@ docker ps
 <u>Example #2</u><br />
 Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
 <br />
-<!-- -->
+<!--
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b><a href="https://github.com/qorbani/docker-golang-hello-world/blob/master/app.go">app.go</a></b></td>
@@ -179,7 +178,7 @@ Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</
 </td>
 </tr>
 </table>
-<!-- -->
+-->
 <br />
 Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">extension</a>.  Generate Dockerfile with the actions:
 <br />
@@ -189,7 +188,7 @@ Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://ma
 <li>What port does app listen on?  Choose 5000</li>
 <li>Include optional Docker Compose files?  Select	No</li>
 </ol>
-<!-- -->
+<!--
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b>Dockerfile</b></td>
@@ -217,7 +216,7 @@ Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://ma
 </tr>
 </table>
 <br />
-<!-- -->
+-->
 In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.  Navigate browser to localhost:5000.  Expand Container to see all files from the running Image built earlier:
 <br />
 <!--
@@ -228,7 +227,7 @@ In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image. 
 <a href="https://www.baeldung.com/ops/docker-container-shell">Shell</a> into the remote running Container.  Navigate the file system from above using the following command:
 <br />
 <pre class="csharp" name="code">
-docker exec -it $(docker ps -q) bash
+docker exec -it $(docker ps -q) /bin/sh
 </pre>
 <br />
 
@@ -238,7 +237,7 @@ docker exec -it $(docker ps -q) bash
 <u>Commands</u><br />
 Here is list of useful coomands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
 <br />
-<!-- -->
+<!--
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<b>Command</b></td>
@@ -285,7 +284,7 @@ Here is list of useful coomands.  Foreach command you can add the <b>--help</b> 
 <td valign="top">&nbsp;Remove all images</td>
 </tr>
 </table>
-<-- -->
+-->
 <br />
 
 <u>Registration</u><br />
