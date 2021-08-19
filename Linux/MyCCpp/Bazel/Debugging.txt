@@ -1,13 +1,37 @@
 Debugging
+19/08/2021
+
+https://www.youtube.com/watch?v=-TUogVOs1Qg
+
+Try again on MacOS
+Install bazel
+brew install bazel
+bazel --version
+brew upgrade bazel
+
+CoreLLDB
+readlink -n bazel-cpp-template
+
+change value in launch.json
+but still did not break
+
+
+ERROR
+Could not load source 'src/main/main.cc': 'SourceRequest' not supported..
+
+
+https://stackoverflow.com/questions/51545327/breakpoint-doesnt-work-when-debug-c-project-builded-with-bazel-in-macos-high
+https://www.adoclib.com/blog/starlark-debugger-for-bazel-in-visual-studio-code.html
+http://5.9.10.113/66844700/starlark-debugger-for-bazel-in-visual-studio-code
+
+
 18/08/2021
-
-
 Debugging C++ in Visual Studio Code using gcc/gdb and Bazel
 https://www.youtube.com/watch?v=-TUogVOs1Qg
 
 source code
-https://github.com/ourarash/cpp-template
 https://github.com/ourarash/gcc_debug_template
+https://github.com/ourarash/cpp-template
 
 
 VS Code
@@ -43,6 +67,7 @@ launch.json	F5
 
 02.	8:34
 Debugging using Bazel
+https://github.com/ourarash/cpp-template
 /home/stevepro/GitHubX/ourarash/cpp-template
 
 Debugging tab
