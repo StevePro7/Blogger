@@ -188,3 +188,28 @@ cat file.txt | wc -l
 
 
 
+
+46
+Sidecar pattern
+k apply -f sidecar.yaml
+
+minikube dashboard
+Pods
+pod-with-sidecar
+
+bottom of screen
+Containers
+app-container
+sidecar-container
+
+k exec -it pod-with-sidecar -c app-container /bin/sh
+k exec -it pod-with-sidecar -c sidecar-container /bin/sh
+
+
+47
+Adapter pattern
+used to standardize and normalize application output or monitoring data for aggregation
+
+48
+Ambassador pattern
+useful way to connect containers with the outside world
