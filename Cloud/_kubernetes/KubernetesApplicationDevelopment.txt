@@ -1,0 +1,190 @@
+Kubernetes Application Development - v1.0.2
+`9/08/2021
+
+15
+context
+profile in K8s
+
+k config view
+
+k config get-contexts
+k config use-context XXXX
+
+
+17
+k command resource options
+
+resource
+po	pod
+svc	service
+ns	namespace
+
+
+k explain <object>
+
+k explain pod
+k explain pod --recursive
+
+kubectl explain pod.spec.volumes
+kubectl explain pod.metadata --recursive
+
+
+
+kubectl get <resource> -o yaml --export=true
+kubectl get pod -o yaml --export=true
+
+DEPRECATED
+https://stackoverflow.com/questions/61392206/kubectl-export-is-deprecated-any-alternative
+
+kubectl get secret <secretname> -ojson | jq 'del(.metadata.namespace,.metadata.resourceVersion,.metadata.uid) | .metadata.creationTimestamp=null'
+
+
+
+kubectl get all
+kubectl describe all
+
+
+19
+image
+container
+good diagram
+
+
+
+21
+docker build . -t node-welcome-app
+docker run -d -p 3000 node-welcome-app:latest
+
+curl localhost:49158
+
+
+23
+Pod
+
+
+25
+IMPORTANT
+when we want minikube to use local Docker images built on localhost
+and added to the minikube image cache then run this command
+
+eval $(minikube docker-env)
+docker build . -t my-first-image:1.0.0
+
+
+27
+k create -f pod.yaml
+kubectl create -f pod.yaml
+k get po -A
+
+
+kubectl exec -it my-first-pod -c my-first-container bash
+
+IMPORTANT
+I think is better to use this syntax plus don't seem to have to state container
+k exec -it my-first-pod --bash
+
+NOTE
+equivalent to SSH into pod
+
+make request inside pod using curl
+
+curl http://	localhost:3000
+
+
+28
+busybox
+image that contains common Unix utilites
+
+
+
+30
+API server
+
+31
+controller manager
+runs infinite loop
+
+31
+kubelet
+agent on every worker node used to manage lifecycle of the node
+process that runs on each worker node responsible for state of that node
+e.g.
+start / stop containers as directed by master
+ensure containers remain healthy
+
+
+32
+kube-proxy
+networking proxy communicates with other services in the cluster and the master node
+
+
+34
+which apiversion should I use
+https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-apiversion-definition-guide.html
+
+
+38
+sh -c
+define shell commands	
+
+
+Custom commands
+kubectl apply -f custom-command-pod.yaml
+k logs custom-command-pod
+
+
+k exec -it custom-command-pod -c command-container bash
+ERROR
+because no image used here
+but can go on to Kubernetes dashboard and shell but w/ same error
+
+
+39
+ENV VARS
+k apply -f env-var.yaml
+
+dashboard | shell
+echo $BASE_URL
+ttps://api.company.com/
+
+
+40
+k apply -f liveness-readiness-probe.yaml 
+kubectl describe pod liveness-readiness-pod
+
+
+43
+security context
+
+volume
+like a regular directory on your computer filesystem
+
+
+44
+kubectl apply -f security-context.yaml
+
+security context example
+kubectl exec security-context-pod -- ls -l /etc/directory
+-rw-r--r--    1 32000    23112         2697 Aug 19 17:53 file.txt
+
+
+
+k exec security-context-pod -- cat /etc/directory/file.txt
+
+IMPORTANT
+with regards to exec
+
+this may not work
+k exec -it security-context-pod -c example-container -- bash
+e.g.
+OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: "bash": executable file not found in $PATH: unknown
+command terminated with exit code 126
+
+
+but this may work
+k exec -it security-context-pod -c example-container /bin/sh
+cd /etc/directory
+cat file.txt | wc -l
+
+
+
