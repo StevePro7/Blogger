@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: my-pv-user-pod
+spec:
+  volumes:
+    - name: a-persistent-volume
+      persistentVolumeClaim:
+        claimName: my-small-pvc
+  containers:
+    - name: pv-user
+      volumeMounts:
+        - name: a-persistent-volume
+          mountPath: /var/forever
+      image: alpine
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do date >> /var/foreve/file.txt; sleep 5; done"]
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"

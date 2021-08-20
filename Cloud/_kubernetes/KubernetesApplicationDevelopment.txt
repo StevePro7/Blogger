@@ -443,3 +443,26 @@ k apply -f my-persistent-volume.yaml
 
 76
 persistent volume claims
+
+
+78
+Kubernetes cluster lifecycle
+Provisioning
+Binding
+Using
+Reclaiming
+
+
+IMPORTANT
+couldn't get this working as PVC created new PV
+so tried this example instead
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage
+
+minikube ssh
+sudo mkdir /mnt/data
+sudo sh -c "echo 'Hello from Kubernetes storage' > /mnt/data/index.html"
+cat /mnt/data/index.html
+
+k apply -f pv-volume.yaml
+k apply -f pv-claim.yaml
+k apply -f pv-pod.yaml
