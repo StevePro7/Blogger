@@ -224,3 +224,199 @@ essentially a proxy that allows other containers to connect to a port on localho
 while the ambassador container proxies these requests to the external world
 e.g.
 access database
+
+
+50
+namespaces
+subdivide physical cluster into multiple virtual clusters
+
+k config get-contexts
+
+IMPORTANT
+how to set default namespace for current context
+k config set-context minikube --namespace=kube-system
+
+
+51
+labels
+associate key value pairs to objects to help identify and query them later
+vital for grouping objects in Kubernetes
+
+set labels in metadata property inside labels dictionary
+
+kubectl get pods --show-labels
+
+k get all --show-labels
+
+
+52
+selectors
+mechanism for performaing queries based on objects' labels
+WHERE clause equivalent for SQL statement
+
+
+use
+-l
+--selector
+
+=
+!
+,	&&
+in
+notin
+exists
+
+e.g.
+kubectl get all --selector='provider = kubernetes'
+
+
+53
+selectors in YAML
+deployments
+services
+
+group pods into a service
+e.g.
+selector field in service spec
+defines which pods receive requests sent to that service
+
+
+e,g,
+apiVersion: v1
+kind: Service
+metadata:
+name: my-service
+# ...
+spec:
+selector:
+key: value
+key2: value2
+
+
+54
+Annotations
+store non-identifying metadata about our objects
+defined in metadata dictionary like labels
+
+
+55
+deployments
+manage a set of identical pods thru a single parent object
+e.g.
+kubectl run nginx-deployment --image=nginx --replicas=3
+
+ERROR
+
+
+kubectl apply -f test_deploy.yaml
+
+k delete pod my-nginx-544d7d679b-pj99j 
+
+
+57
+iMPORTANT
+deployment.spec.template
+has the same metadata and spec dictionary as pod
+
+
+58
+deployment strategy
+Recreate
+RollingUpdate		preferred + more commonly used
+- maxUnavailable
+- maxSurge
+
+
+59
+kubectl rollout
+e.g.
+k rollout history deployment
+
+k apply test_deploy02.yaml
+k rollout status deployments my-nginx
+k describe deployments my-nginx
+
+
+61
+k rollout history deployment my-nginx
+k rollout history deployment my-nginx --revision=1
+k rollout history deployment my-nginx --revision=2
+
+UNDO
+k rollout undo deployment my-nginx --to-revision=1
+
+
+61
+autoscaling
+based on resource usage w/ Horizontal Pod Autoscaler resource
+
+e.g.
+kubectl scale deployment my-nginx --replicas=8
+
+
+63
+services
+
+deployment
+responsible for keeping a set of pods running
+
+service
+responsible for enabling network access to a set of pods
+
+e.g.
+64
+k apply -f service.pods.yaml
+k apply -f my-service.yaml
+
+
+66
+request to service routed
+
+
+clusterIP
+service internal IP address
+
+IMPORTANT
+service is hosted on minikube
+but how did I find out the IP address for minikube?
+
+Reference
+https://minikube.sigs.k8s.io/docs/commands/ip
+
+minikube ip
+192.168.49.2
+
+and service is expose on NodePort
+30163
+
+so
+curl http://192.168.49.2:30163
+Hostname: dc534047acbb
+
+curl http://192.168.49.2:30163
+Hostname: dc534047acbb, date: Sat Jun 16 21:57:15 UTC 2018
+
+NodePort will choose either pod1 or pod2
+and send to corresponding pod IP address
+172.17.0.5
+172.17.0.6
+on port 80
+because that is the service target port which is also the container port
+
+
+BTW
+access the service from inside the cluster on this socket will work
+10.107.242.86:8080
+
+access the pods from inside the cluster on socket will work
+172.17.0.5:80
+172.17.0.6:80
+
+
+70
+2x deployment 1x service example
+
+
+73
+volumes
+ 
