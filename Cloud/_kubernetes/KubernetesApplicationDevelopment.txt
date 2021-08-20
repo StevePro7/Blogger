@@ -466,3 +466,19 @@ cat /mnt/data/index.html
 k apply -f pv-volume.yaml
 k apply -f pv-claim.yaml
 k apply -f pv-pod.yaml
+
+Interesting
+when you do this all 3x remove
+k delete -f pv-pod.yaml
+
+actually had to 
+k delete -f pv-volume.yaml
+
+
+79
+Configuration
+
+configmap
+key-value dictionary whose data is injected into your container's environment when it runs
+
+k apply -f configmap.yaml
