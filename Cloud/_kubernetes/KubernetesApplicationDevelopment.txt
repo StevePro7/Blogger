@@ -308,7 +308,7 @@ kubectl run nginx-deployment --image=nginx --replicas=3
 ERROR
 
 
-kubectl apply -f test_deploy.yaml
+kubectl apply -f deployment_test01.yaml
 
 k delete pod my-nginx-544d7d679b-pj99j 
 
@@ -332,7 +332,7 @@ kubectl rollout
 e.g.
 k rollout history deployment
 
-k apply test_deploy02.yaml
+k apply deployment_test02.yaml
 k rollout status deployments my-nginx
 k describe deployments my-nginx
 
@@ -419,4 +419,27 @@ access the pods from inside the cluster on socket will work
 
 73
 volumes
+provides storage to pod and container(s) running inside it
+essentially a directory
  
+
+74
+k apply -f simple-volume-pod.yaml
+
+types of volumes
+
+emptyDir
+nfs		network file system
+hostPath
+configMap
+secret
+
+
+76 
+persistent volumes
+storage that persists beyond containers, pods and node restarts
+k apply -f my-persistent-volume.yaml
+
+
+76
+persistent volume claims

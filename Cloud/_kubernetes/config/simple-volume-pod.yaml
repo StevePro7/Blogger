@@ -1,0 +1,22 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: simple-volume-pod
+  labels:
+    name: simple-volume-pod
+spec:
+  volumes:
+    - name: simple-vol
+      emptyDir: {}
+  containers:
+    - name: my-container
+      volumeMounts:
+        - name: simple-vol
+          mountPath: /var/simple
+      image: alpine
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do date >> /var/simple/file.txt; sieep 5; done"]
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
