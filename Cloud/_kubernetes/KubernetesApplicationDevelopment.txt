@@ -482,3 +482,54 @@ configmap
 key-value dictionary whose data is injected into your container's environment when it runs
 
 k apply -f configmap.yaml
+k apply -f pod-configmap.yaml
+
+
+80
+configmap thru volume
+k exec -it pod-using-configmap sh
+
+
+82
+Env Var
+kubectl apply -f pod-env-var.yaml
+kubectl exec -it pod-env-var sh
+env
+
+
+Secrets
+designed to hold sensitive data
+keys, tokens, passwords
+
+uses tmpfs volumes on each node so they can't be left behind on a node
+
+when adding secrets via YAML they must be encoded in base64
+not encryption method i.e. does not provide any security for what is encoded
+simply way to present string in different format
+do not share base64 encoded secrets to source control or share thme publicly
+
+use base64 command
+e.g.
+echo "OUR_API_ACCESS_KEY" | base64
+echo "SECRET_7t4836378erwdser34" | base64
+
+
+k apply -f my-secret.yaml
+k apply -f pod-using-secret.yaml
+
+IMPORTANT
+shell into pod-using-secret
+
+cat /etc/secret/key
+OUR_API_ACCESS_KEY
+cat /etc/secret/token
+SECRET_7t4836378erwdser34
+
+
+TODO
+Jobs
+CronJobs
+
+
+90
+Resource quotas
