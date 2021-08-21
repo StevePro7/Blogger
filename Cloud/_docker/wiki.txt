@@ -1,7 +1,51 @@
 <span style="font-family:verdana;font-size:85%;">
-<a href="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s917/EnvoyProxy%2B-%2BCopy.png"><img alt="" border="0" width="98%" data-original-height="737" data-original-width="917" src="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s600/EnvoyProxy%2B-%2BCopy.png"/></a>
 
-<br /><br />
+<u>Example #3</u><br />
+Code an <a href="https://www.youtube.com/watch?v=VZK224Tj_4w">example</a> from scratch: build simple Hello application in C++ and run interactively inside container:
+<br />
+<!-- -->
+<table border="1" width="98%">
+<tr>
+<td width="50%">&nbsp;<b>main.cpp</b></td>
+<td width="50%">&nbsp;<b>Dockerfile</b></td>
+</tr>
+<tr>
+<td width="50%">
+<pre class="csharp" name="code">
+&nbsp;#include &lt;iostream&gt;
+&nbsp;using namespace std;
+&nbsp;int main()
+&nbsp;{
+&nbsp;    cout &lt;&lt; "Hello World C++" &lt; endl;
+&nbsp;    return 0;
+&nbsp;};
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;FROM gcc:latest
+
+&nbsp;COPY . /usr/src/cpp_test
+&nbsp;WORKDIR /usr/src/cpp_test
+
+&nbsp;RUN g++ -o Test main.cpp
+&nbsp;CMD [ "./Test" ]
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+Enter the following commands to build and run image as a container.  <a href="https://phase2.github.io/devtools/common-tasks/ssh-into-a-container">SSH</a> into Container and run directly.
+<br />
+<pre class="csharp" name="code">
+docker build . -t cpp_test:1.0
+docker run --rm -it cpp_test:1.0
+
+docker run -it cpp_test:1.0 bash
+./Test
+</pre>
+<br />
+  <br />
   
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
@@ -322,7 +366,6 @@ Here is list of useful coomands.  Foreach command you can add the <b>--help</b> 
 <u>Registration</u><br />
 Create an account on the Docker <a href="https://hub.docker.com">hub</a>.  In VS Code | Docker extension | Registries | Connect Registry.  Enter case sensitive Docker credentials.  Right click Image | Push Image to registry | Pull Image from the registry.
 <br /><br />
-
 <u>Debugging</u><br />
 Once  Dockerfiles become more complex you may like to follow some of these tips for <a href="https://medium.com/@betz.mark/ten-tips-for-debugging-docker-containers-cde4da841a1d">debugging</a> containers.  The following <a href="https://www.youtube.com/watch?v=qCCj7qy72Bg">video</a> demonstrates some of these ideas to debug Docker containers like override ENTRYPOINT
 <br />
@@ -332,7 +375,6 @@ Once  Dockerfiles become more complex you may like to follow some of these tips 
 <li>Run a debugger inside the container and connect to it from the host system</li>
 </ol>
 <br />
-
 <u>Summary</u><br />
 To summarize, <a href="https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker">Docker</a> provides an open standard for packaging and distributing containerized applications, however, the challenge can then become how to coordinate and schedule increasing amount of containers?
 <br /><br />
