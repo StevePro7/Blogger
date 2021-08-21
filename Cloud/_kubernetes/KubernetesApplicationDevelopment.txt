@@ -596,3 +596,43 @@ and then define rules around what traffic is allowed between these pods
 
 99
 Debugging
+k get all
+k describe
+k describe all
+k describe pod <pod>
+
+k logs
+k logs --previous
+
+k exec -it <pod> -- bash
+curl localhost
+curl other pods
+
+
+100
+pod status
+CrashLoopBackOff		mis config or invalid image
+ErrImagePull			img not retrieved from reg
+
+
+Monitoring
+Heapster widely used tool for monitoring performance and resource usage of the cluster
+k top pod
+k top node
+
+otherwise tools like Prometheus and Google Cloud Monitoring
+
+
+100
+Logging
+resources in Kubernetes are disposable
+i.e.
+storage and lifecycle is transient
+
+Applicaton logging needs to be handled separately to the node, pod or container it runs on
+e.g.
+fluentd			cluster-level log collection and aggregation
+Elasticsearch + Kibana	log querying and analytics
+
+GCP integrate logging directly using Slackdriver
+so you don't have to setup logging and monitoring manually
