@@ -147,6 +147,15 @@ docker run -d -p 5000:5000 flask_app:0.1
 docker ps
 </pre>
 <br />
+IMPORTANT<br />
+If you receive <i>OSError: [Errno 98] Address already in use </i> [Port 5000] then execute the following commands:
+<pre class="csharp" name="code">
+netstat -tulnap | grep 5000
+sudo apt install net-tools
+sudo fuser -k 5000/tcp
+netstat -tulnap | grep 5000
+</pre>
+<br />
 <u>Example #2</u><br />
 Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
 <br />
