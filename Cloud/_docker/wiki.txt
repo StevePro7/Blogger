@@ -1,24 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
-<u>Example #3</u><br />
-Run real world example.  Pull <a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/run-envoy">Envoy</a> image from Internet.  Run locally to prove all dependencies contained:
-<br />
-<pre class="csharp" name="code">
-docker run --rm envoyproxy/envoy-dev:716ee8abc526d51f07ed6d3c2a5aa8a3b2481d9d --version
-docker run --rm envoyproxy/envoy-dev:716ee8abc526d51f07ed6d3c2a5aa8a3b2481d9d --help
-</pre>
-<br />
-Download <a href="https://www.envoyproxy.io/docs/envoy/latest/_downloads/92dcb9714fb6bc288d042029b34c0de4/envoy-demo.yaml">envoy-demo.yaml</a> configuration.  Run following command + navigate to http://localhost:10000.
-<br />
-<pre class="csharp" name="code">
-docker run --rm -it \
-      -v $(pwd)/envoy-demo.yaml:/envoy-demo.yaml \
-      -p 9901:9901 \
-      -p 10000:10000 \
-      envoyproxy/envoy-dev:1acf02f70c75a7723d0269b7f375b3a94cb0fbf0 \
-          -c envoy-demo.yaml
-curl -v localhost:10000
-</pre>
 
+  
 <br /><br />
 <u>TODO Debugging</u><br />
 <br /><br />
@@ -240,10 +222,32 @@ Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://ma
 <!-- -->
 In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.  Navigate browser to localhost:5000.  Expand Container to see all files from the running Image built earlier:
 <br />
-<!--
+<!-- -->
 <a href="https://1.bp.blogspot.com/-AJIdALYWLf8/YQblNTU53nI/AAAAAAAAHJo/-lfHwIMkttsYELyJNZzO-E91EDa8M8KFwCLcBGAsYHQ/s900/Dockerfile.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-AJIdALYWLf8/YQblNTU53nI/AAAAAAAAHJo/-lfHwIMkttsYELyJNZzO-E91EDa8M8KFwCLcBGAsYHQ/s600/Dockerfile.png"/></a>
--->
+<!-- -->
 <br />
+<br />
+<u>Example #3</u><br />
+Run real world example.  Pull <a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/run-envoy">Envoy</a> image from Internet.  Run locally to prove all dependencies contained:
+<br />
+<pre class="csharp" name="code">
+docker run --rm envoyproxy/envoy-dev:716ee8abc526d51f07ed6d3c2a5aa8a3b2481d9d --version
+docker run --rm envoyproxy/envoy-dev:716ee8abc526d51f07ed6d3c2a5aa8a3b2481d9d --help
+</pre>
+<br />
+Download <a href="https://www.envoyproxy.io/docs/envoy/latest/_downloads/92dcb9714fb6bc288d042029b34c0de4/envoy-demo.yaml">envoy-demo.yaml</a> configuration.  Run following command + navigate to http://localhost:10000.
+<br />
+<pre class="csharp" name="code">
+docker run --rm -it \
+      -v $(pwd)/envoy-demo.yaml:/envoy-demo.yaml \
+      -p 9901:9901 \
+      -p 10000:10000 \
+      envoyproxy/envoy-dev:1acf02f70c75a7723d0269b7f375b3a94cb0fbf0 \
+          -c envoy-demo.yaml
+curl -v localhost:10000
+</pre>
+<u>TODO EnvoyProxy image</u><br />
+<br /> 
 <u>Interactive</u><br />
 <a href="https://www.baeldung.com/ops/docker-container-shell">Shell</a> into the remote running Container.  Navigate the file system from above using the following command:
 <br />
