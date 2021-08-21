@@ -1,15 +1,16 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>TODO Debugging</u><br />
-Once  Dockerfiles become more complex you may like to follow some of these tips for <a href="https://medium.com/@betz.mark/ten-tips-for-debugging-docker-containers-cde4da841a1d">debugging</a> containers.  The following video demonstrates some of these ideas to debug Docker containers that aligns some of 
-<br /><br />
+<u>Debugging</u><br />
+Once  Dockerfiles become more complex you may like to follow some of these tips for <a href="https://medium.com/@betz.mark/ten-tips-for-debugging-docker-containers-cde4da841a1d">debugging</a> containers.  The following <a href="https://www.youtube.com/watch?v=qCCj7qy72Bg">video</a> demonstrates some of these ideas to debug Docker containers like override ENTRYPOINT
+<br />
 <ol>
 <li>Override the container entrypoint and exec onto it</li>
 <li>Use docker cp to copy files between containers and host</li>
 <li>Run a debugger inside the container and connect to it from the host system</li>
 </ol>
+<br />
   
-<br /><br />
+<br />
   
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
@@ -271,8 +272,15 @@ docker exec -it $(docker ps -q) bash
 </pre>
 <br />
 
-<u>TODO Debugging</u><br />
-<br /><br />
+<u>Debugging</u><br />
+Once  Dockerfiles become more complex you may like to follow some of these tips for <a href="https://medium.com/@betz.mark/ten-tips-for-debugging-docker-containers-cde4da841a1d">debugging</a> containers.  The following <a href="https://www.youtube.com/watch?v=qCCj7qy72Bg">video</a> demonstrates some of these ideas to debug Docker containers like override ENTRYPOINT
+<br />
+<ol>
+<li>Override the container entrypoint and exec onto it</li>
+<li>Use docker cp to copy files between containers and host</li>
+<li>Run a debugger inside the container and connect to it from the host system</li>
+</ol>
+<br />
   
 <u>Commands</u><br />
 Here is list of useful coomands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
