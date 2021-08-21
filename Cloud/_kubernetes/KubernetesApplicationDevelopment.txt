@@ -533,3 +533,66 @@ CronJobs
 
 90
 Resource quotas
+e.g.
+set resource quotas for each namespace
+
+example
+red-team
+set resource quotas
+k apply -f resource-quota.yaml
+
+then compare
+k apply -f illegal-pod.yaml
+k apply -f   legal-pod.yaml
+
+IMPORTANT
+useful for debugging
+k describe  quota -n=red-team
+k describe my-pod -n=red-team
+
+
+95
+k describe nodes
+
+
+96
+Service Accounts
+human make request to Kubernetes API server using kubectl
+you are authenticated thru a User account
+
+whereas
+process running inside container needs to make a request to
+Kubernetes API server a Service Account is used
+
+another reference
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account
+
+
+k get po use-service-account-pod -o yaml
+
+  serviceAccount: my-service-account
+  serviceAccountName: my-service-account
+
+
+96
+IMPORTANT
+service accounts are defined per-namespace
+user    accounts are not namespaced
+
+
+97
+Network Policies
+1. containers on smae pod can talk to each other vial localhost
+2. pods on same node can talk to each other via pod IP address
+3. pods on different nodes can talk to each other via pod IP address
+
+IMPORTANT
+prefer using services over direct pod access
+since it loosely couples pods and lets the service perform automatic load balancing of requests
+
+Network Policies let you group pods together using labels
+and then define rules around what traffic is allowed between these pods
+
+
+99
+Debugging
