@@ -1,52 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Example #3</u><br />
-Code an <a href="https://www.youtube.com/watch?v=VZK224Tj_4w">example</a> from scratch: build simple Hello application in C++ and run interactively inside container:
-<br />
-<!-- -->
-<table border="1" width="98%">
-<tr>
-<td width="50%">&nbsp;<b>main.cpp</b></td>
-<td width="50%">&nbsp;<b>Dockerfile</b></td>
-</tr>
-<tr>
-<td width="50%">
-<pre class="csharp" name="code">
-&nbsp;#include &lt;iostream&gt;
-&nbsp;using namespace std;
-&nbsp;int main()
-&nbsp;{
-&nbsp;    cout &lt;&lt; "Hello World C++" &lt; endl;
-&nbsp;    return 0;
-&nbsp;};
-</pre>
-</td>
-<td>
-<pre class="csharp" name="code">
-&nbsp;FROM gcc:latest
-
-&nbsp;COPY . /usr/src/cpp_test
-&nbsp;WORKDIR /usr/src/cpp_test
-
-&nbsp;RUN g++ -o Test main.cpp
-&nbsp;CMD [ "./Test" ]
-</pre>
-</td>
-</tr>
-</table>
-<!-- -->
-Enter the following commands to build and run image as a container.  Run interactive inside container also.
-<br />
-<pre class="csharp" name="code">
-docker build . -t cpp_test:1.0
-docker run --rm -it cpp_test:1.0
-
-docker run -it cpp_test:1.0 bash
-./Test
-</pre>
-<br />
-  
-  
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
 <!--
@@ -279,6 +232,51 @@ In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image. 
 <br />
 <br />
 <u>Example #3</u><br />
+Code an <a href="https://www.youtube.com/watch?v=VZK224Tj_4w">example</a> from scratch: build simple Hello application in C++ and run interactively inside container:
+<br />
+<!-- -->
+<table border="1" width="98%">
+<tr>
+<td width="50%">&nbsp;<b>main.cpp</b></td>
+<td width="50%">&nbsp;<b>Dockerfile</b></td>
+</tr>
+<tr>
+<td width="50%">
+<pre class="csharp" name="code">
+&nbsp;#include &lt;iostream&gt;
+&nbsp;using namespace std;
+&nbsp;int main()
+&nbsp;{
+&nbsp;    cout &lt;&lt; "Hello World C++" &lt; endl;
+&nbsp;    return 0;
+&nbsp;};
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;FROM gcc:latest
+
+&nbsp;COPY . /usr/src/cpp_test
+&nbsp;WORKDIR /usr/src/cpp_test
+
+&nbsp;RUN g++ -o Test main.cpp
+&nbsp;CMD [ "./Test" ]
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+Enter the following commands to build and run image as a container.  Run interactive inside container also.
+<br />
+<pre class="csharp" name="code">
+docker build . -t cpp_test:1.0
+docker run --rm -it cpp_test:1.0
+
+docker run -it cpp_test:1.0 bash
+./Test
+</pre>
+<br />
+<u>Example #4</u><br />
 Run real world example.  Pull <a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/run-envoy">Envoy</a> image from Internet.  Run locally to prove all dependencies contained:
 <br />
 <pre class="csharp" name="code">
@@ -307,11 +305,9 @@ curl -v localhost:10000
 docker exec -it $(docker ps -q) bash
 </pre>
 <br />
-
-
   
 <u>Commands</u><br />
-Here is list of useful coomands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
+Here is list of useful commands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
 <br />
 <!-- -->
 <table width="99%" border="1">
@@ -361,6 +357,10 @@ Here is list of useful coomands.  Foreach command you can add the <b>--help</b> 
 </tr>
 </table>
 <!-- -->
+<br />
+  
+<u>TODO Samples</u><br />
+Here is list of useful commonly used commands that I will dump out as samples...
 <br />
 
 <u>Registration</u><br />
