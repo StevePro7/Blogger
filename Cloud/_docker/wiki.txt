@@ -1,16 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
+<a href="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s917/EnvoyProxy%2B-%2BCopy.png"><img alt="" border="0" width="98%" data-original-height="737" data-original-width="917" src="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s600/EnvoyProxy%2B-%2BCopy.png"/></a>
 
-<u>Debugging</u><br />
-Once  Dockerfiles become more complex you may like to follow some of these tips for <a href="https://medium.com/@betz.mark/ten-tips-for-debugging-docker-containers-cde4da841a1d">debugging</a> containers.  The following <a href="https://www.youtube.com/watch?v=qCCj7qy72Bg">video</a> demonstrates some of these ideas to debug Docker containers like override ENTRYPOINT
-<br />
-<ol>
-<li>Override the container entrypoint and exec onto it</li>
-<li>Use docker cp to copy files between containers and host</li>
-<li>Run a debugger inside the container and connect to it from the host system</li>
-</ol>
-<br />
-  
-<br />
+<br /><br />
   
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
@@ -260,10 +251,11 @@ docker run --rm -it \
       -p 10000:10000 \
       envoyproxy/envoy-dev:1acf02f70c75a7723d0269b7f375b3a94cb0fbf0 \
           -c envoy-demo.yaml
+          
 curl -v localhost:10000
 </pre>
-<u>TODO EnvoyProxy image</u><br />
-<br /> 
+<a href="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s917/EnvoyProxy%2B-%2BCopy.png"><img alt="" border="0" width="98%" data-original-height="737" data-original-width="917" src="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s600/EnvoyProxy%2B-%2BCopy.png"/></a>
+<br /><br />
 <u>Interactive</u><br />
 <a href="https://www.baeldung.com/ops/docker-container-shell">Shell</a> into the remote running Container.  Navigate the file system from above using the following command:
 <br />
@@ -272,15 +264,7 @@ docker exec -it $(docker ps -q) bash
 </pre>
 <br />
 
-<u>Debugging</u><br />
-Once  Dockerfiles become more complex you may like to follow some of these tips for <a href="https://medium.com/@betz.mark/ten-tips-for-debugging-docker-containers-cde4da841a1d">debugging</a> containers.  The following <a href="https://www.youtube.com/watch?v=qCCj7qy72Bg">video</a> demonstrates some of these ideas to debug Docker containers like override ENTRYPOINT
-<br />
-<ol>
-<li>Override the container entrypoint and exec onto it</li>
-<li>Use docker cp to copy files between containers and host</li>
-<li>Run a debugger inside the container and connect to it from the host system</li>
-</ol>
-<br />
+
   
 <u>Commands</u><br />
 Here is list of useful coomands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
@@ -338,6 +322,16 @@ Here is list of useful coomands.  Foreach command you can add the <b>--help</b> 
 <u>Registration</u><br />
 Create an account on the Docker <a href="https://hub.docker.com">hub</a>.  In VS Code | Docker extension | Registries | Connect Registry.  Enter case sensitive Docker credentials.  Right click Image | Push Image to registry | Pull Image from the registry.
 <br /><br />
+
+<u>Debugging</u><br />
+Once  Dockerfiles become more complex you may like to follow some of these tips for <a href="https://medium.com/@betz.mark/ten-tips-for-debugging-docker-containers-cde4da841a1d">debugging</a> containers.  The following <a href="https://www.youtube.com/watch?v=qCCj7qy72Bg">video</a> demonstrates some of these ideas to debug Docker containers like override ENTRYPOINT
+<br />
+<ol>
+<li>Override the container entrypoint and exec onto it</li>
+<li>Use docker cp to copy files between containers and host</li>
+<li>Run a debugger inside the container and connect to it from the host system</li>
+</ol>
+<br />
 
 <u>Summary</u><br />
 To summarize, <a href="https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker">Docker</a> provides an open standard for packaging and distributing containerized applications, however, the challenge can then become how to coordinate and schedule increasing amount of containers?
