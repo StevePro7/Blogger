@@ -1,0 +1,301 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+<u>TODO Debugging</u><br />
+<br /><br />
+  
+<a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-8rHlQefLyrg/YPWfgoEbuUI/AAAAAAAAHHc/dmypGeOVJ2cZ1h_hW5HHp2pPALPwsBKeACLcBGAsYHQ/s480/docker-logo.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-8rHlQefLyrg/YPWfgoEbuUI/AAAAAAAAHHc/dmypGeOVJ2cZ1h_hW5HHp2pPALPwsBKeACLcBGAsYHQ/s600/docker-logo.png"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+<u>Installation</u><br />
+Docker Engine is available on a variety of <a href="https://docs.docker.com/engine/install/#server">Linux</a> platforms.  On <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a> it is easiest to install Docker Desktop as a static binary installation.  <a href="https://docs.docker.com/engine/install">Install</a> Docker Engine as per Operating System instructions.
+<br /><br />
+<b>Windows</b><br />
+<a href="https://docs.docker.com/docker-for-windows/install">Install</a> Docker Desktop on Windows which will install the Docker Engine, Docker Compose and Kubernetes.
+<br /><br />
+<b>Mac OS/X</b><br />
+<a href="https://docs.docker.com/docker-for-mac/install">Install</a> Docker Desktop on Mac OS/X which will install the Docker Engine, Docker Compose and Kubernetes.
+<br /><br />
+<b>Linux</b><br />
+Docker provides .deb + .rpm packages for various Linux distributions.  For example <a href="https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04">Install</a> Docker on Ubuntu:
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt-get remove docker docker-engine docker.io
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+docker version
+docker images
+</pre>
+<br />
+The final 2x commands may throw the following error while trying to connect to the Docker daemon socket:
+<!--
+<a href="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s745/01-InstallError.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s600/01-InstallError.png"/></a>
+-->
+<br /><br />
+Here is one way to fix "Got permission denied while trying to connect to the Docker daemon socket" error:
+<pre class="csharp" name="code">
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+sudo reboot
+docker version
+docker images
+</pre>
+<br />
+IMPORTANT<br />
+You may also install <a href="https://docs.docker.com/compose">docker-compose</a> esp. if you are defining + running multi-container Docker applicaitons.
+<pre class="csharp" name="code">
+sudo apt install docker-compose
+</pre>
+<br />
+<!--<br />-->
+
+<u>Definitions</u><br />
+When you <a href="https://www.youtube.com/watch?v=YFl2mCHdv24">learn</a> Docker, you find that <a href="https://www.codeproject.com/Articles/5298027/A-Brief-Docker-Overview">Docker</a> Images are simply templates used to build Docker Containers.  Docker Containers are small isolated environments which are runnable version of their Images.  Finally, the <a href="https://docs.docker.com/engine/reference/builder">Dockerfile</a> contains all the commands that specify how an Image should be built and Container should run.
+<br /><br />
+On brand new install on Docker there will be no Docker Images built or Docker Containers running.  Verify:
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s690/DockerEmpty.png"><img alt="" border="0" width="98%"src="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s600/DockerEmpty.png"/></a>
+-->
+<br />
+  
+<u>Hello World</u><br />
+The simplest way to pull down Docker image from the Docker Hub is to execute <b>docker run hello-world</b>.  
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s770/HelloWorld.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s600/HelloWorld.png"/></a>
+<br />
+-->
+<br />
+  
+<u>Getting Started</u><br />
+Here is more information on Docker Orientation and <a href="https://docs.docker.com/get-started">setup</a> tutorial to build and run an image as a container:
+<br />
+<pre class="csharp" name="code">
+docker run -d -p 80:80 docker/getting-started
+docker images
+docker ps
+</pre>
+<br />
+Launch browser.  Enter http://localhost.  You'll now see the same content locally as the Getting Started page!  Afterwards cleanup.  Enter the following commands from the Terminal to stop container and remove image:
+<pre class="csharp" name="code">
+docker stop $(docker ps -q)
+docker rmi $(docker images -qa) --force
+docker system prune -a
+</pre>
+<br />
+  
+<u>Example #1</u><br />
+Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">example</a> from scratch: build simple Hello application in Python and run on localhost in a container:
+<br />
+<!-- -->
+<table border="1" width="98%">
+<tr>
+<td width="50%">&nbsp;<b>app.py</b></td>
+<td width="50%">&nbsp;<b>Dockerfile</b></td>
+</tr>
+<tr>
+<td width="50%">
+<pre class="csharp" name="code">
+&nbsp;from flask import Flask
+&nbsp;
+&nbsp;app = Flask(__name__)
+&nbsp;@app.route("/")
+&nbsp;
+&nbsp;def hello():
+&nbsp;    return "Hello World!"
+&nbsp;
+&nbsp;if __name__ == "__main__":
+&nbsp;    app.run(debug=True, host="0.0.0.0")
+&nbsp;
+&nbsp;
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;# Inherit from the Python Docker image
+&nbsp;FROM python:3.7-slim
+&nbsp;# Install the Flask package via pip
+&nbsp;RUN pip install flask==1.0.2
+&nbsp;# Copy the source code to app folder
+&nbsp;COPY ./app.py /app/
+&nbsp;# Change the working directory
+&nbsp;WORKDIR /app/
+&nbsp;# Set "python" as the entry point
+&nbsp;ENTRYPOINT ["python"]
+&nbsp;# Set the command as the script name
+&nbsp;CMD ["app.py"]
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+Follow <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices">best practices</a> for writing DockerFile as each FROM, RUN, COPY, CMD instruction creates one layer.
+<br /><br />
+Enter the following commands to build and run image as a container.  Navigate browser to localhost:5000.
+<pre class="csharp" name="code">
+docker build -t flask_app:0.1 .
+docker images
+docker run -d -p 5000:5000 flask_app:0.1
+docker ps
+</pre>
+<br />
+<u>Example #2</u><br />
+Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
+<br />
+<!-- -->
+<table border="1" width="99%">
+<tr>
+<td>&nbsp;<b><a href="https://github.com/qorbani/docker-golang-hello-world/blob/master/app.go">app.go</a></b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;package main
+&nbsp;import (
+&nbsp;	"fmt"
+&nbsp;	"log"
+&nbsp;	"os"
+&nbsp;	"net/http"
+&nbsp;	"github.com/gorilla/mux"
+&nbsp;)
+&nbsp;func main() {
+&nbsp;	port := "5000"
+&nbsp;	r := mux.NewRouter()
+&nbsp;	r.HandleFunc("/", hello)
+&nbsp;	http.Handle("/", r)
+&nbsp;	fmt.Println("Starting up on " + port)
+&nbsp;	log.Fatal(http.ListenAndServe(":" + port, nil))
+&nbsp;}
+&nbsp;func hello(w http.ResponseWriter, req *http.Request) {
+&nbsp;	fmt.Fprintln(w, "Hello world!")
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">extension</a>.  Generate Dockerfile with the actions:
+<br />
+<ol>
+<li>Ctrl+Shift+P.  Choose Docker: Add Docker Files to Workspace...</li>
+<li>Select Application Platform.  Choose GoLang</li>
+<li>What port does app listen on?  Choose 5000</li>
+<li>Include optional Docker Compose files?  Select	No</li>
+</ol>
+<!-- -->
+<table border="1" width="99%">
+<tr>
+<td>&nbsp;<b>Dockerfile</b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#build stage
+&nbsp;FROM golang:alpine AS builder
+&nbsp;RUN apk add --no-cache git
+&nbsp;WORKDIR /go/src/app
+&nbsp;COPY . .
+&nbsp;RUN go get -d -v ./...
+&nbsp;RUN go build -o /go/bin/app -v ./...
+&nbsp;
+&nbsp;#final stage
+&nbsp;FROM alpine:latest
+&nbsp;RUN apk --no-cache add ca-certificates
+&nbsp;COPY --from=builder /go/bin/app /app
+&nbsp;ENTRYPOINT /app
+&nbsp;LABEL Name=golang20 Version=0.0.1
+&nbsp;EXPOSE 5000
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<!-- -->
+In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.  Navigate browser to localhost:5000.  Expand Container to see all files from the running Image built earlier:
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-AJIdALYWLf8/YQblNTU53nI/AAAAAAAAHJo/-lfHwIMkttsYELyJNZzO-E91EDa8M8KFwCLcBGAsYHQ/s900/Dockerfile.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-AJIdALYWLf8/YQblNTU53nI/AAAAAAAAHJo/-lfHwIMkttsYELyJNZzO-E91EDa8M8KFwCLcBGAsYHQ/s600/Dockerfile.png"/></a>
+-->
+<br />
+<u>Interactive</u><br />
+<a href="https://www.baeldung.com/ops/docker-container-shell">Shell</a> into the remote running Container.  Navigate the file system from above using the following command:
+<br />
+<pre class="csharp" name="code">
+docker exec -it $(docker ps -q) bash
+</pre>
+<br />
+
+<u>TODO Debugging</u><br />
+<br /><br />
+  
+<u>Commands</u><br />
+Here is list of useful coomands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Command</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker build -t [image_name]:[tag] .</td>
+<td valign="top">&nbsp;Build a Docker image</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker run --name [container_name] [image_name]:[tag]</td>
+<td valign="top">&nbsp;Run a Docker container specifying a name</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker logs -f [container_id_or_name]</td>
+<td valign="top">&nbsp;Fetch the logs of a container</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker exec -it	[container_id_or_name] bash</td>
+<td valign="top">&nbsp;Run a command in a running container</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker images</td>
+<td valign="top">&nbsp;Show Docker images</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker ps</td>
+<td valign="top">&nbsp;Show running containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker ps -a</td>
+<td valign="top">&nbsp;Show all containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker stop $(docker ps -q)</td>
+<td valign="top">&nbsp;Stop all running containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker rm $(docker ps -aq)</td>
+<td valign="top">&nbsp;Remove all containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker rmi $(docker images -aq)</td>
+<td valign="top">&nbsp;Remove all images</td>
+</tr>
+</table>
+<-- -->
+<br />
+
+<u>Registration</u><br />
+Create an account on the Docker <a href="https://hub.docker.com">hub</a>.  In VS Code | Docker extension | Registries | Connect Registry.  Enter case sensitive Docker credentials.  Right click Image | Push Image to registry | Pull Image from the registry.
+<br /><br />
+
+<u>Summary</u><br />
+To summarize, <a href="https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker">Docker</a> provides an open standard for packaging and distributing containerized applications, however, the challenge can then become how to coordinate and schedule increasing amount of containers?
+<br /><br />
+This is where <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> can help: Kubernetes is open-source orchestration software that provides an API controlling how and where those containers will run.  Kubernetes can scale out multple deployed and more!
+<br />
+This will be the topic of the next post.
+</span>
