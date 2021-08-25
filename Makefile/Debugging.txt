@@ -1,0 +1,28 @@
+Debugging
+25/08/2021
+
+Reference
+https://www.cyberciti.biz/tips/debugging-shell-script.html
+
+e.g.
+set -x : Display commands and their arguments as they are executed.
+set -v : Display shell input lines as they are read.
+
+
+Corroborate this
+e.g.
+set --help
+
+-v  Print shell input lines as they are read.
+-x  Print commands and their arguments as they are executed.
+
+
+Shell scripts here use
+set -e
+-e  Exit immediately if a command exits with a non-zero status.
+
+
+
+Some other links but not sure if they are that useful:
+https://www.oreilly.com/library/view/managing-projects-with/0596006101/ch12.html
+https://www.oreilly.com/openbook/make3/book/ch12.pdf

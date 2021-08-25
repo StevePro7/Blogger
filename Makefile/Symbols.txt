@@ -1,0 +1,28 @@
+Symbols
+25/08/2021
+
+01.
+"$@"
+Makefile.common.$(MAKE_BRANCH):
+
+"$@"	build target
+"$@"	"Makefile.common.v0.53"
+
+
+02.
+"$<"
+
+
+Makefile symbols
+https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean
+
+$@	name of the target being generated
+$<	first pre-requisite	usually a source file
+$^	filename of all pre-requisites
+
+e.g.
+all: library.cpp main.cpp
+
+$@ evaluates to all
+$< evaluates to library.cpp
+$^ evaluates to library.cpp main.cpp
