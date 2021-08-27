@@ -26,3 +26,31 @@ set -e
 Some other links but not sure if they are that useful:
 https://www.oreilly.com/library/view/managing-projects-with/0596006101/ch12.html
 https://www.oreilly.com/openbook/make3/book/ch12.pdf
+
+
+
+https://www.oreilly.com/openbook/make3/book/ch12.pdf
+
+make --just-print
+make --print-data-base
+make --warn-undefined-variables
+make --warn-undefined-variables -n
+
+make --debug
+
+make all --debug=basic
+make all --debug=verbose
+
+
+GOOGLE
+debug step thru shell script in Linux
+
+Reference:
+https://stackoverflow.com/questions/9080431/how-execute-bash-script-line-by-line
+
+seems to be able to break the script
+press return to continue
+
+
+BASH Debugger
+http://bashdb.sourceforge.net
