@@ -2,9 +2,9 @@
 
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
-<!-- -->
+<!--
 <a href="https://1.bp.blogspot.com/-8rHlQefLyrg/YPWfgoEbuUI/AAAAAAAAHHc/dmypGeOVJ2cZ1h_hW5HHp2pPALPwsBKeACLcBGAsYHQ/s480/docker-logo.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-8rHlQefLyrg/YPWfgoEbuUI/AAAAAAAAHHc/dmypGeOVJ2cZ1h_hW5HHp2pPALPwsBKeACLcBGAsYHQ/s600/docker-logo.png"/></a>
-<!-- -->
+-->
 <br />
 Let's check it out!
 <br /><br />
@@ -30,9 +30,9 @@ docker images
 </pre>
 <br />
 The final 2x commands may throw the following error while trying to connect to the Docker daemon socket:
-<!-- -->
+<!--
 <a href="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s745/01-InstallError.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s600/01-InstallError.png"/></a>
-<!-- -->
+-->
 <br /><br />
 Here is one way to fix "Got permission denied while trying to connect to the Docker daemon socket" error:
 <pre class="csharp" name="code">
@@ -49,25 +49,25 @@ You may also install <a href="https://docs.docker.com/compose">docker-compose</a
 sudo apt install docker-compose
 </pre>
 <br />
+<!--<br />-->
 
 <u>Definitions</u><br />
 When you <a href="https://www.youtube.com/watch?v=YFl2mCHdv24">learn</a> Docker, you find that <a href="https://www.codeproject.com/Articles/5298027/A-Brief-Docker-Overview">Docker</a> Images are simply templates used to build Docker Containers.  Docker Containers are small isolated environments which are runnable version of their Images.  Finally, the <a href="https://docs.docker.com/engine/reference/builder">Dockerfile</a> contains all the commands that specify how an Image should be built and Container should run.
 <br /><br />
 On brand new install on Docker there will be no Docker Images built or Docker Containers running.  Verify:
 <br />
-<!-- -->
+<!--
 <a href="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s690/DockerEmpty.png"><img alt="" border="0" width="98%"src="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s600/DockerEmpty.png"/></a>
-<!-- -->
-<br />
+-->
 <br />
   
 <u>Hello World</u><br />
 The simplest way to pull down Docker image from the Docker Hub is to execute <b>docker run hello-world</b>.  
 <br />
-<!-- -->
+<!--
 <a href="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s770/HelloWorld.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s600/HelloWorld.png"/></a>
 <br />
-<!-- -->
+-->
 <br />
   
 <u>Getting Started</u><br />
