@@ -1,31 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Samples</u><br />
-Here is a list of useful commonly used sample commands that can be used frequently as simple cheat sheet:
-<table border="1" width="99%">
-<tr>
-<td valign="top">&nbsp;<b>Command</b></td>
-<td valign="top">&nbsp;<b>Description</b></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker images</td>
-<td valign="top">&nbsp;Show Docker images</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker ps</td>
-<td valign="top">&nbsp;Show running containers</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker system prune -a</td>
-<td valign="top">&nbsp;</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker exec -it $id bash</td>
-<td valign="top">&nbsp;</td>
-</tr>
-</table>
-<br /><br />
-  
+
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
 <!-- -->
@@ -161,17 +136,25 @@ Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-y
 Follow <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices">best practices</a> for writing DockerFile as each FROM, RUN, COPY, CMD instruction creates one layer.
 <br /><br />
 Enter the following commands to build and run image as a container.  Navigate browser to localhost:5000.
+  
 <table border="1" width="99%">
+<tr>
+<td width="50%">&nbsp;<b>Docker Image</b></td>
+<td width="50%">&nbsp;<b>Docker Container</b></td>
+</tr>
 <tr>
 <td>
 &nbsp;docker build -t flask_app:0.1 .<br />
 &nbsp;docker images<br />
+</td>
+<td>
 &nbsp;docker run -d -p 5000:5000 flask_app:0.1<br />
 &nbsp;docker ps<br />
 </td>
 </tr>
 </table>
-<br />
+Also curl http://localhost:5000.  To stop the running container enter command: docker stop $(docker ps -q)
+<br /><br />
 IMPORTANT<br />
 If you receive <i>OSError: [Errno 98] Address already in use </i> [Port 5000] then execute the following commands:
 <table border="1" width="99%">
@@ -312,7 +295,7 @@ Enter the following commands to build and run image as a container.  Run interac
 <tr>
 <td>
 &nbsp;docker build . -t cpp_test:1.0<br />
-&nbsp;docker run --rm -it cpp_test:1.0<br />
+&nbsp;docker run --rm cpp_test:1.0<br />
 </td>
 <td>
 &nbsp;docker run -it cpp_test:1.0 bash<br />
@@ -383,18 +366,6 @@ Here is list of useful commands.  Foreach command you can add the <b>--help</b> 
 <td valign="top">&nbsp;Run a command in a running container</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;docker images</td>
-<td valign="top">&nbsp;Show Docker images</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker ps</td>
-<td valign="top">&nbsp;Show running containers</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;docker ps -a</td>
-<td valign="top">&nbsp;Show all containers</td>
-</tr>
-<tr>
 <td valign="top">&nbsp;docker stop $(docker ps -q)</td>
 <td valign="top">&nbsp;Stop all running containers</td>
 </tr>
@@ -410,9 +381,22 @@ Here is list of useful commands.  Foreach command you can add the <b>--help</b> 
 <!-- -->
 <br />
 <br />
-<u>TODO Samples</u><br />
-Here is list of useful commonly used commands that I will dump out as samples...
-<br />
+<u>Samples</u><br />
+Here is a list of useful commonly used sample commands that can be used frequently as simple cheat sheet:
+<table border="1" width="99%">
+<tr>
+<td valign="top">&nbsp;<b>Command</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker images</td>
+<td valign="top">&nbsp;Show Docker images</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker ps</td>
+<td valign="top">&nbsp;Show running containers</td>
+</tr>
+</table>
 <br />
 <br />
 <u>Registration</u><br />
