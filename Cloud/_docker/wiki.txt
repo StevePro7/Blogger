@@ -159,6 +159,7 @@ If you receive <i>OSError: [Errno 98] Address already in use </i> [Port 5000] th
 </tr>
 </table>
 <br />
+<br />
 <u>Example #2</u><br />
 Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
 <br />
@@ -239,6 +240,7 @@ In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image. 
 <!-- -->
 <br />
 <br />
+<br />
 <u>Example #3</u><br />
 Code an <a href="https://www.youtube.com/watch?v=VZK224Tj_4w">example</a> from scratch: build simple Hello application in C++ and run interactively inside container:
 <br />
@@ -274,15 +276,19 @@ Code an <a href="https://www.youtube.com/watch?v=VZK224Tj_4w">example</a> from s
 </tr>
 </table>
 <!-- -->
-Enter the following commands to build and run image as a container.  Run interactive inside container also.
 <br />
-<pre class="csharp" name="code">
-docker build . -t cpp_test:1.0
-docker run --rm -it cpp_test:1.0
-
-docker run -it cpp_test:1.0 bash
-./Test
-</pre>
+Enter the following commands to build and run image as a container.  Run interactive inside container also.
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;docker build . -t cpp_test:1.0<br />
+&nbsp;docker run --rm -it cpp_test:1.0<br />
+&nbsp;docker run -it cpp_test:1.0 bash<br />
+&nbsp;./Test<br />
+</td>
+</tr>
+</table>
+<br />
 <br />
 <u>Example #4</u><br />
 Run real world example.  Pull <a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/run-envoy">Envoy</a> image from Internet.  Run locally to prove all dependencies contained:
@@ -301,19 +307,24 @@ docker run --rm -it \
       -p 10000:10000 \
       envoyproxy/envoy-dev:1acf02f70c75a7723d0269b7f375b3a94cb0fbf0 \
           -c envoy-demo.yaml
-          
-curl -v localhost:10000
 </pre>
+<br />
+&nbsp;curl -v localhost:10000
+<br />
 <a href="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s917/EnvoyProxy%2B-%2BCopy.png"><img alt="" border="0" width="98%" data-original-height="737" data-original-width="917" src="https://1.bp.blogspot.com/-80E1cmo0P54/YSFdQCHXt7I/AAAAAAAAHNw/19Q5bqYliW4yJPYBwFP7RB2URRrh9wakQCLcBGAsYHQ/s600/EnvoyProxy%2B-%2BCopy.png"/></a>
 <br /><br />
 <u>Interactive</u><br />
 <a href="https://www.baeldung.com/ops/docker-container-shell">Shell</a> into the remote running Container.  Navigate the file system from above using the following command:
 <br />
-<pre class="csharp" name="code">
-docker exec -it $(docker ps -q) bash
-</pre>
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;docker exec -it $(docker ps -q) bash<br />
+</td>
+</tr>
+</table>
 <br />
-  
+<br />
 <u>Commands</u><br />
 Here is list of useful commands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
 <br />
