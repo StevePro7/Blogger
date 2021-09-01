@@ -1,0 +1,90 @@
+anSETUP
+29/08/2021
+
+
+https://wasm4.org
+
+https://wasm4.org/docs/getting-started/setup
+
+Download Linux
+wasm4-linux.zip
+
+Navigate to Downloads folder
+double click
+Extract
+expand and copy w4 binary to /usr/local/bin
+
+close terminal + re-open
+w4
+
+
+Hello World
+
+01.
+AssemblyScript
+
+w4 new --assemblyscript hello-world
+cd hello-world
+npm install
+npm run build
+w4 run build/cart.wasm
+
+
+02.
+C/C++
+
+w4 new --c hello-world
+cd hello-world
+make
+w4 run build/cart.wasm
+
+ERROR complaining about LDFLAGS
+wasm-ld
+
+sudo apt install lld-12
+change Makefile to
+LDFLAGS=wasm-ld-12
+
+make	may give warning but ignore
+w4 run build/cart.wasm
+
+
+03.
+w4 new --rust hello-world
+cd hello-world
+
+cargo build --release
+sudo apt install cargo
+
+ERROR
+error[E0463]: can't find crate for `std`
+  |
+  = note: the `wasm32-unknown-unknown` target may not be installed
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0463`.
+error: could not compile `cart`
+
+
+
+04.
+Go
+install tinygo
+
+Reference:
+https://tinygo.org/getting-started/install/linux/#ubuntu-debian
+
+wget https://github.com/tinygo-org/tinygo/releases/download/v0.19.0/tinygo_0.19.0_amd64.deb
+sudo dpkg -i tinygo_0.19.0_amd64.deb
+
+Warning	ignore
+tinygo build -o build/cart.wasm -target ./target.json -panic=trap ./src
+Tip: wasm-opt was not found. Install it from binaryen for smaller builds!
+
+
+w4 new --go hello-world
+cd hello-world
+
+make
+w4 run build/cart.wasm

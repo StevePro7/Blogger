@@ -18,6 +18,16 @@ https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-f
 Linux
 find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
 
+
+find -L . -type f -exec grep -HniI 'g++' {} \; > ~/Steven/gpp.txt
+
+find "g++" in all text files recursively and output result to ~/Steven/gpp.txt
+
+-I flag says to ignore binary files
+https://stackoverflow.com/questions/4767396/linux-command-how-to-find-only-text-files
+
+
+
 Powershell
 cd D:\Github\tigera\operator
 dir -recurse | select-object extension -unique
