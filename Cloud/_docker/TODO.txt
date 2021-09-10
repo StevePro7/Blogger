@@ -1,5 +1,23 @@
 TODO
 
+09/09/2021
+weird but today when I went to do for Envoy dynamic config
+docker-compose
+
+it was weird because was version 1.25.x
+so I followed steps to remove from here using sudo apt remove docker-compose
+/usr/bin/docker-compose
+
+But when restart PC it now worked from here
+/usr/local/bin/docker-compose
+
+just had to do
+chmod +x /usr/local/bin/docker-compose
+
+Reference
+https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04
+
+
 18/08/2021
 01.
 25_Exec.txt
