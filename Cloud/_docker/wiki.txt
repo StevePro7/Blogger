@@ -370,10 +370,6 @@ Here is list of useful commands.  Foreach command you can add the <b>--help</b> 
 <td valign="top">&nbsp;Run a command in a running container</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;docker stop $(docker ps -q)</td>
-<td valign="top">&nbsp;Stop all running containers</td>
-</tr>
-<tr>
 <td valign="top">&nbsp;docker rm $(docker ps -aq)</td>
 <td valign="top">&nbsp;Remove all containers</td>
 </tr>
@@ -394,11 +390,15 @@ Here is a list of useful commonly used sample commands that can be used frequent
 </tr>
 <tr>
 <td valign="top">&nbsp;docker images</td>
-<td valign="top">&nbsp;Show Docker images</td>
+<td valign="top">&nbsp;Show all Docker images</td>
 </tr>
 <tr>
 <td valign="top">&nbsp;docker ps</td>
-<td valign="top">&nbsp;Show running containers</td>
+<td valign="top">&nbsp;Show all running containers</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;docker stop $(docker ps -q)</td>
+<td valign="top">&nbsp;Stop all running containers</td>
 </tr>
 <tr>
 <td valign="top">&nbsp;docker system prune -a</td>
