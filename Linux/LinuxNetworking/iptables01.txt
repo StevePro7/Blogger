@@ -1,0 +1,74 @@
+Iptables
+13/09/2021
+
+01.
+Iptables REDIRECT vs. DNAT vs. TPROXY
+https://gsoc-blog.ecklm.com/iptables-redirect-vs.-dnat-vs.-tproxy
+
+iptables --table nat --append PREROUTING --protocol tcp --dport 80 --jump DNAT     --to-destination 10.0.4.2
+
+iptables --table nat --append PREROUTING --protocol tcp --dport 80 --jump REDIRECT --to-destination 10.0.4.2
+
+
+TPROXY
+Proxies are nodes / software that are used to stand between the client and the service
+the client connects to the proxy server which then connects to the server thru a distinct connection
+
+A transparent proxy [TPROXY] is invisible for the client
+
+
+
+program
+https://git.breakpoint.cc/cgit/fw/tcprdr.git
+
+
+02.
+A Deep Dive into Iptables and Netfilter Architecture
+https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture
+
+iptables is a widely used firewall tool that interfaces with the kernel netfilter packet filtering framework
+
+
+iptables
+basic firewall sortware most commonly used in Linux
+interact with packet filtering hooks in Linux kernel networking stack
+
+
+netfilter
+kernel [packet filtering] hooks 
+
+
+kmod
+kernel modules associated with iptables register at these [netfilter] hooks
+to ensure traffic confirms to conditions latid out by the firewall rules
+
+
+
+Netfilter hooks
+5x
+NF_IP_PRE_ROUTING
+NF_IP_LOCAL_IN
+NF_IP_FORWARD
+NF_IP_LOCAL_OUT
+NF_IP_POST_ROUTING
+
+
+iptables firewall uses tables to organize its rules
+tables classify rules by type of decision e.g. nat, filter tables
+
+iptables rules in each table organized by chains
+
+chains
+represent which netfilter hooks to trigger
+determine when rules will be evaluated
+
+
+chain			hook
+PREROUTING	chain	Triggered by the NF_IP_PRE_ROUTING hook
+INPUT		chain	Triggered by the NF_IP_LOCAL_IN hook
+FORWARD		chain	Triggered by the NF_IP_FORWARD hook
+OUTPUT		chain	Triggered by the NF_IP_LOCAL_OUT hook
+POSTROUTING	chain	Triggered by the NF_IP_POST_ROUTING hook
+
+
+

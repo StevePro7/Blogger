@@ -1,0 +1,16 @@
+tproxy
+13/09/2021
+
+Transparent Proxy
+
+
+GOOGLE
+The tproxy-podwatch controller watches for pod changes containing the annotation and automatically adds or removes the local firewall REDIRECT rules to apply the transparent proxy to the pod. 
+
+
+https://en.wikipedia.org/wiki/Proxy_server#Transparent_proxy
+
+
+
+Source code
+https://elixir.bootlin.com/linux/latest/source/net/netfilter/xt_TPROXY.c#L36
