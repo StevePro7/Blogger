@@ -1,0 +1,17 @@
+Tun Tap
+13/09/2021
+
+https://en.wikipedia.org/wiki/TUN/TAP
+
+e.g.
+when providing networking for OpenStack
+uses TAP interfaces rather than veth pairs
+
+
+packets sent
+
+TUN	
+simulates network layer device in layer 3 carrying IP packets
+
+TAP
+simulates link layer device in layer 2 carrying Ethernet frames
