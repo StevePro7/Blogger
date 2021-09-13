@@ -71,4 +71,26 @@ OUTPUT		chain	Triggered by the NF_IP_LOCAL_OUT hook
 POSTROUTING	chain	Triggered by the NF_IP_POST_ROUTING hook
 
 
+TABLES
+5x different tables that iptables provides
+each represent distinc sets of rules org'd by areas of concern for evaulating network packets
+
+filter		filting packets	in firewall parlance
+NAT		network address translation to route packets when direct access not possible
+mangle		alter IP headers or place internal kernel "mark" on packet for further processing
+raw		provide mechanism for marking packets in order to opt-out of connection tracking
+security	used to set internal SELinux security context marks on packets
+
+
+SELinux
+Security Enhance Linux
+
+
+Chain Traversal Order
+Incoming packets destined for the local system: 	PREROUTING -> INPUT
+Incoming packets destined to another host: 		PREROUTING -> FORWARD -> POSTROUTING
+Locally generated packets: 				OUTPUT -> POSTROUTING
+
+
+IP tables rules
 
