@@ -1,0 +1,31 @@
+remake
+26/09/2021
+
+Reference
+https://www.usenix.org/legacy/events/lisa11/tech/full_papers/Bernstein.pdf
+
+sudo apt install remake
+
+
+remake --tasks
+
+remake --trace
+
+
+remake --debugger
+step thru target source code
+e.g.
+target ut expand
+
+remake ut --debugger
+
+
+print variables at runtime
+print DOCKER_GO_BUILD
+
+
+GoLand
+View | Tools Window | make
+
+click target
+F4	navigate to target code
