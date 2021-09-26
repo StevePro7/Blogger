@@ -1,0 +1,72 @@
+Calico Routing Modes
+25/09/2021
+
+https://www.youtube.com/watch?v=MpbIZ1SmEkU
+Calico uses BGP to share routes
+Border Gateway Protocol
+
+
+BIRD
+facilitate BGP route sharing
+
+Felix
+program the host route table
+//so packets know where to go
+
+
+master node
+route -n
+
+Calico default	IPinIP
+tun interface
+way to link the nodes
+
+cali interface	Pod IPs on the host
+levarges for enforcing policy
+when the packet routes in and goes to the interface thru IP rules + IP chains rules 
+
+
+Routing Modes
+IP-in-IP	default	encapsulation
+direct				un encapsulated routing mode
+VXLAN				encapsulation but no BGP
+
+
+worker1
+kernel routing tables
+
+tunl0
+cali	interface		could be used for network policy enforcement
+
+master		shell pod-1
+worker1	shell pod-2
+
+on pod1 wk1 curl pd2 wk2	
+netcat -l -p 80S
+
+
+Wireshark
+TCP input on an interface
+
+e.g.
+IP-in-IP
+2x headers to encapsulate
+encapsulate traffic by put packet in another packet
+outer header
+inner header		in packet
+
+outer header	has the host [node] info	206	56	wk1	wk2
+inner header	has the pod ip addr		69	194	pd1	pd2
+
+
+Direct
+unencapsulated traffic
+highly performant
+
+IP Pool
+calicoctl get ippool
+
+blockSize	26		default CIDR
+ipipMode	Always
+
+ipipMode	Never
