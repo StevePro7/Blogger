@@ -2,6 +2,8 @@ Calico Routing Modes
 25/09/2021
 
 https://www.youtube.com/watch?v=MpbIZ1SmEkU
+https://octetz.com/docs/2020/2020-10-01-calico-routing-modes/
+
 Calico uses BGP to share routes
 Border Gateway Protocol
 
@@ -39,6 +41,7 @@ tunl0
 cali	interface		could be used for network policy enforcement
 
 master		shell pod-1
+kubectl exec -it pod-1 /bin/bash
 worker1	shell pod-2
 
 on pod1 wk1 curl pd2 wk2	
@@ -61,12 +64,97 @@ inner header	has the pod ip addr		69	194	pd1	pd2
 
 Direct
 unencapsulated traffic
-highly performant
+routing packets directly
+highly performant		native network speeds
+src/dst checks must be off
 
 IP Pool
 calicoctl get ippool
 
 blockSize	26		default CIDR
 ipipMode	Always
+vxlandMode	Never
 
+CHANGE
 ipipMode	Never
+vxlandMode	Never
+
+watch route -n
+tun10 changes to ens5		e.g. eth0
+
+master		
+kubectl exec -it pod-1 /bin/bash
+curl 192.168.133.194		pod-2
+
+worker1		
+kubectl exec -it pod-2 /bin/bash
+nc -l -p 80
+
+not work because of source + destination checks
+change in AWS dashboard
+
+TCP [no ipip]
+inner header	has the pod ip addr		69	194	pd1	pd2
+
+
+IP in IP
+cross subnet option
+e.g.
+CHANGE
+ipipMode	CrossSubnet
+vxlandMode	Never
+
+change interface from tun10 to ens5 on worker3 because it is cross subnet
+
+
+VXLAN
+Virtual eXtensible Local Area Network
+
+encapsultation like technology
+tunnelling protocol
+encapsulates L2 ethernet frames into UDP packets
+allows you to create virtual L2 networks
+
+why VXLAN?
+you can't use IP-in-IP because network does not allow BGP route sharing
+
+legacy
+project canal
+CNI plugin Calico to do network policy enforcement
+CNI plugin Flannel to do routing
+
+https://github.com/octetz/calico-routing/blob/master/calico.yaml
+wget https://raw.githubusercontent.com/octetz/calico-routing/master/calico.yaml
+
+calico.yaml
+01.
+change calico_backend from bird to vxlan
+
+  calico_backend: "bird"
+  calico_backend: "vxlan"
+
+02.
+change CALICO_IPV4POOL_IPIP to CALICO_IPV4POOL_VXLAN
+
+03.
+Disable readiness checks for the BIRD daemon
+because BIRD is what facilitates the BGP functionality
+and for VXLAN doing the readiness + liveness check for BIRD will now fail
+e.g.
+livenessProbe:
+  # bird-live
+
+readinessProbe:
+  # bird-live
+
+iface
+vxlan.calico 
+
+caliXYZ iface
+network policy enforcement
+
+ssh -i ~/.ssh/otcetz.pem ubuntu@34.220.38.129
+
+
+VXLAN
+encapsulates L2 frames into UDP packets
