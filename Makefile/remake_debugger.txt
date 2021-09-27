@@ -29,3 +29,84 @@ View | Tools Window | make
 
 click target
 F4	navigate to target code
+
+
+
+27/09/2021
+remake clean
+remake --trace clean
+
+remake --debugger
+quit
+
+
+IMPORTANT
+if you just want to expand all the make variables at runtime
+but not even debug step thru the code then simply do this:
+
+remake --debugger
+target clean expand
+target fv expand
+target st expand
+target ut expand
+quit
+
+
+otherwise debug step thru the code
+
+remake --debugger clean
+
+list	expand the code listing for the target
+step	step next line
+<enter>	step next line
+
+target clean expand
+
+IMPORTANT
+evaluate variables at runtime
+
+print DOCKER_GO_BUILD
+mkdir -p .go-pkg-cache bin /home/stevepro/go/pkg/mod && docker run --rm --net=host --init --init -v /home/stevepro/go-public/felix/../pod2daemon:/go/src/github.com/projectcalico/pod2daemon:rw -v /run/user/1001/keyring/ssh:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent -e GO111MODULE=on -v /home/stevepro/go/pkg/mod:/go/pkg/mod:rw -e LOCAL_USER_ID=1001 -e GOCACHE=/go-cache -e GOARCH=amd64 -e GOPATH=/go -e OS=linux -e GOOS=linux -e GOFLAGS= -v /home/stevepro/go-public/felix:/go/src/github.com/projectcalico/felix:rw -v /home/stevepro/go-public/felix/.go-pkg-cache:/go-cache:rw -w /go/src/github.com/projectcalico/felix calico/go-build:v0.54 make -C bpf-apache clean
+
+
+AWESOME
+write
+
+dumps out the target e.g. clean with all evaluated code to somewhere like
+/tmp/clean.sh
+
+
+
+bashdb
+https://sourceforge.net/projects/bashdb/files/bashdb/5.0-1.1.2
+
+download bashdb-5.0-1.1.2.tar.gz
+
+
+install bashdb
+https://unix.stackexchange.com/questions/440816/how-can-i-install-bashdb-on-ubuntu-18-04
+
+
+tar bashdb-5.0-1.1.2.tar.gz 
+cd bashdb-4.4-1.0.1
+./configure --prefix=/usr  # I think /usr/local is the default
+make 
+# make check # optional
+sudo make install
+
+NB: I just did this option and it worked...??
+./configure 
+
+close terminal and re-open
+bashdb
+
+
+e.g.
+cd <blah>
+bashdb entrypoint.sh
+
+can perform similar commands
+e.g.
+list
+step
+print $MY_VARIABLE
