@@ -40,6 +40,7 @@ Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docke
 Here are <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">instructions</a> how to get Kubernetes running locally as single node cluster on Ubuntu with Minikube:
 <br />
 <!--
+-->
 <pre class="csharp" name="code">
 # Prerequisites
 sudo apt install cpu-checker && sudo kvm-ok
@@ -65,36 +66,15 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
     
 # Verify the Minikube installation
 minikube version
-</pre>
--->
-<br />
-<b>KinD</b><br />
-Here are instructions blah blah TODO KinD:
-<br /><br />
-IMPORTANT<br />
-Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">Cheat Sheet</a> and update ~/.bashrc to alias the kubectl command:
-<pre class="csharp" name="code">
-# Auto complete
-source <(kubectl completion bash)
-echo "source <(kubectl completion bash)" >> ~/.bashrc
-
-# Alias kubectl
-alias k='kubectl'
-complete -F __start_kubectl k
-alias kdr='kubectl --dry-run=client -o yaml'
-</pre>
-<br /><br />
-
-
-<u>03-MiniKube</u><br />
-TODO Single node Kubernetes cluster running on localhost...
-<br /><br />  
-TODO
 minikube start
+minikube dashboard
 </pre>
+<!--
+-->
 <a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
 <br /><br />  
-<u>04-KinD</u><br />
+  
+<b>KinD</b><br />
 Kubernetes in Docker [KinD] allows an approach to run a Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating at once instead of running everything in virtual machine.
 <br /><br />
 Launch Terminal.  Enter the following command to install KinD.  Export the path in ~/.bashrc and reboot:
@@ -149,7 +129,24 @@ Launch browser and enter the URL as per below.  Once prompted enter the service 
 <br /><br />    
 
 
+<b>kubeadm</b><br />
+Here are instructions blah blah TODO kubeadm:
 <br /><br />
-TODO minikube dashboard works on Mac + Linux but have to give full on versions for Windows
+
+
+<br />
+IMPORTANT<br />
+Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">Cheat Sheet</a> and update ~/.bashrc to alias the kubectl command:
+<pre class="csharp" name="code">
+# Auto complete
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+# Alias kubectl
+alias k='kubectl'
+complete -F __start_kubectl k
+alias kdr='kubectl --dry-run=client -o yaml'
+</pre>
+<br /><br />
 
 </span>
