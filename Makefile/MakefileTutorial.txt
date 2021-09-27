@@ -21,3 +21,39 @@ if C_FLAGS not set then use CC_FLAGS otherwise use initial C_FLAGS
 
 gotcha
 # Comment	will appear in replacement
+
+
+Built in functions
+$(SRCS:.c=.o)
+$(addprefix build/,$(OBJS))
+$(if ..) $(or ..) $(and ..)
+$(foreach var, list,text)
+$(value (VARIABLE))
+$(shell ..)
+$(error ..)
+$(warning ..)
+$(info ..)
+
+includes:
+text, filename, conditional, value, shell, control functions
+
+
+
+
+Rules
+%.o: %.c
+	$(CC) -c ($(CFLAGS) -o  $@ $<
+
+
+Recipes
+- define targets
+- first target is executed if none are specified
+- tell make about pre requisites
+- hierarchical structure
+- allow to include optional shell commands to run
+- phony targets
+- tell make what rules to use if any
+
+IMPORTANT
+phony targets has no target output
+i.e. just commands = "phony"
