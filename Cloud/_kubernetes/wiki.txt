@@ -7,41 +7,25 @@
 -->
 <br />
 Let's check it out!  
-<br /><br />  
-  
-<br /><br />  
-  
-<u>03-MiniKube</u><br />
-TODO Single node Kubernetes cluster running on localhost...
-<br /><br />  
-
-
 <br /><br />
-TODO minikube dashboard works on Mac + Linux but have to give full on versions for Windows
-
-<br /><br />
-TODO Introduction + image
-<!--
+  
+<u>Tools</u><br />
+Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed to work with and manage Kubernetes clusters:
+<br />
+<!-- 
 -->
-<br />
-  Let's check it out!
-  <br /><br />
-<u>01-Tools</u><br />
-Here are some commonly used tools that can be installed to work with and manage Kubernetes clusters:
-<br />
-<!--
 <table width="97%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
 <td valign="top">&nbsp;Command-line used to run commands against Kubernetes clusters</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<a href="https://kind.sigs.k8s.io/docs"><b>kind</b></a></td>
-<td valign="top">&nbsp;Runs Kubernetes on your local computer inside Docker containers</td>
-</tr>
-<tr>
 <td valign="top">&nbsp;<a href="https://minikube.sigs.k8s.io/docs"><b>minikube</b></a></td>
 <td valign="top">&nbsp;Runs a single-node Kubernetes cluster on your personal computer </td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kind.sigs.k8s.io/docs"><b>kind</b></a></td>
+<td valign="top">&nbsp;Runs Kubernetes on your local computer inside Docker containers</td>
 </tr>
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm"><b>kubeadm</b></a>
@@ -49,16 +33,30 @@ Here are some commonly used tools that can be installed to work with and manage 
 <td valign="top">&nbsp;Used to create and manage and secure larger Kubernetes clusters</td>
 </tr>
 </table>
--->
-<br />
-<u>02-Installation</u><br />
-  <br /><br />
-  TODO Windows Docker Desktop
-  TODO Mac OS/X Docker Desktop and minikube
-
-<b>Linux</b><br />
-Here are instructions on how to get Kubernetes running locally on Ubuntu with Minikube using 1.14 support:
+<br>
 <!--
+-->
+
+<u>Installation</u><br />
+Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> + <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a>.  Install Kubernetes on Linux accordingly:
+
+  
+  
+  <br /><br />
+Install Kubernetes using Docker Desktop on Windows + Mac OS/X.  Install Kubernetes on Linux using MinikUbe, kind or kubeadm.
+<br /><br />
+TODO blat about Kubernetes installation
+<br /><br />
+<b>Windows</b><br />
+<a href="https://docs.docker.com/docker-for-windows/install">Install</a> Docker Desktop on Windows which will install the Docker Engine, Docker Compose and Kubernetes.
+<br /><br />
+<b>Mac OS/X</b><br />
+<a href="https://docs.docker.com/docker-for-mac/install">Install</a> Docker Desktop on Mac OS/X which will install the Docker Engine, Docker Compose and Kubernetes.
+<br /><br />
+<b>Linux</b><br />
+Here are <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">instructions</a> on how to get Kubernetes running locally on Ubuntu with Minikube using 1.14 support:
+<!--
+-->
 <pre class="csharp" name="code">
 # Prerequisites
 sudo apt install cpu-checker && sudo kvm-ok
@@ -84,9 +82,8 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
     
 # Verify the Minikube installation
 minikube version
-minikube start
-</pre>
-<a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
+
+<!--
 -->
 <br /><br />
 IMPORTANT<br />
@@ -104,6 +101,14 @@ alias kdr='kubectl --dry-run=client -o yaml'
 <br /><br />
 
 
+<u>03-MiniKube</u><br />
+TODO Single node Kubernetes cluster running on localhost...
+<br /><br />  
+TODO
+minikube start
+</pre>
+<a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
+<br /><br />  
 <u>04-KinD</u><br />
 Kubernetes in Docker [KinD] allows an approach to run a Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating at once instead of running everything in virtual machine.
 <br /><br />
@@ -157,4 +162,9 @@ If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address alre
 Launch browser and enter the URL as per below.  Once prompted enter the service token above and click OK.
 <i>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy</i>
 <br /><br />    
+
+
+<br /><br />
+TODO minikube dashboard works on Mac + Linux but have to give full on versions for Windows
+
 </span>
