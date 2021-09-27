@@ -57,3 +57,19 @@ Recipes
 IMPORTANT
 phony targets has no target output
 i.e. just commands = "phony"
+
+
+Automatic variables
+
+$@	current target
+$<	first pre-requisitie
+$^	all pre-requisities
+$?	pre-requisities that have changed
+$|	order only pre-requisities
+
+
+Automatic dependency
+-MT	name of target
+-MMD	list user header files
+-MP	add phony targets
+-MF	name of the file
