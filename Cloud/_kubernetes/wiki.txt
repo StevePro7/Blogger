@@ -40,7 +40,6 @@ Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docke
 Here are <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">instructions</a> how to get Kubernetes running locally as single node cluster on Ubuntu with Minikube:
 <br />
 <!--
--->
 <pre class="csharp" name="code">
 # Prerequisites
 sudo apt install cpu-checker && sudo kvm-ok
@@ -69,18 +68,18 @@ minikube version
 minikube start
 minikube dashboard
 </pre>
-<!--
 -->
-<a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
-<br /><br />  
   
+<!--
+<a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
+-->
+<br />  
 <b>KinD</b><br />
 Kubernetes in Docker [KinD] allows an approach to run a Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating at once instead of running everything in virtual machine.
-<br /><br />
-Launch Terminal.  Enter the following command to install KinD.  Export the path in ~/.bashrc and reboot:
 <br />
 <!--
-<table width="96%" border="1">
+-->
+<table width="99%" border="1">
 <tr>
 <td valign="top">
 <pre class="csharp" name="code">
@@ -102,13 +101,13 @@ Launch Terminal.  Enter the following command to install KinD.  Export the path 
 </td>
 </tr>
 </table>
+<!--
 -->
-
-<br /><br />
-<u>04b-KinD Dashboard</u><br />
+<br />
 Launch Terminal.  Enter the following commands to initiate and configure the KinD dashboard in the browser.
 <br />
 <!--
+-->
 <pre class="csharp" name="code">
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.1.0/aio/deploy/recommended.yaml
 kubectl get pod -n kubernetes-dashboard
@@ -119,10 +118,11 @@ token=$(kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kuber
 echo $token
 kubectl proxy
 </pre>
+<!--  
 -->
 <br />
 IMPORTANT<br />
-If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address already in use</i> then enter command: <b>sudo fuser -k 8001/tcp</b>
+If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address already in use</i> then enter command: <i>sudo fuser -k 8001/tcp</i>
 <br /><br />
 Launch browser and enter the URL as per below.  Once prompted enter the service token above and click OK.
 <i>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy</i>
