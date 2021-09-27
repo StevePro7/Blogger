@@ -1,0 +1,25 @@
+struct interface
+27/09/2021
+
+I would like a way to explicitly know when a struct implements an interface in GoLang
+[or not]
+
+but there doesn't seem to be a compile time way to know
+only runtime
+
+e.g.
+https://stackoverflow.com/questions/27803654/explanation-of-checking-if-value-implements-interface
+
+
+You can also take Alpha's solution:
+
+val := MyType("hello")
+var i interface{} = val
+v, ok := i.(Somether)
+... and reduce it further:
+
+val := MyType("hello")
+v, ok := interface{}(val).(Somether)
+
+
+https://stackoverflow.com/questions/17994519/golang-interface-compliance-compile-type-check

@@ -7,3 +7,12 @@ kubernetes shell into pod
 https://blog.macstadium.com/blog/how-to-k8s-exec-into-a-running-kubernetes-pod
 
 k exec -it attacker-app-67cf4cbcd5-phhqg -- /bin/bash
+
+
+02.
+List all Container images in all namespaces
+
+kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |\
+tr -s '[[:space:]]' '\n' |\
+sort |\
+uniq -c
