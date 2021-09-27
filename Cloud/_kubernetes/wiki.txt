@@ -8,12 +8,10 @@
 <br />
 Let's check it out!  
 <br /><br />
-  
 <u>Tools</u><br />
-Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed to work with and manage Kubernetes clusters:
+Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed and to work with and manage Kubernetes clusters:
 <br />
-<!-- 
--->
+<!--
 <table width="97%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
@@ -33,17 +31,15 @@ Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">too
 <td valign="top">&nbsp;Used to create and manage and secure larger Kubernetes clusters</td>
 </tr>
 </table>
-<br>
-<!--
 -->
-
+<br>
 <u>Installation</u><br />
-Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> + <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a>.  Install Kubernetes on Linux accordingly.
+Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a>.  Install Kubernetes on Linux accordingly.
 <br /><br />
 <b>Minikube</b><br />
 Here are <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">instructions</a> how to get Kubernetes running locally as single node cluster on Ubuntu with Minikube:
+<br />
 <!--
--->
 <pre class="csharp" name="code">
 # Prerequisites
 sudo apt install cpu-checker && sudo kvm-ok
@@ -69,9 +65,9 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
     
 # Verify the Minikube installation
 minikube version
-
-<!--
+</pre>
 -->
+<br />
 <b>KinD</b><br />
 Here are instructions blah blah TODO KinD:
 <br /><br />
