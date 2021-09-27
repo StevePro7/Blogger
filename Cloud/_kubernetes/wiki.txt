@@ -37,7 +37,7 @@ Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">too
 Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a>.  Install Kubernetes on Linux accordingly.
 <br /><br />
 <b>Minikube</b><br />
-Here are <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">instructions</a> how to get Kubernetes running locally as single node cluster on Ubuntu with Minikube:
+Here are instructions how to get Kubernetes running locally as single node cluster on Ubuntu with  <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">Minikube</a>:
 <br />
 <!--
 <pre class="csharp" name="code">
@@ -75,7 +75,7 @@ minikube dashboard
 -->
 <br />  
 <b>KinD</b><br />
-Kubernetes in Docker [KinD] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machine.
+Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machine.
 <br />
 <!--
 -->
