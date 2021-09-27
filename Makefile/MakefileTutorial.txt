@@ -1,0 +1,23 @@
+Makefiles but in English
+27/09/2021
+
+https://www.youtube.com/watch?v=FfG-QqRK4cY
+
+
+Assignment Operators
+
+verbatim assignment			SRCS = main.c		
+simple expression			SRCS := $(wildcard *.c)
+shell output				SRCS != find . -name '*.c'
+simple expression [more explicit	SRCS := $(shell find . -name '*.c')
+append to				CC_FLAGS += -Wextra
+conditional operator			C_FLAGS ?= $(CC_FLAGS)
+simple expression [gotcha!]		FOO := $(BAR)		# Comment
+
+
+Notes
+conditional operator
+if C_FLAGS not set then use CC_FLAGS otherwise use initial C_FLAGS
+
+gotcha
+# Comment	will appear in replacement
