@@ -1,0 +1,22 @@
+Build.sh
+30/09/2021
+
+Reference
+https://stackoverflow.com/questions/2841593/bash-script-bad-interpreter
+
+
+this evening I had all sorts of nonsense setting up on Linux
+build.sh
+
+
+Issue:
+the org build.sh script was copy n' paste build.bat from Windows!
+
+
+Answer
+delete org build.sh
+create new build.sh
+dump all the content into the new file
+
+chmod +x build.sh
+now wired up via VS Code

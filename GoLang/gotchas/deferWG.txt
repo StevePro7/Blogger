@@ -1,0 +1,38 @@
+30/09/2021
+what's wrong with this?
+
+wg := sync.WaitGroup{}
+var testErr error
+for i := 0; i < 4; i++ {
+	wg.Add(1)
+	go func() {
+		defer GinkgoRecover()
+		err := codeUnderTest() // nil pointer deep in this logic somewhere
+		if err != nil {
+			testErr = err
+		}
+		wg.Done()
+	}()
+}
+wg.Wait()
+Expect(testErr).NotTo(HaveOccurred())
+
+
+ANSWER
+should use
+defer wg.Done()
+
+
+Also, I did some concurrency examples this evening and also had
+defer wg.Done()
+e.g.
+https://blog.min.io/debugging-go-routine-leaks
+
+go func() {
+			defer wg.Done()
+			_, err = getReq("/sum")
+			if err != nil {
+				log.Fatal(err)
+			}
+
+		}()
