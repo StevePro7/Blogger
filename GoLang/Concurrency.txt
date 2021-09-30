@@ -1,0 +1,30 @@
+Concurrency
+30/09/2021
+
+https://golang.org/doc/effective_go#concurrency
+
+Communicating sequential processes(CSP) for Go developer in a nutshell.
+https://levelup.gitconnected.com/communicating-sequential-processes-csp-for-go-developer-in-a-nutshell-866795eb879d
+
+Chapter 3. Concurrency in Go
+https://livebook.manning.com/book/go-in-practice/chapter-3/63
+
+
+Debugging Go Routine leaks
+https://blog.min.io/debugging-go-routine-leaks
+
+
+Synchronizing states using Mutex vs Channel in Go
+https://medium.com/mindorks/https-medium-com-yashishdua-synchronizing-states-using-mutex-vs-channel-in-go-25e646c83567#:~:text=Go%20channels%20are%20appealing%20because,afraid%20to%20use%20a%20sync.
+
+channel
+are appealing because they provide built-in thread safety and 
+encourage single-threaded access to shared critical resources
+
+mutex
+invaluable resource when synchronizing state across multiple goroutines
+
+summary
+if sync.Mutex locking rules getting too complex then maybe using channels might be simpler
+
+https://github.com/MindorksOpenSource/Go-Log
