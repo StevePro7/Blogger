@@ -15,3 +15,28 @@ YouTube
 https://www.youtube.com/watch?v=Z2x7YrDWrA0
 https://www.youtube.com/watch?v=t4MBGpEFHyk
 https://www.youtube.com/watch?v=R-j1phppdzI
+
+
+
+
+01.
+Unit testing in Go with Ginkgo: Part 1
+https://medium.com/boldly-going/unit-testing-in-go-with-ginkgo-part-1-ce6ff06eb17f
+
+ginkgo bootstrap
+ginkgo generate
+
+import (
+. go get github.com/onsi/ginkgo/ginkgo
+. go get github.com/onsi/gomega
+)
+
+ginkgo
+
+
+Describe	blocks define the thing you're testing
+Context		blocks define the "when" of th test
+		when invalid request is received, when service is unavailable
+It		blocks run the code to test and state what you expect to happen
+BeforeEach 	blocks run before each unit Test	[It blocks]
+AfterEach 	blocks run after  each unit test
