@@ -1,0 +1,25 @@
+Examples
+02/10/2021
+
+Reference
+https://github.com/kubernetes-up-and-running/examples
+
+Chp5
+pods
+complaining about resources + limits
+spec:
+  containers:
+  - name: kuard
+    image: gcr.io/kuar-demo/kuard-amd64:1
+    resources:
+      requests:
+        memory: "32Mi"
+        cpu: "200m"
+      limits:
+        memory: "64Mi"
+        cpu: "250m"
+
+
+Chp8
+replicasets
+https://kubernetes.io/docs/concepts/workloads/controllers/replicaset
