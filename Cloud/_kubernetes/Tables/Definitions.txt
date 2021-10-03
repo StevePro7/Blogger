@@ -1,0 +1,49 @@
+Namespace
+https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces
+Scope cluster resources and a way to isolate Kubernetes objects
+
+Workload
+https://kubernetes.io/docs/concepts/workloads
+An [containerized] application running on Kubernetes
+
+Container
+https://kubernetes.io/docs/concepts/containers
+Decouple applications [workloads] from the underlying host infrastructure
+
+Pod
+https://kubernetes.io/docs/concepts/workloads/pods
+Smallest deployable unit you can create and manage in Kubernetes
+
+
+Node
+https://kubernetes.io/docs/concepts/architecture/nodes
+Kubernetes runs workloads by placing containers in Pods to run on nodes
+//Virtual or physical machine in the cluster that runs workload by placing containers in Pod
+
+
+Deployment
+https://kubernetes.io/docs/concepts/workloads/controllers/deployment
+Provides declarative updates fora Pods and ReplicaSets
+
+Service
+https://kubernetes.io/docs/concepts/services-networking/service
+An absract way to expose an application running on a set of Pods as a network service
+
+
+Some other common terms to be aware of include 
+Replicasets, StatefulSets, DaemonSets, Volumes, ConfigMaps and Secrets
+Replicaset
+https://kubernetes.io/docs/concepts/workloads/controllers/replicaset
+Purpose is to maintain a stable set of Pods running at any given time
+
+StatefulSet
+https://kubernetes.io/docs/concepts/workloads/controllers/statefulset
+The workload API object used to manage stateful applications
+
+DaemonSet
+https://kubernetes.io/docs/concepts/workloads/controllers/daemonset
+Ensures that all (or some) nodes run a copy of a Pod
+
+https://kubernetes.io/docs/concepts/storage/volumes
+https://kubernetes.io/docs/concepts/configuration/configmap
+https://kubernetes.io/docs/concepts/configuration/secret
