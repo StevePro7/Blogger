@@ -1,0 +1,20 @@
+<table width="97%" border="1">
+<tr>
+<td valign="top">
+<pre class="csharp" name="code">
+&nbsp;# Auto complete
+&nbsp;source <(kubectl completion bash)
+&nbsp;echo "source <(kubectl completion bash)" >> ~/.bashrc
+&nbsp;
+</pre>
+</td>
+<td valign="top">
+<pre class="csharp" name="code">
+&nbsp;# Alias kubectl
+&nbsp;alias k='kubectl'
+&nbsp;complete -F __start_kubectl k
+&nbsp;alias kdr='kubectl --dry-run=client -o yaml'
+</pre>
+</td>
+</tr>
+</table>
