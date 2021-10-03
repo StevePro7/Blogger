@@ -1,0 +1,50 @@
+Sega
+03/10/2021
+
+
+Follow previous entry
+http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html
+
+
+but issues most likely because the new linux laptop is amd64
+
+sudo dpkg -i Kega-fusion_3.63-2_i386.deb
+
+ISSUE
+sudo apt --fix-broken install
+
+
+Install Emulicious
+
+Error
+Can't load library: /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt_xawt.so
+
+https://exerror.com/exception-java-lang-unsatisfiedlinkerror-cant-load-library-usr-lib-jvm-java-11-openjdk-amd64-lib-libawt_xawt-so/
+
+
+
+GENS stevepro@Alienware:~/Sega/Install$ sudo dpkg -i Gens_2.16.7_i386.deb 
+Selecting previously unselected package gens:i386.
+(Reading database ... 277366 files and directories currently installed.)
+Preparing to unpack Gens_2.16.7_i386.deb ...
+Unpacking gens:i386 (2.16.7) ...
+dpkg: dependency problems prevent configuration of gens:i386:
+ gens:i386 depends on libpng12-0.
+ gens:i386 depends on libsdl1.2debian (>= 1.1.3).
+
+dpkg: error processing package gens:i386 (--install):
+ dependency problems - leaving unconfigured
+Processing triggers for gnome-menus (3.36.0-1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.24-1ubuntu3) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Errors were encountered while processing:
+ gens:i386
+
+
+sudo apt install libpng12-0
+sudo apt install libsdl1.2debian
+
+
+Emulicious
+
+sudo apt install openjdk-11-jdk
