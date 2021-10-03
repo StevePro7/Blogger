@@ -1,16 +1,44 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
 <u>Planes</u><br />
-Networking back in the day would have rules + policies about how to route network packets.  These policies would make up the network <b>control plane</b>.  The control plane is concerted with establishing network policy.  Meanwhile, the <b>data plane</b> is everything else in the network architecture that enforces all network policies.
+<a href="https://konghq.com/learning-center/cloud-connectivity/control-plane-vs-data-plane">Networking</a> back in the day would have rules + policies about how to route network packets.  These policies would make up the network <b>control plane</b>.  The control plane is concerted with establishing network policy.  Meanwhile, the <b>data plane</b> is everything else in the network architecture that enforces all network policies.
 <br /><br />
-<u>Control Plane</u><br />
-In Kubernetes, the <b>control plane</b> is the set of components that "make global decisions about the cluster" e.g. scheduling as well as detecting and responding to cluster events e.g. auto scaling due to traffic spikes.
-<br />
-  
+<b>Control Plane</b><br />
+In Kubernetes, the control plane is the set of components that "make global decisions about the cluster" e.g. scheduling as well as detecting and responding to cluster events e.g. auto scaling pods due to traffic spikes.
+<br /> 
+<!--
 <a href="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s1059/PlaneControl.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s600/PlaneControl.png"/></a>
+-->
+<br />
+Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on the master node to keep the cluster in the "<a href="https://yannalbou.medium.com/kubernetes-desired-state-4c5c4e873743">desired state</a>":
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Store (etcd)</a></td>
+<td valign="top">&nbsp;Key-value backing store for all Kubernetes objects and data</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kube-apiserver</a></td>
+<td valign="top">&nbsp;Exposes the Kubernetes API as the front end for the control plane</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;controller-manager</a></td>
+<td valign="top">&nbsp;Runs controller processes e.g. Nodes, Jobs, Endpoints + Services</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kube-scheduler </a></td>
+<td valign="top">&nbsp;Watches for newly created pods and assigns nodes to run them on</td>
+</tr>
+</table>
+<br />
+
+  <br /><br />
+<u>Data Plane</u><br />
+<a href="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s600/PlaneData.png"/></a>
   
   <br />
-  
+  <br />
   <u>Objects</u><br />
   
 <br /><br />
