@@ -61,3 +61,60 @@ sudo apt install libpng12-0
 sudo apt install libsdl1.2debian
 
 
+GENS
+https://forums.sonicretro.org/index.php?threads/package-problems-on-ubuntu-11-10.26538
+
+sudo apt install libsdl1.2debian:i386
+sudo apt --fix-broken install
+
+//sudo apt install libpng12-0:i386
+//sudo apt --fix-broken install
+
+
+https://www.linuxuprising.com/2018/05/fix-libpng12-0-missing-in-ubuntu-1804.html
+sudo add-apt-repository ppa:linuxuprising/libpng12
+sudo apt update
+sudo apt install libpng12-0
+
+
+
+still not work for Gens 
+https://www.linuxuprising.com/2018/05/fix-libpng12-0-missing-in-ubuntu-1804.html
+
+sudo apt-get install libpng12-0 libpng12-0:i386
+sudo apt-get install libpng12-0 libpng12-0:i386
+
+
+Unable to find package
+
+
+sudo add-apt repository main
+sudo add-apt repository restricted
+sudo add-apt repository universe
+sudo add-apt repository multiverse
+
+
+Summary
+could not
+
+
+https://segaretro.org/Gens/GS
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install <this package>.deb
+
+
+https://retrocdn.net/images/7/75/Gens_2.16.7_i386.deb
+
+
+YAH! this worked
+Download
+https://retrocdn.net/images/e/e9/Gens_2.16.8-r7orig_amd64.deb
+
+cp Gens_2.16.8-r7orig_amd64.deb ~/Sega/Install
+cd ~/Sega/Install
+
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install Gens_2.16.8-r7orig_amd64.deb
+
