@@ -1,39 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
   
 <u>Commands</u><br />
-Here is list of useful commands. Foreach command you can add the --help flag to see more options to pass:
-<br />
-<table width="99%" border="1">
-<tr>
-<td valign="top">&nbsp;kubectl get all -A</td>
-<td valign="top">&nbsp;Get all resources across all namespaces</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;kubectl describe pod <i>my-pod</i></td>
-<td valign="top">&nbsp;Get the full YAML declaration for <i>my-pod</i> </td>
-</tr>
-<tr>
-<td valign="top">&nbsp;kubectl get pod <i>my-pod</i> -o yaml</td>
-<td valign="top">&nbsp;Get the expanded declaration for <i>my-pod</i></td>
-</tr>
-<tr>
-<td valign="top">&nbsp;kubectl logs -f <i>my-pod</i> -o yaml</td>
-<td valign="top">&nbsp;Get logs for <i>my-pod</i> + tail all its updates</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;kubectl get nodes -o wide</td>
-<td valign="top">&nbsp;List all full details of nodes in namepsace</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;kubectl get deployments -A</td>
-<td valign="top">&nbsp;List all deployments from all namespaces</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;kubectl get services -A</td>
-<td valign="top">&nbsp;List all services across all the namespaces</td>
-</tr>
-</table>
-<br />
+  
+<br /><br />
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
@@ -191,11 +160,8 @@ Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/re
 
 The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtain Kubernetes config + context info:
 <br />
+<!--
 <table border="1" width="99%">
-<tr>
-<td valign="top">&nbsp;<b>Command</b></td>
-<td valign="top">&nbsp;<b>Description</b></td>
-</tr>
 <tr>
 <td valign="top">&nbsp;kubectl config view</td>
 <td valign="top">&nbsp;Show Kubernetes cluster configuration</td>
@@ -214,11 +180,13 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 </tr>
 </table>
 <br />
+-->
 <br />
 
 <u>Definitions</u><br />
 Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
 <br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces">Namespace</a></td>
@@ -250,6 +218,7 @@ Here is some basic terminology when working with containerized applications runn
 </tr>
 </table>
 <br />
+-->
 <br />
   
 <u>Planes</u><br />
@@ -315,15 +284,53 @@ Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/comp
 IMPORTANT<br />
 <table width="99%" border="1">
 <tr>
-<td valign="top">&nbsp;<b>Command</b></td>
-<td valign="top">&nbsp;<b>Description</b></td>
-</tr>
-<tr>
 <td valign="top">&nbsp;kubectl cluster-info</td>
 <td valign="top">&nbsp;Kubernetes control plane is running at https://192.168.49.2:8443</td>
 </tr>
 <tr>
 <td valign="top">&nbsp;kubectl cluster-info dump</td>
 <td valign="top">&nbsp;Full description of all Kubernetes components running in the cluster</td>
-</tr></table>
+</tr>
+</table>
+<br />
+<br />  
+  
+<u>Commands</u><br />
+Here is list of useful commands. Foreach command you can add the --help flag to see more options to pass:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;kubectl get all -A</td>
+<td valign="top">&nbsp;Get all resources across all namespaces</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl describe pod <i>my-pod</i></td>
+<td valign="top">&nbsp;Get the full YAML declaration for <i>my-pod</i> </td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get pod <i>my-pod</i> -o yaml</td>
+<td valign="top">&nbsp;Get the expanded declaration for <i>my-pod</i></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl logs -f <i>my-pod</i> -o yaml</td>
+<td valign="top">&nbsp;Get logs for <i>my-pod</i> + tail all its updates</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get nodes -o wide</td>
+<td valign="top">&nbsp;List all full details of nodes in namepsace</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get deployments -A</td>
+<td valign="top">&nbsp;List all deployments from all namespaces</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get services -A</td>
+<td valign="top">&nbsp;List all services across all the namespaces</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+  
 </span>
