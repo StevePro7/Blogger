@@ -8,22 +8,37 @@ http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html
 
 but issues most likely because the new linux laptop is amd64
 
+01. Fusion
 sudo dpkg -i Kega-fusion_3.63-2_i386.deb
 
 ISSUE
 sudo apt --fix-broken install
 
 
+02.
 Install Emulicious
 
 Error
 Can't load library: /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt_xawt.so
 
+Reference
+https://exerror.com/exception-java-lang-unsatisfiedlinkerror-cant-load-library-usr-lib-jvm-java-11-openjdk-amd64-lib-libawt_xawt-so
+
+
+Emulicious
+Reference
 https://exerror.com/exception-java-lang-unsatisfiedlinkerror-cant-load-library-usr-lib-jvm-java-11-openjdk-amd64-lib-libawt_xawt-so/
 
+sudo apt install openjdk-11-jdk
+ERROR
+sudo apt --fix-broken install
 
 
-GENS stevepro@Alienware:~/Sega/Install$ sudo dpkg -i Gens_2.16.7_i386.deb 
+ldd /usr/lib/jvm/java-11-openjdk-amd64/lib/libawt_xawt.so
+
+
+02.
+sudo dpkg -i Gens_2.16.7_i386.deb 
 Selecting previously unselected package gens:i386.
 (Reading database ... 277366 files and directories currently installed.)
 Preparing to unpack Gens_2.16.7_i386.deb ...
@@ -41,10 +56,8 @@ Errors were encountered while processing:
  gens:i386
 
 
+DOESN'T work
 sudo apt install libpng12-0
 sudo apt install libsdl1.2debian
 
 
-Emulicious
-
-sudo apt install openjdk-11-jdk
