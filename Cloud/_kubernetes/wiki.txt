@@ -2,7 +2,38 @@
 
 <u>Definitions</u><br />
 Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
-<br /><br />
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces">Namespace</a></td>
+<td valign="top">&nbsp;Scope cluster resources and a way to isolate Kubernetes objects</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads">Workload</a></td>
+<td valign="top">&nbsp;Containerized application running within the Kubernetes cluster</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/containers">Container</a></td>
+<td valign="top">&nbsp;Decouples applications from the underlying host infrastructure</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads/pods">Pod</a></td>
+<td valign="top">&nbsp;Smallest deployable unit as created and managed in Kubernetes</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/architecture/nodes">Node</a></td>
+<td valign="top">&nbsp;Workloads are placed in Containers on Pods to be run on Nodes</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment">Deployment</a></td>
+<td valign="top">&nbsp;Provides a declarative way to update all Pods and ReplicaSets</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/services-networking/service">Service</a></td>
+<td valign="top">&nbsp;Absract way to expose an application running on a set of Pods</td>
+</tr>
+</table>
+<br />
   
 <u>Objects</u><br />
   
