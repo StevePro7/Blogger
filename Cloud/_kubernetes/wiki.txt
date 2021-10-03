@@ -34,6 +34,15 @@ Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/c
 <br />
 
 <b>Data Plane</b><br />
+In Kubernetes, the data plane is the set of worker nodes with their pods and containers that enforce all the global decisions made about the cluster from the master node e.g. auto scaling pods due to traffic spikes.
+    <br />  <br />
+  
+In Kubernetes, the data plane is the set of worker nodes with their pods and containers that enforce the global decisions made about the cluster by the master node such scheduling new pods to start up when a deployments replicas field is unsatisfied.
+    <br />  <br />
+  "make global decisions about the cluster" e.g. scheduling as well as detecting and responding to cluster events e.g. auto scaling pods due to traffic spikes.
+  <br />
+<a href="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s600/PlaneData.png"/></a>
+<br />
 Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on each worker node  maintaining pods and runtime environment:
 <br />
 <table width="99%" border="1">
@@ -50,11 +59,8 @@ Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/comp
 <td valign="top">&nbsp;Network proxy that maintains all network rules on the worker nodes</td>
 </tr>
 </table>
-<br />
 
-<br />
 
-<a href="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s600/PlaneData.png"/></a>
   
   <br />
   <br />
