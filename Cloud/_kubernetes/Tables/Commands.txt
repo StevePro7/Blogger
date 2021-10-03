@@ -1,0 +1,34 @@
+<u>Commands</u><br />
+Here is list of useful commands. Foreach command you can add the --help flag to see more options to pass:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;kubectl get all -A</td>
+<td valign="top">&nbsp;Get all resources across all namespaces</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl describe pod <i>my-pod</i></td>
+<td valign="top">&nbsp;Get the full YAML declaration for <i>my-pod</i> </td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get pod <i>my-pod</i> -o yaml</td>
+<td valign="top">&nbsp;Get the expanded declaration for <i>my-pod</i></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl logs -f <i>my-pod</i> -o yaml</td>
+<td valign="top">&nbsp;Get logs for <i>my-pod</i> + tail all its updates</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get nodes -o wide</td>
+<td valign="top">&nbsp;List all full details of nodes in namepsace</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get deployments -A</td>
+<td valign="top">&nbsp;List all deployments from all namespaces</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl get services -A</td>
+<td valign="top">&nbsp;List all services across all the namespaces</td>
+</tr>
+</table>
+<br />

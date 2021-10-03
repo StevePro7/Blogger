@@ -1,43 +1,39 @@
 <span style="font-family:verdana;font-size:85%;">
-
-<u>Definitions</u><br />
-Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
+  
+<u>Commands</u><br />
+Here is list of useful commands. Foreach command you can add the --help flag to see more options to pass:
 <br />
 <table width="99%" border="1">
 <tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces">Namespace</a></td>
-<td valign="top">&nbsp;Scope cluster resources and a way to isolate Kubernetes objects</td>
+<td valign="top">&nbsp;kubectl get all -A</td>
+<td valign="top">&nbsp;Get all resources across all namespaces</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads">Workload</a></td>
-<td valign="top">&nbsp;Containerized application running within the Kubernetes cluster</td>
+<td valign="top">&nbsp;kubectl describe pod <i>my-pod</i></td>
+<td valign="top">&nbsp;Get the full YAML declaration for <i>my-pod</i> </td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/containers">Container</a></td>
-<td valign="top">&nbsp;Decouples applications from the underlying host infrastructure</td>
+<td valign="top">&nbsp;kubectl get pod <i>my-pod</i> -o yaml</td>
+<td valign="top">&nbsp;Get the expanded declaration for <i>my-pod</i></td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads/pods">Pod</a></td>
-<td valign="top">&nbsp;Smallest deployable unit as created and managed in Kubernetes</td>
+<td valign="top">&nbsp;kubectl logs -f <i>my-pod</i> -o yaml</td>
+<td valign="top">&nbsp;Get logs for <i>my-pod</i> + tail all its updates</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/architecture/nodes">Node</a></td>
-<td valign="top">&nbsp;Workloads are placed in Containers on Pods to be run on Nodes</td>
+<td valign="top">&nbsp;kubectl get nodes -o wide</td>
+<td valign="top">&nbsp;List all full details of nodes in namepsace</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment">Deployment</a></td>
-<td valign="top">&nbsp;Provides a declarative way to update all Pods and ReplicaSets</td>
+<td valign="top">&nbsp;kubectl get deployments -A</td>
+<td valign="top">&nbsp;List all deployments from all namespaces</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/services-networking/service">Service</a></td>
-<td valign="top">&nbsp;Absract way to expose an application running on a set of Pods</td>
+<td valign="top">&nbsp;kubectl get services -A</td>
+<td valign="top">&nbsp;List all services across all the namespaces</td>
 </tr>
 </table>
 <br />
-  
-<u>Objects</u><br />
-  
-<br /><br />
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
@@ -221,8 +217,40 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 <br />
 
 <u>Definitions</u><br />
-TODO  
-<br /><br />
+Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces">Namespace</a></td>
+<td valign="top">&nbsp;Scope cluster resources and a way to isolate Kubernetes objects</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads">Workload</a></td>
+<td valign="top">&nbsp;Containerized application running within the Kubernetes cluster</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/containers">Container</a></td>
+<td valign="top">&nbsp;Decouples applications from the underlying host infrastructure</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads/pods">Pod</a></td>
+<td valign="top">&nbsp;Smallest deployable unit as created and managed in Kubernetes</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/architecture/nodes">Node</a></td>
+<td valign="top">&nbsp;Workloads are placed in Containers on Pods to be run on Nodes</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment">Deployment</a></td>
+<td valign="top">&nbsp;Provides a declarative way to update all Pods and ReplicaSets</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/services-networking/service">Service</a></td>
+<td valign="top">&nbsp;Absract way to expose an application running on a set of Pods</td>
+</tr>
+</table>
+<br />
+<br />
   
 <u>Planes</u><br />
 <a href="https://konghq.com/learning-center/cloud-connectivity/control-plane-vs-data-plane">Networking</a> back in the day would have rules + policies about how to route network packets.  These policies would make up the network <b>control plane</b>.  The control plane is concerted with establishing network policy.  Meanwhile, the <b>data plane</b> is everything else in the network architecture that enforces all network policies.
