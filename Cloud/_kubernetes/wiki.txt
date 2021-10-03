@@ -1,5 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<u>Definitions</u><br />
+Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
+<br /><br />
+  
 <u>Objects</u><br />
   
 <br /><br />
@@ -185,6 +189,10 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 <br />
 <br />
 
+<u>Definitions</u><br />
+TODO  
+<br /><br />
+  
 <u>Planes</u><br />
 <a href="https://konghq.com/learning-center/cloud-connectivity/control-plane-vs-data-plane">Networking</a> back in the day would have rules + policies about how to route network packets.  These policies would make up the network <b>control plane</b>.  The control plane is concerted with establishing network policy.  Meanwhile, the <b>data plane</b> is everything else in the network architecture that enforces all network policies.
 <br /><br />
@@ -244,5 +252,19 @@ Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/comp
 </table>
 -->
 <br />
-  
+<br />
+IMPORTANT<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Command</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl cluster-info</td>
+<td valign="top">&nbsp;Kubernetes control plane is running at https://192.168.49.2:8443</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl cluster-info dump</td>
+<td valign="top">&nbsp;Full description of all Kubernetes components running in the cluster</td>
+</tr></table>
 </span>
