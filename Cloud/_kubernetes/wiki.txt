@@ -1,9 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
-The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtain Kubernetes config + context info:
-  <br />
-  <br />
+
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
@@ -139,7 +137,7 @@ Here are instructions blah blah TODO kubeadm:
 IMPORTANT<br />
 Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">Cheat Sheet</a> and update ~/.bashrc to alias the kubectl command:
 <br />
-<table width="97%" border="1">
+<table width="99%" border="1">
 <tr>
 <td valign="top">
 <pre class="csharp" name="code">
@@ -159,7 +157,31 @@ Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/re
 </td>
 </tr>
 </table>
-
 <br />
 
+The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtain Kubernetes config + context info:
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">&nbsp;<b>Command</b></td>
+<td valign="top">&nbsp;<b>Description</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl config view</td>
+<td valign="top">&nbsp;Show Kubernetes cluster configuration</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl config get-contexts</td>
+<td valign="top">&nbsp;Show all Kubernetes cluster contexts</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl config current-context</td>
+<td valign="top">&nbsp;Show current Kubernetes cluster context</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;kubectl config use-context <i>my-cluster-name</i></td>
+<td valign="top">&nbsp;Set default context to <i>my-cluster-name</i></td>
+</tr>
+</table>
+<br />
 </span>
