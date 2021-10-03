@@ -19,15 +19,15 @@ Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/c
 <td valign="top">&nbsp;Key-value backing store for all Kubernetes objects and data</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;kube-apiserver</td>
+<td valign="top">&nbsp;API Server</td>
 <td valign="top">&nbsp;Exposes the Kubernetes API as the front end for the control plane</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;controller-manager</td>
+<td valign="top">&nbsp;Controller-Manager</td>
 <td valign="top">&nbsp;Runs controller processes e.g. Nodes, Jobs, Endpoints + Services</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;kube-scheduler </td>
+<td valign="top">&nbsp;Scheduler</td>
 <td valign="top">&nbsp;Watches for newly created pods and assigns nodes to run them on</td>
 </tr>
 </table>
@@ -36,8 +36,22 @@ Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/c
 <b>Data Plane</b><br />
 Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on each worker node  maintaining pods and runtime environment:
 <br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Kubelet</td>
+<td valign="top">&nbsp;Worker agent that makes sure containers are running inside Pods</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Container Runtime</td>
+<td valign="top">&nbsp;Software that is responsible for running containers on worker nodes</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Kube Proxy</td>
+<td valign="top">&nbsp;Network proxy that maintains all network rules on the worker nodes</td>
+</tr>
+</table>
 <br />
-node to keep the cluster in the "<a href="https://yannalbou.medium.com/kubernetes-desired-state-4c5c4e873743">desired state</a>":
+
 <br />
 
 <a href="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s600/PlaneData.png"/></a>
