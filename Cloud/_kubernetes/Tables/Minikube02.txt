@@ -1,22 +1,33 @@
-kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+Create a Deployment
+minikube start
+minikube dashboard
 
+kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
 kubectl get deployments
 
 kubectl get pods
-
 kubectl get events
 
-kubectl config view
 
+Create a Service
 kubectl expose deployment hello-node --type=LoadBalancer --port=8080
-
 kubectl get services
-
 minikube service hello-node
 
 
+Exec into Pod and tail logs etc
+e.g.
+hello-node-7567d9fdc9-t7f8x
 
-kubectl get pods
+kubectl attach hello-node-7567d9fdc9-t7f8x -i
+kubectl exec hello-node-7567d9fdc9-t7f8x -- ls /
+kubectl exec --it hello-node-7567d9fdc9-t7f8x -- /bin/sh
+kubectl exec --stdin --tty hello-node-7567d9fdc9-t7f8x -- /bin/sh
+
+kubectl logs -f hello-node-7567d9fdc9-t7f8x
+
+//kubectl get pod hello-node-7567d9fdc9-t7f8x -o jsonpath="{.spec.containers[*].image}"
+//kubectl exec hello-node-7567d9fdc9-t7f8x -c my-container -- ls /
 
 
 
