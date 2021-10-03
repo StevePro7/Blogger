@@ -32,3 +32,6 @@ Here is list of useful commands. Foreach command you can add the --help flag to 
 </tr>
 </table>
 <br />
+
+
+kubectl get pod <i>my-pod</i> -o jsonpath="{.spec.containers[*].image}"

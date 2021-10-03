@@ -1,0 +1,103 @@
+kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+
+kubectl get deployments
+
+kubectl get pods
+
+kubectl get events
+
+kubectl config view
+
+kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+
+kubectl get services
+
+minikube service hello-node
+
+
+
+kubectl get pods
+
+
+
+hello-node-7567d9fdc9-t7f8x
+
+kubectl attach hello-node-7567d9fdc9-t7f8x -i
+
+kubectl exec hello-node-7567d9fdc9-t7f8x -- ls /
+kubectl exec --stdin --tty hello-node-7567d9fdc9-t7f8x -- /bin/sh
+
+
+kubectl get pod hello-node-7567d9fdc9-t7f8x -o jsonpath="{.spec.containers[*].image}"
+kubectl exec hello-node-7567d9fdc9-t7f8x -c my-container -- ls /
+
+
+kubectl attach my-pod -i                            # Attach to Running Container
+kubectl port-forward my-pod 5000:6000               # Listen on port 5000 on the local machine and forward to port 6000 on my-pod
+kubectl exec my-pod -- ls /                         # Run command in existing pod (1 container case)
+kubectl exec --stdin --tty my-pod -- /bin/sh        # Interactive shell access to a running pod (1 container case) 
+kubectl exec my-pod -c my-container -- ls /         # Run command in existing pod (multi-container case)
+kubectl top pod POD_NAME --containers               # Show metrics for a given pod and its containers
+kubectl top pod POD_NAME --sort-by=cpu        
+
+
+
+WIP
+hello-node-7567d9fdc9-t7f8x
+
+kubectl attach hello-node-7567d9fdc9-t7f8x -i
+
+kubectl exec hello-node-7567d9fdc9-t7f8x -- ls /
+kubectl exec --stdin --tty hello-node-7567d9fdc9-t7f8x -- /bin/sh
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -- /bin/sh
+
+
+kubectl get pod hello-node-7567d9fdc9-t7f8x -o jsonpath="{.spec.containers[*].image}
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -c k8s.gcr.io/echoserver:1.4 -- ls /
+
+
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -c k8s.gcr.io/echoserver -- ls /
+
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -- ls /
+
+
+k logs -f hello-node-7567d9fdc9-t7f8x
+
+
+
+WIP2
+hello-node-7567d9fdc9-t7f8x
+
+kubectl attach hello-node-7567d9fdc9-t7f8x -i
+
+kubectl exec hello-node-7567d9fdc9-t7f8x -- ls /
+kubectl exec --stdin --tty hello-node-7567d9fdc9-t7f8x -- /bin/sh
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -- /bin/sh
+
+
+kubectl get pod hello-node-7567d9fdc9-t7f8x -o jsonpath="{.spec.containers[*].image}
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -c k8s.gcr.io/echoserver:1.4 -- ls /
+
+
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -c k8s.gcr.io/echoserver -- ls /
+
+kubectl exec -it hello-node-7567d9fdc9-t7f8x -- ls /
+
+
+kubectl get services
+
+
+kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+
+kubectl get services
+
+minikube service hello-node
+
+
+kubectl logs -f hello-node-7567d9fdc9-t7f8x
+
+
+IMPORTANT
+if you would like to replace the default image with your own local image
+
+eval

@@ -1,8 +1,39 @@
 <span style="font-family:verdana;font-size:85%;">
+
   
-<u>Commands</u><br />
+<u>Tutorial</u><br />
+Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube  
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">&nbsp;minikube start</td>
+<td valign="top">&nbsp;Start Minikube cluster</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;minikube dashboard</td>
+<td valign="top">&nbsp;Launch Minikube dashboard</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;minikube ip</td>
+<td valign="top">&nbsp;Display Minikube IP address</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;minikube ssh</td>
+<td valign="top">&nbsp;Secure shell into Minikube node</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;minikube stop</td>
+<td valign="top">&nbsp;Stop Minikube cluster</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;minikube delete</td>
+<td valign="top">&nbsp;Delete Minikube cluster</td>
+</tr>
+</table>
+<br />
+
   
-<br /><br />
+<br /><br /> 
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
@@ -132,6 +163,10 @@ Launch browser and enter the URL as per below.  Once prompted enter the service 
 Here are instructions blah blah TODO kubeadm:
 <br /><br />
 
+<b>Dashboard</b><br />
+TODO outside minikube dashboard and manually launch for KinD - other options are k9s or you can view Kubernetes objects via the VS Code plugin https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
+<br /><br />
+  
 <br />
 IMPORTANT<br />
 Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">Cheat Sheet</a> and update ~/.bashrc to alias the kubectl command:
@@ -183,6 +218,8 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 -->
 <br />
 
+
+  
 <u>Definitions</u><br />
 Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
 <br />
@@ -332,5 +369,14 @@ Here is list of useful commands. Foreach command you can add the --help flag to 
 <br />
 -->
 <br />
+IMPORTANT<br />
+List all container(s) for <i>my-pod</i> <b>kubectl get pod <i>my-pod</i> -o jsonpath="{.spec.containers[*].image}"</b>.
+<br />
+<br />
   
+<u>Implementation</u><br />
+TODO - explain difference btwn imperative and declarative impl of K8s commands to manipulate cluster
+<br /><br />
+https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management
+<br /><br />
 </span>

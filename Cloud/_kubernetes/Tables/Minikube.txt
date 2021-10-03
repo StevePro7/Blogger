@@ -1,22 +1,26 @@
 <table border="1" width="99%">
 <tr>
-<td valign="top">&nbsp;<b>Command</b></td>
-<td valign="top">&nbsp;<b>Description</b></td>
+<td valign="top">&nbsp;minikube start</td>
+<td valign="top">&nbsp;Start Minikube cluster</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;kubectl config view</td>
-<td valign="top">&nbsp;Show Kubernetes cluster configuration</td>
+<td valign="top">&nbsp;minikube dashboard</td>
+<td valign="top">&nbsp;Launch Minikube dashboard</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;kubectl config get-contexts</td>
-<td valign="top">&nbsp;Show all Kubernetes cluster contexts</td>
+<td valign="top">&nbsp;minikube ip</td>
+<td valign="top">&nbsp;Display Minikube IP address</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;kubectl config current-context</td>
-<td valign="top">&nbsp;Show current Kubernetes cluster context</td>
+<td valign="top">&nbsp;minikube ssh</td>
+<td valign="top">&nbsp;Secure shell into Minikube node</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;kubectl config use-context <i>my-cluster-name</i></td>
-<td valign="top">&nbsp;Set default context to <i>my-cluster-name</i></td>
+<td valign="top">&nbsp;minikube stop</td>
+<td valign="top">&nbsp;Stop Minikube cluster</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;minikube delete</td>
+<td valign="top">&nbsp;Delete Minikube cluster</td>
 </tr>
 </table>
