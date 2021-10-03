@@ -2,11 +2,13 @@
 
 <u>Planes</u><br />
 Networking back in the day would have rules + policies about how to route network packets.  These policies would make up the network <b>control plane</b>.  The control plane is concerted with establishing network policy.  Meanwhile, the <b>data plane</b> is everything else in the network architecture that enforces all network policies.
-<br /><br /><br>
+<br /><br />
 <u>Control Plane</u><br />
 In Kubernetes, the <b>control plane</b> is the set of components that "make global decisions about the cluster" e.g. scheduling as well as detecting and responding to cluster events e.g. auto scaling due to traffic spikes.
 <br />
-<a href="https://1.bp.blogspot.com/-LIA2fLpRTno/YVmw6TkpoHI/AAAAAAAAHeQ/Gz4GrXF17mA9yn6bPbxEGuPV9beMdLALQCLcBGAsYHQ/s1059/PlaneControl.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-LIA2fLpRTno/YVmw6TkpoHI/AAAAAAAAHeQ/Gz4GrXF17mA9yn6bPbxEGuPV9beMdLALQCLcBGAsYHQ/s600/PlaneControl.png"/></a>
+  
+<a href="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s1059/PlaneControl.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s600/PlaneControl.png"/></a>
+  
   <br />
   
   <u>Objects</u><br />
