@@ -1,18 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>k9s</u><br />
-<a href="https://k9scli.io">k9s</a> is the Kubernetes CLI to manage clusters.  <a href="https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz">Download</a> the latest binary and extract into <b>/usr/local/bin</b>.  You may need to manually create the <b>~/.k9s</b> folder otherwise you may receive the error <i>Permission denied</i>.
-<br /><br />
-  TODO get an image of k9s cluster
-<br /><br />
-k9s is the Kubernetes CLI to manage clusters.  Download the latest binary and extract into <b>/usr/local/bin</b>.  Note: it may be necessary to manually create ~/.k9s folder otherwise you may receive the error <i>Permission denied</i>/
-<br /><br />
-TODO k9s [https://k9scli.io] is a Kubernetes CLI To Manage Your Clusters In Style!
-Another option is download the latest binary from releases and extract into /usr/local/bin
-<br /><br />
-https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz
-https://github.com/derailed/k9s/releases
-<br /><br />
+
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
@@ -164,8 +152,13 @@ kubeadm version
 <b>Dashboard</b><br />
 TODO outside minikube dashboard and manually launch for KinD - other options are k9s or you can view Kubernetes objects via the VS Code plugin https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
 <br /><br />
-  
-<br />
+
+<u>k9s</u><br />
+<a href="https://k9scli.io">k9s</a> is the Kubernetes CLI to manage clusters.  <a href="https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz">Download</a> the latest binary and extract into <b>/usr/local/bin</b>.  You may need to manually create the <b>~/.k9s</b> folder otherwise you may receive the error <i>Permission denied</i>.
+<br /><br />
+TODO get an image of k9s cluster
+<br /><br />
+
 IMPORTANT<br />
 Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet">Cheat Sheet</a> and update ~/.bashrc to alias the kubectl command:
 <br />
