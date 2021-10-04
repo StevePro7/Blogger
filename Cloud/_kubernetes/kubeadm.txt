@@ -28,3 +28,20 @@ kubeadm version: &version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.2", GitC
 
 
 02. Create cluster
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm
+
+kubeadm init
+	[ERROR IsPrivilegedUser]: user is not running as root
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
+
+sudo su
+kubeadm init
+root@stevepro-VirtualBox:/home/stevepro# kubeadm init
+[init] Using Kubernetes version: v1.22.2
+[preflight] Running pre-flight checks
+	[WARNING Service-Docker]: docker service is not enabled, please run 'systemctl enable docker.service'
+error execution phase preflight: [preflight] Some fatal errors occurred:
+	[ERROR Swap]: running with swap on is not supported. Please disable swap
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
