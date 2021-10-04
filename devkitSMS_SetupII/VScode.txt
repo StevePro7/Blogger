@@ -1,0 +1,36 @@
+VS Code
+04/10/2021
+
+vs code "C_Cpp.intelliSenseEngine" is set to "Disabled"
+
+Reference
+https://stackoverflow.com/questions/66889739/c-cpp-intellisense-disabled-how-to-enable-again
+
+VS Code
+File | Settings
+
+filter
+c_CPP.intellisense
+
+C_Cpp > Default: Intelli Sense Mode
+linux-clang-x86
+
+C_Cpp: Enhanced Colorization
+Enabled
+
+C_Cpp: Intelli Sense Engine
+Default
+
+C_Cpp: Intelli Sense Engine Fallback
+Enabled
+
+
+leave all default settings
+close VS Code and re-open
+
+now can toggle btwn *.h and *.c files
+using
+Alt + O
+
+plus F12 works and navigates to header files or translation units
+[where source code exists]
