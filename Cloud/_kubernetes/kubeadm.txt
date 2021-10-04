@@ -45,3 +45,20 @@ error execution phase preflight: [preflight] Some fatal errors occurred:
 	[ERROR Swap]: running with swap on is not supported. Please disable swap
 [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
 To see the stack trace of this error execute with --v=5 or higher
+
+
+fix?
+https://github.com/kubernetes/kubeadm/issues/610
+
+kubeadm init --ignore-preflight-errors Swap
+
+
+/* DIDN'T WORK
+kubeadm reset 
+echo 'Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+systemctl daemon-reload
+systemctl restart kubelet
+
+kubeadm init
+*/
