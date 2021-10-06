@@ -1,38 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Dashboard</u><br />
-Once Kubernetes cluster is setup there are various options to view all resources.  Minikube simply the launch terminal | <b>minikube start</b>.  Alternatively, install Visual Studio Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a> view all resources.  
-<br /><br />
-KinD dashboard is more involved.  Enter these commands to configure KinD dashboard to run in the browser.
-<br />
-<pre class="csharp" name="code">
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.1.0/aio/deploy/recommended.yaml
-kubectl get pod -n kubernetes-dashboard
-kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
-
-token=$(kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']==\
-'default')].data.token}"|base64 --decode)
-echo $token
-kubectl proxy
-</pre>
-<br />
-IMPORTANT<br />
-If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address already in use</i> then enter command:
-<br />
-<table border="1" width="99%">
-<tr>
-<td>
-&nbsp;netstat -tulnap | grep 5000<br />
-&nbsp;sudo apt install net-tools<br />
-&nbsp;sudo fuser -k 5000/tcp<br />
-&nbsp;netstat -tulnap | grep 5000<br />
-</td>
-</tr>
-</table>
-Launch browser and enter the <a href="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy">URL</a> as per below.  Once prompted enter the service token above and click OK.  
-<br /><br />
-  
-  
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
 <!-- -->
@@ -128,15 +95,7 @@ Assume Go installed.  Launch Terminal.  Enter commands to install KinD.  Export 
 </tr>
 </table>
 <br />
-  
-STEVEPRO<br />
-  
-
-<!-- -->
-  
-STEVEPRO<br />
-  
-<br /><br />    
+<br />
 
 <b>kubeadm</b><br />
 <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm">kubeadm</a> is another tool built to provide s fast path for creating Kuberentes clusters.  kubeadm performs all actions to get minimum viable cluster up and running.  Once you <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm">installed</a> you can then <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">create</a> the cluster.
@@ -158,8 +117,40 @@ kubeadm version
 <br />
   
 <u>Dashboard</u><br />
-Once Kubernetes cluster is setup there are various options to view all resources.  Minikube simply the launch terminal | <i>minikube start</i>.  Alternatively, install VS Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a>.  KinD dashboard requires as:
+Once Kubernetes cluster is setup there are various options to view all resources.  Minikube simply the launch terminal | <b>minikube start</b>.  Alternatively, install Visual Studio Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a> view all resources.  
+<br />
+<a href="https://1.bp.blogspot.com/-SRvrjA6F41U/YV4KNAL4tsI/AAAAAAAAHgM/ZQtB8uDYIbUzMR_rVtHccQJeuoGrwzSxQCLcBGAsYHQ/s1162/Dashboard.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-SRvrjA6F41U/YV4KNAL4tsI/AAAAAAAAHgM/ZQtB8uDYIbUzMR_rVtHccQJeuoGrwzSxQCLcBGAsYHQ/s600/Dashboard.png"/></a>
+<br />
+<br />
+KinD dashboard is more involved.  Enter these commands to configure KinD dashboard to run in the browser.
+<br />
+<pre class="csharp" name="code">
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.1.0/aio/deploy/recommended.yaml
+kubectl get pod -n kubernetes-dashboard
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+
+token=$(kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']==\
+'default')].data.token}"|base64 --decode)
+echo $token
+kubectl proxy
+</pre>
+<br />
+IMPORTANT<br />
+If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address already in use</i> then enter command:
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;netstat -tulnap | grep 5000<br />
+&nbsp;sudo apt install net-tools<br />
+&nbsp;sudo fuser -k 5000/tcp<br />
+&nbsp;netstat -tulnap | grep 5000<br />
+</td>
+</tr>
+</table>
+Launch browser and enter the <a href="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy">URL</a> as per below.  Once prompted enter the service token above and click OK.  
 <br /><br />
+  
 
 <a href="https://k9scli.io">k9s</a> is the Kubernetes CLI to manage clusters.  <a href="https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz">Download</a> the latest binary and extract into <b>/usr/local/bin</b>.  You may need to manually create the <b>~/.k9s</b> folder otherwise you may receive the error <i>Permission denied</i>.
 <br />
@@ -315,8 +306,10 @@ Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/comp
 </table>
 <!-- -->
 <br />
-<br />
+
 IMPORTANT<br />
+Here are 2x simple commands to get full information about control and data planes for Kubernetes cluster:
+<br />
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;kubectl cluster-info</td>
@@ -328,7 +321,7 @@ IMPORTANT<br />
 </tr>
 </table>
 <br />
-<br />  
+<br />
   
 <u>Commands</u><br />
 Here is list of useful commands. Foreach command you can add the --help flag to see more options to pass:
@@ -364,22 +357,13 @@ Here is list of useful commands. Foreach command you can add the --help flag to 
 <td valign="top">&nbsp;List all services across all the namespaces</td>
 </tr>
 </table>
-<br />
 <!-- -->
-<br />
-IMPORTANT<br />
 List all container(s) for <i>my-pod</i> <b>kubectl get pod <i>my-pod</i> -o jsonpath="{.spec.containers[*].image}"</b>.
 <br />
 <br />
-  
-<u>Implementation</u><br />
-TODO - explain difference btwn imperative and declarative impl of K8s commands to manipulate cluster
-<br />
-https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management
-<br /><br />
-  
+
 <u>Tutorial</u><br />
-TODO - Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube  
+Hello MiniKube <a href="https://kubernetes.io/docs/tutorials/hello-minikube">tutorial</a> shows you how to create a sample app on Kubernetes applying the above resources.
 <br />
 <table border="1" width="99%">
 <tr>
@@ -408,7 +392,7 @@ TODO - Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube
 </tr>
 </table>
 <br />
-<i>01-Create Deployment</i><br />
+<i>Create Deployment</i><br />
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -424,7 +408,7 @@ TODO - Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube
 </tr>
 </table>
 <br />
-<i>02-Create Service</i><br />
+<i>Create Service</i><br />
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -438,7 +422,7 @@ TODO - Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube
 </tr>
 </table>
 <br />
-<i>03-Exec into Pod</i><br />
+<i>Exec into Pod</i><br />
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -454,7 +438,7 @@ TODO - Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube
 </tr>
 </table>
 <br />
-<i>04-Tail Logs</i><br />
+<i>Tail Logs</i><br />
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -468,5 +452,12 @@ TODO - Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube
 </tr>
 </table>
 <br />
+<br />  
+<u>Implementation</u><br />
+TODO - explain difference btwn imperative and declarative impl of K8s commands to manipulate cluster
+<br />
+https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management
+<br /><br />
+  
 TODO - Navigate the source code
 </span>
