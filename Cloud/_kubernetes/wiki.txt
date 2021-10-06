@@ -1,5 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-
+  
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
 <!--
@@ -145,17 +145,17 @@ kubeadm version
 <br />  
 </pre>
 <br />
-<br />
 
-<b>Dashboard</b><br />
-TODO outside minikube dashboard and manually launch for KinD - other options are k9s or you can view Kubernetes objects via the VS Code plugin https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
+
+<u>Dashboard</u><br />
+Once Kubernetes cluster is setup there are various options to view all resources.  Minikube simply the launch terminal | <i>minikube start</i>.  Alternatively, install VS Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a>.  KinD dashboard requires as:
 <br /><br />
 
-<u>k9s</u><br />
+<b>k9s</b><br />
 <a href="https://k9scli.io">k9s</a> is the Kubernetes CLI to manage clusters.  <a href="https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz">Download</a> the latest binary and extract into <b>/usr/local/bin</b>.  You may need to manually create the <b>~/.k9s</b> folder otherwise you may receive the error <i>Permission denied</i>.
 <br />
 
-<a href="https://1.bp.blogspot.com/-1oztufZtqKg/YV39aX9PgMI/AAAAAAAAHf8/YixDkRVZ2UI_7bo_OaCeD0OGhremIRDrQCLcBGAsYHQ/s1242/k9s.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-1oztufZtqKg/YV39aX9PgMI/AAAAAAAAHf8/YixDkRVZ2UI_7bo_OaCeD0OGhremIRDrQCLcBGAsYHQ/s600/k9s.png"/></a>
+<a href="https://1.bp.blogspot.com/-mInwoIpHwKM/YV3-6GivDVI/AAAAAAAAHgE/t719Gm7sURQi2GV3KmFP3MAzCMMN3sNdgCLcBGAsYHQ/s1240/k9s.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-mInwoIpHwKM/YV3-6GivDVI/AAAAAAAAHgE/t719Gm7sURQi2GV3KmFP3MAzCMMN3sNdgCLcBGAsYHQ/s600/k9s.png"/></a>
 
 <br />
 <br />
@@ -461,4 +461,5 @@ TODO - Hello MiniKube https://kubernetes.io/docs/tutorials/hello-minikube
 </tr>
 </table>
 <br />
+TODO - Navigate the source code
 </span>
