@@ -43,27 +43,20 @@ Here are instructions how to get Kubernetes running locally as single node clust
 <pre class="csharp" name="code">
 # Prerequisites
 sudo apt install cpu-checker && sudo kvm-ok
-sudo kvm-ok
-
 sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm \
     && sudo usermod -a -G libvirt $(whoami) \
     && newgrp libvirt
     
 sudo virt-host-validate
-
-# kubectl (Kubernetes CLI) installation
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
     && sudo install kubectl /usr/local/bin && rm kubectl
-    
-# Minikube KVM driver installation
+
 curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
     && sudo install docker-machine-driver-kvm2 /usr/local/bin/ && rm docker-machine-driver-kvm
     
-# Minikube installation
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
     && sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
-    
-# Verify the Minikube installation
+
 minikube version
 minikube start
 </pre>
@@ -75,6 +68,11 @@ minikube start
 <br />
 <b>KinD</b><br />
 Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machine.
+<br /><br />
+Kubernetes in Docker [KinD] allows an approach to run a Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating at once instead of running everything in virtual machine.
+<br /><br />
+Launch Terminal.  Enter the following command to install KinD.  Export the path in ~/.bashrc and reboot:
+<br />
 <!-- -->
 <br />
 <table width="99%" border="1">
