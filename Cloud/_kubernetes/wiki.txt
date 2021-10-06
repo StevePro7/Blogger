@@ -12,7 +12,7 @@ Let's check it out!
 Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed and to work with and manage Kubernetes clusters:
 <br />
 <!-- -->
-<table width="97%" border="1">
+<table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
 <td valign="top">&nbsp;Command-line used to run commands against Kubernetes clusters</td>
@@ -66,14 +66,13 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 # Verify the Minikube installation
 minikube version
 minikube start
-minikube dashboard
 </pre>
 <!-- -->
-  
 <!-- -->
 <a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
 <!-- -->
-<br />  
+<br />
+<br />
 <b>KinD</b><br />
 Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machine.
 <!-- -->
