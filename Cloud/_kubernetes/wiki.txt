@@ -69,10 +69,7 @@ minikube start
 <b>KinD</b><br />
 Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machine.
 <br /><br />
-Kubernetes in Docker [KinD] allows an approach to run a Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating at once instead of running everything in virtual machine.
-<br /><br />
-Launch Terminal.  Enter the following command to install KinD.  Export the path in ~/.bashrc and reboot:
-<br />
+Assume Go installed.  Launch Terminal.  Enter commands to install KinD.  Export path in ~/.bashrc and reboot:
 <!-- -->
 <br />
 <table width="99%" border="1">
@@ -130,19 +127,15 @@ sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
 
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
-
 kubeadm version
 <!-- -->
 <br />  
 </pre>
-<br />
-
 
 <u>Dashboard</u><br />
 Once Kubernetes cluster is setup there are various options to view all resources.  Minikube simply the launch terminal | <i>minikube start</i>.  Alternatively, install VS Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a>.  KinD dashboard requires as:
