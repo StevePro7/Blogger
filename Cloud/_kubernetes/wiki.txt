@@ -2,7 +2,7 @@
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
-<!--
+<!-- -->
 <a href="https://1.bp.blogspot.com/-ZXeJTM4CjkA/YVIh6qriF8I/AAAAAAAAHco/Jr7_2tXARisKKV-wFuE9N9xIaecewo9xwCLcBGAsYHQ/s480/kubernetes.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZXeJTM4CjkA/YVIh6qriF8I/AAAAAAAAHco/Jr7_2tXARisKKV-wFuE9N9xIaecewo9xwCLcBGAsYHQ/s600/kubernetes.png"/></a>
 <!-- -->
 <br />
@@ -11,7 +11,7 @@ Let's check it out!
 <u>Tools</u><br />
 Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed and to work with and manage Kubernetes clusters:
 <br />
-<!--
+<!-- -->
 <table width="97%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
@@ -31,7 +31,7 @@ Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">too
 <td valign="top">&nbsp;Used to create and manage and secure larger Kubernetes clusters</td>
 </tr>
 </table>
--->
+<!-- -->
 <br>
 <u>Installation</u><br />
 Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a>.  Install Kubernetes on Linux accordingly.
@@ -39,7 +39,7 @@ Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docke
 <b>Minikube</b><br />
 Here are instructions how to get Kubernetes running locally as single node cluster on Ubuntu with  <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">Minikube</a>:
 <br />
-<!--
+<!-- -->
 <pre class="csharp" name="code">
 # Prerequisites
 sudo apt install cpu-checker && sudo kvm-ok
@@ -68,15 +68,15 @@ minikube version
 minikube start
 minikube dashboard
 </pre>
--->
+<!-- -->
   
-<!--
+<!-- -->
 <a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
--->
+<!-- -->
 <br />  
 <b>KinD</b><br />
 Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machine.
-<!--
+<!-- -->
 <br />
 <table width="99%" border="1">
 <tr>
@@ -121,13 +121,13 @@ If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address alre
 <br /><br />
 Launch browser and enter the URL as per below.  Once prompted enter the service token above and click OK.
 <i>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy</i>
--->
+<!-- -->
 <br /><br />    
 
 <b>kubeadm</b><br />
 <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm">kubeadm</a> is another tool built to provide s fast path for creating Kuberentes clusters.  kubeadm performs all actions to get minimum viable cluster up and running.  Once you <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm">installed</a> you can then <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">create</a> the cluster.
 <br />
-<!--
+<!-- -->
 <pre class="csharp" name="code">
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
@@ -141,7 +141,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
 kubeadm version
--->
+<!-- -->
 <br />  
 </pre>
 <br />
@@ -186,7 +186,7 @@ Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/re
 
 The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtain Kubernetes config + context info:
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">&nbsp;kubectl config view</td>
@@ -206,15 +206,13 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 </tr>
 </table>
 <br />
--->
+<!-- -->
 <br />
-
-
   
 <u>Definitions</u><br />
 Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces">Namespace</a></td>
@@ -246,7 +244,7 @@ Here is some basic terminology when working with containerized applications runn
 </tr>
 </table>
 <br />
--->
+<!-- -->
 <br />
   
 <u>Planes</u><br />
@@ -255,13 +253,13 @@ Here is some basic terminology when working with containerized applications runn
 <b>Control Plane</b><br />
 In Kubernetes, the control plane is the set of components that "make global decisions about the cluster" e.g. scheduling as well as detecting and responding to cluster events e.g. auto scaling pods due to traffic spikes.
 <br /> 
-<!--
+<!-- -->
 <a href="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s1059/PlaneControl.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s600/PlaneControl.png"/></a>
--->
+<!-- -->
 <br />
 Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on the master node to keep the cluster in the "<a href="https://yannalbou.medium.com/kubernetes-desired-state-4c5c4e873743">desired state</a>":
 <br />
-<!--  
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Store (etcd)</td>
@@ -280,18 +278,18 @@ Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/c
 <td valign="top">&nbsp;Watches for newly created pods and assigns nodes to run them on</td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 <b>Data Plane</b><br />
 In Kubernetes, the data plane is the set of worker nodes with their pods and containers that enforce all the global decisions made about the cluster from the master node e.g. auto scaling pods due to traffic spikes.
 <br />
-<!--
+<!-- -->
 <a href="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s600/PlaneData.png"/></a>
--->
+<!-- -->
 <br />
 Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on each worker node  maintaining pods and runtime environment:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Kubelet</td>
@@ -306,7 +304,7 @@ Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/comp
 <td valign="top">&nbsp;Network proxy that maintains all network rules on the worker nodes</td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 <br />
 IMPORTANT<br />
@@ -326,7 +324,7 @@ IMPORTANT<br />
 <u>Commands</u><br />
 Here is list of useful commands. Foreach command you can add the --help flag to see more options to pass:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;kubectl get all -A</td>
@@ -358,7 +356,7 @@ Here is list of useful commands. Foreach command you can add the --help flag to 
 </tr>
 </table>
 <br />
--->
+<!-- -->
 <br />
 IMPORTANT<br />
 List all container(s) for <i>my-pod</i> <b>kubectl get pod <i>my-pod</i> -o jsonpath="{.spec.containers[*].image}"</b>.
