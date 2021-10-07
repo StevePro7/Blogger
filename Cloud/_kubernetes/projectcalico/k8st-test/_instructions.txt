@@ -1,0 +1,97 @@
+k8s-test
+07/10/2021
+
+https://github.com/projectcalico/node/blob/master/Makefile
+
+k8s-test:
+	$(MAKE) kind-k8st-setup
+	$(MAKE) kind-k8st-run-test
+	$(MAKE) kind-k8st-cleanup
+
+
+401 error with calicoctl
+but continue
+export KUBECONFIG==~/.kube/kind-config-kind
+
+Clusters | Add new cluster ~/.kube/kind-config-kind
+Referesh
+Use namespace kube-system
+Workloads | Pods
+Right click calicoctl | Describe
+
+
+
+If I ignore calicoctl can I keep working?
+
+Export $KUBECONFIG - or just copy ~/.kube/kind-config-kind to ~/.kube/config file
+
+
+export KUBECONFIG==~/.kube/kind-config-kind
+
+
+Each node is just a docker container
+docker ps -a
+
+When you kubectl get nodes you see 4x nodes - 1x control plane [master] and 3x worker nodes correpsonding to the 4x docker containers
+
+kubectl get nodes
+
+Exec shell into worker node e.g.
+docker exec -it kind-worker /bin/bash
+
+From there you can check the IP routes e.g.
+
+ip r
+Same as the physical node
+
+
+default via 172.17.0.1 dev eth0 
+172.17.0.0/16 dev eth0 proto kernel scope link src 172.17.0.5 
+blackhole 192.168.144.128/26 proto bird 
+192.168.154.0/26 via 172.17.0.2 dev tunl0 proto bird onlink 
+192.168.186.0/26 via 172.17.0.4 dev tunl0 proto bird onlink 
+192.168.251.128/26 via 172.17.0.3 dev tunl0 proto bird onlink 
+
+
+Exec shell into master node [control plane] e.g.
+
+
+docker exec -it kind-control-plane /bin/bash
+Thus can see all the processes running e.g. etcd
+
+e.g.
+ps -aux
+
+Managed to get this working on local host
+Reference: https://iximiuz.com/en/posts/kubernetes-kind-load-docker-image
+
+
+
+Launch k9s | Filter daemonset | calico-node | “e” to edit.  Press “/” and filter by “imagePullPolicy”
+Change the default entry “IfNotPresent” to “Never” - this helps load only local docker images
+
+
+image: tigera/cnx-node:latest-amd64x
+        imagePullPolicy: Never
+
+Maybe change the calico-node [tiger/cnx-node] to something other than default?  TODO - check
+
+Make changes to felix-private | git commit + push
+Update node-private go.mod file to use the hash
+
+
+make image
+This should update local node-private image tigera/cnx-node
+Tag tigera/cnx-node image to something unique
+
+
+tag tigera/cnx-node:latest-amd64 tigera/cnx-node:latest-amd64x
+Don’t need to push to container registry!
+Instead load image onto kind cluster directly
+
+
+kind load docker-image tigera/cnx-node:latest-amd64x
+The changes should be detected auto-magically by the cluster and applied
+
+IMPORTANT - tail the logs where it makes sense
+k get po -A -w
