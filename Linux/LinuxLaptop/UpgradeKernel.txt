@@ -1,0 +1,40 @@
+Upgrade kernel
+11/10/2021
+
+Upgrade Linux kernel
+GitHub - bkw777/mainline: A continuation of the free version of ukuu. 
+Reference : How To Update The Ubuntu Linux Kernel – Ubuntu Mainline Kernel Installer - GRUB Customizer 
+
+
+sudo add-apt-repository ppa:cappelikan/ppa
+sudo apt update
+sudo apt install mainline
+
+After  install 
+
+mainline --check
+
+list all kernels
+
+
+mainline --list
+
+Simply launch Mainline | "start" button type “Mainline” and GUI launches
+
+
+Linux laptop
+uname -r
+5.11.0-37-generic
+
+
+
+sudo add-apt-repository ppa:cappelikan/ppa
+sudo apt update
+sudo apt install mainline
+
+
+mainline --check
+mainline --list
+
+Start | run | mainline
+5.14.11
