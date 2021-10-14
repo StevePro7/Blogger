@@ -1,0 +1,36 @@
+Dockerfile prototyping
+14/10/2021
+
+
+01.
+Hello world Dockerfile
+right click Dockerfile 		| Build image
+right click generated image 	| Run interactive
+right click generated container | Attach shell
+now can navigate file system
+
+Dockerfile
+
+FROM FROM caddy:2.4.3-builder AS builder
+WORKDIR /stevepro
+COPY entrypoint.sh /bin/
+RUN apk add bash
+ENTRYPOINT ["/bin/entrypoint.sh"]
+
+
+entrypoint.sh
+#!/bin/bash
+echo "Starting stevepro"
+while :
+do
+	echo "Press [CTRL+C] to stop.."
+	sleep 1
+done
+
+
+IMPORTANT
+must have the following line otherwise cannot attach shell OR docker exec into container
+RUN apk add bash
+
+will get error
+OCI runtime etc
