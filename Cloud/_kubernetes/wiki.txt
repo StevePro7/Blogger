@@ -1,10 +1,16 @@
 <span style="font-family:verdana;font-size:85%;">
   
-  <u>Summary</u><br />
-To summarize, Kubernetes has greatly simplified cloud native infrastructure for developers and provides a scalable framework for application deployment.  However, just like any new tool or technology, Kubernetes brings with it new security challenges especially due to the ephemeral nature of containerized applications.
-
+<u>Summary</u><br />
+To summarize, Kubernetes has greatly simplified cloud native infrastructure for developers and provides a scalable framework for application deployment.  However, just like any new tool or technology, Kubernetes brings with it new <a href="https://www.vmware.com/resources/security/three-common-kubernetes-security-mistakes-and-how-to-avoid-them.html">security</a> challenges especially due to the ephemeral nature of containerized applications.
+<br /><br />
+Consequently, the Container Network Interface [<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#cni">CNI</a>] initiative was created to define standardized common interface between container execution and Kubernetes networking layer to address these security concerns.
+<br /><br />
+Thus Kubernetes plugins like <a href="https://www.tigera.io/project-calico">Calico</a> has become the most popular CNI for cluster networking thru definition and enforcement of network policies.  Calico prescribes to which pods can send and receive traffic securely throughout the network which will become imperative as Kubernetes becomes is widely adopted in future!
   
-  <br /><br />
+<br /><br />
+  
+Thus Kubernetes networking plugins such as Calico has emerged as one of the most popular CNI plugins for Kuberenetes cluster networking through its definition and enforcement of network policies.  Calico can prescribe which pods can send and resceive traffic securely within the network and this will become imperative as Kubernetes becomes more wide adopted in the future.
+<br /><br />
   https://platform9.com/blog/the-ultimate-guide-to-using-calico-flannel-weave-and-cilium
 <br /><br />
   
