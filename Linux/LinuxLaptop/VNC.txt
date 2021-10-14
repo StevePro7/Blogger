@@ -53,3 +53,83 @@ SP4
 
 Right click paste NOT working
 https://www.linuxquestions.org/questions/linux-desktop-74/x11vnc-clipboard-and-right-click-menu-context-menu-paste-item-not-in-sync-4175617768
+
+
+https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command
+sudo lsof -i -P -n | grep LISTEN
+sudo netstat -tulpn | grep LISTEN
+sudo ss -tulpn | grep LISTEN
+sudo lsof -i:22 ## see a specific port such as 22 ##
+sudo nmap -sTU -O IP-address-Here
+
+
+IMPORTANT
+13/10/2021
+
+On my personal Linux laptop I did
+sudo fuser -k 5900/tcp
+
+and killed my VNC Viewer connection but now I can't get back despite re-running all instructions above
+compare work Linux laptop
+
+
+https://askubuntu.com/questions/9368/how-can-i-see-what-ports-are-open-on-my-machine
+sudo netstat -ntlp
+
+BEFORE connect to VNC from Windows
+sudo netstat -ntlp
+tcp        0      0 0.0.0.0:5900            0.0.0.0:*               LISTEN      1961/x11vnc 
+
+but same command on home LL
+sudo netstat -ntlp
+VNC is there
+
+so why won't connect??
+
+IP address + port correct + port open + listening
+
+
+LOGGING
+C:\Users\TEST.000\AppData\Local\RealVNC
+
+
+SOLUTION
+believe it was the password??
+
+https://stackoverflow.com/questions/23839647/error-in-tightvnc-viewer-no-connection-could-be-made-because-the-target-machine
+
+Tried these commands
+NB: used SP4 for passwd when prompted obv. to match NT login passwd + passwd above in file
+
+
+sudo apt-get install x11vnc
+x11vnc -storepasswd
+x11vnc -usepw
+sudo x11vnc -xkb -noxrecord -noxfixes -noxdamage -display :0 -auth /var/run/lightdm/root/:0 -usepw
+
+
+Windows connect
+I got prompted to match password
+SP4
+now could VNC connect
+but only once time
+
+
+Weird was from before
+192.168.1.25:5901
+
+was before 192.168.1.25:5900
+
+NOT sure what I have done!
+but at least I have a workaround now
+and it is this:
+
+
+
+Linux
+sudo x11vnc -xkb -noxrecord -noxfixes -noxdamage -display :0 -auth /var/run/lightdm/root/:0 -usepw
+
+
+Windows
+192.168.1.25:5901
+SP4
