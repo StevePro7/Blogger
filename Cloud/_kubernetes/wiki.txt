@@ -3,14 +3,7 @@
 <u>Management</u><br />
 The tutorial demonstrates <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#imperative-commands">imperative</a> commands using kubectl to operate directly on live Kubernetes objects in the cluster.  This is the useful to get started or run one-off tasks however these actions provide no history.
 <br /><br />
-Whereas using declarative object configuration requires configuration files first to be stored locally.  All CRUD operations will be detected automatically per Kuberentes object thus configuration can be version controlled.
-<br /><br />
-  Create, update, and delete operations are automatically detected per Kuberenes object thus configuration can be version controlled.
-<br />
-https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management
-<br /><br />
-
-  
+Whereas using <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#declarative-object-configuration">declarative</a> object configuration requires configuration files first to be stored locally.  All <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations will be detected automatically per Kuberentes object thus configuration can be version controlled.
 <br /><br />
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
@@ -465,13 +458,14 @@ Hello MiniKube <a href="https://kubernetes.io/docs/tutorials/hello-minikube">tut
 </tr>
 </table>
 <br />
-<br />  
-<u>Implementation</u><br />
-TODO - explain difference btwn imperative and declarative impl of K8s commands to manipulate cluster
 <br />
-https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management
+
+<u>Management</u><br />
+The tutorial demonstrates <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#imperative-commands">imperative</a> commands using kubectl to operate directly on live Kubernetes objects in the cluster.  This is the useful to get started or run one-off tasks however these actions provide no history.
 <br /><br />
-  
+Whereas using <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#declarative-object-configuration">declarative</a> object configuration requires configuration files first to be stored locally.  All <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations will be detected automatically per Kuberentes object thus configuration can be version controlled.
+<br /><br />
+<br />
 <u>Source Code</u><br />
 Finally, navigate the Kubernetes <a href="https://github.com/kubernetes/kubernetes">source code</a> to familiarize yourself with the <a href="https://www.youtube.com/watch?v=yqB_le-N6EE">code base</a> and debug step thru the source code especially if you would like to participate in any one of the Special Interest Groups [<a href="https://kubernetes.io/docs/contribute/participate">SIGs</a>]. 
 <br /><br />
