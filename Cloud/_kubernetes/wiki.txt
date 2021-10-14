@@ -26,18 +26,7 @@ Git clone the Kubernetes source code.  Launch folder in VS Code.  Search for <a 
 </td>
 </tr>
 </table>
-<br />
-<pre class="csharp" name="code">
-git clone https://github.com/kubernetes/kubernetes.git
-cd kubernetes
-make
-find -L -type f -name 'main.go'
-
-cd ./cmd/cloud-controller-manager
-go build .
-go run main.go
-Press F5
-</pre>
+<a href="https://1.bp.blogspot.com/-FoNpiURTt_g/YWiCZtfMXvI/AAAAAAAAHjo/JY5f7QNuCI8sdWljxho4sxip-LlREEdwwCLcBGAsYHQ/s1856/K8sSourceCode.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-FoNpiURTt_g/YWiCZtfMXvI/AAAAAAAAHjo/JY5f7QNuCI8sdWljxho4sxip-LlREEdwwCLcBGAsYHQ/s600/K8sSourceCode.png"/></a>
   <br /><br />
   
 <br /><br />
