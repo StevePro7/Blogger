@@ -1,46 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
-<u>Source Code</u><br />
-Finally, navigate the Kubernetes source code to familiarize yourself with the code base and debug step thru the source code especially if you would like to participate in any one of the Special Interest Groups [SIGs]. 
-<br /><br />
-Git clone the Kubernetes source code.  Launch folder in VS Code.  Search for main.go e.g. from ./cmd/cloud-controller-manager.  Right click main.go | Open in | Terminal.  go build .  go run main.go.  Press F5 to debug:
-<br />
-<table width="99%" border="1">
-<tr>
-<td valign="top">
-<pre class="csharp" name="code">
-&nbsp;git clone https://github.com/kubernetes/kubernetes.git
-&nbsp;cd kubernetes
-&nbsp;make
-&nbsp;find -L -type f -name 'main.go'
-</pre>
-</td>
-<td valign="top">
-<pre class="csharp" name="code">
-&nbsp;cd ./cmd/cloud-controller-manager
-&nbsp;go build .
-&nbsp;go run main.go
-&nbsp;Press F5
-</pre>
-</td>
-</tr>
-</table>
-<br />
-<pre class="csharp" name="code">
-git clone https://github.com/kubernetes/kubernetes.git
-cd kubernetes
-make
-find -L -type f -name 'main.go'
-
-cd ./cmd/cloud-controller-manager
-go build .
-go run main.go
-Press F5
-</pre>
-  <br /><br />
-  
-<br /><br />
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
 <!-- -->
