@@ -1,0 +1,28 @@
+Scripts
+17/10/2021
+
+apt-get install -y apt-utils autoconf automake build-essential git libcurl4-openssl-dev libgeoip-dev liblmdb-dev libpcre++-dev libtool libxml2-dev libyajl-dev pkgconf wget zlib1g-dev
+
+
+git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity
+
+
+
+$ cd ModSecurity 
+$ git submodule init 
+$ git submodule update 
+$ ./build.sh 
+$ ./configure 
+$ make 
+$ make install
+
+
+
+ls /usr/local/modsecurity/lib/
+libmodsecurity.a  libmodsecurity.la  libmodsecurity.so  libmodsecurity.so.3  libmodsecurity.so.3.0.4  pkgconfig
+
+
+CONFIGURATION
+$ curl -O https://raw.githubusercontent.com/lsgroup/SmartReverseProxy/master/modsecdefault.conf
+$ curl https://raw.githubusercontent.com/coreruleset/coreruleset/v3.3/dev/crs-setup.conf.example > crs-setup.conf
+$ curl -O https://raw.githubusercontent.com/coreruleset/coreruleset/v3.3/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf
