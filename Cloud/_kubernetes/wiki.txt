@@ -135,6 +135,12 @@ echo $token
 kubectl proxy
 </pre>
 <br />
+Launch the browser and enter the following <a href="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy">URL</a>.  Once prompted enter the service token above and click OK.
+<br />
+<i>
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy
+</i>
+<br /><br /> 
 IMPORTANT<br />
 If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address already in use</i> then enter command:
 <br />
@@ -148,9 +154,7 @@ If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address alre
 </td>
 </tr>
 </table>
-Launch browser and enter the <a href="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy">URL</a> as per below.  Once prompted enter the service token above and click OK.  
 <br /><br />
-  
 
 <a href="https://k9scli.io">k9s</a> is the Kubernetes CLI to manage clusters.  <a href="https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz">Download</a> the latest binary and extract into <b>/usr/local/bin</b>.  You may need to manually create the <b>~/.k9s</b> folder otherwise you may receive the error <i>Permission denied</i>.
 <br />
