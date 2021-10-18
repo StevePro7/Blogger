@@ -9,13 +9,13 @@
 Let's check it out!  
 <br /><br />
 <u>Tools</u><br />
-Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed and to work with and manage Kubernetes clusters:
+Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed to work with + help manage Kubernetes clusters:
 <br />
 <!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
-<td valign="top">&nbsp;Command-line used to run commands against Kubernetes clusters</td>
+<td valign="top">&nbsp;Command-line tool to run commands against Kubernetes clusters</td>
 </tr>
 <tr>
 <td valign="top">&nbsp;<a href="https://minikube.sigs.k8s.io/docs"><b>minikube</b></a></td>
@@ -67,7 +67,7 @@ minikube start
 <br />
 <br />
 <b>KinD</b><br />
-Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machine.
+Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machines.
 <br /><br />
 Assume <a href="https://golang.org">Go</a> installed.  Launch Terminal.  Enter commands to install KinD.  Export path in ~/.bashrc and reboot:
 <!-- -->
@@ -117,7 +117,7 @@ kubeadm version
 <br />
   
 <u>Dashboard</u><br />
-Once Kubernetes cluster is setup there are various options to view all resources.  Minikube simply the launch terminal | <b>minikube start</b>.  Alternatively, install Visual Studio Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a> view all resources.  
+Once Kubernetes cluster is setup there are various options to view all resources.  Minikube: simply the launch terminal | <b>minikube dashboard</b>.  Alternatively, install VS Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a> and view all resources.  
 <br />
 <a href="https://1.bp.blogspot.com/-SRvrjA6F41U/YV4KNAL4tsI/AAAAAAAAHgM/ZQtB8uDYIbUzMR_rVtHccQJeuoGrwzSxQCLcBGAsYHQ/s1162/Dashboard.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-SRvrjA6F41U/YV4KNAL4tsI/AAAAAAAAHgM/ZQtB8uDYIbUzMR_rVtHccQJeuoGrwzSxQCLcBGAsYHQ/s600/Dashboard.png"/></a>
 <br />
