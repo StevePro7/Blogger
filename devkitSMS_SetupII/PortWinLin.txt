@@ -1,0 +1,39 @@
+PortWinLin
+18/10/2021
+
+Reference:
+E:\GitHub\StevePro7\SegaMasterSystemLinux
+
+
+Create folder
+Copy files from original
+
+Copy build.sh
+Open dev folder in Visual Studio
+Global find + replace "\" to "/"
+ignore
+Game.vcxproj
+Game.vcxproj.filters
+output.map
+
+IMPORTANT
+font_manager.c
+ensure this does not change!
+while( '\0' != text[idx] )
+{}
+otherwise will be buffer overflow error
+
+
+build.bat
+change ::sdcc -c to sdcc --debug -c
+change ::sdcc -o to sdcc --debug -o
+
+
+build.sh
+ensure that the "^" to wrap around is "\"
+i.e. do NOT get switched around from above
+
+
+Copy .vscode hidden folder over
+launch.json
+tasks.json
