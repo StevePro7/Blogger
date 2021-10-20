@@ -9,7 +9,7 @@ D:\Github\kusfo\sms-fxsample\example\banks\bank1
 
 
 Code samples
-E:\GitHub\StevePro7\SimpsonsFile\SoundFx
+E:\GitHub\StevePro7\SimpsonsRevise\SoundFx
 
 
 00-Sega
@@ -31,3 +31,36 @@ sdcc --debug -c --no-std-crt0 -mz80 --Werror --opt-code-speed --constseg BANK2 b
 
 
 Now can include the files in code and use riffs
+
+
+
+20/10/2021
+Homer SFX
+E:\GitHub\StevePro7\SimpsonsRevise\Homer\_doh
+E:\GitHub\StevePro7\SimpsonsRevise\Homer\_woohoo
+
+Method
+cd E:\GitHub\StevePro7\SimpsonsRevise\Homer\__sfx
+
+wrong01
+cd E:\GitHub\StevePro7\SimpsonsRevise\Homer\__sfx\banks\bank2\raw
+pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 wrong01.wav
+mv wrong01.wav ..\
+cd E:\GitHub\StevePro7\SimpsonsRevise\Homer\__sfx\banks
+folder2c bank2 bank2 2
+
+
+Change
+bank2 2		bank3 3
+bank2		bank3
+BANK2		BANK3
+01.wav	02.wav
+
+
+wrong01		8926
+wrong02		9101
+wrong03		6598
+
+wrong01		
+wrong02		
+wrong03		
