@@ -1,11 +1,29 @@
 TODO
 
+20/10/2021
+api-resources
+e.g.
+API
+http://localhost:8080/apis
+
+MUST do this first:
+kubectl proxy --port=8080
+
+curl http://localhost:8080
+
+launch browser
+http://localhost:8080
+http://localhost:8080/apis
+
+
 15/10/2021
 k get crds
 
 03/10/2021
 minikube start
 eval $(minikube docker-env)
+
+MORE INFO on YouTube.txt via Tutorial02
 
 
 Tutorial

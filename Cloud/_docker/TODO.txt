@@ -1,5 +1,31 @@
 TODO
 
+20/10/2021
+01.
+docker remove dangling images
+Reference:
+https://forums.docker.com/t/how-to-remove-none-images-after-building/7050/3
+
+docker rmi $(docker images -f dangling=true -q)
+
+if this still not work then brute force clean up any remaining dangling images
+e.g.
+docker rmi b410ea5e34fa --force
+
+
+02.
+docker build not complete with CGO project due to multi redefinition error
+e.g.
+# waftesting
+/usr/bin/ld: $WORK/b001/_x003.o: in function `MyCInit':
+./modsec.c:4: multiple definition of `MyCInit'; $WORK/b001/_x002.o:/home/stevepro/GitHub/StevePro7/GolangWebApplicationFirewall/30-TestAPI_CGO/modsec.c:4: first defined here
+collect2: error: ld returned 1 exit status
+
+useful
+How to debug when docker build fails
+https://sodocumentation.net/docker/topic/8078/how-to-debug-when-docker-build-fails
+
+
 09/09/2021
 weird but today when I went to do for Envoy dynamic config
 docker-compose

@@ -15,6 +15,19 @@ E:\GitHub\StevePro7\SimpsonsFile\SoundFx
 00-Sega
 replicate kusfo effort but laid out the way I prefer
 
-cd E:\GitHub\StevePro7\SimpsonsFile\SoundFx\00-Sega\wav
 
-pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 sega_8000.wav
+cd E:\GitHub\StevePro7\SimpsonsFile\SoundFx\00-Sega\dev\banks\bank2\raw
+pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 Riff_1980_04.wav
+mv Riff_1980_04.wav.pcmenc ..\
+cd E:\GitHub\StevePro7\SimpsonsFile\SoundFx\00-Sega\dev\banks
+folder2c bank2 bank2 2
+
+produces
+bank2.h
+bank2.c
+
+bank2.bat
+sdcc --debug -c --no-std-crt0 -mz80 --Werror --opt-code-speed --constseg BANK2 bank2.c
+
+
+Now can include the files in code and use riffs

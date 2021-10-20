@@ -37,6 +37,13 @@ localhost:8080
 build docker image
 Docker 
 docker build -t k8sdemo:v1 .
+docker run -p 8080:8080 -e PORT=8080 k8sdemo:v1
+
+If blocked or that stupid "port in use error" then
+sudo fuser -k 8080/tcp
+
+stop docker container
+sudo docker stop $(docker ps -q)
 
 
 02.
@@ -47,8 +54,57 @@ minikube start
 eval $(minikube docker-env)
 
 
-kubectl run k8sdemo --image=k8sdemo:v1 -port=8080
+kubectl run k8sdemo --image=k8sdemo:v1 --port=8080
+
+IMPORTANT
+I was getting the "ErrImagePull" error when execute
+kubectl run k8sdemo --image=k8sdemo:v1 --port=8080
+
+
+Therefore try this
+https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d
+
+> minikube docker-env
+export DOCKER_TLS_VERIFY=”1"
+export DOCKER_HOST=”tcp://172.17.0.2:2376"
+export DOCKER_CERT_PATH=”/home/user/.minikube/certs”
+export MINIKUBE_ACTIVE_DOCKERD=”minikube”
+# To point your shell to minikube’s docker-daemon, run:
+# eval $(minikube -p minikube docker-env)
+
+eval $(minikube -p minikube docker-env)
+
+Haha!
+docker images
+now you see tons of images via Minikube
+but the org k8sdemo is not listed here
+
+spawn a new terminal and you will see k8s "outside" of Minikube
+as per article must re-build image for "Minikube"
+
+
+cd ~/GithubX/makotogo/developerWorks/kubernetes
+docker build -t k8sdemo:v1 .
+docker images | grep k8sdemo
+
+kubectl run k8sdemo --image=k8sdemo:v1 --port=8080
+
+curl http://localhost:8080
+curl: (7) Failed to connect to localhost port 8080: Connection refused
 
 kubectl proxy --port=8080
+curl http://localhost:8080
 
+sudo fuser -k 8080/tcp
 ./test-k8sdemo.sh 8080
+
+
+Gets mixed up as kubernetes proxy 8080 for apis
+https://localhost:8080/apis
+
+
+try 8082
+curl http://localhost:8082
+curl: (7) Failed to connect to localhost port 8082: Connection refused
+
+kubectl run k8sdemo --image=k8sdemo:v1 --port=8082
