@@ -1,32 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Example</u><br />
-Code an example from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch Goland.  Enter the following code.  Press F5 to run main.go.
-<br><br>
-main.go
-<br />
-<pre class="csharp" name="code">
-package main
-import (
-	"fmt"
-	"html"
-	"log"
-	"net/http"
-)
-func main() {
-	bind := ":8081"
-	log.Println("Start web server on port", bind)
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		err := fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))		
-	})
-	log.Fatal(http.ListenAndServe(bind, nil))
-}
-<!-- -->
-</pre>
-Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, create Dockerfile to build image:
-  <br>
-  <br />
-  
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
 <!-- -->
@@ -490,10 +463,6 @@ The tutorial demonstrates <a href="https://kubernetes.io/docs/concepts/overview/
 <br /><br />
 Whereas using <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#declarative-object-configuration">declarative</a> object configuration requires configuration files to be stored locally first.  All <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations will be detected automatically per Kuberentes object thus configuration can be version controlled.
 <br /><br />
-  
-<u>Example</u><br />
-<br /><br />
-
 <br />
 <u>Source Code</u><br />
 Finally, navigate the Kubernetes <a href="https://github.com/kubernetes/kubernetes">source code</a> to familiarize yourself with the <a href="https://www.youtube.com/watch?v=yqB_le-N6EE">code base</a> and debug step thru the source code especially if you would like to participate in any one of the Special Interest Groups [<a href="https://kubernetes.io/docs/contribute/participate">SIGs</a>]. 
