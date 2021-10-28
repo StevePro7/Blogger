@@ -1,31 +1,198 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Example</u><br />
-Code an example from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch Goland.  Enter the following code.  Press F5 to run main.go.
-<br><br>
-main.go
+Code an example from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch VS Code.  Enter following code.  Press F5 to debug main.go.
 <br />
+<!--
+<table border="1" width="99%">
+<tr>
+<td>&nbsp;<b>TODO main.go</b></td>
+</tr>
+<tr>
+<td>
 <pre class="csharp" name="code">
-package main
-import (
-	"fmt"
-	"html"
-	"log"
-	"net/http"
-)
-func main() {
-	bind := ":8081"
-	log.Println("Start web server on port", bind)
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		err := fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))		
-	})
-	log.Fatal(http.ListenAndServe(bind, nil))
-}
-<!-- -->
+&nbsp;package main
+&nbsp;import (
+&nbsp;	"fmt"
+&nbsp;	"html"
+&nbsp;	"log"
+&nbsp;	"net/http"
+&nbsp;)
+&nbsp;func main() {
+&nbsp;	bind := ":8081"
+&nbsp;	log.Println("Start web server on port", bind)
+&nbsp;	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+&nbsp;    err := fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+&nbsp;	})
+&nbsp;	log.Fatal(http.ListenAndServe(bind, nil))
+&nbsp;}
 </pre>
+</td>
+</tr>
+</table>
+-->
+<br />  
+
 Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, create Dockerfile to build image:
-  <br>
+<br />
+<ol>
+<li>Ctrl+Shift+P.  Choose Docker: Add Docker Files to Workspace...</li>
+<li>Select Application Platform.  Choose GoLang</li>
+<li>What port does app listen on?  Choose 5000</li>
+<li>Include optional Docker Compose files?  Select	No</li>
+</ol>
+<!--
+<table border="1" width="99%">
+<tr>
+<td>&nbsp;<b>TODO Dockerfile</b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#build stage
+&nbsp;FROM golang:alpine AS builder
+&nbsp;RUN apk add --no-cache git
+&nbsp;WORKDIR /go/src/app
+&nbsp;COPY . .
+&nbsp;RUN go get -d -v ./...
+&nbsp;RUN go build -o /go/bin/app -v ./...
+&nbsp;
+&nbsp;#final stage
+&nbsp;FROM alpine:latest
+&nbsp;RUN apk --no-cache add ca-certificates
+&nbsp;COPY --from=builder /go/bin/app /app
+&nbsp;ENTRYPOINT /app
+&nbsp;LABEL Name=golang20 Version=0.0.1
+&nbsp;EXPOSE 8081
+</pre>
+</td>
+</tr>
+</table>
+<br />
+-->
+In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.
+  <br /><br />
+Test Dockerfile:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Lastly, deploy Web API to Minikube:
+  
+  
   <br />
+  
+<table border="1" width="99%">
+<tr>
+<td colspan="2">&nbsp;<b>TODO Kubernetes.yaml</b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;--- Deployment
+&nbsp;apiVersion: apps/v1
+&nbsp;kind: Deployment
+&nbsp;metadata:
+&nbsp;  name: testwebapi
+&nbsp;spec:
+&nbsp;  replicas: 1
+&nbsp;  selector:
+&nbsp;    matchLabels:
+&nbsp;      app: testwebapi
+&nbsp;  template:
+&nbsp;    metadata:
+&nbsp;      labels:
+&nbsp;        app: testwebapi
+&nbsp;    spec:
+&nbsp;      containers:
+&nbsp;        - name: testwebapi
+&nbsp;          image: stevepro/testwebapi:1.0
+&nbsp;          imagePullPolicy: Never
+&nbsp;          resources:
+&nbsp;            limits:
+&nbsp;              memory: "128Mi"
+&nbsp;              cpu: "500m"
+&nbsp;          ports:
+&nbsp;            - containerPort: 8081 
+&nbsp;
+&nbsp;---
+&nbsp;apiVersion: v1
+&nbsp;kind: Service
+&nbsp;metadata:
+&nbsp;  name: testwebapi-service
+&nbsp;spec:
+&nbsp;  type: NodePort
+&nbsp;  ports:
+&nbsp;    - name: http
+&nbsp;      port: 8082
+&nbsp;      targetPort: 8081
+&nbsp;  selector:
+&nbsp;    app: testwebapi
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;--- Service
+&nbsp;apiVersion: apps/v1
+&nbsp;kind: Deployment
+&nbsp;metadata:
+&nbsp;  name: testwebapi
+&nbsp;spec:
+&nbsp;  replicas: 1
+&nbsp;  selector:
+&nbsp;    matchLabels:
+&nbsp;      app: testwebapi
+&nbsp;  template:
+&nbsp;    metadata:
+&nbsp;      labels:
+&nbsp;        app: testwebapi
+&nbsp;    spec:
+&nbsp;      containers:
+&nbsp;        - name: testwebapi
+&nbsp;          image: stevepro/testwebapi:1.0
+&nbsp;          imagePullPolicy: Never
+&nbsp;          resources:
+&nbsp;            limits:
+&nbsp;              memory: "128Mi"
+&nbsp;              cpu: "500m"
+&nbsp;          ports:
+&nbsp;            - containerPort: 8081 
+&nbsp;
+&nbsp;---
+&nbsp;apiVersion: v1
+&nbsp;kind: Service
+&nbsp;metadata:
+&nbsp;  name: testwebapi-service
+&nbsp;spec:
+&nbsp;  type: NodePort
+&nbsp;  ports:
+&nbsp;    - name: http
+&nbsp;      port: 8082
+&nbsp;      targetPort: 8081
+&nbsp;  selector:
+&nbsp;    app: testwebapi
+</pre>
+
+</td>
+</tr>
+</table>
+<br />
+  <br /><br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl apply -f Kubernetes.yaml
+</td>
+</tr>
+  </table>
+<br /><br />
+Test Kubernetes:  Launch Terminal | minikube service testwebapi-service --url.  Obtain the IP address + port and use Minikube cluster socket to test | curl <b>http://192.168.49.2:32236/test</b>.  Before finishing, cleanup:
+  
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl delete -f Kubernetes.yaml
+</td>
+</tr>
+</table>
+<br />
+<br /><br />
   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
