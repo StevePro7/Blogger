@@ -380,6 +380,10 @@ Here is list of useful commands.  Foreach command you can add the <b>--help</b> 
 <td valign="top">&nbsp;docker rmi $(docker images -aq)</td>
 <td valign="top">&nbsp;Remove all images</td>
 </tr>
+<tr>
+<td valign="top">&nbsp;docker rmi $(docker images -f dangling=true -q)</td>
+<td valign="top">&nbsp;Remove all dangling images</td>
+</tr>
 </table>
 <!-- -->
 <br />
