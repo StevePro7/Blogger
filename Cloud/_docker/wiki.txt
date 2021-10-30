@@ -220,10 +220,10 @@ Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://ma
 <!-- -->
 <table border="1" width="99%">
 <tr>
-<td>&nbsp;<b>Dockerfile</b></td>
+<td colspan="2">&nbsp;<b>TODO Dockerfile</b></td>
 </tr>
 <tr>
-<td>
+<td valign="top">
 <pre class="csharp" name="code">
 &nbsp;#build stage
 &nbsp;FROM golang:alpine AS builder
@@ -232,7 +232,10 @@ Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://ma
 &nbsp;COPY . .
 &nbsp;RUN go get -d -v ./...
 &nbsp;RUN go build -o /go/bin/app -v ./...
-&nbsp;
+</pre>
+</td>
+<td valign="top">
+<pre class="csharp" name="code">
 &nbsp;#final stage
 &nbsp;FROM alpine:latest
 &nbsp;RUN apk --no-cache add ca-certificates
