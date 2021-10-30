@@ -275,7 +275,6 @@ Assume <a href="https://golang.org">Go</a> installed.  Launch Terminal.  Enter c
 </table>
 <br />
 <br />
-
 <b>kubeadm</b><br />
 <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm">kubeadm</a> is another tool built to provide s fast path for creating Kuberentes clusters.  kubeadm performs all actions to get a minimum viable cluster up and running.  Once <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm">installed</a> you can then <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">create</a> the K8s cluster.
 <br />
@@ -334,12 +333,9 @@ If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address alre
 </tr>
 </table>
 <br /><br />
-
 <a href="https://k9scli.io">k9s</a> is the Kubernetes CLI to manage clusters.  <a href="https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz">Download</a> the latest binary and extract into <b>/usr/local/bin</b>.  You may need to manually create the <b>~/.k9s</b> folder otherwise you may receive the error <i>Permission denied</i>.
 <br />
-
 <a href="https://1.bp.blogspot.com/-mInwoIpHwKM/YV3-6GivDVI/AAAAAAAAHgE/t719Gm7sURQi2GV3KmFP3MAzCMMN3sNdgCLcBGAsYHQ/s1240/k9s.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-mInwoIpHwKM/YV3-6GivDVI/AAAAAAAAHgE/t719Gm7sURQi2GV3KmFP3MAzCMMN3sNdgCLcBGAsYHQ/s600/k9s.png"/></a>
-
 <br />
 <br />
 <b>kubectl</b><br />
@@ -366,7 +362,6 @@ Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/re
 </tr>
 </table>
 <br />
-
 The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtain Kubernetes config + context info:
 <br />
 <!-- -->
@@ -391,7 +386,6 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 <br />
 <!-- -->
 <br />
-  
 <u>Definitions</u><br />
 Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
 <br />
@@ -429,7 +423,6 @@ Here is some basic terminology when working with containerized applications runn
 <br />
 <!-- -->
 <br />
-  
 <u>Planes</u><br />
 <a href="https://konghq.com/learning-center/cloud-connectivity/control-plane-vs-data-plane">Networking</a> back in the day would have rules + policies about how to route network packets.  These policies would make up the network <b>control plane</b>.  The control plane is concerted with establishing network policy.  Meanwhile, the <b>data plane</b> is everything else in the network architecture that enforces all network policies.
 <br /><br />
@@ -489,7 +482,6 @@ Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/comp
 </table>
 <!-- -->
 <br />
-
 IMPORTANT<br />
 Here are 2x simple <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#interacting-with-nodes-and-cluster">commands</a> to get full information about control and data planes for Kubernetes cluster:
 <br />
@@ -505,7 +497,6 @@ Here are 2x simple <a href="https://kubernetes.io/docs/reference/kubectl/cheatsh
 </table>
 <br />
 <br />
-  
 <u>Commands</u><br />
 Here is list of useful <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources">commands</a>. Foreach command you can add the --help flag to see more options to pass:
 <br />
@@ -636,7 +627,6 @@ Hello MiniKube <a href="https://kubernetes.io/docs/tutorials/hello-minikube">tut
 </table>
 <br />
 <br />
-
 <u>Management</u><br />
 The tutorial demonstrates <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#imperative-commands">imperative</a> commands using kubectl to operate directly on live Kubernetes objects in the cluster.  This is the useful to get started or run one-off tasks however these actions provide no history.
 <br /><br />
