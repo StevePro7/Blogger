@@ -3,7 +3,7 @@
 <u>Example</u><br />
 Code an example from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch VS Code.  Enter following code.  Press F5 to debug main.go.
 <br />
-<!-- -->
+<!--
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b>TODO main.go</b></td>
@@ -22,7 +22,7 @@ Code an example from scratch as full end-to-end Web API demo on local host, in D
 &nbsp;	bind := ":8081"
 &nbsp;	log.Println("Start web server on port", bind)
 &nbsp;	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-&nbsp;	  fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+&nbsp;    err := fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
 &nbsp;	})
 &nbsp;	log.Fatal(http.ListenAndServe(bind, nil))
 &nbsp;}
@@ -30,23 +30,24 @@ Code an example from scratch as full end-to-end Web API demo on local host, in D
 </td>
 </tr>
 </table>
-<!-- -->
+-->
 <br />  
+
 Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, create Dockerfile to build image:
 <br />
 <ol>
 <li>Ctrl+Shift+P.  Choose Docker: Add Docker Files to Workspace...</li>
 <li>Select Application Platform.  Choose GoLang</li>
-<li>What port does app listen on?  Choose 8081</li>
+<li>What port does app listen on?  Choose 5000</li>
 <li>Include optional Docker Compose files?  Select	No</li>
 </ol>
-<!-- -->
+<!--
 <table border="1" width="99%">
 <tr>
-<td colspan="2">&nbsp;<b>TODO Dockerfile</b></td>
+<td>&nbsp;<b>TODO Dockerfile</b></td>
 </tr>
 <tr>
-<td valign="top">
+<td>
 <pre class="csharp" name="code">
 &nbsp;#build stage
 &nbsp;FROM golang:alpine AS builder
@@ -55,10 +56,7 @@ Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, 
 &nbsp;COPY . .
 &nbsp;RUN go get -d -v ./...
 &nbsp;RUN go build -o /go/bin/app -v ./...
-</pre>
-</td>
-<td valign="top">
-<pre class="csharp" name="code">
+&nbsp;
 &nbsp;#final stage
 &nbsp;FROM alpine:latest
 &nbsp;RUN apk --no-cache add ca-certificates
@@ -71,9 +69,9 @@ Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, 
 </tr>
 </table>
 <br />
-<!-- -->
+-->
 In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.
-<br /><br />
+  <br /><br />
 Test Dockerfile:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Lastly, deploy Web API to the cluster.  Ensure that Minikube is installed.  Launch Terminal | <i>minikube start</i>.  Ensure images will be deployed locally:
 <br />
 <table border="1" width="99%">
@@ -89,7 +87,7 @@ Test Dockerfile:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Las
 <br />
 Build the image as above but this time in the local Minikube cluster <i>docker build -t stevepro/testwebapi:1.0 .</i>  Enter the following YAML as image deployment to local Minikube cluster and expose the endpoint as service:
 <br />
-<!-- -->
+<!--
 <table border="1" width="99%">
 <tr>
 <td colspan="2">&nbsp;<b>TODO Kubernetes.yaml</b></td>
@@ -156,7 +154,8 @@ Build the image as above but this time in the local Minikube cluster <i>docker b
 </tr>
 </table>
 <br />
-<!-- -->
+-->
+<br />
 Apply the deployment and service YAML using the kubectl.  Verify objects created from <i>minikube dashboard</i>.
 <br />
 <table border="1" width="99%">
@@ -165,9 +164,10 @@ Apply the deployment and service YAML using the kubectl.  Verify objects created
 &nbsp;kubectl apply -f Kubernetes.yaml
 </td>
 </tr>
-</table>
-<br />
-Test Kubernetes:  Launch Terminal | minikube service testwebapi-service --url.  Obtain the IP address + port.  Use Minikube cluster socket to test | <b>curl http://192.168.49.2:30799/test</b>.  Before finishing, clean up:
+  </table>
+<br /><br />
+Test Kubernetes:  Launch Terminal | minikube service testwebapi-service --url.  Obtain the IP address + port and use Minikube cluster socket to test | curl <b>http://192.168.49.2:32236/test</b>.  Before finishing, cleanup:
+  
 <br />
 <table border="1" width="99%">
 <tr>
