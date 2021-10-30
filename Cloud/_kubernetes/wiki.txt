@@ -609,13 +609,13 @@ Hello MiniKube <a href="https://kubernetes.io/docs/tutorials/hello-minikube">tut
 <table border="1" width="99%">
 <tr>
 <td valign="top">
-&nbsp;kubectl attach hello-node-7567d9fdc9-t7f8x -i
+&nbsp;kubectl attach hello-node-7567d9fdc9-mblh7 -i
 <br />
-&nbsp;kubectl exec hello-node-7567d9fdc9-t7f8x -- ls /
+&nbsp;kubectl exec hello-node-7567d9fdc9-mblh7 -- ls /
 <br />
-&nbsp;kubectl exec --it hello-node-7567d9fdc9-t7f8x -- /bin/sh
+&nbsp;kubectl exec --it hello-node-7567d9fdc9-mblh7 -- /bin/sh
 <br />
-&nbsp;kubectl exec --stdin --tty hello-node-7567d9fdc9-t7f8x -- /bin/sh
+&nbsp;kubectl exec --stdin --tty hello-node-7567d9fdc9-mblh7 -- /bin/sh
 <br />
 </td>
 </tr>
@@ -625,7 +625,7 @@ Hello MiniKube <a href="https://kubernetes.io/docs/tutorials/hello-minikube">tut
 <table border="1" width="99%">
 <tr>
 <td valign="top">
-&nbsp;kubectl logs -f hello-node-7567d9fdc9-t7f8x
+&nbsp;kubectl logs -f hello-node-7567d9fdc9-mblh7
 <br />
 &nbsp;minikube stop
 <br />
