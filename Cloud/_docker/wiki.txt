@@ -70,7 +70,7 @@ On brand new install on Docker there will be no Docker Images built or Docker Co
 <br />
 <br />
 <u>Hello World</u><br />
-The simplest way to pull down Docker image from the Docker Hub is to execute <b>docker run hello-world</b>.  
+The simplest way to pull down Docker image from the Docker Hub is to execute <b>docker run <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheatSheet/00-HelloWorld">hello-world</a></b>.  
 <br />
 <!-- -->
 <a href="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s770/HelloWorld.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s600/HelloWorld.png"/></a>
@@ -94,7 +94,7 @@ docker system prune -a
 </pre>
 <br />
 <u>Example #1</u><br />
-Code an <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">example</a> from scratch: build simple Hello application in Python and run on localhost in a container:
+Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheatSheet/01-Example">example</a></a> from <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">scratch</a>: build simple Hello application in Python and run on localhost in a container:
 <br />
 <!-- -->
 <table border="1" width="99%">
@@ -174,7 +174,7 @@ If you receive <i>OSError: [Errno 98] Address already in use </i> [Port 5000] th
 <br />
 <br />
 <u>Example #2</u><br />
-Code an <a href="https://github.com/qorbani/docker-golang-hello-world">example</a> from scratch: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
+Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheatSheet/02-Example">example</a> from <a href="https://github.com/qorbani/docker-golang-hello-world">scratch</a>: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
 <br />
 <!-- -->
 <table border="1" width="99%">
