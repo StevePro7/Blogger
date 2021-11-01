@@ -1,16 +1,13 @@
 <span style="font-family:verdana;font-size:85%;">  
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
-<!-- -->
 <a href="https://1.bp.blogspot.com/-ZXeJTM4CjkA/YVIh6qriF8I/AAAAAAAAHco/Jr7_2tXARisKKV-wFuE9N9xIaecewo9xwCLcBGAsYHQ/s480/kubernetes.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZXeJTM4CjkA/YVIh6qriF8I/AAAAAAAAHco/Jr7_2tXARisKKV-wFuE9N9xIaecewo9xwCLcBGAsYHQ/s600/kubernetes.png"/></a>
-<!-- -->
 <br />
 Let's check <a href="https://kubernetes.io">K8s</a> out!  
 <br /><br />
 <u>Tools</u><br />
 Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">tools</a> that can be installed to work with + help manage Kubernetes clusters:
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/reference/kubectl/kubectl"><b>kubectl</b></a></td>
@@ -30,7 +27,6 @@ Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">too
 <td valign="top">&nbsp;Used to create and manage and secure larger Kubernetes clusters</td>
 </tr>
 </table>
-<!-- -->
 <br>
 <u>Installation</u><br />
 Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a>.  Install Kubernetes on <a href="https://phoenixnap.com/kb/install-kubernetes-on-ubuntu">Linux</a> accordingly.
@@ -38,7 +34,6 @@ Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docke
 <b>Minikube</b><br />
 Here are instructions how to get Kubernetes running locally as single node cluster on Ubuntu with  <a href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support">Minikube</a>:
 <br />
-<!-- -->
 <pre class="csharp" name="code">
 # Prerequisites
 sudo apt install cpu-checker && sudo kvm-ok
@@ -59,16 +54,13 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 minikube version
 minikube start
 </pre>
-<!-- -->
 <a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
-<!-- -->
 <br />
 <br />
 <b>KinD</b><br />
 Kubernetes in Docker [<a href="https://kind.sigs.k8s.io/docs/user/quick-start">KinD</a>] allows an approach to run a full Kubernetes cluster using Docker containers to simulate multiple Kubernetes nodes operating all at once instead of running everything in virtual machines.
 <br /><br />
 Assume <a href="https://golang.org">Go</a> installed.  Launch Terminal.  Enter commands to install KinD.  Export path in ~/.bashrc and reboot:
-<!-- -->
 <br />
 <table width="99%" border="1">
 <tr>
@@ -97,7 +89,6 @@ Assume <a href="https://golang.org">Go</a> installed.  Launch Terminal.  Enter c
 <b>kubeadm</b><br />
 <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm">kubeadm</a> is another tool built to provide a fast path for creating Kuberentes clusters.  kubeadm performs all actions to get a minimum viable cluster up and running.  Once <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm">installed</a> you can then <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">create</a> the K8s cluster.
 <br />
-<!-- -->
 <pre class="csharp" name="code">
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
@@ -109,7 +100,6 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 kubeadm version
-<!-- -->
 </pre>
 <br />
 <u>Dashboard</u><br />
@@ -182,7 +172,6 @@ Enable auto completion as per the kubectl <a href="https://kubernetes.io/docs/re
 <br />
 The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtain Kubernetes config + context info:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">&nbsp;kubectl config view</td>
@@ -202,12 +191,10 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 </tr>
 </table>
 <br />
-<!-- -->
 <br />
 <u>Definitions</u><br />
 Here is some basic terminology when working with containerized applications running in Kubernetes cluster:
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces">Namespace</a></td>
@@ -239,7 +226,6 @@ Here is some basic terminology when working with containerized applications runn
 </tr>
 </table>
 <br />
-<!-- -->
 <br />
 <u>Planes</u><br />
 <a href="https://konghq.com/learning-center/cloud-connectivity/control-plane-vs-data-plane">Networking</a> back in the day would have rules + policies about how to route network packets.  These policies would make up the network <b>control plane</b>.  The control plane is concerted with establishing network policy.  Meanwhile, the <b>data plane</b> is everything else in the network architecture that enforces all network policies.
@@ -247,13 +233,10 @@ Here is some basic terminology when working with containerized applications runn
 <b>Control Plane</b><br />
 In Kubernetes, the control plane is the set of components that "make global decisions about the cluster" e.g. scheduling as well as detecting and responding to cluster events e.g. auto scaling pods due to traffic spikes.
 <br /> 
-<!-- -->
 <a href="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s1059/PlaneControl.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s600/PlaneControl.png"/></a>
-<!-- -->
 <br />
 Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on the master node to keep the cluster in the "<a href="https://yannalbou.medium.com/kubernetes-desired-state-4c5c4e873743">desired state</a>":
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Store (etcd)</td>
@@ -272,18 +255,14 @@ Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/c
 <td valign="top">&nbsp;Watches for newly created pods and assigns nodes to run them on</td>
 </tr>
 </table>
-<!-- -->
 <br />
 <b>Data Plane</b><br />
 In Kubernetes, the data plane is the set of worker nodes with their pods and containers that enforce all the global decisions made about the cluster from the master node e.g. auto scaling pods due to traffic spikes.
 <br />
-<!-- -->
 <a href="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s600/PlaneData.png"/></a>
-<!-- -->
 <br />
 Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on each worker node  maintaining pods and runtime environment:
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Kubelet</td>
@@ -298,7 +277,6 @@ Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/comp
 <td valign="top">&nbsp;Network proxy that maintains all network rules on the worker nodes</td>
 </tr>
 </table>
-<!-- -->
 <br />
 IMPORTANT<br />
 Here are 2x simple <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#interacting-with-nodes-and-cluster">commands</a> to get full information about control and data planes for Kubernetes cluster:
@@ -318,7 +296,6 @@ Here are 2x simple <a href="https://kubernetes.io/docs/reference/kubectl/cheatsh
 <u>Commands</u><br />
 Here is list of useful <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources">commands</a>. Foreach command you can add the --help flag to see more options to pass:
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;kubectl get all -A</td>
@@ -349,7 +326,6 @@ Here is list of useful <a href="https://kubernetes.io/docs/reference/kubectl/che
 <td valign="top">&nbsp;List all services across all the namespaces</td>
 </tr>
 </table>
-<!-- -->
 List all container(s) for <i>my-pod</i> <b>kubectl get pod <i>my-pod</i> -o jsonpath="{.spec.containers[*].image}"</b>.
 <br />
 <br />
@@ -453,7 +429,6 @@ Whereas using <a href="https://kubernetes.io/docs/concepts/overview/working-with
 <u>Example</u><br />
 Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/KubernetesCheatSheet/01-Example">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch VS Code.  Enter following code.  Press F5 to debug main.go.
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/main.go">main.go</a></b></td>
@@ -480,7 +455,6 @@ Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/KubernetesC
 </td>
 </tr>
 </table>
-<!-- -->
 <br />  
 Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, create Dockerfile to build image:
 <br />
@@ -490,7 +464,6 @@ Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, 
 <li>What port does app listen on?  Choose 8081</li>
 <li>Include optional Docker Compose files?  Select	No</li>
 </ol>
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td colspan="2">&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/Dockerfile">Dockerfile</a></b></td>
@@ -521,7 +494,6 @@ Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, 
 </tr>
 </table>
 <br />
-<!-- -->
 In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.
 <br /><br />
 Test Dockerfile:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Lastly, deploy Web API to the cluster.  Ensure that Minikube is installed.  Launch Terminal | <i>minikube start</i>.  Ensure images will be deployed locally:
@@ -539,7 +511,6 @@ Test Dockerfile:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Las
 <br />
 Build the image as above but this time in the local Minikube cluster <i>docker build -t stevepro/testwebapi:1.0 .</i>  Enter the following YAML as image deployment to local Minikube cluster and expose the endpoint as service:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td colspan="2">&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
@@ -606,7 +577,6 @@ Build the image as above but this time in the local Minikube cluster <i>docker b
 </tr>
 </table>
 <br />
-<!-- -->
 Apply the deployment and service YAML using the kubectl.  Verify objects created from <i>minikube dashboard</i>.
 <br />
 <table border="1" width="99%">
