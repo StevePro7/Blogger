@@ -95,7 +95,7 @@ Assume <a href="https://golang.org">Go</a> installed.  Launch Terminal.  Enter c
 <br />
 <br />
 <b>kubeadm</b><br />
-<a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm">kubeadm</a> is another tool built to provide s fast path for creating Kuberentes clusters.  kubeadm performs all actions to get a minimum viable cluster up and running.  Once <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm">installed</a> you can then <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">create</a> the K8s cluster.
+<a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm">kubeadm</a> is another tool built to provide a fast path for creating Kuberentes clusters.  kubeadm performs all actions to get a minimum viable cluster up and running.  Once <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm">installed</a> you can then <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm">create</a> the K8s cluster.
 <br />
 <!-- -->
 <pre class="csharp" name="code">
@@ -617,7 +617,7 @@ Apply the deployment and service YAML using the kubectl.  Verify objects created
 </tr>
 </table>
 <br />
-Test Kubernetes:  Launch Terminal | minikube service testwebapi-service --url.  Obtain the IP address + port.  Use Minikube cluster socket to test | <b>curl http://192.168.49.2:30799/test</b>.  Before finishing, clean up:
+Test Kubernetes:  Launch Terminal | <i>minikube service testwebapi-service --url</i>.  Obtain the IP address + port.  Use Minikube cluster socket to test | <b>curl http://192.168.49.2:30799/test</b>.  Before finishing, clean up:
 <br />
 <table border="1" width="99%">
 <tr>
