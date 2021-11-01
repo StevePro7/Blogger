@@ -330,7 +330,7 @@ List all container(s) for <i>my-pod</i> <b>kubectl get pod <i>my-pod</i> -o json
 <br />
 <br />
 <u>Tutorial</u><br />
-Hello MiniKube <a href="https://github.com/StevePro7/CloudTesting/tree/main/KubernetesCheatSheet/00-Tutorial">tutorial</a> shows you how to create a <a href="https://kubernetes.io/docs/tutorials/hello-minikube">sample</a> app on Kubernetes applying the above resources.
+Hello MiniKube <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/00-Tutorial">tutorial</a> shows you how to create a <a href="https://kubernetes.io/docs/tutorials/hello-minikube">sample</a> app on Kubernetes applying the above resources.
 <br />
 <table border="1" width="99%">
 <tr>
@@ -427,11 +427,11 @@ Whereas using <a href="https://kubernetes.io/docs/concepts/overview/working-with
 <br /><br />
 <br />
 <u>Example</u><br />
-Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/KubernetesCheatSheet/01-Example">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch VS Code.  Enter following code.  Press F5 to debug main.go.
+Code an <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/01-Example">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch VS Code.  Enter following code.  Press F5 to debug main.go.
 <br />
 <table border="1" width="99%">
 <tr>
-<td>&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/main.go">main.go</a></b></td>
+<td>&nbsp;<b><a href="https://github.com/SteveProXNA/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/main.go">main.go</a></b></td>
 </tr>
 <tr>
 <td>
@@ -466,7 +466,7 @@ Test main.go:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Next, 
 </ol>
 <table border="1" width="99%">
 <tr>
-<td colspan="2">&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/Dockerfile">Dockerfile</a></b></td>
+<td colspan="2">&nbsp;<b><a href="https://github.com/SteveProXNA/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/Dockerfile">Dockerfile</a></b></td>
 </tr>
 <tr>
 <td valign="top">
@@ -513,7 +513,7 @@ Build the image as above but this time in the local Minikube cluster <i>docker b
 <br />
 <table border="1" width="99%">
 <tr>
-<td colspan="2">&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
+<td colspan="2">&nbsp;<b><a href="https://github.com/SteveProXNA/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
 </tr>
 <tr>
 <td>
