@@ -1,9 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> is a Platform as a Service product that uses OS-level virtualization to deliver software in packages called containers.  Containers are isolated from one another and bundle their own software + libraries and configuration files yet share single operating system kernel thus use fewer resource than virtual machines.
 <br />
-<!-- -->
 <a href="https://1.bp.blogspot.com/-8rHlQefLyrg/YPWfgoEbuUI/AAAAAAAAHHc/dmypGeOVJ2cZ1h_hW5HHp2pPALPwsBKeACLcBGAsYHQ/s480/docker-logo.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-8rHlQefLyrg/YPWfgoEbuUI/AAAAAAAAHHc/dmypGeOVJ2cZ1h_hW5HHp2pPALPwsBKeACLcBGAsYHQ/s600/docker-logo.png"/></a>
-<!-- -->
 <br />
 Let's check it out!
 <br /><br />
@@ -29,9 +27,7 @@ docker images
 </pre>
 <br />
 The final 2x commands may throw the following error while trying to connect to the Docker daemon socket:
-<!-- -->
 <a href="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s745/01-InstallError.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-0tSR8B_6-Yw/YPWddYg5dlI/AAAAAAAAHHI/2Lh7IAtxo10QBI8qaK2E5-up9XSixnBYgCLcBGAsYHQ/s600/01-InstallError.png"/></a>
-<!-- -->
 <br /><br />
 Here is one way to fix "Got permission denied while trying to connect to the Docker daemon socket" error:
 <pre class="csharp" name="code">
@@ -64,18 +60,14 @@ When you <a href="https://www.youtube.com/watch?v=YFl2mCHdv24">learn</a> Docker,
 <br /><br />
 On brand new install on Docker there will be no Docker Images built or Docker Containers running.  Verify:
 <br />
-<!-- -->
 <a href="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s690/DockerEmpty.png"><img alt="" border="0" width="98%"src="https://1.bp.blogspot.com/-cOht5dy3nsc/YQbLeFHERoI/AAAAAAAAHJY/bA002pa5PrAEfMMPTJem6sBDroQFLAyvACLcBGAsYHQ/s600/DockerEmpty.png"/></a>
-<!-- -->
 <br />
 <br />
 <u>Hello World</u><br />
 The simplest way to pull down Docker image from the Docker Hub is to execute <b>docker run <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheatSheet/00-HelloWorld">hello-world</a></b>.  
 <br />
-<!-- -->
 <a href="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s770/HelloWorld.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-sSOhhmX3roE/YQbRcYPB6AI/AAAAAAAAHJg/HAHzwejukh0DbDfhY3n1uwB4wXPfTnTNgCLcBGAsYHQ/s600/HelloWorld.png"/></a>
 <br />
-<!-- -->
 <br />
 <u>Getting Started</u><br />
 Here is more information on Docker Orientation and <a href="https://docs.docker.com/get-started">setup</a> tutorial to build and run an image as a container:
@@ -96,7 +88,6 @@ docker system prune -a
 <u>Example #1</u><br />
 Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheatSheet/01-Example">example</a></a> from <a href="https://medium.com/zero-equals-false/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a">scratch</a>: build simple Hello application in Python and run on localhost in a container:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td width="50%">&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/DockerCheatSheet/01-Example/app.py">app.py</a></b></td>
@@ -137,7 +128,6 @@ Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheat
 </td>
 </tr>
 </table>
-<!-- -->
 Follow <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices">best practices</a> for writing DockerFile as each FROM, RUN, COPY, CMD instruction creates one layer.
 <br /><br />
 Enter the following commands to build and run image as a container.  Navigate browser to localhost:5000.
@@ -176,7 +166,6 @@ If you receive <i>OSError: [Errno 98] Address already in use </i> [Port 5000] th
 <u>Example #2</u><br />
 Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheatSheet/02-Example">example</a> from <a href="https://github.com/qorbani/docker-golang-hello-world">scratch</a>: build simple Hello application in GoLang but <a href="https://towardsdatascience.com/docker-you-are-doing-it-wrong-e703075dd67b">automate</a> Dockerfile generation.
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/DockerCheatSheet/02-Example/app.go">app.go</a></b></td>
@@ -207,7 +196,6 @@ Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheat
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">extension</a>.  Generate Dockerfile with the actions:
 <br />
@@ -217,7 +205,6 @@ Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://ma
 <li>What port does app listen on?  Choose 5000</li>
 <li>Include optional Docker Compose files?  Select	No</li>
 </ol>
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td colspan="2">&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/DockerCheatSheet/02-Example/Dockerfile">Dockerfile</a></b></td>
@@ -248,19 +235,14 @@ Launch VS Code.  Open folder hosting app.go.  Install Docker <a href="https://ma
 </tr>
 </table>
 <br />
-<!-- -->
 In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image.  Once complete Image will be listed in Docker extension Images list.  Expand image built | Run.  Refresh Docker extension Containers list.  Navigate browser to localhost:5000.  Expand Container to see all files from the running Image built earlier:
 <br />
-<!-- -->
 <a href="https://1.bp.blogspot.com/-AJIdALYWLf8/YQblNTU53nI/AAAAAAAAHJo/-lfHwIMkttsYELyJNZzO-E91EDa8M8KFwCLcBGAsYHQ/s900/Dockerfile.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-AJIdALYWLf8/YQblNTU53nI/AAAAAAAAHJo/-lfHwIMkttsYELyJNZzO-E91EDa8M8KFwCLcBGAsYHQ/s600/Dockerfile.png"/></a>
-<!-- -->
-<br />
-<br />
+<br /><br />
 <br />
 <u>Example #3</u><br />
 Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheatSheet/03-Example">example</a> from <a href="https://www.youtube.com/watch?v=VZK224Tj_4w">scratch</a>: build simple Hello application in C++ and run interactively inside container:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td width="50%">&nbsp;<b><a href="https://github.com/StevePro7/CloudTesting/blob/main/DockerCheatSheet/03-Example/main.cpp">main.cpp</a></b></td>
@@ -291,7 +273,6 @@ Code an <a href="https://github.com/StevePro7/CloudTesting/tree/main/DockerCheat
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Enter the following commands to build and run image as a container.  Run interactive inside container also.
 <table border="1" width="99%">
@@ -350,7 +331,6 @@ docker run --rm -it \
 <u>Commands</u><br />
 Here is list of useful commands.  Foreach command you can add the <b>--help</b> flag to see more options to pass:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">&nbsp;<b>Command</b></td>
@@ -386,7 +366,6 @@ Here is list of useful commands.  Foreach command you can add the <b>--help</b> 
 </tr>
 </table>
 Note: another command to clean up dangling images is simply <b>docker image prune</b>.
-<!-- -->
 <br />
 <br />
 <u>Samples</u><br />
