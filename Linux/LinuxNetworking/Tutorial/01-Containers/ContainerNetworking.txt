@@ -1,0 +1,373 @@
+Container Networking Is Simple!
+02/11/2021
+
+https://iximiuz.com/en/posts/container-networking-is-simple
+
+
+Isolating containers with network namespaces
+sudo iptables -N ROOT_NS
+
+sudo su
+./inspect-net-stack.sh
+
+man ip netns
+
+network namespace
+logically another copy of the network stack with its own routes, firewall rules and network devices
+
+
+ip netns
+
+sudo ip netns add netns0
+//sudo ip netns delete netns0
+
+ip netns
+netns0
+
+
+nsenter
+Use just the created namespace
+
+sudo nsenter --net=/var/run/netns/netns0 bash
+
+sudo ./inspect-net-stack.sh
+exit
+
+Connecting containers to host with virtual Ethernet devices (veth)
+
+virtual ethernet devices
+can act as tunnels between network namespaces to create a brdige to a
+physical network device in another namespace but can also be used as
+standalone network devices
+
+
+sudo ip link add veth0 type veth peer name ceth0
+
+create interconnected virtual Ethernet devices
+veth0
+ceth0
+
+created in root network namespace
+[host network stack]
+
+move one device in root namespace into netns0
+
+sudo ip link set ceth0 netns netns0
+
+sudo ip link set veth0 up
+sudo ip addr add 172.18.0.11/16 dev veth0
+
+sudo nsenter --net=/var/run/netns/netns0
+ip link set lo up
+ip link set ceth0 up
+ip addr add 172.18.0.10/16 dev ceth0
+ip link
+
+
+From "netns0" ping root's veth0
+ping -c 2 172.18.0.11
+exit
+
+From root namespace ping root's ceth0
+ping -c 2 172.18.0.10
+
+
+Inside root namespace
+ip addr show dev ens33
+
+
+sudo nsenter --net=/var/run/netns/netns0
+
+default route 
+192.168.1.1
+connect: Network is unreachable
+
+8.8.8.8
+connect: Network is unreachable
+
+
+no route in netns0 routing table for such packets
+
+ip route
+172.18.0.0/16 dev ceth0  proto kernel  scope link  src 172.18.0.10
+
+every packet destined to 172.18.0.0/16 network
+will be sent thru ceth0 device but other packets will be discarded
+
+
+root namespace
+ip route
+172.18.0.0/16 dev veth0  proto kernel  scope link  src 172.18.0.11 
+
+
+Interconnecting containers with virtual network switch (bridge)
+
+# root namespace
+sudo ip netns add netns1
+sudo ip link add veth1 type veth peer name ceth1
+sudo ip link set ceth1 netns netns1
+sudo ip link set veth1 up
+sudo ip addr add 172.18.0.21/16 dev veth1
+
+
+# netns1 namespace
+sudo nsenter --net=/var/run/netns/netns1
+ip link set lo up
+ip link set ceth1 up
+ip addr add 172.18.0.20/16 dev ceth1
+
+
+ping -c 2 172.18.0.21
+Destination Host Unreachable
+
+ip route
+172.18.0.0/16 dev ceth1  proto kernel  scope link  src 172.18.0.20 
+
+# there is a route
+# leave netns1
+exit
+
+# from root namespace we cannot reach netns1
+ping -c 2 172.18.0.20
+Destination Host Unreachable
+
+
+from netns0 we CNAN reach veth1
+sudo nsenter --net=/var/run/netns/netns0
+ping -c 2 172.18.0.21
+
+
+BUT
+ping -c 2 172.18.0.20
+Destination Host Unreachable
+
+
+clash of routes
+exit
+
+# root namespace
+ip route
+172.18.0.0/16 dev veth0  proto kernel  scope link  src 172.18.0.11 
+172.18.0.0/16 dev veth1  proto kernel  scope link  src 172.18.0.21 
+
+
+
+Linux bridge
+forwards packets between interfaces that are connected to it
+since it's a switch it does on L2 [Ethernet] level
+
+
+Cleanup
+sudo ip netns delete netns0
+sudo ip netns delete netns1
+
+sudo ip link delete veth0
+sudo ip link delete veth1
+sudo ip link delete ceth0
+sudo ip link delete ceth1
+
+
+Create 2x new containers
+sudo ip netns add netns0
+sudo ip link add veth0 type veth peer name ceth0
+sudo ip link set veth0 up
+sudo ip link set ceth0 netns netns0
+
+
+sudo nsenter --net=/var/run/netns/netns0
+ip link set lo up
+ip link set ceth0 up
+ip addr add 172.18.0.10/16 dev ceth0
+exit
+
+sudo ip netns add netns1
+sudo ip link add veth1 type veth peer name ceth1
+sudo ip link set veth1 up
+sudo ip link set ceth1 netns netns1
+
+sudo nsenter --net=/var/run/netns/netns1
+ip link set lo up
+ip link set ceth1 up
+ip addr add 172.18.0.20/16 dev ceth1
+exit
+
+
+No new routes
+ip route
+
+
+create bridge
+sudo ip link add br0 type bridge
+sudo ip link set br0 up
+
+sudo ip link set veth0 master br0
+sudo ip link set veth1 master br0
+
+
+check connectivity btwn containers
+sudo nsenter --net=/var/run/netns/netns0
+ping -c 2 172.18.0.20
+
+sudo nsenter --net=/var/run/netns/netns1
+ping -c 2 172.18.0.10
+
+
+only 2x IP addresses assigned on ceth0 and ceth1
+bot are on the same Ethernet segment = connectivity on the L2 level
+
+
+sudo nsenter --net=/var/run/netns/netns0
+ip neigh
+172.18.0.20 dev ceth0 lladdr e2:4f:5f:e8:f1:59 STALE
+
+sudo nsenter --net=/var/run/netns/netns1
+ip neigh
+172.18.0.10 dev ceth1 lladdr aa:6b:4c:c7:ac:79 STALE
+
+Summary
+turn containers into friendly neighbors
+prevent them from interfering but keep the connectivity
+
+
+Reaching out to the outside world
+[IP routing and masquerading]
+
+containers talk to each other but can
+containers talk to host
+
+sudo nsenter --net=/var/run/netns/netns0
+ping -c 2 192.168.1.1
+
+connect: Network is unreachable
+
+no route!
+
+ip route
+172.18.0.0/16 dev ceth0  proto kernel  scope link  src 172.18.0.10 
+
+
+exit
+root namespace
+
+ping -c 2 172.18.0.10
+2 packets transmitted, 0 received, 100% packet loss, time 1008ms
+
+ping -c 2 172.18.0.20
+2 packets transmitted, 0 received, 100% packet loss, time 1008ms
+
+
+Solution
+establish connectivity btwn root and container namespaces
+we need to assign the IP address to the bridge network interface
+
+sudo ip addr add 172.18.0.1/16 dev br0
+
+
+ip route
+172.18.0.0/16 dev br0  proto kernel  scope link  src 172.18.0.1
+
+now
+--- 172.18.0.10 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1028ms
+
+--- 172.18.0.20 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1028ms
+
+
+however stil cannot reach out to host ens33
+192.168.1.1
+
+sudo nsenter --net=/var/run/netns/netns0
+ip route add default via 172.18.0.1
+
+ping -c 2 192.168.1.1
+but I get 100% packet loss
+
+
+connect containers to the outside world
+
+by default packet forwarding i.e. router functionality
+is disabled in Linux
+
+
+# root namespace
+sudo bash -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+
+# container
+sudo nsenter --net=/var/run/netns/netns0
+ping -c 2 8.8.8.8
+
+
+large paragraph RE: Network Address Translation
+NAT
+
+sudo iptables -t nat -A POSTROUTING -s 172.18.0.0/16 ! -o br0 -j MASQUERADE
+
+sudo nsenter --net=/var/run/netns/netns0
+ping -c 2 8.8.8.8
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+
+
+sudo iptables -S
+sudo iptables -t filter --list-rules
+
+example of Docker iptables rules
+
+
+Letting the outside world reach out to containers
+[port publishing]
+
+sudo nsenter --net=/var/run/netns/netns0
+python3 -m http.server --bind 172.18.0.10 5000
+
+# root namespace
+curl 172.18.0.10:5000
+
+
+Must forward any packets arriving at port 5000 on host ens33 interface
+to 172.18.0.10:5000 destination [from outside world]
+
+need to publish container's port 5000 on the host's ens33 interface
+iptables to the rescue
+
+# external traffic
+sudo iptables -t nat -A PREROUTING -d 192.168.1.1 -p tcp -m tcp --dport 5000 -j DNAT --to-destination 172.18.0.10:5000
+
+# local traffic
+sudo iptables -t nat -A OUTPUT -d 192.168.1.1 -p tcp -m tcp --dport 5000 -j DNAT --to-destination 172.18.0.10:5000
+
+
+enable iptables intercepting traffic over bridged networks
+sudo modprobe br_netfitler
+modprobe: FATAL: Module br_netfitler not found in directory /lib/modules/4.13.0-32-generic
+
+
+
+Understanding Docker network drivers
+
+--network host
+ip link
+sudo docker run -it --rm --network host alpine ip link
+
+
+Docker does not use network namespace isolation
+containers work in the root network namespace +
+share the network stack w/ the host machine
+
+
+--network none
+sudo docker run -it --rm --network none alpine op link
+single loopback network interface
+
+
+--network bridge
+
+
+inspect the network stack from the host nad containers POV
+
+
+Bonus : rootless containers and networking
+
+
+Conclusion
+containerization can fairly be regarded as virtualization technology
