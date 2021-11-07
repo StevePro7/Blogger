@@ -9,6 +9,12 @@ https://iximiuz.com/en/posts/bridge-vs-switch
 https://iximiuz.com/en/posts/computer-networking-101
 
 
+veth0	172.18.0.11/16		root network namespace
+ceth0	172.18.0.10/16		container network ns0
+
+veth1	172.18.0.21/16		root network namespace
+ceth1	172.18.0.20/16		container network ns1
+
 Isolating containers with network namespaces
 sudo iptables -N ROOT_NS
 
