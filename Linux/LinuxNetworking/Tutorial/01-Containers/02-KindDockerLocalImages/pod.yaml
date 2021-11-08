@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleepy
+spec:
+  containers:
+  - name: sleepy
+    image: sleepy:latest
+    imagePullPolicy: Never

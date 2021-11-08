@@ -1,0 +1,79 @@
+KiND - How I Wasted a Day Loading Local Docker Images
+08/11/2021
+
+https://iximiuz.com/en/posts/kubernetes-kind-load-docker-image
+
+
+KinD tutorial
+08/11/2021
+
+https://iximiuz.com/en/posts/kubernetes-kind-load-docker-image/
+
+01.
+cat > Dockerfile <<EOF
+FROM debian:buster-slim
+
+CMD ["sleep", "9999"]
+EOF
+
+
+02.
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleepy
+spec:
+  containers:
+  - name: sleepy
+    image: sleepy:latest
+EOF
+
+
+03.
+docker exec -it kind-control-plane bash
+ps auxf
+
+KinD uses containerd as its CRI implementation
+CRI
+Container Runtime Interface
+https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes
+
+crictl images
+docker.io/library/sleepy
+
+image: sleepy:latest
+image pull policy	Always
+
+SO
+docker build -t sleepy:0.1.0 .
+kind load docker-image sleepy:0.1.0
+
+or imagePullPolicy: Never
+
+
+BEFORE
+kubectl delete -f - <<EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleepy
+spec:
+  containers:
+  - name: sleepy
+    image: sleepy:latest
+EOF
+
+
+AFTER
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleepy
+spec:
+  containers:
+  - name: sleepy
+    image: sleepy:latest
+    imagePullPolicy: Never  # or IfNotPresent
+EOF
