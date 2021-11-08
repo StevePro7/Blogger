@@ -310,7 +310,7 @@ Here is list of useful <a href="https://kubernetes.io/docs/reference/kubectl/che
 <td valign="top">&nbsp;Get the expanded declaration for <i>my-pod</i></td>
 </tr>
 <tr>
-<td valign="top">&nbsp;kubectl logs -f <i>my-pod</i></td>
+<td valign="top">&nbsp;kubectl logs -f <i>my-pod</i> -o yaml</td>
 <td valign="top">&nbsp;Get logs for <i>my-pod</i> + tail all its updates</td>
 </tr>
 <tr>
