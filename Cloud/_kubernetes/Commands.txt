@@ -1,19 +1,4 @@
 Kubernetes commands
-
-NEW
-11/11/2021
-
-Delete multiple namespaces
-e.g.
-egress gateway
-
-Reference
-https://stackoverflow.com/questions/59345831/how-to-delete-multiple-namespaces-with-label-option
-
-kubectl get namespaces --no-headers=true -o custom-columns=:metadata.name | grep egress-gateways | xargs kubectl delete namespace
-
-
-
 28/06/2021
 Terminal
 minikube start

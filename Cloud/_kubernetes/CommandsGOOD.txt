@@ -1,7 +1,29 @@
 Kubernetes GOOD
+
+11/11/2021
+
+01.
+Delete multiple namespaces
+e.g.
+egress gateway
+
+Reference
+https://stackoverflow.com/questions/59345831/how-to-delete-multiple-namespaces-with-label-option
+
+kubectl get namespaces --no-headers=true -o custom-columns=:metadata.name | grep egress-gateways | xargs kubectl delete namespace
+
+
+02.
+List all pods on particular node
+e.g. node
+k get nodes -A ip-172-16-101-189.us-west-2.compute.internal
+
+List all pods on that node
+k get po -A -o wide | grep ip-172-16-101-189.us-west-2.compute.internal
+
+
+
 19/08/2021
-
-
 01.
 kubernetes shell into pod
 https://blog.macstadium.com/blog/how-to-k8s-exec-into-a-running-kubernetes-pod
