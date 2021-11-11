@@ -1,0 +1,16 @@
+<pre class="csharp" name="code">
+#ifndef _STORAGE_MANAGER_H_
+#define _STORAGE_MANAGER_H_
+
+void engine_storage_manager_code()
+{
+  sRamOffSet = 0x0000;
+  SYS_disableInts();
+  SRAM_enable();
+
+  SRAM_disable();
+  SYS_enableInts();
+}
+
+#endif//_STORAGE_MANAGER_H_
+</pre>

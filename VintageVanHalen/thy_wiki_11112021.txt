@@ -1,5 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-  There's only one way to rock!  <a href="https://steveproxna.itch.io/vintage-van-halen">Vintage Van Halen</a> celebrates forty awesome riffs shred by Edward Van Halen.  Built using the Sega Genesis Development Kit, Vintage Van Halen is available for free download from <a href="https://steveproxna.itch.io/vintage-van-halen">itch.io</a>.
+There's only one way to rock!  <a href="https://steveproxna.itch.io/vintage-van-halen">Vintage Van Halen</a> celebrates forty awesome riffs shred by Eddie Van Halen.
 <br />
 <a href="https://1.bp.blogspot.com/-qqNaVQnyQks/YQgdapX2twI/AAAAAAAAHJw/sx2hobA33ocWEG0LH3N4YjRi0KKLbwDMACLcBGAsYHQ/s802/04.jpg"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-qqNaVQnyQks/YQgdapX2twI/AAAAAAAAHJw/sx2hobA33ocWEG0LH3N4YjRi0KKLbwDMACLcBGAsYHQ/s600/04.jpg"/></a>
 <br />
@@ -143,28 +143,6 @@ Hack the ROM [above] to show the answers for every quiz during entire game sessi
 <br /><br />
 Also, on Title screen press + hold joystick down while holding button <b>B</b>.  This will show all the game statistics persisted across all game sessions.  Finally, on Splash screen press and hold button <b>B</b> to reset all game stats.
 <br /><br />
-<a href="https://github.com/SteveProXNA/VintageVanHalenMD/blob/main/dev/src/engine/storage_manager.c">storage_manager.c</a>
-<pre class="csharp" name="code">
-#ifndef _STORAGE_MANAGER_H_
-#define _STORAGE_MANAGER_H_
-
-void engine_storage_manager_code()
-{
-  sRamOffSet = 0x0000;
-  signed char byte;
-
-  SYS_disableInts();
-  SRAM_enable();
-
-  byte = SRAM_readByte( sRamOffSet++ );        // Read.
-  SRAM_writeByte( sRamOffSet++, byte );        // Write.
-
-  SRAM_disable();
-  SYS_enableInts();
-}
-#endif//_STORAGE_MANAGER_H_
-</pre>
-<br />
 <u>Credits</u><br />
 Extra special thanks goes to <a href="https://twitter.com/MegadriveDev">@MegadriveDev</a> for the SGDK.  Plus StevePro Studios would like to give thanks: <a href="https://twitter.com/bigevilboss">@bigevilboss</a>, <a href="https://twitter.com/matteusbeus">@matteusbeus</a>, <a href="https://twitter.com/MoonWatcherMD">@MoonWatcherMD</a>, <a href="https://twitter.com/ohsat_games">@ohsat_games</a>, <a href="https://twitter.com/SpritesMind">@SpritesMind</a> for SGDK support online!
 <br /><br />
