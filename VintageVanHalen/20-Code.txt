@@ -5,8 +5,13 @@
 void engine_storage_manager_code()
 {
   sRamOffSet = 0x0000;
+  signed char byte;
+
   SYS_disableInts();
   SRAM_enable();
+
+  byte = SRAM_readByte( sRamOffSet++ );        // Read.
+  SRAM_writeByte( sRamOffSet++, byte );        // Write.
 
   SRAM_disable();
   SYS_enableInts();
