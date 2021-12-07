@@ -1,0 +1,49 @@
+Installation
+07/12/2021
+
+Windows 10 PC
+
+launch Terminal
+sdcc -v
+
+
+follow instructions as before
+https://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html
+
+
+BUT
+download SDCC - version 4.0.4 (build #11929) or newer required - get it here - snapshots here
+
+e.g.
+http://sdcc.sourceforge.net/snap.php
+http://sourceforge.net/projects/sdcc/files/snapshot_builds/x86_64-w64-mingw32-setup/sdcc-20211102-12748-x64-setup.exe/download
+
+
+Copy the files as before to
+C:\Program Files\SDCC\bin
+
+e.g.
+assets2banks.exe	D:\GitHubX\sverx\devkitSMS\assets2banks\Windows
+folder2c.exe		D:\GitHubX\sverx\devkitSMS\folder2c\Windows
+ihx2sms.exe		D:\GitHubX\sverx\devkitSMS\ihx2sms\Windows
+makesms.exe		D:\GitHubX\sverx\devkitSMS\makesms\Windows
+
+
+ISSUE
+4.1.2
+
+
+https://sourceforge.net/projects/sdcc/files/sdcc-win64
+
+
+4.0.0
+https://sourceforge.net/projects/sdcc/files/sdcc-win64/4.0.0
+
+works on "normal" projects but NOT banked project
+e.g.
+https://github.com/StevePro7/SegaMasterSystemLinux/tree/main/NewBanking/04-Banks
+
+
+4.1.0
+https://sourceforge.net/projects/sdcc/files/sdcc-win64/4.1.0
+THIS WORKS!!
