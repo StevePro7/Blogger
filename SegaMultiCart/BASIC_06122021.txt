@@ -1,0 +1,296 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="http://steveproxna.blogspot.ie/2013/06/sega-retro-gaming.html">post</a>, we checked out Sega Retro Gaming and some classic cartridge-based video games built on early 8-bit hardware such as the Sega <a href="http://en.wikipedia.org/wiki/SG-1000">SG-1000</a>, the <a href="http://en.wikipedia.org/wiki/SG-1000#SC-3000">SC-3000</a> and the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.
+<br /><br />
+Now, we would like to write our own similar 8-bit retro games!
+<br /><br />
+In this post, we will focus on the Sega SC-3000 home computer using the <a href="http://en.wikipedia.org/wiki/BASIC">BASIC</a> programming language for its simplicity and ease-of-use.
+<br /><br />
+In order to write Sega BASIC code on a modern-day computer, you will need an <a href="http://en.wikipedia.org/wiki/Emulator">emulator</a> installed and a copy of the <a href="http://www.romnation.net/srv/roms/39583/segamastersystem/Sega-BASIC-Level-3-V1-SC-3000-b1.html">Sega BASIC Level 3</a> ROM, or Sega BASIC IIIb, as it's also known.
+<br /><br />
+While there are many <a href="http://www.emutopia.com/index.php/downloads-emulators/category-items/3-downloads-emulators/298-sega-sg-1000-sc-3000">emulators</a> available for Sega platforms, only one emulator seems to be compatible with the Sega BASIC Level 3 ROM, that is: <a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/239-meka">Meka</a>
+<table width="100%">
+<tr>
+<td valign="top">
+<ul>
+<li>
+Download <a href="http://www.emutopia.com/index.php?option=com_cobalt&task=files.download&no_html=1&id=1912&fid=20&fidx=3&rid=239&return=aHR0cDovL3d3dy5lbXV0b3BpYS5jb20vaW5kZXgucGhwL2Rvd25sb2Fkcy1lbXVsYXRvcnMvaXRlbS8yOTgtc2VnYS1zZy0xMDAwLXNjLTMwMDAvMjM5LW1la2E%3D">mekaw073.zip</a> and extract
+</li>
+<li>Double click on mekaw.exe to launch</li>
+</ul>
+</td>
+</tr>
+</table>
+Note: check Debugger: Enable Z80 debugger for better developer experience.
+<br /><br />
+<u>Configuration</u>
+<br />
+Meka may be challenging to work with, especially if you have dual monitors.  In order to alternate windowed / full screen mode, make changes to the meka.blt file, similar to the following:
+<table width="100%">
+<tr>
+<td valign="top">
+<pre class="xml" name="code">
+[HQ2X::WIN]
+res = 1024x768
+driver = auto_win
+refresh_rate = 20
+blitter = hq2x
+stretch
+</pre>
+</td>
+<td valign="top">
+<br />
+<ul>
+<li>Launch Meka</li>
+<li>Video menu</li>
+<li>Blitters</li>
+<li>Select HQ2X</li>
+</ul>
+</td>
+</tr>
+</table>
+Note: press ESC to alternate windowed / full-screen mode.
+<br /><br />
+<u>Sega BASIC</u>
+<br />
+Next, download the Sega BASIC Level 3 ROM:
+<table width="100%">
+<tr>
+<td valign="top">
+<ul>
+<li>Download <a href="http://www.romnation.net/srv/download/rom/39583/segamastersystem/Sega-BASIC-Level-3-V1-SC-3000-b1.html">Sega BASIC Level 3 V1 (SC-3000) [b1].zip</a> and extract</li>
+<li>Double click Sega BASIC Level 3 V1 (SC-3000) [b1].sc to launch</li>
+<li>Set Sega BASIC Level 3 ROM to open with mekaw.exe by default</li>
+</ul>
+</td></tr>
+</table>
+<a href="http://2.bp.blogspot.com/-nZJVkD80sn4/UeWO4TquyeI/AAAAAAAACT4/Jl5ieaHmsw4/s1600/SegaBASIC.jpg" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-nZJVkD80sn4/UeWO4TquyeI/AAAAAAAACT4/Jl5ieaHmsw4/s320/SegaBASIC.jpg" width="98%" /></a>
+26620 Bytes free – are you serious?!?
+<br /><br />
+<u>Setup</u>
+<br />
+Each time Meka is launched, activate the Sega keyboard to begin typing:
+<table width="100%">
+<tr>
+<td valign="top">
+<ul>
+<li>Inputs menu</li>
+<li>Sega Keyboard</li>
+</ul>
+</td></tr>
+</table>
+Note: the Sega keyboard is not 100% compatible with typical QWERTY keyboard.
+<br />
+For example the "<b>&</b>" character is Shift+6 <b>not</b> Shift+7 on the Sega keyboard.
+<br /><br />
+<u>Hello World</u>
+<br />
+Type in the first BASIC program: the obligatory "Hello World":
+<pre class="csharp" name="code">
+NEW
+10 PRINT "HELLO WORLD"
+20 GOTO 10
+RUN
+</pre>
+<i>Hello World</i> will be printed down the screen indefinitely.  Press the "End" key to break.
+<br />
+Note: there can only be one active program in memory at any one time.
+<br /><br />
+<u>Shortcuts</u>
+<br />
+Here is short list of keyboard shortcuts that may be useful when using the Sega BASIC Level 3 ROM:
+<table width="100%">
+<tr>
+<td valign="top">
+<br /><b>Key</b>
+<br />Scroll lock
+<br />End key
+<br />Arrow keys
+<br />Backspace
+<br />Shift + Backspace
+</td>
+<td valign="top">
+<br /><b>Action</b>
+<br />soft reset (<i>keeps code in memory</i>)
+<br />break current program execution
+<br />move cursor around text screen
+<br />delete character to left of cursor
+<br />insert character to right of cursor
+</td>
+</tr>
+</table>
+<br />
+Also, the Sega keyboard has a special function key that simplifies the typing of entire BASIC commands, for example, press of the "FUNC" key and one other key combination:
+<table width="100%">
+<tr>
+<td valign="top">
+<br /><b>Command</b>
+<br />LIST
+<br />RUN
+</td>
+<td valign="top">
+<br /><b>Shortcut</b>
+<br />Tab + Backspace
+<br />Tab + <b>`</b> (<i>backtick</i>)
+</td>
+</tr>
+</table>
+Note: shortcuts may be different depending on localization.
+<br /><br />
+<u>State</u>
+<br />
+After typing in the first BASIC program, it will remain in memory until the Sega computer is powered off.  In order to maintain program state across sessions, simply save state, close and load state next session.
+<table width="100%">
+<tr>
+<td valign="top">
+<ul>
+<li>Main menu</li>
+<li>Save State</li>
+<li>Close Meka</li>
+<li>Launch Meka</li>
+<li>Main menu</li>
+<li>Load State</li>
+</ul>
+</td></tr>
+</table>
+Note: file is stored at <i>C:\PathToMeka\Saves\Sega BASIC Level 3 V1 (SC-3000) [b1].S00</i>
+<br /><br />
+Important: there can only be one copy of the state file at any one time.
+<br />
+Therefore, it is up to you to archive your state files accordingly!
+<br /><br />
+<u>Documentation</u>
+<br />
+The Sega SC-3000 Survivors <a href="http://www.sc-3000.com">web site</a> contains links to much <a href="http://www.sc-3000.com/index.php/Table/Programming-SEGA-SC-3000">documentation</a>: <a href="http://www.sc-3000.com/index.php/SEGA-SC-3000-User-Manual.html">manuals</a>, <a href="http://www.sc-3000.com/index.php/Table/Magazines">magazines</a> and <a href="http://www.sc-3000.com/index.php/Table/Books">books</a>.  SMS Power <a href="http://www.smspower.org">web site</a> also has more <a href="http://www.smspower.org/Scans/SegaComputer-Magazine">magazines</a> scans for Sega 8-bit preservation and fanaticism!
+<br /><br />
+<u>Example</u>
+<br />
+As an example, let's write the main loop of a simple "Shoot 'em up" style game that simply moves a target sprite around the screen based on user input; preferably the joystick.
+<br /><br />
+<u>Controller</u>
+<br />
+If you have a joystick connected to your computer, e.g. wireless Xbox 360 controller;
+<br />
+Configure the controller for best game play experience: 
+<table width="100%">
+<tr>
+<td valign="top">
+<ol>
+<li value="1">Close Meka</li>
+<li value="2">Activate controller</li>
+<li value="3">Launch Meka</li>
+<li value="4">Inputs menu</li>
+<li value="5">Joypad checked</li>
+</ol>
+</td>
+<td valign="top">
+<ol>
+<li value="6">Configuration</li>
+<li value="7">Input Configuration</li>
+<li value="8">Click ">>" twice</li>
+<li value="9">3/6 Joypad 1</li>
+<li value="10">Enabled checked</li>
+</ol>
+</td>
+</tr>
+</table>
+<a href="http://4.bp.blogspot.com/-B9MvsRd0QD8/UeWTrnyDq-I/AAAAAAAACUI/aobbo1XUJOw/s1600/Joystick.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-B9MvsRd0QD8/UeWTrnyDq-I/AAAAAAAACUI/aobbo1XUJOw/s320/Joystick.jpg" width="98%" /></a>
+Type in the following BASIC program to confirm the controller is configured correctly:
+<pre class="csharp" name="code">
+NEW
+10 PRINT STICK(1)
+20 GOTO 10
+RUN
+</pre>
+<i>Zeros</i> will be printed down the screen indefinitely: move the joystick in different directions;
+<br />
+Output: a value between 1 to 8 will be printed on-screen.  Press the "End" key to break.
+<br /><br />
+<u>Sample</u>
+<br />
+The following code sample is reminiscent of the Sega BASIC "Shoot 'em up" game titled "<a href="http://www.smspower.org/Scans/SegaComputer-Magazine-Issue16?gallerypage=6/7">3D City</a>" (1988).  While we will not dissect the full program at this time, we will replicate the main loop accordingly.
+<br /><br />
+Type in the following program exactly as is:
+<pre class="csharp" name="code">
+10 REM SEGA BASIC PROGRAMMING
+20 GOSUB 300
+30 ST=1
+40 SZ=16:MAG1
+50 ML=0:MU=0
+60 MR=256-SZ:MD=192-SZ
+70 TX=MR/2:TY=MD/2
+80 SCREEN 2,2:CLS
+90 COLOR,1,(0,0)-(255,191),1
+100 REM MAIN LOOP
+110 SPRITE 0,(TX,TY),0,9
+120 VX=0:VY=0
+130 S1=STICK(1):FR=STRIG(1):A$=INKEY$
+140 IF S1=3 OR A$=CHR$(28) THEN VX=1:GOSUB 200
+150 IF S1=7 OR A$=CHR$(29) THEN VX=-1:GOSUB 200
+160 IF S1=1 OR A$=CHR$(30) THEN VY=-1:GOSUB 200
+170 IF S1=5 OR A$=CHR$(31) THEN VY=1:GOSUB 200
+180 IF FR=1 OR A$=CHR$(32) THEN END
+190 GOTO 100
+200 REM MOVEMENT
+210 VX=VX*ST:VY=VY*ST
+220 TX=TX+VX:TY=TY+VY
+230 IF TX <= ML THEN TX=ML
+240 IF TX >= MR THEN TX=MR
+250 IF TY <= MU THEN TY=MU
+260 IF TY >= MD THEN TY=MD
+270 RETURN
+300 RESTORE 350
+310 FOR S=0 TO 3:READ S$:PATTERN S#S,S$:NEXT S
+320 RETURN
+350 DATA 000039202100012A, 2A01002120390000
+360 DATA 00009C0484008054, 54800084049C0000
+RUN
+</pre>
+The graphics screen clears black and positions a red target sprite.  Use the controller, or arrow keys, to move the target sprite left, right, up and down.  Press the left fire button or space bar to end program.
+<a href="http://1.bp.blogspot.com/-FGs6pazXwTs/UfopdQMN1gI/AAAAAAAACas/DGM72irK-bE/s1600/SegaBasicProgam.jpg" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-FGs6pazXwTs/UfopdQMN1gI/AAAAAAAACas/DGM72irK-bE/s320/SegaBasicProgam.jpg" width="98%" /></a>
+As you can see, the current per-pixel sprite movement is smooth but extremely slow!
+<br />
+Therefore, increase the movement step; change line <b>30</b> of the code to the following:
+<br />
+30 ST=2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+30 ST=4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+30 ST=8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+30 ST=16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+etc.
+<br />
+RUN
+<br /><br />
+Also, the movement step can be changed dynamically at runtime by manipulating memory directly:
+<table width="100%">
+<tr>
+<td valign="top">
+<ul>
+<li>Tools menu</li>
+<li>Memory Editor</li>
+<li>Click RAM button</li>
+<li>Type <b>EFF0</b></li>
+<li>Enter "01"</li>
+</ul>
+</td></tr>
+</table>
+<a href="http://2.bp.blogspot.com/-ivQUTfTFXV8/UmvZexMLOnI/AAAAAAAACe8/dnK0HgcfAqc/s1600/Memory.jpg" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-ivQUTfTFXV8/UmvZexMLOnI/AAAAAAAACe8/dnK0HgcfAqc/s1600/Memory.jpg" width="98%" /></a>
+Note: &HEFF0 is the 16-bit memory address where ST will be manipulated.
+<br />
+Next, add the following lines of code to the original program:
+<pre class="csharp" name="code">
+34 AD=&HEFF0
+38 POKE AD,ST
+205 ST=PEEK(AD)
+RUN
+</pre>
+Program runs as before.  However, this time experiment: enter hexadecimal values at the Memory Editor address &HEFF0 for example: 02, 04, 08, 10 etc. to see the movement step effects on the target sprite.
+<br /><br />
+Finally, save the state of Meka for future use: Main menu, Save State.
+<br /><br />
+<u>Summary</u>
+<br />
+In this post, BASIC programming was introduced on the Sega SC-3000 for simplicity and ease-of-use.  
+<br /><br />
+However, games written in BASIC suffer from the disadvantage that they are too slow for applications such as sprite movement; these may be <i>sped</i> up by increasing the step but precision of control is lost.
+<br /><br />
+This can be resolved by using <a href="http://en.wikipedia.org/wiki/Machine_code">machine code</a> routines for parts of the program where BASIC is too slow.  This will be the topic in the next <a href="http://steveproxna.blogspot.ie/2013/07/sega-machine-code-programming.html">post</a>.
+</span>
