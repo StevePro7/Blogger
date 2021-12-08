@@ -1,3 +1,53 @@
+Build.bat
+08/12/2021
+
+Ctrl+Shfit+B to build code
+
+Weird - previous versions of tasks.json on Windows used
+    "windows": {
+        "command": "build.bat"
+      },
+
+However, on the new Windows 10 laptop this gave an error
+
+build.bat : The term 'build.bat' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ build.bat
++ ~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (build.bat:String) [], CommandNotFoundException  
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+The terminal process "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -Command build.bat" terminated with exit code: 1
+
+
+01.	try to update Powershell Set-ExecutionPolicy 
+e.g.
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
+
+Reference:
+Powershell.txt
+~\Steven\Personal\abcd\xy\_Cdrive\Steven\Setup
+
+
+But did not work OR change anything
+
+A workaround is to do this
+    "windows": {
+        "command": "${workspaceFolder}/build.bat"
+      },
+
+
+02.	try this instead:
+    "windows": {
+        "command": "./build.bat"
+      },
+
+
+Reference:
+https://stackoverflow.com/questions/9046890/powershell-issue-i-have-to-type-to-run-bat-file
+
+
 Build.sh
 30/09/2021
 
