@@ -1,0 +1,29 @@
+Is Golang the future of cloud?
+11/12/2021
+
+
+https://www.quora.com/Is-Golang-the-future-of-cloud
+
+
+Michael Pollack
+Cloud Spend & Technology Specialist
+
+When building systems in the cloud, you are essentially building a distributed system. Independent applications running on various servers talk to other applications on other servers through messaging protocols like HTTP REST or RPC (remote procedure calls).
+
+Since all of this communication is happening between all of your applications, you can’t assume that one application will always get its message across to another application. The other system can be be down or running slow and the communication ultimately gets delayed.
+
+How does Golang fit into all of this?
+
+Golang was developed by Google to solve the problem of concurrent messaging between distributed systems in the cloud. It is a programming language that is asynchronous by default. This means that every operation you perform, like sending a message to another system, is done without waiting for the other system to respond back to you. It can handle multiple messages at any given time.
+
+One of the basic building blocks of Go is the goroutine: Go by Example: Goroutines
+
+Who supports Golang?
+
+All three major public cloud providers — AWS, GCP, and Azure — support Golang and have SDKs that interface with their systems in Go. This is a strong signal that Golang is here to stay.
+
+Should you use Golang?
+
+Technology stack and language stack is always a fickle choice amongst developers and CTOs.
+
+That said, cloud computing is distributed, and Golang was developed to address this exact need without needing to import libraries and other crufty frameworks. Therefore, I see Golang becoming one of the standard ways of doing distributed computing and picking up a lot of developer mindshare.
