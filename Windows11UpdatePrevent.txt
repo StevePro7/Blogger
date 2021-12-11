@@ -1,0 +1,34 @@
+Windows 11 Update Prevention
+11/12/2021
+
+
+https://www.howtogeek.com/765377/how-to-block-the-windows-11-update-from-installing-on-windows-10
+
+
+
+Windows 11 block
+https://www.howtogeek.com/765377/how-to-block-the-windows-11-update-from-installing-on-windows-10
+
+
+Computer\
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
+
+dont see
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows
+
+right click Windows
+WindowsUpdate
+
+New | Key
+WindowsUpdate
+
+TargetReleaseVersion		REG_DWORD	1
+TargetReleaseVersionInfo	REG_SZ		21H1
+
+
+
+Win + R
+gpedit.msc
+
+but Local Group Policy not installed for me
+so had to do the manual way above
