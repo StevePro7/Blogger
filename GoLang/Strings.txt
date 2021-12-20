@@ -1,0 +1,18 @@
+Strings
+20/12/2021
+
+Today I learned about the difference btwn
+
+raw strings		`this is a string\n`
+literal strings		"this is a string\n"
+
+the first will ignore CR LF Tab escape characters etc.
+
+Reference:
+https://www.golangprograms.com/golang-raw-string-literals-and-interpreted-string-literals.html
+
+
+IMPORTANT
+for unit testing
+e.g.
+assert(t, ParserData, `Matched Data: union#foo*/*bar\x0d\x0aselect found within ARGS:artist: 0 div 1 union#foo*/*bar\x0d\x0aselect#foo\x0d\x0a1,2,current_user`, dictionary)
