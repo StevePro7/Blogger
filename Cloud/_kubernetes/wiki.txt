@@ -1,5 +1,37 @@
 <span style="font-family:verdana;font-size:85%;">  
 
+
+  
+<br />
+<br />
+  
+  Test Kubernetes: Launch Terminal.  Execute <i>kubectl get nodes -o wide</i> to obtain cluster INTERNAL-IP.  Execute <i>kubectl get services<</i> to obtain cluster port.  Build socket and test | <b>curl http://172.18.0.2:31196/test</b>.
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl get nodes -o wide<br />
+&nbsp;kubectl get services<br />
+&nbsp;curl http://172.18.0.2:31196/test<br />
+</td>
+</tr>
+</table>
+<br />
+Finally, clean up and delete deployment + service YAML after testing complete and destroy the KinD cluster.
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl delete -f Kubernetes.yaml<br />
+&nbsp;kind delete cluster<br />
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
+  
+  
 <b>KinD</b><br />
 Code an <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example">example</a> from above as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Ensure that KinD is installed. Launch Terminal | <i>kind create cluster</i>.  Ensure images will be deployed locally:
 <br />
@@ -23,7 +55,7 @@ Build the image as above but this time in the local KinD cluster as <i>docker bu
 </tr>
 </table>
 <br />
-Test Kubernetes: Launch Terminal.  Execute <i>kubectl get nodes -o wide</i> to obtain cluster INTERNAL-IP.  Execute <i>kubectl get services<</i> to obtain cluster port.  Build socket and test | <b>curl http://172.18.0.2:31196/test</b>.
+Test Kubernetes: Launch Terminal.  Execute <i>kubectl get nodes -o wide</i> to obtain cluster INTERNAL-IP.  Execute <i>kubectl get services</i> to obtain cluster port.  Build socket and test | <b>curl http://172.18.0.2:31196/test</b>.
 <br />
 <table border="1" width="99%">
 <tr>
@@ -35,7 +67,7 @@ Test Kubernetes: Launch Terminal.  Execute <i>kubectl get nodes -o wide</i> to o
 </tr>
 </table>
 <br />
-Finally, clean up and delete deployment + service YAML after testing complete and destory the KinD cluster.
+Finally, clean up and delete deployment + service YAML after testing complete and destroy the KinD cluster.
 <br />
 <table border="1" width="99%">
 <tr>
@@ -215,12 +247,24 @@ Apply the deployment and service YAML using the kubectl.  Verify objects created
 <table border="1" width="99%">
 <tr>
 <td>
+&nbsp;docker build -t stevepro/testwebapi:1.0 .<br />
 &nbsp;kubectl apply -f Kubernetes.yaml<br />
 </td>
 </tr>
 </table>
 <br />
-Test Kubernetes:  Launch Terminal | <i>minikube service testwebapi-service --url</i>.  Obtain the IP address + port.  Use Minikube cluster socket to test | <b>curl http://192.168.49.2:30799/test</b>.  Before finishing, clean up:
+Test Kubernetes:  Launch Terminal.  Execute <i>minikube service testwebapi-service --url</i> to obtain the cluster IP address + port.  Build Minikube cluster socket and test the API | <b>curl http://192.168.49.2:30799/test</b>.
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;minikube service testwebapi-service --url<br />
+&nbsp;curl http://192.168.49.2:30799/test<br />
+</td>
+</tr>
+</table>
+<br />
+Finally, clean up and delete deployment + service YAML after testing complete and destroy Minikube cluster.
 <br />
 <table border="1" width="99%">
 <tr>
@@ -229,8 +273,8 @@ Test Kubernetes:  Launch Terminal | <i>minikube service testwebapi-service --url
 &nbsp;minikube stop<br />
 </td>
 </tr>
-</table>
-<br /><br />
+</table>  
+  <br />
 <b>STEVEPRO -end-</b><br />
   
   
