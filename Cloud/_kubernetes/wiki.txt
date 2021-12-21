@@ -1,37 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">  
 
-
-  
-<br />
-<br />
-  
-  Test Kubernetes: Launch Terminal.  Execute <i>kubectl get nodes -o wide</i> to obtain cluster INTERNAL-IP.  Execute <i>kubectl get services<</i> to obtain cluster port.  Build socket and test | <b>curl http://172.18.0.2:31196/test</b>.
-<br />
-<table border="1" width="99%">
-<tr>
-<td>
-&nbsp;kubectl get nodes -o wide<br />
-&nbsp;kubectl get services<br />
-&nbsp;curl http://172.18.0.2:31196/test<br />
-</td>
-</tr>
-</table>
-<br />
-Finally, clean up and delete deployment + service YAML after testing complete and destroy the KinD cluster.
-<br />
-<table border="1" width="99%">
-<tr>
-<td>
-&nbsp;kubectl delete -f Kubernetes.yaml<br />
-&nbsp;kind delete cluster<br />
-</td>
-</tr>
-</table>
-<br />
-<br />
-  
-  
-  
+ 
+<b>ADRIANA start</b><br />  
 <b>KinD</b><br />
 Code an <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example">example</a> from above as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Ensure that KinD is installed. Launch Terminal | <i>kind create cluster</i>.  Ensure images will be deployed locally:
 <br />
@@ -79,6 +49,8 @@ Finally, clean up and delete deployment + service YAML after testing complete an
 </table>
 <br />
 <br />
+<b>ADRIANA -end-</b><br />
+  
   
 <b>STEVEPRO start</b><br />
 <u>Example</u><br />
