@@ -35,15 +35,18 @@ Test Kubernetes: Launch Terminal.  Execute <i>kubectl get nodes -o wide</i> to o
 </tr>
 </table>
 <br />
-Test Kubernetes: Launch Terminal | Obtain Internal-IP <i>kubectl get nodes -o wide</i> | Obtain port <i>kubectl get services</i>.  Use KinD cluster socket to test | <b>curl http://172.18.0.2:31196/test</b>. Finally, clean up:
- 
+Finally, clean up and delete deployment + service YAML after testing complete and destory the KinD cluster.
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl delete -f Kubernetes.yaml<br />
+&nbsp;kind delete cluster<br />
+</td>
+</tr>
+</table>
 <br />
 <br />
-  Test Kubernetes: Launch Terminal.  Execute <i>kubectl get nodes -o wide</i> to obtain INTERNAL-IP.  Execute <i>kubectl get services<</i> to obtain port.  Use KinD cluster socket to test | <b>curl http://172.18.0.2:31196/test</b>. Before finishing, clean up:
-
-<br /><i>kubectl get services</i> | <i>kubectl get services</i> minikube service testwebapi-service --url. Obtain the IP address + port. Use Minikube cluster socket to test | </b>curl http://172.18.0.2:31196/test</b>. Before finishing, clean up:
-<br />
-  <br />
   
 <b>STEVEPRO start</b><br />
 <u>Example</u><br />
