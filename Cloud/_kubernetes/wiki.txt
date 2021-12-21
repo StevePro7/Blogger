@@ -1,10 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">  
 
-Enter the following YAML as image deployment to local Minikube cluster and expose the endpoint as service:
-  <br />
-Enter the following YAML as image deployment to local installed cluster and expose the endpoint as service:
-<br /><br />  
-  <b>STEVEPRO start</b><br />
+<b>STEVEPRO start</b><br />
 <u>Example</u><br />
 Code an <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/01-Example">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch VS Code.  Enter following code.  Press F5 to debug main.go.
 <br />
@@ -81,6 +77,7 @@ In VS Code | Right click Dockerfile | Build Image...  Choose name to tag image. 
 <br /><br />
 Test Dockerfile:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Lastly, deploy Web API to the cluster.  Enter the following YAML as image deployment to local installed cluster and expose the endpoint as service:
 <br />
+<!--
 <table border="1" width="99%">
 <tr>
 <td colspan="2">&nbsp;<b><a href="https://github.com/SteveProXNA/CloudTesting/blob/main/KubernetesCheatSheet/01-Example/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
@@ -148,21 +145,17 @@ Test Dockerfile:  Launch Terminal | <b>curl http://localhost:8081/test</b>.  Las
 </table>
 IMPORTANT: Kubernetes Templates is a handy VS Code <a href="https://marketplace.visualstudio.com/items?itemName=lunuan.kubernetes-templates">extension</a> that helps <a href="https://itnext.io/how-to-create-kubernetes-yaml-files-abb8426eeb45">create</a> Kubernetes YAML files!
 <br />
+-->
 <br />
-  
-  
-  
-  
-  
-  Ensure that Minikube is installed.  Launch Terminal | <i>minikube start</i>.  Ensure images will be deployed locally:
+<b>Minikube</b><br />
+Ensure that Minikube is installed.  Launch Terminal | <i>minikube start</i>.  Ensure images will be deployed locally:
 <br />
 <table border="1" width="99%">
 <tr>
 <td>
-<pre class="csharp" name="code">
-&nbsp;minikube docker-env
-&nbsp;eval $(minikube -p minikube docker-env)
-</pre>
+&nbsp;minikube start<br />
+&nbsp;minikube docker-env<br />
+&nbsp;eval $(minikube -p minikube docker-env)<br />
 </td>
 </tr>
 </table>
@@ -175,7 +168,7 @@ Apply the deployment and service YAML using the kubectl.  Verify objects created
 <table border="1" width="99%">
 <tr>
 <td>
-&nbsp;kubectl apply -f Kubernetes.yaml
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
 </td>
 </tr>
 </table>
@@ -185,7 +178,8 @@ Test Kubernetes:  Launch Terminal | <i>minikube service testwebapi-service --url
 <table border="1" width="99%">
 <tr>
 <td>
-&nbsp;kubectl delete -f Kubernetes.yaml
+&nbsp;kubectl delete -f Kubernetes.yaml<br />
+&nbsp;minikube stop<br />
 </td>
 </tr>
 </table>
