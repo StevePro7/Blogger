@@ -1,5 +1,33 @@
 <span style="font-family:verdana;font-size:85%;">  
 
+<b>KinD</b><br />
+Code an <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example">example</a> from above as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Ensure that KinD is installed. Launch Terminal | <i>kind create cluster</i>.  Ensure images will be deployed locally:
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kind create cluster<br />
+</td>
+</tr>
+</table>
+<br />
+Build the image as above but this time in the local KinD cluster as <i>docker build -t stevepro/testwebapi:2.0</i>.  Load the newly built local image into KinD cluster.  Apply the deployment and service YAML using the kubectl.
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;docker build -t stevepro/testwebapi:2.0 .<br />
+&nbsp;kind load docker-image stevepro/testwebapi:2.0<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+</td>
+</tr>
+</table>
+<br />
+Build the image as above but this time in the local KinD cluster as <i>docker build -t stevepro/testwebapi:2.0</i>.  Apply the deployment and service YAML using the kubectl. Verify objects created from minikube dashboard.  
+<br />
+<br />
+  <br />
+  
 <b>STEVEPRO start</b><br />
 <u>Example</u><br />
 Code an <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/01-Example">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and on Kubernetes.  Launch Terminal | <i>go mod init testwebapi</i>.  Launch VS Code.  Enter following code.  Press F5 to debug main.go.
@@ -161,8 +189,7 @@ Ensure that Minikube is installed.  Launch Terminal | <i>minikube start</i>.  En
 </table>
 <br />
 Build the image as above but this time in the local Minikube cluster <i>docker build -t stevepro/testwebapi:1.0 .</i>
-  <br>
-  
+<br>  
 Apply the deployment and service YAML using the kubectl.  Verify objects created from <i>minikube dashboard</i>.
 <br />
 <table border="1" width="99%">
