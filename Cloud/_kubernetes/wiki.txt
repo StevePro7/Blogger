@@ -189,6 +189,10 @@ The Kubernetes cluster configuration file lives at <b>~/.kube/config</b>.  Obtai
 <td valign="top">&nbsp;kubectl config use-context <i>my-cluster-name</i></td>
 <td valign="top">&nbsp;Set default context to <i>my-cluster-name</i></td>
 </tr>
+<tr>
+<td valign="top">&nbsp;kubectl config set-context --current --namespace=<i>my-ns</i></td>
+<td valign="top">&nbsp;Set default context namespace to <i>my-ns</i></td>
+</tr>
 </table>
 <br />
 <br />
