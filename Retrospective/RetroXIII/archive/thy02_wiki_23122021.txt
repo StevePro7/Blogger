@@ -1,0 +1,19 @@
+<span style="font-family:verdana;font-size:85%;">
+<u>Cloud</u><br />
+Cloud Computing is the on-demand delivery of infrastructure [hardware / servers], storage + databases via the Internet frequently delivered by cloud-based platforms: Amazon AWS / Google GCP / Microsoft Azure.
+<br /><br />
+Cloud Native is architecture for assembling these cloud-based components optimized for cloud environment; Not about servers but the services.  Enterprises modernize their infrastructure and process by choosing cloud technologies e.g. Docker for containerization, Kuberenetes for orchestration, that best fit their specific needs.
+<br /><br />
+<u>Golang</u><br />
+Golang [Go] is statically typed programming language syntactically similar to C but with memory safety and garbage collection.  Go was developed at Google to help solve the problem of concurrent messaging between distributed systems in the cloud using CSP style concurrency.  Subsequently, Go is asynchronous by default.
+<br /><br />
+Therefore, all three major public cloud providers AWS, GCP, Azure support Go and have SDKs that interface with their systems in Go.  Thus Go may become the standard way of distributed computing into the future.
+<br /><br />
+<u>Cgo</u><br />
+CGo is a technology which allows Go programs to interoperate with C libraries.  For example distributed cloud computing packages that consume <b>ModSecurity</b> C/C++ library for Web Applicaton Firewall (WAF) detection.
+<br /><br />
+Another example <b>eBPF</b>: a revolutionary technology that can run sandboxed C programs safely and efficiently extending the capabilities of the Linux kernel, without requiring changes to kernel source code or load kernel modules, consumed from Go packages providing high-performance networking in cloud native environments. 
+<br /><br />
+<u>Summary</u><br />
+Writing low level C code to target 8-bit Sega Master System hardware and now the 16-bit Sega MegaDrive it has proved to be very valuable experience for CGo applications which could assist in Go + Cloud Computing.  The next challenge is port projects exclusively on Windows and include Linux system builds cross platform <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>  
+</span>
