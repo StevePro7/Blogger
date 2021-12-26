@@ -1,0 +1,19 @@
+<span style="font-family:verdana;font-size:85%;">
+<u>Cloud</u><br />
+<a href="https://www.investopedia.com/terms/c/cloud-computing.asp">Cloud Computing</a> is the on-demand delivery of infrastructure [hardware / servers], storage + databases via the Internet frequently delivered by cloud-based platforms: Amazon <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">AWS</a> / Google <a href="https://en.wikipedia.org/wiki/Google_Cloud_Platform">GCP</a> / Microsoft <a href="https://en.wikipedia.org/wiki/Microsoft_Azure">Azure</a>.
+<br /><br />
+<a href="https://kubernetes.io/blog/2019/05/17/kubernetes-cloud-native-and-the-future-of-software">Cloud Native</a> is architecture for assembling these cloud-based components optimized for cloud environment; Not about servers but the services.  Enterprises modernize their infrastructure and process by choosing cloud technologies e.g. <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> for containerization, <a href="https://en.wikipedia.org/wiki/Kubernetes">Kuberenetes</a> for orchestration, that best fit their specific needs.
+<br /><br />
+<u>Golang</u><br />
+<a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Golang</a> [Go] is statically typed programming language syntactically similar to <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> but with memory safety and garbage collection.  Go was developed at Google to help solve the problem of concurrent messaging between distributed systems in the cloud using <a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes">CSP</a> style concurrency.  Subsequently, Go is asynchronous by default.
+<br /><br />
+Therefore, all three major public cloud providers AWS, GCP, Azure support Go and have SDKs that interface with their systems in Go.  Thus <a href="https://www.quora.com/Is-Golang-the-future-of-cloud">Go</a> may become the standard way of distributed computing into the future.
+<br /><br />
+<u>Cgo</u><br />
+<a href="https://go.dev/blog/cgo">CGo</a> is a technology which allows Go programs to interoperate with C libraries.  For example distributed cloud computing packages that consume <b><a href="https://github.com/SpiderLabs/ModSecurity">ModSecurity</a></b> C/C++ library for Web Applicaton Firewall (WAF) detection.
+<br /><br />
+Another example <b><a href="https://ebpf.io">eBPF</a></b>: a revolutionary technology that can run sandboxed C programs safely and efficiently extending the capabilities of the Linux kernel, without requiring changes to kernel source code or load kernel modules, consumed from Go packages providing high-performance networking in cloud native environments. 
+<br /><br />
+<u>Summary</u><br />
+Writing low level C code to target 8-bit Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a>  hardware and now the 16-bit Sega <a href="https://en.wikipedia.org/wiki/Sega_Genesis">Mega Drive</a> it has proved to be very valuable experience for CGo applications which could assist in <a href="https://dave.cheney.net/tag/cgo">Go</a> + Cloud Computing.  The next challenge is port projects exclusively on Windows and include Linux system builds cross platform <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>  
+</span>
