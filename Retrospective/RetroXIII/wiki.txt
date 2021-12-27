@@ -7,10 +7,10 @@ Last year, I conducted a simple retrospective for 2020. Therefore, here is a ret
 <td valign="top">
 <ul>
 <li><a href="https://steveproxna.blogspot.com/2021/02/z80-programming-setup.html">Setup</a> Z80 Assembly Programming cross platform for Windows, MacOS/X and Linux</li>
-<li>Configure VS Code Emulicious Debugger plugin for Z80 <a href="https://steveproxna.blogspot.com/2021/03/z80-programming-sample.html">source</a> code stepin + hacks</li>
-<li>Enter Van Halen demo for SMS Power! <a href="https://www.smspower.org/Homebrew/VanHalenDemo-SMS">2021</a> competition built in pure Z80 Assembly</li>
-<li>Build Van Halen <a href="https://steveproxna.itch.io/vintage-van-halen">Quiz</a> using C/SGDK for the Sega MegaDrive similar to C/devkitSMS</li>
-<li>Upgrade <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons</a> Trivia for Sega Master System include more characters and SFX</li>
+<li>Configure VS Code Emulicious Debugger plugin for <a href="https://steveproxna.blogspot.com/2021/03/z80-programming-sample.html">Z80</a> source code stepin + hacks</li>
+<li>Enter Van Halen <a href="https://www.smspower.org/Homebrew/VanHalenDemo-SMS">demo</a> for SMS Power! 2021 competition built in pure Z80 Assembly</li>
+<li>Build <a href="https://steveproxna.itch.io/vintage-van-halen">Van Halen</a> quiz using C/SGDK for the Sega MegaDrive similar to C/devkitSMS</li>
+<li>Upgrade <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> for Sega Master System include more characters and SFX</li>
 <li><a href="https://steveproxna.itch.io/simpsons-trivia">Port</a> Simpsons Trivia to the Sega MegaDrive using similar C development processes</li>
 <li>Compile Docker <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">cheat</a> sheet for cluster containerization in Cloud Native technology</li>
 <li>Compile Kuberenetes <a href="https://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">cheat</a> sheet for Cloud Native technology cluster orchestration</li>
@@ -46,10 +46,10 @@ Note: port low level homebrew games built from C/devkitSMS to C/SGDK is an achie
 Therefore, all three major public cloud providers AWS, GCP, Azure support Go and have SDKs that interface with their systems in Go.  Thus <a href="https://www.quora.com/Is-Golang-the-future-of-cloud">Go</a> may become the standard way of distributed computing into the future.
 <br /><br />
 <u>Cgo</u><br />
-<a href="https://go.dev/blog/cgo">CGo</a> is a technology which allows Go programs to interoperate with C libraries.  For example distributed cloud computing packages that consume <b><a href="https://github.com/SpiderLabs/ModSecurity">ModSecurity</a></b> C/C++ library for Web Applicaton Firewall (WAF) detection.
+<a href="https://go.dev/blog/cgo">CGo</a> is a technology which allows Go programs to interoperate with <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> libraries.  For example distributed cloud computing packages that consume <b><a href="https://github.com/SpiderLabs/ModSecurity">ModSecurity</a></b> C/C++ library for Web Applicaton Firewall (WAF) detection.
 <br /><br />
-Another example <b><a href="https://ebpf.io">eBPF</a></b>: a revolutionary technology that can run sandboxed C programs safely and efficiently extending the capabilities of the Linux kernel, without requiring changes to kernel source code or load kernel modules, consumed from Go packages providing high-performance networking in cloud native environments. 
+Another example <b><a href="https://ebpf.io">eBPF</a></b>: a revolutionary technology that can run sandboxed <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> programs safely and efficiently extending the capabilities of the Linux kernel, without requiring changes to kernel source code or load kernel modules, consumed from Go packages providing high-performance networking in cloud native environments. 
 <br /><br />
 <u>Summary</u><br />
-Writing low level C code to target 8-bit Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a>  hardware and now the 16-bit Sega <a href="https://en.wikipedia.org/wiki/Sega_Genesis">Mega Drive</a> it has proved to be very valuable experience for CGo applications which could assist in Go + Cloud Computing.  The next challenge is port projects exclusively on Windows and include Linux system builds cross platform <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>  
+Writing low level <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> code to target 8-bit Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a>  hardware and now the 16-bit Sega <a href="https://en.wikipedia.org/wiki/Sega_Genesis">Mega Drive</a> it has proved to be very valuable experience for CGo applications which could assist in Go + Cloud Computing.  The next challenge is port projects exclusively on Windows and include Linux system builds cross platform <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>  
 </span>
