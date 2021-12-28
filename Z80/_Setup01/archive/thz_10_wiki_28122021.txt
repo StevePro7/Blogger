@@ -29,11 +29,7 @@ Clone <a href="https://github.com/vhelin/wla-dx">wla-dx</a> repository to C:\Git
 <td>&nbsp;8. WLA DX linker wlalink.exe built</td>
 </tr>
 </table>
-<br />
-After build complete wla-z80.exe and wlalink.exe files can be copied out from newly created Release folder.
-<br />
-<a href="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s799/windows.png"><img alt="" border="0" width="98%" 
-src="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s600/windows.png"/></a>
+<a href="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s799/windows.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" data-original-height="183" data-original-width="799" src="https://1.bp.blogspot.com/-F4HCdzIrhTE/YBCSWruTWmI/AAAAAAAAGfs/H_wSDDEa5Gkef_fLO3nQzwpg5RJRGV2sgCLcBGAsYHQ/s600/windows.png"/></a>
 If you have followed <a href="http://steveproxna.blogspot.com/2014/09/z88dk-programming-setup.html">z88dk Programming Setup</a> tutorial and you already have <a href="http://www.contexteditor.org/downloads">ConTEXT</a> installed then copy the updated binaries wla-z80.exe and wlalink.exe built from previous step to output folder C:\wlaz80win32.
 <br /><br />
 Also, tweak the original Compile.bat file as all main entry points will now be via main.asm thus align main.o object file during wla-z80 compilation.  Finally, it seems -drvs wlalink linker flag is now no longer required.
