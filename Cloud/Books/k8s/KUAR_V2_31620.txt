@@ -1,0 +1,89 @@
+Kubernetes up and running
+21/07/2021
+
+https://github.com/kubernetes-up-and-running/examples
+
+
+pg.30
+$
+$
+$
+$ kind create cluster --wait 5m \
+export KUBECONFIG="$(kind get kubeconfig-path)"
+kubectl cluster-info
+kind delete cluster
+
+
+pg.31
+kubectl get componentstatuses
+
+pg.33
+k get nodes
+k describe nodes
+
+pg.34
+kube proxy
+
+pg.35
+dns
+k ui
+
+
+pg.37
+context
+
+pg.38
+JSONPath query lang
+
+pg.39
+k edit
+view last applied
+
+pg.40
+label + annotate
+kubectl exec -it <pod-name> -- bash	
+
+pg.41	TODO
+if not bash or terminal
+kubectl attach -it <pod-name>
+k cp
+
+
+pg.52
+dport fwd
+
+k logs previous
+
+pg.53
+log aggregation
+fluentd
+elasticsearch
+
+Wireshark tcpdump packet capture
+
+pg.54
+health check
+ensure main process of application always running
+
+live check
+app not just running but functioning properly
+
+pg.55
+readiness
+container ready to serve requests
+
+pg.56
+resource requests + limits
+
+pg.58
+cpu-shares
+
+
+pg.65
+labels vs annotations
+
+pg.68
+change label
+
+pg.69
+pod-template-hash
