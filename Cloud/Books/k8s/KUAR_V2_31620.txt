@@ -93,3 +93,89 @@ pg.73
 k delete deployments --all
 
 summary
+
+
+pg.79
+kubectl get endpoints alpaca-prod --watch
+
+pg.80
+ssh <node> -L 8080:localhost:32711
+
+
+pg.82
+kubectl get endpoints alpaca-prod --watch
+
+
+Pg.91
+minikube tunnel
+
+pg.108
+pod run by replicaset
+
+pg.110
+hpa
+heapster
+
+
+pg.112
+cascade flag
+
+pg.115
+get rs
+
+rs manage pods
+deploy manage replocasets
+
+
+pg.131
+intrusion detection sw
+
+
+pg.161
+image pull secrets
+
+
+pg.164
+recreate + update
+pipe to stdout
+k replace -f -
+- = stdin
+
+
+pg.168
+service a/c
+components run inside cluster
+
+
+pg.169
+role + rolebinding
+
+pg.171
+k get clusterroles
+
+pg.172
+can-i
+reconcile
+
+
+pg.196
+admission controllers
+
+pg.197
+CRD
+
+pg.199
+informer pattern
+
+
+pg.205
+kubebuilder project
+
+pg.222
+code review YAml
+
+223
+feature flag
+
+225
+single file
