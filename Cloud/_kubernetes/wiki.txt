@@ -401,7 +401,7 @@ Hello MiniKube <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/Ku
 <br />
 &nbsp;kubectl exec hello-node-7567d9fdc9-mblh7 -- ls /
 <br />
-&nbsp;kubectl exec --it hello-node-7567d9fdc9-mblh7 -- /bin/sh
+&nbsp;kubectl exec -it hello-node-7567d9fdc9-mblh7 -- /bin/sh
 <br />
 &nbsp;kubectl exec --stdin --tty hello-node-7567d9fdc9-mblh7 -- /bin/sh
 <br />
