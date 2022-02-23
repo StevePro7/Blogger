@@ -8,3 +8,15 @@ https://github.com/kubernetes/kubernetes/tree/master/test/e2e
 
 Writing good e2e tests for Kubernetes
 https://github.com/kubernetes/community/blob/master/contributors/devel/sig-testing/writing-good-e2e-tests.md
+
+
+
+
+https://github.com/kubernetes/community/blob/master/contributors/devel/sig-testing/e2e-tests.md
+
+Launch Goland
+~/Github/kubernetes/kubernetes
+
+Terminal
+go install ./test/e2e
+make WHAT=test/e2e/e2e.test

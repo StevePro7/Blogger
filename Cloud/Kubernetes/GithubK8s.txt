@@ -1,0 +1,37 @@
+Github k8s
+23/02/2022
+
+
+Change / learn k8s APIs
+https://github.com/kubernetes/community/blob/master/contributors/guide/coding-conventions.md#testing-conventions
+
+https://github.com/kubernetes/kubernetes/tree/master/test/e2e
+
+https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md
+
+
+etcd
+https://etcd.io/docs/v2.3/api
+
+
+etcd brain of Kubernetes
+https://betterprogramming.pub/a-closer-look-at-etcd-the-brain-of-a-kubernetes-cluster-788c8ea759a5
+
+Kind cluster
+ADVERTISE_URL=https://172.18.0.2:2380
+
+
+Q: how did I "know" my ADVERTISE_URL?
+A: VS Code right click on etcd-kind-control-plane | logs
+
+
+kubectl exec etcd-kind-control-plane -n kube-system -- sh -c \
+"ETCDCTL_API=3 etcdctl \
+--endpoints $ADVERTISE_URL \
+--cacert /etc/kubernetes/pki/etcd/ca.crt \
+--key /etc/kubernetes/pki/etcd/server.key \
+--cert /etc/kubernetes/pki/etcd/server.crt \
+get \"\" --prefix=true -w json" > etcd-kv.json
+
+
+for k in $(cat etcd-kv.json | jq '.kvs[].key' | cut -d '"' -f2); do echo $k | base64 --decode; echo; done
