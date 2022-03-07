@@ -1,4 +1,50 @@
 WAVSoundFx
+06/03/2022
+
+EXAMPLE
+create mp3 => wav file
+if m4a then convert online
+
+Launch Audacity
+
+Selection start	000,000,000 samples
+Length 	  check	000,050,000 samples
+Ctrl+B	01
+Enter
+
+Selection start	000,050,000 samples
+Length 	  check	000,050,000 samples
+Ctrl+B	02
+Enter
+
+Selection start	000,100,000 samples
+Length 	  check	000,050,000 samples
+Ctrl+B	03
+Enter
+con't
+
+File | Export Multiple...
+E:\Steven\Temp\WAV
+Export
+OK
+
+
+CD E:\Steven\Temp\WAV
+riff.bat
+
+IMPORTANT
+ensure that no file is > 0x3FFF
+i.e. 16KB
+
+shift.bat
+then
+
+SplitWAVpacking.exe
+E:\GitHub\StevePro7\Z80test\76-Utils\SplitWAVpacking\bin\Debug
+
+
+
+archive notes
 19/10/2021
 
 IMPORTANT

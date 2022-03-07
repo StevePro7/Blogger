@@ -1,0 +1,26 @@
+Z80 integration
+06/03/2022
+
+
+Example
+rand.c
+D:\Github\mojontwins\loves_the_sg1000\src\dev\utils
+
+
+
+My own corresponding example
+screen_manager.c
+E:\GitHub\StevePro8\SegaMasterSystemLinux\TurtleBridge\maths\05-RandAsmTest\dev\engine
+
+
+unsigned char data = 0;
+
+#else
+
+		__asm
+			ld a, ( _data )
+			inc a
+			ld( _data ), a
+		__endasm;
+
+#endif
