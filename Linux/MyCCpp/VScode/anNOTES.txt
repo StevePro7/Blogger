@@ -10,3 +10,28 @@ Ctrl+Shift+B
 Run
 F5
 debug
+
+
+IMPORTANT
+originally in launch.json I set the value of miDebuggerPath
+"miDebuggerPath": "/bin/gdb"
+
+but I got the error 
+Unable to start debugging.  The value of miDebuggerPath is invalid
+
+
+found solution / workaround
+
+Reference:
+https://stackoverflow.com/questions/56344186/unable-to-start-debugging-the-value-of-midebuggerpath-is-invalid
+
+launch terminal
+whereis gdb
+gdb: /usr/bin/gdb /etc/gdb /usr/share/gdb /opt/clion-2021.1.3/bin/gdb /usr/share/man/man1/gdb.1.gz
+
+
+Therefore updated launch.json
+"miDebuggerPath": "/usr/bin/gdb"
+
+
+and now worked OK
