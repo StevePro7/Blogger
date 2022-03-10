@@ -44,3 +44,98 @@ kubeadm init --ignore-preflight-errors Swap
 Try
 sudo kubeadm init --pod-network-cidr=192.168.0.0/19 \
 --apiserver-cert-extra-sans=127.0.0.1 --ignore-preflight-errors Swap
+
+
+ERROR
+error execution phase wait-control-plane: couldn't initialize a Kubernetes cluster
+
+
+Went back to start
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm
+
+e.g.
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+br_netfilter
+EOF
+
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sudo sysctl --system
+
+
+
+telnet 127.0.0.1 6443
+Trying 127.0.0.1...
+telnet: Unable to connect to remote host: Connection refused
+
+common issue?
+port 6443 not open as required for K8s
+
+
+Try some ideas here
+https://stackoverflow.com/questions/70571312/port-6443-connection-refused-when-setting-up-kubernetes
+
+sudo ufw allow 6443
+sudo ufw allow 6443/tcp
+sudo ufw allow 6443/udp
+
+ss -nltp | grep 6443
+nc -l 6443
+
+
+[WARNING Firewalld]: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
+	[WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup driver. The recommended driver is "systemd". Please follow the guide at https://kubernetes.io/docs/setup/cri/
+error execution phase preflight: [preflight] Some fatal errors occurred:
+	[ERROR Swap]: running with swap on is not supported. Please disable swap
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+
+
+
+Try this for WARNING
+https://stackoverflow.com/questions/52039898/error-while-kubernetes-kubeadm-initialization
+
+[WARNING Firewalld]: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
+
+systemctl restart kubelet
+systemctl status kubelet
+journalctl -xeu kubelet
+
+apt-get purge kubelet && apt-get install kubelet
+apt-get purge kubeadm && apt-get install kubeadm
+
+both on version 1.23.4
+kubeadm version
+kubelet --version
+
+
+VERY thorough account of all errors kubeadm init
+https://www.kevinhooke.com/2017/10/08/setting-up-a-kubernetes-cluster-across-2-virtualized-centos-nodes
+
+sudo swapoff -a
+
+sudo firewall-cmd --zone=public --add-port=6443/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=10250/tcp --permanent
+
+firewall-cmd --reload
+firewall-cmd --list-ports
+
+sudo firewall-cmd --zone public --list-all
+
+but kubelet check was complaining about 10248
+
+Weird - I tried to disable firewalld as per thread
+https://github.com/kubernetes-sigs/kubespray/issues/7460
+
+I tried this before but got error - is this OK now 'cos I opened ports?
+
+
+system restart kubelet
+systemctl daemon-reload
+
+still broken
+is this the reason?
+
+kubelet
+E0310 12:22:54.236976   72345 server.go:279] "Failed to construct kubelet dependencies" err="error reading /var/lib/kubelet/pki/kubelet.key, certificate and key must be supplied as a pair"
