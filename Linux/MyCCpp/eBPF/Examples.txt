@@ -11,3 +11,37 @@ IMPORTANT
 VS Code
 I have Code Runner extension installed
 Ctrl + Alt + N
+
+
+NOTE
+readme prompt to use bpftool
+NB: I tried prompts sudo apt-get install linux-tools-generic linux-tools-common
+which didn't work but this seemed to work
+
+Reference
+https://askubuntu.com/questions/1134896/ebpf-maps-how-to-update-using-bpftool-from-command-line
+
+cd ~/GithubX
+mkdir MyLinux
+cd MyLinux
+git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+cd linux
+cd tools/bpf/bpftool
+make
+sudo make install
+
+close Terminal and re-open
+
+
+
+target_link_libraries(libbpf)
+https://stackoverflow.com/questions/28597351/how-do-i-add-a-library-path-in-cmake
+
+Cannot specify link libraries for target "libbpf" which is not built by
+
+
+Starting build...
+/usr/bin/g++ -g /home/stevepro/GitHub/sartura/ebpf-hello-world/hello.c -o /home/stevepro/GitHub/sartura/ebpf-hello-world/hello
+/usr/bin/ld: /tmp/ccILleHU.o: in function `hello_bpf__destroy(hello_bpf*)':
+/home/stevepro/GitHub/sartura/ebpf-hello-world/hello.skel.h:22: undefined reference to `bpf_object__destroy_skeleton'
+collect2: error: ld returned 1 exit status
