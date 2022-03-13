@@ -1,0 +1,16 @@
+Interesting
+13/03/2022
+
+
+
+GNU error codes
+https://www.gnu.org/software/libc/manual/html_node/Error-Codes.html
+
+
+
+/usr/include/bpf/libbpf_common.h
+e.g.
+#ifndef LIBBPF_API
+#define LIBBPF_API __attribute__((visibility("default")))
+#endif
+https://stackoverflow.com/questions/52719364/how-to-use-the-attribute-visibilitydefault
