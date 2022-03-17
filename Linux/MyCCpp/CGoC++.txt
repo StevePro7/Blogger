@@ -1,0 +1,18 @@
+CGo C++ example
+17/03/2022
+
+
+https://github.com/StevePro7/GolangWebApplicationFirewall/blob/main/00-Test/00-Test_CGO/hello.h
+https://github.com/StevePro7/GolangWebApplicationFirewall/blob/main/00-Test/00-Test_CGO/hello.cc
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void Hello();
+int msc_intervention();
+
+#ifdef __cplusplus
+}
+#endif
