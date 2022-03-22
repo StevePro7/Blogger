@@ -1,0 +1,63 @@
+nasm
+22/03/2022
+
+https://www.cs.virginia.edu/~evans/cs216/guides/x86.html
+https://cs.lmu.edu/~ray/notes/nasmtutorial
+
+
+VS Code extensions
+search x86
+
+x86 and x86_64 Assembly
+x86 Insruction nReference
+nasm x86 syntax highlighting	WLA-DX
+custom nasm x86 syntax highlighting
+x86_64 Assembly Pro
+Intel x86 Instruction Reference
+x8664 Assembly
+GNU Assembler Language Support
+Go Asm
+
+
+
+GOOGLE
+x86 Linux IDE
+
+results
+SASM
+https://stackoverflow.com/questions/5696535/c-assembly-ide-on-linux
+https://dman95.github.io/SASM/english.html
+
+
+Ubuntu software updater
+SASM
+
+example projects
+/usr/share/sasm/Projects
+
+
+
+Hello World in SASM
+%include "io64.inc"
+
+section .text
+global CMAIN
+CMAIN:
+    mov rbp, rsp; for correct debugging
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, message
+    mov rdx, 13
+    syscall
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+    
+section .data
+message:    db  "Hello, Test!", 10
+    ret
+
+
+
+
+nasm -felf64 hello.asm && ld hello.o && ./a.out
