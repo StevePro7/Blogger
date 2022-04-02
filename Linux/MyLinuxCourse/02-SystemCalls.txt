@@ -1,0 +1,87 @@
+Linux Kernel course
+https://www.linkedin.com/learning/advanced-linux-the-linux-kernel-2/read-messages-from-the-kernel?autoSkip=true&autoplay=true&resume=false
+
+
+Understand system call mechanics
+
+System calls are functions implemented by the kernel
+and meant to be called from user space
+
+There are about 300 system calls
+
+read / write
+
+/include/uapi/asm-generic/unistd.h
+lists all the system calls
+
+no. system calls vary from architecture to architecture
+
+calling functions in user space
+
+
+System call mechanics
+1-1 
+function you call
+function in the kernel
+
+tye're called thru the standard libary
+libc
+
+program calls C standard C library
+poke the C libc 
+tell the kernel do the system call
+
+Standard library uses architecutre-dependent means to invoke
+the system call mechanism
+
+Suitablly sized parameters are usually put in registers
+
+Library invoked the kernel, determines
+which system call and calls it
+
+
+System call return
+if an error then system calls returns a negative value to the library
+
+negative value = error code
+
+on error the library sets "errno" to abs(return value) and returns -1
+
+When no error library usually does not set errono
+and returns the value obtained from the kernel
+
+
+EXAMPLE
+
+/usr/src/linux-headers-5.13.0-35-generic/include/uapi/asm-generic
+~/GitHubX/MyLinux/linux/include/uapi/asm-generic
+
+
+grep -i read !$
+grep -i read unistd.h
+
+#define __NR_read 63
+__SYSCALL(__NR_read, sys_read)
+
+
+no. system calls
+grep define __NR unistd.h | wc -l
+340
+
+
+man read
+
+READ (2)
+RETURN VALUE
+       On success (at least one signal was sent), zero is returned.  On error, -1 is returned,  and  errno  is
+       set appropriately.
+
+
+
+man kil
+KILL (1)
+
+kill = send signal
+
+man 2 kill
+KILL (2)
