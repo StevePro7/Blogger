@@ -1,0 +1,65 @@
+Notes Dump
+02/04/2022
+
+
+https://github.com/StevePro7/eBPFtesting
+https://github.com/StevePro7/eBPFtesting/tree/main/01-ebpf-hello-world/01-HelloWorld
+
+
+https://www.sartura.hr/blog/simple-ebpf-core-application
+https://github.com/sartura/ebpf-hello-world
+
+BASIS
+https://www.sartura.hr/blog/ebpf_series_introduction
+
+
+https://ebpf.io
+https://docs.cilium.io/en/stable/bpf
+
+https://pchaigno.github.io/bpf/2021/10/20/ebpf-instruction-sets.html
+https://nakryiko.com/posts/bpf-tips-printk
+
+
+AWESOME
+https://github.com/zoidbergwill/awesome-ebpf
+
+
+
+Linux examples
+https://github.com/torvalds/linux/tree/v4.19/samples/bpf
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/samples/bpf
+
+e.g.
+https://github.com/torvalds/linux/tree/v4.19/samples/bpf/sock_example.c
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/samples/bpf/sock_example.c
+
+
+PDF whitepaper
+https://www.tcpdump.org/papers/bpf-usenix93.pdf
+
+
+Great links
+A brief introduction to XDP and eBPF
+https://blogs.igalia.com/dpino/2019/01/07/introduction-to-xdp-and-ebpf
+
+
+A thorough introduction to eBPF
+https://lwn.net/Articles/740157
+
+seccomp overview
+https://lwn.net/Articles/656307
+
+eBPF, part 1: Past, Present, and Future 
+https://www.ferrisellis.com/content/ebpf_past_present_future
+
+
+
+XDP
+https://medium.com/@christina.jacob.koikara/what-is-xdp-the-express-data-path-in-linux-kernel-9413880a0113
+
+eXpress Data Path
+new edition to the linux kernel intended to speed up the packet processing or
+network data processing in the linux kernel
+
+enabled by using the ebpf virtual machine infrastructure which is available
+in the kernel 
