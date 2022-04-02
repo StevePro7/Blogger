@@ -1,0 +1,45 @@
+Simple eBPF CO-RE Applications
+02/04/2022
+
+
+Ferris Ellis eBPF part 2 syscall and Map types
+https://www.ferrisellis.com/content/ebpf_syscall_and_maps
+
+
+Pre-req
+eBPF, part 1: Past, Present, and Future
+https://www.ferrisellis.com/content/ebpf_past_present_future
+
+
+Part 2
+eBPF commands
+
+enum bpf_cmd {
+    BPF_MAP_CREATE,
+    BPF_MAP_LOOKUP_ELEM,
+    BPF_MAP_UPDATE_ELEM,
+    BPF_MAP_DELETE_ELEM,
+    BPF_MAP_GET_NEXT_KEY,
+    BPF_PROG_LOAD,
+    BPF_OBJ_PIN,
+    BPF_OBJ_GET,
+    BPF_PROG_ATTACH,
+    BPF_PROG_DETACH,
+};
+
+
+eBPF-map types
+enum bpf_map_type {
+    BPF_MAP_TYPE_UNSPEC,
+    BPF_MAP_TYPE_HASH,
+    BPF_MAP_TYPE_ARRAY,
+    BPF_MAP_TYPE_PROG_ARRAY,
+    BPF_MAP_TYPE_PERF_EVENT_ARRAY,
+    BPF_MAP_TYPE_PERCPU_HASH,
+    BPF_MAP_TYPE_PERCPU_ARRAY,
+    BPF_MAP_TYPE_STACK_TRACE,
+    BPF_MAP_TYPE_CGROUP_ARRAY,
+    BPF_MAP_TYPE_LRU_HASH,
+    BPF_MAP_TYPE_LRU_PERCPU_HASH,
+    BPF_MAP_TYPE_LPM_TRIE,
+};
