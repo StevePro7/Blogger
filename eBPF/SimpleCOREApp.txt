@@ -1,0 +1,53 @@
+Simple eBPF CO-RE Applications
+02/04/2022
+
+
+https://www.sartura.hr/blog/simple-ebpf-core-application
+https://github.com/sartura/ebpf-hello-world
+
+
+
+Intro
+eBPF Series Introduction
+https://www.sartura.hr/blog/ebpf_series_introduction
+
+
+Article
+BTF	BPF Type Format
+LSM	Linux Security Modules
+
+sysfs
+/sys
+
+
+Tracepoints
+https://lwn.net/Articles/346470
+
+KProbes
+https://lwn.net/Articles/132196
+
+
+/sys/kernel/btf/vmlinux
+
+
+SEC("tracepoint/syscalls/sys_enter_execve").
+/sys/kernel/debug/tracing/events
+
+e.g.
+/sys/kernel/debug/tracing/events/syscalls
+/sys/kernel/debug/tracing/events/syscalls/sys_enter_execve
+
+
+
+OUTPUT
+bpf_printk("Hello world!\n");
+/sys/kernel/debug/tracing/trace_pipe
+
+
+vmlinux.h
+/sys/kernel/btf/vmlinux
+
+
+MAPS
+When defining maps it is important to place them in the ".maps" section
+so that the userspace loader can load and set up the maps properly
