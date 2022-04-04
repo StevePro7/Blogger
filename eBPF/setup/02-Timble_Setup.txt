@@ -10,3 +10,63 @@ https://intellij-support.jetbrains.com/hc/en-us/community/posts/206608485-Multip
 
 idea using symlinks => implementation
 https://gist.github.com/vipulmathur/7d4f3dde35674874892ca61442fdf8f5
+
+
+// #cgo CFLAGS: -I/home/stevepro/go-private3/skimble/bpf-gpl/libbpf/src
+// #cgo LDFLAGS: -L/home/stevepro/go-private3/skimble/bpf-gpl/libbpf/src -Wl,-rpath -Wl,/home/stevepro/go-private3/skimble/bpf-gpl/libbpf/src -lbpf -lelf -lz
+
+
+
+Home laptop
+~/Steven/Personal/project
+~/Steven/Personal/project/repos
+~/Steven/Personal/project/ide-clion
+~/Steven/Personal/project/ide-goland
+
+
+01.
+cd ~/Steven/Personal/project/ide-clion
+touch main.c
+Launch CLion
+open ~/Steven/Personal/project/ide-clion
+open main.c
+Create CMakeLists.txt
+Hello World
+F5 debug
+
+libbpf
+cd ~/Steven/Personal/project/ide-clion
+git clone https://github.com/libbpf/libbpf 
+cd libbpf/src
+make BUILD_STATIC_ONLY=1 OBJDIR=../build/libbpf DESTDIR=../build INCLUDEDIR= LIBDIR= UAPIDIR= install
+
+make
+sudo make install
+bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h
+
+Create project
+update CMakelists.txt
+
+cmake_minimum_required(VERSION 3.16)
+project(ide_clion C)
+
+set(CMAKE_C_STANDARD 11)
+include_directories(libbpf/src)
+link_directories(libbpf libbpf/src)
+file(GLOB MyCSources  *.c)
+
+add_executable(ide_clion ${MyCSources})
+target_link_libraries(ide_clion bpf elf z)
+
+
+
+02.
+~/Steven/Personal/project/ide-goland
+go mod init github.com/tX/sX
+touch main.go
+touch libbpf.go
+run basic program
+
+
+03.
+link the two projects together thus the C code can be consumed from the Go code

@@ -145,3 +145,23 @@ launch.json
 
 Don't necc need the launch.json
 just ensure that skimble.go is selected
+
+
+
+solution UPDATE
+
+
+But ideally should be relative path NOT absolute - obv. because source code could be in different locations for different people
+so I stumbled onto this env var? / directive?
+
+${SRCDIR}
+https://pkg.go.dev/cmd/cgo
+
+and finally got this working in both IDEs Goland + VS Code w/o error and using relative paths
+
+SOLUTION
+// #cgo CFLAGS: -I${SRCDIR}/../../bpf-gpl/libbpf/src
+// #cgo LDFLAGS: -L${SRCDIR}/../../bpf-gpl/libbpf/src -Wl,-rpath -Wl,${SRCDIR}/../../bpf-gpl/libbpf/src -lbpf -lelf -lz
+// #include "libbpf_api.h"
+import "C"
+
