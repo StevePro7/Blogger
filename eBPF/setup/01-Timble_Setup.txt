@@ -1,0 +1,147 @@
+Timble01
+04/04/2022
+
+Here are some notes consolidated from yesterday Timble
+https://github.com/StevePro7/Timble
+
+NB: there is some duplicate in the README here also
+
+
+
+
+03/04/2022
+
+daemon.go
+InitializeAndServeForever
+SkimbleDaemon	CreateComponents
+Run
+Install
+bpf.programs.go
+libbpf.OpenObject
+
+
+-L/usr/local/modsecurity/lib/ -Wl,-rpath -Wl,/usr/local/modsecurity/lib/ -lmodsecurity
+
+
+-L
+/usr/local/modsecurity/lib/
+/usr/local/modsecurity/lib/
+-Wl,-rpath -Wl,
+
+-lmodsecurity
+
+
+
+-L/usr/local/modsecurity/lib/ -Wl,-rpath -Wl,/usr/local/modsecurity/lib/ -lmodsecurity
+-Lbpf-gpl/libbpf/src          -Wl,-rpath -Wl,bpf-gpl/libbpf/src          -lbpf -lelf -lz
+
+-Lbpf-gpl/libbpf/src -Wl,-rpath -Wl,bpf-gpl/libbpf/src -lbpf -lelf -lz
+
+
+BEFORE
+// #cgo LDFLAGS: -Lbpf-gpl/libbpf/src -lbpf -lelf -lz
+
+API server listening at: 127.0.0.1:42337
+/tmp/GoLand/___go_build_github_com_tigera_skimble_cmd_calico_skimble: error while loading shared libraries: libbpf.so.0: cannot open shared object file: No such file or directory
+
+Debugger finished with the exit code 0
+
+
+
+AFTER
+// #cgo CFLAGS: -I/home/stevepro/GitHub/StevePro7/Timble/bpf-gpl/libbpf/src
+// #cgo LDFLAGS: -Lbpf-gpl/libbpf/src -Wl,-rpath -Wl,bpf-gpl/libbpf/src -lbpf -lelf -lz
+// #include "libbpf_api.h"
+
+
+
+WORK
+~/go-private3/skimble
+
+/home/stevepro/go-private3/skimble
+// #cgo CFLAGS: -I/home/stevepro/go-private3/skimble/bpf-gpl/libbpf/src
+// #cgo LDFLAGS: -Lbpf-gpl/libbpf/src -Wl,-rpath -Wl,bpf-gpl/libbpf/src -lbpf -lelf -lz
+// #include "libbpf_api.h"
+
+
+repeat on VS Code
+/home/stevepro/GitHub/StevePro7/Timble/cmd/calico-skimble/__debug_bin: error while loading shared libraries: libbpf.so.0: cannot open shared object file: No such file or directory
+
+03/04/2022
+TODO
+Golang CBytes Examples
+https://golang.hotexamples.com/examples/c/-/CBytes/golang-cbytes-function-examples.html
+
+Work laptop
+~/Steven/MyCCpp/cgo/CBytes/Tests
+
+
+.env
+LD_LIBRARY_PATH=bpf-gpl/libbpf/src
+
+
+settings.json
+{
+    "environment": [
+        {
+            "name":  "LD_LIBRARY_PATH",
+            "value": "bpf-gpl/libbpf/src"
+        }
+    ],
+    "makefile.extensionOutputFolder": "./.vscode",
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
+}
+
+launch.json
+"environment": [
+                {
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "/home/stevepro/GitHub/StevePro7/Timble/bpf-gpl/libbpf/src/"
+                }
+            ],
+
+ "env": {
+                "LD_LIBRARY_PATH": "bpf-gpl/libbpf/src"
+            },
+
+
+
+SOLUTION
+libbpf.go
+// #cgo CFLAGS: -I/home/stevepro/GitHub/StevePro7/Timble/bpf-gpl/libbpf/src
+// #cgo LDFLAGS: -L/home/stevepro/GitHub/StevePro7/Timble/bpf-gpl/libbpf/src -Wl,-rpath -Wl,/home/stevepro/GitHub/StevePro7/Timble/bpf-gpl/libbpf/src -lbpf -lelf -lz
+// #include "libbpf_api.h"
+
+
+to summarize - none of the advice that was mentioned to set the LD_LIBRARY_PATH
+environment variabled helped out here - the problem was that the relative path
+for libbpf.so in VS Code did not resolve i.e. error
+thus temp solution was to hardcode the absolute path and now worked OK
+
+
+.env
+export LD_LIBRARY_PATH=/home/stevepro/GitHub/StevePro7/Timble/bpf-gpl/libbpf/src
+
+
+
+launch.json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "cmd/calico-skimble/skimble.go",
+            "envFile": "${workspaceFolder}/.env",
+            "stopAtEntry": true,
+        }
+    ]
+}
+
+Don't necc need the launch.json
+just ensure that skimble.go is selected
