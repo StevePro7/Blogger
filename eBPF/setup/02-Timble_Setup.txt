@@ -20,8 +20,11 @@ https://gist.github.com/vipulmathur/7d4f3dde35674874892ca61442fdf8f5
 Home laptop
 ~/Steven/Personal/project
 ~/Steven/Personal/project/repos
-~/Steven/Personal/project/ide-clion
-~/Steven/Personal/project/ide-goland
+~/Steven/Personal/project/repos/Timble2
+
+~/Steven/Personal/project/ide
+~/Steven/Personal/project/ide/clion
+~/Steven/Personal/project/ide/goland
 
 
 01.
@@ -70,3 +73,51 @@ run basic program
 
 03.
 link the two projects together thus the C code can be consumed from the Go code
+
+
+cd ~/Steven/Personal/project/ide/clion
+ln -s ~/Steven/Personal/project/repos/Timble2
+
+cd ~/Steven/Personal/project/ide/goland
+ln -s ~/Steven/Personal/project/repos/Timble2
+
+
+
+~/Steven/Personal/project/repos
+~/Steven/Personal/project/repos/Timble2
+
+~/Steven/Personal/project/ide
+~/Steven/Personal/project/ide/clion
+~/Steven/Personal/project/ide/goland
+
+
+I don't think this does the way I was expecting or is compatible with our layout
+
+
+cd ~/Steven/Personal/project/ide/goland
+ln -s ~/Steven/Personal/project/ide/clion
+
+
+
+// #cgo CFLAGS: -I${SRCDIR}/../../bpf-gpl/libbpf/src
+// #cgo LDFLAGS: -L${SRCDIR}/../../bpf-gpl/libbpf/src -Wl,-rpath -Wl,${SRCDIR}/../../bpf-gpl/libbpf/src -lbpf -lelf -lz
+// #include "libbpf_api.h"
+import "C"
+
+
+
+func NumPossibleCPUs() (int, error) {
+	ncpus := int(C.num_possible_cpu())
+	if ncpus < 0 {
+		return ncpus, fmt.Errorf("Invalid number of CPUs: %d", ncpus)
+	}
+	return ncpus, nil
+}
+
+
+
+TRY THIS
+cd ~/Steven/Personal/project/ide/goland/pkg/libbpf
+ln -s ~/Steven/Personal/project/ide/clion/pkg/libbpf/*
+
+then hard code abs path in libbpf.go to get 
