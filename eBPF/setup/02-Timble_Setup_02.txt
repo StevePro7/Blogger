@@ -1,0 +1,81 @@
+Timble0202
+04/04/2022
+
+
+cd ~/GitHub/StevePro7/Timble2
+mkdir clion
+mkdir goland
+
+C
+```
+cd ~/GitHub/StevePro7/Timble2
+cd clion
+touch main.c
+Launch CLion
+Open project
+~/GitHub/StevePro7/Timble2/clion
+open main.c
+Create CMakeLists.txt
+main.c	CHECK
+Trust project
+
+simple main.c
+debug
+
+
+// libbpf
+mkdir bpf-gpl
+cd ~/GitHub/StevePro7/Timble2/clion
+cd bpf-gpl
+git clone https://github.com/libbpf/libbpf 
+cd libbpf/src
+make BUILD_STATIC_ONLY=1 OBJDIR=../build/libbpf DESTDIR=../build INCLUDEDIR= LIBDIR= UAPIDIR= install
+
+make
+sudo make install
+
+cd ~/GitHub/StevePro7/Timble2/clion/bpf-gpl
+bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h
+
+Add files
+update CMakeLists.txt
+
+add build.sh to build BPF programs in bpf-gpl folder not included in project
+```
+
+
+Go
+```
+cd ~/GitHub/StevePro7/Timble2
+cd goland
+Terminal
+go mod init github.com/TX/SX
+touch main.go
+mkdir pkg/libbpf
+Goland IDE
+open project
+/GitHub/StevePro7/Timble2/goland
+basic main.go + libbpf.go 
+adv:: libbpf.go
+
+Update CFLAGS + LDFLAGS
+/home/stevepro/GitHub/StevePro7/Timble2/clion/bpf-gpl/libbpf/src
+error
+
+// symlinks
+cd ~/GitHub/StevePro7/Timble2/goland/pkg/libbpf
+ln -s ~/GitHub/StevePro7/Timble2/clion/pkg/libbpf/*.h
+ln -s ~/GitHub/StevePro7/Timble2/clion/pkg/libbpf/*.c
+
+cd ~/GitHub/StevePro7/Timble2/goland
+ln -s ~/GitHub/StevePro7/Timble2/clion/bpf-gpl
+```
+
+VS Code
+```
+open project
+~/GitHub/StevePro7/Timble2/goland
+set break points in main.go + libbpf_api.c
+main.go
+F5
+```
