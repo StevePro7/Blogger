@@ -1,9 +1,83 @@
 SSH
 18/06/2021
 
-ssh stevepro@192.168.1.25
-connect to host port 22 connection refused
+ssh stevepro@192.168.1.209
+ssh: connect to host 192.168.1.209 port 22: Connection refused
 
 
 Is SSH installed on laptop?
 https://linuxhint.com/fix_connection_refused_ubuntu
+
+
+SOLUTION
+07/04/2022
+
+Today I followed up and actually got this working!
+
+
+Home linux ubuntu laptop
+192.168.1.25
+stevepro@Alienware
+
+Work linux ubuntu laptop
+192.168.1.209
+stevepro@Tigera
+
+
+IMPLEMENTATION
+
+Home linux ubuntu laptop
+192.168.1.25
+stevepro@Alienware
+
+
+01.
+Make sure OpenSSH is installed
+sudo apt list --installed | grep openssh-server
+
+
+If ssh is NOT installed then you will get the following msg
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+02.
+Install ssh
+sudo apt install openssh-server
+
+
+03.
+Check SSH service
+sudo service ssh status
+
+
+04.
+Start service
+sudo service ssh start
+
+
+Now 
+HOME Linux laptop SSH server is running
+WORL Linux laptop SSH connect
+
+
+
+Work linux ubuntu laptop
+192.168.1.209
+stevepro@Tigera
+
+01.
+ssh stevepro@Alienware
+SP4
+
+
+02.
+Files | Location
+ssh://stevepro@Alienware
+
+
+Prompt for HOME laptop password
+Connect
+
+
+NB: Files | locations replaces recent servers with
+sftp://stevepro@alienware
