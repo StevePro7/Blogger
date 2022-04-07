@@ -1,0 +1,11 @@
+Clear VRAM
+04/04/2022
+
+
+Reference
+https://www.smspower.org/forums/18954-CodingCompetition2022FoodFighterByHaroldoop#120953
+
+maybe don't need to ClearVRAM 
+but instead just call this:
+
+SMS_VRAMmemsetW(XYtoADDR(0,0), 0, 32*28*2);
