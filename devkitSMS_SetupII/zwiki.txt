@@ -1,6 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
 
+In 2017, we checked out devkitsms Programming Setup to build 8-bit video games for the Sega Master System (SMS) using devkitSMS and SDCC compiler.  Here we used version 3.6.9 on Windows only which allowed for 32KB ROM size only.  
 <br /><br />
+
 In 2017, we checked out devkitsms Programming Setup to build 8-bit video games for the Sega Master System (SMS) using devkitSMS and SDCC compiler.  Here we used version 3.6.9 on Windows only which allowed for 32KB ROM size only.  
 <br /><br />
 Now, the latest devkitSMS requires SDCC 4.x which supports the advanced feature of banked code which means it is now possible to page in and out code transparently.  Plus we would also like to build SMS projects cross platform onw Windows and Linux.
@@ -30,8 +32,19 @@ gedit ~/.bashrc
 export PATH="$PATH:$HOME/sdcc/bin"
 </pre>
 Summary<br />
-Windows %INSTALLATION%\SDCC\bin
-Linux %INSTALLATION%\SDCC\bin
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Windows</td>
+<td valign="top">&nbsp;%INSTALLATION%\SDCC\bin
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Linux</td>
+<td valign="top">&nbsp;%INSTALLATION%/SDCC/bin
+</td>
+</tr>
+</table>
+
   
 <br /><br />
 <b>devkitSMS</b><br />
@@ -69,6 +82,6 @@ tasks.json
   In 2021, we installed the Emulicious Debugger initially for Z80 Programming Setup but also extended similar setup to debug step through C source code.
     <br /><br />
   
-  
+VS Code.txt | Settings
   
 </span>
