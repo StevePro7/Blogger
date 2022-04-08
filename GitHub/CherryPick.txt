@@ -1,0 +1,91 @@
+CherryPick
+08/04/2021
+
+
+Cherry pick example
+Goland IDE
+Branch PR merge to master
+Checkout release-v1.0
+right click on commit
+Cherry Pick
+
+
+
+
+TESTing WIP
+
+./cherry_pick_pull.sh
+Kubernetes shell script
+
+
+
+github.com:StevePro7/GitFlowTest/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
+
+2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
+
+fatal: No such remote 'upstream'
+
+
+git remote add upstream git@github.com:StevePro7/GitFlowTest.git
+
+
+origin	git@github.com:tigera/process.git (fetch)
+origin	git@github.com:tigera/process.git (push)
+upstream	git@github.com:StevePro7/GitFlowTest.git (fetch)
+upstream	git@github.com:StevePro7/GitFlowTest.git (push)
+
+
+
+Please export GITHUB_USER=<your-user> (or GH organization, if that's where your fork lives)
+
+
+https://StevePro7@github.com/StevePro7/GitFlowTest.git
+
+
+upstream/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
+
+
+
+stevepro@Alienware:~/GitHub/tigera/process/utilities$ ./cherry_pick_pull.sh 
+Can't find 'hub' tool in PATH, please install from https://github.com/github/hub
+
+
+sudo apt install hub
+
+NB: already had installed on work laptop
+
+
+
+
+cd ~/Github/StevePro9/GitFlowTest
+git co master
+
+git remote -v
+git fetch -v
+
+git remote add upstream git@github.com:StevePro7/GitFlowTest.git
+git remote -v
+
+
+
+home linux laptop
+git@github.com:StevePro7/GitFlowTest.git
+
+
+github.com:StevePro7/GitFlowTest/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
+
+
+git remote add upstream git@github.com:StevePro7/GitFlowTest.git
+
+
+
+https://StevePro7@github.com/StevePro7/GitFlowTest/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
+
+
+upstream/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
+
+
+/GitHub/tigera/process/utilities
+
+
+e38005b6161a7f974bf6647cfd4581ef76e0cb1a

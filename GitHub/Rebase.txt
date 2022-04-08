@@ -8,3 +8,21 @@ git rebase destructive example
 https://betterprogramming.pub/dont-fret-with-git-rebase-75fe3ed5ca8f
 https://medium.com/@fredrikmorken/why-you-should-stop-using-git-rebase-5552bee4fed1
 https://stackoverflow.com/questions/48708239/why-should-we-never-use-rebase-with-commits-that-have-been-pushed
+
+
+
+Merge from Master to feature branch
+Git pull latest code in master branch from remote into local branch.
+Use Goland IDE.  Shelve any changes first i.e. have clean start.  Choose Git tab.  Right click on Remote => origin => master.  Choose Rebase  “<branch-name>” onto origin/master.  If there are conflicts then you will be prompted to Merge either choose Yours or Theirs i.e. your branch or their master.  OK.  
+
+Once complete you should be able to regression test your changes integrated with latest master on your local branch, unshelve any previous code and continue etc.
+
+Alternatively, use the following commands from the Terminal to Rebase
+
+
+git checkout master
+git pull origin master
+git checkout peter-branch
+git rebase origin/master
+if successful (i.e. no conflicts) you usually get a message like
+Successfully rebased and updated refs/heads/peter-branch
