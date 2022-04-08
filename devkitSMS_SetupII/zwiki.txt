@@ -1,0 +1,19 @@
+<span style="font-family:verdana;font-size:85%;"> 
+In 2017, we checked out devkitsms Programming Setup to build 8-bit video games for the Sega Master System (SMS) using devkitSMS and SDCC compiler.  Here we used version 3.6.9 on Windows only which allowed for 32KB ROM size only.  
+<br /><br />
+Now, the latest devkitSMS requires SDCC 4.x which supports the advanced feature of banked code which means it is now possible to page in and out code transparently.  Plus we would also like to build SMS projects cross platform onw Windows and Linux.
+<br /><br />
+Let's check it out!
+TODO devkitSMS picture
+<br /><br />
+devkitSMS<br />
+The devkitSMS is a collection of tools and code built specifically for the Sega Master System but also supports homebrew development using C language for SG-1000, SC-3000 and the Sega Game Gear.
+<br /><br />
+Windows<br />
+Download and install sdcc-4.1.0-x64-setup.exe to C:\Program Files\SDCC. Choose all features to install.
+<br /><br />PIC 1
+There should be no extra configuration except add C:\Program Files\SDCC\bin to the Environment PATH.
+<br /><br />PIC 2
+Start | Run | cmd. Type sdcc --version. The following should display to confirm SDCC version 4.1.0:
+  <br /><br />PIC 3
+</span>
