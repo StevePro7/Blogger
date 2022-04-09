@@ -11,28 +11,65 @@ Now, the latest <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requi
 <br />
 Let’s check it out! 
 <br /><br />
-devkitSMS<br />
-The devkitSMS is a collection of tools and code built specifically for the Sega Master System but also supports homebrew development using C language for SG-1000, SC-3000 and the Sega Game Gear.
+<u>devkitSMS</u>
+<br />
+The <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> is a collection of tools and code built specifically for the Sega Master System but also supports homebrew development using C language for <a href="https://en.wikipedia.org/wiki/SG-1000">SG-1000</a>, <a href="https://en.wikipedia.org/wiki/SG-1000#SC-3000">SC-3000</a> and the Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
 <br /><br />
-Windows<br />
+  
+<b>Windows</b><br />
 Download and install sdcc-4.1.0-x64-setup.exe to C:\Program Files\SDCC.  Choose all features to install.
-<br /><br />PIC 1
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9uu45CRtwIEOo8gtwCHFbYucP7VEGBIzhSKXE6Gg4DCG4oe57g9Q1-qM99MsFQwnOtPomvuc4E4EHDFQqSh7AP37wsE_TTbspjCGttTeWG41BcNOEeNonMziEI58bAQmWKttnLv8WJjjUYxgt5UhI_p0U5r8aP_syb8GhXLcK95SiOtodkdJYFx54/s499/Win05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9uu45CRtwIEOo8gtwCHFbYucP7VEGBIzhSKXE6Gg4DCG4oe57g9Q1-qM99MsFQwnOtPomvuc4E4EHDFQqSh7AP37wsE_TTbspjCGttTeWG41BcNOEeNonMziEI58bAQmWKttnLv8WJjjUYxgt5UhI_p0U5r8aP_syb8GhXLcK95SiOtodkdJYFx54/s600/Win05.png"/></a>
+<br />
+-->
+<br />
 There should be no extra configuration except add C:\Program Files\SDCC\bin to the Environment PATH.
-<br /><br />PIC 2
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbigqleqkDOKp4Qcf67driJ8Te-wEQXcv-H_1Hkp2A9qBYduLEqE0LgJbR9dYnGJEVJuMb2tZbNSG4pu5AvtFIuLrKNCGi198srGW-kxJ1R1w3r6BU59Srwb8wjZrEVA6bugePVugGUf5Tvwc0yqTdkXXAhb80ngSYEjCsqE01GEV_Rx3L0hhyGTwj/s499/Win06.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbigqleqkDOKp4Qcf67driJ8Te-wEQXcv-H_1Hkp2A9qBYduLEqE0LgJbR9dYnGJEVJuMb2tZbNSG4pu5AvtFIuLrKNCGi198srGW-kxJ1R1w3r6BU59Srwb8wjZrEVA6bugePVugGUf5Tvwc0yqTdkXXAhb80ngSYEjCsqE01GEV_Rx3L0hhyGTwj/s600/Win06.png"/></a>
+<br />
+-->
+<br />
 Start | Run | cmd. Type sdcc --version. The following should display to confirm SDCC version 4.1.0:
-<br /><br />PIC 3
-Linux<br />a
-Download and extract sdcc-sdcc-4.1.0-amd64-unknown-linux2.5.tar.bz2 e to ~/sdcc.  Choose all features to install.
-<br /><br />
-Launch ~/.bashrc file in gedit and add $HOME/sdcc/bin to ensure the SDCC is always available
-<br /><br />
-source ~/.bashrc for changes to take effect immediately or simply close Terminal and re-open
-<br /><br />
-<pre class="csharp" name="code">
-gedit ~/.bashrc
-export PATH="$PATH:$HOME/sdcc/bin"
-</pre>
-Summary<br />
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOz6Ai5SZ-OyTnfwuu7VSyCkVqO0TuiANAd91iIaAyGlIRjHsOBcEE-zBAJe8YnwRU0zpjwNA4DNGwW5NKdh_beYewbA4ZULW7I4Sli7ba7exD78pyyfxJzhkv_paldvabqbBTS_Ge_5ESD2NEJYLPZPF0Sv_OMZlovCLtdTfUk29BqkMaSgDIphVU/s1111/Win07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOz6Ai5SZ-OyTnfwuu7VSyCkVqO0TuiANAd91iIaAyGlIRjHsOBcEE-zBAJe8YnwRU0zpjwNA4DNGwW5NKdh_beYewbA4ZULW7I4Sli7ba7exD78pyyfxJzhkv_paldvabqbBTS_Ge_5ESD2NEJYLPZPF0Sv_OMZlovCLtdTfUk29BqkMaSgDIphVU/s600/Win07.png"/></a>
+<br />
+-->
+<br />
+  
+<b>Linux</b><br />
+Download and extract <a href="https://sourceforge.net/projects/sdcc/files/sdcc-linux-amd64/4.1.0/sdcc-4.1.0-amd64-unknown-linux2.5.tar.bz2/download">sdcc-4.1.0-</a>amd64-unknown-linux2.5.tar.bz2 to ~/sdcc.  This should install all features.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgl_I59OuU2qA1Iy7yr1DaBPntXqoeiYvlSz2Rx3laGr_jFOp7PKisSdjZkNK-s5yljCMXKa9VgH36H6AAkkdRD2txOL7kRr-DPhwDgrZ7csckFLof4syuXvjmzm_L4mCQ1FcT4CVgRyPbM91KFoa5NP_PRXgBGNbMg4KuUNreK0jXHNwpNXR5eNflz/s600/Lin05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgl_I59OuU2qA1Iy7yr1DaBPntXqoeiYvlSz2Rx3laGr_jFOp7PKisSdjZkNK-s5yljCMXKa9VgH36H6AAkkdRD2txOL7kRr-DPhwDgrZ7csckFLof4syuXvjmzm_L4mCQ1FcT4CVgRyPbM91KFoa5NP_PRXgBGNbMg4KuUNreK0jXHNwpNXR5eNflz/s600/Lin05.png"/></a>
+<br />
+-->
+<br />
+There should be no extra configuration except add $HOME/sdcc/bin to the ~/.bashrc file so always available.
+<br />
+<!--
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+&nbsp;gedit ~/.bashrc
+<br />
+&nbsp;export PATH="$PATH:$HOME/sdcc/bin"
+</td>
+</tr>
+</table>
+-->  
+<br />
+Launch Terminal. Type sdcc --version [sdcc -v]. The following should display to confirm SDCC version 4.1.0:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s889/Lin07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s600/Lin07.png"/></a>
+<br />
+-->
+<br />
+
+  <u>Directories</u><br />
 <table width="100%" border="1">
 <tr>
 <td valign="top">&nbsp;Windows</td>
@@ -45,11 +82,12 @@ Summary<br />
 </td>
 </tr>
 </table>
+<br />
 
-  
-<br /><br />
 <b>devkitSMS</b><br />
 Navigate to the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> repository on github.  <a href="https://twitter.com/i_am_sverx">@sverx</a> has full instructions <a href="https://github.com/sverx/devkitSMS/blob/master/README.md">here</a> and advises to copy the following 4x executables into SDCC bin folder: assets2banks.exe, folder2c.exe, ihx2sms.exe, makesms.exe.
+<br />
+<!--
 <pre class="csharp" name="code">
 # Clone devkitSMS
 git clone https://github.com/sverx/devkitSMS.git
@@ -61,10 +99,12 @@ copy folder2c/folder2c.exe %INSTALLATION/SDCC/bin
 copy ihx2sms/ihx2sms.exe %INSTALLATION%/SDCC/bin
 copy folder2c/makesms.exe %INSTALLATION/SDCC/bin
 </pre>
+-->
+<br />
 Note: my preference is to usually copy the relevant files up-to-date as each Master System project is built.
+<br /><br />
   
-  
-  
+<br /><br />
 <u>Example</u><br />
 As an example, replicate the simple program from 2017 that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux.  Create HelloWorld new directory.  Copy files across
 <br /><br />
