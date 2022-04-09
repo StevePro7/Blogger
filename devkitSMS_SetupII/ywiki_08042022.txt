@@ -1,0 +1,87 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In 2017, we checked out devkitsms Programming Setup to build 8-bit video games for the Sega Master System (SMS) using devkitSMS and SDCC compiler.  Here we used version 3.6.9 on Windows only which allowed for 32KB ROM size only.  
+<br /><br />
+
+In 2017, we checked out devkitsms Programming Setup to build 8-bit video games for the Sega Master System (SMS) using devkitSMS and SDCC compiler.  Here we used version 3.6.9 on Windows only which allowed for 32KB ROM size only.  
+<br /><br />
+Now, the latest devkitSMS requires SDCC 4.x which supports the advanced feature of banked code which means it is now possible to page in and out code transparently.  Plus we would also like to build SMS projects cross platform onw Windows and Linux.
+<br /><br />
+Let's check it out!
+TODO devkitSMS picture
+<br /><br />
+devkitSMS<br />
+The devkitSMS is a collection of tools and code built specifically for the Sega Master System but also supports homebrew development using C language for SG-1000, SC-3000 and the Sega Game Gear.
+<br /><br />
+Windows<br />
+Download and install sdcc-4.1.0-x64-setup.exe to C:\Program Files\SDCC.  Choose all features to install.
+<br /><br />PIC 1
+There should be no extra configuration except add C:\Program Files\SDCC\bin to the Environment PATH.
+<br /><br />PIC 2
+Start | Run | cmd. Type sdcc --version. The following should display to confirm SDCC version 4.1.0:
+<br /><br />PIC 3
+Linux<br />a
+Download and extract sdcc-sdcc-4.1.0-amd64-unknown-linux2.5.tar.bz2 e to ~/sdcc.  Choose all features to install.
+<br /><br />
+Launch ~/.bashrc file in gedit and add $HOME/sdcc/bin to ensure the SDCC is always available
+<br /><br />
+source ~/.bashrc for changes to take effect immediately or simply close Terminal and re-open
+<br /><br />
+<pre class="csharp" name="code">
+gedit ~/.bashrc
+export PATH="$PATH:$HOME/sdcc/bin"
+</pre>
+Summary<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Windows</td>
+<td valign="top">&nbsp;%INSTALLATION%\SDCC\bin
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Linux</td>
+<td valign="top">&nbsp;%INSTALLATION%/SDCC/bin
+</td>
+</tr>
+</table>
+
+  
+<br /><br />
+<b>devkitSMS</b><br />
+Navigate to the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> repository on github.  <a href="https://twitter.com/i_am_sverx">@sverx</a> has full instructions <a href="https://github.com/sverx/devkitSMS/blob/master/README.md">here</a> and advises to copy the following 4x executables into SDCC bin folder: assets2banks.exe, folder2c.exe, ihx2sms.exe, makesms.exe.
+<pre class="csharp" name="code">
+# Clone devkitSMS
+git clone https://github.com/sverx/devkitSMS.git
+
+# Copy 4x files
+cd devkitSMS
+copy assets2banks/assets2banks.exe %INSTALLATION/SDCC/bin
+copy folder2c/folder2c.exe %INSTALLATION/SDCC/bin
+copy ihx2sms/ihx2sms.exe %INSTALLATION%/SDCC/bin
+copy folder2c/makesms.exe %INSTALLATION/SDCC/bin
+</pre>
+Note: my preference is to usually copy the relevant files up-to-date as each Master System project is built.
+  
+  
+  
+<u>Example</u><br />
+As an example, replicate the simple program from 2017 that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux.  Create HelloWorld new directory.  Copy files across
+<br /><br />
+main.c build.bat copy build.bat to build.sh | chmod +x build.sh
+<br /><br />
+  Reference: PortWinLin
+Linux | Launch Visual Studio Code | ensure Emulicious Debugger is installed
+  <br /><br />
+  
+Copy .vscode hidden folder over
+settings.json
+launch.json
+tasks.json
+  
+  Emulicious Debugger
+  In 2021, we installed the Emulicious Debugger initially for Z80 Programming Setup but also extended similar setup to debug step through C source code.
+    <br /><br />
+  
+VS Code.txt | Settings
+  
+</span>
