@@ -1,0 +1,65 @@
+<u>ROM Hacking</u><br />
+You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXNA/SkazkaSMS/blob/main/Skazka-SMS-1.0.sms">Skazka</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<table width="90%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004E</b></td>
+<td valign="top" width="20%">&nbsp;Delay</td>
+<td valign="top" width="40%">&nbsp;Used to speed through any game delay..</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables invincibility.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Current XP</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets current experience pts.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;Current HP</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets default healthy points..</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;Set Gold</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets current gold available.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0053</b></td>
+<td valign="top" width="20%">&nbsp;Set Weapon</td>
+<td valign="top" width="40%">&nbsp;Set value to 1 or 2 for stock else 0.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Set Armor</td>
+<td valign="top" width="40%">&nbsp;Set value to 1 or 2 for armor else 0.</td>
+</tr
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0055</b></td>
+<td valign="top" width="20%">&nbsp;Add Life</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Life otherwise 0=None.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0056</b></td>
+<td valign="top" width="20%">&nbsp;Village Talk</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=repeat villagers talk.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0057</b></td>
+<td valign="top" width="20%">&nbsp;Music Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Music to play otherwise silent.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0058</b></td>
+<td valign="top" width="20%">&nbsp;Sound Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Sound to play otherwise silent.</td>
+</tr>
+</table>
+<br /> 
