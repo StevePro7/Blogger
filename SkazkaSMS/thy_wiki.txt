@@ -1,6 +1,4 @@
 <span style="font-family:verdana;font-size:85%;">
-
-
   
 <a href="https://www.smspower.org/Homebrew/Skazka-SMS">Skazka</a> is a Slavic RGP Adventure game originally written in BASIC for Sega SC-3000 and posted to SC-3000 Survivors Facebook <a href="https://www.facebook.com/photo/?fbid=3051652211766546&set=gm.4887403341348676">group</a>. The source <a href="https://bit.ly/3tGV9J3">code</a> is now  ported to <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.
 <br />
@@ -56,8 +54,11 @@ Download source code <b><a href="https://github.com/SteveProXNA/SkazkaSMS">here<
 <u>Instructions</u><br />
 Skazka captures the core mechanics of old school RPG experience: Kill monsters | level up | upgrade gear.  There are 5x different enemies in increasing order: Razboynik, Hungry Wolf, Kikimora, Leshy, Baby Yaga.  Defeat final boss Koschey to beat the game!
 <br /><br />
+  
 <u>Tools</u><br />
 Here are a list of Tools and frameworks that were used in the development of this project:
+<br />
+<!--
 <table width="82%" border="1">
 <tr>
 <td valign="top" width="30%">&nbsp;KEY</td>
@@ -102,9 +103,12 @@ Here are a list of Tools and frameworks that were used in the development of thi
 <td valign="top" width="20%">&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a></td>
 </tr>
 </table>
+-->
 <br />
 <u>ROM Hacking</u><br />
 You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXNA/SkazkaSMS/blob/main/Skazka-SMS-1.0.sms">Skazka</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<br />
+<!--
 <table width="90%" border="1">
 <tr>
 <td valign="top" width="20%">&nbsp;ADDRESS</td>
@@ -167,8 +171,51 @@ You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXN
 <td valign="top" width="40%">&nbsp;Set 0=Sound to play otherwise silent.</td>
 </tr>
 </table>
-<br /> 
-<u>Cheats</u><br />
+-->
+<br />
+
+<u>Hints</u><br />
+<!--
+<ul>
+<li>
+Try to buy weapon "Sword" or armor "Tegilay" with your initial gold before entering any forest fights.
+</li>
+<li>
+After completing each forest fight, ensure you "Rest" at the main screen to replenish all health points.
+</li>
+<li>
+In the shop when you buy items you already have then will be deducted unconditionally so be aware!
+</li>
+<li>
+Get "+1 Life" just in case you lose a fight or the final boss battle so you do not have to restart game.
+</li>
+<li>
+Maximize HP + XP + get the best weapon "Axe" and best armor "Kolchuga" before fighting the boss.
+</li>
+<li>
+Fight boss when you have > 60 XP because your weapon and armor may be slightly more powerful!
+</li>
+</ul>
+-->
+<br />
+<u>Cheats</u>
+<!--
+<ul>
+<li>
+On splash screen, hold joystick down and press button 2 to change default back color.
+</li>
+<li>
+On stats screen, move joystick left or right to skip over the flashing arrows indication.
+</li>
+<li>
+On title screen, hold fire2 to skip intro music.  Same applies on boss and over screens.
+</li>
+<li>
+In Easy mode forest screen, press fire2 to "Run away" without risking losing any HPs.
+</li>
+</ul>
+-->
+  
 <u>Credits</u><br />
 <br />
 <!--
@@ -176,4 +223,6 @@ You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXN
 <br />
 -->
 <br />
+  
+<u>Summary</u><br />
 </span>
