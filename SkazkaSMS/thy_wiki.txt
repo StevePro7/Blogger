@@ -1,5 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
+  
 <a href="https://www.smspower.org/Homebrew/Skazka-SMS">Skazka</a> is a Slavic RGP Adventure game originally written in BASIC for Sega SC-3000 and posted to SC-3000 Survivors Facebook <a href="https://www.facebook.com/photo/?fbid=3051652211766546&set=gm.4887403341348676">group</a>. The source <a href="https://bit.ly/3tGV9J3">code</a> is now  ported to <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.
 <br />
 <!--
@@ -52,7 +54,8 @@ Download source code <b><a href="https://github.com/SteveProXNA/SkazkaSMS">here<
 <br />
   
 <u>Instructions</u><br />
-  
+Skazka captures the core mechanics of old school RPG experience: Kill monsters | level up | upgrade gear.  There are 5x different enemies in increasing order: Razboynik, Hungry Wolf, Kikimora, Leshy, Baby Yaga.  Defeat final boss Koschey to beat the game!
+<br /><br />
 <u>Tools</u><br />
 Here are a list of Tools and frameworks that were used in the development of this project:
 <table width="82%" border="1">
@@ -101,6 +104,70 @@ Here are a list of Tools and frameworks that were used in the development of thi
 </table>
 <br />
 <u>ROM Hacking</u><br />
+You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXNA/SkazkaSMS/blob/main/Skazka-SMS-1.0.sms">Skazka</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<table width="90%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004E</b></td>
+<td valign="top" width="20%">&nbsp;Delay</td>
+<td valign="top" width="40%">&nbsp;Used to speed through any game delay..</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables invincibility.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Current XP</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets current experience pts.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;Current HP</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets default healthy points..</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;Set Gold</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets current gold available.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0053</b></td>
+<td valign="top" width="20%">&nbsp;Set Weapon</td>
+<td valign="top" width="40%">&nbsp;Set value to 1 or 2 for stock else 0.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Set Armor</td>
+<td valign="top" width="40%">&nbsp;Set value to 1 or 2 for armor else 0.</td>
+</tr
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0055</b></td>
+<td valign="top" width="20%">&nbsp;Add Life</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Life otherwise 0=None.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0056</b></td>
+<td valign="top" width="20%">&nbsp;Village Talk</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=repeat villagers talk.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0057</b></td>
+<td valign="top" width="20%">&nbsp;Music Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Music to play otherwise silent.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0058</b></td>
+<td valign="top" width="20%">&nbsp;Sound Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Sound to play otherwise silent.</td>
+</tr>
+</table>
+<br /> 
 <u>Cheats</u><br />
 <u>Credits</u><br />
 <br />
