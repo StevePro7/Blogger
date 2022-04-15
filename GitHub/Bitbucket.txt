@@ -1,0 +1,25 @@
+Bitbucket
+14/04/2022
+
+https://itsmycode.com/solved-remote-bitbucket-cloud-recently-stopped-supporting-account-passwords-for-git-authentication
+
+
+Follow instructions
+
+Go to the bitbucket.org website and log in with your account credentials
+From your avatar in the bottom left, click Personal settings
+Click App passwords under Access management
+Click Create App password
+Give the app password sufficient rights and a label related to the application that will use the password
+Don’t forget to save that password
+
+
+e.g.
+Password
+12345678901234567890
+
+then set command
+git remote set-url origin https://SteveProXNA:12345678901234567890@bitbucket.org/SteveProXNA/actionstuff.git
+
+git pull
+git push
