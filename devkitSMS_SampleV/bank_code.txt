@@ -1,0 +1,45 @@
+<span style="font-family:verdana;font-size:85%;">
+
+Imagine you have 3x functions you would like to bank that are stored in 3x separate banked h/c files:
+  
+banked_code_1.h
+<pre class="csharp" name="code">
+#ifndef _BANK_1_H_
+#define _BANK_1_H_
+
+int foo1() __banked;
+
+#endif//_BANK_1_H_
+</pre>
+  
+  
+banked_code_1.c
+<pre class="csharp" name="code">
+#include "banked_code_1.h"
+
+int foo1() __banked
+{
+	return 1;
+}
+</pre>
+  
+  
+build.bat
+<pre class="csharp" name="code">
+:: Compile
+sdcc --debug -c -mz80 --codeseg BANK1 banked_code_1.c
+sdcc --debug -c -mz80 --codeseg BANK2 banked_code_2.c
+sdcc --debug -c -mz80 --codeseg BANK3 banked_code_3.c
+
+# Linker
+sdcc --debug -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 ^
+-Wl-b_BANK1=0x14000 ^
+-Wl-b_BANK2=0x24000 ^
+-Wl-b_BANK3=0x34000 ^
+../crt0/crt0b_sms.rel ^
+../lib/SMSlib.lib ^
+../lib/PSGlib.rel ^
+main.rel ^
+</pre>
+  
+</span>
