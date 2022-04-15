@@ -1,5 +1,29 @@
 <span style="font-family:verdana;font-size:85%;">
-
+<u>Example</u><br />
+As an example, replicate the simple program from 2017 that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux and include debugging!
+<br /><br />  
+Create new directory HelloWorld: ~/HelloWorld.  Copy these files across crt0_sms.rel, SMSlib.h, SMSlib.lib
+<br /><br />
+main.c build.bat copy build.bat to build.sh | chmod +x build.sh
+<br /><br />
+  Reference: PortWinLin
+Linux | Launch Visual Studio Code | ensure Emulicious Debugger is installed
+  <br /><br />
+  
+Copy .vscode hidden folder over
+settings.json
+launch.json
+tasks.json
+  
+  Emulicious Debugger
+  In 2021, we installed the Emulicious Debugger initially for Z80 Programming Setup but also extended similar setup to debug step through C source code.
+    <br /><br />
+  
+VS Code.txt | Settings
+  
+<br /><br />
+  
+  
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit video games in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> (SMS).  Here we use SDCC v3.6.9 which allows maximum 32KB for your main ROM game code size.
 <br /><br />
 Now, the latest <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x which supports banked code which means it is now possible to page code out transparently.  Plus we'd also like to build <a href="http://www.smspower.org">SMS</a> projects cross platform for Windows and Linux.
@@ -11,9 +35,21 @@ Now, the latest <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requi
 <br />
 Let’s check it out! 
 <br /><br />
+  
+<br /><br />
+  
 <u>devkitSMS</u>
 <br />
 The <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> is a collection of tools and code built specifically for the Sega Master System but also supports homebrew development using C language for <a href="https://en.wikipedia.org/wiki/SG-1000">SG-1000</a>, <a href="https://en.wikipedia.org/wiki/SG-1000#SC-3000">SC-3000</a> and the Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
+<br /><br />
+  
+TODO<u>Software</u>
+<br />
+Follow all instructions from the previous post: this documents how to setup the pre-requisite software.
+<br /><br />
+Here is a summary of all required software to be installed:
+<br /><br />
+TODO complete partial table
 <br /><br />
   
 <b>Windows</b><br />
@@ -105,24 +141,6 @@ Note: my preference is to usually copy the relevant files up-to-date as each Mas
 <br /><br />
   
 <br /><br />
-<u>Example</u><br />
-As an example, replicate the simple program from 2017 that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux.  Create HelloWorld new directory.  Copy files across
-<br /><br />
-main.c build.bat copy build.bat to build.sh | chmod +x build.sh
-<br /><br />
-  Reference: PortWinLin
-Linux | Launch Visual Studio Code | ensure Emulicious Debugger is installed
-  <br /><br />
-  
-Copy .vscode hidden folder over
-settings.json
-launch.json
-tasks.json
-  
-  Emulicious Debugger
-  In 2021, we installed the Emulicious Debugger initially for Z80 Programming Setup but also extended similar setup to debug step through C source code.
-    <br /><br />
-  
-VS Code.txt | Settings
+
   
 </span>
