@@ -1,46 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
   
-<u>Visual Studio Code</u><br />
-Finally, add hidden <b>.vscode</b> folder in Visual Studio Code + include tasks.json and launch.json files beneath:
-<br />
-<b>tasks.json</b>
-<!--
-<pre class="csharp" name="code">
-{
-    "version": "2.0.0",
-    "label": "build",
-    "type": "shell",
-    "linux": {
-        "command": "./build.sh"
-    },
-    "windows": {
-        "command": "./build.bat"
-      },
-    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
-    "group": {"kind": "build", "isDefault": true},
-}
-</pre>
---> 
-<br />
-<b>launch.json</b>
-<!--   
-<pre class="csharp" name="code">
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "emulicious-debugger",
-            "request": "launch",
-            "name": "Launch in Emulicious",
-            "program": "${workspaceFolder}/output.sms",
-            "port": 58870,
-            "stopOnEntry": true
-        }
-    ]
-}
-</pre>
--->
-<br />
 
   
 <br /><br />
@@ -242,7 +201,47 @@ ihx2sms output.ihx output.sms
 output.sms
 </pre>
 <br />
-<br /><br />
 
-  
+<u>Visual Studio Code</u><br />
+Finally, add hidden <b>.vscode</b> folder in Visual Studio Code + include tasks.json and launch.json files beneath:
+<br />
+<b>tasks.json</b>
+<!--
+<pre class="csharp" name="code">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+    "windows": {
+        "command": "./build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+</pre>
+--> 
+<br />
+<b>launch.json</b>
+<!--   
+<pre class="csharp" name="code">
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emulicious-debugger",
+            "request": "launch",
+            "name": "Launch in Emulicious",
+            "program": "${workspaceFolder}/output.sms",
+            "port": 58870,
+            "stopOnEntry": true
+        }
+    ]
+}
+</pre>
+-->
+<br />
+
 </span>
