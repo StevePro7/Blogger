@@ -70,7 +70,7 @@ Congratulations! You have just written your first SMS program using <a href="htt
 <br />
   
 <u>Automate</u><br />
-Let's automate the build process: create build script file that contains the previous commands:  On Windows name the file <b>build.bat</b>.  On Linux name the file <b>build.sh</b> and add EXE permissions as chmod +x build.sh.
+Let's automate the build process: create build script file that contains the previous commands.  On Windows name the file <b>build.bat</b>.  On Linux name the file <b>build.sh</b> and add EXE permissions as <b>chmod +x build.sh</b>.
 <pre class="csharp" name="code">
 @echo off
 sdcc --debug -c -mz80 main.c
@@ -78,6 +78,11 @@ sdcc --debug -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 crt0_sms.rel ma
 ihx2sms output.ihx output.sms
 output.sms
 </pre>
+<br />
+
+<u>Visual Studio Code</u><br />
+Finally, add hidden <b>.vscode</b> folder in Visual Studio Code + include tasks.json and launch.json files beneath:
+<br /><br />
 main.c build.bat copy build.bat to build.sh | chmod +x build.sh
 <br /><br />
   Reference: PortWinLin
