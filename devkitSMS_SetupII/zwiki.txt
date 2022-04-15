@@ -2,8 +2,66 @@
 <u>Example</u><br />
 As an example, replicate the simple program from 2017 that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux and include debugging!
 <br /><br />  
-Create new directory HelloWorld: ~/HelloWorld.  Copy these files across crt0_sms.rel, SMSlib.h, SMSlib.lib
+Create new directory HelloWorld: <b>~/HelloWorld</b>.  Copy these files across crt0_sms.rel, SMSlib.h, SMSlib.lib.  Launch Visual Studio Code.  Open HelloWorld directory.  Create new file main.c and enter the following code:
+<br />
+<!--
+<br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "SMSlib.h"
+void main (void)
+{
+  SMS_setSpritePaletteColor(0, RGB(3,3,3));
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 9, 15, "StevePro Studios", "Hello World", "Simple Sega Master System demo to run on real hardware!");
+</pre>
+-->
+<br />
+<u>Build</u><br />
+Manually compile, link and execute the Hello program.  Launch command prompt: Start | Run | cmd.
+<br />
+<!--
+<a href="https://4.bp.blogspot.com/-1A-Osw4R9LA/WP-1dzTxPzI/AAAAAAAAD90/fTJS6gHr4ykeAKtJg_cGDmxMsFWoKJRAwCLcB/s1600/HelloWorldCode.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-1A-Osw4R9LA/WP-1dzTxPzI/AAAAAAAAD90/fTJS6gHr4ykeAKtJg_cGDmxMsFWoKJRAwCLcB/s640/HelloWorldCode.jpg" width="98%" height="184" /></a>
+<br />
+-->
+<br />
+Change directory cd ~/HelloWorld.  Next, execute following 3x commands (in bold) but add <b>debug</b> keyword:
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ACTION</td>
+<td valign="top">&nbsp;COMMAND</td>
+<td valign="top">&nbsp;OUTPUT</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Compile&nbsp;</td>
+<td valign="top">&nbsp;<b>sdcc --debug -c -mz80 main.c</b></td>
+<td valign="top">&nbsp;main.rel</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Link</td>
+<td valign="top">&nbsp;<b>sdcc --debug -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 crt0_sms.rel<br />&nbsp;main.rel SMSlib.lib</b></td>
+<td valign="top">&nbsp;output.ihx</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Exceute</td>
+<td valign="top">&nbsp;<b>ihx2sms output.ihx output.sms</b></td>
+<td valign="top">&nbsp;output.sms&nbsp;</td>
+</tr>
+</table>
+<br />
+Finally, type <b>output.sms</b>.  The Hello program should launch in the Fusion emulator.
+<br />
+Congratulations! You have just written your first SMS program using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
+<a href="https://1.bp.blogspot.com/-orCl08hJsAw/WP-1Uoz5vaI/AAAAAAAAD9w/ZNUofyjnC4E_x5Tz0xQ7yFMC6QW9jRQ9gCLcB/s1600/HelloWorldOutput.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-orCl08hJsAw/WP-1Uoz5vaI/AAAAAAAAD9w/ZNUofyjnC4E_x5Tz0xQ7yFMC6QW9jRQ9gCLcB/s640/HelloWorldOutput.jpg" width="98%" height="500" /></a>
 <br /><br />
+
 main.c build.bat copy build.bat to build.sh | chmod +x build.sh
 <br /><br />
   Reference: PortWinLin
