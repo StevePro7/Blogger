@@ -33,6 +33,8 @@ Manually compile, link and execute the Hello program.  Launch command prompt: St
 -->
 <br />
 Change directory cd ~/HelloWorld.  Next, execute following 3x commands (in bold) but add <b>debug</b> keyword:
+<br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;ACTION</td>
@@ -55,13 +57,27 @@ Change directory cd ~/HelloWorld.  Next, execute following 3x commands (in bold)
 <td valign="top">&nbsp;output.sms&nbsp;</td>
 </tr>
 </table>
+-->
 <br />
 Finally, type <b>output.sms</b>.  The Hello program should launch in the Fusion emulator.
 <br />
 Congratulations! You have just written your first SMS program using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
+<br />
+<!--
 <a href="https://1.bp.blogspot.com/-orCl08hJsAw/WP-1Uoz5vaI/AAAAAAAAD9w/ZNUofyjnC4E_x5Tz0xQ7yFMC6QW9jRQ9gCLcB/s1600/HelloWorldOutput.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-orCl08hJsAw/WP-1Uoz5vaI/AAAAAAAAD9w/ZNUofyjnC4E_x5Tz0xQ7yFMC6QW9jRQ9gCLcB/s640/HelloWorldOutput.jpg" width="98%" height="500" /></a>
-<br /><br />
-
+<br />
+-->
+<br />
+  
+<u>Automate</u><br />
+Let's automate the build process: create build script file that contains the previous commands:  On Windows name the file <b>build.bat</b>.  On Linux name the file <b>build.sh</b> and add EXE permissions as chmod +x build.sh.
+<pre class="csharp" name="code">
+@echo off
+sdcc --debug -c -mz80 main.c
+sdcc --debug -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 crt0_sms.rel main.rel SMSlib.lib
+ihx2sms output.ihx output.sms
+output.sms
+</pre>
 main.c build.bat copy build.bat to build.sh | chmod +x build.sh
 <br /><br />
   Reference: PortWinLin
