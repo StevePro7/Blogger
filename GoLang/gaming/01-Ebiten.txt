@@ -1,0 +1,17 @@
+Ebiten 
+17/04/2022
+
+
+
+https://ebiten.org/documents/install.html?os=linux
+
+
+sudo apt install gcc
+
+sudo apt install libc6-dev libglu1-mesa-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libasound2-dev pkg-config
+
+go get github.com/hajimehoshi/ebiten/v2
+
+DEMO
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate
+
