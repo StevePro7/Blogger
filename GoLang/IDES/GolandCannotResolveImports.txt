@@ -1,0 +1,20 @@
+GoLand cannot resolve imports
+18/04/2022
+
+e.g.
+github.com/labstack/echo 
+
+GOOGLE
+https://stackoverflow.com/questions/51910862/how-do-i-configure-goland-to-recognize-mod-packages
+
+so I tried this
+
+Reference
+https://intellij-support.jetbrains.com/hc/en-us/community/posts/360008537499-cannot-resolve-directory-of-all-the-import
+
+
+Goland IDE | Settings | Go | Go Modules
+Enable Go modules integration	CHECKED
+
+close IDE and repoen
+now all OK
