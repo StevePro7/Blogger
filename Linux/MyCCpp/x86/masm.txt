@@ -4,7 +4,27 @@ masm
 Setting up Visual Studio 2019 for Assembly MASM
 https://www.youtube.com/watch?v=2fyoYNFO9XM
 
+e.g.
 C:\Users\TEST.000\source\repos\Project1
+
+
+Method
+Launch VS 2019
+Empty Project
+
+right click project
+Add | New Item | MyAsmTest.asm
+
+right click project
+Build
+Build Dependencies | Build Customizations
+masm (.targets, .props)	$(VCTargetsPath)\BuildCustomizations\masm.targets
+CHECKED
+
+right click MyAsmTest.asm
+Properties
+Item Type
+Microsoft Macro Assembler
 
 
 
