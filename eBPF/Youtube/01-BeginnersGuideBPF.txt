@@ -1,0 +1,55 @@
+A Beginner's Guide to eBPF Programming for Networking - Liz Rice, Isovalent
+25/04/2022
+
+https://www.youtube.com/watch?v=lrSExTfS-iQ
+https://www.youtube.com/watch?v=uBqRv8bDroc
+
+https://www.youtube.com/watch?v=0p987hCplbk
+
+
+eBPF for networking
+
+
+eBPF
+event driven
+
+hooks include
+system calls
+function enrty/exit
+kernel tracepoint
+network events
+
+
+system call
+execve()
+used to run new executable
+
+
+kprobe of execve
+BPF_PROG_TYPE_KPROBE
+
+
+System calls
+interface btwn user space and the kernel
+
+
+
+sudo perf list
+
+stupid error
+linux perf not found for kernel
+
+so build manually
+https://askubuntu.com/questions/50145/how-to-install-perf-monitoring-tool
+
+cd ~/GitHubX/MyLinux
+cd linux/tools/perf
+make
+sudo cp perf /usr/bin
+
+kprobes
+kretprobes
+
+e.g.
+tcp_v4_connect()
+kernel function
