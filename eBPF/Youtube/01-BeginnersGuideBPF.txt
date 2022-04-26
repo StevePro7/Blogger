@@ -60,3 +60,48 @@ github
 Liz Rice
 https://github.com/lizrice/ebpf-beginners
 https://github.com/lizrice/ebpf-networking
+
+
+
+METHOD
+git clone https://github.com/lizrice/ebpf-networking
+
+but ensure that the folder
+ebpf-networking
+
+is here
+/home/stevepro/ebpf-networking
+
+
+IMPORTANT
+use python3 instead of python
+
+
+
+
+docker run -d --rm --name backend-A -h backend-A --env TERM=xterm-color nginxdemos/hello:plain-text
+
+
+docker exec -it backend-A ip a 
+
+
+172.17.0.2/16
+
+
+docker run --rm -it -v /usr:/usr -v /home:/home -v /sys:/sys --privileged --env TERM=xterm-color -h container ubuntu
+
+
+ebpf-networking
+
+
+python3
+
+
+from bcc import BPF
+ModuleNotFoundError: No module named 'bcc'
+
+sudo apt-get install bpfcc-tools 
+sudo apt-get install linux-headers-*
+
+ImportError: cannot import name 'BPF' from 'bcc'
+sudo pip3 uninstall bcc
