@@ -59,7 +59,7 @@ There should be no extra configuration except add C:\Program Files\SDCC\bin to t
 <br />
 -->
 <br />
-Start | Run | cmd. Type sdcc --version. The following info should display to confirm SDCC version 4.1.0:
+Start | Run | cmd. Type sdcc --version. The following should display to confirm SDCC version 4.1.0:
 <br />
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOz6Ai5SZ-OyTnfwuu7VSyCkVqO0TuiANAd91iIaAyGlIRjHsOBcEE-zBAJe8YnwRU0zpjwNA4DNGwW5NKdh_beYewbA4ZULW7I4Sli7ba7exD78pyyfxJzhkv_paldvabqbBTS_Ge_5ESD2NEJYLPZPF0Sv_OMZlovCLtdTfUk29BqkMaSgDIphVU/s1111/Win07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOz6Ai5SZ-OyTnfwuu7VSyCkVqO0TuiANAd91iIaAyGlIRjHsOBcEE-zBAJe8YnwRU0zpjwNA4DNGwW5NKdh_beYewbA4ZULW7I4Sli7ba7exD78pyyfxJzhkv_paldvabqbBTS_Ge_5ESD2NEJYLPZPF0Sv_OMZlovCLtdTfUk29BqkMaSgDIphVU/s600/Win07.png"/></a>
@@ -91,12 +91,6 @@ There should be no extra configuration except add $HOME/sdcc/bin to the ~/.bashr
 <br />
 Launch Terminal. Type sdcc --version [sdcc -v]. The following should display to confirm SDCC version 4.1.0:
 <br />
-<!-- -->
-<pre class="csharp" name="code">
-# SDCC
-export PATH="$PATH:$HOME/sdcc/bin"
-</pre>
-<!-- -->
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s889/Lin07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s600/Lin07.png"/></a>
 <br />
@@ -107,12 +101,12 @@ export PATH="$PATH:$HOME/sdcc/bin"
 <table width="100%" border="1">
 <tr>
 <td valign="top">&nbsp;Windows</td>
-<td valign="top">&nbsp;C:\Program Files\SDCC\bin
+<td valign="top">&nbsp;%INSTALLATION%\SDCC\bin
 </td>
 </tr>
 <tr>
 <td valign="top">&nbsp;Linux</td>
-<td valign="top">&nbsp;~/sdcc/bin
+<td valign="top">&nbsp;%INSTALLATION%/SDCC/bin
 </td>
 </tr>
 </table>
@@ -128,10 +122,10 @@ git clone https://github.com/sverx/devkitSMS.git
 
 # Copy 4x files
 cd devkitSMS
-copy assets2banks/assets2banks.exe %INSTALLATION%/SDCC/bin
-copy folder2c/folder2c.exe %INSTALLATION%/SDCC/bin
+copy assets2banks/assets2banks.exe %INSTALLATION/SDCC/bin
+copy folder2c/folder2c.exe %INSTALLATION/SDCC/bin
 copy ihx2sms/ihx2sms.exe %INSTALLATION%/SDCC/bin
-copy folder2c/makesms.exe %INSTALLATION%/SDCC/bin
+copy folder2c/makesms.exe %INSTALLATION/SDCC/bin
 </pre>
 -->
 <br />
