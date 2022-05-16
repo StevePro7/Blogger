@@ -92,11 +92,6 @@ There should be no extra configuration except add $HOME/sdcc/bin to the ~/.bashr
 Launch Terminal. Type sdcc --version [sdcc -v]. The following should display to confirm SDCC version 4.1.0:
 <br />
 <!-- --> <!-- -->
-<pre class="csharp" name="code">
-# SDCC
-export PATH="$PATH:$HOME/sdcc/bin"
-</pre>
-<!-- --> <!-- -->
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s889/Lin07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s600/Lin07.png"/></a>
 <br />
@@ -264,7 +259,7 @@ src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9C
 <br /><br />
   
 <u>Visual Studio 2015</u><br />
-For completeness, if the main workstation is Windows then another option is Visual Studio 2015 can also be used to debug step thru the ANSI-C source code.  For more background info see this.  Here is the alternative:
+For completeness, if the main workstation is Windows then another option is Visual Studio 2015 can also be used to debug step thru the ANSI-C source code.  For more background info see <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">this</a>.  Here is the alternative:
 <br />
 <pre class="csharp" name="code">
 #include "main.h"
