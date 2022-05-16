@@ -148,11 +148,11 @@ Create new directory HelloWorld: <b>~/HelloWorld</b>.  Copy these files across c
 <b>main.c</b>
 <pre class="csharp" name="code">
 #include "SMSlib.h"
-void main (void)
+void main ( void )
 {
-  SMS_setSpritePaletteColor(0, RGB(3,3,3));
+  SMS_setSpritePaletteColor( 0, RGB( 3, 3, 3 ) );
   SMS_displayOn();
-  for (;;)
+  for ( ;; )
   {
     SMS_waitForVBlank();
   }
@@ -259,7 +259,6 @@ Finally, add hidden <b>.vscode</b> folder in Visual Studio Code + include tasks.
 }
 </pre>
 <!-- -->
-<br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9CM3jWRxtXuYpQ2cK44r5UhR79WbYo487HzV2OABXXwIqsA_RVbA7oKjs175kqPSteJm_Mlxzg3lFKqMvU1t7QA5taOmLd6SK81GJdu4Sj6JWgC7Jfj_r9OXnjY5YI-DNuYSrpENFxPzFhaK4qqNf7fXEOTqR7lIlhejcEqZtije/s751/debugging.png"><img alt="" border="0" height="600" width="98%"
 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9CM3jWRxtXuYpQ2cK44r5UhR79WbYo487HzV2OABXXwIqsA_RVbA7oKjs175kqPSteJm_Mlxzg3lFKqMvU1t7QA5taOmLd6SK81GJdu4Sj6JWgC7Jfj_r9OXnjY5YI-DNuYSrpENFxPzFhaK4qqNf7fXEOTqR7lIlhejcEqZtije/s600/debugging.png"/></a>
 <br /><br />
@@ -272,7 +271,7 @@ For completeness, if the main workstation is Windows then another option is Visu
 void main( void )
 {
   devkit_SMS_init();
-  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 2 ) );
+  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 3 ) );
   devkit_SMS_displayOn();
   for( ;; )
   {
@@ -280,11 +279,10 @@ void main( void )
   }
 }
 </pre>
-<br /><br />
+<br />
 
 <u>Summary</u><br />
 To summarize, the Sega Master System development process has been very consistent after the SDCC 4.x upgrade plus the ability to support banked code means initial 32KB ROM restriction now no longer applies!
-<br /><br />
-This will be the topic of the next post.   
-  
+<br />
+This will be the topic of the next post.
 </span>
