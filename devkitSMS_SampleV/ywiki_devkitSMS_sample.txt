@@ -1,0 +1,517 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="http://steveproxna.blogspot.ie/2017/09/devkitsms-programming-setup.html">post</a>, we checked out devkitSMS Programming Setup.  The devkitSMS provides tools and code to support homebrew development for the Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a>, <a href="https://en.wikipedia.org/wiki/SG-1000">SG-1000</a>, and Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
+<br /> <br />
+Using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>, it is possible to write game code using the <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> rather than pure <a href="http://en.wikipedia.org/wiki/Zilog_Z80#Z80_assembly_language">Z80 assembly</a>.  Therefore, we would now like to extend this knowledge and write more detailed programming sample. 
+<a href="https://1.bp.blogspot.com/-W6IoPSBFfQQ/WQirzWSliwI/AAAAAAAAECE/Dvq3Uc2j2VU_66UVTNjGVFWtrHhsi7sEQCLcB/s1600/CandyKidDemo.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-W6IoPSBFfQQ/WQirzWSliwI/AAAAAAAAECE/Dvq3Uc2j2VU_66UVTNjGVFWtrHhsi7sEQCLcB/s640/CandyKidDemo.jpg" width="98%" height="500" /></a>
+<br />
+Let's check it out! 
+<br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a>: this documents how to setup the pre-requisite software.
+<br />
+Note: ensure you have downloaded and installed the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and Small Device C Compiler [<a href="http://sdcc.sourceforge.net">SDCC</a>].
+<br /><br />
+Also download <a href="https://github.com/sverx/PSGlib/blob/master/tools/vgm2psg.exe">vgm2psg.exe</a> required to convert <a href="https://en.wikipedia.org/wiki/Video_game_music">VGM</a> files to the Programmable Sound Generator [<a href="https://en.wikipedia.org/wiki/Programmable_sound_generator">PSG</a>].
+<pre class="csharp" name="code">
+# Clone PSGlib
+cd C:\GitHub\sverx
+git clone https://github.com/sverx/PSGlib.git
+</pre>
+<br />
+<u>Demo</u><br />
+The devkitSMS programming sample is based on the <a href="http://www.smspower.org/Homebrew/CandyKidDemo-SMS">Candy Kid Demo</a> coding competition entry for 2017.  
+All graphics, sprites, music, sound fx, coding logic etc. here is based on the devkitSMS <a href="http://www.smspower.org/forums/15888-DevkitSMSTutorial">tutorial</a> by <a href="https://twitter.com/i_am_sverx">@sverx</a>.
+<br /><br />
+Create folder C:\<a href="https://github.com/SteveProXNA/CandyKidDemoSMS">CandyKidDemoSMS</a>.  Create the following sub-folders: <b>asm</b>, <b>crt0</b>, <b>dev</b>, <b>gfx</b>, <b>lib</b>, <b>psg</b>, <b>utl</b>
+<a href="https://3.bp.blogspot.com/-pPag2Q6nNMY/WQhPt0thfcI/AAAAAAAAD_M/s-6Wy-M7tQ8WCrH8-62dkGLndXOmDCJggCLcB/s1600/CandyKidDemoSMS.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-pPag2Q6nNMY/WQhPt0thfcI/AAAAAAAAD_M/s-6Wy-M7tQ8WCrH8-62dkGLndXOmDCJggCLcB/s640/CandyKidDemoSMS.jpg" width="640" height="531" /></a>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Folder</b></td>
+<td valign="top">&nbsp;<b>File</b></td>
+<td valign="top">&nbsp;<b>Location</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;asm</td>
+<td valign="top">&nbsp;Opcodes.dat<br />&nbsp;smsexamine.exe</td>
+<td valign="top">&nbsp;C:\smsexamine1_2a<br />&nbsp;C:\smsexamine1_2a</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;crt0</td>
+<td valign="top">&nbsp;crt0_sms.rel</td>
+<td valign="top">&nbsp;C:\Github\sverx\devkitSMS\crt0</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;lib</td>
+<td valign="top">&nbsp;SMSlib.h<br />&nbsp;SMSlib.lib<br />&nbsp;PSGlib.h<br />&nbsp;PSGlib.rel</td>
+<td valign="top">&nbsp;C:\GitHub\sverx\devkitSMS\SMSlib\src<br />&nbsp;C:\GitHub\sverx\devkitSMS\SMSlib<br />&nbsp;C:\GitHub\sverx\devkitSMS\PSGlib\src<br />&nbsp;C:\GitHub\sverx\devkitSMS\PSGlib</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;utl</td>
+<td valign="top">&nbsp;folder2c.exe<br />&nbsp;ihx2sms.exe<br />&nbsp;vgm2psg.exe</td>
+<td valign="top">&nbsp;C:\GitHub\sverx\devkitSMS\folder2c<br />&nbsp;C:\GitHub\sverx\devkitSMS\ihx2sms<br />&nbsp;C:\GitHub\sverx\PSGlib\tools</td>
+</tr>
+</table>
+Note: assumes Opcodes.dat and smsexamine.exe downloaded from <a href="http://www.smspower.org/Development/SMSExamine">SMS Examine</a> and extracted to C:\
+<br /><br />
+<u>Development</u><br />
+Launch Visual Studio 2008.  File | New | Project... | Visual C++ | Win32 | Win32 Project
+<a href="https://1.bp.blogspot.com/-L1ieohTdGbI/WQhXGltSUMI/AAAAAAAAD_c/_UNQ5vvZ-zcITsLAg35l6-m4MyhLTlHyACLcB/s1600/GameVS.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-L1ieohTdGbI/WQhXGltSUMI/AAAAAAAAD_c/_UNQ5vvZ-zcITsLAg35l6-m4MyhLTlHyACLcB/s640/GameVS.jpg" width="98%" height="434" /></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Name:</td>
+<td valign="top">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\CandyKidDemoSMS\dev</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create directory for solution</td>
+<td valign="top">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+OK<br /><br />
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Application type:</td>
+<td valign="top">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Additional options:</td>
+<td valign="top">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+Finish
+<br /><br />
+<u>Graphics</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href="http://www.smspower.org/maxim/uploads/Software/bmp2tile041.zip">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download <a href="https://github.com/sverx/STMcomp/raw/master/compressor%20plugin/gfxcomp_stm.dll">gfxcomp_stm.dll</a> STM compressed format to output directory.
+<br /><br />
+<b>Splash</b><br />
+Here is an example of background tiles that exhaust the full 256 x 192 resolution e.g. the Splash screen:
+<a href="https://4.bp.blogspot.com/-VPZ7mLevHmc/WQhqB1dER6I/AAAAAAAAD_0/OWfKoIiPn9klhNTZVGoNYiQaloYSMV3_gCLcB/s1600/SplashFileSource.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-VPZ7mLevHmc/WQhqB1dER6I/AAAAAAAAD_0/OWfKoIiPn9klhNTZVGoNYiQaloYSMV3_gCLcB/s640/SplashFileSource.jpg" width="98%" height="400" /></a>
+<br /><br />
+Choose "Tiles" tab. Ensure that "Remove duplicates" and "Planar tile output" are both checked.
+<br />
+Click Save button | File name <b>splash (tiles).psgcompr</b> | File type PS Gaiden (*.psgcompr)
+<a href="https://4.bp.blogspot.com/-40kmFRUuzjM/WQhrNHvLTXI/AAAAAAAAEAA/6u5_it-onkwqT5BBmZ1cvE3eBX_PcWaswCLcB/s1600/SplashTiles.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-40kmFRUuzjM/WQhrNHvLTXI/AAAAAAAAEAA/6u5_it-onkwqT5BBmZ1cvE3eBX_PcWaswCLcB/s640/SplashTiles.jpg" width="98%" height="400" /></a>
+<br /><br />
+Choose "Tilemap" tab. Leave "Use sprite palette" and "In front of sprites" options both unchecked.
+<br />
+Click Save button | File name <b>splash (tilemap).stmcompr</b> | File type Sverx's TileMap (*.stmcompr)
+<a href="https://4.bp.blogspot.com/-ZdEprJKcikc/WQhrprj7SLI/AAAAAAAAEAE/kxdyW-fnbOgJ7FOCjKTFmkQohCsZDoYKwCLcB/s1600/SplashTilemap.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-ZdEprJKcikc/WQhrprj7SLI/AAAAAAAAEAE/kxdyW-fnbOgJ7FOCjKTFmkQohCsZDoYKwCLcB/s640/SplashTilemap.jpg" width="98%" height="400" /></a>
+<br /><br />
+Choose "Palette" tab. Leave the "Output hex (SMS)" option checked for Sega Master System. 
+<br />
+Click Save button | File name <b>splash (palette).bin</b> | File type Binary files (*.bin)
+<a href="https://3.bp.blogspot.com/--3LZAaxv3uY/WQhtjkW3e8I/AAAAAAAAEAQ/QEfYY5l69acHbFRTpRnJ4MiIKtd8ia4hACLcB/s1600/SplashPalette.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/--3LZAaxv3uY/WQhtjkW3e8I/AAAAAAAAEAQ/QEfYY5l69acHbFRTpRnJ4MiIKtd8ia4hACLcB/s640/SplashPalette.jpg" width="98%" height="400" /></a>
+<br />
+Here is basic code sample to render the splash screen in <b>main.c</b> with corresponding updated <b>build.bat</b>
+<br /><br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "..\lib\SMSlib.h"
+#include "gfx.h"
+
+#define SPLASH_TILES 144
+
+void engine_content_manager_splash()
+{
+  SMS_loadPSGaidencompressedTiles(splash__tiles__psgcompr, SPLASH_TILES);
+  SMS_loadSTMcompressedTileMap(0, 0, splash__tilemap__stmcompr);
+  SMS_loadBGPalette(splash__palette__bin);
+}
+void main (void)
+{
+  engine_content_manager_splash();
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<b>build.bat</b>
+<pre class="csharp" name="code">
+@echo off
+..\utl\folder2c ..\gfx gfx
+
+sdcc -c -mz80 gfx.c
+sdcc -c -mz80 main.c
+sdcc -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 ..\crt0\crt0_sms.rel main.rel ..\lib\SMSlib.lib gfx.rel
+
+..\utl\ihx2sms output.ihx output.sms
+output.sms
+</pre>
+<a href="https://2.bp.blogspot.com/-yU9DtmgtWqk/WQhwD2bHBaI/AAAAAAAAEAc/J_u4IJ1UzdwFwyjA6zvgN-h95NJxFvngACLcB/s1600/SplashOutput.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-yU9DtmgtWqk/WQhwD2bHBaI/AAAAAAAAEAc/J_u4IJ1UzdwFwyjA6zvgN-h95NJxFvngACLcB/s640/SplashOutput.jpg" width="98%" height="400" /></a>
+<br /><br />
+<b>Background</b><br />
+Repeat the process for background tiles e.g. Font however save tilemap as uncompressed binary format [bin] to access data randomly.  Save tiles in PS Gaiden compressed format + use same palette as above.
+<a href="https://3.bp.blogspot.com/-n-LuDZN2zDU/WQiJMXea2SI/AAAAAAAAEAw/u0asKw6TgP0k8Mkj5qqsBPXJxqEK70SkQCLcB/s1600/FontFileSource.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-n-LuDZN2zDU/WQiJMXea2SI/AAAAAAAAEAw/u0asKw6TgP0k8Mkj5qqsBPXJxqEK70SkQCLcB/s640/FontFileSource.jpg" width="98%" height="400" /></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Tiles</td>
+<td valign="top">&nbsp;font (tiles).psgcompr</td>
+<td valign="top">&nbsp;PS Gaiden (*.psgcompr)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tilemap</td>
+<td valign="top">&nbsp;font (tilemap).bin</td>
+<td valign="top">&nbsp;Raw (uncompressed) binary (*.bin)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Palette</td>
+<td valign="top">&nbsp;font (palette).bin</td>
+<td valign="top">&nbsp;Raw (uncompressed) binary (*.bin)</td>
+</tr>
+</table>
+<br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "..\lib\SMSlib.h"
+#include "gfx.h"
+
+#define FONT_TILES  16
+#define TEXT_ROOT  33  // 33 is "!" in ASCII.
+
+void engine_content_manager_load()
+{
+  SMS_loadPSGaidencompressedTiles(font__tiles__psgcompr, FONT_TILES);
+  SMS_loadBGPalette(font__palette__bin);
+}
+void engine_font_manager_draw_text(unsigned char* text, unsigned char x, unsigned char y)
+{
+  const unsigned int *pnt = font__tilemap__bin;
+  unsigned char idx=0;
+  while ('\0' != text[idx])
+  {
+    signed char tile = text[idx] - TEXT_ROOT;
+    SMS_setNextTileatXY(x++, y);
+    SMS_setTile(*pnt + tile);
+    idx++;
+  }
+}
+void main (void)
+{
+  char *text = "HELLO";
+  engine_content_manager_load();
+  engine_font_manager_draw_text(text, 0, 0);
+
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<b>Sprites</b><br />
+Repeat the process for sprite tiles however no need to save the tilemap file.  Also, introduce sprite code:
+<a href="https://2.bp.blogspot.com/-sQJcVcO94B0/WQiLgr4YrOI/AAAAAAAAEA8/PiRQ17hAXmILiKWTusMBeNfis13Iab7QACLcB/s1600/SpritesFileSource.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-sQJcVcO94B0/WQiLgr4YrOI/AAAAAAAAEA8/PiRQ17hAXmILiKWTusMBeNfis13Iab7QACLcB/s640/SpritesFileSource.jpg" width="98%" height="400" /></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Tiles</td>
+<td valign="top">&nbsp;sprites (tiles).psgcompr</td>
+<td valign="top">&nbsp;PS Gaiden (*.psgcompr)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Palette</td>
+<td valign="top">&nbsp;sprites (palette).bin</td>
+<td valign="top">&nbsp;Raw (uncompressed) binary (*.bin)</td>
+</tr>
+</table>
+<br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include &lt;stdbool.h&gt;
+#include "..\lib\SMSlib.h"
+#include "gfx.h"
+
+#define SPRITE_TILES  80
+#define KID_BASE_TILE  SPRITE_TILES + 0
+
+void engine_content_manager_load()
+{
+  SMS_loadPSGaidencompressedTiles(sprites__tiles__psgcompr, SPRITE_TILES);
+  SMS_loadSpritePalette(sprites__palette__bin);
+}
+void engine_sprite_manager_draw(unsigned char x, unsigned char y, unsigned char tile)
+{
+  SMS_addSprite(x+0, y+0, tile+0);
+  SMS_addSprite(x+8, y+0, tile+1);
+  SMS_addSprite(x+0, y+8, tile+8);
+  SMS_addSprite(x+8, y+8, tile+9);
+}
+void main (void)
+{
+  unsigned char kidX = 32;
+  unsigned char kidY = 32;
+  unsigned char kidColor = 0;
+  unsigned char kidFrame = 0;
+  unsigned char kidTile = KID_BASE_TILE + ((kidColor * 2) + kidFrame) * 2;
+
+  SMS_setSpriteMode(SPRITEMODE_NORMAL);
+  SMS_useFirstHalfTilesforSprites(true);
+  engine_content_manager_load();
+
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_initSprites();
+    engine_sprite_manager_draw(kidX, kidY, kidTile);
+    SMS_finalizeSprites();
+    SMS_waitForVBlank();
+    SMS_copySpritestoSAT();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<u>Music</u><br />
+Download <a href="http://www.smspower.org/uploads/Music/Mod2PSG2_V2.04_23.11.2007.zip?sid=4b459e3baf058f68618492393fade531">Mod2PSG2</a> music tracker to record music [FX] and convert output <a href="https://en.wikipedia.org/wiki/Video_game_music">VGM</a> files to <a href="https://en.wikipedia.org/wiki/Programmable_sound_generator">PSG</a> file format.
+<a href="https://2.bp.blogspot.com/-2RBa1ZLMSuw/WQiPCSxq4YI/AAAAAAAAEBI/qtqCOT74E-IfzcQgW46bb8XA1rO8iuUxQCLcB/s1600/Mod2Psg2.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-2RBa1ZLMSuw/WQiPCSxq4YI/AAAAAAAAEBI/qtqCOT74E-IfzcQgW46bb8XA1rO8iuUxQCLcB/s640/Mod2Psg2.jpg" width="98%" height="500" /></a>
+File | Export module | VGM... | C:\CandyKidDemoSMS\psg\raw\music.vgm | Save
+<br />
+Now convert to PSG file format using vgm2psg.exe utility downloaded previously:
+<br /><br />
+Start | run | cmd | cd C:\CandyKidDemoSMS
+<br />
+utl\vgm2psg.exe psg\raw\music.vgm psg\music.psg
+<a href="https://4.bp.blogspot.com/-bqyQ-M97Gk0/WQiRXuqRwaI/AAAAAAAAEBY/Z68op0xm0xgrTCPvwDkcfA1aerJzyxmbQCLcB/s1600/vgm2psg.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-bqyQ-M97Gk0/WQiRXuqRwaI/AAAAAAAAEBY/Z68op0xm0xgrTCPvwDkcfA1aerJzyxmbQCLcB/s640/vgm2psg.jpg" width="98%" height="179" /></a>
+<br />
+Here is basic code sample to play the background music in <b>main.c</b> with corresponding updated <b>build.bat</b>
+<br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "..\lib\SMSlib.h"
+#include "..\lib\PSGlib.h"
+#include "gfx.h"
+#include "psg.h"
+
+#define MUSIC_PSG   music_psg
+
+void main (void)
+{
+  PSGPlayNoRepeat(MUSIC_PSG);
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+    PSGFrame();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<b>build.bat</b>
+<pre class="csharp" name="code">
+@echo off
+..\utl\folder2c ..\gfx gfx
+..\utl\folder2c ..\psg psg
+
+sdcc -c -mz80 gfx.c
+sdcc -c -mz80 psg.c
+sdcc -c -mz80 main.c
+sdcc -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 ..\crt0\crt0_sms.rel main.rel ..\lib\SMSlib.lib ..\lib\PSGlib.rel gfx.rel psg.rel
+
+..\utl\ihx2sms output.ihx output.sms
+output.sms
+</pre>
+<br />
+<b>Sound</b><br />
+Repeat the process for sound effects however export VGM file to channel 2 and play on SFX_CHANNEL2:
+<br /><br />
+Start | run | cmd | cd C:\CandyKidDemoSMS
+<br />
+utl\vgm2psg.exe psg\raw\sound.vgm psg\sound.psg <b>2</b>
+<a href="https://2.bp.blogspot.com/-x4iAaPeY38Q/WQicVS1tscI/AAAAAAAAEBo/WiZMXhALnuIb7Md5xXZRjLm1DxzKaK85wCLcB/s1600/sound.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-x4iAaPeY38Q/WQicVS1tscI/AAAAAAAAEBo/WiZMXhALnuIb7Md5xXZRjLm1DxzKaK85wCLcB/s640/sound.jpg" width="98%" height="175" /></a>
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "..\lib\SMSlib.h"
+#include "..\lib\PSGlib.h"
+#include "gfx.h"
+#include "psg.h"
+
+#define SOUND_PSG   sound_psg
+
+void main (void)
+{
+  PSGSFXPlay(SOUND_PSG, SFX_CHANNEL2);
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+    PSGSFXFrame();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<b>Noise</b><br />
+Repeat the process for noise effects however export VGM file to channel 3 and play on SFX_CHANNEL3:
+<br /><br />
+Start | run | cmd | cd C:\CandyKidDemoSMS
+<br />
+utl\vgm2psg.exe psg\raw\noise.vgm psg\noise.psg <b>3</b>
+<a href="https://2.bp.blogspot.com/-E4ve3kORh7k/WQidN77T3_I/AAAAAAAAEBw/XZw-gWg2RMkdXstYiOGQAbxtxDb-q-80gCLcB/s1600/noise.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-E4ve3kORh7k/WQidN77T3_I/AAAAAAAAEBw/XZw-gWg2RMkdXstYiOGQAbxtxDb-q-80gCLcB/s640/noise.jpg" width="98%" height="175" /></a>
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "..\lib\SMSlib.h"
+#include "..\lib\PSGlib.h"
+#include "gfx.h"
+#include "psg.h"
+
+#define NOISE_PSG   noise_psg
+
+void main (void)
+{
+  PSGSFXPlay(NOISE_PSG, SFX_CHANNEL3);
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+    PSGSFXFrame();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<u>Input</u><br />
+Input detection is straightforward although it seems joypad variables must be static so to persist values:
+<br /><br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "..\lib\SMSlib.h"
+void update(const unsigned int curr_joypad1, const unsigned int prev_joypad1)
+{
+  if (curr_joypad1 & PORT_A_KEY_1 && !(prev_joypad1 & PORT_A_KEY_1))
+  {
+    SMS_setSpritePaletteColor(0, RGB(2,2,2));
+  }
+}
+void main (void)
+{
+  // Must be static to persist values!
+  static unsigned int curr_joypad1 = 0;
+  static unsigned int prev_joypad1 = 0;
+
+  SMS_setSpritePaletteColor(0, RGB(3,3,3));
+  SMS_displayOn();
+  for (;;)
+  {
+    curr_joypad1 = SMS_getKeysStatus();
+    update(curr_joypad1, prev_joypad1);
+    SMS_waitForVBlank();
+    prev_joypad1 = curr_joypad1;
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<u>Pause</u><br />
+Many homebrew games do not query pause button although I believe this is good programming practice!
+<br /><br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include &lt;stdbool.h&gt;
+#include "..\lib\SMSlib.h"
+#include "..\lib\PSGlib.h"
+
+bool global_pause;
+void main (void)
+{
+  global_pause = false;
+  SMS_setSpritePaletteColor(0, RGB(3,3,3));
+  SMS_displayOn();
+  for (;;)
+  {
+    if (SMS_queryPauseRequested())
+    {
+      SMS_resetPauseRequest();
+      global_pause = !global_pause;
+      if (global_pause)
+      {
+        SMS_setSpritePaletteColor(0, RGB(1,1,1));
+        PSGSilenceChannels();
+      }
+      else
+      {
+        SMS_setSpritePaletteColor(0, RGB(3,3,3));
+        PSGRestoreVolumes();
+      }
+    }
+    if (global_pause)
+    {
+      continue;
+    }
+
+    SMS_waitForVBlank();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<u>Assembler</u><br />
+Ultimately the goal <b>would</b> be to write game code in Z80 assembly!  However, one useful way to slowly transition from C language to Z80 assembly would be to wrap inline assembly blocks via C functions.
+<br /><br />
+Let's integrate the <a href="http://en.wikipedia.org/wiki/Zilog_Z80#Z80_assembly_language">Z80 assembly</a> code inline to clear VRAM from Maxim <a href="http://www.smspower.org/maxim/HowToProgram/Initialisation">Hello World</a> example directly:
+<br /><br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "..\lib\SMSlib.h"
+__sfr __at 0xBF VDPControlPort;
+__sfr __at 0xBE VDPDataPort;
+
+void engine_asm_manager_clear_VRAM()
+{
+  __asm
+    ld a,#0x00
+    out (_VDPControlPort),a
+    ld a,#0x40
+    out (_VDPControlPort),a
+    ld bc, #0x4000
+ClearVRAMLoop:
+    ld a,#0x00
+    out (_VDPDataPort),a
+    dec bc
+    ld a,b
+    or c
+    jp nz,ClearVRAMLoop
+  __endasm;
+}
+
+void main (void)
+{
+  engine_asm_manager_clear_VRAM();
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 3, 17, "StevePro Studios", "Candy Kid Demo", "DESC");
+</pre>
+<br />
+<u>Summary</u><br />
+Armed with all this knowledge, we are now in an excellent position to build complete video games for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> that will be able to run on real hardware but now without any <a href="http://computer.wikia.com/wiki/Texas_Instruments_TMS9918">VDP</a> graphics glitches!
+</span>
