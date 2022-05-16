@@ -1,21 +1,17 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>Visual Studio 2015</u><br />
-For completeness, if the main workstation is Windows then another option is Visual Studio 2015 can also be used to debug step thru the ANSI-C source code.  For more background info see this.  Here is the alternative:
-<br />
-<pre class="csharp" name="code">
-#include "main.h"
-void main( void )
-{
-  devkit_SMS_init();
-  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 2 ) );
-  devkit_SMS_displayOn();
-  for( ;; )
-  {
-    devkit_SMS_waitForVBlank();
-  }
-}
-</pre>
+<u>Summary</u><br />
+To summarize, the Sega Master System development process has been very consistent after the SDCC 4.x upgrade plus the ability to support banked code means initial 32KB ROM restriction now no longer applies!
+<br /><br />    
+  the ability  exciting features allows banked code which means the 32KB ROM restriction now no longer applies 
+<br /><br />  
+  To summarize, the Sega Master System development process has been consistent after the SDCC 4.x upgrade plus banked code support means 32KB ROM restriction now no longer applies.  
+<br /><br />  
+  
+  This will be the topic of the next post.   
+<br /><br />
+  
+To summarize, the Sega Master System development process has been very consistent despite the upgrade to SDCC 4.x however one of the exciting features allows banked code which means the 32KB ROM restriction now no longer applies 
 <br /><br />
   
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit video games in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> (SMS).  Here we use SDCC v3.6.9 which allows maximum 32KB for your main ROM game code size.
@@ -280,7 +276,24 @@ Finally, add hidden <b>.vscode</b> folder in Visual Studio Code + include tasks.
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9CM3jWRxtXuYpQ2cK44r5UhR79WbYo487HzV2OABXXwIqsA_RVbA7oKjs175kqPSteJm_Mlxzg3lFKqMvU1t7QA5taOmLd6SK81GJdu4Sj6JWgC7Jfj_r9OXnjY5YI-DNuYSrpENFxPzFhaK4qqNf7fXEOTqR7lIlhejcEqZtije/s751/debugging.png"><img alt="" border="0" height="600" width="98%"
 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9CM3jWRxtXuYpQ2cK44r5UhR79WbYo487HzV2OABXXwIqsA_RVbA7oKjs175kqPSteJm_Mlxzg3lFKqMvU1t7QA5taOmLd6SK81GJdu4Sj6JWgC7Jfj_r9OXnjY5YI-DNuYSrpENFxPzFhaK4qqNf7fXEOTqR7lIlhejcEqZtije/s600/debugging.png"/></a>
+<br /><br />
   
 <u>Visual Studio 2015</u><br />
+For completeness, if the main workstation is Windows then another option is Visual Studio 2015 can also be used to debug step thru the ANSI-C source code.  For more background info see this.  Here is the alternative:
+<br />
+<pre class="csharp" name="code">
+#include "main.h"
+void main( void )
+{
+  devkit_SMS_init();
+  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 2 ) );
+  devkit_SMS_displayOn();
+  for( ;; )
+  {
+    devkit_SMS_waitForVBlank();
+  }
+}
+</pre>
+<br /><br />
   
 </span>
