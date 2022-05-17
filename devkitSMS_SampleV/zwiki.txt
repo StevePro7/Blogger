@@ -1,38 +1,21 @@
 <span style="font-family:verdana;font-size:85%;">
-
-Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from here including build the scripts.
-<br /><br />
-<b>main.c</b><br />
-<pre class="csharp" name="code">
-#include "main.h"
-void main( void )
-{
-  devkit_SMS_init();
-  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 3 ) );
-  devkit_SMS_displayOn();
-  for( ;; )
-  {
-    devkit_SMS_waitForVBlank();
-  }
-}
-</pre>
-<br />
-<br />
-  
-<br /><br />
   
 <u>Graphics</u><br />
-Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href="http://www.smspower.org/maxim/uploads/Software/bmp2tile041.zip">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download <a href="https://github.com/sverx/STMcomp/raw/master/compressor%20plugin/gfxcomp_stm.dll">gfxcomp_stm.dll</a> STM compressed format to output directory.
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href=https://github.com/maxim-zhao/bmp2tile/releases/">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download new <a href="">gfxcomp_stm.dll</a> STM compressed format to output directory.
 <br /><br />
 <b>Splash</b><br />
+Here is an example of background tiles that exhaust the full 256 x 192 resolution e.g. the Splash screen:
   
   
 <br /><br />
 In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a> and Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
 <br /><br />
 The latest version of the  <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires an updated version of Small Device Cross Compiler <a href="https://sourceforge.net/projects/sdcc/files">SDCC 4.x</a> and supports new and updated features including the ability to page both code and content transparently.
-<br /><br />
-TODO - new picture<br />
+<br />
+<!--  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwS_Dtb0AXfBqHTRhlmg2Rf-S6N12gOgy8T4L45lZ-OAd9sPzqKjqBF57ogARl5EBWnmK-30Ukgs4i1O-b8Fcve3WWnKZmr2BcWM_-9zZJHQKhDCsRkWwkZ7Rgy6wyLOqdTk-hHSjqBjQjoilTj4sqVosLPUf2M4LWG3ohiuqtu4pnT1YwwrEPVl7J/s617/turtle_bridge.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwS_Dtb0AXfBqHTRhlmg2Rf-S6N12gOgy8T4L45lZ-OAd9sPzqKjqBF57ogARl5EBWnmK-30Ukgs4i1O-b8Fcve3WWnKZmr2BcWM_-9zZJHQKhDCsRkWwkZ7Rgy6wyLOqdTk-hHSjqBjQjoilTj4sqVosLPUf2M4LWG3ohiuqtu4pnT1YwwrEPVl7J/s600/turtle_bridge.png"/></a>
+  -->
+<br />
 Let's check it out!
 <br /><br />
   
@@ -86,5 +69,23 @@ OK<br /><br />
 -->
 Finish
 <br /><br />
-Finally, create the folders beneath dev for .vscode and devkit.  Copy the build scripts that automates all <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">code</a>.
+Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from here including build the scripts.
+<br /><br />
+<b>main.c</b><br />
+<pre class="csharp" name="code">
+#include "main.h"
+void main( void )
+{
+  devkit_SMS_init();
+  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 3 ) );
+  devkit_SMS_displayOn();
+  for( ;; )
+  {
+    devkit_SMS_waitForVBlank();
+  }
+}
+</pre>
+<br />
+<br />
+  
 </span>
