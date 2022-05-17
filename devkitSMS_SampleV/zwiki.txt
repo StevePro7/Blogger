@@ -7,7 +7,39 @@ Follow the devkitSMS tutorial to demo both horizontal and vertical scrolling exa
   
 <br /><br /> 
 <b>Horizontal</b><br />
-  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
+<pre class="csharp" name="code">
+void engine_scroll_manager_update_right( unsigned char delta )
+{
+  unsigned char *src = NULL;
+  unsigned char ytile = 0;
+  unsigned int index = 0;
+  const unsigned int size = 2;
+
+  unsigned int x = 0;
+  unsigned char y = 0;
+
+  if( scrollRightDivided8 < scrollWidth )
+  {
+    scroll -= delta;
+    scrollRight += delta;
+    scrollRightDivided8 = scrollRight / 8;
+    devkit_SMS_setBGScrollX( scroll );
+
+    if( ( scrollRight % 8 ) == delta )
+    {
+      for( ytile = 1; ytile < Y_TILE_MAX; ytile++ )
+      {
+        x = X_TILE_MAX + scrollRightDivided8;
+        y = ytile - 1;
+        index = ( ( BG_TILE_WIDTH*ytile ) + ( X_TILE_MAX + scrollRightDivided8 ) ) * 2;
+        src = ( void * ) &hockey__tilemap__bin[ index ];
+        devkit_SMS_loadTileMap( x, y, src, size );
+      }
+    }
+  }
+}
+</pre>
 <br /><br />  
   <b>Vertical</b><br />
   
