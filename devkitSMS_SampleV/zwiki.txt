@@ -4,10 +4,20 @@
 TODO blurb about scrolling why so popular in 8-bit video games
 <br /><br />
 Follow the devkitSMS tutorial to demo both horizontal and vertical scrolling examples... method: trigger scroll, ensure still req'd to scroll screen, update internal variables, invoke devkitSMS scroll API, check if need to render graphics offscreen that will be scrolled onscreen; if yes then render 8px column of graphics for horizontal scroll or 8px row of graphics for vertical scroll
-  
+
+<br /><br />
+IMPORTANT<br />
+It seems that the preferred devkitSMS API to use to render the offscreen graphics that would be scrolled onto screen is SMS_loadTileMap() however, Dragon Blaster gives a good example of horizontal scrolling that uses SMS_setTile() and SMS_setNextTileatXY().
+<br />
+e.g. https://github.com/haroldo-ok/dragon-blaster/blob/main/map.c
 <br /><br /> 
 <b>Horizontal</b><br />
+<!--
+<br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
+-->
+<br />
+<!--
 <pre class="csharp" name="code">
 void engine_scroll_manager_update_right( unsigned char delta )
 {
@@ -40,7 +50,9 @@ void engine_scroll_manager_update_right( unsigned char delta )
   }
 }
 </pre>
-<br /><br />  
+<br />
+-->
+<br />
   <b>Vertical</b><br />
   
 <br /><br />
