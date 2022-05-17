@@ -1,55 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
   
-<u>Graphics</u><br />
-Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href=https://github.com/maxim-zhao/bmp2tile/releases/">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download new <a href="">gfxcomp_stm.dll</a> STM compressed format to output directory.
-<br /><br />
-<b>Splash</b><br />
-Here is an example of background tiles that will exhaust the full 256 x 192 resolution e.g. the Splash screen:
-<br />
-<!--
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s576/SplashScreen.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s600/SplashScreen.png"/></a>
--->
-<br />
-Follow the same settings as per here but this time use this script to automate the correspodning formatting:
-<br />
-<pre class="csharp" name="code">
-bmp2tile.exe raw/splash.bmp ^
-  -savetiles "splash (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 128 ^
-  -savetilemap "splash (tilemap).stmcompr" ^
-  -savepalette "splash (palette).bin" ^
-  -fullpalette -exit
-</pre>  
-<br />
-<table width="99%" border="1">
-<tr>
-<td valign="top">&nbsp;Tiles:</td>
-<td valign="top">&nbsp;Remove duplicates</td>
-<td valign="top">&nbsp;Checked</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Tiles:</td>
-<td valign="top">&nbsp;Planar tile output</td>
-<td valign="top">&nbsp;Checked</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Tilemap:</td>
-<td valign="top">&nbsp;Use sprite palette</td>
-<td valign="top">&nbsp;Unchecked</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Tilemap:</td>
-<td valign="top">&nbsp;In front of sprites</td>
-<td valign="top">&nbsp;Unchecked</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;Palette:</td>
-<td valign="top">&nbsp;Output hex (SMS)</td>
-<td valign="top">&nbsp;Checked</td>
-</tr>
-<tr>
-</table>
-  <br />
-  e.g. Choose "Tiles" tab. Ensure that "Remove duplicates" and "Planar tile output" are both checked.  Choose "Tilemap" tab. Leave "Use sprite palette" and "In front of sprites" options both unchecked.  Choose "Palette" tab. Leave the "Output hex (SMS)" option checked for Sega Master System.
+
 <br /><br />
 <br /><br />
 In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a> and Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
@@ -131,5 +82,59 @@ void main( void )
 </pre>
 <br />
 <br />
-  
+
+<u>Graphics</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href=https://github.com/maxim-zhao/bmp2tile/releases/">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download new <a href="">gfxcomp_stm.dll</a> STM compressed format to output directory.
+<br /><br />
+<b>Splash</b><br />
+Here is an example of background tiles that will exhaust the full 256 x 192 resolution e.g. the Splash screen:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s576/SplashScreen.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s600/SplashScreen.png"/></a>
+-->
+<br />
+Follow the same settings as per here but this time use this script to automate the correspodning formatting:
+<br />
+<!--
+<pre class="csharp" name="code">
+bmp2tile.exe raw/splash.bmp ^
+  -savetiles "splash (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 128 ^
+  -savetilemap "splash (tilemap).stmcompr" ^
+  -savepalette "splash (palette).bin" ^
+  -fullpalette -exit
+</pre>
+-->
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Tiles:</td>
+<td valign="top">&nbsp;Remove duplicates</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tiles:</td>
+<td valign="top">&nbsp;Planar tile output</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tilemap:</td>
+<td valign="top">&nbsp;Use sprite palette</td>
+<td valign="top">&nbsp;Unchecked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tilemap:</td>
+<td valign="top">&nbsp;In front of sprites</td>
+<td valign="top">&nbsp;Unchecked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Palette:</td>
+<td valign="top">&nbsp;Output hex (SMS)</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+<tr>
+</table>
+-->
+<br />
+
 </span>
