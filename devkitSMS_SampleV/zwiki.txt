@@ -53,8 +53,37 @@ void engine_scroll_manager_update_right( unsigned char delta )
 <br />
 -->
 <br />
-  <b>Vertical</b><br />
-  
+<b>Vertical</b><br />
+<!--
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s618/ScrollingVert.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s600/ScrollingVert.png"/></a>
+-->
+<br />
+<!--
+<pre class="csharp" name="code">
+void engine_scroll_manager_down()
+{
+  struct_scroll_object *so = &global_scroll_object;
+  unsigned int index;
+  unsigned int y;
+
+  if( so->scroll < so->height )
+  {
+    so->scroll++;
+    devkit_SMS_setBGScrollY( so->scroll );
+
+    if( ( so->scroll % 8 ) == 0 )
+    {
+      y = ( 24 + ( so->scroll / 8 ) ) % 28;
+      index = ( 24 + ( so->scroll / 8 ) ) * 32 * 2;
+      devkit_SMS_loadTileMap( 0, y, ( void * ) &MM__tilemap__bin[ index ], so->size );  
+    }
+  }
+}
+</pre>
+<br />
+-->
+<br />
 <br /><br />
 In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a> and Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
 <br /><br />
