@@ -3,13 +3,67 @@
 <u>Banked Code</u><br />
 TODO - build up blurb about banked code....!
 <br />
-Imagine you have 3x functions you would like to bank that are stored in 3x separate banked h/c files:
+IMPORTANT - ensure that crt0b_sms.rel is used...!
 <br />
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s594/BankedCode.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s600/BankedCode.png"/></a>
 <br />
 -->  
+<br />
+Imagine you have 3x functions you would like to bank that are stored in 3x separate banked h/c files:
+<br />
+banked_code_1.h
+<pre class="csharp" name="code">
+#ifndef _BANK_1_H_
+#define _BANK_1_H_
+
+#ifdef _CONSOLE
+int banked_code_1();
+#else
+int banked_code_1() __banked;
+#endif
+
+#endif//_BANK_1_H_
+</pre>
 <br /><br />
+banked_code_1.c
+<pre class="csharp" name="code">
+#include "banked_code_1.h"
+
+#ifdef _CONSOLE
+int banked_code_1()
+#else
+int banked_code_1() __banked
+#endif
+{
+	return 1;
+}
+</pre>
+<br /><br />
+build.bat
+<br />
+TODO - don't forget to write about the algorithm for the linked code BANK address  
+<br />
+<pre class="csharp" name="code">
+:: Compile
+sdcc --debug -c -mz80 --codeseg BANK1 banked_code_1.c
+sdcc --debug -c -mz80 --codeseg BANK2 banked_code_2.c
+sdcc --debug -c -mz80 --codeseg BANK3 banked_code_3.c
+
+# Linker
+sdcc --debug -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 ^
+-Wl-b_BANK1=0x14000 ^
+-Wl-b_BANK2=0x24000 ^
+-Wl-b_BANK3=0x34000 ^
+../crt0/crt0b_sms.rel ^
+../lib/SMSlib.lib ^
+../lib/PSGlib.rel ^
+main.rel ^
+</pre>
+</pre>
+  
+  
+  
 In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a> and Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
 <br /><br />
 The latest version of the  <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires an updated version of Small Device Cross Compiler <a href="https://sourceforge.net/projects/sdcc/files">SDCC 4.x</a> and supports new and updated features including the ability to page both code and content transparently.
