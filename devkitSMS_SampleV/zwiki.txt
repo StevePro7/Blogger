@@ -1,6 +1,23 @@
 <span style="font-family:verdana;font-size:85%;">
 
-  Finally, create the folders beneath dev for .vscode and devkit.  Copy the build scripts that automates all <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">code</a>.
+Ensure Visual Studio 2015 is configured as per instructions here to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from here including build the scripts.
+<br /><br />
+<b>main.c</b><br />
+<pre class="csharp" name="code">
+#include "main.h"
+void main( void )
+{
+  devkit_SMS_init();
+  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 3 ) );
+  devkit_SMS_displayOn();
+  for( ;; )
+  {
+    devkit_SMS_waitForVBlank();
+  }
+}
+</pre>
+<br />
+<br />
   
 <br /><br />
   
