@@ -234,7 +234,7 @@ In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to
 Horizontal scrolling was very popular for action, run-and-gun and shoot/beat 'em up games whereas vertical scrolling was used in top down shooters.  The devkitSMS <a href="https://www.smspower.org/forums/15888-DevkitSMSTutorial">tutorial</a> has both vertical and horizontal examples:
 <br /><br /> 
 <b>Horizontal</b><br />
-Here is the devkitSMS tutorial horizontal scrolling example using the SMS_loadTileMap() API.
+Here is the devkitSMS tutorial horizontal scrolling "Ice Hockey" example using the SMS_loadTileMap() API.
 <!--
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
@@ -309,8 +309,10 @@ void engine_scroll_manager_down()
 -->
 <br />
 <b>Vertical II</b><br />
-Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all tiles.
-
+Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all the tiles.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s619/ScrollingVertII.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s600/ScrollingVertII.png"/></a>
+<br />
 <pre class="csharp" name="code">
 static void draw_map_row()
 {
