@@ -1,7 +1,10 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
- 
+<b>Vertical II</b><br />
+Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all tiles.
+  
+  
+<br /><br /> 
   
 <u>Banked Code</u><br />
 TODO - build up blurb about banked code....!
@@ -231,6 +234,7 @@ In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to
 Horizontal scrolling was very popular for action, run-and-gun and shoot/beat 'em up games whereas vertical scrolling was used in top down shooters.  The devkitSMS <a href="https://www.smspower.org/forums/15888-DevkitSMSTutorial">tutorial</a> has both vertical and horizontal examples:
 <br /><br /> 
 <b>Horizontal</b><br />
+Here is the devkitSMS tutorial horizontal scrolling example using the SMS_loadTileMap() API.
 <!--
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
@@ -273,6 +277,7 @@ void engine_scroll_manager_update_right( unsigned char delta )
 -->
 <br />
 <b>Vertical</b><br />
+Here is the devkitSMS tutorial vertical scrolling "Marilyn" [MM] example using the SMS_loadTileMap() API.
 <!--
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s618/ScrollingVert.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s600/ScrollingVert.png"/></a>
@@ -303,7 +308,33 @@ void engine_scroll_manager_down()
 <br />
 -->
 <br />
-  
+<b>Vertical II</b><br />
+Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all tiles.
+
+<pre class="csharp" name="code">
+static void draw_map_row()
+{
+  struct_map_object *map_data = &global_map_object;
+  unsigned char i, j;
+  unsigned char y;
+  unsigned char *map_char;
+  unsigned int base_tile, tile;
+  unsigned char buffer[ 16 ];
+
+  decompress_map_row( buffer );
+  for( i = 2, y = map_data->background_y, base_tile = 256; i; i--, y++, base_tile++ ) 
+  {
+    devkit_SMS_setNextTileatXY( 0, y );
+    for( j = 16, map_char = buffer; j; j--, map_char++ ) 
+    {
+      tile = base_tile + ( *map_char << 2 );
+      devkit_SMS_setTile( tile );
+      devkit_SMS_setTile( tile + 2 );
+    }
+  }
+}
+</pre>
+<br /><br />
 <u>PCM Samples</u><br />
 TODO<br />
 https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested<br />
