@@ -2,17 +2,17 @@
 <a href="https://golang.org/doc/install">Download</a> and install Go as per instructions for your target operating system.  Afterwards verify <b>go version</b>.
 <br /><br />
 <b>Windows</b><br />
-<a href="https://golang.org/dl/go1.16.6.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
+<a href="https://golang.org/dl/go1.18.2.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
 <br /><br />
 <b>Mac OS/X</b><br />
-<a href="https://golang.org/dl/go1.16.6.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
+<a href="https://golang.org/dl/go1.18.2.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
 <br /><br />
 <b>Linux</b><br />
-<a href="https://golang.org/dl/go1.16.6.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
+<a href="https://golang.org/dl/go1.18.2.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
 <br />
 <pre class="csharp" name="code">
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 go version
 </pre>
