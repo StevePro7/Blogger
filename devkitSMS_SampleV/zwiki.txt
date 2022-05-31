@@ -1,24 +1,4 @@
 <span style="font-family:verdana;font-size:85%;">
-
-<b>Obscure</b><br />
-Candy Kid, which is a Pacman clone, uses black background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses the sprite palette bitwise OR with tile priority.
-<br />
-<br />
-tile_manager.h
-<pre class="csharp" name="code">
-static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y )
-{
-  unsigned int priority = devkit_TILE_PRIORITY() | devkit_TILE_USE_SPRITE_PALETTE();
-  
-  devkit_SMS_setNextTileatXY( x + 0, y + 0 );
-  devkit_SMS_setTile( ( *game_tiles__tilemap__bin + offset + 0 ) | priority );  
-}
-</pre>
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s485/CandyKid.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s600/CandyKid.png"/></a>
-<br />
-IMPORTANT: the sprite palette color in this example must be black to match background despite white tiles.
-
-<br /><br /> 
   
 <u>Banked Code</u><br />
 TODO - build up blurb about banked code....!
@@ -217,6 +197,28 @@ bmp2tile.exe raw/splash.bmp ^
 -->
 <br />
 
+<b>Obscure</b><br />
+Candy Kid, which is a Pacman clone, uses black background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses the sprite palette bitwise OR with tile priority.
+<br />
+<br />
+<!--  
+tile_manager.h
+<pre class="csharp" name="code">
+static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y )
+{
+  unsigned int priority = devkit_TILE_PRIORITY() | devkit_TILE_USE_SPRITE_PALETTE();
+  
+  devkit_SMS_setNextTileatXY( x + 0, y + 0 );
+  devkit_SMS_setTile( ( *game_tiles__tilemap__bin + offset + 0 ) | priority );  
+}
+</pre>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s485/CandyKid.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s600/CandyKid.png"/></a>
+<br />
+-->
+IMPORTANT: the sprite palette color in this example must be black to match background despite white tiles.
+<br /><br />
+
+<br />
 <b>Tools</b><br />
 In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to convert graphics as <a href="https://superuser.com/questions/678434/export-file-as-palleted-8bit-per-pixel-bmp-from-gimp">Indexed</a> [16] mode to meet the 4bpp Sega Master System compatible requirements.  However, paint.net is great to output PNG files for BMP online <a href="https://online-converting.com/image/convert2bmp">converter</a>:
 <br />
