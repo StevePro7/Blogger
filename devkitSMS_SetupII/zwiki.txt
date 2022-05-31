@@ -135,7 +135,7 @@ Note: my preference is to usually copy the relevant files up-to-date as each Mas
 <br /><br />
 
 <u>Example</u><br />
-As an example, replicate the simple program from 2017 that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux and include debugging!
+As an example, replicate the simple program from <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">2017</a> that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux and include debugging!
 <br /><br />  
 Create new directory HelloWorld: <b>~/HelloWorld</b>.  Copy these files across crt0_sms.rel, SMSlib.h, SMSlib.lib.  Launch Visual Studio Code.  Open HelloWorld directory.  Create new file main.c and enter the following code:
 <br />
@@ -188,13 +188,13 @@ Change directory cd ~/HelloWorld.  Next, execute following 3x commands (in bold)
 </tr>
 <tr>
 <td valign="top">&nbsp;Exceute</td>
-<td valign="top">&nbsp;<b>ihx2sms output.ihx output.sms</b></td>
+<td valign="top">&nbsp;<b>ihx2sms output.ihx</b></td>
 <td valign="top">&nbsp;output.sms&nbsp;</td>
 </tr>
 </table>
 <!-- -->
 <br />
-Finally, type <b>output.sms</b>.  The Hello program should launch in the Fusion emulator.
+Finally, type <b>java -jar ~/Sega/Emulicious/Emulicious.jar output.sms</b> to launch the Hello program.  
 <br />
 Congratulations! You have just written your first SMS program using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
 <br />
@@ -211,7 +211,7 @@ Let's automate the build process: create build script file that contains the pre
 sdcc --debug -c -mz80 main.c
 sdcc --debug -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 crt0_sms.rel main.rel SMSlib.lib
 ihx2sms output.ihx output.sms
-output.sms
+java -jar ~/Sega/Emulicious/Emulicious.jar output.sms
 </pre>
 <br />
 
@@ -262,6 +262,8 @@ src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9C
 <u>Visual Studio 2015</u><br />
 For completeness, if the main workstation is Windows then another option is Visual Studio 2015 can also be used to debug step thru the ANSI-C source code.  For more background info see <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">this</a>.  Here is the alternative:
 <br />
+<br />
+<b>main.c</b>
 <pre class="csharp" name="code">
 #include "main.h"
 void main( void )
