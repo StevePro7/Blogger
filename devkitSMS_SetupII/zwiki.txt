@@ -188,7 +188,7 @@ Change directory cd ~/HelloWorld.  Next, execute following 3x commands (in bold)
 </tr>
 <tr>
 <td valign="top">&nbsp;Exceute</td>
-<td valign="top">&nbsp;<b>ihx2sms output.ihx</b></td>
+<td valign="top">&nbsp;<b>ihx2sms output.ihx output.sms</b></td>
 <td valign="top">&nbsp;output.sms&nbsp;</td>
 </tr>
 </table>
@@ -236,8 +236,10 @@ Finally, add hidden <b><a href="https://github.com/SteveProXNA/devkitSMScode/Set
     "group": {"kind": "build", "isDefault": true},
 }
 </pre>
+Important: On Windows prefer the ./build syntax as Linux otherwise an "unrecognized cmdlet" may result.
 <!-- --> 
 <br />
+<br />  
 <b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/.vscode/launch.json">launch.json</a></b>
 <!-- -->   
 <pre class="csharp" name="code">
