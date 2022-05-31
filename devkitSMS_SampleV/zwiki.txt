@@ -1,8 +1,11 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<b>Vertical II</b><br />
-Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all tiles.
-  
+<b>Obscure</b><br />
+Candy Kid, which is a Pacman clone, uses black background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses the sprite palette bitwise OR with tile priority.
+<br /><br />
+Candy Kid, which is a Pacman clone, uses black background tiles to obscure the main sprite as he goes through the exits.  This technique renders a white 16x16 tile but uses the sprite palette with tile priority.
+<br /><br />   
+IMPORTANT: the sprite palette color in this example must be black to match background despite white tiles.
   
 <br /><br /> 
   
