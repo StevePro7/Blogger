@@ -1,0 +1,345 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<b>Vertical II</b><br />
+Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all tiles.
+  
+  
+<br /><br /> 
+  
+<u>Banked Code</u><br />
+TODO - build up blurb about banked code....!
+<br />
+IMPORTANT - ensure that crt0b_sms.rel is used...!
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s594/BankedCode.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s600/BankedCode.png"/></a>
+<br />
+-->  
+<br />
+Imagine you have 3x functions you would like to bank that are stored in 3x separate banked h/c files:
+<br />
+banked_code_1.h
+<pre class="csharp" name="code">
+#ifndef _BANK_1_H_
+#define _BANK_1_H_
+
+#ifdef _CONSOLE
+int banked_code_1();
+#else
+int banked_code_1() __banked;
+#endif
+
+#endif//_BANK_1_H_
+</pre>
+<br /><br />
+banked_code_1.c
+<pre class="csharp" name="code">
+#include "banked_code_1.h"
+
+#ifdef _CONSOLE
+int banked_code_1()
+#else
+int banked_code_1() __banked
+#endif
+{
+	return 1;
+}
+</pre>
+<br /><br />
+build.bat
+<br />
+TODO - don't forget to write about the algorithm for the linked code BANK address  
+<br />
+<pre class="csharp" name="code">
+:: Compile
+sdcc --debug -c -mz80 --codeseg BANK1 banked_code_1.c
+sdcc --debug -c -mz80 --codeseg BANK2 banked_code_2.c
+sdcc --debug -c -mz80 --codeseg BANK3 banked_code_3.c
+
+# Linker
+sdcc --debug -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 ^
+-Wl-b_BANK1=0x14000 ^
+-Wl-b_BANK2=0x24000 ^
+-Wl-b_BANK3=0x34000 ^
+../crt0/crt0b_sms.rel ^
+../lib/SMSlib.lib ^
+../lib/PSGlib.rel ^
+main.rel ^
+</pre>
+</pre>
+  
+  
+  
+In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a> and Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
+<br /><br />
+The latest version of the  <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires an updated version of Small Device Cross Compiler <a href="https://sourceforge.net/projects/sdcc/files">SDCC 4.x</a> and supports new and updated features including the ability to page both code and content transparently.
+<br />
+<!--  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwS_Dtb0AXfBqHTRhlmg2Rf-S6N12gOgy8T4L45lZ-OAd9sPzqKjqBF57ogARl5EBWnmK-30Ukgs4i1O-b8Fcve3WWnKZmr2BcWM_-9zZJHQKhDCsRkWwkZ7Rgy6wyLOqdTk-hHSjqBjQjoilTj4sqVosLPUf2M4LWG3ohiuqtu4pnT1YwwrEPVl7J/s617/turtle_bridge.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwS_Dtb0AXfBqHTRhlmg2Rf-S6N12gOgy8T4L45lZ-OAd9sPzqKjqBF57ogARl5EBWnmK-30Ukgs4i1O-b8Fcve3WWnKZmr2BcWM_-9zZJHQKhDCsRkWwkZ7Rgy6wyLOqdTk-hHSjqBjQjoilTj4sqVosLPUf2M4LWG3ohiuqtu4pnT1YwwrEPVl7J/s600/turtle_bridge.png"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+  
+<u>Software</u><br />
+Follow all instructions from the previous post: this documents how to setup the pre-requisite software.
+<br />
+Note: ensure you have downloaded and installed the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and Small Device C Compiler [<a href="http://sdcc.sourceforge.net">SDCC</a>].
+<br /><br />
+Also ensure that <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">pcmenc</a> is installed in the SDCC bin folder as this utility is used to play WAV audio files.
+<br /><br />
+  
+<u>Demo</u><br />
+All demos in this devkitSMS programming sample are based on the simple Hello World program the previous post that utilizes Visual Studio 2015 on Windows but can be deployed cross platform on Windows and Linux.
+<br /><br />
+Create folder C:\DevkitExample. Create the following sub-folders: crt0, dev, lib, tmp.  Note: all content now prferred to reside under content sub-folder beneath the main dev folder.  All content also built using scripts.
+<br /><br />
+TODO github image<br /><br />
+<u>Development</u><br />
+Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwq-Op458CxFwVAfEfpHg5p_pmJ40-GtVIbgqQ1_02x_dlvG7-qc3S2Jh-wlfyFlHRaCThT0FEdfnbwTQREg5mNAisW57yaNy_-WpuvGiGkzr4QJyBvC4gsA3MJwRfUEmD19RhL4FMkwMxqhlcCePvgjeRK1ER59Bm4DZ6tG_f-NqRJgFM0BJTes3l/s828/DevkitExample.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwq-Op458CxFwVAfEfpHg5p_pmJ40-GtVIbgqQ1_02x_dlvG7-qc3S2Jh-wlfyFlHRaCThT0FEdfnbwTQREg5mNAisW57yaNy_-WpuvGiGkzr4QJyBvC4gsA3MJwRfUEmD19RhL4FMkwMxqhlcCePvgjeRK1ER59Bm4DZ6tG_f-NqRJgFM0BJTes3l/s600/DevkitExample.png"/></a>
+-->
+<br />
+<!--
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Name:</td>
+<td valign="top">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\DevkitExample\dev</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create directory for solution</td>
+<td valign="top">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+OK<br /><br />
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Application type:</td>
+<td valign="top">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Additional options:</td>
+<td valign="top">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+-->
+Finish
+<br /><br />
+Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from here including build the scripts.
+<br /><br />
+<b>main.c</b><br />
+<pre class="csharp" name="code">
+#include "main.h"
+void main( void )
+{
+  devkit_SMS_init();
+  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 3 ) );
+  devkit_SMS_displayOn();
+  for( ;; )
+  {
+    devkit_SMS_waitForVBlank();
+  }
+}
+</pre>
+<br />
+<br />
+
+<u>Graphics</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href=https://github.com/maxim-zhao/bmp2tile/releases/">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download new <a href="">gfxcomp_stm.dll</a> STM compressed format to output directory.
+<br /><br />
+<b>Splash</b><br />
+Here is an example of background tiles that will exhaust the full 256 x 192 resolution e.g. the Splash screen:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s576/SplashScreen.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s600/SplashScreen.png"/></a>
+-->
+<br />
+Follow the same settings as per here but this time use this script to automate the correspodning formatting:
+<br />
+<!--
+<pre class="csharp" name="code">
+bmp2tile.exe raw/splash.bmp ^
+  -savetiles "splash (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 128 ^
+  -savetilemap "splash (tilemap).stmcompr" ^
+  -savepalette "splash (palette).bin" ^
+  -fullpalette -exit
+</pre>
+-->
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Tiles:</td>
+<td valign="top">&nbsp;Remove duplicates</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tiles:</td>
+<td valign="top">&nbsp;Planar tile output</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tilemap:</td>
+<td valign="top">&nbsp;Use sprite palette</td>
+<td valign="top">&nbsp;Unchecked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tilemap:</td>
+<td valign="top">&nbsp;In front of sprites</td>
+<td valign="top">&nbsp;Unchecked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Palette:</td>
+<td valign="top">&nbsp;Output hex (SMS)</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+</table>
+-->
+<br />
+
+<b>Tools</b><br />
+In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to convert graphics as <a href="https://superuser.com/questions/678434/export-file-as-palleted-8bit-per-pixel-bmp-from-gimp">Indexed</a> [16] mode to meet the 4bpp Sega Master System compatible requirements.  However, paint.net is great to output PNG files for BMP online <a href="https://online-converting.com/image/convert2bmp">converter</a>:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Color:</td>
+<td valign="top">&nbsp;4 (indexed)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;With rows direction:</td>
+<td valign="top">&nbsp;Bottom - Top (default)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Quantization equal to:</td>
+<td valign="top">&nbsp;8</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Using dithering:</td>
+<td valign="top">&nbsp;No</td>
+</tr>
+</table>
+-->
+<br />
+  
+<u>Scrolling</u><br />
+<a href="https://en.wikipedia.org/wiki/Scrolling">Scrolling</a> in video games involves moving graphics across a display, either <a href="https://en.wikipedia.org/wiki/Side-scrolling_video_game">horizontally</a> and/or <a href="https://en.wikipedia.org/wiki/Vertically_scrolling_video_game">vertically</a> such that the layout does not change but rather moves the view across is an image larger than the whole screen.
+<br /><br />
+Horizontal scrolling was very popular for action, run-and-gun and shoot/beat 'em up games whereas vertical scrolling was used in top down shooters.  The devkitSMS <a href="https://www.smspower.org/forums/15888-DevkitSMSTutorial">tutorial</a> has both vertical and horizontal examples:
+<br /><br /> 
+<b>Horizontal</b><br />
+Here is the devkitSMS tutorial horizontal scrolling "Ice Hockey" example using the SMS_loadTileMap() API.
+<!--
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
+-->
+<br />
+<!--
+<pre class="csharp" name="code">
+void engine_scroll_manager_update_right( unsigned char delta )
+{
+  unsigned char *src = NULL;
+  unsigned char ytile = 0;
+  unsigned int index = 0;
+  const unsigned int size = 2;
+
+  unsigned int x = 0;
+  unsigned char y = 0;
+
+  if( scrollRightDivided8 < scrollWidth )
+  {
+    scroll -= delta;
+    scrollRight += delta;
+    scrollRightDivided8 = scrollRight / 8;
+    devkit_SMS_setBGScrollX( scroll );
+
+    if( ( scrollRight % 8 ) == delta )
+    {
+      for( ytile = 1; ytile < Y_TILE_MAX; ytile++ )
+      {
+        x = X_TILE_MAX + scrollRightDivided8;
+        y = ytile - 1;
+        index = ( ( BG_TILE_WIDTH*ytile ) + ( X_TILE_MAX + scrollRightDivided8 ) ) * 2;
+        src = ( void * ) &hockey__tilemap__bin[ index ];
+        devkit_SMS_loadTileMap( x, y, src, size );
+      }
+    }
+  }
+}
+</pre>
+<br />
+-->
+<br />
+<b>Vertical</b><br />
+Here is the devkitSMS tutorial vertical scrolling "Marilyn" [MM] example using the SMS_loadTileMap() API.
+<!--
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s618/ScrollingVert.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s600/ScrollingVert.png"/></a>
+-->
+<br />
+<!--
+<pre class="csharp" name="code">
+void engine_scroll_manager_down()
+{
+  struct_scroll_object *so = &global_scroll_object;
+  unsigned int index;
+  unsigned int y;
+
+  if( so->scroll < so->height )
+  {
+    so->scroll++;
+    devkit_SMS_setBGScrollY( so->scroll );
+
+    if( ( so->scroll % 8 ) == 0 )
+    {
+      y = ( 24 + ( so->scroll / 8 ) ) % 28;
+      index = ( 24 + ( so->scroll / 8 ) ) * 32 * 2;
+      devkit_SMS_loadTileMap( 0, y, ( void * ) &MM__tilemap__bin[ index ], so->size );  
+    }
+  }
+}
+</pre>
+<br />
+-->
+<br />
+<b>Vertical II</b><br />
+Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all the tiles.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s619/ScrollingVertII.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s600/ScrollingVertII.png"/></a>
+<br />
+<pre class="csharp" name="code">
+static void draw_map_row()
+{
+  struct_map_object *map_data = &global_map_object;
+  unsigned char i, j;
+  unsigned char y;
+  unsigned char *map_char;
+  unsigned int base_tile, tile;
+  unsigned char buffer[ 16 ];
+
+  decompress_map_row( buffer );
+  for( i = 2, y = map_data->background_y, base_tile = 256; i; i--, y++, base_tile++ ) 
+  {
+    devkit_SMS_setNextTileatXY( 0, y );
+    for( j = 16, map_char = buffer; j; j--, map_char++ ) 
+    {
+      tile = base_tile + ( *map_char << 2 );
+      devkit_SMS_setTile( tile );
+      devkit_SMS_setTile( tile + 2 );
+    }
+  }
+}
+</pre>
+<br /><br />
+<u>PCM Samples</u><br />
+TODO<br />
+https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested<br />
+https://github.com/maxim-zhao/pcmenc<br />
+  
+</span>
