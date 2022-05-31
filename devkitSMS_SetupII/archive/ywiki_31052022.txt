@@ -21,7 +21,7 @@ The <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> is a collection o
 Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a>: this documents how to setup the pre-requisite software.
 <br /><br />
 Here is a summary of all required software to be installed:
-<table width="99%" border="0">
+<table width="90%" border="0">
 <tr>
 <td>
 <table width="100%" border="1">
@@ -36,14 +36,13 @@ Here is a summary of all required software to be installed:
 <table width="100%" border="1">
 <tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
 <tr><td valign="top">&nbsp;Make files</td><td valign="top">&nbsp;<a href="http://cygwin.com/install.html">Cygwin</a></td></tr>
-<tr><td valign="top">&nbsp;Emulators</td><td valign="top">&nbsp<a href="http://emulicious.net/downloads">Emulicious</a>, <a href="http://www.emutopia.com/index.php?option=com_cobalt&task=files.download&no_html=1&id=3537&fid=20&fidx=2&rid=404&return=aHR0cDovL3d3dy5lbXV0b3BpYS5jb20vaW5kZXgucGhwL2Rvd25sb2Fkcy1lbXVsYXRvcnMvaXRlbS8yOTgtc2VnYS1zZy0xMDAwLXNjLTMwMDAvNDA0LWtlZ2EtZnVzaW9u">Fusion</a>, <a href="http://www.emutopia.com/index.php?option=com_cobalt&task=files.download&no_html=1&id=1912&fid=20&fidx=3&rid=239&return=aHR0cDovL3d3dy5lbXV0b3BpYS5jb20vaW5kZXgucGhwL2Rvd25sb2Fkcy1lbXVsYXRvcnMvaXRlbS8yOTgtc2VnYS1zZy0xMDAwLXNjLTMwMDAvMjM5LW1la2E%3D">Meka</a></td></tr>
 <tr><td valign="top">&nbsp;Debugger</td><td valign="top">&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a></td></tr>
+<tr><td valign="top">&nbsp;Emulators</td><td valign="top">&nbsp<a href="http://emulicious.net/downloads">Emulicious</a>, <a href="http://www.emutopia.com/index.php?option=com_cobalt&task=files.download&no_html=1&id=3537&fid=20&fidx=2&rid=404&return=aHR0cDovL3d3dy5lbXV0b3BpYS5jb20vaW5kZXgucGhwL2Rvd25sb2Fkcy1lbXVsYXRvcnMvaXRlbS8yOTgtc2VnYS1zZy0xMDAwLXNjLTMwMDAvNDA0LWtlZ2EtZnVzaW9u">Fusion</a>, <a href="http://www.emutopia.com/index.php?option=com_cobalt&task=files.download&no_html=1&id=1912&fid=20&fidx=3&rid=239&return=aHR0cDovL3d3dy5lbXV0b3BpYS5jb20vaW5kZXgucGhwL2Rvd25sb2Fkcy1lbXVsYXRvcnMvaXRlbS8yOTgtc2VnYS1zZy0xMDAwLXNjLTMwMDAvMjM5LW1la2E%3D">Meka</a></td></tr>
 </table>
 </td>
 </tr>
 </table>
-Note: Emulicioushas dependency on Java therefore launch using <i>java -jar ~/Sega/Emulicious/Emulicious.jar</i>
-<br /><br />
+<br />
   
 <b>Windows</b><br />
 Download and install <a href="https://sourceforge.net/projects/sdcc/files/sdcc-win64/4.1.0/sdcc-4.1.0-x64-setup.exe/download">sdcc-4.1.0-</a>x64-setup.exe to C:\Program Files\SDCC.  Choose all features to install.
@@ -124,10 +123,10 @@ git clone https://github.com/sverx/devkitSMS.git
 
 # Copy 4x files
 cd devkitSMS
-copy assets2banks/%PLATFORM%/assets2banks %INSTALLATION%/SDCC/bin
-copy folder2c/%PLATFORM%/folder2c.exe %INSTALLATION%/SDCC/bin
-copy ihx2sms/%PLATFORM%/ihx2sms.exe %INSTALLATION%/SDCC/bin
-copy makesms/%PLATFORM%/makesms.exe %INSTALLATION%/SDCC/bin
+copy assets2banks/assets2banks.exe %INSTALLATION%/SDCC/bin
+copy folder2c/folder2c.exe %INSTALLATION%/SDCC/bin
+copy ihx2sms/ihx2sms.exe %INSTALLATION%/SDCC/bin
+copy folder2c/makesms.exe %INSTALLATION%/SDCC/bin
 </pre>
 <!-- -->
 <br />
