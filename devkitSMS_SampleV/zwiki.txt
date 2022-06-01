@@ -4,17 +4,35 @@
 The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-code modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
 <br /><br />
 <b>Single Bank</b><br />
-Ensure the pcmenc executable currently lives in ~/SDCC/bin folder and accessible from $PATH.  Launch the terminal and execute the following command to convert an input "test" WAV file to pcmenc compatible file:
+Ensure the <a href="https://github.com/maxim-zhao/pcmenc/releases/tag/v0.3">pcmenc</a> executable currently lives in ~/SDCC/bin folder and accessible from $PATH.  Launch the terminal and execute the following command to convert an input "test" WAV file to pcmenc compatible file:
 <br />
 <table width="98%" border="1">
 <tr>
-<td valign="top">&nbsp;if exist "test.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 test.wav:</td>
+<td valign="top">&nbsp;if exist "SoundFx.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 SoundFx.wav</td>
 </tr>
 </table>
 <br />
 This assumes that the converted WAV file will be less than 16KB; the maximum size for Sega Master System bank.  If not then the WAV file will need to be converted to multiple WAV files + converted [example below].
-<br /><br />  
-<b>Multiple Banks</b><br />
+<br /><br />
+HERE is an example of converting an input WAV file using pcmenc to be SMS compatible for code integration.
+<br />TODO equiv - https://github.com/StevePro7/SegaMasterSystemLinux/blob/main/ExamplesBlog/DD-WAVsamples/01-SingleExample/dev/scripts/bank3.bat
+<br /><br />
+<b>sample_manager.c</b><br />
+Contains the engine code to init and play the converted WAV file as PCM sample on the Sega Master System.
+<br />
+<pre class="csharp" name="code">
+void engine_sample_manager_init( const void *psginit );
+void engine_sample_manager_play( const void *sample );
+</pre>
+<br />TODO equiv - https://github.com/StevePro7/SegaMasterSystemLinux/blob/main/ExamplesBlog/DD-WAVsamples/01-SingleExample/dev/engine/sample_manager.c
+<br /><br />
+<b>riff_manager.c</b><br />
+Public API that game code will call as wrapper around the sample manager to actually play the PCM sample.
+<br /><br />
+IMPORTANT:<br />
+I've found that is usually safest to init the riff manager before playing each riff to avoid unwanted noise!
+<br /><br />
+  <b>Multiple Banks</b><br />
 Download, install and launch Audacity.  Open WAV file to play.
 <br /><br />
 TODO<br />
