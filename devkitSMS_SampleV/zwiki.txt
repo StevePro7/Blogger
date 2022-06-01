@@ -2,6 +2,8 @@
 <b>Multiple Banks</b><br />
 When the converted WAV file is greater than 16KB then use Audacity to convert the riff to multiple WAV files.  Download, install and launch Audacity.  Open WAV file.  Divide into multiple smaller files using these settings:
 <br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT-Xuw5LcfcQkyz382K90RwN929CDpdi1NjqncakiBPelvL_J-c1oZzVoOMIYpl3C2pdzZwpkvkdhjRj2el_w9xf0_pfx8pgXoEdWzhXDYoWyTu-679OwubNO1APQ-a8tKa1BXqEG0Exv8baHlfPCr3lJieKK9gzQAzlCZwDurL-_n_3kv6tTjwcbu/s1717/MeanStreet.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT-Xuw5LcfcQkyz382K90RwN929CDpdi1NjqncakiBPelvL_J-c1oZzVoOMIYpl3C2pdzZwpkvkdhjRj2el_w9xf0_pfx8pgXoEdWzhXDYoWyTu-679OwubNO1APQ-a8tKa1BXqEG0Exv8baHlfPCr3lJieKK9gzQAzlCZwDurL-_n_3kv6tTjwcbu/s600/MeanStreet.png"/></a>
+<br />
 <!--
 <table width="98%" border="1">
 <tr>
@@ -72,6 +74,8 @@ if exist "04.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 04.wav
 </pre>
 <br />
 Finally, rename the *.wav.pcmenc files to more code friendly names and copy the files to parent banks folder with each *.wav.pcmenc file in its own bank.  Use this utiltiy to automate this task and generate the scripts.
+<br /><br />
+Invoke the riff manager similar to single bank example except iterate thru all banks that are required to play riff.  The only current drawback with this technique is the main thread blocks as the riff plays synchronously!
 <br /><br />
 <u>PCM Samples</u><br />
 The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-code modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
