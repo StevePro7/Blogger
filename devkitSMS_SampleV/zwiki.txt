@@ -2,6 +2,7 @@
 <b>Multiple Banks</b><br />
 When the converted WAV file is greater than 16KB then use Audacity to convert the riff to multiple WAV files.  Download, install and launch Audacity.  Open WAV file.  Divide into multiple smaller files using these settings:
 <br />
+<!--
 <table width="98%" border="1">
 <tr>
 <td valign="top">&nbsp;Project Rate (Hz)</td>
@@ -24,9 +25,11 @@ When the converted WAV file is greater than 16KB then use Audacity to convert th
 <td valign="top">&nbsp;000,000,000 samples</td>
 </tr>
 </table>
+-->
 <br />
 Hit Ctrl+B | Enter "01".  Repeat as per number of banks required at 50,000 samples intervals for example:
 <br />
+<!--
 <table width="98%" border="1">
 <tr>
 <td valign="top">&nbsp;Riff 01</td>
@@ -57,6 +60,7 @@ Hit Ctrl+B | Enter "01".  Repeat as per number of banks required at 50,000 sampl
 <td valign="top">&nbsp;000,050,000 samples</td>
 </tr>
 </table>
+-->
 <br />
 File menu | Export Multiple.  Choose export location | Export | OK.  Execute the following script to convert:
 <br />
@@ -67,6 +71,8 @@ if exist "03.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 03.wav
 if exist "04.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 04.wav
 </pre>
 <br />
+Finally, rename the *.wav.pcmenc files to more code friendly names and copy the files to parent banks folder with each *.wav.pcmenc file in its own bank.  Use this utiltiy to automate this task and generate the scripts.
+<br /><br />
 <u>PCM Samples</u><br />
 The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-code modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
 <br /><br />
