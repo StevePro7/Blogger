@@ -3,8 +3,19 @@
 <u>PCM Samples</u><br />
 The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-code modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
 <br /><br />
-<b>Vertical II</b><br />
-  
+<b>Single Bank</b><br />
+Ensure the pcmenc executable currently lives in ~/SDCC/bin folder and accessible from $PATH.  Launch the terminal and execute the following command to convert an input "test" WAV file to pcmenc compatible file:
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;if exist "test.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 test.wav:</td>
+</tr>
+</table>
+<br />
+This assumes that the converted WAV file will be less than 16KB; the maximum size for Sega Master System bank.  If not then the WAV file will need to be converted to multiple WAV files + converted [example below].
+<br /><br />  
+<b>Multiple Banks</b><br />
+Download, install and launch Audacity.  Open WAV file to play.
 <br /><br />
 TODO<br />
 https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested<br />
