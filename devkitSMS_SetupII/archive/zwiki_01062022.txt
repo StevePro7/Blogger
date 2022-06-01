@@ -92,6 +92,7 @@ There should be no extra configuration except add $HOME/sdcc/bin to the ~/.bashr
 <br />
 Launch Terminal. Type sdcc --version [sdcc -v]. The following should display to confirm SDCC version 4.1.0:
 <br />
+<!-- --> <!-- -->
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s889/Lin07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52LS-l9Is_zr73tpLXKr7Npbzr0eEuE7j1KnpfXhflSSxE9CMAGz51g6iZKUW6CEIP5f4xxSPG75XKudDT8ITQAtaAlGYP5dKR9PQZ2iQ6S5-WKqGCc3UmuUDfA_EjdE_PY2LNsYb_WJzhQN_xRrPctVk_J8tmGKg-R7vU4CO2bFViNN4dO_GqbvS/s600/Lin07.png"/></a>
 <br />
@@ -136,11 +137,11 @@ Note: my preference is to usually copy the relevant files up-to-date as each Mas
 <u>Example</u><br />
 As an example, replicate the simple program from <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">2017</a> that sets the border colors of the screen using devkitSMS but this time we will port the Windows build cross platform to Linux and include debugging!
 <br /><br />  
-Create new directory HelloWorld: <b><a href="https://github.com/SteveProXNA/devkitSMScode/tree/main/SetupII/01-HelloWorld/01-SimpleExample">~/HelloWorld</a></b>.  Copy these files across <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/crt0_sms.rel">crt0_sms.rel</a>, <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/SMSlib.h">SMSlib.h</a>, <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/SMSlib.lib">SMSlib.lib</a>.  Launch Visual Studio Code.  Open HelloWorld directory.  Create new file main.c and enter the following code:
+Create new directory HelloWorld: <b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld">~/HelloWorld</a></b>.  Copy these files across <a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/crt0_sms.rel">crt0_sms.rel</a>, <a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/SMSlib.h">SMSlib.h</a>, <a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/SMSlib.lib">SMSlib.lib</a>.  Launch Visual Studio Code.  Open HelloWorld directory.  Create new file main.c and enter the following code:
 <br />
 <!-- -->
 <br />
-<b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/main.c">main.c</a></b>
+<b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/main.c">main.c</a></b>
 <pre class="csharp" name="code">
 #include "SMSlib.h"
 void main ( void )
@@ -204,7 +205,7 @@ Congratulations! You have just written your first SMS program using <a href="htt
 <br />
   
 <u>Automate</u><br />
-Let's automate the build process: create build script file that contains the previous commands.  On Windows name the file <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/build.bat">build.bat</a></b>.  On Linux name the file <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/build.sh">build.sh</a></b> and add EXE permissions as <b>chmod +x build.sh</b>.
+Let's automate the build process: create build script file that contains the previous commands.  On Windows name the file <b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/build.bat">build.bat</a></b>.  On Linux name the file <b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/build.sh">build.sh</a></b> and add EXE permissions as <b>chmod +x build.sh</b>.
 <pre class="csharp" name="code">
 @echo off
 sdcc --debug -c -mz80 main.c
@@ -215,10 +216,10 @@ java -jar ~/Sega/Emulicious/Emulicious.jar output.sms
 <br />
 
 <u>Visual Studio Code</u><br />
-Finally, add hidden <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/.vscode">.vscode</a></b> folder in Visual Studio Code + include tasks.json and launch.json files beneath:
+Finally, add hidden <b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/.vscode">.vscode</a></b> folder in Visual Studio Code + include tasks.json and launch.json files beneath:
 <br />
 <br />
-<b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/.vscode/tasks.json">tasks.json</a></b>
+<b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/.vscode/tasks.json">tasks.json</a></b>
 <!-- -->
 <pre class="csharp" name="code">
 {
@@ -239,7 +240,7 @@ Important: On Windows prefer the ./build syntax as Linux otherwise an "unrecogni
 <!-- --> 
 <br />
 <br />  
-<b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/01-SimpleExample/.vscode/launch.json">launch.json</a></b>
+<b><a href="https://github.com/SteveProXNA/devkitSMScode/SetupII/01-HelloWorld/.vscode/launch.json">launch.json</a></b>
 <!-- -->   
 <pre class="csharp" name="code">
 {
@@ -265,7 +266,7 @@ src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9C
 For completeness, if the main workstation is Windows then another option is Visual Studio 2015 can also be used to debug step thru the ANSI-C source code.  For more background info see <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">this</a>.  Here is the alternative:
 <br />
 <br />
-<b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SetupII/01-HelloWorld/02-DevkitExample/dev/main.c">main.c</a></b>
+<b><a href="https://github.com/SteveProXNA/devkitSMScode/SampleV/01-HelloWorld/dev/main.c">main.c</a></b>
 <pre class="csharp" name="code">
 #include "main.h"
 void main( void )
