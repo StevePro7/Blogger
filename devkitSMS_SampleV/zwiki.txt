@@ -126,7 +126,7 @@ Finish
 <br /><br />
 Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from here including build the scripts.
 <br /><br />
-<b>main.c</b><br />
+<b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/01-HelloWorld/02-DevkitExample/dev/main.c">main.c</a></b><br />
 <pre class="csharp" name="code">
 #include "main.h"
 void main( void )
@@ -155,7 +155,8 @@ Here is an example of background tiles that will exhaust the full 256 x 192 reso
 <br />
 Follow the same settings as per here but this time use this script to automate the correspodning formatting:
 <br />
-
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/02-SplashScreen/02-NEWsplash/dev/scripts/gfx.bat">build.bat</a>
+<br />
 <pre class="csharp" name="code">
 bmp2tile.exe raw/splash.bmp ^
   -savetiles "splash (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 128 ^
@@ -163,7 +164,6 @@ bmp2tile.exe raw/splash.bmp ^
   -savepalette "splash (palette).bin" ^
   -fullpalette -exit
 </pre>
-
 <br />
 
 <table width="99%" border="1">
@@ -199,9 +199,9 @@ bmp2tile.exe raw/splash.bmp ^
 <b>Opaque</b><br />
 Candy Kid, which is a Pacman clone, uses opaque background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses the sprite palette bitwise OR with tile priority.
 <br />
-<br />
-  
-tile_manager.h
+<br />  
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/03-OpaqueTiles/02-NEWopaque/dev/engine/tile_manager.c">tile_manager.c</a>
+<br />  
 <pre class="csharp" name="code">
 static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y )
 {
@@ -255,7 +255,8 @@ Here is the devkitSMS tutorial horizontal scrolling "Ice Hockey" example using t
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
 
 <br />
-
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/01-HorizontalHockey/dev/engine/scroll_manager.c">scroll_manager.c</a>
+<br />
 <pre class="csharp" name="code">
 void engine_scroll_manager_update_right( unsigned char delta )
 {
@@ -298,7 +299,8 @@ Here is the devkitSMS tutorial vertical scrolling "Marilyn" [MM] example using t
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s618/ScrollingVert.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s600/ScrollingVert.png"/></a>
 
 <br />
-
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/02-VerticalMarilyn/dev/engine/scroll_manager.c">scroll_manager.c</a>
+<br />
 <pre class="csharp" name="code">
 void engine_scroll_manager_down()
 {
@@ -329,6 +331,8 @@ Here is another vertical scrolling example which prefers SMS_setNextTileatXY() a
 
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s619/ScrollingVertII.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s600/ScrollingVertII.png"/></a>
   
+<br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/03-VerticalDragon/dev/engine/map_manager.c">map_manager.c</a>
 <br />
 <pre class="csharp" name="code">
 static void draw_map_row()
@@ -371,19 +375,17 @@ Ensure the <a href="https://github.com/maxim-zhao/pcmenc/releases/tag/v0.3">pcme
 <br />
 This assumes that the converted WAV file will be less than 16KB; the maximum size for Sega Master System bank.  If not then the WAV file will need to be converted to multiple WAV files + converted [example below].
 <br /><br />
-HERE is an example of converting an input WAV file using pcmenc to be SMS compatible for code integration.
-<br />TODO equiv - https://github.com/StevePro7/SegaMasterSystemLinux/blob/main/ExamplesBlog/DD-WAVsamples/01-SingleExample/dev/scripts/bank3.bat
-<br /><br />
-<b>sample_manager.c</b><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/scripts/bank3.bat">Here</a> is an example of converting an input WAV file using pcmenc to be SMS compatible for code integration.
+<br />
 Contains the engine code to init and play the converted WAV file as PCM sample on the Sega Master System.
 <br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/engine/sample_manager.c">sample_manager.c</a>
 <pre class="csharp" name="code">
 void engine_sample_manager_init( const void *psginit );
 void engine_sample_manager_play( const void *sample );
 </pre>
-<br />TODO equiv - https://github.com/StevePro7/SegaMasterSystemLinux/blob/main/ExamplesBlog/DD-WAVsamples/01-SingleExample/dev/engine/sample_manager.c
 <br /><br />
-<b>riff_manager.c</b><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/engine/riff_manager.c">riff_manager.c</a><br />
 Public API that game code will call as wrapper around the sample manager to actually play the PCM sample.
 <br /><br />
 IMPORTANT:<br />
