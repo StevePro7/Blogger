@@ -1,5 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
-  
+
+<!--
 <u>Banked Code</u><br />
 TODO - build up blurb about banked code....!
 <br />
@@ -62,6 +63,7 @@ main.rel ^
 </pre>
 
 <br /><br />
+-->
   
 In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the Sega <a href="http://en.wikipedia.org/wiki/Master_System">Master System</a> and Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
 <br /><br />
@@ -95,7 +97,6 @@ Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 
 <br />
 
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwq-Op458CxFwVAfEfpHg5p_pmJ40-GtVIbgqQ1_02x_dlvG7-qc3S2Jh-wlfyFlHRaCThT0FEdfnbwTQREg5mNAisW57yaNy_-WpuvGiGkzr4QJyBvC4gsA3MJwRfUEmD19RhL4FMkwMxqhlcCePvgjeRK1ER59Bm4DZ6tG_f-NqRJgFM0BJTes3l/s828/DevkitExample.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwq-Op458CxFwVAfEfpHg5p_pmJ40-GtVIbgqQ1_02x_dlvG7-qc3S2Jh-wlfyFlHRaCThT0FEdfnbwTQREg5mNAisW57yaNy_-WpuvGiGkzr4QJyBvC4gsA3MJwRfUEmD19RhL4FMkwMxqhlcCePvgjeRK1ER59Bm4DZ6tG_f-NqRJgFM0BJTes3l/s600/DevkitExample.png"/></a>
-
 <br />
 
 <table width="82%" border="1">
@@ -128,7 +129,8 @@ Finish
 <br /><br />
 Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from here including build the scripts.
 <br /><br />
-<b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/01-HelloWorld/02-DevkitExample/dev/main.c">main.c</a></b><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/01-HelloWorld/02-DevkitExample/dev/main.c">main.c</a>
+<br />
 <pre class="csharp" name="code">
 #include "main.h"
 void main( void )
@@ -143,7 +145,6 @@ void main( void )
 }
 </pre>
 <br />
-<br />
 
 <u>Graphics</u><br />
 Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href="https://github.com/maxim-zhao/bmp2tile/tags">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download new <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/02-SplashScreen/02-NEWsplash/lib/gfxcomp_stmNEW.dll">gfxcomp_stm.dll</a> STM compressed format to output directory.
@@ -156,7 +157,7 @@ Here is an example of background tiles that will exhaust the full 256 x 192 reso
 
 <br />
 Follow the same settings as per here but this time use this script to automate the correspodning formatting:
-<br />
+<br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/02-SplashScreen/02-NEWsplash/dev/scripts/gfx.bat">build.bat</a>
 <br />
 <pre class="csharp" name="code">
@@ -195,7 +196,6 @@ bmp2tile.exe raw/splash.bmp ^
 <td valign="top">&nbsp;Checked</td>
 </tr>
 </table>
-
 <br />
 
 <b>Opaque</b><br />
@@ -219,7 +219,6 @@ static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned 
 IMPORTANT: the sprite palette color in this example must be black to match background despite white tiles.
 <br /><br />
 
-<br />
 <b>Tools</b><br />
 In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to convert graphics as <a href="https://superuser.com/questions/678434/export-file-as-palleted-8bit-per-pixel-bmp-from-gimp">Indexed</a> [16] mode to meet the 4bpp Sega Master System compatible requirements.  However, paint.net is great to output PNG files for BMP online <a href="https://online-converting.com/image/convert2bmp">converter</a>:
 <br />
@@ -242,9 +241,8 @@ In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to
 <td valign="top">&nbsp;No</td>
 </tr>
 </table>
-
 <br />
-  
+<br />
 <u>Scrolling</u><br />
 <a href="https://en.wikipedia.org/wiki/Scrolling">Scrolling</a> in video games involves moving graphics across a display, either <a href="https://en.wikipedia.org/wiki/Side-scrolling_video_game">horizontally</a> and/or <a href="https://en.wikipedia.org/wiki/Vertically_scrolling_video_game">vertically</a> such that the layout does not change but rather moves the view across is an image larger than the whole screen.
 <br /><br />
@@ -256,7 +254,7 @@ Here is the devkitSMS tutorial horizontal scrolling "Ice Hockey" example using t
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
 
-<br />
+<br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/01-HorizontalHockey/dev/engine/scroll_manager.c">scroll_manager.c</a>
 <br />
 <pre class="csharp" name="code">
@@ -292,15 +290,14 @@ void engine_scroll_manager_update_right( unsigned char delta )
 }
 </pre>
 <br />
-
-<br />
+  
 <b>Vertical</b><br />
 Here is the devkitSMS tutorial vertical scrolling "Marilyn" [MM] example using the SMS_loadTileMap() API.
 
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s618/ScrollingVert.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s600/ScrollingVert.png"/></a>
 
-<br />
+<br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/02-VerticalMarilyn/dev/engine/scroll_manager.c">scroll_manager.c</a>
 <br />
 <pre class="csharp" name="code">
@@ -326,14 +323,13 @@ void engine_scroll_manager_down()
 </pre>
 <br />
 
-<br />
 <b>Vertical II</b><br />
 Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all the tiles.
 <br />
 
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s619/ScrollingVertII.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s600/ScrollingVertII.png"/></a>
   
-<br />
+<br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/03-VerticalDragon/dev/engine/map_manager.c">map_manager.c</a>
 <br />
 <pre class="csharp" name="code">
@@ -361,8 +357,6 @@ static void draw_map_row()
 </pre>
 <br />
 
-<br />
-
 <u>PCM Samples</u><br />
 The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-code modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
 <br /><br />
@@ -380,14 +374,16 @@ This assumes that the converted WAV file will be less than 16KB; the maximum siz
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/scripts/bank3.bat">Here</a> is an example of converting an input WAV file using pcmenc to be SMS compatible for code integration.
 <br />
 Contains the engine code to init and play the converted WAV file as PCM sample on the Sega Master System.
-<br />
+<br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/engine/sample_manager.c">sample_manager.c</a>
+<br />
 <pre class="csharp" name="code">
 void engine_sample_manager_init( const void *psginit );
 void engine_sample_manager_play( const void *sample );
 </pre>
-<br /><br />
-<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/engine/riff_manager.c">riff_manager.c</a><br />
+<br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/engine/riff_manager.c">riff_manager.c</a>
+<br />
 Public API that game code will call as wrapper around the sample manager to actually play the PCM sample.
 <br /><br />
 IMPORTANT:<br />
@@ -475,7 +471,7 @@ Invoke the riff manager similar to single bank example except iterate thru all b
 <u>Banked Code</u><br />
 TODO - build up blurb about banked code....!
 <br />
-  
+<br />
 <u>Summary</u><br />
 Armed with all this knowledge, we are now in an excellent position to upgrade any existing game projects for Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a> to latest version of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> on <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x built cross platform for Windows and Linux!
   
