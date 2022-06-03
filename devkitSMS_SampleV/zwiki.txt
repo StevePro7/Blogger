@@ -2,7 +2,63 @@
 
 <u>Banked Code</u><br />
 SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-use-more-than-32kib-of-code-in-your-smsgg-rom-banked-code">banked</a> code which means it is now possible to page in and out code in a transparent manner.  The banked code should be written in separate source files that get allocated in separate code banks.  To summarize, banked code means that total code will not be restricted to 32KB maximum size.
-<br /><br />
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s594/BankedCode.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s600/BankedCode.png"/></a>
+-->
+<br />
+<b>Method</b> <br />
+1. Put banked code in separate source files marking banked functions using __banked SDCC keyword
+<br />
+<table width="97%" border="1">
+<tr>
+<td>&nbsp;banked_code_1.h</td>
+<td>&nbsp;banked_code_1.c</td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#ifndef _BANK_1_H_
+&nbsp;#define _BANK_1_H_
+
+&nbsp;int banked_code_1() __banked;
+
+&nbsp;#endif//_BANK_1_H_
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#include "banked_code_1.h"
+
+&nbsp;int banked_code_1() __banked
+&nbsp;{
+&nbsp;	return 1;
+&nbsp;}
+</pre>  
+</td>
+</tr>
+</table>
+  <br /><br />
+banked_code_1.h
+<pre class="csharp" name="code">
+#ifndef _BANK_1_H_
+#define _BANK_1_H_
+
+int banked_code_1() __banked;
+
+#endif//_BANK_1_H_
+</pre>
+
+banked_code_1.c
+<pre class="csharp" name="code">
+#include "banked_code_1.h"
+
+int banked_code_1() __banked
+{
+	return 1;
+}
+</pre>
+<br />
 IMPORTANT - ensure that crt0b_sms.rel is used...!
 <br /><br />
 
@@ -13,33 +69,7 @@ IMPORTANT - ensure that crt0b_sms.rel is used...!
 <br />
 Imagine you have 3x functions you would like to bank that are stored in 3x separate banked h/c files:
 <br />
-banked_code_1.h
-<pre class="csharp" name="code">
-#ifndef _BANK_1_H_
-#define _BANK_1_H_
 
-#ifdef _CONSOLE
-int banked_code_1();
-#else
-int banked_code_1() __banked;
-#endif
-
-#endif//_BANK_1_H_
-</pre>
-<br /><br />
-banked_code_1.c
-<pre class="csharp" name="code">
-#include "banked_code_1.h"
-
-#ifdef _CONSOLE
-int banked_code_1()
-#else
-int banked_code_1() __banked
-#endif
-{
-	return 1;
-}
-</pre>
 <br /><br />
 build.bat
 <br />
