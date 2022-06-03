@@ -1,70 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-
-<!--
-<u>Banked Code</u><br />
-TODO - build up blurb about banked code....!
-<br />
-IMPORTANT - ensure that crt0b_sms.rel is used...!
-<br />
-
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s594/BankedCode.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s600/BankedCode.png"/></a>
-<br />
-  
-<br />
-Imagine you have 3x functions you would like to bank that are stored in 3x separate banked h/c files:
-<br />
-banked_code_1.h
-<pre class="csharp" name="code">
-#ifndef _BANK_1_H_
-#define _BANK_1_H_
-
-#ifdef _CONSOLE
-int banked_code_1();
-#else
-int banked_code_1() __banked;
-#endif
-
-#endif//_BANK_1_H_
-</pre>
-<br /><br />
-banked_code_1.c
-<pre class="csharp" name="code">
-#include "banked_code_1.h"
-
-#ifdef _CONSOLE
-int banked_code_1()
-#else
-int banked_code_1() __banked
-#endif
-{
-	return 1;
-}
-</pre>
-<br /><br />
-build.bat
-<br />
-TODO - don't forget to write about the algorithm for the linked code BANK address  
-<br />
-<pre class="csharp" name="code">
-:: Compile
-sdcc --debug -c -mz80 --codeseg BANK1 banked_code_1.c
-sdcc --debug -c -mz80 --codeseg BANK2 banked_code_2.c
-sdcc --debug -c -mz80 --codeseg BANK3 banked_code_3.c
-
-# Linker
-sdcc --debug -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 ^
--Wl-b_BANK1=0x14000 ^
--Wl-b_BANK2=0x24000 ^
--Wl-b_BANK3=0x34000 ^
-../crt0/crt0b_sms.rel ^
-../lib/SMSlib.lib ^
-../lib/PSGlib.rel ^
-main.rel ^
-</pre>
-
-<br /><br />
--->
-  
+ 
 In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> and <a href="https://en.wikipedia.org/wiki/Game_Gear">Sega Game Gear</a>.
 <br /><br />
 The latest version of the  <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires an updated version of Small Device Cross Compiler <a href="https://sourceforge.net/projects/sdcc/files">SDCC 4.x</a> and supports new and updated features including the ability to page both code and content transparently.
@@ -467,10 +402,100 @@ Finally, rename the *.wav.pcmenc files to more code friendly names and copy the 
 <br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/02-MultipeBanks/dev/engine/screen_manager.c">Invoke</a> the riff manager similar to single bank example except iterate thru all banks that are required to play riff.  The only current drawback with this technique is the main thread blocks as the riff plays synchronously!
 <br /><br />
-  
-<u>Banked Code</u><br />
-TODO - build up blurb about banked code....!
 <br />
+<u>Banked Code</u><br />
+SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-use-more-than-32kib-of-code-in-your-smsgg-rom-banked-code">banked</a> code which means it is now possible to page in and out code in a transparent manner.  The banked code should be written in separate source files that get allocated in separate code banks.  To summarize, banked code means that total code will not be restricted to 32KB maximum size.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s594/BankedCode.png"><img alt="" border="0" width="97%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s600/BankedCode.png"/></a>
+<br />
+<br />
+<b>Method</b> <br />
+1. Put all banked code in separate source files marking banked functions using __banked SDCC keyword.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/dev/banks/banked_code_1.h">banked_code_1.h</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/dev/banks/banked_code_1.c">banked_code_1.c</a></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#ifndef _BANK_1_H_
+&nbsp;#define _BANK_1_H_
+
+&nbsp;int banked_code_1() __banked;
+
+&nbsp;#endif//_BANK_1_H_
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#include "banked_code_1.h"
+
+&nbsp;int banked_code_1() __banked
+&nbsp;{
+&nbsp;	return 1;
+&nbsp;}
+</pre>  
+</td>
+</tr>
+</table>
+<br />
+2. Compile each banked code source file into a specific separate code segment as part of the build script.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK1 banked_code_1.c
+<br />
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK2 banked_code_2.c
+<br />
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK3 banked_code_3.c
+</td>
+</tr>
+</table>
+<br />
+3. Use the newly provided <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/crt0/crt0b_sms.rel">crt0b_sms.rel</a></b> as the first module into your linker call instead of crt0_sms.rel.
+<br />  
+4. Instruct the linker to place the banked code at address 0x4000 + the <i>virtual address</i> of the bank which will be calculated as bank number * 2^16 i.e. code segment BANK1 at 0x14000, BANK2 at 0x24000 etc.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;sdcc --debug -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 \
+<br />
+&nbsp;-Wl-b_BANK1=0x14000 \
+<br />
+&nbsp;-Wl-b_BANK2=0x24000 \
+<br />
+&nbsp;-Wl-b_BANK3=0x34000 \
+<br />
+&nbsp;../crt0/crt0b_sms.rel \
+<br />
+&nbsp;../lib/SMSlib.lib \
+<br />
+&nbsp;main.rel \
+<br />
+&nbsp;banks/banked_code_1.rel \
+<br />
+&nbsp;banks/banked_code_2.rel \
+<br />
+&nbsp;banks/banked_code_3.rel \
+</td>
+</tr>
+</table>
+<br />
+5. Finally use the new makesms tool to convert the ihx output to sms format instead of the ihx2sms tool.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;makesms output.ihx output.sms
+</td>
+</tr>
+</table>
+<br />
+
 <br />
 <u>Summary</u><br />
 Armed with all this knowledge, we are now in an excellent position to upgrade any existing game projects for <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> to latest version of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> on <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x built cross platform for Windows and Linux!
