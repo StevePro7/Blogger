@@ -8,8 +8,64 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 -->
 <br />
 <b>Method</b> <br />
-1. Put banked code in separate source files marking banked functions using __banked SDCC keyword
+5. Finally use the newer makesms tool to convert the ihx output to sms format instead of the ihx2sms tool.
 <br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;makesms output.ihx output.sms
+</td>
+</tr>
+</table>
+<br />
+4. Instruct the linker to place the banked code at address 0x4000 + the <i>virtual address</i> of the bank which is calculated as bank number * 2^16 i.e. code segment BANK1 at 0x14000 with compiled modules in order.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;sdcc --debug -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 \
+<br />
+&nbsp;-Wl-b_BANK1=0x14000 \
+<br />
+&nbsp;-Wl-b_BANK2=0x24000 \
+<br />
+&nbsp;-Wl-b_BANK3=0x34000 \
+<br />
+&nbsp;../crt0/crt0b_sms.rel \
+<br />
+&nbsp;../lib/SMSlib.lib \
+<br />
+&nbsp;main.rel \
+<br />
+&nbsp;banks/banked_code_1.rel \
+<br />
+&nbsp;banks/banked_code_2.rel \
+<br />
+&nbsp;banks/banked_code_3.rel \
+</td>
+</tr>
+</table>
+
+  <br />
+3. Use the newly provided <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/crt0/crt0b_sms.rel">crt0b_sms.rel</a></b> as the first module in your linker call instead of crt0_sms.rel.
+<br /><br />
+2. Compile each banked code source file into a specific separate code segment into your build script.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK1 banked_code_1.c
+<br />
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK2 banked_code_2.c
+<br />
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK3 banked_code_3.c
+</td>
+</tr>
+</table>
+<br />
+1. Put banked code in separate source files marking banked functions using __banked SDCC keyword.
+<br />
+<!--  
 <table width="97%" border="1">
 <tr>
 <td>&nbsp;<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/dev/banks/banked_code_1.h">banked_code_1.h</a></td>
@@ -38,26 +94,10 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 </td>
 </tr>
 </table>
-  <br /><br />
-banked_code_1.h
-<pre class="csharp" name="code">
-#ifndef _BANK_1_H_
-#define _BANK_1_H_
+<br />
+-->
+<br />
 
-int banked_code_1() __banked;
-
-#endif//_BANK_1_H_
-</pre>
-
-banked_code_1.c
-<pre class="csharp" name="code">
-#include "banked_code_1.h"
-
-int banked_code_1() __banked
-{
-	return 1;
-}
-</pre>
 <br />
 IMPORTANT - ensure that crt0b_sms.rel is used...!
 <br /><br />
