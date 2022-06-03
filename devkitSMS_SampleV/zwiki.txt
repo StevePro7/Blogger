@@ -1,7 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Banked Code</u><br />
-SDCC 4.x supports banked code which means it is now possible to page in and out code in a transparent manner.  The banked code should be written in separate source files that get allocated in separate code banks.  To summarize, banked code means that total code will not be restricted to 32KB maximum size.
+SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-use-more-than-32kib-of-code-in-your-smsgg-rom-banked-code">banked</a> code which means it is now possible to page in and out code in a transparent manner.  The banked code should be written in separate source files that get allocated in separate code banks.  To summarize, banked code means that total code will not be restricted to 32KB maximum size.
 <br /><br />
 IMPORTANT - ensure that crt0b_sms.rel is used...!
 <br /><br />
