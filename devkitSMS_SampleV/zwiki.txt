@@ -40,7 +40,7 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 </table>
 <br />
 
-2. Compile each banked code source file into a specific separate code segment into your build script.
+2. Compile each banked code source file into a specific separate code segment as part of the build script.
 <br />
 <table width="97%" border="1">
 <tr>
@@ -55,11 +55,9 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 </table>
 <br />
   
-3. Use the newly provided <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/crt0/crt0b_sms.rel">crt0b_sms.rel</a></b> as the first module in your linker call instead of crt0_sms.rel.
-<br /><br />
-  
-
-4. Instruct the linker to place the banked code at address 0x4000 + the <i>virtual address</i> of the bank which is calculated as bank number * 2^16 i.e. code segment BANK1 at 0x14000 with compiled modules in order.
+3. Use the newly provided <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/crt0/crt0b_sms.rel">crt0b_sms.rel</a></b> as the first module into your linker call instead of crt0_sms.rel.
+<br />  
+4. Instruct the linker to place the banked code at address 0x4000 + the <i>virtual address</i> of the bank which will be calculated as bank number * 2^16 i.e. code segment BANK1 at 0x14000, BANK2 at 0x24000 etc.
 <br />
 <table width="97%" border="1">
 <tr>
@@ -88,7 +86,7 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 </table>
 <br />
 
-5. Finally use the newer makesms tool to convert the ihx output to sms format instead of the ihx2sms tool.
+5. Finally use the new makesms tool to convert the ihx output to sms format instead of the ihx2sms tool.
 <br />
 <table width="97%" border="1">
 <tr>
