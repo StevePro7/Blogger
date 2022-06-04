@@ -1,6 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
  
-In the previous post, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> and <a href="https://en.wikipedia.org/wiki/Game_Gear">Sega Game Gear</a>.
+In the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a>, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> and <a href="https://en.wikipedia.org/wiki/Game_Gear">Sega Game Gear</a>.
 <br /><br />
 The latest version of the  <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires an updated version of Small Device Cross Compiler <a href="https://sourceforge.net/projects/sdcc/files">SDCC 4.x</a> and supports new and updated features including the ability to page both code and content transparently.
 <br />
@@ -12,7 +12,7 @@ Let's check it out!
 <br /><br />
   
 <u>Software</u><br />
-Follow all instructions from the previous post: this documents how to setup the pre-requisite software.
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a>: this documents how to setup the pre-requisite software.
 <br />
 Note: ensure you have downloaded and installed the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and Small Device C Compiler [<a href="http://sdcc.sourceforge.net">SDCC</a>].
 <br /><br />
@@ -20,7 +20,7 @@ Also ensure that <a href="https://www.smspower.org/forums/15964-HighQualityPCMWi
 <br /><br />
   
 <u>Demo</u><br />
-All demos in this devkitSMS programming sample are based on the simple Hello World program the previous post that utilizes Visual Studio 2015 on Windows but can be deployed cross platform on Windows and Linux.
+All demos in this devkitSMS programming sample are based on the simple <a href="https://github.com/SteveProXNA/devkitSMScode/tree/main/SetupII/01-HelloWorld/02-DevkitExample">Hello World</a> program the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a> that utilizes Visual Studio 2015 on Windows but can be deployed cross platform on Windows and Linux.
 <br /><br />
 Create folder C:\DevkitExample. Create the following sub-folders: crt0, dev, lib, tmp.  Note: all content now prferred to reside under content sub-folder beneath the main dev folder.  All content also built using scripts.
 <br />
