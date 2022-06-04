@@ -1,6 +1,4 @@
-<span style="font-family:verdana;font-size:85%;">
-
-  
+<span style="font-family:verdana;font-size:85%;"> 
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit video games in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> (SMS).  Here we use SDCC v3.6.9 which allows maximum 32KB for your main ROM game code size.
 <br /><br />
 Now, the latest <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x which supports banked code which means it is now possible to page code out transparently.  Plus we'd also like to build <a href="http://www.smspower.org">SMS</a> projects cross platform for Windows and Linux.
