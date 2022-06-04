@@ -1,10 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
-
-  
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit video games in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> (SMS).  Here we use SDCC v3.6.9 which allows maximum 32KB for your main ROM game code size.
 <br /><br />
 Now, the latest <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x which supports banked code which means it is now possible to page code out transparently.  Plus we'd also like to build <a href="http://www.smspower.org">SMS</a> projects cross platform for Windows and Linux.
-<br /><br />
+<br />
+<br />
 <a href="https://3.bp.blogspot.com/-V-s3bFQyWXE/WQB7Lw64JpI/AAAAAAAAD-g/GEoxW1vrGGccMvp3aedQdqaYxtXCHVz3QCLcB/s1600/devkitsms.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-V-s3bFQyWXE/WQB7Lw64JpI/AAAAAAAAD-g/GEoxW1vrGGccMvp3aedQdqaYxtXCHVz3QCLcB/s640/devkitsms.jpg" width="98%" height="300" /></a>
 <br />
 Let’s check it out! 
@@ -223,12 +222,9 @@ Important: On Windows prefer the ./build syntax as Linux otherwise an "unrecogni
     ]
 }
 </pre>
-On Linux, launch Emulicious as above.  Press Ctrl + Shift + B to build code and F5 to debug step thru code:
-<br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9CM3jWRxtXuYpQ2cK44r5UhR79WbYo487HzV2OABXXwIqsA_RVbA7oKjs175kqPSteJm_Mlxzg3lFKqMvU1t7QA5taOmLd6SK81GJdu4Sj6JWgC7Jfj_r9OXnjY5YI-DNuYSrpENFxPzFhaK4qqNf7fXEOTqR7lIlhejcEqZtije/s751/debugging.png"><img alt="" border="0" height="600" width="98%"
 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ6R2KqufnPKW_9CM3jWRxtXuYpQ2cK44r5UhR79WbYo487HzV2OABXXwIqsA_RVbA7oKjs175kqPSteJm_Mlxzg3lFKqMvU1t7QA5taOmLd6SK81GJdu4Sj6JWgC7Jfj_r9OXnjY5YI-DNuYSrpENFxPzFhaK4qqNf7fXEOTqR7lIlhejcEqZtije/s600/debugging.png"/></a>
 <br /><br />
-
 <u>Visual Studio 2015</u><br />
 For completeness, if the main workstation is Windows then another option is Visual Studio 2015 can also be used to debug step thru the ANSI-C source code.  For more background info see <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">this</a>.  Here is the alternative:
 <br />
@@ -250,7 +246,7 @@ void main( void )
 </pre>
 <br />
 <u>Summary</u><br />
-To summarize, the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> development process has been very consistent after the <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x upgrade plus the ability to support banked code means initial 32KB ROM restriction now no longer applies!
+To summarize, the Sega Master System development process has been very consistent after the SDCC 4.x upgrade plus the ability to support banked code means initial 32KB ROM restriction now no longer applies!
 <br />
 This will be the topic of the next post.
 </span>
