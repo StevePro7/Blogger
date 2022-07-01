@@ -1,0 +1,14 @@
+02 Upgrade
+01/07/2022
+
+
+01.	01-Misc.txt		Upgrade Ubuntu
+<i>Upgrade Ubuntu</i><br />
+As of the time of this writing Ubuntu 20.04 is available.  If you are operating an older version e.g. 18.04 then consider upgrading Ubuntu.  Ensure Software & Updates "Notify me of new Ubuntu version" is not set Never! 
+<pre class="csharp" name="code">
+sudo apt update && sudo apt upgrade
+sudo reboot command
+sudo apt install update-manager-core
+sudo do-release-upgrade
+sudo reboot
+lsb_release -a
