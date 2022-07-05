@@ -80,7 +80,7 @@ Here is an example of background tiles that will exhaust the full 256 x 192 reso
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s576/SplashScreen.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s600/SplashScreen.png"/></a>
 <br />
-Follow the same settings as per <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">here</a> but this time use this script to automate the correspodning formatting:
+Follow the same settings as per <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">here</a> but this time use this script to automate the corresponding formatting:
 <br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/02-SplashScreen/02-NEWsplash/dev/scripts/gfx.bat">build.bat</a>
 <br />
@@ -123,16 +123,16 @@ bmp2tile.exe raw/splash.bmp ^
 <b>Opaque</b><br />
 Candy Kid, which is a Pacman clone, uses opaque background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses sprite palette bitwise OR with tile priority.
 <br />
-<br />  
+<br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/03-OpaqueTiles/02-NEWopaque/dev/engine/tile_manager.c">tile_manager.c</a>
-<br />  
+<br />
 <pre class="csharp" name="code">
 static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y )
 {
   unsigned int priority = devkit_TILE_PRIORITY() | devkit_TILE_USE_SPRITE_PALETTE();
-  
+
   devkit_SMS_setNextTileatXY( x + 0, y + 0 );
-  devkit_SMS_setTile( ( *game_tiles__tilemap__bin + offset + 0 ) | priority );  
+  devkit_SMS_setTile( ( *game_tiles__tilemap__bin + offset + 0 ) | priority );
 }
 </pre>
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s485/CandyKid.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s600/CandyKid.png"/></a>
@@ -166,7 +166,7 @@ In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to
 <a href="https://en.wikipedia.org/wiki/Scrolling">Scrolling</a> in video games involves moving graphics across a display, either <a href="https://en.wikipedia.org/wiki/Side-scrolling_video_game">horizontally</a> and/or <a href="https://en.wikipedia.org/wiki/Vertically_scrolling_video_game">vertically</a> such that the layout does not change but rather moves the view across as an image larger than the whole screen.
 <br /><br />
 Horizontal scrolling was very popular for action, run-and-gun and shoot/beat 'em up games whereas vertical scrolling was used in top down shooters.  The devkitSMS <a href="https://www.smspower.org/forums/15888-DevkitSMSTutorial">tutorial</a> has both vertical and horizontal examples:
-<br /><br /> 
+<br /><br />
 <b>Horizontal</b><br />
 Here is the devkitSMS tutorial horizontal scrolling "Ice Hockey" example using the SMS_loadTileMap() API.
 <br />
@@ -230,7 +230,7 @@ void engine_scroll_manager_down()
     {
       y = ( 24 + ( so->scroll / 8 ) ) % 28;
       index = ( 24 + ( so->scroll / 8 ) ) * 32 * 2;
-      devkit_SMS_loadTileMap( 0, y, ( void * ) &MM__tilemap__bin[ index ], so->size );  
+      devkit_SMS_loadTileMap( 0, y, ( void * ) &MM__tilemap__bin[ index ], so->size );
     }
   }
 }
@@ -254,10 +254,10 @@ static void draw_map_row()
   unsigned char buffer[ 16 ];
 
   decompress_map_row( buffer );
-  for( i = 2, y = map_data->background_y, base_tile = 256; i; i--, y++, base_tile++ ) 
+  for( i = 2, y = map_data->background_y, base_tile = 256; i; i--, y++, base_tile++ )
   {
     devkit_SMS_setNextTileatXY( 0, y );
-    for( j = 16, map_char = buffer; j; j--, map_char++ ) 
+    for( j = 16, map_char = buffer; j; j--, map_char++ )
     {
       tile = base_tile + ( *map_char << 2 );
       devkit_SMS_setTile( tile );
@@ -407,7 +407,7 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 &nbsp;{
 &nbsp;	return 1;
 &nbsp;}
-</pre>  
+</pre>
 </td>
 </tr>
 </table>
@@ -427,7 +427,7 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 </table>
 <br />
 3. Use the newly provided <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/crt0/crt0b_sms.rel">crt0b_sms.rel</a></b> as the first module into your linker call instead of crt0_sms.rel.
-<br />  
+<br />
 4. Instruct the linker to place the banked code at address 0x4000 + the <i>virtual address</i> of the bank which will be calculated as bank number * 2^16 i.e. code segment BANK1 at 0x14000, BANK2 at 0x24000 etc.
 <br />
 <table width="97%" border="1">
