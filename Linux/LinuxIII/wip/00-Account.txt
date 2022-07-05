@@ -1,0 +1,16 @@
+<b>Account</b><br />
+Typically, during the installation process, an admin account is prompted to be created with username and password.  However, follow these instructions to <a href="https://www.cyberciti.biz/faq/add-new-user-account-with-admin-access-on-linux">add</a> new user account with admin access on Ubuntu Linux.
+<br />
+<table width="97%" border="1">
+<tr>
+<td valign="top">
+  &nbsp;adduser stevepro <br />
+  &nbsp;usermod -aG sudo stevepro <br />
+  &nbsp;id stevepro <br />
+  &nbsp;su - stevepro <br />
+</td>
+</tr>  
+</table>
+<br />
+Alternatively, <a href="https://help.ubuntu.com/stable/ubuntu-help/user-accounts.html.en#manage">manage</a> user accounts from Settings | Users user interface to <a href="https://help.ubuntu.com/stable/ubuntu-help/user-add.html.en">add</a> new user account.  Initially, the account user will use the default icon.  Consider changing via Settings | Users | Picture | Select File.
+<br /><br />
