@@ -1,4 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
+ 
 In the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a>, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> and <a href="https://en.wikipedia.org/wiki/Game_Gear">Sega Game Gear</a>.
 <br /><br />
 The latest version of the  <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires an updated version of Small Device Cross Compiler <a href="https://sourceforge.net/projects/sdcc/files">SDCC 4.x</a> and supports new and updated features including the ability to page both code and content transparently.
@@ -17,7 +18,7 @@ Also ensure that <a href="https://www.smspower.org/forums/15964-HighQualityPCMWi
 <u>Demo</u><br />
 All demos in this devkitSMS programming sample are based on the simple <a href="https://github.com/SteveProXNA/devkitSMScode/tree/main/SetupII/01-HelloWorld/02-DevkitExample">Hello World</a> program the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a> that utilizes Visual Studio 2015 on Windows but can be deployed cross platform on Windows and Linux.
 <br /><br />
-Create folder C:\DevkitExample. Create the following sub-folders: crt0, dev, lib, tmp.  Note: all content now preferred to reside under content sub-folder beneath the main dev folder.  All content also built using scripts.
+Create folder C:\DevkitExample. Create the following sub-folders: crt0, dev, lib, tmp.  Note: all content now prferred to reside under content sub-folder beneath the main dev folder.  All content also built using scripts.
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitcLpvIr6apaj1Q7M1lwwdRSJ1_nN5sPgxy7aySlZ5S4nccL7VHnAQwX_5vjK8JXbG-8MV_x8Gspm6TiIK6IJfZViRs7yNlgzuRFe5FbwWE14-J9hy7CCHtW5IQtY9Z78lOHYaPeeL86xmI8iNWIGZtc8XKn-h0SBfmqmlSSdLc6wOwOW62RdLjWCX/s1054/Github.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitcLpvIr6apaj1Q7M1lwwdRSJ1_nN5sPgxy7aySlZ5S4nccL7VHnAQwX_5vjK8JXbG-8MV_x8Gspm6TiIK6IJfZViRs7yNlgzuRFe5FbwWE14-J9hy7CCHtW5IQtY9Z78lOHYaPeeL86xmI8iNWIGZtc8XKn-h0SBfmqmlSSdLc6wOwOW62RdLjWCX/s600/Github.png"/></a>
 <br />
@@ -54,7 +55,7 @@ OK<br /><br />
 </table>
 Finish
 <br /><br />
-Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from <a href="https://github.com/SteveProXNA/devkitSMScode/tree/main/SampleV/01-HelloWorld/02-DevkitExample/dev">here</a> including build the scripts.
+Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from here including build the scripts.
 <br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/01-HelloWorld/02-DevkitExample/dev/main.c">main.c</a>
 <br />
@@ -80,7 +81,7 @@ Here is an example of background tiles that will exhaust the full 256 x 192 reso
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s576/SplashScreen.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s600/SplashScreen.png"/></a>
 <br />
-Follow the same settings as per <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">here</a> but this time use this script to automate the correspodning formatting:
+Follow the same settings as per here but this time use this script to automate the correspodning formatting:
 <br /><br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/02-SplashScreen/02-NEWsplash/dev/scripts/gfx.bat">build.bat</a>
 <br />
@@ -121,7 +122,7 @@ bmp2tile.exe raw/splash.bmp ^
 </table>
 <br />
 <b>Opaque</b><br />
-Candy Kid, which is a Pacman clone, uses opaque background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses sprite palette bitwise OR with tile priority.
+Candy Kid, which is a Pacman clone, uses opaque background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses the sprite palette bitwise OR with tile priority.
 <br />
 <br />  
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/03-OpaqueTiles/02-NEWopaque/dev/engine/tile_manager.c">tile_manager.c</a>
@@ -137,8 +138,10 @@ static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned 
 </pre>
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s485/CandyKid.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s600/CandyKid.png"/></a>
 <br />
+
 IMPORTANT: the sprite palette color in this example must be black to match background despite white tiles.
 <br /><br />
+
 <b>Tools</b><br />
 In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to convert graphics as <a href="https://superuser.com/questions/678434/export-file-as-palleted-8bit-per-pixel-bmp-from-gimp">Indexed</a> [16] mode to meet the 4bpp Sega Master System compatible requirements.  However, paint.net is great to output PNG files for BMP online <a href="https://online-converting.com/image/convert2bmp">converter</a>:
 <br />
@@ -163,7 +166,7 @@ In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to
 <br />
 <br />
 <u>Scrolling</u><br />
-<a href="https://en.wikipedia.org/wiki/Scrolling">Scrolling</a> in video games involves moving graphics across a display, either <a href="https://en.wikipedia.org/wiki/Side-scrolling_video_game">horizontally</a> and/or <a href="https://en.wikipedia.org/wiki/Vertically_scrolling_video_game">vertically</a> such that the layout does not change but rather moves the view across as an image larger than the whole screen.
+<a href="https://en.wikipedia.org/wiki/Scrolling">Scrolling</a> in video games involves moving graphics across a display, either <a href="https://en.wikipedia.org/wiki/Side-scrolling_video_game">horizontally</a> and/or <a href="https://en.wikipedia.org/wiki/Vertically_scrolling_video_game">vertically</a> such that the layout does not change but rather moves the view across is an image larger than the whole screen.
 <br /><br />
 Horizontal scrolling was very popular for action, run-and-gun and shoot/beat 'em up games whereas vertical scrolling was used in top down shooters.  The devkitSMS <a href="https://www.smspower.org/forums/15888-DevkitSMSTutorial">tutorial</a> has both vertical and horizontal examples:
 <br /><br /> 
@@ -268,7 +271,7 @@ static void draw_map_row()
 </pre>
 <br />
 <u>PCM Samples</u><br />
-The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-Code Modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
+The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-code modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
 <br /><br />
 <b>Single Bank</b><br />
 Ensure the <a href="https://github.com/maxim-zhao/pcmenc/releases/tag/v0.3">pcmenc</a> executable currently lives in ~/SDCC/bin folder and accessible from $PATH.  Launch the terminal and execute the following command to convert an input "test" WAV file to pcmenc compatible file:
@@ -469,4 +472,5 @@ SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-us
 <br />
 <u>Summary</u><br />
 Armed with all this knowledge, we are now in an excellent position to upgrade any existing game projects for <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> to latest version of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> on <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x built cross platform for Windows and Linux!
+  
 </span>
