@@ -1,0 +1,21 @@
+<b>Find</b><br />
+  Here are some simple but effective uses of the find command e.g. <a href="https://stackoverflow.com/questions/4767396/linux-command-how-to-find-only-text-files">find</a> all text in file that follows predicate:
+<br />
+  <table width="97%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;find -L . -type f -exec grep -HniI 'g++' {} \; > ~/Steven/gpp.txt<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+Another useful example is how to <a href="https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy">find</a> all of the distinct file extensions in a particular folder hierarchy:
+  <br />
+  <table width="97%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u<br />
+      </td>
+    </tr>  
+  </table>
+<br />
