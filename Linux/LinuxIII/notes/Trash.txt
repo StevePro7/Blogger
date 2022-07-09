@@ -5,3 +5,15 @@ Reference
 https://itsfoss.com/fix-empty-trash-ubuntu/
 
 rm -rf ~/.local/share/Trash/*
+du -sh ~/.cache/thumbnails
+
+sudo du -h /var/lib/snapd/snaps
+sudo du -sh /var/cache/apt 
+
+
+
+sudo apt-get autoclean
+sudo apt-get clean
+
+sudo journalctl --disk-usage
+sudo journalctl --vacuum-time=3d
