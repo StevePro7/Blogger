@@ -1,14 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
   
-<b>Diff Tools</b><br />
-On Windows PC, Tortoise Merge is handy tool to compare 2x files whereas WinMerge is handy tool that can compare 2x directories.  Meld + KDiff3 are alternatives for Linux both installed from Ubuntu Software Center.
-<br /><br />
-<u>Meld</u><br>
-File | New Comparison.  File comparison navigate to file 1.  Directory comparison navigate to file 2.  Compare.  
-<br /><br />
-<u>KDiff3</u><br>
-Similar to WinMerge: A. Directory navigate to directory 1.  B. Directory navigate to directory 2.  Compare OK.
-<br /><br />
+
+  
 <br /> 
 In the previous <a href="http://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html">post</a>, we set up Ubuntu Linux on Windows and Mac OS/X using VirtualBox.  Now we focus our set up on dedicated Ubuntu Linux workstation or Windows PC that has dual boot with Ubuntu Linux installed.
 <br />
@@ -143,4 +136,62 @@ File | New Comparison.  File comparison navigate to file 1.  Directory compariso
 Similar to WinMerge: A. Directory navigate to directory 1.  B. Directory navigate to directory 2.  Compare OK.
 <br /><br />
 
+<b>Shortcuts</b><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;General</td>
+<td valign="top">&nbsp;Minimize all windows</td>  
+<td valign="top">&nbsp;Ctrl + Alt + D</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;gedit</td>
+<td valign="top">&nbsp;Move prev tab</td>  
+<td valign="top">&nbsp;Ctrl + Alt + PgUp</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;gedit</td>
+<td valign="top">&nbsp;Move next tab</td>  
+<td valign="top">&nbsp;Ctrl + Alt + PgDown</td>
+</tr>
+</table>
+<br />
+
+<b>Mouse Scroll</b><br />  
+After setting up new blue tooth mouse the default scroll was too slow.  Therefore, install and set up <a href="https://io.bikegremlin.com/11541/linux-mouse-scroll-speed/">lmwheel</a>:
+<br />
+  <table width="99%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo apt-get install imwheel<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+Create mouse.sh.  Integrate the following shell script.  Set execute permissions.  Configure using <b>./mouse.sh</b>.
+<br />
+<pre class="csharp" name="code">
+#!/bin/bash
+if [ ! -f ~/.imwheelrc ]
+then
+cat &gt;~/.imwheelrc&lt;&lt;EOF
+".*"
+None,      Up,   Button4, 1
+None,      Down, Button5, 1
+Control_L, Up,   Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L,   Up,   Shift_L|Button4
+Shift_L,   Down, Shift_L|Button5
+EOF
+fi
+CURRENT_VALUE=$(awk -F 'Button4,' '{print $2}' ~/.imwheelrc)
+NEW_VALUE=$(zenity --scale --window-icon=info --ok-label=Apply --title="Wheelies" --text "Mouse wheel speed:" --min-value=1 --max-value=100 --value="$CURRENT_VALUE" --step 1)
+if [ "$NEW_VALUE" == "" ];
+then exit 0
+fi
+sed -i "s/\($TARGET_KEY *Button4, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button4, and write new value.
+sed -i "s/\($TARGET_KEY *Button5, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button5, and write new value.
+cat ~/.imwheelrc
+imwheel -kill
+</pre>  
+<br />
 </span>
