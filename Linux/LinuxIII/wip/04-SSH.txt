@@ -10,8 +10,8 @@ Secure SHell [SSH] may not be enabled after Ubuntu Linux is installed.  Therefor
 </tr>  
 </table>
 <br>
-<U>SERVER</U><br>
-Here is how to fix the Connection refused issue on port 22.  On the destination server set up the following:
+<i>Server</i><br>
+<a href="https://linuxhint.com/fix_connection_refused_ubuntu">Here</a> is how to fix the Connection refused issue on port 22.  On the destination server set up the following:
 <table width="98%" border="1">
 <tr>
 <td valign="top">
@@ -29,7 +29,7 @@ Here is how to fix the Connection refused issue on port 22.  On the destination 
 </tr>  
 </table>
 <br />
-<U>CLIENT</U><br>
+<i>Client</i><br>
 On source client connect to Files | Other Locations | Connect to Server <b>sftp://stevepro@192.168.15.50</b>.
 <br />  
 Also, <b>ssh stevepro@192.168.15.50</b> should now work!  

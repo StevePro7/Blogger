@@ -1,7 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
-  
 
   <br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html">post</a>, we set up Ubuntu Linux on Windows and Mac OS/X using VirtualBox.  Now we focus our set up on dedicated Ubuntu Linux workstation or Windows PC that has dual boot with Ubuntu Linux installed.
@@ -93,8 +92,8 @@ Secure SHell [SSH] may not be enabled after Ubuntu Linux is installed.  Therefor
     </tr>  
   </table>
   <br>
-<U>SERVER</U><br>
-Here is how to fix the Connection refused issue on port 22.  On the destination server set up the following:
+<i>Server</i><br>
+<a href="https://linuxhint.com/fix_connection_refused_ubuntu">Here</a> is how to fix the Connection refused issue on port 22.  On the destination server set up the following:
 <table width="98%" border="1">
     <tr>
       <td valign="top">
@@ -112,7 +111,7 @@ Here is how to fix the Connection refused issue on port 22.  On the destination 
     </tr>  
   </table>
   <br />
-<U>CLIENT</U><br>
+<i>Client</i><br>
 On source client connect to Files | Other Locations | Connect to Server <b>sftp://stevepro@192.168.15.50</b>.
 <br />  
 Also, <b>ssh stevepro@192.168.15.50</b> should now work!
@@ -141,7 +140,7 @@ Another useful example is how to <a href="https://stackoverflow.com/questions/18
 <br />
 
 <b>Diff Tools</b><br />
-On Windows PC, Tortoise Merge is handy tool to compare 2x files whereas WinMerge is handy tool that can compare 2x directories.  Meld + KDiff3 are alternatives for Linux both installed from Ubuntu Software Center.
+On Windows PC, Tortoise Merge is handy tool to compare 2x files whereas WinMerge is handy tool that can compare 2x directories.  Meld + KDiff3 are <a href="https://alternativeto.net/software/winmerge/?platform=linux">alternatives</a> for Linux both installed from Ubuntu Software Center.
 <br /><br />
 <u>Meld</u><br>
 File | New Comparison.  File comparison navigate to file 1.  Directory comparison navigate to file 2.  Compare.  
@@ -210,7 +209,7 @@ imwheel -kill
 <br />
   
 <b>Disk Space</b><br />  
-Use Ubuntu Linux Disk Analyzer utility to identify common locations which can be used to free up disk space:
+  Use Ubuntu Linux Disk Analyzer utility to <a href="https://itsfoss.com/fix-empty-trash-ubuntu">identify</a> common locations which can be used to free up disk space:
 <br />
   <table width="99%" border="1">
     <tr>
@@ -229,7 +228,7 @@ Use Ubuntu Linux Disk Analyzer utility to identify common locations which can be
     </tr>  
   </table>
 Other utilities to identify excess storage include <b>ncud</b> and <b>bleachbit</b> both which can be sudo apt install[ed].
-<br />
+<br /><br />
 
 <b>VNC Viewer</b><br />
 If you are transitioning from Windows to Linux you may like to remote desktop from Windows to Linux box.
@@ -283,4 +282,6 @@ Don't lock the screen as you won't be able to VNC back in!  Change Settings | Pr
   <br /><br />
 When prompted choose Continue.  Enter password | Check Remember password.  Unfortunately not all keys may work e.g. Caps Lock.  Also, you may have to disable and re-enable Repeat Keys from Universal Access.
 
+<u>Summary</u><br />
+Now we have a dedicated Ubuntu Linux workstation set up we are all set for cloud computing development!
 </span>
