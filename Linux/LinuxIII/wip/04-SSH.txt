@@ -1,0 +1,35 @@
+<b>SSH</b><br />
+Secure SHell [SSH] may not be enabled after Ubuntu Linux is installed.  Therefore you may get the following:
+<br>
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+  &nbsp;ssh stevepro@192.168.15.50<br />
+  &nbsp;ssh: connect to host 192.168.15.50 port 22: Connection refused<br />  
+</td>
+</tr>  
+</table>
+<br>
+<U>SERVER</U><br>
+Here is how to fix the Connection refused issue on port 22.  On the destination server set up the following:
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+  &nbsp;# Make sure OpenSSH is installed<br />
+  &nbsp;# Install SSH<br />
+  &nbsp;# Check SSH service<br />
+  &nbsp;# Start SSH service<br />
+</td>
+<td valign="top">
+  &nbsp;sudo apt list --installed | grep openssh-server<br />
+  &nbsp;sudo apt install openssh-server<br />
+  &nbsp;sudo service ssh status<br>
+  &nbsp;sudo service ssh start<br>
+</td>
+</tr>  
+</table>
+<br />
+<U>CLIENT</U><br>
+On source client connect to Files | Other Locations | Connect to Server <b>sftp://stevepro@192.168.15.50</b>.
+<br />  
+Also, <b>ssh stevepro@192.168.15.50</b> should now work!  
