@@ -1,8 +1,28 @@
 <span style="font-family:verdana;font-size:85%;">
-  
 
   
-<br /> 
+<b>Disk Space</b><br />  
+Use Ubuntu Linux Disk Analyzer utility to identify common locations which can be used to free up disk space:
+<br />
+  <table width="99%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;rm -rf ~/.local/share/Trash/*<br />
+        &nbsp;du -sh ~/.cache/thumbnails<br />
+        &nbsp;sudo du -h /var/lib/snapd/snaps<br />
+        &nbsp;sudo du -sh /var/cache/apt <br />
+      </td>
+      <td valign="top">
+        &nbsp;sudo apt-get autoclean<br />
+        &nbsp;sudo apt-get clean<br />
+        &nbsp;sudo journalctl --disk-usage<br />
+        &nbsp;sudo journalctl --vacuum-time=3d <br />
+      </td>
+    </tr>  
+  </table>
+Other utilities to identify excess storage include <b>ncud</b> and <b>bleachbit</b> both which can be sudo apt install[ed].
+<br />
+  <br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html">post</a>, we set up Ubuntu Linux on Windows and Mac OS/X using VirtualBox.  Now we focus our set up on dedicated Ubuntu Linux workstation or Windows PC that has dual boot with Ubuntu Linux installed.
 <br />
 <!--  
@@ -194,4 +214,27 @@ cat ~/.imwheelrc
 imwheel -kill
 </pre>  
 <br />
+  
+<b>Disk Space</b><br />  
+Use Ubuntu Linux Disk Analyzer utility to identify common locations which can be used to free up disk space:
+<br />
+  <table width="99%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;rm -rf ~/.local/share/Trash/*<br />
+        &nbsp;du -sh ~/.cache/thumbnails<br />
+        &nbsp;sudo du -h /var/lib/snapd/snaps<br />
+        &nbsp;sudo du -sh /var/cache/apt <br />
+      </td>
+      <td valign="top">
+        &nbsp;sudo apt-get autoclean<br />
+        &nbsp;sudo apt-get clean<br />
+        &nbsp;sudo journalctl --disk-usage<br />
+        &nbsp;sudo journalctl --vacuum-time=3d <br />
+      </td>
+    </tr>  
+  </table>
+Other utilities to identify excess storage include <b>ncud</b> and <b>bleachbit</b> both which can be sudo apt install[ed].
+<br />
+
 </span>
