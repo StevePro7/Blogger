@@ -1,27 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
   
-<b>Disk Space</b><br />  
-Use Ubuntu Linux Disk Analyzer utility to identify common locations which can be used to free up disk space:
-<br />
-  <table width="99%" border="1">
-    <tr>
-      <td valign="top">
-        &nbsp;rm -rf ~/.local/share/Trash/*<br />
-        &nbsp;du -sh ~/.cache/thumbnails<br />
-        &nbsp;sudo du -h /var/lib/snapd/snaps<br />
-        &nbsp;sudo du -sh /var/cache/apt <br />
-      </td>
-      <td valign="top">
-        &nbsp;sudo apt-get autoclean<br />
-        &nbsp;sudo apt-get clean<br />
-        &nbsp;sudo journalctl --disk-usage<br />
-        &nbsp;sudo journalctl --vacuum-time=3d <br />
-      </td>
-    </tr>  
-  </table>
-Other utilities to identify excess storage include <b>ncud</b> and <b>bleachbit</b> both which can be sudo apt install[ed].
-<br />
+
   <br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html">post</a>, we set up Ubuntu Linux on Windows and Mac OS/X using VirtualBox.  Now we focus our set up on dedicated Ubuntu Linux workstation or Windows PC that has dual boot with Ubuntu Linux installed.
 <br />
@@ -53,6 +34,19 @@ Alternatively, <a href="https://help.ubuntu.com/stable/ubuntu-help/user-accounts
 TODO - black screen of death
 <br /><br />
 
+<b>Graphics</b><br />
+Initially, video file formats like mp4 may result in black screen.  If so then install all the <a href="Multimedia">Multimedia</a> Codecs:
+<br />
+  <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo apt-get update<br />
+        &nbsp;sudo apt install ubuntu-restricted-extras<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+  
 <b>Ubuntu</b><br />
 Confirm the version of Ubuntu Linux installed on terminal with <b>lsb_release -a</b>.  Upgrade now accordingly:
 <br />
@@ -236,5 +230,57 @@ Use Ubuntu Linux Disk Analyzer utility to identify common locations which can be
   </table>
 Other utilities to identify excess storage include <b>ncud</b> and <b>bleachbit</b> both which can be sudo apt install[ed].
 <br />
+
+<b>VNC Viewer</b><br />
+If you are transitioning from Windows to Linux you may like to remote desktop from Windows to Linux box.
+<br /><br />
+<i>Linux</i><br />
+Follow all <a href="https://www.youtube.com/watch?v=bLGLwGToFCg">instructions</a>.  Change Ubuntu desktop manager from GNOME to LightDM.  <a href="https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing">Install</a> X11VNC as service on Ubuntu.  Launch Terminal and enter the following.  When prompted, ensure you choose lightdm not gdm3:
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt-get install lightdm
+sudo reboot
+sudo apt-get install x11vnc
+</pre>
+<br />
+After installing LightDM, rebooting and installing X11VNC, configure x11vnc.service.  Replace your password!
+<pre class="csharp" name="code">
+sudo gedit /lib/systemd/system/x11vnc.service
+
+[Unit]
+Description=x11vnc service
+After=display-manager.service network.target syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -forever -display :0 -auth guess -passwd REPLACE_WITH_YOUR_LOGIN_PASSWORD
+ExecStop=/usr/bin/killall x11vnc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<br />
+Finally, after configuring x11vnc.service, enter the following commands to complete the VNC Viewer setup.
+<pre class="csharp" name="code">
+systemctl daemon-reload
+systemctl enable x11vnc.service
+systemctl start x11vnc.service
+
+systemctl status x11vnc.service
+ip addr | grep 192                        # NOTE the IP address 192.168.1.X
+</pre>
+<br />
+IMPORTANT<br />
+Don't lock the screen as you won't be able to VNC back in!  Change Settings | Privacy | Screen Lock to this:  
+<!--
+<a href="https://1.bp.blogspot.com/-Rn8mo4N3krQ/YPGpZhGfXHI/AAAAAAAAHG0/ncOX0364UtkIKeskQAmcnP95o8xxyXFWgCLcBGAsYHQ/s661/vnc-screenlock.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Rn8mo4N3krQ/YPGpZhGfXHI/AAAAAAAAHG0/ncOX0364UtkIKeskQAmcnP95o8xxyXFWgCLcBGAsYHQ/s600/vnc-screenlock.png"/></a>
+-->
+<br /><br />
+
+<i>Windows</i><br />
+<a href="https://www.realvnc.com/en/connect/download/viewer">Download</a> and install VNC Viewer.  Launch VNC Viewer.  Setup Team.  Choose File | New Connection.  Enter the IP address from above on port 5000 for VNC Server e.g. 192.168.1.X:5900.  Enter friendly name + Connect.
+  <br /><br />
+When prompted choose Continue.  Enter password | Check Remember password.  Unfortunately not all keys may work e.g. Caps Lock.  Also, you may have to disable and re-enable Repeat Keys from Universal Access.
 
 </span>
