@@ -1,16 +1,32 @@
-<b>Account</b><br />
-Typically, during the installation process, an admin account is prompted to be created with username and password.  However, follow these instructions to <a href="https://www.cyberciti.biz/faq/add-new-user-account-with-admin-access-on-linux">add</a> new user account with admin access on Ubuntu Linux.
+<b>Login</b><br />
+If, whenever you attempt to login, you get the Ubuntu black screen with flashing cursor then attempt this <a href="https://www.youtube.com/watch?v=UjGy2-y-fzs">fix</a>:  Reboot computer and login as <a href="https://askubuntu.com/questions/859630/how-to-start-ubuntu-in-console-mode">recovery</a> mode.  Once logged in again, download and install NVIDIA.run.
+<br /><br>
+  Checkout <a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux">here</a> and <a href="https://www.cyberciti.biz/faq/ubuntu-linux-install-nvidia-driver-latest-proprietary-driver">here</a> how to <a href="https://download.nvidia.com/XFree86/Linux-x86_64/460.84/NVIDIA-Linux-x86_64-460.84.run">install</a> nVidia driver on Ubuntu Linux e.g. NVIDIA-Linux-x86_64-460.84.run
+  <br>
+  <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo su<br />
+        &nbsp;cd Downloads<br />
+        &nbsp;./NVIDIA.run<br />
+      </td>
+    </tr>  
+  </table>
 <br />
-<table width="97%" border="1">
-<tr>
-<td valign="top">
-  &nbsp;adduser stevepro <br />
-  &nbsp;usermod -aG sudo stevepro <br />
-  &nbsp;id stevepro <br />
-  &nbsp;su - stevepro <br />
-</td>
-</tr>  
-</table>
+IMPORTANT<br />
+If you are running X server then you may get an <a href="https://askubuntu.com/questions/149206/how-to-install-nvidia-run">error</a> when trying to install NVIDIA.run while still logged in:
 <br />
-Alternatively, <a href="https://help.ubuntu.com/stable/ubuntu-help/user-accounts.html.en#manage">manage</a> user accounts from Settings | Users user interface to <a href="https://help.ubuntu.com/stable/ubuntu-help/user-add.html.en">add</a> new user account.  Initially, the account user will use the default icon.  Consider changing via Settings | Users | Picture | Select File.
-<br /><br />
+    <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;<b>Ensure you are logged out!</b><br />
+        &nbsp;sudo service lightdm stop<br />
+        &nbsp;sudo init 3<br />
+        &nbsp;./NVIDIA...run<br />
+        &nbsp;sudo service lightdm start<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+In, Software Updater | Additional Drivers, ensure NVidia is set "Using X.Org X server" as alternative driver.
+<br /> <br />

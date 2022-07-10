@@ -1,7 +1,39 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
-
+<b>Login</b><br />
+If, whenever you attempt to login, you get the Ubuntu black screen with flashing cursor then attempt this <a href="https://www.youtube.com/watch?v=UjGy2-y-fzs">fix</a>:  Reboot computer and login as <a href="https://askubuntu.com/questions/859630/how-to-start-ubuntu-in-console-mode">recovery</a> mode.  Once logged in again, download and install NVIDIA.run.
+<br /><br>
+  Checkout <a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux">here</a> and <a href="https://www.cyberciti.biz/faq/ubuntu-linux-install-nvidia-driver-latest-proprietary-driver">here</a> how to <a href="https://download.nvidia.com/XFree86/Linux-x86_64/460.84/NVIDIA-Linux-x86_64-460.84.run">install</a> nVidia driver on Ubuntu Linux e.g. NVIDIA-Linux-x86_64-460.84.run
+  <br>
+  <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo su<br />
+        &nbsp;cd Downloads<br />
+        &nbsp;./NVIDIA.run<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+IMPORTANT<br />
+If you are running X server then you may get an <a href="https://askubuntu.com/questions/149206/how-to-install-nvidia-run">error</a> when trying to install NVIDIA.run while still logged in:
+<br />
+    <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;<b>Ensure you are logged out!</b><br />
+        &nbsp;sudo service lightdm stop<br />
+        &nbsp;sudo init 3<br />
+        &nbsp;./NVIDIA...run<br />
+        &nbsp;sudo service lightdm start<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+In, Software Updater | Additional Drivers, ensure NVidia is set "Using X.Org X server" as alternative driver.
+<br /> <br />
+  
+  
   <br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html">post</a>, we set up Ubuntu Linux on Windows and Mac OS/X using VirtualBox.  Now we focus our set up on dedicated Ubuntu Linux workstation or Windows PC that has dual boot with Ubuntu Linux installed.
 <br />
@@ -282,6 +314,7 @@ Don't lock the screen as you won't be able to VNC back in!  Change Settings | Pr
   <br /><br />
 When prompted choose Continue.  Enter password | Check Remember password.  Unfortunately not all keys may work e.g. Caps Lock.  Also, you may have to disable and re-enable Repeat Keys from Universal Access.
 
+<br /><br />
 <u>Summary</u><br />
 Now we have a dedicated Ubuntu Linux workstation set up we are all set for cloud computing development!
 </span>
