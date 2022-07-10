@@ -1,0 +1,195 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<i>Graphics Driver</i><br />
+If you attempt to login to Ubuntu 20.04 and are confronted with black screen [and blinking cursor] then you may need to re-install graphics drivers.  Instructions on how install the <a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux">NVIDIA</a> drivers for Ubuntu are here.
+<br /><br />
+However, you receive an error complaining that the X server is running then complete these recovery <a href="https://askubuntu.com/questions/149206/how-to-install-nvidia-run">steps</a>:
+<!--
+<i>ERROR: You appear to be running an X server; please exit X before installing</i>
+-->
+<br /><br />
+  TODO cxomplete
+  <br /><br />
+Reboot computer in recovery mode | Login prompt | Enter username and password | Enter these commands
+<pre class="csharp" name="code">
+sudo service lightdm stop
+sudo init 3
+./NVIDIA...run
+sudo service lightdm start
+</pre>
+<br />
+  
+  TODO cxomplete
+  <br /><br />
+  
+00-Intro<br />
+In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, we set up Ubuntu Linux and installed some initial software.  Now, let's continue setup.
+<!--
+<a href="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s1600/Linux.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s640/Linux.jpg" width="98%" height="225" /></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+
+01-Misc<br />
+<u>Miscellaneous</u><br />
+Here are some additional miscellaneous tasks that could be useful for consistent developer user experience.
+<br /><br />
+<i>Upgrade Ubuntu</i><br />
+As of the time of this writing Ubuntu 20.04 is available.  If you are operating an older version e.g. 18.04 then consider upgrading Ubuntu.  Ensure Software & Updates "Notify me of new Ubuntu version" is not set Never! 
+<pre class="csharp" name="code">
+sudo apt update && sudo apt upgrade
+sudo reboot command
+sudo apt install update-manager-core
+sudo do-release-upgrade
+sudo reboot
+lsb_release -a
+</pre>
+<br />
+<i>Account Icon</i><br />
+Initially, the account user will use default icon.  Consider changing via Settings | Users | Picture | Select File.
+<br /><br />
+<i>File Explorer</i><br />
+Launch File Explorer | Click "three lines" | Preferences | List View | "Allow folders to be expanded" option is replica of Tree Style used in Windows.  Also, it can be useful to enable "Show Hidden Files" to match <b>ls -al</b>.
+<br /><br />
+<i>Video Codecs</i><br />
+Initially, video file formats like mp4 may result in black screen.  If so then install all the Multimedia Codecs:
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt install ubuntu-restricted-extras
+</pre>
+<br />
+<i>Keyboard Shortcuts</i><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;General</td>
+<td valign="top">&nbsp;Minimize all windows</td>  
+<td valign="top">&nbsp;Ctrl + Alt + D</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;gedit</td>
+<td valign="top">&nbsp;Move prev tab</td>  
+<td valign="top">&nbsp;Ctrl + Alt + PgUp</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;gedit</td>
+<td valign="top">&nbsp;Move next tab</td>  
+<td valign="top">&nbsp;Ctrl + Alt + PgDown</td>
+</tr>
+</table> 
+<br /><br />
+
+02-VNC<br />
+<u>VNC Viewer</u><br />
+If you are transitioning from Windows to Linux you may like to remote desktop from Windows to Linux box.
+<br /><br />
+<i>Linux</i><br />
+Follow all <a href="https://www.youtube.com/watch?v=bLGLwGToFCg">instructions</a>.  Change Ubuntu desktop manager from GNOME to LightDM.  <a href="https://www.crazy-logic.co.uk/projects/computing/how-to-install-x11vnc-vnc-server-as-a-service-on-ubuntu-20-04-for-remote-access-or-screen-sharing">Install</a> X11VNC as service on Ubuntu.  Launch Terminal and enter the following.  When prompted, ensure you choose lightdm not gdm3:
+<pre class="csharp" name="code">
+sudo apt-get update
+sudo apt-get install lightdm
+sudo reboot
+sudo apt-get install x11vnc
+</pre>
+<br />
+After installing LightDM, rebooting and installing X11VNC, configure x11vnc.service.  Replace your password!
+<pre class="csharp" name="code">
+sudo gedit /lib/systemd/system/x11vnc.service
+
+[Unit]
+Description=x11vnc service
+After=display-manager.service network.target syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -forever -display :0 -auth guess -passwd REPLACE_WITH_YOUR_LOGIN_PASSWORD
+ExecStop=/usr/bin/killall x11vnc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<br />
+Finally, after configuring x11vnc.service, enter the following commands to complete the VNC Viewer setup.
+<pre class="csharp" name="code">
+systemctl daemon-reload
+systemctl enable x11vnc.service
+systemctl start x11vnc.service
+
+systemctl status x11vnc.service
+ip addr | grep 192                        # NOTE the IP address 192.168.1.X
+</pre>
+<br />
+IMPORTANT<br />
+Don't lock the screen as you won't be able to VNC back in!  Change Settings | Privacy | Screen Lock to this:  
+<!--
+<a href="https://1.bp.blogspot.com/-Rn8mo4N3krQ/YPGpZhGfXHI/AAAAAAAAHG0/ncOX0364UtkIKeskQAmcnP95o8xxyXFWgCLcBGAsYHQ/s661/vnc-screenlock.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Rn8mo4N3krQ/YPGpZhGfXHI/AAAAAAAAHG0/ncOX0364UtkIKeskQAmcnP95o8xxyXFWgCLcBGAsYHQ/s600/vnc-screenlock.png"/></a>
+-->
+<br /><br />
+<i>Windows</i><br />
+<a href="https://www.realvnc.com/en/connect/download/viewer">Download</a> and install VNC Viewer.  Launch VNC Viewer.  Setup Team.  Choose File | New Connection.  Enter the IP address from above on port 5000 for VNC Server e.g. 192.168.1.X:5900.  Enter friendly name + Connect.
+  <br /><br />
+When prompted choose Continue.  Enter password | Check Remember password.  Unfortunately not all keys may work e.g. Caps Lock.  Also, you may have to disable and re-enable Repeat Keys from Universal Access.
+<br /><br />
+
+03-Software<br />
+<u>Software</u><br />
+In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, a lot of software was installed from various commands entered in the Terminal window.  Fortunately, a lot of software can be installed directly from <a href="https://wiki.ubuntu.com/SoftwareCenter">Ubuntu</a> Software instead.  Here, an extended list.
+<br /><br />
+Launch Ubuntu Software.  Search for the following software applications listed below and install accordingly:
+<br />
+<!--
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;<a href="https://www.gitkraken.com">GitKraken</a></td>
+<td valign="top">&nbsp;Legendary Git GUI client for Windows, Mac & Linux</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://code.visualstudio.com">Visual Studio Code</a></td>
+<td valign="top">&nbsp;Source-code editor for Windows, Linux and macOS</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://www.jetbrains.com/go">Goland</a></td>
+<td valign="top">&nbsp;Cross-platform IDE built specially for Go developers </td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://www.codeblocks.org">Code Blocks</a></td>
+<td valign="top">&nbsp;The free C/C++ and Fortran IDE</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://www.jetbrains.com/clion">CLion</a></td>
+<td valign="top">&nbsp;Cross-platform IDE for C and C++</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://www.jetbrains.com/pycharm">PyCharm</a></td>
+<td valign="top">&nbsp;The Python IDE for Professional Developers </td>
+</tr>
+</table>
+-->
+<br />
+IMPORTANT<br />
+If, for some reason you cannot search Code::Blocks in Application Manager then consider installing Add-ons.
+<br /><br />
+  
+04-Utilities<br />
+<u>Utilities</u><br />
+Remember some utilities may still need to be installed and configured from the Terminal.  Launch Terminal:  
+<pre class="csharp" name="code">
+sudo apt-get install git
+sudo apt-get install curl
+sudo apt-get install python3-pip
+</pre>
+<br />
+<i>Python</i><br />
+Update your ~/.bashrc file as necessary to use Python 3.7 by default instead of Python 2 as per this post.
+<pre class="csharp" name="code">
+cd ~/
+cp .bashrc .bashrc_bak
+echo "alias python='python3'" >> ~/.bashrc
+echo "alias pip='pip3'" >> ~/.bashrc
+</pre>
+<br /><br />
+05-Kernel<br />
+<u>Kernel</u><br />
+
+</span>
