@@ -1,65 +1,169 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<i>Graphics Driver</i><br />
-If you attempt to login to Ubuntu 20.04 and are confronted with black screen [and blinking cursor] then you may need to re-install graphics drivers.  Instructions on how install the <a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux">NVIDIA</a> drivers for Ubuntu are here.
-<br /><br />
-However, you receive an error complaining that the X server is running then complete these recovery <a href="https://askubuntu.com/questions/149206/how-to-install-nvidia-run">steps</a>:
-<!--
-<i>ERROR: You appear to be running an X server; please exit X before installing</i>
--->
-<br /><br />
-  TODO cxomplete
-  <br /><br />
-Reboot computer in recovery mode | Login prompt | Enter username and password | Enter these commands
-<pre class="csharp" name="code">
-sudo service lightdm stop
-sudo init 3
-./NVIDIA...run
-sudo service lightdm start
-</pre>
+In the previous <a href="http://steveproxna.blogspot.com/2019/09/linux-setup-cheat-sheet.html">post</a>, we set up Ubuntu Linux on Windows and Mac OS/X using VirtualBox.  Now we focus our set up on dedicated Ubuntu Linux workstation or Windows PC that has dual boot with Ubuntu Linux installed.
 <br />
-  
-  TODO cxomplete
-  <br /><br />
-  
-00-Intro<br />
-In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, we set up Ubuntu Linux and installed some initial software.  Now, let's continue setup.
-<!--
 <a href="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s1600/Linux.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-tOvmPTWg5LA/XUfplik_HaI/AAAAAAAAFlo/twAFdZ83mtAOkqpWHdvSfPRlKZNc4E7OACLcBGAs/s640/Linux.jpg" width="98%" height="225" /></a>
--->
 <br />
 Let's check it out!
 <br /><br />
 
-01-Misc<br />
-<u>Miscellaneous</u><br />
-Here are some additional miscellaneous tasks that could be useful for consistent developer user experience.
-<br /><br />
-<i>Upgrade Ubuntu</i><br />
-As of the time of this writing Ubuntu 20.04 is available.  If you are operating an older version e.g. 18.04 then consider upgrading Ubuntu.  Ensure Software & Updates "Notify me of new Ubuntu version" is not set Never! 
-<pre class="csharp" name="code">
-sudo apt update && sudo apt upgrade
-sudo reboot command
-sudo apt install update-manager-core
-sudo do-release-upgrade
-sudo reboot
-lsb_release -a
-</pre>
+<b>Account</b><br />
+Typically, during the installation process, an admin account is prompted to be created with username and password.  However, follow these instructions to <a href="https://www.cyberciti.biz/faq/add-new-user-account-with-admin-access-on-linux">add</a> new user account with admin access on Ubuntu Linux.
 <br />
-<i>Account Icon</i><br />
-Initially, the account user will use default icon.  Consider changing via Settings | Users | Picture | Select File.
-<br /><br />
-<i>File Explorer</i><br />
-Launch File Explorer | Click "three lines" | Preferences | List View | "Allow folders to be expanded" option is replica of Tree Style used in Windows.  Also, it can be useful to enable "Show Hidden Files" to match <b>ls -al</b>.
-<br /><br />
-<i>Video Codecs</i><br />
-Initially, video file formats like mp4 may result in black screen.  If so then install all the Multimedia Codecs:
-<pre class="csharp" name="code">
-sudo apt-get update
-sudo apt install ubuntu-restricted-extras
-</pre>
+  <table width="97%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;adduser stevepro<br />
+        &nbsp;usermod -aG sudo stevepro<br />
+        &nbsp;id stevepro<br />
+        &nbsp;su - stevepro<br />
+      </td>
+    </tr>  
+  </table>
 <br />
-<i>Keyboard Shortcuts</i><br />
+Alternatively, <a href="https://help.ubuntu.com/stable/ubuntu-help/user-accounts.html.en#manage">manage</a> user accounts from Settings | Users user interface to <a href="https://help.ubuntu.com/stable/ubuntu-help/user-add.html.en">add</a> new user account.  Initially, the account user will use the default icon.  Consider changing via Settings | Users | Picture | Select File.
+<br /><br />
+
+<b>Login</b><br />
+If, whenever you attempt to login, you get the Ubuntu black screen with flashing cursor then attempt this <a href="https://www.youtube.com/watch?v=UjGy2-y-fzs">fix</a>:  Reboot computer and login as <a href="https://askubuntu.com/questions/859630/how-to-start-ubuntu-in-console-mode">recovery</a> mode.  Once logged in again, download and install NVIDIA.run.
+<br /><br>
+  Checkout <a href="https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux">here</a> and <a href="https://www.cyberciti.biz/faq/ubuntu-linux-install-nvidia-driver-latest-proprietary-driver">here</a> how to <a href="https://download.nvidia.com/XFree86/Linux-x86_64/460.84/NVIDIA-Linux-x86_64-460.84.run">install</a> nVidia driver on Ubuntu Linux e.g. NVIDIA-Linux-x86_64-460.84.run
+  <br>
+  <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo su<br />
+        &nbsp;cd Downloads<br />
+        &nbsp;./NVIDIA.run<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+IMPORTANT<br />
+If you are running X server then you may get an <a href="https://askubuntu.com/questions/149206/how-to-install-nvidia-run">error</a> when trying to install NVIDIA.run while still logged in:
+<br />
+    <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;<b>Ensure you are logged out!</b><br />
+        &nbsp;sudo service lightdm stop<br />
+        &nbsp;sudo init 3<br />
+        &nbsp;./NVIDIA...run<br />
+        &nbsp;sudo service lightdm start<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+In, Software Updater | Additional Drivers, ensure NVidia is set "Using X.Org X server" as alternative driver.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY3hoR5qokDKwCTU248HJCN1EPKtY_3yra6j6zKJNenBH03bJXR-hS69J94JI25kQys1vlsE_6cUo3sAsWYlpeOqKQPk642-xICEsdV8Fqb4KkTl1S8dJWwdrVj4IYNEd1Zy-QngiNyPPfHgSCsIOwCgfd5IV9tTfYKcXMu0CSzLaYPEaHgJU3tA6a/s992/nvidia-driver.png"><img alt="" border="0" width="98%"
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY3hoR5qokDKwCTU248HJCN1EPKtY_3yra6j6zKJNenBH03bJXR-hS69J94JI25kQys1vlsE_6cUo3sAsWYlpeOqKQPk642-xICEsdV8Fqb4KkTl1S8dJWwdrVj4IYNEd1Zy-QngiNyPPfHgSCsIOwCgfd5IV9tTfYKcXMu0CSzLaYPEaHgJU3tA6a/s600/nvidia-driver.png"/></a>
+<br /><br />
+
+<b>Graphics</b><br />
+Initially, video file formats like mp4 may result in black screen.  If so then install all the <a href="Multimedia">Multimedia</a> Codecs:
+<br />
+  <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo apt-get update<br />
+        &nbsp;sudo apt install ubuntu-restricted-extras<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+  
+<b>Ubuntu</b><br />
+Confirm the version of Ubuntu Linux installed on terminal with <b>lsb_release -a</b>.  Upgrade now accordingly:
+<br />
+  <table width="97%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo apt update && sudo apt upgrade<br />
+        &nbsp;sudo reboot command<br />
+        &nbsp;sudo apt install update-manager-core<br />
+        &nbsp;sudo do-release-upgrade<br />
+        &nbsp;sudo reboot<br />
+        &nbsp;lsb_release -a<br />
+      </td>
+    </tr>  
+  </table>
+  <br />
+
+<b>Kernel</b><br />
+<a href="https://ubuntuhandbook.org/index.php/2020/08/mainline-install-latest-kernel-ubuntu-linux-mint">Mainline</a> is graphical tool to install the latest mainline kernel in Ubuntu Linux.  Install Mainline from Terminal:
+  <br>
+  <table width="98%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo add-apt-repository ppa:cappelikan/ppa<br />
+        &nbsp;sudo apt update<br />
+        &nbsp;sudo apt install mainline<br />  
+        &nbsp;mainline --check<br />  
+        &nbsp;mainline --list<br />
+      </td>
+    </tr>  
+  </table>
+Start | Ubuntu Mainline.  From the User Interface now install / uninstall Ubuntu Linux versions seemlessly.  Once Ubuntu Linux kernel has been updated confirm kernel new version with <b>uname -r</b>.
+  <br><br>
+
+
+  
+
+<b>Diff Tools</b><br />
+On Windows PC, Tortoise Merge is handy tool to compare 2x files whereas WinMerge is handy tool that can compare 2x directories.  Meld + KDiff3 are <a href="https://alternativeto.net/software/winmerge/?platform=linux">alternatives</a> for Linux both installed from Ubuntu Software Center.
+<br /><br />
+<i>Meld</i><br>
+File | New Comparison.  File comparison navigate to file 1.  Directory comparison navigate to file 2.  Compare.  
+<br />
+<i>KDiff3</i><br>
+Similar to WinMerge: A. Directory navigate to directory 1.  B. Directory navigate to directory 2.  Compare OK.
+<br /><br />
+
+<b>Disk Space</b><br />  
+  Use Ubuntu Linux Disk Analyzer utility to <a href="https://itsfoss.com/fix-empty-trash-ubuntu">identify</a> common locations which can be used to free up disk space:
+<br />
+  <table width="99%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;rm -rf ~/.local/share/Trash/*<br />
+        &nbsp;du -sh ~/.cache/thumbnails<br />
+        &nbsp;sudo du -h /var/lib/snapd/snaps<br />
+        &nbsp;sudo du -sh /var/cache/apt <br />
+      </td>
+      <td valign="top">
+        &nbsp;sudo apt-get autoclean<br />
+        &nbsp;sudo apt-get clean<br />
+        &nbsp;sudo journalctl --disk-usage<br />
+        &nbsp;sudo journalctl --vacuum-time=3d <br />
+      </td>
+    </tr>  
+  </table>
+Other utilities to identify excess storage include <b>ncud</b> and <b>bleachbit</b> both which can be sudo apt install[ed].
+<br /><br />
+<b>Find</b><br />
+  Here are some simple but effective uses of the find command e.g. <a href="https://stackoverflow.com/questions/4767396/linux-command-how-to-find-only-text-files">find</a> all text in file that follows predicate:
+<br />
+  <table width="97%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;find -L . -type f -exec grep -HniI 'g++' {} \; > ~/Steven/gpp.txt<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+Another useful example is how to <a href="https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy">find</a> all of the distinct file extensions in a particular folder hierarchy:
+  <br />
+  <table width="97%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+
+<b>Shortcuts</b><br />
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;General</td>
@@ -76,11 +180,87 @@ sudo apt install ubuntu-restricted-extras
 <td valign="top">&nbsp;Move next tab</td>  
 <td valign="top">&nbsp;Ctrl + Alt + PgDown</td>
 </tr>
-</table> 
-<br /><br />
+</table>
+<br />
 
-02-VNC<br />
-<u>VNC Viewer</u><br />
+<b>SSH</b><br />
+Secure SHell [SSH] may not be enabled after Ubuntu Linux is installed.  Therefore you may get the following:
+<br>
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+&nbsp;ssh stevepro@192.168.15.50<br />
+&nbsp;ssh: connect to host 192.168.15.50 port 22: Connection refused<br />  
+</td>
+</tr>  
+</table>
+<i>Server</i><br>
+<a href="https://linuxhint.com/fix_connection_refused_ubuntu">Here</a> is how to fix the Connection refused issue on port 22.  On the destination server set up the following:
+<br>
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+&nbsp;# Make sure OpenSSH is installed<br />
+&nbsp;# Install SSH<br />
+&nbsp;# Check SSH service<br />
+&nbsp;# Start SSH service<br />
+</td>
+<td valign="top">
+&nbsp;sudo apt list --installed | grep openssh-server<br />
+&nbsp;sudo apt install openssh-server<br />
+&nbsp;sudo service ssh status<br>
+&nbsp;sudo service ssh start<br>
+</td>
+</tr>  
+</table>
+<i>Client</i><br>
+On source client connect to Files | Other Locations | Connect to Server <b>sftp://stevepro@192.168.15.50</b>.
+<br />  
+Also, <b>ssh stevepro@192.168.15.50</b> should now work!
+<br /><br />
+  
+<b>Mouse Scroll</b><br />  
+After setting up new blue tooth mouse the default scroll was too slow.  Therefore, install and set up <a href="https://io.bikegremlin.com/11541/linux-mouse-scroll-speed/">lmwheel</a>:
+<br />
+  <table width="99%" border="1">
+    <tr>
+      <td valign="top">
+        &nbsp;sudo apt-get install imwheel<br />
+      </td>
+    </tr>  
+  </table>
+<br />
+Create mouse.sh.  Integrate the following shell script.  Set execute permissions.  Configure using <b>./mouse.sh</b>.
+<br />
+<pre class="csharp" name="code">
+#!/bin/bash
+if [ ! -f ~/.imwheelrc ]
+then
+cat &gt;~/.imwheelrc&lt;&lt;EOF
+".*"
+None,      Up,   Button4, 1
+None,      Down, Button5, 1
+Control_L, Up,   Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L,   Up,   Shift_L|Button4
+Shift_L,   Down, Shift_L|Button5
+EOF
+fi
+CURRENT_VALUE=$(awk -F 'Button4,' '{print $2}' ~/.imwheelrc)
+NEW_VALUE=$(zenity --scale --window-icon=info --ok-label=Apply --title="Wheelies" --text "Mouse wheel speed:" --min-value=1 --max-value=100 --value="$CURRENT_VALUE" --step 1)
+if [ "$NEW_VALUE" == "" ];
+then exit 0
+fi
+sed -i "s/\($TARGET_KEY *Button4, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button4, and write new value.
+sed -i "s/\($TARGET_KEY *Button5, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button5, and write new value.
+cat ~/.imwheelrc
+imwheel -kill
+</pre>  
+<br />
+  
+
+
+<b>VNC Viewer</b><br />
 If you are transitioning from Windows to Linux you may like to remote desktop from Windows to Linux box.
 <br /><br />
 <i>Linux</i><br />
@@ -126,70 +306,14 @@ Don't lock the screen as you won't be able to VNC back in!  Change Settings | Pr
 <a href="https://1.bp.blogspot.com/-Rn8mo4N3krQ/YPGpZhGfXHI/AAAAAAAAHG0/ncOX0364UtkIKeskQAmcnP95o8xxyXFWgCLcBGAsYHQ/s661/vnc-screenlock.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Rn8mo4N3krQ/YPGpZhGfXHI/AAAAAAAAHG0/ncOX0364UtkIKeskQAmcnP95o8xxyXFWgCLcBGAsYHQ/s600/vnc-screenlock.png"/></a>
 -->
 <br /><br />
+
 <i>Windows</i><br />
 <a href="https://www.realvnc.com/en/connect/download/viewer">Download</a> and install VNC Viewer.  Launch VNC Viewer.  Setup Team.  Choose File | New Connection.  Enter the IP address from above on port 5000 for VNC Server e.g. 192.168.1.X:5900.  Enter friendly name + Connect.
   <br /><br />
 When prompted choose Continue.  Enter password | Check Remember password.  Unfortunately not all keys may work e.g. Caps Lock.  Also, you may have to disable and re-enable Repeat Keys from Universal Access.
-<br /><br />
 
-03-Software<br />
-<u>Software</u><br />
-In the previous <a href="https://steveproxna.blogspot.com/2019/10">post</a>, a lot of software was installed from various commands entered in the Terminal window.  Fortunately, a lot of software can be installed directly from <a href="https://wiki.ubuntu.com/SoftwareCenter">Ubuntu</a> Software instead.  Here, an extended list.
 <br /><br />
-Launch Ubuntu Software.  Search for the following software applications listed below and install accordingly:
-<br />
-<!--
-<table width="98%" border="1">
-<tr>
-<td valign="top">&nbsp;<a href="https://www.gitkraken.com">GitKraken</a></td>
-<td valign="top">&nbsp;Legendary Git GUI client for Windows, Mac & Linux</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://code.visualstudio.com">Visual Studio Code</a></td>
-<td valign="top">&nbsp;Source-code editor for Windows, Linux and macOS</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://www.jetbrains.com/go">Goland</a></td>
-<td valign="top">&nbsp;Cross-platform IDE built specially for Go developers </td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://www.codeblocks.org">Code Blocks</a></td>
-<td valign="top">&nbsp;The free C/C++ and Fortran IDE</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://www.jetbrains.com/clion">CLion</a></td>
-<td valign="top">&nbsp;Cross-platform IDE for C and C++</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://www.jetbrains.com/pycharm">PyCharm</a></td>
-<td valign="top">&nbsp;The Python IDE for Professional Developers </td>
-</tr>
-</table>
--->
-<br />
-IMPORTANT<br />
-If, for some reason you cannot search Code::Blocks in Application Manager then consider installing Add-ons.
-<br /><br />
-  
-04-Utilities<br />
-<u>Utilities</u><br />
-Remember some utilities may still need to be installed and configured from the Terminal.  Launch Terminal:  
-<pre class="csharp" name="code">
-sudo apt-get install git
-sudo apt-get install curl
-sudo apt-get install python3-pip
-</pre>
-<br />
-<i>Python</i><br />
-Update your ~/.bashrc file as necessary to use Python 3.7 by default instead of Python 2 as per this post.
-<pre class="csharp" name="code">
-cd ~/
-cp .bashrc .bashrc_bak
-echo "alias python='python3'" >> ~/.bashrc
-echo "alias pip='pip3'" >> ~/.bashrc
-</pre>
-<br /><br />
-05-Kernel<br />
-<u>Kernel</u><br />
+<u>Summary</u><br />
+Now we have a dedicated Ubuntu Linux workstation set up we are all set for cloud computing development!
 
 </span>
