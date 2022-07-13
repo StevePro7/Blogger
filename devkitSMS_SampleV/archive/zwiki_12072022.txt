@@ -121,7 +121,7 @@ bmp2tile.exe raw/splash.bmp ^
 </table>
 <br />
 <b>Opaque</b><br />
-<a href="https://www.smspower.org/Homebrew/CandyKid-SMS">Candy Kid</a>, which is a Pacman clone, uses opaque background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses sprite palette bitwise OR with tile priority.
+Candy Kid, which is a Pacman clone, uses opaque background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses sprite palette bitwise OR with tile priority.
 <br />
 <br />
 <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/03-OpaqueTiles/02-NEWopaque/dev/engine/tile_manager.c">tile_manager.c</a>
