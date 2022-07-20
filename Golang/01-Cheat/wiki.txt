@@ -146,25 +146,23 @@ Finally, you may like to Ctrl + "+" to <a href="https://stackoverflow.com/questi
 <i>Configurations</i><br />
 Launch GoLand.  In the "Welcome to GoLand" popup choose Customize | Color theme | IntelliJ Light.  Next, choose All settings...  Expand Go tab at the top | GOROOT | Add SDK... <a href="https://www.jetbrains.com/help/go/configuring-goroot-and-gopath.html#navigate-to-go-sdk">Local</a> | Navigate to where <b>Go</b> was installed previously e.g. <b>/usr/local/go</b>.  Finally update GOPATH.  Click "+" select <b>~/go</b>. OK | Apply | OK.
 <br />
-<br />TODO - insert GoRoot.png<br />
-<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEji3RNzkpS_lTa9JHj3LifGOxAIfwOv2pzZYGzwHzAjK7P0PH89aULT57zDEeb7FnEOT7IFZlbby3K_dnsljSeo-LhgdTqihqPDuqI1v_YQkvbbfukbgfeDROCLturLlIBU95WUGLRoRLlggEOD2ZFcnOOq5B80XFz5TGD_cY18UTHFJ4KKvIU1_KEI/s910/GoRoot.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEji3RNzkpS_lTa9JHj3LifGOxAIfwOv2pzZYGzwHzAjK7P0PH89aULT57zDEeb7FnEOT7IFZlbby3K_dnsljSeo-LhgdTqihqPDuqI1v_YQkvbbfukbgfeDROCLturLlIBU95WUGLRoRLlggEOD2ZFcnOOq5B80XFz5TGD_cY18UTHFJ4KKvIU1_KEI/s600/GoRoot.png"/></a>
+<br /><br />
 IMPORTANT<br />
 Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.  Also, in Go tab | <a href="https://stackoverflow.com/questions/64463967/go-mod-unresolved-dependency">Go Modules</a> ensure "Enable Go modules integration" is checked as may not be by default.
 <br />
-<br />TODO - insert GoModules.png<br />
-<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT8gAm6B1RuK0xB81GS3FIv1Ng4sp7rzKXbqjvBNz7q50eZ9wBPRuLPahN6ga4iKJw5JPVNylDAXW_CQfgyHuTgpAbOskKlY3BKy253TgvD2zD4cg2BDiyCEayLp_kL2dkpeBUq-NxN2J5o1pj9BXHvClhCvPFLy8KWYfrbG_v58m_a6cEDhRK45T-/s910/GoModules.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT8gAm6B1RuK0xB81GS3FIv1Ng4sp7rzKXbqjvBNz7q50eZ9wBPRuLPahN6ga4iKJw5JPVNylDAXW_CQfgyHuTgpAbOskKlY3BKy253TgvD2zD4cg2BDiyCEayLp_kL2dkpeBUq-NxN2J5o1pj9BXHvClhCvPFLy8KWYfrbG_v58m_a6cEDhRK45T-/s600/GoModules.png"/></a>
+<br /><br />
 <i>Mappings</i><br />
 <a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default value to VSCode.  Now all VS Code shortcuts above will work in GoLand.
 <br /><br />
 IMPORTANT<br />
 Repeat process to map Keymap in other JetBrains IDE products e.g. <a href="https://en.wikipedia.org/wiki/PyCharm">PyCharm</a> to VS Code for consistency.
 <br /><br />
-  
 <br />
 <u>Example</u><br />
 Create the obligatory Hello World program in both VS Code and GoLand IDE to complete the configration:
 <br /><br />
-<!--
 <a href="https://play.golang.org">main.go</a>
 <pre class="csharp" name="code">
 package main
@@ -175,8 +173,6 @@ func main() {
 }
 </pre>
 <br />
--->
-  
 <b>VS Code</b><br />
 Create "HelloVSCode" folder at ~/go/src.  Launch VS Code.  Open folder [Ctrl+K, Ctrl+O] HelloVSCode folder.  New File | main.go.  Enter + save Hello World source code from package main above.  Launch new Terminal:
 <pre class="csharp" name="code">
@@ -188,15 +184,12 @@ go run .
 </pre>
 Set breakpoint in main.go.  Run menu and choose either Start Debugging or Run without Debugging option.
 <br /><br />
-  
 <br />
 <b>GoLand</b><br />
 Launch GoLand.  New Project | Enter Location and GOROOT as above i.e. <b>Go 1.18.3 /usr/local/go</b>.  Create.
 <br />
-<br />TODO - HelloGoLand.png<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixX1ea7LKM5WZb2XMmGPSWVnLVQ6ogfyGJ8BFUDpF4yqxsK5eq40oKtWvwXydzZ8TW72oPf269qIgST_HP0Ms9AwceLwKz0k1zeOKoXgmForrsle6tnJzG2sa19DbQTIUQYLkAVSMVwLYGAPJgP-vgLb39A0Q2d7fy2H93uXfLY2nP4IV_w26LOgLn/s799/HelloGoLand.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixX1ea7LKM5WZb2XMmGPSWVnLVQ6ogfyGJ8BFUDpF4yqxsK5eq40oKtWvwXydzZ8TW72oPf269qIgST_HP0Ms9AwceLwKz0k1zeOKoXgmForrsle6tnJzG2sa19DbQTIUQYLkAVSMVwLYGAPJgP-vgLb39A0Q2d7fy2H93uXfLY2nP4IV_w26LOgLn/s600/HelloGoLand.png"/></a>
 <br />
-<!--
-<a href="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s800/HelloGoLand.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s600/HelloGoLand.png"/></a>
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Location</td>
@@ -211,7 +204,6 @@ Launch GoLand.  New Project | Enter Location and GOROOT as above i.e. <b>Go 1.18
 <td valign="top">&nbsp;CHECKED</td>
 </tr>
 </table>
--->
 <br />
 New | Go File | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
 <pre class="csharp" name="code">
@@ -235,16 +227,9 @@ As code bases become larger use the Bookmarks feature for easier navigation.  Ri
 <br /><br />  
 <i>Source Control</i><br />
 In GoLand, top right under Project is the Control tab.  Right click any file and choose Rollback to revert any changes.  In VS Code the Source Control tab is third tab.  Choose Discard Changes as corresponding action.
-<br /><br />
-  
+<br /><br /> 
 <u>Summary</u><br />
-<!--  
-To summarize, we have a simple setup for Golang programming on Windows, Mac OS/X and Linux.  There is much to explore e.g. Cloud Computing and developing highly scalable concurrent applications using Golang.
-<br /><br />
-This will be topic of the next post.
--->
 To summarize, we have a simple setup for Golang programming on <a href="https://go.dev/dl/go1.18.3.windows-amd64.msi">Windows</a>, <a href="https://go.dev/dl/go1.18.3.darwin-amd64.pkg">Mac OS/X</a> and <a href="https://go.dev/dl/go1.18.3.linux-amd64.tar.gz">Linux</a>.  There is much to explore e.g. <a href="https://www.linkedin.com/pulse/power-up-your-cloud-computing-golang-reemi-shirsath">Cloud</a> Computing and developing highly scalable concurrent applications using Golang!
 <br />
 This will be topic of the next post.
-
 </span>
