@@ -8,46 +8,31 @@
 <br />
 Let's check it out!
 <br /><br />
-<u>Installation</u><br />
+<u>01-Installation</u><br />
 <a href="https://golang.org/doc/install">Download</a> and install Go as per instructions for your target operating system.  Afterwards verify <b>go version</b>.
 <br /><br />
 <b>Windows</b><br />
-<a href="https://golang.org/dl/go1.18.3.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
+<a href="https://golang.org/dl/go1.16.6.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
 <br /><br />
 <b>Mac OS/X</b><br />
-<a href="https://golang.org/dl/go1.18.3.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
+<a href="https://golang.org/dl/go1.16.6.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
 <br /><br />
 <b>Linux</b><br />
-<a href="https://golang.org/dl/go1.18.3.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
+<a href="https://golang.org/dl/go1.16.6.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
 <br />
-<table width="98%" border="1">
-<tr>
-<td valign="top">
-&nbsp;sudo rm -rf /usr/local/go<br />
-&nbsp;sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz<br />
-&nbsp;export PATH=$PATH:/usr/local/go/bin/<br />
-&nbsp;go version<br />
-</td>
-</tr>  
-</table>
-Alternatively, include <b>export PATH="$PATH:/usr/local/go/bin/"</b> to your <b>~/.bashrc</b> file for future use.
-<br /><br />
+<pre class="csharp" name="code">
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+</pre>
+<br />
 IMPORTANT<br />
 If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</b>.  Also, verify Go environment variables by entering <b>go env</b> at the Terminal prompt for all operating systems.
 <br /><br />
-<u>Uninstall</u><br />
-Follow this <a href="https://stackoverflow.com/questions/42186003/how-to-uninstall-go">guide</a> on how to uninstall Go.  While there seems to be many options, the following should work:
+
 <br />
-<table width="98%" border="1">
-<tr>
-<td valign="top">
-&nbsp;sudo apt-get remove golang-go<br />
-&nbsp;sudo apt-get remove --auto-remove golang-go<br />
-</td>
-</tr>  
-</table>
-<br />
-<u>IDEs</u><br />
+<u>02-IDEs</u><br />
 Now we'd like to build GoLang software so let's setup 2x main <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated</a> Development Environments IDEs:
 <br /><br />
 <b>VS Code</b><br />
@@ -93,7 +78,7 @@ Repeat process for Terminal: Copy Selection: File | Preferences | Keyboard Short
 If you are transitioning from Visual Studio on Windows to VS Code then the Solution Explorer with folders being represented as folder icons not arrows may be more familiar.  Therefore, install <a href="https://code.visualstudio.com/blogs/2016/09/08/icon-themes">vscode-icons</a> plugin.  Also, as code bases become larger it can be handier to install the <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks">Bookmarks</a> plugin for easier navigation.  
 <br /><br />  
 <i>Shortcuts</i><br />
-<!-- -->
+<!--
 <table width="100%" border="1">
 <tr>
 <td valign="top">&nbsp;Ctrl + P</td>
@@ -132,7 +117,7 @@ If you are transitioning from Visual Studio on Windows to VS Code then the Solut
 <td valign="top">&nbsp;Debug | Step Out</td>
 </tr>
 </table>
-<!-- -->
+-->
 <br />
 <i>Zoom In</i><br />
 Finally, you may like to Ctrl + "+" to <a href="https://stackoverflow.com/questions/36040857/visual-studio-code-change-font-size-for-file-explorer-tray/46344568">zoom</a> in on the Explorer and Terminal then reduce the Font Size to 12.  
@@ -145,14 +130,10 @@ Finally, you may like to Ctrl + "+" to <a href="https://stackoverflow.com/questi
 <br /><br />
 <i>Configurations</i><br />
 Launch GoLand.  In the "Welcome to GoLand" popup choose Customize | Color theme | IntelliJ Light.  Next, choose All settings...  Expand Go tab at the top | GOROOT | Add SDK... <a href="https://www.jetbrains.com/help/go/configuring-goroot-and-gopath.html#navigate-to-go-sdk">Local</a> | Navigate to where <b>Go</b> was installed previously e.g. <b>/usr/local/go</b>.  Finally update GOPATH.  Click "+" select <b>~/go</b>. OK | Apply | OK.
-<br />
-<br />TODO - insert GoRoot.png<br />
-<br />
+<br /><br />
 IMPORTANT<br />
 Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.  Also, in Go tab | <a href="https://stackoverflow.com/questions/64463967/go-mod-unresolved-dependency">Go Modules</a> ensure "Enable Go modules integration" is checked as may not be by default.
-<br />
-<br />TODO - insert GoModules.png<br />
-<br />
+<br /><br />
 <i>Mappings</i><br />
 <a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default value to VSCode.  Now all VS Code shortcuts above will work in GoLand.
 <br /><br />
@@ -161,7 +142,7 @@ Repeat process to map Keymap in other JetBrains IDE products e.g. <a href="https
 <br /><br />
   
 <br />
-<u>Example</u><br />
+<u>04-Example</u><br />
 Create the obligatory Hello World program in both VS Code and GoLand IDE to complete the configration:
 <br /><br />
 <!--
@@ -191,9 +172,7 @@ Set breakpoint in main.go.  Run menu and choose either Start Debugging or Run wi
   
 <br />
 <b>GoLand</b><br />
-Launch GoLand.  New Project | Enter Location and GOROOT as above i.e. <b>Go 1.18.3 /usr/local/go</b>.  Create.
-<br />
-<br />TODO - HelloGoLand.png<br />
+Launch GoLand.  New Project | Enter Location and GOROOT.  Ensure to check "Index entire GOPATH".  Create.
 <br />
 <!--
 <a href="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s800/HelloGoLand.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ioM__fU65lw/YPcdngxSvmI/AAAAAAAAHIA/Ya8dyXvLAlUVggk588ZvRYIurKl8dmRRQCLcBGAsYHQ/s600/HelloGoLand.png"/></a>
@@ -204,25 +183,22 @@ Launch GoLand.  New Project | Enter Location and GOROOT as above i.e. <b>Go 1.18
 </tr>
 <tr>
 <td valign="top">&nbsp;GOROOT</td>
-<td valign="top">&nbsp;Go 1.18.3 /usr/local/go</td>
+<td valign="top">&nbsp;Go 1.16.6 /usr/local/go</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;Enable vendoring support automatically</td>
+<td valign="top">&nbsp;Index entire GOPATH</td>
 <td valign="top">&nbsp;CHECKED</td>
 </tr>
 </table>
 -->
 <br />
-New | Go File | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
+New | Go file | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
 <pre class="csharp" name="code">
 go mod init HelloGoLand
 go mod tidy
 </pre>
 <br />
 In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
-<br /><br />
-<i>Cache</i><br />
-If GoLand complains "cannot resolve symbol" then choose File | Invalidate Caches... | Invalidate and Restart.
 <br /><br />
 <i>Configurations</i><br />
 <a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>. Remember Rename files and folder is in the Refactor menu.  Disable Typo In All Scopes: Settings | Editor | Inspections | Proofreading: Process code and Process literals.
@@ -231,13 +207,13 @@ If GoLand complains "cannot resolve symbol" then choose File | Invalidate Caches
 It may be good idea to position Problems tab next to code window so you can see issues as you enter code.  In GoLand, click cog on Problems | Move to | Right Top.  In VS Code right click Problems | Move Panel Right.
 <br /><br />
 <i>Navigation</i><br />
-As code bases become larger use the Bookmarks feature for easier navigation.  Right click the code gutter + Add Bookmark.  View menu | Tool Windows | Bookmarks.  This can also be used to add / remove Breakpoints.
-<br /><br />  
+As code bases become larger use the Navigate | Bookmarks option to Toggle Bookmarks to navigate easier.  
+<br /><br />
 <i>Source Control</i><br />
 In GoLand, top right under Project is the Control tab.  Right click any file and choose Rollback to revert any changes.  In VS Code the Source Control tab is third tab.  Choose Discard Changes as corresponding action.
 <br /><br />
   
-<u>Summary</u><br />
+<u>05-Summary</u><br />
 <!--  
 To summarize, we have a simple setup for Golang programming on Windows, Mac OS/X and Linux.  There is much to explore e.g. Cloud Computing and developing highly scalable concurrent applications using Golang.
 <br /><br />
