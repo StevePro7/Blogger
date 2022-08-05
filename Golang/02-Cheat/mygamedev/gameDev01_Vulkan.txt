@@ -1,0 +1,91 @@
+Game Dev
+03-Aug-2022
+
+https://bitbucket.org/SteveProXNA/actionstuff/src/master/Study/Plurasight/GoLang/GameDevelopment/Links.txt
+
+
+01.
+Vulkan Go
+https://github.com/shravanshetty1/vulkan-tutorial-go.git
+https://github.com/shravanshetty1/vulkan-tutorial-go
+
+ERROR
+In file included from ./glfw/src/internal.h:188,
+                 from ./glfw/src/context.c:30,
+                 from ../../../../go/pkg/mod/github.com/go-gl/glfw/v3.3/glfw@v0.0.0-20201108214237-06ea97f0c265/c_glfw.go:4:
+./glfw/src/x11_platform.h:33:10: fatal error: X11/Xlib.h: No such file or directory
+   33 | #include <X11/Xlib.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+
+
+https://vulkan-tutorial.com
+https://vulkan-tutorial.com/Development_environment#page_Linux
+
+
+SUMMARY
+Vulkan Packages
+sudo apt install vulkan-tools
+sudo apt install libvulkan-dev
+sudo apt install vulkan-validationlayers-dev spirv-tools
+vkcube
+
+GLFW
+sudo apt install libglfw3-dev
+
+GLM
+sudo apt install libglm-dev
+
+
+Shader Project
+sudo apt install libxxf86vm-dev libxi-dev
+
+
+main.cpp
+/home/stevepro/Steven/MyCCpp/Vulkan/VulkanTest
+
+
+
+Vulkan Go still give error
+#include <X11/Xlib.h>
+
+Try this
+https://linuxconfig.org/install-and-test-vulkan-on-linux
+
+sudo add-apt-repository ppa:oibaf/graphics-drivers
+sudo apt update
+sudo apt upgrade
+
+sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils
+
+
+https://www.youtube.com/watch?v=q9aAoVJsTUQ
+Setup Vulkan With GLFW On Linux Using Make - Vulkan Graphics/Games Programming
+
+sudo apt-get install libxi-dev
+sudo apt-get install libxxf86vm-dev
+
+
+Unable to install glfw/v3.1 #129
+https://github.com/go-gl/glfw/issues/129
+
+
+sudo apt-cache policy libx11-dev
+find /usr/include -name Xcursor.h
+find /usr/local/include -name Xcursor.h
+
+sudo apt-get install libxcursor-dev
+sudo apt-get install libxinerama-dev
+
+IMPORTANT
+I think this is the one that actually did it
+sudo apt-get install libxcursor-dev
+
+find /usr/include -name Xcursor.h
+/usr/include/X11/Xcursor/Xcursor.h
+
+
+HOWEVER
+code samples emit warning
+MESA-INTEL: warning: Performance support disabled, consider sysctl dev.i915.perf_stream_paranoid=0
+
