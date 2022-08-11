@@ -1,0 +1,38 @@
+INSTALLATION II
+11-Aug-2022
+
+
+Reference
+https://github.com/microsoft/ebpf-for-windows/blob/main/docs/GettingStarted.md
+
+
+PR 1181
+https://github.com/microsoft/ebpf-for-windows/issues/1181
+
+
+
+Cloning the project
+git clone --recurse-submodules https://github.com/microsoft/ebpf-for-windows.git
+
+
+Prepare for first build
+Launch Terminal
+
+Launch Developer Command Prompt for VS 2019 by running 
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\VsDevCmd.bat"
+
+
+Launch VS2019
+open solution
+epf-windows.sln
+
+Debug
+x64
+Build solution
+
+
+ERROR
+https://docs.microsoft.com/en-us/visualstudio/msbuild/errors/msb8040?f1url=%3FappId%3DDev16IDEF1%26l%3DEN-US%26k%3Dk(MSB8040)%26rd%3Dtrue&view=vs-2022
+
+MSBuild error MSB8040
+Spectre-mitigated libraries aren't installed
