@@ -21,6 +21,12 @@ Launch Terminal
 Launch Developer Command Prompt for VS 2019 by running 
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\VsDevCmd.bat"
 
+cd D:\GithubX\microsoft\ebpf...
+cmake -G "Visual Studio 16 2019" -S external\ebpf-verifier -B external\ebpf-verifier\build
+cmake -G "Visual Studio 16 2019" -S external\catch2 -B external\catch2\build -DBUILD_TESTING=OFF
+cmake -G "Visual Studio 16 2019" -S external\ubpf -B external\ubpf\build
+nuget restore ebpf-for-windows.sln
+del external\ebpf-verifier\build\obj\project.assets.json
 
 Launch VS2019
 open solution
@@ -45,6 +51,14 @@ Repair VS2019
 
 Individual components
 search
-MSVC v142 VS 	2019 C++ x64/x86 Spectre-mit
-
 MSVC v142 - VS 2019 C++ x64/x86 Spectre-mitigated libs (latest)
+
+
+REPEAT
+Launch VS2019
+open solution
+epf-windows.sln
+
+Debug
+x64
+Build solution
