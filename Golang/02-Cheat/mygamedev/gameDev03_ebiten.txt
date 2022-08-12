@@ -7,3 +7,37 @@ https://bitbucket.org/SteveProXNA/actionstuff/src/master/Study/Plurasight/GoLang
 02.
 ebiten
 https://github.com/hajimehoshi/ebiten
+
+EXAMPLES
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate
+
+OR
+Launch Goland IDE
+Navigate to project
+github.com/hajimehoshi/ebiten/v2/examples/rotate
+
+Run
+
+
+Here are projects that do not work
+
+# pkg-config --cflags  -- alsa
+Package alsa was not found in the pkg-config search path.
+Perhaps you should add the directory containing `alsa.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'alsa' found
+pkg-config: exit status 1
+
+
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/audio
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/audioinfiniteloop
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/audiopanning
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/flappy
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/pcm
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/piano
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/realtimepcm
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/sinewave
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/wav
+
+go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/shader
+works but didn't work in Goland IDE - not sure as no go.mod file
