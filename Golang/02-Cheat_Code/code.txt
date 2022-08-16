@@ -40,3 +40,25 @@ and how to debug step thru source code
 
 Theory how to debug step thru Go and C code here
 https://tigera.atlassian.net/wiki/spaces/ENG/pages/2223669271/Golang+CGo+Debugging	
+
+
+03.
+cgo
+MyHelloWorld02
+
+mkdir MyHelloWorld02
+cd MyHelloWorld02
+go mod init hellotest
+touch hello.go
+touch hello.h
+touch hello.c
+
+write all code
+VS Code
+regenerate cgo definitions
+
+If get a squiggle in VS Code under import "C" then close VS Code and re-open
+
+Set breakpoints
+F5 to run on
+only see logging output on fprintf(stderr, ) not printf()
