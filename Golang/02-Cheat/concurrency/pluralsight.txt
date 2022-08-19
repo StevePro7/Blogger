@@ -29,7 +29,7 @@ go routines to enable concurrent programming
 basis of concurrent programming and go is founded on the go routine
 sync package provides capabilities that we're gonna be able to leverage to allow go routines to coordinate their work together
 e.g. waitGroups
-weight groups So that one go routine can do weight on a series of other go routines
+wait groups So that one go routine can do wait on a series of other go routines
 
 mutex
 how we can use those to protect shared memory
@@ -121,7 +121,7 @@ wait Group is just a simple object that we can create from the sync package
 create a pointer to await group because we're gonna be passing this around in her application
 wg.Add()
 wg.Done()
-wg.Wait()	method all that's going to do is wait till our weight group is no longer waiting on any concurrent activities
+wg.Wait()	method all that's going to do is wait till our wait group is no longer waiting on any concurrent activities
 
 wait groups are forcing my main function to wait until all of those concurrent tasks are completed.
 
@@ -322,5 +322,59 @@ So for loop is work together with that close function to detect when to stop the
 
 
 Select Statements
+v/ similar to switch statements
+there are multiple cases that they're gonna handle and then based on the state of the application
+So instead of checking for truth
+is checking against some condition like you would do in a switch statement
+We're actually going to try and either send or receive from a channel
+if both cases are available then choose at random
+There's no predetermined order
+This select statement will block until it can act on one of those cases
+This is what's called a blocking select statement.
+If you only want to operate on one of these cases, only if the application is ready right at this instant to honor that, then you can add a default case.
+The default case makes this a non blocking select.
+
+we introduced go routines. Up until now, when we receive a hit on our cache, we still get the result from the database. Well, now that we have channels and select statements, we can actually use these constructs together to ensure that we only get one result printed out
 
 
+Demo: Using Select Statements
+application logic doesn't have any way to indicate when the cache has a hit.
+we want to use channels to coordinate this work.
+cache channel
+database channel
+send a message on the channel that I'm provided if I get a match
+create another go routine here. 
+one go routine per query to handle the response. 
+receive the cache channel
+Both of those error going to be receive only channels.
+inside of this now I'm gonna have a select statement, and I wanna listen on both of these channels.
+So the first case is going to be receiving messages from the cache channel in the second case is going to be receiving messages from the db channel.
+So the database channel is always sending messages. The cache channel is occasionally sending messages. 
+my select is my cache channel only responds if a value comes in on the cache,
+my database channel never gets drained If I get a hit on the cache
+I need to wait until I get this message from the database channel to make sure that we don't block that second go routine
+
+We found a use case for go routines to enable the concurrent tasks to be generated
+We used wait groups to allow the main go routine to know when all of the workers were done
+e use Mu Texas to protect the in memory cache from simultaneous writes and writes and reads happening at the same time
+we use channels to coordinate
+Response from go routines to make sure that we only returned one result back out whether we got a hit from the cache or a hit from the database
+
+
+Summary
+select statement, which is specifically designed to allow multiple channels to be listened for and have the current go routine pause until one of those channels is either ready to send a message or ready to receive a message for the use case where we have a blocking select or we need one of those situations to occur.
+
+Or we also have the ability to use that default case in case we wanna have a non blocking select and allow the go routine to continue processing,
+
+go routine and how it's the key to unlock concurrent programming with the go language
+
+In order to provide some coordination constructs, we learned about the sync package and how the sync package provides, for example, the wait group that allows a supervising go routine to manage a collection of go routines and pause its execution until those supervised go routines error complete.
+
+We also learned about how we can use mu taxes to protect shared memory in the case where we have a variable or a set of variables that we want to restrict to only be accessed by one task at a time
+
+we talked about channels and how channels allow us another mechanism to coordinate message passing between different go routines
+
+as an alternative to mutexes
+channels provide us a safer mechanism by decoupling the go routines and having only sending side and a receiving side and allowing the synchronization to happen within the channel, , the go routines become much simpler to work with
+
+As a general rule, all of the synchronization logic is handled within the channel and abstracted away from the application.
