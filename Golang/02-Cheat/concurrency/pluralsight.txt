@@ -1,0 +1,326 @@
+Pluralsight
+18-Aug-2022
+
+https://bitbucket.org/SteveProXNA/actionstuff/src/master/Study/Plurasight/GoLang/ConcurrentProgramming/Transcript.txt
+
+
+00. overall
+there are two basic challenges in concurrent programming:
+1. coordinating tasks
+2. shared memory
+
+01.
+Course Overview
+concurrency model and learn how to use it to enable applications to realize the dramatic performance gains that multiple processing cores enable
+use go routines to start concurrent tasks
+allow channels to allow go routines to communicate with each other safely
+concurrency mechanism to allow you to maximize your applications performance
+
+
+02.
+Goroutines
+Introduction
+Concurrency and parallelism
+go routines the core construct that we use when introducing concurrency
+
+
+Course Overview
+go routines to enable concurrent programming
+basis of concurrent programming and go is founded on the go routine
+sync package provides capabilities that we're gonna be able to leverage to allow go routines to coordinate their work together
+e.g. waitGroups
+weight groups So that one go routine can do weight on a series of other go routines
+
+mutex
+how we can use those to protect shared memory
+
+channels
+channels in the sync package
+provide a mechanism to allow go routines to coordinate their work
+
+
+Concurrency and Parallelism
+example shopping list
+concurrent list of tasks
+multiple tasks you can work on at the same time
+
+parallelism builds on top of concurrency
+So what you could do is give your friends each a piece of that list and have them all do your grocery shopping for you
+So since each one has a smaller list of tasks to accomplish, you're gonna have the net effect of getting all of your grocery shopping done faster
+
+SUMMARY
+concurrency is multiple things that need to be done. 
+Parallelism is the ability to act on those multiple things at the same time
+
+
+Creating the Course Demo
+
+Introduction to Goroutines
+add some concurrency to it using go routines
+
+thread
+A thread represents the ability for the operating system to run a task so typical operating systems can often have thousands of threads active in a single time. Each one of those threads represents something that the operating system can be working on
+
+thread vs. goroutine
+TODO official difference
+
+goroutines are managed by the go runtime ; it has threads as well bu go manages those threads for yoiu
+create go routines, the go runtime is going to manage mapping those go routines onto the operating system thread for you
+
+thus can creat many more times go rroutines than acutal threads OS has
+the go runtime provides an interface allow a small number of threads to work w/ all the go routines and the the runtime schedules th go routines under the greads 
+
+
+
+https://www.geeksforgeeks.org/golang-goroutine-vs-thread
+Goroutine
+every concurrently executing activity in Go is know an a Goroutines
+even the main "thread" of execution is a goroutine
+
+Threa
+A process is part of the OS resposible for executing an application
+A thread is a unit which executes the code inside an application
+//Each process runs the code inside the application using a thread
+
+
+Demo: Creating Goroutines
+go keyword launches a function concurrently
+
+
+Summary
+go routines and how they allow us to create concurrent tasks for our application to work on
+
+Concurrency, as you'll recall, is the ability to have multiple things that can be worked on, but you're not necessarily working on them all at the same time
+Parallelism is the ability to work on multiple concurrent tasks at the same time
+concurrency is a prerequisite for parallel execution because you have to have multiple tasks before you can work on them at the same time
+therefore all parallel are concurrent but not all concurrent applications that do not work in parallel
+
+
+03.
+The Sync Package
+Introduction	
+go routines are independent means that they don't have any built in mechanism to allow them to coordinate with one another
+
+waitGroups
+allow a supervising goroutine to wait on several other go routines
+
+mutexes
+going to allow us to share memory between go routines and our application
+
+Now that we have concurrency, how do we get our concurrent tasks to coordinate with each other and share memory? 
+
+
+Overview of the sync Package
+
+WaitGroups
+waits for a collection of go routines to finish	[Normally go routines that it created itself]
+
+
+Demo: Using WaitGroups
+wait Group is just a simple object that we can create from the sync package 
+create a pointer to await group because we're gonna be passing this around in her application
+wg.Add()
+wg.Done()
+wg.Wait()	method all that's going to do is wait till our weight group is no longer waiting on any concurrent activities
+
+wait groups are forcing my main function to wait until all of those concurrent tasks are completed.
+
+NB: task swap
+fmt package is not thread safe - it's not safe to access fmt package concurrently
+
+wait group supervising all the goroutines
+
+
+Mutexes
+when working concurrently in Argo applications is how to manage shared memory
+mutual exclusion lock
+detect race condition	how to fix it
+
+
+Demo: Mutexes
+detect race condition	how to fix it
+e.g.
+go run main.go --race
+
+instrument the run or instrument the executable to look for race conditions
+Warning data race.
+
+create mutex similar to waitGroup above and pass mutex around by pointer in code
+when have multiple reads and infrequent writes then prefer RWmutex
+
+
+Demo: Read/Write Mutexes
+We use regular mu Texas to protect our shared memory
+two types of mu Texas
+If you've got a balance between reading and writing, then using the regular mu Texas going to be your most efficient choice
+if you've got an asymmetrical use where you've got many, many readers of the shared memory and only a few writers, then the R W mu Texas probably what you want to use
+
+
+Summary
+we focused on the sync package
+2x primary objects
+waitGroup	
+allow us to coordinate go routines So one supervising go routine can monitor and wait for go routines normally go routines that it spawns to finish their work before it continues
+
+mutex
+can be used to protect memory that's going to be shared between multiple go routines
+
+Now the sync package contains some pretty low level members. You'll use them all the time, but they contain very low level primitives for managing your go routines and coordinating them together
+
+A channel is a higher level construct that's really designed to allow direct communication from one go routine to another without sharing memory
+
+
+04.
+Channels
+Introduction
+sync package enable us to coordinate the activities between multiple go routines
+channels, which is another mechanism that we have available to us to coordinate the work between multiple go routines
+
+
+Rob Pike
+Don't communicate by sharing memory share memory by communicating
+
+mu Texas protect a certain section of memory so that only one operator can manipulate that memory at one time
+with a channel. What we're gonna do is we're actually gonna generate copies of that memory and pass it along in our application
+
+channel
+one side of the channel will have a sender that's going to send a message into the channel
+that's gonna be received on the other side by another go routine
+But the received message is gonna be a copy of the original, not the original message itself
+So we're no longer sharing the memory
+
+difference
+waitGroups	help with coordinating tasks
+mutex		help with shared memory
+
+channels actuall support coordinating tasks AND shared memory
+
+
+Introduction to Channels
+we're going to send that message directly into the channel.
+The channel is going to send a copy of that message on to the receiving go routine
+So the coordination of the communication is no longer the responsibility of the go routines
+They don't have to worry about managing Mu Tex is locking and unlocking
+The center just passes a message into the channel
+The receiver just received a message from the channel
+They [sneder + receiver] don't have to know about each other at all.	
+They only have to know about the channel
+
+
+Overview of Channels
+How do you create one, and how do you send messages into it and receive messages from it? 
+buffered channels
+send only channel
+receive only channel
+close channel
+if statements in for loops
+special type of statement	select	 that only works with channels
+
+
+Creating Channels
+channels are strongly typed
+
+// unbuffered channel
+ch := make(chan int)
+
+// buffered channel
+ch := make(chan int, 5)
+make a channel gonna send and receive integers but it's got an internal capacity of five
+I can store five messages inside of the channel without having any receivers immediately
+
+
+Demo: Unbuffered Channels
+// synchronous / blocking?
+So these two go routines are completely decoupled from one another.
+the channels, providing all of the coordination between these go routines.
+channels are blocking constructs
+What that means is in order to receive a message from the channel, I have to have a message available or the application is going to block in this go routine until a message does become available
+I'm trying to push a message into the channel. But I can't because there's nothing listening for it
+I'm blocked until I have a receiver. 
+So if I try and run the application, I see that I get a deadlock condition.
+all  go routines are asleep. Deadlock
+one go routine can recognize that it's looking for a message, but one isn't available, but it's okay because that go routine can do just go to sleep and let another go. Routine takeover
+decoupled but need capacity
+
+
+Demo: Buffered Channels
+I get a deadlock condition because I'm trying to send on a channel that doesn't have an active receiver
+I can't finish out the second go routine because I don't have anything to receive the message from it
+We need to have some sort of an internal buffer within the channel
+
+NB: when you have internal capacity over unbuffered channels is zero you must have matched senders + receivers
+Otherwise you block	synchronous
+
+buffered channels
+I can have one message sitting within the channel so I don't have to have perfect matches between the centers and receivers.	
+talk about are the different types of communication that we can have with our channels.
+
+
+Channel Types
+channels are bidirectional by default
+bidirectional channel	don't have any arrows on it
+send only channel	arrow pointing into the channel	ch<-
+recd only channel 	arrow point away from the channel	<-ch
+
+
+Demo: Channel Types
+if I run this application right now, probably that second go routine is immediately going to put a message in and receive it, so I'm gonna have a deadlock threat.
+change our signature here to have some channels be received, only channels and some channels to be send only channels
+recd	<-ch	receive from the channel
+send	ch<-	send to the channel
+my channels type signatures indicate the direction that I expect messages to flow in my application
+
+send a series of messages and have no more messages to send
+how do you signal to the rest of the application that you're done
+closed channels
+
+
+Closing Channels
+sending side of the channel can actually close that channel to let receivers know that no more messages error going to be forthcoming
+You cannot check the status of a channel to see if it's closed or not
+there's no built in inspection mechanism to determine if that channels closed or not
+If you try and send a new message into a closed channel, you will trigger a panic
+
+inspected channel for its status. You can receive a message from that channel and then check that second return parameter to see if that's true or false
+if true  then the channel is open
+if false then the channel is closed
+
+
+Demo: Working with Closed Channels
+the impact comes if I want to send a message into a closed channel or trying to receive a message from a closed channel
+send message into closed channel = application panics
+there's no way to reopen a channel once it's closed
+receive a message on a closed channel = I get the value zero
+so you can't even close it on the receiving side
+Closing a channel always has to be on the sending side of the operation	so the way to go runtime handles
+So in summary, if you send a message into a closed channel
+if you receive a message from a closed channel then that's OK
+
+next module work with if statements on closed channels	control flow
+
+
+Channels and Control Flow
+if, for loop and
+special kind of statement that only works with channels called a select statement
+select statement are kind of switch statements but designed to work with channels
+
+
+
+Using Channels with If Statements
+return false false is indicating that the channels actually closed.
+It's no longer available to receive messages.
+true indicates that the channel is still open and able to have more messages sent through it.
+syntax to let the receiving side know that the channels open or closed and take different actions
+
+
+Using Channels in Loops
+deadlock was this go routine up online. 12 was listening for the next message to come in, but nothing was generating new messages.
+So we were blocked in that go routine
+So by closing the channel, the for loop. Is gonna be able to detect that No messages error going to be coming into the channel anymore, and so it can shut that go routine down.
+So if we run this again now we see that we do get the value zero through nine and we no longer have that deadlock condition. 
+So for loop is work together with that close function to detect when to stop the iteration
+
+
+Select Statements
+
+
