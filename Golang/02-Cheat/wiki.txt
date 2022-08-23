@@ -1,5 +1,23 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
+
+
+  
+In the previous POST, we checked out <a href="https://www.techtarget.com/searchitoperations/definition/Go-programming-language">Go</a> as a statically typed and compiled programming language designed at Google.  Go is gaining popularity due to relIability + ability to deliver high-performance software projects.
+<br /><br />  
+Development teams <a href="https://content.techgig.com/technology/5-components-to-learn-googles-golang-coding-language/articleshow/76976910.cms">prefer</a> Golang to harness the power of large servers and sophisticated cloud platorms.  Go can be used in mobile, web and simple game development and can also invoke C code directly via <a href="https://go.dev/blog/cgo">Cgo</a>.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s256/Gopher.jpg"><img alt="" border="0" width="98%" height="300" src="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s600/Gopher.jpg"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+
+<u>Example</u><br>
+In the previous POST, we created a simple <a href="https://golangbot.com/hello-world-gomod">Hello World</a> example by setting up the development environment, create a Go module with the code and issue go build and run commands to execute the Hello World program
+<br /><br />
+  
 <u>Modules</u><br>
 A <a href="https://go.dev/blog/using-go-modules">module</a> in Go is a collection  of Go packages stored in a file tree with a go.mod file at its root
 The go.mod file defines the module's path, which is also  the import path used for the root directory,
@@ -42,18 +60,4 @@ A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/r
 Go programs are built by linking together <a href="https://go.dev/ref/spec#Packages">packages</a>.  A package is constructed from one or more source files that declare constants, types, variables and functions belonging to the package to which are accessible in all files of the sams package.  Those elements may be exported and used in other package(s).
 <br /><br />
   
-In the previous POST, we checked out <a href="https://www.techtarget.com/searchitoperations/definition/Go-programming-language">Go</a> as a statically typed and compiled programming language designed at Google.  Go is gaining popularity due to relIability + ability to deliver high-performance software projects.
-<br /><br />  
-Development teams <a href="https://content.techgig.com/technology/5-components-to-learn-googles-golang-coding-language/articleshow/76976910.cms">prefer</a> Golang to harness the power of large servers and sophisticated cloud platorms.  Go can be used in mobile, web and simple game development and can also invoke C code directly via <a href="https://go.dev/blog/cgo">Cgo</a>.
-<br />
-<!--
-<a href="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s256/Gopher.jpg"><img alt="" border="0" width="98%" height="300" src="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s600/Gopher.jpg"/></a>
--->
-<br />
-Let's check it out!
-<br /><br />
-
-<u>Example</u><br>
-In the previous POST, we created a simple <a href="https://golangbot.com/hello-world-gomod">Hello World</a> example by setting up the development environment, create a Go module with the code and issue go build and run commands to execute the Hello World program
-<br /><br />
 </span>
