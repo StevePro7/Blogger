@@ -1,6 +1,9 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
 <u>Modules</u><br>
+A <a href="https://go.dev/blog/using-go-modules">module</a> in Go is a collection  of Go packages stored in a file tree with a go.mod file at its root
+The go.mod file defines the module's path, which is also  the import path used for the root directory,
+and its dependency requirements which are other modules needed for a successful build.
 <br /><br />
   
 <u>Packages</u><br>
