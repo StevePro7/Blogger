@@ -9,31 +9,31 @@ A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/r
 <br />
 <table width="99%" border="1">
 <tr>
-<td valign="top">&nbsp;go get</td>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-get">go get</a></td>
 <td valign="top">&nbsp;Updates module dependencies in the go.mod file</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;go install</td>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-install">go install</a></td>
 <td valign="top">&nbsp;Builds and installs the packages named by paths</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;go list -m</td>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-list-m">go list -m</a></td>
 <td valign="top">&nbsp;Lists all the modules instead of all the packages</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;go mod download</td>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-mod-download">go mod download</a></td>
 <td valign="top">&nbsp;Downloads named modules into the module cache</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;go mod init</td>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-mod-init">go mod init</a></td>
 <td valign="top">&nbsp;Initializes + writes new go.mod file in the current directory</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;go mod tidy</td>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-mod-tidy">go mod tidy</a></td>
 <td valign="top">&nbsp;Ensures the go.mod file matches source code in the module</td>
 </tr>
 </table>
-  
+<br />  
 <br />
 <u>Packages</u><br>
 Go programs are built by linking together <a href="https://go.dev/ref/spec#Packages">packages</a>.  A package is constructed from one or more source files that declare constants, types, variables and functions belonging to the package to which are accessible in all files of the sams package.  Those elements may be exported and used in other package(s).
