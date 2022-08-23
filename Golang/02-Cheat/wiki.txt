@@ -7,6 +7,7 @@ and its dependency requirements which are other modules needed for a successful 
 <br /><br />
 A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/ref/mod#go-mod-file">go.mod</a> in its root directory.  Here are some usages:
 <br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-get">go get</a></td>
@@ -33,8 +34,10 @@ A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/r
 <td valign="top">&nbsp;Ensures the go.mod file matches source code in the module</td>
 </tr>
 </table>
-<br />  
 <br />
+-->
+<br />
+
 <u>Packages</u><br>
 Go programs are built by linking together <a href="https://go.dev/ref/spec#Packages">packages</a>.  A package is constructed from one or more source files that declare constants, types, variables and functions belonging to the package to which are accessible in all files of the sams package.  Those elements may be exported and used in other package(s).
 <br /><br />
