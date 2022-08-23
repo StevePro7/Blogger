@@ -1,0 +1,34 @@
+concurrently
+22-Aug-2022
+
+https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go
+
+first class support for concurrency...
+
+
+
+
+concurrency
+https://en.wikipedia.org/wiki/Concurrency_(computer_science)
+
+Rob Pike
+concurrency is the computations of independently executing computations
+
+
+
+Goroutines
+special type of function that can run while other goroutines are running
+
+
+channel
+the arrow points to where the value is going
+writing to a channel, the arrow points the value to the channel
+reading from a channel, the arrow points the channel to the variable
+
+Notice that the arrow is pointing out of the channel for reading
+and pointing into the channel for writing
+
+
+NB:
+too many goroutines
+resource starvation	
