@@ -5,8 +5,36 @@ A <a href="https://go.dev/blog/using-go-modules">module</a> in Go is a collectio
 The go.mod file defines the module's path, which is also  the import path used for the root directory,
 and its dependency requirements which are other modules needed for a successful build.
 <br /><br />
-A module is defined by a UTF-8 encoded text file named go mod in its root directory.  Here are some usages:
-<br /><br />
+A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/ref/mod#go-mod-file">go.mod</a> in its root directory.  Here are some usages:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;go get</td>
+<td valign="top">&nbsp;Updates module dependencies in the go.mod file</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;go install</td>
+<td valign="top">&nbsp;Builds and installs the packages named by paths</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;go list -m</td>
+<td valign="top">&nbsp;Lists all modules instead of all packages</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;go mod download</td>
+<td valign="top">&nbsp;Downloads the named modules into the module cache</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;go mod init</td>
+<td valign="top">&nbsp;Initializes and writes new go.mod file in the current directory</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;go mod tidy</td>
+<td valign="top">&nbsp;Ensures that the go.mod file matches the source code in the module</td>
+</tr>
+</table>
+  
+<br />
 <u>Packages</u><br>
 Go programs are built by linking together <a href="https://go.dev/ref/spec#Packages">packages</a>.  A package is constructed from one or more source files that declare constants, types, variables and functions belonging to the package to which are accessible in all files of the sams package.  Those elements may be exported and used in other package(s).
 <br /><br />
@@ -15,7 +43,9 @@ In the previous POST, we checked out <a href="https://www.techtarget.com/searchi
 <br /><br />  
 Development teams <a href="https://content.techgig.com/technology/5-components-to-learn-googles-golang-coding-language/articleshow/76976910.cms">prefer</a> Golang to harness the power of large servers and sophisticated cloud platorms.  Go can be used in mobile, web and simple game development and can also invoke C code directly via <a href="https://go.dev/blog/cgo">Cgo</a>.
 <br />
+<!--
 <a href="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s256/Gopher.jpg"><img alt="" border="0" width="98%" height="300" src="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s600/Gopher.jpg"/></a>
+-->
 <br />
 Let's check it out!
 <br /><br />
