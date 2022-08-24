@@ -26,6 +26,11 @@ llvm-objdump --triple=bpf -h bpf.o
 llvm-objdump --triple=bpf -h bpf-d.o
 
 
+clang -target bpf -Werror -O2 -c bpf2.c -o bpf2.o
+llvm-objdump --triple=bpf -h bpf2.o
+llvm-objdump --triple=bpf -S --section=myprog bpf2.o
+
+
 3. Compiling eBPF for Windows
 done during installation
 
@@ -36,5 +41,31 @@ copy x64\Debug\*.dll %windir%\system32
 netsh add helper %windir%\system32\ebpfnetsh.dll
 
 
+5. Verifying eBPF programs on Windows
+netsh ebpf show sections bpf.o
+netsh ebpf show sections bpf-d.o
+netsh ebpf show sections bpf2.o
 
-copy ls x64/Debug/*.dll %windir%\system32
+
+This didn't work
+netsh ebpf show verification bpf2.o another
+
+
+netsh ebpf show disassembly bpf.o
+netsh ebpf show disassembly bpf-d.o
+
+netsh ebpf show disassembly bpf2.o myprog
+netsh ebpf show disassembly bpf2.o another
+
+netsh ebpf show section bpf.o .text verbose
+
+
+6. Advanced Topics
+myxdp.c
+
+clang -I ../include/ -target bpf -Werror -O2 -c myxdp.c -o myxdp.o
+
+> netsh ebpf show verification myxdp.o
+
+Verification succeeded
+Program terminates within 30 instructions
