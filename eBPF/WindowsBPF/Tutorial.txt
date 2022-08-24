@@ -1,0 +1,40 @@
+Tutorial
+24-Aug-2022
+
+https://github.com/microsoft/ebpf-for-windows/blob/main/docs/tutorial.md
+
+
+stevepro
+bpf.c
+
+clang -I include -target bpf -Werror -O2 -c bpf.c -o bpf.o
+clang -I include -target bpf -Werror -O2 -c bpf.c -o bpf.o
+
+
+llvm-objdump --triple=bpf -S bpf.o
+
+
+Debugging
+clang -I include -target bpf -Werror -g -O2 -c bpf.c -o bpf-d.o
+llvm-objdump --triple=bpf -S bpf-d.o
+llvm-objdump --triple=bpf -S -l bpf-d.o
+
+
+
+Sections
+llvm-objdump --triple=bpf -h bpf.o
+llvm-objdump --triple=bpf -h bpf-d.o
+
+
+3. Compiling eBPF for Windows
+done during installation
+
+
+4. Installing the eBPF netsh helper on Windowss
+
+copy x64\Debug\*.dll %windir%\system32
+netsh add helper %windir%\system32\ebpfnetsh.dll
+
+
+
+copy ls x64/Debug/*.dll %windir%\system32
