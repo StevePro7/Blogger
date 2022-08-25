@@ -1,12 +1,8 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-<u>Concurrency</u><br>
-<a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">Concurrency</a> is the "composition of independently executing computations".  Concurrency: dealing with lots of things at once but parallelism: about doing lots of things at once.  Concurrency is all about structure whereas parallelism is about execution.  Consequently, Golang provides first-class language <a href="https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go">support</a> for concurrency.
-<br /><br />
-Challenges in <a href="https://www.youtube.com/playlist?list=PLve39GJ2D71wSwRQLp_h8B60pKgS85StC">concurrent</a> programming include co-ordinating tasks + shared memory.  Thus, Go concurrency implementation centers around  <a href="https://go.dev/tour/concurrency/1">goroutines</a>: functions that execute simultaneously in Go program with other (goroutine) functions and are lightweight threads managed by the Go runtime.  Here are some other terms:
+<u>Functional Programming</u><br>
   
-
-<br /><br />
+<u>Concurrency</u><br>
   
 <b>Goroutines</b><br>
 <b>WaitGrous</b><br>
@@ -70,7 +66,4 @@ A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/r
 Go programs are built by linking together <a href="https://go.dev/ref/spec#Packages">packages</a>.  A package is constructed from one or more source files that declare constants, types, variables and functions belonging to the package to which are accessible in all files of the sams package.  Those elements may be exported and used in other package(s).
 <br /><br />
   
-<u>Functional Programming</u><br>
-<a href="https://medium.com/@geisonfgfg/functional-go-bc116f4c96a4">Functional</a> programming is the paradigm that treats computation as the evaluation of functions and avoids state and mutable data as opposed to imperative programming which empathizes change of state.  Without shared data, concurrency becomes easier because this means no locks, race conditions, no dead locks etc.
-<br /><br />
 </span>
