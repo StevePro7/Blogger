@@ -1,18 +1,9 @@
 <span style="font-family:verdana;font-size:85%;"> 
-
-<u>Concurrency</u><br>
-<a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">Concurrency</a> is the "composition of independently executing computations".  Concurrency: dealing with lots of things at once but parallelism: about doing lots of things at once.  Concurrency is all about structure whereas parallelism is about execution.  Consequently, Golang provides first-class language <a href="https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go">support</a> for concurrency.
-<br /><br />
-Challenges in <a href="https://www.youtube.com/playlist?list=PLve39GJ2D71wSwRQLp_h8B60pKgS85StC">concurrent</a> programming include co-ordinating tasks + shared memory.  Thus, Go concurrency implementation centers around  <a href="https://go.dev/tour/concurrency/1">goroutines</a>: functions that execute simultaneously in Go program with other (goroutine) functions and are lightweight threads managed by the Go runtime.  Here are some other terms:
   
 
-<br /><br />
+
+
   
-<b>Goroutines</b><br>
-<b>WaitGrous</b><br>
-<b>Mutexes</b><br>
-<b>Channels</b><br>
-<br /><br />
 In the previous POST, we checked out <a href="https://www.techtarget.com/searchitoperations/definition/Go-programming-language">Go</a> as a statically typed and compiled programming language designed at Google.  Go is gaining popularity due to its ability to deliver highly scalable concurrent computing software.
 <br /><br />  
 Development teams <a href="https://content.techgig.com/technology/5-components-to-learn-googles-golang-coding-language/articleshow/76976910.cms">prefer</a> Golang to harness the power of large servers and sophisticated cloud platorms.  Go can be used in mobile, web and simple game development and can also invoke C code directly via <a href="https://go.dev/blog/cgo">Cgo</a>.
@@ -63,7 +54,7 @@ A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/r
 </tr>
 </table>
 <br />
--->
+ -->
 <br />
 
 <u>Packages</u><br>
@@ -73,4 +64,112 @@ Go programs are built by linking together <a href="https://go.dev/ref/spec#Packa
 <u>Functional Programming</u><br>
 <a href="https://medium.com/@geisonfgfg/functional-go-bc116f4c96a4">Functional</a> programming is the paradigm that treats computation as the evaluation of functions and avoids state and mutable data as opposed to imperative programming which empathizes change of state.  Without shared data, concurrency becomes easier because this means no locks, race conditions, no dead locks etc.
 <br /><br />
+  
+<u>Concurrency</u><br>
+<a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">Concurrency</a> is the "composition of independently executing computations".  Concurrency: dealing with lots of things at once but parallelism: about doing lots of things at once.  Concurrency is all about structure whereas parallelism is about execution.  Consequently, Golang provides first-class language <a href="https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go">support</a> for concurrency.
+<br /><br />
+Challenges in <a href="https://www.youtube.com/playlist?list=PLve39GJ2D71wSwRQLp_h8B60pKgS85StC">concurrent</a> programming include co-ordinating tasks + shared memory.  Thus, Go concurrency implementation centers around  <a href="https://go.dev/tour/concurrency/1">goroutines</a>: functions that execute simultaneously in Go program with other (goroutine) functions and are lightweight threads managed by the Go runtime.  Here are some more terms:
+<!--<br><br>Definitions-->
+<br />
+<!---->
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Concurrency</td>
+<td valign="top">&nbsp;Ability to have multiple things that can be worked on not necessarily at the same time</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Parallelism</td>
+<td valign="top">&nbsp;Ability to work on multiple concurrent tasks typically all worked on at the same time</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Process</td>
+<td valign="top">&nbsp;Part of the Operating System resposible for executing an application</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Thread</td>
+<td valign="top">&nbsp;Unit within the process which executes the code inside an application</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Goroutine</td>
+<td valign="top">&nbsp;Special function type that can run while other goroutines are running</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;WaitGroups</td>
+<td valign="top">&nbsp;Allows a supervising goroutine to wait on several other go routines</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Mutexes</td>
+<td valign="top">&nbsp;Allow us to share memory between go routines and our application</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Channels</td>
+<td valign="top">&nbsp;Another mechanism available to us to coordinate the work between multiple go routines</td>
+</tr>
+</table>
+<!---->
+<br />
+
+Concurrency in Go is also based on <a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes">Communicating</a> Sequential Processes.  <a href="https://levelup.gitconnected.com/communicating-sequential-processes-csp-for-go-developer-in-a-nutshell-866795eb879d">CSP</a> is a form to describe patterns of interaction in concurrent systems.  CSP involvement in concurrency based on messaging passing <a href="https://en.wikipedia.org/wiki/Channel_(programming)">channels</a>.  Channels in Go allow goroutines to communincate with each other safely + co-ordinate work between them.
+
+<br /><br />
+<b>Demos</b><br>
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Introduction</td>
+<td valign="top">&nbsp;<a href="01">Goroutine ID</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Goroutines</td>
+<td valign="top">&nbsp;<a href="01">Sequential code</a>, <a href="01">Creating goroutines</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Sync Package</td>
+<td valign="top">&nbsp;<a href="01">Using WaitGroups</a>, <a href="01">Mutexes</a>, <a href="01">Read/Write Mutexes</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Channels</td>
+<td valign="top">
+  &nbsp;<a href="01">Unbuffered channels</a>, <a href="demo02">Buffered channels</a>, <a href="demo03">Channel types</a>
+  <br />
+  &nbsp;<a href="demo05">Working with closed channels</a>, <a href="demo07">Using select statements</a>
+</td>
+</tr>
+</table>
+
+<br />
+IMPORTANT<br>
+If you are new to goroutines then you may like to log go ID() similar to logging thread ID in multithreading:
+<br />
+<!--
+<pre class="csharp" name="code">
+go mod init goidtesting
+go get "github.com/nikandfor/goid"
+go mod tidy
+</pre>
+main.go
+<pre class="csharp" name="code">
+package main
+import (
+	"fmt"
+	"os"
+	"time"
+	"github.com/nikandfor/goid"
+)
+func say(s string) {
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		_, _ = fmt.Fprintln(os.Stdout, goid.ID(), s)
+	}
+}
+func main() {
+	go say("world")
+	say("hello")
+}
+</pre>
+<br />
+-->
+<br />
+
+MORE INFO
 </span>

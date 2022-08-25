@@ -1,0 +1,76 @@
+<span style="font-family:verdana;font-size:85%;"> 
+
+<u>Concurrency</u><br>
+<a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">Concurrency</a> is the "composition of independently executing computations".  Concurrency: dealing with lots of things at once but parallelism: about doing lots of things at once.  Concurrency is all about structure whereas parallelism is about execution.  Consequently, Golang provides first-class language <a href="https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go">support</a> for concurrency.
+<br /><br />
+Challenges in <a href="https://www.youtube.com/playlist?list=PLve39GJ2D71wSwRQLp_h8B60pKgS85StC">concurrent</a> programming include co-ordinating tasks + shared memory.  Thus, Go concurrency implementation centers around  <a href="https://go.dev/tour/concurrency/1">goroutines</a>: functions that execute simultaneously in Go program with other (goroutine) functions and are lightweight threads managed by the Go runtime.  Here are some other terms:
+  
+
+<br /><br />
+  
+<b>Goroutines</b><br>
+<b>WaitGrous</b><br>
+<b>Mutexes</b><br>
+<b>Channels</b><br>
+<br /><br />
+In the previous POST, we checked out <a href="https://www.techtarget.com/searchitoperations/definition/Go-programming-language">Go</a> as a statically typed and compiled programming language designed at Google.  Go is gaining popularity due to its ability to deliver highly scalable concurrent computing software.
+<br /><br />  
+Development teams <a href="https://content.techgig.com/technology/5-components-to-learn-googles-golang-coding-language/articleshow/76976910.cms">prefer</a> Golang to harness the power of large servers and sophisticated cloud platorms.  Go can be used in mobile, web and simple game development and can also invoke C code directly via <a href="https://go.dev/blog/cgo">Cgo</a>.
+<br />
+<!--
+<a href="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s256/Gopher.jpg"><img alt="" border="0" width="98%" height="300" src="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s600/Gopher.jpg"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+
+<u>Example</u><br>
+In the previous POST, we created a simple <a href="https://golangbot.com/hello-world-gomod">Hello World</a> example by setting up the development environment, create a Go module with the code and issue go build and run commands to execute the Hello World program
+<br /><br />
+  
+<u>Modules</u><br>
+A <a href="https://go.dev/blog/using-go-modules">module</a> in Go is a collection  of Go packages stored in a file tree with a go.mod file at its root
+The go.mod file defines the module's path, which is also  the import path used for the root directory,
+and its dependency requirements which are other modules needed for a successful build.
+<br /><br />
+A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/ref/mod#go-mod-file">go.mod</a> in its root directory.  Here are some usages:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-get">go get</a></td>
+<td valign="top">&nbsp;Updates module dependencies in the go.mod file</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-install">go install</a></td>
+<td valign="top">&nbsp;Builds and installs the packages named by paths</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-list-m">go list -m</a></td>
+<td valign="top">&nbsp;Lists all the modules instead of all the packages</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-mod-download">go mod download</a></td>
+<td valign="top">&nbsp;Downloads named modules into the module cache</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-mod-init">go mod init</a></td>
+<td valign="top">&nbsp;Initializes + writes new go.mod file in the current directory</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-mod-tidy">go mod tidy</a></td>
+<td valign="top">&nbsp;Ensures the go.mod file matches source code in the module</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+
+<u>Packages</u><br>
+Go programs are built by linking together <a href="https://go.dev/ref/spec#Packages">packages</a>.  A package is constructed from one or more source files that declare constants, types, variables and functions belonging to the package to which are accessible in all files of the sams package.  Those elements may be exported and used in other package(s).
+<br /><br />
+  
+<u>Functional Programming</u><br>
+<a href="https://medium.com/@geisonfgfg/functional-go-bc116f4c96a4">Functional</a> programming is the paradigm that treats computation as the evaluation of functions and avoids state and mutable data as opposed to imperative programming which empathizes change of state.  Without shared data, concurrency becomes easier because this means no locks, race conditions, no dead locks etc.
+<br /><br />
+</span>
