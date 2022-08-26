@@ -1,0 +1,45 @@
+26-Aug-2022
+
+https://github.com/shravanshetty1/vulkan-tutorial-go
+https://vulkan-tutorial.com/Development_environment#page_Linux
+
+ERROR
+In file included from ./glfw/src/internal.h:188,
+                 from ./glfw/src/context.c:30,
+                 from ../../../../go/pkg/mod/github.com/go-gl/glfw/v3.3/glfw@v0.0.0-20201108214237-06ea97f0c265/c_glfw.go:4:
+./glfw/src/x11_platform.h:33:10: fatal error: X11/Xlib.h: No such file or directory
+   33 | #include <X11/Xlib.h>
+   
+ 
+https://vulkan-tutorial.com/Development_environment#page_Linux  
+sudo apt install vulkan-tools
+sudo apt install libvulkan-dev
+sudo apt install vulkan-validationlayers-dev spirv-tools
+vkcube
+
+
+GLFW		sudo apt install libglfw3-dev
+GLM		sudo apt install libglm-dev
+Shader Project	sudo apt install libxxf86vm-dev libxi-dev
+
+
+
+https://linuxconfig.org/install-and-test-vulkan-on-linux
+sudo add-apt-repository ppa:oibaf/graphics-drivers
+sudo apt update
+sudo apt upgrade
+sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils
+
+
+https://www.youtube.com/watch?v=q9aAoVJsTUQ
+Setup Vulkan With GLFW On Linux Using Make - Vulkan Graphics/Games Programming
+
+sudo apt-get install libxi-dev
+sudo apt-get install libxxf86vm-dev
+
+sudo apt-cache policy libx11-dev
+
+sudo apt-get install libxcursor-dev
+sudo apt-get install libxinerama-dev
+
+

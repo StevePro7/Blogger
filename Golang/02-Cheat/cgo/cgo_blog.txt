@@ -1,0 +1,18 @@
+Avoiding the LD_LIBRARY_PATH for Shared Libs in Go (cgo) Applications
+29.11.2021
+
+
+http://gridengine.eu/index.php/other-stories/232-avoiding-the-ldlibrarypath-with-shared-libs-in-go-cgo-applications-2015-12-21
+
+
+Debugging Cgo in VS Code
+Feb 28 2022
+
+According to this THREAD it is possible to debug Go code and into CGo code from VS Code if you are on Linux.  Assuming you can F5 run the Go project initially from VS Code and debug step thru then the trick is to set breakpoint in Go code just before the call into CGo code AND set breakpoint in the C function; if you do not set breakpoint in the C function then from Go code F11 step in will actually step over altogether
+
+IMPORTANT
+I could not get this working in Goland IDE because it does not seem possible to set breakpoints in C files from Goland IDE thus this technique doesn’t seem to be able to work
+
+
+THREAD
+https://stackoverflow.com/questions/69904782/how-to-debug-go-with-cgo-in-visual-studio-code
