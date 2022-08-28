@@ -6,7 +6,7 @@ import "fmt"
 import "C"
 
 func main() {
-	fmt.Println("beg")
+	fmt.Println("begin")
 	C.hello()
-	fmt.Println("end")
+	fmt.Println("-end-")
 }
