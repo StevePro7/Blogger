@@ -258,7 +258,17 @@ A fun way to learn Go is by making games.  Game <a href="https://gamefromscratch
 <!-- -->
 <!--<br />-->
 According to this <a href="https://stackoverflow.com/questions/69904782/how-to-debug-go-with-cgo-in-visual-studio-code">thread</a>, it is possible to debug Go to C from Visual Studio Code on Linux.  Assuming you can F5 run the project then set breakpoints either side the Go code calling into and out of the C function to step.
-<br /><br />
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvy4uGAnfgjvXu0mlEKhi3scQQGbsWKWFPxd3ovKaGiG62CzGIQpVUEm0Zi1C0s_JJMRZA4iogGxbJPz9HPKPu1ly_aW44xP5_es6m4XTH41yEUQjNnkiPVrQCXkJ09b5Pv88dACP7DuZD_kKFB29LBrGq9cGeKGD9R4ZkYSDp0EIJCwnehXrluuDY/s348/debugCgo01.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvy4uGAnfgjvXu0mlEKhi3scQQGbsWKWFPxd3ovKaGiG62CzGIQpVUEm0Zi1C0s_JJMRZA4iogGxbJPz9HPKPu1ly_aW44xP5_es6m4XTH41yEUQjNnkiPVrQCXkJ09b5Pv88dACP7DuZD_kKFB29LBrGq9cGeKGD9R4ZkYSDp0EIJCwnehXrluuDY/s600/debugCgo01.png"/></a>
+</td>
+<td valign="top" width="50%">
+</td>
+</tr>
+</table>
+<br />
 <!--<br />-->
 <b>Mod Security</b><br>
 In the previous <a href="http://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">post</a>, we coded an example in Go from scratch as full end-to-end Web API demo on our local host, in Docker and on Kubernetes.  Extend this <a href="https://medium.com/lightbaseio/web-application-firewall-in-go-feat-owasp-modsecurity-core-rule-set-3f97a26e3311">example</a> as Web Application Firewall using <a href="https://github.com/SpiderLabs/ModSecurity">Mod Sec</a> and Cgo.
