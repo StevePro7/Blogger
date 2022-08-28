@@ -2,9 +2,7 @@
 
 <u>Game Development</u><br>
 A fun way to learn Go is by making games.  Game <a href="https://gamefromscratch.com/game-development-in-the-go-programming-language">development</a> in Go includes <a href="https://github.com/hajimehoshi/ebiten">Ebiten</a>, <a href="https://github.com/faiface/pixel">Pixel</a> and <a href="https://github.com/vulkan-go/vulkan">Vulkan</a> 3D.
-<br /><br />
-  
-  
+<br /><br />  
 <b>Ebiten</b><br>
 <a href="https://ebiten.org">Ebiten</a> is an open source game library for Go programming language making it easy to develop 2D games.
 <br />
@@ -31,7 +29,6 @@ A fun way to learn Go is by making games.  Game <a href="https://gamefromscratch
 </tr>
 </table>
 <br />
-  
 <b>Vulkan</b><br>
 <a href="https://vulkan-tutorial.com/Introduction">Vulkan</a> is a new graphics and compute API by the Khronos group (known for OpenGL).  This Vulkan Tutorial details setting up Development <a href="https://vulkan-tutorial.com/Development_environment#page_Linux">environment</a> with corresponding 3D graphics examples available on <a href="https://github.com/shravanshetty1/vulkan-tutorial-go">Github</a>.
 <br /><br />
@@ -205,8 +202,40 @@ func main() {
 -->
 <br />
 
-<u>Game Dev</u><br>
-  
+<u>Game Development</u><br>
+A fun way to learn Go is by making games.  Game <a href="https://gamefromscratch.com/game-development-in-the-go-programming-language">development</a> in Go includes <a href="https://github.com/hajimehoshi/ebiten">Ebiten</a>, <a href="https://github.com/faiface/pixel">Pixel</a> and <a href="https://github.com/vulkan-go/vulkan">Vulkan</a> 3D.
+<br /><br />  
+<b>Ebiten</b><br>
+<a href="https://ebiten.org">Ebiten</a> is an open source game library for Go programming language making it easy to develop 2D games.
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;git clone https://github.com/hajimehoshi/ebiten<br/>
+&nbsp;cd ebiten/examples<br/>
+&nbsp;go run -tags=example github.com/hajimehoshi/ebiten/v2/examples/rotate<br/>  
+</td>
+</tr>
+</table>
+<br />
+<b>Pixel</b><br>
+<a href="https://github.com/faiface/pixel/wiki">Pixel</a> is a new, fast, innovative 2D game library built for Go language with full documentation and tutorials.
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;git clone https://github.com/faiface/pixel-examples<br/>
+&nbsp;cd pixel-examples/platformer<br/>
+&nbsp;go run main.go<br/>  
+</td>
+</tr>
+</table>
+<br />
+<b>Vulkan</b><br>
+<a href="https://vulkan-tutorial.com/Introduction">Vulkan</a> is a new graphics and compute API by the Khronos group (known for OpenGL).  This Vulkan Tutorial details setting up Development <a href="https://vulkan-tutorial.com/Development_environment#page_Linux">environment</a> with corresponding 3D graphics examples available on <a href="https://github.com/shravanshetty1/vulkan-tutorial-go">Github</a>.
+<br /><br />
+<br>
+
 <u>Cgo</u><br>
 <a href="https://go.dev/blog/cgo">Cgo</a> lets Go packages <a href="https://karthikkaranth.me/blog/calling-c-code-from-go">call</a> C code.  Cgo outputs Go and C files that can be combined into a single Go package.
 <br /><br>
@@ -262,7 +291,7 @@ func main() {
 <!--<br />-->
 According to this <a href="https://stackoverflow.com/questions/69904782/how-to-debug-go-with-cgo-in-visual-studio-code">thread</a>, it is possible to debug Go to C from Visual Studio Code on Linux.  Assuming you can F5 run the project then set breakpoints either side the Go code calling into and out of the C function to step.
 <br /><br />
-<br />
+<!--<br />-->
 <b>Mod Security</b><br>
 In the previous <a href="http://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">post</a>, we coded an example in Go from scratch as full end-to-end Web API demo on our local host, in Docker and on Kubernetes.  Extend this <a href="https://medium.com/lightbaseio/web-application-firewall-in-go-feat-owasp-modsecurity-core-rule-set-3f97a26e3311">example</a> as Web Application Firewall using <a href="https://github.com/SpiderLabs/ModSecurity">Mod Sec</a> and Cgo.
 <br /><br />
@@ -298,7 +327,6 @@ waf.go<br />
 </tr>
 </table>
 <br />
-  
   
 <u>Asm</u><br>
 Finally, if you would like to reproduce Go example that calls ASM assembly code then replicate <a href="https://github.com/nikandfor/goid">goid</a> source:
