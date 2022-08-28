@@ -1,0 +1,205 @@
+Pluralsight
+27-Aug-2022
+
+https://bitbucket.org/SteveProXNA/actionstuff/src/master/Study/Plurasight/GoLang/BuildDistributedAppsGo/Transcript.txt
+
+00. order
+registration
+logging svc
+grading svc
+
+
+01.
+Overview
+distributed systems
+services discover other services
+monitoring distributed systems
+
+
+Elements of a Distributed System
+
+Module Outline
+
+Characteristics of Distributed Systems
+01. service discoverry
+02. load balancing
+03. logging + tracing
+04. service monitoring
+
+
+Types of Distributed Systems
+hub-spoke
+peer-to-peer
+message queue	RabbitMQ
+hybrid
+
+
+Architectural Elements
+Overview of the Course Demo
+grade book application
+
+Course Demo Components and Roles
+API gateway	intermediary single point of contact for web application
+
+Course Overview
+Go kit
+Go micro
+
+
+Summary
+characteristics of distributed system
+load balancing
+service discovery
+tracing + logging
+architectures: hub + spoke, peer-to-peer, message queues, hybrid
+languages, transport [HTTP, gRPC], protocols
+
+
+02.
+Service Registration
+Introduction	
+
+Creating the Core Logic for a Service
+service registry
+logging service
+
+Creating a Standalone Service
+RegisterHandlers
+Start ( context )
+registerHandlerFunc
+context w/ cancel function
+goroutines:
+1. go 	start service
+2. go	cancellation option
+
+logService
+context Background
+<-ctx.Done		service.go	keystroke
+curl -XPOST http://localhost:4000/log
+
+service registry
+register service so allow other services to discover it
+
+Registering a Service: The Service Registry Logic
+allow service to register itself
+mutex protect Registration slice in thread-safe way for concurrent access
+NO defer mutex unlock for complete control
+
+
+Registering a Service: Starting the Service Registry
+register handler
+e.g.
+/service
+
+base context	context Background
+2x goroutines
+1. go 	start server	listen for error	if err then cancel context
+2. go	provide path to shut down server gracefully	and cancel context
+wait for <-ctx.Done signal
+
+
+Registering a Service: The Client
+MIME type application/json
+2x terminals
+01. registry service
+02. logging  service
+http://localhost:4000
+
+
+Deregistering a Service Upon Shutdown
+endpoint	/services
+MethodPost
+MethodDelete
+
+Summary
+logging service
+registry service
+register log service
+de-register log service
+next module	service discovery
+
+
+03.
+Service Discovery
+Introduction
+grading service
+service discovery
+grading service needs to register + talk to log service
+
+want
+service registry to be able to notify grading svc that new instance of logging svc starts up or shuts down
+
+
+Grading Service: Core Logic
+Grading Service: Service Handlers
+/students
+/students/{id}/grade
+StatusCreated
+
+
+Grading Service: Starting the Service
+context Background
+wait for context to send its Done signal	shutdown grading svc
+
+
+Service Discovery: Updating the Registry Service
+grading service sets dependency logging service
+patch	services that are avaiilable	
+
+
+Service Discovery: Updating the Clients
+providers	each service has requested
+patch		update providers
+
+
+Service Discovery: Requesting and Using a Service
+notify services when one of those services shuts down
+
+
+Notifying a Service When a Dependency Is Started
+
+Notifying a Service When a Dependency Is Stopped
+service discovery notify service when dependent service shuts down
+but what if catastrophic failure?
+
+Summary
+service request dependent service
+infor those services of start up and shutf down
+e.g.
+grading service => log services
+monitor services if they fail
+
+
+04.
+Status Monitoring
+Introduction
+add ability to notify application if service crash / panic
+and inform the rest of the system
+health checks
+
+
+Review of Course Demo Functionality
+
+Web Application: Defining the Core Logic
+
+Web Application: Starting the Application
+/services
+
+Checking and Reacting to Nonresponsive Services
+registry service	heartbeat
+waitGroup to surround all the tasks from each heartbeat
+declare Once variable	ensure this code occurs just once
+replicate catastrophic failure = close / delete terminal window
+
+
+Summary
+created
+service registry
+collection of web services
+web application that uses those web services	
+teacher portal	added health checks
+service registry	proactively ping those web services	respond to requests
+service discovery
+status monitoring
+detect that services are shutting down and respond accordingly so that healthy web services
+don't run into problems because they send a request to a service that's no longer available
