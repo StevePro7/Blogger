@@ -225,9 +225,9 @@ A fun way to learn Go is by making games.  Game <a href="https://gamefromscratch
 &nbsp;import "C"
 
 &nbsp;func main() {
-&nbsp;	fmt.Println("beg")
+&nbsp;	fmt.Println("begin")
 &nbsp;	C.hello()
-&nbsp;	fmt.Println("end")
+&nbsp;	fmt.Println("-end-")
 &nbsp;}
 </pre>
 </td>
@@ -249,7 +249,7 @@ A fun way to learn Go is by making games.  Game <a href="https://gamefromscratch
 
 &nbsp;void hello()
 &nbsp;{
-&nbsp;    fprintf(stderr, "%s\n", "Hello CGO!!");
+&nbsp;    fprintf(stderr, "%s\n", "Hello Cgo!");
 &nbsp;}
 </pre>
 </td>
