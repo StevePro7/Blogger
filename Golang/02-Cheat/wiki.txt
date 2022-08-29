@@ -1,5 +1,9 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
+
+  
+<br /><br />
+
 <u>Unit Testing</u><br> 
 <br /><br />
   
@@ -140,7 +144,7 @@ Concurrency in Go is also based on <a href="https://en.wikipedia.org/wiki/Commun
 IMPORTANT<br>
 If you are new to goroutines then you may like to log go ID() similar to logging thread ID in multithreading:
 <br />
-<!--
+<!-- -->
 <pre class="csharp" name="code">
 go mod init goidtesting
 go get "github.com/nikandfor/goid"
@@ -166,8 +170,21 @@ func main() {
 	say("hello")
 }
 </pre>
+<!--<br /> -->
+<i>Data Race</i><br>
+A <a href="https://go.dev/doc/articles/race_detector">data race</a> occurs when two goroutines access the same variable concurrently and are very hard to debug:
 <br />
--->
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;go run -race mysrc.go  // to run the source file<br />
+&nbsp;go build -race mycmd   // to build the command<br />
+&nbsp;go install -race mypkg // to install the package<br />
+&nbsp;go test -race mypkg    // to test the package<br />
+</td>
+</tr>
+</table>
+<br />
 <br />
 <u>Cloud Computing</u><br>
 <a href="https://www.linkedin.com/pulse/power-up-your-cloud-computing-golang-reemi-shirsath">Cloud</a> computing systems are highly scalable that require access to resources which must be shared.  Thus, Golang has the capability to develop highly scalable, highly performant, reliable and concurrent applications.
