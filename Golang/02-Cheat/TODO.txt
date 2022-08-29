@@ -5,6 +5,15 @@ https://stackoverflow.com/questions/19189542/how-to-test-concurrency-and-locking
 
 
 go race -v
+e.g.
+https://go.dev/doc/articles/race_detector
+
+$ go test -race mypkg    // to test the package
+$ go run -race mysrc.go  // to run the source file
+$ go build -race mycmd   // to build the command
+$ go install -race mypkg // to install the package
+
+
 go test
 
 
