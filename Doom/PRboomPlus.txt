@@ -13,7 +13,21 @@ e.g.
 cd prboom-plus-2.5.1.3
 
 Configure
+chmod +x configure
 ./configure
+
+ERROR sdl
+*** The sdl-config script installed by SDL could not be found
+*** If SDL was installed in PREFIX, make sure PREFIX/bin is in
+*** your path, or set the SDL_CONFIG environment variable to the
+*** full path to sdl-config.
+configure: error: *** You must have the SDL libraries installed before you can compile prboom
+ *** See http://prboom.sourceforge.net/linux.html
+
+
+libsdl1.2-dev
+libsdl-mixer1.2-dev 
+libsdl-net1.2-dev
 
 MAKE
 make
@@ -99,6 +113,18 @@ launch.json
         }
     ]
 }
+
+
+WAD files
+prboom-plus-2.5.1.3_VScode/data/prboom-plus.wad
+WADfiles/Doom2.wad
+
+build / make code above
+which will create hidden folder
+e.g.
+~/.prboom-plus
+
+copy 2x wad file here
 
 
 WINDOWS
