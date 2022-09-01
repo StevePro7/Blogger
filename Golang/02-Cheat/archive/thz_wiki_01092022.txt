@@ -1,11 +1,10 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-<u>Unit Testing</u><br>
-Simple unit testing in Golang typically uses the testing package however more sophisticated Test Driven and Behaviour Driven Design can be accomplished using Ginkgo testng framework complemented by the Gomega matcher library.
-<br /><br />
-However, unit testing concurrent code in Go can be more challenging especially an anonymous goroutines as they are not executed immediately; instead the calling thread keeps execution priority until it pauses
+
+  
 <br /><br />
 
+<u>Unit Testing</u><br> 
 <br /><br />
   
 In the previous POST, we checked out <a href="https://www.techtarget.com/searchitoperations/definition/Go-programming-language">Go</a> as a statically typed and compiled programming language designed at Google.  Go is gaining popularity due to its ability to deliver highly scalable concurrent computing software.
