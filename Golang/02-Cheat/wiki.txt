@@ -1,9 +1,9 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
 <u>Unit Testing</u><br>
-Unit testing in Golang uses the testing package however more sophisticated Test Driven Design TDD / BDD can be accomplished using the Ginkgo testng framework complemented by the Gomega matching library.
+Unit <a href="https://www.digitalocean.com/community/tutorials/how-to-write-unit-tests-in-go-using-go-test-and-the-testing-package">testing</a> in Golang uses the testing <a href="https://pkg.go.dev/testing">package</a> however more sophisticated Test Driven Design TDD / BDD can be accomplished using the <a href="https://github.com/onsi/ginkgo">Ginkgo</a> testng framework complemented by the <a href="https://onsi.github.io/gomega">Gomega</a> matching library.
 <br /><br />
-However, unit testing concurrent code in Go is more challenging esp. anonymous goroutines as they are not executed immediately.  Instead the calling thread keeps execution priority until it pauses.  Only then will the code inside the goroutine get execution.  Therefore, a solution could be insert an empty function which acts as a hook for testing purposes; push a value into a channel which blocks until received + test code passes. 
+However, unit testing <a href="https://www.jernejsila.com/2016/07/19/testing-concurrent-code-golang">concurrent</a> code in Go is more <a href="https://www.youtube.com/watch?v=ndmB0bj7eyw">challenging</a> esp. anonymous goroutines as they are not executed immediately.  Instead the calling thread keeps execution priority until it pauses.  Only then will the code inside the goroutine get execution.  Therefore, a solution could be insert an empty function which acts as a hook for testing purposes; push a value into a channel which blocks until received + test code passes. 
 <br /><br />
 However, unit testing concurrent code in Go is more challenging esp. anonymous goroutines as they are not executed immediately.  Instead the calling thread keeps execution priority until it pauses.  Only then will the code inside the goroutine get execution.  Therefore, a solution could be insert an empty function for testing purposes
 <br /><br />
