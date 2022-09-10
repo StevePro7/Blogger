@@ -1,0 +1,280 @@
+<span style="font-family:verdana;font-size:85%;">
+<a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Golang</a> is a statically typed and compiled programming language designed at Google.  Go plays a major role in Enterprises by developing highly scalable concurrent <a href="https://www.linkedin.com/pulse/power-up-your-cloud-computing-golang-reemi-shirsath">cloud</a> computing systems like <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> + <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a>.
+<br />
+<a href="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s256/Gopher.jpg"><img alt="" border="0" width="98%" height="300" src="https://1.bp.blogspot.com/-VQLYPzT4tgY/YPcuQB_NcII/AAAAAAAAHII/k2nolLXI4pcUFTSj_CeE5AXO5lW_bEpRACLcBGAsYHQ/s600/Gopher.jpg"/></a>
+<br />
+Let's check it out!
+<br /><br />
+<u>Installation</u><br />
+<a href="https://golang.org/doc/install">Download</a> and install Go as per instructions for your target operating system.  Afterwards verify <b>go version</b>.
+<br /><br />
+<b>Windows</b><br />
+<a href="https://golang.org/dl/go1.18.3.windows-amd64.msi">Download</a> and open the Go MSI file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Mac OS/X</b><br />
+<a href="https://golang.org/dl/go1.18.3.darwin-amd64.pkg">Download</a> and open the Go PKG file.  Follow all prompts and ensure Go added to PATH environment variable.
+<br /><br />
+<b>Linux</b><br />
+<a href="https://golang.org/dl/go1.18.3.linux-amd64.tar.gz">Download</a> and extract the Go archive.  Launch Terminal and ensure Go added to PATH environment variable.
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+&nbsp;sudo rm -rf /usr/local/go<br />
+&nbsp;sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz<br />
+&nbsp;export PATH=$PATH:/usr/local/go/bin/<br />
+&nbsp;go version<br />
+</td>
+</tr>  
+</table>
+Alternatively, include <b>export PATH="$PATH:/usr/local/go/bin/"</b> to your <b>~/.bashrc</b> file for future use.
+<br /><br />
+IMPORTANT<br />
+If Go does not install or update then you may have to remove snap package using <b>sudo snap remove go</b>.  Also, verify Go environment variables by entering <b>go env</b> at the Terminal prompt for all operating systems.
+<br /><br />
+<u>Uninstall</u><br />
+Follow this <a href="https://stackoverflow.com/questions/42186003/how-to-uninstall-go">guide</a> on how to uninstall Go.  While there seems to be many options, the following should work:
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign="top">
+&nbsp;sudo apt-get remove golang-go<br />
+&nbsp;sudo apt-get remove --auto-remove golang-go<br />
+</td>
+</tr>  
+</table>
+<br />
+<u>IDEs</u><br />
+Now we'd like to build Golang software so let's setup 2x main <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated</a> Development Environments IDEs:
+<br /><br />
+<b>VS Code</b><br />
+<a href="https://code.visualstudio.com">Visual Studio Code</a> is a popular lightweight IDE available cross platform on <a href="https://code.visualstudio.com/docs/?dv=win">Windows</a>, <a href="https://code.visualstudio.com/docs/?dv=osx">Mac OS/X</a> and <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install VS Code and install the following plugins: Go, Go Doc, Go Outliner, Go Autotest + Go Test Explorer.
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;Go</td>
+<td valign="top">&nbsp;Rich Go language support for Visual Studio Code</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Go Doc</td>
+<td valign="top">&nbsp;Show Go's documentation symbols and packages</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Go Outliner</td>
+<td valign="top">&nbsp;Go code outline explorer and navigation package</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Go Autotest</td>
+<td valign="top">&nbsp;Adds autotest functionality to vscode's Go mode</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Go Test Explorer</td>
+<td valign="top">&nbsp;Go Test Explorer for unit and integration testing</td>
+</tr>
+</table>
+<br />
+Launch VS Code.  Press Ctrl + Shift + P.  Filter on "Go: Install".  Choose "Go: Install/Update Tools".  Select all.  Ok.  Also, if prompted "The "gopls" command is not available." bottom right then click Install to go get gopls.
+<br /><br />
+<i>Miscellaneous</i><br />
+Launch Terminal.  Drag tab headings to prefer following order: Terminal, Problems, Output, Debug Console.
+<br /><br />
+<i>Mappings</i><br />
+If you are transitioning from Windows to Linux you may like to <a href="https://github.com/microsoft/vscode/issues/84227">update</a> keyboard mappings for example Back to Alt + LeftArrow.  File | Preferences | Keyboard Shortcuts.  Filter "Go Back".  Click pencil.  Hit Alt + LeftArrow.
+<br /><br />
+Repeat process for Terminal: Copy Selection: File | Preferences | Keyboard Shortcuts.  Hit Ctrl + C and Enter.  Repeat process for Terminal: Paste into Active Terminal: File | Preferences | Keyboard Shortcuts.  Hit Ctrl + V.
+<br /><br />
+<i>Navigation</i><br />
+If you are transitioning from Visual Studio on Windows to VS Code then the Solution Explorer with folders being represented as folder icons not arrows may be more familiar.  Therefore, install <a href="https://code.visualstudio.com/blogs/2016/09/08/icon-themes">vscode-icons</a> plugin.  Also, as code bases become larger it can be handier to install the <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks">Bookmarks</a> plugin for easier navigation.  
+<br /><br />  
+<i>Shortcuts</i><br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Ctrl + ,</td>
+<td valign="top">&nbsp;Open Settings similar to Preferences</td>
+<td valign="top">&nbsp;F5</td>
+<td valign="top">&nbsp;Debug | Start w/ Debugging</td>  
+</tr>
+<tr>
+<td valign="top">&nbsp;Ctrl + P</td>
+<td valign="top">&nbsp;Search files to open e.g. main.go</td>
+<td valign="top">&nbsp;Ctrl + F5</td>
+<td valign="top">&nbsp;Debug | Run w/o Debugger</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Ctrl + R</td>
+<td valign="top">&nbsp;Select to open from previous files</td>
+<td valign="top">&nbsp;F9</td>
+<td valign="top">&nbsp;Debug | Toggle Breakpoint</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Ctrl + Shift + O</td>
+<td valign="top">&nbsp;Outline file structure for opened file</td>
+<td valign="top">&nbsp;F10</td>
+<td valign="top">&nbsp;Debug | Step Over</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;F12</td>
+<td valign="top">&nbsp;Navigate | Go to Definition</td>
+<td valign="top">&nbsp;F11</td>
+<td valign="top">&nbsp;Debug | Step Into</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Alt + Left</td>
+<td valign="top">&nbsp;Navigate | Going Backward</td>  
+<td valign="top">&nbsp;Shift + F11</td>
+<td valign="top">&nbsp;Debug | Step Out</td>
+</tr>
+</table>
+<br />
+<i>Zoom In</i><br />
+Finally, you may like to Ctrl + "+" to <a href="https://stackoverflow.com/questions/36040857/visual-studio-code-change-font-size-for-file-explorer-tray/46344568">zoom</a> in on the Explorer and Terminal then reduce the Font Size to 12.  
+<br /><br />
+<br />
+<b>GoLand</b><br />
+<a href="https://www.jetbrains.com/go">GoLand</a> is a cross-platform Go Integrated Development Environment IDE on <a href="https://www.jetbrains.com/go/download/download-thanks.html?platform=windows">Windows</a>, <a href="https://www.jetbrains.com/go/download/download-thanks.html?platform=mac">Mac OS/X</a> and <a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Linux</a>.  Install GoLand and setup the following configurations as commercial alternative with better IDE Intellisense.
+<br /><br />
+<i>Configurations</i><br />
+Launch GoLand.  In the "Welcome to GoLand" popup choose Customize | Color theme | IntelliJ Light.  Next, choose All settings...  Expand Go tab at the top | GOROOT | Add SDK... <a href="https://www.jetbrains.com/help/go/configuring-goroot-and-gopath.html#navigate-to-go-sdk">Local</a> | Navigate to where <b>Go</b> was installed previously e.g. <b>/usr/local/go</b>.  Finally update GOPATH.  Click "+" select <b>~/go</b>. OK | Apply | OK.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7rYpTSTv05HrcxF9i0pu1lUL3NLpMMB-leQ2S55j8F9QFRCTAGrAMlAy2SirTQVjLMe3RT4XKRNKnfZFmQ78GHAJ_v-GlGwnk20UJX2thRYZxyv3z8KPiWe7LyXNmls09lGca-dR89uVgW0wse8LAZB7OKN4fmluCetuG_FWk-_Kb8aOgC3CU7PRC/s910/GoRoot.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7rYpTSTv05HrcxF9i0pu1lUL3NLpMMB-leQ2S55j8F9QFRCTAGrAMlAy2SirTQVjLMe3RT4XKRNKnfZFmQ78GHAJ_v-GlGwnk20UJX2thRYZxyv3z8KPiWe7LyXNmls09lGca-dR89uVgW0wse8LAZB7OKN4fmluCetuG_FWk-_Kb8aOgC3CU7PRC/s600/GoRoot.png"/></a>
+<br /><br />
+IMPORTANT<br />
+Verify GOROOT path is correct from  Terminal via go env | grep GOROOT.  Repeat for go env | grep GOPATH.  Also, in Go tab | <a href="https://stackoverflow.com/questions/64463967/go-mod-unresolved-dependency">Go Modules</a> ensure "Enable Go modules integration" is checked as may not be by default.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT8gAm6B1RuK0xB81GS3FIv1Ng4sp7rzKXbqjvBNz7q50eZ9wBPRuLPahN6ga4iKJw5JPVNylDAXW_CQfgyHuTgpAbOskKlY3BKy253TgvD2zD4cg2BDiyCEayLp_kL2dkpeBUq-NxN2J5o1pj9BXHvClhCvPFLy8KWYfrbG_v58m_a6cEDhRK45T-/s910/GoModules.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT8gAm6B1RuK0xB81GS3FIv1Ng4sp7rzKXbqjvBNz7q50eZ9wBPRuLPahN6ga4iKJw5JPVNylDAXW_CQfgyHuTgpAbOskKlY3BKy253TgvD2zD4cg2BDiyCEayLp_kL2dkpeBUq-NxN2J5o1pj9BXHvClhCvPFLy8KWYfrbG_v58m_a6cEDhRK45T-/s600/GoModules.png"/></a>
+<br /><br />
+<i>Mappings</i><br />
+<a href="https://www.youtube.com/watch?v=GDHET-k4zz4">Align</a> GoLand Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to GoLand" popup choose Plugins | VSCode Keymap | Install.  Navigate back to Customize.  Under <a href="https://plugins.jetbrains.com/plugin/12062-vscode-keymap">Keymap</a> change the default value to VSCode.  Now all VS Code shortcuts above will work in GoLand.
+<br /><br />
+Additionally to Ctrl + Shift + O, outline file structure for opened file, GoLand has these handy shortcuts also:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Ctrl + Numpad -</td>
+<td valign="top">&nbsp;Collapse struct types for easier overall type visibility in IDE</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Ctrl + Numpad +</td>
+<td valign="top">&nbsp;Expand struct types to navigate type properties + methods</td>
+</tr>
+</table>
+<br />
+<i>Settings</i><br />
+Finally, from Customize | All settings... here are some more general GoLand IDE settings that can be useful:
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Editor | General | Code Folding | Fold by default | General</td>
+<td valign="top">&nbsp;UNCHEKED</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Editor | Font</td>
+<td valign="top">&nbsp;JetBrains Mono | Size: 14.0 | Line: 1.2</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Editor | Color Scheme Font</td>
+<td valign="top">&nbsp;Scheme: Classic Light</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Editor | Inspections | Proofreading | Typo</td>
+<td valign="top">&nbsp;UNCHEKED</td>
+</tr>
+</table>
+<!--<br />-->
+<table width="100%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4-jFgamqD0vw_BMZdf3Helx41OpSnp2nTlbUTM-KkBDJQoSAF6xxvqlIed7NsSXAYfeuvG5lh0meEWaOCqW0iM0lGQwRsgKzKXYUkM0WmE3jOCVJRH-q4Khsz2ylK5iUmkpjVz_77zaYzNOYnmzcgpd6eX12Bm18iWMXuz3UEuABbl_t9bj7Ups4B/s1020/00-IDE_CodeFolding.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4-jFgamqD0vw_BMZdf3Helx41OpSnp2nTlbUTM-KkBDJQoSAF6xxvqlIed7NsSXAYfeuvG5lh0meEWaOCqW0iM0lGQwRsgKzKXYUkM0WmE3jOCVJRH-q4Khsz2ylK5iUmkpjVz_77zaYzNOYnmzcgpd6eX12Bm18iWMXuz3UEuABbl_t9bj7Ups4B/s600/00-IDE_CodeFolding.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGCa4oKG0bhEqZwotGXpS17ikHJe699eIhoz9HrlaX3svei07AH_ygW8Dc-Lmex8dL4bMs-9Xmx3KCfrjJMbVG9rylqKnkH9ggeeyQcrPV2QVCKAIXZbHzyLXzfiBaXghcPjGMUW2HGyRpePQf115Me1y1exvGNX49U_QzX8rxbkTnJ82vTf7ze81O/s1020/02-IDE_Color.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGCa4oKG0bhEqZwotGXpS17ikHJe699eIhoz9HrlaX3svei07AH_ygW8Dc-Lmex8dL4bMs-9Xmx3KCfrjJMbVG9rylqKnkH9ggeeyQcrPV2QVCKAIXZbHzyLXzfiBaXghcPjGMUW2HGyRpePQf115Me1y1exvGNX49U_QzX8rxbkTnJ82vTf7ze81O/s600/02-IDE_Color.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRQlLY5zaElbqmqkm4UyuV7opgEp2YFt7fudkCZLmw-IzN_e6ca_gRJUrnDeETYM21JjCBIWA2l_tqIO_1QSms3RsPYocdqV7Vv4uvY_DX8T_L01I7_H3--eTS-lFFi__zCzFHm3S1EQOBkIo2YXhzCKlLmqaHsZBspyGjiTdHRC4PDb2lP8Ipg6Ww/s1020/01-IDE_Font.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRQlLY5zaElbqmqkm4UyuV7opgEp2YFt7fudkCZLmw-IzN_e6ca_gRJUrnDeETYM21JjCBIWA2l_tqIO_1QSms3RsPYocdqV7Vv4uvY_DX8T_L01I7_H3--eTS-lFFi__zCzFHm3S1EQOBkIo2YXhzCKlLmqaHsZBspyGjiTdHRC4PDb2lP8Ipg6Ww/s600/01-IDE_Font.png"/></a>
+</td>
+<td valign="top" width="40%">  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnvyWroc6qHzXuG_t6mvuTIvLcpVt1qh7Fx4G4u8wGilKCCZAeU8kX0pq0yAmJbXmJxrwmMpjj-7m9bOqyGgUZBTb2EZITr3Pmq1ghaPkY6SYnC3B7s8C-9d5-oiO88oEn0yiTwds3eBcxIlnaofrCKawlXLfkB-womE-bJlN_goISOQ18aq7EiIEX/s1020/03-IDE_Inspections.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnvyWroc6qHzXuG_t6mvuTIvLcpVt1qh7Fx4G4u8wGilKCCZAeU8kX0pq0yAmJbXmJxrwmMpjj-7m9bOqyGgUZBTb2EZITr3Pmq1ghaPkY6SYnC3B7s8C-9d5-oiO88oEn0yiTwds3eBcxIlnaofrCKawlXLfkB-womE-bJlN_goISOQ18aq7EiIEX/s600/03-IDE_Inspections.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+
+<u>Example</u><br />
+Create the obligatory Hello World program in both VS Code and GoLand IDE to complete the configration:
+<br /><br />
+<a href="https://play.golang.org">main.go</a>
+<pre class="csharp" name="code">
+package main
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World!")
+}
+</pre>
+<br />
+<b><a href="https://github.com/SteveProXNA/CloudTesting/tree/main/GolangCheatSheet/01-HelloGoLand">VS Code</a></b><br />
+Create "HelloVSCode" folder at ~/go/src.  Launch VS Code.  Open folder [Ctrl+K, Ctrl+O] HelloVSCode folder.  New File | main.go.  Enter + save Hello World source code from package main above.  Launch new Terminal:
+<pre class="csharp" name="code">
+go mod init HelloVSCode
+go mod tidy
+
+go build .
+go run .
+</pre>
+Set breakpoint in main.go.  Run menu and choose either Start Debugging or Run without Debugging option.
+<br /><br />
+<br />
+<b><a href="https://github.com/SteveProXNA/CloudTesting/tree/main/GolangCheatSheet/00-HelloVSCode">GoLand</a></b><br />
+Launch GoLand.  New Project | Enter Location and GOROOT as above i.e. <b>Go 1.18.3 /usr/local/go</b>.  Create.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixX1ea7LKM5WZb2XMmGPSWVnLVQ6ogfyGJ8BFUDpF4yqxsK5eq40oKtWvwXydzZ8TW72oPf269qIgST_HP0Ms9AwceLwKz0k1zeOKoXgmForrsle6tnJzG2sa19DbQTIUQYLkAVSMVwLYGAPJgP-vgLb39A0Q2d7fy2H93uXfLY2nP4IV_w26LOgLn/s799/HelloGoLand.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixX1ea7LKM5WZb2XMmGPSWVnLVQ6ogfyGJ8BFUDpF4yqxsK5eq40oKtWvwXydzZ8TW72oPf269qIgST_HP0Ms9AwceLwKz0k1zeOKoXgmForrsle6tnJzG2sa19DbQTIUQYLkAVSMVwLYGAPJgP-vgLb39A0Q2d7fy2H93uXfLY2nP4IV_w26LOgLn/s600/HelloGoLand.png"/></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Location</td>
+<td valign="top">&nbsp;~/go/src/HelloGoLand</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GOROOT</td>
+<td valign="top">&nbsp;Go 1.18.3 /usr/local/go</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Enable vendoring support automatically</td>
+<td valign="top">&nbsp;CHECKED</td>
+</tr>
+</table>
+<br />
+New | Go File | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
+<pre class="csharp" name="code">
+go mod init HelloGoLand
+go mod tidy
+</pre>
+<br />
+In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
+<br /><br />
+<i>Cache</i><br />
+If GoLand complains "cannot resolve symbol" then choose File | Invalidate Caches... | Invalidate and Restart.
+<br /><br />
+<i>Configurations</i><br />
+<a href="https://stackoverflow.com/questions/11502796/intellij-idea-track-active-item-in-solution-explorer">Track</a> active item in solution explorer similar to Visual Studio: Click cog to right of Project and Always Select Opened File. Hit shift key twice for quick <a href="https://www.jetbrains.com/help/pycharm/searching-everywhere.html">search</a>. Remember Rename files and folder is in the Refactor menu.  Disable Typo In All Scopes: Settings | Editor | Inspections | Proofreading: Process code and Process literals.
+<br /><br />
+<i>Layout</i><br />
+It may be good idea to position Problems tab next to code window so you can see issues as you enter code.  In GoLand, click cog on Problems | Move to | Right Top.  In VS Code right click Problems | Move Panel Right.
+<br /><br />
+<i>Navigation</i><br />
+As code bases become larger use the Bookmarks feature for easier navigation.  Right click the code gutter + Add Bookmark.  View menu | Tool Windows | Bookmarks.  This can also be used to add / remove Breakpoints.
+<br /><br />  
+<i>Source Control</i><br />
+In GoLand, by default the Staging area may be disabled.  Therefore, you wouldn't see any Unversioned files
+To disable changelists choose File menu | Settings | Version Control | Git | Enable staging area | UNCHECK.
+<br /><br /> 
+In GoLand, top right under Project is the Control tab.  Right click any file and choose Rollback to revert any changes.  In VS Code the Source Control tab is third tab.  Choose Discard Changes as corresponding action.
+<br /><br />
+<br />
+<u>Summary</u><br />
+To summarize, we have a simple setup for Golang programming on <a href="https://go.dev/dl/go1.18.3.windows-amd64.msi">Windows</a>, <a href="https://go.dev/dl/go1.18.3.darwin-amd64.pkg">Mac OS/X</a> and <a href="https://go.dev/dl/go1.18.3.linux-amd64.tar.gz">Linux</a>.  There is much to explore e.g. <a href="https://www.linkedin.com/pulse/power-up-your-cloud-computing-golang-reemi-shirsath">Cloud</a> Computing and developing highly scalable concurrent applications using Golang!
+<br />
+This will be topic of the next post.
+</span>
