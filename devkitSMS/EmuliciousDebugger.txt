@@ -1,0 +1,37 @@
+Emulicious Debugger
+11-Sep-2022
+
+
+VS Code
+Emulicious Debugger installed
+If, for some reason, when you F5 to run ASM or C code directly from VS Code
+and you get the error complaining that Emulicious is not running or the emuliciousPath is not set then
+you can do either the following:
+
+01.
+manually launch Emulicious externally and F5 will magically work
+
+02.
+manually set emuliciousPath in the Emulicious Debugger settings
+Launch VS Code
+Emulicious | click cog | settings
+update the JSON
+e.g.
+.vscode/launch.json/Launch Targets/Launch in Emulicious
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emulicious-debugger",
+            "request": "launch",
+            "name": "Launch in Emulicious",
+            "program": "${workspaceFolder}/output.sms",
+            "port": 58870,
+            "stopOnEntry": true,
+            "emuliciousPath": "C:/SEGA/Emulicious/Emulicious.exe"
+        }
+    ]
+}
