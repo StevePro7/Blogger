@@ -1,0 +1,23 @@
+Monogame 3.7
+06-Sep-2022
+
+Install
+https://community.monogame.net/t/monogame-3-7/10971
+
+
+VS 2015
+could not see Monogame project template
+
+solution
+reference
+https://stackoverflow.com/questions/35450489/monogame-templates-wont-show-in-vs2015
+
+i.e.
+I copied Monogame folder from "$DOCUMENTS\Visual Studio 2015\Templates\ProjectTemplates\Visual C#\" (with $DOCUMENTS referring to your user documents folder) to my actual VS2015 Project Templates(during installation which i selected) folder.And it's worked fine for me. Screenshots for further help:
+
+
+dest
+C:\Users\steve\Documents\Visual Studio 2015\Templates\ProjectTemplates\Visual C#
+
+srce
+C:\Users\steve\OneDrive\Documents\Visual Studio 2015\Templates\ProjectTemplates\Visual C#\MonoGame
