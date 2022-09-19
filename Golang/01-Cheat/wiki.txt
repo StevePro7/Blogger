@@ -246,12 +246,7 @@ Launch GoLand.  New Project | Enter Location and GOROOT as above i.e. <b>Go 1.18
 </tr>
 </table>
 <br />
-New | Go File | main.go.  Enter + save Hello World source code from package main above.  Launch Terminal:
-<pre class="csharp" name="code">
-go mod init HelloGoLand
-go mod tidy
-</pre>
-<br />
+
 In main.go right click triangle next to func main() | Modify Run configuration...  Ensure there are no errors.  If there are errors then ensure if Run kind is Package the package name matches in go.mod.  Otherwise choose File | main.go.  Once confirmed no errors then right click triangle and choose the Run or Debug configuration.
 <br /><br />
 <i>Cache</i><br />
