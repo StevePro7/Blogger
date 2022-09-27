@@ -187,10 +187,7 @@ A <a href="https://go.dev/doc/articles/race_detector">data race</a> occurs when 
 <u>Unit Testing</u><br>
 Unit <a href="https://www.digitalocean.com/community/tutorials/how-to-write-unit-tests-in-go-using-go-test-and-the-testing-package">testing</a> in Golang uses the testing <a href="https://pkg.go.dev/testing">package</a> however more sophisticated Test Driven Design <a href="https://en.wikipedia.org/wiki/Test-driven_development">TDD</a> / <a href="https://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a> can be accomplished using the <a href="https://github.com/onsi/ginkgo">Ginkgo</a> testng framework complemented by the <a href="https://onsi.github.io/gomega">Gomega</a> matching library.
 <br /><br />
-However, unit testing <a href="https://www.jernejsila.com/2016/07/19/testing-concurrent-code-golang">concurrent</a> code in Go is more <a href="https://www.youtube.com/watch?v=ndmB0bj7eyw">challenging</a> esp. anonymous <a href="https://blog.devgenius.io/go-concurrency-testing-in-cpu-constrained-environments-8788052b7560">goroutines</a> as they are not executed immediately.  Instead the calling thread keeps execution priority until it pauses.  Only then will the code inside the goroutine get execution.  Therefore, a solution could be insert an empty function which acts as a hook for testing purposes; push a value into a channel which blocks until received + TEST code passes. 
-<br />
-<!--<br /> -->
-TODO - TEST is link to GitHub concurrent unit testing code
+However, unit testing <a href="https://www.jernejsila.com/2016/07/19/testing-concurrent-code-golang">concurrent</a> code in Go is more <a href="https://www.youtube.com/watch?v=ndmB0bj7eyw">challenging</a> esp. anonymous <a href="https://blog.devgenius.io/go-concurrency-testing-in-cpu-constrained-environments-8788052b7560">goroutines</a> as they are not executed immediately.  Instead the calling thread keeps execution priority until it pauses.  Only then will the code inside the goroutine get execution.  Therefore, a solution could be insert an empty function which acts as a hook for testing purposes; push a value into a channel which blocks until received + TEST code passes.
 <br /><br />
   
 <u>Cloud Computing</u><br>
@@ -287,7 +284,7 @@ Install Mod Security on local host
 </tr>
 </table>
 <!--<br />-->
-Follow all instructions from the <a href="https://medium.com/lightbaseio/web-application-firewall-in-go-feat-owasp-modsecurity-core-rule-set-3f97a26e3311">example</a> i.e. download OWASP rules, build <a href="TODO">main</a>, <a href="TODO">server</a> and <a href="TODO">waf</a> code.  Here, it is critical for Go to C interface to set include + linker flags correctly <a href="http://gridengine.eu/index.php/other-stories/232-avoiding-the-ldlibrarypath-with-shared">avoiding</a> runtime PATH for shared libs!
+Follow all instructions from the <a href="https://medium.com/lightbaseio/web-application-firewall-in-go-feat-owasp-modsecurity-core-rule-set-3f97a26e3311">example</a> i.e. download OWASP rules, build <a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/01-Example/main.go">main</a>, <a href="https://github.com/StevePro7/CloudTesting/tree/main/GolangCheatSheetII/04-Cgo/01-Example/server">server</a> and <a href="https://github.com/StevePro7/CloudTesting/tree/main/GolangCheatSheetII/04-Cgo/01-Example/waf">waf</a> code.  Here, it is critical for Go to C interface to set include + linker flags correctly <a href="http://gridengine.eu/index.php/other-stories/232-avoiding-the-ldlibrarypath-with-shared">avoiding</a> runtime PATH for shared libs!
 <br /><br />
 waf.go<br />
 <table width="99%" border="1">
