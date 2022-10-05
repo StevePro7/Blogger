@@ -1,0 +1,38 @@
+https://www.youtube.com/watch?v=pfMh-qNfpVo
+04-Oct-2022
+
+sc triggerinfo W32Time delete
+
+
+
+
+Steven Boland
+@SteveProXNA
+·
+May 21
+Is Your Windows 10 or 11 Time Wrong? http://bit.ly/3yY2UgG Ensure Windows Time service is running! Plus ensure Control Panel | Clock and Region | Date and Time | Internet Time does not error out!
+
+
+https://www.makeuseof.com/tag/3-reasons-windows-computer-loses-time-date/
+
+
+
+Windows services Time
+Automatic
+
+Control Panel | Clock and Region | Date and Time | Internet Time
+time.windows.com
+
+
+
+but the issue was that Windows time would "eventually" sync
+so hopefully I found the issue was that it was Triggered Start
+
+
+Terminal
+sc triggerinfo W32Time delete
+
+restart
+
+and so far so good
+i.e. time is sync'd on boot / login
