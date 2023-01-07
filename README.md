@@ -3,7 +3,14 @@ Notes from StevePro Studios blog
 I am making changes now!
 Adding a new line also!!
 
-
+IMPORTANT
+If github.com detects your repo language as HTML then do the following:
+reference: https://dev.to/katkelly/changing-your-repo-s-language-in-github-5gjo
+Create .gitattribtes file
+Add the following line
+```
+*.html linguist-detectable=false
+```
 
 Orders of magnitude in time
 https://en.wikipedia.org/wiki/Orders_of_magnitude_(time)
