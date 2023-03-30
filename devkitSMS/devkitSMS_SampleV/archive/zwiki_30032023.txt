@@ -1,0 +1,472 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a>, we checked out devkitSMS Programming Setup II. The devkitSMS provides tools and code to support many homebrew development projects for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> and <a href="https://en.wikipedia.org/wiki/Game_Gear">Sega Game Gear</a>.
+<br /><br />
+The latest version of the  <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires an updated version of Small Device Cross Compiler <a href="https://sourceforge.net/projects/sdcc/files">SDCC 4.x</a> and supports new and updated features including the ability to page both code and content transparently.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwS_Dtb0AXfBqHTRhlmg2Rf-S6N12gOgy8T4L45lZ-OAd9sPzqKjqBF57ogARl5EBWnmK-30Ukgs4i1O-b8Fcve3WWnKZmr2BcWM_-9zZJHQKhDCsRkWwkZ7Rgy6wyLOqdTk-hHSjqBjQjoilTj4sqVosLPUf2M4LWG3ohiuqtu4pnT1YwwrEPVl7J/s617/turtle_bridge.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwS_Dtb0AXfBqHTRhlmg2Rf-S6N12gOgy8T4L45lZ-OAd9sPzqKjqBF57ogARl5EBWnmK-30Ukgs4i1O-b8Fcve3WWnKZmr2BcWM_-9zZJHQKhDCsRkWwkZ7Rgy6wyLOqdTk-hHSjqBjQjoilTj4sqVosLPUf2M4LWG3ohiuqtu4pnT1YwwrEPVl7J/s600/turtle_bridge.png"/></a>
+<br />
+Let's check it out!
+<br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a>: this documents how to setup the pre-requisite software.
+<br />
+Note: ensure you have downloaded and installed the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and Small Device C Compiler [<a href="http://sdcc.sourceforge.net">SDCC</a>].
+<br /><br />
+Also ensure that <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">pcmenc</a> is installed in the SDCC bin folder as this utility is used to play WAV audio files.
+<br /><br />
+<u>Demo</u><br />
+All demos in this devkitSMS programming sample are based on the simple <a href="https://github.com/SteveProXNA/devkitSMScode/tree/main/SetupII/01-HelloWorld/02-DevkitExample">Hello World</a> program the previous <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">post</a> that utilizes Visual Studio 2015 on Windows but can be deployed cross platform on Windows and Linux.
+<br /><br />
+Create folder C:\DevkitExample. Create the following sub-folders: crt0, dev, lib, tmp.  Note: all content now preferred to reside under content sub-folder beneath the main dev folder.  All content also built using scripts.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitcLpvIr6apaj1Q7M1lwwdRSJ1_nN5sPgxy7aySlZ5S4nccL7VHnAQwX_5vjK8JXbG-8MV_x8Gspm6TiIK6IJfZViRs7yNlgzuRFe5FbwWE14-J9hy7CCHtW5IQtY9Z78lOHYaPeeL86xmI8iNWIGZtc8XKn-h0SBfmqmlSSdLc6wOwOW62RdLjWCX/s1054/Github.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitcLpvIr6apaj1Q7M1lwwdRSJ1_nN5sPgxy7aySlZ5S4nccL7VHnAQwX_5vjK8JXbG-8MV_x8Gspm6TiIK6IJfZViRs7yNlgzuRFe5FbwWE14-J9hy7CCHtW5IQtY9Z78lOHYaPeeL86xmI8iNWIGZtc8XKn-h0SBfmqmlSSdLc6wOwOW62RdLjWCX/s600/Github.png"/></a>
+<br />
+<br />
+<u>Development</u><br />
+Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwq-Op458CxFwVAfEfpHg5p_pmJ40-GtVIbgqQ1_02x_dlvG7-qc3S2Jh-wlfyFlHRaCThT0FEdfnbwTQREg5mNAisW57yaNy_-WpuvGiGkzr4QJyBvC4gsA3MJwRfUEmD19RhL4FMkwMxqhlcCePvgjeRK1ER59Bm4DZ6tG_f-NqRJgFM0BJTes3l/s828/DevkitExample.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwq-Op458CxFwVAfEfpHg5p_pmJ40-GtVIbgqQ1_02x_dlvG7-qc3S2Jh-wlfyFlHRaCThT0FEdfnbwTQREg5mNAisW57yaNy_-WpuvGiGkzr4QJyBvC4gsA3MJwRfUEmD19RhL4FMkwMxqhlcCePvgjeRK1ER59Bm4DZ6tG_f-NqRJgFM0BJTes3l/s600/DevkitExample.png"/></a>
+<br />
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Name:</td>
+<td valign="top">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\DevkitExample\dev</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create directory for solution</td>
+<td valign="top">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+OK<br /><br />
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Application type:</td>
+<td valign="top">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Additional options:</td>
+<td valign="top">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+Finish
+<br /><br />
+Ensure Visual Studio 2015 is configured as per instructions <a href="http://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a> to automate build process from Ctrl+1 hot key.  Create folders beneath dev for .vscode and devkit.  Import all code from <a href="https://github.com/SteveProXNA/devkitSMScode/tree/main/SampleV/01-HelloWorld/02-DevkitExample/dev">here</a> including build the scripts.
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/01-HelloWorld/02-DevkitExample/dev/main.c">main.c</a>
+<br />
+<pre class="csharp" name="code">
+#include "main.h"
+void main( void )
+{
+  devkit_SMS_init();
+  devkit_SMS_setSpritePaletteColor( 0, devkit_RGB( 3, 3, 3 ) );
+  devkit_SMS_displayOn();
+  for( ;; )
+  {
+    devkit_SMS_waitForVBlank();
+  }
+}
+</pre>
+<br />
+<u>Graphics</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a> to download and install <a href="https://github.com/maxim-zhao/bmp2tile/tags">BMP2Tile</a> utility to convert graphics into Sega Master System format.  Download new <a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/02-SplashScreen/02-NEWsplash/lib/gfxcomp_stmNEW.dll">gfxcomp_stm.dll</a> STM compressed format to output directory.
+<br /><br />
+<b>Splash</b><br />
+Here is an example of background tiles that will exhaust the full 256 x 192 resolution e.g. the Splash screen:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s576/SplashScreen.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnCDj_xYseQUhi4Luxt1cuZEcgH9x7Epx54pkDrsjWC5wwgVGoIUJaOkG3p5pHALh61FhwNtAH31uuBLQq_MFF_NvWIm7TxPc_ZCeTV65TY3pQV9QYFpEuJ6y5tuupqktM8QgEY7dybcjOVLX3Gp58plgRsyos_EMNK2FJDG_kDv3Bu0rZfHt5LIH/s600/SplashScreen.png"/></a>
+<br />
+Follow the same settings as per <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">here</a> but this time use this script to automate the corresponding formatting:
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/02-SplashScreen/02-NEWsplash/dev/scripts/gfx.bat">build.bat</a>
+<br />
+<pre class="csharp" name="code">
+bmp2tile.exe raw/splash.bmp ^
+  -savetiles "splash (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 128 ^
+  -savetilemap "splash (tilemap).stmcompr" ^
+  -savepalette "splash (palette).bin" ^
+  -fullpalette -exit
+</pre>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Tiles:</td>
+<td valign="top">&nbsp;Remove duplicates</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tiles:</td>
+<td valign="top">&nbsp;Planar tile output</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tilemap:</td>
+<td valign="top">&nbsp;Use sprite palette</td>
+<td valign="top">&nbsp;Unchecked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Tilemap:</td>
+<td valign="top">&nbsp;In front of sprites</td>
+<td valign="top">&nbsp;Unchecked</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Palette:</td>
+<td valign="top">&nbsp;Output hex (SMS)</td>
+<td valign="top">&nbsp;Checked</td>
+</tr>
+</table>
+<br />
+<b>Opaque</b><br />
+<a href="https://www.smspower.org/Homebrew/CandyKid-SMS">Candy Kid</a>, which is a Pacman clone, uses opaque background tiles to obscure the main sprite as he goes thru the exits.  This technique renders a white 16x16 tile but uses sprite palette bitwise OR with tile priority.
+<br />
+<br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/03-OpaqueTiles/02-NEWopaque/dev/engine/tile_manager.c">tile_manager.c</a>
+<br />
+<pre class="csharp" name="code">
+static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y )
+{
+  unsigned int priority = devkit_TILE_PRIORITY() | devkit_TILE_USE_SPRITE_PALETTE();
+
+  devkit_SMS_setNextTileatXY( x + 0, y + 0 );
+  devkit_SMS_setTile( ( *game_tiles__tilemap__bin + offset + 0 ) | priority );
+}
+</pre>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s485/CandyKid.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4tvc6LTGhOadJGEIVee_0IqmQAQ0oO2hKG_Fnvh5iHjgVgVrP15LA5mb9BuNRaraouV1zXqZOXfcjoi6hXhKBlc7ZNSCuAELgoSn7k8_Rf9nvQTvxAA3w51QsS_CSiXROKU4A6K5zk4g3wHBrKeONAEh1yPOKFbudIoWdo7y-HpYzofXGKFDspft/s600/CandyKid.png"/></a>
+<br />
+IMPORTANT: the sprite palette color in this example must be black to match background despite white tiles.
+<br /><br />
+<b>Tools</b><br />
+In previous years, <a href="https://www.gimp.org/downloads">Gimp</a> was used to convert graphics as <a href="https://superuser.com/questions/678434/export-file-as-palleted-8bit-per-pixel-bmp-from-gimp">Indexed</a> [16] mode to meet the 4bpp Sega Master System compatible requirements.  However, paint.net is great to output PNG files for BMP online <a href="https://online-converting.com/image/convert2bmp">converter</a>:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Color:</td>
+<td valign="top">&nbsp;4 (indexed)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;With rows direction:</td>
+<td valign="top">&nbsp;Bottom - Top (default)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Quantization equal to:</td>
+<td valign="top">&nbsp;8</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Using dithering:</td>
+<td valign="top">&nbsp;No</td>
+</tr>
+</table>
+<br />
+<br />
+<u>Scrolling</u><br />
+<a href="https://en.wikipedia.org/wiki/Scrolling">Scrolling</a> in video games involves moving graphics across a display, either <a href="https://en.wikipedia.org/wiki/Side-scrolling_video_game">horizontally</a> and/or <a href="https://en.wikipedia.org/wiki/Vertically_scrolling_video_game">vertically</a> such that the layout does not change but rather moves the view across as an image larger than the whole screen.
+<br /><br />
+Horizontal scrolling was very popular for action, run-and-gun and shoot/beat 'em up games whereas vertical scrolling was used in top down shooters.  The devkitSMS <a href="https://www.smspower.org/forums/15888-DevkitSMSTutorial">tutorial</a> has both vertical and horizontal examples:
+<br /><br />
+<b>Horizontal</b><br />
+Here is the devkitSMS tutorial horizontal scrolling "Ice Hockey" example using the SMS_loadTileMap() API.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s619/ScrollingHorz.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSaq9-A_-SMaHYZ0acD2hJ0jdSdE0wDRs2zibO7ZiSkJNbxvEaPAeXqLh1Q_OtWX1Am-MlahFqiCmO6foDJ8-8OXbC2GkGuJA_j159b2rMkD2xRXxFvtDsJGCoYAsMmIzONr4laCe-xBRmxYDguVFJnUnE1lGVej1fAa3kpstIsLwFmR4TEnYmeVyz/s600/ScrollingHorz.png"/></a>
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/01-HorizontalHockey/dev/engine/scroll_manager.c">scroll_manager.c</a>
+<br />
+<pre class="csharp" name="code">
+void engine_scroll_manager_update_right( unsigned char delta )
+{
+  unsigned char *src = NULL;
+  unsigned char ytile = 0;
+  unsigned int index = 0;
+  const unsigned int size = 2;
+
+  unsigned int x = 0;
+  unsigned char y = 0;
+
+  if( scrollRightDivided8 < scrollWidth )
+  {
+    scroll -= delta;
+    scrollRight += delta;
+    scrollRightDivided8 = scrollRight / 8;
+    devkit_SMS_setBGScrollX( scroll );
+
+    if( ( scrollRight % 8 ) == delta )
+    {
+      for( ytile = 1; ytile < Y_TILE_MAX; ytile++ )
+      {
+        x = X_TILE_MAX + scrollRightDivided8;
+        y = ytile - 1;
+        index = ( ( BG_TILE_WIDTH*ytile ) + ( X_TILE_MAX + scrollRightDivided8 ) ) * 2;
+        src = ( void * ) &hockey__tilemap__bin[ index ];
+        devkit_SMS_loadTileMap( x, y, src, size );
+      }
+    }
+  }
+}
+</pre>
+<br />
+<b>Vertical</b><br />
+Here is the devkitSMS tutorial vertical scrolling "Marilyn" [MM] example using the SMS_loadTileMap() API.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s618/ScrollingVert.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC7mhLp04Raw_XJCnAiCjDfkM4qM6Jdgp5MladvMWKMoy-ZLlmM5UuPLSOjUUZgX8sxdRr54RB74vaqRpJQqbXW_vOHo5g2f6EdmCdcOoabLCH9iaLURrSfoYwsx-Gl_YasaL_-xJUzieVYI9B3gY_RlxnclAedKflKyfyIU-yo7dDyQGuL7OPDr0o/s600/ScrollingVert.png"/></a>
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/02-VerticalMarilyn/dev/engine/scroll_manager.c">scroll_manager.c</a>
+<br />
+<pre class="csharp" name="code">
+void engine_scroll_manager_down()
+{
+  struct_scroll_object *so = &global_scroll_object;
+  unsigned int index;
+  unsigned int y;
+
+  if( so->scroll < so->height )
+  {
+    so->scroll++;
+    devkit_SMS_setBGScrollY( so->scroll );
+
+    if( ( so->scroll % 8 ) == 0 )
+    {
+      y = ( 24 + ( so->scroll / 8 ) ) % 28;
+      index = ( 24 + ( so->scroll / 8 ) ) * 32 * 2;
+      devkit_SMS_loadTileMap( 0, y, ( void * ) &MM__tilemap__bin[ index ], so->size );
+    }
+  }
+}
+</pre>
+<br />
+<b>Vertical II</b><br />
+Here is another vertical scrolling example which prefers SMS_setNextTileatXY() after loading all the tiles.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s619/ScrollingVertII.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfERHCzCT1S3r44rP56kTlgHRzHqDkRAlSWyrV3zx76mZTCGuXsDAOpsb73xVlHPkOwpAYoRui6hDnaJquhB6hGvtIYLwrEWgrlBfxIkpThvJ8Ua9-n2Z5zbCinz0IRHuIKVLrS_kEvPfb8Yrdsapv-Lj41NDWX7-QxKEN02HWeNzkSatFytioatU/s600/ScrollingVertII.png"/></a>
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/04-ScrollScreen/03-VerticalDragon/dev/engine/map_manager.c">map_manager.c</a>
+<br />
+<pre class="csharp" name="code">
+static void draw_map_row()
+{
+  struct_map_object *map_data = &global_map_object;
+  unsigned char i, j;
+  unsigned char y;
+  unsigned char *map_char;
+  unsigned int base_tile, tile;
+  unsigned char buffer[ 16 ];
+
+  decompress_map_row( buffer );
+  for( i = 2, y = map_data->background_y, base_tile = 256; i; i--, y++, base_tile++ )
+  {
+    devkit_SMS_setNextTileatXY( 0, y );
+    for( j = 16, map_char = buffer; j; j--, map_char++ )
+    {
+      tile = base_tile + ( *map_char << 2 );
+      devkit_SMS_setTile( tile );
+      devkit_SMS_setTile( tile + 2 );
+    }
+  }
+}
+</pre>
+<br />
+<u>PCM Samples</u><br />
+The Sega Master System is able to play high <a href="https://www.smspower.org/forums/15964-HighQualityPCMWithPcmencFeedbackRequested">quality</a> Pulse-Code Modulation [PCM] samples with the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool built by Maxim from the SMS Power! community which means WAV files can be converted and played.
+<br /><br />
+<b>Single Bank</b><br />
+Ensure the <a href="https://github.com/maxim-zhao/pcmenc/releases/tag/v0.3">pcmenc</a> executable currently lives in ~/SDCC/bin folder and accessible from $PATH.  Launch the terminal and execute the following command to convert an input "test" WAV file to pcmenc compatible file:
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;if exist "SoundFx.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 SoundFx.wav</td>
+</tr>
+</table>
+<br />
+This assumes that the converted WAV file will be less than 16KB; the maximum size for Sega Master System bank.  If not then the WAV file will need to be converted to multiple WAV files + converted [example below].
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/scripts/bank3.bat">Here</a> is an example of converting an input WAV file using pcmenc to be SMS compatible for code integration.
+<br />
+Contains the engine code to init and play the converted WAV file as PCM sample on the Sega Master System.
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/engine/sample_manager.c">sample_manager.c</a>
+<br />
+<pre class="csharp" name="code">
+void engine_sample_manager_init( const void *psginit );
+void engine_sample_manager_play( const void *sample );
+</pre>
+<br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/01-SingleBank/dev/engine/riff_manager.c">riff_manager.c</a>
+<br />
+Public API that game code will call as wrapper around the sample manager to actually play the PCM sample.
+<br /><br />
+IMPORTANT:<br />
+I've found that is usually safest to init the riff manager before playing each riff to avoid unwanted noise!
+<br /><br />
+<b>Multiple Banks</b><br />
+When the converted WAV file is greater than 16KB then use <a href="https://en.wikipedia.org/wiki/Audacity_(audio_editor)">Audacity</a> to convert the riff to multiple WAV files.  <a href="https://www.audacityteam.org/download">Download</a>, install and launch Audacity.  Open WAV file.  Divide into multiple smaller files using these settings:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT-Xuw5LcfcQkyz382K90RwN929CDpdi1NjqncakiBPelvL_J-c1oZzVoOMIYpl3C2pdzZwpkvkdhjRj2el_w9xf0_pfx8pgXoEdWzhXDYoWyTu-679OwubNO1APQ-a8tKa1BXqEG0Exv8baHlfPCr3lJieKK9gzQAzlCZwDurL-_n_3kv6tTjwcbu/s1717/MeanStreet.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT-Xuw5LcfcQkyz382K90RwN929CDpdi1NjqncakiBPelvL_J-c1oZzVoOMIYpl3C2pdzZwpkvkdhjRj2el_w9xf0_pfx8pgXoEdWzhXDYoWyTu-679OwubNO1APQ-a8tKa1BXqEG0Exv8baHlfPCr3lJieKK9gzQAzlCZwDurL-_n_3kv6tTjwcbu/s600/MeanStreet.png"/></a>
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;Project Rate (Hz)</td>
+<td valign="top">&nbsp;44100</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Snap To</td>
+<td valign="top">&nbsp;Off</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Selection Start</td>
+<td valign="top">&nbsp;000,000,000 samples</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Length CHECKED</td>
+<td valign="top">&nbsp;000,050,000 samples</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Audio Position</td>
+<td valign="top">&nbsp;000,000,000 samples</td>
+</tr>
+</table>
+<br />
+Hit Ctrl+B | Enter "01".  Repeat as per number of banks required at 50,000 samples intervals for example:
+<br />
+<table width="98%" border="1">
+<tr>
+<td valign="top">&nbsp;Riff 01</td>
+<td valign="top">&nbsp;Selection Start</td>
+<td valign="top">&nbsp;000,000,000 samples</td>
+<td valign="top">&nbsp;Length CHECKED</td>
+<td valign="top">&nbsp;000,050,000 samples</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Riff 02</td>
+<td valign="top">&nbsp;Selection Start</td>
+<td valign="top">&nbsp;000,050,000 samples</td>
+<td valign="top">&nbsp;Length CHECKED</td>
+<td valign="top">&nbsp;000,050,000 samples</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Riff 03</td>
+<td valign="top">&nbsp;Selection Start</td>
+<td valign="top">&nbsp;000,100,000 samples</td>
+<td valign="top">&nbsp;Length CHECKED</td>
+<td valign="top">&nbsp;000,050,000 samples</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Riff 04</td>
+<td valign="top">&nbsp;Selection Start</td>
+<td valign="top">&nbsp;000,150,000 samples</td>
+<td valign="top">&nbsp;Length CHECKED</td>
+<td valign="top">&nbsp;000,050,000 samples</td>
+</tr>
+</table>
+<br />
+File menu | Export Multiple.  Choose export location | Export | OK.  Execute the following script to convert:
+<br />
+<pre class="csharp" name="code">
+if exist "01.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 01.wav
+if exist "02.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 02.wav
+if exist "03.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 03.wav
+if exist "04.wav" pcmenc -rto 1 -dt1 12 -dt2 12 -dt3 423 04.wav
+</pre>
+<br />
+Finally, rename the *.wav.pcmenc files to more code friendly names and copy the files to parent banks folder with each *.wav.pcmenc file in its own bank.  Use this <a href="https://github.com/SteveProXNA/devkitSMScode/tree/main/Utilities/SplitWAVpacking">utiltiy</a> to automate this task and generate the scripts.
+<br /><br />
+<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/05-PCMsamples/02-MultipeBanks/dev/engine/screen_manager.c">Invoke</a> the riff manager similar to single bank example except iterate thru all banks that are required to play riff.  The only current drawback with this technique is the main thread blocks as the riff plays synchronously!
+<br /><br />
+<br />
+<u>Banked Code</u><br />
+SDCC 4.x supports <a href="https://github.com/sverx/devkitSMS#advanced-how-to-use-more-than-32kib-of-code-in-your-smsgg-rom-banked-code">banked</a> code which means it is now possible to page in and out code in a transparent manner.  The banked code should be written in separate source files that get allocated in separate code banks.  To summarize, banked code means that total code will not be restricted to 32KB maximum size.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s594/BankedCode.png"><img alt="" border="0" width="97%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7l9bHnr12ButUU8_k-yLtvxE1yROeBAsX1gH5YQxKH0hcjj6IrXeP-mehta2xKvv9Zt1isKNumr84aXh0fj_HWtOXGwV4cIKdfQc4Gt--Zbt7I68ArnAO9ncSyFRH4C6BeBnc_OfT2lDrqsE5gdygbR53VnqZ5NWgVW9hqdOg2fqYkaRxdiOBZ-au/s600/BankedCode.png"/></a>
+<br />
+<br />
+<b>Method</b> <br />
+1. Put all banked code in separate source files marking banked functions using __banked SDCC keyword.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/dev/banks/banked_code_1.h">banked_code_1.h</a></td>
+<td>&nbsp;<a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/dev/banks/banked_code_1.c">banked_code_1.c</a></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#ifndef _BANK_1_H_
+&nbsp;#define _BANK_1_H_
+
+&nbsp;int banked_code_1() __banked;
+
+&nbsp;#endif//_BANK_1_H_
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;#include "banked_code_1.h"
+
+&nbsp;int banked_code_1() __banked
+&nbsp;{
+&nbsp;	return 1;
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+<br />
+2. Compile each banked code source file into a specific separate code segment as part of the build script.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK1 banked_code_1.c
+<br />
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK2 banked_code_2.c
+<br />
+&nbsp;sdcc --debug -c -mz80 --codeseg BANK3 banked_code_3.c
+</td>
+</tr>
+</table>
+<br />
+3. Use the newly provided <b><a href="https://github.com/SteveProXNA/devkitSMScode/blob/main/SampleV/06-BankedCode/01-SimpleExample/crt0/crt0b_sms.rel">crt0b_sms.rel</a></b> as the first module into your linker call instead of crt0_sms.rel.
+<br />
+4. Instruct the linker to place the banked code at address 0x4000 + the <i>virtual address</i> of the bank which will be calculated as bank number * 2^16 i.e. code segment BANK1 at 0x14000, BANK2 at 0x24000 etc.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;sdcc --debug -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 \
+<br />
+&nbsp;-Wl-b_BANK1=0x14000 \
+<br />
+&nbsp;-Wl-b_BANK2=0x24000 \
+<br />
+&nbsp;-Wl-b_BANK3=0x34000 \
+<br />
+&nbsp;../crt0/crt0b_sms.rel \
+<br />
+&nbsp;../lib/SMSlib.lib \
+<br />
+&nbsp;main.rel \
+<br />
+&nbsp;banks/banked_code_1.rel \
+<br />
+&nbsp;banks/banked_code_2.rel \
+<br />
+&nbsp;banks/banked_code_3.rel \
+</td>
+</tr>
+</table>
+<br />
+5. Finally use the new makesms tool to convert the ihx output to sms format instead of the ihx2sms tool.
+<br />
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;makesms output.ihx output.sms
+</td>
+</tr>
+</table>
+<br />
+<br />
+<u>Summary</u><br />
+Armed with all this knowledge, we are now in an excellent position to upgrade any existing game projects for <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a> to latest version of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> on <a href="http://sdcc.sourceforge.net">SDCC</a> 4.x built cross platform for Windows and Linux!
+</span>
