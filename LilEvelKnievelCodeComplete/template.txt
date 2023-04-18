@@ -1,0 +1,224 @@
+<span style="font-family:verdana;font-size:85%;"> 
+<a href="https://www.smspower.org/Homebrew/Skazka-SMS">Skazka</a> is a Slavic RGP Adventure game originally written in BASIC for Sega SC-3000 and posted to SC-3000 Survivors Facebook <a href="https://www.facebook.com/photo/?fbid=3051652211766546&set=gm.4887403341348676">group</a>. The source <a href="https://bit.ly/3tGV9J3">code</a> is now  ported to <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhINGJHXnArSSbmkA9KYiPZeT4yrhzQosxpiOX5BaHs55WZFXYSpaZvHHzJhqQ3clnQUjulJWOQBnTHFM6f2jMEcU9wP3GRsJdl_CHzjqwNHu7PyMfqTKjEAvqfZ_79VaYBGVN1KKoQ2iajXNSQQiT9ketIscaozMMBS1uYYUZ2G2C0922BSpUY4ttt/s514/00-splash.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhINGJHXnArSSbmkA9KYiPZeT4yrhzQosxpiOX5BaHs55WZFXYSpaZvHHzJhqQ3clnQUjulJWOQBnTHFM6f2jMEcU9wP3GRsJdl_CHzjqwNHu7PyMfqTKjEAvqfZ_79VaYBGVN1KKoQ2iajXNSQQiT9ketIscaozMMBS1uYYUZ2G2C0922BSpUY4ttt/s600/00-splash.png"/></a>
+<br />
+Let's check it out!
+<br /><br />
+Note: Skazka development based on devkitSMS Programming <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">Setup</a> and devkitSMS Programming <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">Sample</a>.
+<br />
+Download source code <b><a href="https://github.com/SteveProXNA/SkazkaSMS">here</a></b>.
+<br /><br />
+<table width="100%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8ZyT2xZ6RNfcGTUknMgP6iLwZztXxfB3uxT7yvoO6Do0SAUyePEvP02WXlQv2RfTQ7aKwEWI6SI3nKahgYKgRPCvPWFZ0dswnibcJIy0VXzm1nz5HwNGR_5iq945xC_x5BP14t9JVEv-o4s6dAULLUZ-yyWkyZVY4huMO0VH5iVKlMU27FkSFh7n8/s509/01-title.png"><img alt="" border="0" width="95%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8ZyT2xZ6RNfcGTUknMgP6iLwZztXxfB3uxT7yvoO6Do0SAUyePEvP02WXlQv2RfTQ7aKwEWI6SI3nKahgYKgRPCvPWFZ0dswnibcJIy0VXzm1nz5HwNGR_5iq945xC_x5BP14t9JVEv-o4s6dAULLUZ-yyWkyZVY4huMO0VH5iVKlMU27FkSFh7n8/s600/01-title.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFlvo9QXGmYwo8Kz6epDKK4D6IEEvN2J5pYV6hTOnVBgnb4IzR11sHMOOaBNqrLhVqEqAJRqIV3thBa1XNS3Yz0oS4YnzEy_j_1Y8KUMUOH7iZ3uobIPcm_gAlDaNmkXhiNjIICmTDOgCe6k-pWqgk_nRYv1hyka8tedKW2OQaDPgxh7p_h4f7HS4H/s509/03-intro.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFlvo9QXGmYwo8Kz6epDKK4D6IEEvN2J5pYV6hTOnVBgnb4IzR11sHMOOaBNqrLhVqEqAJRqIV3thBa1XNS3Yz0oS4YnzEy_j_1Y8KUMUOH7iZ3uobIPcm_gAlDaNmkXhiNjIICmTDOgCe6k-pWqgk_nRYv1hyka8tedKW2OQaDPgxh7p_h4f7HS4H/s600/03-intro.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGjjkzx3rcGjHz9Jw-wX542Lr_7k11j1bu83Ip5XWUBctp5WWGCEPjCLmEXXfqrv3pnt62V2hVmX8eqV-SHly8IhHbOS6_GbCvZghvFqzLfL0abjzf_Z98c4gdMio9UsQrCFAKUuNYk6FIvybW0kJIUW9JjenxiM1oP7qdZsHwScDNek4-nmL9aAnE/s509/04-stats.png"><img alt="" border="0" width="95%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGjjkzx3rcGjHz9Jw-wX542Lr_7k11j1bu83Ip5XWUBctp5WWGCEPjCLmEXXfqrv3pnt62V2hVmX8eqV-SHly8IhHbOS6_GbCvZghvFqzLfL0abjzf_Z98c4gdMio9UsQrCFAKUuNYk6FIvybW0kJIUW9JjenxiM1oP7qdZsHwScDNek4-nmL9aAnE/s600/04-stats.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1JL6KAX9DFpahkGTD-lFKCX8y-p89G8ANgCCHOe3M6Nyi7y3G7HXgjzKPBKR44a_imYez1nzZo1u58vgUToHhZBoZuFqq2MHy10Fy99bFuCX1PVGcyz4MdvCb6UatDfyFbyFhLQyzNhJ0Uwum8jOLLOu4TWIv7im5_K_AeDFHtCNhEoYKyOGFI5ss/s509/05-forest.png"><img alt="" border="0" width="95%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1JL6KAX9DFpahkGTD-lFKCX8y-p89G8ANgCCHOe3M6Nyi7y3G7HXgjzKPBKR44a_imYez1nzZo1u58vgUToHhZBoZuFqq2MHy10Fy99bFuCX1PVGcyz4MdvCb6UatDfyFbyFhLQyzNhJ0Uwum8jOLLOu4TWIv7im5_K_AeDFHtCNhEoYKyOGFI5ss/s600/05-forest.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyI0YZ7CxCqz0YoGACHpeknEvXPQcQiO8Z15ad4cPQ6kMF6fL5tbfhScKXskiz0tCUMBR3n_e-Z96XlMeiRZAm26ru6qzFFRsqndZb0V67tBc1GD-yEE4NDo247pIsN9gICJ9WbaUoTCxB-T9-iGY41cahV_aGmSG9u7fCrj2X35LUkPj3RC0LEjKl/s509/06-shop.png"><img alt="" border="0" width="95%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyI0YZ7CxCqz0YoGACHpeknEvXPQcQiO8Z15ad4cPQ6kMF6fL5tbfhScKXskiz0tCUMBR3n_e-Z96XlMeiRZAm26ru6qzFFRsqndZb0V67tBc1GD-yEE4NDo247pIsN9gICJ9WbaUoTCxB-T9-iGY41cahV_aGmSG9u7fCrj2X35LUkPj3RC0LEjKl/s600/06-shop.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhtBZpfFCIAoQlUcZccUrQtLlWR6tjBtbVJB9zVaHPNZ_xouEfZCLzHlEV9q4oKhkVOzC93J1aHAH53zoxLpCH4SJnDRcAFv3abP6QGwiAZt7EDo27bpstQX7UlHKmpEIb3wAduowbpZj4W57xYlHhd7UVZhhovYPdZvU5I-5Md8hDb5v1PfXAgnAY/s509/08c-boss-fight.png"><img alt="" border="0" width="95%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhtBZpfFCIAoQlUcZccUrQtLlWR6tjBtbVJB9zVaHPNZ_xouEfZCLzHlEV9q4oKhkVOzC93J1aHAH53zoxLpCH4SJnDRcAFv3abP6QGwiAZt7EDo27bpstQX7UlHKmpEIb3wAduowbpZj4W57xYlHhd7UVZhhovYPdZvU5I-5Md8hDb5v1PfXAgnAY/s600/08c-boss-fight.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjh9WpeTrv9CW54C33CRhrNzQ72k5zKcqk7OTqv3a8uKjHGUPhPMAT9Bfjy0bvoHoQ2t-UelCUI03wK1pPDPFENyVia8vSlNeYFjXppx9JVsydySr823GJ4D2Jy3eb7NkSKeHaDKMkVLXAcnnMjcIuKogJ4Ca8RfqhUwjGkRAHNyduuB7_p6fU8BdaF/s514/10-beat-game.png"><img alt="" border="0" width="95%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjh9WpeTrv9CW54C33CRhrNzQ72k5zKcqk7OTqv3a8uKjHGUPhPMAT9Bfjy0bvoHoQ2t-UelCUI03wK1pPDPFENyVia8vSlNeYFjXppx9JVsydySr823GJ4D2Jy3eb7NkSKeHaDKMkVLXAcnnMjcIuKogJ4Ca8RfqhUwjGkRAHNyduuB7_p6fU8BdaF/s600/10-beat-game.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3ywULqfKn-vj0vFRaOf0qDf88TNGztJxQ1S3_T-jxnOozzEI4rvZ8pKN1U2x8_Gle2Iw-ejyPzmUaYD2yVkwE52yqOypG91uYw8_gBvwRezqKnYiwX_sKiAh0qgxwy55aIBmlYYIfYf5HJrnkRxVhr1zCIqQsTN7k4WGBd8NwS1Ig9Xfoq7D-z9CY/s509/99-credits.png"><img alt="" border="0" width="95%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3ywULqfKn-vj0vFRaOf0qDf88TNGztJxQ1S3_T-jxnOozzEI4rvZ8pKN1U2x8_Gle2Iw-ejyPzmUaYD2yVkwE52yqOypG91uYw8_gBvwRezqKnYiwX_sKiAh0qgxwy55aIBmlYYIfYf5HJrnkRxVhr1zCIqQsTN7k4WGBd8NwS1Ig9Xfoq7D-z9CY/s600/99-credits.png"/></a>
+</td>
+</tr> 
+</table>
+<br />
+<u>Instructions</u><br />
+Skazka captures the core mechanics of old school RPG experience: Kill monsters | level up | upgrade gear.  There are 5x different enemies in increasing order: Razboynik, Hungry Wolf, Kikimora, Leshy, Baby Yaga.  Defeat final boss Koschey to beat the game!
+<br /><br /> 
+<u>Tools</u><br />
+Here are a list of Tools and frameworks that were used in the development of this project:
+<br />
+<table width="82%" border="1">
+<tr>
+<td valign="top" width="30%">&nbsp;KEY</td>
+<td valign="top" width="70%">&nbsp;VALUE</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Programming</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/sverx/devkitSMS">devkitSMS</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Compiler</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://sourceforge.net/projects/sdcc/files/sdcc/3.6.9">sdcc 3.6.9</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Assembler</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://www.villehelin.com/wla.html">WLA-DX</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>IDE</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202015&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio 2015</a> / <a href="https://code.visualstudio.com">Visual Studio Code</a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Languages</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a> / <a href="https://en.wikipedia.org/wiki/Zilog_Z80">Z80</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Graphics</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/maxim-zhao/bmp2tile/releases/tag/v0.43">BMP2Tile 0.43</a> / 
+<a href="https://online-converting.com/image/convert2bmp">BMP Converter</a> / <a href="https://www.gimp.org">GIMP 2</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Music</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> / <a href="https://github.com/sverx/PSGlib/blob/master/tools/vgm2psg.exe">vgm2psg</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Emulators</b></td>
+<td valign="top" width="20%">&nbsp;<a href="http://emulicious.net">Emulicious</a> / <a href="http://www.emutopia.com/index.php/downloads-emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> / <a href="http://www.smspower.org/meka">Meka</a></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>Debugger</b></td>
+<td valign="top" width="20%">&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a></td>
+</tr>
+</table>
+<br />
+<u>ROM Hacking</u><br />
+You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXNA/SkazkaSMS/blob/main/Skazka-SMS-1.0.sms">Skazka</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<br />
+<table width="90%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x019E</b></td>
+<td valign="top" width="20%">&nbsp;Delay</td>
+<td valign="top" width="40%">&nbsp;Used to speed through any game delay.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x019F</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables invincibility.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A0</b></td>
+<td valign="top" width="20%">&nbsp;Current XP</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets current experience pts.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A1</b></td>
+<td valign="top" width="20%">&nbsp;Current HP</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets default healthy points.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A2</b></td>
+<td valign="top" width="20%">&nbsp;Set Gold</td>
+<td valign="top" width="40%">&nbsp;Non-zero sets current gold available.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A3</b></td>
+<td valign="top" width="20%">&nbsp;Set Weapon</td>
+<td valign="top" width="40%">&nbsp;Set value to 1 or 2 for stock else 0.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A4</b></td>
+<td valign="top" width="20%">&nbsp;Set Armor</td>
+<td valign="top" width="40%">&nbsp;Set value to 1 or 2 for armor else 0.</td>
+</tr
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A5</b></td>
+<td valign="top" width="20%">&nbsp;Add Life</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=Life otherwise 0=None.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A6</b></td>
+<td valign="top" width="20%">&nbsp;Village Talk</td>
+<td valign="top" width="40%">&nbsp;Set value to 1=repeat villagers talk.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A7</b></td>
+<td valign="top" width="20%">&nbsp;Music Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Music to play otherwise silent.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x01A8</b></td>
+<td valign="top" width="20%">&nbsp;Sound Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Sound to play otherwise silent.</td>
+</tr>
+</table>
+
+<br />
+<u>Hints</u><br />
+<ul>
+<li>
+Try to buy weapon "Sword" or armor "Tegilay" with your initial gold before entering any forest fights.
+</li>
+<li>
+After completing each forest fight, ensure you "Rest" at the main screen to replenish all health points.
+</li>
+<li>
+In the shop when you buy items you already have then will be deducted unconditionally so be aware!
+</li>
+<li>
+Get "+1 Life" just in case you lose a fight or the final boss battle so you do not have to restart game.
+</li>
+<li>
+Maximize HP + XP + get the best weapon "Axe" and best armor "Kolchuga" before fighting the boss.
+</li>
+<li>
+Fight boss when you have > 60 XP because your weapon and armor may be slightly more powerful!
+</li>
+</ul>
+<br />
+<u>Cheats</u><br />
+<ul>
+<li>
+On title screen, hold fire2 to skip intro music.  Same applies on boss and over screens.
+</li>
+<li>
+On title screen, hold fire2 after intro music completes to reveal hidden credits screen.
+</li>
+<li>
+On stats screen, move joystick left or right to skip over the flashing arrows indication.
+</li>
+<li>
+In Easy mode forest screen, press fire2 to "Run away" without risking losing any HPs.
+</li>
+</ul>
+<br />
+<u>Debugging</u><br />
+<ul>
+<li>
+On Windows you can debug the source code directly from in Visual Studio Code after pressing F5.
+</li>
+<li>
+On Linux you can debug source code directly from Visual Studio Code but launch Emulicious first.
+</ul>
+<br />
+<u>Credits</u><br />
+Extra special thanks to <a href="http://www.smspower.org/forums/member7198">sverx</a> for the devkitSMS.  Plus StevePro Studios would like to thank <a href="https://www.smspower.org/forums/member6944">Calindro</a> all for his 24/7 Tech Support.  Plus shout out to Mojon Twins <a href="https://www.smspower.org/forums/member9616">na_th_an</a> in which I <a href="https://github.com/mojontwins/loves_the_sg1000">found</a> lots of some cool sound effects.
+<br /><br />
+<u>Update</u><br />
+Skazka V1.0 was initially a text-based RPG adventure game.  However, after collaboration with <a href="https://www.smspower.org/forums/member7411">Kagesan</a> from SMS Power!, graphics were added for all screens for V2.0 which is the most up-to-date version of the game.
+<br /><br />
+<iframe width="98%" height="315" src="https://www.youtube.com/embed/61KrZ4gJW7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br /><br />
+<u>Summary</u><br />
+Despite the fact that <a href="https://www.smspower.org/Homebrew/Skazka-SMS">Skazka</a> was a simple text-based RPG adventure with limited game play, the cool aspect was collaborating with original <a href="https://www.facebook.com/groups/334334389988950/user/100007653903932">developer</a> and working together to port the game to the Sega Master System.
+<br><br>
+Skazka was entered in the SMS Power! 2022 <a href="https://www.smspower.org/Competitions/Coding-2022">competition</a> to connect the Sega SC-3000 Facebook <a href="https://www.facebook.com/photo/?fbid=3051652211766546&set=gm.4887403341348676">group</a> and the <a href="https://www.smspower.org">SMS Power!</a> community with the goal to spread Sega 8-bit preservation and fanaticism. That's awesome! 
+</span>
