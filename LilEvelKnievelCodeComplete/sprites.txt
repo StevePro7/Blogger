@@ -1,6 +1,39 @@
 sprites
 27-Apr-2023
 
+
+BLOG
+<span style="font-family:verdana;font-size:85%;">
+  
+<u>Sprites</u><br />
+The Title screen uses <a href="https://github.com/sverx/devkitSMS/blob/master/SMSlib/src/SMSlib.h#L58">Zoom</a> sprites in which the 24x32 player sprite is magnified as a 48x64 sprite.  However, SMS I has a <a href="https://github.com/sverx/devkitSMS/wiki/Advanced">bug</a> in how the VDP processes zoomed sprites.   Therefore, to circumvent the VDP bug you have to draw 4x additional sprites on the same Y coordinates of the original sprites to be displayed.  For example: 
+  
+<br/><br/>
+
+<a href="https://github.com/SteveProXNA/LilEvelKnievelSMS/blob/main/dev/screen/title_screen.c#L113">title_screen.c</a>
+<br />
+<pre class="csharp" name="code">
+static void draw_sprite( unsigned char idx, unsigned char mode, unsigned char x, unsigned char y )
+{
+	engine_sprite_manager_mode( idx, mode, x - 8, y );
+
+	engine_sprite_manager_zoom( mode, 0, y + mode * 0 );
+	engine_sprite_manager_zoom( mode, 8, y + mode * 0 );
+	engine_sprite_manager_zoom( mode, 192, y + mode * 0 );
+	engine_sprite_manager_zoom( mode, 224, y + mode * 0 );
+
+	engine_sprite_manager_zoom( mode, 0, y + mode * 16 );
+	engine_sprite_manager_zoom( mode, 8, y + mode * 16 );
+	engine_sprite_manager_zoom( mode, 192, y + mode * 16 );
+	engine_sprite_manager_zoom( mode, 224, y + mode * 16 );
+}
+</pre>
+<br />
+<br>
+
+</span>
+
+
 zoom sprites
 BUG on SMS #1
 Re: Zoom / Tall sprites
