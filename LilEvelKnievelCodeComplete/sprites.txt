@@ -1,0 +1,22 @@
+sprites
+27-Apr-2023
+
+zoom sprites
+BUG on SMS #1
+Re: Zoom / Tall sprites
+You replied on Mon 08/08/2022 22:00
+
+
+EMAIL
+Then to circumvent the VDP 'bug' you have to place 4 additional sprites on the same Y coordinates of the sprites you want to display. These 4 additional sprites can be transparent, placed at any X coordinate, or they could simply be placed at X=0 in case you're hiding the leftmost BG column... they won't appear.
+
+
+
+BLOG
+<u>Sprites</u><br />
+The Title screen uses Zoom sprites in which the 24x32 player sprite is magnified as a 48x64 sprite.  However, SMS I has a bug in how the VDP processes zoomed sprites.   Therefore, to circumvent the VDP bug you have to draw 4x additional sprites on the same Y coordinates of the original sprites to be displayed.  For example: 
+  
+  <br/><br>
+The Title screen uses Zoom sprites in which the 24x32 player sprite is magnified as 48x64 sprite.  However, on the SMS I there is a bug in how the original SMS VDP processes zoomed sprites.   Therefore, to circumvent the VDP bug you have to place 4x additional sprites on the same Y coordinates of the sprites you want to display. 
+  <br/><br>
+  These 4 additional sprites can be transparent, placed at any X coordinate, or they could simply be placed at X=0 in case you're hiding the leftmost BG column... they won't appear.
