@@ -111,5 +111,54 @@ Here are a list of Tools and frameworks that were used in the development of thi
 </tr>
 </table>
 -->
- <br />
+<br />
+
+<u>ROM Hacking</u><br />
+You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXNA/LilEvelKnievelSMS/blob/main/LilEvelKnievel-SMS-1.0.sms">Lil Evel Knievel</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
+<br />
+<!--  
+<table width="96%" border="1">
+<tr>
+<td valign="top" width="20%">&nbsp;ADDRESS</td>
+<td valign="top" width="20%">&nbsp;VARIABLE</td>
+<td valign="top" width="40%">&nbsp;DESCRIPTION</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x004F </b></td>
+<td valign="top" width="20%">&nbsp;Delay</td>
+<td valign="top" width="40%">&nbsp;Used to speed through any game delay.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0050</b></td>
+<td valign="top" width="20%">&nbsp;Invincible</td>
+<td valign="top" width="40%">&nbsp;Non-zero value enables invincibility.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0051</b></td>
+<td valign="top" width="20%">&nbsp;Gravity Jump</td>
+<td valign="top" width="40%">&nbsp;Jump once while falling from gravity.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0052</b></td>
+<td valign="top" width="20%">&nbsp;HarderLands</td>
+<td valign="top" width="40%">&nbsp;Tougher platform collision detection.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0053</b></td>
+<td valign="top" width="20%">&nbsp;Music Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Music to play otherwise silent.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0054</b></td>
+<td valign="top" width="20%">&nbsp;Sound Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Sound to play otherwise silent.</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;<b>0x0055</b></td>
+<td valign="top" width="20%">&nbsp;Riffs Off</td>
+<td valign="top" width="40%">&nbsp;Set 0=Riffs to play otherwise silent.</td>
+</tr>
+</table>
+-->
+<br />
 </span>
