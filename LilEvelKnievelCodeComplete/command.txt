@@ -1,77 +1,18 @@
-Physics
-27-Apr-2023
+Command
+28-Apr-2023
 
 
-<span style="font-family:verdana;font-size:85%;">
-  
-<u>Physics</u><br />
-  Game physics are aptly based on the "The Motorcycle Daredevil" <a href="https://bit.ly/3Vh5GqO">projectile</a> motion practice <a href="https://www.youtube.com/watch?v=rNvaEnZT0u4">problem</a>.  Here are player angle / speed combinations to produce four jump types nicknamed Skip, Jump, Leap and Hurl.
-<br />
-<table width="97%" border="1">
-<tr>
-<td>&nbsp;<b>Type</b></td>
-<td>&nbsp;<b>Angle</b></td>
-<td>&nbsp;<b>Speed</b></td>
-<td>&nbsp;<b>Horizontal</b></td>
-<td>&nbsp;<b>Vertical</b></td>
-<td>&nbsp;<b>Max Frames</b></td>
-</tr>
-<tr><td>&nbsp;SKIP</td><td>&nbsp;45</td><td>&nbsp;30</td><td>&nbsp;92</td><td>&nbsp;23</td><td>&nbsp;53</td></tr>
-<tr><td>&nbsp;JUMP</td><td>&nbsp;45</td><td>&nbsp;40</td><td>&nbsp;163</td><td>&nbsp;41</td><td>&nbsp;81</td></tr>
-<tr><td>&nbsp;LEAP</td><td>&nbsp;45</td><td>&nbsp;55</td><td>&nbsp;309</td><td>&nbsp;77</td><td>&nbsp;133</td></tr>
-<tr><td>&nbsp;HURL</td><td>&nbsp;40</td><td>&nbsp;65</td><td>&nbsp;425</td><td>&nbsp;89</td><td>&nbsp;177</td></tr>
-</table>
-  
-</span>
+The Command design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.
 
+Coindentally, Lil EK uses 8x commands [plus default no command] therefore each command stored as a single bit thus all 8x can be stored in a single byte
 
+This way, combinations of commands such as jump and right can be bitwised detected and recorded for playback.  This process is critical for development and esp. debugging as streams of commands can be issued to the game engine and any combination of game play action and physics collision detection can be "detected" to ensure the game engine source code is rock solid and bug free
 
-Source
-https://www.youtube.com/watch?v=rNvaEnZT0u4
-Practice Problem: The Motorcycle Daredevil
-
-
-Equations
-Output04.cs
-D:\GitHub\StevePro8\SegaMasterSystemLinux\TurtleBridge\physics\04-MyPhysicsPARAequations
-
-
-Output
-00-Master-Output04.csv
-D:\GitHub\StevePro8\SegaMasterSystemLinux\TurtleBridge\physics\graphs\04-MyPhysicsPARAequations
-
-
-Coding
-player_object.c
-D:\GitHub\StevePro8\SegaMasterSystemLinux\TurtleBridge\tilesNew\20-NewGraphicsTestingSMS\09-graphics_scroll_NEW\dev\object
-
-
-
-TABLE
-
-<table width="90%" border="1">
-<tr>
-<td>&nbsp;<b>Type</b></td>
-<td>&nbsp;<b>Angle</b></td>
-<td>&nbsp;<b>Speed</b></td>
-<td>&nbsp;<b>Horizontal</b></td>
-<td>&nbsp;<b>Vertical</b></td>
-<td>&nbsp;<b>Max Frames</b></td>
-</tr>
-<tr><td>&nbsp;SKIP</td><td>&nbsp;45</td><td>&nbsp;30</td><td>&nbsp;92</td><td>&nbsp;23</td><td>&nbsp;53</td></tr>
-<tr><td>&nbsp;JUMP</td><td>&nbsp;45</td><td>&nbsp;40</td><td>&nbsp;163</td><td>&nbsp;41</td><td>&nbsp;81</td></tr>
-<tr><td>&nbsp;LEAP</td><td>&nbsp;45</td><td>&nbsp;55</td><td>&nbsp;309</td><td>&nbsp;77</td><td>&nbsp;133</td></tr>
-<tr><td>&nbsp;HURL</td><td>&nbsp;40</td><td>&nbsp;65</td><td>&nbsp;425</td><td>&nbsp;89</td><td>&nbsp;177</td></tr>
-</table>
-
-
-
-LINK
-https://bit.ly/3Vh5GqO
-
-https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.101computing.net%2Fwp%2Fwp-content%2Fuploads%2Fprojectile-motion-formula-t.png&tbnid=GtXqcrRC69muPM&vet=12ahUKEwjLn5vS8sr-AhWCrEwKHSWOAqAQMygKegUIARDcAQ..i&imgrefurl=https%3A%2F%2Fwww.101computing.net%2Fprojectile-motion-formula%2F&docid=6x0z-cEasAKo_M&w=489&h=165&q=projectile%20motion%20physics%20equations&ved=2ahUKEwjLn5vS8sr-AhWCrEwKHSWOAqAQMygKegUIARDcAQ
-
-
-<br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRjzoLlXWXPh7Yx4s_LlN4RnN3lBeT3jR4J_QCx1TJndX5TOYH7R8-zbFS0ZXwk2C2sUO9OzvTYEFJIA1FJSuaAk7INmL2GIKixUMl6aytGqwiBsFrMek71NSyyp_LcVLTLxIsioMvhSFkqrBWyQgDIcSsMz80y1aKvCkMvwlK2sizXy1w6abAj091/s387/physics.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRjzoLlXWXPh7Yx4s_LlN4RnN3lBeT3jR4J_QCx1TJndX5TOYH7R8-zbFS0ZXwk2C2sUO9OzvTYEFJIA1FJSuaAk7INmL2GIKixUMl6aytGqwiBsFrMek71NSyyp_LcVLTLxIsioMvhSFkqrBWyQgDIcSsMz80y1aKvCkMvwlK2sizXy1w6abAj091/s600/physics.png"/></a>
-<br />
+#define COMMAND_LEFT_MASK	0b00000001
+#define COMMAND_MIDD_MASK	0b00000010
+#define COMMAND_RGHT_MASK	0b00000100
+#define COMMAND_HIGH_MASK	0b00001000
+#define COMMAND_DOWN_MASK	0b00010000
+#define COMMAND_JUMP_MASK	0b00100000
+#define COMMAND_SWAP_MASK	0b01000000
+#define COMMAND_FLIP_MASK	0b10000000
