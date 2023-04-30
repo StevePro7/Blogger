@@ -1,0 +1,18 @@
+Command
+28-Apr-2023
+
+
+The Command design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.
+
+Coindentally, Lil EK uses 8x commands [plus default no command] therefore each command stored as a single bit thus all 8x can be stored in a single byte
+
+This way, combinations of commands such as jump and right can be bitwised detected and recorded for playback.  This process is critical for development and esp. debugging as streams of commands can be issued to the game engine and any combination of game play action and physics collision detection can be "detected" to ensure the game engine source code is rock solid and bug free
+
+#define COMMAND_LEFT_MASK	0b00000001
+#define COMMAND_MIDD_MASK	0b00000010
+#define COMMAND_RGHT_MASK	0b00000100
+#define COMMAND_HIGH_MASK	0b00001000
+#define COMMAND_DOWN_MASK	0b00010000
+#define COMMAND_JUMP_MASK	0b00100000
+#define COMMAND_SWAP_MASK	0b01000000
+#define COMMAND_FLIP_MASK	0b10000000
