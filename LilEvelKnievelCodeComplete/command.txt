@@ -2,7 +2,7 @@ Command
 28-Apr-2023
 
 
-The Command design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.
+The <a href="https://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command</a> design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.
 
 Coindentally, Lil EK uses 8x commands [plus default no command] therefore each command stored as a single bit thus all 8x can be stored in a single byte
 
@@ -16,3 +16,26 @@ This way, combinations of commands such as jump and right can be bitwised detect
 #define COMMAND_JUMP_MASK	0b00100000
 #define COMMAND_SWAP_MASK	0b01000000
 #define COMMAND_FLIP_MASK	0b10000000
+
+
+
+<u>Commands</u><br />
+The <a href="https://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command</a> design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.  
+<br><br>
+Coindentally, Lil EK uses 8x commands therefore each command stored as single bit mask; all 8x commands stored within a single byte.  This way, combos can be bitwised detected rather than flattened out individually.
+<br />
+<!--
+<pre class="csharp" name="code">
+#define COMMAND_LEFT_MASK	0b00000001
+#define COMMAND_MIDD_MASK	0b00000010
+#define COMMAND_RGHT_MASK	0b00000100
+#define COMMAND_HIGH_MASK	0b00001000
+#define COMMAND_DOWN_MASK	0b00010000
+#define COMMAND_JUMP_MASK	0b00100000
+#define COMMAND_SWAP_MASK	0b01000000
+#define COMMAND_FLIP_MASK	0b10000000
+</pre>
+-->
+<br />
+Critical to the development process, streams commands can be issued to the game engine for debugging all possible game play scenarios.  Plus commands can be recorded for playback to show case instructional demo.
+  <br><br>

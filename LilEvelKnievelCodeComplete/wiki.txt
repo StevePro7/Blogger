@@ -1,7 +1,7 @@
 <span style="font-family:verdana;font-size:85%;"> 
-  
 
-  
+
+  <br><br>
 <!--
 <u>Commands</u><br />
 <u>Physics</u><br />  
@@ -10,7 +10,7 @@
 <u>Sprites</u><br />  
   -->
 
-  <br>
+  <br><br>
 
 A tribute to the greatest daredevil!  <a href="https://www.smspower.org/Homebrew/LilEvelKnievel-SMS">Lil Evel Knievel</a> is a continuous side-scrolling skateboard platformer video game set in the original Wonderboy aquazone.  Lil EK is also an SMS Power! 2023 coding competition entry.
 <br />
@@ -212,12 +212,32 @@ Leverage down action on descent to land especially if you start to overshoot the
   
 <!--
 <u>Commands</u><br />
- 
+<u>Physics</u><br />
 <u>Riffs</u><br />
 <u>Scrolling</u><br />
 <u>Sprites</u><br />  
   -->
   
+  <u>Commands</u><br />
+The <a href="https://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command</a> design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.  
+<br><br>
+Coindentally, Lil EK uses 8x commands therefore each command stored as single bit mask; all 8x commands stored within a single byte.  This way, combos can be bitwised detected rather than flattened out individually.
+<br />
+<!--
+<pre class="csharp" name="code">
+#define COMMAND_LEFT_MASK	0b00000001
+#define COMMAND_MIDD_MASK	0b00000010
+#define COMMAND_RGHT_MASK	0b00000100
+#define COMMAND_HIGH_MASK	0b00001000
+#define COMMAND_DOWN_MASK	0b00010000
+#define COMMAND_JUMP_MASK	0b00100000
+#define COMMAND_SWAP_MASK	0b01000000
+#define COMMAND_FLIP_MASK	0b10000000
+</pre>
+-->
+<br />
+Critical to the development process, streams commands can be issued to the game engine for debugging all possible game play scenarios.  Plus commands can be recorded for playback to show case instructional demo.
+  <br><br>
   
 <u>Physics</u><br />
 Game physics are aptly based on the "The Motorcycle Daredevil" <a href="https://bit.ly/3Vh5GqO">projectile</a> motion practice <a href="https://www.youtube.com/watch?v=rNvaEnZT0u4">problem</a>.  Here are player angle / speed combinations to produce four jump types nicknamed Skip, Jump, Leap and Hurl.
