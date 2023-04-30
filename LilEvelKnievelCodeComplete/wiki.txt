@@ -1,23 +1,5 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
-<u>Audio</u><br />
-Lil Evel Knievel includes digitized sound extensively by leveraging the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool and uses development techniques outlined in devkitSMS Programming <a href="http://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Sample</a> under PCM Samples section.  Some riffs you may have missed include: <i>AC/DC, Austin Powers, Gn'R, Simpsons, Van Halen, Wayne's World, WWF Wrestling</i>.
-<br><br>
-Music is often easy to neglect in a time pressure coding competition but Lil EK has been <a href="https://www.youtube.com/watch?v=wtaDY79qoK4&t=1000s">quoted</a> as having "<b><i>perhaps the single most impressive audo soundtrack the little PSG has ever seen</i></b>".
-<br><br>
-  
-  <a href="https://www.youtube.com/watch?v=wtaDY79qoK4&t=1000s">quoted</a>
-  <br><br>
-<!--
-<u>Commands</u><br />
-<u>Physics</u><br />  
-<u>Riffs</u><br />
-<u>Scrolling</u><br />
-<u>Sprites</u><br />  
-  -->
-
-  <br><br>
-
 A tribute to the greatest daredevil!  <a href="https://www.smspower.org/Homebrew/LilEvelKnievel-SMS">Lil Evel Knievel</a> is a continuous side-scrolling skateboard platformer video game set in the original Wonderboy aquazone.  Lil EK is also an SMS Power! 2023 coding competition entry.
 <br />
 <!--   
@@ -95,7 +77,6 @@ There are four jump categories on ground: Skip, Jump, Leap, Hurl.  Once airborne
 </table>
 -->
 <br />
-  
   
 <u>Tools</u><br />
 Here are a list of Tools and frameworks that were used in the development of this project:
@@ -222,9 +203,15 @@ Leverage down action on descent to land especially if you start to overshoot the
 <u>Riffs</u><br />
 <u>Scrolling</u><br />
 <u>Sprites</u><br />  
-  -->
-  
-  <u>Commands</u><br />
+-->
+
+<u>Audio</u><br />
+Lil Evel Knievel includes digitized sound extensively by leveraging the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool and uses development techniques outlined in devkitSMS Programming <a href="http://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Sample</a> under PCM Samples section.  Some riffs you may have missed include: <i>AC/DC, Austin Powers, Gn'R, Simpsons, Van Halen, Wayne's World, WWF Wrestling</i>.
+<br><br>
+Music is often easy to neglect in a time pressure coding competition but Lil EK has been <a href="https://www.youtube.com/watch?v=wtaDY79qoK4&t=1000s">quoted</a> as having "<b><i>perhaps the single most impressive audo soundtrack the little PSG has ever seen</i></b>".
+<br><br>
+
+<u>Commands</u><br />
 The <a href="https://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command</a> design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.  
 <br><br>
 Coindentally, Lil EK uses 8x commands therefore each command stored as single bit mask; all 8x commands stored within a single byte.  This way, combos can be bitwised detected rather than flattened out individually.
