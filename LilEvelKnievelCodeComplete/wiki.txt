@@ -2,9 +2,9 @@
 
 A tribute to the greatest daredevil!  <a href="https://www.smspower.org/Homebrew/LilEvelKnievel-SMS">Lil Evel Knievel</a> is a continuous side-scrolling skateboard platformer video game set in the original Wonderboy aquazone.  Lil EK is also an SMS Power! 2023 coding competition entry.
 <br />
-<!--   
+<!-- -->  
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMGwmVgPC_XIi3yYuoj-ednkdDfUPOivLiyFFgyiO8FdYDivFmWet-EYdNHdDjx-4yWndVvyOCJENBM4CtDICXd1SfZn84rF9_vJs7YbvbRDH5JKozcpDOaqMVzg4wKNhRz1x2nnWvJcLhQQC05GxwykLqomyTrhHSKiDOpJmR8QgLIC6IcsIXE0i_/s514/02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMGwmVgPC_XIi3yYuoj-ednkdDfUPOivLiyFFgyiO8FdYDivFmWet-EYdNHdDjx-4yWndVvyOCJENBM4CtDICXd1SfZn84rF9_vJs7YbvbRDH5JKozcpDOaqMVzg4wKNhRz1x2nnWvJcLhQQC05GxwykLqomyTrhHSKiDOpJmR8QgLIC6IcsIXE0i_/s600/02.png"/></a>
--->
+<!-- -->
 <br />
 Let's check it out!
 <br /><br />
@@ -12,7 +12,7 @@ Note: all Lil Evel Knievel development is based on devkitSMS Programming <a href
 <br />
 Download source code <b><a href="https://github.com/SteveProXNA/LilEvelKnievelSMS">here</a></b>.
 <br />
-<!--
+<!-- -->
 <br />  
 <table width="100%">  
 <tr>
@@ -56,7 +56,7 @@ Download source code <b><a href="https://github.com/SteveProXNA/LilEvelKnievelSM
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
   
 <u>Instructions</u><br />
@@ -64,7 +64,7 @@ Lil Evel Knievel V1.0 game play is very open and simple due to the aggressive co
 <br /><br />  
 There are four jump categories on ground: Skip, Jump, Leap, Hurl.  Once airborne, Lil EK can swap direction or flip somersault.  Move opposite direction while airborne inverts somersault and down to accelerate land.
 <br />
-<!--
+<!-- -->
 <table width="97%" border="1">
 <tr><td colspan="4">&nbsp;<b>Jump Categories On Ground</b></td></tr>
 <tr><td>&nbsp;SKIP</td><td>&nbsp;Smallest</td><td>&nbsp;Left + Fire1</td><td>&nbsp;</td></tr>
@@ -75,13 +75,13 @@ There are four jump categories on ground: Skip, Jump, Leap, Hurl.  Once airborne
 <tr><td>&nbsp;SWAP</td><td>&nbsp;Direction</td><td>&nbsp;Fire1</td><td>&nbsp;</td></tr>
 <tr><td>&nbsp;FLIP</td><td>&nbsp;Somersault</td><td>&nbsp;Fire2</td><td>&nbsp;</td></tr>
 </table>
--->
+<!-- -->
 <br />
   
 <u>Tools</u><br />
 Here are a list of Tools and frameworks that were used in the development of this project:
 <br />
-<!--  
+<!-- --> 
 <table width="82%" border="1">
 <tr>
 <td valign="top" width="30%">&nbsp;KEY</td>
@@ -125,13 +125,13 @@ Here are a list of Tools and frameworks that were used in the development of thi
 <td valign="top" width="20%">&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a></td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 
 <u>ROM Hacking</u><br />
 You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXNA/LilEvelKnievelSMS/blob/main/LilEvelKnievel-SMS-1.0.sms">Lil Evel Knievel</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
 <br />
-<!--  
+<!-- --> 
 <table width="96%" border="1">
 <tr>
 <td valign="top" width="20%">&nbsp;ADDRESS</td>
@@ -174,11 +174,11 @@ You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXN
 <td valign="top" width="40%">&nbsp;Set 0=Riffs to play otherwise silent.</td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
   
 <u>Hints</u><br />
-<!--
+<!-- -->
 <ul>
 <li>
 Four difficulty options: Easier, Normal, Harder, Insane.  Difficulty increase = Visibility descreases
@@ -193,17 +193,8 @@ Favour Hurl for medium sized gap with opposite move direction to land inverted s
 Leverage down action on descent to land especially if you start to overshoot the target platform
 </li>
 </ul>
--->
+<!-- -->
 <br />
-  
-  
-<!--
-<u>Commands</u><br />
-<u>Physics</u><br />
-<u>Riffs</u><br />
-<u>Scrolling</u><br />
-<u>Sprites</u><br />  
--->
 
 <u>Audio</u><br />
 Lil Evel Knievel includes digitized sound extensively by leveraging the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool and uses development techniques outlined in devkitSMS Programming <a href="http://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Sample</a> under PCM Samples section.  Some riffs you may have missed include: <i>AC/DC, Austin Powers, Gn'R, Simpsons, Van Halen, Wayne's World, WWF Wrestling</i>.
@@ -216,7 +207,7 @@ The <a href="https://steveproxna.blogspot.com/2009/12/command-design-pattern.htm
 <br><br>
 Coindentally, Lil EK uses 8x commands therefore each command stored as single bit mask; all 8x commands stored within a single byte.  This way, combos can be bitwised detected rather than flattened out individually.
 <br />
-<!--
+<!-- -->
 <pre class="csharp" name="code">
 #define COMMAND_LEFT_MASK	0b00000001
 #define COMMAND_MIDD_MASK	0b00000010
@@ -227,15 +218,16 @@ Coindentally, Lil EK uses 8x commands therefore each command stored as single bi
 #define COMMAND_SWAP_MASK	0b01000000
 #define COMMAND_FLIP_MASK	0b10000000
 </pre>
--->
+<!-- 
 <br />
+-->
 Critical to the development process, streams commands can be issued to the game engine for debugging all possible game play scenarios.  Plus commands can be recorded for playback to show case instructional demo.
-  <br><br>
+<br><br>
   
 <u>Physics</u><br />
 Game physics are aptly based on the "The Motorcycle Daredevil" <a href="https://bit.ly/3Vh5GqO">projectile</a> motion practice <a href="https://www.youtube.com/watch?v=rNvaEnZT0u4">problem</a>.  Here are player angle / speed combinations to produce four jump types nicknamed Skip, Jump, Leap and Hurl.
 <br />
-<!--  
+<!--  -->
 <table width="97%" border="1">
 <tr>
 <td>&nbsp;<b>Type</b></td>
@@ -250,7 +242,7 @@ Game physics are aptly based on the "The Motorcycle Daredevil" <a href="https://
 <tr><td>&nbsp;LEAP</td><td>&nbsp;45</td><td>&nbsp;55</td><td>&nbsp;309</td><td>&nbsp;77</td><td>&nbsp;133</td></tr>
 <tr><td>&nbsp;HURL</td><td>&nbsp;40</td><td>&nbsp;65</td><td>&nbsp;425</td><td>&nbsp;89</td><td>&nbsp;177</td></tr>
 </table>
--->
+<!-- -->
 <br />
   
 <u>Sprites</u><br />
@@ -260,7 +252,7 @@ The Title screen uses <a href="https://github.com/sverx/devkitSMS/blob/master/SM
 <u>YouTube</u><br />
 YouTube videos showcasing all SMS Power! 2023 coding competition entries including some with long play:
 <br>
-<!--
+<!-- -->
 <iframe width="98%" height="315" src="https://www.youtube.com/embed/Dc4UebzLpW4?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
 <table width="90%" border="1">
@@ -281,7 +273,7 @@ YouTube videos showcasing all SMS Power! 2023 coding competition entries includi
 <td valign="top">&nbsp;Révo SEGA 8-bit</td>
 </tr>  
 </table>
--->
+<!-- -->
 <br>
   
 <u>Summary</u><br />
