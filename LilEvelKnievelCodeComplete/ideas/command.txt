@@ -30,6 +30,7 @@ Coindentally, Lil EK uses 8x commands therefore each command stored as single bi
 #define COMMAND_MIDD_MASK	0b00000010
 #define COMMAND_RGHT_MASK	0b00000100
 #define COMMAND_HIGH_MASK	0b00001000
+
 #define COMMAND_DOWN_MASK	0b00010000
 #define COMMAND_JUMP_MASK	0b00100000
 #define COMMAND_SWAP_MASK	0b01000000
@@ -38,4 +39,23 @@ Coindentally, Lil EK uses 8x commands therefore each command stored as single bi
 -->
 <br />
 Critical to the development process, streams commands can be issued to the game engine for debugging all possible game play scenarios.  Plus commands can be recorded for playback to show case instructional demo.
-  <br><br>
+<br><br>
+
+
+
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;#define COMMAND_LEFT_MASK	0b00000001<br />
+&nbsp;#define COMMAND_MIDD_MASK	0b00000010<br />
+&nbsp;#define COMMAND_RGHT_MASK	0b00000100<br />
+&nbsp;#define COMMAND_HIGH_MASK	0b00001000<br />
+</td>
+<td>
+&nbsp;#define COMMAND_DOWN_MASK	0b00010000<br />
+&nbsp;#define COMMAND_JUMP_MASK	0b00100000<br />
+&nbsp;#define COMMAND_SWAP_MASK	0b01000000<br />
+&nbsp;#define COMMAND_FLIP_MASK	0b10000000<br />
+</td>
+</tr>
+</table>

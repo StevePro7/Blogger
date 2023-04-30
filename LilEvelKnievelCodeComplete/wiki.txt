@@ -1,5 +1,22 @@
 <span style="font-family:verdana;font-size:85%;"> 
 
+<table width="97%" border="1">
+<tr>
+<td>
+&nbsp;#define COMMAND_LEFT_MASK	0b00000001<br />
+&nbsp;#define COMMAND_MIDD_MASK	0b00000010<br />
+&nbsp;#define COMMAND_RGHT_MASK	0b00000100<br />
+&nbsp;#define COMMAND_HIGH_MASK	0b00001000<br />
+</td>
+<td>
+&nbsp;#define COMMAND_DOWN_MASK	0b00010000<br />
+&nbsp;#define COMMAND_JUMP_MASK	0b00100000<br />
+&nbsp;#define COMMAND_SWAP_MASK	0b01000000<br />
+&nbsp;#define COMMAND_FLIP_MASK	0b10000000<br />
+</td>
+</tr>
+</table>
+  
 A tribute to the greatest daredevil!  <a href="https://www.smspower.org/Homebrew/LilEvelKnievel-SMS">Lil Evel Knievel</a> is a continuous side-scrolling skateboard platformer video game set in the original Wonderboy aquazone.  Lil EK is also an SMS Power! 2023 coding competition entry.
 <br />
 <!-- -->  
@@ -207,17 +224,22 @@ The <a href="https://steveproxna.blogspot.com/2009/12/command-design-pattern.htm
 <br><br>
 Coindentally, Lil EK uses 8x commands therefore each command stored as single bit mask; all 8x commands stored within a single byte.  This way, combos can be bitwised detected rather than flattened out individually.
 <br />
-<!-- -->
-<pre class="csharp" name="code">
-#define COMMAND_LEFT_MASK	0b00000001
-#define COMMAND_MIDD_MASK	0b00000010
-#define COMMAND_RGHT_MASK	0b00000100
-#define COMMAND_HIGH_MASK	0b00001000
-#define COMMAND_DOWN_MASK	0b00010000
-#define COMMAND_JUMP_MASK	0b00100000
-#define COMMAND_SWAP_MASK	0b01000000
-#define COMMAND_FLIP_MASK	0b10000000
-</pre>
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;#define COMMAND_LEFT_MASK	0b00000001<br />
+&nbsp;#define COMMAND_MIDD_MASK	0b00000010<br />
+&nbsp;#define COMMAND_RGHT_MASK	0b00000100<br />
+&nbsp;#define COMMAND_HIGH_MASK	0b00001000<br />
+</td>
+<td>
+&nbsp;#define COMMAND_DOWN_MASK	0b00010000<br />
+&nbsp;#define COMMAND_JUMP_MASK	0b00100000<br />
+&nbsp;#define COMMAND_SWAP_MASK	0b01000000<br />
+&nbsp;#define COMMAND_FLIP_MASK	0b10000000<br />
+</td>
+</tr>
+</table>
 <!-- 
 <br />
 -->
