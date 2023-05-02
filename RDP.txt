@@ -1,0 +1,22 @@
+RDP
+02/05/2023
+
+
+Setup BFG computer on RDP as before
+192.168.15.254
+BIGFISH\steven.boland
+
+but there was an issue with audio on the remote BFG PC
+so here is the "fix"
+
+RDP
+show options
+Local Resources
+Remote audio
+Configure remote audio settings
+Settings
+Play on remote computer
+
+
+Otherewise there will be an issue with the Media Player
+playing audio remotely
