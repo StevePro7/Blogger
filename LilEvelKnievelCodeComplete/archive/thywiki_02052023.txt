@@ -1,14 +1,19 @@
 <span style="font-family:verdana;font-size:85%;"> 
+
 A tribute to the greatest daredevil!  <a href="https://www.smspower.org/Homebrew/LilEvelKnievel-SMS">Lil Evel Knievel</a> is a continuous side-scrolling skateboard platformer video game set in the original Wonderboy aquazone.  Lil EK is also an SMS Power! 2023 coding competition entry.
 <br />
+<!-- -->  
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMGwmVgPC_XIi3yYuoj-ednkdDfUPOivLiyFFgyiO8FdYDivFmWet-EYdNHdDjx-4yWndVvyOCJENBM4CtDICXd1SfZn84rF9_vJs7YbvbRDH5JKozcpDOaqMVzg4wKNhRz1x2nnWvJcLhQQC05GxwykLqomyTrhHSKiDOpJmR8QgLIC6IcsIXE0i_/s514/02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMGwmVgPC_XIi3yYuoj-ednkdDfUPOivLiyFFgyiO8FdYDivFmWet-EYdNHdDjx-4yWndVvyOCJENBM4CtDICXd1SfZn84rF9_vJs7YbvbRDH5JKozcpDOaqMVzg4wKNhRz1x2nnWvJcLhQQC05GxwykLqomyTrhHSKiDOpJmR8QgLIC6IcsIXE0i_/s600/02.png"/></a>
+<!-- -->
 <br />
 Let's check it out!
 <br /><br />
 Note: all Lil Evel Knievel development is based on devkitSMS Programming <a href="http://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">Setup</a> and Programming <a href="http://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Sample</a>.
 <br />
 Download source code <b><a href="https://github.com/SteveProXNA/LilEvelKnievelSMS">here</a></b>.
-<br /><br />  
+<br />
+<!-- -->
+<br />  
 <table width="100%">  
 <tr>
 <td valign="top" width="40%">
@@ -51,13 +56,15 @@ Download source code <b><a href="https://github.com/SteveProXNA/LilEvelKnievelSM
 </td>
 </tr>
 </table>
+<!-- -->
 <br />
- 
+  
 <u>Instructions</u><br />
 Lil Evel Knievel V1.0 game play is very open and simple due to the aggressive coding competition deadline: jump over varying platform gaps and pull off cool skateboard flips and trick combos to complete each level.
 <br /><br />  
 There are four jump categories on ground: Skip, Jump, Leap, Hurl.  Once airborne, Lil EK can swap direction or flip somersault.  Move opposite direction while airborne inverts somersault and down to accelerate land.
 <br />
+<!-- -->
 <table width="97%" border="1">
 <tr><td colspan="4">&nbsp;<b>Jump Categories On Ground</b></td></tr>
 <tr><td>&nbsp;SKIP</td><td>&nbsp;Smallest</td><td>&nbsp;Left + Fire1</td><td>&nbsp;</td></tr>
@@ -68,10 +75,13 @@ There are four jump categories on ground: Skip, Jump, Leap, Hurl.  Once airborne
 <tr><td>&nbsp;SWAP</td><td>&nbsp;Direction</td><td>&nbsp;Fire1</td><td>&nbsp;</td></tr>
 <tr><td>&nbsp;FLIP</td><td>&nbsp;Somersault</td><td>&nbsp;Fire2</td><td>&nbsp;</td></tr>
 </table>
+<!-- -->
 <br />
+  
 <u>Tools</u><br />
 Here is a list of Tools and frameworks that were used in the development of this project:
 <br />
+<!-- --> 
 <table width="81%" border="1">
 <tr>
 <td valign="top" width="30%">&nbsp;KEY</td>
@@ -115,10 +125,13 @@ Here is a list of Tools and frameworks that were used in the development of this
 <td valign="top" width="20%">&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger">Emulicious Debugger</a></td>
 </tr>
 </table>
+<!-- -->
 <br />
+
 <u>ROM Hacking</u><br />
 You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXNA/LilEvelKnievelSMS/blob/main/LilEvelKnievel-SMS-1.0.sms">Lil Evel Knievel</a> into Hex Editor, e.g. <a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a>, and modify bytes:
 <br />
+<!-- --> 
 <table width="96%" border="1">
 <tr>
 <td valign="top" width="20%">&nbsp;ADDRESS</td>
@@ -161,8 +174,11 @@ You can hack this ROM!  Download and dump <a href="https://github.com/SteveProXN
 <td valign="top" width="40%">&nbsp;Set 0=Riffs to play otherwise silent.</td>
 </tr>
 </table>
-<br /> 
+<!-- -->
+<br />
+  
 <u>Hints</u><br />
+<!-- -->
 <ul>
 <li>
 Four difficulty options: Easier, Normal, Harder, Insane.  Difficulty increase = Visibility descreases
@@ -177,12 +193,15 @@ Favour Hurl for medium sized gap with opposite move direction to land inverted s
 Leverage down action on descent to land especially if you start to overshoot the target platform
 </li>
 </ul>
+<!-- -->
 <br />
+
 <u>Audio</u><br />
 Lil Evel Knievel includes digitized sound extensively by leveraging the <a href="https://github.com/maxim-zhao/pcmenc">pcmenc</a> tool and uses development techniques outlined in devkitSMS Programming <a href="http://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Sample</a> under PCM Samples section.  Some riffs you may have missed include: <i>AC/DC, Austin Powers, Gn'R, Simpsons, Van Halen, Wayne's World, WWF Wrestling</i>.
 <br><br>
 Music is often easy to neglect in a time pressure coding competition but Lil EK has been <a href="https://www.youtube.com/watch?v=wtaDY79qoK4&t=1000s">quoted</a> as having "<b><i>perhaps the single most impressive audo soundtrack the little PSG has ever seen</i></b>".
 <br><br>
+
 <u>Commands</u><br />
 The <a href="https://steveproxna.blogspot.com/2009/12/command-design-pattern.html">Command</a> design pattern encapsulates a command request as an object.  In game code, an example of a command request could be a move command: e.g. move sprite left, right or jump command flip, swap etc.  
 <br><br>
@@ -204,13 +223,17 @@ Coindentally, Lil EK uses 8x commands therefore each command stored as single bi
 </td>
 </tr>
 </table>
+<!-- -->
 <br />
+
 Critical to the development process, streams commands can be issued to the game engine for debugging all possible game play scenarios.  Plus commands can be recorded for playback to show case instructional <a href="https://www.youtube.com/watch?v=Dc4UebzLpW4&t=31s">demo</a>!
 <br><br>
+
 <br>
 <u>Physics</u><br />
 Game physics are aptly based on the "The Motorcycle Daredevil" <a href="https://bit.ly/3Vh5GqO">projectile</a> motion practice <a href="https://www.youtube.com/watch?v=rNvaEnZT0u4">problem</a>.  Here are player angle / speed combinations to produce four jump types nicknamed Skip, Jump, Leap and Hurl.
 <br />
+<!--  -->
 <table width="97%" border="1">
 <tr>
 <td>&nbsp;<b>Type</b></td>
@@ -225,13 +248,17 @@ Game physics are aptly based on the "The Motorcycle Daredevil" <a href="https://
 <tr><td>&nbsp;LEAP</td><td>&nbsp;45</td><td>&nbsp;55</td><td>&nbsp;309</td><td>&nbsp;77</td><td>&nbsp;133</td></tr>
 <tr><td>&nbsp;HURL</td><td>&nbsp;40</td><td>&nbsp;65</td><td>&nbsp;425</td><td>&nbsp;89</td><td>&nbsp;177</td></tr>
 </table>
-<br /> 
+<!-- -->
+<br />
+  
 <u>Sprites</u><br />
 The Title screen uses <a href="https://github.com/sverx/devkitSMS/blob/master/SMSlib/src/SMSlib.h#L58">Zoom</a> sprites in which the 24x32 player sprite is magnified as a 48x64 sprite.  However, SMS I has a <a href="https://github.com/sverx/devkitSMS/wiki/Advanced">bug</a> in how the VDP processes zoomed sprites.   Therefore, to circumvent the VDP bug you have to draw 4x additional sprites on the same Y coordinates of the original sprites as seen in <a href="https://github.com/SteveProXNA/LilEvelKnievelSMS/blob/main/dev/screen/title_screen.c#L113">title_screen.c</a> file.
 <br><br>
+  
 <u>YouTube</u><br />
 YouTube videos showcasing all SMS Power! 2023 coding competition entries including some with long play:
 <br>
+<!-- -->
 <iframe width="98%" height="315" src="https://www.youtube.com/embed/Dc4UebzLpW4?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
 <table width="90%" border="1">
@@ -252,7 +279,10 @@ YouTube videos showcasing all SMS Power! 2023 coding competition entries includi
 <td valign="top">&nbsp;Révo SEGA 8-bit</td>
 </tr>  
 </table>
+<!-- -->
 <br>
+  
 <u>Summary</u><br />
 There has been progressive interest in Sega Master System Homebrew as coding competition entries become more impressive.  Unfortunately due to time constraints, the game mechanics and level design were not able to be fully developed at this time.  However the foundation for potential future development did receive some incredible <a href="https://www.smspower.org/forums/19526-CodingCompetition2023LilEvelKnievelBySteveProXNA">feedback</a> from the community and Sega 8-bit preservation and fanaticism fans.  That is awesome!
+
 </span>
