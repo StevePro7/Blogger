@@ -1,0 +1,128 @@
+Simpsons Port
+05-May-2023
+
+
+Example
+base
+~/GitHub/StevePro8/SegaMasterSystemLinux/sgdk/SimpsonsPort
+
+
+01-HelloWorld
+follow SGDK Sample to setup basic project directory structure
+
+Create top level directory	HW
+Create sub directories 		dev	lib
+Copy all SGDK lib stuff in 	lib
+
+
+Setup dev subdirectories	as per SGDK Sample
+inc
+out
+res
+src
+
+Setup dev files
+build.bat
+Game.sln
+Game.vcxproj
+Game.vcxproj.filters
+
+Ensure project properties setup as per SGDK Sample
+
+
+02-HelloResources
+follow SGDK Sample to import all content required for project port
+
+Clone 01-HelloWorld
+import content into
+dev/res
+
+Launch VS2015
+Ctrl+1
+this will rebuild all the "res" and produce object files in
+dev/out/res
+
+create "content" filter in VS2015 under
+Header Files
+Source Files
+
+import the res header files from dev/res into VS2015
+modify the res header files to suit dev in VS2015
+e.g.
+#ifdef _CONSOLE
+#include "_genesis.h"
+#else
+#include <genesis.h>
+#endif
+
+setup corresponding translation units
+gfx/res
+sfx/res
+
+IMPORTANT
+If/when any object *.o files are deleted from dev/out/res then
+each Ctrl+1 keyboard combo will force rebuild the resource(s)
+which means that the #ifdef...#endif [above] will get overwritten!
+
+
+03-HelloFolders
+follow SGDK Sample to setup subdirectories in order to scale out ported code
+
+Reference:
+D:\Github\moon-watcher\AbbayeMD
+https://github.com/moon-watcher/AbbayeMD
+https://github.com/moon-watcher/AbbayeMD/blob/master/makefile.gen
+
+Clone 02-HelloResources
+copy default makefile.gen from SGDK home directory
+i.e.
+%GDK%/makefile.gen
+
+to dev/makefile.gen
+and modify to include custom sub directories
+e.g.
+* engine
+* object
+* screen
+
+Manually create subdirectories in "out" directory
+And do not continually rebuild
+i.e.
+remove "cleanup" make targets
+and
+pre-build
+$(MKDIR)
+pre-build:
+	$(MKDIR) -p $(SRC)/boot
+	$(MKDIR) -p out
+	$(MKDIR) -p out/src
+	$(MKDIR) -p out/res
+
+NEW
+
+e.g.
+AA:
+SRC_C= $(wildcard *.c)
+SRC_C+= $(wildcard $(SRC)/*.c)
+SRC_C+= $(wildcard $(SRC)/banks/*.c)
+SRC_C+= $(wildcard $(SRC)/engine/*.c)
+SRC_C+= $(wildcard $(SRC)/object/*.c)
+SRC_C+= $(wildcard $(SRC)/screen/*.c)
+
+BB:
+remove any reference to ASM and s80 if not relevant
+
+CC:
+extend the include engine / object / screen
+INCS= -I$(INCLUDE) -I$(INCLUDE)/engine -I$(INCLUDE)/object -I$(INCLUDE)/screen -I$(SRC) -I$(RES) -I$(LIBINCLUDE) -I$(LIBRES)
+
+
+Update build.bat to refer to custom makefile.gen
+i.e.
+OLD
+::%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen
+::%GDK_WIN%\bin\make -f %GDK_WIN%\makefile.gen > NUL
+
+NEW
+::%GDK_WIN%\bin\make -f makefile.gen
+%GDK_WIN%\bin\make -f makefile.gen > NUL
