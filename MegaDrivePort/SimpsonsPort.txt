@@ -126,3 +126,19 @@ OLD
 NEW
 ::%GDK_WIN%\bin\make -f makefile.gen
 %GDK_WIN%\bin\make -f makefile.gen > NUL
+
+
+04-HelloProject
+import SMS source code under the sub directories
+engine
+object
+screen
+
+and make the corresponding API code changes
+from	devkitSMS
+to	SGDK
+
+
+TODO
+do I want to have a short Cheat Sheet for common API translations?
+e.g.
