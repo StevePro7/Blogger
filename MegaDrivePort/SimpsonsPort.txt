@@ -138,7 +138,27 @@ and make the corresponding API code changes
 from	devkitSMS
 to	SGDK
 
+IMPORTANT
+update Game.vcxproj file
+<AdditionalIncludeDirectories>$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath);$(ProjectDir)inc\engine;$(ProjectDir)inc\object;$(ProjectDir)inc\screen</AdditionalIncludeDirectories>
+
+i.e.
+right click Game project | Project Properties
+C/C++ | General | Additional Include Directories
+
+Remember that because there is a custom makefile.gen
+must manually create the following out sub directories
+
+out/src/banks
+out/src/engine
+out/src/object
+out/src/screen
+
 
 TODO
 do I want to have a short Cheat Sheet for common API translations?
 e.g.
+
+
+TODO #2
+do I want to address all the warnings?
