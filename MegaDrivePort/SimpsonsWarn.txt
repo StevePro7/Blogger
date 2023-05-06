@@ -1,0 +1,836 @@
+Building...
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/banks/bank2.c -o out/src/banks/bank2.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/banks/bank3.c -o out/src/banks/bank3.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/banks/bank4.c -o out/src/banks/bank4.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/banks/bank5.c -o out/src/banks/bank5.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/actor_manager.c -o out/src/engine/actor_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/audio_manager.c -o out/src/engine/audio_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/debug_manager.c -o out/src/engine/debug_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/enum_manager.c -o out/src/engine/enum_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/font_manager.c -o out/src/engine/font_manager.o
+src/engine/font_manager.c:17:22: warning: 'get_tile' declared 'static' but never defined [-Wunused-function]
+ static unsigned char get_tile( unsigned char ch );
+                      ^~~~~~~~
+src/engine/font_manager.c:18:13: warning: 'draw_char' declared 'static' but never defined [-Wunused-function]
+ static void draw_char( unsigned int tile, unsigned char x, unsigned char y );
+             ^~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/function_manager.c -o out/src/engine/function_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/global_manager.c -o out/src/engine/global_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/graphics_manager.c -o out/src/engine/graphics_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/hack_manager.c -o out/src/engine/hack_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/image_manager.c -o out/src/engine/image_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/input_manager.c -o out/src/engine/input_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/locale_manager.c -o out/src/engine/locale_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/quiz_manager.c -o out/src/engine/quiz_manager.o
+In file included from src/engine/quiz_manager.c:6:0:
+src/engine/quiz_manager.c: In function 'engine_quiz_manager_base':
+inc/engine/locale_manager.h:28:26: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUESTION  "QUESTION #"
+                          ^
+src/engine/quiz_manager.c:35:28: note: in expansion of macro 'LOCALE_QUESTION'
+  engine_font_manager_text( LOCALE_QUESTION, QUIZ_X, TITLE_Y );
+                            ^~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:6:0:
+inc/engine/locale_manager.h:50:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_FSLASH_SYM "/"
+                           ^
+src/engine/quiz_manager.c:38:28: note: in expansion of macro 'LOCALE_FSLASH_SYM'
+  engine_font_manager_text( LOCALE_FSLASH_SYM, QUIZ_X + 15, TITLE_Y );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:6:0:
+src/engine/quiz_manager.c: In function 'engine_quiz_manager_cheat':
+inc/engine/locale_manager.h:46:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_SPACE " "
+                            ^
+src/engine/quiz_manager.c:82:29: note: in expansion of macro 'LOCALE_ARROW_SPACE'
+   engine_font_manager_text( LOCALE_ARROW_SPACE, QUIZ_X - 1, cheat_Y );
+                             ^~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:6:0:
+inc/engine/locale_manager.h:47:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_LEFT ">"
+                           ^
+src/engine/quiz_manager.c:88:29: note: in expansion of macro 'LOCALE_ARROW_LEFT'
+   engine_font_manager_text( LOCALE_ARROW_LEFT, QUIZ_X - 2, cheat_Y );
+                             ^~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:6:0:
+src/engine/quiz_manager.c: In function 'engine_quiz_manager_cheat2':
+inc/engine/locale_manager.h:47:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_LEFT ">"
+                           ^
+src/engine/quiz_manager.c:99:30: note: in expansion of macro 'LOCALE_ARROW_LEFT'
+    engine_font_manager_text( LOCALE_ARROW_LEFT, QUIZ_X - 2, cheat_Y );
+                              ^~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:6:0:
+inc/engine/locale_manager.h:46:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_SPACE " "
+                            ^
+src/engine/quiz_manager.c:103:30: note: in expansion of macro 'LOCALE_ARROW_SPACE'
+    engine_font_manager_text( LOCALE_ARROW_SPACE, QUIZ_X - 2, cheat_Y );
+                              ^~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:6:0:
+src/engine/quiz_manager.c: In function 'show_diff':
+inc/engine/locale_manager.h:51:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_SQUARE_LEFT "["
+                            ^
+src/engine/quiz_manager.c:233:28: note: in expansion of macro 'LOCALE_SQUARE_LEFT'
+  engine_font_manager_text( LOCALE_SQUARE_LEFT, x + 0, y );
+                            ^~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:6:0:
+inc/engine/locale_manager.h:52:29: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_SQUARE_RIGHT "]"
+                             ^
+src/engine/quiz_manager.c:234:28: note: in expansion of macro 'LOCALE_SQUARE_RIGHT'
+  engine_font_manager_text( LOCALE_SQUARE_RIGHT, x + 5, y );
+                            ^~~~~~~~~~~~~~~~~~~
+In file included from src/engine/quiz_manager.c:3:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/random_manager.c -o out/src/engine/random_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/score_manager.c -o out/src/engine/score_manager.o
+In file included from src/engine/score_manager.c:4:0:
+src/engine/score_manager.c: In function 'engine_score_manager_base':
+inc/engine/locale_manager.h:29:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_SCORE  "SCORE"
+                       ^
+src/engine/score_manager.c:23:28: note: in expansion of macro 'LOCALE_SCORE'
+  engine_font_manager_text( LOCALE_SCORE, TITLE_X + 1, TITLE_Y );
+                            ^~~~~~~~~~~~
+In file included from src/engine/score_manager.c:2:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/screen_manager.c -o out/src/engine/screen_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/select_manager.c -o out/src/engine/select_manager.o
+In file included from src/engine/select_manager.c:4:0:
+src/engine/select_manager.c: In function 'engine_select_manager_clear2':
+inc/engine/locale_manager.h:6:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK  "                                  "
+                       ^
+inc/engine/locale_manager.h:6:23: note: in definition of macro 'LOCALE_BLANK'
+ #define LOCALE_BLANK  "                                  "
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/select_manager.c:2:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/select_manager.c:4:0:
+inc/engine/locale_manager.h:74:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK22  "                      "
+                         ^
+src/engine/select_manager.c:56:29: note: in expansion of macro 'LOCALE_BLANK22'
+   engine_font_manager_text( LOCALE_BLANK22, 4, high );
+                             ^~~~~~~~~~~~~~
+In file included from src/engine/select_manager.c:2:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/select_manager.c:4:0:
+src/engine/select_manager.c: In function 'engine_select_manager_clear3':
+inc/engine/locale_manager.h:70:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK5  "     "
+                        ^
+src/engine/select_manager.c:64:29: note: in expansion of macro 'LOCALE_BLANK5'
+   engine_font_manager_text( LOCALE_BLANK5, QUIZ_X, select_high_option[ idx ] );
+                             ^~~~~~~~~~~~~
+In file included from src/engine/select_manager.c:2:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/engine/select_manager.c:4:0:
+src/engine/select_manager.c: In function 'engine_select_manager_load_long':
+inc/engine/locale_manager.h:46:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_SPACE " "
+                            ^
+src/engine/select_manager.c:84:29: note: in expansion of macro 'LOCALE_ARROW_SPACE'
+   engine_font_manager_text( LOCALE_ARROW_SPACE, QUIZ_X + LONG_DELTA + 1, select_high_option[ idx ] );
+                             ^~~~~~~~~~~~~~~~~~
+In file included from src/engine/select_manager.c:2:0:
+inc/engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/sprite_manager.c -o out/src/engine/sprite_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/engine/timer_manager.c -o out/src/engine/timer_manager.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/object/audio_object.c -o out/src/object/audio_object.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/object/image_object.c -o out/src/object/image_object.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/diff_screen.c -o out/src/screen/diff_screen.o
+In file included from src/screen/diff_screen.c:7:0:
+src/screen/diff_screen.c: In function 'screen_diff_screen_load':
+inc/engine/../engine/locale_manager.h:70:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK5  "     "
+                        ^
+src/screen/diff_screen.c:26:28: note: in expansion of macro 'LOCALE_BLANK5'
+  engine_font_manager_text( LOCALE_BLANK5, 4, 13 );
+                            ^~~~~~~~~~~~~
+In file included from src/screen/diff_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/diff_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:70:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK5  "     "
+                        ^
+src/screen/diff_screen.c:27:28: note: in expansion of macro 'LOCALE_BLANK5'
+  engine_font_manager_text( LOCALE_BLANK5, 4, 14 );
+                            ^~~~~~~~~~~~~
+In file included from src/screen/diff_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/diff_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:19:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_DIFFICULTY "DIFFICULTY"
+                           ^
+src/screen/diff_screen.c:30:28: note: in expansion of macro 'LOCALE_DIFFICULTY'
+  engine_font_manager_text( LOCALE_DIFFICULTY, 3, 6 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/diff_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/diff_screen.c:7:0:
+src/screen/diff_screen.c: In function 'screen_diff_screen_update':
+inc/engine/../engine/locale_manager.h:69:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK3  "   "
+                        ^
+src/screen/diff_screen.c:66:29: note: in expansion of macro 'LOCALE_BLANK3'
+   engine_font_manager_text( LOCALE_BLANK3, QUIZ_X - 1, select_high_option[ diff_select ] );
+                             ^~~~~~~~~~~~~
+In file included from src/screen/diff_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/func_screen.c -o out/src/screen/func_screen.o
+src/screen/func_screen.c: In function 'screen_func_screen_load':
+src/screen/func_screen.c:7:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+  engine_font_manager_text( "FUNC SCREEN!!", 10, 2 );
+                            ^~~~~~~~~~~~~~~
+In file included from src/screen/func_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/intro_screen.c -o out/src/screen/intro_screen.o
+In file included from src/screen/intro_screen.c:8:0:
+src/screen/intro_screen.c: In function 'screen_intro_screen_load':
+inc/engine/../engine/locale_manager.h:13:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_PRESS  "PRESS"
+                       ^
+src/screen/intro_screen.c:27:28: note: in expansion of macro 'LOCALE_PRESS'
+  engine_font_manager_text( LOCALE_PRESS, 4, 13 );
+                            ^~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:14:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_START  "START"
+                       ^
+src/screen/intro_screen.c:28:28: note: in expansion of macro 'LOCALE_START'
+  engine_font_manager_text( LOCALE_START, 4, 14 );
+                            ^~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:16:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_CHEAT  "CHEAT"
+                       ^
+src/screen/intro_screen.c:32:29: note: in expansion of macro 'LOCALE_CHEAT'
+   engine_font_manager_text( LOCALE_CHEAT, 29, 10 );
+                             ^~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:17:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_MODE   "MODE!"
+                       ^
+src/screen/intro_screen.c:33:29: note: in expansion of macro 'LOCALE_MODE'
+   engine_font_manager_text( LOCALE_MODE, 29, 11 );
+                             ^~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+src/screen/intro_screen.c: In function 'screen_intro_screen_update':
+inc/engine/../engine/locale_manager.h:13:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_PRESS  "PRESS"
+                       ^
+src/screen/intro_screen.c:49:30: note: in expansion of macro 'LOCALE_PRESS'
+    engine_font_manager_text( LOCALE_PRESS, 4, 13 );
+                              ^~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:14:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_START  "START"
+                       ^
+src/screen/intro_screen.c:50:30: note: in expansion of macro 'LOCALE_START'
+    engine_font_manager_text( LOCALE_START, 4, 14 );
+                              ^~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:70:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK5  "     "
+                        ^
+src/screen/intro_screen.c:54:30: note: in expansion of macro 'LOCALE_BLANK5'
+    engine_font_manager_text( LOCALE_BLANK5, 4, 13 );
+                              ^~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:70:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK5  "     "
+                        ^
+src/screen/intro_screen.c:55:30: note: in expansion of macro 'LOCALE_BLANK5'
+    engine_font_manager_text( LOCALE_BLANK5, 4, 14 );
+                              ^~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:16:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_CHEAT  "CHEAT"
+                       ^
+src/screen/intro_screen.c:79:31: note: in expansion of macro 'LOCALE_CHEAT'
+     engine_font_manager_text( LOCALE_CHEAT, 29, 10 );
+                               ^~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/intro_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:17:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_MODE   "MODE!"
+                       ^
+src/screen/intro_screen.c:80:31: note: in expansion of macro 'LOCALE_MODE'
+     engine_font_manager_text( LOCALE_MODE, 29, 11 );
+                               ^~~~~~~~~~~
+In file included from src/screen/intro_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/level_screen.c -o out/src/screen/level_screen.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/long_screen.c -o out/src/screen/long_screen.o
+In file included from src/screen/long_screen.c:7:0:
+src/screen/long_screen.c: In function 'screen_long_screen_load':
+inc/engine/../engine/locale_manager.h:25:26: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUESTIONS "QUESTIONS"
+                          ^
+src/screen/long_screen.c:27:28: note: in expansion of macro 'LOCALE_QUESTIONS'
+  engine_font_manager_text( LOCALE_QUESTIONS, 3, 6 );
+                            ^~~~~~~~~~~~~~~~
+In file included from src/screen/long_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/long_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:46:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_SPACE " "
+                            ^
+src/screen/long_screen.c:28:28: note: in expansion of macro 'LOCALE_ARROW_SPACE'
+  engine_font_manager_text( LOCALE_ARROW_SPACE, 12, 6 );
+                            ^~~~~~~~~~~~~~~~~~
+In file included from src/screen/long_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/long_screen.c:7:0:
+src/screen/long_screen.c: In function 'screen_long_screen_update':
+inc/engine/../engine/locale_manager.h:69:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK3  "   "
+                        ^
+src/screen/long_screen.c:71:29: note: in expansion of macro 'LOCALE_BLANK3'
+   engine_font_manager_text( LOCALE_BLANK3, QUIZ_X - 1, select_high_option[ long_select ] );
+                             ^~~~~~~~~~~~~
+In file included from src/screen/long_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/none_screen.c -o out/src/screen/none_screen.o
+src/screen/none_screen.c: In function 'screen_none_screen_load':
+src/screen/none_screen.c:7:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+  engine_font_manager_text( "NONE SCREEN!!", 10, 2 );
+                            ^~~~~~~~~~~~~~~
+In file included from src/screen/none_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/number_screen.c -o out/src/screen/number_screen.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/over_screen.c -o out/src/screen/over_screen.o
+In file included from src/screen/over_screen.c:8:0:
+src/screen/over_screen.c: In function 'screen_over_screen_load':
+inc/engine/../engine/locale_manager.h:6:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK  "                                  "
+                       ^
+inc/engine/../engine/locale_manager.h:6:23: note: in definition of macro 'LOCALE_BLANK'
+ #define LOCALE_BLANK  "                                  "
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:66:26: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_OVER_MSG1 "THANKS FOR PLAYING "
+                          ^
+src/screen/over_screen.c:34:28: note: in expansion of macro 'LOCALE_OVER_MSG1'
+  engine_font_manager_text( LOCALE_OVER_MSG1, 4, 23 );
+                            ^~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:67:26: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_OVER_MSG2 "=STEVEPRO STUDIOS= "
+                          ^
+src/screen/over_screen.c:35:28: note: in expansion of macro 'LOCALE_OVER_MSG2'
+  engine_font_manager_text( LOCALE_OVER_MSG2, 4, 24 );
+                            ^~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:56:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_UNDERLINED "-----------------"
+                           ^
+src/screen/over_screen.c:37:28: note: in expansion of macro 'LOCALE_UNDERLINED'
+  engine_font_manager_text( LOCALE_UNDERLINED, INFO_SUMMARY_X, TITLE_Y - 1 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:55:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_COMPLETION "I GAME COMPLETE I"
+                           ^
+src/screen/over_screen.c:38:28: note: in expansion of macro 'LOCALE_COMPLETION'
+  engine_font_manager_text( LOCALE_COMPLETION, INFO_SUMMARY_X, TITLE_Y + 0 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:56:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_UNDERLINED "-----------------"
+                           ^
+src/screen/over_screen.c:39:28: note: in expansion of macro 'LOCALE_UNDERLINED'
+  engine_font_manager_text( LOCALE_UNDERLINED, INFO_SUMMARY_X, TITLE_Y + 1 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:58:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUIZ_TOTAL "QUESTIONS TOTAL"
+                           ^
+src/screen/over_screen.c:41:28: note: in expansion of macro 'LOCALE_QUIZ_TOTAL'
+  engine_font_manager_text( LOCALE_QUIZ_TOTAL, SUMMARY_TEXT_X, 7 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:59:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUIZ_SOLVE "QUESTIONS SOLVED"
+                           ^
+src/screen/over_screen.c:44:28: note: in expansion of macro 'LOCALE_QUIZ_SOLVE'
+  engine_font_manager_text( LOCALE_QUIZ_SOLVE, SUMMARY_TEXT_X, 11 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:60:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUIZ_RIGHT "QUESTIONS RIGHT"
+                           ^
+src/screen/over_screen.c:47:28: note: in expansion of macro 'LOCALE_QUIZ_RIGHT'
+  engine_font_manager_text( LOCALE_QUIZ_RIGHT, SUMMARY_TEXT_X, 15 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:61:29: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_CURR_PERCENT "CURRENT PERCENT"
+                             ^
+src/screen/over_screen.c:51:28: note: in expansion of macro 'LOCALE_CURR_PERCENT'
+  engine_font_manager_text( LOCALE_CURR_PERCENT, SUMMARY_TEXT_X, 19 );
+                            ^~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:49:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_PERCENT_SYM "%"
+                            ^
+src/screen/over_screen.c:53:28: note: in expansion of macro 'LOCALE_PERCENT_SYM'
+  engine_font_manager_text( LOCALE_PERCENT_SYM, SUMMARY_DATA_X + 1, 20 );
+                            ^~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:8:0:
+inc/engine/../engine/locale_manager.h:69:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK3  "   "
+                        ^
+src/screen/over_screen.c:58:29: note: in expansion of macro 'LOCALE_BLANK3'
+   engine_font_manager_text( LOCALE_BLANK3, QUIZ_X - 3, select_high_option[ answer_index ] );
+                             ^~~~~~~~~~~~~
+In file included from src/screen/over_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/play_screen.c -o out/src/screen/play_screen.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/quiz_screen.c -o out/src/screen/quiz_screen.o
+In file included from src/screen/quiz_screen.c:7:0:
+src/screen/quiz_screen.c: In function 'screen_quiz_screen_load':
+inc/engine/../engine/locale_manager.h:70:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK5  "     "
+                        ^
+src/screen/quiz_screen.c:38:28: note: in expansion of macro 'LOCALE_BLANK5'
+  engine_font_manager_text( LOCALE_BLANK5, QUIZ_X - 3, select_high_option[ quiz_select ] );
+                            ^~~~~~~~~~~~~
+In file included from src/screen/quiz_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/ready_screen.c -o out/src/screen/ready_screen.o
+In file included from src/screen/ready_screen.c:7:0:
+src/screen/ready_screen.c: In function 'screen_ready_screen_load':
+inc/engine/../engine/locale_manager.h:26:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_SUMMARY  "=SUMMARY= "
+                         ^
+src/screen/ready_screen.c:37:28: note: in expansion of macro 'LOCALE_SUMMARY'
+  engine_font_manager_text( LOCALE_SUMMARY, 3, 6 );
+                            ^~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:19:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_DIFFICULTY "DIFFICULTY"
+                           ^
+src/screen/ready_screen.c:39:28: note: in expansion of macro 'LOCALE_DIFFICULTY'
+  engine_font_manager_text( LOCALE_DIFFICULTY, 3, 10 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:47:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_LEFT ">"
+                           ^
+src/screen/ready_screen.c:40:28: note: in expansion of macro 'LOCALE_ARROW_LEFT'
+  engine_font_manager_text( LOCALE_ARROW_LEFT, 2, 11 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:25:26: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUESTIONS "QUESTIONS"
+                          ^
+src/screen/ready_screen.c:43:28: note: in expansion of macro 'LOCALE_QUESTIONS'
+  engine_font_manager_text( LOCALE_QUESTIONS, 3, 16 );
+                            ^~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:47:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_ARROW_LEFT ">"
+                           ^
+src/screen/ready_screen.c:44:28: note: in expansion of macro 'LOCALE_ARROW_LEFT'
+  engine_font_manager_text( LOCALE_ARROW_LEFT, 2, 17 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:21:22: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_GET   " GET "
+                      ^
+src/screen/ready_screen.c:47:28: note: in expansion of macro 'LOCALE_GET'
+  engine_font_manager_text( LOCALE_GET, 3, 22 );
+                            ^~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:22:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_READY  "READY   "
+                       ^
+src/screen/ready_screen.c:48:28: note: in expansion of macro 'LOCALE_READY'
+  engine_font_manager_text( LOCALE_READY, 3, 23 );
+                            ^~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+src/screen/ready_screen.c: In function 'screen_ready_screen_update':
+inc/engine/../engine/locale_manager.h:72:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK11  "           "
+                         ^
+src/screen/ready_screen.c:71:29: note: in expansion of macro 'LOCALE_BLANK11'
+   engine_font_manager_text( LOCALE_BLANK11, 2, 10 );
+                             ^~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:72:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK11  "           "
+                         ^
+src/screen/ready_screen.c:72:29: note: in expansion of macro 'LOCALE_BLANK11'
+   engine_font_manager_text( LOCALE_BLANK11, 1, 11 );
+                             ^~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:72:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK11  "           "
+                         ^
+src/screen/ready_screen.c:73:29: note: in expansion of macro 'LOCALE_BLANK11'
+   engine_font_manager_text( LOCALE_BLANK11, 1, 16 );
+                             ^~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:72:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK11  "           "
+                         ^
+src/screen/ready_screen.c:74:29: note: in expansion of macro 'LOCALE_BLANK11'
+   engine_font_manager_text( LOCALE_BLANK11, 1, 17 );
+                             ^~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:72:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK11  "           "
+                         ^
+src/screen/ready_screen.c:75:29: note: in expansion of macro 'LOCALE_BLANK11'
+   engine_font_manager_text( LOCALE_BLANK11, 0, 22 );
+                             ^~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:72:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK11  "           "
+                         ^
+src/screen/ready_screen.c:76:29: note: in expansion of macro 'LOCALE_BLANK11'
+   engine_font_manager_text( LOCALE_BLANK11, 0, 23 );
+                             ^~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/ready_screen.c:7:0:
+inc/engine/../engine/locale_manager.h:23:22: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_DOT   "."
+                      ^
+src/screen/ready_screen.c:103:30: note: in expansion of macro 'LOCALE_DOT'
+    engine_font_manager_text( LOCALE_DOT, DOTS_X + screen_ready_screen_dots, DOTS_Y );
+                              ^~~~~~~~~~
+In file included from src/screen/ready_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/score_screen.c -o out/src/screen/score_screen.o
+In file included from src/screen/score_screen.c:6:0:
+src/screen/score_screen.c: In function 'screen_score_screen_load':
+inc/engine/../engine/locale_manager.h:65:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_FIRE2  "PRESS FIRE2 => BACK"
+                       ^
+src/screen/score_screen.c:21:28: note: in expansion of macro 'LOCALE_FIRE2'
+  engine_font_manager_text( LOCALE_FIRE2, 4, 23 );
+                            ^~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:64:23: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_FIRE1  "PRESS FIRE1 => QUIT"
+                       ^
+src/screen/score_screen.c:22:28: note: in expansion of macro 'LOCALE_FIRE1'
+  engine_font_manager_text( LOCALE_FIRE1, 4, 24 );
+                            ^~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:54:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_STATISTICS "=THE STATISTICS="
+                           ^
+src/screen/score_screen.c:24:28: note: in expansion of macro 'LOCALE_STATISTICS'
+  engine_font_manager_text( LOCALE_STATISTICS, INFO_SUMMARY_X, TITLE_Y );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:58:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUIZ_TOTAL "QUESTIONS TOTAL"
+                           ^
+src/screen/score_screen.c:25:28: note: in expansion of macro 'LOCALE_QUIZ_TOTAL'
+  engine_font_manager_text( LOCALE_QUIZ_TOTAL, SUMMARY_TEXT_X, 7 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:59:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUIZ_SOLVE "QUESTIONS SOLVED"
+                           ^
+src/screen/score_screen.c:28:28: note: in expansion of macro 'LOCALE_QUIZ_SOLVE'
+  engine_font_manager_text( LOCALE_QUIZ_SOLVE, SUMMARY_TEXT_X, 11 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:60:27: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_QUIZ_RIGHT "QUESTIONS RIGHT"
+                           ^
+src/screen/score_screen.c:31:28: note: in expansion of macro 'LOCALE_QUIZ_RIGHT'
+  engine_font_manager_text( LOCALE_QUIZ_RIGHT, SUMMARY_TEXT_X, 15 );
+                            ^~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:61:29: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_CURR_PERCENT "CURRENT PERCENT"
+                             ^
+src/screen/score_screen.c:35:28: note: in expansion of macro 'LOCALE_CURR_PERCENT'
+  engine_font_manager_text( LOCALE_CURR_PERCENT, SUMMARY_TEXT_X, 19 );
+                            ^~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:49:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_PERCENT_SYM "%"
+                            ^
+src/screen/score_screen.c:37:28: note: in expansion of macro 'LOCALE_PERCENT_SYM'
+  engine_font_manager_text( LOCALE_PERCENT_SYM, SUMMARY_DATA_X + 1, 20 );
+                            ^~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:6:0:
+inc/engine/../engine/locale_manager.h:69:24: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_BLANK3  "   "
+                        ^
+src/screen/score_screen.c:42:29: note: in expansion of macro 'LOCALE_BLANK3'
+   engine_font_manager_text( LOCALE_BLANK3, QUIZ_X - 3, select_high_option[ answer_index ] );
+                             ^~~~~~~~~~~~~
+In file included from src/screen/score_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/splash_screen.c -o out/src/screen/splash_screen.o
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/test_screen.c -o out/src/screen/test_screen.o
+src/screen/test_screen.c: In function 'screen_test_screen_load':
+src/screen/test_screen.c:7:28: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+  engine_font_manager_text( "TEST SCREEN!!", 10, 2 );
+                            ^~~~~~~~~~~~~~~
+In file included from src/screen/test_screen.c:3:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+C:/SGDK/bin/gcc -m68000 -Wall -Wextra -Wno-shift-negative-value -fno-builtin -Iinc -Iinc/engine -Iinc/object -Iinc/screen -Isrc -Ires -IC:/SGDK/inc -IC:/SGDK/res -BC:/SGDK/bin -O3 -fuse-linker-plugin -fno-web -fno-gcse -fno-unit-at-a-time -fomit-frame-pointer -flto -c src/screen/title_screen.c -o out/src/screen/title_screen.o
+In file included from src/screen/title_screen.c:8:0:
+src/screen/title_screen.c: In function 'screen_title_screen_load':
+inc/engine/../engine/locale_manager.h:4:25: warning: pointer targets in passing argument 1 of 'engine_font_manager_text' differ in signedness [-Wpointer-sign]
+ #define LOCALE_VERSION  "V2.0"
+                         ^
+src/screen/title_screen.c:25:28: note: in expansion of macro 'LOCALE_VERSION'
+  engine_font_manager_text( LOCALE_VERSION, 35, 26 );
+                            ^~~~~~~~~~~~~~
+In file included from src/screen/title_screen.c:4:0:
+inc/engine/../engine/font_manager.h:6:6: note: expected 'const unsigned char *' but argument is of type 'char *'
+ void engine_font_manager_text( const unsigned char *text, unsigned char x, unsigned char y );
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+echo "out/res/gfx_actors.o out/res/gfx_sprites.o out/res/gfx_tiles.o out/res/sfx_effects.o out/res/sfx_musics.o out/res/sfx_results.o out/src/main.o out/src/banks/bank2.o out/src/banks/bank3.o out/src/banks/bank4.o out/src/banks/bank5.o out/src/engine/actor_manager.o out/src/engine/audio_manager.o out/src/engine/debug_manager.o out/src/engine/enum_manager.o out/src/engine/font_manager.o out/src/engine/function_manager.o out/src/engine/global_manager.o out/src/engine/graphics_manager.o out/src/engine/hack_manager.o out/src/engine/image_manager.o out/src/engine/input_manager.o out/src/engine/locale_manager.o out/src/engine/quiz_manager.o out/src/engine/random_manager.o out/src/engine/score_manager.o out/src/engine/screen_manager.o out/src/engine/select_manager.o out/src/engine/sprite_manager.o out/src/engine/timer_manager.o out/src/object/audio_object.o out/src/object/image_object.o out/src/screen/diff_screen.o out/src/screen/func_screen.o out/src/screen/intro_screen.o out/src/screen/level_screen.o out/src/screen/long_screen.o out/src/screen/none_screen.o out/src/screen/number_screen.o out/src/screen/over_screen.o out/src/screen/play_screen.o out/src/screen/quiz_screen.o out/src/screen/ready_screen.o out/src/screen/score_screen.o out/src/screen/splash_screen.o out/src/screen/test_screen.o out/src/screen/title_screen.o" > out/cmd_
+C:/SGDK/bin/gcc -BC:/SGDK/bin -n -T C:/SGDK/md.ld -nostdlib out/sega.o @out/cmd_ C:/SGDK/lib/libmd.a C:/SGDK/lib/libgcc.a -o out/rom.out
+C:/SGDK/bin/rm out/cmd_
+C:/SGDK/bin/objcopy -O binary out/rom.out out/rom.bin
+C:/SGDK/bin/sizebnd out/rom.bin -sizealign 131072
+
+Time taken: 05.08 secs
+
