@@ -177,5 +177,34 @@ Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/mas
 Create folder <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/gfx">gfx</a></b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit files under <i>res</i> sub folder.  Repeat process with <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/sfx">sfx</a></b> folder.  Import all translation units into Visual Studio.
 <br><br>
   
-  
+<u>Setup Folders</u><br />
+Larger game projects will require nested folders in the <b>inc</b> or <b>src</b> directories to organize engine and screen code etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources">Clone</a> the "Setup Resources" folder and add all necessary subfolders + then update the makefile.
+<br><br>
+Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution:
+<br>
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLYxMPqY_IP1xEa1GLpIfeASws3dmpHGfUgpuoq7q366iMWzdbMDP_g-JfH3ktKsJmj3CxfIMlacNFRhhGvz3rbBI32GyNL6Qgvppg348zRZqV_cwj-Wqf9lj4A1o96hnuCZQCedJgR71muVWvVT-ltQhZrOglwwBsutSN1bZETM40Ko5J7lcPfLT/s856/SolutionExplorer.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLYxMPqY_IP1xEa1GLpIfeASws3dmpHGfUgpuoq7q366iMWzdbMDP_g-JfH3ktKsJmj3CxfIMlacNFRhhGvz3rbBI32GyNL6Qgvppg348zRZqV_cwj-Wqf9lj4A1o96hnuCZQCedJgR71muVWvVT-ltQhZrOglwwBsutSN1bZETM40Ko5J7lcPfLT/s600/SolutionExplorer.png"/></a>
+<br>
+-->
+<br>
+Create corresponding engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupFolders/dev/inc">inc</a></b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupFolders/dev/src">src</a></b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
+<br /><br /> 
+Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
+<br />
+<!--  
+<a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png"><img border="0" height="385" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" /></a>
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">&nbsp;Value:&nbsp;</td>
+<td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath);<br />&nbsp;$(ProjectDir)inc\engine;$(ProjectDir)inc\object;$(ProjectDir)inc\screen</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\<a href="https://github.com/Stephane-D/SGDK/blob/master/makefile.gen">makefile.gen</a></i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entries per folder.
+<br /><br />
+Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto %GDK_WIN% version.  
+
 </span>
