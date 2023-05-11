@@ -1,17 +1,10 @@
-01 Introl
-11/05/2023
-
-
 <span style="font-family:verdana;font-size:85%;">
   
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build code in C for the 8-bit Sega Master System.  Then, in 2020, we checked out <a href="http://steveproxna.blogspot.com/2020/09/sgdk-programming-setup.html">SGDK Programming Setup</a> to build code in C for the 16-bit Sega Mega Drive.
 <br /><br />
 Leveraging this knowledge, we would now like to port existing code built for the 8-bit Sega Master System, for example, <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS">Simpsons Trivia SMS</a> to the 16-bit Mega Drive <a href="https://github.com/SteveProXNA/SimpsonsTriviaMD">Simpsons Trivia MD</a> and document the process.
-<br /><br />
-Leveraging this knowledge, we would now like to port existing code built for the 8-bit Sega Master System, for example, Simpsons Trivia SMS to the 16-bit Mega Drive Simpsons Trivia MD.  Repeat process for Skazka.
-<br /><br />
-  e.g. Simpsons Trivia or Skazka to the 16-bit Mega Drive
 <br />
+<!--
 <table width="100%" border="1">
 <tr>
 <td valign="top" width="40%">&nbsp;<b>SEGA MASTER SYSTEM</b></td>
@@ -26,52 +19,8 @@ Leveraging this knowledge, we would now like to port existing code built for the
 </td>
 <tr>
 </table>
+-->
 <br />
-  
+Let's check it out!
+<br /><br />
 </span>
-
-In 2017, we checked out devkitSMS Programming Setup
-to build game code in C for the 8-bit Sega Master System [console]
-
-In 2020, we checked out SGDK Programming Setup
-to build game code in C for the 16-bit Sega Mega Drive
-
-Leveraging all this knowledge, we would now like to port existing game code built for the 8-bit SMS 
-e.g. Simpsons Trivia or Skazka to the 16-bit Mega Drive
-
-[pic]
-
-Let’s check it out!
-
-
-
-SGDK Setup
-http://steveproxna.blogspot.com/2020/09/sgdk-programming-setup.html
-
-Software
-Follow most instructions from the previous post: this documents how to setup some pre-requisite software.
-
-Here is a summary of some of the software to be installed:
- Name	 Version
- C IDE Editor	 Visual Studio 2015
- Emulators	 Fusion, Gens KMod
- 	
- Name	 Version
- Cross compiler	 GCC
- Make files	 Cygwin
-
-
-IMPORTANT
-This posts assumes you have all pre-requisite Software installed and setup before continuing...
-
-Example
-Use Simpsons Trivia as an game port example.  Follow steps similar to SGDK Programming Sample
-
-
-Setup Project
-Setup Resources
-Setup Folders
-
-Convert APIs
-SMS
-256x192		320x228
