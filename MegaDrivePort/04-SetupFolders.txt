@@ -1,5 +1,3 @@
-<span style="font-family:verdana;font-size:85%;"> 
-
 <u>Setup Folder</u><br />
 Larger game projects will require nested folders in the <b>inc</b> or <b>src</b> directories to organize engine and screen code etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources">Clone</a> the "Setup Resources" folder and add all necessary subfolders + then update the makefile.
 <br><br>
@@ -29,4 +27,3 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\<a href="https://github.com/Stephane-D/SGDK/blob/master/makefile.gen">makefile.gen</a></i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entries per folder.
 <br /><br />
 Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto %GDK_WIN% version.  
-</span>

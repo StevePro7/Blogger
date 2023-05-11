@@ -53,6 +53,121 @@ Here is a summary of some of the software to be installed:
 -->
 <br />
   
+
+
+<u>Setup Project</u><br />
+Create folder C:\<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/01-SetupProject">SimpsonsTriviaMD</a>.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder  here. Create sub-folder: <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b>.  Change directory to dev folder and create the following sub-folders as indicated per <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">Usage</a>: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKLMvBD-jxIt4sZiO_5Ww38Rs374dYS4stLbED54ntmcLV3-1dSn3LvFs4ySYOxdDPDoOwXPtSmD0f7cEYahCaUB3euGbMAwaYKtJ0Lycx59b-Fc_y_mfL2upOzhwSkw4UTSWSJOOQrINMJWe2s-s9uE1BYbTAPZiHHTMRlGC7fFVwlLq3LrTEVbVG/s736/SetupProject01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKLMvBD-jxIt4sZiO_5Ww38Rs374dYS4stLbED54ntmcLV3-1dSn3LvFs4ySYOxdDPDoOwXPtSmD0f7cEYahCaUB3euGbMAwaYKtJ0Lycx59b-Fc_y_mfL2upOzhwSkw4UTSWSJOOQrINMJWe2s-s9uE1BYbTAPZiHHTMRlGC7fFVwlLq3LrTEVbVG/s600/SetupProject01.png"/></a>
+<br />
+-->
+<br />
+Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ_ZdaaDQiW9Ikrf0FgoEP2k1IVJRyC9N8hsOcf2tBab-LVa66z3zKs9GXk2K6C1x9DvKMO7_6pRC9M0nU8_hyMzVS2XQEU0eR8ksWfCUH8DSQKRxb54QdJh5kpbQBGm7YUvoN7kuV0o6LjYgCcxxVGQDzkfvqE37lM1tVpoDXu5xnNy3PLsssOUYT/s829/SetupProject02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ_ZdaaDQiW9Ikrf0FgoEP2k1IVJRyC9N8hsOcf2tBab-LVa66z3zKs9GXk2K6C1x9DvKMO7_6pRC9M0nU8_hyMzVS2XQEU0eR8ksWfCUH8DSQKRxb54QdJh5kpbQBGm7YUvoN7kuV0o6LjYgCcxxVGQDzkfvqE37lM1tVpoDXu5xnNy3PLsssOUYT/s600/SetupProject02.png"/></a>
+<br>
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="33%">&nbsp;Name:</td>
+<td valign="top" width="66%">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\SimpsonsTriviaMD\dev</td>
+</tr>
+<tr>
+<td valign="top" width="33%">&nbsp;Create directory for solution</td>
+<td valign="top" width="66%">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+OK
+<br /><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="33%">&nbsp;Application type:</td>
+<td valign="top" width="66%">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top" width="33%">&nbsp;Additional options:</td>
+<td valign="top" width="66%">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+Finish
+<br />
+-->
+<br />
+First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
+<br /><br />
+Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
+<br>
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL-ifStLxp7baQOVK_R95f7K6cSqiUx_Tvl87bwo_RLR6DyovLYLfx9_WT3MOYMz4NJPb0Bdq_rMXNOxiIgDDBwzNqcAPB6xnZyvQH1xpV10EZNcXObtwhl3WrWxF-b771OfXPHFtWR0WtmQkV_f0y6JsUSUCX1SFi-C-ichxtBu_QhMW9HColkgrJ/s921/SetupProject03.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL-ifStLxp7baQOVK_R95f7K6cSqiUx_Tvl87bwo_RLR6DyovLYLfx9_WT3MOYMz4NJPb0Bdq_rMXNOxiIgDDBwzNqcAPB6xnZyvQH1xpV10EZNcXObtwhl3WrWxF-b771OfXPHFtWR0WtmQkV_f0y6JsUSUCX1SFi-C-ichxtBu_QhMW9HColkgrJ/s600/SetupProject03.png"/></a>
+<br>
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="33%">&nbsp;Output Directory:</td>
+<td valign="top" width="66%">&nbsp;$(SolutionDir)..\bin\$(ConfigurationName)</td>
+</tr>
+<tr>
+<td valign="top" width="33%">&nbsp;Intermediate Directory:</td>
+<td valign="top" width="66%">&nbsp;$(SolutionDir)..\obj\$(ConfigurationName)</td>
+</tr>
+</table>
+<br />
+-->
+<br />  
+Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
+<br>
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiByYSpe0QbYMs65LXGR_Cft3XnhwyCq2i3XvVUW3fYxC7YULzB1cBZnT3dJRTic-hZChIxZcZZbTPrOcdv7mUyLffXSDldCygAleJitxDrE5QFmIh2O7GUhvmkizhNYd2l6Gg_X2R3EZTCHNZOAyvsEHjy3CGS_saju1t4GqyxGByJ6UNfVF3or9gM/s920/SetupProject04.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiByYSpe0QbYMs65LXGR_Cft3XnhwyCq2i3XvVUW3fYxC7YULzB1cBZnT3dJRTic-hZChIxZcZZbTPrOcdv7mUyLffXSDldCygAleJitxDrE5QFmIh2O7GUhvmkizhNYd2l6Gg_X2R3EZTCHNZOAyvsEHjy3CGS_saju1t4GqyxGByJ6UNfVF3or9gM/s600/SetupProject04.png"/></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Value:&nbsp;</td>
+<td valign="top">&nbsp;$(SolutionDir)..\lib;$(ProjectDir)inc;$(ProjectDir)res;$(GDK_WIN)\inc;$(IncludePath)</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+Right click Project | Properties | Configuration Properties | Linker | General | Additional Library Directories:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_5oOJCNp2MzPikp7RVuAILVbv5uSeZdrIcXHfLtZ7wLfWymM8oRErjf0nbI2uYtndZEDQwfAT3NroN1Y7Mj4dtYwBVPHVbF9-CpDDJN8ikgLaoJ1SVEe2GV2EsTuaJcSj3ea2MCmSB8BIUh1VXC50KZyL1FNUkdTPJ5y8sGMd1FuskMCfVkgIwN6X/s920/SetupProject05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_5oOJCNp2MzPikp7RVuAILVbv5uSeZdrIcXHfLtZ7wLfWymM8oRErjf0nbI2uYtndZEDQwfAT3NroN1Y7Mj4dtYwBVPHVbF9-CpDDJN8ikgLaoJ1SVEe2GV2EsTuaJcSj3ea2MCmSB8BIUh1VXC50KZyL1FNUkdTPJ5y8sGMd1FuskMCfVkgIwN6X/s600/SetupProject05.png"/></a>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top" width="25%">&nbsp;Value:&nbsp;</td>
+<td valign="top" width="75%">&nbsp;$(SolutionDir)..\lib</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+Right click Project | Properties | Configuration Properties | Linker | Input.  Set the Additional Dependencies:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXnOw7trRd5tlro6lN9wp7PBSllZu_dqxeHzN0xK_wI2I8cxYwutIpgYVWVfOFn3SEwU8M9HbexVzUCgNMZ6F1jD9ZNraC0rJo06zCinBXmpKT6OM-e9XAqxeJ_8EZHJDJNwuspesc2_K8lKSC-mUOmB0_fuOJ-QsO7jaQAYBhFgP17xrNC7-nop0_/s922/SetupProject06.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXnOw7trRd5tlro6lN9wp7PBSllZu_dqxeHzN0xK_wI2I8cxYwutIpgYVWVfOFn3SEwU8M9HbexVzUCgNMZ6F1jD9ZNraC0rJo06zCinBXmpKT6OM-e9XAqxeJ_8EZHJDJNwuspesc2_K8lKSC-mUOmB0_fuOJ-QsO7jaQAYBhFgP17xrNC7-nop0_/s600/SetupProject06.png"/></a>
+<br />
+<table width="99%"border="1">
+<tr>
+<td valign="top" width="25%">&nbsp;Value:&nbsp;</td>
+<td valign="top" width="75%">&nbsp;_genesis.lib;%(AdditionalDependencies)</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+The final solution should look like this:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcI_-wveWFhdC8fAuFx273LZ0VwWRU9ie21lP5QpamAk4wLQzaUi0PLuxpUq_GxXhANtYSFtjq29psiT5ONWpRl5SY8_R6Kb9CztPxD8FkPIR5AFycCyZttoIMZp-qJUvCSrHE0Hb4T87LK2KwsTInTNxzyddynEb0XvG6AZ69wMaTGab7neXnFQa9/s736/SetupProject07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcI_-wveWFhdC8fAuFx273LZ0VwWRU9ie21lP5QpamAk4wLQzaUi0PLuxpUq_GxXhANtYSFtjq29psiT5ONWpRl5SY8_R6Kb9CztPxD8FkPIR5AFycCyZttoIMZp-qJUvCSrHE0Hb4T87LK2KwsTInTNxzyddynEb0XvG6AZ69wMaTGab7neXnFQa9/s600/SetupProject07.png"/></a>
+<br />
+-->
+<br />  
   
+
   
 </span>
