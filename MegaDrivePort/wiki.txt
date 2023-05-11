@@ -1,3 +1,58 @@
-<span style="font-family:verdana;font-size:85%;"> 
-
+<span style="font-family:verdana;font-size:85%;">
+  
+In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build code in C for the 8-bit Sega Master System.  Then, in 2020, we checked out <a href="http://steveproxna.blogspot.com/2020/09/sgdk-programming-setup.html">SGDK Programming Setup</a> to build code in C for the 16-bit Sega Mega Drive.
+<br /><br />
+Leveraging this knowledge, we would now like to port existing code built for the 8-bit Sega Master System, for example, <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS">Simpsons Trivia SMS</a> to the 16-bit Mega Drive <a href="https://github.com/SteveProXNA/SimpsonsTriviaMD">Simpsons Trivia MD</a> and document the process.
+<br />
+<!--
+<table width="100%" border="1">
+<tr>
+<td valign="top" width="40%">&nbsp;<b>SEGA MASTER SYSTEM</b></td>
+<td valign="top" width="40%">&nbsp;<b>SEGA MEGA DRIVE</b></td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOQAur4QBLkqjekg11RwWNsadVo5TVKOuk3NebMs-4FS-mUuPUZGW31IC8EpbQjs9yX0FGq3GVyz2kVCnRgAomWGE-65dAz6aMNxKmsO5Th7kkhHfrONqDvhllTzFKyoP6rrd-l_w2vbrDVRX8gcl2BlTFZSz4YE_1Lw9Y4Hufg5EcDW8mCtcFcgLJ/s642/SimpsonsSMS.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOQAur4QBLkqjekg11RwWNsadVo5TVKOuk3NebMs-4FS-mUuPUZGW31IC8EpbQjs9yX0FGq3GVyz2kVCnRgAomWGE-65dAz6aMNxKmsO5Th7kkhHfrONqDvhllTzFKyoP6rrd-l_w2vbrDVRX8gcl2BlTFZSz4YE_1Lw9Y4Hufg5EcDW8mCtcFcgLJ/s600/SimpsonsSMS.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg5t66uT1DuU7FevlSXuMKYr1FZYdhGul7mzAMJHpG0rdmOH2-OnY7xH0CfwENj4zsV2qJTVVoEu3UyLpxDaeLStWWVm8yiQWLi1QUlvjNrDT3EJHe9o_OBwtejr8l6dK79G_dPubimf8dwuXBI9-B4ihSOWaBOltki1hkeQ54DWAJ9jDf0nrb-vbP/s642/SimpsonsMD.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg5t66uT1DuU7FevlSXuMKYr1FZYdhGul7mzAMJHpG0rdmOH2-OnY7xH0CfwENj4zsV2qJTVVoEu3UyLpxDaeLStWWVm8yiQWLi1QUlvjNrDT3EJHe9o_OBwtejr8l6dK79G_dPubimf8dwuXBI9-B4ihSOWaBOltki1hkeQ54DWAJ9jDf0nrb-vbP/s600/SimpsonsMD.png"/></a>
+</td>
+<tr>
+</table>
+-->
+<br />
+Let's check it out!
+<br /><br />
+  
+<u>Software</u><br />
+Follow most instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a>: this documents how to setup some pre-requisite software.
+<br /><br />
+Here is a summary of some of the software to be installed:
+<br />
+<!--
+<table width="98%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;C IDE Editor</td><td valign="top">&nbsp;<a href="https://my.visualstudio.com/Downloads?q=visual%20studio%202015&wt.mc_id=o~msft~vscom~older-downloads">Visual Studio 2015</a></td></tr>
+<tr><td valign="top">&nbsp;Emulators</td><td valign="top">&nbsp<a href="https://retrocdn.net/images/6/6c/Fusion364.7z">Fusion</a>, <a href="https://retrocdn.net/images/4/43/Gens_KMod_v0.7.3.7z">Gens KMod</a></td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;Cross compiler</td><td valign="top">&nbsp;<a href="https://gcc.gnu.org/">GCC</a></td></tr>
+<tr><td valign="top">&nbsp;Make files</td><td valign="top">&nbsp;<a href="http://cygwin.com/install.html">Cygwin</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+  
+  
+  
 </span>
