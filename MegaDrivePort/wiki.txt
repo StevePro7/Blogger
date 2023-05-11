@@ -168,6 +168,14 @@ The final solution should look like this:
 -->
 <br />  
   
-
+<u>Setup Resources</u><br />
+Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/01-SetupProject">Clone</a> the "Setup Project" folder and follow these steps;
+<br />
+<br />
+Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/dev/res">res</a></b> folder under <i>dev</i> folder.  Copy all resources here.  Create corresponding <b>*.res</b> files.  Next execute <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/dev/build.bat">build.bat</a> to compile all resources then generate all corresponding <b>gfx</b> and <b>sfx</b> header files.
+<br><br>
+Create folder <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/gfx">gfx</a></b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit files under <i>res</i> sub folder.  Repeat process with <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/sfx">sfx</a></b> folder.  Import all translation units into Visual Studio.
+<br><br>
+  
   
 </span>
