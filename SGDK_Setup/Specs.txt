@@ -22,9 +22,21 @@ Genesis 2 (smaller model) 10V Center Positive
 
 
 Resolution
-320 x 224
+320 x 224		seems most acceptable / generic / safe values to use
+
+IMPORTANT
+google Sega Mega Drive resolution
+
+320 x 224		NTSC
+320 x 240		PAL
+
+e.g.
+From Sega Retro
+Usually, resolution is denoted by width x height (in pixels). For example, a Mega Drive screenshot has a resolution of 320x224 pixels in NTSC regions, however, the resolution in PAL regions is 320×240.
 
 
 TODO
 there are APIs in vdp.h that get width and height
 I need to check these out and print out on screen
+e.g.
+VDP_getScreenHeight()
