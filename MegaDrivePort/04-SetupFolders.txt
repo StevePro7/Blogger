@@ -26,4 +26,6 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 <br />
 Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\<a href="https://github.com/Stephane-D/SGDK/blob/master/makefile.gen">makefile.gen</a></i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entries per folder.
 <br /><br />
-Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto %GDK_WIN% version.  
+Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto <b>%GDK_WIN% version</b>.
+<br />
+If you remove pre-build step to speed up makefile build then don't forget to create out subfolders manually.  
