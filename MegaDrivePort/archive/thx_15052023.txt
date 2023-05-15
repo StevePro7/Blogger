@@ -1,9 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-
-
-
   
-  '
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build code in C for the 8-bit Sega Master System.  Then, in 2020, we checked out <a href="http://steveproxna.blogspot.com/2020/09/sgdk-programming-setup.html">SGDK Programming Setup</a> to build code in C for the 16-bit Sega Mega Drive.
 <br /><br />
 Leveraging this knowledge, we would now like to port existing code built for the 8-bit Sega Master System, for example, <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS">Simpsons Trivia SMS</a> to the 16-bit Mega Drive <a href="https://github.com/SteveProXNA/SimpsonsTriviaMD">Simpsons Trivia MD</a> and document the process.
@@ -213,26 +209,4 @@ Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of
 <br />
 If you remove pre-build step to speed up makefile build then don't forget to create out subfolders manually.
 
-  
-<u>Summary</u><br />
-TODO - test process above and port Skazka from SMS to MD...
-  <br>
-  
-<table width="100%" border="1">
-<tr>
-<td valign="top" width="40%">&nbsp;<b>SEGA MASTER SYSTEM</b>&nbsp;[256 x 192]</td>
-<td valign="top" width="40%">&nbsp;<b>SEGA MEGA DRIVE</b>&nbsp;[320 x 224]</td>
-<tr>
-<tr>
-<td valign="top" width="40%">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDZE-YOUvI2zQzI6ME-Ssln9DkhVyO7Y_OZrAemELq9nF1HlhqU7n5wtCpWex2yiZ-N2nqoiZ2j519jN_1vOb2TP7BpUWHv31MoCuMWLHGGWun0tSudt2IAS8AzF864JWuinAZ2tntXoLR-5-oVS5InOX4r4lci7XxVCvOraIPjy2fsHDJW7adXBPq/s642/SkazkaSMS.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDZE-YOUvI2zQzI6ME-Ssln9DkhVyO7Y_OZrAemELq9nF1HlhqU7n5wtCpWex2yiZ-N2nqoiZ2j519jN_1vOb2TP7BpUWHv31MoCuMWLHGGWun0tSudt2IAS8AzF864JWuinAZ2tntXoLR-5-oVS5InOX4r4lci7XxVCvOraIPjy2fsHDJW7adXBPq/s600/SkazkaSMS.png"/></a>
-</td>
-<td valign="top" width="40%">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkb0s2xWNk_QjZiKPWeXX5KbIUqtoZrN0cjn16E7ABwLhFxeuoqnYJGlV2CBq3o1Xv1yXFqNzshFyQ8yYeHSLq_GneLYwn1QTOKktCiXsccOhGRYpKYbDUNOx2uhjyrt7Sbi3jDToT8sF0-tCP7kdWFC6Lkuowdl7y3d10sujobzXAe9X2p_5QYO4_/s642/SkazkaMD.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkb0s2xWNk_QjZiKPWeXX5KbIUqtoZrN0cjn16E7ABwLhFxeuoqnYJGlV2CBq3o1Xv1yXFqNzshFyQ8yYeHSLq_GneLYwn1QTOKktCiXsccOhGRYpKYbDUNOx2uhjyrt7Sbi3jDToT8sF0-tCP7kdWFC6Lkuowdl7y3d10sujobzXAe9X2p_5QYO4_/s600/SkazkaMD.png"/></a>
-</td>
-</tr>
-
-</table>
-  
 </span>
-
