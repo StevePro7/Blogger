@@ -1,9 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
 
-
-  
-  '
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build code in C for the 8-bit Sega Master System.  Then, in 2020, we checked out <a href="http://steveproxna.blogspot.com/2020/09/sgdk-programming-setup.html">SGDK Programming Setup</a> to build code in C for the 16-bit Sega Mega Drive.
 <br /><br />
 Leveraging this knowledge, we would now like to port existing code built for the 8-bit Sega Master System, for example, <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS">Simpsons Trivia SMS</a> to the 16-bit Mega Drive <a href="https://github.com/SteveProXNA/SimpsonsTriviaMD">Simpsons Trivia MD</a> and document the process.
@@ -212,11 +209,103 @@ Customize the makefile.gen file to include the new subfolders accordingly.  Copy
 Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto <b>%GDK_WIN% version</b>.
 <br />
 If you remove pre-build step to speed up makefile build then don't forget to create out subfolders manually.
-
-  
+<br /><br />
+<u>Convert APIs</u><br />
+TODO - copy all engine, object, screen files from SMS to MD and convert APIs - here is quick cheat sheet
+<br />
+<table width="100%" border="1">
+<tr>
+ <td valign="top" width="20%">&nbsp;</td>
+<td valign="top" width="40%">&nbsp;<b>SEGA MASTER SYSTEM</b></td>
+<td valign="top" width="40%">&nbsp;<b>SEGA MEGA DRIVE</b></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Audio</td>
+<td valign="top" width="40%">
+&nbsp;PSGPlay();<br />
+&nbsp;PSGStop();<br />
+&nbsp;PSGGetStatus();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;XGM_startPlayPCM();<br />
+&nbsp;XGM_stopPlayPCM();<br />
+&nbsp;XGM_isPlayingPCM();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Dimensions</td>
+<td valign="top" width="40%">
+&nbsp;256 x 192 [32x24]<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;320 x 224 [40x28]<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Font</td>
+<td valign="top" width="40%">
+&nbsp;SMS_setNextTileatXY();<br />
+&nbsp;SMS_setTile();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;VDP_setMapEx();<br />
+&nbsp;
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Graphics</td>
+<td valign="top" width="40%">
+&nbsp;SMS_loadPSGaidencompressedTiles();<br />
+&nbsp;SMS_loadBGPalette();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;VDP_drawImageEx();<br />
+&nbsp;VDP_setPalette();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Hack</td>
+<td valign="top" width="40%">
+&nbsp;Address : 0x0050<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;Address : 0x01E0<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Input</td>
+<td valign="top" width="40%">
+&nbsp;SMS_getKeysStatus();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;JOY_readJoypad();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Random</td>
+<td valign="top" width="40%">
+&nbsp;rand();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;random();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Sprites</td>
+<td valign="top" width="40%">
+&nbsp;SMS_addSprite();<br />
+&nbsp;SMS_copySpritestoSAT();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;SPR_addSprite();<br />
+&nbsp;SPR_update();<br />
+</td>
+</tr>
+</table>  
+<br />
 <u>Summary</u><br />
 TODO - test process above and port Skazka from SMS to MD...
-  <br>
+<br />
   
 <table width="100%" border="1">
 <tr>
