@@ -55,7 +55,7 @@ Create folder C:\<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SG
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ_ZdaaDQiW9Ikrf0FgoEP2k1IVJRyC9N8hsOcf2tBab-LVa66z3zKs9GXk2K6C1x9DvKMO7_6pRC9M0nU8_hyMzVS2XQEU0eR8ksWfCUH8DSQKRxb54QdJh5kpbQBGm7YUvoN7kuV0o6LjYgCcxxVGQDzkfvqE37lM1tVpoDXu5xnNy3PLsssOUYT/s829/SetupProject02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ_ZdaaDQiW9Ikrf0FgoEP2k1IVJRyC9N8hsOcf2tBab-LVa66z3zKs9GXk2K6C1x9DvKMO7_6pRC9M0nU8_hyMzVS2XQEU0eR8ksWfCUH8DSQKRxb54QdJh5kpbQBGm7YUvoN7kuV0o6LjYgCcxxVGQDzkfvqE37lM1tVpoDXu5xnNy3PLsssOUYT/s600/SetupProject02.png"/></a>
-<br>
+<br />
 <table width="99%" border="1">
 <tr>
 <td valign="top" width="33%">&nbsp;Name:</td>
@@ -150,18 +150,18 @@ Import all resources into your project as media files that your game will use su
 <br />
 <br />
 Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/dev/res">res</a></b> folder under <i>dev</i> folder.  Copy all resources here.  Create corresponding <b>*.res</b> files.  Next execute <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/dev/build.bat">build.bat</a> to compile all resources then generate all corresponding <b>gfx</b> and <b>sfx</b> header files.
-<br><br>
+<br /><br />
 Create folder <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/gfx">gfx</a></b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit files under <i>res</i> sub folder.  Repeat process with <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/sfx">sfx</a></b> folder.  Import all translation units into Visual Studio.
 <br /><br />
 <br />
 <u>Setup Folders</u><br />
 Larger game projects will require nested folders in the <b>inc</b> or <b>src</b> directories to organize engine and screen code etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources">Clone</a> the "Setup Resources" folder and add all necessary subfolders + then update the makefile.
-<br><br>
+<br /><br />
 Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution:
-<br>
+<br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLYxMPqY_IP1xEa1GLpIfeASws3dmpHGfUgpuoq7q366iMWzdbMDP_g-JfH3ktKsJmj3CxfIMlacNFRhhGvz3rbBI32GyNL6Qgvppg348zRZqV_cwj-Wqf9lj4A1o96hnuCZQCedJgR71muVWvVT-ltQhZrOglwwBsutSN1bZETM40Ko5J7lcPfLT/s856/SolutionExplorer.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLYxMPqY_IP1xEa1GLpIfeASws3dmpHGfUgpuoq7q366iMWzdbMDP_g-JfH3ktKsJmj3CxfIMlacNFRhhGvz3rbBI32GyNL6Qgvppg348zRZqV_cwj-Wqf9lj4A1o96hnuCZQCedJgR71muVWvVT-ltQhZrOglwwBsutSN1bZETM40Ko5J7lcPfLT/s600/SolutionExplorer.png"/></a>
-<br>
-<!--<br>-->
+<br />
+<!--<br />-->
 Create corresponding engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupFolders/dev/inc">inc</a></b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupFolders/dev/src">src</a></b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
 <br /><br /> 
 Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
@@ -185,9 +185,9 @@ If you remove pre-build step to speed up makefile build then don't forget to cre
 <br />
 <u>Convert APIs</u><br />
 Finally, copy over all engine, object, screen etc. files from the Sega Master System code base into the Sega Mega Drive port.  Convert all <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> APIs to the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> equivalents.  Allow for different screen resolution!
-<br><br>
+<br /><br />
 Here is quick sheet of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> to <a href="https://github.com/Stephane-D/SGDK">SGDK</a> API conversions; of course not all APIs are one-to-one mapping:  
-<br>
+<br />
 <table width="100%" border="1">
 <tr>
  <td valign="top" width="20%">&nbsp;</td>
