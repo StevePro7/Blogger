@@ -1,15 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
-  
-<u>Convert APIs</u><br />
-Finally, copy over all engine, object, screen etc. files from the Sega Master System code base into the Sega Mega Drive port.  Convert all devkitSMS APIs to the SGDK equivalents.  Allow for different screen resolution!
-<br><br>
-Here is quick sheet of devkitSMS to SGDK API conversions; of course not all APIs are one-to-one mapping:  
-<br>
-<br>
 
 
-
-<br><br>
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build code in C for the 8-bit Sega Master System.  Then, in 2020, we checked out <a href="http://steveproxna.blogspot.com/2020/09/sgdk-programming-setup.html">SGDK Programming Setup</a> to build code in C for the 16-bit Sega Mega Drive.
 <br /><br />
 Leveraging this knowledge, we would now like to port existing code built for the 8-bit Sega Master System, for example, <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS">Simpsons Trivia SMS</a> to the 16-bit Mega Drive <a href="https://github.com/SteveProXNA/SimpsonsTriviaMD">Simpsons Trivia MD</a> and document the process.
