@@ -1,10 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
-
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build code in C for the 8-bit Sega Master System.  Then, in 2020, we checked out <a href="http://steveproxna.blogspot.com/2020/09/sgdk-programming-setup.html">SGDK Programming Setup</a> to build code in C for the 16-bit Sega Mega Drive.
 <br /><br />
 Leveraging this knowledge, we would now like to port existing code built for the 8-bit Sega Master System, for example, <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS">Simpsons Trivia SMS</a> to the 16-bit Mega Drive <a href="https://github.com/SteveProXNA/SimpsonsTriviaMD">Simpsons Trivia MD</a> and document the process.
 <br />
-
 <table width="100%" border="1">
 <tr>
 <td valign="top" width="40%">&nbsp;<b>SEGA MASTER SYSTEM</b>&nbsp;[256 x 192]</td>
@@ -19,17 +17,14 @@ Leveraging this knowledge, we would now like to port existing code built for the
 </td>
 <tr>
 </table>
-
-<br />
+<!--<br />-->
 Let's check it out!
 <br /><br />
-  
 <u>Software</u><br />
 Follow most instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a>: this documents how to setup some pre-requisite software.
 <br /><br />
 Here is a summary of some of the software to be installed:
 <br />
-
 <table width="98%" border="0">
 <tr>
 <td>
@@ -50,22 +45,15 @@ Here is a summary of some of the software to be installed:
 </tr>
 </table>
 <br />
-
 <br />
-  
-
-
 <u>Setup Project</u><br />
 Create folder C:\<a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/01-SetupProject">SimpsonsTriviaMD</a>.  Copy new SGDK custom library <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDK_Library/Library/lib">lib</a></b> folder  here. Create sub-folder: <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKdemos/01-HelloWorld/dev">dev</a></b>.  Change directory to dev folder and create the following sub-folders as indicated per <a href="https://github.com/Stephane-D/SGDK/wiki/SGDK-Usage">Usage</a>: <i>inc</i>, <i>out</i>, <i>res</i>, <i>src</i>
 <br />
-
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKLMvBD-jxIt4sZiO_5Ww38Rs374dYS4stLbED54ntmcLV3-1dSn3LvFs4ySYOxdDPDoOwXPtSmD0f7cEYahCaUB3euGbMAwaYKtJ0Lycx59b-Fc_y_mfL2upOzhwSkw4UTSWSJOOQrINMJWe2s-s9uE1BYbTAPZiHHTMRlGC7fFVwlLq3LrTEVbVG/s736/SetupProject01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKLMvBD-jxIt4sZiO_5Ww38Rs374dYS4stLbED54ntmcLV3-1dSn3LvFs4ySYOxdDPDoOwXPtSmD0f7cEYahCaUB3euGbMAwaYKtJ0Lycx59b-Fc_y_mfL2upOzhwSkw4UTSWSJOOQrINMJWe2s-s9uE1BYbTAPZiHHTMRlGC7fFVwlLq3LrTEVbVG/s600/SetupProject01.png"/></a>
 <br />
-
 <br />
 Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32 Project
 <br />
-
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ_ZdaaDQiW9Ikrf0FgoEP2k1IVJRyC9N8hsOcf2tBab-LVa66z3zKs9GXk2K6C1x9DvKMO7_6pRC9M0nU8_hyMzVS2XQEU0eR8ksWfCUH8DSQKRxb54QdJh5kpbQBGm7YUvoN7kuV0o6LjYgCcxxVGQDzkfvqE37lM1tVpoDXu5xnNy3PLsssOUYT/s829/SetupProject02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZ_ZdaaDQiW9Ikrf0FgoEP2k1IVJRyC9N8hsOcf2tBab-LVa66z3zKs9GXk2K6C1x9DvKMO7_6pRC9M0nU8_hyMzVS2XQEU0eR8ksWfCUH8DSQKRxb54QdJh5kpbQBGm7YUvoN7kuV0o6LjYgCcxxVGQDzkfvqE37lM1tVpoDXu5xnNy3PLsssOUYT/s600/SetupProject02.png"/></a>
 <br>
 <table width="99%" border="1">
@@ -96,15 +84,14 @@ OK
 </table>
 Finish
 <br />
-
 <br />
 First, remove x64 build configuration!  Right click Solution | Properties.  Click Configuration Manager button.  Click Active solution platform drop down | Edit.  Click x64 option | Remove.  Now will have only Win32 build.
-<br /><br />
+<br />
+<br />
 Right click Project | Properties | Configuration Properties | General.  Set Output and Intermediate directories:
-<br>
-
+<br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL-ifStLxp7baQOVK_R95f7K6cSqiUx_Tvl87bwo_RLR6DyovLYLfx9_WT3MOYMz4NJPb0Bdq_rMXNOxiIgDDBwzNqcAPB6xnZyvQH1xpV10EZNcXObtwhl3WrWxF-b771OfXPHFtWR0WtmQkV_f0y6JsUSUCX1SFi-C-ichxtBu_QhMW9HColkgrJ/s921/SetupProject03.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL-ifStLxp7baQOVK_R95f7K6cSqiUx_Tvl87bwo_RLR6DyovLYLfx9_WT3MOYMz4NJPb0Bdq_rMXNOxiIgDDBwzNqcAPB6xnZyvQH1xpV10EZNcXObtwhl3WrWxF-b771OfXPHFtWR0WtmQkV_f0y6JsUSUCX1SFi-C-ichxtBu_QhMW9HColkgrJ/s600/SetupProject03.png"/></a>
-<br>
+<br />
 <table width="99%" border="1">
 <tr>
 <td valign="top" width="33%">&nbsp;Output Directory:</td>
@@ -116,11 +103,9 @@ Right click Project | Properties | Configuration Properties | General.  Set Outp
 </tr>
 </table>
 <br />
-
-<br />  
+<!--<br />-->  
 Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
-<br>
-
+<br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiByYSpe0QbYMs65LXGR_Cft3XnhwyCq2i3XvVUW3fYxC7YULzB1cBZnT3dJRTic-hZChIxZcZZbTPrOcdv7mUyLffXSDldCygAleJitxDrE5QFmIh2O7GUhvmkizhNYd2l6Gg_X2R3EZTCHNZOAyvsEHjy3CGS_saju1t4GqyxGByJ6UNfVF3or9gM/s920/SetupProject04.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiByYSpe0QbYMs65LXGR_Cft3XnhwyCq2i3XvVUW3fYxC7YULzB1cBZnT3dJRTic-hZChIxZcZZbTPrOcdv7mUyLffXSDldCygAleJitxDrE5QFmIh2O7GUhvmkizhNYd2l6Gg_X2R3EZTCHNZOAyvsEHjy3CGS_saju1t4GqyxGByJ6UNfVF3or9gM/s600/SetupProject04.png"/></a>
 <br />
 <table width="99%" border="1">
@@ -130,11 +115,9 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 </tr>
 </table>
 <br />
-
-<br />
+<!--<br />-->
 Right click Project | Properties | Configuration Properties | Linker | General | Additional Library Directories:
 <br />
-
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_5oOJCNp2MzPikp7RVuAILVbv5uSeZdrIcXHfLtZ7wLfWymM8oRErjf0nbI2uYtndZEDQwfAT3NroN1Y7Mj4dtYwBVPHVbF9-CpDDJN8ikgLaoJ1SVEe2GV2EsTuaJcSj3ea2MCmSB8BIUh1VXC50KZyL1FNUkdTPJ5y8sGMd1FuskMCfVkgIwN6X/s920/SetupProject05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_5oOJCNp2MzPikp7RVuAILVbv5uSeZdrIcXHfLtZ7wLfWymM8oRErjf0nbI2uYtndZEDQwfAT3NroN1Y7Mj4dtYwBVPHVbF9-CpDDJN8ikgLaoJ1SVEe2GV2EsTuaJcSj3ea2MCmSB8BIUh1VXC50KZyL1FNUkdTPJ5y8sGMd1FuskMCfVkgIwN6X/s600/SetupProject05.png"/></a>
 <br />
 <table width="99%" border="1">
@@ -144,11 +127,9 @@ Right click Project | Properties | Configuration Properties | Linker | General |
 </tr>
 </table>
 <br />
-
-<br />
+<!--<br />-->
 Right click Project | Properties | Configuration Properties | Linker | Input.  Set the Additional Dependencies:
 <br />
-
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXnOw7trRd5tlro6lN9wp7PBSllZu_dqxeHzN0xK_wI2I8cxYwutIpgYVWVfOFn3SEwU8M9HbexVzUCgNMZ6F1jD9ZNraC0rJo06zCinBXmpKT6OM-e9XAqxeJ_8EZHJDJNwuspesc2_K8lKSC-mUOmB0_fuOJ-QsO7jaQAYBhFgP17xrNC7-nop0_/s922/SetupProject06.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXnOw7trRd5tlro6lN9wp7PBSllZu_dqxeHzN0xK_wI2I8cxYwutIpgYVWVfOFn3SEwU8M9HbexVzUCgNMZ6F1jD9ZNraC0rJo06zCinBXmpKT6OM-e9XAqxeJ_8EZHJDJNwuspesc2_K8lKSC-mUOmB0_fuOJ-QsO7jaQAYBhFgP17xrNC7-nop0_/s600/SetupProject06.png"/></a>
 <br />
 <table width="99%"border="1">
@@ -158,16 +139,12 @@ Right click Project | Properties | Configuration Properties | Linker | Input.  S
 </tr>
 </table>
 <br />
-
-<br />
+<!--<br />-->
 The final solution should look like this:
 <br />
-
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcI_-wveWFhdC8fAuFx273LZ0VwWRU9ie21lP5QpamAk4wLQzaUi0PLuxpUq_GxXhANtYSFtjq29psiT5ONWpRl5SY8_R6Kb9CztPxD8FkPIR5AFycCyZttoIMZp-qJUvCSrHE0Hb4T87LK2KwsTInTNxzyddynEb0XvG6AZ69wMaTGab7neXnFQa9/s736/SetupProject07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcI_-wveWFhdC8fAuFx273LZ0VwWRU9ie21lP5QpamAk4wLQzaUi0PLuxpUq_GxXhANtYSFtjq29psiT5ONWpRl5SY8_R6Kb9CztPxD8FkPIR5AFycCyZttoIMZp-qJUvCSrHE0Hb4T87LK2KwsTInTNxzyddynEb0XvG6AZ69wMaTGab7neXnFQa9/s600/SetupProject07.png"/></a>
 <br />
-
 <br />  
-  
 <u>Setup Resources</u><br />
 Import all resources into your project as media files that your game will use such as images for background tiles + sprites, audio for music + sound effects etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/01-SetupProject">Clone</a> the "Setup Project" folder and follow these steps;
 <br />
@@ -175,23 +152,20 @@ Import all resources into your project as media files that your game will use su
 Change directory to <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/dev/res">res</a></b> folder under <i>dev</i> folder.  Copy all resources here.  Create corresponding <b>*.res</b> files.  Next execute <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/dev/build.bat">build.bat</a> to compile all resources then generate all corresponding <b>gfx</b> and <b>sfx</b> header files.
 <br><br>
 Create folder <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/gfx">gfx</a></b> at same level as <i>dev</i> folder.  Create sub folder <i>res</i>.  Add dummy corresponding translation unit files under <i>res</i> sub folder.  Repeat process with <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources/sfx">sfx</a></b> folder.  Import all translation units into Visual Studio.
-<br><br>
-  
+<br /><br />
+<br />
 <u>Setup Folders</u><br />
 Larger game projects will require nested folders in the <b>inc</b> or <b>src</b> directories to organize engine and screen code etc.  <a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupResources">Clone</a> the "Setup Resources" folder and add all necessary subfolders + then update the makefile.
 <br><br>
 Launch Visual Studio and include resource files as before.  Next, scale out engine and screen code but now organize into subfolders.  Create as New Filters under Visual Studio Header Files and Source Files solution:
 <br>
-
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLYxMPqY_IP1xEa1GLpIfeASws3dmpHGfUgpuoq7q366iMWzdbMDP_g-JfH3ktKsJmj3CxfIMlacNFRhhGvz3rbBI32GyNL6Qgvppg348zRZqV_cwj-Wqf9lj4A1o96hnuCZQCedJgR71muVWvVT-ltQhZrOglwwBsutSN1bZETM40Ko5J7lcPfLT/s856/SolutionExplorer.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLYxMPqY_IP1xEa1GLpIfeASws3dmpHGfUgpuoq7q366iMWzdbMDP_g-JfH3ktKsJmj3CxfIMlacNFRhhGvz3rbBI32GyNL6Qgvppg348zRZqV_cwj-Wqf9lj4A1o96hnuCZQCedJgR71muVWvVT-ltQhZrOglwwBsutSN1bZETM40Ko5J7lcPfLT/s600/SolutionExplorer.png"/></a>
 <br>
-
-<br>
+<!--<br>-->
 Create corresponding engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupFolders/dev/inc">inc</a></b> folder under <i>dev</i>.  Add header files.  Create engine and screen subfolders beneath <b><a href="https://github.com/SteveProXNA/SGDKcode/tree/master/SGDKport/SimpsonsTriviaMD/02-SetupFolders/dev/src">src</a></b> folder under <i>dev</i>.  Add all the corresponding translation unit code.
 <br /><br /> 
 Right click Project | Properties | Configuration Properties | C++ | General.  Set Additional Include Directories:
 <br />
-  
 <a href="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s1600/HelloWorld02.png"><img border="0" height="385" src="https://3.bp.blogspot.com/-pVISIsj4tTc/XvpD8a50fbI/AAAAAAAAGRw/71YfCsYJuOko71qKWDc2HKd0SyRn1td2gCLcBGAsYHQ/s640/HelloWorld02.png" width="98%" /></a>
 <br />
 <table border="1" width="99%">
@@ -201,21 +175,19 @@ Right click Project | Properties | Configuration Properties | C++ | General.  Se
 </tr>
 </table>
 <br />
-
-<br />
+<!--<br />-->
 Customize the makefile.gen file to include the new subfolders accordingly.  Copy <i>%GDK_WIN%\<a href="https://github.com/Stephane-D/SGDK/blob/master/makefile.gen">makefile.gen</a></i> to local <b>dev</b> folder.  Update makefile: Add new <b>$(wildcard $(SRC)/</b> and <b>-I$(INCLUDE)</b> entries per folder.
 <br /><br />
 Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of de-facto <b>%GDK_WIN% version</b>.
 <br />
 If you remove pre-build step to speed up makefile build then don't forget to create out subfolders manually.
 <br /><br />
-
+<br />
 <u>Convert APIs</u><br />
 Finally, copy over all engine, object, screen etc. files from the Sega Master System code base into the Sega Mega Drive port.  Convert all <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> APIs to the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> equivalents.  Allow for different screen resolution!
 <br><br>
 Here is quick sheet of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> to <a href="https://github.com/Stephane-D/SGDK">SGDK</a> API conversions; of course not all APIs are one-to-one mapping:  
 <br>
-
 <table width="100%" border="1">
 <tr>
  <td valign="top" width="20%">&nbsp;</td>
@@ -305,12 +277,11 @@ Here is quick sheet of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a
 </td>
 </tr>
 </table>
-
+<br />
 <br />
 <u>Summary</u><br />
 Repeat process with <a href="https://steveproxna.itch.io/skazka">Skazka</a>.  In summary, the <a href="https://github.com/SteveProXNA/SkazkaSMS">Master System</a> to <a href="https://github.com/SteveProXNA/SkazkaMD">Mega Drive</a> port should be fairly seemless <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
 <br />
- 
 <table width="100%" border="1">
 <tr>
 <td valign="top" width="40%">&nbsp;<b>SEGA MASTER SYSTEM</b>&nbsp;[256 x 192]</td>
@@ -324,7 +295,5 @@ Repeat process with <a href="https://steveproxna.itch.io/skazka">Skazka</a>.  In
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkb0s2xWNk_QjZiKPWeXX5KbIUqtoZrN0cjn16E7ABwLhFxeuoqnYJGlV2CBq3o1Xv1yXFqNzshFyQ8yYeHSLq_GneLYwn1QTOKktCiXsccOhGRYpKYbDUNOx2uhjyrt7Sbi3jDToT8sF0-tCP7kdWFC6Lkuowdl7y3d10sujobzXAe9X2p_5QYO4_/s642/SkazkaMD.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkb0s2xWNk_QjZiKPWeXX5KbIUqtoZrN0cjn16E7ABwLhFxeuoqnYJGlV2CBq3o1Xv1yXFqNzshFyQ8yYeHSLq_GneLYwn1QTOKktCiXsccOhGRYpKYbDUNOx2uhjyrt7Sbi3jDToT8sF0-tCP7kdWFC6Lkuowdl7y3d10sujobzXAe9X2p_5QYO4_/s600/SkazkaMD.png"/></a>
 </td>
 </tr>
-
 </table>
- 
 </span>
