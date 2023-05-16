@@ -1,9 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
   
 <u>Convert APIs</u><br />
-Finally, copy over all engine, object, screen etc. files from the Sega Master System code base into the Sega Mega Drive port.  Convert all devkitSMS APIs to the SGDK equivalents.  Allow for different screen resolution!
+Finally, copy over all engine, object, screen etc. files from the Sega Master System code base into the Sega Mega Drive port.  Convert all <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> APIs to the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> equivalents.  Allow for different screen resolution!
 <br><br>
-Here is quick sheet of devkitSMS to SGDK API conversions; of course not all APIs are one-to-one mapping:  
+Here is quick sheet of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> to <a href="https://github.com/Stephane-D/SGDK">SGDK</a> API conversions; of course not all APIs are one-to-one mapping:  
 <br>
 <table width="100%" border="1">
 <tr>
@@ -308,10 +308,12 @@ Update <b>dev</b> built.bat file to use new local custom makefile.gen instead of
 <br />
 If you remove pre-build step to speed up makefile build then don't forget to create out subfolders manually.
 <br /><br />
-  
+
 <u>Convert APIs</u><br />
-TODO - copy all engine, object, screen files from SMS to MD and convert APIs - here is quick cheat sheet
-<br />
+Finally, copy over all engine, object, screen etc. files from the Sega Master System code base into the Sega Mega Drive port.  Convert all <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> APIs to the <a href="https://github.com/Stephane-D/SGDK">SGDK</a> equivalents.  Allow for different screen resolution!
+<br><br>
+Here is quick sheet of <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> to <a href="https://github.com/Stephane-D/SGDK">SGDK</a> API conversions; of course not all APIs are one-to-one mapping:  
+<br>
 <!--
 <table width="100%" border="1">
 <tr>
