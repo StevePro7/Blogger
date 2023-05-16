@@ -5,6 +5,95 @@ Finally, copy over all engine, object, screen etc. files from the Sega Master Sy
 <br><br>
 Here is quick sheet of devkitSMS to SGDK API conversions; of course not all APIs are one-to-one mapping:  
 <br>
+<table width="100%" border="1">
+<tr>
+ <td valign="top" width="20%">&nbsp;</td>
+<td valign="top" width="40%">&nbsp;<b>SEGA MASTER SYSTEM</b></td>
+<td valign="top" width="40%">&nbsp;<b>SEGA MEGA DRIVE</b></td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Audio</td>
+<td valign="top" width="40%">
+&nbsp;PSGPlay();<br />
+&nbsp;PSGStop();<br />
+&nbsp;PSGGetStatus();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;XGM_startPlayPCM();<br />
+&nbsp;XGM_stopPlayPCM();<br />
+&nbsp;XGM_isPlayingPCM();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Dimensions</td>
+<td valign="top" width="40%">
+&nbsp;256 x 192 [32x24]<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;320 x 224 [40x28]<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Font</td>
+<td valign="top" width="40%">
+&nbsp;SMS_setNextTileatXY();<br />
+&nbsp;SMS_setTile();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;VDP_setMapEx();<br />
+&nbsp;
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Graphics</td>
+<td valign="top" width="40%">
+&nbsp;SMS_loadPSGaidencompressedTiles();<br />
+&nbsp;SMS_loadBGPalette();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;VDP_drawImageEx();<br />
+&nbsp;VDP_setPalette();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Hack</td>
+<td valign="top" width="40%">
+&nbsp;Address : 0x0050<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;Address : 0x01E0<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Input</td>
+<td valign="top" width="40%">
+&nbsp;SMS_getKeysStatus();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;JOY_readJoypad();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Random</td>
+<td valign="top" width="40%">
+&nbsp;rand();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;random();<br />
+</td>
+</tr>
+<tr>
+<td valign="top" width="20%">&nbsp;Sprites</td>
+<td valign="top" width="40%">
+&nbsp;SMS_addSprite();<br />
+&nbsp;SMS_copySpritestoSAT();<br />
+</td>
+<td valign="top" width="40%">
+&nbsp;SPR_addSprite();<br />
+&nbsp;SPR_update();<br />
+</td>
+</tr>
+</table>
 <br>
 
 
