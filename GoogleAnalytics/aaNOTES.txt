@@ -1,0 +1,68 @@
+aa NOTES
+17-mAY-2023
+
+Not yet migrated to the new Google Analytics? Simple steps to get started.
+https://www.youtube.com/watch?v=Wa8-TLldfCM
+
+
+
+
+GOOGLE Analytics
+http://steveproxna.blogspot.com
+UA-12397220-1
+
+How do you find your Google Analytics Tracking ID?
+Google Analytics
+click dropdown link
+steveproxna.blogspot.com
+
+YouTube
+https://www.youtube.com/c/SteveproxnaBlogspot
+
+
+Jul-2023
+migrate UA to GA4
+UA	Universal Analytics
+GA4	Google Analytics4
+
+https://www.youtube.com/watch?v=Wa8-TLldfCM
+
+Analytics Accounts		SteveProXNA				12397220
+Properties & Apps		http://steveproxna.blogspot.com		UA-12397220-1
+
+Begin migration
+https://analytics.google.com/analytics/web/#/a12397220w26512742p25136410/admin/ga4-setup-assistant
+
+use existing tag
+
+Below is the Google tag for this account. Copy and paste it in the code of every page of your website, immediately after the <head> element. Don’t add more than one Google tag to each page.
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTVSZT9D1H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HTVSZT9D1H');
+</script>
+
+GA4 PROPERTY NAME
+http://steveproxna.blogspot.com - GA4
+PROPERTY ID
+376406434
+
+complete migration
+https://analytics.google.com/analytics/web/#/a12397220p376406434/admin/setup-assistant
+
+Stream ID
+Measurement ID		G-HTVSZT9D1H
+
+
+Ad Sense
+https://www.google.com/adsense/new/u/0/pub-7462372955735639/home
+
+
+Theme | Edit HTML
+<meta content='stevepro studios, steveproxna, indie game development, sega, master system, megadrive, devkitsms, sgdk, android, ios, xna' name='keywords'/>
+Senior Software Engineer and Retro Indie Game Developer
