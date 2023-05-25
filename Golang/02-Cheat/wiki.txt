@@ -178,9 +178,9 @@ Consequently, Go is often <a href="https://thechief.io/c/editorial/why-golang-is
 <b>Hello World</b><br>
 <table width="99%" border="1">
 <tr>
-<td valign="top" width="30%">&nbsp;<a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/00-Hello/hello.go">hello.go</a></td>
-<td valign="top" width="30%">&nbsp;<a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/00-Hello/hello.h">hello.h</a></td>
-<td valign="top" width="30%">&nbsp;<a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/00-Hello/hello.c">hello.c</a></td>
+<td valign="top" width="30%">&nbsp;<a href="https://github.com/SteveProXNA/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/00-Hello/hello.go">hello.go</a></td>
+<td valign="top" width="30%">&nbsp;<a href="https://github.com/SteveProXNA/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/00-Hello/hello.h">hello.h</a></td>
+<td valign="top" width="30%">&nbsp;<a href="https://github.com/SteveProXNA/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/00-Hello/hello.c">hello.c</a></td>
 </tr>
 <tr>
 <td valign="top">
@@ -258,9 +258,9 @@ Install Mod Security on local host
 </tr>
 </table>
 <!--<br />-->
-Follow all instructions from the <a href="https://medium.com/lightbaseio/web-application-firewall-in-go-feat-owasp-modsecurity-core-rule-set-3f97a26e3311">example</a> i.e. download OWASP rules, build <a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/01-Example/main.go">main</a>, <a href="https://github.com/StevePro7/CloudTesting/tree/main/GolangCheatSheetII/04-Cgo/01-Example/server">server</a> and <a href="https://github.com/StevePro7/CloudTesting/tree/main/GolangCheatSheetII/04-Cgo/01-Example/waf">waf</a> code.  Here, it is critical for Go to C interface to set include + linker flags correctly <a href="http://gridengine.eu/index.php/other-stories/232-avoiding-the-ldlibrarypath-with-shared">avoiding</a> runtime PATH for shared libs!
+Follow all instructions from the <a href="https://medium.com/lightbaseio/web-application-firewall-in-go-feat-owasp-modsecurity-core-rule-set-3f97a26e3311">example</a> i.e. download OWASP rules, build <a href="https://github.com/SteveProXNA/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/01-Example/main.go">main</a>, <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/GolangCheatSheetII/04-Cgo/01-Example/server">server</a> and <a href="https://github.com/SteveProXNA/CloudTesting/tree/main/GolangCheatSheetII/04-Cgo/01-Example/waf">waf</a> code.  Here, it is critical for Go to C interface to set include + linker flags correctly <a href="http://gridengine.eu/index.php/other-stories/232-avoiding-the-ldlibrarypath-with-shared">avoiding</a> runtime PATH for shared libs!
 <br /><br />
-<a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/01-Example/waf/waf.go">waf.go</a><br />
+<a href="https://github.com/SteveProXNA/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/01-Example/waf/waf.go">waf.go</a><br />
 <table width="99%" border="1">
 <tr>
 <td valign="top">
