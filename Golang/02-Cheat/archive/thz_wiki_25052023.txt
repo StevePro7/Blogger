@@ -1,15 +1,20 @@
-<span style="font-family:verdana;font-size:85%;">  
+<span style="font-family:verdana;font-size:85%;"> 
+  
 In the previous <a href="http://steveproxna.blogspot.com/2022/09/golang-cheat-sheet.html">post</a>, we checked out <a href="https://www.techtarget.com/searchitoperations/definition/Go-programming-language">Go</a> as a statically typed and compiled programming language designed at Google.  Go is gaining popularity due to its ability to deliver highly scalable concurrent computing software.
 <br /><br />  
 Development teams <a href="https://content.techgig.com/technology/5-components-to-learn-googles-golang-coding-language/articleshow/76976910.cms">prefer</a> Golang to harness the power of large servers and sophisticated cloud platorms.  Go can be used in mobile, web and simple game development and can also invoke C code directly via <a href="https://go.dev/blog/cgo">Cgo</a>.
 <br />
+<!---->
 <a href="https://blogger.googleusercontent.com/img/a/AVvXsEjIjhX6Qo239XaOcVZe2QF0huqCXqMlGXdl6rQGlANVVHiqh5Hwyt0OTIgsxGplgcIXFbioRUNkKkyMP9lMFsHEF6M-rWzEtdOHGwDUYC7NVWXTAnZFUBa5682nD5pWw7TSdUfHmmoJ8o5ZSaiRtU_yvJeT6IhR3sNsvcYcmIUUaD6xACtlpM4F57u0=s750"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/a/AVvXsEjIjhX6Qo239XaOcVZe2QF0huqCXqMlGXdl6rQGlANVVHiqh5Hwyt0OTIgsxGplgcIXFbioRUNkKkyMP9lMFsHEF6M-rWzEtdOHGwDUYC7NVWXTAnZFUBa5682nD5pWw7TSdUfHmmoJ8o5ZSaiRtU_yvJeT6IhR3sNsvcYcmIUUaD6xACtlpM4F57u0=s600"/></a>
+<!---->
 <br />
 Let's check it out!
 <br /><br />
+
 <u>Example</u><br>
 In the previous <a href="http://steveproxna.blogspot.com/2022/09/golang-cheat-sheet.html">post</a>, we created a simple <a href="https://golangbot.com/hello-world-gomod">Hello World</a> example by setting up the development environment, create a Go module with the code and issue go build and run commands to execute the Hello World program
 <br /><br />
+  
 <u>Modules</u><br>
 A <a href="https://go.dev/blog/using-go-modules">module</a> in Go is a collection  of Go packages stored in a file tree with a go.mod file at its root
 The go.mod file defines the module's path, which is also  the import path used for the root directory,
@@ -17,6 +22,7 @@ and its dependency requirements which are other modules needed for a successful 
 <br /><br />
 A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/ref/mod#go-mod-file">go.mod</a> in its root directory.  Here are some usages:
 <br />
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;<a href="https://go.dev/ref/mod#go-get">go get</a></td>
@@ -45,18 +51,23 @@ A module is defined by a UTF-8 encoded text file named <a href="https://go.dev/r
 </table>
 <br />
 <!--<br /> -->
+
 <u>Packages</u><br>
 Go programs are built by linking together <a href="https://go.dev/ref/spec#Packages">packages</a>.  A package is constructed from one or more source files that declare constants, types, variables and functions belonging to the package to which are accessible in all files of the sams package.  Those elements may be exported and used in other package(s).
 <br /><br />
+  
 <u>Functional Programming</u><br>
 <a href="https://medium.com/@geisonfgfg/functional-go-bc116f4c96a4">Functional</a> programming is the paradigm that treats computation as the evaluation of functions and avoids state and mutable data as opposed to imperative programming which empathizes change of state.  Without shared data, concurrency becomes easier because this means no locks, race conditions, no dead locks etc.
 <br /><br />
+  
 <u>Concurrency</u><br>
 <a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">Concurrency</a> is the "composition of independently executing computations".  Concurrency: dealing with lots of things at once but parallelism: about doing lots of things at once.  Concurrency is all about structure whereas parallelism is about execution.  Consequently, Golang provides first-class language <a href="https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go">support</a> for concurrency.
 <br /><br />
 Challenges in <a href="https://www.youtube.com/playlist?list=PLve39GJ2D71wSwRQLp_h8B60pKgS85StC">concurrent</a> programming include co-ordinating tasks + shared memory.  Thus, Go concurrency implementation centers around  <a href="https://go.dev/tour/concurrency/1">goroutines</a>: functions that execute simultaneously in Go program with other (goroutine) functions and are lightweight threads managed by the Go runtime.  Here are some more terms:
 <!--<br><br>Definitions-->
-<br /><br />
+<br />
+<!---->
+<br />
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Concurrency</td>
@@ -91,8 +102,11 @@ Challenges in <a href="https://www.youtube.com/playlist?list=PLve39GJ2D71wSwRQLp
 <td valign="top">&nbsp;Another mechanism available to us to coordinate the work between multiple goroutines</td>
 </tr>
 </table>
+<!---->
 <br />
+
 Concurrency in Go is also based on <a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes">Communicating</a> Sequential Processes.  <a href="https://levelup.gitconnected.com/communicating-sequential-processes-csp-for-go-developer-in-a-nutshell-866795eb879d">CSP</a> is a form to describe patterns of interaction in concurrent systems.  CSP involvement in concurrency based on messaging passing <a href="https://en.wikipedia.org/wiki/Channel_(programming)">channels</a>.  Channels in Go allow goroutines to communincate with each other safely + co-ordinate work between them.
+
 <br /><br />
 <b>Demos</b><br>
 <table width="99%" border="1">
@@ -111,16 +125,18 @@ Concurrency in Go is also based on <a href="https://en.wikipedia.org/wiki/Commun
 <tr>
 <td valign="top">&nbsp;Channels</td>
 <td valign="top">
-&nbsp;<a href="01">Unbuffered channels</a>, <a href="demo02">Buffered channels</a>, <a href="demo03">Channel types</a>
-<br />
-&nbsp;<a href="demo05">Working with closed channels</a>, <a href="demo07">Using select statements</a>
+  &nbsp;<a href="01">Unbuffered channels</a>, <a href="demo02">Buffered channels</a>, <a href="demo03">Channel types</a>
+  <br />
+  &nbsp;<a href="demo05">Working with closed channels</a>, <a href="demo07">Using select statements</a>
 </td>
 </tr>
 </table>
+
 <br />
 IMPORTANT<br>
 If you are new to goroutines then you may like to log go ID() similar to logging thread ID in multithreading:
 <br />
+<!-- -->
 <pre class="csharp" name="code">
 go mod init goidtesting
 go get "github.com/nikandfor/goid"
@@ -162,20 +178,24 @@ A <a href="https://go.dev/doc/articles/race_detector">data race</a> occurs when 
 </table>
 <br />
 <!--<br /> -->
+
 <u>Unit Testing</u><br>
 Unit <a href="https://www.digitalocean.com/community/tutorials/how-to-write-unit-tests-in-go-using-go-test-and-the-testing-package">testing</a> in Golang uses the testing <a href="https://pkg.go.dev/testing">package</a> however more sophisticated Test Driven Design <a href="https://en.wikipedia.org/wiki/Test-driven_development">TDD</a> / <a href="https://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a> can be accomplished using the <a href="https://github.com/onsi/ginkgo">Ginkgo</a> testng framework complemented by the <a href="https://onsi.github.io/gomega">Gomega</a> matching library.
 <br /><br />
 However, unit testing <a href="https://www.jernejsila.com/2016/07/19/testing-concurrent-code-golang">concurrent</a> code in Go is more <a href="https://www.youtube.com/watch?v=ndmB0bj7eyw">challenging</a> esp. anonymous <a href="https://blog.devgenius.io/go-concurrency-testing-in-cpu-constrained-environments-8788052b7560">goroutines</a> as they are not executed immediately.  Instead the calling thread keeps execution priority until it pauses.  Only then will the code inside the goroutine get execution.  Therefore, a solution could be insert an empty function which acts as a hook for testing purposes; push a value into a channel which blocks until received + TEST code passes.
 <br /><br />
+  
 <u>Cloud Computing</u><br>
 <a href="https://www.linkedin.com/pulse/power-up-your-cloud-computing-golang-reemi-shirsath">Cloud</a> computing systems are highly scalable that require access to resources which must be shared.  Thus, Golang has the capability to develop highly scalable, highly performant, reliable and concurrent applications.
 <br /><br />
 Consequently, Go is often <a href="https://thechief.io/c/editorial/why-golang-is-widely-used-in-the-devops-and-cloud-native-space">preferred</a> to build tools for distributed systems and containerized applications such as <a href="http://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a> and <a href="http://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">Kubernetes</a> because of Go's fast compilation, low-level system calls and concurrency features.
 <br /><br />
+
 <u>Cgo</u><br>
 <a href="https://go.dev/blog/cgo">Cgo</a> lets Go packages <a href="https://karthikkaranth.me/blog/calling-c-code-from-go">call</a> C code.  Cgo outputs Go and C files that can be combined into a single Go package.
 <br /><br>
 <b>Hello World</b><br>
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top" width="30%">&nbsp;<a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/04-Cgo/00-Hello/hello.go">hello.go</a></td>
@@ -222,6 +242,7 @@ Consequently, Go is often <a href="https://thechief.io/c/editorial/why-golang-is
 </td>
 </tr>
 </table>
+<!-- -->
 <!--<br />-->
 According to this <a href="https://stackoverflow.com/questions/69904782/how-to-debug-go-with-cgo-in-visual-studio-code">thread</a>, it is possible to debug Go to C from Visual Studio Code on Linux.  Assuming you can F5 run the project then set breakpoints either side the Go code calling into and out of the C function to step.
 <br />
@@ -232,7 +253,7 @@ According to this <a href="https://stackoverflow.com/questions/69904782/how-to-d
 </td>
 <td valign="top" width="50%">
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfHjiPumovbRSF8tXPQvgKdAmDzRxVY-6Myngkk3A9DpyKRRQBAVcALKWYjCrs0S0Fp3-bvUUUcspP95c8hHdBmDKjADj9hHvf1O9B61f8aI6Zqdx_LC-o-XF_OeJUkjcJx1OIA-6Ohgcc_dnAspOyr4F5Z2kBP1nrAwshPwfq365Wcs4jQNcG7_KW/s449/debugCgo03.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfHjiPumovbRSF8tXPQvgKdAmDzRxVY-6Myngkk3A9DpyKRRQBAVcALKWYjCrs0S0Fp3-bvUUUcspP95c8hHdBmDKjADj9hHvf1O9B61f8aI6Zqdx_LC-o-XF_OeJUkjcJx1OIA-6Ohgcc_dnAspOyr4F5Z2kBP1nrAwshPwfq365Wcs4jQNcG7_KW/s600/debugCgo03.png"/></a>
-<br />
+  <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiuBXeZJt76FmPZtkx2BIzYwMI5kNe1P0MZw6WQ1Mbj98DRkf_NlhMKaRm5KfvQuIOLEgHrYeWW_BgRz4NiiTDdZqOD5yTQNCA20wIaOyauabfh1I3WV-_zkun-H7iFi42PZj_oWetFEjkeoAqXhxUEpZ2sFzIZWf0NnR9wXI2XSzX58RCoi5Y8krO/s449/debugCgo02.png"><img alt="" border="0" width="95%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiuBXeZJt76FmPZtkx2BIzYwMI5kNe1P0MZw6WQ1Mbj98DRkf_NlhMKaRm5KfvQuIOLEgHrYeWW_BgRz4NiiTDdZqOD5yTQNCA20wIaOyauabfh1I3WV-_zkun-H7iFi42PZj_oWetFEjkeoAqXhxUEpZ2sFzIZWf0NnR9wXI2XSzX58RCoi5Y8krO/s600/debugCgo02.png"/></a>
 </td>
 </tr>
@@ -274,8 +295,10 @@ Follow all instructions from the <a href="https://medium.com/lightbaseio/web-app
 </tr>
 </table>
 <br />
+  
 <u>Asm</u><br>
 Finally, if you would like to reproduce Go example that calls ASM assembly code then replicate <a href="https://github.com/nikandfor/goid">goid</a> source:
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top" width="50%">&nbsp;<a href="https://github.com/StevePro7/CloudTesting/blob/main/GolangCheatSheetII/01-GoID/02-GoID_ASM/main.go">main.go</a></td>
@@ -318,6 +341,7 @@ Finally, if you would like to reproduce Go example that calls ASM assembly code 
 </table>
 <br />
 <!--<br /> -->
+
 <u>Summary</u><br>
 To summarize,  <a href="https://www.techtarget.com/searchitoperations/definition/Go-programming-language">Go</a> is now popular due to its ability to deliver highly scalable concurrent computing software.  Plus, Cgo also allows Go programs to interoperate with <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> libraries, distributed cloud computing, and  <b><a href="https://ebpf.io">eBPF</a></b>.
 <br><br>
