@@ -1,0 +1,33 @@
+Debugging
+19-May-2023
+
+Use this as an example
+D:\gbdk\examples\gb\colorbar
+
+
+copy .vscode folder from SMS project
+Ctrl+Shift+B	build
+F5		debug
+
+
+set c-cpp-properties
+https://code.visualstudio.com/docs/cpp/c-cpp-properties-schema-reference
+
+e.g.
+{
+    "configurations": [
+      {
+        "name": "stevepro",
+        "intelliSenseMode": "clang-x64",
+        "includePath": ["D:/gbdk/include", ],
+        "cStandard": "c11",
+        "cppStandard": "c++17",
+        "browse": {
+          "path": ["${workspaceFolder}"],
+          "limitSymbolsToIncludedHeaders": true,
+          "databaseFilename": ""
+        }
+      }
+    ],
+    "version": 4
+  }
