@@ -205,7 +205,7 @@ Coindentally, Lil EK uses 8x commands therefore each command stored as single bi
 </tr>
 </table>
 <br />
-Critical to the development process, streams commands can be issued to the game engine for debugging all possible game play scenarios.  Plus commands can be recorded for playback to show case instructional <a href="https://www.youtube.com/watch?v=Dc4UebzLpW4&t=31s">demo</a>!
+Critical to the development process, multiple commands can be issued to the game engine for debugging all possible game play scenarios.  Plus commands can be recorded for playback to show case instructional <a href="https://www.youtube.com/watch?v=Dc4UebzLpW4&t=31s">demo</a>!
 <br><br>
 <br>
 <u>Physics</u><br />
@@ -227,7 +227,7 @@ Game physics are aptly based on the "The Motorcycle Daredevil" <a href="https://
 </table>
 <br /> 
 <u>Sprites</u><br />
-The Title screen uses <a href="https://github.com/sverx/devkitSMS/blob/master/SMSlib/src/SMSlib.h#L58">Zoom</a> sprites in which the 24x32 player sprite is magnified as a 48x64 sprite.  However, SMS I has a <a href="https://github.com/sverx/devkitSMS/wiki/Advanced">bug</a> in how the VDP processes zoomed sprites.   Therefore, to circumvent the VDP bug you have to draw 4x additional sprites on the same Y coordinates of the original sprites as seen in <a href="https://github.com/SteveProXNA/LilEvelKnievelSMS/blob/main/dev/screen/title_screen.c#L113">title_screen.c</a> file.
+The Title screen uses <a href="https://github.com/sverx/devkitSMS/blob/master/SMSlib/src/SMSlib.h#L58">Zoom</a> sprites in which the 24x32 player sprite is magnified as a 48x64 sprite.  However, SMS I has a <a href="https://github.com/sverx/devkitSMS/wiki/Advanced">bug</a> in how the VDP processes zoomed sprites.   Therefore, to circumvent the VDP bug you have to draw 4x additional sprites on the same Y co-ordinates of the original sprites as seen in <a href="https://github.com/SteveProXNA/LilEvelKnievelSMS/blob/main/dev/screen/title_screen.c#L113">title_screen.c</a> file.
 <br><br>
 <u>YouTube</u><br />
 YouTube videos showcasing all SMS Power! 2023 coding competition entries including some with long play:
@@ -250,11 +250,7 @@ YouTube videos showcasing all SMS Power! 2023 coding competition entries includi
 <tr>
 <td valign="top">&nbsp;<a href="https://www.youtube.com/watch?v=5EGPAYH31Gk&t=120s">Présentation SMS Power Competition</a></td>
 <td valign="top">&nbsp;Révo SEGA 8-bit</td>
-</tr>
-<tr>
-<td valign="top">&nbsp;<a href="https://www.youtube.com/watch?v=o0a6wv_Nz24">Master System Game Lil Evel Knievel</a></td>
-<td valign="top">&nbsp;Genesis 8:14</td>
-</tr>
+</tr>  
 </table>
 <br>
 <u>Summary</u><br />
