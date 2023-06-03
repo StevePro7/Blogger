@@ -15,3 +15,11 @@ disable optimize imports
 https://stackoverflow.com/questions/51410979/how-to-stop-goland-from-auto-removal-of-unused-imports
 
 File | Settings | Actions on Save | Optimize imports	UNCHECK
+
+this will prevent unused imports from being removed on save
+however
+
+will remove them when run Go program
+so for completeness
+
+File | Settings | Go | Imports | Optimize imports on the fly	UNCHECK

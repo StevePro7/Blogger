@@ -1,0 +1,383 @@
+Tutorial 01
+03-Jun-2023
+
+Features of bpftool: the thread of tips and examples to work with eBPF objects
+https://qmonnet.github.io/whirl-offload/2021/09/23/bpftool-features-thread
+
+
+sudo cat /sys/kernel/debug/tracing/trace_pipe
+
+
+bpftool man
+https://www.mankier.com/8/bpftool-prog
+
+
+
+How do I know hat version of LInux?
+Reference:
+https://opensource.com/article/18/6/linux-version
+
+uname -srm
+Linux 6.0.9-060009-generic x86_64
+
+hostnamectl
+   Static hostname: Alienware
+         Icon name: computer-laptop
+           Chassis: laptop
+        Machine ID: 54b16063529b4736b008f591ac948044
+           Boot ID: 52a84f5d7c2a4405bd154cc5c466fb98
+  Operating System: Ubuntu 20.04.6 LTS
+            Kernel: Linux 6.0.9-060009-generic
+      Architecture: x86-64
+
+
+Build bpftool
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/bpf/bpftool?h=v5.14
+cd tools/bpf/bpftool
+make
+make install
+make doc doc-install
+
+
+Ubuntu
+apt install linux-tools-common linux-tools-generic
+
+
+bpftool version
+bpftool v5.17.0-rc8
+bpftool -V
+
+
+EXAMPLE
+HelloWorld
+~/GitHub/StevePro9/eBPFtesting/_SetupIII/01-HelloWorld/01-HelloWorld
+
+bpftool prog list
+bpftool prog show
+385: tracepoint  name tracepoint__sys  tag ad7f62a5e7675635  gpl
+	loaded_at 2023-06-03T17:12:59+0100  uid 0
+	xlated 48B  jited 36B  memlock 4096B  map_ids 59
+	btf_id 1410
+	pids HelloWorld(107329)
+
+bpftool prog dump xlated id 385
+bpftool prog dump xlated id 385 linum
+
+int tracepoint__syscalls__sys_enter_execve(struct trace_event_raw_sys_enter * ctx):
+; bpf_printk("Hello world!\n"); [file:/home/stevepro/GitHub/StevePro10/eBPFtesting/_SetupIII/01-HelloWorld/HelloWorld/hello.bpf.c line_num:7 line_col:5]
+   0: (18) r1 = map[id:59][0]+0
+   2: (b7) r2 = 14
+   3: (85) call bpf_trace_printk#-82688
+; return 0; [file:/home/stevepro/GitHub/StevePro10/eBPFtesting/_SetupIII/01-HelloWorld/HelloWorld/hello.bpf.c line_num:8 line_col:5]
+   4: (b7) r0 = 0
+   5: (95) exit
+
+
+
+sudo bpftool --debug prog load hello.bpf.o /sys/fs/bpf/foo
+
+libbpf: loading hello.bpf.o
+libbpf: elf: section(3) tracepoint/syscalls/sys_enter_execve, size 48, link 0, flags 6, type=1
+libbpf: sec 'tracepoint/syscalls/sys_enter_execve': found program 'tracepoint__syscalls__sys_enter_execve' at insn offset 0 (0 bytes), code size 6 insns (48 bytes)
+libbpf: elf: section(4) .reltracepoint/syscalls/sys_enter_execve, size 16, link 20, flags 0, type=9
+libbpf: elf: section(5) .rodata, size 14, link 0, flags 2, type=1
+libbpf: elf: section(6) license, size 4, link 0, flags 3, type=1
+libbpf: license of hello.bpf.o is GPL
+libbpf: elf: section(11) .BTF, size 951, link 0, flags 0, type=1
+libbpf: elf: section(13) .BTF.ext, size 96, link 0, flags 0, type=1
+libbpf: elf: section(20) .symtab, size 888, link 1, flags 0, type=2
+libbpf: looking for externs among 37 symbols...
+libbpf: collected 0 externs total
+libbpf: map 'hello.rodata' (global data): at sec_idx 5, offset 0, flags 480.
+libbpf: map 0 is "hello.rodata"
+libbpf: sec '.reltracepoint/syscalls/sys_enter_execve': collecting relocation for section(3) 'tracepoint/syscalls/sys_enter_execve'
+libbpf: sec '.reltracepoint/syscalls/sys_enter_execve': relo #0: insn #0 against '.rodata'
+libbpf: prog 'tracepoint__syscalls__sys_enter_execve': found data map 0 (hello.rodata, sec 5, off 0) for insn 0
+libbpf: map 'hello.rodata': created successfully, fd=4
+libbpf: prog 'tracepoint__syscalls__sys_enter_execve': -- BEGIN PROG LOAD LOG --
+func#0 @0
+R1 type=ctx expected=fp
+0: R1=ctx(off=0,imm=0) R10=fp0
+; bpf_printk("Hello world!\n");
+0: (18) r1 = 0xffffad3d41386000       ; R1_w=map_value(off=0,ks=4,vs=14,imm=0)
+2: (b7) r2 = 14                       ; R2_w=14
+3: (85) call bpf_trace_printk#6
+last_idx 3 first_idx 0
+regs=4 stack=0 before 2: (b7) r2 = 14
+4: R0_w=scalar()
+; return 0;
+4: (b7) r0 = 0                        ; R0_w=0
+5: (95) exit
+verification time 525 usec
+stack depth 0
+processed 5 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+-- END PROG LOAD LOG --
+
+
+sudo bpftool prog dump xlated id 385
+int tracepoint__syscalls__sys_enter_execve(struct trace_event_raw_sys_enter * ctx):
+; bpf_printk("Hello world!\n");
+   0: (18) r1 = map[id:59][0]+0
+   2: (b7) r2 = 14
+   3: (85) call bpf_trace_printk#-82688
+; return 0;
+   4: (b7) r0 = 0
+   5: (95) exit
+
+
+sudo bpftool prog load hello.bpf.o /sys/fs/bpf/bar
+
+
+llvm-objdump -d hello.bpf.o
+hello.bpf.o:    file format ELF64-BPF
+
+Disassembly of section tracepoint/syscalls/sys_enter_execve:
+0000000000000000 tracepoint__syscalls__sys_enter_execve:
+       0:       18 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 r1 = 0 ll
+       2:       b7 02 00 00 0e 00 00 00 r2 = 14
+       3:       85 00 00 00 06 00 00 00 call 6
+       4:       b7 00 00 00 00 00 00 00 r0 = 0
+       5:       95 00 00 00 00 00 00 00 exit
+
+
+sudo bpftool prog dump jited pinned /sys/fs/bpf/foo
+Error: No libbfd support
+
+
+bpftool prog pin id 385 /sys/fs/bpf/foo_prog
+rm /sys/fs/bpf/foo_prog
+
+
+bpftool prog show --bpffs
+385: tracepoint  name tracepoint__sys  tag ad7f62a5e7675635  gpl
+	loaded_at 2023-06-03T17:12:59+0100  uid 0
+	xlated 48B  jited 36B  memlock 4096B  map_ids 59
+	btf_id 1410
+	pids HelloWorld(107329)
+436: tracepoint  name tracepoint__sys  tag ad7f62a5e7675635  gpl
+	loaded_at 2023-06-03T17:31:36+0100  uid 0
+	xlated 48B  jited 36B  memlock 4096B  map_ids 87
+	pinned /sys/fs/bpf/bar
+	btf_id 1466
+
+
+bpftool -f map
+59: array  name hello_bp.rodata  flags 0x80
+	key 4B  value 14B  max_entries 1  memlock 4096B
+	btf_id 1410  frozen
+	pids HelloWorld(107329)
+87: array  name hello.rodata  flags 0x480
+	key 4B  value 14B  max_entries 1  memlock 4096B
+	btf_id 1466  frozen
+	
+	
+bpftool -f map id 59 -j -p
+
+
+PIVOT
+bpftool -j -p map dump pinned /sys/fs/bpf/XXX
+
+
+sudo bpftool prog load hello.bpf.o /sys/fs/bpf/food map idx 0 id 127 map name stats pinned /sys/fs/bpf/smap
+Error: get map by id (127): No such file or directory
+
+
+bpftool prog show
+bpftool map
+bpftool link
+bpftool btf
+
+
+bpftool map dump id 87
+[{
+        "value": {
+            ".rodata": [{
+                    "tracepoint__syscalls__sys_enter_execve.____fmt": [72,101,108,108,111,32,119,111,114,108,100,33,10,0
+                    ]
+                }
+            ]
+        }
+    }
+]
+
+
+bpftool prog show pinned /sys/fs/bpf/bar
+436: tracepoint  name tracepoint__sys  tag ad7f62a5e7675635  gpl
+	loaded_at 2023-06-03T17:31:36+0100  uid 0
+	xlated 48B  jited 36B  memlock 4096B  map_ids 87
+	btf_id 1466
+
+bpftool prog show name tracepoint__sys
+436: tracepoint  name tracepoint__sys  tag ad7f62a5e7675635  gpl
+	loaded_at 2023-06-03T17:31:36+0100  uid 0
+	xlated 48B  jited 36B  memlock 4096B  map_ids 87
+	btf_id 1466
+
+
+MAPs
+bpftool map list
+bpftool map show
+
+bpftool map show id <id>
+
+
+bpftool map list -j
+[{"id":87,"type":"array","name":"hello.rodata","flags":11
+
+bpftool map dump  id 87
+[{
+        "value": {
+            ".rodata": [{
+                    "tracepoint__syscalls__sys_enter_execve.____fmt": [72,101,108,108,111,32,119,111,114,108,100,33,10,0
+                    ]
+                }
+            ]
+        }
+    }
+]
+
+bpftool map show id 87
+87: array  name hello.rodata  flags 0x480
+	key 4B  value 14B  max_ent
+	
+	
+create map
+bpftool map create /sys/fs/bpf/stats_map \
+        type array key 4 value 32 entries 8 name stats_map
+        
+bpftool map
+209: array  name stats_map  flags 0x0
+	key 4B  value 32B  max_entries 8  memlock 4096B
+
+
+bpftool cgroup tree
+CgroupPath
+ID       AttachType      AttachFlags     Name           
+/sys/fs/cgroup/unified/system.slice/systemd-udevd.service
+    268      ingress                                        
+    267      egress                                         
+/sys/fs/cgroup/unified/system.slice/systemd-journald.service
+    270      ingress                                        
+    269      egress                                         
+/sys/fs/cgroup/unified/system.slice/systemd-machined.service
+    264      ingress                                        
+    263      egress                                         
+/sys/fs/cgroup/unified/system.slice/upower.service
+    262      ingress                                        
+    261      egress                                         
+/sys/fs/cgroup/unified/system.slice/systemd-logind.service
+    266      ingress                                        
+    265      egress                         
+    
+bpftool perf
+
+
+bpftool net show dev enp63s0
+xdp:
+tc:
+flow_dissector:
+
+
+bpftool btf show
+
+
+bpftool btf dump <btf_source>
+could not get the btf_source?
+
+
+bpftool struct_ops
+bpftool struct_ops dump
+
+
+bpftool link show
+
+bpftool iter pin hello.bpf.o /sys/fs/bpf
+
+
+bpftool batch file hello.bpf.o
+
+
+TRACING
+cat /sys/kernel/debug/tracing/trace_pipe
+
+pftool prog tracelog
+but did not see output
+
+
+bpftool map event_pipe
+
+
+bpftool prog
+bpftool prog dump xlated id 436
+bpftool prog dump xlated id 436 visual
+
+bpftool prog dump xlated id 436 visual > /tmp/graph.dot
+dot -Tpng /tmp/graph.dot > /tmp/graph.png
+xview /tmp/graph.png &
+
+
+apt install xloadimage
+xview /tmp/graph.png &
+
+
+bpftool feature probe kernel
+bpftool feature probe kernel macros
+
+bpftool feature probe dev enp63s0
+
+
+SKELETON
+have been doing this in all BPF programs
+
+
+
+MAP example
+HelloMaps
+
+run the program
+bpftool maps
+
+304: hash  name execs  flags 0x0
+	key 4B  value 24B  max_entries 128  memlock 4096B
+	btf_id 1790
+	pids HelloMaps(125588)
+	
+bpftool map show  id 313
+313: hash  name execs  flags 0x0
+	key 4B  value 24B  max_entries 128  memlock 4096B
+	btf_id 1815
+	pids HelloMaps(125934)
+
+
+ps -ef | grep 125934
+root      125934  125912 99 18:40 pts/3    00:01:06 /home/stevepro/GitHub/StevePro9/eBPFtesting/_SetupIII/01-HelloWorld/02-HelloMaps/cmake-build-debug/HelloMaps
+
+
+struct {
+	__uint(type, BPF_MAP_TYPE_HASH);
+	__uint(max_entries, 128);
+	__type(key, pid_t);
+	__type(value, struct event);
+} execs SEC(".maps");
+
+bpftool map list id 313 -jp
+{
+    "id": 313,
+    "type": "hash",
+    "name": "execs",
+    "flags": 0,
+    "bytes_key": 4,
+    "bytes_value": 24,
+    "max_entries": 128,
+    "bytes_memlock": 4096,
+    "frozen": 0,
+    "btf_id": 1815,
+    "pids": [{
+            "pid": 125934,
+            "comm": "HelloMaps"
+        }
+    ]
+}
+
+
+
