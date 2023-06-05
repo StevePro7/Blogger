@@ -3,3 +3,65 @@ anNOTES
 
 How to Set Up Assembly Language on Visual Studio Code | 2021
 https://medium.com/@muhammadmeeran2003/how-to-set-up-assembly-language-on-visual-studio-code-2021-587a7b01c9a1
+
+
+CODE
+https://github.com/meeran03/assembly-vscode
+
+
+Pre-reqs
+gcc
+gdb
+ld
+nasm
+
+
+mkdir debugging
+cd debugging
+code .
+touch test.asm
+
+
+section     .text
+global      _start
+_start:
+mov     edx,len
+mov     ecx,msg
+mov     ebx,1
+mov     eax,4
+int     0x80
+mov     eax,1
+int     0x80
+section     .data
+msg     db  'Hello world',0xa
+len     equ $ - msg
+
+
+
+Ctrl+Shift+B
+tasks.json
+https://github.com/meeran03/assembly-vscode/blob/main/.vscode/tasks.json
+
+
+Ctrl+P
+ext install DamianKoper.gdb-debug
+
+
+Ctrl+Shift+B
+./test
+Hello world
+
+
+F5
+launch.json
+https://github.com/meeran03/assembly-vscode/blob/main/.vscode/launch.json
+
+run code directly in VS Code
+
+
+Finally, change launch.json
+stopOnEntry: true
+
+
+F5
+debug step thru assembly code!
