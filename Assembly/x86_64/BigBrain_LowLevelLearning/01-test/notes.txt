@@ -1,0 +1,16 @@
+https://www.youtube.com/watch?v=6S5KRJv-7RU&t=198s
+
+
+pre-reqs
+as		assmebler
+ld		linker
+
+as asem.s -o asem.o
+gcc -o asem asem.o -nostdlib -static
+
+syscall table
+
+./asem
+
+echo $?
+69
