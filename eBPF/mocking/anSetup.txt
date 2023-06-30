@@ -1,0 +1,94 @@
+Setup
+30-Jun-2023
+
+
+unity cmock tutorial
+
+articles
+https://spin.atomicobject.com/2019/02/07/cmock-get-started
+
+gem install ceedling
+
+Ruby not installed
+sudo apt install ruby
+
+ruby -v
+ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-linux-gnu]
+
+
+sudo gem install ceedling
+
+Fetching deep_merge-1.2.2.gem
+Fetching thor-0.20.3.gem
+Fetching ceedling-0.31.1.gem
+Fetching constructor-2.0.0.gem
+Successfully installed constructor-2.0.0
+Successfully installed deep_merge-1.2.2
+Successfully installed thor-0.20.3
+Successfully installed ceedling-0.31.1
+Parsing documentation for constructor-2.0.0
+Installing ri documentation for constructor-2.0.0
+Parsing documentation for deep_merge-1.2.2
+Installing ri documentation for deep_merge-1.2.2
+Parsing documentation for thor-0.20.3
+Installing ri documentation for thor-0.20.3
+Parsing documentation for ceedling-0.31.1
+Installing ri documentation for ceedling-0.31.1
+Done installing documentation for constructor, deep_merge, thor, ceedling after 1 seconds
+4 gems installed
+
+
+EXAMPLE
+cd ~/GitHub/StevePro9/eBPFtesting/mocking
+ceedling new cmock_example
+
+Project
+https://github.com/joaniedavis/cmock_example
+
+Copy over the following folders
+inc
+src
+test
+
+Update project.yml
+add include folder
+
+:paths:
+  :test:
+    - +:test/**
+    - -:test/support
+  :source:
+    - src/**
+  :include:
+    - inc/**
+  :support:
+    - test/support
+  :libraries: []
+
+
+cd ~/GitHub/StevePro9/eBPFtesting/mocking/cmock_example
+ceedling
+
+
+Test 'test_shape_container.c'
+-----------------------------
+Generating include list for rectangle.h...
+Creating mock for rectangle...
+Generating include list for test_shape_container.c...
+Generating runner for test_shape_container.c...
+Compiling test_shape_container_runner.c...
+Compiling test_shape_container.c...
+Compiling mock_rectangle.c...
+Compiling unity.c...
+Compiling shape_container.c...
+Compiling cmock.c...
+Linking test_shape_container.out...
+Running test_shape_container.out...
+
+--------------------
+OVERALL TEST SUMMARY
+--------------------
+TESTED:  3
+PASSED:  3
+FAILED:  0
+IGNORED: 0
