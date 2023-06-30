@@ -55,6 +55,32 @@ A new C project will be created which automatically adds the following two files
 </table>
 -->
 <br />
-f  
-
+In the Terminal window within CLion IDE enter the following commands to install and buld the libbpf library:
+<br>
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git clone https://github.com/libbpf/libbpf<br />
+&nbsp;cd libbpf/src<br />
+&nbsp;make<br />
+&nbsp;sudo make install<br />
+&nbsp;cd ../..<br />
+</td>
+</tr>
+</table>
+<br>
+Next, enter commands to create the vmlinux.h file.  Create and build the Hello BPF program + skeleton file:
+<br>
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h<br />
+&nbsp;touch hello.bpf.c<br />
+&nbsp;clang -g -O2 -target bpf -D__TARGET_ARCH_x86_64 -I libbpf/src -c hello.bpf.c -o hello.bpf.o<br />
+&nbsp;bpftool gen skeleton hello.bpf.o > hello.skel.h<br />
+</td>
+</tr>
+</table>
+<br>
+  
 </span>
