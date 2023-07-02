@@ -1,0 +1,108 @@
+Setup II
+02-Jul-2023
+
+OUTPUT
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/homemade_mocks
+
+
+cmock setup directly
+https://github.com/ThrowTheSwitch/CMock
+
+cd /home/stevepro/GitHubX/ThrowTheSwitch
+git clone --recursive https://github.com/throwtheswitch/cmock.git
+cd cmock
+bundle install
+
+
+Command 'bundle' not found, but can be installed with:
+
+sudo snap install ruby          # version 3.2.2, or
+sudo apt  install ruby-bundler  # version 2.1.4-1
+
+See 'snap info ruby' for additional versions.
+
+
+sudo apt  install ruby-bundler
+bundle install
+
+
+bundle install
+Fetching gem metadata from http://rubygems.org/.......
+Fetching gem metadata from http://rubygems.org/.
+Resolving dependencies...
+Following files may not be writable, so sudo is needed:
+  /usr/local/bin
+  /var/lib/gems/2.7.0
+  /var/lib/gems/2.7.0/build_info
+  /var/lib/gems/2.7.0/cache
+  /var/lib/gems/2.7.0/doc
+  /var/lib/gems/2.7.0/extensions
+  /var/lib/gems/2.7.0/gems
+  /var/lib/gems/2.7.0/specifications
+Fetching rake 13.0.6
+
+
+Your user account isn't allowed to install to the system RubyGems.
+  You can cancel this installation and run:
+
+      bundle install --path vendor/bundle
+
+  to install the gems into ./vendor/bundle/, or you can enter your password
+  and install the bundled gems to RubyGems using sudo.
+
+  Password:
+
+
+Complete
+
+
+cd test
+rake
+
+
+EXAMPLE
+cd /home/stevepro/GitHub/StevePro9/eBPFtesting/mocking
+mkdir homemade_mocks
+
+Reference
+https://github.com/ThrowTheSwitch/CMock/blob/master/docs/CMock_Summary.md
+
+
+Copy this file
+rectangle.h
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/cmock_example/inc
+
+to
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/homemade_mocks
+
+Example
+ruby cmock.rb -oMyConfig.yml super.h duper.h awesome.h
+
+Reality
+ruby /home/stevepro/GitHubX/ThrowTheSwitch/cmock/lib/cmock.rb rectangle.h
+
+command generates the following "mocks" folder
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/homemade_mocks/mocks
+
+with the two files:
+Mockrectangle.h
+Mockrectangle.c
+
+not sure if there is some configuration required as the name convention
+subtly different to mocks generated in ceedling example
+
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/cmock_example/build/test/mocks
+mock_rectangle.h
+mock_rectangle.c
+
+try again
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/homemade_mocks/02
+
+ruby /home/stevepro/GitHubX/ThrowTheSwitch/cmock/lib/cmock.rb -oproject.yml rectangle.h
+
+IMPORTANT
+project.yml file is from the ceedling example
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/cmock_example
+
+thus the mock_rectangle files are a bit more aligned
+only major difference is _Bool to bool which is preferred
