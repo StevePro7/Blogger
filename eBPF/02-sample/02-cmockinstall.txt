@@ -1,0 +1,120 @@
+cmock install
+08/07/2023
+
+Reference
+E:\GitHub\StevePro7\Blogger\eBPF\mocking
+
+anSetup.txt
+initial example
+
+anSetupII.txt
+manual example
+
+
+IMPORTANT
+ceedling installs unity.h here
+./var/lib/gems/2.7.0/gems/ceedling-0.31.1/vendor/cmock/vendor/unity/src/unity.h
+
+
+
+
+INTERESTING
+google
+clion unity
+https://stackoverflow.com/questions/39887552/c-testing-undefined-reference-with-unity-and-cmake
+
+
+clion unity cmock
+https://github.com/ThrowTheSwitch/CMock/issues/97
+https://stackoverflow.com/questions/40270089/cmock-multiple-definitions
+http://www.throwtheswitch.org/build/build-unity
+
+ARTICLE
+https://www.poisel.info/posts/2019-07-15-cmake-unity-integration
+git clone --recursive https://github.com/rpoisel/cmake-unity-tutorial.git
+
+
+
+not sure if possible to combine all?
+https://github.com/ThrowTheSwitch/Unity/issues/302
+
+
+Can do
+01.
+CLion
+Unity	installed
+
+02.
+Ceedling
+Unity
+CMock
+//but no CLion
+
+03. try gtest / gmock with CLion?
+https://gist.github.com/dlime/313f74fd23e4267c4a915086b84c7d3d
+
+http://google.github.io/googletest/quickstart-cmake.html
+http://google.github.io/googletest/gmock_for_dummies.html
+
+
+https://www.youtube.com/watch?v=zfgFphZ63UY
+https://github.com/PhysicsX/ExampleCode/tree/master/googleTest
+
+
+git clone https://github.com/google/googletest.git -b release-1.12.0
+cd googletest
+mkdir build
+cd build
+cmake .. -DBUILD_GMOCK=OFF
+make
+
+lcov
+sudo apt install lcov
+
+Reference:
+https://interrupt.memfault.com/blog/unit-testing-basics#project-cpputest-harness
+
+
+C
+gtest
+gmock
+https://github.com/Ed-Yang/gmockc
+
+NO - is C++
+
+lcov
+
+
+
+CLion
+https://linuxhint.com/install_jetbrains_clion_ubuntu
+
+
+another example
+https://interrupt.memfault.com/blog/unit-test-mocking#example-project-setup
+
+
+ThrowTheSwitch.org
+http://www.throwtheswitch.org/build/cmake
+
+
+CLion integration GOOGLE groups
+https://groups.google.com/g/throwtheswitch/c/dbPNtBZ_84M/m/0_qZaa4KAgAJ
+
+http://www.throwtheswitch.org/eclipse
+
+
+
+Ceedling debug
+https://stackoverflow.com/questions/41488664/how-to-use-gdb-with-ceedling
+
+Installed VS Code extension
+Ceedling Test Explorer
+
+Settings | ceedling_gdb
+but not sure if I need to set
+
+
+WOW!
+got an example working!!
+/home/stevepro/GitHub/StevePro9/eBPFtesting/mocking/cmock_example/.vscode
