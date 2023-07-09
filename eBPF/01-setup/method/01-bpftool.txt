@@ -1,0 +1,19 @@
+bpftool install
+09/07/2023
+
+reference:
+https://askubuntu.com/questions/1134896/ebpf-maps-how-to-update-using-bpftool-from-command-line
+
+
+01-bpftool.png
+git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+
+02-bpftool.png
+cd linux
+cd tools/bpf/bpftool
+make
+sudo make install
+
+
+03-bpftool.png
+bpftool version

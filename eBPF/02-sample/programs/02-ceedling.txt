@@ -1,0 +1,49 @@
+ceedling program
+09/07/2023
+
+Home laptop
+~/GitHub/StevePro9/eBPFtesting/mocking/cmock_example
+
+
+TODO
+step thru coding this!!
+
+e.g.
+https://spin.atomicobject.com/2019/02/07/cmock-get-started
+
+work laptop
+~/GitHub/StevePro7/eBPFtesting/mocking
+
+ceedling new cmock_example
+
+copy files across
+
+ceedling
+
+
+DEBUG program
+
+03-ceedlingdebug.txt
+E:\GitHub\StevePro7\Blogger\eBPF\02-sample
+
+reference
+https://stackoverflow.com/questions/41488664/how-to-use-gdb-with-ceedling
+
+
+Add .vscode
+launch.json
+
+set breakpoint
+F5
+or
+Run menu | Start Debugging
+
+
+IMPORTANT
+makes reference to  Ceedling Test Explorer extension which I installed but could not get this line of code working
+"program": "${workspaceFolder}/build/test/out/${command:ceedlingExplorer.debugTestExecutable}",
+            "args": [],
+
+so just hardcoded to test_container.
+
+test_shape_container.out
