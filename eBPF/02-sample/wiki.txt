@@ -1,3 +1,24 @@
 <span style="font-family:verdana;font-size:85%;">
 In the previous post - sample - debugging - topic of this post
+  <br><br>
+Unity<br>
+Unity is a unit testing framework built for C which we would like to try and leverage for BPF development.  Follow instructions as outlined here in order to 
+  
+  <br><br>
+Unity is a unit testing framework built for C, with a focus on working with embedded toolchains, which we would like to try and leverage for BPF development.  Follow instructions here to install and configure Unity.
+  <br>
+  <table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git clone git clone git@github.com:ThrowTheSwitch/Unity.git<br />
+&nbsp;cd Unity<br />
+&nbsp;cmake .<br />
+&nbsp;make<br />
+&nbsp;sudo make install<br />
+&nbsp;sudo cp libunity.a /usr/local/lib<br />
+&nbsp;sudo cp src/unity*.h /usr/local/include/unity<br />
+</td>
+</tr>
+</table>
+  <br>
 </span>
