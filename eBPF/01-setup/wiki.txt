@@ -1,7 +1,19 @@
 <span style="font-family:verdana;font-size:85%;">
-  <u>Software</u><br />
+
+  
+TODO - introduction on eBPF - PIC
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
+<br />
+-->
+Let's check it out! 
+<br /><br />
+
+<u>Software</u><br />
 Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the <b><a href="https://man.archlinux.org/man/bpftool.8.en">bpftool</a></b> which was added to the 2017 Linux kernel as a user space utility to introspect the eBPF subsystem.
 <br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td>
@@ -18,18 +30,10 @@ Follow all instructions from the previous <a href="http://steveproxna.blogspot.c
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzmYlxCUky6tGUQNQ-u8iOFKcNhDT1Pv93XvdJplY6ygE4rCD5SfWg3mMIJaOeIBNBEjeycUc4yoAvsC4xGMecJ_eFLRaQg6huDwyfaqXw6w37qfWzIGCR5C0QAqLqcsvmqTFpf0qOXyx5SiSQY5DQyHAJHhLcoYt9POs3yeJudjCfZ9hniMwvaJe4BnQ/s817/02-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzmYlxCUky6tGUQNQ-u8iOFKcNhDT1Pv93XvdJplY6ygE4rCD5SfWg3mMIJaOeIBNBEjeycUc4yoAvsC4xGMecJ_eFLRaQg6huDwyfaqXw6w37qfWzIGCR5C0QAqLqcsvmqTFpf0qOXyx5SiSQY5DQyHAJHhLcoYt9POs3yeJudjCfZ9hniMwvaJe4BnQ/s600/02-bpftool.png"/></a>
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s817/03-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s600/03-bpftool.png"/></a>
-  <br />
-  
-TODO - introduction on eBPF - PIC
-<br />
-<!--
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
-<br />
 -->
-Let's check it out! 
-<br /><br />
+<br />
 
-<br /><br />
+<u>Hello World</u><br />
 Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloWorld</b> | Language std: <b>C11</b>
 <br />
 <!--
