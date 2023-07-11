@@ -1,9 +1,12 @@
 <table width="99%" border="1">
 <tr>
-<td>&nbsp;hello.bpf.c
-</td>
-<td>&nbsp;CMakeLists.txt
+<td>
+&nbsp;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git<br />
+&nbsp;cd linux<br />
+&nbsp;cd tools/bpf/bpftool<br />
+&nbsp;make<br />
+&nbsp;sudo make install<br />
+&nbsp;bpftool version
 </td>
 </tr>
-
 </table>
