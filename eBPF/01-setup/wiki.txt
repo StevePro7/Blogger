@@ -1,13 +1,24 @@
 <span style="font-family:verdana;font-size:85%;">
   <u>Software</u><br />
-Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the <b>bpftool</b> which was added to the 2017 Linux kernel as a user space utility to introspect the eBPF subsystem.
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the <b><a href="https://man.archlinux.org/man/bpftool.8.en">bpftool</a></b> which was added to the 2017 Linux kernel as a user space utility to introspect the eBPF subsystem.
 <br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git<br />
+&nbsp;cd linux<br />
+&nbsp;cd tools/bpf/bpftool<br />
+&nbsp;make<br />
+&nbsp;sudo make install<br />
+&nbsp;bpftool version
+</td>
+</tr>
+</table>
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyg5CqVJShDhLkZWgf2zJNr3HNQjgCWTCGHvgNbQwsLVvxovYtPeZcMAvsoiq-RnRu7k9eouptdbJNPtRF1-j3O8-b2_cRgqiNDyLBUvezizXNGzoKVnwqCHLLnUL8XbNWr7wXjoyMru2Ut67e9FoxgWq5zUuV_MQb68pVItRUN26Izni0SL85nP7ypx0/s1078/01-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyg5CqVJShDhLkZWgf2zJNr3HNQjgCWTCGHvgNbQwsLVvxovYtPeZcMAvsoiq-RnRu7k9eouptdbJNPtRF1-j3O8-b2_cRgqiNDyLBUvezizXNGzoKVnwqCHLLnUL8XbNWr7wXjoyMru2Ut67e9FoxgWq5zUuV_MQb68pVItRUN26Izni0SL85nP7ypx0/s600/01-bpftool.png"/></a>
 <br />
-
-bpftool was added to the Linux kernel as a user space utility to introspect the eBPF subsystem.  Install as follows:
-<br /><br />
-  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzmYlxCUky6tGUQNQ-u8iOFKcNhDT1Pv93XvdJplY6ygE4rCD5SfWg3mMIJaOeIBNBEjeycUc4yoAvsC4xGMecJ_eFLRaQg6huDwyfaqXw6w37qfWzIGCR5C0QAqLqcsvmqTFpf0qOXyx5SiSQY5DQyHAJHhLcoYt9POs3yeJudjCfZ9hniMwvaJe4BnQ/s817/02-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzmYlxCUky6tGUQNQ-u8iOFKcNhDT1Pv93XvdJplY6ygE4rCD5SfWg3mMIJaOeIBNBEjeycUc4yoAvsC4xGMecJ_eFLRaQg6huDwyfaqXw6w37qfWzIGCR5C0QAqLqcsvmqTFpf0qOXyx5SiSQY5DQyHAJHhLcoYt9POs3yeJudjCfZ9hniMwvaJe4BnQ/s600/02-bpftool.png"/></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s817/03-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s600/03-bpftool.png"/></a>
+  <br />
 <u>Software</u><br />
   
 Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install CLion + VS Code on Ubuntu Linux.  Also install bpftool.
