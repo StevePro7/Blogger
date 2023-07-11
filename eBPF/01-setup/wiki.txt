@@ -1,9 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
-<u>Hello Maps</u><br />
-BPF maps are generic structures for storing different types of data accessible between kernel + user space.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloMaps</b> | Language std: <b>C11</b>
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkok-druaSYapIJC585J9LAnqubq-4yfXYO7k4MNYj_p1sTaP8fUW-MVZHsRtjbF85bw9gLZ9xaktcEG70vRbT6aBI0js1Tg4EZ5yrPT0Gzevqz165X9d_LvYsMFwFz8GmvH71sgX1bxcW8gdwZMt2BpePt03ADFDw4mjXr9KRyVbzwpz7zYGCKQCKZ9A/s800/HelloMaps01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkok-druaSYapIJC585J9LAnqubq-4yfXYO7k4MNYj_p1sTaP8fUW-MVZHsRtjbF85bw9gLZ9xaktcEG70vRbT6aBI0js1Tg4EZ5yrPT0Gzevqz165X9d_LvYsMFwFz8GmvH71sgX1bxcW8gdwZMt2BpePt03ADFDw4mjXr9KRyVbzwpz7zYGCKQCKZ9A/s600/HelloMaps01.png"/></a>
-<br/>
-  <br /><br />
+  
+
 TODO - introduction on eBPF - PIC
 <br />
 <!--
@@ -189,4 +186,26 @@ Set break point in hello.c | HelloWorld | Debug or Press F5 to launch your first
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s941/HelloWorld04.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s600/HelloWorld04.png"/></a>
 -->
 <br>
+  
+<u>Hello Maps</u><br />
+BPF <a href="https://docs.kernel.org/bpf/maps.html">maps</a> are generic structures for storing different types of data accessible between kernel + user space.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloMaps</b> | Language std: <b>C11</b>
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkok-druaSYapIJC585J9LAnqubq-4yfXYO7k4MNYj_p1sTaP8fUW-MVZHsRtjbF85bw9gLZ9xaktcEG70vRbT6aBI0js1Tg4EZ5yrPT0Gzevqz165X9d_LvYsMFwFz8GmvH71sgX1bxcW8gdwZMt2BpePt03ADFDw4mjXr9KRyVbzwpz7zYGCKQCKZ9A/s800/HelloMaps01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkok-druaSYapIJC585J9LAnqubq-4yfXYO7k4MNYj_p1sTaP8fUW-MVZHsRtjbF85bw9gLZ9xaktcEG70vRbT6aBI0js1Tg4EZ5yrPT0Gzevqz165X9d_LvYsMFwFz8GmvH71sgX1bxcW8gdwZMt2BpePt03ADFDw4mjXr9KRyVbzwpz7zYGCKQCKZ9A/s600/HelloMaps01.png"/></a>
+-->
+<br/>
+Create
+<br /><br />
+Repeat the process similar to Hello World: Install the libbpf library.  Create the vmlinux header file, the Maps BPF program and driver code.  Compile code.  Update the CMakeLists build script and Run with root privileges:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJFq4g30RU4htG_2w6Mu3hdqGVTNVsSrw8lbIGztwNdlKnJe52RpQrlYLd9EvHGCB4Yz_yz4ru4Dko2e4VNUmmX2Z_eBDNan6MMP26BP21ltHM2FtxiXT7YHHVxZI5wigBFqzsdMU8fi7Aa9o8FAHrWXGqRBZ2sF9dJ7Gg0rLjS4JMXzLL7MVQ35PQFGs/s941/HelloMaps02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJFq4g30RU4htG_2w6Mu3hdqGVTNVsSrw8lbIGztwNdlKnJe52RpQrlYLd9EvHGCB4Yz_yz4ru4Dko2e4VNUmmX2Z_eBDNan6MMP26BP21ltHM2FtxiXT7YHHVxZI5wigBFqzsdMU8fi7Aa9o8FAHrWXGqRBZ2sF9dJ7Gg0rLjS4JMXzLL7MVQ35PQFGs/s600/HelloMaps02.png"/></a>
+-->
+<br />
+    
+TODO - libbpf bootstrap progrms...
+  <br>
+TODO - summary - next post
+<br /><br />
+  
 </span>
