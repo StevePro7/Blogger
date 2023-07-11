@@ -1,10 +1,31 @@
 <span style="font-family:verdana;font-size:85%;">
-TODO - introduction on eBPF
+  <u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the <b>bpftool</b> which was added to the 2017 Linux kernel as a user space utility to introspect the eBPF subsystem.
 <br />
-<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="296" data-original-width="850" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a></div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyg5CqVJShDhLkZWgf2zJNr3HNQjgCWTCGHvgNbQwsLVvxovYtPeZcMAvsoiq-RnRu7k9eouptdbJNPtRF1-j3O8-b2_cRgqiNDyLBUvezizXNGzoKVnwqCHLLnUL8XbNWr7wXjoyMru2Ut67e9FoxgWq5zUuV_MQb68pVItRUN26Izni0SL85nP7ypx0/s1078/01-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyg5CqVJShDhLkZWgf2zJNr3HNQjgCWTCGHvgNbQwsLVvxovYtPeZcMAvsoiq-RnRu7k9eouptdbJNPtRF1-j3O8-b2_cRgqiNDyLBUvezizXNGzoKVnwqCHLLnUL8XbNWr7wXjoyMru2Ut67e9FoxgWq5zUuV_MQb68pVItRUN26Izni0SL85nP7ypx0/s600/01-bpftool.png"/></a>
+<br />
+
+bpftool was added to the Linux kernel as a user space utility to introspect the eBPF subsystem.  Install as follows:
 <br /><br />
   
-Launch <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">CLion</a> | New Project | C Executable | Location: <b>/home/stevepro/HelloWorld</b> | Language std: <b>C11</b>
+<u>Software</u><br />
+  
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install CLion + VS Code on Ubuntu Linux.  Also install bpftool.
+<br /><br />  
+  <b>bpftool</b><br />
+bpftool was added to the Linux kernel as a user space utility to introspect the eBPF subsystem.  Install as follows:
+<br /><br />
+TODO - introduction on eBPF - PIC
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
+<br />
+-->
+Let's check it out! 
+<br /><br />
+
+<br /><br />
+Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloWorld</b> | Language std: <b>C11</b>
 <br />
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx1jnPxY9wKeLiBxiWSdHs7nGqOys4cryU1sEMkwvjEYP9vDeN83YAOEV3oE5igHbamVKTFF-iyUSPBijQ_cN8T1LUEZod4BwnpFMt6IzASsQFDhJEiYjFWHnYDmnT7woVQ8BBrNVrxsuXR8Ybf7Voi1wjNY7jUatuu092Qb2iybxjHat2tNg4GH0E/s800/HelloWorld01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx1jnPxY9wKeLiBxiWSdHs7nGqOys4cryU1sEMkwvjEYP9vDeN83YAOEV3oE5igHbamVKTFF-iyUSPBijQ_cN8T1LUEZod4BwnpFMt6IzASsQFDhJEiYjFWHnYDmnT7woVQ8BBrNVrxsuXR8Ybf7Voi1wjNY7jUatuu092Qb2iybxjHat2tNg4GH0E/s600/HelloWorld01.png"/></a>
