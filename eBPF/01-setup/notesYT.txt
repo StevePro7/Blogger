@@ -1,0 +1,36 @@
+YT notes
+13-Jul-2023
+
+/home/stevepro/Steven/Personal/Youtube/eBPF
+
+
+BPF better dataplane
+BPF
+is general purpose execution engine
+has minimal instruction set w/ 2x major goals:
+1- low overhead when mapping of BPF Instructions to native code/instructions
+[particular on x86-64 and arm64]
+2 - bpf instructions must be verifiable for safety by the kernel at program load time
+[so they cannot crash the kernel] or de-stabilize the kernel at the time you load the BPF Program
+
+BPF is an instruction set with C calling convention in mind
+
+
+
+BPF internals
+BPF comes from BSD and originally stood for Berkeley Packet Filter
+org. an obscure technology to speed up tcpdump and packet filtering since packet rates can be very high
+so with bpf, user space could define a filter that could be compiled to the most efficient instructions
+and those were run close to where the packets were ingested
+
+interesting in technology = the way it worked was like a VM in the Linux kernel
+
+
+in 2013, BPF was extended and this extended BPF [eBPF] modernised BPF turning it from 32-bit to 64-bit
+giving it more registers, giving it almost unlimited storage space
+
+but also instead of only being attached to packets it can now be attached to many event sources
+and run many programs within the kernel
+
+so bpf today has evolved - it's now a technology like LLVM  
+
