@@ -1,5 +1,13 @@
 <span style="font-family:verdana;font-size:85%;">
-
+<u>libbpf-bootstrap</u><br />
+libbpf-bootstrap provides a starting point for building your own BPF applications with things like BPF Compile Once-Run Everywhere [<a href="https://blog.aquasec.com/vmlinux.h-ebpf-programs">CO-RE</a>] and <a href="https://nakryiko.com/posts/bpf-core-reference-guide">vmlinux.h</a>.  Numerous more BPF <a href="https://github.com/torvalds/linux/tree/master/samples/bpf">samples</a> can be found at the Linux repo. 
+  <br /><br />
+  libbpf-bootstrap provides a starting point for building your own BPF applications with things like BPF Compile Once-Run Everywhere [CO-RE] and vmlinux.h.  There are numerous more BPF examples on the official Linux Github repo. 
+  <br /><br />
+  bootstrap is intended to be the starting point for your own BPF application, with things like BPF CO-RE and vmlinux.h, consuming BPF ring buffer data, command line arguments parsing, graceful Ctrl-C handling, etc. all taken care of for you, which are crucial but mundane tasks that are no fun, but necessary to be able to do anything useful. Just copy/paste and do simple renaming to get yourself started.
+  
+  
+<br /><br />
 Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a></b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
 <br />
 <!--
