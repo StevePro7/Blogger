@@ -1,4 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
+
+
+
 Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a></b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
 <br />
 <!--
@@ -202,9 +205,67 @@ Repeat the process similar to Hello World: Install the libbpf library.  Create t
 <u>libbpf-bootstrap</u><br />
 libbpf-bootstrap provides a starting point for building your own BPF applications with things like BPF Compile Once-Run Everywhere [<a href="https://blog.aquasec.com/vmlinux.h-ebpf-programs">CO-RE</a>] and <a href="https://nakryiko.com/posts/bpf-core-reference-guide">vmlinux.h</a>.  Numerous more BPF <a href="https://github.com/torvalds/linux/tree/master/samples/bpf">samples</a> can be found at the Linux repo. 
 <br />
-<br />
-TODO - table of source code examples  
-<br />
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CUSTOM: 01</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/minimal.bpf.c">minimal</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 02</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/minimal_ns.bpf.c">minimal_ns</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 03</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/minimal_legacy.bpf.c">minimal_legacy</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 04</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/bootstrap.bpf.c">bootstrap</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 05</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/uprobe.bpf.c">uprobe</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 06</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/usdt.bpf.c">usdt</a></a></td>
+</tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CUSTOM: 07</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/fentry.bpf.c">fentry</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 08</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/kprobe.bpf.c">kprobe</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 09</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/ksyscall.bpf.c">ksyscall</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 10</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/tc.bpf.c">tc</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 11</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/profile.bpf.c">profile</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: 12</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/sockfilter.bpf.c">sockfilter</a></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 <br />
 <u>Summary</u><br />
 Although <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> allows BPF programs to be loaded, verified and attached to various kernel hooks and execute custom code there is currently no way to debug BPF programs' source code interactively.  Therefore, this now presents alternatives to explore unit testing and <a href="https://www.youtube.com/watch?v=vkYKXlTQ6cg">mock</a> BPF programs.  This will be the topic of the next POST. 
