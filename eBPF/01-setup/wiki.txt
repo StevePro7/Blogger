@@ -1,10 +1,4 @@
 <span style="font-family:verdana;font-size:85%;">
-  
-<u>Summary</u><br />
-Although <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> allows BPF programs to be loaded, verified and attached to various kernel hooks and execute custom code there is currently no way to debug BPF programs' source code interactively.  Therefore, this now presents alternatives to explore unit testing and <a href="https://www.youtube.com/watch?v=vkYKXlTQ6cg">mock</a> BPF programs.  This will be the topic of the next POST.
-<br /><br />
-  Although libbpf allows BPF programs to be loaded, verified and attached to various kernel hooks and execute custom code there is currently no way to debug BPF programs' source code interactively.  Therefore, this now seems to present an opportunitiy to explore the potential to mock BPF programs in isolation with unit tests.
-<br /><br />
 Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a></b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
 <br />
 <!--
@@ -13,7 +7,6 @@ Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF"
 <br />
 Let's check it out! 
 <br /><br />
-
 <u>Software</u><br />
 Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the <b><a href="https://man.archlinux.org/man/bpftool.8.en">bpftool</a></b> which was added to the 2017 Linux kernel as a user space utility to introspect the eBPF subsystem.
 <br />
@@ -179,7 +172,6 @@ Next, enter commands to create the <a href="https://blog.aquasec.com/vmlinux.h-e
 </table>
 <br>
 -->
-
 Rename main.c to hello.c and update the driver program code.  Edit configurations | Run with root privileges
 <br>
 <!--
@@ -192,7 +184,6 @@ Set break point in hello.c | HelloWorld | Debug or Press F5 to launch your first
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s941/HelloWorld04.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s600/HelloWorld04.png"/></a>
 -->
 <br>
-  
 <u>Hello Maps</u><br />
 BPF <a href="https://docs.kernel.org/bpf/maps.html">maps</a> are generic structures for storing different types of data accessible between kernel + user space.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloMaps</b> | Language std: <b>C11</b>
 <br />
@@ -216,5 +207,5 @@ TODO - table of source code examples
 <br />
 <br />
 <u>Summary</u><br />
-TODO - summary - next post 
+Although <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> allows BPF programs to be loaded, verified and attached to various kernel hooks and execute custom code there is currently no way to debug BPF programs' source code interactively.  Therefore, this now presents alternatives to explore unit testing and <a href="https://www.youtube.com/watch?v=vkYKXlTQ6cg">mock</a> BPF programs.  This will be the topic of the next POST. 
 </span>
