@@ -1,6 +1,16 @@
 <span style="font-family:verdana;font-size:85%;">
-  
 
+Extended Berkeley Packet Filter [<b>eBPF</b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  libbpf is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
+<br />
+  <br />
+Extended Berkeley Packet Filter [<b>eBPF</b>] is a technology that runs sandboxed programs in privileged context such as the operating system kernel.  It is used to safely and efficiently extend the capabilities of the kernel at runtime without requiring to change kernel source code or load kernel modules.  
+<br />
+<br />  
+libbpf is a C-based library containing a BPF loader that takes compiled BPF object files and prepares and loads them into the Linux kernel. libbpf takes the heavy lifting of loading, verifying, and attaching BPF programs to various kernel hooks, allowing BPF application developers to focus only on BPF program correctness and performance.
+<br />
+<br />
+Extended Berkeley Packet Filter [<b>eBPF</b>] is a technology that can run sandboxed programs in a privileged context such as the operating system kernel.  It is used to safely and efficiently extend the capabilities of the kernel at runtime without requiring to change kernel source code or load kernel modules.  
+<br />
 TODO - introduction on eBPF - PIC
 <br />
 <!--
