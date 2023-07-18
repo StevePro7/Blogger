@@ -1,6 +1,33 @@
 <span style="font-family:verdana;font-size:85%;">
 In the previous post - sample - debugging - topic of this post
 <br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the following components for low level C code unit testing, mocking and integration: <b>Unity</b>, <b>CMock</b>, <b>Ceedling</b>.
+<br />
+
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;Unity</td>
+<td>&nbsp;Unit testing framework built for C projects with a focus on working with embedded toolchains
+</td>
+</tr>
+<tr>
+<td>&nbsp;CMock</td>
+<td>&nbsp;Mock and stub generator and runtime for unit testing C designed to work smoothly with Unity
+</td>
+</tr>
+<tr>
+<td>&nbsp;Ceedling</td>
+<td>&nbsp;Build system for C projects using Ruby Rake [make] build system to integrate Unity + CMock
+</td>
+</tr>
+</table>
+
+  
+<br />  
+<u>Unity</u><br />
+  
+<br /><br />
 <b>Unity</b><br />
 <a href="http://www.throwtheswitch.org/unity">Unity</a> is a unit testing framework built for C, with a focus on working with embedded toolchains, which we would like to try and <a href="https://github.com/ThrowTheSwitch/Unity">leverage</a> for BPF development.  Follow instructions <a href="https://github.com/ThrowTheSwitch/Unity/issues/302">here</a> to install and configure Unity.
 <br />
