@@ -89,7 +89,7 @@ A new C project will be created which automatically adds the following two files
 <!-- -->
 <br />
 In the Terminal window within CLion IDE enter the following commands to install and buld the libbpf library:
-<br>
+<br />
 <!-- -->
 <table width="99%" border="1">
 <tr>
@@ -103,9 +103,9 @@ In the Terminal window within CLion IDE enter the following commands to install 
 </tr>
 </table>
 <!-- -->
-<br>
+<br />
 Next, enter commands to create the <a href="https://blog.aquasec.com/vmlinux.h-ebpf-programs">vmlinux.h</a> file.  Create and build the Hello BPF program + skeleton file:
-<br>
+<br />
 <!-- -->
 <table width="99%" border="1">
 <tr>
@@ -118,7 +118,7 @@ Next, enter commands to create the <a href="https://blog.aquasec.com/vmlinux.h-e
 </tr>
 </table>
 <!-- --> <!-- -->
-<br>
+<br />
 <!-- -->
 <table width="99%" border="1">
 <tr>
@@ -170,20 +170,20 @@ Next, enter commands to create the <a href="https://blog.aquasec.com/vmlinux.h-e
 </td>
 </tr>
 </table>
-<br>
+<br />
 <!-- -->
 Rename main.c to hello.c and update the driver program code.  Edit configurations | Run with root privileges
-<br>
+<br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSzYLhQDy1CIQWyE_mU13bb_WEJjCLeGrwqN4blumS2PnyALwJHMoEY90Y9PeCLUp1zDTN7g_QwmbcUEuQWsEMVwhgvxHOdtn9JMLkRsxgVW9MFlVEXhS9dlHHTL9WsIE9vqT4xuOj_mPdnQn1aBjcJYke3cJcp4aq_FaU5tfWlM_14jG7P7dpHrnS/s844/HelloWorld03.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSzYLhQDy1CIQWyE_mU13bb_WEJjCLeGrwqN4blumS2PnyALwJHMoEY90Y9PeCLUp1zDTN7g_QwmbcUEuQWsEMVwhgvxHOdtn9JMLkRsxgVW9MFlVEXhS9dlHHTL9WsIE9vqT4xuOj_mPdnQn1aBjcJYke3cJcp4aq_FaU5tfWlM_14jG7P7dpHrnS/s600/HelloWorld03.png"/></a>
 <!-- -->
-<br>
+<br />
 Set break point in hello.c | HelloWorld | Debug or Press F5 to launch your first Hello World BPF program!
-<br>
+<br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s941/HelloWorld04.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s600/HelloWorld04.png"/></a>
 <!-- -->
-<br>
+<br />
 <u>Hello Maps</u><br />
 BPF <a href="https://docs.kernel.org/bpf/maps.html">maps</a> are generic structures for storing different types of data accessible between kernel + user space.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloMaps</b> | Language std: <b>C11</b>
 <br />
