@@ -25,8 +25,17 @@ Follow all instructions from the previous <a href="http://steveproxna.blogspot.c
 
   
 <br />  
-<u>Unity</u><br />
-  
+<u>Pre-requisite</u><br />
+As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not found</i> errors may be thrown:
+<br />
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;sudo apt  install ruby</td>
+</td>
+</tr>
+</table>
+<br />
+
 <br /><br />
 <b>Unity</b><br />
 <a href="http://www.throwtheswitch.org/unity">Unity</a> is a unit testing framework built for C, with a focus on working with embedded toolchains, which we would like to try and <a href="https://github.com/ThrowTheSwitch/Unity">leverage</a> for BPF development.  Follow instructions <a href="https://github.com/ThrowTheSwitch/Unity/issues/302">here</a> to install and configure Unity.
