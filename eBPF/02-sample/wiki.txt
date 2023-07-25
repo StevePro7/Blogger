@@ -2,21 +2,11 @@
   
 <u>Hello CMock</u><br />
 At the time of writing, there is currently no way to debug BPF programs' source code interactively.  Therefore, we would like to attempt to <a href="https://www.youtube.com/watch?v=vkYKXlTQ6cg">mock</a> BPF programs or at least underlying C sourc code somehow using CMock.
-  
+<br /><br />
+Follow the example <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">Spin up CMock</a>.  This article uses Ceedling to automate project setup and generate mocks but we will complete the following manually first to better understand the process.  Original code found <a href="https://github.com/joaniedavis/cmock_example">here</a>.
 <br /><br />
   
-<u>Hello Unity</u><br />
-In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, examples installed the <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> C-based library.  Therefore, extend an example and write tests that invoke simple libbpf APIs, for example, <i><a href="https://github.com/libbpf/libbpf/blob/master/src/libbpf.c#L12828">libbpf_num_possible_cpus</a></i> directly using Unity framework.
-<br /><br />
-Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloUnity</b> | Language std: C11
-<br />
-<!--
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s704/HelloUnity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s600/HelloUnity.png"/></a>
--->
-<br />
-Create
-<br /><br />
-TODO - complete documenting building out the src / tests code for this as per 01-unity.txt
+  
 <br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, we checked out <a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a> Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to debug BPF programs thus we'd like to explore test options.
 <br />
@@ -116,6 +106,20 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s826/02-ceedling.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s600/02-ceedling.png"/></a>
 -->
 <br />
+  
+<u>Hello Unity</u><br />
+In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, examples installed the <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> C-based library.  Therefore, extend an example and write tests that invoke simple libbpf APIs, for example, <i><a href="https://github.com/libbpf/libbpf/blob/master/src/libbpf.c#L12828">libbpf_num_possible_cpus</a></i> directly using Unity framework.
+<br /><br />
+Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloUnity</b> | Language std: C11
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s704/HelloUnity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s600/HelloUnity.png"/></a>
+-->
+<br />
+Create
+<br /><br />
+TODO - complete documenting building out the src / tests code for this as per 01-unity.txt
+<br /><br />
 
 <u>Hello CMock</u><br />
 <u>Hello Ceedling</u><br />
