@@ -5,7 +5,19 @@ At the time of writing, there is currently no way to debug BPF programs' source 
 <br /><br />
 Follow the example <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">Spin up CMock</a>.  This article uses Ceedling to automate project setup and generate mocks but we will complete the following manually first to better understand the process.  Original code found <a href="https://github.com/joaniedavis/cmock_example">here</a>.
 <br /><br />
-  
+Create folder <b>/home/stevepro/HelloCMock</b>.  Copy <a href="https://github.com/joaniedavis/cmock_example/blob/master/inc/rectangle.h">rectangle.h</a> and <a href="https://github.com/joaniedavis/cmock_example/blob/master/project.yml">project.yml</a>.  Execute mock command:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;ruby ~/GitHub/ThrowTheSwitch/cmock/lib/cmock.rb -oproject.yml rectangle.h<br />
+</td>
+</tr>
+</table>
+<br />
+TODO - link mock_rectangle.h and mock_rectangle.c to my Github!<br>
+This creates mocks folder two corresponding files: mock_rectangle.h and mock_rectangle.c.  Notice we did not attempt to use CLion as is not currently <a href="https://groups.google.com/g/throwtheswitch/c/dbPNtBZ_84M/m/0_qZaa4KAgAJ?pli=1">integrated</a>; any attempt may produce Multiple Definition <a href="https://github.com/ThrowTheSwitch/CMock/issues/97">issue</a>!
+<br />
   
 <br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, we checked out <a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a> Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to debug BPF programs thus we'd like to explore test options.
