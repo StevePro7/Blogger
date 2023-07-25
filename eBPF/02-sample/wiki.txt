@@ -1,9 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
   
 <u>Hello CMock</u><br />
-At the time of writing, there is currently no way to debug BPF programs' source code interactively.  Therefore, we would like to attempt to mock BPF programs or at least underlying C sourc code somehow using CMock.
-  <br><br>
-  it is currently not possible to debug step thru BPF source code 
+At the time of writing, there is currently no way to debug BPF programs' source code interactively.  Therefore, we would like to attempt to <a href="https://www.youtube.com/watch?v=vkYKXlTQ6cg">mock</a> BPF programs or at least underlying C sourc code somehow using CMock.
+  
+<br /><br />
   
 <u>Hello Unity</u><br />
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, examples installed the <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> C-based library.  Therefore, extend an example and write tests that invoke simple libbpf APIs, for example, <i><a href="https://github.com/libbpf/libbpf/blob/master/src/libbpf.c#L12828">libbpf_num_possible_cpus</a></i> directly using Unity framework.
