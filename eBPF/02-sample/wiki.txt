@@ -1,12 +1,13 @@
 <span style="font-family:verdana;font-size:85%;">
-In the previous post, we checked out eBPF Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to debug BPF programs thus we'd like to explore test options.
-
-  <br /><br />
-  current issue is that there is currently no way to debug BPF programs' source code interactively
+In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, we checked out <a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a> Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to debug BPF programs thus we'd like to explore test options.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
+-->
+<br />
+Let's check it out! 
+<br /><br />
   
-<br /><br />
-TODO - In the previous post - sample - debugging - topic of this post
-<br /><br />
   
 <u>Software</u><br />
 Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the following components for low level C code unit testing, mocking and integration: <b><a href="http://www.throwtheswitch.org/unity">Unity</a></b>, <b><a href="http://www.throwtheswitch.org/cmock">CMock</a></b>, <b><a href="http://www.throwtheswitch.org/ceedling">Ceedling</a></b>.
@@ -28,7 +29,7 @@ Follow all instructions from the previous <a href="http://steveproxna.blogspot.c
 </table>
 -->
 <br />  
-<u>Pre-requisite</u><br />
+<u>Pre-requisites</u><br />
 As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not found</i> errors may be thrown.  Also, CMock requires Ruby bundle be installed otherwise <i>Command 'bundle' not found</i> errors may be thrown.
 <br />
 <!--
