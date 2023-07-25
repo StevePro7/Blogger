@@ -1,35 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
   
-<u>Hello Ceedling</u><br />
-Complete previous example but this time use Ceedling using the article as a guideline:  Launch the Terminal:
-<br />
-<table width="99%" border="1">
-<tr>
-<td>
-&nbsp;cd $HOME<br />
-&nbsp;ceedling new HelloCeedling<br />
-</td>
-</tr>
-</table>
-<br />
-Copy all project files into <b>src</b> and <b>test</b> directories.  Include <b>inc</b> and update project.yml with the inc directory: 
-<br />
-<pre class="csharp" name="code">
-  :paths:
-  :test:
-    - +:test/**
-    - -:test/support
-  :source:
-    - src/**
-  :include:
-    - inc/**
-  :support:
-    - test/support
-  :libraries: []
-</pre>
-<br />
-
-<br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, we checked out <a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a> Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to debug BPF programs thus we'd like to explore test options.
 <br />
 <!--
@@ -164,5 +134,72 @@ TODO - link mock_rectangle.h and mock_rectangle.c to my Github!<br>
 This creates mocks folder two corresponding files: mock_rectangle.h and mock_rectangle.c.  Notice we did not attempt to use CLion as is not currently <a href="https://groups.google.com/g/throwtheswitch/c/dbPNtBZ_84M/m/0_qZaa4KAgAJ?pli=1">integrated</a>; any attempt may produce Multiple Definition <a href="https://github.com/ThrowTheSwitch/CMock/issues/97">issue</a>!
 <br /><br />
   
-
+<u>Hello Ceedling</u><br />
+Complete previous <a href="https://github.com/joaniedavis/cmock_example">example</a> but this time use Ceedling using the <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">article</a> as a guideline:  Launch the Terminal:
+<!--
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;cd $HOME<br />
+&nbsp;ceedling new HelloCeedling<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+Copy all project files into <b>src</b> and <b>test</b> directories.  Include <b>inc</b> and update project.yml with the inc directory:
+<br />
+<!--
+<pre class="csharp" name="code">
+  :paths:
+  :test:
+    - +:test/**
+    - -:test/support
+  :source:
+    - src/**
+  :include:
+    - inc/**
+  :support:
+    - test/support
+  :libraries: []
+</pre>
+<br />
+-->
+Run tests manually simply by typing <b>ceedling</b>
+<br /><br />
+Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb-with-ceedling">interactively</a> with GDB as follows: Launch VS Code.  Press F5 to add launch.json file to complete:
+<br />
+<pre class="csharp" name="code">
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ceedling_gdb",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/test/out/test_shape_container.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
+</pre>
+Set breakpoints | Press F5 to debug step thru source code!
+<br /><br />
+  
+<u>Summary</u><br />
 </span>
+  
