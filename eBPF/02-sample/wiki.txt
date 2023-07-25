@@ -1,7 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
   
 <u>Hello Unity</u><br />
-In the previous post, examples installed the libbpf C-based library.  Therefore, extend an example and write tests that invoke simple libbpf APIs, for example, <i>libbpf_num_possible_cpus</i> directly using Unity framework.
+In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, examples installed the <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> C-based library.  Therefore, extend an example and write tests that invoke simple libbpf APIs, for example, <i><a href="https://github.com/libbpf/libbpf/blob/master/src/libbpf.c#L12828">libbpf_num_possible_cpus</a></i> directly using Unity framework.
 <br /><br />
 Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloUnity</b> | Language std: C11
 <br />
