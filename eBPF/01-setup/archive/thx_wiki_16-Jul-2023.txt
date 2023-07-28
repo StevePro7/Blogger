@@ -1,19 +1,12 @@
 <span style="font-family:verdana;font-size:85%;">
-<u>libbpf-bootstrap</u><br />
-libbpf-bootstrap provides a starting point for building your own BPF applications with things like BPF Compile Once-Run Everywhere [CO-RE] and vmlinux.h.  Numerous more BPF samples can be found at the Linux repo. 
-  <br /><br />
-  libbpf-bootstrap provides a starting point for building your own BPF applications with things like BPF Compile Once-Run Everywhere [CO-RE] and vmlinux.h.  There are numerous more BPF examples on the official Linux Github repo. 
-  <br /><br />
-  bootstrap is intended to be the starting point for your own BPF application, with things like BPF CO-RE and vmlinux.h, consuming BPF ring buffer data, command line arguments parsing, graceful Ctrl-C handling, etc. all taken care of for you, which are crucial but mundane tasks that are no fun, but necessary to be able to do anything useful. Just copy/paste and do simple renaming to get yourself started.
   
-  
-<br /><br />
-Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a></b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
+
+TODO - introduction on eBPF - PIC
 <br />
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
--->
 <br />
+-->
 Let's check it out! 
 <br /><br />
 
@@ -39,9 +32,7 @@ Follow all instructions from the previous <a href="http://steveproxna.blogspot.c
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s817/03-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s600/03-bpftool.png"/></a>
 -->
 <br />
-Alternatively, download <b><a href="https://man.archlinux.org/man/bpftool.8.en">bpftool</a></b> binary from the Github <a href="https://github.com/libbpf/bpftool/releases">releases</a> and extract into <b>/usr/local/bin</b> directory.
-<br />
-<br />
+
 <u>Hello World</u><br />
 Create your first BPF <a href="https://github.com/sartura/ebpf-hello-world">program</a> using this simple eBPF <a href="https://nakryiko.com/posts/bpf-core-reference-guide">CO-RE</a> <a href="https://www.sartura.hr/blog/simple-ebpf-core-application">application</a> as a reference however using CLion.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloWorld</b> | Language std: <b>C11</b>
 <br />

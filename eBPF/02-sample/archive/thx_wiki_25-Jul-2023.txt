@@ -1,0 +1,99 @@
+<span style="font-family:verdana;font-size:85%;">
+
+TODO - In the previous post - sample - debugging - topic of this post
+<br /><br />
+  
+<u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the following components for low level C code unit testing, mocking and integration: <b><a href="http://www.throwtheswitch.org/unity">Unity</a></b>, <b><a href="http://www.throwtheswitch.org/cmock">CMock</a></b>, <b><a href="http://www.throwtheswitch.org/ceedling">Ceedling</a></b>.
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<a href="https://github.com/ThrowTheSwitch/Unity">Unity</a>&nbsp;</td>
+<td>&nbsp;Unit testing framework built for C projects with a focus on working with embedded toolchains</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://github.com/ThrowTheSwitch/CMock">CMock</a>&nbsp;</td>
+<td>&nbsp;Mock and stub generator and runtime for unit testing C designed to work smoothly with Unity</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://github.com/ThrowTheSwitch/Ceedling">Ceedling</a>&nbsp;</td>
+<td>&nbsp;Build system for C projects using Ruby Rake [make] build system to integrate Unity + CMock</td>
+</tr>
+</table>
+-->
+<br />  
+<u>Pre-requisite</u><br />
+As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not found</i> errors may be thrown.  Also, CMock requires Ruby bundle be installed otherwise <i>Command 'bundle' not found</i> errors may be thrown.
+<br />
+<!--
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;sudo apt install ruby</td>
+<td>&nbsp;sudo apt install ruby-bundler</td>
+</td>
+</tr>
+</table>
+-->
+<br />
+<!--<br />-->
+<b>Unity</b><br />
+<a href="http://www.throwtheswitch.org/unity">Unity</a> is a unit testing framework built for C, with a focus on working with embedded toolchains, which we would like to try and <a href="https://github.com/ThrowTheSwitch/Unity">leverage</a> for BPF development.  Follow instructions <a href="https://github.com/ThrowTheSwitch/Unity/issues/302">here</a> to install and configure Unity.
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git clone git clone git@github.com:ThrowTheSwitch/Unity.git<br />
+&nbsp;cd Unity<br />
+&nbsp;cmake .<br />
+&nbsp;make<br />
+&nbsp;sudo make install<br />
+&nbsp;sudo cp libunity.a /usr/local/lib<br />
+&nbsp;sudo cp src/unity*.h /usr/local/include/unity<br />
+</td>
+</tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigHo7-E8E8BwXpbneb-Lah2iL3sjeI321CwDcSkpLD-BQPbRCkGNsthVhCfNvzs7Tf7MbuWU7877vljTTQV2r7kV-Pt38ED3r36akYdsk7gNU1bneNaKL5KIT6Im2ff2DPWW5aPN9G2Teom7eNVA_AsjAEcN_7TjYMkAe5lCtWHpw-JPc4oHNapx_lTMA/s934/01-unity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigHo7-E8E8BwXpbneb-Lah2iL3sjeI321CwDcSkpLD-BQPbRCkGNsthVhCfNvzs7Tf7MbuWU7877vljTTQV2r7kV-Pt38ED3r36akYdsk7gNU1bneNaKL5KIT6Im2ff2DPWW5aPN9G2Teom7eNVA_AsjAEcN_7TjYMkAe5lCtWHpw-JPc4oHNapx_lTMA/s600/01-unity.png"/></a>
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikUUb5t6yMGwhFoyk9cvn0sA1q1vPjLm8uR3Nz6CGlStSpzn2bEB0ZBa5zZv1t5TgXubnqobyumb8uzahy6NsoWEabAXtGbVU2P0qoTcvtx7wgFb2DlIblY-6r-lHhnLgoD7UdYZ39_3BxNZIwed7MBJ-p8O3EjpZNmCCaLu2yf68iWWuIpr6-HQAaTQY/s889/02-unity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikUUb5t6yMGwhFoyk9cvn0sA1q1vPjLm8uR3Nz6CGlStSpzn2bEB0ZBa5zZv1t5TgXubnqobyumb8uzahy6NsoWEabAXtGbVU2P0qoTcvtx7wgFb2DlIblY-6r-lHhnLgoD7UdYZ39_3BxNZIwed7MBJ-p8O3EjpZNmCCaLu2yf68iWWuIpr6-HQAaTQY/s600/02-unity.png"/></a>
+-->
+<br />
+<!--<br />-->
+<b>CMock</b><br />
+<a href="http://www.throwtheswitch.org/cmock">CMock</a> is a mock and stub generator designed to work smoothly with Unity. CMock automagically parses the C headers and creates useful mock interfaces used for unit testing.  Follow instructions <a href="https://github.com/ThrowTheSwitch/CMock">here</a> to install CMock.
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git clone --recursive https://github.com/throwtheswitch/cmock.git<br />
+&nbsp;cd cmock<br />
+&nbsp;bundle install<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+<!--<br />-->
+<b>Ceedling</b><br />
+<a href="http://www.throwtheswitch.org/ceedling">Ceedling</a> is a build system for C projects using Ruby Rake [make] build system.  Ceedling also makes TDD Test Driven Development simple by integrating CMock + Unity.  Follow instructions <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">here</a> to install Ceedling.
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;ruby -v<br />
+&nbsp;sudo gem install ceedling<br />
+</td>
+</tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHH0bdvUt3Jtd8xHarpED4IWNzNOc9VfzjNgPFLEbSaUYshe5-vJINvAT0JElTNuKw4IZBfdOgCSp0f3fZr_a1WAK28YaaCmXX3izV7W9n6c1W-BwKivf6nr0oi5sKtbdw-4D0AzrxzOubTa8pHRwBh-8mwiup0LMOeHFJXMVaJ6CFIzQPDE_JfeJNxIE/s736/01-ceedling.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHH0bdvUt3Jtd8xHarpED4IWNzNOc9VfzjNgPFLEbSaUYshe5-vJINvAT0JElTNuKw4IZBfdOgCSp0f3fZr_a1WAK28YaaCmXX3izV7W9n6c1W-BwKivf6nr0oi5sKtbdw-4D0AzrxzOubTa8pHRwBh-8mwiup0LMOeHFJXMVaJ6CFIzQPDE_JfeJNxIE/s600/01-ceedling.png"/></a>
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s826/02-ceedling.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s600/02-ceedling.png"/></a>
+-->
+<br />
+<u>Hello Unity</u><br />
+<u>Hello CMock</u><br />
+<u>Hello Ceedling</u><br />
+</span>

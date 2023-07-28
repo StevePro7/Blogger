@@ -22,3 +22,9 @@ femto	quadrilliob	th		10 ^ -15
 atto	quintillion	th		10 ^ -18
 zepto	sextillion	th		10 ^ -21
 yocto	septilltion	th		10 ^ -24
+
+
+
+Network icon
+Settings | Personalization | Taskbar
+Select which icons appear on the taskbar

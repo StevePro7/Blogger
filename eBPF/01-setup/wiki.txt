@@ -1,16 +1,49 @@
 <span style="font-family:verdana;font-size:85%;">
-
-Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloWorld</b> | Language std: <b>C11</b>
+Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a></b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
 <br />
-<!--
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
+<!-- -->
+<br />
+Let's check it out! 
+<br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the <b><a href="https://man.archlinux.org/man/bpftool.8.en">bpftool</a></b> which was added to the 2017 Linux kernel as a user space utility to introspect the eBPF subsystem.
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git<br />
+&nbsp;cd linux<br />
+&nbsp;cd tools/bpf/bpftool<br />
+&nbsp;make<br />
+&nbsp;sudo make install<br />
+&nbsp;bpftool version
+</td>
+</tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyg5CqVJShDhLkZWgf2zJNr3HNQjgCWTCGHvgNbQwsLVvxovYtPeZcMAvsoiq-RnRu7k9eouptdbJNPtRF1-j3O8-b2_cRgqiNDyLBUvezizXNGzoKVnwqCHLLnUL8XbNWr7wXjoyMru2Ut67e9FoxgWq5zUuV_MQb68pVItRUN26Izni0SL85nP7ypx0/s1078/01-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyg5CqVJShDhLkZWgf2zJNr3HNQjgCWTCGHvgNbQwsLVvxovYtPeZcMAvsoiq-RnRu7k9eouptdbJNPtRF1-j3O8-b2_cRgqiNDyLBUvezizXNGzoKVnwqCHLLnUL8XbNWr7wXjoyMru2Ut67e9FoxgWq5zUuV_MQb68pVItRUN26Izni0SL85nP7ypx0/s600/01-bpftool.png"/></a>
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzmYlxCUky6tGUQNQ-u8iOFKcNhDT1Pv93XvdJplY6ygE4rCD5SfWg3mMIJaOeIBNBEjeycUc4yoAvsC4xGMecJ_eFLRaQg6huDwyfaqXw6w37qfWzIGCR5C0QAqLqcsvmqTFpf0qOXyx5SiSQY5DQyHAJHhLcoYt9POs3yeJudjCfZ9hniMwvaJe4BnQ/s817/02-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzmYlxCUky6tGUQNQ-u8iOFKcNhDT1Pv93XvdJplY6ygE4rCD5SfWg3mMIJaOeIBNBEjeycUc4yoAvsC4xGMecJ_eFLRaQg6huDwyfaqXw6w37qfWzIGCR5C0QAqLqcsvmqTFpf0qOXyx5SiSQY5DQyHAJHhLcoYt9POs3yeJudjCfZ9hniMwvaJe4BnQ/s600/02-bpftool.png"/></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s817/03-bpftool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJfo8_H0gZmK3uAYKymCOA2WJwSnIE3UFlO127Kj70oyUNXXcvIGDieRmo6P2w9KWSmm4kIADIWCPs4i0kSENosda6p97HGVkJnkKWToPaNe1H-KHSA0c5CW-PgB_fm0dlXVvWq9FsQwUGd5uha1dBsWFsvLtwlNdOjowpc1wHzM9GnuE1iyEXQm9Kh3Y/s600/03-bpftool.png"/></a>
+<!-- -->
+<br />
+Alternatively, download <b><a href="https://man.archlinux.org/man/bpftool.8.en">bpftool</a></b> binary from the Github <a href="https://github.com/libbpf/bpftool/releases">releases</a> and extract into <b>/usr/local/bin</b> directory.
+<br />
+<br />
+<u>Hello World</u><br />
+Create your first BPF <a href="https://github.com/sartura/ebpf-hello-world">program</a> using this simple eBPF <a href="https://nakryiko.com/posts/bpf-core-reference-guide">CO-RE</a> <a href="https://www.sartura.hr/blog/simple-ebpf-core-application">application</a> as a reference however using CLion.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloWorld</b> | Language std: <b>C11</b>
+<br />
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx1jnPxY9wKeLiBxiWSdHs7nGqOys4cryU1sEMkwvjEYP9vDeN83YAOEV3oE5igHbamVKTFF-iyUSPBijQ_cN8T1LUEZod4BwnpFMt6IzASsQFDhJEiYjFWHnYDmnT7woVQ8BBrNVrxsuXR8Ybf7Voi1wjNY7jUatuu092Qb2iybxjHat2tNg4GH0E/s800/HelloWorld01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx1jnPxY9wKeLiBxiWSdHs7nGqOys4cryU1sEMkwvjEYP9vDeN83YAOEV3oE5igHbamVKTFF-iyUSPBijQ_cN8T1LUEZod4BwnpFMt6IzASsQFDhJEiYjFWHnYDmnT7woVQ8BBrNVrxsuXR8Ybf7Voi1wjNY7jUatuu092Qb2iybxjHat2tNg4GH0E/s600/HelloWorld01.png"/></a>
--->
+<!-- -->
 <br />
 Create
 <br /><br />
 A new C project will be created which automatically adds the following two files: main.c and CMakeLists.txt
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;main.c
@@ -53,11 +86,11 @@ A new C project will be created which automatically adds the following two files
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
-In the Terminal window within CLion IDE enter the following commands to install and buld the libbpf library:
-<br>
-<!--
+In the Terminal window within CLion IDE enter the following commands to install and buld the <a href="https://github.com/libbpf/libbpf">libbpf</a> library:
+<br />
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>
@@ -69,11 +102,11 @@ In the Terminal window within CLion IDE enter the following commands to install 
 </td>
 </tr>
 </table>
--->
-<br>
+<!-- -->
+<br />
 Next, enter commands to create the <a href="https://blog.aquasec.com/vmlinux.h-ebpf-programs">vmlinux.h</a> file.  Create and build the Hello BPF program + skeleton file:
-<br>
-<!--
+<br />
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>
@@ -84,9 +117,9 @@ Next, enter commands to create the <a href="https://blog.aquasec.com/vmlinux.h-e
 </td>
 </tr>
 </table>
+<!-- --> <!-- -->
+<br />
 <!-- -->
-<br>
-<!--
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;hello.bpf.c
@@ -137,19 +170,102 @@ Next, enter commands to create the <a href="https://blog.aquasec.com/vmlinux.h-e
 </td>
 </tr>
 </table>
-<br>
--->
-
+<br />
+<!-- -->
 Rename main.c to hello.c and update the driver program code.  Edit configurations | Run with root privileges
-<br>
-<!--
+<br />
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSzYLhQDy1CIQWyE_mU13bb_WEJjCLeGrwqN4blumS2PnyALwJHMoEY90Y9PeCLUp1zDTN7g_QwmbcUEuQWsEMVwhgvxHOdtn9JMLkRsxgVW9MFlVEXhS9dlHHTL9WsIE9vqT4xuOj_mPdnQn1aBjcJYke3cJcp4aq_FaU5tfWlM_14jG7P7dpHrnS/s844/HelloWorld03.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSzYLhQDy1CIQWyE_mU13bb_WEJjCLeGrwqN4blumS2PnyALwJHMoEY90Y9PeCLUp1zDTN7g_QwmbcUEuQWsEMVwhgvxHOdtn9JMLkRsxgVW9MFlVEXhS9dlHHTL9WsIE9vqT4xuOj_mPdnQn1aBjcJYke3cJcp4aq_FaU5tfWlM_14jG7P7dpHrnS/s600/HelloWorld03.png"/></a>
--->
-<br>
+<!-- -->
+<br />
 Set break point in hello.c | HelloWorld | Debug or Press F5 to launch your first Hello World BPF program!
-<br>
-<!--
+<br />
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s941/HelloWorld04.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s600/HelloWorld04.png"/></a>
--->
-<br>
+<!-- -->
+<br />
+<br />  
+<u>Hello Maps</u><br />
+BPF <a href="https://docs.kernel.org/bpf/maps.html">maps</a> are generic structures for storing different types of data accessible between kernel + user space.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloMaps</b> | Language std: <b>C11</b>
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkok-druaSYapIJC585J9LAnqubq-4yfXYO7k4MNYj_p1sTaP8fUW-MVZHsRtjbF85bw9gLZ9xaktcEG70vRbT6aBI0js1Tg4EZ5yrPT0Gzevqz165X9d_LvYsMFwFz8GmvH71sgX1bxcW8gdwZMt2BpePt03ADFDw4mjXr9KRyVbzwpz7zYGCKQCKZ9A/s800/HelloMaps01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkok-druaSYapIJC585J9LAnqubq-4yfXYO7k4MNYj_p1sTaP8fUW-MVZHsRtjbF85bw9gLZ9xaktcEG70vRbT6aBI0js1Tg4EZ5yrPT0Gzevqz165X9d_LvYsMFwFz8GmvH71sgX1bxcW8gdwZMt2BpePt03ADFDw4mjXr9KRyVbzwpz7zYGCKQCKZ9A/s600/HelloMaps01.png"/></a>
+<!-- -->
+<br/>
+Create
+<br /><br />
+Repeat the process similar to Hello World: Install the <a href="https://github.com/libbpf/libbpf">libbpf</a> library.  Create the vmlinux header file, the Maps BPF program and driver code.  Compile code.  Update the CMakeLists build script and Run with root privileges:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJFq4g30RU4htG_2w6Mu3hdqGVTNVsSrw8lbIGztwNdlKnJe52RpQrlYLd9EvHGCB4Yz_yz4ru4Dko2e4VNUmmX2Z_eBDNan6MMP26BP21ltHM2FtxiXT7YHHVxZI5wigBFqzsdMU8fi7Aa9o8FAHrWXGqRBZ2sF9dJ7Gg0rLjS4JMXzLL7MVQ35PQFGs/s941/HelloMaps02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJFq4g30RU4htG_2w6Mu3hdqGVTNVsSrw8lbIGztwNdlKnJe52RpQrlYLd9EvHGCB4Yz_yz4ru4Dko2e4VNUmmX2Z_eBDNan6MMP26BP21ltHM2FtxiXT7YHHVxZI5wigBFqzsdMU8fi7Aa9o8FAHrWXGqRBZ2sF9dJ7Gg0rLjS4JMXzLL7MVQ35PQFGs/s600/HelloMaps02.png"/></a>
+<!-- -->
+<br />
+<br />
+<u>libbpf-bootstrap</u><br />
+<a href="https://github.com/libbpf/libbpf-bootstrap">libbpf-bootstrap</a> provides a starting point for building your own BPF applications with things like BPF Compile Once-Run Everywhere [<a href="https://nakryiko.com/posts/bpf-core-reference-guide">CO-RE</a>] and <a href="https://blog.aquasec.com/vmlinux.h-ebpf-programs">vmlinux.h</a>.  Numerous more BPF <a href="https://github.com/torvalds/linux/tree/master/samples/bpf">samples</a> can be found at the Linux repo. 
+<br />
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/01-minimal/minimal.bpf.c">minimal</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/minimal.bpf.c">minimal</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/02-minimal_ns/minimal_ns.bpf.c">minimal_ns</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/minimal_ns.bpf.c">minimal_ns</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/03-minimal_legacy/minimal_legacy.bpf.c">minimal_legacy</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/minimal_legacy.bpf.c">minimal_legacy</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/04-bootstrap/bootstrap.bpf.c">bootstrap</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/bootstrap.bpf.c">bootstrap</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/05-uprobe/uprobe.bpf.c">uprobe</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/uprobe.bpf.c">uprobe</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/06-usdt/usdt.bpf.c">usdt</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/usdt.bpf.c">usdt</a></a></td>
+</tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/07-fentry/fentry.bpf.c">fentry</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/fentry.bpf.c">fentry</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/08-kprobe/kprobe.bpf.c">kprobe</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/kprobe.bpf.c">kprobe</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/09-ksyscall/ksyscall.bpf.c">ksyscall</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/ksyscall.bpf.c">ksyscall</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/10-tc/tc.bpf.c">tc</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/tc.bpf.c">tc</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/11-profile/profile.bpf.c">profile</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/profile.bpf.c">profile</a></a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Setup/02-libbpf-bootstrap/12-sockfilter/sockfilter.bpf.c">sockfilter</a></a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/libbpf/libbpf-bootstrap/blob/master/examples/c/sockfilter.bpf.c">sockfilter</a></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<u>Summary</u><br />
+Although <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> allows BPF programs to be loaded, verified and attached to various kernel hooks and execute custom code there is currently no way to debug BPF programs' source code interactively.  Therefore, this now presents alternatives to explore unit testing and <a href="https://www.youtube.com/watch?v=vkYKXlTQ6cg">mock</a> BPF programs.  This will be the topic of the next post.
 </span>

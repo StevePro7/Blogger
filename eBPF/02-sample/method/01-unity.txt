@@ -1,0 +1,20 @@
+unity install
+09/07/2023
+
+INTRO
+https://github.com/ThrowTheSwitch/Unity
+http://www.throwtheswitch.org/unity
+
+reference
+https://github.com/ThrowTheSwitch/Unity/issues/302
+
+01-unity.png
+git clone git@github.com:ThrowTheSwitch/Unity.git
+
+02-unity.png
+cd Unity
+cmake .
+make
+sudo make install
+sudo cp libunity.a /usr/local/lib
+sudo cp src/unity*.h /usr/local/include/unity
