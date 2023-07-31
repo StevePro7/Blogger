@@ -22,3 +22,64 @@ https://libbpf.readthedocs.io/en/latest/api.html
 
 Self tess
 https://github.com/torvalds/linux/tree/master/tools/testing/selftests/bpf
+
+
+Breaking changes
+
+error code
+https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/errno-base.h
+
+errno = Exxx
+
+
+
+BPF program SEC() annotation streamlining
+no matter how many XDP programs one has in a single BPF object file
+all of them should be annotated strictly as SEC("xdp"
+
+use BPF program name [i.e. C function name]
+to identify BPF programs uniquely
+
+
+IMPORTANT
+I still see the old version in examples 
+e.g.
+SEC("tp/syscalls/sys_enter_write")
+
+
+API extensibility through OPTS framework
+lots of APIs accept optional struct xxx_opts arguments
+OPTS approach lets libbpf deal with compatibility w/o
+relying on ELF symbol versioning
+
+
+
+user-space APIs:
+libbpf.h;
+bpf.h;
+btf.h;
+
+BPF-side APIs:
+bpf_helpers.h;
+bpf_tracing.h;
+bpf_core_read.h;
+usdt.bpf.h;
+bpf_endian.h.
+
+
+USDT
+User Statically Defined Tracing
+
+
+Improved uprobes
+uprobes
+user-space tracing
+
+
+example
+SEC("usdt/libc.so.6:libc:setjmp")
+
+
+Networking support improvements
+libbpf provides API for creating TC [Traffic Control] hooks and attaching
+BPF programs to them - prveiously only possible thru iproute2 tool
