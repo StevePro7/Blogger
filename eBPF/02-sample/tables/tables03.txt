@@ -1,0 +1,30 @@
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;cmake_minimum_required(VERSION 3.19)<br />
+&nbsp;project(HelloUnity C)<br />
+&nbsp;set(CMAKE_C_STANDARD 11)<br />
+&nbsp;<br />
+&nbsp;include_directories(src/ /usr/local/include/unity/ src/include/libbpf/src)<br />
+&nbsp;link_directories(/usr/local/lib/ src/include/libbpf/src/amd64)<br />
+&nbsp;<br />
+&nbsp;file(GLOB CODE_FILES src/*.c)<br />
+&nbsp;file(GLOB TEST_FILES test/*.c)<br />
+&nbsp;add_executable(HelloUnity ${CODE_FILES} ${TEST_FILES} )<br />
+&nbsp;target_link_libraries(HelloUnity unity bpf elf z)<br />
+</td>
+</tr>
+</table>
+
+
+cmake_minimum_required(VERSION 3.19)
+project(HelloUnity C)
+set(CMAKE_C_STANDARD 11)
+
+include_directories(src/ /usr/local/include/unity/ src/include/libbpf/src)
+link_directories(/usr/local/lib/ src/include/libbpf/src/amd64)
+
+file(GLOB CODE_FILES src/*.c)
+file(GLOB TEST_FILES test/*.c)
+add_executable(HelloUnity ${CODE_FILES} ${TEST_FILES} )
+target_link_libraries(HelloUnity unity bpf elf z)

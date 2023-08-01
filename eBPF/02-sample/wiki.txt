@@ -1,5 +1,30 @@
 <span style="font-family:verdana;font-size:85%;">
-  
+
+Organize <b>src</b> and <b>test</b> directory structure.  Install libbpf beneath <b>src</b> folder.  Rename main.c to all_tests.c and move beneath test folder.  Update all prod and unit test code.  Complete CMakeLists.txt to include library files:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;cmake_minimum_required(VERSION 3.19)<br />
+&nbsp;project(HelloUnity C)<br />
+&nbsp;set(CMAKE_C_STANDARD 11)<br />
+&nbsp;<br />
+&nbsp;include_directories(src/ /usr/local/include/unity/ src/include/libbpf/src)<br />
+&nbsp;link_directories(/usr/local/lib/ src/include/libbpf/src/amd64)<br />
+&nbsp;<br />
+&nbsp;file(GLOB CODE_FILES src/*.c)<br />
+&nbsp;file(GLOB TEST_FILES test/*.c)<br />
+&nbsp;add_executable(HelloUnity ${CODE_FILES} ${TEST_FILES} )<br />
+&nbsp;target_link_libraries(HelloUnity unity bpf elf z)<br />
+</td>
+</tr>
+</table>
+Set breakpoints | Press F5 to debug step thru source code.
+<br />
+<br />
+TODO - complete documenting building out the src / tests code for this as per 01-unity.txt
+<br /><br />
+<br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, we checked out <a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a> Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to <a href="https://www.youtube.com/watch?v=R8-GbeaIOwc">debug</a> BPF programs thus we'd like to explore test options.
 <br />
 <!--
@@ -104,9 +129,9 @@ In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programmin
 <br /><br />
 Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloUnity</b> | Language std: C11
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s704/HelloUnity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s600/HelloUnity.png"/></a>
--->
+<!-- -->
 <br />
 Create
 <br /><br />
@@ -196,7 +221,7 @@ Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb
     ]
 }
 </pre>
-Set breakpoints | Press F5 to debug step thru source code!
+Set breakpoints | Press F5 to debug step thru source code.
 <br /><br />
   
 <u>Summary</u><br />
