@@ -64,7 +64,7 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikUUb5t6yMGwhFoyk9cvn0sA1q1vPjLm8uR3Nz6CGlStSpzn2bEB0ZBa5zZv1t5TgXubnqobyumb8uzahy6NsoWEabAXtGbVU2P0qoTcvtx7wgFb2DlIblY-6r-lHhnLgoD7UdYZ39_3BxNZIwed7MBJ-p8O3EjpZNmCCaLu2yf68iWWuIpr6-HQAaTQY/s889/02-unity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikUUb5t6yMGwhFoyk9cvn0sA1q1vPjLm8uR3Nz6CGlStSpzn2bEB0ZBa5zZv1t5TgXubnqobyumb8uzahy6NsoWEabAXtGbVU2P0qoTcvtx7wgFb2DlIblY-6r-lHhnLgoD7UdYZ39_3BxNZIwed7MBJ-p8O3EjpZNmCCaLu2yf68iWWuIpr6-HQAaTQY/s600/02-unity.png"/></a>
 <!-- -->
 <br />
-<!--<br />-->
+<br />
 <b>CMock</b><br />
 <a href="http://www.throwtheswitch.org/cmock">CMock</a> is a mock and stub generator designed to work smoothly with Unity. CMock automagically parses the C headers and creates useful mock interfaces used for unit testing.  Follow instructions <a href="https://github.com/ThrowTheSwitch/CMock">here</a> to install CMock.
 <br />
@@ -80,7 +80,7 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 </table>
 <!-- -->
 <br />
-<!--<br />-->
+<br />
 <b>Ceedling</b><br />
 <a href="http://www.throwtheswitch.org/ceedling">Ceedling</a> is a build system for C projects using Ruby Rake [make] build system.  Ceedling also makes TDD Test Driven Development simple by integrating CMock + Unity.  Follow instructions <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">here</a> to install Ceedling.
 <br />
@@ -97,8 +97,8 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s826/02-ceedling.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s600/02-ceedling.png"/></a>
 <!-- -->
+<br /><br />
 <br />
-  
 <u>Hello Unity</u><br />
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, examples installed the <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> C-based library.  Therefore, extend an example and write tests that invoke simple libbpf APIs, for example, <i><a href="https://github.com/libbpf/libbpf/blob/master/src/libbpf.c#L12828">libbpf_num_possible_cpus</a></i> directly using Unity framework.
 <br /><br />
@@ -131,7 +131,7 @@ Organize <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/01-H
 </table>
 Edit configurations | Run with root privileges | Set breakpoints | Press F5 to debug step thru source code.
 <br /><br />
-
+<br />
 <u>Hello CMock</u><br />
 At the time of writing, there is currently no way to <a href="https://www.youtube.com/watch?v=R8-GbeaIOwc&t=1100s">debug</a> BPF programs' source code interactively.  Therefore, we would like to attempt to <a href="https://www.youtube.com/watch?v=vkYKXlTQ6cg">mock</a> BPF programs or at least underlying C sourc code somehow using CMock.
 <br /><br />
@@ -151,7 +151,7 @@ Open folder <b>/home/stevepro/<a href="https://github.com/StevePro7/eBPFcode/tre
 <br />
 This creates mocks folder two corresponding files: <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/02-HelloCMock/mocks/mock_rectangle.h">mock_rectangle.h</a> and <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/02-HelloCMock/mocks/mock_rectangle.c">mock_rectangle.c</a>.  Notice we did not attempt to use CLion as is not currently <a href="https://groups.google.com/g/throwtheswitch/c/dbPNtBZ_84M/m/0_qZaa4KAgAJ?pli=1">integrated</a>; any attempt may produce Multiple Definition <a href="https://github.com/ThrowTheSwitch/CMock/issues/97">issue</a>!
 <br /><br />
-  
+<br />
 <u>Hello Ceedling</u><br />
 Complete previous <a href="https://github.com/joaniedavis/cmock_example">example</a> but this time try Ceedling using the <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">article</a> as a guideline:  Launch the Terminal:
 <!-- -->
@@ -219,7 +219,7 @@ Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb
 </pre>
 Set breakpoint in <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/03-HelloCeedling/test/test_shape_container.c">test_shape_container.c</a> | Press F5 to debug step thru source code.
 <br /><br />
-  
+<br />
 <u>Summary</u><br />
 </span>
   
