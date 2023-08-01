@@ -118,13 +118,13 @@ At the time of writing, there is currently no way to debug BPF programs' source 
 <br /><br />
 Follow the example <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">Spin up CMock</a>.  This article uses Ceedling to automate project setup and generate mocks but we will complete the following manually first to better understand the process.  Original code found <a href="https://github.com/joaniedavis/cmock_example">here</a>.
 <br /><br />
-Create folder <b>/home/stevepro/HelloCMock</b>.  Copy <a href="https://github.com/joaniedavis/cmock_example/blob/master/inc/rectangle.h">rectangle.h</a> and <a href="https://github.com/joaniedavis/cmock_example/blob/master/project.yml">project.yml</a>.  Execute mock command:
+Open folder <b>/home/stevepro/<a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/02-HelloCMock">HelloCMock</a></b>.  Copy inc/<a href="https://github.com/joaniedavis/cmock_example/blob/master/inc/rectangle.h">rectangle.h</a> + <a href="https://github.com/joaniedavis/cmock_example/blob/master/project.yml">project.yml</a>.  Execute mock command:
 <br />
 <!-- -->
 <table width="99%" border="1">
 <tr>
 <td>
-&nbsp;ruby ~/GitHub/ThrowTheSwitch/cmock/lib/cmock.rb -oproject.yml rectangle.h<br />
+&nbsp;ruby ~/GitHub/ThrowTheSwitch/cmock/lib/cmock.rb -oproject.yml inc/rectangle.h<br />
 </td>
 </tr>
 </table>
