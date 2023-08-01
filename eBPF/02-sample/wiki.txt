@@ -1,26 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Organize <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/01-HelloUnity/src">src</a></b> and <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/01-HelloUnity/test">test</a></b> directory structure.  Install <a href="https://github.com/libbpf/libbpf">libbpf</a> beneath <b>src</b> folder.  Rename main.c to <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/01-HelloUnity/test/all_tests.c">all_tests.c</a> and move beneath test folder.  Update all prod and unit test code.  Complete <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/01-HelloUnity/CMakeLists.txt">CMakeLists.txt</a> to include library files:
-<br />
-<table width="99%" border="1">
-<tr>
-<td>
-&nbsp;cmake_minimum_required(VERSION 3.19)<br />
-&nbsp;project(HelloUnity C)<br />
-&nbsp;set(CMAKE_C_STANDARD 11)<br />
-&nbsp;<br />
-&nbsp;include_directories(src/ /usr/local/include/unity/ src/include/libbpf/src)<br />
-&nbsp;link_directories(/usr/local/lib/ src/include/libbpf/src/amd64)<br />
-&nbsp;<br />
-&nbsp;file(GLOB CODE_FILES src/*.c)<br />
-&nbsp;file(GLOB TEST_FILES test/*.c)<br />
-&nbsp;add_executable(HelloUnity ${CODE_FILES} ${TEST_FILES} )<br />
-&nbsp;target_link_libraries(HelloUnity unity bpf elf z)<br />
-</td>
-</tr>
-</table>
-Edit configurations | Run with root privileges | Set breakpoints | Press F5 to debug step thru source code.
-<br />
+
 <br />
 TODO - complete documenting building out the src / tests code for this as per 01-unity.txt
 <br /><br />
@@ -135,7 +115,26 @@ Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloUni
 <br />
 Create
 <br /><br />
-TODO - complete documenting building out the src / tests code for this as per 01-unity.txt
+Organize <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/01-HelloUnity/src">src</a></b> and <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/01-HelloUnity/test">test</a></b> directory structure.  Install <a href="https://github.com/libbpf/libbpf">libbpf</a> beneath <b>src</b> folder.  Rename main.c to <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/01-HelloUnity/test/all_tests.c">all_tests.c</a> and move beneath test folder.  Update all prod and unit test code.  Complete <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/01-HelloUnity/CMakeLists.txt">CMakeLists.txt</a> to include library files:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;cmake_minimum_required(VERSION 3.19)<br />
+&nbsp;project(HelloUnity C)<br />
+&nbsp;set(CMAKE_C_STANDARD 11)<br />
+&nbsp;<br />
+&nbsp;include_directories(src/ /usr/local/include/unity/ src/include/libbpf/src)<br />
+&nbsp;link_directories(/usr/local/lib/ src/include/libbpf/src/amd64)<br />
+&nbsp;<br />
+&nbsp;file(GLOB CODE_FILES src/*.c)<br />
+&nbsp;file(GLOB TEST_FILES test/*.c)<br />
+&nbsp;add_executable(HelloUnity ${CODE_FILES} ${TEST_FILES} )<br />
+&nbsp;target_link_libraries(HelloUnity unity bpf elf z)<br />
+</td>
+</tr>
+</table>
+Edit configurations | Run with root privileges | Set breakpoints | Press F5 to debug step thru source code.
 <br /><br />
 
 <u>Hello CMock</u><br />
