@@ -190,8 +190,10 @@ Copy all project files into <b><a href="https://github.com/StevePro7/eBPFcode/tr
 <br />
 <!-- -->
 Run tests manually simply by typing <b>ceedling</b>
-<br /><br />
-Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb-with-ceedling">interactively</a> with GDB as follows: Launch VS Code.  Press F5 to add launch.json file to complete:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_iEa91TFucjzWcbM9xPGQ9_TykLVhnHPhqjQ71tgOtcDkMNzeBgr0xUXPOk9-UwomMEaIowbWKkzbjM7VRP_5Ra9HRbzJhmz0gi-HhDCr052e2pmpyJDjsTLEGld1YIMk-RhJn4IX3pWxPUHlS9ALyjIsX_LVPU2XjE_tQzr-fUF2Tz_9SHGZTZ1J4rw/s468/ceedling_run.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_iEa91TFucjzWcbM9xPGQ9_TykLVhnHPhqjQ71tgOtcDkMNzeBgr0xUXPOk9-UwomMEaIowbWKkzbjM7VRP_5Ra9HRbzJhmz0gi-HhDCr052e2pmpyJDjsTLEGld1YIMk-RhJn4IX3pWxPUHlS9ALyjIsX_LVPU2XjE_tQzr-fUF2Tz_9SHGZTZ1J4rw/s600/ceedling_run.png"/></a>
+<br />
+Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb-with-ceedling">interactively</a> with GDB as follows: Launch VS Code.  Press F5 to add <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/03-HelloCeedling/.vscode/launch.json">launch.json</a> file to complete:
 <br />
 <pre class="csharp" name="code">
 {
@@ -220,7 +222,7 @@ Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb
     ]
 }
 </pre>
-Set breakpoint in test_shape_container.c | Press F5 to debug step thru source code.
+Set breakpoint in <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/03-HelloCeedling/test/test_shape_container.c">test_shape_container.c</a> | Press F5 to debug step thru source code.
 <br /><br />
   
 <u>Summary</u><br />
