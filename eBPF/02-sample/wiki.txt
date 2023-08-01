@@ -1,6 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Organize <b>src</b> and <b>test</b> directory structure.  Install libbpf beneath <b>src</b> folder.  Rename main.c to all_tests.c and move beneath test folder.  Update all prod and unit test code.  Complete CMakeLists.txt to include library files:
+Organize <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/01-HelloUnity/src">src</a></b> and <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/01-HelloUnity/test">test</a></b> directory structure.  Install <a href="https://github.com/libbpf/libbpf">libbpf</a> beneath <b>src</b> folder.  Rename main.c to <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/01-HelloUnity/test/all_tests.c">all_tests.c</a> and move beneath test folder.  Update all prod and unit test code.  Complete <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/01-HelloUnity/CMakeLists.txt">CMakeLists.txt</a> to include library files:
 <br />
 <table width="99%" border="1">
 <tr>
@@ -19,7 +19,7 @@ Organize <b>src</b> and <b>test</b> directory structure.  Install libbpf beneath
 </td>
 </tr>
 </table>
-Set breakpoints | Press F5 to debug step thru source code.
+Edit configurations | Run with root privileges | Set breakpoints | Press F5 to debug step thru source code.
 <br />
 <br />
 TODO - complete documenting building out the src / tests code for this as per 01-unity.txt
