@@ -158,8 +158,8 @@ This creates mocks folder two corresponding files: <a href="https://github.com/S
 <br /><br />
   
 <u>Hello Ceedling</u><br />
-Complete previous <a href="https://github.com/joaniedavis/cmock_example">example</a> but this time use Ceedling using the <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">article</a> as a guideline:  Launch the Terminal:
-<!--
+Complete previous <a href="https://github.com/joaniedavis/cmock_example">example</a> but this time try Ceedling using the <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">article</a> as a guideline:  Launch the Terminal:
+<!-- -->
 <br />
 <table width="99%" border="1">
 <tr>
@@ -169,11 +169,11 @@ Complete previous <a href="https://github.com/joaniedavis/cmock_example">example
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
-Copy all project files into <b>src</b> and <b>test</b> directories.  Include <b>inc</b> and update project.yml with the inc directory:
+Copy all project files into <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/03-HelloCeedling/src">src</a></b> and <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/03-HelloCeedling/test">test</a></b> directories.  Include <b><a href="https://github.com/StevePro7/eBPFcode/tree/main/Sample/03-HelloCeedling/inc">inc</a></b> and update <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sample/03-HelloCeedling/project.yml">project.yml</a> with the inc directory:
 <br />
-<!--
+<!-- -->
 <pre class="csharp" name="code">
   :paths:
   :test:
@@ -188,7 +188,7 @@ Copy all project files into <b>src</b> and <b>test</b> directories.  Include <b>
   :libraries: []
 </pre>
 <br />
--->
+<!-- -->
 Run tests manually simply by typing <b>ceedling</b>
 <br /><br />
 Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb-with-ceedling">interactively</a> with GDB as follows: Launch VS Code.  Press F5 to add launch.json file to complete:
@@ -220,7 +220,7 @@ Debug tests <a href="https://stackoverflow.com/questions/41488664/how-to-use-gdb
     ]
 }
 </pre>
-Set breakpoints | Press F5 to debug step thru source code.
+Set breakpoint in test_shape_container.c | Press F5 to debug step thru source code.
 <br /><br />
   
 <u>Summary</u><br />
