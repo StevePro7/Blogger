@@ -28,3 +28,11 @@ yocto	septilltion	th		10 ^ -24
 Network icon
 Settings | Personalization | Taskbar
 Select which icons appear on the taskbar
+
+
+
+Easiest Way to Download YouTube Transcript / Subtitles as Plain Text
+https://www.youtube.com/watch?v=vxb0X1fdbaI
+
+YouTube.txt
+D:\GitHub\StevePro9\Blogger\eBPF
