@@ -1,0 +1,110 @@
+Setting up a productive development environment to debug and step through the Linux source code can be a complex task, but I'll provide a general guide to help you get started. Keep in mind that the process may vary depending on your specific Linux distribution and the version of the kernel you want to debug. For this guide, I'll assume you're using a Debian-based distribution and working with the latest stable Linux kernel.
+
+1. Install necessary packages:
+Ensure that your system has essential development tools and utilities installed. Open a terminal and run the following commands to install the required packages:
+
+```bash
+sudo apt update
+sudo apt install build-essential gdb git
+```
+
+2. Get the Linux kernel source code:
+You can either download the Linux kernel source code manually from https://www.kernel.org/ or clone the Git repository. Cloning the repository is recommended as it allows easy updates to the latest code:
+
+```bash
+git clone https://github.com/torvalds/linux.git
+```
+
+3. Build the kernel:
+Next, navigate to the directory where you cloned the Linux kernel source code and build it. The process may take some time, depending on your system specifications.
+
+```bash
+cd linux
+make menuconfig  # Optionally, configure kernel options if needed
+make -j $(nproc)
+```
+
+4. Load necessary kernel modules:
+Before debugging, ensure that the kernel debugging symbols are available. Load the required kernel modules to enable debugging:
+
+```bash
+sudo modprobe debugfs
+sudo mount -t debugfs none /sys/kernel/debug
+```
+
+5. Install necessary tools:
+Install additional tools required for kernel debugging:
+
+```bash
+sudo apt install linux-tools-common linux-tools-generic
+```
+
+6. Install KGDB/KDB (optional):
+KGDB (Kernel GNU Debugger) and KDB (Kernel Debugging) are popular kernel debugging tools. To enable these options, use the following commands in the kernel source directory:
+
+```bash
+make menuconfig
+```
+
+Then navigate to "Kernel Hacking" -> "Compile-time checks and compiler options" -> Enable "Compile the kernel with debug info" and "KGDB: Kernel debugging with remote gdb" or "KDB: Kernel Debugging".
+
+After making changes, save the configuration and rebuild the kernel:
+
+```bash
+make -j $(nproc)
+```
+
+7. Configure GDB:
+Create a `.gdbinit` file in your home directory with the following content:
+
+```
+set architecture i386:x86-64
+target remote localhost:1234
+```
+
+8. Start the debug session:
+Boot your custom-built kernel with KGDB/KDB enabled and add the "kgdbwait" parameter to the kernel command line. This will cause the kernel to wait for a debugger to attach before continuing the boot process.
+
+You can either pass the "kgdbwait" parameter manually during boot or edit your GRUB configuration to include it. To edit GRUB, open the grub configuration file:
+
+```bash
+sudo nano /etc/default/grub
+```
+
+Find the line starting with `GRUB_CMDLINE_LINUX_DEFAULT` and add "kgdbwait" to the parameters:
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet kgdbwait"
+```
+
+Save the file and update GRUB:
+
+```bash
+sudo update-grub
+```
+
+9. Start debugging:
+Now, you are ready to start debugging. In one terminal, navigate to the kernel source directory and run:
+
+```bash
+gdb vmlinux
+```
+
+In another terminal, as a superuser, run:
+
+```bash
+sudo gdbserver :1234 /path/to/vmlinux
+```
+
+Replace `/path/to/vmlinux` with the absolute path to your vmlinux file.
+
+10. Connect GDB to the remote target:
+In the GDB terminal, use the `target remote` command to connect to the remote target:
+
+```bash
+(gdb) target remote localhost:1234
+```
+
+Now, you can start debugging the Linux kernel using GDB!
+
+Keep in mind that kernel debugging is an advanced topic, and this guide only covers the basics. The Linux kernel has extensive documentation on kernel debugging, and you may need to refer to specific resources depending on the version and configurations of the kernel you are working with. Happy debugging!
