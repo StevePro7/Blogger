@@ -1,0 +1,27 @@
+In Linux networking, both `ip route` and `ip rule` commands are used for managing routing tables and policy-based routing, respectively. Here's a brief explanation of each:
+
+1. `ip route`:
+The `ip route` command is used to manage the routing table in Linux. A routing table is a data structure used by the operating system to determine where network traffic should be sent. It contains information about network destinations and the next-hop gateway or interface to reach those destinations.
+
+With `ip route`, you can add, delete, or modify routes in the routing table. This allows you to control how network packets are forwarded between different network interfaces and gateways. The routing table is consulted whenever the system needs to decide how to send data to a specific IP address or network.
+
+Example usage of `ip route`:
+```
+# Add a route to send traffic destined for 10.0.0.0/24 via gateway 192.168.1.1
+ip route add 10.0.0.0/24 via 192.168.1.1 dev eth0
+```
+
+2. `ip rule`:
+The `ip rule` command is used to manage the policy routing rules in Linux. Policy-based routing allows you to have multiple routing tables and apply different rules to determine which table to use for specific types of traffic.
+
+Each policy routing rule consists of a selector (used to match certain properties of the traffic) and an action (specifying which routing table to use for the matched traffic). When a packet matches a rule, the corresponding routing table is consulted to determine the path of the packet.
+
+Policy routing is often used for more advanced networking configurations, such as load balancing, source-based routing, and network policy enforcement.
+
+Example usage of `ip rule`:
+```
+# Add a rule to send traffic from source IP 192.168.2.10 via a separate routing table with ID 100
+ip rule add from 192.168.2.10 table 100
+```
+
+In summary, `ip route` is used to manage the primary routing table, while `ip rule` is used to configure policy-based routing rules, allowing for more granular control over network traffic based on various conditions.
