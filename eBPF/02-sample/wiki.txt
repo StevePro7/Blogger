@@ -1,10 +1,4 @@
 <span style="font-family:verdana;font-size:85%;">
-
-<u>Summary</u><br />
-According to <a href="https://chat.openai.com">ChatGPT</a>, eBPF is versatile technology that allows safe and efficient code execution within the Linux kernel without requiring modification of kernel code.  This feature makes it attractive for applications including network packet filtering, security, logging + tracing, monitoring, and performance optimization.
-<br /><br />
-In summary, while eBPF is a valuable addition to the Linux ecosystem, it is not expected to replace kernel development.  Instead, eBPF complements this by currently providing a flexible and efficient way to extend specific kernel features.  Therefore, it will be interesting to see if this technology is dominant in the <a href="https://www.youtube.com/watch?v=hCixFexl9YU">future</a>.
-<br /><br />
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, we checked out <a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a> Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to <a href="https://www.youtube.com/watch?v=R8-GbeaIOwc">debug</a> BPF programs thus we'd like to explore test options.
 <br />
 <!-- --> 
@@ -226,5 +220,7 @@ Set breakpoint in <a href="https://github.com/StevePro7/eBPFcode/blob/main/Sampl
 <br /><br />
 <br />
 <u>Summary</u><br />
+According to <a href="https://chat.openai.com">ChatGPT</a>, eBPF is versatile technology that allows safe and efficient code execution within the Linux kernel without requiring modification of kernel code.  This feature makes it attractive for applications including network packet filtering, security, logging + tracing, monitoring, and performance optimization.
+<br /><br />
+In summary, while eBPF is a valuable addition to the Linux ecosystem, it is not expected to replace kernel development.  Instead, eBPF complements this by currently providing a flexible and efficient way to extend specific kernel features.  Therefore, it will be interesting to see if this technology is dominant in the <a href="https://www.youtube.com/watch?v=hCixFexl9YU">future</a>.
 </span>
-  
