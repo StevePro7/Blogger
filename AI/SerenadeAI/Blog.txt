@@ -1,0 +1,102 @@
+Blog
+25-Jul-2023
+
+INTRO
+about AI - everyone talking about ChatGPT
+Q. what good for i.e. coding?
+
+But what about using AI / ML for automating code flow and/or programming via Voice Recognition?
+
+Enter Serenade AI
+https://serenade.ai
+
+
+Blurb what it is
+open source project
+https://github.com/serenadeai/serenade
+
+Reference
+YT videos
+
+
+INSTALLATION
+Navigate to https://serenade.ai
+Download
+Linux
+
+at time of writing version
+Serenade-2.0.2.AppImage
+
+
+Simple setup
+Launch Terminal | Navigate to downloaded file Serenade-2.0.2.AppImage
+cd ~/Downloads
+chmod +x Serenade-2.0.2.AppImage
+./Serenade-2.0.2.AppImage
+
+
+Install Plugins
+VS Code
+JetBrains
+
+Share audio data	UNCHECKED
+Share command data	UNCHECKED
+
+
+Launch VS Code
+Extensions
+search for Serenade
+Install
+
+
+Launch Goland IDE
+Setings | Plugins | Marketplace
+search for Serenade
+Install
+
+
+Advanced setup
+cd ~/Downloads
+sudo cp Serenade-2.0.2.AppImage /usr/local/bin/SerenadeAI
+
+
+Setup as application
+cd /usr/share/applications
+
+touch SerenadeAI.desktop
+vim SerenadeAI.desktop
+
+
+[Desktop Entry]
+Name=SerenadeAI
+Comment=Share this desktop by Serenade
+Exec=/usr/local/bin/SerenadeAI
+Icon=/usr/share/pixmaps/SerenadeIcon.png
+Terminal=false
+Type=Application
+
+
+NB: downloaded custom icon e.g. Calico cat to here
+sudo cp SerenadeIcon.png /usr/share/pixmaps/SerenadeIcon.png
+
+
+sudo cp SerenadeAI.desktop /usr/share/applications/SerenadeAI.desktop
+
+
+Custom commands
+https://github.com/serenadeai/custom-commands
+
+
+made start on some custom commands and must be stored here
+~/.serenade/scripts
+
+
+
+Alt+space	toggle
+pause		listening
+
+common comands to use
+pause
+enter
+undo
+repeat

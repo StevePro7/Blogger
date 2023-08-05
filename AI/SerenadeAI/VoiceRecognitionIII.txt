@@ -1,0 +1,40 @@
+Voice recognition III
+24-Jul-2023
+
+Serenade.ai - code using your voice (and AI)
+https://www.youtube.com/watch?v=Pc-EbY1fRWk&t=11s
+
+
+Neuralink
+
+
+
+Setup SerenadeAI as application
+reference
+https://askubuntu.com/questions/1176867/how-to-show-an-application-from-the-dock-in-files
+
+cp AppImage to /usr/local/bin
+as per yesterday
+
+but follow this to create
+SerenadeAI.desktop
+/usr/share/applications
+
+Start | SerenadeAI
+
+custom icon
+ref
+https://askubuntu.com/questions/884109/how-do-i-create-a-new-application-icon
+Download steveproXNA.jpg
+cp here
+/usr/share/pixmaps/
+
+SerenadeAI.desktop
+
+[Desktop Entry]
+Name=SerenadeAI
+Comment=Share this desktop by Serenade
+Exec=/usr/local/bin/SerenadeAI
+Icon=/usr/share/pixmaps/SteveProXNA.jpg
+Terminal=false
+Type=Application
