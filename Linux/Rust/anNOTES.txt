@@ -1,0 +1,68 @@
+anNOTES
+05-Aug-2023
+
+
+
+how to install rust on ubuntu linux and clion
+
+chatGPT
+/home/stevepro/Steven/INSTALLATION/rust
+
+
+
+NB:
+I already had CLion and the Rust plugin installed
+
+
+Terminal
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+
+sudo apt-get update
+sudo apt-get install build-essential
+
+
+Launch CLion
+Settings 
+Language
+Rust
+
+Toolchain location
+was
+/usr/bin
+but changed
+/home/stevepro/.cargo/bin
+
+
+Standard library
+greyed out
+
+CLion installed a ton of stuff...
+
+
+Standard library
+click
+Download as rustup
+
+
+auto complete
+/home/stevepro/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust 
+
+OK
+
+
+
+IMPORTANT
+I updated CLion also but used JetBrains Toolbox App
+https://www.jetbrains.com/toolbox-app
+
+~/Downloads
+Extract
+cd /home/stevepro/Downloads/jetbrains-toolbox-1.28.1.15219
+
+right click
+jetbrains-toolbox
+Run
+
+CLion
+update

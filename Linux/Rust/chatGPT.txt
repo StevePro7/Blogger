@@ -1,0 +1,55 @@
+To install Rust on Ubuntu Linux and set it up with CLion, you'll need to follow these steps:
+
+1. **Install Rust:**
+   Open a terminal and run the following command to install Rust using `rustup`, which is the recommended way to install and manage Rust on your system:
+
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+
+   Follow the on-screen instructions to complete the installation. This will also add the Rust binary directory to your system's PATH.
+
+2. **Install Build Essentials:**
+   Before using Rust on Ubuntu, you might need to install some basic build tools. Run the following command to install them:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install build-essential
+   ```
+
+3. **Install CLion:**
+   CLion is an Integrated Development Environment (IDE) developed by JetBrains. You can download the CLion installer for Linux from the official website: https://www.jetbrains.com/clion/download/
+
+   After downloading, follow the installation instructions provided by JetBrains.
+
+4. **Install Rust plugin for CLion:**
+   Once you have CLion installed, you need to install the Rust plugin to enable Rust development within CLion.
+
+   - Open CLion.
+   - Go to **File > Settings** (or **CLion > Preferences** on macOS).
+   - In the left panel, navigate to **Plugins**.
+   - Click on the **Marketplace** tab.
+   - Search for "Rust" and install the official Rust plugin.
+
+5. **Configure Rust Toolchain in CLion:**
+   After installing the Rust plugin, you need to configure the Rust toolchain in CLion.
+
+   - Open CLion.
+   - Go to **File > Settings** (or **CLion > Preferences** on macOS).
+   - In the left panel, navigate to **Languages & Frameworks > Rust**.
+   - Select the Rust toolchain you installed using `rustup`.
+   - Click **OK** to apply the settings.
+
+6. **Create a Rust Project in CLion:**
+   Now you can create a new Rust project in CLion:
+
+   - Open CLion.
+   - Click on **Create New Project**.
+   - Select **Rust** as the project type.
+   - Choose the location and name for your project.
+   - Click **Create**.
+
+7. **Write and Run Rust Code:**
+   You can now start writing Rust code in CLion. Create new Rust files, write your code, and use CLion's built-in features for code completion, debugging, and version control.
+
+Remember that the steps and details might slightly vary based on your specific system configuration and any updates to the software since my knowledge cutoff in September 2021. Always refer to the official documentation for the most up-to-date information.
