@@ -1,0 +1,223 @@
+<span style="font-family:verdana;font-size:85%;">
+In 2014, we checked out z88dk Programming <a href="http://steveproxna.blogspot.com/2014/09/z88dk-programming-setup.html">Setup</a> + <a href="http://steveproxna.blogspot.com/2014/11/z88dk-programming-sample.html">Sample</a> to build <a href="http://www.smspower.org/Homebrew/3DCity-SMS">3D City</a> for the <a href="https://en.wikipedia.org/wiki/Master_System">Sega Master System</a>.  While this worked on <a href="http://www.emutopia.com/index.php/emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> + <a href="http://www.emutopia.com/index.php/emulators/item/298-sega-sg-1000-sc-3000/239-meka">Meka</a> emulators unfortunately 3D City encountered graphics glitches on real hardware.
+<br /><br />
+In 2017 we checked out devkitSMS Programming <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">Setup</a> + <a href="http://steveproxna.blogspot.com/2017/11/devkitsms-programming-sample.html">Sample</a> to build <a href="http://www.smspower.org/Homebrew/CandyKidDemo-SMS">CandyKid</a> Demo for the <a href="https://en.wikipedia.org/wiki/Master_System">SMS</a> also.  As this demo worked on <a href="http://www.emutopia.com/index.php/emulators/item/295-sega-master-system/1165-emulicious">Emulicious</a> emulator with VDP constraints enabled CandyKid Demo now ran on real hardware.
+<br /><br />
+Building upon knowledge + experience shared by the <a href="http://www.smspower.org">SMS Power</a> community, plus gaining access to source code, we have now streamlined the SMS development process to build <a href="http://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> using the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
+<a href="https://1.bp.blogspot.com/-SyXu4LLExtU/WulruLrYRJI/AAAAAAAAEks/2vh6VDieRx8EOU9zZ0WY7UYp0d0vi6GXwCLcBGAs/s1600/00.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-SyXu4LLExtU/WulruLrYRJI/AAAAAAAAEks/2vh6VDieRx8EOU9zZ0WY7UYp0d0vi6GXwCLcBGAs/s640/00.jpg" width="98%" height="525" data-original-width="642" data-original-height="527" /></a>
+<br />
+Let’s check it out!
+<br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">post</a>: this documents how to setup the pre-requisite software.
+<br />
+Note: ensure you have downloaded and installed the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and Small Device C Compiler [<a href="http://sdcc.sourceforge.net">SDCC</a>].
+<br /><br />
+<u>Folders</u>
+<br />
+The <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> requires certain utilities to work such as ihx2sms, assets2banks and/or folder2c.  Plus, it is common to use utilities like <a href="http://www.smspower.org/maxim/Software/BMP2Tile">BMP2Tile</a> for graphics, <a href="https://github.com/sverx/PSGlib/blob/master/tools/vgm2psg.exe">VGM2PSG</a> for sound, assemblers like <a href="https://github.com/vhelin/wla-dx">WLA-DX</a> etc. etc.
+<br /><br />
+Therefore, it makes sense to centralize these utilities in a parent folder C:\SEGA\Utilities.  Also, all emulators such as <a href="http://www.emutopia.com/index.php/emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a>, <a href="http://www.emutopia.com/index.php/emulators/item/298-sega-sg-1000-sc-3000/239-meka">Meka</a> + <a href="http://www.emutopia.com/index.php/emulators/item/295-sega-master-system/1165-emulicious">Emulicious</a> can be re-located to C:\SEGA and added to <a href="https://en.wikipedia.org/wiki/PATH_(variable)">PATH</a> Environment variable.
+<a href="https://4.bp.blogspot.com/-8orXcaOhakE/WvlccicYStI/AAAAAAAAEog/4CRqq0kxewoEkaDQ_I8hhZvfs0FDl6DQgCLcBGAs/s1600/Folder.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-8orXcaOhakE/WvlccicYStI/AAAAAAAAEog/4CRqq0kxewoEkaDQ_I8hhZvfs0FDl6DQgCLcBGAs/s640/Folder.jpg" width="98%" height="424" data-original-width="689" data-original-height="457" /></a>
+System | Advanced system settings | Environment Variables | PATH.  Add all corresponding C:\SEGA folders
+<br /><br /> 
+<u>Graphics</u>
+<br />
+Previous <a href="http://steveproxna.blogspot.com/2014/11/z88dk-programming-sample.html">work</a> on SMS graphics simply used basic tools like MS Paint to save sprite and tile data in 16 Color Bitmap format to conform to the 4bpp (bits per pixel) constraints.  However, graphics here were very simple!
+<br /><br />
+In order to achieve a more authentic 8-bit look and feel, and still comply with 4bpp, let's use another tool: Download <a href="https://www.gimp.org/downloads">Gimp</a>.  Load typical 256x192 BMP image as before but save as <a href="https://superuser.com/questions/678434/export-file-as-palleted-8bit-per-pixel-bmp-from-gimp">Indexed</a> mode with max 16 colors.
+<a href="https://2.bp.blogspot.com/-Lf_cjlymi4w/WvlgiRHfVdI/AAAAAAAAEos/CNKrqumHknIwNzZp63KjvBgwKSSxMgJrACLcBGAs/s1600/01.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-Lf_cjlymi4w/WvlgiRHfVdI/AAAAAAAAEos/CNKrqumHknIwNzZp63KjvBgwKSSxMgJrACLcBGAs/s640/01.jpg" width="98%" height="490" data-original-width="405" data-original-height="310" /></a>
+Image menu | Mode | Indexed...
+<a href="https://2.bp.blogspot.com/-G2NCBDHS-Uk/Wvlg5llTusI/AAAAAAAAEo0/xW-9pIa3FrMo1QXbIglJy5iFx60yN1hrQCLcBGAs/s1600/02.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-G2NCBDHS-Uk/Wvlg5llTusI/AAAAAAAAEo0/xW-9pIa3FrMo1QXbIglJy5iFx60yN1hrQCLcBGAs/s640/02.jpg" width="98%" height="446" data-original-width="615" data-original-height="429" /></a>
+Convert Image to Indexed Colors | Generate optimum palette | Maximum number of colors: 16
+<a href="https://2.bp.blogspot.com/-k3BVk0JmKXU/WvlhBxkWxaI/AAAAAAAAEo4/yBk-N5ifxeEes8ANjsUjvaB3ajvUyxm9ACLcBGAs/s1600/03.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-k3BVk0JmKXU/WvlhBxkWxaI/AAAAAAAAEo4/yBk-N5ifxeEes8ANjsUjvaB3ajvUyxm9ACLcBGAs/s640/03.jpg" width="98%" height="640" data-original-width="369" data-original-height="410" /></a>
+Click Convert button.  Finally, File menu | Export As... simpsons.bmp | Export
+<br /><br />
+<u>BMP2Tile</u>
+<br />
+Previous <a href="http://steveproxna.blogspot.com/2014/11/z88dk-programming-sample.html">work</a> using <a href="http://www.smspower.org/maxim/Software/BMP2Tile">BMP2Tile</a> was a very manual process: Launch BMP2Tile | drag n' drop the 4bpp image into BMP2Tile and manually configure options and save out the Tiles, Tilemap and Palette files one by one.
+<br /><br />
+After inspecting the source code for <a href="https://github.com/kusfo/astroforce">Astro Force</a>, we see that <a href="http://www.smspower.org/forums/member10267">eruiz00</a> automates this process using batch scripts.  Let's replicate this process to produce Tiles, Tilemap and Palette files for simpsons.bmp [above].
+<br /><br />
+<b>Image.bat</b>
+<pre class="csharp" name="code">
+bmp2tile.exe raw\simpsons.bmp -savetiles "simpsons (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 96
+bmp2tile.exe raw\simpsons.bmp -savetilemap "simpsons (tilemap).stmcompr" -exit
+bmp2tile.exe raw\simpsons.bmp -savepalette "simpsons (palette).bin" -exit
+</pre>
+Tiles
+<a href="https://1.bp.blogspot.com/-ov_uO5_SniI/WvlqOb0Yx1I/AAAAAAAAEpM/gTjUB4RM0iow-vioWxL335FdKbKsDToyQCLcBGAs/s1600/Tiles.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-ov_uO5_SniI/WvlqOb0Yx1I/AAAAAAAAEpM/gTjUB4RM0iow-vioWxL335FdKbKsDToyQCLcBGAs/s640/Tiles.jpg" width="98%" height="428" data-original-width="594" data-original-height="397" /></a>
+Tilemap
+<a href="https://1.bp.blogspot.com/-Nk1e00kkDM4/WvlqZ1vpLCI/AAAAAAAAEpQ/mrBXB7GPrQ0uR2d1Z1YmTSlwnCmVAr6swCLcBGAs/s1600/Tilemap.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-Nk1e00kkDM4/WvlqZ1vpLCI/AAAAAAAAEpQ/mrBXB7GPrQ0uR2d1Z1YmTSlwnCmVAr6swCLcBGAs/s640/Tilemap.jpg" width="98%" height="431" data-original-width="593" data-original-height="399" /></a>
+Palette
+<a href="https://4.bp.blogspot.com/-5wrwPzIPtdU/WvlqjbhVR8I/AAAAAAAAEpY/XN5yJUDnVIIVOykS7rdN7yvL781YYLpLACLcBGAs/s1600/Palette.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-5wrwPzIPtdU/WvlqjbhVR8I/AAAAAAAAEpY/XN5yJUDnVIIVOykS7rdN7yvL781YYLpLACLcBGAs/s640/Palette.jpg" width="98%" height="301" data-original-width="591" data-original-height="278" /></a>
+IMPORTANT: for multiple images loaded and rendered at the same time ensure the palette file is the same!
+<br />
+Note: folder2c ..\gfx gfx is used as before to convert files to code.  Here <b>96</b> is the tile offset used in code:
+<br /><br />
+<b>ContentManager.c</b>
+<pre class="csharp" name="code">
+#define SIMPSONS_TILES 96
+void engine_content_manager_title()
+{
+  SMS_loadPSGaidencompressedTiles( simpsons__tiles__psgcompr, SIMPSONS_TILES );
+  SMS_loadSTMcompressedTileMap( 0, 0, simpsons__tilemap__stmcompr );
+  SMS_loadBGPalette( simpsons__palette__bin );
+}
+</pre>
+Finally, see <a href="https://github.com/maxim-zhao/bmp2tile/blob/master/readme.txt">here</a> for a complete list of all Command line mode arguments that can be used with BMP2Tile.
+<br /><br />
+<u>ROM Banking</u>
+<br />
+<a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/blob/master/SimpsonsTrivia-v1.02.sms">Simpsons Trivia</a> is 128KB in size thus uses ROM banking to allow for more that 48KB in the game ROM.  Again Astro, Force gives a real world example on how <a href="https://en.wikipedia.org/wiki/Bank_switching">bank switching</a> can be achieved for more content.
+<br /><br />
+For example, let's load the Splash screen from bank 2 as this is rendered once during the entire game:
+<br /><br />
+<b>Image.bat</b>
+<pre class="csharp" name="code">
+bmp2tile.exe raw\splash.bmp -savetiles "splash (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 112 
+bmp2tile.exe raw\splash.bmp -savetilemap "splash (tilemap).stmcompr" -exit
+bmp2tile.exe raw\splash.bmp -savepalette "splash (palette).bin" -exit
+</pre>
+<b>Build.bat</b>
+<pre class="csharp" name="code">
+REM echo Build banks.c and banks.h from banks folder
+cd banks
+folder2c bank2 bank6 2
+
+REM echo Build banks
+sdcc -c --no-std-crt0 -mz80 --Werror --opt-code-speed --constseg BANK2 bank2.c
+
+REM echo Build main
+sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 main.c
+
+REM echo Linking
+sdcc -o output.ihx --Werror --opt-code-speed -mz80 --no-std-crt0 --data-loc 0xC000 ^
+-Wl-b_BANK2=0x8000 ^
+..\crt0\crt0_sms.rel ^main.rel ^
+..\lib\SMSlib.lib ^
+..\lib\PSGlib.rel ^
+banks\bank2.rel
+</pre>
+<br />
+<b>ContentManager.c</b>
+<pre class="csharp" name="code">
+#define GRAPHICS_TILES 112
+void engine_content_manager_splash()
+{
+  SMS_mapROMBank( 2 );
+  SMS_loadPSGaidencompressedTiles( splash__tiles__psgcompr, GRAPHICS_TILES );
+  SMS_loadSTMcompressedTileMap( 0, 0, splash__tilemap__stmcompr );
+  SMS_loadBGPalette( splash__palette__bin );
+}
+</pre>
+<br />
+<u>Function Pointers</u>
+<br />
+Game development is renown for using the <a href="https://en.wikipedia.org/wiki/State_pattern">State</a> design pattern.  Therefore, previous SMS titles like <a href="http://www.smspower.org/Homebrew/3DCity-SMS">3D City</a> or <a href="http://www.smspower.org/Homebrew/CandyKidDemo-SMS">CandyKid</a> demo have a main loop that switches load and update methods depending on the current state.
+<br /><br />
+For example, CandyKid demo has 4x states: Splash, Title, Ready, and Play thus the main loop is as follows:
+<br /><br />
+<b>Main.c</b>
+<pre class="csharp" name="code">
+for ( ;; )
+{
+  if ( enum_curr_screen_type != enum_next_screen_type )
+  {
+    enum_curr_screen_type = enum_next_screen_type;
+    custom_screen_manager_load( enum_curr_screen_type );
+  }
+  // ...
+  custom_screen_manager_update( &enum_next_screen_type, curr_joypad1, prev_joypad1 );
+}
+void custom_screen_manager_load( unsigned char screen_type )
+{
+  switch( screen_type )
+  {
+  case SCREEN_TYPE_SPLASH:
+    screen_splash_screen_load(); break;
+  case SCREEN_TYPE_TITLE:
+    screen_title_screen_load(); break;
+  case SCREEN_TYPE_READY:
+    screen_ready_screen_load(); break;
+  case SCREEN_TYPE_PLAY:
+    screen_play_screen_load(); break;
+  }
+}
+void custom_screen_manager_update( unsigned char *screen_type, const int curr_joypad1, const int prev_joypad1 )
+{
+  switch ( *screen_type )
+  {
+  case SCREEN_TYPE_SPLASH:
+    screen_splash_screen_update( screen_type, curr_joypad1, prev_joypad1 ); break;
+  case SCREEN_TYPE_TITLE:
+    screen_title_screen_update( screen_type, curr_joypad1, prev_joypad1 ); break;
+  case SCREEN_TYPE_READY:
+    screen_ready_screen_update( screen_type, curr_joypad1, prev_joypad1 ); break;
+  case SCREEN_TYPE_PLAY:
+    screen_play_screen_update( screen_type, curr_joypad1, prev_joypad1 ); break;
+  }
+}
+</pre>
+<br />
+Consequently, this <i>solution</i> does not scale!  Instead, opt for an array of function pointers: for each state add to an array of load and update function pointers; the main loop invokes the correct function based on state.
+<br /><br />
+<b>Main.c</b>
+<pre class="csharp" name="code">
+void ( *load_method[ MAX_STATES ] )();
+void ( *update_method[ MAX_STATES ] )( unsigned char *screen_type, const int curr_joypad1, const int prev_joypad1 );
+
+for ( ;; )
+{
+  if ( enum_curr_screen_type != enum_next_screen_type )
+  {
+    enum_curr_screen_type = enum_next_screen_type;
+    load_method[ enum_curr_screen_type ]();
+  }
+  // ...
+  update_method[ enum_curr_screen_type ]( &enum_next_screen_type, curr_joypad1, prev_joypad1 );
+}
+
+void custom_initialize()
+{
+// Set load methods
+load_method[ SCREEN_TYPE_SPLASH ] = screen_splash_screen_load;
+load_method[ SCREEN_TYPE_TITLE ] = screen_title_screen_load;
+load_method[ SCREEN_TYPE_READY ] = screen_ready_screen_load;
+load_method[ SCREEN_TYPE_PLAY ] = screen_play_screen_load;
+// ...
+load_method[ SCREEN_TYPE_OVER ] = screen_over_screen_load;
+
+// Set update methods
+update_method[ SCREEN_TYPE_SPLASH ] = screen_splash_screen_update;
+update_method[ SCREEN_TYPE_TITLE ] = screen_title_screen_update;
+update_method[ SCREEN_TYPE_READY ] = screen_ready_screen_update;
+update_method[ SCREEN_TYPE_PLAY ] = screen_play_screen_update;
+// ...
+update_method[ SCREEN_TYPE_OVER ] = screen_over_screen_update;
+}
+</pre>
+<br />
+<u>Emulation</u>
+<br />
+In the past, <a href="http://www.emutopia.com/index.php/emulators/item/298-sega-sg-1000-sc-3000/404-kega-fusion">Fusion</a> emulator was used during development especially to test code changes quickly.  However, more developers prefer <a href="http://www.emutopia.com/index.php/emulators/item/295-sega-master-system/1165-emulicious">Emulicious</a> as this has an option to Emulate VDP constraints for real SMS hardware.
+<br /><br />
+Also, Emulicious has numerous built-in tools to view memory, tiles, tilemaps, palettes, sprites etc. plus it has an awesome debugger!  Therefore, let's integrate Emulicious into our build batch script development process:
+<br /><br />
+First, launch Emulicious.  Tools menu open all windows.  Ensure the "Reopen Tools" option is checked.  Launch the debugger.  Run menu | ensure "Suspend On Open" is checked.  Close Emulicious.  Update the build script:
+<br /><br />
+<b>Build.bat</b>
+<pre class="csharp" name="code">
+REM output.sms
+java -jar C:\SEGA\Emulicious\emulicious.jar output.sms
+</pre>
+Finally, Ctrl+1 in Visual Studio 2008 will now launch in Emulicious with debug step through Z80 assembler!
+<br /><br />
+<u>Summary</u>
+<br />
+To summarize, the SMS Power community has been awesome and by members sharing especially their code, for example like <a href="http://www.smspower.org/Homebrew/AstroForce-SMS">Astro Force</a> then this really does help develop ideas for new projects like <a href="http://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a>.
+<br /><br />
+Recently, <a href="http://www.smspower.org/forums/member10267">eruiz00</a> has shared the source code for <a href="http://www.smspower.org/Homebrew/GalacticRevenge-SMS">Galactic Revenge</a>.  This game uses an up-to-date version of <a href="https://en.wikipedia.org/wiki/Z88DK">z88dk</a> with devkitSMS [instead of <a href="http://sdcc.sourceforge.net">sdcc</a>] as the libraries are optimized in ASM + produce smaller object code.
+<br /><br />
+Therefore, <a href="https://github.com/z88dk/z88dk/tree/master/examples/sms/3dcity">3D City</a> and future games could be written using z88dk with <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> without graphics glitches!
+</span>

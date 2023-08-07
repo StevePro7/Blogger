@@ -1,0 +1,252 @@
+<span style="font-family:verdana;font-size:85%;">
+
+UPDATE: if you build games like <a href="https://github.com/kusfo/astroforce">Astro Force</a> then I believe you need to upgrade to version <a href="http://sourceforge.net/projects/sdcc/files/snapshot_builds/x86_64-w64-mingw32-setup/sdcc-20170720-9960-x64-setup.exe/download">sdcc-3.6.9</a>.
+
+<br />
+<br />
+
+In 2013, we checked out <a href="http://steveproxna.blogspot.ie/2013/09/sega-console-programming.html">Sega Console Programming</a>, specifically for the <a href="http://en.wikipedia.org/wiki/Master_System">Sega Master System</a> (SMS).
+<br />
+The <a href="http://www.smspower.org">SMS</a> was the last ever 8-bit video game console manufactured by Sega built using the Z80 chip.
+<br /><br />
+However, the process to write Z80 assembly language from scratch for the SMS can be very daunting.  Instead, in 2014 we checked out <a href="http://steveproxna.blogspot.co.uk/2014/09/z88dk-programming-setup.html">z88dk Programming Setup</a> to write code in <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> using <a href="http://en.wikipedia.org/wiki/Z88DK">z88dk</a>.
+<br /><br />
+All code here worked on <a href="http://www.emutopia.com/index.php/downloads-emulators/category-items/3-downloads-emulators/295-sega-master-system">emulators</a> but real Sega Master System hardware experienced graphics glitches!  Fortunately, there is another way: write game code in C language using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> and <a href="http://sdcc.sourceforge.net">SDCC</a> compiler.
+<a href="https://3.bp.blogspot.com/-V-s3bFQyWXE/WQB7Lw64JpI/AAAAAAAAD-g/GEoxW1vrGGccMvp3aedQdqaYxtXCHVz3QCLcB/s1600/devkitsms.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-V-s3bFQyWXE/WQB7Lw64JpI/AAAAAAAAD-g/GEoxW1vrGGccMvp3aedQdqaYxtXCHVz3QCLcB/s640/devkitsms.jpg" width="98%" height="300" /></a>
+<br />
+Let’s check it out! 
+<br /><br />
+<u>devkitSMS</u>
+<br />
+The <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> is a collection of tools and code built specifically for the Sega Master System but also supports homebrew development using C language for <a href="https://en.wikipedia.org/wiki/SG-1000">SG-1000</a>, <a href="https://en.wikipedia.org/wiki/SG-1000#SC-3000">SC-3000</a> and the Sega <a href="https://en.wikipedia.org/wiki/Game_Gear">Game Gear</a>.
+<br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous <a href="http://steveproxna.blogspot.co.uk/2014/11/z88dk-programming-sample.html">post</a>: this documents how to setup the pre-requisite software.
+<br /><br />
+Here is a summary of all required software to be installed:
+<table width="90%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;Z80 Editor</td><td valign="top">&nbsp;<a href="http://www.contexteditor.org/downloads">ConTEXT</a></td></tr>
+<tr><td valign="top">&nbsp;Assembler</td><td valign="top">&nbsp;<a href="http://www.villehelin.com/wla.html">WLA DX</a></td></tr>
+<tr><td valign="top">&nbsp;Emulators</td><td valign="top">&nbsp<a href="http://www.emutopia.com/index.php?option=com_cobalt&task=files.download&no_html=1&id=3537&fid=20&fidx=2&rid=404&return=aHR0cDovL3d3dy5lbXV0b3BpYS5jb20vaW5kZXgucGhwL2Rvd25sb2Fkcy1lbXVsYXRvcnMvaXRlbS8yOTgtc2VnYS1zZy0xMDAwLXNjLTMwMDAvNDA0LWtlZ2EtZnVzaW9u">Fusion</a>, <a href="http://www.emutopia.com/index.php?option=com_cobalt&task=files.download&no_html=1&id=1912&fid=20&fidx=3&rid=239&return=aHR0cDovL3d3dy5lbXV0b3BpYS5jb20vaW5kZXgucGhwL2Rvd25sb2Fkcy1lbXVsYXRvcnMvaXRlbS8yOTgtc2VnYS1zZy0xMDAwLXNjLTMwMDAvMjM5LW1la2E%3D">Meka</a>, <a href="http://emulicious.net/downloads">Emulicious</a></td></tr>
+<tr><td valign="top">&nbsp;Disassembler</td><td valign="top">&nbsp;<a href="http://www.smspower.org/uploads/Development/smsexamine1_2a.zip">SMS Examine</a></td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Name</b></td><td valign="top">&nbsp;<b>Version</b></td></tr>
+<tr><td valign="top">&nbsp;C IDE Editor</td><td valign="top">&nbsp;<a href="https://www.microsoft.com/en-gb/download/confirmation.aspx?id=7873">Visual Studio 2008</a></td></tr>
+<tr><td valign="top">&nbsp;Cross compiler</td><td valign="top">&nbsp;<a href="https://sourceforge.net/projects/sdcc/files/sdcc-win64/3.6.0/sdcc-3.6.0-x64-setup.exe/download">Small Device C Compiler</a></td></tr>
+<tr><td valign="top">&nbsp;Make files</td><td valign="top">&nbsp;<a href="http://cygwin.com/install.html">Cygwin</a></td></tr>
+<tr><td valign="top">&nbsp;Hex Editor</td><td valign="top">&nbsp;<a href="http://mh-nexus.de/downloads/HxDSetupEN.zip">HxD</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<b>SDCC</b><br />
+Download and install <a href="https://sourceforge.net/projects/sdcc/files/sdcc-win64/3.6.0/sdcc-3.6.0-x64-setup.exe/download">sdcc-3.6.0</a>-x64-setup.exe to C:\Program Files\SDCC. Choose all features to install.  UPDATE: if you build games like <a href="https://github.com/kusfo/astroforce">Astro Force</a> then I believe you need to upgrade to version <a href="http://sourceforge.net/projects/sdcc/files/snapshot_builds/x86_64-w64-mingw32-setup/sdcc-20170720-9960-x64-setup.exe/download">sdcc-3.6.9</a>.<a href="https://1.bp.blogspot.com/-gtfDmc9u8EE/WP-1_nvNlhI/AAAAAAAAD98/97332M15Yb0ugkN7Rmb9RQn6m_2TDTs7ACLcB/s1600/05.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-gtfDmc9u8EE/WP-1_nvNlhI/AAAAAAAAD98/97332M15Yb0ugkN7Rmb9RQn6m_2TDTs7ACLcB/s640/05.jpg" width="98%" height="450" /></a>
+<br /><br />
+There should be no extra configuration except add C:\Program Files\SDCC\bin to the Environment PATH.
+<a href="https://4.bp.blogspot.com/-sEUyTemja_M/WP-2FVKAl8I/AAAAAAAAD-A/buDDOhOh4U4hlZbuIb_vE1zjfRawmRFdQCLcB/s1600/06.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-sEUyTemja_M/WP-2FVKAl8I/AAAAAAAAD-A/buDDOhOh4U4hlZbuIb_vE1zjfRawmRFdQCLcB/s640/06.jpg" width="98%" height="450" /></a>
+<br /><br />
+Start | Run | cmd. Type sdcc --version. The following should display to confirm SDCC version 3.6.0:
+<a href="https://1.bp.blogspot.com/-jkkCVQB9Rsc/WP-1zoYcRFI/AAAAAAAAD94/fykN-zen6GA1ZsuWyXfa4KfpdYsuIcGqwCLcB/s1600/sdcc360.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-jkkCVQB9Rsc/WP-1zoYcRFI/AAAAAAAAD94/fykN-zen6GA1ZsuWyXfa4KfpdYsuIcGqwCLcB/s640/sdcc360.jpg" width="98%" height="117" /></a>
+<br /><br />
+<b>devkitSMS</b><br />
+Navigate to the <a href="https://github.com/sverx/devkitSMS">devkitSMS</a> repository on github.  <a href="https://twitter.com/i_am_sverx">@sverx</a> has full instructions <a href="https://github.com/sverx/devkitSMS/blob/master/README.md">here</a> and advises to copy the following 3x executables into the SDCC bin folder [above]: ihx2sms.exe, assets2banks.exe, folder2c.exe.
+<pre class="csharp" name="code">
+# Clone devkitSMS
+cd C:\GitHub\sverx
+git clone https://github.com/sverx/devkitSMS.git
+
+# Copy 3x files
+cd devkitSMS
+copy ihx2sms\ihx2sms.exe C:\Program Files\SDCC\bin
+copy assets2banks\assets2banks.exe C:\Program Files\SDCC\bin
+copy folder2c\folder2c.exe C:\Program Files\SDCC\bin
+</pre>
+Note: my preference is to usually copy these 3x files up-top-date as each Master System project is built.
+<br /><br />
+<br />
+<u>Example</u><br />
+As an example, let's write a simple program that sets the border colors of the screen using devkitSMS.  Create new directory: C:\HelloWorld.  Copy these files: crt0_sms.rel, SMSlib.h, SMSlib.lib, ihx2sms.exe
+<br /><br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include "SMSlib.h"
+void main (void)
+{
+  SMS_setSpritePaletteColor(0, RGB(3,3,3));
+  SMS_displayOn();
+  for (;;)
+  {
+    SMS_waitForVBlank();
+  }
+}
+
+SMS_EMBED_SEGA_ROM_HEADER(9999, 0);
+SMS_EMBED_SDSC_HEADER(1, 0, 2017, 9, 15, "StevePro Studios", "Hello World", "Simple Sega Master System demo to run on real hardware!");
+</pre>
+<br />
+<u>Build</u><br />
+Manually compile, link and execute the Hello program.  Launch command prompt: Start | Run | cmd.
+<a href="https://4.bp.blogspot.com/-1A-Osw4R9LA/WP-1dzTxPzI/AAAAAAAAD90/fTJS6gHr4ykeAKtJg_cGDmxMsFWoKJRAwCLcB/s1600/HelloWorldCode.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-1A-Osw4R9LA/WP-1dzTxPzI/AAAAAAAAD90/fTJS6gHr4ykeAKtJg_cGDmxMsFWoKJRAwCLcB/s640/HelloWorldCode.jpg" width="98%" height="184" /></a>
+<br /><br />
+Change directory cd C:\HelloWorld.  Next, execute the following 3x commands (in bold):
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ACTION</td>
+<td valign="top">&nbsp;COMMAND</td>
+<td valign="top">&nbsp;OUTPUT</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Compile&nbsp;</td>
+<td valign="top">&nbsp;<b>sdcc -c -mz80 main.c</b></td>
+<td valign="top">&nbsp;main.rel</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Link</td>
+<td valign="top">&nbsp;<b>sdcc -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 crt0_sms.rel<br />&nbsp;main.rel SMSlib.lib</b></td>
+<td valign="top">&nbsp;output.ihx</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Exceute</td>
+<td valign="top">&nbsp;<b>ihx2sms output.ihx output.sms</b></td>
+<td valign="top">&nbsp;output.sms&nbsp;</td>
+</tr>
+</table>
+<br />
+Finally, type <b>output.sms</b>.  The Hello program should launch in the Fusion emulator.
+<br />
+Congratulations! You have just written your first SMS program using <a href="https://github.com/sverx/devkitSMS">devkitSMS</a>.
+<a href="https://1.bp.blogspot.com/-orCl08hJsAw/WP-1Uoz5vaI/AAAAAAAAD9w/ZNUofyjnC4E_x5Tz0xQ7yFMC6QW9jRQ9gCLcB/s1600/HelloWorldOutput.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-orCl08hJsAw/WP-1Uoz5vaI/AAAAAAAAD9w/ZNUofyjnC4E_x5Tz0xQ7yFMC6QW9jRQ9gCLcB/s640/HelloWorldOutput.jpg" width="98%" height="500" /></a>
+<br /><br />
+<u>Automate</u><br />
+Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+<pre class="csharp" name="code">
+@echo off
+sdcc -c -mz80 main.c
+sdcc -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 crt0_sms.rel main.rel SMSlib.lib
+ihx2sms output.ihx output.sms
+output.sms
+</pre>
+<br />
+<u>Visual Studio</u><br />
+Inspired by this <a href="http://www.smspower.org/forums/15228-DevkitSMSDevelopYourHomebrewInC?start=250">suggestion</a> to use Visual Studio as an IDE to better navigate files in larger projects and help automate the development build system.  Download + install Visual Studio 2008 and setup solution.
+<br /><br />
+Launch Visual Studio 2008.  File | New | Project... | Visual C++ | Win32 | Win32 Project
+<a href="https://3.bp.blogspot.com/-EcRAOdj74Gg/WP-zSbyl5GI/AAAAAAAAD9k/qAI6j5QSpn8c5j5QAa7WL2HsU1PvcZMOgCLcB/s1600/HelloWorldVS.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-EcRAOdj74Gg/WP-zSbyl5GI/AAAAAAAAD9k/qAI6j5QSpn8c5j5QAa7WL2HsU1PvcZMOgCLcB/s640/HelloWorldVS.jpg" width="98%" height="434" /></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Name:</td>
+<td valign="top">&nbsp;HelloWorld</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create directory for solution</td>
+<td valign="top">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+<br />
+<a href="https://2.bp.blogspot.com/-dEob7MChC1I/WP-zAyEXzCI/AAAAAAAAD9g/HozQ5SiITcAB7CcVVrV-o9RjH7WV-Mi7gCLcB/s1600/HelloWorldVS2.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-dEob7MChC1I/WP-zAyEXzCI/AAAAAAAAD9g/HozQ5SiITcAB7CcVVrV-o9RjH7WV-Mi7gCLcB/s640/HelloWorldVS2.jpg" width="98%" height="434" /></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Application type:</td>
+<td valign="top">&nbsp;Console application</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Additional options:</td>
+<td valign="top">&nbsp;Empty project CHECKED</td>
+</tr>
+</table>
+<br />
+Navigate to C:\HelloWorld.  Copy the following files as before such that they are on the same folder level like HelloWorld.sln: crt0_sms.rel, SMSlib.h, SMSlib.lib, ihx2sms.exe.  Add existing: main.c and build.bat.
+<a href="https://1.bp.blogspot.com/-i7Bb-INwm4M/WP-s162LGOI/AAAAAAAAD88/CRPVK3IOPwYwF923fTqbvlBopTKXD57XgCLcB/s1600/VisualStudioBuild.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-i7Bb-INwm4M/WP-s162LGOI/AAAAAAAAD88/CRPVK3IOPwYwF923fTqbvlBopTKXD57XgCLcB/s640/VisualStudioBuild.jpg" width="98%" height="460" /></a>
+<br /><br />
+<b>External Tools</b><br />
+<a href="http://stackoverflow.com/questions/3160063/visual-studio-run-batch-file">Integrate</a> the build process directly from within Visual Studio 2008 using the External Tools functionality.
+<br />
+Choose Tools menu | External Tools... | Add
+<a href="https://3.bp.blogspot.com/-SuHv21xwSaY/WP-yYz3bx6I/AAAAAAAAD9Y/qnGjTTG-hegVkrRveW2WlqySpN0QejMQACLcB/s1600/VisualStudioTools.jpg" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-SuHv21xwSaY/WP-yYz3bx6I/AAAAAAAAD9Y/qnGjTTG-hegVkrRveW2WlqySpN0QejMQACLcB/s640/VisualStudioTools.jpg" width="98%" height="500" /></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Title:</td>
+<td valign="top">&nbsp;Run Batch File</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Command:</td>
+<td valign="top">&nbsp;CMD.EXE</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Arguments:</td>
+<td valign="top">&nbsp;/c "$(SolutionDir)"build.bat</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Initial directory:</td>
+<td valign="top">&nbsp;$(SolutionDir)</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Use Output Window</td>
+<td valign="top">&nbsp;CHECKED</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Close on exit</td>
+<td valign="top">&nbsp;CHECKED</td>
+</tr>
+</table>
+Click Apply button.  Click Move Up button until "Run Batch File" is at the top of the list.
+<br /><br />
+<b>Keyboard Shortcut</b><br />
+Next connect "Run Batch File" command to Ctrl+1 hot key to automatically build, link and execute code!
+<br /><br />
+Choose Tools menu | Options... | Environment | Keyboard.  Show command containing: "Tools".  Scroll list down to "Tools.ExternalCommand1".  In the "Press shortcut keys:" textbox hit Ctrl+1.  Click Apply button.
+<a href="https://1.bp.blogspot.com/-002zX9nVy1U/WP-w6xFUJWI/AAAAAAAAD9I/pgxsgt0ZWbMEqmLTTPrLB5N4-yYimCutgCLcB/s1600/VisualStudioKeyboard.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-002zX9nVy1U/WP-w6xFUJWI/AAAAAAAAD9I/pgxsgt0ZWbMEqmLTTPrLB5N4-yYimCutgCLcB/s640/VisualStudioKeyboard.jpg" width="98%" height="372" /></a>
+<br /><br />
+<u>Disassemble</u><br />
+Finally, disassemble the compiled binary file <b>output.sms</b> generated from the Visual Studio batch script.
+<br />
+In directory C:\HelloWorld, copy the 2x files Opcodes.dat and smsexamine.exe from <a href="http://www.smspower.org/Development/SMSExamine">SMS Examine</a> zip.
+<br /><br />
+Launch command prompt, change directory to cd C:\HelloWorld. Type: <b>smsexamine.exe output.sms</b>.
+<br />
+This action will generate <b>output.sms.asm</b> and any data files. Launch ConTEXT. Open output.sms.asm: 
+<a href="https://1.bp.blogspot.com/-KyKd2ykwoy8/WP-sZwrh4ZI/AAAAAAAAD84/RLf5sppZ_Jgsoa9qpx7_kk0RQY44NZJQACLcB/s1600/Disassemble.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-KyKd2ykwoy8/WP-sZwrh4ZI/AAAAAAAAD84/RLf5sppZ_Jgsoa9qpx7_kk0RQY44NZJQACLcB/s640/Disassemble.jpg" width="98%" height="600" /></a>
+Follow instructions to setup emulator <a href="http://steveproxna.blogspot.co.uk/2013/09/sega-console-programming.html">hotkeys</a> for: <b>F10</b> (Fusion) <b>F11</b> (Meka) + HOTKEY <b>F12</b> (Emulicious).
+<br /><br />
+Press <b>F12</b> to run program in Emulicious.  Ensure VDP constraints are ENABLED to emulate real hardware.
+<a href="https://4.bp.blogspot.com/-5PjJQx0QyUA/WQBuOdv-EjI/AAAAAAAAD-Q/QjFEo7YVu4Uep0OYOgOwf8buG4ccNj55gCLcB/s1600/Emulicious.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-5PjJQx0QyUA/WQBuOdv-EjI/AAAAAAAAD-Q/QjFEo7YVu4Uep0OYOgOwf8buG4ccNj55gCLcB/s640/Emulicious.jpg" width="98%" height="500" /></a>
+<br /><br />
+Note: in Emulicious we are able to debug through the HelloWorld source assembly code:
+<a href="https://2.bp.blogspot.com/-l5PA3VwcV08/WQdihrYy7xI/AAAAAAAAD-4/ByULMOPYKAcSV159hezk0-Prf_joTXl3wCLcB/s1600/Debugger.jpg" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-l5PA3VwcV08/WQdihrYy7xI/AAAAAAAAD-4/ByULMOPYKAcSV159hezk0-Prf_joTXl3wCLcB/s640/Debugger.jpg" width="98%" height="490" /></a>
+<br /><br />
+Compare machine code in the debugger with the raw binary output file from <b>output.sms</b>.
+<a href="https://4.bp.blogspot.com/-SdXygbeHLg0/WQdi4ydSZ_I/AAAAAAAAD-8/9Yk4umaSq7Qy1igMWjrgGi7nse7BF8FvQCLcB/s1600/HexEditor.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-SdXygbeHLg0/WQdi4ydSZ_I/AAAAAAAAD-8/9Yk4umaSq7Qy1igMWjrgGi7nse7BF8FvQCLcB/s640/HexEditor.jpg" width="98%" height="400" /></a>
+<br /><br />
+Update the <b>build.bat</b> script to include the disassemble step.  Clean up and delete any unnecessary files:
+<pre class="csharp" name="code">
+@echo off
+sdcc -c -mz80 main.c
+sdcc -o output.ihx -mz80 --data-loc 0xC000 --no-std-crt0 crt0_sms.rel main.rel SMSlib.lib
+ihx2sms output.ihx output.sms
+smsexamine.exe output.sms
+del *.ihx > nul
+del *.lk > nul
+del *.lst > nul
+del *.map > nul
+del *.noi > nul
+del *.sym > nul
+output.sms
+</pre>
+<br />
+<u>Summary</u><br />
+Now the devkitSMS has been downloaded, installed and setup, it is possible to write full <a href="http://www.smspower.org/Homebrew">homebrew</a> demos and / or video games to target real Sega Master System hardware!  This will be the topic of the next post.
+<br /><br />
+</span>
