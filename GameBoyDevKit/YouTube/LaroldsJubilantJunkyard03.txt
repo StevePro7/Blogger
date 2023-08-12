@@ -1,0 +1,100 @@
+How to make a Games for Gameboy Color. GBDK 2020 Tutorial Part 3: More with Backgrounds
+https://www.youtube.com/watch?v=so5sDcmZw-w
+
+Introduction
+The graphics for the Nintendo Gameboy can be split into three main topics
+the background tower map, the window tower map and sprites.
+Each of these are rendered using eight by eight tiles that are stored
+in the Gameboy video RAM or VRAM for short.
+In my previous tutorial you got a basic background drawn on the Gameboy screen.
+Before we get to drawing sprites.
+I want to show you how to do a little bit more with the background.
+In this video, we'll go over how to move the background
+and how to draw colored backgrounds for the Gameboy Color.
+Background Explanation
+The Gameboy screen
+is exactly 20 tiles wide and 18 tiles high.
+However, the Gameboys background time
+is 32 tiles wide and 32 tiles high
+to show tiles outside of the screen where you must move the background tile map.
+We have two common ways of doing this.
+Move BKG and Scroll BKG
+We can use the MOVE BCD function
+or we can use the scroll BCD function.
+Both of these functions will change the position of the background.
+They also both take in two parameters an X and the Y.
+The move BCD function will instantly move the background to the X and Y picks
+the coordinates specified.
+The scroll BCD function will move the background relative
+to its current position.
+The naming can be
+a little confusing at first, but you'll get the hang of it quickly
+in our game loop.
+If we pass the same values to both function, we'll see different behaviors
+increasing the x coordinates of the background moves
+it leftward, increasing the y coordinates of the background moves upward.
+The next and final
+thing we're go over in this video is drawing colored backgrounds.
+Drawing Colored backgrounds
+Drawing colored backgrounds is relatively easy, but it requires three
+additional things compilers and for Gameboy Color,
+color palettes and an array of time map attributes.
+There are two common ways of creating Gameboy graphics
+using PNG to asset
+or using the Gameboy tile designer and map builder.
+I'll go over those options in greater detail in a later video.
+Both of these options can generate color palettes
+and tile map attribute arrays for you.
+Once exported, color palette will be defined
+as an array of unsigned 16 bit integers, and your time
+attributes will be an array of unsigned eight integers.
+Compilation for Gameboy Color
+Let's cover a comparison for Gameboy Color.
+You can specify that your game is compatible with Gameboy Color
+using one of the following arguments when compiling your ROM file.
+Once you've updated our compilation
+arguments, we need to set the color palette in VRAM.
+Color Palettes
+The Gameboy Color supports a total of 16 different color palettes.
+Each color palette has 416 bit colors in it.
+Eight of the 16 color palettes are specifically designated for sprites,
+and the other eight are specifically designated for the background
+and window tile maps.
+With that said, now we can get to some coding
+Coding Colored Backgrounds
+and your main.
+That C file first will include the source files for our card background image.
+Check out the video description below for a link to these files.
+After that, we'll put our background images style data
+into the Gameboys in your app.
+Include the Gameboy Color header file
+and then set the color palettes into VRAM using the set box palette function.
+This function takes three parameters.
+The first palette to write to what should be a value between zero and seven.
+How many color palettes are you placing into the RAM?
+Maximum eight and the pointer to the first item and the first color palette.
+Once you have your colors in Vietnam,
+here's how you apply the colors to your background.
+To do this, we'll use our array of tile map attributes.
+These attributes can contain tiles, specific operations,
+and or which color palette a given tile should use.
+Recall in the previous tutorial we used to set bhakti tiles function.
+We use this function to tell our background tile map
+which tiles and reram each draw in where
+the Gameboy color has two areas in VRAM called banks for tiles and attribute data.
+We can use the v ram bank register
+to change which b ramping we write to.
+We should write our tiles indices to bank zero
+and our town map attributes to Bank one.
+First will temporarily change our RAM bank to one.
+Next we'll call the set B CG tiles function and pass it.
+Our tile map attributes array.
+After that, we'll reset the B ram bank back to zero.
+Finally, we'll call our big tiles
+function again with our normal tile map array.
+Compilation
+If you compile and run, you should see our background has colors.
+Now help we find this helpful.
+As always, if you need help, reach out in the comments or in the TBD k
+discord server like in Subscribe for more Gameboy Game Development videos.
+Have a good day.

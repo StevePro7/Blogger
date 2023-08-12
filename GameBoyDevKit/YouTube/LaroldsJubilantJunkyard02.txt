@@ -1,0 +1,102 @@
+How to make Games for Gameboy - Drawing Backgrounds with GBDK-2020
+https://www.youtube.com/watch?v=VCD64VepbVA
+
+Introduction
+The graphics for the Nintendo Gameboy can be split into three main topics
+the background tower map, the window tower map and sprites.
+Each of these are rendered using eight by eight tiles that are stored
+in the Gameboy video RAM or VRAM for short.
+In my previous material we installed TBD K 2020
+and compiled a basic ROM file in this material.
+I'm going to show you how to draw a basic background image
+Background Tile Data and Tile Maps
+to draw backgrounds in Gameboy games.
+You need two different things tile data and a tile map.
+The towns that consist of all the unique eight by eight
+tiles in our background image and the tile map.
+Tell us the game boy which tiles and be around the background should show.
+Before we jump into the code, I'll explain the process on a high level
+High-Level Explanation
+drawing background.
+Can usually be split into four different steps.
+In the first step, we simply include
+our background files into the Game Boys Rom file.
+In the second step, we need to make sure
+the background tile map is visible.
+In the third step, we place our tile in the ram
+in the fourth and final step.
+We update tiles in the background tile map.
+We'll start by relocating the minimal template folder
+from the previous tutorial.
+Creating our project folder
+We don't want to edit this photo directly,
+so we'll just duplicate it.
+You can place the duplicate anywhere in whatever you want.
+However, if you move the folder, you'll need to update the makefile
+so it still knows the location of the GBA.
+Including our background files
+The minimal template has only one code file
+called main that see to get started.
+We'll add the dots.
+Seeing that h files for our background to our project folder.
+Our Makefile compiles all ACCE files
+so we do not need any extra compilers from configuration.
+You can find links for the background image files in the video description
+below.
+After adding our files will add an included
+in our main dot C for our background image.
+In a later video, I'll show you the two common ways
+to create background images.
+Next, in the second step, we'll step inside of our main function.
+Enabling our background
+We'll use the show B CG macro to make sure
+the background color map is visible.
+In the third step, we'll use a function called set big data
+Setting tiles in VRAM
+to populate the Gameboys v around with tiles.
+This function takes three parameters
+where to start placing the tiles and VRAM how many is
+how to place in v ram and a pointer to our background images tile data.
+When we
+call the set big data function, we'll use zero as the first parameter.
+This is where we want to start placing tiles in v ram.
+For the second parameter, we'll use a macro ad
+that represents the number of unique tiles in our image.
+This macro was generated back when I converted the image
+to C into H files.
+If we open up the header file for our background image,
+we can see the macros true value.
+If we compile and run our RAM file, if we look on our emulators RAM display,
+we should see all of the unique tiles from our image.
+Getting back to the code, the fourth and final
+step is to update our background tile map.
+Fully Showing our Background image
+For this, we use a function called set CG tiles.
+The set BQ tiles function takes five parameters
+the exposition of our image in tiles.
+The Y position of our image in tiles.
+The width of our image in tiles.
+The height of our image in tiles.
+And the final parameter is a pointer to our background images tile map.
+Our background image will start at the top left of the screen,
+so we use zero and zero as the first two parameters.
+Our background images are the size of the Gameboy screen,
+so we use 20 and 18 as a second two parameters
+respectively.
+Our final parameter is a pointer to our background images tile map.
+Once done with all of that,
+if we compile and run our RAM file, we should see our background image.
+Emulicious Shout Out
+In the last video I use the BGP emulator,
+but I want to highlight another emulator called Ambitious Emulation
+is a free emulator that also supports live debugging via voice code.
+It can run on any operating system.
+Emily.
+Many different retro game consoles since the GPD K can compile
+for multiple retro consoles and malicious is definitely worth
+your time.
+That's it for this video and the next video where we explain
+how to move the back, run around and some of its limitations.
+If you have any questions, please post a comment below.
+Alternatively, you can check out some of the helpful links in the description.
+Thanks for watching.

@@ -1,0 +1,96 @@
+How to Make Games for Game Boy - Sound Effects - GBDK 2020 Retro Homebrew Tutorial
+https://www.youtube.com/watch?v=1hwf7CNpUR0
+
+Introduction to Sound Effects
+Audio is an underappreciated aspect of games and entertainment.
+Good sounds help connect the player with your game's world.
+It engages one more sense, making the overall experience that much better.
+In my previous tutorials, we drew background sprites and handled Joy
+pad input.
+Larold's Jubilant Junkyard Intro
+In this tutorial, I'll show you how to play
+simple sound effects
+if you need help in this material.
+Check out my website or one of the links in the description below.
+Getting Started with Sound Effects
+The focus of this material is playing audio effects
+to save time will avoid drawing anything to the screen.
+This tutorial won't cover playing actual music.
+I'll save that for a later tutorial.
+The sounds you play in this material will be very basic in
+any four noises like jumping, collecting coins or taking damage.
+With that said, let's get started.
+Cloning the GBDK Minimal Template
+Like in my previous tutorials,
+we'll clone the minimal template provided in the DVD examples holder.
+Capturing Joypad Input
+We'll set up and implement a joy pad current and joy pad previous variable.
+Just like in the last video
+with our variables in place will now get to the audio aspect of things.
+Enabling Sound
+Firstly, we need to enable audio on the Gameboy.
+Audio on the Gameboy is handled by a variety of different noise registers.
+Sound Register Explanations
+We can enable audio by setting noise registers 5051
+and 52 Noise register 52 will enable sound
+noise Register 50
+Sets the volume for the left and right speakers.
+There are four different channels or modes
+for playing sounds on with noise Register 51.
+You can toggle one of the four channels on or off on either side.
+The current code will enable sound set
+both speakers to maximum volume and enable all four channels on both sides.
+These registers need to be set in that order.
+We'll keep this video quick and easy.
+We're going to pull for joy pad input and we'll play one of four different sounds
+Setting up joypad inputs
+we'll set up for if statements
+and these if statements like in the previous video
+we'll check out the user has just pressed the a, B
+start or select buttons
+with those.
+If they've been set up, they can play our actual sounds. Now
+playing basic sounds
+and GBDK just requires us to set some registers.
+The hardware and GBDK will do the rest for us.
+The Gameboy has four different channels for playing different sounds
+and each channel has its own 4 to 5 different registers associated with it.
+Channels one into the pulse channels
+produce pulse with modulated waves.
+The first channel uses noise registers ten through 14
+Adding sounds with noise registers
+and the second channel uses noise registers 21 to 24.
+Channel three.
+The Wave Channel uses noise registers 30 to 34 to produce
+arbitrary user supplied waves.
+Channel four is the noise channel.
+It uses registers 41 to 44 to produce pseudo random waves.
+For more information on the game by hardware,
+its audio capabilities, check out the Game Boy paradox.
+Once we've added that logic to our statements,
+Previewing our demo
+we can compile and run our code.
+We'll see different sounds playing when we push different buttons.
+GBDK Sound ROM
+It's not intuitive what values to use for each of these channels.
+So GBDK has an example that allows you to experiment in real time.
+If you go back to your GBDK folder and look in the Gameboy examples
+subfolder, you'll find a folder called sound.
+If we compile and run this example, you'll be presented
+with a basic user interface for making sounds.
+Press Select the change between sound channels called sound modes.
+Use left and right buttons to change the selected values.
+Press Start to preview the current sound
+when you've found something you like.
+On the bottom
+you'll see which registers and hex values to use for the living registers.
+You now have the knowledge and tools to add basic sound effects to your game.
+Need Help and Site Mention
+As always.
+Do you have any questions?
+You can contact me via email in the video comments or in the GBDK discord
+like and subscribe for more game Boy game development videos.
+Additionally, check out my website for more tutorials.
+At the time of this recording, my latest tutorial shows you how
+to recreate Zelda style for directional movement.
+Thank you and have a good day.

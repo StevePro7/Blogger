@@ -1,0 +1,110 @@
+How to Make Games for Gameboy - Joypad Input - GBDK 2020 Tutorial
+https://www.youtube.com/watch?v=C3GbhXeDb-U
+
+Introduction to Joypad Input
+Video games wouldn't be video games if you couldn't take control of things,
+whether it's moving the player around or selecting different menu options.
+Every game gives the player a control over his or her own destiny.
+In a previous material, I showed you how to draw sprites with GBDK
+in this material.
+Larold's Jubilant Junkyard Intro
+Usher you how to handle drip hot input.
+If you need help,
+check out the description below for helpful links.
+If you have any questions, feel free to post a comment below
+and or check out the greedy k discord server.
+We'll start this story by drawing a basic sprite on the screen.
+Getting sprites drawing
+We cover this process step by step in my last video,
+so I'll skip in-depth explanations and the video description.
+You'll find a link for the graphics using this tutorial.
+Just like in the previous video.
+We'll download these graphics, drop them into our project,
+include them at the top of our main dot C file
+and that's how did the interview ramp and enable sprites on the Gameboy
+in this tutorial or object, we'll use to eight by 16 sprites,
+so it makes sure to tell the Gameboy to use a by 16 sprites as well.
+In a future video
+I'll show you how to use GBDK's built in Metasprites implementation.
+This makes drawing multi sprite objects really easy.
+However, while we're still covering the basics, we'll manually handle our sprites.
+We'll tell the game boy that our first sprite will use
+the first tile and our second sprite will use the third tile
+recall when the Gameboy sprites are an eight by 16 mode.
+The next tile is automatically drawn below.
+This means that the second tile will be automatically drawn below
+the first and the fourth. Below the third.
+Declaring Variables
+Next, before we get into the overhead input, we'll set up four variables.
+The first variable will call player X and the second will call player Y.
+These two variables represent the player's position.
+The next two variables will call Joy Pad current and Joy Pad previous.
+These variables
+represent the current and previous state of the Joy Pad respectively.
+All of these variables
+will be a bit unsigned integers and will declare them above our main function.
+We'll set the initial value
+of the player position variables to be 80, so it's in the middle of the screen
+from the joy pad variables was at their default values to be zero.
+Our goal is to be able to move the player around in four directions
+using the Game Boy's D-Pad.
+Additionally, when the player presses the A button will reset
+the player's position back to the middle of the screen.
+At this point in time, our game loop just has a single function.
+This function wait be all done
+halts the game boy's CPU until the vertical blank phase is over.
+I'll spare you the details. Just know.
+This ultimately gives our game a consistent frame rate
+at the top of our game loop will start by saving the previous dropout pad state.
+Capturing Joypad Input
+We do this by copying the value of our joy pad current variable into our joy
+pad previous variable.
+This doesn't do anything the first time the game loop runs, but later it lets us
+test of a button. Was pressed in the last update.
+Next will be reading the Game Boy's Joy Pad State and saving it into our joy pad.
+Current variable for this will use the GBDK function called joy Pad.
+It's important you only call this function once per update.
+That's why we're saving this value in a variable.
+This function takes no parameters and will return an unsigned bit integer.
+Changing the players position
+The game boy has eight different buttons.
+Each bit in our variable corresponds to a different button.
+We can tell if a button is held down by simply performing a bitwise
+and operation with our joy pad.
+Current variable from their basic if statements to change our players position.
+Jimmy D k comes with built ten macros for each button will perform
+bitwise and operations with the four d-pad directions
+and then change our players position when the operation is true.
+One important thing to remember it might seem counterintuitive,
+but in order to move an object upwards, you need to decrease its Y value.
+Once we've done that, we want to set up the ability to reset the sprites position
+Resetting the Player's position
+via the A button will perform a bitwise and operation like with the other buttons.
+However, this time will also check if a button was previously not pressed down.
+We do this again using a bitwise and operation with our joy
+pad previous variable, but this time making sure the result is false.
+If both operations are true, we'll set our player position back to the
+middle of the screen.
+The last thing to do in our game loop is actually move our object.
+Updating the player's sprites
+Recall our previously mentioned AR object is going to use two eight by 16 sprites.
+This means we'll use the move sprite function twice.
+The first time we call move.
+The sprite will pass the first sprite and our players position.
+The second time we call it will pass the second sprite and our players position
+plus an additional eight pixels to the right.
+Testing in Emulicious
+If you compile and run, you should be able to move your sprite in four directions.
+If you press the sprites to reset back to the middle,
+if you hold down a, you should be able to move the sprite
+after its position resets.
+If we didn't compare against our previous drop hard state,
+the sprite would see locked in the middle of the screen while
+a button is held down.
+That's pretty much it for this tutorial.
+End & Future Plans
+Like in subscribers, we found this video helpful.
+Stay tuned for more DKA videos.
+Once all the basics are covered, we'll jump into more advanced topics
+and eventually into making small clones of popular games.
+Thank you and have a good day.

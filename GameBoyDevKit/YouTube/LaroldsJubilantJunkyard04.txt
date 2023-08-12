@@ -1,0 +1,112 @@
+How To Make Games for Nintendo Gameboy - Drawing Sprites with GBDK 2020
+https://www.youtube.com/watch?v=wdwRHRvxEXI
+
+Introduction
+Sprites are the heart and soul of game boy games.
+They're used for characters, enemies, bullets, special effects and more.
+In a previous editorial, I thought you had to draw a back room in this material.
+Well, draw basic sprites on the screen.
+Sprites Explanation
+Sprites and Gameboy
+games are drawn over both the background and window tower maps.
+They can be moved
+freely, independent of one another, and can even be flipped around.
+Gameboy games up to 40 different sprites in two different sizes.
+A sprite can be eight by eight, the size of a single tile forest
+by can be eight by 16, the size of two tiles stacked vertically.
+Setting up our Project
+We'll start this tutorial by copying our minimal template provided by the GB k.
+If you don't have the GB decay installed,
+check out the previous video on getting started with GB decay.
+Once we clone that folder, we need our sprite source files.
+Check out the video description for a link to the sprite
+files used in this tutorial.
+I'll also include a dot v as called folder.
+If you install the C++ extension for the Visual Studio code,
+you can use IntelliSense when coding your Gameboy games.
+How to draw a sprite overview
+Drawing sprites can be broken down into four different steps.
+Include the sprites and to compile ation process encode files.
+Add the sprite tile data into VRAM
+enabling sprites on the Gameboy and finally showing the sprite
+in this tutorial with clone the minimal template.
+Its Makefile automatically includes all dot c files in the compilation.
+So all we need to do next is include the header file for our sprite.
+Including our Sprites
+Like with drawing backgrounds.
+Before we can draw sprite, we decided that's how did it into VRAM for drawing
+Adding our sprites into VRAM
+backgrounds, we use the set B CG data function
+to pit sprite together into VRAM.
+We'll use the set sprite data function will use zero as the first parameter.
+This is where our tiles will begin in the region of VRAM dedicated to sprites.
+The second parameter
+will be how many tiles are in our circle sprites graphic.
+Our third and final parameter will be appointed to the Circle Sprites.
+Tile data.
+The game way supports up to 40 different sprites.
+Setting our Sprite's tiles
+Once we've set, that's how they do in VRAM, we can use the set
+sprite tile function to assign a tile to the sprite.
+This function takes in two parameters which bright
+you want to use and what tile should that sprite show?
+In this case, to keep things simple will use sprite zero and tile zero.
+Moving our Sprites
+The last thing to do is move the sprite to a visible location.
+For that, we have a function conveniently named move Sprite.
+This function takes three parameters the index of the Sprite.
+We want to move the acquisition we want to move to
+and the Y position we want to move to.
+We'll move our sprite to the coordinates 80.
+However, one important thing to note
+Gameboy sprites are drawn with a negative offset.
+Whatever location you want, the top left corner of the sprite to actually be at.
+You need to add eight pixels to the X position
+Enabling Sprites with GBDK 2020
+and 16 pixels to the Y position.
+This means a sprite position that zero zero
+will not be visible on screen.
+Now that our sprite is in a visible location,
+we need to make sure the game will actually render sprites by default.
+Sprites will not be rendered.
+We have to explicitly tell the game boy to actually show sprites
+using the show sprites macro.
+We only do this once now.
+Any sprites we use will be visible.
+Finally, before we test,
+Scrolling our sprites
+I'm going to show off the scroll sprite function.
+This function changes to the sprites location.
+Make the move sprite function.
+However, the scroll sprite function changes the sprite position relative
+to its current location.
+Compile and Test
+If we compile and run our ROM file,
+we should see our sprite moving across the screen.
+That's cool,
+Drawing 8x16 Sprites
+but one more featuring to cover in this video is drawing eight by 16 sprites.
+By default sprites are eight by eight the size of a single tile.
+If we add the sprites eight by 16 macro to our code
+now, all sprites will be eight by 16.
+When this mode is enabled for whatever tile we assign a single sprite
+without costing any extra sprites, the game will automatically draw
+8x16 Sprite Compile and Test
+the next column, the ram immediately below it.
+If we recompile our RAM file, we should see.
+Now our sprite has two circled tiles
+moving across the screen.
+Before I in this video I just mention a useful feature
+that I'll make a future video on.
+GBDK Metasprites Explanation
+Often multiple sprites are used to make up a single object.
+These are called Metis sprites and they are a supported GB decay feature.
+The GB decay implementation of many sprites
+makes it easier to draw, animate and move larger objects.
+Tutorial End
+In later video, I'll show you how to actually use metal sprites.
+I hope you find this video helpful as always.
+If you need help, reach out in the comments or images.
+Discord Server.
+Liking subscribe for more Gameboy Games.
+Relevant Videos. Have a good day.
