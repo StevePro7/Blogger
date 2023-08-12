@@ -1,0 +1,16 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<u>Example</u><br />
+As an example, let's write a simple program that prints Hello World to the screen using the GameBoy DevKit.  Create new directory: C:\HelloWorld.  Create new file main.c.  Copy in the following code to print Hello World. 
+
+  <br /><br />
+<b>main.c</b>
+<pre class="csharp" name="code">
+#include &lt;gb/gb.h&gt;
+#include &lt;stdio.h&gt;
+void main()
+{
+  printf( "HELLO WORLD" );
+}
+</pre>
+</span>
