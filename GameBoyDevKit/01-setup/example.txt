@@ -49,4 +49,19 @@ Change directory cd C:\HelloWorld.  Next, execute the following 2x commands (in 
 Finally, type <b>output.gb</b>.  The Hello World program should launch in the Emulicious emulator.
 <br />
 Congratulations! You have just written your first test program using the GameBoy DevKit.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcOTutAeAgKj5i7YMWOEveThWpQKxD2wJEY6ya0VB3lSx8U4cGkqv53yCtS7254JZt9Eq2E5Bfuv3um7xPPVfPSIzmh3LagM0O4Phwiht1oBWFlyF7O4zDUdqKqMf5F2c3Z2mDu4mpfhFzT9fxg65ZyNQiWoQjK5uqY5b21sZM3Hm1rIqGXnjd8EJwGUU/s486/HWoutput.png"><img alt="" border="0" height="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcOTutAeAgKj5i7YMWOEveThWpQKxD2wJEY6ya0VB3lSx8U4cGkqv53yCtS7254JZt9Eq2E5Bfuv3um7xPPVfPSIzmh3LagM0O4Phwiht1oBWFlyF7O4zDUdqKqMf5F2c3Z2mDu4mpfhFzT9fxg65ZyNQiWoQjK5uqY5b21sZM3Hm1rIqGXnjd8EJwGUU/s600/HWoutput.png"/></a>
+-->
+<br />  
+<u>Automate</u><br />
+Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+<pre class="csharp" name="code">
+@echo off
+%GBDK_WIN%/bin/lcc -Wa-l -Wl-m -Wl-j -c -o main.o main.c
+%GBDK_WIN%/bin/lcc -Wa-l -Wl-m -Wl-j -o output.gb main.o
+output.gb
+</pre>
+<br />
+
 </span>
