@@ -2,8 +2,9 @@
 
 <u>Example</u><br />
 As an example, let's write a simple program that prints Hello World to the screen using the GameBoy DevKit.  Create new directory: C:\HelloWorld.  Create new file main.c.  Copy in the following code to print Hello World. 
-
-  <br /><br />
+<br />
+<!--
+<br />
 <b>main.c</b>
 <pre class="csharp" name="code">
 #include &lt;gb/gb.h&gt;
@@ -13,4 +14,39 @@ void main()
   printf( "HELLO WORLD" );
 }
 </pre>
+-->
+<br />
+<u>Build</u><br />
+Manually compile and link the Hello World program.  Launch command prompt: Start | Run | cmd.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghwDn1hOAOfe6YVaBXl1zg0py2ibhc42kE8VVTf2dsZHx8o2OjOOXCdKvfP1S4T9eKT5EmLraKDi2OlLl-jk4Kit8h9KGDOrssnR_X1KO0TXa9EaTcbcz1q7fw36naxKZi9CVYi9K8ylSPmdl6ZveleDmKJQzAac5MOY3l-2VIGhTshGsKtagvV-53Vsk/s635/HelloWorld.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEghwDn1hOAOfe6YVaBXl1zg0py2ibhc42kE8VVTf2dsZHx8o2OjOOXCdKvfP1S4T9eKT5EmLraKDi2OlLl-jk4Kit8h9KGDOrssnR_X1KO0TXa9EaTcbcz1q7fw36naxKZi9CVYi9K8ylSPmdl6ZveleDmKJQzAac5MOY3l-2VIGhTshGsKtagvV-53Vsk/s600/HelloWorld.png"/></a>
+<br />
+-->
+<br />
+Change directory cd C:\HelloWorld.  Next, execute the following 2x commands (in bold):
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ACTION</td>
+<td valign="top">&nbsp;COMMAND</td>
+<td valign="top">&nbsp;OUTPUT</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Compile&nbsp;</td>
+<td valign="top">&nbsp;<b>%GBDK_WIN%/bin/lcc -Wa-l -Wl-m -Wl-j -c -o main.o main.c</b></td>
+<td valign="top">&nbsp;main.o</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Link</td>
+<td valign="top">&nbsp;<b>%GBDK_WIN%/bin/lcc -Wa-l -Wl-m -Wl-j -o output.gb main.o</b></td>
+<td valign="top">&nbsp;output.gb</td>
+</tr>
+</table>
+-->
+<br />
+Finally, type <b>output.gb</b>.  The Hello World program should launch in the Emulicious emulator.
+<br />
+Congratulations! You have just written your first test program using the GameBoy DevKit.
 </span>
