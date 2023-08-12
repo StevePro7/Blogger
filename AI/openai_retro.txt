@@ -19,6 +19,18 @@ https://github.com/Farama-Foundation/Gymnasium/tree/main/docs#other-steps
 blog
 https://farama.org/Announcing-The-Farama-Foundation
 
+docs
+https://github.com/Farama-Foundation/Gymnasium/tree/main/docs#other-steps
 cd ~/GitHubX/Farama-Foundation/Gymnasium
 pip install gymnasium
 pip install -r docs/requirements.txt
+
+cd docs
+make dirhtml
+
+output
+/home/stevepro/GitHubX/Farama-Foundation/Gymnasium/docs/_build
+/home/stevepro/GitHubX/Farama-Foundation/Gymnasium/docs/_build/dirhtml/environments/atari/asteroids
+
+cd docs
+sphinx-autobuild -b dirhtml . _build
