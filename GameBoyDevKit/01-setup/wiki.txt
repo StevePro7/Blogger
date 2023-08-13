@@ -1,77 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Launch Visual Studio Code.  Open folder C:\HelloWorld.  Add the <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Setup/01-HelloWorld/01_helloworld/.vscode">.vscode</a></b> folder the following files beneath:
-<br />
-<br />
-<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/c_cpp_properties.json">c_cpp_properties.json</a>
-<br />
-<!--
-<pre class="csharp" name="code">
-{
-  "configurations": [
-    {
-      "name": "stevepro",
-      "intelliSenseMode": "clang-x64",
-      "includePath": [
-        "${env:GBDK_WIN}/include"
-      ],
-      "cStandard": "c11",
-      "cppStandard": "c++17",
-      "browse": {
-        "path": [
-          "${workspaceFolder}"
-        ],
-        "limitSymbolsToIncludedHeaders": true,
-        "databaseFilename": ""
-      }
-    }
-  ],
-  "version": 4
-}
-</pre>
--->
-<br />
-<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/tasks.json">tasks.json</a>
-<br />
-<!--
-<pre class="csharp" name="code">
-{
-    "version": "2.0.0",
-    "label": "build",
-    "type": "shell",
-    "windows": {
-        "command": "./build.bat"
-      },
-    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
-    "group": {"kind": "build", "isDefault": true},
-}
-</pre>
--->
-<br />
-<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/launch.json">launch.json</a>
-<br />
-<!--
-<pre class="csharp" name="code">
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "emulicious-debugger",
-            "request": "launch",
-            "name": "Launch in Emulicious",
-            "program": "${workspaceFolder}/output.gb",
-            "port": 58870,
-            "stopOnEntry": false,
-        }
-    ]
-}
-</pre>
--->
-<br />
-Open main.c.  Set breakpoint.  Press Ctrl + Shift + B to build source code.  Press F5 to debug step thru code:  
-<br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuY0S6dZH3dnauVn6eu4Wy_VXrd4qDXhexk71NOnKQmRiJqyLIzHd0BGmNrPesTYiysWMVwoAUruM0r5G-GJDcEBLV7MPPe0SECW4uD4YNAkXh-NbRt0dpRhD_TZcsLUlCd5cMMmmCy7R8CPKiUGKMTU0wPyEoqIziszaSdkvToRPvSTZaOK1kJPmwqYI/s1019/VScodeDebug.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuY0S6dZH3dnauVn6eu4Wy_VXrd4qDXhexk71NOnKQmRiJqyLIzHd0BGmNrPesTYiysWMVwoAUruM0r5G-GJDcEBLV7MPPe0SECW4uD4YNAkXh-NbRt0dpRhD_TZcsLUlCd5cMMmmCy7R8CPKiUGKMTU0wPyEoqIziszaSdkvToRPvSTZaOK1kJPmwqYI/s600/VScodeDebug.png"/></a>
-<br />
+
   
 <br /><br />
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit video games for Sega Master System.  Here we installed all the tools required including a powerful emulator: <b><a href="https://emulicious.net">Emulicious</a></b> to test the video games.  
@@ -257,7 +186,78 @@ Configuration Properties | C/C++ | General | Additional Include Directories | <b
 <u>Visual Studio Code</u><br />
 Similar to Sega Master System development using devkitSMS, setup Visual Studio Code as per instructions <a href="https://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">here</a>.  Add hidden <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Setup/01-HelloWorld/01_helloworld/.vscode">.vscode</a></b> folder + include <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/tasks.json">tasks.json</a> and <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/launch.json">launch.json</a> files beneath to build + debug code.
 <br /><br />
-
+Launch Visual Studio Code.  Open folder C:\HelloWorld.  Add the <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Setup/01-HelloWorld/01_helloworld/.vscode">.vscode</a></b> folder the following files beneath:
+<br />
+<br />
+<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/c_cpp_properties.json">c_cpp_properties.json</a>
+<br />
+<!--
+<pre class="csharp" name="code">
+{
+  "configurations": [
+    {
+      "name": "stevepro",
+      "intelliSenseMode": "clang-x64",
+      "includePath": [
+        "${env:GBDK_WIN}/include"
+      ],
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "browse": {
+        "path": [
+          "${workspaceFolder}"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+      }
+    }
+  ],
+  "version": 4
+}
+</pre>
+-->
+<br />
+<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/tasks.json">tasks.json</a>
+<br />
+<!--
+<pre class="csharp" name="code">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "windows": {
+        "command": "./build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+</pre>
+-->
+<br />
+<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/launch.json">launch.json</a>
+<br />
+<!--
+<pre class="csharp" name="code">
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emulicious-debugger",
+            "request": "launch",
+            "name": "Launch in Emulicious",
+            "program": "${workspaceFolder}/output.gb",
+            "port": 58870,
+            "stopOnEntry": false,
+        }
+    ]
+}
+</pre>
+-->
+<br />
+Open main.c.  Set breakpoint.  Press Ctrl + Shift + B to build source code.  Press F5 to debug step thru code:  
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuY0S6dZH3dnauVn6eu4Wy_VXrd4qDXhexk71NOnKQmRiJqyLIzHd0BGmNrPesTYiysWMVwoAUruM0r5G-GJDcEBLV7MPPe0SECW4uD4YNAkXh-NbRt0dpRhD_TZcsLUlCd5cMMmmCy7R8CPKiUGKMTU0wPyEoqIziszaSdkvToRPvSTZaOK1kJPmwqYI/s1019/VScodeDebug.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuY0S6dZH3dnauVn6eu4Wy_VXrd4qDXhexk71NOnKQmRiJqyLIzHd0BGmNrPesTYiysWMVwoAUruM0r5G-GJDcEBLV7MPPe0SECW4uD4YNAkXh-NbRt0dpRhD_TZcsLUlCd5cMMmmCy7R8CPKiUGKMTU0wPyEoqIziszaSdkvToRPvSTZaOK1kJPmwqYI/s600/VScodeDebug.png"/></a>
+<br />
 
 
 </span>
