@@ -1,8 +1,75 @@
 <span style="font-family:verdana;font-size:85%;">
 
-
-
-  
+Launch Visual Studio Code.  Open folder C:\HelloWorld.  Add the <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Setup/01-HelloWorld/01_helloworld/.vscode">.vscode</a></b> folder the following files beneath:
+<br />
+<br />
+<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/c_cpp_properties.json">c_cpp_properties.json</a>
+<br />
+<!--
+<pre class="csharp" name="code">
+{
+  "configurations": [
+    {
+      "name": "stevepro",
+      "intelliSenseMode": "clang-x64",
+      "includePath": [
+        "${env:GBDK_WIN}/include"
+      ],
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "browse": {
+        "path": [
+          "${workspaceFolder}"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+      }
+    }
+  ],
+  "version": 4
+}
+</pre>
+-->
+<br />
+<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/tasks.json">tasks.json</a>
+<br />
+<!--
+<pre class="csharp" name="code">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "windows": {
+        "command": "./build.bat"
+      },
+    "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
+    "group": {"kind": "build", "isDefault": true},
+}
+</pre>
+-->
+<br />
+<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/launch.json">launch.json</a>
+<br />
+<!--
+<pre class="csharp" name="code">
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emulicious-debugger",
+            "request": "launch",
+            "name": "Launch in Emulicious",
+            "program": "${workspaceFolder}/output.gb",
+            "port": 58870,
+            "stopOnEntry": false,
+        }
+    ]
+}
+</pre>
+-->
+<br />
+Open main.c.  Set breakpoint.  Press Ctrl + Shift + B to build source code.  Press F5 to debug step thru code:  
+<br /><br />
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit video games for Sega Master System.  Here we installed all the tools required including a powerful emulator: <b><a href="https://emulicious.net">Emulicious</a></b> to test the video games.  
 <br /><br />
 <a href="http://emulicious.net/downloads">Emulicious</a> is a free multi-system emulator popular for Sega Master System and Sega Game Gear games but can also play Nintendo <a href="https://en.wikipedia.org/wiki/Game_Boy">Game Boy</a> and <a href="https://en.wikipedia.org/wiki/Game_Boy_Color">Game Boy Color</a> games.  Therefore, let's leverage Sega Master System development setup to build and test games for Nintendo Game Boy and Game Boy Color using the <b><a href="https://gbdev.gg8.se/wiki/articles/GBDK">GBDK</a></b>.
@@ -179,9 +246,9 @@ Navigate to C:\HelloWorld.  Add existing: main.c and build.bat at the same folde
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvTaTyDCM34aiJZzv7HqP-vUofC0nbMmdSu8qcI-VkMjhlEjEJLsymRyG2gKdaU-ZHssFH8a7BdVlYXUFoYpXO6HJF24TtSpV8VIkZJ-0M7sdZ68lPMHtGfE2mIan6srNnWcPYACWAopnYanYPY4uvPrhBtIBKq4flQivzuwsM_4OmGzpJDhKIFe99v0U/s940/VisualStudio03.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvTaTyDCM34aiJZzv7HqP-vUofC0nbMmdSu8qcI-VkMjhlEjEJLsymRyG2gKdaU-ZHssFH8a7BdVlYXUFoYpXO6HJF24TtSpV8VIkZJ-0M7sdZ68lPMHtGfE2mIan6srNnWcPYACWAopnYanYPY4uvPrhBtIBKq4flQivzuwsM_4OmGzpJDhKIFe99v0U/s600/VisualStudio03.png"/></a>
 -->
 <br />
-Finally, ensure that the GBDK header files are included for Intellisense:  Right click Solution | Properties |
+Finally, ensure that the GBDK header files are included for Intellisense:  Right click project | Properties |
 <br />
-Configuration Properties | C/C++ | General | Additional Include Directories | %GBDK_WIN%/include
+Configuration Properties | C/C++ | General | Additional Include Directories | <b>%GBDK_WIN%/include</b>
 <br /><br />
 <u>Visual Studio Code</u><br />
 Similar to Sega Master System development using devkitSMS, setup Visual Studio Code as per instructions <a href="https://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">here</a>.  Add hidden <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Setup/01-HelloWorld/01_helloworld/.vscode">.vscode</a></b> folder + include <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/tasks.json">tasks.json</a> and <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/launch.json">launch.json</a> files beneath to build + debug code.
