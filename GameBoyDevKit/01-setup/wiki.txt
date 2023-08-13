@@ -73,9 +73,10 @@ As an example, let's write a simple program that prints Hello World to the scree
 <pre class="csharp" name="code">
 #include &lt;gb/gb.h&gt;
 #include &lt;stdio.h&gt;
+
 void main()
 {
-  printf( "HELLO WORLD" );
+	printf( "HELLO WORLD" );
 }
 </pre>
 <!-- -->
@@ -169,7 +170,7 @@ Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32
 </table>
 <!-- -->
 <br />  
-Navigate to C:\HelloWorld.  Add existing: main.c and build.bat at the same folder level as HelloWorld.sln.
+Navigate to C:\HelloWorld.  Add existing: <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/main.c">main.c</a> and build.bat at the same folder level as HelloWorld.sln.
 <br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvTaTyDCM34aiJZzv7HqP-vUofC0nbMmdSu8qcI-VkMjhlEjEJLsymRyG2gKdaU-ZHssFH8a7BdVlYXUFoYpXO6HJF24TtSpV8VIkZJ-0M7sdZ68lPMHtGfE2mIan6srNnWcPYACWAopnYanYPY4uvPrhBtIBKq4flQivzuwsM_4OmGzpJDhKIFe99v0U/s940/VisualStudio03.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvTaTyDCM34aiJZzv7HqP-vUofC0nbMmdSu8qcI-VkMjhlEjEJLsymRyG2gKdaU-ZHssFH8a7BdVlYXUFoYpXO6HJF24TtSpV8VIkZJ-0M7sdZ68lPMHtGfE2mIan6srNnWcPYACWAopnYanYPY4uvPrhBtIBKq4flQivzuwsM_4OmGzpJDhKIFe99v0U/s600/VisualStudio03.png"/></a>
@@ -250,7 +251,7 @@ Launch Visual Studio Code.  Open folder C:\HelloWorld.  Add the <b><a href="http
 </pre>
 <!-- -->
 <br />
-Open main.c.  Set breakpoint.  Press Ctrl + Shift + B to build source code.  Press F5 to debug step thru code:  
+Open <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/main.c">main.c</a>.  Set breakpoint.  Press Ctrl + Shift + B to build source code.  Press F5 to debug step thru code:  
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuY0S6dZH3dnauVn6eu4Wy_VXrd4qDXhexk71NOnKQmRiJqyLIzHd0BGmNrPesTYiysWMVwoAUruM0r5G-GJDcEBLV7MPPe0SECW4uD4YNAkXh-NbRt0dpRhD_TZcsLUlCd5cMMmmCy7R8CPKiUGKMTU0wPyEoqIziszaSdkvToRPvSTZaOK1kJPmwqYI/s1019/VScodeDebug.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuY0S6dZH3dnauVn6eu4Wy_VXrd4qDXhexk71NOnKQmRiJqyLIzHd0BGmNrPesTYiysWMVwoAUruM0r5G-GJDcEBLV7MPPe0SECW4uD4YNAkXh-NbRt0dpRhD_TZcsLUlCd5cMMmmCy7R8CPKiUGKMTU0wPyEoqIziszaSdkvToRPvSTZaOK1kJPmwqYI/s600/VScodeDebug.png"/></a>
 <br />
