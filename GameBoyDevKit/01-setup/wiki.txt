@@ -132,7 +132,6 @@ Let's automate the build process: create C:\HelloWorld\<a href="https://github.c
 output.gb
 </pre>
 <br />
-  
 <u>Visual Studio 2015</u><br />
 Similar to Sega Master System development using devkitSMS, setup Visual Studio 2015 as per instructions <a href="https://steveproxna.blogspot.com/2019/04/devkitsms-programming-sample-iii.html">here</a>.  Also, follow instructions <a href="https://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">here</a> to connect Ctrl+1 hot key to automatically compile, link and run code.
 <br /><br />
@@ -154,7 +153,6 @@ Launch Visual Studio 2015.  File | New | Project... | Visual C++ | Win32 | Win32
 <td valign="top">&nbsp;UNCHECKED</td>
 </tr>
 </table>
-<!-- -->
 <!-- --> 
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGSPHyB2uv6YP0XVK8S29AZb6dE3nsI9kxe1vB4wecW-Y79q_GCmYbP1bPQhwJLQNqL9lO3FBGI_ZnjXdFgp3NYnf6Apc6SSJl0oZjZCFHaOj2EXSnXnu5Sl9B4SIqv0aBxuF0FxpoSUkfohC6VELHF3l-D3FRGaUSp_IEWZo3kwBbvdI58vQdztsMQ2w/s667/VisualStudio02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGSPHyB2uv6YP0XVK8S29AZb6dE3nsI9kxe1vB4wecW-Y79q_GCmYbP1bPQhwJLQNqL9lO3FBGI_ZnjXdFgp3NYnf6Apc6SSJl0oZjZCFHaOj2EXSnXnu5Sl9B4SIqv0aBxuF0FxpoSUkfohC6VELHF3l-D3FRGaUSp_IEWZo3kwBbvdI58vQdztsMQ2w/s600/VisualStudio02.png"/></a>
@@ -180,6 +178,7 @@ Finally, ensure that the GBDK header files are included for Intellisense:  Right
 <br />
 Configuration Properties | C/C++ | General | Additional Include Directories | <b>%GBDK_WIN%/include</b>
 <br /><br />
+<br />  
 <u>Visual Studio Code</u><br />
 Similar to Sega Master System development using devkitSMS, setup Visual Studio Code as per instructions <a href="https://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html">here</a>.  Add hidden <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Setup/01-HelloWorld/01_helloworld/.vscode">.vscode</a></b> folder + include <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/tasks.json">tasks.json</a> and <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/.vscode/launch.json">launch.json</a> files beneath to build + debug code.
 <br /><br />
