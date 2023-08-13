@@ -1,4 +1,12 @@
 <span style="font-family:verdana;font-size:85%;">
+<u>Visual Studio 2015</u><br />
+Similar to Sega Master System development using devkitSMS, setup Visual Studio 2015 as per instructions here.  Also, follow instructions here to connect Ctrl+1 hot key + automatically compile and link and run code!
+<br /><br />
+
+  Similar to Sega Master System development using devkitSMS, setup Visual Studio 2015 as per instructions from this post.  Also, follow instructions from this post to Ctrl+1 hot key to automatically compile and link and run code!
+<br /><br />
+  
+  
 In 2017, we checked out <a href="http://steveproxna.blogspot.com/2017/09/devkitsms-programming-setup.html">devkitSMS Programming Setup</a> to build 8-bit video games for Sega Master System.  Here we installed all the tools required including a powerful emulator: <b><a href="https://emulicious.net">Emulicious</a></b> to test the video games.  
 <br /><br />
 <a href="http://emulicious.net/downloads">Emulicious</a> is a free multi-system emulator popular for Sega Master System and Sega Game Gear games but can also play Nintendo <a href="https://en.wikipedia.org/wiki/Game_Boy">Game Boy</a> and <a href="https://en.wikipedia.org/wiki/Game_Boy_Color">Game Boy Color</a> games.  Therefore, let's leverage Sega Master System development setup to build and test games for Nintendo Game Boy and Game Boy Color using the <b><a href="https://gbdev.gg8.se/wiki/articles/GBDK">GBDK</a></b>.
@@ -64,7 +72,7 @@ Setup the following environment variable for GBDK_WIN as it can be useful throug
 -->
 <br />
 <u>Example</u><br />
-As an example, let's write a simple program that prints Hello World to the screen using the GameBoy DevKit.  Create new directory: C:\HelloWorld.  Create new file main.c.  Copy in the following code to print Hello World. 
+As an example, let's write a simple program that prints Hello World to the screen using the GameBoy DevKit.  Create new directory: C:\HelloWorld.  Create new file <a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/main.c">main.c</a>.  Copy in the following code to print Hello World. 
 <br />
 <!--
 <br />
@@ -109,16 +117,20 @@ Change directory cd C:\HelloWorld.  Next, execute the following 2x commands (in 
 </table>
 -->
 <br />
-Finally, type <b>output.gb</b>.  The Hello World program should launch in the Emulicious emulator.
+Finally, type <b><a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/output.gb">output.gb</a></b>.  The Hello World program should launch in the Emulicious emulator.
 <br />
 Congratulations! You have just written your first test program using the GameBoy DevKit.
 <br />
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcOTutAeAgKj5i7YMWOEveThWpQKxD2wJEY6ya0VB3lSx8U4cGkqv53yCtS7254JZt9Eq2E5Bfuv3um7xPPVfPSIzmh3LagM0O4Phwiht1oBWFlyF7O4zDUdqKqMf5F2c3Z2mDu4mpfhFzT9fxg65ZyNQiWoQjK5uqY5b21sZM3Hm1rIqGXnjd8EJwGUU/s486/HWoutput.png"><img alt="" border="0" height="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcOTutAeAgKj5i7YMWOEveThWpQKxD2wJEY6ya0VB3lSx8U4cGkqv53yCtS7254JZt9Eq2E5Bfuv3um7xPPVfPSIzmh3LagM0O4Phwiht1oBWFlyF7O4zDUdqKqMf5F2c3Z2mDu4mpfhFzT9fxg65ZyNQiWoQjK5uqY5b21sZM3Hm1rIqGXnjd8EJwGUU/s600/HWoutput.png"/></a>
 -->
+<br />
+IMPORTANT<br />
+If game does not initially render correct then select Options menu | System | Game Boy or Game Boy Color.
+<br />
 <br />  
 <u>Automate</u><br />
-Let's automate the build process: create C:\HelloWorld\build.bat script file that contains the commands:
+Let's automate the build process: create C:\HelloWorld\<a href="https://github.com/StevePro7/GBDKcode/blob/main/Setup/01-HelloWorld/01_helloworld/build.bat">build.bat</a> script file that contains the commands:
 <pre class="csharp" name="code">
 @echo off
 %GBDK_WIN%/bin/lcc -Wa-l -Wl-m -Wl-j -c -o main.o main.c
