@@ -1,0 +1,46 @@
+openai retro 02
+14-Aug-2023
+
+github.com/openai
+https://github.com/openai/retro
+
+https://retro.readthedocs.io/en/latest
+https://retro.readthedocs.io/en/latest/getting_started.html
+
+
+https://retro.readthedocs.io/en/latest/integration.html#supported-roms
+includes
+Sega Master System
+Sega Genesis / MegaDrive
+Nintendo GameBoy
+Nintendo GameBoy Color
+
+
+https://retro.readthedocs.io/en/latest/developing.html#development
+
+example game
+https://github.com/openai/retro/blob/master/retro/data/stable/KidChameleon-Genesis/scenario.json	
+
+
+
+Introduction and Setup - EP1 - Open-AI and NEAT Tutorial
+https://www.youtube.com/watch?v=CFa6NhLgeL0&list=PLTWFMbPFsvz3CeozHfeuJIXWAJMkPtAdS&index=3
+
+
+Learning to Use Open-AI Retro - E2 - Open-AI and NEAT Tutorial
+https://www.youtube.com/watch?v=S4jI-ambYKE
+https://github.com/openai/retro/tree/master/retro/data
+
+
+OpenAI game integration tool - part 1
+https://www.youtube.com/watch?v=lPYWaUAq_dY
+
+git clone https://github.com/openai/retro
+cd retro
+cmake . -DBUILD_UI=ON -UPVLIB_DIRECTORY
+make -j$(grep -c ^processor /proc/cpuinfo)
+./gym-retro-integration
+
+
+Setup an openAI training environment with gym-retro and NEAT in Windows 7
+https://www.youtube.com/watch?v=j3eHWG2CtqU
