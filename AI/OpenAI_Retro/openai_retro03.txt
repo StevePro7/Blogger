@@ -20,6 +20,7 @@ sudo apt-get autoremove
 cd /home/stevepro/GitHubX/openai
 git clone https://github.com/openai/retro.git
 cd retro
+cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY
 Build files have been written to: /home/stevepro/GitHubX/openai/retro
 
 make -j$(grep -c ^processor /proc/cpuinfo)
@@ -93,3 +94,32 @@ def test_def():
 Debug
 
 Install pytest fromf PyCharm packages as necc.
+
+
+search for
+retro.data.get_romfile_path(game, inttype)
+
+
+maybe try this
+Airstriker-Genesis
+/home/stevepro/GitHubX/openai/retro/retro/data/stable
+
+cd /home/stevepro/GitHubX/openai/retro/retro
+python examples/random_agent.py --game Airstriker-Genesis --state Level1
+
+ERROR #1
+AttributeError: module 'gym.utils.seeding' has no attribute 'hash_seed'
+https://stackoverflow.com/questions/73710249/openai-gym-retro-error-attributeerror-module-gym-utils-seeding-has-no-attri
+pip install gym==0.25.2
+
+
+ERROR #2
+from gym.envs.classic_control.rendering import SimpleImageViewer
+ModuleNotFoundError: No module named 'gym.envs.classic_control.rendering'
+
+https://www.reddit.com/r/reinforcementlearning/comments/uklf29/no_module_named_gymenvsclassic_controlrendering
+pip uninstall gym
+pip install gym==0.21.0
+
+
+RE-run but only got small blank blue screen
