@@ -23,3 +23,73 @@ cd retro
 Build files have been written to: /home/stevepro/GitHubX/openai/retro
 
 make -j$(grep -c ^processor /proc/cpuinfo)
+./gym-retro-integration
+
+
+
+Introduction and Setup - EP1 - Open-AI and NEAT Tutorial
+https://www.youtube.com/watch?v=CFa6NhLgeL0&list=PLTWFMbPFsvz3CeozHfeuJIXWAJMkPtAdS&index=3
+
+IMPORTANT
+all the data + state info is stored here
+https://github.com/openai/retro/tree/master/retro/data
+e.g.
+https://github.com/openai/retro/tree/master/retro/data/stable
+
+https://github.com/openai/retro/tree/master/retro/data/stable/SonicTheHedgehog-Genesis
+
+/home/stevepro/GitHubX/openai/retro/retro/data/stable/SonicTheHedgehog-Genesis
+GreenHillZone.Act1
+
+cd /home/stevepro/GitHubX/openai/retro/retro
+python examples/random_agent.py SonicTheHedgehog-Genesis GreenHillZone.Act1
+
+rom
+SonicTheHedgehog-Genesis
+/home/stevepro/Steven/INSTALLATIONSEGA/roms
+
+
+
+python examples/random_agent.py SonicTheHedgehog-Genesis GreenHillZone.Act1
+ModuleNotFoundError: No module named 'retro'
+
+
+cd /home/stevepro/GitHubX/openai/retro/retro
+pip3 install gym-retro
+python examples/random_agent.py SonicTheHedgehog-Genesis GreenHillZone.Act1
+random_agent.py: error: unrecognized arguments: SonicTheHedgehog-Genesis GreenHillZone.Act1
+
+python examples/random_agent.py --game SonicTheHedgehog-Genesis --state GreenHillZone.Act1
+
+Traceback (most recent call last):
+  File "/home/stevepro/.local/lib/python3.8/site-packages/retro/__init__.py", line 49, in make
+    retro.data.get_romfile_path(game, inttype)
+  File "/home/stevepro/.local/lib/python3.8/site-packages/retro/data/__init__.py", line 288, in get_romfile_path
+    raise FileNotFoundError("No romfiles found for game: %s" % game)
+FileNotFoundError: No romfiles found for game: SonicTheHedgehog-Genesis
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "examples/random_agent.py", line 16, in <module>
+    env = retro.make(args.game, args.state or retro.State.DEFAULT, scenario=args.scenario, record=args.record, players=args.players, obs_type=obs_type)
+  File "/home/stevepro/.local/lib/python3.8/site-packages/retro/__init__.py", line 54, in make
+    raise FileNotFoundError('Game not found: %s. Did you make sure to import the ROM?' % game)
+FileNotFoundError: Game not found: SonicTheHedgehog-Genesis. Did you make sure to import the ROM?
+
+
+get_romfile_path
+
+
+
+IMPORTANT
+there are tests that can be run directly in PyCharm using pytest
+can't remember exactly what I did but...
+
+Launch PyCharm
+open test_integration.py
+set breakpoint
+def test_def():
+Debug
+
+Install pytest fromf PyCharm packages as necc.
