@@ -1,0 +1,25 @@
+openai retro 03
+16-Aug-2023
+
+github.com/openai
+https://github.com/openai/retro
+
+
+OpenAI game integration tool - part 1
+https://www.youtube.com/watch?v=lPYWaUAq_dY
+
+Launch terminal
+sudo apt-get update
+sudo apt-get install capnproto
+sudo apt-get install libcapnp-dev
+sudo apt-get install libqt5opengl5-dev
+sudo apt-get install qtbase5-dev
+
+sudo apt-get autoremove
+
+cd /home/stevepro/GitHubX/openai
+git clone https://github.com/openai/retro.git
+cd retro
+Build files have been written to: /home/stevepro/GitHubX/openai/retro
+
+make -j$(grep -c ^processor /proc/cpuinfo)
