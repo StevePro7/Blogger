@@ -184,7 +184,9 @@ Set break point in <a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Se
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s941/HelloWorld04.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikCEtyl0dPlR4FSyipBBhsFTk0ajre60fNXd5gCmLqhizoFEzk7vzepmd0hN26zIeHDIf8Fh8qxa45ibS5WGAZUZuvjPvbEol5ONna6RpSXUzHlDKGLA4SjApTY3MphH4TMa8bsSfATHb8Y5iri8EBo7MFzjRr8CgQh9t6bqWLhabjFJJMa9HQOaLx/s600/HelloWorld04.png"/></a>
 <!-- -->
 <br />
-<br />  
+IMPORTANT you can tail BPF output in Terminal window: <i>sudo cat /sys/kernel/debug/tracing/trace_pipe</i>
+<br />
+<br />
 <u>Hello Maps</u><br />
 BPF <a href="https://docs.kernel.org/bpf/maps.html">maps</a> are generic structures for storing different types of data accessible between kernel + user space.  Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloMaps</b> | Language std: <b>C11</b>
 <br />
