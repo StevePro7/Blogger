@@ -1,0 +1,146 @@
+video Notes
+27-Aug-2023
+
+
+video 01
+IMPORTANT
+download + extract
+gbdk_win.zip
+
+imp cos these have the compile.bat file already auto-gen'd from the Makefile	
+in each examples sub-folder
+e.g.
+template_minimal
+
+
+video 02
+sprites
+drawn over background + window tilemaps
+2x types
+8x8		default
+8x16
+
+40x sprites supported
+rember there is a negative offset 
+X	-8
+Y	-16
+thus (0,0) will not be visible
+sprites NOT rendered by default	employ 	SHOW_SPRITES
+
+metasprites
+many sprites combined to make up a single sprites
+
+
+video 03
+graphics
+background tilemap
+window tilemap
+sprites
+
+screen / window
+20x18 tiles
+160x144 pixels
+
+background
+32x32	tiles
+256x256 px
+
+GB color
+drawing colored backgrounds
+3x things
+compilation for GB color
+color palettes
+array of tilemap attributes
+
+
+2x common ways of creating GB graphics
+PNG2ASSET
+or
+Gameboy tile Designer + Gameboy map builder
+
+
+NOTE
+RGB8 is a C pre-processor macro
+palette_color_t is an alias for unsigned 16-bit integer
+
+
+IMPORTANT
+specify that your game is compatible with GB color
+
+when compiling ROM file
+pass one of the following arguments to LCC
+
+-Wm-yc	GameBoy Color compatible	NB: lowercase c
+-Wm-yC	GameBoy Color only		NB: uppercase C
+-Wm-ys	Super GameBoy compatible
+
+
+GB color supports 16x different color palettes
+each color palette has 4x 16-bit colors in it	4bpp
+8x of the 16x color palettes are designated for sprites
+8x of the 16x color palettes are designated for background / window tilemaps
+
+
+code
+#include <gb/cgb.h>
+GB color header file
+
+IMPORTANT
+color attributes only work for GB color and Super GameBoy
+
+
+GBC Tile Attributes are defined as
+Bit 7	priority flag
+when this is set, it puts the tile above the sprites with color 0 being transparent
+(0: below sprites, 1: above sprites)
+
+Bit 6	vertical flip
+dictates which way up the tile is drawn vertically
+(0: normal, 1: flipped vertically)
+
+Bit 5	horizontal flip
+dictates which way up the tile is drawn horizontally
+(0: normal, 1: flipped horizontally)
+
+Bit 4	not used
+Bit 3	character bank specification
+dictates from which bank of background tile patterns the tile is taken
+(0: bank0, 1: bank1)
+
+Bit 2	see bit 0
+Bit 1	see bit 0 
+Bit 0	bits 0-2 indicate which of the 7 BKG color palettes the tile is assigned
+
+
+write tile indices to VRAM bank 0
+write tile map attributes to VRAM bank 1
+
+
+video 04
+graphics #2
+draw background image
+
+tile data
+tilemap
+
+
+video 05
+joypad input
+
+wait_vbl_done()
+HALTs the CPU and waits for the vertical blank interrupt (VBL) io finish
+
+This is often in main loops to idel the CPU at low power until it's time to start the next frame
+It's also useful for syncing animations with the screen re-draw
+
+Warning:
+if the VBL interrup is disabled then this function will never return
+if the screen is off then this function returns immediately
+
+joypad()
+reads and returns the current state of the joypad
+Follow Nintendo's guidelines for reading the pad
+return value is an OR of J_*
+
+when testing for multiple different buttons it's best to read the joypad state once into a variable and test using that variable
+
