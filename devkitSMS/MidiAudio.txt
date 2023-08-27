@@ -8,3 +8,24 @@ https://johnnyz.smspower.org/master.html
 GOOGLE
 convert mid to vgm
 https://github.com/SudoMaker/midi2vgm
+
+git clone https://github.com/SudoMaker/midi2vgm.git
+midi2vgm_opl3
+
+apt install build-essential git cmake
+git clone https://github.com/SudoMaker/midi2vgm
+cd midi2vgm
+mkdir build; cd build
+cmake ..
+make
+
+
+/home/stevepro/GitHubX/SudoMaker/midi2vgm/build
+./midi2vgm_opl3
+
+
+mkdir /home/stevepro/GitHubX/SudoMaker/midi2vgm/build/_steveproMidi
+
+./midi2vgm_opl3 --in _steveproMidi/AfterB-Title.mid --out _steveproMidi/
+
+
