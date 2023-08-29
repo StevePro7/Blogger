@@ -3,8 +3,15 @@ TODO
 
 Junkyard header files update
 StevePro7
-SteveProXBA
+SteveProXNA
 %GBDK_WIN%/include;$(SolutionDir)\headers\gen;$(SolutionDir)\headers\main;%(AdditionalIncludeDirectories)
+
+
+01.
+Finally, ensure that the GBDK header files are included for Intellisense:  Right click project | Properties |
+<br />
+Configuration Properties | C/C++ | General | Additional Include Directories | <b>%GBDK_WIN%/include</b>.
+<br />
 
 
 22-Aug-2023
