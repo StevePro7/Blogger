@@ -1,5 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a></b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
+Extended Berkeley Packet Filter [<b><a href="https://en.wikipedia.org/wiki/EBPF">eBPF</a></b>] is a technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  <a href="https://docs.kernel.org/bpf/libbpf/libbpf_overview.html">libbpf</a> is a C-based library that takes compiled BPF object files and loads and verifies them into the kernel attachiing BPF programs to various kernel hooks and execute custom code.
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
 <br />
@@ -35,13 +35,13 @@ Create your first BPF <a href="https://github.com/sartura/ebpf-hello-world">prog
 <br />
 Create
 <br /><br />
-A new C project will be created which automatically adds the following two files: <a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Setup/01-HelloWorld/01-HelloWorld/hello.c">main.c</a> and <a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Setup/01-HelloWorld/01-HelloWorld/CMakeLists.txt">CMakeLists.txt</a>
+A new C project will be created which automatically adds the following two files: main.c and CMakeLists.txt
 <br />
 <table width="99%" border="1">
 <tr>
-<td>&nbsp;<a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Setup/01-HelloWorld/01-HelloWorld/hello.c">main.c</a>
+<td>&nbsp;main.c
 </td>
-<td>&nbsp;<a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Setup/01-HelloWorld/01-HelloWorld/CMakeLists.txt">CMakeLists.txt</a>
+<td>&nbsp;CMakeLists.txt
 </td>
 </tr>
 <tr>
