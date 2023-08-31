@@ -1,16 +1,13 @@
 <span style="font-family:verdana;font-size:85%;">
 In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programming-setup.html">post</a>, we checked out <a href="https://en.wikipedia.org/wiki/EBPF">eBPF<a> Programming Setup. Extended Berkeley Packet Filter [eBPF] is technology that runs sandboxed programs in privileged context like the OS kernel to safely and efficiently extend the capabilities of the kernel at runtime without requiring changes to the kernel source code.  One issue is there are currently limited methods to <a href="https://www.youtube.com/watch?v=R8-GbeaIOwc">debug</a> BPF programs thus we'd like to explore test options.
 <br />
-<!-- --> 
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s850/EBPF_logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM6Dz0JhtGBagI4XR-6pkK1OnpsQQKcemem2ArVYzyS3jI3LPC772Rk6mh00XUanwrZhbE7f1oe6krSRXGPJhoybEUFDt2_64jnx-oEJm_4d0vQMY8AZzElYQTIJm5tEez4qQGeRkYz3a1e0D29_cWlDMjF_L2xdrr9bATfv4aKQUeU6m5AmFUTsv9oI/s600/EBPF_logo.png"/></a>
-<!-- -->
 <br />
 Let's check it out! 
 <br /><br />  
 <u>Software</u><br />
 Follow all instructions from the previous <a href="http://steveproxna.blogspot.com/2019/10/linux-setup-cheat-sheet-ii.html">post</a> to install <b>CLion</b> and <b>VS Code</b> on Ubuntu Linux.  Also install the following components for low level C code unit testing, mocking and integration: <b><a href="http://www.throwtheswitch.org/unity">Unity</a></b>, <b><a href="http://www.throwtheswitch.org/cmock">CMock</a></b>, <b><a href="http://www.throwtheswitch.org/ceedling">Ceedling</a></b>.
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<a href="https://github.com/ThrowTheSwitch/Unity">Unity</a>&nbsp;</td>
@@ -25,12 +22,10 @@ Follow all instructions from the previous <a href="http://steveproxna.blogspot.c
 <td>&nbsp;Build system for C projects using Ruby Rake [make] build system to integrate Unity + CMock</td>
 </tr>
 </table>
-<!-- -->
 <br />  
 <u>Pre-requisites</u><br />
 As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not found</i> errors may be thrown.  Also, CMock requires Ruby bundle be installed otherwise <i>Command 'bundle' not found</i> errors may be thrown.
 <br />
-<!-- -->
 <table width="100%" border="1">
 <tr>
 <td>&nbsp;sudo apt install ruby</td>
@@ -38,13 +33,10 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
-<!--<br />-->
 <b>Unity</b><br />
 <a href="http://www.throwtheswitch.org/unity">Unity</a> is a unit testing framework built for C, with a focus on working with embedded toolchains, which we would like to try and <a href="https://github.com/ThrowTheSwitch/Unity">leverage</a> for BPF development.  Follow instructions <a href="https://github.com/ThrowTheSwitch/Unity/issues/302">here</a> to install and configure Unity.
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>
@@ -61,13 +53,11 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigHo7-E8E8BwXpbneb-Lah2iL3sjeI321CwDcSkpLD-BQPbRCkGNsthVhCfNvzs7Tf7MbuWU7877vljTTQV2r7kV-Pt38ED3r36akYdsk7gNU1bneNaKL5KIT6Im2ff2DPWW5aPN9G2Teom7eNVA_AsjAEcN_7TjYMkAe5lCtWHpw-JPc4oHNapx_lTMA/s934/01-unity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigHo7-E8E8BwXpbneb-Lah2iL3sjeI321CwDcSkpLD-BQPbRCkGNsthVhCfNvzs7Tf7MbuWU7877vljTTQV2r7kV-Pt38ED3r36akYdsk7gNU1bneNaKL5KIT6Im2ff2DPWW5aPN9G2Teom7eNVA_AsjAEcN_7TjYMkAe5lCtWHpw-JPc4oHNapx_lTMA/s600/01-unity.png"/></a>
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikUUb5t6yMGwhFoyk9cvn0sA1q1vPjLm8uR3Nz6CGlStSpzn2bEB0ZBa5zZv1t5TgXubnqobyumb8uzahy6NsoWEabAXtGbVU2P0qoTcvtx7wgFb2DlIblY-6r-lHhnLgoD7UdYZ39_3BxNZIwed7MBJ-p8O3EjpZNmCCaLu2yf68iWWuIpr6-HQAaTQY/s889/02-unity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikUUb5t6yMGwhFoyk9cvn0sA1q1vPjLm8uR3Nz6CGlStSpzn2bEB0ZBa5zZv1t5TgXubnqobyumb8uzahy6NsoWEabAXtGbVU2P0qoTcvtx7wgFb2DlIblY-6r-lHhnLgoD7UdYZ39_3BxNZIwed7MBJ-p8O3EjpZNmCCaLu2yf68iWWuIpr6-HQAaTQY/s600/02-unity.png"/></a>
-<!-- -->
 <br />
 <br />
 <b>CMock</b><br />
 <a href="http://www.throwtheswitch.org/cmock">CMock</a> is a mock and stub generator designed to work smoothly with Unity. CMock automagically parses the C headers and creates useful mock interfaces used for unit testing.  Follow instructions <a href="https://github.com/ThrowTheSwitch/CMock">here</a> to install CMock.
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>
@@ -77,13 +67,11 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 <br />
 <b>Ceedling</b><br />
 <a href="http://www.throwtheswitch.org/ceedling">Ceedling</a> is a build system for C projects using Ruby Rake [make] build system.  Ceedling also makes TDD Test Driven Development simple by integrating CMock + Unity.  Follow instructions <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">here</a> to install Ceedling.
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>
@@ -95,7 +83,6 @@ As above, Ceedling requires Ruby installed otherwise <i>sudo: gem: command not f
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHH0bdvUt3Jtd8xHarpED4IWNzNOc9VfzjNgPFLEbSaUYshe5-vJINvAT0JElTNuKw4IZBfdOgCSp0f3fZr_a1WAK28YaaCmXX3izV7W9n6c1W-BwKivf6nr0oi5sKtbdw-4D0AzrxzOubTa8pHRwBh-8mwiup0LMOeHFJXMVaJ6CFIzQPDE_JfeJNxIE/s736/01-ceedling.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHH0bdvUt3Jtd8xHarpED4IWNzNOc9VfzjNgPFLEbSaUYshe5-vJINvAT0JElTNuKw4IZBfdOgCSp0f3fZr_a1WAK28YaaCmXX3izV7W9n6c1W-BwKivf6nr0oi5sKtbdw-4D0AzrxzOubTa8pHRwBh-8mwiup0LMOeHFJXMVaJ6CFIzQPDE_JfeJNxIE/s600/01-ceedling.png"/></a>
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s826/02-ceedling.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit2Ae-5krstLh2Y6aOkGS1-BSLKOW1D0i5Y7QQaHhWclqQz7BTmWQQEAXtraGbOtPl5nu1_fkyQGNW1ynCOKEXNMPvG6r7K1mu8MmexeKcEHbGS5Rm3m6tCOdfD4s91VpiG8zebcawpW34VHuDcDGBFFmhd9BVYEyTy6p3K3l1jMNbNkbxD0CYfkOJAGU/s600/02-ceedling.png"/></a>
-<!-- -->
 <br /><br />
 <br />
 <u>Hello Unity</u><br />
@@ -103,9 +90,7 @@ In the previous <a href="http://steveproxna.blogspot.com/2023/07/ebpf-programmin
 <br /><br />
 Launch CLion | New Project | C Executable | Location: <b>/home/stevepro/HelloUnity</b> | Language std: C11
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s704/HelloUnity.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKvgpLLXwwCZ8K5WXInspuYVs5SzmyYpshIWTroDvZyZrAXZf1DuHlnW35UKZLIfEFvUnaYc0LlheLMwog3A_ASjbcAJolneLRnQqI5fjrHRzzA3hqBYKHxeOU_j6pH5MZ_XkmHXqg7-bI-obfWoySGnqIjM5OlUXjVl17124JGE60ak6rUFZtktqtWLk/s600/HelloUnity.png"/></a>
-<!-- -->
 <br />
 Create
 <br /><br />
@@ -138,7 +123,6 @@ Follow the example <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-s
 <br /><br />
 Open folder <b>/home/stevepro/<a href="https://github.com/SteveProXNA/eBPFcode/tree/main/Sample/02-HelloCMock">HelloCMock</a></b>.  Copy inc/<a href="https://github.com/joaniedavis/cmock_example/blob/master/inc/rectangle.h">rectangle.h</a> + <a href="https://github.com/joaniedavis/cmock_example/blob/master/project.yml">project.yml</a>.  Execute mock command:
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>
@@ -146,14 +130,12 @@ Open folder <b>/home/stevepro/<a href="https://github.com/SteveProXNA/eBPFcode/t
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 This creates <a href="https://github.com/SteveProXNA/eBPFcode/tree/main/Sample/02-HelloCMock/mocks">mocks</a> folder two corresponding files: <a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Sample/02-HelloCMock/mocks/mock_rectangle.h">mock_rectangle.h</a> and <a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Sample/02-HelloCMock/mocks/mock_rectangle.c">mock_rectangle.c</a>.  Notice we did not attempt to use CLion as is not currently <a href="https://groups.google.com/g/throwtheswitch/c/dbPNtBZ_84M/m/0_qZaa4KAgAJ?pli=1">integrated</a>; any attempt may produce Multiple Definition <a href="https://github.com/ThrowTheSwitch/CMock/issues/97">issue</a>!
 <br /><br />
 <br />
 <u>Hello Ceedling</u><br />
 Complete previous <a href="https://github.com/joaniedavis/cmock_example">example</a> but this time try Ceedling using the <a href="https://spin.atomicobject.com/2019/02/07/cmock-get-started">article</a> as a guideline:  Launch the Terminal:
-<!-- -->
 <br />
 <table width="99%" border="1">
 <tr>
@@ -163,11 +145,9 @@ Complete previous <a href="https://github.com/joaniedavis/cmock_example">example
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Copy all project files into <b><a href="https://github.com/SteveProXNA/eBPFcode/tree/main/Sample/03-HelloCeedling/src">src</a></b> and <b><a href="https://github.com/SteveProXNA/eBPFcode/tree/main/Sample/03-HelloCeedling/test">test</a></b> directories.  Include <b><a href="https://github.com/SteveProXNA/eBPFcode/tree/main/Sample/03-HelloCeedling/inc">inc</a></b> and update <a href="https://github.com/SteveProXNA/eBPFcode/blob/main/Sample/03-HelloCeedling/project.yml">project.yml</a> with the inc directory:
 <br />
-<!-- -->
 <pre class="csharp" name="code">
   :paths:
   :test:
@@ -182,7 +162,6 @@ Copy all project files into <b><a href="https://github.com/SteveProXNA/eBPFcode/
   :libraries: []
 </pre>
 <br />
-<!-- -->
 Run tests manually simply by typing <b>ceedling</b>
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_iEa91TFucjzWcbM9xPGQ9_TykLVhnHPhqjQ71tgOtcDkMNzeBgr0xUXPOk9-UwomMEaIowbWKkzbjM7VRP_5Ra9HRbzJhmz0gi-HhDCr052e2pmpyJDjsTLEGld1YIMk-RhJn4IX3pWxPUHlS9ALyjIsX_LVPU2XjE_tQzr-fUF2Tz_9SHGZTZ1J4rw/s468/ceedling_run.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_iEa91TFucjzWcbM9xPGQ9_TykLVhnHPhqjQ71tgOtcDkMNzeBgr0xUXPOk9-UwomMEaIowbWKkzbjM7VRP_5Ra9HRbzJhmz0gi-HhDCr052e2pmpyJDjsTLEGld1YIMk-RhJn4IX3pWxPUHlS9ALyjIsX_LVPU2XjE_tQzr-fUF2Tz_9SHGZTZ1J4rw/s600/ceedling_run.png"/></a>
