@@ -1,9 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">
   
 <u>Homebrew</u><br /><!--JUNKYARD-->
-TODO - Junkyard text
-<br /><br />
-Copy over all original folders and files from the corresponding <a href="https://github.com/LaroldsJubilantJunkyard/alleyway-gameboy">example</a>.  Copy from prior Hello World example the hidden <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Sample/02-LaroldsJubilantJunkyard/alleyway-gameboy/.vscode">.vscode</a></b> folder and files.  Copy also <a href="https://github.com/StevePro7/GBDKcode/blob/main/Sample/02-LaroldsJubilantJunkyard/alleyway-gameboy/build.bat">build.bat</a> and align with source's <a href="https://github.com/LaroldsJubilantJunkyard/alleyway-gameboy/blob/master/make.bat">make.bat</a> file.  Add relevant files to Visual Studio 2015.  Press Ctrl+1 to build, link and run code similar to the prior Hello World example!
+TODO - Junkyard text - include new tables w/ resolution etc.
 <br /><br />
 Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project
 <br />
@@ -25,9 +23,11 @@ Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 
 </table>
 -->
 <br />
-
+Copy over all original folders and files from the corresponding <a href="https://github.com/LaroldsJubilantJunkyard/alleyway-gameboy">example</a>.  Copy from prior Hello World example the hidden <b><a href="https://github.com/StevePro7/GBDKcode/tree/main/Sample/02-LaroldsJubilantJunkyard/alleyway-gameboy/.vscode">.vscode</a></b> folder and files.  Copy also <a href="https://github.com/StevePro7/GBDKcode/blob/main/Sample/02-LaroldsJubilantJunkyard/alleyway-gameboy/build.bat">build.bat</a> and align with source's <a href="https://github.com/LaroldsJubilantJunkyard/alleyway-gameboy/blob/master/make.bat">make.bat</a> file.  Add relevant files to Visual Studio 2015.  Press Ctrl+1 to build, link and run code similar to the prior Hello World example!
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgI3zJhCTIt-djxyBjtoPc9WfnbxItWYMPhADQxg08ywWW8Zinwg_3-JkKC9xRP1efkhKO2bFRMfd71trXAjo3l7_kCNe4cdGgZjyovfa8xYBbiLNHX6587dHxtSxR2LAoW2NjEwBkEmZHZh_RQWPMD8EVuMZNUmfcNZV7SeOoU8eoennshhYnq78yo0DQ/s1085/VisualStudio03b.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgI3zJhCTIt-djxyBjtoPc9WfnbxItWYMPhADQxg08ywWW8Zinwg_3-JkKC9xRP1efkhKO2bFRMfd71trXAjo3l7_kCNe4cdGgZjyovfa8xYBbiLNHX6587dHxtSxR2LAoW2NjEwBkEmZHZh_RQWPMD8EVuMZNUmfcNZV7SeOoU8eoennshhYnq78yo0DQ/s600/VisualStudio03b.png"/></a>
 <br /><br />
-Finally, ensure that the GBDK header files are included for Intellisense:  Right click project | Properties |
+NOTE: ensure that the GBDK header files are included for Intellisense:  Right click project | Properties |
 <br />
 Configuration Properties | C/C++ | General | Additional Include Directories | <b>%GBDK_WIN%/include; $(SolutionDir)/headers/gen; $(SolutionDir)/headers/main; %(AdditionalIncludeDirectories)</b>.
 <br /><br />
