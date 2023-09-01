@@ -134,7 +134,7 @@ This is often in main loops to idel the CPU at low power until it's time to star
 It's also useful for syncing animations with the screen re-draw
 
 Warning:
-if the VBL interrup is disabled then this function will never return
+if the VBL interrupt is disabled then this function will never return
 if the screen is off then this function returns immediately
 
 joypad()
