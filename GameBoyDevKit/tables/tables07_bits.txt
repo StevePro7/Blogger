@@ -1,0 +1,44 @@
+GBC Tile Attributes
+
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Bit 7</b></td>
+<td valign="top">&nbsp;priority flag</td>
+<td valign="top">&nbsp;0: tiles below sprites, 1: tiles above sprites</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 6</b></td>
+<td valign="top">&nbsp;vertical flip</td>
+<td valign="top">&nbsp;0: tiles normal, 1: flipped vertically</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 5</b></td>
+<td valign="top">&nbsp;horizontal flip</td>
+<td valign="top">&nbsp;0: tiles normal, 1: flipped horizontally</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 4</b></td>
+<td valign="top">&nbsp;not used</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 3</b></td>
+<td valign="top">&nbsp;character bank specification</td>
+<td valign="top">&nbsp;0: tiles at bank0, 1: tiles at bank1</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 2</b></td>
+<td valign="top">&nbsp;see bit 0</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 1</b></td>
+<td valign="top">&nbsp;see bit 0</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 0</b></td>
+<td valign="top">&nbsp;bits 0-2</td>
+<td valign="top">&nbsp;indicate tile color palette assignment</td>
+</tr>
+</table>
