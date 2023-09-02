@@ -4,9 +4,83 @@
 Larold's Jubilant <a href="https://laroldsjubilantjunkyard.com">Junkyard</a> is a website/blog/shop which focuses on creating digital products including game development projects and <a href="https://laroldsjubilantjunkyard.com/tutorials">tutorials</a>.  The Nintendo GameBoy development tutorial series is very educational.
 <br /><br />
 Follow Larold's Jubilant Junkyard <a href="https://www.youtube.com/@laroldsjubilantjunkyard/videos">YouTube</a> video channel for additional GBDK 2020 information and content:
-<br /><br />
-TODO - Junkyard text - include new tables w/ resolution etc.
-<br /><br />
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;SCREEN resolution</td>
+<td valign="top">&nbsp;20 x 18 tiles</td>
+<td valign="top">&nbsp;160 x 144 pixels</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;BACKGROUND</td>
+<td valign="top">&nbsp;32 x 32 tiles</td>
+<td valign="top">&nbsp;256 x 256 pixels</td>
+</tr>
+</table>
+<br />
+<b>Compiler flags</b><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>-Wm-yc</b></td>
+<td valign="top">&nbsp;GameBoy Color compatible</td>
+<td valign="top">&nbsp;NB: lowercase <b>c</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>-Wm-yC</b></td>
+<td valign="top">&nbsp;GameBoy Color only</td>
+<td valign="top">&nbsp;NB: lowercase <b>C</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>-Wm-ys</b></td>
+<td valign="top">&nbsp;Super GameBoy compatible</td>
+<td valign="top">&nbsp;</td>
+</tr>
+</table>
+<br />
+<b>GameBoy Color Tile Attributes</b><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Bit 7</b></td>
+<td valign="top">&nbsp;priority flag</td>
+<td valign="top">&nbsp;0: tiles below sprites, 1: tiles above sprites</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 6</b></td>
+<td valign="top">&nbsp;vertical flip</td>
+<td valign="top">&nbsp;0: tiles normal, 1: flipped vertically</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 5</b></td>
+<td valign="top">&nbsp;horizontal flip</td>
+<td valign="top">&nbsp;0: tiles normal, 1: flipped horizontally</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 4</b></td>
+<td valign="top">&nbsp;not used</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 3</b></td>
+<td valign="top">&nbsp;character bank specification</td>
+<td valign="top">&nbsp;0: tiles at bank0, 1: tiles at bank1</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 2</b></td>
+<td valign="top">&nbsp;see bit 0</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 1</b></td>
+<td valign="top">&nbsp;see bit 0</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 0</b></td>
+<td valign="top">&nbsp;bits 0-2</td>
+<td valign="top">&nbsp;indicate tile color palette assignment</td>
+</tr>
+</table>
+<br />
 Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project
 <br />
 <!--
@@ -35,6 +109,7 @@ NOTE: ensure that the GBDK header files are included for Intellisense:  Right cl
 <br />
 Configuration Properties | C/C++ | General | Additional Include Directories | <b>%GBDK_WIN%/include; $(SolutionDir)/headers/gen; $(SolutionDir)/headers/main; %(AdditionalIncludeDirectories)</b>.
 <br /><br />
+  
 <br /><br />
 <b>TODO</b> - post =- previous URL<br />
 In the previous post, we checked out GBDK Programming Setup. The <a href="https://github.com/gbdk-2020/gbdk-2020">GBDK</a> is a cross-platform development kit for sm83, z80 and 6502 based gaming consoles including the Nintendo Game Boy and Game Boy Color.
