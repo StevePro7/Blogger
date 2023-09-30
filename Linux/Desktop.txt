@@ -1,0 +1,50 @@
+Desktop Failed
+29/09/2023
+
+Today I was doing some Python in PyCharm on Linux but I could not setup a virtualenv
+I got an error in PyCharm that complained about
+virtualenv.seed.app
+
+something
+so I followed some blog which prompted me to uninstall some virtualenv stuff
+sudo apt-remote 
+tl;dr
+AFter remoot I couldn't login to Ubuntu desktop
+error
+Failed to start session
+
+I believe the problem with removing some Python modules or something must have caused this
+
+SOLUTION
+reinstall ubuntu-desktop
+
+Reference
+https://itsfoss.com/failed-to-start-session-ubuntu-14-04
+
+Method
+reboot
+choose option1
+reboot from recovery mode
+choose latest version
+
+popup
+do not choose option1 = black screen of death
+
+choose others
+choose network configuration
+otherwise sudo apt-get update will throw errors
+
+choose root
+follow instructinos in post
+sudo apt-get install ubuntu-desktop
+
+IMPORTANT
+I will be get prompted that there are multiple display managers
+because I installed lightdm after to avail of VNC Viewer
+
+choose lightdm
+sudo reboot
+
+
+Now on reboot prior screen was blue is now black again
+and can login as before - yah!
