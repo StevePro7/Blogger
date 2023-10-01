@@ -46,3 +46,10 @@ to here
 /home/stevepro/.prboom-plus/prboom-plus.cfg
 
 Where is WAD file directory?
+I had to hardcode the WAD directory
+
+//if (!(wad_files[MAXLOADFILES-1] = I_FindFile("prboom-plus.wad", "")))
+if (!(wad_files[MAXLOADFILES-1] = I_FindFile("/home/stevepro/.prboom-plus/PrBoom-Plus.wad", "")))
+
+Cannot find the IWAD file...
+stop here for now
