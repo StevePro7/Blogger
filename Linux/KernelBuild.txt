@@ -5,6 +5,41 @@ How to compile a custom Linux kernel
 https://www.youtube.com/watch?v=APQY0wUbBow
 15:31
 
+https://kernel.org
+wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.tar.xz
+tar xvf linux-6.6.tar.xz
+cd linux-6.6
+
+ls -al .config
+make menuconfig -j16
+
+12 = magic number
+no. cores i.e.from
+nproc
+
+IMPORTANT
+a lot of this video spent talking about all the options in menuconfig
+
+afterwards the .config file is generated
+ls -al .config
+
+make kernel
+make j-12
+sudo make modules_install -j12
+
+manual copy bunary
+e.g.
+arch/x86/boot/bzimage
+
+ls /boot
+vmlinuz
+
+sudo cp /arch/x86/boot/bzimage /boot/vmlinuz/mycustomkernel
+
+update bootloader to load new kernel
+sudo grub-mkconfig -o /boot/grub/grub.cfg 	
+
+
 Linux Kernel Programming 01: Compile and Boot
 https://www.youtube.com/watch?v=WiZ05pnHZqM
 51:56
