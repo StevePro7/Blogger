@@ -12,6 +12,8 @@ cd linux-6.6
 
 ls -al .config
 make menuconfig -j16
+OR
+make menuconfig -j$(nproc)
 
 12 = magic number
 no. cores i.e.from
@@ -23,7 +25,7 @@ a lot of this video spent talking about all the options in menuconfig
 afterwards the .config file is generated
 ls -al .config
 
-make kernel
+#make kernel
 make j-12
 sudo make modules_install -j12
 
@@ -43,5 +45,88 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 Linux Kernel Programming 01: Compile and Boot
 https://www.youtube.com/watch?v=WiZ05pnHZqM
 51:56
+
+git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+
+Download from Ubuntu software
+kdevelop
+
+Launch kdevelop
+Open project
+~/linux
+open the Makefile
+
+main.c
+init/main.c
+
+setup header files
+Project | Settings | Lanugage support | include
+select directory
+~/linux/include
+click "+"
+
+main.c
+start_kernel
+
+Compile
+kernel.org | Documentation | Introduction to kernel development
+Minimal requirements to compile the kernel
+https://www.kernel.org/doc/html/v4.14/process/changes.html
+
+install all the dependent software
+
+.config
+options
+make config		CLI one-by-one selection
+make defconfig		give default config
+
+zcat /proc/config
+OR
+sudo cp /proc/config.gz ./
+gunzip ./config.gz
+mv config .config	
+sudo apt install 
+
+make menuconfig
+make xconfig
+make oldconfig
+
+IMPORTANT
+Ubuntu does not have the following file
+/proc/config.gz
+
+BUT
+can get the equivalent
+ref
+https://superuser.com/questions/287371/obtain-kernel-config-from-currently-running-linux-system
+e.g.
+/boot/config-$(uname -r)
+
+
+make -j$(nproc)
+sudo make install
+
+ls -l /boot
+vmlinuz
+
+make kernelversion
+cp /boot/vmlinuz /boot/vmlinuz-$(make kernelversion)-$(uname -m)
+
+UPDATE boot loader
+sudo vim /boot/grub/grub.cfg
+sudo update-grub
+OR
+sudo vim /etc/grub.d/40_custom
+
+menuentry 'Splat' {
+	#davedefault
+	#insmod part_gpt
+	#insmod ext2
+	search --no-floppy --fs-uuid --set=root GUID
+	linux /boot/vmlinuz-6.6-x86_64 root=/dev/nvme0nlp5 rw quiet result=GUID
+	#initrd /boot/intel-ucode.img		
+}
+
+
 
 https://www.youtube.com/watch?v=1gEFYoGUFxM
