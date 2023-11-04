@@ -1,6 +1,31 @@
 Kernel Build
-03-Nov-2023
+04-Nov-2023
 
+SUMMARY
+cd
+git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+
+Install kdevelop
+Project | Open / Import Project...
+/home/stevepro/linux
+Makefile
+<takes ages to import source code>
+
+ main.c
+ init/main.c
+ Project | Open Configuration | Lanugage Support
+ Includes/Imports
+ /home/stevepro/linux/include
+ click "+"
+
+sudo cp /boot/config-$(uname -r) ~/linux/.config
+make -j$(nproc)
+sudo make modules_install -j$(nproc)
+
+#sudo make install
+
+
+03-Nov-2023
 How to compile a custom Linux kernel
 https://www.youtube.com/watch?v=APQY0wUbBow
 15:31
