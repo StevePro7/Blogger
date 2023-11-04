@@ -11,12 +11,12 @@ Project | Open / Import Project...
 Makefile
 <takes ages to import source code>
 
- main.c
- init/main.c
- Project | Open Configuration | Lanugage Support
- Includes/Imports
- /home/stevepro/linux/include
- click "+"
+main.c
+init/main.c
+Project | Open Configuration | Lanugage Support
+Includes/Imports
+/home/stevepro/linux/include
+click "+"
 
 sudo cp /boot/config-$(uname -r) ~/linux/.config
 make -j$(nproc)
