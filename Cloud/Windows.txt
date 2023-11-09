@@ -1,0 +1,66 @@
+Windows
+08-Nov-2023
+
+Today on Windows laptop I set up Docker Desktop but I also got working the code for
+
+https://github.com/dotnet-architecture/eShopOnContainers
+
+.NET Microservices Architecture for Containerized .NET Applications
+Asynchronous event-driven communication
+
+NET-Microservices-Architecture-for-Containerized-NET-Applications.pdf
+D:\Bitbucket\SteveProXNA\actionstuff\_2023\MyBooks
+
+
+Launch VS 2022
+Open eShopOnContainers SLN
+Clean + Rebuild
+complains about Docker Desktop not installed
+
+Says that WSL is pre-req?
+wsl.exe --install
+C:\Windows\System32
+
+Reboot
+Start | run | cmd | wsl
+Wsl/WSL_E_WSL_OPTIONAL_COMPONENT_REQUIRED
+
+Soln
+https://code.visualstudio.com/docs/remote/wsl-tutorial
+
+Pretty sure I had to check
+Windows Hypervisor Platform
+
+TODO - get the image off Windows laptop
+Reboot
+Start | run | cmd | wsl
+complain that no Linux distro was installed
+
+Start | MS Store
+Ubuntu installed
+
+Reboot
+Start | run | cmd | wsl
+
+now WSL works!!
+
+
+
+Launch VS 2022
+Open eShopOnContainers SLN
+Clean + Rebuild
+complains about Docker Desktop not installed
+
+Download + install Docker Desktop
+4.25.0
+
+reboot
+
+Rebuild SLN
+complain node.js not installed
+
+Install node.js
+https://nodejs.org
+
+
+Now can Clean + Rebuild entire SLN
