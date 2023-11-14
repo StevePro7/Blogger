@@ -1,0 +1,319 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="https://steveproxna.blogspot.com/2023/09/gbdk-programming-setup.html">post</a>, we checked out GBDK Programming Setup. The <a href="https://github.com/gbdk-2020/gbdk-2020">GBDK</a> is a cross-platform development kit for sm83, z80 and 6502 based gaming consoles including the Nintendo <a href="https://en.wikipedia.org/wiki/Game_Boy">Game Boy</a> and <a href="https://en.wikipedia.org/wiki/Game_Boy_Color">Game Boy Color</a>.
+<br /><br />
+Using the GBDK, it is now possible to write game code using the <a href="http://en.wikipedia.org/wiki/C_(programming_language)">C language</a> rather than pure <a href="http://en.wikipedia.org/wiki/Zilog_Z80#Z80_assembly_language">Z80 assembly</a>. Therefore, we would like to extend this knowledge and checkout some code samples and homebrew games.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiqTU3PsECzHr-OQ2EBPrAmrEro1GJ9swSzBkHYIItXJhDi0uz0BvlLtySuELKqmAGOrkk-4plXheukVQDMVuPySqa8t2SK7Ng66uSa0iFlpZd1hn9xZED7z78TJktHmSzM4SjJAC6jMQt-ZBQxHMcd9Sgb9Z0-HOSbHrn_E4S4fY-42ramaMtegEuXDk/s486/PacmanGameboy.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiqTU3PsECzHr-OQ2EBPrAmrEro1GJ9swSzBkHYIItXJhDi0uz0BvlLtySuELKqmAGOrkk-4plXheukVQDMVuPySqa8t2SK7Ng66uSa0iFlpZd1hn9xZED7z78TJktHmSzM4SjJAC6jMQt-ZBQxHMcd9Sgb9Z0-HOSbHrn_E4S4fY-42ramaMtegEuXDk/s600/PacmanGameboy.png"/></a>
+<br />
+Let's check it out! 
+<br /><br />
+<u>Software</u><br />
+Follow all instructions from the previous <a href="https://steveproxna.blogspot.com/2023/09/gbdk-programming-setup.html">post</a>: this documents how to setup all the pre-requisite software.
+<br />
+Note: ensure you have downloaded and installed the GBDK devkit and Small Device C Compiler [<a href="https://sourceforge.net/p/sdcc/wiki/Home">SDCC</a>].
+<br /><br />
+<u>Examples</u><br />
+As per the previous <a href="https://steveproxna.blogspot.com/2023/09/gbdk-programming-setup.html">post</a>, after the GBDK has been downloaded, installed and setup, we should now checkout C:\gbdk\<a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples">examples</a>\gb to learn more about APIs available in the devkit.  Replicate prior Hello World <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/01-HelloWorld">example</a>.
+<br /><br />
+Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEDNgJToC2epoIaoL0SkKwslIPTpKO3swjZDsbJuTz0gmEBCzBsx32-pRxLF7VNdsgdRkgzZcF6dK1rZaR1mdgquOtn_Eyzc2AgKUxwOyaY7yWc9IS_TPMjugnRWzjd2VG8cT9wfYQdc-uutYqzWvx9V46Ldr3VkpgzdAskBl5XEmMPHsozMVVBvIED3g/s941/VisualStudio01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEDNgJToC2epoIaoL0SkKwslIPTpKO3swjZDsbJuTz0gmEBCzBsx32-pRxLF7VNdsgdRkgzZcF6dK1rZaR1mdgquOtn_Eyzc2AgKUxwOyaY7yWc9IS_TPMjugnRWzjd2VG8cT9wfYQdc-uutYqzWvx9V46Ldr3VkpgzdAskBl5XEmMPHsozMVVBvIED3g/s600/VisualStudio01.png"/></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Name:</td>
+<td valign="top">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\apa_image</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create directory for solution</td>
+<td valign="top">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+<br />
+Copy over all original folders and files from the corresponding <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/apa_image">example</a>.  Copy from prior Hello World example the hidden <b><a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/apa_image/.vscode">.vscode</a></b> folder and files.  Copy also <a href="https://github.com/SteveProXNA/GBDKcode/blob/main/Setup/02-examples/apa_image/build.bat">build.bat</a> and align with source <a href="https://github.com/SteveProXNA/GBDKcode/blob/main/Setup/02-examples/apa_image/compile.bat">compile.bat</a> file.  Add relevant files to Visual Studio 2015.  Press Ctrl+1 to build, link and run code similar to the prior Hello World example!
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhj8QzU60QxF5G7K4D7Cxd_GHjD-sw5RqOIAOgo_wxT19oyluxeDGB5G2FW7JxpB2xrpLVClu0tfwKaCPYoC1UAFwN63ym24FfeYLZpH4sSLeqAhZt6nlIhJXkcpF1yKGc3ljz26WocbJ9-2rRwD8YIrl8NQuMrr4gkXu2Q6eDCSlDEJXwBdPyMKyqNjz4/s1085/VisualStudio01b.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhj8QzU60QxF5G7K4D7Cxd_GHjD-sw5RqOIAOgo_wxT19oyluxeDGB5G2FW7JxpB2xrpLVClu0tfwKaCPYoC1UAFwN63ym24FfeYLZpH4sSLeqAhZt6nlIhJXkcpF1yKGc3ljz26WocbJ9-2rRwD8YIrl8NQuMrr4gkXu2Q6eDCSlDEJXwBdPyMKyqNjz4/s600/VisualStudio01b.png"/></a>
+<br />
+Launch Visual Studio Code.  Open example <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/apa_image">folder</a>.  Set breakpoint in <a href="https://github.com/SteveProXNA/GBDKcode/blob/main/Setup/02-examples/apa_image/src/main.c">main.c</a>.  Press F5 to debug step thru code
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWeHDD_HW7bG4nFR0jfPLyw7vZHRZwCuTQ_WfGkpO26RJYB4mdgpDYgFWjLLASz0DuOIFE5KkI63ezf71bKiCw5EW0_4qhk_Pv5pT1e81h7xh81pGeWri1TF4GfeLUs0d4O2MJa3VpZReo4iq_2UNO1vR02SnewIVeUPXV5rbcfjYbM8LI7vRvpPu_ROI/s1083/VisualStudioCode01c.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWeHDD_HW7bG4nFR0jfPLyw7vZHRZwCuTQ_WfGkpO26RJYB4mdgpDYgFWjLLASz0DuOIFE5KkI63ezf71bKiCw5EW0_4qhk_Pv5pT1e81h7xh81pGeWri1TF4GfeLUs0d4O2MJa3VpZReo4iq_2UNO1vR02SnewIVeUPXV5rbcfjYbM8LI7vRvpPu_ROI/s600/VisualStudioCode01c.png"/></a>
+<br /><br />
+Here is the complete list:
+<br />
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/apa_image">apa_image</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/apa_image">apa_image</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/banks">banks</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/banks">banks</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/bcd">bcd</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/bcd">bcd</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/colorbar">colorbar</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/colorbar">colorbar</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/comm">comm</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/comm">comm</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/crash">crash</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/crash">crash</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/dscan">dscan</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/dscan">dscan</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/filltest">filltest</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/filltest">filltest</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/galaxy">galaxy</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/galaxy">galaxy</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/gb-dtmf">gb-dtmf</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/gb-dtmf">gb-dtmf</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/gbdecompress">gbcompress</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/gbdecompress">gbcompress</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/incbin">incbin</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/incbin">incbin</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/irq">irq</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/irq">irq</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/isr_vector">isr_vector</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/isr_vector">isr_vector</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/large_map">large_map</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/large_map">large_map</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/lcd_isr_wobble">lcd_isr_wob</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/lcd_isr_wobble">lcd_isr_wob</a></td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/linkerfile">linkerfile</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/linkerfile">linkerfile</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/metasprites">metasprites</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/metasprites">metasprites</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/paint">paint</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/paint">paint</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/ram_function">ram_function</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/ram_function">ram_function</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/rand">rand</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/rand">rand</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/rpn">rpn</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/rpn">rpn</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/scroller">scroller</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/scroller">scroller</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/sgb_border">sgb_border</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/sgb_border">sgb_border</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/sgb_multiplayer">sgb_multiplay</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/sgb_multiplayer">sgb_multiplay</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/sgb_pong">sgb_pong</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/sgb_pong">sgb_pong</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/sgb_sfx">sgb_sfx</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/sgb_sfx">sgb_sfx</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/simple_physics">simple_physics</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/simple_physics">simple_physics</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/sound">sound</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/sound">sound</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/template_minimal">temp_minimal</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/template_minimal">temp_minimal</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/template_subfolders">temp_subfolder</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/template_subfolders">temp_subfolder</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Setup/02-examples/wav_sample">wav_sample</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gbdk-2020/gbdk-2020/tree/master/gbdk-lib/examples/gb/wav_sample">wav_sample</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<u>Samples</u><br />
+Gaming Monsters YouTube <a href="https://www.youtube.com/playlist?list=PLeEj4c2zF7PaFv5MPYhNAkBGrkx4iPGJo">channel</a> has many <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode">samples</a> to teach how to develop your own GameBoy games:
+<br /><br />
+Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjy6vO2pV9H4Q8dtNR9xNVPYk29R0DXtt9h2g2tqPgrWq_fjXXmssclmo2vxmcR9fFCKAWqdV-0tTQ10E91tls1g8NcbevDog_6ozcV3JgNFHGn-yxJq7z0AoJdAc1pwyJyoQej0vshm-yXivLIuw43Moic34wONo-jlBt2iScTabzqS-wRfpsn3cjw0vE/s941/VisualStudio02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjy6vO2pV9H4Q8dtNR9xNVPYk29R0DXtt9h2g2tqPgrWq_fjXXmssclmo2vxmcR9fFCKAWqdV-0tTQ10E91tls1g8NcbevDog_6ozcV3JgNFHGn-yxJq7z0AoJdAc1pwyJyoQej0vshm-yXivLIuw43Moic34wONo-jlBt2iScTabzqS-wRfpsn3cjw0vE/s600/VisualStudio02.png"/></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Name:</td>
+<td valign="top">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\SimpleSprites</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create directory for solution</td>
+<td valign="top">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+<br />
+Copy over all original folders and files from the corresponding <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/02_simplesprites">example</a>.  Copy from prior Hello World example the hidden <b><a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/02_simplesprites/.vscode">.vscode</a></b> folder and files.  Copy also <a href="https://github.com/SteveProXNA/GBDKcode/blob/main/Sample/01-gingemonster/02_simplesprites/build.bat">build.bat</a> and align with source's <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/blob/master/02_simplesprites/make.bat">make.bat</a> file.  Add relevant files to Visual Studio 2015.  Press Ctrl+1 to build, link and run code similar to the prior Hello World example!
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDIOH2Q21j5KaGH4tNOJLwP1Nj0HWG-L0VtFOaafuk9f5q-kDDnBGSS3aA8wQNX_XTyIXRiD5SInCABcVwgqxgfK1ljYjjClpQ5LmBnFYa0tcQGmO_-Piwjq6whecx0SUvlxeKqjMrnLfqgl39WuFuPH6kU80V1gK-YUhEbRJL13UPY-DtnIsaOoybJjE/s1085/VisualStudio02b.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDIOH2Q21j5KaGH4tNOJLwP1Nj0HWG-L0VtFOaafuk9f5q-kDDnBGSS3aA8wQNX_XTyIXRiD5SInCABcVwgqxgfK1ljYjjClpQ5LmBnFYa0tcQGmO_-Piwjq6whecx0SUvlxeKqjMrnLfqgl39WuFuPH6kU80V1gK-YUhEbRJL13UPY-DtnIsaOoybJjE/s600/VisualStudio02b.png"/></a>
+<br />
+Launch Visual Studio Code.  Open example <a href="https://github.com/SteveProXNA/GBDKcode/blob/main/Sample/01-gingemonster/02_simplesprites">folder</a>.  Set breakpoint in <a href="https://github.com/SteveProXNA/GBDKcode/blob/main/Sample/01-gingemonster/02_simplesprites/main.c">main.c</a>.  Press F5 to debug step thru code
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1PuBtPSXYAdHjFSsLe-pqaSYxhJSLpQ_8rAAeZNhv9pHNy3zKJjgmksY6gRiibBZHQh0hipjWs0Y4vWCTMYNWjOT8Uw7lNHrjlFL5PkDP9PyRhmLmI23aWpGKFeHtLVhfPuGZns4P4m5i1A0ihAGP6kq7yp1uQIYbUyOvTzPKsXiOioeNUKO1guSj7PY/s1083/VisualStudioCode02c.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1PuBtPSXYAdHjFSsLe-pqaSYxhJSLpQ_8rAAeZNhv9pHNy3zKJjgmksY6gRiibBZHQh0hipjWs0Y4vWCTMYNWjOT8Uw7lNHrjlFL5PkDP9PyRhmLmI23aWpGKFeHtLVhfPuGZns4P4m5i1A0ihAGP6kq7yp1uQIYbUyOvTzPKsXiOioeNUKO1guSj7PY/s600/VisualStudioCode02c.png"/></a>
+<br /><br />
+Here is the complete list:
+<br />
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/01_helloworld">helloworld</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/01_helloworld">helloworld</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/02_simplesprites">simplesprites</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/02_simplesprites">simplesprites</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/03_movesprites">movesprites</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/03_movesprites">movesprites</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/04_background">background</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/04_background">background</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/05_window">window</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/05_window">window</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/06_sound">sound</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/06_sound">sound</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/07_noise">noise</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/07_noise">noise</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/08_simplejumping">simplejumping</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/08_simplejumping">simplejumping</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/09_metasprites">metasprites</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/09_metasprites">metasprites</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/10_sprite_collision">spritecollision</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/10_sprite_collision">spritecollision</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/11_background_collision">bkgdcollision</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/11_background_collision">bkgdcollision</a></td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/12_splashscreens">splashscreens</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/12_splashscreens">splashscreens</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/13_fade_effects">fadeeffects</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/13_fade_effects">fadeeffects</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/14_keyboard">keyboard</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/14_keyboard">keyboard</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/15_save_name">savename</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/15_save_name">savename</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/16_gameboy_color_sprites">colorsprites</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/16_gameboy_colorsprites">colorsprites</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/17_gameboy_color_backgrounds">backgrounds</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/17_gameboy_color_backgrounds">backgrounds</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/19_making_music">makingmusic</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/19_making_music">makingmusic</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/20_sprite_tricks">spritetricks</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/20_sprite_tricks">spritetricks</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/21_parallax_scrolling">scrolling</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/21_parallax_scrolling">scrolling</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/23_debugging">debugging</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/23_debugging">debugging</a></td></tr>
+<tr><td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/01-gingemonster/XX_platformer">platformer</a></td><td valign="top">&nbsp;SOURCE: <a href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/XX_platformer">platformer</a></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<u>Homebrew</u><br />
+Larold's Jubilant <a href="https://laroldsjubilantjunkyard.com">Junkyard</a> is a website/blog/shop which focuses on creating digital products including game development projects and <a href="https://laroldsjubilantjunkyard.com/tutorials">tutorials</a>.  The Nintendo GameBoy development tutorial series is very educational.
+<br /><br />
+Follow Larold's Jubilant Junkyard YouTube video <a href="https://www.youtube.com/@laroldsjubilantjunkyard/videos">channel</a> for additional GBDK 2020 information and content:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;SCREEN resolution</td>
+<td valign="top">&nbsp;20 x 18 tiles</td>
+<td valign="top">&nbsp;160 x 144 pixels</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;BACKGROUND</td>
+<td valign="top">&nbsp;32 x 32 tiles</td>
+<td valign="top">&nbsp;256 x 256 pixels</td>
+</tr>
+</table>
+<br />
+<b>Compiler flags</b><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>-Wm-yc</b></td>
+<td valign="top">&nbsp;GameBoy Color compatible</td>
+<td valign="top">&nbsp;NB: lowercase <b>c</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>-Wm-yC</b></td>
+<td valign="top">&nbsp;GameBoy Color only</td>
+<td valign="top">&nbsp;NB: lowercase <b>C</b></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>-Wm-ys</b></td>
+<td valign="top">&nbsp;Super GameBoy compatible</td>
+<td valign="top">&nbsp;</td>
+</tr>
+</table>
+<br />
+<b>GameBoy Color Tile Attributes</b><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Bit 7</b></td>
+<td valign="top">&nbsp;priority flag</td>
+<td valign="top">&nbsp;0: tiles below sprites, 1: tiles above sprites</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 6</b></td>
+<td valign="top">&nbsp;vertical flip</td>
+<td valign="top">&nbsp;0: tiles normal, 1: flipped vertically</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 5</b></td>
+<td valign="top">&nbsp;horizontal flip</td>
+<td valign="top">&nbsp;0: tiles normal, 1: flipped horizontally</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 4</b></td>
+<td valign="top">&nbsp;not used</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 3</b></td>
+<td valign="top">&nbsp;character bank specification</td>
+<td valign="top">&nbsp;0: tiles at bank0, 1: tiles at bank1</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 2</b></td>
+<td valign="top">&nbsp;see bit 0</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 1</b></td>
+<td valign="top">&nbsp;see bit 0</td>
+<td valign="top">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<b>Bit 0</b></td>
+<td valign="top">&nbsp;bits 0-2</td>
+<td valign="top">&nbsp;indicate tile color palette assignment</td>
+</tr>
+</table>
+<br />
+Launch Visual Studio 2015. File | New | Project... | Visual C++ | Win32 | Win32 Project
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1suPMHQ6wB1e1NSx61Q-LpYtAYl0OPZQ-7sYFBCqkWFBCY34Alw73a12YRmikmIg1SbR14iRhwqhMHvYQjeQ9SnTVO69kw1Y1D76OGz6sa9ozIBdx5GssdKShOdjcjybgeRqxIIvIDWhWJfnhPQ6l41WFQqw1kB3DNzF6g3WG0fxSMDq55mCOITx-GuA/s941/VisualStudio03.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1suPMHQ6wB1e1NSx61Q-LpYtAYl0OPZQ-7sYFBCqkWFBCY34Alw73a12YRmikmIg1SbR14iRhwqhMHvYQjeQ9SnTVO69kw1Y1D76OGz6sa9ozIBdx5GssdKShOdjcjybgeRqxIIvIDWhWJfnhPQ6l41WFQqw1kB3DNzF6g3WG0fxSMDq55mCOITx-GuA/s600/VisualStudio03.png"/></a>
+<table width="82%" border="1">
+<tr>
+<td valign="top">&nbsp;Name:</td>
+<td valign="top">&nbsp;Game</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Location:</td>
+<td valign="top">&nbsp;C:\AlleywayGameboy</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Create directory for solution</td>
+<td valign="top">&nbsp;UNCHECKED</td>
+</tr>
+</table>
+<br />
+Copy over all original folders and files from the corresponding <a href="https://github.com/LaroldsJubilantJunkyard/alleyway-gameboy">example</a>.  Copy from prior Hello World example the hidden <b><a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/02-LaroldsJubilantJunkyard/alleyway-gameboy/.vscode">.vscode</a></b> folder and files.  Copy also <a href="https://github.com/SteveProXNA/GBDKcode/blob/main/Sample/02-LaroldsJubilantJunkyard/alleyway-gameboy/build.bat">build.bat</a> and align with source's <a href="https://github.com/LaroldsJubilantJunkyard/alleyway-gameboy/blob/master/make.bat">make.bat</a> file.  Add relevant files to Visual Studio 2015.  Press Ctrl+1 to build, link and run code similar to the prior Hello World example!
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgI3zJhCTIt-djxyBjtoPc9WfnbxItWYMPhADQxg08ywWW8Zinwg_3-JkKC9xRP1efkhKO2bFRMfd71trXAjo3l7_kCNe4cdGgZjyovfa8xYBbiLNHX6587dHxtSxR2LAoW2NjEwBkEmZHZh_RQWPMD8EVuMZNUmfcNZV7SeOoU8eoennshhYnq78yo0DQ/s1085/VisualStudio03b.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgI3zJhCTIt-djxyBjtoPc9WfnbxItWYMPhADQxg08ywWW8Zinwg_3-JkKC9xRP1efkhKO2bFRMfd71trXAjo3l7_kCNe4cdGgZjyovfa8xYBbiLNHX6587dHxtSxR2LAoW2NjEwBkEmZHZh_RQWPMD8EVuMZNUmfcNZV7SeOoU8eoennshhYnq78yo0DQ/s600/VisualStudio03b.png"/></a>
+<br /><br />
+NOTE: ensure that the GBDK header files are included for Intellisense:  Right click project | Properties |
+<br />
+Configuration Properties | C/C++ | General | Additional Include Directories | <b>%GBDK_WIN%/include; $(SolutionDir)/headers/gen; $(SolutionDir)/headers/main; %(AdditionalIncludeDirectories)</b>.
+<br /><br />
+Here is the complete list:
+<br />
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/02-LaroldsJubilantJunkyard/alleyway-gameboy">alleyway</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/LaroldsJubilantJunkyard/alleyway-gameboy">alleyway</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/02-LaroldsJubilantJunkyard/flappy-bird-gameboy">flappy-bird</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/LaroldsJubilantJunkyard/flappy-bird-gameboy">flappy-bird</a></td>
+</tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/02-LaroldsJubilantJunkyard/pacman-gameboy">pacman</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/LaroldsJubilantJunkyard/pacman-gameboy">pacman</a></td>
+</tr>
+<tr>
+<td valign="top">&nbsp;CUSTOM: <a href="https://github.com/SteveProXNA/GBDKcode/tree/main/Sample/02-LaroldsJubilantJunkyard/space-invaders-gameboy">space-invaders</a></td>
+<td valign="top">&nbsp;SOURCE: <a href="https://github.com/LaroldsJubilantJunkyard/space-invaders">space-invaders</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="100%">
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhC1uTz8yEFUeC_1Kam3Ke4_5IzpeXb2TCYXAK8pqaWB10oG-GyRal0EpBWY7xX2LqU07SiplaXB26GGBh4yCMtQovu1BTjFwjJkBzAj3WSuPY1RW2QDZNe0DF7Dr8RB39_E7i8AQf4yAjqB418Ji8wN4vpdX6sQaY-gdk4QjsUxV1tzp9_CmDcqxfDCc4/s243/BreakoutGameboy.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhC1uTz8yEFUeC_1Kam3Ke4_5IzpeXb2TCYXAK8pqaWB10oG-GyRal0EpBWY7xX2LqU07SiplaXB26GGBh4yCMtQovu1BTjFwjJkBzAj3WSuPY1RW2QDZNe0DF7Dr8RB39_E7i8AQf4yAjqB418Ji8wN4vpdX6sQaY-gdk4QjsUxV1tzp9_CmDcqxfDCc4/s600/BreakoutGameboy.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9tG0p32-Ondv1BHRVDA7GCdxusLz8bI4AsPc4Ys7c75uEAervp18uipZ09gH0P-qgkflWeMIKmK6yojjrxeV422aidpFjXooOEol4eO8VjE-Fx7kesNKZ8Qclsa-YRY0EoofKFgUlpIAJRQiJU_VGOOAJKx74T-yClCc3UcBs_Aye_TSlpPQs6688LuA/s243/PacmanGameboy.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9tG0p32-Ondv1BHRVDA7GCdxusLz8bI4AsPc4Ys7c75uEAervp18uipZ09gH0P-qgkflWeMIKmK6yojjrxeV422aidpFjXooOEol4eO8VjE-Fx7kesNKZ8Qclsa-YRY0EoofKFgUlpIAJRQiJU_VGOOAJKx74T-yClCc3UcBs_Aye_TSlpPQs6688LuA/s600/PacmanGameboy.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEyg-zo3rK1cM99rO_UPsSSNg7E5aUmhbZHuWkMsaWmGLydNtVJJFoZyqdRaySns6it_1B6ERVhCI8_QF6FyaTcIFUYbClYVV8IfPFy1nPz7lsMM0UmEqDQguNVWw6R9-sgV_69uUYg7JS8W9hxq6gPBMcEi_JoYIujKMnIxlNnC1padWV7Hpq9rxH6D0/s243/FlappybirdGameboy.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEyg-zo3rK1cM99rO_UPsSSNg7E5aUmhbZHuWkMsaWmGLydNtVJJFoZyqdRaySns6it_1B6ERVhCI8_QF6FyaTcIFUYbClYVV8IfPFy1nPz7lsMM0UmEqDQguNVWw6R9-sgV_69uUYg7JS8W9hxq6gPBMcEi_JoYIujKMnIxlNnC1padWV7Hpq9rxH6D0/s600/FlappybirdGameboy.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiX3-vK3VZq8xjTFk9P3sGZu9SltnkLaNxH-OBlzM0DMUf1V3v-0zKhKNXfBbmFDkVLpnvHVPflPwYbjm0kg8yH7d5sq3V77iDrv9X8zt-iAJgstvDtip-ZcCLzEL6oT7GhbMWRyMEqUnsvcgTr6EBt9uPm1Fjk5y7AbIe9nOQgx0PgdXEOdgGJC2FgaPU/s243/SpaceInvadersGameboy.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiX3-vK3VZq8xjTFk9P3sGZu9SltnkLaNxH-OBlzM0DMUf1V3v-0zKhKNXfBbmFDkVLpnvHVPflPwYbjm0kg8yH7d5sq3V77iDrv9X8zt-iAJgstvDtip-ZcCLzEL6oT7GhbMWRyMEqUnsvcgTr6EBt9uPm1Fjk5y7AbIe9nOQgx0PgdXEOdgGJC2FgaPU/s600/SpaceInvadersGameboy.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+<u>Summary</u><br />
+Armed with all this knowledge, we are now in an excellent position to build complete video games for the Nintendo <a href="https://en.wikipedia.org/wiki/Game_Boy">Game Boy</a> and <a href="https://en.wikipedia.org/wiki/Game_Boy_Color">Game Boy Color</a>.  In the interim, we see the GameBoy <a href="https://itch.io/jam/gbcompo23">Competition</a> 2023 is <a href="https://www.youtube.com/watch?v=tezGoSgHZZQ">here</a>!
+<br /><br />
+</span>
