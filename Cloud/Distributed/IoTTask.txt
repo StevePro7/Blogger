@@ -1,0 +1,94 @@
+Rabbit MQ + Redis test
+16-Nov-2023
+
+IoT-Task
+D:\Bitbucket\SteveProXNA\actionstuff\_ActionStuff\Archer.ie\DeirdreCollins\Answer
+
+
+AA.
+Setup RabbitMQ
+port	5672
+D:\Steven\INSTALLATION\RabbitMQ
+
+install
+otp_win64_22.0.exe
+rabbitmq-server-3.7.16.exe
+D:\Steven\INSTALLATION\RabbitMQ
+
+installed here
+C:\Program Files\RabbitMQ Server\
+can see in Services	RabbitMQ
+
+
+BB.
+Setup Redis
+port	6379
+D:\Steven\INSTALLATION\Redis
+
+01.
+double click
+Redis-x64-3.2.100.msi
+D:\Steven\INSTALLATION\Redis
+
+installs Redis cache server
+C:\Program Files\Redis
+
+Now can see Redis in 
+Services list
+Control Panel | Programs and Features
+
+02.
+double click
+redis-desktop-manager-0.9.3.817.exe
+D:\Steven\INSTALLATION\Redis
+"C:\Program Files (x86)\RedisDesktopManager\rdm.exe"
+confirm when double click icon
+Redis Desktop Mgr
+0.9.3.817
+
+
+CC.
+Query Service
+Services
+World Wide Web Publishing Service
+NOT
+IIS Admin Service
+
+Launch IIS
+Default Web Site
+Start
+
+localhost
+
+Launch VS2017
+Query Service
+start up project
+
+
+
+DD.
+Rabbit MQ dashboard UI
+
+reference
+https://www.codementor.io/@bosunbolawa/how-to-enable-rabbitmq-management-interface-owc5lzg7f
+D:\Bitbucket\SteveProXNA\actionstuff\_ActionStuff\Archer.ie\DeirdreCollins\LoadTesting\01-PerfTest
+
+repeat
+Start | run | cmd
+cd C:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.16
+cd sbin
+
+rabbitmq-plugins enable rabbitmq_management
+
+started 3x pluguns
+rabbitmq_management
+rabbitmq_management_agent
+rabbitmq_web_dispatch
+
+http://localhost:15672
+
+guest
+guest
+
+Reference
+https://www.rabbitmq.com/access-control.html
