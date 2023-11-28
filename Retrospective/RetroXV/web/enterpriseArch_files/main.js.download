@@ -1,0 +1,237 @@
+jQuery(function($) {
+    
+    //Bacground aurora live
+    var windowsize = $(window).width();
+    var bodyW  = $(window).width(),
+    elementOffset = $('.aurora-home-header .container').width(),
+    distance      = ((bodyW - elementOffset)/2) + 15;
+    $('.style-aurora').html('<style>.aurora-home-header-before{width: ' + (distance + elementOffset) + 'px } .aurora-home-header::after{width: ' + (distance + elementOffset) + 'px }</style>');
+
+    $(window).resize(function() {
+      var bodyW  = $(window).width(),
+      elementOffset = $('.aurora-home-header .container').width(),
+      distance      = ((bodyW - elementOffset)/2) + 15;
+      $('.style-aurora').html('<style>.aurora-home-header-before{width: ' + (distance + elementOffset) + 'px } .aurora-home-header::after{width: ' + (distance + elementOffset) + 'px }</style>');
+  
+    });
+
+    // fixed menu
+    
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 60){
+            $('.header').addClass("sticky");
+            if(windowsize > 576){
+                if(windowsize < 767 ){
+                    $('.header').css({"animation": "fixed-menu-mobile 2s forwards"});
+                } else{
+                    $('.header').css({"animation": "fixed-menu 2s forwards"});
+                }
+            }
+            
+            $('.header.sticky .header__main').css({"animation": "animation-menu 2s forwards"});
+        }
+        else {
+            $('.header').removeClass("sticky");
+            $('.header').css({"animation": "remove-fixed-menu 0s forwards"});
+            $('.header .header__main').css({"animation": "remove-animation-menu 1s forwards"});
+        }
+    });
+    
+    $(".gform_button-application").click(function(){
+        $('.submit-type input').val($(this).text());
+    });
+    $(".gform_button-learn-more").click(function(){
+        $('.submit-type input').val($(this).text());
+    });
+    $(".gform_button_learn_more").click(function(){
+        $('.submit-type input').val($(this).text());
+    });
+    $(".gform_button_apply_for_membership").click(function(){
+        $('.submit-type input').val($(this).text());
+    });
+
+    $(document).ready(function() {
+        $('#iFrame1').load(function() {
+            $('.registration_gravity_box').height($(this).contents().height() + 50);
+            // $('.registration_gravity_box').width($('.registration_gravity_box').contents().width());
+        });
+    });
+
+ 
+    $('.form-consent-text .class-provacy-policy').click(function(){
+        window.parent.open(
+            window.location.origin+"/aurora-live/privacy-policy/",
+            '_blank'
+        );
+    });
+
+    $('.form-consent-text .class-terms-conditions').click(function(){
+        window.parent.open(
+            window.location.origin+"/aurora-live/enquiry-terms-conditions/",
+            '_blank'
+        );
+    });
+
+
+    //active button gravity form on auroralive 
+    $(document).ready(function() {
+        
+        $form = $('.aurora_registration_form'); // cache
+        $form.find('.gform_button').prop('disabled', true); 
+        $form.find('.gform_button').removeClass('active');
+        var url_path = window.location.pathname; 
+        var event_text = 'sso'; 
+        if (url_path.indexOf(event_text) !== -1){   
+            $form.find('.gform_button').prop('disabled', false);
+            $form.find('.gform_button').addClass('active');
+        }
+        $form.find('.gform-body:first input').keyup(function() { 
+            activeButtonGravityForm($form);
+            
+        });
+        
+        jQuery(document).on('gform_post_render', function(){
+            $form = jQuery('.aurora_registration_form');
+            $form.find('.gform_button').prop('disabled', true); 
+            $form.find('.gform-body input').keyup(function() { 
+                activeButtonGravityForm($form);
+            });
+        });
+    });
+
+    function activeButtonGravityForm($form){
+        var disable = false;
+        $form.find('.gform-body input').not('.input-hiden input').each(function(i, el) {
+            if ($.trim(el.value) === '') {
+                disable = true; 
+            }
+        });
+        $form.find('.gform_button').prop('disabled',disable);
+        if(disable == true){
+            $form.find('.gform_button').prop('disabled', true); 
+            $form.find('.gform_button').removeClass('active');
+        } else {
+            $form.find('.gform_button').prop('disabled', false);
+            $form.find('.gform_button').addClass('active');
+        }
+    }
+    /**===HOME==== */
+    $('.home-slider-slick').slick({
+        centerMode: true,
+        centerPadding: '165px',
+        slidesToShow: 1,
+        infinite: false,
+        prevArrow: '<a href="#" type="button" class="slick-prev"><span class="fa fa-angle-left"></span></a>',
+        nextArrow: '<a href="#" type="button" class="slick-next"><span class="fa fa-angle-right"></span></a>',
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                  centerMode: true,
+                  centerPadding: '120px',
+                  slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                  arrows: false,
+                  centerMode: true,
+                  centerPadding: '80px',
+                  slidesToShow: 1
+                }
+            },
+            {
+            breakpoint: 768,
+                settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+                }
+            },
+            {
+            breakpoint: 480,
+                settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '30px',
+                slidesToShow: 1
+                }
+            }
+        ]
+    });
+    
+    
+    $('.multiple-items-testimonials').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        variableWidth: true,
+        centerMode: true,
+        draggable: false,
+        prevArrow: '<a href="#" type="button" class="slick-prev slick-arrow"><span class="fa fa-angle-left"></span></a>',
+        nextArrow: '<a href="#" type="button" class="slick-next slick-arrow"><span class="fa fa-angle-right"></span></a>',
+        centerPadding: '0px',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    infinite: true,
+                    slidesToShow: 1,
+                    dots: false,
+                    prevArrow: false,
+                    nextArrow: false,
+                    arrows: false,
+                    variableWidth: false,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    infinite: true,
+                    slidesToShow: 1,
+                    dots: false,
+                    prevArrow: false,
+                    nextArrow: false,
+                    arrows: false,
+                    variableWidth: false,
+                }
+            }
+        ]
+    });
+    /**===END HOME==== */
+
+    $('.home-slider-slick').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        $(".slick-slide").removeClass('active-slide');
+        $(slick.$slides[currentSlide]).removeClass('active-slide');
+        $(slick.$slides[nextSlide]).prev().addClass('active-slide');     
+     });
+    $("#section-offer").on("click", function() {
+        window.location.href = "/me-matchmaking/#offer";
+    });
+    $("#section-expertise").on("click", function() {
+        window.location.href = "/me-matchmaking/#expertise";
+    });
+    $("#section-study").on("click", function() {
+        window.location.href = "/me-matchmaking/#study";
+    });
+
+     /**====HEADER=== */
+    $('.header__menu-icon--sm').click(function(){
+        $('.header__menu').toggleClass('header__menu--show');
+        $('.header__menu-link').toggleClass('header__menu-link--sm');
+    });
+     /**====END HEADER=== */
+
+});
+
+jQuery(document).bind('gform_page_loaded', function(event, form_id, current_page){
+    const classCheck = jQuery(this).find('form').attr('class');
+      if((classCheck.indexOf('industry-forum-form io-register') > -1) || (classCheck.indexOf('industry-forum-form req_invi_form join-partner-form') > -1)) {
+        jQuery('select').on('change', function() {
+            jQuery(this).closest('.gform_page').find('.gform_page_footer .gform_next_button').click();
+        });
+      }
+});
