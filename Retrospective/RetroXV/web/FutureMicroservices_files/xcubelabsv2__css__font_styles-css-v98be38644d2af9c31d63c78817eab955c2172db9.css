@@ -1,0 +1,565 @@
+/*!/wp-content/themes/xcubelabsv2/css/font_styles.css*/@font-face {
+    font-family: 'xcube';
+    src:    url('/wp-content/themes/xcubelabsv2/css/../fonts/xcube.eot');
+    src:    url('/wp-content/themes/xcubelabsv2/css/../fonts/xcube.eot') format('embedded-opentype'),
+        url('/wp-content/themes/xcubelabsv2/css/../fonts/xcube.ttf') format('truetype'),
+        url('/wp-content/themes/xcubelabsv2/css/../fonts/xcube.woff') format('woff'),
+        url('/wp-content/themes/xcubelabsv2/css/../fonts/xcube.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ font-display:swap;}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('/wp-content/themes/xcubelabsv2/css/../fonts/icomoonvr.eot?ds2mdn');
+  src:  url('/wp-content/themes/xcubelabsv2/css/../fonts/icomoonvr.eot?ds2mdn#iefix') format('embedded-opentype'),
+    url('/wp-content/themes/xcubelabsv2/css/../fonts/icomoonvr.ttf?ds2mdn') format('truetype'),
+    url('/wp-content/themes/xcubelabsv2/css/../fonts/icomoonvr.woff?ds2mdn') format('woff'),
+    url('/wp-content/themes/xcubelabsv2/css/../fonts/icomoonvr.svg?ds2mdn#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+ font-display:swap;}
+
+@font-face {
+    font-family: 'chatbot-icon';
+    src: url('/wp-content/themes/xcubelabsv2/css/../fonts/chatbot-icon.eot');
+    src: url('/wp-content/themes/xcubelabsv2/css/../fonts/chatbot-icon.eot?#iefix') format('embedded-opentype'),
+         url('/wp-content/themes/xcubelabsv2/css/../fonts/chatbot-icon.woff') format('woff'),
+         url('/wp-content/themes/xcubelabsv2/css/../fonts/chatbot-icon.ttf') format('truetype'),
+         url('/wp-content/themes/xcubelabsv2/css/../fonts/chatbot-icon.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ font-display:swap;}
+
+[class*='icon2-']:before{
+	display: inline-block;
+   font-family: 'chatbot-icon';
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'xcube' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon1-"], [class*=" icon1-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.icon2-chatbot-black:before{
+	content: "\0041";
+}
+.icon1-vr:before {
+  content: "\e900";
+}
+
+.icon-analytics:before {
+    content: "\e972";
+}
+.icon-app-marketing:before {
+    content: "\e973";
+}
+.icon-augmented-reality:before {
+    content: "\e974";
+}
+.icon-big-data-analytics:before {
+    content: "\e975";
+}
+.icon-cloud:before {
+    content: "\e976";
+}
+.icon-cms:before {
+    content: "\e977";
+}
+.icon-connected-stores:before {
+    content: "\e978";
+}
+.icon-design:before {
+    content: "\e979";
+}
+.icon-digital-strategy:before {
+    content: "\e97a";
+}
+.icon-emr:before {
+    content: "\e97b";
+}
+.icon-gamification:before {
+    content: "\e97c";
+}
+.icon-gps:before {
+    content: "\e97d";
+}
+.icon-iot:before {
+    content: "\e97e";
+}
+.icon-mobile:before {
+    content: "\e97f";
+}
+.icon-predictive-cms:before {
+    content: "\e980";
+}
+.icon-strategy2:before {
+    content: "\e981";
+}
+.icon-wearables:before {
+    content: "\e982";
+}
+.icon-cross-icon:before {
+    content: "\e971";
+}
+.icon-DigitalTransformationIcon:before {
+    content: "\e970";
+}
+.icon-company:before {
+    content: "\e900";
+}
+.icon-email:before {
+    content: "\e901";
+}
+.icon-message:before {
+    content: "\e902";
+}
+.icon-phone:before {
+    content: "\e903";
+}
+.icon-username:before {
+    content: "\e904";
+}
+.icon-automobile:before {
+    content: "\e95f";
+}
+.icon-banking:before {
+    content: "\e960";
+}
+.icon-constructions:before {
+    content: "\e961";
+}
+.icon-energy-utilities:before {
+    content: "\e962";
+}
+.icon-financial-services:before {
+    content: "\e963";
+}
+.icon-healthcare2:before {
+    content: "\e964";
+}
+.icon-insurance:before {
+    content: "\e965";
+}
+.icon-manufacturing2:before {
+    content: "\e966";
+}
+.icon-media:before {
+    content: "\e967";
+}
+.icon-retail:before {
+    content: "\e968";
+}
+.icon-telecom:before {
+    content: "\e969";
+}
+.icon-travel2:before {
+    content: "\e96a";
+}
+.icon-calc:before {
+    content: "\e95d";
+}
+.icon-member:before {
+    content: "\e95e";
+}
+.icon-experiment:before {
+    content: "\e959";
+}
+.icon-human:before {
+    content: "\e95a";
+}
+.icon-initiative:before {
+    content: "\e95b";
+}
+.icon-make_progree:before {
+    content: "\e95c";
+}
+.icon-agent:before {
+    content: "\e933";
+}
+.icon-airpot_guid:before {
+    content: "\e934";
+}
+.icon-assist_solutions:before {
+    content: "\e935";
+}
+.icon-care_solutions:before {
+    content: "\e936";
+}
+.icon-check_in:before {
+    content: "\e937";
+}
+.icon-claims:before {
+    content: "\e938";
+}
+.icon-commerce_solutions:before {
+    content: "\e939";
+}
+.icon-concering:before {
+    content: "\e93a";
+}
+.icon-crew_reporting:before {
+    content: "\e93b";
+}
+.icon-engagement:before {
+    content: "\e93c";
+}
+.icon-field_service:before {
+    content: "\e93d";
+}
+.icon-general_hospital:before {
+    content: "\e93e";
+}
+.icon-guest_servicing:before {
+    content: "\e93f";
+}
+.icon-housekeeping:before {
+    content: "\e940";
+}
+.icon-indoor:before {
+    content: "\e941";
+}
+.icon--:before {
+    content: "\e942";
+}
+.icon-ivr_solutions:before {
+    content: "\e943";
+}
+.icon-loung:before {
+    content: "\e944";
+}
+.icon-magazines:before {
+    content: "\e945";
+}
+.icon-management:before {
+    content: "\e946";
+}
+.icon-media_solutions:before {
+    content: "\e947";
+}
+.icon-medical_transcription:before {
+    content: "\e948";
+}
+.icon-medication:before {
+    content: "\e949";
+}
+.icon-mobile_trading:before {
+    content: "\e94a";
+}
+.icon-news_reader:before {
+    content: "\e94b";
+}
+.icon-notification:before {
+    content: "\e94c";
+}
+.icon-patient_education:before {
+    content: "\e94d";
+}
+.icon-physician:before {
+    content: "\e94e";
+}
+.icon-physician_solution:before {
+    content: "\e94f";
+}
+.icon-planner:before {
+    content: "\e950";
+}
+.icon-policyholder:before {
+    content: "\e951";
+}
+.icon-pos_solutions:before {
+    content: "\e952";
+}
+.icon-radiology:before {
+    content: "\e953";
+}
+.icon-retail_store:before {
+    content: "\e954";
+}
+.icon-shop_floor:before {
+    content: "\e955";
+}
+.icon-ticketing:before {
+    content: "\e956";
+}
+.icon-tour_operator:before {
+    content: "\e957";
+}
+.icon-tourist:before {
+    content: "\e958";
+}
+.icon-analytics_icon:before {
+    content: "\e905";
+}
+.icon-Arrow:before {
+    content: "\e906";
+}
+.icon-business_process_icon:before {
+    content: "\e907";
+}
+.icon-cart:before {
+    content: "\e908";
+}
+.icon-Cloud_icon:before {
+    content: "\e909";
+}
+.icon-content_management_icon:before {
+    content: "\e90a";
+}
+.icon-cross_platform_icon:before {
+    content: "\e90b";
+}
+.icon-dash_cam_icon:before {
+    content: "\e90c";
+}
+.icon-Design_icon:before {
+    content: "\e90d";
+}
+.icon-device_integration_icon:before {
+    content: "\e90e";
+}
+.icon-energy_icon:before {
+    content: "\e90f";
+}
+.icon-entertainment_icon:before {
+    content: "\e910";
+}
+.icon-FinancialBanking:before {
+    content: "\e911";
+}
+.icon-gaming_icon:before {
+    content: "\e912";
+}
+.icon-healthcare:before {
+    content: "\e913";
+}
+.icon-hospital_icon:before {
+    content: "\e914";
+}
+.icon-image_icons:before {
+    content: "\e915";
+}
+.icon-internet_of_things_icon:before {
+    content: "\e916";
+}
+.icon-manufacturing:before {
+    content: "\e917";
+}
+.icon-markting_icon:before {
+    content: "\e918";
+}
+.icon-MobileBankingSolutions_icon:before {
+    content: "\e919";
+}
+.icon-MobileBuildingInspectionSolution:before {
+    content: "\e91a";
+}
+.icon-MobileCheckDepositSolutions_icon:before {
+    content: "\e91b";
+}
+.icon-MobileConstructionProjectManagement:before {
+    content: "\e91c";
+}
+.icon-MobileCostReferenceGuide_icon:before {
+    content: "\e91d";
+}
+.icon-MobileCustomerOnboardingSolutions_icon:before {
+    content: "\e91e";
+}
+.icon-MobileFieldForceAutomationSolutions:before {
+    content: "\e91f";
+}
+.icon-MobileReportOutageSolution:before {
+    content: "\e920";
+}
+.icon-MobileUtilitiesBillPaymentSolutions:before {
+    content: "\e921";
+}
+.icon-mobile_app_analytics_icon:before {
+    content: "\e922";
+}
+.icon-mobile_app_icon:before {
+    content: "\e923";
+}
+.icon-mobile_car_icon:before {
+    content: "\e924";
+}
+.icon-mobile_car_vehicle_icon:before {
+    content: "\e925";
+}
+.icon-mobile_icon:before {
+    content: "\e926";
+}
+.icon-Mobile_Payment_Solutions_icon:before {
+    content: "\e927";
+}
+.icon-mobile_road_traffic_solutions_icon:before {
+    content: "\e928";
+}
+.icon-mobile_vehicle_blackbox_icon:before {
+    content: "\e929";
+}
+.icon-project_live_icons:before {
+    content: "\e92a";
+}
+.icon-satellite:before {
+    content: "\e92b";
+}
+.icon-search_icon:before {
+    content: "\e92c";
+}
+.icon-settings_icon:before {
+    content: "\e92d";
+}
+.icon-share_icon:before {
+    content: "\e92e";
+}
+.icon-smart_TV_icon:before {
+    content: "\e92f";
+}
+.icon-strategy:before {
+    content: "\e930";
+}
+.icon-telecom_icon:before {
+    content: "\e931";
+}
+.icon-testing_icon:before {
+    content: "\e932";
+}
+.icon-touch_icon:before {
+    content: "\e96b";
+}
+.icon-track_icon:before {
+    content: "\e96c";
+}
+.icon-travel:before {
+    content: "\e96d";
+}
+.icon-users_icon:before {
+    content: "\e96e";
+}
+.icon-wearables_icon:before {
+    content: "\e96f";
+}
+
+
+@font-face{font-family:'devops';src:url('/wp-content/themes/xcubelabsv2/css/../fonts/devops.eot?b2adz1');src:url('/wp-content/themes/xcubelabsv2/css/../fonts/devops.eot?b2adz1#iefix') format('embedded-opentype'),
+url('/wp-content/themes/xcubelabsv2/css/../fonts/devops.ttf?b2adz1') format('truetype'),
+url('/wp-content/themes/xcubelabsv2/css/../fonts/devops.woff?b2adz1') format('woff'),
+url('/wp-content/themes/xcubelabsv2/css/../fonts/devops.svg?b2adz1#devops') format('svg');font-weight:normal;font-style:normal;font-display:block;}
+
+[class^="icondev-"], [class*=" icondev-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  display: inline-block;
+  font-family: 'devops' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icondev-DevOps-svg:before {
+  content: "\e900";
+}
+
+@font-face{font-family:'iconservices';src:url('/wp-content/themes/xcubelabsv2/css/../fonts/serviceicons.eot?u29h81');src:url('/wp-content/themes/xcubelabsv2/css/../fonts/serviceicons.eot?u29h81#iefix') format('embedded-opentype'),
+url('/wp-content/themes/xcubelabsv2/css/../fonts/serviceicons.ttf?u29h81') format('truetype'),
+url('/wp-content/themes/xcubelabsv2/css/../fonts/serviceicons.woff?u29h81') format('woff'),
+url('/wp-content/themes/xcubelabsv2/css/../fonts/serviceicons.svg?u29h81#servicesic1') format('svg');font-weight:normal;font-style:normal;font-display:block;}
+
+
+
+[class^="iconservices-"], [class*=" iconservices-"] {
+  
+  font-family: 'iconservices' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconservices-connected-product-strategy-and-IoT:before {
+  content: "\e907";
+}
+.iconservices-innovation-as-a-services:before {
+  content: "\e908";
+}
+.iconservices-product-engineering:before {
+  content: "\e909";
+}
+.iconservices-CX-Consulting:before {
+  content: "\e904";
+}
+.iconservices-Digital-Product-Development:before {
+  content: "\e905";
+}
+.iconservices-Digital-Strategy-Consulting:before {
+  content: "\e906";
+}
+.iconservices-CES:before {
+  content: "\e903";
+}
+.iconservices-Agritech:before {
+  content: "\e902";
+}
+.iconservices-Magento:before {
+  content: "\e900";
+}
+.iconservices-unity-development:before {
+  content: "\e901";
+}
+.iconservices-AI:before {
+  content: "\e90a";
+}
+.iconservices-Blockchain:before {
+  content: "\e90b";
+}
+.iconservices-Web-Apps:before {
+  content: "\e90c";
+}
+.iconservices-assessment:before {
+  content: "\e90d";
+}
+.iconservices-workshops:before {
+  content: "\e90e";
+}
