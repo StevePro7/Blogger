@@ -17,6 +17,35 @@ Microservices
 Microservices Architecture: Implementing Communication Patterns and Protocols
 https://www.xcubelabs.com/blog/microservices-architecture-implementing-communication-patterns-and-protocols
 
+Microservices have evolved as a breakthrough paradigm in software design’s constantly changing digital landscape, promising unprecedented scalability, flexibility, and agility.
+
+c. Event-Driven Architectures: Microservices can communicate through events, publishing, and subscribing to specific events of interest. This approach is ideal for responding to changes and updates within the system.
+b. Flexibility
+RESTful APIs for synchronous requests or message queues for asynchronous processing.
+
+Request-Response
+b. API Gateway: An API gateway is a central entry point for clients to communicate with multiple microservices. It receives client requests, forwards them to the appropriate microservices, and aggregates the responses.
+e. Authentication and Authorization: Request-response communication is essential for handling security-related tasks like authentication and authorization at the microservice level.
+
+C. Message Queueing Systems (e.g., RabbitMQ, Apache Kafka):
+
+Best Practices
+Documentation: TODO Swagger + OpenAPI in Golang
+
+C. Security and Authentication:
+Authentication and Authorization: Implement robust authentication mechanisms like OAuth2 or JWT (JSON Web Tokens) to secure communication between microservices. Enforce authorization rules based on roles and permissions.
+Data Encryption: Use transport-layer security (TLS/SSL) to encrypt data in transit, protecting sensitive information from eavesdropping.
+API Gateway: Consider using an API gateway to centralize authentication, rate limiting, and security policies, reducing the complexity of individual microservices.
+
+Monitoring and Logging
+Alerting: Set up alerting based on predefined thresholds and anomalies in your monitoring data to proactively address issues before they impact the system.
+[IMPORTANT: anomaly detection]
+
+
+Security: Microservices communication can be a potential security risk. Ensure the tools provide authentication, authorization, and encryption features to protect sensitive data.
+
+Conclusion
+Mastering the art of implementing communication patterns and protocols designed for microservices is a recommended practice and a must in today’s dynamic and competitive software world, where agility and scalability are critical. Organizations can achieve better flexibility, quicker development cycles, and enhanced system resilience by maximizing the advantages of microservices design.
 
 
 03. WIP
