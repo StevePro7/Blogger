@@ -1,0 +1,25 @@
+golangci-lint
+01-Dec-2023
+
+
+Launch terminal
+golangci-lint run
+bash: golangci-lint: command not found
+
+Install
+ref:
+https://stackoverflow.com/questions/72911755/cant-install-golangci-lint-locally
+
+sudo snap install golangci-lint 
+
+golangci-lint version
+golangci-lint has version (devel) built with go1.21.3
+
+Examples
+cd /GitHub/StevePro7/GoLangTesting/EventTesting/EventStreaming
+golangci-lint run
+
+main.go:18:22: Error return value of `writer.WriteMessages` is not checked (errcheck)
+	writer.WriteMessages(context.Background(),
+	                    ^
+
