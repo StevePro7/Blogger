@@ -19,3 +19,26 @@ echo "deb [arch=`dpkg --print-architecture` signed-by=/etc/apt/keyrings/microsof
 
 sudo apt-get update
 sudo apt-get install azure-cli
+
+
+
+Ubuntu Linux 
+Launch Terminal
+az login
+az ad sp create-for-rbac --name ${USER}-sp
+
+
+export AZ_SP_ID=	<appId>
+export AZ_SP_PASSWORD=	<password>
+export AZ_TENANT_ID=	<tenant>
+
+
+
+# find your sp app id
+az ad sp list --display-name ${USER}-sp --query "[0].appId"
+
+# delete it
+az ad sp delete --id <id result above>
+
+# re-create it
+az ad sp create-for-rbac --name ${USER}-sp
