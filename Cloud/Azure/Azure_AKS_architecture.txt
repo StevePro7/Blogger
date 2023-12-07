@@ -136,6 +136,7 @@ more resource gropus + resources as a result
 Azure Deploy
 export CLUSTER_NAME=$(az deployment group show -g $RESOURCE_GROUP -n $DEPLOYMENT_NAME --query properties.outputs.aksClusterName.value -o tsv)
 
+CLUSTER_NAME=unxyygp7sytao
 
 #az aks install-cli
 az aks get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -146,3 +147,394 @@ IMPORTANT
 this is the command that "gets" the kubeconfig file!
 az aks get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ~/.kube/config
+
+Also, navigate to the Azure portal
+Kubernetes services
+
+now see the AKS cluster
+unxyygp7sytao
+
+
+Get Helm 3
+#curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+Create a SecretProviderClass custom resource
+kubectl get pods -n kube-system
+
+
+
+Secrets Store CSI driver
+
+export WORKFLOW_KEYVAULT_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.workflowKeyVaultName.value -o tsv)
+export INGESTION_KEYVAULT_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.ingestionKeyVaultName.value -o tsv)
+export PACKAGE_KEYVAULT_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.packageKeyVaultName.value -o tsv)
+export DELIVERY_KEYVAULT_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.deliveryKeyVaultName.value -o tsv)
+export TENANT_ID=$(az account show --query tenantId --output tsv)
+export INGRESS_TLS_SECRET_NAME=ingestion-ingress-tls
+export DELIVERY_INGRESS_TLS_SECRET_NAME=delivery-ingress-tls
+
+# Create secrets
+export SIGNED_IN_OBJECT_ID=$(az ad signed-in-user show --query 'id' -o tsv)
+
+az keyvault set-policy --secret-permissions set --object-id $SIGNED_IN_OBJECT_ID -n $INGESTION_KEYVAULT_NAME
+
+az keyvault secret set --name Ingestion-Ingress-Tls-Key --vault-name $INGESTION_KEYVAULT_NAME --value "$(cat ingestion-ingress-tls.key)"
+az keyvault secret set --name Ingestion-Ingress-Tls-Crt --vault-name $INGESTION_KEYVAULT_NAME --value "$(cat ingestion-ingress-tls.crt)"
+az keyvault delete-policy --object-id $SIGNED_IN_OBJECT_ID -n $INGESTION_KEYVAULT_NAME
+
+ERRORs on keyvault secret set
+most likely because of the issue above with the feature still "Registering"
+finally did update status to "Registered"
+
+
+
+cat <<EOF | kubectl apply -f -
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: workflow-secrets-csi-akv
+  namespace: backend-dev
+spec:
+  provider: azure
+  parameters:
+    usePodIdentity: "true"
+    keyvaultName: "${WORKFLOW_KEYVAULT_NAME}"
+    objects:  |
+      array:
+        - |
+          objectName: QueueName
+          objectAlias: QueueName
+          objectType: secret
+        - |
+          objectName: QueueEndpoint
+          objectAlias: QueueEndpoint
+          objectType: secret
+        - |
+          objectName: QueueAccessPolicyName
+          objectAlias: QueueAccessPolicyName
+          objectType: secret
+        - |
+          objectName: QueueAccessPolicyKey
+          objectAlias: QueueAccessPolicyKey
+          objectType: secret
+        - |
+          objectName: ApplicationInsights--InstrumentationKey
+          objectAlias: ApplicationInsights--InstrumentationKey
+          objectType: secret
+    tenantId: "${TENANT_ID}"
+EOF
+
+cat <<EOF | kubectl apply -f -
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: ingestion-secrets-csi-akv
+  namespace: backend-dev
+spec:
+  provider: azure
+  secretObjects:
+  - secretName: "${INGRESS_TLS_SECRET_NAME}"
+    type: Opaque
+    data: 
+    - objectName: Ingestion-Ingress-Tls-Key
+      key: tls.key
+    - objectName: Ingestion-Ingress-Tls-Crt
+      key: tls.crt
+  - secretName: ingestion-secrets
+    type: Opaque
+    data: 
+    - objectName: Queue--Key
+      key: queue-keyvalue
+    - objectName: ApplicationInsights--InstrumentationKey
+      key: appinsights-ikey
+  parameters:
+    usePodIdentity: "true"
+    keyvaultName: "${INGESTION_KEYVAULT_NAME}"
+    objects:  |
+      array:
+        - |
+          objectName: Queue--Key
+          objectAlias: Queue--Key
+          objectType: secret
+        - |
+          objectName: ApplicationInsights--InstrumentationKey
+          objectAlias: ApplicationInsights--InstrumentationKey
+          objectType: secret
+        - |
+          objectName: Ingestion-Ingress-Tls-Key
+          objectAlias: Ingestion-Ingress-Tls-Key
+          objectType: secret
+        - |
+          objectName: Ingestion-Ingress-Tls-Crt
+          objectAlias: Ingestion-Ingress-Tls-Crt
+          objectType: secret
+    tenantId: "${TENANT_ID}"
+EOF
+
+cat <<EOF | kubectl apply -f -
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: package-secrets-csi-akv
+  namespace: backend-dev
+spec:
+  provider: azure
+  secretObjects:
+  - secretName: package-secrets
+    type: Opaque
+    data: 
+    - objectName: CosmosDb--ConnectionString
+      key: cosmosdb-connstr
+    - objectName: ApplicationInsights--InstrumentationKey
+      key: appinsights-ikey
+  parameters:
+    usePodIdentity: "true"
+    keyvaultName: "${PACKAGE_KEYVAULT_NAME}"
+    objects:  |
+      array:
+        - |
+          objectName: CosmosDb--ConnectionString
+          objectAlias: CosmosDb--ConnectionString
+          objectType: secret
+        - |
+          objectName: ApplicationInsights--InstrumentationKey
+          objectAlias: ApplicationInsights--InstrumentationKey
+          objectType: secret
+    tenantId: "${TENANT_ID}"
+EOF
+
+cat <<EOF | kubectl apply -f -
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: delivery-secrets-csi-akv
+  namespace: backend-dev
+spec:
+  provider: azure
+  secretObjects:
+  - secretName: "${INGRESS_TLS_SECRET_NAME}"
+    type: Opaque
+    data: 
+    - objectName: Delivery-Ingress-Tls-Key
+      key: tls.key
+    - objectName: Delivery-Ingress-Tls-Crt
+      key: tls.crt
+  parameters:
+    usePodIdentity: "true"
+    keyvaultName: "${DELIVERY_KEYVAULT_NAME}"
+    objects:  |
+      array:
+        - |
+          objectName: Delivery-Ingress-Tls-Key
+          objectAlias: Delivery-Ingress-Tls-Key
+          objectType: secret
+        - |
+          objectName: Delivery-Ingress-Tls-Crt
+          objectAlias: Delivery-Ingress-Tls-Crt
+          objectType: secret
+    tenantId: "${TENANT_ID}"
+EOF
+
+
+
+# setup AAD pod identity
+helm repo add aad-pod-identity https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
+
+helm repo update
+
+helm install aad-pod-identity aad-pod-identity/aad-pod-identity --set installCRDs=true --set nmi.allowNetworkPluginKubenet=true  --namespace kube-system --version 4.0.0
+
+ERROR
+Error: INSTALLATION FAILED: failed to install CRD crds/crd.yaml: [resource mapping not found for name: "azureassignedidentities.aadpodidentity.k8s.io" namespace: "" from "": no matches for kind "CustomResourceDefinition" in version "apiextensions.k8s.io/v1beta1"
+ensure CRDs are installed first, resource mapping not found for name: "azureidentitybindings.aadpodidentity.k8s.io" namespace: "" from "": no matches for kind "CustomResourceDefinition" in version "apiextensions.k8s.io/v1beta1"
+ensure CRDs are installed first, resource mapping not found for name: "azureidentities.aadpodidentity.k8s.io" namespace: "" from "": no matches for kind "CustomResourceDefinition" in version "apiextensions.k8s.io/v1beta1"
+ensure CRDs are installed first, resource mapping not found for name: "azurepodidentityexceptions.aadpodidentity.k8s.io" namespace: "" from "": no matches for kind "CustomResourceDefinition" in version "apiextensions.k8s.io/v1beta1"
+ensure CRDs are installed first]
+
+
+Deploy the ingress controller
+# Deploy the ngnix ingress controller
+kubectl create namespace ingress-controllers
+helm install nginx-ingress-dev stable/nginx-ingress --namespace ingress-controllers --version 1.24.7 --set rbac.create=true --set controller.ingressClass=nginx-dev
+
+ERROR
+helm repo add nginx-stable https://helm.nginx.com/stable
+helm repo update
+
+soln
+reference: https://stackoverflow.com/questions/62310383/cannot-install-nginx-ingress-with-helm-from-nginx-stable-when-specifying-namespa
+helm install nginx-release nginx-stable/nginx-ingress --namespace ingress-controllers
+
+
+# Obtain the load balancer ip address and assign a domain name
+until export INGRESS_LOAD_BALANCER_IP=$(kubectl get services/nginx-ingress-dev-controller -n ingress-controllers -o jsonpath="{.status.loadBalancer.ingress[0].ip}" 2> /dev/null) && test -n "$INGRESS_LOAD_BALANCER_IP"; do echo "Waiting for load balancer deployment" && sleep 20; done
+
+export INGRESS_LOAD_BALANCER_IP_ID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$INGRESS_LOAD_BALANCER_IP')].[id]" --output tsv) && \
+export EXTERNAL_INGEST_DNS_NAME="${RESOURCE_GROUP}-${RANDOM}-ing" && \
+export EXTERNAL_INGEST_FQDN=$(az network public-ip update --ids $INGRESS_LOAD_BALANCER_IP_ID --dns-name $EXTERNAL_INGEST_DNS_NAME --query "dnsSettings.fqdn" --output tsv)
+
+# Create a self-signed certificate for TLS
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -out ingestion-ingress-tls.crt \
+    -keyout ingestion-ingress-tls.key \
+    -subj "/CN=${EXTERNAL_INGEST_FQDN}/O=fabrikam"
+
+Generating a RSA private key
+....................+++++
+............................................................................................................................+++++
+writing new private key to 'ingestion-ingress-tls.key'
+-----
+problems making Certificate Request
+139998198637888:error:0D07A097:asn1 encoding routines:ASN1_mbstring_ncopy:string too long:../crypto/asn1/a_mbstr.c:107:maxsize=64
+
+
+Setup cluster resource quota
+kubectl apply -f k8s/k8s-resource-quotas-dev.yaml
+
+Deploy the Delivery service
+export COSMOSDB_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.deliveryCosmosDbName.value -o tsv) && \
+export DATABASE_NAME="${COSMOSDB_NAME}-db" && \
+export COLLECTION_NAME="${DATABASE_NAME}-col" && \
+export DELIVERY_KEYVAULT_URI=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.deliveryKeyVaultUri.value -o tsv)
+
+URL
+https://dkv-a2vw5fmc7xhew.vault.azure.net
+
+
+Build and publish the Delivery service container image.
+az acr build -r $ACR_NAME -t $ACR_SERVER/delivery:0.1.0 ./workload/src/shipping/delivery/.
+
+Docker downloading images
+
+Deploy the Delivery service.
+# Extract pod identity outputs from deployment
+export DELIVERY_PRINCIPAL_RESOURCE_ID=$(az deployment group show -g $RESOURCE_GROUP -n $DEPLOYMENT_NAME --query properties.outputs.deliveryPrincipalResourceId.value -o tsv) && \
+export DELIVERY_PRINCIPAL_CLIENT_ID=$(az identity show -g $RESOURCE_GROUP -n $DELIVERY_ID_NAME --query clientId -o tsv)
+
+# Create secrets
+# Note: Ingress TLS key and certificate secrets cannot be exported as outputs in ARM deployments
+# So we create an access policy to allow these secrets to be created imperatively.
+# The policy is deleted right after the secret creation commands are executed
+export SIGNED_IN_OBJECT_ID=$(az ad signed-in-user show --query 'id' -o tsv)
+
+az keyvault set-policy --secret-permissions set --object-id $SIGNED_IN_OBJECT_ID -n $DELIVERY_KEYVAULT_NAME
+az keyvault secret set --name Delivery-Ingress-Tls-Key --vault-name $DELIVERY_KEYVAULT_NAME --value "$(cat ingestion-ingress-tls.key)"
+az keyvault secret set --name Delivery-Ingress-Tls-Crt --vault-name $DELIVERY_KEYVAULT_NAME --value "$(cat ingestion-ingress-tls.crt)"
+az keyvault delete-policy --object-id $SIGNED_IN_OBJECT_ID -n $DELIVERY_KEYVAULT_NAME
+
+# Deploy the service
+helm package charts/delivery/ -u && \
+helm install delivery-v0.1.0-dev delivery-v0.1.0.tgz \
+     --set image.tag=0.1.0 \
+     --set image.repository=delivery \
+     --set dockerregistry=$ACR_SERVER \
+     --set ingress.hosts[0].name=$EXTERNAL_INGEST_FQDN \
+     --set ingress.hosts[0].serviceName=delivery \
+     --set ingress.hosts[0].tls=true \
+     --set ingress.hosts[0].tlsSecretName=$INGRESS_TLS_SECRET_NAME \
+     --set identity.clientid=$DELIVERY_PRINCIPAL_CLIENT_ID \
+     --set identity.resourceid=$DELIVERY_PRINCIPAL_RESOURCE_ID \
+     --set cosmosdb.id=$DATABASE_NAME \
+     --set cosmosdb.collectionid=$COLLECTION_NAME \
+     --set keyvault.uri=$DELIVERY_KEYVAULT_URI \
+     --set reason="Initial deployment" \
+     --set tags.dev=true \
+     --namespace backend-dev \
+     --dependency-update
+
+Error: INSTALLATION FAILED: failed pre-install: unable to build kubernetes object for deleting hook delivery/templates/delivery-identity.yaml: resource mapping not found for name: "delivery-v010-dev-identity" namespace: "" from "": no matches for kind "AzureIdentity" in version "aadpodidentity.k8s.io/v1"
+ensure CRDs are installed first
+
+
+# Verify the pod is created
+helm status delivery-v0.1.0-dev --namespace backend-dev
+
+
+Deploy the Package service
+export COSMOSDB_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.packageMongoDbName.value -o tsv)
+export PACKAGE_PRINCIPAL_RESOURCE_ID=$(az deployment group show -g $RESOURCE_GROUP -n $DEPLOYMENT_NAME --query properties.outputs.packagePrincipalResourceId.value -o tsv) && \
+export PACKAGE_PRINCIPAL_CLIENT_ID=$(az identity show -g $RESOURCE_GROUP -n $PACKAGE_ID_NAME --query clientId -o tsv)
+
+Build the package service
+az acr build -r $ACR_NAME -t $ACR_SERVER/package:0.1.0 ./workload/src/shipping/package/.
+
+ERRORS
+The command '/bin/sh -c npm run build' returned a non-zero code: 1
+2023/12/07 17:45:00 Container failed during run: build. No retries remaining.
+failed to run step ID: build: exit status 1
+
+Run ID: cg2 failed after 1m6s. Error: failed during run, err: exit status 1
+
+
+
+# Create secret
+# Note: Connection strings cannot be exported as outputs in ARM deployments
+# So we create an access policy to allow the secret to be created imperatively.
+# The policy is deleted right after the secret creation command is executed
+export COSMOSDB_CONNECTION=$(az cosmosdb keys list --type connection-strings --name $COSMOSDB_NAME --resource-group $RESOURCE_GROUP --query "connectionStrings[0].connectionString" -o tsv | sed 's/==/%3D%3D/g') && \
+export COSMOSDB_COL_NAME=packages && \
+
+az keyvault set-policy --secret-permissions set --object-id $SIGNED_IN_OBJECT_ID -n $PACKAGE_KEYVAULT_NAME
+
+az keyvault secret set --name CosmosDb--ConnectionString --vault-name $PACKAGE_KEYVAULT_NAME --value $COSMOSDB_CONNECTION
+
+az keyvault delete-policy --object-id $SIGNED_IN_OBJECT_ID -n $PACKAGE_KEYVAULT_NAME
+
+# Deploy service
+helm package charts/package/ -u && \
+helm install package-v0.1.0-dev package-v0.1.0.tgz \
+     --set image.tag=0.1.0 \
+     --set image.repository=package \
+     --set identity.clientid=$PACKAGE_PRINCIPAL_CLIENT_ID \
+     --set identity.resourceid=$PACKAGE_PRINCIPAL_RESOURCE_ID \
+     --set ingress.hosts[0].name=$EXTERNAL_INGEST_FQDN \
+     --set ingress.hosts[0].serviceName=package \
+     --set ingress.hosts[0].tls=false \
+     --set cosmosDb.collectionName=$COSMOSDB_COL_NAME \
+     --set dockerregistry=$ACR_SERVER \
+     --set reason="Initial deployment" \
+     --set tags.dev=true \
+     --namespace backend-dev \
+     --dependency-update
+
+ERROR
+Error: INSTALLATION FAILED: failed pre-install: unable to build kubernetes object for deleting hook package/templates/package-identity.yaml: resource mapping not found for name: "package-v010-dev-identity" namespace: "" from "": no matches for kind "AzureIdentity" in version "aadpodidentity.k8s.io/v1"
+ensure CRDs are installed first
+
+
+# Verify the pod is created
+helm status package-v0.1.0-dev --namespace backend-dev
+
+
+Deploy the Workflow service
+export WORKFLOW_KEYVAULT_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.workflowKeyVaultName.value -o tsv)
+
+az acr build -r $ACR_NAME -t $ACR_SERVER/workflow:0.1.0 ./workload/src/shipping/workflow/.
+
+
+# Extract outputs from deployment and get Azure account details
+export WORKFLOW_PRINCIPAL_RESOURCE_ID=$(az deployment group show -g $RESOURCE_GROUP -n $DEPLOYMENT_NAME --query properties.outputs.workflowPrincipalResourceId.value -o tsv) && \
+export WORKFLOW_PRINCIPAL_CLIENT_ID=$(az identity show -g $RESOURCE_GROUP -n $WORKFLOW_ID_NAME --query clientId -o tsv) && \
+export SUBSCRIPTION_ID=$(az account show --query id --output tsv) && \
+export TENANT_ID=$(az account show --query tenantId --output tsv)
+
+
+# Deploy the service
+helm package charts/workflow/ -u && \
+helm install workflow-v0.1.0-dev workflow-v0.1.0.tgz \
+     --set image.tag=0.1.0 \
+     --set image.repository=workflow \
+     --set dockerregistry=$ACR_SERVER \
+     --set identity.clientid=$WORKFLOW_PRINCIPAL_CLIENT_ID \
+     --set identity.resourceid=$WORKFLOW_PRINCIPAL_RESOURCE_ID \
+     --set keyvault.name=$WORKFLOW_KEYVAULT_NAME \
+     --set keyvault.resourcegroup=$RESOURCE_GROUP \
+     --set keyvault.subscriptionid=$SUBSCRIPTION_ID \
+     --set keyvault.tenantid=$TENANT_ID \
+     --set reason="Initial deployment" \
+     --set tags.dev=true \
+     --namespace backend-dev \
+     --dependency-update
+
+# Verify the pod is created
+helm status workflow-v0.1.0-dev --namespace backend-dev
