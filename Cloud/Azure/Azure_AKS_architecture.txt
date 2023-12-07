@@ -13,3 +13,136 @@ https://github.com/mspnp/microservices-reference-implementation
 
 Deploy solution
 https://github.com/mspnp/microservices-reference-implementation/blob/main/deployment.md
+
+
+Deploying the Reference Implementation
+cd ~/GitHubX
+mkdir mspnp
+cd mspnp
+git clone --recurse-submodules https://github.com/mspnp/microservices-reference-implementation.git
+cd microservices-reference-implementation
+
+
+Generate a SSH rsa public/private key pair
+use
+~/.ssh/id_rsa.pub
+/home/stevepro/.ssh/id_rsa.pub: OpenSSH RSA public key
+
+
+Azure Resources Provisioning
+export SSH_PUBLIC_KEY_FILE=~/.ssh/id_rsa.pub
+export LOCATION=northeurope
+export RESOURCE_GROUP=rg-shipping-microservices
+
+
+az login
+export SP_DETAILS=$(az ad sp create-for-rbac --role="Contributor" -o json)
+ERROR: Usage error: To create role assignments, specify both --role and --scopes.
+
+export SP_DETAILS=$(az ad sp create-for-rbac --name ${USER}-sp --skip-assignment -o json)
+export SP_APP_ID=$(echo $SP_DETAILS | jq ".appId" -r)
+export SP_CLIENT_SECRET=$(echo $SP_DETAILS | jq ".password" -r)
+export DEPLOYMENT_SUFFIX=$(date +%S%N)
+
+
+Deployment
+export PREREQS_DEPLOYMENT_NAME=workload-stamp-prereqs-main
+
+az deployment sub create --name $PREREQS_DEPLOYMENT_NAME --location eastus2 --template-file ./workload/workload-stamp-prereqs.json --parameters resourceGroupName=$RESOURCE_GROUP resourceGroupLocation=$LOCATION
+
+
+export WORKLOAD_PREREQS_DEPLOYMENT_NAME=workload-stamp-prereqs-dep  && \
+export DELIVERY_ID_NAME=$(az deployment group show -g $RESOURCE_GROUP -n $WORKLOAD_PREREQS_DEPLOYMENT_NAME --query properties.outputs.deliveryIdName.value -o tsv) && \
+export DELIVERY_ID_PRINCIPAL_ID=$(az identity show -g $RESOURCE_GROUP -n $DELIVERY_ID_NAME --query principalId -o tsv) && \
+export DRONESCHEDULER_ID_NAME=$(az deployment group show -g $RESOURCE_GROUP -n $WORKLOAD_PREREQS_DEPLOYMENT_NAME --query properties.outputs.droneSchedulerIdName.value -o tsv) && \
+export DRONESCHEDULER_ID_PRINCIPAL_ID=$(az identity show -g $RESOURCE_GROUP -n $DRONESCHEDULER_ID_NAME --query principalId -o tsv) && \
+export WORKFLOW_ID_NAME=$(az deployment group show -g $RESOURCE_GROUP -n $WORKLOAD_PREREQS_DEPLOYMENT_NAME --query properties.outputs.workflowIdName.value -o tsv) && \
+export WORKFLOW_ID_PRINCIPAL_ID=$(az identity show -g $RESOURCE_GROUP -n $WORKFLOW_ID_NAME --query principalId -o tsv) && \
+export PACKAGE_ID_NAME=$(az deployment group show -g $RESOURCE_GROUP -n $WORKLOAD_PREREQS_DEPLOYMENT_NAME --query properties.outputs.packageIdName.value -o tsv) && \
+export PACKAGE_ID_PRINCIPAL_ID=$(az identity show -g $RESOURCE_GROUP -n $PACKAGE_ID_NAME --query principalId -o tsv) && \
+export INGESTION_ID_NAME=$(az deployment group show -g $RESOURCE_GROUP -n $WORKLOAD_PREREQS_DEPLOYMENT_NAME --query properties.outputs.ingestionIdName.value -o tsv) && \
+export INGESTION_ID_PRINCIPAL_ID=$(az identity show -g $RESOURCE_GROUP -n $INGESTION_ID_NAME --query principalId -o tsv) && \
+export RESOURCE_GROUP_ACR=$(az deployment sub show -n $PREREQS_DEPLOYMENT_NAME --query properties.outputs.acrResourceGroupName.value -o tsv)
+
+
+until az ad sp show --id $DELIVERY_ID_PRINCIPAL_ID &> /dev/null ; do echo "Waiting for AAD propagation" && sleep 5; done
+until az ad sp show --id $DRONESCHEDULER_ID_PRINCIPAL_ID &> /dev/null ; do echo "Waiting for AAD propagation" && sleep 5; done
+until az ad sp show --id $WORKFLOW_ID_PRINCIPAL_ID &> /dev/null ; do echo "Waiting for AAD propagation" && sleep 5; done
+until az ad sp show --id $INGESTION_ID_PRINCIPAL_ID &> /dev/null ; do echo "Waiting for AAD propagation" && sleep 5; done
+until az ad sp show --id $PACKAGE_ID_PRINCIPAL_ID &> /dev/null ; do echo "Waiting for AAD propagation" && sleep 5; done
+
+
+export KUBERNETES_VERSION=$(az aks get-versions -l $LOCATION --query "orchestrators[?default!=null].orchestratorVersion" -o tsv)
+WEIRD null
+az aks get-versions
+<default>
+export KUBERNETES_VERSION=1.27.3
+
+
+az deployment group create -f ./workload/workload-stamp.json -g $RESOURCE_GROUP -p droneSchedulerPrincipalId=$DRONESCHEDULER_ID_PRINCIPAL_ID -p workflowPrincipalId=$WORKFLOW_ID_PRINCIPAL_ID -p deliveryPrincipalId=$DELIVERY_ID_PRINCIPAL_ID -p ingestionPrincipalId=$INGESTION_ID_PRINCIPAL_ID -p packagePrincipalId=$PACKAGE_ID_PRINCIPAL_ID -p acrResourceGroupName=$RESOURCE_GROUP_ACR
+OUTPUT = lots of resources now
+
+
+# Get outputs from workload deploy
+export ACR_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.acrName.value -o tsv)
+export ACR_SERVER=$(az acr show -n $ACR_NAME --query loginServer -o tsv)
+
+
+CSI
+az feature register --namespace "Microsoft.ContainerService" --name "AKS-AzureKeyVaultSecretsProvider"
+az feature register --namespace "Microsoft.ContainerService" --name AKS-AzureKeyVaultSecretsProvider --subscription 5582f145-f8d1-4dbb-9f21-35933d44dcad
+5582f145-f8d1-4dbb-9f21-35933d44dcad
+
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzureKeyVaultSecretsProvider')].{Name:name,State:properties.state}"
+az provider register --namespace Microsoft.ContainerService
+
+status
+Registering
+
+
+Cluster
+export DEPLOYMENT_NAME=azuredeploy-$DEPLOYMENT_SUFFIX
+az deployment group create -g $RESOURCE_GROUP --name $DEPLOYMENT_NAME --template-file azuredeploy.json \
+--parameters servicePrincipalClientId=$SP_APP_ID \
+            servicePrincipalClientSecret=$SP_CLIENT_SECRET \
+            kubernetesVersion=$KUBERNETES_VERSION \
+            sshRSAPublicKey="$(cat $SSH_PUBLIC_KEY_FILE)" \
+            deliveryIdName=$DELIVERY_ID_NAME \
+            ingestionIdName=$INGESTION_ID_NAME \
+            packageIdName=$PACKAGE_ID_NAME \
+            droneSchedulerIdName=$DRONESCHEDULER_ID_NAME \
+            workflowIdName=$WORKFLOW_ID_NAME \
+            acrResourceGroupName=$RESOURCE_GROUP_ACR \
+            acrName=$ACR_NAME
+
+IMPORTANT
+ensure that $KUBERNETES_VERSION above is valid for the location e.g. northeurope
+
+
+{"status":"Failed","error":{"code":"DeploymentFailed","target":"/subscriptions/5582f145-f8d1-4dbb-9f21-35933d44dcad/resourceGroups/rg-shipping-microservices/providers/Microsoft.Resources/deployments/azuredeploy-03352220321","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-deployment-operations for usage details.","details":[{"code":"InvalidParameter","message":"'RetentionInDays' property doesn't match the SKU limits please refer to https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces. Operation Id: '5d763211e70f4f59196a15413e9aa472'"}]}}
+
+
+RetentionInDays
+variable lives in the file
+azuredeploy.json
+
+change 7 to 30 as per here
+https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=portal-1%2Cportal-2
+
+complete now
+more resource gropus + resources as a result
+
+
+Azure Deploy
+export CLUSTER_NAME=$(az deployment group show -g $RESOURCE_GROUP -n $DEPLOYMENT_NAME --query properties.outputs.aksClusterName.value -o tsv)
+
+
+#az aks install-cli
+az aks get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
+kubectl create namespace backend-dev
+
+
+IMPORTANT
+this is the command that "gets" the kubeconfig file!
+az aks get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
+~/.kube/config
