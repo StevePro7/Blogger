@@ -1,0 +1,31 @@
+demo
+07-129-2023
+
+start off with 4x files
+main.tf
+providers.tf
+terraform.tfvars
+variables.tf
+
+
+main.tf
+refereneces variables
+e.g.
+var.location
+
+variable "location" lives in variables.tf
+but the actual value to use at runtime in
+i.e.
+terraform.tfvars
+
+
+terraform init
+terraform validate
+terraform plan -input=false -out="demo.tfplan"
+terraform apply -input=false -auto-approve demo.tfplan
+terraform show
+terraform destroy
+
+terraform output
+terraform console
+
