@@ -536,5 +536,145 @@ helm install workflow-v0.1.0-dev workflow-v0.1.0.tgz \
      --namespace backend-dev \
      --dependency-update
 
+Error: INSTALLATION FAILED: failed pre-install: unable to build kubernetes object for deleting hook workflow/templates/workflow-identity.yaml: resource mapping not found for name: "workflow-v010-dev-identity" namespace: "" from "": no matches for kind "AzureIdentity" in version "aadpodidentity.k8s.io/v1"
+ensure CRDs are installed first
+
+
 # Verify the pod is created
 helm status workflow-v0.1.0-dev --namespace backend-dev
+
+
+Deploy the Ingestion service
+export INGESTION_QUEUE_NAMESPACE=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.ingestionQueueNamespace.value -o tsv) && \
+export INGESTION_QUEUE_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.ingestionQueueName.value -o tsv)
+export INGESTION_PRINCIPAL_RESOURCE_ID=$(az deployment group show -g $RESOURCE_GROUP -n $DEPLOYMENT_NAME --query properties.outputs.ingestionPrincipalResourceId.value -o tsv) && \
+export INGESTION_PRINCIPAL_CLIENT_ID=$(az identity show -g $RESOURCE_GROUP -n $INGESTION_ID_NAME --query clientId -o tsv)
+
+az acr build -r $ACR_NAME -t $ACR_SERVER/ingestion:0.1.0 ./workload/src/shipping/ingestion/.
+
+
+
+# Deploy service
+helm package charts/ingestion/ -u && \
+helm install ingestion-v0.1.0-dev ingestion-v0.1.0.tgz \
+     --set image.tag=0.1.0 \
+     --set image.repository=ingestion \
+     --set dockerregistry=$ACR_SERVER \
+     --set identity.clientid=$INGESTION_PRINCIPAL_CLIENT_ID \
+     --set identity.resourceid=$INGESTION_PRINCIPAL_RESOURCE_ID \
+     --set ingress.hosts[0].name=$EXTERNAL_INGEST_FQDN \
+     --set ingress.hosts[0].serviceName=ingestion \
+     --set ingress.hosts[0].tls=true \
+     --set ingress.hosts[0].tlsSecretName=$INGRESS_TLS_SECRET_NAME \
+     --set secrets.queue.keyname=IngestionServiceAccessKey \
+     --set secrets.queue.name=${INGESTION_QUEUE_NAME} \
+     --set secrets.queue.namespace=${INGESTION_QUEUE_NAMESPACE} \
+     --set reason="Initial deployment" \
+     --set tags.dev=true \
+     --namespace backend-dev \
+     --dependency-update
+
+Error: INSTALLATION FAILED: failed pre-install: unable to build kubernetes object for deleting hook ingestion/templates/ingestion-identity.yaml: resource mapping not found for name: "ingestion-v010-dev-identity" namespace: "" from "": no matches for kind "AzureIdentity" in version "aadpodidentity.k8s.io/v1"
+ensure CRDs are installed first
+
+
+# Verify the pod is created
+helm status ingestion-v0.1.0-dev --namespace backend-dev
+
+
+Deploy DroneScheduler service
+export DRONESCHEDULER_KEYVAULT_URI=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.droneSchedulerKeyVaultUri.value -o tsv)
+export DRONESCHEDULER_COSMOSDB_NAME=$(az deployment group show -g $RESOURCE_GROUP -n workload-stamp --query properties.outputs.droneSchedulerCosmosDbName.value -o tsv) && \
+export ENDPOINT_URL=$(az cosmosdb show -n $DRONESCHEDULER_COSMOSDB_NAME -g $RESOURCE_GROUP --query documentEndpoint -o tsv) && \
+export AUTH_KEY=$(az cosmosdb keys list -n $DRONESCHEDULER_COSMOSDB_NAME -g $RESOURCE_GROUP --query primaryMasterKey -o tsv) && \
+export DATABASE_NAME="invoicing" && \
+export COLLECTION_NAME="utilization"
+
+# Extract outputs from deployment
+export DRONESCHEDULER_PRINCIPAL_RESOURCE_ID=$(az deployment group show -g $RESOURCE_GROUP -n $DEPLOYMENT_NAME --query properties.outputs.droneSchedulerPrincipalResourceId.value -o tsv) && \
+export DRONESCHEDULER_PRINCIPAL_CLIENT_ID=$(az identity show -g $RESOURCE_GROUP -n $DRONESCHEDULER_ID_NAME --query clientId -o tsv)
+
+az acr build -r $ACR_NAME -f ./workload/src/shipping/dronescheduler/Dockerfile -t $ACR_SERVER/dronescheduler:0.1.0 ./workload/src/shipping/.
+
+
+
+# Deploy the service
+helm package charts/dronescheduler/ -u && \
+helm install dronescheduler-v0.1.0-dev dronescheduler-v0.1.0.tgz \
+     --set image.tag=0.1.0 \
+     --set image.repository=dronescheduler \
+     --set dockerregistry=$ACR_SERVER \
+     --set ingress.hosts[0].name=$EXTERNAL_INGEST_FQDN \
+     --set ingress.hosts[0].serviceName=dronescheduler \
+     --set ingress.hosts[0].tls=false \
+     --set identity.clientid=$DRONESCHEDULER_PRINCIPAL_CLIENT_ID \
+     --set identity.resourceid=$DRONESCHEDULER_PRINCIPAL_RESOURCE_ID \
+     --set keyvault.uri=$DRONESCHEDULER_KEYVAULT_URI \
+     --set cosmosdb.id=$DATABASE_NAME \
+     --set cosmosdb.collectionid=$COLLECTION_NAME \
+     --set reason="Initial deployment" \
+     --set tags.dev=true \
+     --namespace backend-dev \
+     --dependency-update
+
+Error: INSTALLATION FAILED: failed pre-install: unable to build kubernetes object for deleting hook dronescheduler/templates/dronescheduler-identity.yaml: resource mapping not found for name: "dronescheduler-v010-dev-identity" namespace: "" from "": no matches for kind "AzureIdentity" in version "aadpodidentity.k8s.io/v1"
+ensure CRDs are installed first
+
+
+# Verify the pod is created
+helm status dronescheduler-v0.1.0-dev --namespace backend-dev
+
+
+Validate the application is running
+
+Send a request
+curl -X POST "https://$EXTERNAL_INGEST_FQDN/api/deliveryrequests" --header 'Content-Type: application/json' --header 'Accept: application/json' -k -d '{
+   "confirmationRequired": "None",
+   "deadline": "",
+   "dropOffLocation": "drop off",
+   "expedited": true,
+   "ownerId": "myowner",
+   "packageInfo": {
+     "packageId": "mypackage",
+     "size": "Small",
+     "tag": "mytag",
+     "weight": 10
+   },
+   "pickupLocation": "my pickup",
+   "pickupTime": "2019-05-08T20:00:00.000Z"
+ }' > deliveryresponse.json
+
+
+Check the request status
+DELIVERY_ID=$(cat deliveryresponse.json | jq -r .deliveryId)
+curl "https://$EXTERNAL_INGEST_FQDN/api/deliveries/$DELIVERY_ID" --header 'Accept: application/json' -k
+
+
+
+RESOURCES
+NetworkWatcherRG
+Network Watcher
+
+
+rg-shipping-microservices
+Action group
+Application Insights
+Azure Cache for Redis
+Azure Cosmos DB account
+Azure Cosmos DB account for MongoDB
+Key Vault
+Kubernetes service
+Log Analytics workspace
+Managed Identity
+Service Bus Namespace
+Smart detector alert rule
+Solution
+Storage account
+
+
+rg-shipping-microservices-acr
+Container registry replication
+Container registry 
+
+
+rg-unxyygp7sytao-nodepools
