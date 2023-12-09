@@ -5,29 +5,140 @@ Quick guide to understand Linux Commands
 https://medium.com/@mj.vishweshwaran/vish-linux-commands-for-devops-warriors-3866e4f4e56
 
 System Info Commands
-hostname - shows the name of the system host.
+hostname
+hostid
+date
+whoami
+uptime
+uname
+clear
+history
+sudo
+echo $?
+shutdown -r now
+printenv
+last
 
-hostid - shows the host id of the system assigned by the OS.
 
-date - shows the current date and time in UTC format.
+Directory Commands
+pwd
+cd
+mkdir
+ls
 
-whoami - shows the currently logged-in username of the terminal.
 
-uptime - shows the elapsed time duration since the machine logged in.
+File Commands
+touch
+cat
+head
+tail
+less
+rm
+cp
+mv
 
-uname - unix name.
 
-clear - clears the screen.
+File Permission Commands
+ls -l
+chmod
+chown
+chgrp
+getfacl
+setfacl
 
-history - lists all the commands executed until now.
 
-sudo - Super User Do.
+File Permission Octal Numbers
+read (r) — 4, write (w)- 2, execute (x) — 1
 
-echo $? - shows the exit status of the last executed command (0 - success, 1-255 - error/failure).
 
-shutdown -r now - restart the machine immediately (-r restart).
+User Management Commands
+useradd
+passwd
+userdel
+/etc/passwd
+/etc/shadow
+su
+exit
+usernod -aG
+chsh
 
-printenv - displays all the environment variables of the Linux system.
 
-last - shows previous logins in the Linux system.
+Group Management Commands
+groupadd
+groupdel
+/etc/group
+gpasswd
 
+
+Searching Commands
+locate
+sudo updatedb
+
+
+GREP Command — Global Regular Expression Print
+grep
+
+
+Find Command
+find
+
+
+Hardware Infomation Commands
+free -h
+df -h
+du
+du -h
+du -sh
+du -sh <filename/dirname>
+
+
+Network Commands
+ping <hostname>
+dig <domainName>
+wget <url>
+curl <url>
+ifconfig
+ip addr
+curl ifconfig.me
+netstat -antp
+traceroute <url>
+
+
+Process Information Commands
+ps
+ps -u <userName>
+us -ef
+top
+kill <pid>
+pgrep <processName>
+bg
+fb
+nohup	no hangup
+
+
+Archiving File Commands
+tar
+tar -cvf
+tar -xvf
+
+
+Ubuntu Package related Commands
+apt
+apt update
+apt list --installed
+apt list --installed <packageName>
+apt show <packageName>
+apt search <packageName>
+apt install <packageName>
+apt remove <packageName>
+apt purge <packageName>
+
+
+Misc Commands
+echo "sample text" | grep text
+ls -l | tee file.txt
+echo "sample text" > <fileName>
+echo "new sample text" >> <fileName>
+stat <fileName/dirName>
+cron
+tree
