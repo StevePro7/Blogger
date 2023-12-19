@@ -1,0 +1,26 @@
+ServiceBus
+19/12/2023
+
+
+Reference
+https://www.serverless360.com/blog/azure-service-bus-connection-string
+
+
+Azure portal
+new Service Bus namespace
+stevennamespace
+create
+
+Shared access policies
+Primary Connection string
+Endpoint=sb://stevennamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+create queue
+mystevequque
+
+
+Launch UI
+D:\GitHubX\paolosalvatori\ServiceBusExplorer
+
+app.config
+<add key="SASConnectionString" value="Endpoint=sb://stevennamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
