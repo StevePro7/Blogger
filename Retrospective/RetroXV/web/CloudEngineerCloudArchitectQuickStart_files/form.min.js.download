@@ -1,1 +1,0 @@
-(function(factory){"use strict";if(typeof define==="function"&&define.amd){define(["jquery","./version"],factory);}else{factory(jQuery);}})(function($){"use strict";return $.fn._form=function(){return typeof this[0].form==="string"?this.closest("form"):$(this[0].form);};});

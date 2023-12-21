@@ -1,1 +1,0 @@
-define(['ko','./template/engine','knockoutjs/knockout-es5','./bindings/bootstrap','./extender/observable_array','./extender/bound-nodes','domReady!'],function(ko,templateEngine){'use strict';ko.uid=0;ko.setTemplateEngine(templateEngine);ko.applyBindings();});

@@ -1,2 +1,0 @@
-define(['underscore','Magento_Catalog/js/product/view/product-ids'],function(_,productIds){'use strict';return function($form){var idSet=productIds(),product=_.findWhere($form.serializeArray(),{name:'product'});if(!_.isUndefined(product)){idSet.push(product.value);}
-return _.uniq(idSet);};});

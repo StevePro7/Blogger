@@ -1,2 +1,0 @@
-define(['underscore','Magento_Catalog/js/product/view/product-info'],function(_,productInfo){'use strict';return function($form){var product=_.findWhere($form.serializeArray(),{name:'product'});if(!_.isUndefined(product)){productInfo().push({'id':product.value});}
-return _.uniq(productInfo(),function(item){return item.id;});};});
