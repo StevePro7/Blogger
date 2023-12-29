@@ -10,3 +10,26 @@ cd retro
 
 Emulator does not seem to have sound / audio playing
 I guess this is by definition but check video if so
+
+
+02.
+data folder
+~/GitHubX/openai/retro/retro/data
+e.g.
+data.json
+/home/stevepro/GitHubX/openai/retro/retro/data/stable/AdventureIslandII-Nes
+|u
+>u
+what are the types?
+
+
+03.
+repro the random_agent.py file manually
+random_agent.py
+/home/stevepro/GitHubX/openai/retro/retro/examples
+similar to retro06 in PythonSetup
+i.e.
+begin with the argparse
+e.g.
+--game		SonicTheHedgehog-Genesis
+--state	GreeHillZone.Act1

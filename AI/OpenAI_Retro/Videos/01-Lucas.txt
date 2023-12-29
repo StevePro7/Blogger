@@ -11,3 +11,56 @@ python -m venv tutorials
 cd tutorials
 source bin/activate
 pip freeze
+
+github.com/openai/retro
+master
+
+Building
+https://retro.readthedocs.io/en/latest/developing.html#install-retro-from-source
+
+git clone https://github.com/openai/retro.git gym-retro
+cd gym-retro
+pip3 install -e .
+
+
+[optional]
+Updating submodules
+git submodule deinit -f --all
+rm -rf .git/modules
+git submodule udpate --init
+
+retro
+cd examples
+random_agent.py
+https://github.com/openai/retro/blob/master/retro/examples/
+
+e.g.
+python examples/random_agent.py SonicTheHedgehog-Genesis GreeHillZone.Act1
+
+NO romfiles
+
+ls scripts
+python retro/scripts/import_sega_classics.py
+
+Repeat
+python examples/random_agent.py SonicTheHedgehog-Genesis GreeHillZone.Act1
+
+cd /home/stevepro/GitHubX/openai/retro/retro/data/stable/SonicTheHedgehog-Genesis
+GreenHillZone.Act1.state
+
+
+IMPORTANT
+only 3x ROMs
+stevepro@Alienware:~/GitHubX/openai/retro/retro/data$ find -L -type f -name '*.md'
+./contrib/OutRun-Genesis/rom.md
+./stable/SonicTheHedgehog-Genesis/rom.md
+
+
+data.json file works in conjunction with the scenario.json file to "determine"
+when the game is "won" i.e. make rules
+
+
+
+./stable/Airstriker-Genesis/rom.md
+
+
