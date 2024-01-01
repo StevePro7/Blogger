@@ -5,5 +5,35 @@ tutorials
 01.
 https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym
 
+https://www.gymlibrary.dev/environments/toy_text/taxi
+https://github.com/ltbringer/open-ai-gym-taxi-v2
+
+obs, rew, done, info = env.step(env.action_space.sample())
+
+obs	observation of the environment
+rew	reward if your action was beneficial or not
+done	indicates success
+info	e.g. performance + latency for debugging
+
+action		env.action_space
+state		env.observation_space
+
+
+RL algorithm	Q-learning
+Q-learning
+lets the agent use the environment's rewards to learn, over time, the best action to take in a given state
+
+IMPORTANT
+Deep Reinforcement Learning
+relates to when Deep neural networks are used instead of the Q-table in Q-learning
+
+CNN
+Convolutional Neural Networks
+deep learning technique can be used to interpret pixels
+
+
 02.
 https://www.guru99.com/reinforcement-learning-tutorial.html
+
+Q-learning
+value-based method of supplying information to inform which action an agent should take
