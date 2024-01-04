@@ -1,0 +1,68 @@
+AWS CLI SSO
+04-Jan-2024
+
+
+Linux
+Terminal
+aws iam list-policies
+
+did not work
+so I set up SSO today
+
+References:
+https://medium.com/@pushkarjoshi0410/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056
+
+https://eu-north-1.console.aws.amazon.com/singlesignon/home?region=eu-north-1#!
+
+https://www.linkedin.com/pulse/fix-error-loading-sso-token-access-has-either-expired-wesley-siow
+
+
+Here is what I did:
+log on to AWS console
+
+root
+steven_boland@hotmail.com
+pwd
+
+
+Search for SSO
+IAM Identity Center
+
+https://us-east-1.console.aws.amazon.com/iamv2/home?region=eu-west-1#/instances/68040f5f581e1411/organization/accounts
+
+I added user	SteveProXNA
+I added group	SteveProGroup
+I added permission set		AdministratorAccess
+
+then you need to update the ~/.aws/config file
+add the following
+
+sso_start_url = <AWS access portal URL>
+sso_region = eu-west-1
+sso_account_id = <account_id>
+sso_role_name = AdministratorAccess
+region = eu-west-1
+output = json
+
+
+sso_start_url = <AWS access portal URL>
+IAM Identity Center | Settings | Identity source
+AWS access portal URL
+
+
+sso_account_id = <account_id>
+e.g.
+4xxxxxxxxxxx
+
+
+Linux terminal
+aws sso login
+
+
+IMPORTANT
+the first time I added User SteveProXNA
+I had to verify the user
+
+I uses the Google Authenticator app to do this
+scan QR code
+enter 6x digits when prompted for the MFA
