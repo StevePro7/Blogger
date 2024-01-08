@@ -6,7 +6,6 @@ Reference
 https://gymnasium.farama.org/content/basic_usage
 
 
-
 pip install gymnasium
 
 
@@ -18,3 +17,34 @@ more detailed instructions here
 https://gymnasium.farama.org/environments/box2d/#
 
 pip install gymnasium[box2d]
+ERROR
+
+SUMMARY process
+copied requirements.txt
+~/GithubX/Farama-Foundation/Gymnasium/docs
+
+pip install -r requirements.txt
+//pip install gymnasium[box2d]
+
+pip install gymnasium
+pip install Box2D
+
+
+IMPORTANT
+Box2D docs say should be able to install package like this
+pip install gymnasium[box2d]
+
+But I get error so just install the 2x packages separately
+Failed to build box2d-py
+ERROR: Could not build wheels for box2d-py, which is required to install pyproject.toml-based projects
+
+
+pip install gymnasium
+pip install Box2D
+
+
+
+SUMMARY process
+pip install -r requirements.txt
+pip install gymnasium
+pip install Box2D
