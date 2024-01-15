@@ -4,6 +4,7 @@ Farma Foundation
 
 Reference
 https://github.com/Farama-Foundation/Gymnasium
+git clone https://github.com/Farama-Foundation/Gymnasium
 /home/stevepro/GitHubX/Farama-Foundation/Gymnasium
 
 
@@ -31,3 +32,48 @@ pip install opencv-python
 
 Misc
 https://gymnasium.farama.org/content/basic_usage
+
+
+
+15-Jan-2024
+repeat GitHub2
+pip install -r docs/requirements.txt
+
+Create Python package
+examples
+stevepro.py
+
+ClassicControl
+name = 'Acrobot-v1'
+
+ToyText
+name = "FrozenLake-v1"
+
+Box2D
+name = "LunarLander-v2"
+pip install Box2D
+
+muJoCo
+name ="Ant-v4"
+pip install mujoco==2.3.0
+
+Atari
+name = "ALE/Boxing-v5"
+pip install gymnasium[atari]
+pip install gymnasium[accept-rom-license]
+raise error.NamespaceNotFound(f"Namespace {ns} not found. {suggestion_msg}")
+gymnasium.error.NamespaceNotFound: Namespace ALE not found. Have you installed the proper package for ALE?
+
+2x ways to get this working
+01. to debug step thru codee
+git checkout v0.29.1
+
+OR
+02.
+use the gy package directly but not be able to debug step thru code
+pip install "gym[atari, accept-rom-license]"
+
+
+Reference:
+https://stackoverflow.com/questions/76150278/getting-an-error-trying-to-import-environment-openai-gym
+pip install "gym[atari, accept-rom-license]"
