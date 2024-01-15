@@ -1,0 +1,711 @@
+You Tube
+31/05/2021
+
+
+Kubernetes Security Best Practices - Ian Lewis, Google
+https://www.youtube.com/watch?v=wqsUfvRyYpw
+
+
+GCE
+Google Container Engine
+
+Kubernetes
+container orchestrator
+
+framework that provides infrastructure in the form of an API
+provides security features to make your infrastructure more secure
+
+
+
+NOT covered
+Threat detection
+determining if you've been compromised
+
+Build Hygiene
+making sure that your CI/CD pipelines are secure
+
+Image Hygiene
+making your images more secure
+
+SecOps
+how to do security operations
+
+
+Security 101
+* security is a spectrum
+* attackers can pick their target
+* provide as many hurdles btwn threat and asset
+* attackers can shift focus
+ "It doesn't matter how many locks are on your door if your window is open"
+
+
+* security is a spectrum
+many different pieces of a Kubernetes cluster w/ many pieces of software
+each piece of software has its own security posture or security context
+so
+need to think of security as a holistic process
+
+
+* attackers can pick their target
+attackers advantage to security
+attackers advantage vs defenders dilemma
+
+attackers can pick what they attack	in your cluster
+attackers can pick when they attack	what time
+attackers can attack the weakest link in your cluster
+so
+must make sure the holistic picture of the security of your cluster is addressed
+
+Solution
+AA.
+apply layered defense or defense in depth
+e.g.
+	Network
+	Node / Host
+	Runtime
+i.e.
+make each of your security pieces of software are redundant in your clusters
+so this means an attacker must do multiple things in order to get [user] data
+credit cards
+
+Good security is redundant
+Security is opposite DRY
+want multiple things that we're doing in order to secure something
+
+
+BB.
+Limit the attack surface at each piece of these levels
+give attacker as few options as possible in order to attack the cluster
+means
+usually reducing the amount of software that's installed on the machine
+or
+inside of your images
+or
+inside each of your applications
+so
+there is 
+less software that you have to patch
+less software that is vulnerable to attack
+
+
+CC.
+Least privilege
+idea of providing each of the applications that you are running
+the least amount of privilege that it needs in order to run
+
+if somebody is able to take the credentials of that application then
+they don't get more permissions that are absolutely necessary 
+because that means that they could then further attack or get more info
+and escalate their privileges and cause a wider problem
+
+
+Guestbook App
+- web UI
+- msg svc
+- user svc
+- redis db
+
+
+Kubernetes API Server
+1. Get token from frontend pod
+2. Use token to attack cluster API server
+3. Get secrets etc. to further attack
+
+
+Talk about how to attack a K8s cluster and how to mitigate those attacks
+e.g.
+attack the Kubernetes cluster or the API Server itself
+
+by default, every Pod in a Kubernetes cluster gets what's called a
+service account
+
+if you're not using RBAC then each of those service accounts has a
+number of permissions or a role associated with it that allows that pod to
+talk to the API Server and make requests to the API Server
+
+if you're not careful and have given too many permissions to the [pod] service account
+then you can use this service account to do things w/ the API sever
+e.g.
+send requests to the API server
+
+imagine web frontend has a vulnerability that allows us to read a file off file system
+i.e.
+allow attacker to read a token file that the attacker could use to send a request to the
+API server with that token and then be able to
+- create pods
+- read some secrets
+
+IMPORTANT
+prevent + mitigate against those kinds of attacks
+
+
+Mitigate 1 & 2: RBAC
+
+* Role Based Access Control
+* Roles given to users
+* Each role has permission to perform some operation
+  e.g. get secrets, update configmap
+* RBAC settings apply to namespace
+
+
+MUST use RBAC...!
+in order to secure the cluster
+NB:
+enabled by default but can be disabled
+
+
+RBAC
+gives roles to each of the users in your cluster
+as well as each of the service accounts that are running in your cluster
+
+this is the service account that gets added to your pod
+and
+each role in RBAC contains a number of permissions that the user or
+service account can perform 
+i.e.
+usually a verb and a noun
+e.g.
+GET Secrets 
+Update configmap
+
+these are things that a user can do
+
+then those roles can be assigned to people so you can assign the same role
+to multiple people and each of those roles can have multiple permissions
+
+
+IMPORTANT
+RBAC settings apply to namespaces so that if you can assign roles to a user
+that are allowed in one namespace but not in other namespaces 
+
+e.g.
+ClusterRole
+ClusterRoleBinding
+
+this is just assigning a role to a user and each user can have many roles
+associated with them
+here
+we are assigning a role that applies to the entire cluster but if you use
+a role or roleBinding then that applies only to a single namespace
+
+that allows the API server to decide whether we can perform certain types of operations
+
+
+Mitigate 2: API Server Firewall
+
+* Restrict access to API server to certain IP addresses
+* GKE:
+	gcloud container clusters create
+	--enable-master-authorized-networks
+	--master-authorized-networks=....
+
+we can firewall the API server so that the attacker hopefully does not even have
+access to actually even send a connect to the API server from the Internet
+
+we can do this using regular firewalling rules or port firewalling rules
+or if you are using GKE then use can use a master authorized networks feature
+in order to limit the IP addresses that can access the API server
+
+
+Mitigate 3: Network Policy
+
+* Restrict access to datatbase to only the Pods that require it
+* Specify access via labels
+* Implemented by Network solution: Calico, Weave, etc.
+
+another way to mitigate attacks on the cluster is to use Network Policy
+which allows us to restrict the things that you can have access to from
+a single pod
+
+e.g.
+create Network Policy to ensure web front end cannot send requests
+to Redis DB directly but must go thru the msg svc
+
+Network Policy
+has an implementation which is usually Calico or Weave or some other network policy
+enforcement mechanism
+e.g.
+specify a label selector to tell which pods that the policy applies to and
+then which pods that pod is able to accept request from or send request to
+
+Example
+
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: redis
+spec:
+  podSelector:
+    matchLabels:
+      name: redis
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: guestbook
+
+Redis pod can accept request from ingress so incoming network requests can
+only come from our guestbook or our message application and NOT from the web front-end
+
+
+Get access to cluster components
+
+1. Manipulate the cluster data in etcd
+
+another problem that is typical in clusters and is a way that somebody can attack a
+cluster is to get access to cluster components and manipulate those cluster components
+
+one typical this to do is you've provided your etcd that the API server uses to the
+cluster then an attacker could interact with etcd and bypass the API server completely
+so
+you must ensure that your etcd is secured
+
+
+Mitigate 1: Secure etcd
+
+* use authentication and firewalls to restrict access to etcd
+* encrypt data in etcd (encryption at rest)
+
+ensure that your etcd is setup so that it requires authentication and then firewall it
+to make sure that you cannot send network traffic to etcd from inside of the cluster
+
+this makes it so that things like your cluster objects, the things that the API server saves
+in etcd are secure because if a user is able to modify those objects directly in etcd then
+that's the same thing as if they had full access to the entire cluster
+e.g.
+they can create pods or create secrets
+
+
+Another thing you can do is encrypt the data that gets saved in etcd so the API server
+has the ability to encrypt data that's coming in and being saved to etcd
+
+this allows it so that if somebody tries to read from etcd directly then they're just
+reading encrypted data rather than reading data that is basically saved in plain text
+
+
+Get access to host
+
+1. break out of the container using container or kernel exploits
+2. attack the kubelet
+3. attack other containers running on the same host
+
+another way you might attack attach a cluster would be to break out of the container
+and then try to get access to the host itself
+i.e. 
+single worker node in the Kubernetes cluster
+
+and then read data off other containers or the configuration of the kubelet in order to
+further attack the cluster and get escalated privileges
+
+typically people will break out of a container by using something like a current kernel
+bug or some other Kubernetes bug - there have several that allow container escapes
+
+so 
+an attacker may be able to break out of a container and then read files from the 
+filesystem or otherwise execute applications on the host outside of the container
+
+this would allow them to read other and see other containers that are running on the host
+read the secrets that are associated with those containers plus read the kubelet authentication certificates
+
+then what attackers can do is use those credentials from the kubelet in order to talk to the
+API server and pretend it's the kubelet and then try to get other information about other
+pods or other secrets
+
+
+Mitigate 1: Run as non-root
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 1000
+
+
+one way to make it harder to break out of a container is to run applications inside the
+container as a user rather than as root user
+
+typically in Docker people run applications as root inside the container and this makes
+it easier for attackers to be able to break out of containers so it is better practice
+to run them [containers] as user
+
+run container as user then the attacker would have to escalate privileges as root inside of
+container in order to break out of the container so first low hanging fruit is to run your
+applications as user inside the container
+
+
+Mitigate 1: Read-only root filesystem
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    readOnlyRootFilesystem: true
+
+another good practice:
+make your root filesystem read-only for your application
+
+sometimes applications require you to write some data to disk or to the file system so
+you can create a temporary directory or an external volume that you can allow the container
+to write to but the root file system itself you can make that read-only and this prevents
+applications or attackers from overwriting files on the file system that you don't expect
+them to write to
+
+e.g.
+maybe your application allows you to upload files and you have a bug in your code that allows
+them to upload a file to anywhere and so they could overwrite some binary and then trick your
+application into executing that binary then they have full privileges inside the container
+
+
+Mitigate 1: no_new_privs
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    allowPrivilegeEscalation: false
+
+
+another thing to do is NOT allow new privileges or set the "no_new_privs" flag to false
+this makes it so that if your application is executing another binary that you don't allow
+extra privileges to be attached to that particular application or process
+=> this makes it harder to escalate privileges inside of the container 
+
+
+SUMMARY
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 1000
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+
+
+if you do these ALL together then that just makes it even harder for attackers to get
+privileges inside the container that they can use to break out of the container
+
+
+Mitigate 1: Sandboxed Pods
+
+1. Pods are sandboxed from other Pods on the same host
+2. Sandbox provides 2x layers of isolation:
+   Sandbox + Container	[Linux Kernel]
+3. Examples: kata containers, gVisor
+
+
+Another idea is to use sandboxed pods and this is like using a different runtime from the
+container runtimes in Kubernetes and what these do is give you an extra layer of isolation
+between the container and the host system what allows you to run applications that you
+don't trust as much
+
+typically used for something that where users upload code or where you're executing third
+party applications and things like kata containers, gVisor or solutions for that make it
+really hard to break out of a container
+
+
+gVisor
+1. user space kernel
+2. intercepts and implements syscalls in user space
+3. sandbox has low capabilities and runs with restricted seccomp filters
+
+
+seccomp
+https://en.wikipedia.org/wiki/Seccomp
+
+allows a process to make a one-way transition into a "secure" state where it cannot make
+any system calls except exit(), sigreturn(), read() and write() to open file descriptors
+
+
+gVisor
+intercepts syscalls and handles that in user space rather than using the hosts and so that
+makes it really hard to take advantage of bugs that are in host operating systems in order
+to break out of the container
+
+
+Mitigate 1:
+seccomp/
+AppArmor/
+SELinux
+
+another way to further lockdown a container is to use seccomp / AppArmor/ SELinux
+
+if you think of a container like a jail for your application then it's a little bit leaky
+in that you can do a lot of things, there is a large surface area that you can attack
+
+but
+seccomp allows us to add another kind of layer on top of that container isolation layer
+
+AppArmor and SELinux allow us to add another layer on top of that that adds more policy and
+more options to further lock down the container and make it hard to escape
+
+
+01.
+seccomp
+
+Recommends to enable seccomp runtime default policy on their containers
+[not applied by default]
+
+what this does is just applies the default Docker runtime seccomp policy to a container
+e.g.
+
+seccomp
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  annotations:
+    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+
+
+02.
+AppArmor
+
+can also use AppArmor [if installed] will apply the default AppArmor policy to your containers
+but if you want to run your own profile or you want to really make sure that your running
+AppArmor using AppArmor policy then you can specify that as an annotation in your pod as well
+e.g.
+
+AppArmor 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/hello: runtime/default
+  spec:
+    containers:
+      - name: hello
+
+
+03.
+SELinux
+
+still the only one that is currently "GA" as a feature and that's part of the security context
+inside there you can specify SELinux options in order to specify the type of options that you
+want to use to lock down the container
+e.g.
+
+SELinux
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  securityContext:
+    seLinuxOptions:
+      level: "s0:c123,c456"
+    containers:
+      - name: hello
+
+
+Downside
+it requires you to know what your application does in order to be able to specify the right
+types of options in order to lock down the container properly
+
+
+Mitigate 2 & 3: Restrict Kubelet permissions
+
+* RBAC for kubelet
+  --authorization-mode=RBAC,Node
+  --admission-control=...,NodeRestriction
+* Rotate kubelet certs:
+    kubelet... --rotate-certificates
+
+
+Mitigate things like attackers reading your kubelet credentials and being able to do other
+things in the cluster by using RBAC for the kubelet which is enabled by adding some options
+to your kubelet or to your API server
+
+Example
+--authorization-mode=RBAC,Node
+
+creates a special RBAC role for a node that restricts things like reading secrets on the node
+to only to secrets that are attached to pods that are assigned to that node for instance
+
+a node can't just read any secrets in the cluster, it can only read the secrets that it's
+allowed to see and this limits a little bit what you can see from the node 
+
+
+Another thing to do is rotate those certificates so even if that certificate is stolen it's
+only valid for a short period of time before it becomes invalid
+
+e.g.
+kubelet... --rotate-certificates
+
+
+Unsecured pods
+* you don't follow the rules
+
+if you have many people using your cluster and you want to ensure that everyone is doing the
+right thing and setting all the features that they need to on their pods then you want to set
+some sort of policy that says you can't create pods without that run as root for instance??
+
+so
+you can use something like Open Policy Agent in order to block those type of features by
+creating some policy that specifies the type of policy that you want to use that uses
+the admission controller features in the API server in order to block those type of pods
+from being created 
+
+
+Listen to Traffic
+
+1. sniffing or intercepting traffic on the network
+2. request forgery
+
+
+request forgery
+e.g.
+sending a request to another service as if you were a different service
+and not the one that you are 
+
+Mitigate against that [request forgery] by using Service Mesh
+e.g.
+Istio
+[which includes Envoy proxy]
+
+
+Istio provides an authentication mechanism for your services so you know which service is
+sending the request and which service is receiving the request and you can block services
+that are not allowed to access it
+
+similar to how network policy works but at a service level rather than at a network level
+i.e. more defense in depth
+
+
+Istio
+
+1. proxy data between services
+2. end-to-end encryption
+3. rolling certificates
+4. policy managed by central server
+
+what Istio does it that it puts a proxy between services and enforces service policy that way
+and then Istio encrypts traffic between the services and rolls, i.e. continually updates the
+certificates so they aren't valid forever
+
+so
+if Web UI tries to send requests to services it's not allowed to send requests to then
+those requests will be blocked by the proxy on other end of the request
+
+you also can't just listen to traffic on the network that your cluster is running because
+all of the traffic is encrypted between the services
+i.e.
+listening to traffic on the network = listening to encrypted data or encrypted traffic on network
+
+
+Tips
+
+1. update Kubernetes early + often
+2. don't use admin for day-to-day work
+3. try benchmarking tools like kube-bench
+4. use managed services like GKE		Google Kubernetes Engine
+
+
+use admin only to deploy from CI/CD pipelines	deployment server
+
+kube-bench
+can suggest ways in which to secure your cluster better
+
+GKE
+gives better defaults in terms of security posture
+
+
+SUMMARY	[from earlier]
+
+* Layered Security / Defense in depth
+* Good security is redundant (not DRY)
+* Limit the attack surface
+* Least privilege
+  [only give as much permission/privilege as is absolutely necessary]
+
+* Must use RBAC to secure cluster	enabled by default but can be disabled
+* Restrict API server to certain IP addresses	Firewall
+* Apply Network Policy to restrict access to what pods can send / receive requests via label selector
+* Restrict access to etcd from API server	never directly!
+* Encrypt data in etcd
+
+01.
+* Run container as user NOT root user		can't break out of container		runAsUser: 1000
+* Read-only root filesystem								readOnlyRootFilesystem: true
+* Do NOT allow new privileges 			inside the container			allowPrivilegeEscalation: false
+* Use sandboxed pods esp. for 3rd party applications you don't trust as much
+
+02.
+* Lockdown container further using:		seccomp / AppArmor / SELinux
+* Enable seccomp runtime default policy on containers					disabled by default
+
+
+03.
+* Restrict kubelet permissions
+* Create RBAC for node to restrict reading secrets that are attached to only pods assigned to that node
+* Rotate certificates thus if certificate is stolen it will only be valid for short period of time
+* Use Open Policy Agent to block pod creation from wrong people / processes
+* Mitigate against request forgery by using Service Mesh 				e.g. Istio
+
+
+FINAL Tips
+
+1. update Kubernetes early + often
+2. don't use admin for day-to-day work
+3. try benchmarking tools like kube-bench
+4. use managed services like GKE		Google Kubernetes Engine
+
+
+use admin only to deploy from CI/CD pipelines	deployment server
+
+
+
+01.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 1000
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+
+
+02.
+seccomp
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  annotations:
+    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+
+
+AppArmor 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/hello: runtime/default
+  spec:
+    containers:
+      - name: hello
+
+
+SELinux
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  securityContext:
+    seLinuxOptions:
+      level: "s0:c123,c456"
+    containers:
+      - name: hello
