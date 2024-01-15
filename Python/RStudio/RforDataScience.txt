@@ -3,3 +3,30 @@ R for Data Science
 
 https://r4ds.had.co.nz
 https://r4ds.had.co.nz/introduction.html#other-packages
+
+
+Filter observations
+filter(flights, month == 1, day == 1)
+
+x | y		x  or y
+
+x xor y = 	!(x | y)
+
+nov_dec <- filter(flights, month %in% c(11, 12))
+
+!(x & y) same	!x | !y
+!(x | y) same	!x & !y
+
+
+NA is.na(x)
+
+filter(flights, arr_delay>=120)
+filter(flights, dest=="IAH" | dest=="HOU")
+filter(flights, carrier=="UA" | carrier=="AA" | carrier=="DL")
+filter(flights, month>=7 & month <= 9)
+dep_delay - arr_delay
+filter(flights, dep_time>=0 & dep_time <= 600)
+
+?between
+
+filter(flights, dep_time==NA | TRUE)
