@@ -28,5 +28,47 @@ dep_delay - arr_delay
 filter(flights, dep_time>=0 & dep_time <= 600)
 
 ?between
+http://127.0.0.1:11055/library/dplyr/html/between.html
 
 filter(flights, dep_time==NA | TRUE)
+
+
+
+Create new variables
+mutate()
+
+library(tidyverse) # loads dplyr, ggplot2, and others
+library(nycflights13)
+
+
+select()
+flights_sml <- select(flights,
+  arr_delay,
+  dep_delay,
+  distance,
+  air_time
+)
+
+mutate()
+mutate(flights_sml,
+  gain = arr_delay - dep_delay,
+  speed = distance / air_time * 60
+)
+
+mutate(flights_sml,
+  gain = arr_delay - dep_delay,
+  hours = air_time / 60,
+  gain_per_hour = gain / hours
+)
+
+transmute()
+return the new variables appended to a copy of the original data
+transmute(flights,
+  gain = arr_delay - dep_delay,
+  hours = air_time / 60,
+  gain_per_hour = gain / hours
+)
+
+
+vectorised function
+takes a vector of values as input and returns a vector with the same number of values as output
