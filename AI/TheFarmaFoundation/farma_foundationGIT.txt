@@ -1,0 +1,51 @@
+Farma Foundation GIT
+18-Jan-2024
+
+
+Reference
+https://github.com/Farama-Foundation/Gymnasium
+git clone https://github.com/Farama-Foundation/Gymnasium
+/home/stevepro/GitHub2/Gymnasium
+
+
+Launch PyCharm
+Open
+/home/stevepro/GitHub2/Gymnasium
+
+
+Right click Gymnasium
+Python package examples
+
+import gymnasium as gym
+
+name = "ALE/Zaxxon-v5"
+
+try:
+    env = gym.make(name, render_mode="human")
+    observation, info = env.reset()
+
+    for _ in range(1000):
+        action = env.action_space.sample()  # agent policy that uses the observation and info
+        observation, reward, terminated, truncated, info = env.step(action)
+
+        if terminated or truncated:
+            observation, info = env.reset()
+
+    env.close()
+except KeyboardInterrupt:
+    exit(0)
+    
+    
+IMPORTANT
+for the first 2x OK - no new packages but
+pip install Box2D
+pip install muJoCO
+
+Finally, in order to get Atari working I had to checkout the tag
+0.29.1
+81b87eb
+
+in order to get this working!!
+
+i.e.
+there must be breaking code change on latest Gymnasium master 
