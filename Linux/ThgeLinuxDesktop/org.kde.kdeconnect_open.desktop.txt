@@ -1,0 +1,22 @@
+org.kde.kdeconnect_open.desktop
+19-Jan-2024
+
+Today I tried to install K8s Studio on Ubuntu Linux but got an error 
+complaining about this file and the MIME type
+
+
+org.kde.kdeconnect_open.desktop
+cd /usr/share/applications
+
+
+Suggestion
+https://github.com/clearlinux/distribution/issues/1906
+
+
+Change this line from this to this
+MimeType=*/*;
+MimeType=application/octet-stream;
+
+
+IMPORTANT
+I made a back up of this file just-in-case I need to revert!
