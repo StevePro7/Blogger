@@ -1,0 +1,41 @@
+Fork Repo
+25-Jan-2024
+
+SRCE
+https://github.com/openai/retro
+
+DEST
+https://github.com/SteveProXNA/retro
+
+
+Login SteveProXNA
+
+Fork
+https://github.com/openai/retro
+
+
+cd ~/GitHub/SteveProXNA
+git clone   ssh://github.com/SteveProXNA/retro
+git clone https://github.com/SteveProXNA/retro
+
+git config --global --get user.name
+git config --global user.name "SteveProXNA"
+
+git config --global --get user.email
+git config --global user.email "steven_boland@hotmail.com"
+
+
+Upstream
+git remote -v
+git remote add upstream git@github.com/openai/retro
+
+origin git@github.com:SteveProXNA/retro.git (fetch)
+origin git@github.com:SteveProXNA/retro.git (push)
+upstream git@github.com:tigera/retro.git (fetch)
+upstream git@github.com:tigera/retro.git (push)
+
+
+git checkout -b StevenTestBranch
+git push --set-upstream origin StevenTestBranch:StevenTestBranch
+
+
