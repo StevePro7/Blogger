@@ -1,0 +1,33 @@
+gcloud CLI
+09-Feb-2024
+
+Cheat sheet
+https://cloud.google.com/sdk/docs/cheatsheet
+
+gcloud auth list
+steven_boland@hotmail.com
+gcloud login
+
+Projects
+Create project via dashboard
+https://console.cloud.google.com
+
+gcloud projects list
+PROJECT_ID       NAME             PROJECT_NUMBER
+steveproproject  SteveProProject  835309765216
+
+gcloud config get project
+(unset)
+gcloud config set project steveproproject
+
+gcloud config get project
+steveproproject
+
+gcloud auth application-default set-quota-project
+
+
+OTHERS
+gcloud auth login
+gcloud auth configure-docker
+gcloud auth application-default login
+gcloud config set project steveproproject
