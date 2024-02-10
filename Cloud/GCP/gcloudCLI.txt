@@ -4,6 +4,16 @@ gcloud CLI
 Cheat sheet
 https://cloud.google.com/sdk/docs/cheatsheet
 
+Reference
+https://cloud.google.com/sdk/gcloud/reference
+
+gcloud init
+gcloud version
+gcloud components install
+gcloud components update
+gcloud info
+
+
 gcloud auth list
 steven_boland@hotmail.com
 gcloud login
@@ -31,3 +41,50 @@ gcloud auth login
 gcloud auth configure-docker
 gcloud auth application-default login
 gcloud config set project steveproproject
+
+
+CONFIG
+gcloud config get --help
+gcloud config get account
+gcloud config get project
+gcloud config list
+
+
+AUTH
+gcloud auth list
+gcloud auth login
+gcloud auth print-access-token
+
+
+PROJECTS
+gcloud projects describe
+gcloud projects list
+
+
+IAM
+gcloud iam list-grantable-roles --help
+gcloud iam service-accounts keys list --help
+
+
+GKE
+gcloud auth configure-docke
+gcloud container clusters list
+
+VMs
+gcloud compute zones list
+
+
+BILLING
+gcloud billing accounts list
+ACCOUNT_ID            NAME                OPEN   MASTER_ACCOUNT_ID
+01FD5B-165673-0E0CA5  SteveProBilling     True
+
+gcloud billing accounts describe 01FD5B-165673-0E0CA5
+gcloud billing budgets list --billing-account=01FD5B-165673-0E0CA5
+gcloud billing projects list --billing-account=01FD5B-165673-0E0CA5
+
+PROJECT_ID       BILLING_ACCOUNT_ID    BILLING_ENABLED
+steveproproject  01FD5B-165673-0E0CA5  True
+
+IMPORTANT
+no API has been built to query billing amount spent!
