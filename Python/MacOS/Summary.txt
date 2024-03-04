@@ -13,6 +13,9 @@ Terminal
 PyCharm
 Browser
 
+IMPORTANT
+Ctrl + could be "^\U" or "@\U"	for me I believe it should be "@\U"
+
 01.
 /* Home Button*/
 "\UF729" = "moveToBeginningOfLine:";
@@ -40,3 +43,33 @@ Browser
 "@\UF72B" = "moveToEndOfDocument:";
 "^\UF72B" = "moveToEndOfDocument:"; /* Ctrl + End */
 "^\UF72B" =  moveToEndOfDocument:; // ctrl-end
+
+
+05.
+/* Ctrl + Left */
+"@\UF702" = "moveWordLeft:";
+"^\UF702" = "moveWordLeft:"; // ctrl-left
+"^\UF702" =  moveWordLeft:; // ctrl-left
+"@\UF702" =  moveWordLeft:; // cmd-left
+
+
+06.
+/* Ctrl + Right */
+"@\UF703" = "moveWordRight:";
+"^\UF703" = "moveWordRight:"; // ctrl-right
+"^\UF703" =  moveWordRight:; // ctrl-right 
+"@\UF703" =  moveWordRight:; // cmd-right 
+
+
+07.
+/* Ctrl + Shift + Left */
+"@$\UF702" = "moveWordLeftAndModifySelection:";
+"^$\UF702" =  moveWordLeftAndModifySelection:; // ctrl-shift-left
+"@$\UF702" =  moveWordLeftAndModifySelection:; // cmd-shift-left
+
+
+08.
+/* Ctrl + Shift + Right */
+"@$\UF703" = "moveWordRightAndModifySelection:";
+"^$\UF703" =  moveWordRightAndModifySelection:; // ctrl-shift-right
+"@$\UF703" =  moveWordRightAndModifySelection:; // cmd-shift-right

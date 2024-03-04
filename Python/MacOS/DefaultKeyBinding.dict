@@ -1,13 +1,25 @@
 {
-    /* Home Button*/
+    /* 01. Home Button*/
     "\UF729" = "moveToBeginningOfLine:";
 
-    /* End Button */
+    /* 02. End Button */
     "\UF72B" = "moveToEndOfLine:";
 
-    /* Ctrl + Home Button */
+    /* 03. Ctrl + Home Button */
     "@\UF729" = "moveToBeginningOfDocument:";
 
-    /* Ctrl + End Button */
-    "@\UF72B" = "moveToEndOfDocument:"; 
+    /* 04. Ctrl + End Button */
+    "@\UF72B" = "moveToEndOfDocument:";
+
+    /* 05. Ctrl + Left */
+    "@\UF702"  = "moveWordLeft:";
+
+    /* 06. Ctrl + Right */
+    "@\UF703"  = "moveWordRight:";
+
+    /* 07. Ctrl + Shift + Left */
+    "@$\UF702" = "moveWordLeftAndModifySelection:";
+
+    /* 08. Ctrl + Shift + Right */
+    "@$\UF703" = "moveWordRightAndModifySelection:";
 }
