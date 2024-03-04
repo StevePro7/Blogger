@@ -1,16 +1,36 @@
 Summary
 04-Mar-2024
 
+ORDER
+https://medium.com/@elhayefrat/how-to-fix-the-home-and-end-buttons-for-an-external-keyboard-in-mac-4da773a0d3a2
+https://blog.victormendonca.com/2020/04/27/how-to-change-macos-key-bindings
+https://gist.github.com/trusktr/1e5e516df4e8032cbc3d
+https://gist.github.com/Belphemur/5a45ce6826c609a65421cc10a1e607c1
 
+01.
 /* Home Button*/
 "\UF729" = "moveToBeginningOfLine:";
 "\UF729" = "moveToBeginningOfLine:";
 "\UF729" = "moveToBeginningOfLine:";
-"\UF729"  = moveToBeginningOfParagraph:; // home
+"\UF729" =  moveToBeginningOfParagraph:; // home
 
-
+02.
 /* End Button */
 "\UF72B" = "moveToEndOfLine:";
 "\UF72B" = "moveToEndOfLine:";
 "\UF72B" = "moveToEndOfLine:";
-"\UF72B"  = moveToEndOfParagraph:; // end
+"\UF72B" =  moveToEndOfParagraph:; // end
+
+03.
+/* Ctrl + Home Button */
+"^\UF729" = "moveToBeginningOfDocument:";
+"@\UF729" = "moveToBeginningOfDocument:";
+"^\UF729" = "moveToBeginningOfDocument:"; /* Ctrl + Home */
+"^\UF729" =  moveToBeginningOfDocument:; // ctrl-home
+
+04.
+/* Ctrl + End Button */
+"^\UF72B" = "moveToEndOfDocument:"; 
+"@\UF72B" = "moveToEndOfDocument:";
+"^\UF72B" = "moveToEndOfDocument:"; /* Ctrl + End */
+"^\UF72B" =  moveToEndOfDocument:; // ctrl-end
