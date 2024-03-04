@@ -78,7 +78,12 @@ Ctrl + could be "^\U" or "@\U"	for me I believe it should be "@\U"
 09.
 /* Shift + Home Button */
 "$\UF729" = "moveToBeginningOfLineAndModifySelection:"; 
+"$\UF729" = "moveToBeginningOfLineAndModifySelection:";
+"$\UF729" =  moveToBeginningOfParagraphAndModifySelection:; // shift-home
+
 
 10.
 /* Shift + End Button */
 "$\UF72B" = "moveToEndOfLineAndModifySelection:";
+"$\UF72B" = "moveToEndOfLineAndModifySelection:";
+"$\UF72B" =  moveToEndOfParagraphAndModifySelection:; // shift-end
