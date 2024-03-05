@@ -16,6 +16,15 @@ VS Code
 IMPORTANT
 Ctrl + could be "^\U" or "@\U"	for me I believe it should be "@\U"
 
+Cmd	= ^
+Ctrl	= @
+Shift 	= $
+
+\UF729	= Home
+\UF72B	= End
+\UF702	= Left
+\UF703	= Right
+
 01.
 /* Home Button*/
 "\UF729" = "moveToBeginningOfLine:";
@@ -44,14 +53,12 @@ Ctrl + could be "^\U" or "@\U"	for me I believe it should be "@\U"
 "^\UF72B" = "moveToEndOfDocument:"; /* Ctrl + End */
 "^\UF72B" =  moveToEndOfDocument:; // ctrl-end
 
-
 05.
 /* Ctrl + Left */
 "@\UF702" = "moveWordLeft:";
 "^\UF702" = "moveWordLeft:"; // ctrl-left
 "^\UF702" =  moveWordLeft:; // ctrl-left
 "@\UF702" =  moveWordLeft:; // cmd-left
-
 
 06.
 /* Ctrl + Right */
@@ -60,13 +67,11 @@ Ctrl + could be "^\U" or "@\U"	for me I believe it should be "@\U"
 "^\UF703" =  moveWordRight:; // ctrl-right 
 "@\UF703" =  moveWordRight:; // cmd-right 
 
-
 07.
 /* Ctrl + Shift + Left */
 "@$\UF702" = "moveWordLeftAndModifySelection:";
 "^$\UF702" =  moveWordLeftAndModifySelection:; // ctrl-shift-left
 "@$\UF702" =  moveWordLeftAndModifySelection:; // cmd-shift-left
-
 
 08.
 /* Ctrl + Shift + Right */
@@ -74,16 +79,28 @@ Ctrl + could be "^\U" or "@\U"	for me I believe it should be "@\U"
 "^$\UF703" =  moveWordRightAndModifySelection:; // ctrl-shift-right
 "@$\UF703" =  moveWordRightAndModifySelection:; // cmd-shift-right
 
-
 09.
 /* Shift + Home Button */
 "$\UF729" = "moveToBeginningOfLineAndModifySelection:"; 
 "$\UF729" = "moveToBeginningOfLineAndModifySelection:";
 "$\UF729" =  moveToBeginningOfParagraphAndModifySelection:; // shift-home
 
-
 10.
 /* Shift + End Button */
 "$\UF72B" = "moveToEndOfLineAndModifySelection:";
 "$\UF72B" = "moveToEndOfLineAndModifySelection:";
 "$\UF72B" =  moveToEndOfParagraphAndModifySelection:; // shift-end
+
+11.
+/* Shift + Ctrl + Home Button */
+"$^\UF729" = "moveToBeginningOfDocumentAndModifySelection:";
+"@$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";
+"@$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";
+"^$\UF729" =  moveToBeginningOfDocumentAndModifySelection:; // ctrl-shift-home
+
+12.
+/* Shift + Ctrl + End Button*/
+"$^\UF72B" = "moveToEndOfDocumentAndModifySelection:";
+"@$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
+"@$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
+"^$\UF72B" =  moveToEndOfDocumentAndModifySelection:; // ctrl-shift-end
