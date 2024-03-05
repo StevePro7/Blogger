@@ -34,16 +34,4 @@
 
     /* 12. Shift + Ctrl + End Button */
     "@$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
-
-    /* 13. Cmd + Left */
-    "^\UF702" = "moveWordLeft:";
-
-    /* 14. Cmd + Right */
-    "^\UF703" = "moveWordRight:";
-
-    /* 15. Cmd + Shift + Left */
-    "^$\UF702" =  moveWordLeftAndModifySelection:;
-
-    /* 16. Cmd + Shift + Right */
-    "^$\UF703" =  moveWordRightAndModifySelection:;
 }

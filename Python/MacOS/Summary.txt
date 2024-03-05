@@ -104,3 +104,31 @@ Shift 	= $
 "@$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
 "@$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
 "^$\UF72B" =  moveToEndOfDocumentAndModifySelection:; // ctrl-shift-end
+
+
+CLONE with cmd
+13.
+/* Cmd + Left */
+"@\UF702" = "moveWordLeft:";
+"^\UF702" = "moveWordLeft:"; // ctrl-left
+"^\UF702" =  moveWordLeft:; // ctrl-left
+"@\UF702" =  moveWordLeft:; // cmd-left
+
+14.
+/* Cmd + Right */
+"@\UF703" = "moveWordRight:";
+"^\UF703" = "moveWordRight:"; // ctrl-right
+"^\UF703" =  moveWordRight:; // ctrl-right 
+"@\UF703" =  moveWordRight:; // cmd-right 
+
+15.
+/* Cmd + Shift + Left */
+"@$\UF702" = "moveWordLeftAndModifySelection:";
+"^$\UF702" =  moveWordLeftAndModifySelection:; // ctrl-shift-left
+"@$\UF702" =  moveWordLeftAndModifySelection:; // cmd-shift-left
+
+16.
+/* Cmd + Shift + Right */
+"@$\UF703" = "moveWordRightAndModifySelection:";
+"^$\UF703" =  moveWordRightAndModifySelection:; // ctrl-shift-right
+"@$\UF703" =  moveWordRightAndModifySelection:; // cmd-shift-right
