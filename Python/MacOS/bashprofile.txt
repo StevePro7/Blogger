@@ -1,0 +1,37 @@
+bash profile
+07-Mar-2024
+
+
+# General
+# alias cls='clear'
+
+# Python
+alias python='python3'
+
+# Pip
+alias pip='pip3'
+
+# Docker
+alias d='docker'
+
+# Kubernetes
+source <(kubectl completion bash)
+alias k='kubectl'
+complete -F __start_kubectl k
+alias kdr='kubectl --dry-run=client -o yaml'
+
+# Golang
+export PATH="$PATH:/usr/local/go/bin/"
+
+# KinD	Kubernetes in Docker
+export PATH="$PATH:$HOME/go/bin"
+
+# sdcc
+export PATH="$PATH:$HOME/sdcc/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/stevepro/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/stevepro/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/stevepro/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/stevepro/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+. "$HOME/.cargo/env"
