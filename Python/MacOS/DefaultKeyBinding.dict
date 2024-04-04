@@ -23,16 +23,33 @@
 
     /* 04. Opt + End Button */
     "~\UF72B" = "moveToEndOfDocument:";
-	
-	
-	
-	
+		
 
+    /* 09. Shift + Home Button */
+    "$\UF729" = "moveToBeginningOfLineAndModifySelection:"; 
+
+    /* 10. Shift + End Button */
+    "$\UF72B" = "moveToEndOfLineAndModifySelection:"; 
+	
+	
     /* 05. Ctrl + Left */
     "@\UF702"  = "moveWordLeft:";
 
     /* 06. Ctrl + Right */
     "@\UF703"  = "moveWordRight:";
+
+    /* 05. Cmd + Left */
+    "^\UF702"  = "moveWordLeft:";
+
+    /* 06. Cmd + Right */
+    "^\UF703"  = "moveWordRight:";
+
+    /* 05. Opt + Left */
+    "~\UF702"  = "moveWordLeft:";
+
+    /* 06. Opt + Right */
+    "~\UF703"  = "moveWordRight:";
+
 
     /* 07. Ctrl + Shift + Left */
     "@$\UF702" = "moveWordLeftAndModifySelection:";
@@ -40,27 +57,34 @@
     /* 08. Ctrl + Shift + Right */
     "@$\UF703" = "moveWordRightAndModifySelection:";
 
-    /* 09. Shift + Home Button */
-    "$\UF729" = "moveToBeginningOfLineAndModifySelection:"; 
+    /* 07. Cmd + Shift + Left */
+    "^$\UF702" = "moveWordLeftAndModifySelection:";
 
-    /* 10. Shift + End Button */
-    "$\UF72B" = "moveToEndOfLineAndModifySelection:"; 
+    /* 08. Cmd + Shift + Right */
+    "^$\UF703" = "moveWordRightAndModifySelection:";
+	
+	/* 07. Opt + Shift + Left */
+    "~$\UF702" = "moveWordLeftAndModifySelection:";
 
-    /* 11. Shift + Ctrl + Home Button */
+    /* 08. Opt + Shift + Right */
+    "~$\UF703" = "moveWordRightAndModifySelection:";
+
+
+    /* 11. Ctrl + Shift + Home Button */
     "@$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";
 
-    /* 12. Shift + Ctrl + End Button */
+    /* 12. Ctrl + Shift + End Button */
     "@$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
+	
+	/* 11. Cmd + Shift + Home Button */
+    "^$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";
 
-    /* 13. Cmd + Left */
-    "^\UF702" = "moveWordLeft:";
+    /* 12. Cmd + Shift + End Button */
+    "^$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
+	
+    /* 11. Opt + Shift + Home Button */
+    "~$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";
 
-    /* 14. Cmd + Right */
-    "^\UF703" = "moveWordRight:";
-
-    /* 15. Cmd + Shift + Left */
-    "^$\UF702" =  moveWordLeftAndModifySelection:;
-
-    /* 16. Cmd + Shift + Right */
-    "^$\UF703" =  moveWordRightAndModifySelection:;
+    /* 12. Opt + Shift + End Button */
+    "~$\UF72B" = "moveToEndOfDocumentAndModifySelection:";
 }
