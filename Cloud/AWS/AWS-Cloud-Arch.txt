@@ -1,0 +1,76 @@
+AWS Cloud Architecture
+16/08/2021
+
+Basics of AWS Cloud Architecture
+https://aws.plainenglish.io/basics-of-aws-cloud-architecture-cf949129b824
+
+01. AWS Cloud Provider: The Foundation
+Canvas to build digital cloud-based svcs + apps
+ex: Single-Tier architecture
+
+
+02. Region: Defining Geographical Scope
+Region = geographical area w/ multiple data centers
+like city to build digital infrastructure
+
+
+03. Virtual Private Cloud (VPC): Creating a Digital Fortress
+VPC = Virtual Private Cloud
+isolate resources to communicate securely
+like digital fortress create boundary for apps + data
+
+
+04. Availability Zone: Building Redundancy
+AZ = Availability Zone
+separate data centers
+distribute resources across AZs = enhance redundancy + high availability
+like backup generators for digital city
+
+
+05. Public Subnet: Facing the World
+Subnet = neighbourhoods for VPC
+Public subnet = resources directly accessible from Internet
+
+
+06. EC2 Instance: The Digital Workhorse
+EC2 = Elastic Cloud Compute = virtual server in the cloud
+EC2 = computer running in data center = workhorse for apps
+
+
+07. Route 53: Navigating the Digital Streets
+Route 53 = DNS [Domain Name System] service
+like street signs on the Internet
+translates domain names into IP addresses computers understand
+directs traffic efficiently to resources
+
+
+08. Internet Gateway: Connecting to the Outside World
+Internet Gateway = gateway to digital city
+allows communication btwn VPC and the Internet
+resources in public subnets use the Internet Gateway to be access to/from Internet
+
+
+09. Load Balancer: Balancing the Digital Load
+Load Balancer = distributes traffic across multiple EC2 instances
+like traffic cop ensures no single instance bears too much load
+improves fault tolerance and scalability
+
+
+10. Routing Table: Directing Traffic Within the VPC
+Routing Table = digital GPS directing traffic in VPC
+specifies where traffic should go e.g. to Internet, another subnet or an internal resource
+like street plan for digital city
+
+
+OTHERS
+Security Groups and Network ACLs
+digital bouncers controlling inbout / outbound traffic to EC2 instances + [public/private] subnets
+
+Elastic IP
+static IP for EC2 instances ensure keep same IP address after stop / start
+
+Amazon S3 (Simple Storage Service)
+scalable object storage service like digital garage for storing / retrieving and amount of data
+
+Elastic Block Store (EBS)
+block-level storage volumes for EC2 instances like digital closet
