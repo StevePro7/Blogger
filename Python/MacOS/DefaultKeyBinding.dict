@@ -5,11 +5,28 @@
     /* 02. End Button */
     "\UF72B" = "moveToEndOfLine:";
 
+
     /* 03. Ctrl + Home Button */
     "@\UF729" = "moveToBeginningOfDocument:";
 
     /* 04. Ctrl + End Button */
     "@\UF72B" = "moveToEndOfDocument:";
+
+    /* 03. Cmd + Home Button */
+    "^\UF729" = "moveToBeginningOfDocument:";
+
+    /* 04. Cmd + End Button */
+    "^\UF72B" = "moveToEndOfDocument:";
+
+    /* 03. Opt + Home Button */
+    "~\UF729" = "moveToBeginningOfDocument:";
+
+    /* 04. Opt + End Button */
+    "~\UF72B" = "moveToEndOfDocument:";
+	
+	
+	
+	
 
     /* 05. Ctrl + Left */
     "@\UF702"  = "moveWordLeft:";
