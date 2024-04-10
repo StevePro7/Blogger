@@ -1,0 +1,30 @@
+{    
+    "\UF729" = "moveToBeginningOfLine:";						/* Home Button*/    
+    "\UF72B" = "moveToEndOfLine:";								/* End  Button */
+	"$\UF729" = "moveToBeginningOfLineAndModifySelection:";		/* Shift+ Home Button */ 
+    "$\UF72B" = "moveToEndOfLineAndModifySelection:"; 			/* Shift+ End  Button */	
+    "@\UF729" = "moveToBeginningOfDocument:";					/* Ctrl + Home Button */    
+    "^\UF729" = "moveToBeginningOfDocument:";					/* Cmd  + Home Button */
+	"~\UF729" = "moveToBeginningOfDocument:";					/* Opt  + Home Button */
+    "@\UF72B" = "moveToEndOfDocument:";							/* Ctrl + End  Button */   
+    "^\UF72B" = "moveToEndOfDocument:";							/* Cmd  + End  Button */
+    "~\UF72B" = "moveToEndOfDocument:";							/* Opt 	+ End  Button */
+    "@$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";/* Ctrl + Shift + Home Button */
+	"^$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";/* Cmd  + Shift + Home Button */
+	"~$\UF729" = "moveToBeginningOfDocumentAndModifySelection:";/* Opt  + Shift + Home Button */    
+    "@$\UF72B" = "moveToEndOfDocumentAndModifySelection:";		/* Ctrl + Shift + End Button */	    
+    "^$\UF72B" = "moveToEndOfDocumentAndModifySelection:";		/* Cmd  + Shift + End Button */    
+    "~$\UF72B" = "moveToEndOfDocumentAndModifySelection:";		/* Opt  + Shift + End Button */	
+    "@\UF702"  = "moveWordLeft:";								/* Ctrl + Left */
+    "^\UF702"  = "moveWordLeft:";								/* Cmd  + Left */
+	"~\UF702"  = "moveWordLeft:";								/* Opt  + Left */
+	"@\UF703"  = "moveWordRight:";								/* Ctrl + Right */
+    "^\UF703"  = "moveWordRight:";								/* Cmd  + Right */    
+    "~\UF703"  = "moveWordRight:";								/* Opt  + Right */
+    "@$\UF702" = "moveWordLeftAndModifySelection:";				/* Ctrl + Shift + Left */        
+    "^$\UF702" = "moveWordLeftAndModifySelection:";				/* Cmd  + Shift + Left */        
+    "~$\UF702" = "moveWordLeftAndModifySelection:";				/* Opt  + Shift + Left */
+	"@$\UF703" = "moveWordRightAndModifySelection:";			/* Ctrl + Shift + Right */
+	"^$\UF703" = "moveWordRightAndModifySelection:";			/* Cmd  + Shift + Right */	
+    "~$\UF703" = "moveWordRightAndModifySelection:";			/* Opt  + Shift + Right */
+}
