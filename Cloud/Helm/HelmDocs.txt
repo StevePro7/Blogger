@@ -1,0 +1,28 @@
+Helm Docs
+11-Apr-2023
+
+https://helm.sh/docs/intro/quickstart
+
+https://helm.sh/docs/intro/using_helm
+Chart
+Helm package
+contains all resource definitions necc to run app, tool, svc inside K8s cluster
+
+Repository	repo
+place where charts collected + shared
+i.e.
+place where charts = Helm [k8s] packages are stored
+
+Release
+instance of a chart running in k8s cluster
+each time chart installed a new release created
+
+
+SUMMARY
+Helm installs charts into k8s creating new release for each installation
+Find new charts by search Helm chart repositories
+
+
+
+
+
