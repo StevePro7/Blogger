@@ -1,6 +1,16 @@
 VS Code
 11-Apr-2024
 
+keybindings.json
+~/Library/Application\ Support/Code/User/keybindings.json
+
+Reference
+https://stackoverflow.com/questions/33791097/how-can-i-change-keyboard-shortcut-bindings-in-visual-studio-code
+
+OR
+Code | Settings | Keyboard Shortcuts
+
+
 textInputFocus
 cursorHome			remove binding
 cursorHomeSelect		remove binding
@@ -21,3 +31,37 @@ cursorWordRightSelect		Ctrl + Shift + Right		sel. next word
 
 
 Terminal
+https://stackoverflow.com/questions/57824640/how-to-delete-the-prior-word-with-vs-code-terminal
+
+QUOTE
+These commands worked by sending a particular character sequence to the terminal, which was a best effort guess based on what command keybindings terminals use. The problem with these commands was that they were a black box, you needed to literally search through the vscode codebase to figure out how they worked. They have been replaced with custom keybindings for the workbench.action.terminal.sendSequence command, which does the same thing in a generic way.
+
+
+DELETE
+    {
+        "key": "alt+backspace",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u001b\u007f" },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "cmd+backspace",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u001b\u007f" },
+        "when": "terminalFocus"
+    },
+
+
+MOVE
+    {
+        "key": "cmd+left",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u001bb" },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "cmd+right",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u001bf" },
+        "when": "terminalFocus"
+    },
