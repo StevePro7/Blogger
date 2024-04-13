@@ -16,3 +16,23 @@ https://about.gitlab.com/blog/2017/09/21/how-to-create-a-ci-cd-pipeline-with-aut
 
 Think this example is close
 https://medium.com/linkbynet/helm-chart-releaser-with-gitlab-ci-generated-and-parent-child-pipelines-b57b50e6c442
+
+https://gitlab.com/rverchere/helm-chart-release-example
+
+
+~/helm/
+https://gitlab.com/rverchere/helm-chart-release-example/-/tree/main/charts/my-chart/
+
+templates/
+Chart.yaml
+values.yaml
+
+~helm/templates/
+https://gitlab.com/rverchere/helm-chart-release-example/-/tree/main/charts/my-chart/templates/
+NOTES.txt
+deployment.yaml
+service.yaml
+
+
+gitlab ci/cd pipeline include helm.yml example
+https://gitlab.kuleuven.be/explore/catalog/to-be-continuous/helm
