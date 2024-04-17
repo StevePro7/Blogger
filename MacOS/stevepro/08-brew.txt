@@ -1,0 +1,29 @@
+08
+17-Apr-20243
+BLOG
+
+
+brew
+https://brew.sh
+Homebrew
+The Missing Package Manager for macOS
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+update .bash_profile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile
+
+
+LATER can now use brew to install utility apps
+brew install minikube
+brew install kind
+etc.
+
+
+terraform
+ref
+https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+Homebrew on macOS
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform

@@ -1,0 +1,45 @@
+03
+17-Apr-20243
+BLOG
+
+
+DefaultKeyBinding.dict
+reference
+https://medium.com/@elhayefrat/how-to-fix-the-home-and-end-buttons-for-an-external-keyboard-in-mac-4da773a0d3a2
+
+sudo bash 
+mkdir -p ~/Library/KeyBindings ; cd ~/Library/KeyBindings
+vim DefaultKeyBinding.dict
+
+OR
+mkdir -p ~/Library/KeyBindings
+sudo touch DefaultKeyBinding.dict
+sudo open -e DefaultKeyBinding.dict
+
+TODO
+update as per the table already in wiki 01
+
+
+NOTE
+DefaultKeyBindings.dict
+relates mainly to TextEdit app
+don't think this reflected anywhere else?
+
+
+GOOD ref
+Text keyboard shortcuts (Mac OS)
+https://support.claris.com/s/article/Text-keyboard-shortcuts-Mac-OS-1503692940241?language=en_US
+
+esp.
+Text navigation keyboard shortcuts
+Beginning of the text	command-Up Arrow
+End of the text	command-Down Arrow
+Beginning of the line	command-Left Arrow
+End of the line	commnd-Right Arrow
+Beginning of the previous word	Option-Left Arrow
+
+
+
+NB: Terminal find
+find . -type f -exec grep -Hni 'text' {} \;
+
