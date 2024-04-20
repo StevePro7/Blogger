@@ -1,0 +1,45 @@
+03 gitlab
+20-Apr-20243
+
+
+HTTPS
+Setup personal token
+
+Create a personal access token
+https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token
+
+Source Tree
+Settings 
+Accounts
+Add
+
+Host		gitlab.com
+Aut-Type	Private Token
+Username	
+Password	<above>
+Protocol	HTTPS
+
+
+git config --get --global user.name
+git config --get --global user.email
+
+
+git config --get  user.name
+git config --get  user.email
+
+
+CLONE repo like this
+Source Tree
+Remote tab
+Display all repos
+Filter repo you want
+
+Source URL		https://gitlab.com/StevePro7/MyTestRepo.git
+Destination path	~/GitLab/StevePro7/
+Name			MyTestRepo
+
+Advanced OPtions
+Choose branch		main
+
+
+git push --set-upstream origin steven-test-branch
