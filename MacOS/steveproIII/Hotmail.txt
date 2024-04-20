@@ -35,3 +35,19 @@ EX
 02c. APPLE thorough background information
 Text System Defaults and Key Bindings
 https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
+
+
+03.
+How do i change the shortcut for selecting words
+https://discussions.apple.com/thread/250176657?sortBy=best
+Good example on how to setup AppShortcuts
+
+
+04a.
+OS/X Key Bindings	another example
+https://gist.github.com/trusktr/1e5e516df4e8032cbc3d?permalink_comment_id=3119311
+/System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict
+
+04b. VS Code good - I ended up doing my own custom VS Code anyway!
+vscode does not respect ~/Library/KeyBindings/DefaultKeyBinding.dict on macOS
+https://github.com/microsoft/vscode/issues/111950
