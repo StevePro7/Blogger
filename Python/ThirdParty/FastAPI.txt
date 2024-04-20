@@ -2,6 +2,22 @@ Fast API
 20-Apr-2024
 
 
+01.
 FastAPI - A python framework | Full Course
 https://www.youtube.com/watch?v=7t2alSnE2-I
 4hrs
+
+
+02a.
+FastAPI - Debugging
+https://fastapi.tiangolo.com/tutorial/debugging
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+02b.
+FastAPI - Reload
+https://stackoverflow.com/questions/75625178/uvicorn-with-reload-true-not-running-against-database-in-fastapi-app
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run('myprogram:app', host="0.0.0.0", port=8000, log_level="debug", reload=True,)
+
