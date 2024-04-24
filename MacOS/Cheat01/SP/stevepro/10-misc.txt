@@ -1,0 +1,87 @@
+10
+17-Apr-20243
+BLOG
+
+
+MISC
+
+AA.
+Alt + Tab utlity
+https://alt-tab-macos.netlify.app
+
+article
+https://zapier.com/blog/alt-tab-on-mac
+
+Neat app but may not be allowed to be installed on corporate laptop
+as is 3rd party software
+therefore con't blog w/o installation accordingly
+
+
+
+BB.
+MS Outlook
+Calendars
+weird issue after adding "Other calendar"
+suddenly Birthdays calendar appears
+when you attempt to delete - the Birthday calendar deletes but magically re-appears...??
+SOLn
+
+Close Outlook
+Launch Calendar app
+Calendar
+Settings...
+Show Birthdays calendar		UNCHECKED
+Show Holidays calendar		UNCHECKED
+
+Close Calendar app
+Open MS Outlook
+Calendars
+Remove Birthdays calendar - should now NOT re-appear
+
+
+BLOG 02 - data focus
+Terminal
+jupyter notebook
+
+Internal Server Error
+Jupyter Notebook 500 : Internal Server Error
+https://stackoverflow.com/questions/36851746/jupyter-notebook-500-internal-server-error
+
+pip install --upgrade jupyterhub
+pip install --upgrade --user nbconvert
+
+Restart laptop
+Terminal
+
+ERROR
+ModuleNotFoundError: No module named 'jupyter_server.contents'
+https://stackoverflow.com/questions/77549493/modulenotfounderror-no-module-named-jupyter-server-contents
+
+SLOn
+pip uninstall traitlets
+pip install traitlets==5.9.0
+jupyter notebook
+http://localhost:8889/notebooks
+
+
+
+Shell locked out
+context: tried to change shell due to the k8s autocomplete not working out-of-the-box
+
+When I start my terminal I get "login: /usr/local/bin/bash: No such file or directory [Process completed]" and i cant type anything in my terminal
+https://stackoverflow.com/questions/55562522/when-i-start-my-terminal-i-get-login-usr-local-bin-bash-no-such-file-or-dire
+
+1. Go to "System Preferences" > "Users & Groups"
+2. Click the "Lock" icon and authenticate
+3. Right-click the your user icon and select "Advanced Options"
+4. Change the value for "Login shell" to /bin/bash
+
+
+PyCharm Diff files
+Git
+right click file
+Click cog
+Show Diff in Separate Window
+
+to revert
+Show Diff in Editor Tab
