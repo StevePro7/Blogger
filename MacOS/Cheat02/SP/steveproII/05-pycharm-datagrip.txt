@@ -1,0 +1,118 @@
+PyCharm Prof	Datagrip
+19-Apr-2024
+
+Refrence
+https://www.jetbrains.com/help/pycharm/postgresql.html
+
+either install DataGrip or PyCharm Prof. with the following Plugins
+Database Tools and SQL
+PostgresSQL Debugger
+
+
+Typically have the following:
+
+Navigate back		Alt + left
+Navigate forward	Alt + right
+
+Due to modifier keys Ctrl + Opt + Cmd this will double up
+Move word prev		Alt + left	OR Ctrl + left
+Move word next		Alt + right	OR Ctrl + right
+SO
+Navigate back		Alt + up
+Navigate forward	Alt + down
+
+
+TODO
+Ctrl + Shift + O
+from previous blog
+
+
+Database
+Keyboard shortcuts
+Keymap
+Console Toolbar
+Execute
+F5
+Keep
+
+Reference
+https://www.jetbrains.com/help/pycharm/run-a-query.html
+
+PyCharm Prof
+align w/ Datagrip
+
+Editor Actions
+Ctrl + Home
+Ctrl + End
+Move Caret to Text Start	Ctrl + Home	remove Ctrl + Up
+Move Caret to Text End		Ctrl + End	remove Ctrl + Down
+
+Ctrl + Shift + Home
+Ctrl + Shift + End
+Move Caret to Text Start with Selection		Ctrl + Shift + Home	remove others
+Move Caret to Text End with Selection		Ctrl + Shift + End	remove others
+
+
+REPEAT
+Editor Actions
+Ctrl + Left
+Ctrl + Right
+Move Caret to Previous Word	Ctrl + Left	remove others
+Move Caret to Next Word		Ctrl + Right	remove others
+
+Ctrl + Shift + Left
+Ctrl + Shift + Right
+Move Caret to Previous Word with Selection	Ctrl + Shift + Left	remove others
+Move Caret to Next Word	with Selection		Ctrl + Shift + Right	remove others
+
+
+Editor Actions	- this not relevant anymore due to Navigate Back + Forward
+Ctrl + Up
+Ctrl + Down
+Move Up and Scroll		Ctrl + Up
+Move Down and Scroll		Ctrl + Down
+
+Ctrl + Shift + Up
+Ctrl + Shift + Right
+Move Up and Scroll with Selection		Ctrl + Shift + Up
+Move Down and Scroll with Selection		Ctrl + Shift + Down
+
+
+IMPORTANT
+Remove other conflicting keyboard shortcuts
+
+
+UPPER CASE
+Force all upper case
+https://www.jetbrains.com/help/pycharm/code-style-sql-case.html
+
+Settings | Editor | Code Style | SQL | PostgreSQL
+Default IDE
+Inherit general SQL style	DISABLE
+Word Case
+Keywords	To Upper
+
+
+PyCharm
+F5
+
+
+Ctrl + Space
+prompt auto-complete	BASIC
+NB: disable Ctrl + Space for spotlight first
+
+Keymap | Code | Code Completion
+Basic	Ctrl + Space
+Type	Ctrl + Shift + Space
+
+Editor | Code Completion
+Sort suggestions alphabetically
+
+
+IMPORTANT
+Delete to word end		Alt + Backspace
+
+Alt + Delete
+Delete to line start		remove Alt + Backspace
+//Delete to line end		leave
+//Delete to word start		empty

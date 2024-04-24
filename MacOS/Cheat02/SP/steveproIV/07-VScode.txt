@@ -1,0 +1,79 @@
+07 VS code
+20-Apr-20243
+
+TODO - check the directory
+This is where VS code stores custom key bindings
+
+~/Library/Application \Support/Code/User/
+~/Library/Application \Support/Code/User/keybindings.json
+
+Ctrl + Shift + T
+New Terminal
+
+Reference
+Key Bindings for Visual Studio Code
+https://code.visualstudio.com/docs/getstarted/keybindings
+
+Code
+Settings...
+Keyboard
+Shortcuts
+
+
+Default
+Home		beg line
+End		end line
+
+
+TODO check all keys
+
+
+
+Misc
+
+How to ctrl+right arrow and/or ctrl+left arrow, jump words in Visual Studio Code's Terminal 
+Key Bindings for Visual Studio Code
+https://github.com/Microsoft/vscode/issues/64972
+
+Visual Studio Code - Ctrl+Backspace not working in Integrated Terminal
+https://stackoverflow.com/questions/52806758/visual-studio-code-ctrlbackspace-not-working-in-integrated-terminal
+
+How to delete the prior word with VS Code terminal
+https://stackoverflow.com/questions/57824640/how-to-delete-the-prior-word-with-vs-code-terminal
+
+https://code.visualstudio.com/docs/terminal/basics
+
+How can I configure Cmd+. to map to Ctrl+C like macOS' built-in terminal?
+The macOS default terminal uses Cmd+. to perform the same as Ctrl+C. To get this behavior in VS Code, add this custom keybinding:
+
+{
+  "key": "cmd+.",
+  "command": "workbench.action.terminal.sendSequence",
+  "when": "terminalFocus",
+  "args": { "text": "\u0003" }
+}
+Wh
+
+
+
+How can I make ctrl+right/left arrow jump words in Visual Studio Code
+https://apple.stackexchange.com/questions/336382/how-can-i-make-ctrlright-left-arrow-jump-words-in-visual-studio-code
+
+
+
+VS Code 02
+
+Open Folder
+Ctrl + K
+Ctrl + O
+
+Code
+Settings...
+Keyboard
+Shortcuts
+
+File: Open Folder...
+workbench.action.files.openFolder
+
+Ctrl + K
+Ctrl + O
