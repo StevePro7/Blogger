@@ -1,0 +1,116 @@
+React JS 02
+26-Apr-2024
+
+01.
+How to automate testing for a React application with GitLab
+https://about.gitlab.com/blog/2022/11/01/how-to-automate-testing-for-a-react-application-with-gitlab
+https://gitlab.com/jwagner-demo/vandelay-industries/engineering/react-app
+
+IMPLEMENT
+/home/stevepro/GitLab/StevePro7/reacttest
+
+IMPortant
+README.old.md
+has notes how I upgraded npm on Linux
+create repo
+npx create-react-app .
+npm run start
+
+
+DOCKER
+NOW I want to integrate Dockerfile to build + run locallhost
+
+Example of React JS Dockerfile
+My01Dockerfile
+https://medium.com/@wahab.kazmi2000/building-and-deploying-a-react-js-project-with-docker-and-gitlab-ci-3913efa74c71
+
+My02Dockerfile
+https://medium.com/@heinhtetwin386/building-a-gitlab-ci-cd-pipeline-for-aws-eks-cluster-deployment-5e0b63beb180
+https://gitlab.com/hhw_sharing/gitlab_to_eks
+
+docker build -t nodejs_test .
+docker run -itd -p 3000:3000 nodejs_test
+http://localhost:3000
+
+
+HELM
+https://medium.com/@heinhtetwin386/building-a-gitlab-ci-cd-pipeline-for-aws-eks-cluster-deployment-5e0b63beb180
+https://dev.to/aws-builders/helmify-your-react-app-on-eks-39m5
+
+helm create hello-front
+helm install hello-front --namespace hello-front --create-namespace ./hello-front
+
+NOTE - confirm Helm chart installed
+helm list
+
+
+k config get-contexts
+k config set-context --current --namespace=hello-front
+
+pod
+service
+deployment
+replicaset
+
+
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace hello-front -l "app.kubernetes.io/name=hello-front,app.kubernetes.io/instance=hello-front" -o jsonpath="{.items[0].metadata.name}")
+  export CONTAINER_PORT=$(kubectl get pod --namespace hello-front $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace hello-front port-forward $POD_NAME 8080:$CONTAINER_PORT
+
+While this did run the website it was nginx!
+Need to update the correct deployment image
+
+Update values.yaml
+
+Kill port
+sudo fuser -k 8080/tcp
+
+Re-run but this time pod kept restarting because could not find
+/app
+this is the WORKDIR in the Dockerfile
+
+Update
+remove liveness + readiness probes from deployment.yaml
+
+Connection refused
+E0426 09:45:55.477866  107268 portforward.go:400] an error occurred forwarding 3000 -> 80: error forwarding port 80 to pod 706f76bcfd12a303e499b207e241ce7b92481e621a3890d4e2e9ab74b9486d23, uid : exit status 1: 2024/04/26 09:45:55 socat[107471] E connect(5, AF=2 127.0.0.1:80, 16): Connection refused
+
+
+SOLUTION
+https://stackoverflow.com/questions/53799600/kubernetes-port-forwarding-connection-refused
+
+Here was the problem:
+Dockerfile
+EXPOSE 3000
+
+But the containerPort:80 in values.yaml
+Hence the mismatch - update to match
+service:
+  type: ClusterIP
+  port: 3000
+
+Now works
+helm install hello-front --namespace hello-front --create-namespace ./hello-front
+echo "Visit http://127.0.0.1:8080 to use your application"
+kubectl --namespace hello-front port-forward $POD_NAME 8080:$CONTAINER_PORT
+
+i.e.
+kubectl --namespace hello-front port-forward $POD_NAME 8080:3000
+
+which makes sense because before when running web site directly from Docker container
+http://localhost:3000
+
+we are now running website in K8s cluster thus forwarding port e.g. 8080 to port opened from container
+i.e. containerPort = 3000
+map 8080 => 3000
+
+kubectl --namespace hello-front port-forward $POD_NAME 8080:$CONTAINER_PORT
+Forwarding from 127.0.0.1:8080 -> 3000
+Forwarding from [::1]:8080 -> 3000
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+
+

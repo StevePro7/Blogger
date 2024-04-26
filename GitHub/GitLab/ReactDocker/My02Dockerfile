@@ -1,0 +1,24 @@
+# https://medium.com/@heinhtetwin386/building-a-gitlab-ci-cd-pipeline-for-aws-eks-cluster-deployment-5e0b63beb180
+# https://gitlab.com/hhw_sharing/gitlab_to_eks/-/blob/main/src/Dockerfile?ref_type=heads
+# 26-Apr-2024
+
+# Set the base image to the official Node.js 18 image
+FROM node:18
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
+
+# Install the application's dependencies
+RUN npm install
+
+# Copy the rest of the application's source code to the container
+COPY . .
+
+# Expose port 3000 for the application
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "start"]
