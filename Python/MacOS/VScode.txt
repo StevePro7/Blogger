@@ -1,6 +1,16 @@
 VS Code
 11-Apr-2024
 
+VS Code - must do its own key bindings	TODO
+vscode does not respect ~/Library/KeyBindings/DefaultKeyBinding.dict on macOS
+https://github.com/microsoft/vscode/issues/111950
+  "\UF705" = "cut:";				
+  "\UF706" = "copy:";				
+  "\UF707" = "paste:";	
+  "\UF707" = (insertText:, "works1");
+
+
+
 keybindings.json
 ~/Library/Application\ Support/Code/User/keybindings.json
 
