@@ -1,11 +1,12 @@
-How to Fix the Home and End Buttons for an External Keyboard in Mac
 04-Mar-2024
 
+How to Fix the Home and End Buttons for an External Keyboard in Mac
 https://medium.com/@elhayefrat/how-to-fix-the-home-and-end-buttons-for-an-external-keyboard-in-mac-4da773a0d3a2
 
-
+How to Change macOS Key Bindings
 https://blog.victormendonca.com/2020/04/27/how-to-change-macos-key-bindings
 
+DefaultKeyBinding.dict Examples
 https://gist.github.com/Belphemur/5a45ce6826c609a65421cc10a1e607c1
 https://gist.github.com/trusktr/1e5e516df4e8032cbc3d
 
@@ -16,12 +17,3 @@ mkdir -p ~/Library/KeyBindings
 cd ~/Library/KeyBindings
 touch DefaultKeyBinding.dict
 open -e DefaultKeyBinding.dict
-
-Best to clone DefaultKeyBinding.dict somewhere else
-modify
-then copy back to here
-~/Library/KeyBindings
-
-
-e.g.
-/Users/stevepro/Steven/Python
