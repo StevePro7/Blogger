@@ -114,3 +114,11 @@ Handling connection for 8080
 Handling connection for 8080
 
 
+SUMMARY - two solutions
+01. update Dockerfile
+Had to copy all the root directory "." to WORKDIR /app
+
+02. match kubectl port-forward
+containerPort match in Dockerfile e.g. 3000
+
+
