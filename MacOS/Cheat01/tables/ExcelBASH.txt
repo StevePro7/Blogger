@@ -1,0 +1,49 @@
+NEW
+<table width="100%" border="1">
+<tr>
+<td>
+<table width="100%">
+<tr><td valign="top">&nbsp;export BASH_SILENCE_DEPRECATION_WARNING=1</td><td valign="top">&nbsp;# https://support.apple.com/en-us/102360</td></tr>
+<tr><td valign="top">&nbsp;eval "$(/opt/homebrew/bin/brew shellenv)"</td><td valign="top">&nbsp;# brew</td></tr>
+<tr><td valign="top">&nbsp;export PS1='\u@\h:\w$ '</td><td valign="top">&nbsp;# Show always fullpath on terminal</td></tr>
+<tr><td valign="top">&nbsp;alias d='docker'</td><td valign="top">&nbsp;# Docker</td></tr>
+<tr><td valign="top">&nbsp;alias k='kubectl'</td><td valign="top">&nbsp;# Kubernetes</td></tr>
+</table>
+</tr>
+</td>
+</table>
+<br />
+<br />
+
+
+OLD
+<table width="100%" border="1">
+<tr>
+<td>
+<table width="100%">
+<tr><td valign="top">&nbsp;# https://support.apple.com/en-us/102360</td></tr>
+<tr><td valign="top">&nbsp;export BASH_SILENCE_DEPRECATION_WARNING=1</td></tr>
+<tr><td valign="top">&nbsp;# brew</td></tr>
+<tr><td valign="top">&nbsp;eval "$(/opt/homebrew/bin/brew shellenv)"</td></tr>
+<tr><td valign="top">&nbsp;# Show always fullpath on terminal</td></tr>
+<tr><td valign="top">&nbsp;# https://superuser.com/questions/239994/how-to-have-full-directory-path-always-shown-in-mac-terminal-like-linux-termina</td></tr>
+<tr><td valign="top">&nbsp;export PS1='\u@\h:\w$ '</td></tr>
+<tr><td valign="top">&nbsp;# Docker</td></tr>
+<tr><td valign="top">&nbsp;alias d='docker'</td></tr>
+<tr><td valign="top">&nbsp;# Kubernetes</td></tr>
+<tr><td valign="top">&nbsp;alias k='kubectl'</td></tr>
+<tr><td valign="top">&nbsp;source <(kubectl completion bash)</td></tr>
+<tr><td valign="top">&nbsp;#complete -o default -F __start_kubectl k</td></tr>
+<tr><td valign="top">&nbsp;complete -F __start_kubectl k</td></tr>
+<tr><td valign="top">&nbsp;# Setting PATH for Python 3.12</td></tr>
+<tr><td valign="top">&nbsp;PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"</td></tr>
+<tr><td valign="top">&nbsp;export PATH</td></tr>
+<tr><td valign="top">&nbsp;# Show / Hide files</td></tr>
+<tr><td valign="top">&nbsp;alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; \<br />&nbsp;killall Finder /System/Library/CoreServices/Finder.app'</td></tr>
+<tr><td valign="top">&nbsp;alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; \<br />&nbsp;killall Finder /System/Library/CoreServices/Finder.app'</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<br />
