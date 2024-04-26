@@ -1,10 +1,35 @@
 Here are some links to the descriptors
 04-Mar-2024
 
+KeyModifiers
+How-to: macOS Key bindings
 https://ss64.com/mac/syntax-keybindings.html
+e.g.
+    Key Modifiers 
+    ^ : Ctrl 
+    $ : Shift 
+    ~ : Option (Alt) 
+    @ : Command (Apple) 
+    # : Numeric Keypad 
 
+
+Mac OS X and Home / End keys
 https://www.evansweb.info/2005/03/24/mac-os-x-and-home-end-keys
+{
+        /* Remap Home / End to be correct :-) */
+        "\UF729"  = "moveToBeginningOfLine:";                   /* Home         */
+        "\UF72B"  = "moveToEndOfLine:";                         /* End          */
+        "$\UF729" = "moveToBeginningOfLineAndModifySelection:"; /* Shift + Home */
+        "$\UF72B" = "moveToEndOfLineAndModifySelection:";       /* Shift + End  */
+}
 
+Complete list of NSResponder
 https://web.archive.org/web/20160314030051/http://osxnotes.net/keybindings.html
+e.g.
+/System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict
+~/Library/KeyBindings/DefaultKeyBinding.dict
 
-https://web.archive.org/web/20160312143213/http://www.hcs.harvard.edu/~jrus/Site/selectors.html
+
+//NOT DOING
+Usable Selectors for Cocoa Key Bindings
+//https://web.archive.org/web/20160312143213/http://www.hcs.harvard.edu/~jrus/Site/selectors.html
