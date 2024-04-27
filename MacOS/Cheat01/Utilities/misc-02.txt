@@ -1,0 +1,27 @@
+Misc02
+27-Apr-2024
+
+
+BLOG 02 - data focus
+Terminal
+jupyter notebook
+
+Internal Server Error
+Jupyter Notebook 500 : Internal Server Error
+https://stackoverflow.com/questions/36851746/jupyter-notebook-500-internal-server-error
+
+pip install --upgrade jupyterhub
+pip install --upgrade --user nbconvert
+
+Restart laptop
+Terminal
+
+ERROR
+ModuleNotFoundError: No module named 'jupyter_server.contents'
+https://stackoverflow.com/questions/77549493/modulenotfounderror-no-module-named-jupyter-server-contents
+
+SLOn
+pip uninstall traitlets
+pip install traitlets==5.9.0
+jupyter notebook
+http://localhost:8889/notebooks

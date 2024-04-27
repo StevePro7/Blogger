@@ -1,0 +1,36 @@
+Misc03
+27-Apr-2024
+
+
+k8s install kubectl TODO
+kubectl setup autocomplete	ISSUE
+
+
+01.
+kubectl Quick Reference
+https://kubernetes.io/docs/reference/kubectl/quick-reference
+
+IMPORTANT
+complete -o default -F __start_kubectl k
+
+default but there is an issue on Tab = auto complete on Mac
+get pesky error TODO - get error - __start_kubectl
+
+I was checking out error to update bash and replace
+complete -F __start_kubectl k
+
+
+
+WHEN I attempt to upgrade BASH to cope with error I locked out Terminal
+Here is the fix
+
+Shell locked out
+context: tried to change shell due to the k8s autocomplete not working out-of-the-box
+
+When I start my terminal I get "login: /usr/local/bin/bash: No such file or directory [Process completed]" and i cant type anything in my terminal
+https://stackoverflow.com/questions/55562522/when-i-start-my-terminal-i-get-login-usr-local-bin-bash-no-such-file-or-dire
+
+1. Go to "System Preferences" > "Users & Groups"
+2. Click the "Lock" icon and authenticate
+3. Right-click the your user icon and select "Advanced Options"
+4. Change the value for "Login shell" to /bin/bash
