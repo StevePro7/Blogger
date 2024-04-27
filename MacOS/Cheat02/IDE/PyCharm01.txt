@@ -1,7 +1,7 @@
-Pre Reqs
-29-Mar-2024
+PyCharm 01
+11-Apr-2024
 
-01. TODO
+
 add code how to install this and configure
 Plugins
 Keymap
@@ -10,13 +10,6 @@ VS Code (Mac)
 
 Settings | Plugins | VS Code Keymap (Mac)
 Settings | Keymap | VS Code Keymap 
-
-
-Mission Control remove at a minimum
-TODO - complete table
-F5
-F11
-
 
 IMPORTANT PyCharm	like Goland IDE
 
@@ -29,11 +22,31 @@ NOTE
 If Ctrl + Shift + O launches Symbols then remove duplicate: Choose Settings | Keymap | filter as "symbol". Double click Navigate | Go to Symbol | Edit | Remove Ctrl+Shift+O | Apply | OK. Repeat this as necessary.
 
 
+PyCharm
+Ctrl|Shift+O
+symbols "bug"
+remember to remove via Poland blog post
+e.g.
+Settings Keymap  filter "symbol"
+Goto symbol
+remove ctrl+chift+O
+OK
 
-//02. TODO
-//Modifier Keys
-//Ctrl => Cmd
-//Cmd  => Ctrl 
-//
-//Opt  => Cmd
-//Alt + Tab
+
+
+
+Settings | Keymap | Main menu | Navigate | Back
+Alt + Left
+
+BUT this would now conflct with Ctrl+Left
+because Alt = Ctrl now due to modifier keys
+
+
+
+PyCharm
+extend Ctrl+F5 to run
+already does this but we swap Control for Command
+so just add the new keycap
+Settings Keycap filter "Run"
+Run/Debug
+Add keyboard shortcut
