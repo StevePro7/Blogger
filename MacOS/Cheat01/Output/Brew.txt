@@ -1,0 +1,22 @@
+<b>Homebrew</b><br />
+<a href="https://brew.sh">Homebrew</a> is a package manager for macOS which lets you install free and open-source software using your terminal.  Launch terminal and issue the following commands to install Homebrew and update bash_profile:
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+&nbsp;/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+<br />
+&nbsp;echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile
+</td>
+</tr>
+</table>
+<br />
+Install free and open-source software for Cloud Computing for example: <a href="https://formulae.brew.sh/formula/minikube">minikube</a>, <a href="https://formulae.brew.sh/formula/kind">KinD</a>, <a href="https://helm.sh/docs/intro/install">Helm</a>, <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli">Terraform</a>:
+<br />
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;minikube</td><td valign="top">&nbsp;brew install minikube</td></tr>
+<tr><td valign="top">&nbsp;KinD</td><td valign="top">&nbsp;brew install kind</td></tr>
+<tr><td valign="top">&nbsp;Helm</td><td valign="top">&nbsp;brew install helm</td></tr>
+<tr><td valign="top">&nbsp;Terraform</td><td valign="top">&nbsp;brew tap hashicorp/tap | brew install hashicorp/tap/terraform</td></tr>
+</table>
+<br />
