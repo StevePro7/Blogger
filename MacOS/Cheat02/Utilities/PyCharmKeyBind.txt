@@ -1,0 +1,47 @@
+PyCharm
+
+
+01. NAV
+https://steveproxna.blogspot.com/2022/
+f Ctrl + Shift + O launches Symbols then remove duplicate: Choose Settings | Keymap | filter as "symbol". Double click Navigate | Go to Symbol | Edit | Remove Ctrl+Shift+O | Apply | OK. Repeat this as necessary.
+
+
+PyCharm
+Settings...
+Keycap
+Search
+Move Caret to Text Start
+
+Editor Actions
+Move Caret to Text Start
+right click entry
+Remove
+right click
+Add Keyboard Shortcut
+OK
+
+
+BUG
+ Move Caret to Previous Word	 Ctrl + Right
+
+SHOULD BE NEXT
+
+ Move Up and Scroll with Selection
+second value should be Move Down
+
+
+IMPORTANT
+Move Up and Scroll	 Ctrl + Up
+ Move Down and Scroll	 Ctrl + Down
+
+I replaced these for Navigate forward + back
+
+Manin Menu
+Navigate
+Back
+Ctrl + Up
+
+Forward
+Ctrl + Down
+
+because Alt + left / right won't work with duplicates
