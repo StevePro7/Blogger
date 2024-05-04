@@ -24,4 +24,24 @@ pgAdmin launch
 no servers
 
 Right click Servers
-Register server
+Register | Server...
+
+General tab
+Name		PostgreSQL 16
+Server group	Servers
+
+Connection tab
+Host name/address	localhost
+Port			5432
+Maintenance database	postgres
+Username		postgres
+Password		<empty>
+
+Other tabs leave defaults
+Save
+
+
+server
+\conninfo
+\l
+\dt
