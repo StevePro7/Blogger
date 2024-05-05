@@ -30,13 +30,13 @@ complete -F __start_kubectl k
 
 
 
-WHEN I attempt to upgrade BASH to cope with error I locked out Terminal
-Here is the fix
+//WHEN I attempt to upgrade BASH to cope with error I locked out Terminal
+//Here is the fix
+//
+//Shell locked out
+//context: tried to change shell due to the k8s autocomplete not working out-of-the-box
 
-Shell locked out
-context: tried to change shell due to the k8s autocomplete not working out-of-the-box
-
-When I start my terminal I get "login: /usr/local/bin/bash: No such file or directory [Process completed]" and i cant type anything in my terminal
+//When I start my terminal I get "login: /usr/local/bin/bash: No such file or directory [Process completed]" and i cant t//ype anything in my terminal
 https://stackoverflow.com/questions/55562522/when-i-start-my-terminal-i-get-login-usr-local-bin-bash-no-such-file-or-dire
 
 1. Go to "System Preferences" > "Users & Groups"
