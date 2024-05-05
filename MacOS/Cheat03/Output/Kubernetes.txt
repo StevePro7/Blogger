@@ -1,5 +1,8 @@
 <u>Kubernetes</u><br />
-As per this post, install Kubernetes with Docker Desktop on Mac OS/X.  Next, install and setup kubectl on on Mac OS/X.  The kubectl quick reference also outlines how to setup kubectl autocomplete... ERROR
+As per this post, install Kubernetes with Docker Desktop on Mac OS/X.  Next, install and setup kubectl on the Mac OS/X.  However, the default kubectl autocomplete setup quick reference may produce the following error
+<br />
+<table width="99%" border="1"><tr><td>&nbsp;<i>bash: completion: function `__start_kubectl` not found</i></td></tr></table>
+<br />
 
 
 source <(kubectl completion bash)
@@ -21,7 +24,3 @@ https://kubernetes.io/docs/reference/kubectl/quick-reference
 
 
 
-ERROR
-https://github.com/kubernetes/kubectl/issues/120
-
-source <(kubectl completion bash | sed 's/kubectl/k/g').
