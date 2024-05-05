@@ -3,40 +3,40 @@
 BLOG
 
 
-Terminal
-BASH
-by default Terminal may be zsh
-ref
-https://support.apple.com/en-us/102360
+//Terminal
+//BASH
+//by default Terminal may be zsh
+//ref
+//https://support.apple.com/en-us/102360
 
-change
-Terminal
-Settings...
-General
-Shells open with
-Command (complete path)
+//change
+//Terminal
+//Settings...
+//General
+//Shells open with
+//Command (complete path)
 /bin/bash
 
-OR
-chsh -s /bin/bash
+//OR
+//chsh -s /bin/bash
 
-IMP
-confirm BASH as will be in Terminal title
-
-
-PESKY
-if you want to get rid of the [pesky] deprecated note then do:
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
-OR
-echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ¬/.bash_profile
+//IMP
+//confirm BASH as will be in Terminal title
 
 
-Terminal
-How to have full directory path always shown in mac terminal (like linux terminal)
-https://superuser.com/questions/239994/how-to-have-full-directory-path-always-shown-in-mac-terminal-like-linux-termina
+//PESKY
+//if you want to get rid of the [pesky] deprecated note then do:
+//export BASH_SILENCE_DEPRECATION_WARNING=1
 
-echo "export PS1='\u@\h:\w$ '" >> ~/.bash_profile
+//OR
+//echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ¬/.bash_profile
+
+
+T//erminal
+//How to have full directory path always shown in mac terminal (like linux terminal)
+//https://superuser.com/questions/239994/how-to-have-full-directory-path-always-shown-in-mac-terminal-like-linux-termina
+
+//echo "export PS1='\u@\h:\w$ '" >> ~/.bash_profile
 
 IMPORTANT - I prefer h NOT H
 as I do not want the full host path

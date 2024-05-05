@@ -6,10 +6,25 @@ IMPORTANT: remove silence deprecation warning | Enter the following into Termina
 <table width="98%" border="1">
 <tr><td valign="top">&nbsp;echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ¬/.bash_profile</td></tr>
 </table>
-
 <br />
-
+Customize the Mac terminal to always show full directory path as the cursor similar to the Linux terminal:
+<br />
+<table width="98%" border="1">
+<tr><td valign="top">&nbsp;echo "export PS1='\u@\h:\w$ '" >> ~/.bash_profile</td></tr>
+</table>
+<br />
+Finally, keyboard shortcuts like Ctrl + C or Ctrl + Z may not work to break on Mac thus prefer <b>Ctrl + "."</b>.
+<br />
 
 
 default
 https://support.apple.com/en-us/102360
+
+
+show
+https://superuser.com/questions/239994/how-to-have-full-directory-path-always-shown-in-mac-terminal-like-linux-termina
+
+
+
+may not work
+https://superuser.com/questions/394100/ctrl-c-and-ctrl-z-not-working-in-terminal
