@@ -1,8 +1,13 @@
 <u>Terminal</u><br />
-The Mac terminal may be zsh by default.  However, change your default shell via Settings... | General | Shell open with: Command path <i>/bin/bash</i> or <b>chsh -s /bin/bash</b>.  Confirm BASH is in Terminal title!
-
+The Mac terminal may be <b>zsh</b> by default.  However, change your default shell via Settings... | General | Shell open with: Command path <i>/bin/bash</i> or enter <b>chsh -s /bin/bash</b>.  Confirm BASH is now in Terminal title!
 <br /><br />
+IMPORTANT: remove silence deprecation warning | Enter the following into Terminal for <b>~/.bash_profile</b>:
+<br />
+<table width="98%" border="1">
+<tr><td valign="top">&nbsp;echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ¬/.bash_profile</td></tr>
+</table>
 
+<br />
 
 
 
