@@ -1,10 +1,11 @@
 <u>Kubernetes</u><br />
-As per this post, install Kubernetes with Docker Desktop on Mac OS/X.  Next, install and setup kubectl on the Mac OS/X.  However, the default kubectl autocomplete setup quick reference may produce the following error
+As per this <a href="https://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">post</a>, install Kubernetes with Docker Desktop on Mac OS/X.  Next, install and setup <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-macos">kubectl</a> on the Mac OS/X.  However, the default kubectl autocomplete setup quick <a href="https://kubernetes.io/docs/reference/kubectl/quick-reference">reference</a> may produce the following error
 <br />
 <table width="99%" border="1"><tr><td>&nbsp;<i>bash: completion: function `__start_kubectl` not found</i></td></tr></table>
 <br />
-If you experience this error then here is an alternative approach: first <b>brew install bash bash-completion</b>  Set Terminal to use bash | Settings... | General | Shell open with: Command path <i>/opt/homebrew/bin/bash</i>
-
+If you experience this error then <a href="https://stackoverflow.com/questions/45240862/why-doesnt-kubectl-bash-completion-work-on-macos-os-x">here</a> is an alternative approach: first <b>brew install bash bash-completion</b>  Set Terminal to use bash: Settings... | General | Shell open with: Command path <i>/opt/homebrew/bin/bash</i>
+<br /><br />
+Finally, update <b>~/.bash_profile</b>
 <br />
 <table width="99%" border="1">
 <tr><td>
@@ -19,7 +20,6 @@ If you experience this error then here is an alternative approach: first <b>brew
 </td></tr>
 </table>
 <br />
-
 
 
 source <(kubectl completion bash)
