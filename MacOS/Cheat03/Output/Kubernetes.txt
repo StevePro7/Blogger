@@ -3,6 +3,23 @@ As per this post, install Kubernetes with Docker Desktop on Mac OS/X.  Next, ins
 <br />
 <table width="99%" border="1"><tr><td>&nbsp;<i>bash: completion: function `__start_kubectl` not found</i></td></tr></table>
 <br />
+If you experience this error then here is an alternative approach: first <b>brew install bash bash-completion</b>  Set Terminal to use bash | Settings... | General | Shell open with: Command path <i>/opt/homebrew/bin/bash</i>
+
+<br />
+<table width="99%" border="1">
+<tr><td>
+<table width="99%">
+<tr><td>
+&nbsp;alias k="kubectl"<br />
+&nbsp;complete -F __start_kubectl k<br />
+&nbsp;source /opt/homebrew/etc/profile.d/bash_completion.sh<br />
+&nbsp;source <(kubectl completion bash)<br />
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br />
+
 
 
 source <(kubectl completion bash)
