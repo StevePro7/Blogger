@@ -24,6 +24,15 @@ right click
 Remove Keybinding
 
 
+02. Terminal
+pwd
+/Users/stevepro/Library/Application Support/Code/User
+
+cd
+cd Library/Application\ Support/Code/User
+cat keybindings.json
+
+
 Command			Keybinding	When		Desc
 cursorTop		Ctrl + Home	textInputFocus	Move to beg of file	
 
@@ -39,27 +48,44 @@ Code
 Settings
 Keyboard Shortcuts
 
-Terminal: Create New Terminal	Ctrl + Shift + T
-NB: again remove any previous keybindings to avoid conflict
+AA.
+Terminal: Create New Terminal
+workbench.action.terminal.new
+Ctrl + Shift + T
+
+
+//NB: again remove any previous keybindings to avoid conflict
+
+
+Terminal | Ctrl + L = clear terminal
+Code
+Settings
+Keyboard Shortcuts
+
+BB.
+Terminal: Clear
+workbench.action.terminal.clear
+Ctrl + L
+
+
+CC.
+File: Open Folder...
+workbench.action.files.openFolderViaWorkspace
+Ctrl + K Ctrl + O
 
 
 
-02. Terminal
-pwd
-/Users/stevepro/Library/Application Support/Code/User
-
-cd
-cd Library/Application\ Support/Code/User
-cat keybindings.json
 
 
-IMPORTANT
-remember that I had a partial entry for cmd+right and that prevented it from working!!
-
-No need for Ctrl + Shift + left / right on the terminal!
+//IMPORTANT
+//remember that I had a partial entry for cmd+right and that prevented it from working!!
+//No need for Ctrl + Shift + left / right on the terminal!
 
 
 
+
+
+/**
 XX.
 Another one to do
 Open folder
@@ -78,3 +104,4 @@ search
 Terminal Clear
 Ctrl + L
 workbench.action.terminal.clear
+**/
