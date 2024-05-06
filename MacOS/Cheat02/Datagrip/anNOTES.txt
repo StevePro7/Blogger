@@ -50,3 +50,70 @@ Owner			steven
 Download missing driver files
 
 
+Setup keyboard shortcuts to run SQL automated
+
+
+Refrence
+https://www.jetbrains.com/help/pycharm/postgresql.html
+
+Reference
+https://www.jetbrains.com/help/pycharm/run-a-query.html
+
+/*
+Database
+Keyboard shortcuts
+Keymap
+
+Execute
+F5
+Keep
+*/
+
+Settings | Keycap | Console Toolbar | Execute
+right click
+Add keyboard shortcut
+F5
+Keep
+remove conflicting keyboard shortcuts
+
+
+
+UPPER CASE
+Force all upper case
+https://www.jetbrains.com/help/pycharm/code-style-sql-case.html
+
+Settings | Editor | Code Style | SQL | PostgreSQL
+Default IDE
+Inherit general SQL style	DISABLE
+Word Case
+Keywords	To upper
+
+
+IMPORTANT
+Use Ctrl + Space for intelligence
+will have this now because of Cheat01 - disable Spotlight
+/*
+Ctrl + Space
+prompt auto-complete	BASIC
+NB: disable Ctrl + Space for spotlight first
+*/
+
+
+Other options
+Keymap | Main Menu | Code | Code Completion
+Basic		Ctrl + Space
+Type-Matching	Ctrl + Shift + Space
+
+Editor | General | Code Completion
+Sort suggestions alphabetically
+
+
+
+DUPLICATE..!!
+IMPORTANT
+Delete to word end		Alt + Backspace
+
+Alt + Delete
+Delete to line start		remove Alt + Backspace
+//Delete to line end		leave
+//Delete to word start		empty
