@@ -63,3 +63,18 @@ Shortcuts: Right click folder | Show in Enclosing folder.  Right click folder th
 </table>
 -->
 <br />
+Finally, here are two handy aliases to hide and show private files and folders on Mac via <b>~/.bash_profile</b>:
+<br />
+<!--
+<table width="100%" border="1">
+<tr>
+<td>
+<table width="100%">
+<tr><td valign="top">&nbsp;alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder &nbsp;&nbsp;/System/Library/CoreServices/Finder.app'</td></tr>
+<tr><td valign="top">&nbsp;alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder &nbsp;&nbsp;/System/Library/CoreServices/Finder.app'</td></tr>
+</table>
+</tr>
+</td>
+</table>
+<br />
+-->
