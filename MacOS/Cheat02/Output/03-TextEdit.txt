@@ -1,13 +1,22 @@
-<span style="font-family:verdana;font-size:85%;">
-
 <u>TextEdit</u><br />
 The Mac text system uses generalized key bindings mechanism that is completely re-mappable by the user.  The standard bindings include all system defaults but you can override bindings in your own custom dict file:
-  <br />
-The Mac text system uses generalized key bindings mechanism that is completely re-mappable by the user.  The standard key bindings include all system defaults however you can override custom key bindings in DefaultKeyBinding.dict file.
 <br />
 <table width="100%" border="1">
 <tr><td>&nbsp;<b>SYSTEM</b></td><td>&nbsp;/System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict</td></tr>
 <tr><td>&nbsp;<b>CUSTOM</b></td><td>&nbsp;~/Library/KeyBindings/DefaultKeyBinding.dict</td></tr>
+</table>
+<br />
+  
+<br />
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;sudo bash<br />
+&nbsp;mkdir -p ~/Library/KeyBindings<br />
+&nbsp;touch ~/Library/KeyBindings/DefaultKeyBinding.dict<br />
+&nbsp;open -e ~/Library/KeyBindings/DefaultKeyBinding.dict<br />
+</td>
+</tr>
 </table>
 <br />
 <!--
@@ -51,6 +60,3 @@ The Mac text system uses generalized key bindings mechanism that is completely r
 </table>
 <br />
 -->
-
-  
-
