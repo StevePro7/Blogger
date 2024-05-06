@@ -3,13 +3,13 @@ The Mac terminal may be <b>zsh</b> by default.  However, change your <a href="ht
 <br /><br />
 IMPORTANT: remove silence deprecation warning | Enter the following into Terminal for <b>~/.bash_profile</b>:
 <br />
-<table width="98%" border="1">
+<table width="100%" border="1">
 <tr><td valign="top">&nbsp;echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ¬/.bash_profile</td></tr>
 </table>
 <br />
 Customize the Mac terminal to always <a href="https://superuser.com/questions/239994/how-to-have-full-directory-path-always-shown-in-mac-terminal-like-linux-termina">show</a> full directory path as the cursor similar to the Linux terminal:
 <br />
-<table width="98%" border="1">
+<table width="100%" border="1">
 <tr><td valign="top">&nbsp;echo "export PS1='\u@\h:\w$ '" >> ~/.bash_profile</td></tr>
 </table>
 <br />
