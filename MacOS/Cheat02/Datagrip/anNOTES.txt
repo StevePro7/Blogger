@@ -1,6 +1,13 @@
 ANnotes
 06-May-2024
 
+
+Refrence
+https://www.jetbrains.com/help/pycharm/postgresql.html
+https://www.jetbrains.com/help/pycharm/run-a-query.html
+https://www.jetbrains.com/help/pycharm/code-style-sql-case.html
+
+
 SOURCE
 IDE
 datagrip-pycharm.txt
@@ -23,7 +30,6 @@ Database Tools and SQL
 
 Try PyCharm Professional
 https://www.jetbrains.com/pycharm/download/?section=mac
-
 https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1
 
 Start trial
@@ -32,6 +38,18 @@ Import Settings
 
 
 Start Trial
+
+IMPORTANT
+After installing PyCharm Prof + setup the Database Tools + SQL plugin will be installed and enabled by default - thus can now use the Database tab
+
+NB: may want to mention Datagrip here - either standalone IDE or integrated here
+Also other plugin of interest may be
+- PostgreSQL Debugger
+- Postgres Explain Visualizer
+- SQL Optimizer + Indexing
+
+
+
 
 View menu
 Database
@@ -53,11 +71,7 @@ Download missing driver files
 Setup keyboard shortcuts to run SQL automated
 
 
-Refrence
-https://www.jetbrains.com/help/pycharm/postgresql.html
 
-Reference
-https://www.jetbrains.com/help/pycharm/run-a-query.html
 
 /*
 Database
@@ -68,6 +82,9 @@ Execute
 F5
 Keep
 */
+
+Reference
+https://www.jetbrains.com/help/pycharm/run-a-query.html
 
 Settings | Keycap | Console Toolbar | Execute
 right click
@@ -105,15 +122,23 @@ Basic		Ctrl + Space
 Type-Matching	Ctrl + Shift + Space
 
 Editor | General | Code Completion
+Match case	First letter only
 Sort suggestions alphabetically
+Show suggestions as you type
 
 
 
 DUPLICATE..!!
-IMPORTANT
-Delete to word end		Alt + Backspace
+00. DUP
+Settings
+Keycap | Editor Actions
+Delete to Line Start		remove Alt + Backspace
+Delete to Word Start		Alt + Backspace
 
-Alt + Delete
-Delete to line start		remove Alt + Backspace
+//IMPORTANT
+//Delete to word end		Alt + Backspace
+//
+//Alt + Delete
+//Delete to line start		remove Alt + Backspace
 //Delete to line end		leave
 //Delete to word start		empty
