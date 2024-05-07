@@ -698,5 +698,5 @@ To summarize, Kubernetes has greatly simplified cloud native infrastructure for 
 <br /><br />
 Consequently, the Container Network Interface [<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#cni">CNI</a>] initiative was created to define a standardized common interface between container execution and Kubernetes networking layer to address these security concerns.
 <br /><br />
-Thus Kubernetes plugins like <a href="https://www.tigera.io/project-calico">Calico</a> has become the most popular CNI for cluster networking thru definition and enforcement of network policies.  Calico prescribes to which pods can send and receive traffic securely throughout the cluster which becomes critical esp. if Kubernetes adoption continues to grow in the future!
+Thus Kubernetes plugins like <a href="https://cilium.io">Cilium</a> has become the most popular CNI for cluster networking thru definition and enforcement of network policies.  Cilium prescribes to which pods can send and receive traffic securely throughout the cluster which becomes critical esp. if Kubernetes adoption continues to grow in the future!
 </span>
