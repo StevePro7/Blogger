@@ -1,7 +1,7 @@
 <span style="font-family:verdana;font-size:85%;">   
 <a href="https://en.wikipedia.org/wiki/Kubernetes">Kubernetes</a> is an open source container orchestration system for automating application deployment, scaling and management.  Maintained by the Cloud Native Computing Foundation, Kubernetes works with a range of container tools and runs applications deployed in containers in a cluster often with images built using <a href="https://steveproxna.blogspot.com/2021/08/docker-cheat-sheet.html">Docker</a>.
 <br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJkAHQB4eVkzU-Q5ZLRFRrRvSorbPflV5IMrOmuybfLIZi1cLjTNYOovXHWEG2eAyO9McIgFndjseYgKjukGtYw1HbKs8Vahwpt6WyTZNgX_ofFm9rAsGVYSECdPAoHHbUnTCspXxzO80/s480/kubernetes.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJkAHQB4eVkzU-Q5ZLRFRrRvSorbPflV5IMrOmuybfLIZi1cLjTNYOovXHWEG2eAyO9McIgFndjseYgKjukGtYw1HbKs8Vahwpt6WyTZNgX_ofFm9rAsGVYSECdPAoHHbUnTCspXxzO80/s600/kubernetes.png"/></a>
+<a href="https://1.bp.blogspot.com/-ZXeJTM4CjkA/YVIh6qriF8I/AAAAAAAAHco/Jr7_2tXARisKKV-wFuE9N9xIaecewo9xwCLcBGAsYHQ/s480/kubernetes.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZXeJTM4CjkA/YVIh6qriF8I/AAAAAAAAHco/Jr7_2tXARisKKV-wFuE9N9xIaecewo9xwCLcBGAsYHQ/s600/kubernetes.png"/></a>
 <br />
 Let's check <a href="https://kubernetes.io">K8s</a> out!  
 <br /><br />
@@ -54,7 +54,7 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 minikube version
 minikube start
 </pre>
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkq-kJIHlY9NqQsBS77Lk3t7BMeDld8efyiYH6DHHCO46Ch-iPghubbWzC_gxCB1OIMBryNXF46zR8qIyTrWAsqJ7Xpp-W2ri-vZ-7iRvd_UYe-U1tMvLnnXFAJYuqnznSVefmkWXGkC0/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkq-kJIHlY9NqQsBS77Lk3t7BMeDld8efyiYH6DHHCO46Ch-iPghubbWzC_gxCB1OIMBryNXF46zR8qIyTrWAsqJ7Xpp-W2ri-vZ-7iRvd_UYe-U1tMvLnnXFAJYuqnznSVefmkWXGkC0/s600/MiniKube.png"/></a>
+<a href="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s816/MiniKube.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-ZwTq-wMESmE/YPWzQ_Q7y_I/AAAAAAAAHHo/cMAXOAUCg6Mzz3cgdn6bB7yfS67CL-7vACLcBGAsYHQ/s600/MiniKube.png"/></a>
 <br />
 <br />
 <b>KinD</b><br />
@@ -105,7 +105,7 @@ kubeadm version
 <u>Dashboard</u><br />
 Once Kubernetes cluster is setup there are various options to view all resources.  Minikube: simply the launch terminal | <b>minikube dashboard</b>.  Alternatively, install VS Code Kubernetes <a href="https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools">extension</a> and view all resources.  
 <br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4iP8pJ_4HV6k9KNbrRjRo_hybJMzBnazVqTsa5wWr2a76c9FbIcLkRVs02u6dXdPRkqCSs83sho16BySereqVqT6kthzh9-XJNHx9thubS2tHL9h4Wiw2iHpFr1MzTSSI8rcwyVXSRVs/s1162/Dashboard.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4iP8pJ_4HV6k9KNbrRjRo_hybJMzBnazVqTsa5wWr2a76c9FbIcLkRVs02u6dXdPRkqCSs83sho16BySereqVqT6kthzh9-XJNHx9thubS2tHL9h4Wiw2iHpFr1MzTSSI8rcwyVXSRVs/s600/Dashboard.png"/></a>
+<a href="https://1.bp.blogspot.com/-SRvrjA6F41U/YV4KNAL4tsI/AAAAAAAAHgM/ZQtB8uDYIbUzMR_rVtHccQJeuoGrwzSxQCLcBGAsYHQ/s1162/Dashboard.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-SRvrjA6F41U/YV4KNAL4tsI/AAAAAAAAHgM/ZQtB8uDYIbUzMR_rVtHccQJeuoGrwzSxQCLcBGAsYHQ/s600/Dashboard.png"/></a>
 <br />
 <br />
 KinD dashboard is more involved.  Enter these commands to configure KinD dashboard to run in the browser.
@@ -143,7 +143,7 @@ If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address alre
 <br /><br />
 <a href="https://k9scli.io">k9s</a> is the Kubernetes CLI to manage clusters.  <a href="https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz">Download</a> the latest binary and extract into <b>/usr/local/bin</b>.  You may need to manually create the <b>~/.k9s</b> folder otherwise you may receive the error <i>Permission denied</i>.
 <br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiswihI31xNlJdVh1V20t-jYvTLIftrt4nDJA1FKGv2VpYY35xBMPMcMTWWba5hcniPjtuCw3eMeqPf7elb_07aLJgnbC4L9ez9IoDASPXs239zKvclAJAXRY26q7gogfJ9BIO1SGUpEIs/s1240/k9s.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiswihI31xNlJdVh1V20t-jYvTLIftrt4nDJA1FKGv2VpYY35xBMPMcMTWWba5hcniPjtuCw3eMeqPf7elb_07aLJgnbC4L9ez9IoDASPXs239zKvclAJAXRY26q7gogfJ9BIO1SGUpEIs/s600/k9s.png"/></a>
+<a href="https://1.bp.blogspot.com/-mInwoIpHwKM/YV3-6GivDVI/AAAAAAAAHgE/t719Gm7sURQi2GV3KmFP3MAzCMMN3sNdgCLcBGAsYHQ/s1240/k9s.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-mInwoIpHwKM/YV3-6GivDVI/AAAAAAAAHgE/t719Gm7sURQi2GV3KmFP3MAzCMMN3sNdgCLcBGAsYHQ/s600/k9s.png"/></a>
 <br />
 <br />
 <b>kubectl</b><br />
@@ -237,7 +237,7 @@ Here is some basic terminology when working with containerized applications runn
 <b>Control Plane</b><br />
 In Kubernetes, the control plane is the set of components that "make global decisions about the cluster" e.g. scheduling as well as detecting and responding to cluster events e.g. auto scaling pods due to traffic spikes.
 <br /> 
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiymQuIfNB3v33E68hZV5pcaG6hZ9niqBflZdkFioCU74kIlj5kAOMad8gG82UUb3whvOGSNCiRM1xl9PTMVYTdN-sa6gWw5iRilURb-egoL7k0r2173Sohyphenhyphen0Q3tbEV9f_LBCFz8aRoPfA/s1059/PlaneControl.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiymQuIfNB3v33E68hZV5pcaG6hZ9niqBflZdkFioCU74kIlj5kAOMad8gG82UUb3whvOGSNCiRM1xl9PTMVYTdN-sa6gWw5iRilURb-egoL7k0r2173Sohyphenhyphen0Q3tbEV9f_LBCFz8aRoPfA/s600/PlaneControl.png"/></a>
+<a href="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s1059/PlaneControl.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-Nj96lyk2CtU/YVmyNENVqUI/AAAAAAAAHeY/1PNKas0BCvUz4__kXew4Bg7YDaocivc0QCLcBGAsYHQ/s600/PlaneControl.png"/></a>
 <br />
 Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on the master node to keep the cluster in the "<a href="https://yannalbou.medium.com/kubernetes-desired-state-4c5c4e873743">desired state</a>":
 <br />
@@ -263,7 +263,7 @@ Listed are control plane <a href="https://kubernetes.io/docs/concepts/overview/c
 <b>Data Plane</b><br />
 In Kubernetes, the data plane is the set of worker nodes with their pods and containers that enforce all the global decisions made about the cluster from the master node e.g. auto scaling pods due to traffic spikes.
 <br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq3Yl5DnL2yIhl41kXazBMQYR9MEG_CqxjS8kFZ3MorbyHib7_KYKzbD4OE8aYgi61wiZMKPMo6xNqv8O5ONldXmIv4yQU9GARPlzGEYJCHPgDUEcZug-bNIQxjvS0WgZqFmgkjB6nyls/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq3Yl5DnL2yIhl41kXazBMQYR9MEG_CqxjS8kFZ3MorbyHib7_KYKzbD4OE8aYgi61wiZMKPMo6xNqv8O5ONldXmIv4yQU9GARPlzGEYJCHPgDUEcZug-bNIQxjvS0WgZqFmgkjB6nyls/s600/PlaneData.png"/></a>
+<a href="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s1059/PlaneData.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-a3aLU6IFuuQ/YVmyl-XVpqI/AAAAAAAAHeg/bXgnCIaLHO0KKwx0WmJ7ZGa4QLkFBETAgCLcBGAsYHQ/s600/PlaneData.png"/></a>
 <br />
 Listed are data plane <a href="https://kubernetes.io/docs/concepts/overview/components">components</a> that run on each worker node  maintaining pods and runtime environment:
 <br />
@@ -691,7 +691,7 @@ git clone the Kubernetes <a href="https://github.com/kubernetes/kubernetes">sour
 </td>
 </tr>
 </table>
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsI2mBAqG8KLXw3ERYWIssPMVN_uZ-wjRvOABjSbiCgVwK7CDo1NsCq5ZFJ5pZIzaBfugeD1_lPHAhEzVOCUDqChd3BMXASyLfNT31PwUr-Xi8K59H-8RRpIgndjsdxYu5zfxvZhsgwmc/s1856/K8sSourceCode.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsI2mBAqG8KLXw3ERYWIssPMVN_uZ-wjRvOABjSbiCgVwK7CDo1NsCq5ZFJ5pZIzaBfugeD1_lPHAhEzVOCUDqChd3BMXASyLfNT31PwUr-Xi8K59H-8RRpIgndjsdxYu5zfxvZhsgwmc/s600/K8sSourceCode.png"/></a>
+<a href="https://1.bp.blogspot.com/-FoNpiURTt_g/YWiCZtfMXvI/AAAAAAAAHjo/JY5f7QNuCI8sdWljxho4sxip-LlREEdwwCLcBGAsYHQ/s1856/K8sSourceCode.png"><img alt="" border="0" width="98%" src="https://1.bp.blogspot.com/-FoNpiURTt_g/YWiCZtfMXvI/AAAAAAAAHjo/JY5f7QNuCI8sdWljxho4sxip-LlREEdwwCLcBGAsYHQ/s600/K8sSourceCode.png"/></a>
 <br /><br />
 <u>Summary</u><br />
 To summarize, Kubernetes has greatly simplified cloud native infrastructure for developers and provides a scalable framework for application deployment.  However, just like any new tool or technology, Kubernetes brings with it new <a href="https://www.vmware.com/resources/security/three-common-kubernetes-security-mistakes-and-how-to-avoid-them.html">security</a> challenges especially due to the ephemeral nature of containerized applications.
