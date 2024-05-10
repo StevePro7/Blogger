@@ -1,0 +1,74 @@
+Miscellaneous
+10-Mar-2024
+
+Output
+03-TextEdit_links.txt
+
+
+01.
+03-DefaultKeyBinding.txt
+
+DefaultKeyBinding.dict
+reference
+How to Fix the Home and End Buttons for an External Keyboard in Mac
+https://medium.com/@elhayefrat/how-to-fix-the-home-and-end-buttons-for-an-external-keyboard-in-mac-4da773a0d3a2
+
+sudo bash 
+mkdir -p ~/Library/KeyBindings ; cd ~/Library/KeyBindings
+vim DefaultKeyBinding.dict
+
+OR
+mkdir -p ~/Library/KeyBindings
+sudo touch DefaultKeyBinding.dict
+sudo open -e DefaultKeyBinding.dict
+
+
+02.
+anNotes02.txt
+N/A
+
+
+03.
+anNotes03_DESC.txt
+
+How-to: macOS Key bindings
+https://ss64.com/mac/syntax-keybindings.html
+e.g.
+//    Key Modifiers 
+//    ^ : Ctrl 
+//    $ : Shift 
+//    ~ : Option (Alt) 
+//    @ : Command (Apple) 
+//    # : Numeric Keypad 
+
+
+Mac OS X and Home / End keys
+https://www.evansweb.info/2005/03/24/mac-os-x-and-home-end-keys
+{
+        /* Remap Home / End to be correct :-) */
+        "\UF729"  = "moveToBeginningOfLine:";                   /* Home         */
+        "\UF72B"  = "moveToEndOfLine:";                         /* End          */
+        "$\UF729" = "moveToBeginningOfLineAndModifySelection:"; /* Shift + Home */
+        "$\UF72B" = "moveToEndOfLineAndModifySelection:";       /* Shift + End  */
+}
+
+
+
+04.
+Hotmail.txt
+02b.
+DefaultKeyBinding.dict method not working to move cursor from word to word(which is by default options + left/right)
+https://apple.stackexchange.com/questions/428543/defaultkeybinding-dict-method-not-working-to-move-cursor-from-word-to-wordwhich
+
+EX
+{
+  "@\UF702" = moveWordLeft:;
+  "@\UF703" = moveWordRight:;
+  "@$\UF702" = moveWordLeftAndModifySelection:;
+  "@$\UF703" = moveWordRightAndModifySelection:;
+}
+
+//02c. APPLE thorough background information
+//Text System Defaults and Key Bindings
+//https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
+
