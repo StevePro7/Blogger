@@ -2,78 +2,77 @@ ANnotes
 06-May-2024
 
 
-Refrence
-https://www.jetbrains.com/help/pycharm/postgresql.html
+//Refrence
+//https://www.jetbrains.com/help/pycharm/postgresql.html
 https://www.jetbrains.com/help/pycharm/run-a-query.html
 https://www.jetbrains.com/help/pycharm/code-style-sql-case.html
 
 
-SOURCE
-IDE
-datagrip-pycharm.txt
-Datagrip.txt
+//SOURCE
+//IDE
+//datagrip-pycharm.txt
+//Datagrip.txt
 
-Pre-reqs
-PostgreSQL installed and setup
-client
-server
-
-
-01.
-Install PyCharm Professional
+//Pre-reqs
+//PostgreSQL installed and setup
+//client
+//server
 
 
-Launch PyCharm CE
-Plugins
-Database Tools and SQL
+//01.
+//Install PyCharm Professional
 
 
-Try PyCharm Professional
-https://www.jetbrains.com/pycharm/download/?section=mac
-https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1
-
-Start trial
-Import Settings from PyCharm CE
-Import Settings
+//Launch PyCharm CE
+//Plugins
+//Database Tools and SQL
 
 
-Start Trial
+//Try PyCharm Professional
+//https://www.jetbrains.com/pycharm/download/?section=mac
+//https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1
 
-IMPORTANT
-After installing PyCharm Prof + setup the Database Tools + SQL plugin will be installed and enabled by default - thus can now use the Database tab
-
-NB: may want to mention Datagrip here - either standalone IDE or integrated here
-Also other plugin of interest may be
-- PostgreSQL Debugger
-- Postgres Explain Visualizer
-- SQL Optimizer + Indexing
+//Start trial
+//Import Settings from PyCharm CE
+//Import Settings
 
 
+//Start Trial
 
+//IMPORTANT
+//After installing PyCharm Prof + setup the Database Tools + SQL plugin will be installed //and enabled by default - thus can now use the Database tab
 
-View menu
-Database
-Click "+"
-Data Source
-PostgreSQL
-PostgreSQL
-
-Database credentials
-Use the values from pgAdmin properties
-
-General
-Database		MyTestDB
-Owner			steven
-
-Download missing driver files
-
-
-Setup keyboard shortcuts to run SQL automated
+/NB: may want to mention Datagrip here - either standalone IDE or integrated here
+//Also other plugin of interest may be
+//- PostgreSQL Debugger
+//- Postgres Explain Visualizer
+//- SQL Optimizer + Indexing
 
 
 
 
-/*
+//View menu
+//Database
+//Click "+"
+//Data Source
+//PostgreSQL
+//PostgreSQL
+
+//Database credentials
+//Use the values from pgAdmin properties
+
+//General
+//Database		MyTestDB
+//Owner			steven
+
+//IGNORE!!
+//Download missing driver files
+//Setup keyboard shortcuts to run SQL automated
+
+
+
+
+/**
 Database
 Keyboard shortcuts
 Keymap
@@ -81,17 +80,16 @@ Keymap
 Execute
 F5
 Keep
-*/
+**/
 
-Reference
-https://www.jetbrains.com/help/pycharm/run-a-query.html
-
-Settings | Keycap | Console Toolbar | Execute
-right click
-Add keyboard shortcut
-F5
-Keep
-remove conflicting keyboard shortcuts
+//Reference
+//https://www.jetbrains.com/help/pycharm/run-a-query.html
+//Settings | Keymap | Database | Console Toolbar | Execute
+//Right click
+//Add keyboard shortcut
+//F5
+//Keep
+//remove conflicting keyboard shortcuts
 
 
 
@@ -128,12 +126,12 @@ Show suggestions as you type
 
 
 
-DUPLICATE..!!
-00. DUP
-Settings
-Keycap | Editor Actions
-Delete to Line Start		remove Alt + Backspace
-Delete to Word Start		Alt + Backspace
+//DUPLICATE..!!
+//00. DUP
+//Settings
+//Keycap | Editor Actions
+//Delete to Line Start		remove Alt + Backspace
+//Delete to Word Start		Alt + Backspace
 
 //IMPORTANT
 //Delete to word end		Alt + Backspace
