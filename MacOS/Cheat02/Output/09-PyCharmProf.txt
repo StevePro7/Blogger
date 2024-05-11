@@ -1,5 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-
+ 
 <u>PyCharm Professional</u><br />
 After installing Postgres server one can use pgAdmin client for data access.  However, it seems challenging to customize navigation here.  An excellent alternative is Database Tools + SQL <a href="https://www.jetbrains.com/help/pycharm/postgresql.html">plugin</a> available from PyCharm.  This plugin is available only in PyCharm Professional but may prove to be a valuable investment longterm <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
 <br /><br />
@@ -14,9 +14,18 @@ TODO - TABLE #2
 Checkout the PyCharm <a href="https://www.jetbrains.com/help/pycharm/run-a-query.html">documentation</a> to Run queries.  Align F5 to Execute queries similar to SQL Server Mgt Studio: Settings | Keymap | Database | Console Toolbar | Execute.  Right click | Add keyboard shortcut | F5.
 <br /><br />
 Checkout the PyCharm <a href="https://www.jetbrains.com/help/pycharm/code-style-sql-case.html">documentation</a> to update Word Case as per SQL convention: Settings | Editor | Code Style | SQL | PostgreSQL.  Inherit general SQL style	DISABLE | Word Case | Keywords To upper.  Also update Code Completion as Ctrl + Space: Settings | Keymap | Main Menu | Code | Code Completion | Ctrl + Space.
-<br /><br />
-TODO - TABLE #3
-<br /><br />
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgidazDfD8fbnvwFRL_-ZsLrbmzFoeKYZJGeutzzJM7StXIk9RA3r9Fp7yDmpJFeGp-_WGGFYgFd_Ngm5hs-ihlLNJMDKbq86H0gJH1daq9EQEL_TTwP08PwcoYFbYkzY1fKGZcw7hY8s5KBuPbXroJbJbMLa7XPfHmSggzSVVblAuSg5raQO3xNBCkV7A/s673/04-DatabaseCodeStyle.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgidazDfD8fbnvwFRL_-ZsLrbmzFoeKYZJGeutzzJM7StXIk9RA3r9Fp7yDmpJFeGp-_WGGFYgFd_Ngm5hs-ihlLNJMDKbq86H0gJH1daq9EQEL_TTwP08PwcoYFbYkzY1fKGZcw7hY8s5KBuPbXroJbJbMLa7XPfHmSggzSVVblAuSg5raQO3xNBCkV7A/s600/04-DatabaseCodeStyle.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQG8vMhAHzMxB1KsziTkdjysWQ-D8ponte1j4n3d7pF7_KcEEi0nLYHmthwaqUIPSRdrFxato_M2SqHzZ85Tc2WbjxFvCbbVlqLWqm1V4teotuSLuNT3i2UB0PSjNiLsWOqgrNGHVnVUYPCsu9qCykSzxF5k4oYZDC7mB14nH2LkjNd1CLGjRSYGVN1DU/s652/05-CodeCompletion.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQG8vMhAHzMxB1KsziTkdjysWQ-D8ponte1j4n3d7pF7_KcEEi0nLYHmthwaqUIPSRdrFxato_M2SqHzZ85Tc2WbjxFvCbbVlqLWqm1V4teotuSLuNT3i2UB0PSjNiLsWOqgrNGHVnVUYPCsu9qCykSzxF5k4oYZDC7mB14nH2LkjNd1CLGjRSYGVN1DU/s600/05-CodeCompletion.png"/></a>
+</td>
+</tr>
+</table>
+<br />
 Finally in Settings | Editor | General | Code Completion enable the following options: Automatically insert single suggestions, Sort suggestions alphabetically, Show suggestions as you type, Match case: First letter.
   
 </span>
