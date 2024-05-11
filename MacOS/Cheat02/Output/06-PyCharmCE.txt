@@ -1,5 +1,3 @@
-<span style="font-family:verdana;font-size:85%;">
-   
 <u>PyCharm Community</u><br />
 Align PyCharm Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to PyCharm" popup choose Plugins | VSCode Keymap | Install. Navigate back to Customize.  Under Keymap change default value VSCode (macOS). Now <b>most</b> VS Code shortcuts will work like Windows.
 <!--//images-VSCodekeymap01-->
@@ -23,7 +21,7 @@ Align PyCharm Keymap to VS Code Keymap for consistent keyboard shortcuts and dev
 <!-- -->
 </table>
 <br />
-  
+However, in order to better align full navigation, update the following from PyCharm | Settings... | Keymap:
 <!--//table-ExcelPyCharm PyCharm - update keyboard shortcuts - Install VS Code (Mac OS) plug-in first!-->
 <br />
 <!-- -->
@@ -42,8 +40,9 @@ Align PyCharm Keymap to VS Code Keymap for consistent keyboard shortcuts and dev
 <tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Back</td><td>&nbsp;Alt + Up</td></tr>
 <tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Forward</td><td>&nbsp;Alt + Down</td></tr>
 </table>
-<br />
+<!--<br />-->
+IMPORTANT: typically use Alt + Left to Navigate Back but this is now doubled to Move Word left as priority!
 <!-- -->
-<br />
-  
-</span>
+<br /><br />
+NOTE<br />
+If Ctrl + Shift + O launches Symbols then remove duplicate: Choose Settings | Keymap | filter as "symbol". Double click Navigate | Go to Symbol | Edit | Remove Ctrl+Shift+O | Apply | OK. Repeat this as necessary.
