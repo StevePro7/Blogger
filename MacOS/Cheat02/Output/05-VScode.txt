@@ -1,2 +1,68 @@
+<span style="font-family:verdana;font-size:85%;">
+   
 <u>VS Code</u><br />
-
+Customize VS Code keybindings to align navigation: Launch VS Code | Settings | Keyboard Shortcuts
+<br /><br />
+  
+VS Code<br />
+VS Code Navigation
+<br />
+<!--//table-ExcelVScode - compare w/ ExcelGeneral-->
+<br />
+<!-- -->
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Command</b></td><td valign="top">&nbsp;<b>Keybinding</b></td><td valign="top">&nbsp;<b>Description</b></td></tr>
+<tr><td valign="top">&nbsp;cursorTop</td><td>&nbsp;Ctrl + Home</td><td>&nbsp;Move to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottom</td><td>&nbsp;Ctrl + End</td><td>&nbsp;Move to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeft</td><td>&nbsp;Ctrl + Left</td><td>&nbsp;Move to prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRight</td><td>&nbsp;Ctrl + Right</td><td>&nbsp;Move to next word</td></tr>
+<tr><td valign="top">&nbsp;cursorTopSelect</td><td>&nbsp;Ctrl + Shift + Home</td><td>&nbsp;Select to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottomSelect</td><td>&nbsp;Ctrl + Shift + End</td><td>&nbsp;Select to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeftSelect</td><td>&nbsp;Ctrl + Shift + Left</td><td>&nbsp;Select the prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRightSelect</td><td>&nbsp;Ctrl + Shift + Right</td><td>&nbsp;Select the next word</td></tr>
+<tr><td valign="top">&nbsp;deleteWordLeft</td><td>&nbsp;Alt + Backspace</td><td>&nbsp;Delete the prev word</td></tr>
+</table>
+<br />
+<!-- -->
+<br />
+VS Code Terminal
+<br />
+<!--//table-ExceTerminal - use VS Code as "Terminal" as can manipulate the built-in terminal-->
+<br />
+<!-- -->
+<table width="100%" border="1">
+<tr>
+<td>
+<table width="100%">
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"alt+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+left",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001bb" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+right",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001bf" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+<!-- -->
+  
+</span>
