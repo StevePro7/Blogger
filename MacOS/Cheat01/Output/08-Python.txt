@@ -1,9 +1,9 @@
 <u>Python</u><br />
 As per this <a href="https://steveproxna.blogspot.com/2020/07/python-setup-cheat-sheet.html">post</a>, Python is installed on most Mac OS/X systems by default.  Also, one can install Python when you <a href="https://www.freecodecamp.org/news/install-xcode-command-line-tools">install</a> Xcode Command Line Tools.  Another option is update <a href="https://www.python.org/downloads/macos">Python</a> from the official website e.g. <a href="https://www.python.org/ftp/python/3.12.3/python-3.12.3-macos11.pkg">v3.12</a>.  IMPORTANT: when coding in Python activate the created virtual environment: <b><i>source .venv/bin/activate</i></b>.
 <br /><br />
-As per this post, we installed open source Python distribution Anaconda used for data science.  However, on the Mac after launch Terminal and enter <b>jupyter notebook</b> you may encounter the following couple errors:
+As per this <a href="https://steveproxna.blogspot.com/2020/08/python-setup-cheat-sheet-ii.html">post</a>, we installed open source Python distribution <a href="https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)">Anaconda</a> used for data science.  However, on the Mac after launch Terminal and enter <b>jupyter notebook</b> you may encounter the following couple errors:
 <br /><br />
-<b>Error #1</b>: <i>Jupyter Notebook 500 : Internal Server Error</i> - follow instructions here to resolve the issue:
+<b>Error #1</b>: <i>Jupyter Notebook 500 : Internal Server Error</i> - follow instructions <a href="https://stackoverflow.com/questions/36851746/jupyter-notebook-500-internal-server-error">here</a> to resolve the issue:
 <table width="99%" border="1">
 <tr><td valign="top">
 &nbsp;pip install --upgrade jupyterhub<br />
@@ -11,11 +11,13 @@ As per this post, we installed open source Python distribution Anaconda used for
 </td></tr>
 </table>
 <br />
-<b>Error #2</b>: <i>ModuleNotFoundError: No module named 'jupyter_server.contents'</i> - follow instructions here:
+<b>Error #2</b>: <i>ModuleNotFoundError: No module named 'jupyter_server.contents'</i> - follow instructions <a href="https://stackoverflow.com/questions/77549493/modulenotfounderror-no-module-named-jupyter-server-contents">here</a>:
 <table width="99%" border="1">
 <tr><td valign="top">
-&nbsp;pip install --upgrade jupyterhub<br />
-&nbsp;pip install --upgrade --user nbconvert<br />
+&nbsp;pip uninstall traitlets<br />
+&nbsp;pip install traitlets==5.9.0<br />
+&nbsp;jupyter notebook<br />
+&nbsp;http://localhost:8889/notebooks<br />
 </td></tr>
 </table>
 
