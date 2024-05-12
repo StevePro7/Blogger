@@ -329,9 +329,15 @@ Dump out the contents of the <b>~/.bash_profile</b> file and verify all the foll
 <table width="99%" border="1">
 <tr>
 <td>
-<table width="99%">
-<tr><td valign="top">&nbsp;export BASH_SILENCE_DEPRECATION_WARNING=1</td><td valign="top">&nbsp;# https://support.apple.com/en-us/102360</td></tr>
-<tr><td valign="top">&nbsp;export PS1='\u@\h:\w$ '</td><td valign="top">&nbsp;# Show always fullpath on terminal</td></tr>
+<table width="100%">
+<tr><td valign="top">&nbsp;export BASH_SILENCE_DEPRECATION_WARNING=1</td><td>&nbsp;# https://support.apple.com/en-us/102360</td></tr>
+<tr><td valign="top">&nbsp;export PS1='\u@\h:\w$ '</td><td>&nbsp;# Show always fullpath on terminal</td></tr>
+<tr><td valign="top">&nbsp;eval "$(/opt/homebrew/bin/brew shellenv)"</td><td>&nbsp;# brew</td></tr>
+<tr><td valign="top">&nbsp;alias d='docker'</td><td>&nbsp;# Docker</td></tr>
+<tr><td valign="top">&nbsp;alias k='kubectl'</td><td>&nbsp;# Kubernetes</td></tr>
+<tr><td valign="top">&nbsp;complete -F __start_kubectl k</td><td>&nbsp;# Kubernetes autocomplete</td></tr>
+<tr><td valign="top">&nbsp;source /opt/homebrew/etc/profile.d/bash_completion.sh</td><td>&nbsp;# Kubernetes autocomplete</td></tr>
+<tr><td valign="top">&nbsp;source <(kubectl completion bash)</td><td>&nbsp;# Kubernetes autocomplete</td></tr>
 <tr><td valign="top" colspan="2">&nbsp;alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder &nbsp;&nbsp;/System/Library/CoreServices/Finder.app'</td></tr>
 <tr><td valign="top" colspan="2">&nbsp;alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder &nbsp;&nbsp;/System/Library/CoreServices/Finder.app'</td></tr>
 </table>
