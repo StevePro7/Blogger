@@ -352,6 +352,29 @@ Download and install Command Line Interfaces for all managed cloud providers e.g
 <a href="https://cloud.google.com/sdk/docs/install-sdk#mac">Install</a> the <b>Google</b> Cloud CLI.  Download the Apple M1 <a href="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-473.0.0-darwin-arm.tar.gz">package</a>.  Extract and execute <i>install.sh</i> | <i>gcloud init</i>.
 <br /><br />
 
+<b>Kubernetes</b><br />
+As per this <a href="https://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">post</a>, install Kubernetes with Docker Desktop on Mac OS/X.  Next, install and setup <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-macos">kubectl</a> on the Mac OS/X.  However, the default kubectl autocomplete setup quick <a href="https://kubernetes.io/docs/reference/kubectl/quick-reference">reference</a> may produce the following error
+<br />
+<table width="99%" border="1"><tr><td>&nbsp;<i>bash: completion: function `__start_kubectl` not found</i></td></tr></table>
+<br />
+If you experience this error then <a href="https://stackoverflow.com/questions/45240862/why-doesnt-kubectl-bash-completion-work-on-macos-os-x">here</a> is an alternative approach: first <b>brew install bash bash-completion</b>  Set Terminal to use bash: Settings... | General | Shell open with: Command path <i>/opt/homebrew/bin/bash</i>
+<br /><br />
+Finally, update <b>~/.bash_profile</b>
+<br />
+<table width="99%" border="1">
+<tr><td>
+<table width="99%">
+<tr><td>
+&nbsp;alias k="kubectl"<br />
+&nbsp;complete -F __start_kubectl k<br />
+&nbsp;source /opt/homebrew/etc/profile.d/bash_completion.sh<br />
+&nbsp;source <(kubectl completion bash)<br />
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br />
+
 <!-- -->
 <u>BASH Profile</u><br />
 Dump out the contents of the <b>~/.bash_profile</b> file and verify all the following aliases and commands exist:
