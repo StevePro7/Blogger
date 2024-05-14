@@ -1,14 +1,7 @@
 07 VS code
 20-Apr-20243
 
-TODO - check the directory
-This is where VS code stores custom key bindings
 
-~/Library/Application \Support/Code/User/
-~/Library/Application \Support/Code/User/keybindings.json
-
-Ctrl + Shift + T
-New Terminal
 
 Reference
 Key Bindings for Visual Studio Code
@@ -46,34 +39,42 @@ https://code.visualstudio.com/docs/terminal/basics
 How can I configure Cmd+. to map to Ctrl+C like macOS' built-in terminal?
 The macOS default terminal uses Cmd+. to perform the same as Ctrl+C. To get this behavior in VS Code, add this custom keybinding:
 
-{
-  "key": "cmd+.",
-  "command": "workbench.action.terminal.sendSequence",
-  "when": "terminalFocus",
-  "args": { "text": "\u0003" }
-}
-Wh
-
-
 
 How can I make ctrl+right/left arrow jump words in Visual Studio Code
 https://apple.stackexchange.com/questions/336382/how-can-i-make-ctrlright-left-arrow-jump-words-in-visual-studio-code
 
 
 
-VS Code 02
 
-Open Folder
-Ctrl + K
-Ctrl + O
+DONE
+//TODO - check the directory
+//This is where VS code stores custom key bindings
 
-Code
-Settings...
-Keyboard
-Shortcuts
+//~/Library/Application \Support/Code/User/
+//~/Library/Application \Support/Code/User/keybindings.json
 
-File: Open Folder...
-workbench.action.files.openFolder
+//Ctrl + Shift + T
+//New Terminal
 
-Ctrl + K
-Ctrl + O
+
+
+//{
+//  "key": "cmd+.",
+//  "command": "workbench.action.terminal.sendSequence",
+//  "when": "terminalFocus",
+//  "args": { "text": "\u0003" }
+//}
+
+
+//VS Code 02
+//Open Folder
+//Ctrl + K
+//Ctrl + O
+//Code
+//Settings...
+//Keyboard
+//Shortcuts
+//File: Open Folder...
+//workbench.action.files.openFolder
+//Ctrl + K
+//Ctrl + O

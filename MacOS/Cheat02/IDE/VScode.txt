@@ -2,12 +2,6 @@ VS Code
 11-Apr-2024
 
 
-03.
-Terminal + k8s
-do I want to try and update BASH terminal 'cos wont do auto-complete out-of-box
-TODO - i have info on this...
-
-
 VS Code - must do its own key bindings	TODO
 vscode does not respect ~/Library/KeyBindings/DefaultKeyBinding.dict on macOS
 https://github.com/microsoft/vscode/issues/111950
@@ -16,10 +10,6 @@ https://github.com/microsoft/vscode/issues/111950
   "\UF707" = "paste:";	
   "\UF707" = (insertText:, "works1");
 
-
-
-keybindings.json
-~/Library/Application\ Support/Code/User/keybindings.json
 
 Reference
 https://stackoverflow.com/questions/33791097/how-can-i-change-keyboard-shortcut-bindings-in-visual-studio-code
@@ -33,18 +23,7 @@ cursorHome			remove binding
 cursorHomeSelect		remove binding
 cursorEnd			remove binding
 cursorEndSelect			remove binding
-
-
-cursorTop			Ctrl + Home			move beg file
-cursorTopSelect			Ctrl + Shift + Home		sel. beg file
-cursorBottom			Ctrl + End			move end file
-cursorBottomSelect		Ctrl + Shift + End		sel. end file
-
-
-cursorWordLeft			Ctrl + Left			move prev word 
-cursorWordLeftSelect		Ctrl + Shift + Left		sel. prev word
-cursorWordRight			Ctrl + Right			move next word
-cursorWordRightSelect		Ctrl + Shift + Right		sel. next word
+//cursorTop			Ctrl + Home			move beg file
 
 
 Terminal
@@ -54,6 +33,30 @@ QUOTE
 These commands worked by sending a particular character sequence to the terminal, which was a best effort guess based on what command keybindings terminals use. The problem with these commands was that they were a black box, you needed to literally search through the vscode codebase to figure out how they worked. They have been replaced with custom keybindings for the workbench.action.terminal.sendSequence command, which does the same thing in a generic way.
 
 
+DONE
+//03.
+//Terminal + k8s
+//do I want to try and update BASH terminal 'cos wont do auto-complete out-of-box
+//TODO - i have info on this...
+
+
+//keybindings.json
+//~/Library/Application\ Support/Code/User/keybindings.json
+
+
+//cursorTop			Ctrl + Home			move beg file
+//cursorTopSelect			Ctrl + Shift + Home		sel. beg file
+//cursorBottom			Ctrl + End			move end file
+//cursorBottomSelect		Ctrl + Shift + End		sel. end file
+
+
+//cursorWordLeft			Ctrl + Left			move prev word 
+//cursorWordLeftSelect		Ctrl + Shift + Left		sel. prev word
+//cursorWordRight			Ctrl + Right			move next word
+//cursorWordRightSelect		Ctrl + Shift + Right		sel. next word
+
+
+/**
 DELETE
     {
         "key": "alt+backspace",
@@ -82,3 +85,4 @@ MOVE
         "args": { "text": "\u001bf" },
         "when": "terminalFocus"
     },
+**/
