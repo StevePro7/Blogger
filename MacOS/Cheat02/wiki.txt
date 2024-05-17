@@ -19,39 +19,39 @@ In the previous post, we began looking at using keyboard <a href="https://suppor
 <table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Home</td>	
-<td>&nbsp;Move to beg of line</td>
-<td>&nbsp;Ctrl + Home</td>	
-<td>&nbsp;Move to beg of file</td>
+<td valign="top">&nbsp;Move to beg of line</td>
+<td valign="top">&nbsp;Ctrl + Home</td>	
+<td valign="top">&nbsp;Move to beg of file</td>
 </tr>
 <tr> 
 <td valign="top">&nbsp;End</td>
-<td>&nbsp;Move to end of line</td>
-<td>&nbsp;Ctrl + End</td>	
-<td>&nbsp;Move to end of file</td>
+<td valign="top">&nbsp;Move to end of line</td>
+<td valign="top">&nbsp;Ctrl + End</td>	
+<td valign="top">&nbsp;Move to end of file</td>
 </tr>
 <tr>
 <td valign="top">&nbsp;Ctrl + Left</td>
-<td>&nbsp;Move to prev word</td>
-<td>&nbsp;Ctrl + Shift + Left</td>
-<td>&nbsp;Select the prev word</td>
+<td valign="top">&nbsp;Move to prev word</td>
+<td valign="top">&nbsp;Ctrl + Shift + Left</td>
+<td valign="top">&nbsp;Select the prev word</td>
 </tr>
 <tr>  
 <td valign="top">&nbsp;Ctrl + Right</td>
-<td>&nbsp;Move to next word</td>
-<td>&nbsp;Ctrl + Shift + Right</td>
-<td>&nbsp;Select the next word</td>
+<td valign="top">&nbsp;Move to next word</td>
+<td valign="top">&nbsp;Ctrl + Shift + Right</td>
+<td valign="top">&nbsp;Select the next word</td>
 </tr>
 <tr> 
 <td valign="top">&nbsp;Shift + Home</td>
-<td>&nbsp;Select to beg of line</td>
-<td>&nbsp;Ctrl + Shift + Home</td>	
-<td>&nbsp;Select to beg of file</td>
+<td valign="top">&nbsp;Select to beg of line</td>
+<td valign="top">&nbsp;Ctrl + Shift + Home</td>	
+<td valign="top">&nbsp;Select to beg of file</td>
 </tr>
 <tr>
 <td valign="top">&nbsp;Shift + End</td>
-<td>&nbsp;Select to end of line</td>
-<td>&nbsp;Ctrl + Shift + End</td>
-<td>&nbsp;Select to end of file</td>
+<td valign="top">&nbsp;Select to end of line</td>
+<td valign="top">&nbsp;Ctrl + Shift + End</td>
+<td valign="top">&nbsp;Select to end of file</td>
 </tr>
 </table>
 <!--<br />-->
@@ -86,40 +86,40 @@ Typically, the default key bindings for the Home and End <a href="https://www.ev
 Next key bindings that may not be working is to move <a href="https://apple.stackexchange.com/questions/428543/defaultkeybinding-dict-method-not-working-to-move-cursor-from-word-to-wordwhich">cursor</a> from word to word.  Integrate <a href="https://forum.keyboardmaestro.com/t/os-x-text-system-keybindings/4929/1">Keycode</a> Modifier learnt from the previous <a href="https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html">post</a> to complete custom dict file to change all MasOS key <a href="https://blog.victormendonca.com/2020/04/27/how-to-change-macos-key-bindings">bindings</a>.  Here is my file: 
 <br />
 <!-- -->
-<table width="99%" border="1">
+<table width="100%" border="1">
 <tr>
 <td>
-<table width="99%">
-<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"\UF729" = </td><td>&nbsp;"moveToBeginningOfLine:"</td><td>&nbsp;/* Home Button*/</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"\UF72B" = </td><td>&nbsp;"moveToEndOfLine:"</td><td>&nbsp;/* End  Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"$\UF729" = </td><td>&nbsp;"moveToBeginningOfLineAndModifySelection:"</td><td>&nbsp;/* Shift+ Home Button */ </td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"$\UF72B" = </td><td>&nbsp;"moveToEndOfLineAndModifySelection:"</td><td>&nbsp;/* Shift+ End  Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF729" = </td><td>&nbsp;"moveToBeginningOfDocument:"</td><td>&nbsp;/* Ctrl + Home Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF729" = </td><td>&nbsp;"moveToBeginningOfDocument:"</td><td>&nbsp;/* Alt + Home Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF729" = </td><td>&nbsp;"moveToBeginningOfDocument:"</td><td>&nbsp;/* Win + Home Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF72B" = </td><td>&nbsp;"moveToEndOfDocument:"</td><td>&nbsp;/* Ctrl + End  Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF72B" = </td><td>&nbsp;"moveToEndOfDocument:"</td><td>&nbsp;/* Alt + End  Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF72B" = </td><td>&nbsp;"moveToEndOfDocument:"</td><td>&nbsp;/* Win + End  Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF729" = </td><td>&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + Home Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF729" = </td><td>&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + Home Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF729" = </td><td>&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td>&nbsp;/* Win  + Shift + Home Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF72B" = </td><td>&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + End Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF72B" = </td><td>&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + End Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF72B" = </td><td>&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td>&nbsp;/* Win + Shift + End Button */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF702" = </td><td>&nbsp;"moveWordLeft:"</td><td>&nbsp;/* Ctrl + Left */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF702" = </td><td>&nbsp;"moveWordLeft:"</td><td>&nbsp;/* Alt + Left */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF702" = </td><td>&nbsp;"moveWordLeft:"</td><td>&nbsp;/* Win + Left */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF703" = </td><td>&nbsp;"moveWordRight:"</td><td>&nbsp;/* Ctrl + Right */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF703" = </td><td>&nbsp;"moveWordRight:"</td><td>&nbsp;/* Alt + Right */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF703" = </td><td>&nbsp;"moveWordRight:"</td><td>&nbsp;/* Win + Right */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF702" = </td><td>&nbsp;"moveWordLeftAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + Left */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF702" = </td><td>&nbsp;"moveWordLeftAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + Left */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF702" = </td><td>&nbsp;"moveWordLeftAndModifySelection:"</td><td>&nbsp;/* Win + Shift + Left */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF703" = </td><td>&nbsp;"moveWordRightAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + Right */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF703" = </td><td>&nbsp;"moveWordRightAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + Right */</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF703" = </td><td>&nbsp;"moveWordRightAndModifySelection:"</td><td>&nbsp;/* Win + Shift + Right */</td></tr>
-<tr><td valign="top">&nbsp;}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<table width="100%">
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfLine:"</td><td valign="top">&nbsp;/* Home Button*/</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfLine:"</td><td valign="top">&nbsp;/* End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfLineAndModifySelection:"</td><td valign="top">&nbsp;/* Shift+ Home Button */ </td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfLineAndModifySelection:"</td><td valign="top">&nbsp;/* Shift+ End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocument:"</td><td valign="top">&nbsp;/* Ctrl + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocument:"</td><td valign="top">&nbsp;/* Alt + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocument:"</td><td valign="top">&nbsp;/* Win + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocument:"</td><td valign="top">&nbsp;/* Ctrl + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocument:"</td><td valign="top">&nbsp;/* Alt + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocument:"</td><td valign="top">&nbsp;/* Win + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Win  + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Win + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF702" = </td><td valign="top">&nbsp;"moveWordLeft:"</td><td valign="top">&nbsp;/* Ctrl + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF702" = </td><td valign="top">&nbsp;"moveWordLeft:"</td><td valign="top">&nbsp;/* Alt + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF702" = </td><td valign="top">&nbsp;"moveWordLeft:"</td><td valign="top">&nbsp;/* Win + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF703" = </td><td valign="top">&nbsp;"moveWordRight:"</td><td valign="top">&nbsp;/* Ctrl + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF703" = </td><td valign="top">&nbsp;"moveWordRight:"</td><td valign="top">&nbsp;/* Alt + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF703" = </td><td valign="top">&nbsp;"moveWordRight:"</td><td valign="top">&nbsp;/* Win + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF702" = </td><td valign="top">&nbsp;"moveWordLeftAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF702" = </td><td valign="top">&nbsp;"moveWordLeftAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF702" = </td><td valign="top">&nbsp;"moveWordLeftAndModifySelection:"</td><td valign="top">&nbsp;/* Win + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF703" = </td><td valign="top">&nbsp;"moveWordRightAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF703" = </td><td valign="top">&nbsp;"moveWordRightAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF703" = </td><td valign="top">&nbsp;"moveWordRightAndModifySelection:"</td><td valign="top">&nbsp;/* Win + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;}</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
 </table>
 </td>
 </tr>
@@ -142,14 +142,14 @@ VS Code Navigation
 <br />
 <!--
 <table width="99%" border="1">
-<tr><td valign="top">&nbsp;cursorTop</td><td>&nbsp;Ctrl + Home</td><td>&nbsp;Move to beg of file</td></tr>
-<tr><td valign="top">&nbsp;cursorBottom</td><td>&nbsp;Ctrl + End</td><td>&nbsp;Move to end of file</td></tr>
-<tr><td valign="top">&nbsp;cursorWordLeft</td><td>&nbsp;Ctrl + Left</td><td>&nbsp;Move to prev word</td></tr>
-<tr><td valign="top">&nbsp;cursorWordRight</td><td>&nbsp;Ctrl + Right</td><td>&nbsp;Move to next word</td></tr>
-<tr><td valign="top">&nbsp;cursorTopSelect</td><td>&nbsp;Ctrl + Shift + Home</td><td>&nbsp;Select to beg of file</td></tr>
-<tr><td valign="top">&nbsp;cursorBottomSelect</td><td>&nbsp;Ctrl + Shift + End</td><td>&nbsp;Select to end of file</td></tr>
-<tr><td valign="top">&nbsp;cursorWordLeftSelect</td><td>&nbsp;Ctrl + Shift + Left</td><td>&nbsp;Select the prev word</td></tr>
-<tr><td valign="top">&nbsp;cursorWordRightSelect</td><td>&nbsp;Ctrl + Shift + Right</td><td>&nbsp;Select the next word</td></tr>
+<tr><td valign="top">&nbsp;cursorTop</td><td valign="top">&nbsp;Ctrl + Home</td><td valign="top">&nbsp;Move to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottom</td><td valign="top">&nbsp;Ctrl + End</td><td valign="top">&nbsp;Move to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeft</td><td valign="top">&nbsp;Ctrl + Left</td><td valign="top">&nbsp;Move to prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRight</td><td valign="top">&nbsp;Ctrl + Right</td><td valign="top">&nbsp;Move to next word</td></tr>
+<tr><td valign="top">&nbsp;cursorTopSelect</td><td valign="top">&nbsp;Ctrl + Shift + Home</td><td valign="top">&nbsp;Select to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottomSelect</td><td valign="top">&nbsp;Ctrl + Shift + End</td><td valign="top">&nbsp;Select to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeftSelect</td><td valign="top">&nbsp;Ctrl + Shift + Left</td><td valign="top">&nbsp;Select the prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRightSelect</td><td valign="top">&nbsp;Ctrl + Shift + Right</td><td valign="top">&nbsp;Select the next word</td></tr>
 </table>
 <br />
 -->
@@ -163,30 +163,30 @@ VS Code Terminal
 <tr>
 <td>
 <table width="99%">
-<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"alt+backspace",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001b\u007f" },</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
-<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+backspace",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001b\u007f" },</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
-<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+left",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001bb" },</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
-<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+right",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001bf" },</td></tr>
-<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
-<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"alt+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+left",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001bb" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+right",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001bf" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
 </table>
 </td>
 </tr>
@@ -245,15 +245,15 @@ tidy this section and add URL for Keyboard shortcuts in Excel<br>
 https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f#PickTab=Windows
 <br />
 <table width="99%" border="1">
-<tr><td valign="top">&nbsp;Ctrl + Home</td><td>&nbsp;Move to first cell in upper-left corner</td></tr>
-<tr><td valign="top">&nbsp;Ctrl + End</td><td>&nbsp;Move to last cell in lower-right corner</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Home</td><td valign="top">&nbsp;Move to first cell in upper-left corner</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + End</td><td valign="top">&nbsp;Move to last cell in lower-right corner</td></tr>
 </table>
 This won't work on Mac so use these keys instead!!  
 <table width="99%" border="1">	
-<tr><td valign="top">&nbsp;Ctrl + Left</td><td>&nbsp;Move to first cell of selected row</td></tr>
-<tr><td valign="top">&nbsp;Ctrl + Right</td><td>&nbsp;Move to last cell of selected row</td></tr>
-<tr><td valign="top">&nbsp;Ctrl + Up</td><td>&nbsp;Move to first cell of selected column</td></tr>
-<tr><td valign="top">&nbsp;Ctrl + Down</td><td>&nbsp;Move to last cell of selected column</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Left</td><td valign="top">&nbsp;Move to first cell of selected row</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Right</td><td valign="top">&nbsp;Move to last cell of selected row</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Up</td><td valign="top">&nbsp;Move to first cell of selected column</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Down</td><td valign="top">&nbsp;Move to last cell of selected column</td></tr>
 </table>
 -->
 <br />
