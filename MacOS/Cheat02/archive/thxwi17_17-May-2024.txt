@@ -1,0 +1,262 @@
+<span style="font-family:verdana;font-size:85%;"> 
+
+<!-- 01-Intro	-->
+In the previous <a href="https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html">post</a> we checked out MacOS Setup Cheat Sheet to seamlessly transfer all keyboard shortcuts from Windows to Mac.  Now we would like to transfer all Application navigation as <a href="https://en.wikipedia.org/wiki/Apple_M1">M1</a> powered MacBooks are more appealing for <a href="https://medium.com/@abhishek.quicktech/why-companies-run-better-on-a-mac-than-on-windows-61272da87980">companies</a> than ever.  Especially with the rise of <a href="https://www.linkedin.com/pulse/apple-m1-m2-chips-what-good-deep-learning-denovo-team-fydrf">A.I.</a> requirements for faster data access.  
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiq1YSFVTPkHH46ynNtUAc_Ab4T0F-zolbEIqa7qmPcjHnQ0jo0f2YUfOv-m63uFKNo8myj1HxgYrzBtgeQgy4Wn-kvdEmNotzwNqJkVzhNIStf0Lvf1-8KcRn2-MpXQeLNFU67rUCX6mcXFcYy0Ad3k6p2MAtn8z07MGP45tme7HX16ZiC8zjMc3SLd4Q/s1280/MacOSX.png"><img alt="" border="0" width="98%" height="275px" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiq1YSFVTPkHH46ynNtUAc_Ab4T0F-zolbEIqa7qmPcjHnQ0jo0f2YUfOv-m63uFKNo8myj1HxgYrzBtgeQgy4Wn-kvdEmNotzwNqJkVzhNIStf0Lvf1-8KcRn2-MpXQeLNFU67rUCX6mcXFcYy0Ad3k6p2MAtn8z07MGP45tme7HX16ZiC8zjMc3SLd4Q/s600/MacOSX.png"/></a>
+<!-- -->
+<br />
+Let's check it out!
+<br /><br />
+
+<!-- 02-Navigation	-->
+<u>Navigation</u><br />
+<!--//table-ExcelGeneral Application keyboard -->
+In the previous post, we began looking at using keyboard <a href="https://support.apple.com/en-us/HT201236">shortcuts</a> on Mac.  Now we would like to compare document shortcuts that we are used to for navigation on Windows however now using Ctrl instead of Cmd:
+<br />
+<!-- -->
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;Home</td>	
+<td valign="top">&nbsp;Move to beg of line</td>
+<td valign="top">&nbsp;Ctrl + Home</td>	
+<td valign="top">&nbsp;Move to beg of file</td>
+</tr>
+<tr> 
+<td valign="top">&nbsp;End</td>
+<td valign="top">&nbsp;Move to end of line</td>
+<td valign="top">&nbsp;Ctrl + End</td>	
+<td valign="top">&nbsp;Move to end of file</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Ctrl + Left</td>
+<td valign="top">&nbsp;Move to prev word</td>
+<td valign="top">&nbsp;Ctrl + Shift + Left</td>
+<td valign="top">&nbsp;Select the prev word</td>
+</tr>
+<tr>  
+<td valign="top">&nbsp;Ctrl + Right</td>
+<td valign="top">&nbsp;Move to next word</td>
+<td valign="top">&nbsp;Ctrl + Shift + Right</td>
+<td valign="top">&nbsp;Select the next word</td>
+</tr>
+<tr> 
+<td valign="top">&nbsp;Shift + Home</td>
+<td valign="top">&nbsp;Select to beg of line</td>
+<td valign="top">&nbsp;Ctrl + Shift + Home</td>	
+<td valign="top">&nbsp;Select to beg of file</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Shift + End</td>
+<td valign="top">&nbsp;Select to end of line</td>
+<td valign="top">&nbsp;Ctrl + Shift + End</td>
+<td valign="top">&nbsp;Select to end of file</td>
+</tr>
+</table>
+<!--<br />-->
+The main issue is there doesn't seem to be generic shortcut mapping; navigation seems application specific!
+<br /><br />
+<!-- -->
+
+<!-- 03-TextEdit	-->
+<u>TextEdit</u><br />
+The Mac text system uses generalized key <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html">bindings</a> mechanism that is completely re-mappable by all users.  The standard bindings include all system defaults but you can override bindings in your own custom dict file:
+<br />
+<table width="100%" border="1">
+<tr><td>&nbsp;<b>SYSTEM</b></td><td>&nbsp;/System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict</td></tr>
+<tr><td>&nbsp;<b>CUSTOM</b></td><td>&nbsp;~/Library/KeyBindings/DefaultKeyBinding.dict</td></tr>
+</table>
+<br />
+Here is <a href="https://ss64.com/mac/syntax-keybindings.html">how to</a> override MacOS key bindings:  Launch Terminal and create new a <i>DefaultKeyBinding.dict</i> file:
+<br />
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;sudo bash<br />
+&nbsp;mkdir -p ~/Library/KeyBindings<br />
+&nbsp;touch ~/Library/KeyBindings/DefaultKeyBinding.dict<br />
+&nbsp;open -e ~/Library/KeyBindings/DefaultKeyBinding.dict<br />
+</td>
+</tr>
+</table>
+<br />
+Typically, the default key bindings for the Home and End <a href="https://www.evansweb.info/2005/03/24/mac-os-x-and-home-end-keys">keys</a> in MacOS are different to any other operating system.  Thus you may like to <a href="https://medium.com/@elhayefrat/how-to-fix-the-home-and-end-buttons-for-an-external-keyboard-in-mac-4da773a0d3a2">fix</a> the Home and End buttons first and in combination with Shift and Ctrl keys.
+<br /><br />
+Next key bindings that may not be working is to move <a href="https://apple.stackexchange.com/questions/428543/defaultkeybinding-dict-method-not-working-to-move-cursor-from-word-to-wordwhich">cursor</a> from word to word.  Integrate <a href="https://forum.keyboardmaestro.com/t/os-x-text-system-keybindings/4929/1">Keycode</a> Modifier learnt from the previous <a href="https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html">post</a> to complete custom dict file to change all MasOS key <a href="https://blog.victormendonca.com/2020/04/27/how-to-change-macos-key-bindings">bindings</a>.  Here is my file: 
+<br />
+<!-- -->
+<table width="100%" border="1">
+<tr>
+<td>
+<table width="100%">
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfLine:"</td><td valign="top">&nbsp;/* Home Button*/</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfLine:"</td><td valign="top">&nbsp;/* End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfLineAndModifySelection:"</td><td valign="top">&nbsp;/* Shift+ Home Button */ </td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfLineAndModifySelection:"</td><td valign="top">&nbsp;/* Shift+ End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocument:"</td><td valign="top">&nbsp;/* Ctrl + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocument:"</td><td valign="top">&nbsp;/* Alt + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocument:"</td><td valign="top">&nbsp;/* Win + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocument:"</td><td valign="top">&nbsp;/* Ctrl + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocument:"</td><td valign="top">&nbsp;/* Alt + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocument:"</td><td valign="top">&nbsp;/* Win + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Win  + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td valign="top">&nbsp;/* Win + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF702" = </td><td valign="top">&nbsp;"moveWordLeft:"</td><td valign="top">&nbsp;/* Ctrl + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF702" = </td><td valign="top">&nbsp;"moveWordLeft:"</td><td valign="top">&nbsp;/* Alt + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF702" = </td><td valign="top">&nbsp;"moveWordLeft:"</td><td valign="top">&nbsp;/* Win + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@\UF703" = </td><td valign="top">&nbsp;"moveWordRight:"</td><td valign="top">&nbsp;/* Ctrl + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^\UF703" = </td><td valign="top">&nbsp;"moveWordRight:"</td><td valign="top">&nbsp;/* Alt + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~\UF703" = </td><td valign="top">&nbsp;"moveWordRight:"</td><td valign="top">&nbsp;/* Win + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF702" = </td><td valign="top">&nbsp;"moveWordLeftAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF702" = </td><td valign="top">&nbsp;"moveWordLeftAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF702" = </td><td valign="top">&nbsp;"moveWordLeftAndModifySelection:"</td><td valign="top">&nbsp;/* Win + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"@$\UF703" = </td><td valign="top">&nbsp;"moveWordRightAndModifySelection:"</td><td valign="top">&nbsp;/* Ctrl + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"^$\UF703" = </td><td valign="top">&nbsp;"moveWordRightAndModifySelection:"</td><td valign="top">&nbsp;/* Alt + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"~$\UF703" = </td><td valign="top">&nbsp;"moveWordRightAndModifySelection:"</td><td valign="top">&nbsp;/* Win + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;}</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<!--<br />-->
+For completeness, here is a thorough KeyBindings <a href="http://xahlee.info/kbd/osx_keybinding.html">tutorial</a> explaining MacOS Keybinding <a href="http://xahlee.info/kbd/osx_keybinding_key_syntax.html">Key Syntax</a> and the <a href="http://xahlee.info/kbd/osx_keybinding_action_code.html">Action Code</a>.  Detailed <a href="https://web.archive.org/web/20160314030051/http://osxnotes.net/keybindings.html">DefaultKeyBinding</a>.dict examples shared online by users <a href="https://gist.github.com/Belphemur/5a45ce6826c609a65421cc10a1e607c1">Belphemu</a>, <a href="https://gist.github.com/trusktr/1e5e516df4e8032cbc3d">trusktr</a> and <a href="https://gist.github.com/zsimic/1367779">zsimic</a>.
+<br /><br />
+Finally, in researching Default Key Bindings many posts promote <a href="https://karabiner-elements.pqrs.org">Karabiner-Elements</a> as a powerful keyboard customizer for macOS.  However, it has been <a href="https://www.reddit.com/r/MacOS/comments/mxq20w/option_leftright_arrows_remapped_to">recommended</a> not to use on M1 hardware due to kernel panics.
+<br /><br />
+
+<!- 04-Terminal -->
+<u>Terminal</u><br />
+Ideally we would like to update navigation on Terminal due to frequent use: Terminal | Settings... | Profiles.  Keyboard tab customize Key and Action settings.  Check <i>Use Option as Meta Key</i> to "<a href="https://stackoverflow.com/questions/327664/mac-os-x-terminal-map-optiondelete-to-backward-delete-word">backward delete word</a>".  Unfortunately, Terminal navigation not aligned therefore will prefer IDEs like VS Code or PyCharm terminals.
+<br /><br />
+  
+VS Code<br />
+VS Code Navigation
+<br />
+<!--//table-ExcelVScode - compare w/ ExcelGeneral-->
+<br />
+<!--
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;cursorTop</td><td valign="top">&nbsp;Ctrl + Home</td><td valign="top">&nbsp;Move to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottom</td><td valign="top">&nbsp;Ctrl + End</td><td valign="top">&nbsp;Move to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeft</td><td valign="top">&nbsp;Ctrl + Left</td><td valign="top">&nbsp;Move to prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRight</td><td valign="top">&nbsp;Ctrl + Right</td><td valign="top">&nbsp;Move to next word</td></tr>
+<tr><td valign="top">&nbsp;cursorTopSelect</td><td valign="top">&nbsp;Ctrl + Shift + Home</td><td valign="top">&nbsp;Select to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottomSelect</td><td valign="top">&nbsp;Ctrl + Shift + End</td><td valign="top">&nbsp;Select to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeftSelect</td><td valign="top">&nbsp;Ctrl + Shift + Left</td><td valign="top">&nbsp;Select the prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRightSelect</td><td valign="top">&nbsp;Ctrl + Shift + Right</td><td valign="top">&nbsp;Select the next word</td></tr>
+</table>
+<br />
+-->
+<br />
+VS Code Terminal
+<br />
+<!--//table-ExceTerminal - use VS Code as "Terminal" as can manipulate the built-in terminal-->
+<br />
+<!--
+<table width="100%" border="1">
+<tr>
+<td>
+<table width="100%">
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"alt+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+left",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001bb" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"cmd+right",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"args":</td><td valign="top">&nbsp;{ "text": "\u001bf" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"when":</td><td valign="top">&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />
+-->
+
+<u>PyCharm Community</u><br />
+<!--//images-VSCodekeymap01-->
+<br />
+<table width="100%" border="1">
+<tr>
+<td>
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIPiZRtbCmjc4VVuvn-yVVkrFPlLAIGwpDRNFsfc6r-sRV6qmh3PcXZuc7tByM1v1QEdAyKcr95Yl7pTp3-BCsr7Nk0Rnt-RemYDzxFxDb3KXFTyK84Ub3Q4lsqc3hJYLgYihulZchKCeuV5WfPVqttdwP72gfGGZpP7-xGaub-lzRNN3XW2CWqytBXGM/s980/VSCodekeymap01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIPiZRtbCmjc4VVuvn-yVVkrFPlLAIGwpDRNFsfc6r-sRV6qmh3PcXZuc7tByM1v1QEdAyKcr95Yl7pTp3-BCsr7Nk0Rnt-RemYDzxFxDb3KXFTyK84Ub3Q4lsqc3hJYLgYihulZchKCeuV5WfPVqttdwP72gfGGZpP7-xGaub-lzRNN3XW2CWqytBXGM/s600/VSCodekeymap01.png"/></a>
+<!-- -->
+</td>
+<!--<br />-->
+<!--//images-VSCodekeymap02 | VScode (macOS)-->
+<!--<br />-->
+<td>
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit4hn7b3yCPKaPab8yR_EWt0Ex-qfirlAUx-tOxlA0ZJmz-2YdSIJnzNCVwTilyv5zr3r0yjGUJ2nzT2AvbsPrItNn2JCChsf_0pPXH46Zvz5sJ1GblCxF0edJt4Pez7-pAIejlU77v5Isb-eUzUbepPx6ZWiHHvYmIDN6TERUA0Zx11KBsebYakm1Eyw/s981/VSCodekeymap02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit4hn7b3yCPKaPab8yR_EWt0Ex-qfirlAUx-tOxlA0ZJmz-2YdSIJnzNCVwTilyv5zr3r0yjGUJ2nzT2AvbsPrItNn2JCChsf_0pPXH46Zvz5sJ1GblCxF0edJt4Pez7-pAIejlU77v5Isb-eUzUbepPx6ZWiHHvYmIDN6TERUA0Zx11KBsebYakm1Eyw/s600/VSCodekeymap02.png"/></a>
+</td>
+<!--<br />-->
+</tr>
+<!-- -->
+</table>
+<br />
+
+<!--//table-ExcelPyCharm PyCharm - update keyboard shortcuts - Install VS Code (Mac OS) plug-in first!-->
+<br />
+<!-- -->
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start</td><td>&nbsp;Ctrl + Home</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text End</td><td>&nbsp;Ctrl + End</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start with Selection</td><td>&nbsp;Ctrl + Shift + Home</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text End with Selection</td><td>&nbsp;Ctrl + Shift + End</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Previous Word</td><td>&nbsp;Ctrl + Left</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Next Word</td><td>&nbsp;Ctrl + Right</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Previous Word with Selection</td><td>&nbsp;Ctrl + Shift + Left</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Next Word with Selection</td><td>&nbsp;Ctrl + Shift + Right</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Up and Scroll with Selection</td><td>&nbsp;Ctrl + Shift + Up</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Down and Scroll with Selection</td><td>&nbsp;Ctrl + Shift + Down</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Delete to Word Start</td><td>&nbsp;Alt + Backspace</td></tr>
+<tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Back</td><td>&nbsp;Alt + Up</td></tr>
+<tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Forward</td><td>&nbsp;Alt + Down</td></tr>
+</table>
+<br />
+<!-- -->
+<br />
+  
+<!--
+table-ExcelXLnac Excel navigation<br />
+tidy this section and add URL for Keyboard shortcuts in Excel<br>
+https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f#PickTab=Windows
+<br />
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;Ctrl + Home</td><td valign="top">&nbsp;Move to first cell in upper-left corner</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + End</td><td valign="top">&nbsp;Move to last cell in lower-right corner</td></tr>
+</table>
+This won't work on Mac so use these keys instead!!  
+<table width="100%" border="1">	
+<tr><td valign="top">&nbsp;Ctrl + Left</td><td valign="top">&nbsp;Move to first cell of selected row</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Right</td><td valign="top">&nbsp;Move to last cell of selected row</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Up</td><td valign="top">&nbsp;Move to first cell of selected column</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Down</td><td valign="top">&nbsp;Move to last cell of selected column</td></tr>
+</table>
+-->
+<br />
+SUMMARY<br />  
+-->
+</span>
