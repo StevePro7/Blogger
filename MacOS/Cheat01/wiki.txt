@@ -325,7 +325,7 @@ Finally, keyboard shortcuts like Ctrl + C or Ctrl + Z may <a href="https://super
 <b>Homebrew</b><br />
 <a href="https://brew.sh">Homebrew</a> is a package manager for macOS which lets you install free and open-source software using your terminal.  Launch terminal and issue the following commands to install Homebrew and update bash_profile:
 <br />
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr>
 <td valign="top">
 &nbsp;/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -337,7 +337,7 @@ Finally, keyboard shortcuts like Ctrl + C or Ctrl + Z may <a href="https://super
 <br />
 Install free and open-source software for Cloud Computing for example: <a href="https://formulae.brew.sh/formula/minikube">minikube</a>, <a href="https://formulae.brew.sh/formula/kind">KinD</a>, <a href="https://helm.sh/docs/intro/install">Helm</a>, <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli">Terraform</a>:
 <br />
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr><td valign="top">&nbsp;minikube</td><td>&nbsp;brew install minikube</td></tr>
 <tr><td valign="top">&nbsp;KinD</td><td>&nbsp;brew install kind</td></tr>
 <tr><td valign="top">&nbsp;Helm</td><td>&nbsp;brew install helm</td></tr>
@@ -382,7 +382,7 @@ Dump out the contents of the <b>~/.bash_profile</b> file and verify all the foll
 <table width="99%" border="1">
 <tr>
 <td>
-<table width="100%">
+<table width="99%">
 <tr><td valign="top">&nbsp;export BASH_SILENCE_DEPRECATION_WARNING=1</td><td>&nbsp;# https://support.apple.com/en-us/102360</td></tr>
 <tr><td valign="top">&nbsp;export PS1='\u@\h:\w$ '</td><td>&nbsp;# Show always fullpath on terminal</td></tr>
 <tr><td valign="top">&nbsp;eval "$(/opt/homebrew/bin/brew shellenv)"</td><td>&nbsp;# brew</td></tr>
