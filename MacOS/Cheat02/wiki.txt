@@ -16,7 +16,7 @@ Let's check it out!
 In the previous post, we began looking at using keyboard <a href="https://support.apple.com/en-us/HT201236">shortcuts</a> on Mac.  Now we would like to compare document shortcuts that we are used to for navigation on Windows however now using Ctrl instead of Cmd:
 <br />
 <!-- -->
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr>
 <td valign="top">&nbsp;Home</td>	
 <td valign="top">&nbsp;Move to beg of line</td>
@@ -63,14 +63,14 @@ The main issue is there doesn't seem to be generic shortcut mapping; navigation 
 <u>TextEdit</u><br />
 The Mac text system uses generalized key <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html">bindings</a> mechanism that is completely re-mappable by all users.  The standard bindings include all system defaults but you can override bindings in your own custom dict file:
 <br />
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr><td>&nbsp;<b>SYSTEM</b></td><td>&nbsp;/System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict</td></tr>
 <tr><td>&nbsp;<b>CUSTOM</b></td><td>&nbsp;~/Library/KeyBindings/DefaultKeyBinding.dict</td></tr>
 </table>
 <br />
 Here is <a href="https://ss64.com/mac/syntax-keybindings.html">how to</a> override MacOS key bindings:  Launch Terminal and create new a <i>DefaultKeyBinding.dict</i> file:
 <br />
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr>
 <td>
 &nbsp;sudo bash<br />
@@ -86,10 +86,10 @@ Typically, the default key bindings for the Home and End <a href="https://www.ev
 Next key bindings that may not be working is to move <a href="https://apple.stackexchange.com/questions/428543/defaultkeybinding-dict-method-not-working-to-move-cursor-from-word-to-wordwhich">cursor</a> from word to word.  Integrate <a href="https://forum.keyboardmaestro.com/t/os-x-text-system-keybindings/4929/1">Keycode</a> Modifier learnt from the previous <a href="https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html">post</a> to complete custom dict file to change all MasOS key <a href="https://blog.victormendonca.com/2020/04/27/how-to-change-macos-key-bindings">bindings</a>.  Here is my file: 
 <br />
 <!-- -->
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr>
 <td>
-<table width="100%">
+<table width="99%">
 <tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
 <tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"\UF729" = </td><td valign="top">&nbsp;"moveToBeginningOfLine:"</td><td valign="top">&nbsp;/* Home Button*/</td></tr>
 <tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"\UF72B" = </td><td valign="top">&nbsp;"moveToEndOfLine:"</td><td valign="top">&nbsp;/* End  Button */</td></tr>
@@ -141,7 +141,7 @@ VS Code Navigation
 <!--//table-ExcelVScode - compare w/ ExcelGeneral-->
 <br />
 <!--
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr><td valign="top">&nbsp;cursorTop</td><td valign="top">&nbsp;Ctrl + Home</td><td valign="top">&nbsp;Move to beg of file</td></tr>
 <tr><td valign="top">&nbsp;cursorBottom</td><td valign="top">&nbsp;Ctrl + End</td><td valign="top">&nbsp;Move to end of file</td></tr>
 <tr><td valign="top">&nbsp;cursorWordLeft</td><td valign="top">&nbsp;Ctrl + Left</td><td valign="top">&nbsp;Move to prev word</td></tr>
@@ -159,10 +159,10 @@ VS Code Terminal
 <!--//table-ExceTerminal - use VS Code as "Terminal" as can manipulate the built-in terminal-->
 <br />
 <!--
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr>
 <td>
-<table width="100%">
+<table width="99%">
 <tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
 <tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"alt+backspace",</td></tr>
 <tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
@@ -197,7 +197,7 @@ VS Code Terminal
 <u>PyCharm Community</u><br />
 <!--//images-VSCodekeymap01-->
 <br />
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr>
 <td>
 <!-- -->
@@ -220,7 +220,7 @@ VS Code Terminal
 <!--//table-ExcelPyCharm PyCharm - update keyboard shortcuts - Install VS Code (Mac OS) plug-in first!-->
 <br />
 <!-- -->
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start</td><td>&nbsp;Ctrl + Home</td></tr>
 <tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text End</td><td>&nbsp;Ctrl + End</td></tr>
 <tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start with Selection</td><td>&nbsp;Ctrl + Shift + Home</td></tr>
@@ -244,12 +244,12 @@ table-ExcelXLnac Excel navigation<br />
 tidy this section and add URL for Keyboard shortcuts in Excel<br>
 https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f#PickTab=Windows
 <br />
-<table width="100%" border="1">
+<table width="99%" border="1">
 <tr><td valign="top">&nbsp;Ctrl + Home</td><td valign="top">&nbsp;Move to first cell in upper-left corner</td></tr>
 <tr><td valign="top">&nbsp;Ctrl + End</td><td valign="top">&nbsp;Move to last cell in lower-right corner</td></tr>
 </table>
 This won't work on Mac so use these keys instead!!  
-<table width="100%" border="1">	
+<table width="99%" border="1">	
 <tr><td valign="top">&nbsp;Ctrl + Left</td><td valign="top">&nbsp;Move to first cell of selected row</td></tr>
 <tr><td valign="top">&nbsp;Ctrl + Right</td><td valign="top">&nbsp;Move to last cell of selected row</td></tr>
 <tr><td valign="top">&nbsp;Ctrl + Up</td><td valign="top">&nbsp;Move to first cell of selected column</td></tr>
