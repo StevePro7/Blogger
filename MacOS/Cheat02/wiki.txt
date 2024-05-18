@@ -135,34 +135,42 @@ Finally, in researching Default Key Bindings many posts promote <a href="https:/
 Ideally we would like to update navigation on Terminal due to frequent use: Terminal | Settings... | Profiles.  Keyboard tab customize Key and Action settings.  Check <i>Use Option as Meta Key</i> to "<a href="https://stackoverflow.com/questions/327664/mac-os-x-terminal-map-optiondelete-to-backward-delete-word">backward delete word</a>".  Unfortunately, Terminal navigation not aligned therefore will prefer IDEs like VS Code or PyCharm terminals.
 <br /><br />
   
-VS Code<br />
-VS Code Navigation
-<br />
+<u>VS Code</u><br />
+Customize VS Code keybindings to align navigation: Launch VS Code | Settings | Keyboard Shortcuts | Add:
 <!--//table-ExcelVScode - compare w/ ExcelGeneral-->
 <br />
-<!--
-<table width="99%" border="1">
-<tr><td valign="top">&nbsp;cursorTop</td><td valign="top">&nbsp;Ctrl + Home</td><td valign="top">&nbsp;Move to beg of file</td></tr>
-<tr><td valign="top">&nbsp;cursorBottom</td><td valign="top">&nbsp;Ctrl + End</td><td valign="top">&nbsp;Move to end of file</td></tr>
-<tr><td valign="top">&nbsp;cursorWordLeft</td><td valign="top">&nbsp;Ctrl + Left</td><td valign="top">&nbsp;Move to prev word</td></tr>
-<tr><td valign="top">&nbsp;cursorWordRight</td><td valign="top">&nbsp;Ctrl + Right</td><td valign="top">&nbsp;Move to next word</td></tr>
-<tr><td valign="top">&nbsp;cursorTopSelect</td><td valign="top">&nbsp;Ctrl + Shift + Home</td><td valign="top">&nbsp;Select to beg of file</td></tr>
-<tr><td valign="top">&nbsp;cursorBottomSelect</td><td valign="top">&nbsp;Ctrl + Shift + End</td><td valign="top">&nbsp;Select to end of file</td></tr>
-<tr><td valign="top">&nbsp;cursorWordLeftSelect</td><td valign="top">&nbsp;Ctrl + Shift + Left</td><td valign="top">&nbsp;Select the prev word</td></tr>
-<tr><td valign="top">&nbsp;cursorWordRightSelect</td><td valign="top">&nbsp;Ctrl + Shift + Right</td><td valign="top">&nbsp;Select the next word</td></tr>
+<!-- -->
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Command</b></td><td valign="top">&nbsp;<b>Keybinding</b></td><td valign="top">&nbsp;<b>Description</b></td></tr>
+<tr><td valign="top">&nbsp;cursorTop</td><td>&nbsp;Ctrl + Home</td><td>&nbsp;Move to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottom</td><td>&nbsp;Ctrl + End</td><td>&nbsp;Move to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeft</td><td>&nbsp;Ctrl + Left</td><td>&nbsp;Move to prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRight</td><td>&nbsp;Ctrl + Right</td><td>&nbsp;Move to next word</td></tr>
+<tr><td valign="top">&nbsp;cursorTopSelect</td><td>&nbsp;Ctrl + Shift + Home</td><td>&nbsp;Select to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottomSelect</td><td>&nbsp;Ctrl + Shift + End</td><td>&nbsp;Select to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeftSelect</td><td>&nbsp;Ctrl + Shift + Left</td><td>&nbsp;Select the prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRightSelect</td><td>&nbsp;Ctrl + Shift + Right</td><td>&nbsp;Select the next word</td></tr>
+<tr><td valign="top">&nbsp;deleteWordLeft</td><td>&nbsp;Alt + Backspace</td><td>&nbsp;Delete the prev word</td></tr>
 </table>
 <br />
--->
+Continue to customize Menu keyboard shortcuts that one is accustomed to aligning VS Code navigation e.g.:
+<br /> 
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;<b>Command</b></td><td valign="top">&nbsp;<b>Keybinding</b></td><td valign="top">&nbsp;<b>Description</b></td></tr>
+<tr><td valign="top">&nbsp;File: Open Folder...</td><td>&nbsp;Ctrl + K Ctrl + O</td><td>&nbsp;workbench.action.files.openFolderViaWorkspace</td></tr>
+<tr><td valign="top">&nbsp;Terminal: Clear</td><td>&nbsp;Ctrl + L</td><td>&nbsp;workbench.action.terminal.clear</td></tr>
+<tr><td valign="top">&nbsp;Terminal: Create New Terminal</td><td>&nbsp;Ctrl + Shift + T</td><td>&nbsp;workbench.action.terminal.new</td></tr>
+</table>
 <br />
-VS Code Terminal
-<br />
+<!-- -->
+Modify Terminal keyboard shortcuts in <b><i>~/Library/Application\ Support/Code/User/keybindings.json</i></b>:
 <!--//table-ExceTerminal - use VS Code as "Terminal" as can manipulate the built-in terminal-->
 <br />
-<!--
-<table width="99%" border="1">
+<!-- -->
+<table width="100%" border="1">
 <tr>
 <td>
-<table width="99%">
+<table width="100%">
 <tr><td valign="top">&nbsp;{</td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td></tr>
 <tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"key":</td><td valign="top">&nbsp;"alt+backspace",</td></tr>
 <tr><td valign="top">&nbsp;</td><td valign="top">&nbsp;"command":</td><td valign="top">&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
@@ -192,7 +200,8 @@ VS Code Terminal
 </tr>
 </table>
 <br />
--->
+<!-- -->
+
 
 <u>PyCharm Community</u><br />
 <!--//images-VSCodekeymap01-->
