@@ -1,7 +1,4 @@
 <span style="font-family:verdana;font-size:85%;"> 
-
-
-  
   
 <!-- 01-Intro	-->
 In the previous <a href="https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html">post</a> we checked out MacOS Setup Cheat Sheet to seamlessly transfer all keyboard shortcuts from Windows to Mac.  Now we would like to transfer all Application navigation as <a href="https://en.wikipedia.org/wiki/Apple_M1">M1</a> powered MacBooks are more appealing for <a href="https://medium.com/@abhishek.quicktech/why-companies-run-better-on-a-mac-than-on-windows-61272da87980">companies</a> than ever.  Especially with the rise of <a href="https://www.linkedin.com/pulse/apple-m1-m2-chips-what-good-deep-learning-denovo-team-fydrf">A.I.</a> requirements for faster data access.  
@@ -138,8 +135,9 @@ Finally, in researching Default Key Bindings many posts promote <a href="https:/
 Ideally we would like to update navigation on Terminal due to frequent use: Terminal | Settings... | Profiles.  Keyboard tab customize Key and Action settings.  Check <i>Use Option as Meta Key</i> to "<a href="https://stackoverflow.com/questions/327664/mac-os-x-terminal-map-optiondelete-to-backward-delete-word">backward delete word</a>".  Unfortunately, Terminal navigation not aligned therefore will prefer IDEs like VS Code or PyCharm terminals.
 <br /><br />
   
+<!- 05-VScode -->
 <u>VS Code</u><br />
-Visual Studio Code is a cross-platform code editor available on Windows, Linux and Mac.  However, unlike the TextEdit, VS Code does not respect DefaultKeyBinding.dict on MacOS.  Therefore, change keyboard shorcuts!
+Visual Studio Code is a cross-platform code <a href="https://code.visualstudio.com/docs/editor/whyvscode">editor</a> available on Windows, Linux and Mac.  However, unlike the TextEdit, VS Code does not <a href="https://github.com/microsoft/vscode/issues/111950">respect</a> DefaultKeyBinding.dict on MacOS.  Therefore, <a href="https://stackoverflow.com/questions/33791097/how-can-i-change-keyboard-shortcut-bindings-in-visual-studio-code">change</a> keyboard shorcuts!
 <br /><br />
 Customize VS Code keybindings to align navigation: Launch VS Code | Settings | Keyboard Shortcuts | Add:
 <!--//table-ExcelVScode - compare w/ ExcelGeneral-->
@@ -169,7 +167,7 @@ Continue to customize Menu keyboard shortcuts that one is accustomed to aligning
 </table>
 <br />
 <!-- -->
-The keybindings for VS Code are updated in <i>~/Library/Application\ Support/Code/User/keybindings.json</i> file.  Update keybindings.json directly for Terminal keyboard shortcuts like delete word prior + cursor movement:
+The <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindings</a> for VS Code are updated in <i>~/Library/Application\ Support/Code/User/keybindings.json</i> file.  Update keybindings.json directly for Terminal keyboard shortcuts like <a href="https://stackoverflow.com/questions/57824640/how-to-delete-the-prior-word-with-vs-code-terminal">delete</a> word prior + cursor <a href="https://apple.stackexchange.com/questions/336382/how-can-i-make-ctrlright-left-arrow-jump-words-in-visual-studio-code">movement</a>:
 <!--//table-ExceTerminal - use VS Code as "Terminal" as can manipulate the built-in terminal-->
 <br />
 <!-- -->
@@ -207,7 +205,7 @@ The keybindings for VS Code are updated in <i>~/Library/Application\ Support/Cod
 </table>
 <br />
 <!-- -->
-
+  
 <u>PyCharm Community</u><br />
 <!--//images-VSCodekeymap01-->
 <br />
