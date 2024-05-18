@@ -278,9 +278,63 @@ Keyboard <a href="https://support.microsoft.com/en-us/office/keyboard-shortcuts-
 <br /><br />
 <b>pgAdmin</b><br />
 <a href="https://www.pgadmin.org/download/pgadmin-4-macos">Download</a> and install local <a href="https://www.pgadmin.org">pgAdmin</a> database client on <a href="https://www.postgresql.org/ftp/pgadmin/pgadmin4/v8.6/macos">Mac</a> OS/X to administer and PostgreSQL <a href="https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v8.6/macos/pgadmin4-8.6-arm64.dmg">instances</a>.
+<br /><br />
+
 <!-- 09-PyCharmProf	-->
+<u>PyCharm Professional</u><br />
+After installing Postgres server one can use pgAdmin client for data access.  However, it seems challenging to customize navigation here.  An excellent alternative is Database Tools + SQL <a href="https://www.jetbrains.com/help/pycharm/postgresql.html">plugin</a> available from PyCharm.
+<br /><br />  
+This plugin is available only in PyCharm Professional but may prove to be a valuable investment longterm <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>PyCharm Community</b></td>
+<td valign="top">&nbsp;<b>PyCharm Professional</b></td>
+</tr>
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkaIYm2wy4jbMF-RGqe-7lailnzgSLwlpcVct76K9Lk9f8LhDj7NvlZ_9Dl-sQrQaKExNPeiBvITMc2GL852sKr6I9HypIBEKhna8vQfG2Z5UbIHMtDyFOdNI9DtG3tj8bkPvGjV7zXdGULSmVCqSjMaYgDdejgVoCkF88Qo2rDkvowOYnjZNmkzkcGTc/s730/00-DatabaesToolsCE.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkaIYm2wy4jbMF-RGqe-7lailnzgSLwlpcVct76K9Lk9f8LhDj7NvlZ_9Dl-sQrQaKExNPeiBvITMc2GL852sKr6I9HypIBEKhna8vQfG2Z5UbIHMtDyFOdNI9DtG3tj8bkPvGjV7zXdGULSmVCqSjMaYgDdejgVoCkF88Qo2rDkvowOYnjZNmkzkcGTc/s600/00-DatabaesToolsCE.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgilr4GMj_WPyKvePmd5U4WR7BNjn0wQ1xDKTajthEgEv7eCzp9aKdLMyUd27_wB-Wgu2L4BcsOngLV6EzfLiDUkXiAZFVDFXdnYEoeXB53XuUkNt5pPDN135DqMhxRUKlv6lBLkZcsbE4TSOHXvmZr2IEAat7_FxBN8l14a9f0JNgJKKvVKPr6tsiJjdM/s725/01-DatabaseToolsProf.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgilr4GMj_WPyKvePmd5U4WR7BNjn0wQ1xDKTajthEgEv7eCzp9aKdLMyUd27_wB-Wgu2L4BcsOngLV6EzfLiDUkXiAZFVDFXdnYEoeXB53XuUkNt5pPDN135DqMhxRUKlv6lBLkZcsbE4TSOHXvmZr2IEAat7_FxBN8l14a9f0JNgJKKvVKPr6tsiJjdM/s600/01-DatabaseToolsProf.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+<a href="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1">Download</a> and install PyCharm Professional for <a href="https://www.jetbrains.com/pycharm/download/?section=mac">macOS</a>.  Launch PyCharm Professional.  Import Settings from PyCharm Community Edition.  Thus you should have all navigation aligned!  Note the Database Tools + SQL plugin will be enabled by default.  Interesting plugins PostgreSQL Debugger and SQL Optimizer + Indexing.
+<br /><br />
+Connect to database: View menu | Database | Click "+" | Data Source | PostgreSQL.  Enter credentials | OK.
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiznRAKflWQHhAcaEjCmcjlWXXzs6LEqMnZ2UBHkwehdEgP83AtOBOdltQgJt1Tc8IdeRO2OgbV6_IQimXKt-Jxsj6WNEvLqlIAIxNzXHyfITGedzgJ5F4BxUPGriUb9mu9lpkIxpMPYyqtrvIGnumptbj7ktNo3QUra3dhh7LewiUmP8zyZwfmV2azbgM/s563/02-DataSource.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiznRAKflWQHhAcaEjCmcjlWXXzs6LEqMnZ2UBHkwehdEgP83AtOBOdltQgJt1Tc8IdeRO2OgbV6_IQimXKt-Jxsj6WNEvLqlIAIxNzXHyfITGedzgJ5F4BxUPGriUb9mu9lpkIxpMPYyqtrvIGnumptbj7ktNo3QUra3dhh7LewiUmP8zyZwfmV2azbgM/s600/02-DataSource.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje65CiY8KDxIMk9DxH42Bppg7fcIB9iQmi-kl1yyBIoKPbVYGvU4fGReMujlAlSK6Tn3RUwTsxT8B-80U7IJx_ikuc1kPjvCEBjmBOlJGwqK0pmK1DTGW7lRW3I1KO1Nsj9h0Pc6kBi96X1RYt-QhE7yXD53IRMKQKfl6felKnK3j13O8ViK4SL1b2paw/s551/03-DatabaseConnection.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje65CiY8KDxIMk9DxH42Bppg7fcIB9iQmi-kl1yyBIoKPbVYGvU4fGReMujlAlSK6Tn3RUwTsxT8B-80U7IJx_ikuc1kPjvCEBjmBOlJGwqK0pmK1DTGW7lRW3I1KO1Nsj9h0Pc6kBi96X1RYt-QhE7yXD53IRMKQKfl6felKnK3j13O8ViK4SL1b2paw/s600/03-DatabaseConnection.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+Checkout the PyCharm <a href="https://www.jetbrains.com/help/pycharm/run-a-query.html">documentation</a> to Run queries.  Align F5 to Execute queries similar to SQL Server Mgt Studio: Settings | Keymap | Database | Console Toolbar | Execute.  Right click | Add keyboard shortcut | F5.
+<br /><br />
+Checkout the PyCharm <a href="https://www.jetbrains.com/help/pycharm/code-style-sql-case.html">documentation</a> to update Word Case as per SQL convention: Settings | Editor | Code Style | SQL | PostgreSQL.  Inherit general SQL style	DISABLE | Word Case | Keywords To upper.  Also update Code Completion as Ctrl + Space: Settings | Keymap | Main Menu | Code | Code Completion | Ctrl + Space.
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgidazDfD8fbnvwFRL_-ZsLrbmzFoeKYZJGeutzzJM7StXIk9RA3r9Fp7yDmpJFeGp-_WGGFYgFd_Ngm5hs-ihlLNJMDKbq86H0gJH1daq9EQEL_TTwP08PwcoYFbYkzY1fKGZcw7hY8s5KBuPbXroJbJbMLa7XPfHmSggzSVVblAuSg5raQO3xNBCkV7A/s673/04-DatabaseCodeStyle.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgidazDfD8fbnvwFRL_-ZsLrbmzFoeKYZJGeutzzJM7StXIk9RA3r9Fp7yDmpJFeGp-_WGGFYgFd_Ngm5hs-ihlLNJMDKbq86H0gJH1daq9EQEL_TTwP08PwcoYFbYkzY1fKGZcw7hY8s5KBuPbXroJbJbMLa7XPfHmSggzSVVblAuSg5raQO3xNBCkV7A/s600/04-DatabaseCodeStyle.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQG8vMhAHzMxB1KsziTkdjysWQ-D8ponte1j4n3d7pF7_KcEEi0nLYHmthwaqUIPSRdrFxato_M2SqHzZ85Tc2WbjxFvCbbVlqLWqm1V4teotuSLuNT3i2UB0PSjNiLsWOqgrNGHVnVUYPCsu9qCykSzxF5k4oYZDC7mB14nH2LkjNd1CLGjRSYGVN1DU/s652/05-CodeCompletion.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQG8vMhAHzMxB1KsziTkdjysWQ-D8ponte1j4n3d7pF7_KcEEi0nLYHmthwaqUIPSRdrFxato_M2SqHzZ85Tc2WbjxFvCbbVlqLWqm1V4teotuSLuNT3i2UB0PSjNiLsWOqgrNGHVnVUYPCsu9qCykSzxF5k4oYZDC7mB14nH2LkjNd1CLGjRSYGVN1DU/s600/05-CodeCompletion.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+Finally in Settings | Editor | General | Code Completion enable the following options: Automatically insert single suggestions, Sort suggestions alphabetically, Show suggestions as you type, Match case: First letter.
+<br /><br />
   
-<!-- 10-Summaryn	-->
-SUMMARY<br />  
+<!-- 10-Summary	-->
+  
 
 </span>
