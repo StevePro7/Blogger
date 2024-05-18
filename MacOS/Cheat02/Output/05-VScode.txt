@@ -1,10 +1,9 @@
 <u>VS Code</u><br />
 Visual Studio Code is a cross-platform code editor available on Windows, Linux and Mac.  However, unlike the TextEdit, VS Code does not respect DefaultKeyBinding.dict on MacOS.  Therefore, change keyboard shorcuts!
 <br /><br />
-
 Customize VS Code keybindings to align navigation: Launch VS Code | Settings | Keyboard Shortcuts | Add:
 <!--//table-ExcelVScode - compare w/ ExcelGeneral-->
-<!--
+<!-- -->
 <br />
 <table width="100%" border="1">
 <tr><td valign="top">&nbsp;<b>Command</b></td><td valign="top">&nbsp;<b>Keybinding</b></td><td valign="top">&nbsp;<b>Description</b></td></tr>
@@ -18,10 +17,10 @@ Customize VS Code keybindings to align navigation: Launch VS Code | Settings | K
 <tr><td valign="top">&nbsp;cursorWordRightSelect</td><td>&nbsp;Ctrl + Shift + Right</td><td>&nbsp;Select the next word</td></tr>
 <tr><td valign="top">&nbsp;deleteWordLeft</td><td>&nbsp;Alt + Backspace</td><td>&nbsp;Delete the prev word</td></tr>
 </table>
--->
+<!-- -->
 <br />
 Continue to customize Menu keyboard shortcuts that one is accustomed to aligning VS Code navigation e.g.:
-<!--
+<!-- -->
 <table width="100%" border="1">
 <tr><td valign="top">&nbsp;<b>Command</b></td><td valign="top">&nbsp;<b>Keybinding</b></td><td valign="top">&nbsp;<b>Description</b></td></tr>
 <tr><td valign="top">&nbsp;File: Open Folder...</td><td>&nbsp;Ctrl + K Ctrl + O</td><td>&nbsp;workbench.action.files.openFolderViaWorkspace</td></tr>
@@ -29,16 +28,8 @@ Continue to customize Menu keyboard shortcuts that one is accustomed to aligning
 <tr><td valign="top">&nbsp;Terminal: Create New Terminal</td><td>&nbsp;Ctrl + Shift + T</td><td>&nbsp;workbench.action.terminal.new</td></tr>
 </table>
 <br />
--->
-  <br /> 
-<br /> 
+<!-- -->
 The keybindings for VS Code are updated in <i>~/Library/Application\ Support/Code/User/keybindings.json</i> file.  Update keybindings.json directly for Terminal keyboard shortcuts like delete word prior + cursor movement:
-  <br><br>
-The keybindings for VS Code are updated in <i>~/Library/Application\ Support/Code/User/keybindings.json</i> file.  Terminal keyboard shortcuts to delete word prior and cursor movement requires keybindings.json updated directly:
-  <br><br>
-The keybindings for VS Code are updated in <i>~/Library/Application\ Support/Code/User/keybindings.json</i> file.  Advanced customization is required for Terminal keyboard shortcuts e.g. delete word prior and cursor movement:
-  <br><br>
-
 <!--//table-ExceTerminal - use VS Code as "Terminal" as can manipulate the built-in terminal-->
 <br />
 <!-- -->
