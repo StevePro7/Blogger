@@ -205,11 +205,13 @@ The <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindi
 </table>
 <br />
 <!-- -->
-  
+
+<!-- 06-PyCharmCE	-->
 <u>PyCharm Community</u><br />
+Align PyCharm Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to PyCharm" popup choose Plugins | VSCode Keymap | Install. Navigate back to Customize.  Under Keymap change default value VSCode (macOS). Now <b>most</b> VS Code shortcuts will work like Windows.
 <!--//images-VSCodekeymap01-->
 <br />
-<table width="99%" border="1">
+<table width="100%" border="1">
 <tr>
 <td>
 <!-- -->
@@ -228,11 +230,11 @@ The <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindi
 <!-- -->
 </table>
 <br />
-
+However, in order to better align full navigation, update the following from PyCharm | Settings... | Keymap:
 <!--//table-ExcelPyCharm PyCharm - update keyboard shortcuts - Install VS Code (Mac OS) plug-in first!-->
 <br />
 <!-- -->
-<table width="99%" border="1">
+<table width="100%" border="1">
 <tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start</td><td>&nbsp;Ctrl + Home</td></tr>
 <tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text End</td><td>&nbsp;Ctrl + End</td></tr>
 <tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start with Selection</td><td>&nbsp;Ctrl + Shift + Home</td></tr>
@@ -247,9 +249,13 @@ The <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindi
 <tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Back</td><td>&nbsp;Alt + Up</td></tr>
 <tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Forward</td><td>&nbsp;Alt + Down</td></tr>
 </table>
-<br />
+<!--<br />-->
+IMPORTANT: typically use Alt + Left to Navigate Back but this is now doubled to Move Word left as priority!
 <!-- -->
-<br />
+<br /><br />
+NOTE<br />
+If Ctrl + Shift + O launches Symbols then remove duplicate: Choose Settings | Keymap | filter as "symbol". Double click Navigate | Go to Symbol | Edit | Remove Ctrl+Shift+O | Apply | OK. Repeat this as necessary.
+<br />  
   
 <!--
 table-ExcelXLnac Excel navigation<br />
