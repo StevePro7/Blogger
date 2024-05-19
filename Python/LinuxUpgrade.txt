@@ -1,0 +1,14 @@
+Linux upgrade
+19-May-2024
+
+How to Install the Latest Python Version on Ubuntu Linux
+https://www.howtogeek.com/install-latest-python-version-on-ubuntu
+
+python  --version
+python3 --version
+
+sudo add-apt-repository ppa:deadsnakes/ppa
+
+sudo apt update
+
+sudo apt install python3.12
