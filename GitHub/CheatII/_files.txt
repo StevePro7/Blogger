@@ -1,0 +1,85 @@
+Files
+19-May-2024
+
+01-GitCodeTestFlow
+some of the notes here are in Fork
+
+
+03-GitUsagewithIDEs
+File menu | Settings… | Version Control | Git | Enable staging area | UNCHECK
+
+
+06-GitCommitHashSync
+git cherry-pick <commit hash>
+docker tag
+docker push
+TODO get the docker update image
+
+
+08-GitPullLatestCodetoBranch
+git pull origin master
+rebase
+IDE | Git tab. Checkout your branch. Expand Remote | origin | master. 
+Choose either “Rebase <feature branch> onto origin/master”.
+
+
+09-GitCherryPickExample
+git push --set-upstream origin <branch>
+git cherry-pick --mainline=1 <merge-commit-id>
+
+
+12-GitCompareBranches
+git diff --name-only master
+git diff-tree --no-commit-id --name-only -r master..<feature_branch>
+
+
+14-GitMergeOrigin
+git merge origin/master
+
+
+16-GitSquashCommits
+IMPORTANT
+Rewrite your git history [in 4x friendly commands]
+https://whitep4nth3r.com/blog/rewrite-git-history
+
+git reset --soft <initial-commit-id>
+git add .
+git commit -m "Squash all commits"
+git push --force
+
+
+17-GitCherryPickfromanotherRepository
+git remote add public-repo git@github.com:repo/public.git
+git fetch public-repo
+git log public-repo/master
+git cherry-pick <commit-hash>
+
+
+18-GitRebaseMergeSquash
+IMPORTANT
+how to integrate changes: from master to feature branch
+https://idiv-biodiversity.github.io/git-knowledge-base/how-to-integrate-master-in-feature.html
+
+rebase
+Local | Right click feature branch | Checkout
+Remote | origin | master | Right click master | Choose “Rebase <feature branch> onto origin/master”
+IMPORTANT
+
+merge
+Remote | origin | master | Right click master | Choose “Merge<feature branch> onto origin/master”
+
+squash
+git reset --soft <initial-commit-id>
+git add .
+git commit -m "Squash all commits"
+git push --force
+
+
+
+
+
+NOT DOING
+02-GitTroubleshooting
+07-GitCheckoutPinnedUpdates
+13-GitRenameBranches
+15-GitPullRequest
