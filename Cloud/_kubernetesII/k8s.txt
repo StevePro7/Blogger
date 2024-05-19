@@ -1,0 +1,10 @@
+k8s
+19-May-2024
+
+23-DiagnoseCrashLoopBackOff
+
+kubectl annotate -n public-system ds/public-node --overwrite unsupported.operator.public.io/ignore="true"
+docker tag public/node:latest-amd64 dockerhub/publicnode:master
+docker push dockerhub/publicnode:master
+kubectl set image -n public-system ds/public-node publicnode=dockerhub/publicnode:master
+watch -x kubectl -n public-system get pods
