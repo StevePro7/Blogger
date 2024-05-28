@@ -391,6 +391,7 @@ Dump out the contents of the <b>~/.bash_profile</b> file and verify all the foll
 <tr><td valign="top">&nbsp;complete -F __start_kubectl k</td><td>&nbsp;# Kubernetes autocomplete</td></tr>
 <tr><td valign="top">&nbsp;source /opt/homebrew/etc/profile.d/bash_completion.sh</td><td>&nbsp;# Kubernetes autocomplete</td></tr>
 <tr><td valign="top">&nbsp;source <(kubectl completion bash)</td><td>&nbsp;# Kubernetes autocomplete</td></tr>
+<tr><td valign="top">&nbsp;alias sba='source .venv/bin/activate'</td><td>&nbsp;# Python virtual environment</td></tr>
 <tr><td valign="top" colspan="2">&nbsp;alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder &nbsp;&nbsp;/System/Library/CoreServices/Finder.app'</td></tr>
 <tr><td valign="top" colspan="2">&nbsp;alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder &nbsp;&nbsp;/System/Library/CoreServices/Finder.app'</td></tr>
 </table>
