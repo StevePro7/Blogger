@@ -1,0 +1,70 @@
+New PRBoomPlus
+09-Jun-2024
+
+IMPORTANT - got this working today!!
+/home/stevepro/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode
+
+/home/stevepro/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode/src
+/home/stevepro/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode/.vscode
+
+RUN
+chmod +x configure
+./configure
+make
+
+./src/prboom-plus
+M_LoadDefaults: Load system defaults.
+default file: /home/stevepro/.prboom-plus/prboom-plus.cfg
+PrBoom-Plus.wad not found. Can't continue.
+
+Need 3x files:
+stevepro@Alienware:~/.prboom-plus$ ls -l
+-rw-rw-r-- 1 stevepro stevepro 14604584 Jun  9 15:51 Doom2.wad
+-rw-rw-r-- 1 stevepro stevepro    13175 Jun  9 15:45 prboom-plus.cfg
+-rw-rw-r-- 1 stevepro stevepro   317028 Jun  9 15:47 prboom-plus.wad
+
+01. prboom-plus.cfg
+Source:
+prboom-plus.cfg.5
+/home/stevepro/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode/doc
+cp /home/stevepro/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode/doc/prboom-plus.cfg.5 ~/.prboom-plus
+mv ~/.prboom-plus prboom-plus.cfg.5 rboom-plus.cfg
+
+02. PrBoom-Plus.wad
+Source:
+PrBoom-Plus.wad
+/home/stevepro/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode/data
+
+03. Doom2.wad
+Source:
+Doom2.wad
+/home/stevepro/GitHub/StevePro7/Blogger/Doom/WADfiles
+
+
+Terminal
+cd ~/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode/
+IdentifyVersion: IWAD not found
+
+BUT this works!!
+./src/prboom-plus -iwad Doom2.wad
+
+IMPORTANT
+The first character of Doom2.wad file MUST be "I" not "P"
+otherwise may still get the "IWAD not found" error
+Reference:
+https://www.doomworld.com/forum/topic/52918-prboom-cannot-find-my-iwad
+
+
+DEBUG
+Launch VS Code
+Open folder
+/home/stevepro/GitHub/StevePro7/Blogger/Doom/prboom-plus-2.5.1.3_VScode
+
+Ensure the .vscode folder exists with the 2x json files:
+tasks.json
+launch.json
+
+chmod +x build.sh
+Ctrl+Shift+B        Build
+F5                  Debug
+IdentifyVersion: IWAD not found
