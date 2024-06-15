@@ -1,6 +1,11 @@
 Topics
 15-Jun-2024
 
+TODO
+master		main
+my-branch	feature-branch
+
+
 01.	Git Code Test Flow
 git remote -v
 git remote add upstream git@github.com:tigera/felix-private.git
@@ -10,3 +15,49 @@ git fetch upstream && git merge --ff-only upstream/master
 
 git checkout -b StevenTestBranch
 git push --set-upstream origin StevenTestBranch:StevenTestBranch
+
+
+//02.	Git Troubleshooting
+
+//03.	Git Usage with IDEs	Enable staging area
+
+//04.	Git Commit Hash Sync	
+git cherry-pick 93304b42d2211f055aeb557e17d0a3b8977a8df9
+
+//05.	Git Checkout Pinned Updates
+
+
+06.	Git Pull Latest Code to Branch
+git pull origin master
+
+JetBRains IDE | Remote | origin
+Right click master
+Rebase <feature branch> onto origin/master
+
+IMPORTANT
+do not choose “Pull into <feature branch> using Rebase” as this will include all history
+
+
+07.	Git Cherry Pick Example
+IMPORTANT
+If you receive an error “Cherry pick failed - <hash> is a merge but no -m option was given
+
+git cherry-pick -m 1 93304b42d2211f055aeb557e17d0a3b8977a8df9
+
+
+08.	Git Compare Branches
+git diff --name-only master
+git diff-tree --no-commit-id --name-only -r master.<my-branch>
+
+
+//09.	Git Rename Branches
+JetBrains IDE | Local | right click branch | Rename…
+e.g. <my-branch>
+
+JetBrains IDE | Remote | origin | right click branch | Delete - this deletes the branch from the server
+
+
+//10.	Git Merge Origin
+git merge origin/master
+
+//11.	Git Pull Request
