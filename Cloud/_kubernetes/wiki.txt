@@ -27,7 +27,7 @@ Here are some commonly used <a href="https://kubernetes.io/docs/tasks/tools">too
 <td valign="top">&nbsp;Used to create and manage and secure larger Kubernetes clusters</td>
 </tr>
 </table>
-<br>
+<br />
 <u>Installation</u><br />
 Install Kubernetes with Docker Desktop on <a href="https://docs.docker.com/docker-for-windows/install">Windows</a> and <a href="https://docs.docker.com/docker-for-mac/install">Mac OS/X</a>.  Install Kubernetes on <a href="https://phoenixnap.com/kb/install-kubernetes-on-ubuntu">Linux</a> accordingly.
 <br /><br />
@@ -133,10 +133,10 @@ If you receive following <i>error: listen tcp 127.0.0.1:8001: bind: address alre
 <table border="1" width="99%">
 <tr>
 <td>
-&nbsp;netstat -tulnap | grep 5000<br />
+&nbsp;netstat -tulnap | grep 8001<br />
 &nbsp;sudo apt install net-tools<br />
-&nbsp;sudo fuser -k 5000/tcp<br />
-&nbsp;netstat -tulnap | grep 5000<br />
+&nbsp;sudo fuser -k 8001/tcp<br />
+&nbsp;netstat -tulnap | grep 8001<br />
 </td>
 </tr>
 </table>
@@ -584,7 +584,7 @@ Ensure that Minikube is installed.  Launch Terminal | <i>minikube start</i>.  En
 </table>
 <br />
 Build the image as above but this time in the local Minikube cluster <i>docker build -t stevepro/testwebapi:1.0 .</i>
-<br>  
+<br />
 Apply the deployment and service YAML using the kubectl.  Verify objects created from <i>minikube dashboard</i>.
 <br />
 <table border="1" width="99%">
