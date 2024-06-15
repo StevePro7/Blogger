@@ -29,8 +29,16 @@ sudo rm -rf /var/lib/docker/overlay2
 Device or resource busy
 https://stackoverflow.com/questions/60058321/docker-overlay2-resource-is-busy
 
+
+In the end just restart Docker
+could not resolve
+https://stackoverflow.com/questions/44942790/docker-error-failed-to-register-layer-symlink
+
 sudo umount /var/lib/docker/overlay2/
 sudo rm -rf /var/lib/docker/overlay2/
 
-YAH!
 Now everytrhing gone
+
+Couldn't redo KinD cluster
+Do I need to do this
+sudo mount /var/lib/docker/overlay2/
