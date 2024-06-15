@@ -1,0 +1,36 @@
+IMPORTANT delete
+15-jUN-2024
+
+d images
+d ps
+
+d system prune -a
+
+Today try to delete everything but ps + img keep re-spawning
+
+Think it's because prior KinD cluster corrupt
+
+https://serverfault.com/questions/1070337/kind-cluster-is-not-deleting-how-to-fix-that
+
+kind delete clusters *
+
+sudo service docker stop
+sudo rm -rf /var/lib/docker/containers
+
+ERROR
+Device or resource busy
+
+https://serverfault.com/questions/1104367/cant-remove-var-lib-docker-due-to-device-or-resource-busy
+
+sudo docker stop $(sudo docker ps -a -q)
+sudo rm -rf /var/lib/docker/containers
+
+sudo rm -rf /var/lib/docker/overlay2
+Device or resource busy
+https://stackoverflow.com/questions/60058321/docker-overlay2-resource-is-busy
+
+sudo umount /var/lib/docker/overlay2/
+sudo rm -rf /var/lib/docker/overlay2/
+
+YAH!
+Now everytrhing gone
