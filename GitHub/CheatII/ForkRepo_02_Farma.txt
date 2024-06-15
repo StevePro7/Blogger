@@ -35,42 +35,17 @@ git config --global user.email "steven_boland@hotmail.com"
 
 Upstream
 git remote -v
-git remote add upstream git@github.com/openai/retro
+git remote add upstream git@github.com:Farama-Foundation/Gymnasium.git
 
-origin git@github.com:SteveProXNA/retro.git (fetch)
-origin git@github.com:SteveProXNA/retro.git (push)
-upstream git@github.com:openai/retro.git (fetch)
-upstream git@github.com:openai/retro.git (push)
+origin	git@github.com:SteveProXNA/Gymnasium.git (fetch)
+origin	git@github.com:SteveProXNA/Gymnasium.git (push)
+upstream	git@github.com:Farama-Foundation/Gymnasium.git (fetch)
+upstream	git@github.com:Farama-Foundation/Gymnasium.git (push)
 
+git checkout -b GymGameExamples
+git push --set-upstream origin GymGameExamples:GymGameExamples
 
-git checkout -b StevenTestBranch
-git push --set-upstream origin StevenTestBranch:StevenTestBranch
-
-
-EXAMPLE on Linux
-Pre-requisite: already forked this repo
-git@github.com:openai/retro.git
-
-cd ~/GitHub/SteveProXNA
-git clone git@github.com:SteveProXNA/retro.git
-
-
-git config --get user.name
-git config user.name "SteveProXNA"
-
-git config --get user.email
-git config user.email "steven_boland@hotmail.com"
-
-
-git remote -v
-git remote add upstream git@github.com:openai/retro.git
-
-git remote -v
-origin	git@github.com:SteveProXNA/retro.git (fetch)
-origin	git@github.com:SteveProXNA/retro.git (push)
-upstream	git@github.com:openai/retro.git (fetch)
-upstream	git@github.com:openai/retro.git (push)
 
 Launch PyCharm
 Open
-/home/stevepro/GitHub/SteveProXNA/retro
+/home/stevepro/GitHub/SteveProXNA/Gymnasium
