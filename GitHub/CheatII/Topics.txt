@@ -1,0 +1,12 @@
+Topics
+15-Jun-2024
+
+01.	Git Code Test Flow
+git remote -v
+git remote add upstream git@github.com:tigera/felix-private.git
+
+Sync fork
+git fetch upstream && git merge --ff-only upstream/master
+
+git checkout -b StevenTestBranch
+git push --set-upstream origin StevenTestBranch:StevenTestBranch
