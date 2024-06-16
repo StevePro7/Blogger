@@ -8,7 +8,7 @@ my-branch	feature-branch
 
 01.	Git Code Test Flow
 git remote -v
-git remote add upstream git@github.com:tigera/felix-private.git
+git remote add upstream git@github.com:source/forked-repo.git
 
 Sync fork
 git fetch upstream && git merge --ff-only upstream/master
