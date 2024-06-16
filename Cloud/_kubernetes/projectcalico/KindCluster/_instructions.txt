@@ -45,30 +45,6 @@ github.com/projectcalico/felix
 make build
 make image
 
-tigera/cnx-node:latest-amd64
-
-
-k9s
-In the cluster annotate calico-node daemonset from calico-system namespace with unsupported.operator.tigera.io/ignore: "true"
-e.g.
-Launch k9s | Navigate to daemonset calico-node | press “e” to edit and add annotation
-
-
-unsupported.operator.tigera.io/ignore: "true"
-This will prevent the operator from changing it.
-i.e. kube-system calico-node Daemonset
-
-
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  annotations:
-    deprecated.daemonset.template.generation: "2"
-    unsupported.operator.tigera.io/ignore: "true"
-    kubectl.kubernetes.io/last-applied-configuration: |
-
-
-
 Launch k9s | Edit “calico-node” pod
 Update the calico image
 

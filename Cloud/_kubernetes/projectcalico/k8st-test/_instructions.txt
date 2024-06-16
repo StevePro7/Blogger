@@ -71,27 +71,5 @@ Launch k9s | Filter daemonset | calico-node | “e” to edit.  Press “/” an
 Change the default entry “IfNotPresent” to “Never” - this helps load only local docker images
 
 
-image: tigera/cnx-node:latest-amd64x
-        imagePullPolicy: Never
-
-Maybe change the calico-node [tiger/cnx-node] to something other than default?  TODO - check
-
-Make changes to felix-private | git commit + push
-Update node-private go.mod file to use the hash
-
-
-make image
-This should update local node-private image tigera/cnx-node
-Tag tigera/cnx-node image to something unique
-
-
-tag tigera/cnx-node:latest-amd64 tigera/cnx-node:latest-amd64x
-Don’t need to push to container registry!
-Instead load image onto kind cluster directly
-
-
-kind load docker-image tigera/cnx-node:latest-amd64x
-The changes should be detected auto-magically by the cluster and applied
-
 IMPORTANT - tail the logs where it makes sense
 k get po -A -w

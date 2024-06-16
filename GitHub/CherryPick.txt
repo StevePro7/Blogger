@@ -21,16 +21,14 @@ Kubernetes shell script
 
 github.com:StevePro7/GitFlowTest/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
 
-2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
-
 fatal: No such remote 'upstream'
 
 
 git remote add upstream git@github.com:StevePro7/GitFlowTest.git
 
 
-origin	git@github.com:tigera/process.git (fetch)
-origin	git@github.com:tigera/process.git (push)
+origin	git@github.com:source/process.git (fetch)
+origin	git@github.com:source/process.git (push)
 upstream	git@github.com:StevePro7/GitFlowTest.git (fetch)
 upstream	git@github.com:StevePro7/GitFlowTest.git (push)
 
@@ -44,10 +42,6 @@ https://StevePro7@github.com/StevePro7/GitFlowTest.git
 
 upstream/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
 
-
-
-stevepro@Alienware:~/GitHub/tigera/process/utilities$ ./cherry_pick_pull.sh 
-Can't find 'hub' tool in PATH, please install from https://github.com/github/hub
 
 
 sudo apt install hub
@@ -85,7 +79,6 @@ https://StevePro7@github.com/StevePro7/GitFlowTest/release-v1.0 2eae69b22ed52a0c
 upstream/release-v1.0 2eae69b22ed52a0cb414e3ab5996225bdf5d59ee
 
 
-/GitHub/tigera/process/utilities
 
 
 e38005b6161a7f974bf6647cfd4581ef76e0cb1a

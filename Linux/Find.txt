@@ -13,7 +13,6 @@ grep foo * -lR
 
 01.
 e.g. Envoy code base
-cd ~/GitHubX/Tigera/envoy
 
 find -L . -type f -name '*.cc'
 find -L . -type f -name '*.cc' -exec grep -Hni 'main(int' {} \;
@@ -38,7 +37,7 @@ https://stackoverflow.com/questions/4767396/linux-command-how-to-find-only-text-
 
 
 Powershell
-cd D:\Github\tigera\operator
+cd <my-dir>
 dir -recurse | select-object extension -unique
 
 
