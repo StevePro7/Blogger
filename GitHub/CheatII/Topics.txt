@@ -61,3 +61,29 @@ JetBrains IDE | Remote | origin | right click branch | Delete - this deletes the
 git merge origin/master
 
 //11.	Git Pull Request
+
+12.	Git Squash Commits
+Rewrite your git history in 4 friendly commands
+https://whitep4nth3r.com/blog/rewrite-git-history
+
+git reset --soft {INITIAL_COMMIT_HASH}
+git add .
+git commit -m "Initial commit"
+git push --force
+
+
+13.	Git Cherry Pick from another Repository
+https://coderwall.com/p/sgpksw/git-cherry-pick-from-another-repository
+
+git clone repo-private
+cut branch off master as before e.g. 
+feature_cherrypick_master + push
+
+git remote add repo-public 
+git@github.com:repo/public.git
+git fetch repo-public
+git log repo-public/master
+git cherry-pick <COMMIT_SHA>
+
+
+14.	Git Rebase Merge Squash

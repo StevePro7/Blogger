@@ -1,4 +1,39 @@
 Squash Merge
-26-Jan-2024
+16-JUn-2024
 
-todo...
+Git Rebase Merge Squash
+
+
+REBASE
+Local | Right click feature branch | Checkout
+Remote | origin | master | Right click master
+Choose "Rebase <feature branch> onto origin/master"
+
+IMPORTANT
+If you get conflicts then choose "Accept Theirs" to easily resolve conflicts.
+
+You must force push the changes now otherwise when you simply git push you may be prompted to git pull first
+
+git push --force
+
+Reference: 
+https://idiv-biodiversity.github.io/git-knowledge-base/how-to-integrate-master-in-feature.html
+
+
+MERGE
+If there are a lot of conflicts that need to be resolved then maybe favour:
+Remote | origin | master | Right click master
+Choose “Merge<feature branch> onto origin/master”
+
+IMPORTANT
+Do not choose “Pull into <feature branch> using Rebase” as this will include all history
+Do not choose “Pull into <feature branch> using Merge” as this will include all history
+
+
+SQUASH
+repeat
+
+git reset --soft <INITIAL_COMMIT_SHA>
+git add .
+git commit -m "Squash all commits"
+git push --force
