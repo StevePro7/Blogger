@@ -1,0 +1,19 @@
+C++
+21-Jun-2024
+
+https://www.baeldung.com/linux/boost-install-on-ubuntu
+sudo apt install libboost-all-dev
+dpkg -l | grep boost
+
+cd ~/Downloads
+wget https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz
+boost_1_81_0.tar.gz
+tar -xzf boost_*.tar.gz
+cd boost_*/
+./bootstrap.sh
+sudo ./b2 install --prefix=/opt/boost
+
+
+Install Boost on Ubuntu Linux
+https://stackoverflow.com/questions/3808775/cmake-doesnt-find-boost
+sudo apt install build-essential libboost-system-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev
