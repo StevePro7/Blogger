@@ -1,9 +1,29 @@
 GitLab DEMO
 22-Jun-2024
 
-Reference
+References
 /home/stevepro/GitLab/StevePro7/hello-world-python
 /home/stevepro/GitHub/StevePro7/CloudTesting/GitLabCheatSheet
+
+AKS
+~/Bitbucket/SteveProXNA/actionstuff/MediumDigest/2023/k8s/recipes/azr-aks
+
+README_CIGD.md  PASSWORD
+/home/stevepro/GitHub/StevePro7/CloudTesting/GitLabCheatSheet
+
+How I secured sensitive information in GitLab environment variable and made the pipeline secured
+base64
+https://cloudifydevops.com/secured-gitlab-pipeline-with-base64
+https://stackoverflow.com/questions/62454027/how-to-set-gitlab-gitlab-ci-variables-properly
+https://www.ferdinandlist.de/blog/gitlab_cicd_env_var_masking_base64
+e.g.
+echo -n "insert_your_variable" | base64
+
+TODO
+1. replicate existing AKS
+2. Docker PASSWORD b54
+3. scale out files
+4. multiple envs
 
 
 SCREEN SHOT
@@ -32,3 +52,6 @@ Create From Existing Sources
 https://steveproxna.blogspot.com/2016/08/github-cheat-sheet.html
 User name	 git config --get user.name	    git config user.name "SteveProXNA"
 User email	 git config --get user.email	git config user.email "steven_boland@hotmail.com"
+
+
+
