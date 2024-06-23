@@ -14,6 +14,7 @@ README_CIGD.md  PASSWORD
 How I secured sensitive information in GitLab environment variable and made the pipeline secured
 base64
 https://cloudifydevops.com/secured-gitlab-pipeline-with-base64
+
 https://stackoverflow.com/questions/62454027/how-to-set-gitlab-gitlab-ci-variables-properly
 https://www.ferdinandlist.de/blog/gitlab_cicd_env_var_masking_base64
 e.g.
@@ -63,4 +64,23 @@ README_CICD
 ~/GitLab/StevePro7/gitlabcheatsheet
 ~/Bitbucket/SteveProXNA/actionstuff/MediumDigest/2023/k8s/recipes/azr-aks
 
+Create DEV cluster
+CI/CD pipeline variables
 
+CI_REGISTRY_HOST    docker.io
+CI_REGISTRY_USER    steveproxna
+CI_REGISTRY_CODE    <redacted>
+CI_REGISTRY_PASS    <redacted>
+CLUSTER_CONFIG
+TEST_NAMESPACE      test-ns
+K8S_IMAGE_NAME     flask-api
+K8S_BUILD_NAME     latest
+
+KUBECONFIG_DEV
+KUBECONFIG_IQA
+KUBECONFIG_PREPROD
+KUBECONFIG_PROD
+~/.kube/config
+File | All | Visible
+
+TODO - do I want to add some ENV VARs to the deployment?
