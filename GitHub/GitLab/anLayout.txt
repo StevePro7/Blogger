@@ -1,3 +1,47 @@
 Layout
 24-Jun-2024
 
+
+Intro
+
+Account
+
+G/L token
+
+Source Tree
+
+Example
+
+PyCharm API similar to Go API
+https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example
+
+local
+Docker
+KinD	- important	deployment + service values hardcoded!
+
+But now leverage CI/CD pipelines
+
+Pre-reqs
+az a/c + CLI
+az login
+Provision AKS cluster
+
+Docker HUB a/c
+
+Setup CI/CD variables
+
+Setup 1x environment DEV	to PoC
+
+create .gitlab-ci.yml
+
+Docker build + push
+Helm chart to install
+
+Summary
+replicate to 1x env DEV to 4x env
+DEV, IQA, P/P, Prod	table
+to complete full SDLC
+
+From here future exploration:
+full GitFlow using develop as "main" integration branch
+rollback, upgrade, downgrade, tagging, auto merge code?
