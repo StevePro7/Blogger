@@ -1,0 +1,24 @@
+azure CLI defaults
+25-Jun-2024
+
+az login
+
+GOOGLE
+az set default group
+
+
+az configure
+Your settings can be found at /home/stevepro/.azure/config
+Your current configuration is as follows:
+
+[cloud]
+name = AzureCloud
+
+[core]
+first_run = yes
+
+[defaults]
+group = stevepro-AKS-cluster
+
+
+az configure --defaults group=stevepro-dev-cluster
