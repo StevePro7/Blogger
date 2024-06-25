@@ -1,0 +1,83 @@
+Layout
+24-Jun-2024
+
+
+Intro
+
+Account
+GH + GL
+
+G/H ssh
+SSH_keys.txt
+~\GitHub\StevePro7\Blogger\GitHub
+
+G/H token
+GitHubToken.txt
+~\GitHub\StevePro7\Blogger\GitHub\GitLab
+
+Source Tree
+setup
+
+
+Example
+
+PyCharm API similar to Go API
+https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example
+
+create initial code sample
+main.py		Dockerfile	Kubernetes.yaml
+local
+Docker
+KinD	- important	deployment + service values hardcoded!
+
+But now leverage CI/CD pipelines
+
+Pre-reqs
+az a/c + CLI
+az login
+Provision AKS cluster
+
+Docker HUB a/c
+
+Setup CI/CD variables
+
+Setup 1x environment DEV	to PoC
+
+CUT branch
+create PR
+create .gitlab-ci.yml
+
+Docker build + push
+Helm chart to install
+
+PR
+08.	Git Compare Branches
+Topics.txt
+~\GitHub\StevePro7\Blogger\GitHub\CheatII
+
+Rebase
+Squash
+Merge
+
+14.	Git Rebase Merge Squash
+SquashMerge.txt
+Topics.txt
+~\GitHub\StevePro7\Blogger\GitHub\CheatII
+
+Deploy change to DEV cluster
+
+Summary
+replicate to 1x env DEV to 4x env
+DEV, IQA, P/P, Prod	table
+to complete full SDLC
+
+From here future exploration:
+full GitFlow using develop as "main" integration branch
+rollback, upgrade, downgrade, tagging, auto merge code?
+
+
+WON'T DO HERE
+fork
+git remote -v
+
+leave that until last 2x blog posts
