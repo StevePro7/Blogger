@@ -1,0 +1,36 @@
+<b>SSH Keys</b><br />
+An SSH key is an access credential for the SSH network protocol.  Git supports both RSA and ED25519 keys.  Launch Terminal.  Issue the following commands to <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">generate</a> new SSH key and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">adding</a> SSH key to ssh-agent:
+<br /><br />
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;<b>RSA</b></td>
+<td>&nbsp;<b>ED25519</b></td>
+</tr>
+<tr>
+<td>&nbsp;cd ~/.ssh</td>
+<td>&nbsp;cd ~/.ssh</td>
+</tr>
+<tr>
+<td>&nbsp;ssh-keygen -t rsa -b 4096 -C "steven_boland@hotmail.com"</td>
+<td>&nbsp;ssh-keygen -t ed25519 -C &lt;email&gt;</td>
+</tr>
+<tr>
+<td>&nbsp;Passphrase &lt;redacted&gt;</td>
+<td>&nbsp;Passphrase &lt;redacted&gt;</td>
+</tr>
+<tr>
+<td>&nbsp;eval "$(ssh-agent -s)"</td>
+<td>&nbsp;eval "$(ssh-agent -s)"</td>
+<tr>
+<td>&nbsp;ssh-add ~/.ssh/id_rsa</td>
+<td>&nbsp;ssh-add ~/.ssh/id_ed25519</td>
+</tr>
+<tr>
+<td>&nbsp;xclip -selection clipboard < ~/.ssh/id_rsa.pub</td>
+<td>&nbsp;xclip -selection clipboard < &lt;key&gt;</td>
+</tr>
+</table>
+<br />
+IMPORTANT:<br />
+If <b>xclip</b> is not installed then issue 2x commands: <i>sudo apt-get update</i> and <i>sudo apt-get install xclip</i>.  Finally, navigate to github.com Settings | <a href="https://github.com/settings/keys">SSH and GPG</a> keys | New SSH key | Paste contents from id_rsa.pub here.
+<br /><br />
