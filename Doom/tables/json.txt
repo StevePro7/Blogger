@@ -1,0 +1,88 @@
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b>tasks.json</b></td>
+<td>&nbsp;<b>launch.json</b></td>
+</tr>
+<tr>  
+<td valign="top">
+<pre code="C#">
+&nbsp;{
+&nbsp;    "version": "2.0.0",
+&nbsp;    "label": "build",
+&nbsp;    "type": "shell",
+&nbsp;    "linux": {
+&nbsp;        "command": "./build.sh"
+&nbsp;    },
+&nbsp;}
+</pre>
+</td>
+<td>
+<pre code="C#">
+&nbsp;{
+&nbsp;  "version": "0.2.0",
+&nbsp;  "configurations": [
+&nbsp;    {
+&nbsp;      "name": "(gdb) Launch",
+&nbsp;      "type": "cppdbg",
+&nbsp;      "request": "launch",
+&nbsp;      "program": "${workspaceFolder}/src/prboom-plus",
+&nbsp;      "args": [
+&nbsp;        "-iwad",
+&nbsp;        "Doom1.wad"
+&nbsp;      ],
+&nbsp;      "stopAtEntry": false,
+&nbsp;      "cwd": "${workspaceFolder}",
+&nbsp;      "externalConsole": false,
+&nbsp;      "MIMode": "gdb",
+&nbsp;    }
+&nbsp;  ]
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table
+
+
+tasks.json
+<pre code="C#">
+{
+    "version": "2.0.0",
+    "label": "build",
+    "type": "shell",
+    "linux": {
+        "command": "./build.sh"
+    },
+}
+</pre>
+
+
+launch.json
+<pre code="C#">
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(gdb) Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/prboom-plus",
+      "args": [
+        "-iwad",
+        "Doom2.wad"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
+</pre>
