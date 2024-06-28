@@ -1,0 +1,39 @@
+GitLab Source Tree
+28-Jun-2024
+
+WK
+Personal Access Token
+https://gitlab.com/-/user_settings/personal_access_tokens
+
+Personal access tokens
+https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
+https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token
+
+Sourse Tree
+Settings | Accounts | Add
+
+Host		GitLab.com
+Auth-Type	Private Token
+Username	SteveProXNA
+Private Token	<redacted>
+Protocol	HTTPS
+
+
+MAC
+Source Tree
+Remote tab
+Clone
+
+Source URL	https://gitlab.com/SteveProXNA/repo.git
+Destination	~/gitlab/SteveProXNA/repo
+Name		repo
+
+Advance options
+Choose branch	main
+
+
+git config --get user.name
+git config --get user.email
+
+git config user.name "SteveProXNA"
+git config user.email "steven_boland@hotmail.com"
