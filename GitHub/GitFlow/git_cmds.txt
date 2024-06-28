@@ -2,4 +2,48 @@ GitFlow
 git_cmds
 28-Jun-2024
 
+# 1. Feature start
+git checkout -b feature/my-feature develop
 
+# 2. Feature -end-
+git checkout develop
+git merge --no-ff feature/my-feature
+
+# Delete feature branch
+git branch -d feature/my-feature
+
+
+3. Release start
+git checkout -b release/1.0 develop
+
+4. Release -end-
+git checkout main
+git merge --no-ff release/1.0
+
+# Tag release
+git tag -a 1.0
+
+# Merge release back into develop
+git checkout develop
+git merge --no-ff release/1.0
+
+# Delete release branch
+git branch -d release/1.0
+
+
+5. Hotfix start
+git checkout -b hotfix/1.1 main
+
+6. Hotfix -end-
+git checkout main
+git merge --no-fff hotfix/1.1
+
+# Tag hotfix
+git tag -a 1.1
+
+# Merge hotfix back into develop
+git checkout develop
+git merge --no-f hotfix/1.1
+
+# Delete hotfix branch
+git branch -d hotfix/1.1
