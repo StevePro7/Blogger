@@ -1,0 +1,41 @@
+GitFlow proposal
+29-Jun-2024	
+
+GitFlow branches
+main
+develop			[default]
+feature/
+release/
+hotfix/
+bugfix/
+
+develop			integration branch	cut release branch
+main			ship to production	cut hotfix  branch
+
+
+feature/
+cut feature/ branches off develop
+PR merge feature/ to develop
+auto 	deploy to DEV
+manual	deploy to UAT
+
+
+release/
+when develop stable with features
+cut release/ branch off develop
+bug fixes for releases cut off release branch
+cut bugfix/ branch off release
+PR merge bugfix/ to release
+auto	deploy to UAT
+
+when ready to ship release to Prod
+PR merge release to main		delete release/ branch
+PR merge main to develop		sync release/ to develop
+cut Tag from main
+
+hotfix/
+if/when emergency arises
+cut hotfix/ branch off main
+PR merge hotfix/ to main		delete hotfix/ branch
+PR merge main to develop		sync hotfix/ to develop
+cut Tag from main
