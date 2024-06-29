@@ -6,11 +6,90 @@ https://gitlab.com/StevePro7/gitflowtest2
 Test bed for git_cmds
 
 
-Source Tree | Repository | Git flow | Initialize Repository
-
+BEGIN
 main
 Add .gitignore
 
 TAG
 git tag -a 0.1 -m "Tag 0.1"
 git push origin tag 0.1
+
+GITFLOW
+Source Tree | Repository | Git flow | Initialize Repository
+
+main
+develop
+feature/
+release/
+hotfix/
+
+git push --set-upstream origin develop
+Set develop as default branch
+
+GitLab | Setttings | Repository | Branch defaults
+Default branch
+develop
+
+FEATURE start
+git checkout -b feature/my-feature develop		# cut feature branch
+git push --set-upstream origin feature/my-feature	# push feature to remote
+git checkout develop
+git merge --no-ff feature/my-feature			# merge feature to develop
+git push						# push develop to remote
+FEATURE -end-
+git branch -d feature/my-feature		# delete local branch
+git push origin -d feature/my-feature		# delete remote branch
+
+RELEASE start
+git checkout -b release/1.0 develop		# cut release branch
+git push --set-upstream origin release/1.0	# push release to remote
+
+BUG FIX start
+git checkout -b bugfix/1.0 release/1.0		# cut bugfix branch
+git push --set-upstream origin bugfix/1.0	# push bugfix to remote
+git checkout release/1.0			
+git merge --no-ff bugfix/1.0			# merge bugfix to release
+git push					# push release to remote
+BUG FIX -end-
+git branch -d bugfix/1.0		# delete local branch
+git push origin -d bugfix/1.0		# delete remote branch
+
+RELEASE -end-
+git checkout main
+git merge --no-ff release/1.0		# merge release to main
+git push				# sync release with main
+git tag -a 1.0 -m "Tag 1.0"		# cut tag 1.0 off main
+git push origin tag 1.0			# push tag 1.0 to remote
+git checkout develop		
+git merge --no-ff release/1.0		# merge release to develop
+git push				# sync release with develop
+git branch -d release/1.0		# delete local branch
+git push origin -d release/1.0		# delete remote branch
+
+NB: Publish release off Tag in GitLab
+Deploy | Releases | Create a new release
+Tag 1.0
+
+HOTFIX start
+git checkout main
+git checkout -b hotfix/1.1 main		# cut hotfix branch
+git push --set-upstream origin hotfix/1.1	# push hotfix to remote
+	
+HOTFIX -end-
+git checkout main
+git merge --no-ff hotfix/1.1		# merge hotfix to main
+git push				# sync hotfix with main
+git tag -a 1.1 -m "Tag 1.1"		# cut Tag 1.1 off main
+git push origin tag 1.1			# push Tag 1.1 to remote
+git checkout develop		
+git merge --no-ff hotfix/1.1		# merge hotfix to develop
+git push				# sync hotfix with develop
+git branch -d hotfix/1.1		# delete local branch
+git push origin -d hotfix/1.1		# delete remote branch
+
+IMPORTANT at any time you can compare 2x branches
+git checkout develop			# source branch
+git diff --name-only main		# target branch
+
+OR
+git diff-tree --no-commit-id --name-only -r main..develop
