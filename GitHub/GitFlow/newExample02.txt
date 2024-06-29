@@ -9,3 +9,50 @@ Repeat but use Pull Requests
 BLOG
 20-GifFlowExample.txt
 ~\GitHub\StevePro7\Blogger\GitHub\GitLab
+
+			SOURCE				TARGET
+FEATURE start
+create PR		feature/my-feature	=>	develop
+merge
+delete FB
+
+
+RELEASE start
+release/1.0
+bugfix/1.0
+create PR		bugfix/1.0	=>	release/1.0
+delete BF
+
+RELEASE -end-
+create PR		release/1.0	=>	main
+IMPORTANT		do NOT delete source branch
+create PR		release/1.0	=>	develop
+
+checkout main
+Cut tag 1.0
+
+RELEASE complete
+
+
+HOTFIX
+checkout main
+
+create PR		hotfix/1.1	=>	main
+IMPORTANT		do NOT delete source branch
+create PR		hotfix/1.1	=>	develop
+
+checkout main
+Cut tag 1.1
+
+
+NOTE
+double PR
+maybe its better to do this
+
+create PR		release/1.0	=>	main
+DELETE release/1.0
+create PR		main		=>	develop
+
+create PR		hotfix/1.1	=>	main
+DELETE hotfix/1.1
+create PR		main		=>	develop
