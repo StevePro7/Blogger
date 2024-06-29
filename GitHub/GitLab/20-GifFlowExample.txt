@@ -8,23 +8,6 @@ TODO - sourcetree.png
 In gitlab.com set develop as default branch: GitLab | Setttings | Repository | Branch defaults | <b>develop</b>.
 <br />
   
-<br /><br />
-IMPORTANT - you can compare two branches [source vs. target] anytime issuing the following commands:
-<br />
-<table width="99%" border="1">
-<tr><td>
-<table width="99%" border="0">
-<tr><td>&nbsp;git checkout develop</td><td>&nbsp;# source branch</td></tr>
-<tr><td>&nbsp;git diff --name-only main</td><td>&nbsp;# target branch</td></tr>
-<tr><td colspan="2">&nbsp;<b>OR</b></td></tr>
-<tr><td colspan="2">&nbsp;git diff-tree --no-commit-id --name-only -r main..develop</td></tr>
-</table>
-</td></tr>
-</table>
-<br />
-  
-<br />
-<br />
 <!-- -->
 <table width="99%" border="1">
 <tr><td>
@@ -81,5 +64,18 @@ IMPORTANT - you can compare two branches [source vs. target] anytime issuing the
 </table>
 <!-- -->
 <br />
-  IMPORTANT - you can compare two branches [source vs. target] anytime issuing the following commands:  
+IMPORTANT - you can compare two branches [source vs. target] anytime issuing the following commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<table width="99%" border="0">
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;# source branch</td></tr>
+<tr><td>&nbsp;git diff --name-only main</td><td>&nbsp;# target branch</td></tr>
+<tr><td align="center">&nbsp;<b>OR</b></td><td>&nbsp;# target branch</td></tr>
+<tr><td>&nbsp;git diff-tree --no-commit-id --name-only -r main..develop</td><td>&nbsp;# source vs. target branch</td></tr>
+</table>
+</td></tr>
+</table>
+<br />
+
 </span>
