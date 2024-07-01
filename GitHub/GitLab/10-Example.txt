@@ -24,9 +24,17 @@ https://blog.devops.dev/ci-cd-using-gitlab-and-docker-python-app-example-3f19ef2
 PRE-REQs
 
 VM size = price
-https://cloudprice.net/vm/Standard_D2s_v3  
+https://cloudprice.net/vm/Standard_D2s_v3
 
 Azure VM Comparison
 https://cloudprice.net
 
 https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist
+
+
+IMPORTANT
+another VM options
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --node-vm-size Standard_B1s --enable-addons monitoring --generate-ssh-keys
+
+--node-count 1
+--node-vm-size Standard_B1s 
