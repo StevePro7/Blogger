@@ -1,0 +1,65 @@
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;<br />
+&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;<br />
+&nbsp;export AZ_TENANT_ID=&lt;value_from_tenant<br />
+&nbsp;export CLUSTER_NAME=stevepro-dev-cluster<br />
+&nbsp;export CLUSTER_NODES=3<br />
+&nbsp;export MASTER_SSH_KEY=~/.ssh/master_ssh_key.pub<br />
+</td>
+<td>
+&nbsp;export AZ_NETWORK_MODE=transparent<br />
+&nbsp;export AZ_CREATE_MODE=AKS<br />
+&nbsp;export AZ_LB_SKU=standard<br />
+&nbsp;export AZ_VM_SIZE=Standard_D2s_v3<br />
+&nbsp;export AZ_LOCATION=northeurope<br />
+&nbsp;export KUBERNETES_VERSION=1.28<br />
+</td>
+</tr>
+</table>
+
+
+
+ARCHIVE
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;<br />
+&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;<br />
+&nbsp;export AZ_TENANT_ID=&lt;value_from_tenant<br />
+&nbsp;export AZ_CREATE_MODE=AKS<br />
+&nbsp;export AZ_NETWORK_MODE=transparent<br />
+&nbsp;export AZ_LB_SKU=standard<br />
+&nbsp;export AZ_VM_SIZE=Standard_D2s_v3<br />
+&nbsp;export CLUSTER_NODES=3<br />
+&nbsp;export KUBERNETES_VERSION=1.28<br />
+&nbsp;export MASTER_CONNECT_KEY_PUB=~/.ssh/master_ssh_key.pub<br />
+&nbsp;export CLUSTER_NAME=stevepro-dev-cluster<br />
+&nbsp;export AZ_LOCATION=northeurope<br />
+</td>
+</tr>
+</table>
+
+
+
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;<br />
+&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;<br />
+&nbsp;export AZ_TENANT_ID=&lt;value_from_tenant<br />
+&nbsp;export CLUSTER_NAME=stevepro-dev-cluster<br />
+&nbsp;export AZ_NETWORK_MODE=transparent<br />
+&nbsp;export MASTER_CONNECT_KEY_PUB=~/.ssh/master_ssh_key.pub<br />
+<td>
+</td>
+&nbsp;export AZ_CREATE_MODE=AKS<br />
+&nbsp;export AZ_LB_SKU=standard<br />
+&nbsp;export AZ_VM_SIZE=Standard_D2s_v3<br />
+&nbsp;export CLUSTER_NODES=3<br />
+&nbsp;export KUBERNETES_VERSION=1.28<br />
+&nbsp;export AZ_LOCATION=northeurope<br />
+</td>
+</tr>
+</table>
