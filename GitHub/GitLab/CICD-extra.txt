@@ -1,0 +1,47 @@
+CICD extra
+02-Jul-2024
+
+reference
+
+CI/CD YAML syntax reference
+https://docs.gitlab.com/ee/ci/yaml
+
+
+01.
+e.g. how to do LIKE
+for pre-canned GitFlow branches
+i.e.
+feature/
+release/
+hotfix/
+
+https://docs.gitlab.com/ee/ci/yaml/#workflowrulesvariables
+e.g.
+if: $CI_COMMIT_REF_NAME =~ /feature/
+
+
+if: $CI_COMMIT_REF_NAME =~ /hotfix/
+
+
+implementation
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_COMMIT_REF_NAME =~ /release/
+      when: manual
+    - if: $CI_COMMIT_REF_NAME =~ /hotfix/
+      when: manual
+
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_REF_NAME =~ /release/
+    - if: $CI_COMMIT_REF_NAME =~ /hotfix/
+
+
+
+Qs.
+When folding code back into develop branch
+e.g. from main - the build pipeline for main
+re-runs - is there anyway to prevent this
+because it already ran for deploy to prod?
