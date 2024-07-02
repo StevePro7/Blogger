@@ -25,10 +25,6 @@
 &nbsp;        - name: flask-api
 &nbsp;          image: flask-api:latest
 &nbsp;          imagePullPolicy: Never
-&nbsp;          resources:
-&nbsp;            limits:
-&nbsp;              memory: "128Mi"
-&nbsp;              cpu: "500m"
 &nbsp;          ports:
 &nbsp;            - containerPort: 8080
 </pre>
@@ -49,10 +45,6 @@
 &nbsp;    - protocol: TCP
 &nbsp;      port: 80
 &nbsp;      targetPort: 8080
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
 &nbsp;
 &nbsp;
 &nbsp;

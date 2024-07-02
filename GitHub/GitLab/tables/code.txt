@@ -1,0 +1,30 @@
+<table border="1" width="99%">
+<tr>
+<td>&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a></b></td>
+<td>&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockerfile</a></b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;from flask import Flask
+&nbsp;app = Flask(__name__)
+&nbsp;@app.route('/')
+&nbsp;def root():
+&nbsp;    return "Hello World (Python)!\n"
+&nbsp;if __name__ == "__main__":
+&nbsp;    app.run(host="0.0.0.0", port=8080)
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;FROM python:3-alpine
+&nbsp;WORKDIR /service
+&nbsp;COPY requirements.txt .
+&nbsp;RUN pip install -r requirements.txt
+&nbsp;COPY . ./
+&nbsp;EXPOSE 8080
+&nbsp;ENTRYPOINT ["python3", "main.py"]
+</pre>
+</td>
+</tr>
+</table>
