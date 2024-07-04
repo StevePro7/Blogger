@@ -1,11 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<b>Variables</b><br />
-Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab Variables here e.g. Docker registry host and username.  Secure sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
-
-<br /><br />
-  GitLab environment variables    
-  
+<b>Deployment</b><br />
+Trigger CI/CD pipeline.  Launch Terminal | Repeat <i>kubectl port-forward</i>.  Test: curl <b>http://localhost:8080</b>
+<br />
+TODO - create table for kubectl port-forward + curl
 <br /><br />
   
 <u>Cluster</u><br />
@@ -53,5 +51,9 @@ Follow this tutorial to create and run your first GitLab CI/CD pipeline.  Create
 <br /><br />
 
 <b>Variables</b><br />
+Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab Variables here e.g. Docker registry host and username.  Secure sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
+<br /><br />
 
+<b>Deployment</b><br />
+  
 </span>
