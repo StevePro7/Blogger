@@ -1,0 +1,22 @@
+01.
+
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;az login<br />
+&nbsp;az ad sp create-for-rbac --name ${USER}-bz-sp<br />
+&nbsp;cd ~/.ssh<br />
+</td>
+<td>
+&nbsp;ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key<br />
+&nbsp;eval $(ssh-agent -s)<br />
+&nbsp;ssh-add master_ssh_key<br />
+</td>
+</tr>
+</table>
+
+
+
+&nbsp;
+<br />
+
