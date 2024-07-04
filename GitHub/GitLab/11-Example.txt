@@ -53,12 +53,12 @@ docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"
 //data.txt
 
 
-table		commands
-example.txt
+//table		commands
+//example.txt
 
-kubectl config set-context --current --namespace=test-ns
-kind load docker-image flask-api:latest --name flask-cluster
-kubectl apply -f Kubernetes.yaml
+//kubectl config set-context --current --namespace=test-ns
+//kind load docker-image flask-api:latest --name flask-cluster
+//kubectl apply -f Kubernetes.yaml
 
-kubectl port-forward service/flask-api-service 8080:80
-curl http://localhost:8080
+//kubectl port-forward service/flask-api-service 8080:80
+//curl http://localhost:8080

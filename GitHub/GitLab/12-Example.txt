@@ -131,5 +131,21 @@ Create local <a href="https://kind.sigs.k8s.io">KinD</a> cluster.  Enter all the
 -->
 <br />
 Finally test: Launch Terminal | Enter the following Kubernetes commands | curl <b>http://localhost:8080</b>
-
+<br />
+<!--
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kind load docker-image flask-api:latest --name flask-cluster<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td>
+</tr>
+</table>
+<br />
+-->
+  
 </span>
