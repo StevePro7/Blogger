@@ -17,6 +17,28 @@
 
 
 
+02.
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;az group create --name ${CLUSTER_NAME} --location ${AZ_LOCATION} --debug
+</td>
+</tr>
+<tr>
+<td valign="top">
+&nbsp;az aks create --name ${CLUSTER_NAME} --resource-group ${CLUSTER_NAME} \<br />
+&nbsp; --dns-name-prefix ${CLUSTER_NAME} --node-count ${CLUSTER_NODES} \<br />
+&nbsp; --node-vm-size ${AZ_VM_SIZE} --kubernetes-version ${KUBERNETES_VERSION} \<br />
+&nbsp; --ssh-key-value ${MASTER_SSH_KEY} --service-principal ${AZ_SP_ID} \<br />
+&nbsp; --client-secret ${AZ_SP_PASSWORD} --load-balancer-sku ${AZ_LB_SKU} \<br />
+&nbsp; --network-plugin azure --debug<br />
+</td>
+</tr>
+</table>
+
+
+
 &nbsp;
 <br />
+
 
