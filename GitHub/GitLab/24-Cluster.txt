@@ -1,11 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<b>Deployment</b><br />
-Trigger CI/CD pipeline.  Launch Terminal | Repeat <i>kubectl port-forward</i>.  Test: curl <b>http://localhost:8080</b>
-<br />
-TODO - create table for kubectl port-forward + curl
-<br /><br />
-  
 <u>Cluster</u><br />
 Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure you have all Pre-Requisites:
 <br />
@@ -28,7 +22,7 @@ Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure 
 </table>
 <br />
 -->
-<br /><br />
+<br />
   
 <b>Azure AKS</b><br />
 Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
@@ -55,5 +49,9 @@ Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab Variabl
 <br /><br />
 
 <b>Deployment</b><br />
+Trigger CI/CD pipeline.  Launch Terminal | Repeat <i>kubectl port-forward</i>.  Test: curl <b>http://localhost:8080</b>
+<br />
+TODO - create table for kubectl port-forward + curl
+<br /><br />
   
 </span>
