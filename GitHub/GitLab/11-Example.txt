@@ -1,0 +1,61 @@
+11 Example
+04-Jul-2024
+
+
+01.
+gitlab.com
+https://gitlab.com/SteveProXNA/gitlabcheatsheet
+
+
+02.
+Table
+images
+BlankProject.png
+NewProject.png
+
+
+03.
+Code main.py
+link
+https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py
+
+Install packages
+link
+https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/requirements.txt
+
+table
+code.txt
+
+
+04.
+Code Dockefile
+link
+https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile
+
+Terminal
+2x commands
+docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."
+docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"
+
+
+
+05.
+link 
+KinD
+
+link
+Kubernetes
+https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml
+
+table		Kubernetes
+data.txt
+
+
+table		commands
+
+kubectl config set-context --current --namespace=test-ns
+kind load docker-image flask-api:latest --name flask-cluster
+kubectl apply -f Kubernetes.yaml
+
+kubectl port-forward service/flask-api-service 8080:80
+curl http://localhost:8080
