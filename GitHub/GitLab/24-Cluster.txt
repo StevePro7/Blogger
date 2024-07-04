@@ -1,5 +1,24 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<b>Azure AKS</b><br />
+Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
+<br />
+TODO - create table for AZ login + SSH key
+<br /><br />
+Export the following environment variables.  Note: use the Service Principal information for first 3x ENV VARs
+<br /><br />
+Create the Azure resource group then finally create the AKS cluster.  Note: this process can take few minutes
+<br />
+TODO - create table for AZ group + AKS create
+<br /><br />
+Finally, execute following commands to download + export <b>KUBECONFIG</b> file on localhost and setup context
+<br />
+TODO - create table for KUBECONFIG
+<br /><br />
+<br /><br />
+  
+  
+  
 <u>Cluster</u><br />
 Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure you have all Pre-Requisites:
 <br />
