@@ -1,6 +1,13 @@
 22 Cluster
 04-Jul-2024
 
+IMPORTANT - align outstanding export
+export table
+AKS create
+
+I had to modify this export
+export MASTER_SSH_KEY=~/.ssh/master_ssh_key.pub
+
 
 01.
 TODO - create table for AZ login + SSH key
@@ -32,6 +39,9 @@ https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/cicd
 Automate
 https://robinjanke1.medium.com/automating-helm-chart-builds-and-deployment-with-gitlab-ci-cd-2dbfad30a86c
 
+//OR
+//https://about.gitlab.com/blog/2017/09/21/how-to-create-a-ci-cd-pipeline-with-auto-deploy-to-kubernetes-using-gitlab
+
 helm
 https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/helm
 
@@ -51,6 +61,9 @@ CICDvariables.png
 
 
 07.
+Trigger
+https://cto.ai/blog/using-gitlab-ci-cd-with-a-kubernetes-cluster
+
 BuildPipelines.png
 
 TODO - table
