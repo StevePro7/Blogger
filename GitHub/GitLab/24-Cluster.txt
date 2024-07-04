@@ -1,23 +1,12 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<b>Azure AKS</b><br />
-Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
-<br />
-TODO - create table for AZ login + SSH key
+<b>Variables</b><br />
+Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab Variables here e.g. Docker registry host and username.  Secure sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
+
 <br /><br />
-Export the following environment variables.  Note: use the Service Principal information for first 3x ENV VARs
-<br /><br />
-Create the Azure resource group then finally create the AKS cluster.  Note: this process can take few minutes
-<br />
-TODO - create table for AZ group + AKS create
-<br /><br />
-Finally, execute following commands to download + export <b>KUBECONFIG</b> file on localhost and setup context
-<br />
-TODO - create table for KUBECONFIG
-<br /><br />
-<br /><br />
+  GitLab environment variables    
   
-  
+<br /><br />
   
 <u>Cluster</u><br />
 Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure you have all Pre-Requisites:
@@ -45,8 +34,24 @@ Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure 
   
 <b>Azure AKS</b><br />
 Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
-<br /><br />  
-<!--
-  Create file <b>.gitlab-ci.yml</b> at root directory
--->
+<br />
+TODO - create table for AZ login + SSH key
+<br /><br />
+Export the following environment variables.  Note: use the Service Principal information for first 3x ENV VARs
+<br /><br />
+Create the Azure resource group then finally create the AKS cluster.  Note: this process can take few minutes
+<br />
+TODO - create table for AZ group + AKS create
+<br /><br />
+Finally, execute following commands to download + export <b>KUBECONFIG</b> file on localhost and setup context
+<br />
+TODO - create table for KUBECONFIG
+<br /><br />
+  
+<b>Pipeline</b><br />
+Follow this tutorial to create and run your first GitLab CI/CD pipeline.  Create <b>.gitlab-ci.yml</b> file at root the of the project directory.  Refactor all YAML configuration in files beneath the <b>cicd</b> directory.  Automate CI/CD to the Kubernetes cluster using <b>helm</b> charts.  This way, multiple environments can be targeted and customized.
+<br /><br />
+
+<b>Variables</b><br />
+
 </span>
