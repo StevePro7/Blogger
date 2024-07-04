@@ -3,9 +3,21 @@
 <u>Example</u><br />
 In 2021, we coded an <a href="http://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and Kubernetes.  Let's replicate with <a href="https://blog.devops.dev/ci-cd-using-gitlab-and-docker-python-app-example-3f19ef26c2e8">Python Flask API</a> but this time include Gitlab CI/CD deployment pipelines.
 <br /><br />
-Navigate to gitlab.com.  Create blank project.  Launch PyCharm.  Create the new project <b>gitlabcheatsheet</b>.
-
-<br /><br />
+Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet">gitlab.com</a>.  Create blank project.  Launch PyCharm.  Create the new project <b>gitlabcheatsheet</b>.
+<br />
+<!--
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdqqC9Y8zFXYnH6fLnE-19x2NGdufNlAk-nntpH5zPwPlwNndYqJTD4qdIdbbyvxRlA4ZgBM1eZPb9lm1KBGK2uEZMx0mWjp-dS3WKKn2MZprE8NZ4gSsV3nFPuprhcLKi4WeXEADweRIJEPqGYPvAb52ySN6YHUApCDexLsM8BGZc8TxTVTwINjLRMk0/s925/BlankProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdqqC9Y8zFXYnH6fLnE-19x2NGdufNlAk-nntpH5zPwPlwNndYqJTD4qdIdbbyvxRlA4ZgBM1eZPb9lm1KBGK2uEZMx0mWjp-dS3WKKn2MZprE8NZ4gSsV3nFPuprhcLKi4WeXEADweRIJEPqGYPvAb52ySN6YHUApCDexLsM8BGZc8TxTVTwINjLRMk0/s600/BlankProject.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT5O32B_bQ_V4w6igR5jnHlotjLGjl_CEkwFYMQxQLP5m6bSNFwmBcjZXvr1szF236wl5eTdnG5DOKqD-QCof3PK1u5ta_J0eKDKC3SBSaOulD9MRu0-yEjwbuunmmfMhgOdMw1Q6XHN4C0EOc3L36x39slpEvqlDts_qL-P1K3E3r4ORxdKeMRZu_YNA/s800/NewProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT5O32B_bQ_V4w6igR5jnHlotjLGjl_CEkwFYMQxQLP5m6bSNFwmBcjZXvr1szF236wl5eTdnG5DOKqD-QCof3PK1u5ta_J0eKDKC3SBSaOulD9MRu0-yEjwbuunmmfMhgOdMw1Q6XHN4C0EOc3L36x39slpEvqlDts_qL-P1K3E3r4ORxdKeMRZu_YNA/s600/NewProject.png"/></a>
+</td>
+</tr>
+</table>
+-->
+<br />
 Enter main.py code.  Install packages.  Press F5 to debug.  Launch Terminal | curl <b>http://localhost:8080</b>
   
 <br /><br />
@@ -16,8 +28,5 @@ Create local KinD cluster.  Enter all the following Kubernetes Deployment and Se
 
 <br /><br />
 Finally test: Launch Terminal | Enter the following Kubernetes commands | curl <b>http://localhost:8080</b>
-  
-<br /><br />
-<u>Cluster</u><br />
 
 </span>
