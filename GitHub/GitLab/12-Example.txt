@@ -20,6 +20,7 @@ Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet">gitlab.com
 <br />
 Enter <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a> code.  Install <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/requirements.txt">packages</a>.  Press F5 to debug.  Launch Terminal | curl <b>http://localhost:8080</b>
 <br />
+<!--
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a></b></td>
@@ -50,10 +51,21 @@ Enter <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.
 </td>
 </tr>
 </table>
+-->
 <br />
-Code Dockerfile.  Launch Terminal | Enter the following Docker commands | curl <b>http://localhost:8080</b>
-  
-<br /><br />
+Code <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockefile</a>.  Launch Terminal | Enter the following Docker commands | curl <b>http://localhost:8080</b>  
+<br />
+<!--
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."<br />
+&nbsp;docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"<br />
+</td>
+</tr>
+</table>
+-->
+<br />
 Create local KinD cluster.  Enter all the following Kubernetes Deployment and Service YAML configuration:
 
 <br /><br />
