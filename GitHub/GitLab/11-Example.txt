@@ -34,6 +34,8 @@ https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile
 
 Terminal
 2x commands
+example.txt
+
 docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."
 docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"
 
@@ -52,6 +54,7 @@ data.txt
 
 
 table		commands
+example.txt
 
 kubectl config set-context --current --namespace=test-ns
 kind load docker-image flask-api:latest --name flask-cluster

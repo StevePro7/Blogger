@@ -1,0 +1,22 @@
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."<br />
+&nbsp;docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"<br />
+</td>
+</tr>
+</table>
+
+
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kind load docker-image flask-api:latest --name flask-cluster<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td>
+</tr>
+</table>
