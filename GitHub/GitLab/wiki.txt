@@ -1,22 +1,16 @@
 <span style="font-family:verdana;font-size:85%;">
-
 In 2016, we checked out <a href="http://steveproxna.blogspot.com/2016/08/github-cheat-sheet.html">GitHub Cheat Sheet</a>: a distributed version control system for Open Source projects.  Now we will explore differences in GitLab to streamline collaborative workflow and leverage <a href="https://www.bomberbot.com/devops/automate-your-software-development-lifecycle-with-gitlab-ci-cd">CI/CD pipelines</a>.
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s713/GitLab.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s600/GitLab.png"/></a>
-<!-- -->
 <br />
 Let's check it out!
-<br /><br />
-  
+<br /><br /> 
 <u>GitLab</u><br />
 As per previous post assumes an account setup on <a href="https://github.com/SteveProXNA">github.com</a>.  Create an account on <a href="https://gitlab.com/SteveProXNA">gitlab.com</a> if you have not already done so.  As GitLab also uses underlying git we setup the following on localhost for development:
 <br /><br />
-
 <b>SSH Keys</b><br />
 An SSH key is an access credential for the SSH network protocol.  Git supports both RSA and ED25519 keys.  Launch Terminal.  Issue the following commands to <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">generate</a> new SSH key and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">adding</a> SSH key to ssh-agent:
 <br />
-<!-- -->
 <br />
 <table width="100%" border="1">
 <tr>
@@ -47,44 +41,32 @@ An SSH key is an access credential for the SSH network protocol.  Git supports b
 <td>&nbsp;xclip -selection clipboard < &lt;key&gt;</td>
 </tr>
 </table>
-<!-- -->
 <br />
 IMPORTANT:<br />
 If <b>xclip</b> is not installed then issue 2x commands: <i>sudo apt-get update</i> and <i>sudo apt-get install xclip</i>.  Finally, navigate to github.com Settings | <a href="https://github.com/settings/keys">SSH and GPG</a> keys | New SSH key | Paste contents from id_rsa.pub here.
 <br /><br />
-
 <b>Personal Access Token</b><br />
 If you favor HTTPS then Personal Access Tokens offer security benefits over password-based <a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations">authentication</a>.  Launch <a href="https://gitlab.com/SteveProXNA">gitlab.com</a>.  Navigate to Edit Profile | Access Tokens | Add new token.  <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token">Create</a> personal access token.
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1wDKBpfmtIOFqgzXHsQvpzgwfg2xeZeES03OwSDC5IbM9Xl9IXSHD2TgaAciFgM4-1LUHfIVBtyg9N1YWtCH6VE9j6DOh9ih1U2QD34xiDnz4aQrOsYIBUIWEZh2CYafvGcMQWdYBit42VQlt6TJ-YiuM7q31-yX45cvAhtmWEfaeIkdvJ13bemSxgzQ/s1209/PersonalAccessToken.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1wDKBpfmtIOFqgzXHsQvpzgwfg2xeZeES03OwSDC5IbM9Xl9IXSHD2TgaAciFgM4-1LUHfIVBtyg9N1YWtCH6VE9j6DOh9ih1U2QD34xiDnz4aQrOsYIBUIWEZh2CYafvGcMQWdYBit42VQlt6TJ-YiuM7q31-yX45cvAhtmWEfaeIkdvJ13bemSxgzQ/s600/PersonalAccessToken.png"/></a>
-<!-- -->
 <br />
 After new Personal Access Token is created upload into source control software for example Source Tree on Windows and Mac OS/X and JetBrains products on Linux that integrate Git like PyCharm for Python etc etc.
 <br /><br />
-  
 <i>Source Tree</i><br />
 Launch Source Tree | Settings | Accounts Add... | Enter the following details | Paste personal access token:
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoe_STkSKCChQRNh1KuIAge9dKx-bfQwgfkfjHIL5PaNb8l808ZXcgnAXuc-aXAuHpvc6EHuXl0c9lAXZNo35ItpFq212AjWZy6VHmZF-gMbN7srBtvQlT1Q0fjw4LTvzg1XlymKxmj1CU6t6hqg8YreD5rj2R1UHOYRPEneO19XZO-oS1vzvWuoYaEEE/s476/PrivateToken.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoe_STkSKCChQRNh1KuIAge9dKx-bfQwgfkfjHIL5PaNb8l808ZXcgnAXuc-aXAuHpvc6EHuXl0c9lAXZNo35ItpFq212AjWZy6VHmZF-gMbN7srBtvQlT1Q0fjw4LTvzg1XlymKxmj1CU6t6hqg8YreD5rj2R1UHOYRPEneO19XZO-oS1vzvWuoYaEEE/s600/PrivateToken.png"/></a>
-<!-- -->
-<br />
-  
+<br />  
 <i>JetBrains IDE</i><br />
 Launch PyCharm | File | Settings... | Version Control | GitLab.  Click "+" button | Enter GitLab token | Log In:
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s1022/JetBrainsLogin.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s600/JetBrainsLogin.png"/></a>
-<!-- -->
 <br /><br />
-
 <u>Example</u><br />
 In 2021, we coded an <a href="http://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and Kubernetes.  Let's replicate with <a href="https://blog.devops.dev/ci-cd-using-gitlab-and-docker-python-app-example-3f19ef26c2e8">Python Flask API</a> but this time include Gitlab CI/CD deployment pipelines.
 <br /><br />
 Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet">gitlab.com</a>.  Create blank project.  Launch PyCharm.  Create the new project <b>gitlabcheatsheet</b>.
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -95,11 +77,9 @@ Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet">gitlab.com
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Enter <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a> code.  Install <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/requirements.txt">packages</a>.  Press F5 to debug.  Launch Terminal | curl <b>http://localhost:8080</b>
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a></b></td>
@@ -130,11 +110,9 @@ Enter <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Code <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockefile</a>.  Launch Terminal | Enter the following Docker commands | curl <b>http://localhost:8080</b>  
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>
@@ -143,11 +121,9 @@ Code <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Docker
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Create local <a href="https://kind.sigs.k8s.io">KinD</a> cluster.  Enter all the following <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes</a> Deployment and Service YAML configuration:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td colspan="2">&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
@@ -207,11 +183,9 @@ Create local <a href="https://kind.sigs.k8s.io">KinD</a> cluster.  Enter all the
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Finally test: Launch Terminal | Enter the following Kubernetes commands | curl <b>http://localhost:8080</b>
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>
@@ -224,14 +198,10 @@ Finally test: Launch Terminal | Enter the following Kubernetes commands | curl <
 </td>
 </tr>
 </table>
-<br />
-<!-- -->
-
-  
+<br /> 
 <u>Cluster</u><br />
 Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure you have all Pre-Requisites:
 <br />
-<!-- -->
 <table width="100%" border="1">
 <tr>
 <td>
@@ -248,13 +218,10 @@ Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure 
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
-  
 <b>Azure AKS</b><br />
 Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -269,11 +236,9 @@ Launch Terminal | Login to Azure portal.  Enter commands to extract Service Prin
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Export the following environment variables.  Note: use the Service Principal information for first 3x ENV VARs
 <br />
-<!-- -->
 <table width="100%" border="1">
 <tr>
 <td>
@@ -294,11 +259,9 @@ Export the following environment variables.  Note: use the Service Principal inf
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Create the Azure resource group then finally create the AKS cluster.  Note: this process can take few minutes
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -330,25 +293,18 @@ Finally, execute following commands to download + export <b>KUBECONFIG</b> file 
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
-  
 <b>Pipeline</b><br />
 Follow this <a href="https://docs.gitlab.com/ee/ci/quick_start">tutorial</a> to create and run your first GitLab CI/CD pipeline.  Create <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/.gitlab-ci.yml">.gitlab-ci.yml</a></b> file at root the of the project directory.  Refactor all YAML configuration in files beneath the <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/cicd">cicd</a></b> directory.  <a href="https://robinjanke1.medium.com/automating-helm-chart-builds-and-deployment-with-gitlab-ci-cd-2dbfad30a86c">Automate</a> CI/CD to the Kubernetes cluster using <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/helm">helm</a></b> charts.  This way, multiple environments can be targeted and customized.
 <br /><br />
-
 <b>Variables</b><br />
 Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/settings/ci_cd">gitlab.com</a> | Settings | CI/CD | Variables.  Enter all GitLab <a href="https://docs.gitlab.com/ee/ci/variables/predefined_variables.html ">Variables</a> here e.g. Docker registry host and username.  <a href="https://cloudifydevops.com/secured-gitlab-pipeline-with-base64">Secure</a> sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s883/CICDvariables.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s600/CICDvariables.png"/></a>
-<!-- -->
 <br />
-
 <b>Deployment</b><br />
 <a href="https://cto.ai/blog/using-gitlab-ci-cd-with-a-kubernetes-cluster">Trigger</a> CI/CD pipeline.  Launch Terminal | Repeat <i>kubectl port-forward</i>.  Test: curl <b>http://localhost:8080</b>
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzOSHgEJZVKEX5LG99aT75Fsfyrc_ZD-irkWDCUlImKc5H8oCtaHIolzNPkfi_v94dtfkFeRB1CuKUYrUBeETS6Q2f1h2iijmKjh1NGt5fE8DGbswjweKX2Qko1-Ns0Imhc7778Sdl9u3C5UBdCDgJUVVk0BncozYu85rgFedC5waAdBW5pvOPDodl3_Y/s770/BuildPipelines.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzOSHgEJZVKEX5LG99aT75Fsfyrc_ZD-irkWDCUlImKc5H8oCtaHIolzNPkfi_v94dtfkFeRB1CuKUYrUBeETS6Q2f1h2iijmKjh1NGt5fE8DGbswjweKX2Qko1-Ns0Imhc7778Sdl9u3C5UBdCDgJUVVk0BncozYu85rgFedC5waAdBW5pvOPDodl3_Y/s600/BuildPipelines.png"/></a>
 <br />
 <table border="1" width="99%">
@@ -359,21 +315,16 @@ Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/settings/
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
-  
 <u>GitFlow Example</u><br />
 <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow</a> is an alternative Git branching model that involves the use of feature branches and multiple primary branches.  Here is practical <a href="https://hackernoon.com/from-git-flow-to-cicd-a-practical-guide-to-implement-git-workflow">guide</a> to implement GitFlow using GitLab with the corresponding git commands.
 <br /><br />
 Launch <a href="https://gitlab.com">gitlab.com</a>.  Create new project.  Default branch will be main.  Git clone repository to localhost.  For completeness cut initial Tag 0.1.  In SourceTree setup GitFlow: Repository | Git-flow | Initialize Repository:
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s413/sourcetree.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s600/sourcetree.png"/></a>
-<!-- -->
 <br />
 In <a href="https://gitlab.com">gitlab.com</a> set develop as default branch: GitLab | Setttings | Repository | Branch defaults | <b>develop</b>.
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr><td>
 <table width="99%" border="0">
@@ -427,7 +378,6 @@ In <a href="https://gitlab.com">gitlab.com</a> set develop as default branch: Gi
 </table>
 </td></tr>
 </table>
-<!-- -->
 <br />
 IMPORTANT - you can compare two branches [source vs. target] anytime issuing the following commands:
 <br />
@@ -442,8 +392,6 @@ IMPORTANT - you can compare two branches [source vs. target] anytime issuing the
 </td></tr>
 </table>
 <br />
-  
 <u>Summary</u><br />
 To summarize, now that we have discussed the <a href="https://www.geeksforgeeks.org/difference-between-gitlab-and-github">differences</a> between GitHub and GitLab, we have extended our previous end-to-end Web API demo on local host, in Docker and Kubernetes but now leveraged GitLab CI/CD pipelines to automate deployments to the cloud.  Our next steps would be more GitFlow integration: Replicate deployments across multiple environments and complete the full Software Development LifeCyle!
-
 </span>
