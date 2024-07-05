@@ -1,11 +1,9 @@
-<span style="font-family:verdana;font-size:85%;">
-
 <u>Example</u><br />
 In 2021, we coded an <a href="http://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and Kubernetes.  Let's replicate with <a href="https://blog.devops.dev/ci-cd-using-gitlab-and-docker-python-app-example-3f19ef26c2e8">Python Flask API</a> but this time include Gitlab CI/CD deployment pipelines.
 <br /><br />
 Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet">gitlab.com</a>.  Create blank project.  Launch PyCharm.  Create the new project <b>gitlabcheatsheet</b>.
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -16,11 +14,11 @@ Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet">gitlab.com
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 Enter <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a> code.  Install <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/requirements.txt">packages</a>.  Press F5 to debug.  Launch Terminal | curl <b>http://localhost:8080</b>
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a></b></td>
@@ -51,11 +49,11 @@ Enter <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 Code <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockefile</a>.  Launch Terminal | Enter the following Docker commands | curl <b>http://localhost:8080</b>  
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>
@@ -64,11 +62,11 @@ Code <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Docker
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 Create local <a href="https://kind.sigs.k8s.io">KinD</a> cluster.  Enter all the following <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes</a> Deployment and Service YAML configuration:
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td colspan="2">&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
@@ -128,11 +126,11 @@ Create local <a href="https://kind.sigs.k8s.io">KinD</a> cluster.  Enter all the
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 Finally test: Launch Terminal | Enter the following Kubernetes commands | curl <b>http://localhost:8080</b>
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td>
@@ -146,6 +144,4 @@ Finally test: Launch Terminal | Enter the following Kubernetes commands | curl <
 </tr>
 </table>
 <br />
--->
-  
-</span>
+<!-- -->
