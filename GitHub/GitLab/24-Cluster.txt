@@ -107,7 +107,7 @@ Finally, execute following commands to download + export <b>KUBECONFIG</b> file 
 <br />
   
 <b>Pipeline</b><br />
-Follow this tutorial to create and run your first GitLab CI/CD pipeline.  Create <b>.gitlab-ci.yml</b> file at root the of the project directory.  Refactor all YAML configuration in files beneath the <b>cicd</b> directory.  Automate CI/CD to the Kubernetes cluster using <b>helm</b> charts.  This way, multiple environments can be targeted and customized.
+Follow this <a href="https://docs.gitlab.com/ee/ci/quick_start">tutorial</a> to create and run your first GitLab CI/CD pipeline.  Create <b>.gitlab-ci.yml</b> file at root the of the project directory.  Refactor all YAML configuration in files beneath the <b>cicd</b> directory.  Automate CI/CD to the Kubernetes cluster using <b>helm</b> charts.  This way, multiple environments can be targeted and customized.
 <br /><br />
 
 <b>Variables</b><br />
@@ -117,7 +117,14 @@ Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab Variabl
 <b>Deployment</b><br />
 Trigger CI/CD pipeline.  Launch Terminal | Repeat <i>kubectl port-forward</i>.  Test: curl <b>http://localhost:8080</b>
 <br />
-TODO - create table for kubectl port-forward + curl
-<br /><br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td>
+</tr>
+</table>
+<br />
   
 </span>
