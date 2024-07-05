@@ -27,18 +27,84 @@ Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure 
 <b>Azure AKS</b><br />
 Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
 <br />
-TODO - create table for AZ login + SSH key
-<br /><br />
+<!--
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;az login<br />
+&nbsp;az ad sp create-for-rbac --name ${USER}-bz-sp<br />
+&nbsp;cd ~/.ssh<br />
+</td>
+<td>
+&nbsp;ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key<br />
+&nbsp;eval $(ssh-agent -s)<br />
+&nbsp;ssh-add master_ssh_key<br />
+</td>
+</tr>
+</table>
+-->
+<br />
 Export the following environment variables.  Note: use the Service Principal information for first 3x ENV VARs
-<br /><br />
+<br />
+<!--
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;<br />
+&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;<br />
+&nbsp;export AZ_TENANT_ID=&lt;value_from_tenant<br />
+&nbsp;export CLUSTER_NAME=stevepro-dev-cluster<br />
+&nbsp;export CLUSTER_NODES=3<br />
+&nbsp;export MASTER_SSH_KEY=~/.ssh/master_ssh_key.pub<br />
+</td>
+<td>
+&nbsp;export AZ_NETWORK_MODE=transparent<br />
+&nbsp;export AZ_CREATE_MODE=AKS<br />
+&nbsp;export AZ_LB_SKU=standard<br />
+&nbsp;export AZ_VM_SIZE=Standard_D2s_v3<br />
+&nbsp;export AZ_LOCATION=northeurope<br />
+&nbsp;export KUBERNETES_VERSION=1.28<br />
+</td>
+</tr>
+</table>
+-->
+<br />
 Create the Azure resource group then finally create the AKS cluster.  Note: this process can take few minutes
 <br />
-TODO - create table for AZ group + AKS create
-<br /><br />
+<!--
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;az group create --name ${CLUSTER_NAME} --location ${AZ_LOCATION} --debug
+</td>
+</tr>
+<tr>
+<td valign="top">
+&nbsp;az aks create --name ${CLUSTER_NAME} --resource-group ${CLUSTER_NAME} \<br />
+&nbsp; --dns-name-prefix ${CLUSTER_NAME} --node-count ${CLUSTER_NODES} \<br />
+&nbsp; --node-vm-size ${AZ_VM_SIZE} --kubernetes-version ${KUBERNETES_VERSION} \<br />
+&nbsp; --ssh-key-value ${MASTER_SSH_KEY} --service-principal ${AZ_SP_ID} \<br />
+&nbsp; --client-secret ${AZ_SP_PASSWORD} --load-balancer-sku ${AZ_LB_SKU} \<br />
+&nbsp; --network-plugin azure --debug<br />
+</td>
+</tr>
+</table>
+<br />
 Finally, execute following commands to download + export <b>KUBECONFIG</b> file on localhost and setup context
 <br />
-TODO - create table for KUBECONFIG
-<br /><br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;export KUBECONFIG=~/.kube/config<br />
+&nbsp;az aks get-credentials --name ${CLUSTER_NAME} \<br />
+&nbsp; --resource-group ${CLUSTER_NAME} --file ${KUBECONFIG}<br />
+&nbsp;kubectl create ns test-ns<br />
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+</td>
+</tr>
+</table>
+-->
+<br />
   
 <b>Pipeline</b><br />
 Follow this tutorial to create and run your first GitLab CI/CD pipeline.  Create <b>.gitlab-ci.yml</b> file at root the of the project directory.  Refactor all YAML configuration in files beneath the <b>cicd</b> directory.  Automate CI/CD to the Kubernetes cluster using <b>helm</b> charts.  This way, multiple environments can be targeted and customized.
