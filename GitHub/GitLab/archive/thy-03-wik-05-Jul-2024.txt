@@ -1,0 +1,83 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In 2016, we checked out <a href="http://steveproxna.blogspot.com/2016/08/github-cheat-sheet.html">GitHub Cheat Sheet</a>: a distributed version control system for Open Source projects.  Now we will explore differences in GitLab to streamline collaborative workflow and leverage <a href="https://www.bomberbot.com/devops/automate-your-software-development-lifecycle-with-gitlab-ci-cd">CI/CD pipelines</a>.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s713/GitLab.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s600/GitLab.png"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+  
+<u>GitLab</u><br />
+As per previous post assumes an account setup on <a href="https://github.com/SteveProXNA">github.com</a>.  Create an account on <a href="https://gitlab.com/SteveProXNA">gitlab.com</a> if you have not already done so.  As GitLab also uses underlying git we setup the following on localhost for development:
+<br /><br />
+
+<b>SSH Keys</b><br />
+An SSH key is an access credential for the SSH network protocol.  Git supports both RSA and ED25519 keys.  Launch Terminal.  Issue the following commands to <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">generate</a> new SSH key and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">adding</a> SSH key to ssh-agent:
+<br />
+<!--
+<br />
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;<b>RSA</b></td>
+<td>&nbsp;<b>ED25519</b></td>
+</tr>
+<tr>
+<td>&nbsp;cd ~/.ssh</td>
+<td>&nbsp;cd ~/.ssh</td>
+</tr>
+<tr>
+<td>&nbsp;ssh-keygen -t rsa -b 4096 -C "steven_boland@hotmail.com"</td>
+<td>&nbsp;ssh-keygen -t ed25519 -C &lt;email&gt;</td>
+</tr>
+<tr>
+<td>&nbsp;Passphrase &lt;redacted&gt;</td>
+<td>&nbsp;Passphrase &lt;redacted&gt;</td>
+</tr>
+<tr>
+<td>&nbsp;eval "$(ssh-agent -s)"</td>
+<td>&nbsp;eval "$(ssh-agent -s)"</td>
+<tr>
+<td>&nbsp;ssh-add ~/.ssh/id_rsa</td>
+<td>&nbsp;ssh-add ~/.ssh/id_ed25519</td>
+</tr>
+<tr>
+<td>&nbsp;xclip -selection clipboard < ~/.ssh/id_rsa.pub</td>
+<td>&nbsp;xclip -selection clipboard < &lt;key&gt;</td>
+</tr>
+</table>
+-->
+<br />
+IMPORTANT:<br />
+If <b>xclip</b> is not installed then issue 2x commands: <i>sudo apt-get update</i> and <i>sudo apt-get install xclip</i>.  Finally, navigate to github.com Settings | <a href="https://github.com/settings/keys">SSH and GPG</a> keys | New SSH key | Paste contents from id_rsa.pub here.
+<br /><br />
+
+<b>Personal Access Token</b><br />
+If you favor HTTPS then Personal Access Tokens offer security benefits over password-based <a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations">authentication</a>.  Launch <a href="https://gitlab.com/SteveProXNA">gitlab.com</a>.  Navigate to Edit Profile | Access Tokens | Add new token.  <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token">Create</a> personal access token.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1wDKBpfmtIOFqgzXHsQvpzgwfg2xeZeES03OwSDC5IbM9Xl9IXSHD2TgaAciFgM4-1LUHfIVBtyg9N1YWtCH6VE9j6DOh9ih1U2QD34xiDnz4aQrOsYIBUIWEZh2CYafvGcMQWdYBit42VQlt6TJ-YiuM7q31-yX45cvAhtmWEfaeIkdvJ13bemSxgzQ/s1209/PersonalAccessToken.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1wDKBpfmtIOFqgzXHsQvpzgwfg2xeZeES03OwSDC5IbM9Xl9IXSHD2TgaAciFgM4-1LUHfIVBtyg9N1YWtCH6VE9j6DOh9ih1U2QD34xiDnz4aQrOsYIBUIWEZh2CYafvGcMQWdYBit42VQlt6TJ-YiuM7q31-yX45cvAhtmWEfaeIkdvJ13bemSxgzQ/s600/PersonalAccessToken.png"/></a>
+-->
+<br />
+After new Personal Access Token is created upload into source control software for example Source Tree on Windows and Mac OS/X and JetBrains products on Linux that integrate Git like PyCharm for Python etc etc.
+<br /><br />
+  
+<i>Source Tree</i><br />
+Launch Source Tree | Settings | Accounts Add... | Enter the following details | Paste personal access token:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoe_STkSKCChQRNh1KuIAge9dKx-bfQwgfkfjHIL5PaNb8l808ZXcgnAXuc-aXAuHpvc6EHuXl0c9lAXZNo35ItpFq212AjWZy6VHmZF-gMbN7srBtvQlT1Q0fjw4LTvzg1XlymKxmj1CU6t6hqg8YreD5rj2R1UHOYRPEneO19XZO-oS1vzvWuoYaEEE/s476/PrivateToken.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoe_STkSKCChQRNh1KuIAge9dKx-bfQwgfkfjHIL5PaNb8l808ZXcgnAXuc-aXAuHpvc6EHuXl0c9lAXZNo35ItpFq212AjWZy6VHmZF-gMbN7srBtvQlT1Q0fjw4LTvzg1XlymKxmj1CU6t6hqg8YreD5rj2R1UHOYRPEneO19XZO-oS1vzvWuoYaEEE/s600/PrivateToken.png"/></a>
+-->
+<br />
+  
+<i>JetBrains IDE</i><br />
+Launch PyCharm | File | Settings... | Version Control | GitLab.  Click "+" button | Enter GitLab token | Log In:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s1022/JetBrainsLogin.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s600/JetBrainsLogin.png"/></a>
+-->
+<br />
+<br />  
+  
+</span>
