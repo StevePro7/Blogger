@@ -3,3 +3,132 @@ kubectl commands
 
 Top Kubernetes Commands And Tricks For DevOps Tasks
 https://vinodhakumara2681997.medium.com/top-kubernetes-commands-and-tricks-for-devops-tasks-f7590f66f3af
+
+References:
+https://vinodhakumara2681997.medium.com/top-linux-commands-and-tricks-for-devops-tasks-42cf93aa77e0
+https://vinodhakumara2681997.medium.com/cheatsheet-linux-commands-for-devops-80be32b88656
+
+
+k version
+
+k cluster-info
+
+k api-resources
+
+k config get-contexts
+
+k config use-context <context-name>
+
+k config set-context --curent --namesapce <NAMESPACE_NAME>
+
+
+k apply -f <file_name>
+
+k create ns <namespace_name>
+
+
+k patch (-f FILENME | TYPE NAME) [-p PATCH | --patch-file FILE]
+
+Examples
+kubectl patch node k8s-node-1 -p '{"spec":{"unschedulable":true}}'
+kubectl patch node k8s-node-1 -p $'spec:\n unschedulable: true'
+kubectl patch -f node.json -p '{"spec":{"unschedulable":true}}'
+kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"kubernetes-serve-hostname","image":"new image"}]}}'
+kubectl patch pod valid-pod --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value":"new image"}]'
+kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":2}}'
+
+
+k get deploy -n kube-system
+
+k rollout status deployment/<deployment_name>
+
+k describe pod <pod_name> -n <NAMESPACE>
+
+k logs <pod_name <container_name> -f
+
+k exec -it <pod_name> -c <container>name> -- /bin/sh
+
+k scale deployment <deployment_name> --replicas=3
+
+k expose deployment <deployment_name> --type=NodePort --port=<port_number>
+
+k delete pod <pod_name>
+
+
+k taint nodes <node_name> key=value:taint_effect
+
+k cordon NODE
+
+k uncordon NODE
+
+k drain foo --force
+
+k drain foo --grace-period=900
+
+k explain pods
+
+k get events --sort-by=.metadata.creationTimestamp
+
+
+k diff -f ./my-manifest.yaml
+
+k set image deployment/frontend www=image:v2
+
+
+k replace --force -f ./pod.json
+
+
+kubectl label pods my-pod new-label=awesome
+kubectl label pods my-pod new-label-               
+kubectl label pods my-pod new-label=new-value --overwrite
+
+
+k edit svc/docker-registry
+KUBE_EDITOR="nano" kubectl edit svc/docker-registry
+
+k debug my-pod -it --image=busybox:1.28
+k debug node/my-node -it --image=busybox:1.28
+
+k run -i --tty busybox --image=busybox:1.28 -- sh
+
+k cp /tmp/foo_dir my-pod:/tmp/bar_dir
+
+
+k port-forward <pod-name> <local-port>:<pod:port>
+
+
+k top [node | pod | container | service] [NAME | -l label]
+
+
+Formatting output
+-o=custom-columns=<spec> : Print a table using a comma separated list of custom columns.
+-o=custom-columns-file=<filename>: Print a table using the custom columns template in the <filename> file
+-o=go-template=<template>: Print the fields defined in a golang template
+-o=go-template-file=<filename>: Print the fields defined by the golang template in the <filename> file
+-o=json: Output a JSON formatted API object
+-o=jsonpath=<template>: Print the fields defined in a jsonpath expression
+-o=jsonpath-file=<filename>: Print the fields defined by the jsonpath expression in the <filename> file
+-o=name: Print only the resource name and nothing else
+-o=wide: Output in the plain-text format with any additional information, and for pods, the node name is included
+-o=yaml: Output a YAML formatted API object
+
+
+Examples using -o=custom-columns:
+kubectl get pods -A -o=custom-columns='DATA:spec.containers[*].image'
+kubectl get pods --namespace default --output=custom-columns="NAME:.metadata.name,IMAGE:.spec.containers[*].image"
+kubectl get pods -A -o=custom-columns='DATA:spec.containers[?(@.image!="registry.k8s.io/coredns:1.6.2")].image'
+kubectl get pods -A -o=custom-columns='DATA:metadata.*'
+
+
+
+Verbosity level
+--v=0: Generally useful for this to always be visible to a cluster operator.
+--v=1: A reasonable default log level if you don't want verbosity.
+--v=2: Provides steady state information and key log messages for significant system changes. Recommended default log level.
+--v=3: Extended information about changes.
+--v=4: Debug level verbosity.
+--v=5: Trace level verbosity.
+--v=6: Display requested resources.
+--v=7: Display HTTP request headers.
+--v=8: Display HTTP request contents.
+--v=9: Display HTTP request contents without truncation of contents.
