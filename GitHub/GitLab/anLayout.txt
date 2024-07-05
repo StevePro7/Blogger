@@ -19,36 +19,36 @@ Layout
 //JetBrains
 
 
-Example
+//Example
 
-PyCharm API similar to Go API
-https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example
+//PyCharm API similar to Go API
+//https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example
 
-create initial code sample
-main.py		Dockerfile	Kubernetes.yaml
-local
-Docker
-KinD	- important	deployment + service values hardcoded!
+//create initial code sample
+//main.py		Dockerfile	Kubernetes.yaml
+//local
+//Docker
+//KinD	- important	deployment + service values hardcoded!
 
-But now leverage CI/CD pipelines
+//But now leverage CI/CD pipelines
 
-Pre-reqs
-az a/c + CLI
-az login
-Provision AKS cluster
+//Pre-reqs
+//az a/c + CLI
+//az login
+//Provision AKS cluster
 
-Docker HUB a/c
+//Docker HUB a/c
 
-Setup CI/CD variables
+//Setup CI/CD variables
 
-Setup 1x environment DEV	to PoC
+//Setup 1x environment DEV	to PoC
 
-CUT branch
-create PR
-create .gitlab-ci.yml
+//CUT branch
+//create PR
+//create .gitlab-ci.yml
 
-Docker build + push
-Helm chart to install
+//Docker build + push
+//Helm chart to install
 
 
 //GITFLOW
