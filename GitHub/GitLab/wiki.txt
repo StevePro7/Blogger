@@ -77,7 +77,90 @@ Launch PyCharm | File | Settings... | Version Control | GitLab.  Click "+" butto
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s1022/JetBrainsLogin.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s600/JetBrainsLogin.png"/></a>
 -->
-<br />
-<br />  
+<br /><br />
   
+<u>GitFlow Example</u><br />
+<a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow</a> is an alternative Git branching model that involves the use of feature branches and multiple primary branches.  Here is practical <a href="https://hackernoon.com/from-git-flow-to-cicd-a-practical-guide-to-implement-git-workflow">guide</a> to implement GitFlow using GitLab with the corresponding git commands.
+<br /><br />
+Launch <a href="https://gitlab.com">gitlab.com</a>.  Create new project.  Default branch will be main.  Git clone repository to localhost.  For completeness cut initial Tag 0.1.  In SourceTree setup GitFlow: Repository | Git-flow | Initialize Repository:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s413/sourcetree.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s600/sourcetree.png"/></a>
+<!-- -->
+<br />
+In <a href="https://gitlab.com">gitlab.com</a> set develop as default branch: GitLab | Setttings | Repository | Branch defaults | <b>develop</b>.
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<table width="99%" border="0">
+<tr><td>&nbsp;<b>FEATURE</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout -b feature/my-feature develop</td><td>&nbsp;# cut feature branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin feature/my-feature</td><td>&nbsp;# push feature to remote</td></tr>
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff feature/my-feature</td><td>&nbsp;# merge feature to develop</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# push develop to remote</td></tr>
+<tr><td>&nbsp;<b>FEATURE</b> [end]</td></tr>
+<tr><td>&nbsp;git branch -d feature/my-feature</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d feature/my-feature</td><td>&nbsp;# delete remote branch</td></tr>
+<tr><td>&nbsp;<b>RELEASE</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout -b release/1.0 develop</td><td>&nbsp;# cut release branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin release/1.0</td><td>&nbsp;# push release to remote</td></tr>
+<tr><td>&nbsp;<b>BUGFIX</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout -b bugfix/1.0 release/1.0</td><td>&nbsp;# cut bugfix branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin bugfix/1.0</td><td>&nbsp;# push bugfix to remote</td></tr>
+<tr><td>&nbsp;git checkout release/1.0</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff bugfix/1.0</td><td>&nbsp;# merge bugfix to release</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# push release to remote</td></tr>
+<tr><td>&nbsp;<b>BUGFIX</b> [end]</td></tr>
+<tr><td>&nbsp;git branch -d bugfix/1.0</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d bugfix/1.0</td><td>&nbsp;# delete remote branch</td></tr>
+<tr><td>&nbsp;<b>RELEASE</b> [end]</td></tr>
+<tr><td>&nbsp;git checkout main</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff release/1.0</td><td>&nbsp;# merge release to main</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync release with main</td></tr>
+<tr><td>&nbsp;git tag -a 1.0 -m "Tag 1.0"</td><td>&nbsp;# cut tag 1.0 off main</td></tr>
+<tr><td>&nbsp;git push origin tag 1.0</td><td>&nbsp;# push tag 1.0 to remote</td></tr>
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff release/1.0</td><td>&nbsp;# merge release to develop</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync release with develop</td></tr>
+<tr><td>&nbsp;git branch -d release/1.0</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d release/1.0</td><td>&nbsp;# delete remote branch</td></tr>
+<tr><td>&nbsp;<b>HOTFIX</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout main</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git checkout -b hotfix/1.1 main</td><td>&nbsp;# cut hotfix branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin hotfix/1.1</td><td>&nbsp;# push hotfix to remote</td></tr>
+<tr><td>&nbsp;<b>HOTFIX</b> [end]</td></tr>
+<tr><td>&nbsp;git checkout main</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff hotfix/1.1</td><td>&nbsp;# merge hotfix to main</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync hotfix with main</td></tr>
+<tr><td>&nbsp;git tag -a 1.1 -m "Tag 1.1"</td><td>&nbsp;# cut Tag 1.1 off main</td></tr>
+<tr><td>&nbsp;git push origin tag 1.1</td><td>&nbsp;# push Tag 1.1 to remote</td></tr>
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff hotfix/1.1</td><td>&nbsp;# merge hotfix to develop</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync hotfix with develop</td></tr>
+<tr><td>&nbsp;git branch -d hotfix/1.1</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d hotfix/1.1</td><td>&nbsp;# delete remote branch</td></tr>
+</table>
+</td></tr>
+</table>
+<!-- -->
+<br />
+IMPORTANT - you can compare two branches [source vs. target] anytime issuing the following commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<table width="99%" border="0">
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;# source branch</td></tr>
+<tr><td>&nbsp;git diff --name-only main</td><td>&nbsp;# target branch</td></tr>
+<tr><td align="center">&nbsp;<b>OR</b></td><td>&nbsp;# target branch</td></tr>
+<tr><td>&nbsp;git diff-tree --no-commit-id --name-only -r main..develop</td><td>&nbsp;# source vs. target branch</td></tr>
+</table>
+</td></tr>
+</table>
+<br />
+  
+<u>Summary</u><br />
+To summarize, now that we have discussed the <a href="https://www.geeksforgeeks.org/difference-between-gitlab-and-github">differences</a> between GitHub and GitLab, we have extended our previous end-to-end Web API demo on local host, in Docker and Kubernetes but now leveraged GitLab CI/CD pipelines to automate deployments to the cloud.  Our next steps would be more GitFlow integration: Replicate deployments across multiple environments and complete the full Software Development LifeCyle!
+
 </span>
