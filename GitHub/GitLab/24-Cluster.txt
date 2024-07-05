@@ -1,9 +1,7 @@
-<span style="font-family:verdana;font-size:85%;">
-
 <u>Cluster</u><br />
 Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure you have all Pre-Requisites:
 <br />
-<!--
+<!-- -->
 <table width="100%" border="1">
 <tr>
 <td>
@@ -20,14 +18,13 @@ Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure 
 </td>
 </tr>
 </table>
-<br />
--->
+<!-- -->
 <br />
   
 <b>Azure AKS</b><br />
 Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -42,11 +39,11 @@ Launch Terminal | Login to Azure portal.  Enter commands to extract Service Prin
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 Export the following environment variables.  Note: use the Service Principal information for first 3x ENV VARs
 <br />
-<!--
+<!-- -->
 <table width="100%" border="1">
 <tr>
 <td>
@@ -67,11 +64,11 @@ Export the following environment variables.  Note: use the Service Principal inf
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 Create the Azure resource group then finally create the AKS cluster.  Note: this process can take few minutes
 <br />
-<!--
+<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -103,7 +100,7 @@ Finally, execute following commands to download + export <b>KUBECONFIG</b> file 
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
   
 <b>Pipeline</b><br />
@@ -113,15 +110,15 @@ Follow this <a href="https://docs.gitlab.com/ee/ci/quick_start">tutorial</a> to 
 <b>Variables</b><br />
 Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/settings/ci_cd">gitlab.com</a> | Settings | CI/CD | Variables.  Enter all GitLab <a href="https://docs.gitlab.com/ee/ci/variables/predefined_variables.html ">Variables</a> here e.g. Docker registry host and username.  <a href="https://cloudifydevops.com/secured-gitlab-pipeline-with-base64">Secure</a> sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s883/CICDvariables.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s600/CICDvariables.png"/></a>
--->
+<!-- -->
 <br />
 
 <b>Deployment</b><br />
 <a href="https://cto.ai/blog/using-gitlab-ci-cd-with-a-kubernetes-cluster">Trigger</a> CI/CD pipeline.  Launch Terminal | Repeat <i>kubectl port-forward</i>.  Test: curl <b>http://localhost:8080</b>
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzOSHgEJZVKEX5LG99aT75Fsfyrc_ZD-irkWDCUlImKc5H8oCtaHIolzNPkfi_v94dtfkFeRB1CuKUYrUBeETS6Q2f1h2iijmKjh1NGt5fE8DGbswjweKX2Qko1-Ns0Imhc7778Sdl9u3C5UBdCDgJUVVk0BncozYu85rgFedC5waAdBW5pvOPDodl3_Y/s770/BuildPipelines.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzOSHgEJZVKEX5LG99aT75Fsfyrc_ZD-irkWDCUlImKc5H8oCtaHIolzNPkfi_v94dtfkFeRB1CuKUYrUBeETS6Q2f1h2iijmKjh1NGt5fE8DGbswjweKX2Qko1-Ns0Imhc7778Sdl9u3C5UBdCDgJUVVk0BncozYu85rgFedC5waAdBW5pvOPDodl3_Y/s600/BuildPipelines.png"/></a>
 <br />
 <table border="1" width="99%">
@@ -132,7 +129,5 @@ Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/settings/
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
-  
-</span>
