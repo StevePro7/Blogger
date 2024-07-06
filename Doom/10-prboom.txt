@@ -5,6 +5,7 @@
 <br /><br />
 Follow this <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ">YouTube</a> video to setup PrBoom in VS Code and build and debug step through the source code!  Launch Terminal.  Install the following Linux packages as PrBoom pre-requisites, if not currently installed:
 <br />
+<!--
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -13,10 +14,12 @@ Follow this <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ">YouTube</a> vi
 </td>
 </tr>
 </table>
+-->
 <br />
 Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/prboom-plus/files/prboom-plus/2.5.1.3">sourceforge.net</a></b>.  That is the link that seemed to work OK for me.  Launch Terminal.  Execute following commands to extract source code, configure, build and run PrBoom:
 <br />
- <table border="1" width="99%">
+<!--
+<table border="1" width="99%">
 <tr>
 <td valign="top">
 &nbsp;tar -xvf prboom-plus-2.5.1.3.tar.gz<br />
@@ -27,10 +30,12 @@ Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/p
 </td>
 </tr>
 </table>
+-->
 <br />
 If you get the following <i>configure: error: *** You must have the SDL libraries installed before you can compile prboom
  *** See http://prboom.sourceforge.net/linux.html</i> then install the following packages:
 <br />
+<!--
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -40,9 +45,17 @@ If you get the following <i>configure: error: *** You must have the SDL librarie
 </td>
 </tr>
 </table>
+-->
 <br />
-Copy all files from the DoomCodeWalkThru Files directory to the local hidden directory <b>~/.prboom-plus</b>
-<br /><br />
+Copy all files from the DoomCodeWalkThru <a href="https://github.com/SteveProXNA/DoomCodeWalkThru/tree/main/Files">Files</a> directory to the local hidden directory <b>~/.prboom-plus</b>
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;cp ~/GitHub/SteveProXNA/Doom/Files/* ~/.prboom-plus<br />
+</td>
+</tr>
+</table><br />
 Launch VS Code.  Create <a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/build.sh">build</a> shell script, hidden <b>.vscode</b> directory with tasks.json and launch.json files
 <br />
 <!--
@@ -101,7 +114,7 @@ IMPORTANT - the first character of IWAD file <b>must</b> be <b>I</b> not <b>P</b
 <br /><br />
 TODO - keys
 <br /><br />
-The YouTube video shows some examples how to hack the <b>d_english.h</b> to make custom text and sounds!
+The YouTube video shows some examples how to hack the <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/src/d_englsh.h">d_englsh.h</a></b> to make custom text and sounds!
 <br />
 <!--
 <table width="100%">
