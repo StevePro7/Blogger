@@ -3,9 +3,7 @@
 <u>PrBoom</u><br />
 <a href="https://wiki.archlinux.org/title/PrBoom">PrBoom</a> is a cross-platform version of the classic 3D first-person shooter Doom from id Software.  PrBoom has since been ported to Linux and many other platforms.  PrBoom requires the original <a href="https://zdoom.org/wiki/IWAD">IWAD</a> data files.
 <br /><br />
-Follow this <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ">YouTube</a> video to setup PrBoom in VS Code and build and debug step through the source code!
-<br /><br />
-Launch Terminal.  Install the following Linux packages as PrBoom pre-requisites, if not currently installed:
+Follow this <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ">YouTube</a> video to setup PrBoom in VS Code and build and debug step through the source code!  Launch Terminal.  Install the following Linux packages as PrBoom pre-requisites, if not currently installed:
 <br />
 <table border="1" width="99%">
 <tr>
@@ -16,12 +14,20 @@ Launch Terminal.  Install the following Linux packages as PrBoom pre-requisites,
 </tr>
 </table>
 <br />
-Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/prboom-plus/files/prboom-plus/2.5.1.3">sourceforge.net</a></b>.  That is the link that seemed to work OK for me.
+Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/prboom-plus/files/prboom-plus/2.5.1.3">sourceforge.net</a></b>.  That is the link that seemed to work OK for me.  Launch Terminal.  Execute following commands to extract source code, configure, build and run PrBoom:
 <br />
-
+ <table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;tar -xvf prboom-plus-2.5.1.3.tar.gz<br />
+&nbsp;chmod +x configure<br />
+&nbsp;./configure<br />
+&nbsp;make<br />
+&nbsp;./src/prboom-pluse<br />
+</td>
+</tr>
+</table>
 <br />
-Launch Terminal - 02. configure + make
-<br /><br />
 If you get the following <i>configure: error: *** You must have the SDL libraries installed before you can compile prboom
  *** See http://prboom.sourceforge.net/linux.html</i> then install the following packages:
 <br />
