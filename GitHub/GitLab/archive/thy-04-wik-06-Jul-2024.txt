@@ -207,7 +207,7 @@ Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure 
 <td>
 &nbsp;Python 3.8<br />
 &nbsp;<a href="https://gitlab.com/SteveProXNA">GitLab</a> account [CI/CD]<br />
-&nbsp;Microsoft <a href="https://portal.azure.com">Azure</a> subscription [AZ CLI]<br />
+&nbsp;Microsoft <a href="https://portal.azure.com">Azur</a>e subscription [AZ CLI]<br />
 &nbsp;VS Code Docker + Kubernetes <br />
 </td>
 <td>
@@ -298,7 +298,7 @@ Finally, execute following commands to download + export <b>KUBECONFIG</b> file 
 Follow this <a href="https://docs.gitlab.com/ee/ci/quick_start">tutorial</a> to create and run your first GitLab CI/CD pipeline.  Create <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/.gitlab-ci.yml">.gitlab-ci.yml</a></b> file at root the of the project directory.  Refactor all YAML configuration in files beneath the <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/cicd">cicd</a></b> directory.  <a href="https://robinjanke1.medium.com/automating-helm-chart-builds-and-deployment-with-gitlab-ci-cd-2dbfad30a86c">Automate</a> CI/CD to the Kubernetes cluster using <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/helm">helm</a></b> charts.  This way, multiple environments can be targeted and customized.
 <br /><br />
 <b>Variables</b><br />
-Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab <a href="https://docs.gitlab.com/ee/ci/variables/predefined_variables.html ">Variables</a> here e.g. Docker registry host and username.  <a href="https://cloudifydevops.com/secured-gitlab-pipeline-with-base64">Secure</a> sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
+Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/settings/ci_cd">gitlab.com</a> | Settings | CI/CD | Variables.  Enter all GitLab <a href="https://docs.gitlab.com/ee/ci/variables/predefined_variables.html ">Variables</a> here e.g. Docker registry host and username.  <a href="https://cloudifydevops.com/secured-gitlab-pipeline-with-base64">Secure</a> sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s883/CICDvariables.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s600/CICDvariables.png"/></a>
 <br />
@@ -316,14 +316,14 @@ Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab <a href
 </tr>
 </table>
 <br />
-<u>GitFlow</u><br />
+<u>GitFlow Example</u><br />
 <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow</a> is an alternative Git branching model that involves the use of feature branches and multiple primary branches.  Here is practical <a href="https://hackernoon.com/from-git-flow-to-cicd-a-practical-guide-to-implement-git-workflow">guide</a> to implement GitFlow using GitLab with the corresponding git commands.
 <br /><br />
 Launch <a href="https://gitlab.com">gitlab.com</a>.  Create new project.  Default branch will be main.  Git clone repository to localhost.  For completeness cut initial Tag 0.1.  In SourceTree setup GitFlow: Repository | Git-flow | Initialize Repository:
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s413/sourcetree.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s600/sourcetree.png"/></a>
 <br />
-In gitlab.com set develop as default branch: GitLab | Setttings | Repository | Branch defaults | <b>develop</b>.
+In <a href="https://gitlab.com">gitlab.com</a> set develop as default branch: GitLab | Setttings | Repository | Branch defaults | <b>develop</b>.
 <br />
 <table width="99%" border="1">
 <tr><td>
