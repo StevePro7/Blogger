@@ -8,6 +8,8 @@ Follow this YouTube video to setup PrBoom in VS Code and build and debug step th
 <br /><br />
 Launch Terminal - 01. install the following packages using sudo apt-get install
 <br /><br />
+Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/prboom-plus/files/prboom-plus/2.5.1.3">sourceforge.net</a></b>.  That is the link that seemed to work OK for me.
+<br /><br />
 Launch Terminal - 02. configure + make
 <br /><br />
 If you get the following <i>configure: error: *** You must have the SDL libraries installed before you can compile prboom
@@ -16,6 +18,53 @@ If you get the following <i>configure: error: *** You must have the SDL librarie
 Launch Terminal - 03. install the following packages using sudo apt-get install
 <br /><br />
 Copy all files from the DoomCodeWalkThru Files directory to the local hidden directory <b>~/.prboom-plus</b>
-  
 <br /><br />
+Launch VS Code.  Create <a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/build.sh">build</a> shell script, hidden <b>.vscode</b> directory with tasks.json and launch.json files
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/.vscode/tasks.json">tasks.json</a></b></td>
+<td>&nbsp;<b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/.vscode/launch.json">launch.json</a></b></td>
+</tr>
+<tr>  
+<td valign="top">
+<pre code="C#">
+&nbsp;{
+&nbsp;    "version": "2.0.0",
+&nbsp;    "label": "build",
+&nbsp;    "type": "shell",
+&nbsp;    "linux": {
+&nbsp;        "command": "./build.sh"
+&nbsp;    },
+&nbsp;}
+</pre>
+</td>
+<td>
+<pre code="C#">
+&nbsp;{
+&nbsp;  "version": "0.2.0",
+&nbsp;  "configurations": [
+&nbsp;    {
+&nbsp;      "name": "(gdb) Launch",
+&nbsp;      "type": "cppdbg",
+&nbsp;      "request": "launch",
+&nbsp;      "program": "${workspaceFolder}/src/prboom-plus",
+&nbsp;      "args": [
+&nbsp;        "-iwad",
+&nbsp;        "Doom1.wad"
+&nbsp;      ],
+&nbsp;      "stopAtEntry": false,
+&nbsp;      "cwd": "${workspaceFolder}",
+&nbsp;      "externalConsole": false,
+&nbsp;      "MIMode": "gdb",
+&nbsp;    }
+&nbsp;  ]
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
 </span>
