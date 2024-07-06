@@ -13,9 +13,11 @@ sudo apt-get install libghc-opengl-dev
 sudo apt-get install libghc-sdl-dev
 
 02. configure + make
+tar -xvf prboom-plus-2.5.1.3.tar.gz
 chmod +x configure
 ./configure
 make
+./src/prboom-plus
 
 
 03.
