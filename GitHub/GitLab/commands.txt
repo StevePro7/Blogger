@@ -6,3 +6,8 @@ docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"
 
 docker tag flask-api:latest steveproxna/flask-api:latest
 docker push docker.io/steveproxna/flask-api:latest
+
+
+AZ
+az group list
+az resource list
