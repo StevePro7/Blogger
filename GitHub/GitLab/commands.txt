@@ -1,0 +1,8 @@
+Commands
+06-Jul-2024
+
+docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."
+docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"
+
+docker tag flask-api:latest steveproxna/flask-api:latest
+docker push docker.io/steveproxna/flask-api:latest
