@@ -3,7 +3,6 @@
 <br /><br />
 Follow this <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ">YouTube</a> video to setup PrBoom in VS Code and build and debug step through the source code!  Launch Terminal.  Install the following Linux packages as PrBoom pre-requisites, if not currently installed:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -12,11 +11,9 @@ Follow this <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ">YouTube</a> vi
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/prboom-plus/files/prboom-plus/2.5.1.3">sourceforge.net</a></b>.  That is the link that seemed to work OK for me.  Launch Terminal.  Execute following commands to extract source code, configure, build and run PrBoom:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -29,12 +26,10 @@ Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/p
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 If you get the following <i>configure: error: *** You must have the SDL libraries installed before you can compile prboom
  *** See http://prboom.sourceforge.net/linux.html</i> then install the following packages:
 <br />
-<!-- -->
 <table border="1" width="99%">
 <tr>
 <td valign="top">
@@ -44,7 +39,6 @@ If you get the following <i>configure: error: *** You must have the SDL librarie
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Copy all files from the DoomCodeWalkThru <a href="https://github.com/SteveProXNA/DoomCodeWalkThru/tree/main/Files">Files</a> directory to the local hidden directory <b>~/.prboom-plus</b>
 <br />
@@ -57,7 +51,6 @@ Copy all files from the DoomCodeWalkThru <a href="https://github.com/SteveProXNA
 </table><br />
 Launch VS Code.  Create <a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/build.sh">build</a> shell script, hidden <b>.vscode</b> directory with tasks.json and launch.json files
 <br />
-<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/.vscode/tasks.json">tasks.json</a></b></td>
@@ -101,13 +94,10 @@ Launch VS Code.  Create <a href="https://github.com/SteveProXNA/DoomCodeWalkThru
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
 Open <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/src/SDL/i_main.c">i_main.c</a></b>.  Set breakpoints.  Press Ctrl+Shift+B to build and F5 to debug step through source code!
 <br />
-<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0EEnizqqW4uPCmvBTdqO3rPwp-FEpuxGsLJ-gLDkjK9wPhVQLPZ3Gr5RNd9blH4LPjCisW3szVJhHghWYMk4jc0vxPrvrqy_83I1TdeYD4GYrz6oJSNv5hpqkm-jVGAgRtTAUwW41RqwpONQcUy1cYG-cH5Y3gCso4G8-3hcHqdItYaOc0Er64EpftVY/s1125/VScodeDebug.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0EEnizqqW4uPCmvBTdqO3rPwp-FEpuxGsLJ-gLDkjK9wPhVQLPZ3Gr5RNd9blH4LPjCisW3szVJhHghWYMk4jc0vxPrvrqy_83I1TdeYD4GYrz6oJSNv5hpqkm-jVGAgRtTAUwW41RqwpONQcUy1cYG-cH5Y3gCso4G8-3hcHqdItYaOc0Er64EpftVY/s600/VScodeDebug.png"/></a>
-<!-- -->  
 <br />
 IMPORTANT - the first character of IWAD file <b>must</b> be <b>I</b> not <b>P</b> otherwise may get an "IWAD not found" <a href="https://www.doomworld.com/forum/topic/52918-prboom-cannot-find-my-iwad">error</a>.
 <br /><br />
@@ -171,7 +161,6 @@ Note: <b>F11</b> does Gamma correction.  Also, re-copy <b>Prboom-plus.cfg</b> an
 <br /><br />
 The YouTube video shows some examples how to hack the <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/src/d_englsh.h">d_englsh.h</a></b> to make custom text and sounds!
 <br />
-<!-- -->
 <table width="100%">
 <tr>
 <td valign="top" width="50%">
@@ -190,5 +179,4 @@ The YouTube video shows some examples how to hack the <b><a href="https://github
 </td>
 </tr>
 </table>
-<!-- -->
 <br />
