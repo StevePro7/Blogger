@@ -52,6 +52,201 @@ The <a href="https://doomwiki.org/wiki/Doom_Bible">Doom Bible</a> is the origina
 <br /><br />
 -->
   
+<u>PrBoom</u><br />
+<a href="https://wiki.archlinux.org/title/PrBoom">PrBoom</a> is a cross-platform version of the classic 3D first-person shooter Doom from id Software.  PrBoom has since been ported to Linux and many other platforms.  PrBoom requires the original <a href="https://zdoom.org/wiki/IWAD">IWAD</a> data files.
+<br /><br />
+Follow this <a href="https://www.youtube.com/watch?v=Cd8T5-j1QwQ">YouTube</a> video to setup PrBoom in VS Code and build and debug step through the source code!  Launch Terminal.  Install the following Linux packages as PrBoom pre-requisites, if not currently installed:
+<br />
+<!-- -->
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;sudo apt-get install libghc-opengl-dev<br />
+&nbsp;sudo apt-get install libghc-sdl-dev<br />
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/prboom-plus/files/prboom-plus/2.5.1.3">sourceforge.net</a></b>.  That is the link that seemed to work OK for me.  Launch Terminal.  Execute following commands to extract source code, configure, build and run PrBoom:
+<br />
+<!-- -->
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;tar -xvf prboom-plus-2.5.1.3.tar.gz<br />
+&nbsp;cd ~/prboom-plus<br />
+&nbsp;chmod +x configure<br />
+&nbsp;./configure<br />
+&nbsp;make<br />
+&nbsp;chmod +x src/prboom-plus<br />
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+If you get the following <i>configure: error: *** You must have the SDL libraries installed before you can compile prboom
+ *** See http://prboom.sourceforge.net/linux.html</i> then install the following packages:
+<br />
+<!-- -->
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;sudo apt-get install libsdl1.2-dev<br />
+&nbsp;sudo apt-get install libsdl-mixer1.2-dev<br />
+&nbsp;sudo apt-get install libsdl-net1.2-dev<br />
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Copy all files from the DoomCodeWalkThru <a href="https://github.com/SteveProXNA/DoomCodeWalkThru/tree/main/Files">Files</a> directory to the local hidden directory <b>~/.prboom-plus</b>
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;cp ~/GitHub/SteveProXNA/Doom/Files/* ~/.prboom-plus<br />
+</td>
+</tr>
+</table><br />
+Launch VS Code.  Create <a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/build.sh">build</a> shell script, hidden <b>.vscode</b> directory with tasks.json and launch.json files
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/.vscode/tasks.json">tasks.json</a></b></td>
+<td>&nbsp;<b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/.vscode/launch.json">launch.json</a></b></td>
+</tr>
+<tr>  
+<td valign="top">
+<pre code="C#">
+&nbsp;{
+&nbsp;    "version": "2.0.0",
+&nbsp;    "label": "build",
+&nbsp;    "type": "shell",
+&nbsp;    "linux": {
+&nbsp;        "command": "./build.sh"
+&nbsp;    },
+&nbsp;}
+</pre>
+</td>
+<td>
+<pre code="C#">
+&nbsp;{
+&nbsp;  "version": "0.2.0",
+&nbsp;  "configurations": [
+&nbsp;    {
+&nbsp;      "name": "(gdb) Launch",
+&nbsp;      "type": "cppdbg",
+&nbsp;      "request": "launch",
+&nbsp;      "program": "${workspaceFolder}/src/prboom-plus",
+&nbsp;      "args": [
+&nbsp;        "-iwad",
+&nbsp;        "Doom1.wad"
+&nbsp;      ],
+&nbsp;      "stopAtEntry": false,
+&nbsp;      "cwd": "${workspaceFolder}",
+&nbsp;      "externalConsole": false,
+&nbsp;      "MIMode": "gdb",
+&nbsp;    }
+&nbsp;  ]
+&nbsp;}
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Open <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/src/SDL/i_main.c">i_main.c</a></b>.  Set breakpoints.  Press Ctrl+Shift+B to build and F5 to debug step through source code!
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0EEnizqqW4uPCmvBTdqO3rPwp-FEpuxGsLJ-gLDkjK9wPhVQLPZ3Gr5RNd9blH4LPjCisW3szVJhHghWYMk4jc0vxPrvrqy_83I1TdeYD4GYrz6oJSNv5hpqkm-jVGAgRtTAUwW41RqwpONQcUy1cYG-cH5Y3gCso4G8-3hcHqdItYaOc0Er64EpftVY/s1125/VScodeDebug.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0EEnizqqW4uPCmvBTdqO3rPwp-FEpuxGsLJ-gLDkjK9wPhVQLPZ3Gr5RNd9blH4LPjCisW3szVJhHghWYMk4jc0vxPrvrqy_83I1TdeYD4GYrz6oJSNv5hpqkm-jVGAgRtTAUwW41RqwpONQcUy1cYG-cH5Y3gCso4G8-3hcHqdItYaOc0Er64EpftVY/s600/VScodeDebug.png"/></a>
+<!-- -->  
+<br />
+IMPORTANT - the first character of IWAD file <b>must</b> be <b>I</b> not <b>P</b> otherwise may get an "IWAD not found" <a href="https://www.doomworld.com/forum/topic/52918-prboom-cannot-find-my-iwad">error</a>.
+<br /><br />
+CRITICAL - specify the arguments <b>-iwad</b> and WAD file e.g. <b>Doom1.wad</b> otherwise you will encounter error:
+<br />
+<table width="100%" border="1">
+<tr><td>  
+<pre code="C#">
+&nbsp;M_LoadDefaults: Load system defaults.
+&nbsp; default file: ~/.prboom-plus/prboom-plus.cfg
+&nbsp;  found ~/.prboom-plus/prboom-plus.wad
+&nbsp;
+&nbsp;prboom-plus v2.5.1.3 (http://prboom-plus.sourceforge.net/)
+&nbsp;I_SetAffinityMask: manual affinity mask is 1
+&nbsp;IdentifyVersion: IWAD not found
+</pre>
+</td></tr>
+</table>
+<br />
+<b>Keys</b><br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUdyuUtxpsHR4bPUugD7lGbFfgdhJZ26HoC5lu7BCjVn6wAoBiwApOrbbXE3h1fmCtKJ2u6bBZC00WZd5TL7GeIwZB_CV8oIwOp7WVk10bwPVyoWj9u9QKQuHscueBk6IavgBrR3mS8-QuFCwpfGZxIvmr_3RXeocxysLr7sCUy0041v3pyylaec8KHZQ/s1024/PrBoomKeys.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUdyuUtxpsHR4bPUugD7lGbFfgdhJZ26HoC5lu7BCjVn6wAoBiwApOrbbXE3h1fmCtKJ2u6bBZC00WZd5TL7GeIwZB_CV8oIwOp7WVk10bwPVyoWj9u9QKQuHscueBk6IavgBrR3mS8-QuFCwpfGZxIvmr_3RXeocxysLr7sCUy0041v3pyylaec8KHZQ/s600/PrBoomKeys.png"/></a>
+<br />
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td>&nbsp;F1</td><td>&nbsp;Help</td></tr>
+<tr><td>&nbsp;F2</td><td>&nbsp;Save game</td></tr>
+<tr><td>&nbsp;F3</td><td>&nbsp;Load game</td></tr>
+<tr><td>&nbsp;F4</td><td>&nbsp;Sound volume</td></tr>
+<tr><td>&nbsp;F5</td><td>&nbsp;Change HUD</td></tr>
+<tr><td>&nbsp;F6</td><td>&nbsp;Save game</td></tr>
+<tr><td>&nbsp;F7</td><td>&nbsp;End game</td></tr>
+<tr><td>&nbsp;F8</td><td>&nbsp;Message toggle</td></tr>
+<tr><td>&nbsp;F9</td><td>&nbsp;Quick load</td></tr>
+<tr><td>&nbsp;F10</td><td>&nbsp;Quit application</td></tr>
+<tr><td>&nbsp;Escape</td><td>&nbsp;Menu back</td></tr>
+<tr><td>&nbsp;Enter</td><td>&nbsp;Menu forward</td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td>&nbsp;Home</td><td>&nbsp;Restart game</td></tr>
+<tr><td>&nbsp;Tab</td><td>&nbsp;Map</td></tr>
+<tr><td>&nbsp;0-9</td><td>&nbsp;Change weapons</td></tr>
+<tr><td>&nbsp;Left arrow</td><td>&nbsp;Rotate left</td></tr>
+<tr><td>&nbsp;Right arrow</td><td>&nbsp;Rotate right</td></tr>
+<tr><td>&nbsp;Up arrow</td><td>&nbsp;Move forward</td></tr>
+<tr><td>&nbsp;Down arrow</td><td>&nbsp;Move back</td></tr>
+<tr><td>&nbsp;Ctrl</td><td>&nbsp;Shoot</td></tr>
+<tr><td>&nbsp;Space</td><td>&nbsp;Open door</td></tr>
+<tr><td>&nbsp;<</td><td>&nbsp;Strafe left</td></tr>
+<tr><td>&nbsp;></td><td>&nbsp;Strafe right</td></tr>
+<tr><td>&nbsp;/</td><td>&nbsp;Rotate 180</td></tr>
+</table>
+</td>
+</tr>
+</table>
+Note: <b>F11</b> does Gamma correction.  Also, re-copy <b>Prboom-plus.cfg</b> and <b>Prboom-plus.wad</b> to reset HUD.
+<br /><br />
+The YouTube video shows some examples how to hack the <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/src/d_englsh.h">d_englsh.h</a></b> to make custom text and sounds!
+<br />
+<!-- -->
+<table width="100%">
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoo8JXJLTlQY-zqIEWZWkrQ7zqdpfcW0cT1eNniUpkeSz9W3iSkoLSP6ZryNrmuNg6Gv-ML9y8IN7Egg9QOh6bhfnqvCPQGGvvBZRk674Ff-gJY45vu_OX3u00ZCnVArNmVkv5q3_UaxRZ3mLnZph_CLpk7HtnZYoGTC8pTWgA36XmwbA4HZQUp1Sl3zc/s640/Doom1.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoo8JXJLTlQY-zqIEWZWkrQ7zqdpfcW0cT1eNniUpkeSz9W3iSkoLSP6ZryNrmuNg6Gv-ML9y8IN7Egg9QOh6bhfnqvCPQGGvvBZRk674Ff-gJY45vu_OX3u00ZCnVArNmVkv5q3_UaxRZ3mLnZph_CLpk7HtnZYoGTC8pTWgA36XmwbA4HZQUp1Sl3zc/s600/Doom1.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb4aMy6FygHRo6S0uHgYPnJ7boCwWHM0ltd1wKV4UUssPObfnsxsiKKh1OvmUleMFDsSOL8jEob-rgItWvLDo0QeKL3aZg3Jp45eMalaJ-eIwttlAJzbb9MzxEG2l3vQ_MeF2lbq-IJ730D3JTGjuOXtYq5CdNI4c_igaCqp8Lc2tJV6imb0iA8OzcAEk/s640/Doom2.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb4aMy6FygHRo6S0uHgYPnJ7boCwWHM0ltd1wKV4UUssPObfnsxsiKKh1OvmUleMFDsSOL8jEob-rgItWvLDo0QeKL3aZg3Jp45eMalaJ-eIwttlAJzbb9MzxEG2l3vQ_MeF2lbq-IJ730D3JTGjuOXtYq5CdNI4c_igaCqp8Lc2tJV6imb0iA8OzcAEk/s600/Doom2.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-Dd7WuiscVA52WZyOoMurFMkvib3BmR73RjMgGeBcZn-7wrGfjJZUx471ykD2tnZv7fgMgskA9jj_VGIruxXE4HiotULRnTnXhpRRhg6urVtyHIcn24DeiDFPGDlUQiUjW9utzmkO2lOUVzyssyefxD2bWt0SfWMWeUemHVmn1XXJ5vSvovTs1UsXjBI/s640/Plutonia.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-Dd7WuiscVA52WZyOoMurFMkvib3BmR73RjMgGeBcZn-7wrGfjJZUx471ykD2tnZv7fgMgskA9jj_VGIruxXE4HiotULRnTnXhpRRhg6urVtyHIcn24DeiDFPGDlUQiUjW9utzmkO2lOUVzyssyefxD2bWt0SfWMWeUemHVmn1XXJ5vSvovTs1UsXjBI/s600/Plutonia.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYNHIJ3DVsX7VnZbu0nhAmNEc384bLifin2SV0Ih1g3RafeOIrABYaMckZ1DYXCTbjKpk4MKh48aFUtzi53zTGoN8InM1-vJ2Qv-qpxyfcFg2pukc-rQgka_J2CRWdhShCSsaG4gNBXEqoYE5UpMOb4_m-MD6LLZlUfzqgFyfr-dlN6hML3fKy2_ziXtg/s640/Tnt.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYNHIJ3DVsX7VnZbu0nhAmNEc384bLifin2SV0Ih1g3RafeOIrABYaMckZ1DYXCTbjKpk4MKh48aFUtzi53zTGoN8InM1-vJ2Qv-qpxyfcFg2pukc-rQgka_J2CRWdhShCSsaG4gNBXEqoYE5UpMOb4_m-MD6LLZlUfzqgFyfr-dlN6hML3fKy2_ziXtg/s600/Tnt.png"/></a>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+  
 <u>DoomRetro</u><br />
 <a href="https://github.com/bradharding/doomretro/wiki">Doom Retro</a> is the classic, refined Doom source port for Windows PC.  Written in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>, Doom Retro source code is maintained in <a href="https://github.com/bradharding/doomretro">doomretro</a> Git repository and regularly compiled for both 32 and 64-bit using Visual Studio.
 <br /><br />
