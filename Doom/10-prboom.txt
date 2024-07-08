@@ -23,10 +23,11 @@ Download prboom-plus-2.5.1.3 from <b><a href="https://sourceforge.net/projects/p
 <tr>
 <td valign="top">
 &nbsp;tar -xvf prboom-plus-2.5.1.3.tar.gz<br />
+&nbsp;cd ~/prboom-plus<br />
 &nbsp;chmod +x configure<br />
 &nbsp;./configure<br />
 &nbsp;make<br />
-&nbsp;./src/prboom-pluse<br />
+&nbsp;chmod +x src/prboom-plus<br />
 </td>
 </tr>
 </table>
@@ -112,6 +113,22 @@ Open <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux
 <br />
 IMPORTANT - the first character of IWAD file <b>must</b> be <b>I</b> not <b>P</b> otherwise may get "IWAD not found" <a href="https://www.doomworld.com/forum/topic/52918-prboom-cannot-find-my-iwad">error</a>.
 <br /><br />
+CRITICAL - specify the arguments <b>-iwad</b> and WAD file e.g. <b>Doom1.wad</b> otherwise you will encounter error:
+<br />
+<table width="100%" border="1">
+<tr><td>  
+<pre code="C#">
+&nbsp;M_LoadDefaults: Load system defaults.
+&nbsp; default file: ~/.prboom-plus/prboom-plus.cfg
+&nbsp;  found ~/.prboom-plus/prboom-plus.wad
+&nbsp;
+&nbsp;prboom-plus v2.5.1.3 (http://prboom-plus.sourceforge.net/)
+&nbsp;I_SetAffinityMask: manual affinity mask is 1
+&nbsp;IdentifyVersion: IWAD not found
+</pre>
+</td></tr>
+</table>
+<br />
 <b>Keys</b><br />
 <table width="100%" border="0">
 <tr>
@@ -175,6 +192,6 @@ The YouTube video shows some examples how to hack the <b><a href="https://github
 </table>
 <!-- -->
 <br />
-
 <br />
+
 </span>
