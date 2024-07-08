@@ -1,44 +1,4 @@
 <span style="font-family:verdana;font-size:85%;">
-<b>Keys</b><br />
-<table width="100%" border="0">
-<tr>
-<td>
-<table width="100%" border="1">
-<tr><td>&nbsp;F1</td><td>&nbsp;Help</td></tr>
-<tr><td>&nbsp;f2</td><td>&nbsp;Save game</td></tr>
-<tr><td>&nbsp;f3</td><td>&nbsp;Load game</td></tr>
-<tr><td>&nbsp;F4</td><td>&nbsp;Sound volume</td></tr>
-<tr><td>&nbsp;F5</td><td>&nbsp;Change HUD</td></tr>
-<tr><td>&nbsp;F6</td><td>&nbsp;Save game</td></tr>
-<tr><td>&nbsp;F7</td><td>&nbsp;End game</td></tr>
-<tr><td>&nbsp;F8</td><td>&nbsp;Message toggle</td></tr>
-<tr><td>&nbsp;F9</td><td>&nbsp;Quick load</td></tr>
-<tr><td>&nbsp;F10</td><td>&nbsp;Quit application</td></tr>
-<tr><td>&nbsp;Escape</td><td>&nbsp;Menu back</td></tr>
-<tr><td>&nbsp;Enter</td><td>&nbsp;Menu forward</td></tr>
-</table>
-</td>
-<td>&nbsp;</td>
-<td>
-<table width="100%" border="1">
-<tr><td>&nbsp;Home</td><td>&nbsp;Restart game</td></tr>
-<tr><td>&nbsp;Tab</td><td>&nbsp;Map</td></tr>
-<tr><td>&nbsp;0-9</td><td>&nbsp;Change weapons</td></tr>
-<tr><td>&nbsp;Left arrow</td><td>&nbsp;Rotate left</td></tr>
-<tr><td>&nbsp;Right arrow</td><td>&nbsp;Rotate right</td></tr>
-<tr><td>&nbsp;Up arrow</td><td>&nbsp;Move forward</td></tr>
-<tr><td>&nbsp;Down arrow</td><td>&nbsp;Move back</td></tr>
-<tr><td>&nbsp;Ctrl</td><td>&nbsp;Shoot</td></tr>
-<tr><td>&nbsp;Space</td><td>&nbsp;Open door</td></tr>
-<tr><td>&nbsp;<</td><td>&nbsp;Strafe left</td></tr>
-<tr><td>&nbsp;></td><td>&nbsp;Strafe right</td></tr>
-<tr><td>&nbsp;/</td><td>&nbsp;Rotate 180</td></tr>
-</table>
-</td>
-</tr>
-</table>
-Note: <b>F11</b> does Gamma correction.  Also, re-copy <b>Prboom-plus.cfg</b> and <b>Prboom-plus.wad</b> to reset HUD.
-<br /><br />
   
 <u>PrBoom</u><br />
 <a href="https://wiki.archlinux.org/title/PrBoom">PrBoom</a> is a cross-platform version of the classic 3D first-person shooter Doom from id Software.  PrBoom has since been ported to Linux and many other platforms.  PrBoom requires the original <a href="https://zdoom.org/wiki/IWAD">IWAD</a> data files.
@@ -152,7 +112,45 @@ Open <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux
 <br />
 IMPORTANT - the first character of IWAD file <b>must</b> be <b>I</b> not <b>P</b> otherwise may get "IWAD not found" <a href="https://www.doomworld.com/forum/topic/52918-prboom-cannot-find-my-iwad">error</a>.
 <br /><br />
-TODO - keys
+<b>Keys</b><br />
+<table width="100%" border="0">
+<tr>
+<td>
+<table width="100%" border="1">
+<tr><td>&nbsp;F1</td><td>&nbsp;Help</td></tr>
+<tr><td>&nbsp;f2</td><td>&nbsp;Save game</td></tr>
+<tr><td>&nbsp;f3</td><td>&nbsp;Load game</td></tr>
+<tr><td>&nbsp;F4</td><td>&nbsp;Sound volume</td></tr>
+<tr><td>&nbsp;F5</td><td>&nbsp;Change HUD</td></tr>
+<tr><td>&nbsp;F6</td><td>&nbsp;Save game</td></tr>
+<tr><td>&nbsp;F7</td><td>&nbsp;End game</td></tr>
+<tr><td>&nbsp;F8</td><td>&nbsp;Message toggle</td></tr>
+<tr><td>&nbsp;F9</td><td>&nbsp;Quick load</td></tr>
+<tr><td>&nbsp;F10</td><td>&nbsp;Quit application</td></tr>
+<tr><td>&nbsp;Escape</td><td>&nbsp;Menu back</td></tr>
+<tr><td>&nbsp;Enter</td><td>&nbsp;Menu forward</td></tr>
+</table>
+</td>
+<td>&nbsp;</td>
+<td>
+<table width="100%" border="1">
+<tr><td>&nbsp;Home</td><td>&nbsp;Restart game</td></tr>
+<tr><td>&nbsp;Tab</td><td>&nbsp;Map</td></tr>
+<tr><td>&nbsp;0-9</td><td>&nbsp;Change weapons</td></tr>
+<tr><td>&nbsp;Left arrow</td><td>&nbsp;Rotate left</td></tr>
+<tr><td>&nbsp;Right arrow</td><td>&nbsp;Rotate right</td></tr>
+<tr><td>&nbsp;Up arrow</td><td>&nbsp;Move forward</td></tr>
+<tr><td>&nbsp;Down arrow</td><td>&nbsp;Move back</td></tr>
+<tr><td>&nbsp;Ctrl</td><td>&nbsp;Shoot</td></tr>
+<tr><td>&nbsp;Space</td><td>&nbsp;Open door</td></tr>
+<tr><td>&nbsp;<</td><td>&nbsp;Strafe left</td></tr>
+<tr><td>&nbsp;></td><td>&nbsp;Strafe right</td></tr>
+<tr><td>&nbsp;/</td><td>&nbsp;Rotate 180</td></tr>
+</table>
+</td>
+</tr>
+</table>
+Note: <b>F11</b> does Gamma correction.  Also, re-copy <b>Prboom-plus.cfg</b> and <b>Prboom-plus.wad</b> to reset HUD.
 <br /><br />
 The YouTube video shows some examples how to hack the <b><a href="https://github.com/SteveProXNA/DoomCodeWalkThru/blob/main/Linux/prboom-plus/src/d_englsh.h">d_englsh.h</a></b> to make custom text and sounds!
 <br />
