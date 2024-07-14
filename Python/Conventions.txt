@@ -1,0 +1,30 @@
+Conventions
+14-Jul-2024
+
+What is Python’s _ (Underscore) Variable, and How is it Conventionally Used?
+
+https://blog.devgenius.io/what-is-pythons-underscore-variable-and-how-is-it-conventionally-used-3f5215c3c304
+
+1. Interpreter Placeholder:
+*  stores the result of the last executed expression in the interpreter
+
+2. Ignoring values:
+*  used to ignore values in assignments
+
+3. Loop Iterations
+*  used in loops when the loop variable is not needed
+
+4. I18n Translation
+*  used an an alias for the gettext function
+
+5. Single Leading Underscore _var:
+*  indicates a private variable or method
+
+6. Single Trailing Underscore var_:
+*  avoids conflicts with Python keywords
+
+7. Double Leading Underscore __var:
+*  triggers name mangling to avoid conflicts in subclasses
+
+8. Double Leading and Trailing Underscore __var__:
+*  reserved for special use in the language (e.g. magic methods like __init__)
