@@ -28,6 +28,7 @@ git config --global user.email "steven_boland@hotmail.com"
 Upstream
 git remote -v
 git remote add upstream git@github.com/openai/retro
+git remote add upstream git@github.com:openai/retro.git
 
 origin git@github.com:SteveProXNA/retro.git (fetch)
 origin git@github.com:SteveProXNA/retro.git (push)
@@ -66,3 +67,14 @@ upstream	git@github.com:openai/retro.git (push)
 Launch PyCharm
 Open
 /home/stevepro/GitHub/SteveProXNA/retro
+
+If not prompted to create virtual environment frmo PyCharm then choose
+Python Interpreter | Add New interpreter | Add Local interpreter
+
+ForkRetro06.png
+Virtual Environment
+New
+Location
+~/GitHub/SteveProXNA/retro/.venv
+Base interpreter	3.8
+OK
