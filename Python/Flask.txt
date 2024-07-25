@@ -1,0 +1,82 @@
+Flask
+25-Jul-2024
+
+Flask_Web_Development_Developing
+git clone https://github.com/miguelgrinberg/flasky.git
+
+
+Pg.7
+All Flask applications must create an application instance
+application instance is an object of class Flask
+
+Pg.8
+Decorator
+register functons as handlers for an event
+
+Pg.9
+Routes
+dynamic part
+/user/<name>
+/user/<int:id>
+
+
+Pg.12
+Request object
+
+Flask context
+temp make certain objects globally accessible
+
+Pg.13
+Thread
+smallest sequence of instructions managed independently
+Multithreaded web servers start a pool of threads and select a thread from the pol tohandle each incoming request
+
+
+Two contexts
+Application context	AC
+Request context	RC
+
+current_app	AC	application instance
+g		AC	object application use for temp storage during request
+request	RC	request object - encap contents of HTTP request sent by client
+session	RC	user session - dict application use to store values across requests
+
+
+Pg.14
+from hello import app
+app.url_map
+Map([<Rule '/' (OPTIONS, HEAD, GET) -> index>,
+ <Rule '/static/<filename>' (OPTIONS, HEAD, GET) -> static>,
+ <Rule '/user/<name>' (OPTIONS, HEAD, GET) -> user>])
+
+GET = request method
+
+
+Pg.14
+request hooks
+e.g.
+share data btwn request hook + view func = g context global
+g.user
+
+Pg.15
+Response
+HTTP Response = status code
+
+@app.route('/')
+def index():
+return '<h1>Bad Request</h1>', 400
+
+or
+return Response object	
+make_response()
+example Pg.16
+
+redirect()
+abort(404)
+
+
+Pg.18
+Flask script
+python hello.py runserver --help
+
+
