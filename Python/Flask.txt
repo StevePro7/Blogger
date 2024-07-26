@@ -5,8 +5,13 @@ Flask_Web_Development_Developing
 git clone https://github.com/miguelgrinberg/flasky.git
 
 
+Chp.1
+
+Chp.2
 Pg.7
 All Flask applications must create an application instance
+web server passes all requests rec'd from clients to application instance
+[object] using protocol WSGI Web Server Gateway Interface
 application instance is an object of class Flask
 
 Pg.8
@@ -79,4 +84,67 @@ Pg.18
 Flask script
 python hello.py runserver --help
 
+
+
+Chp.3
+Pg.21
+Rendering
+process replace variables w/ actual values + returns final response
+
+Jinja2
+template engine used by Flask
+
+Pg.26
+Bootstrap
+Flask extension
+
+Pg.33
+Localization
+server needs uniform time units independent of user location
+UTC
+
+
+Chp.4
+Pg.37
+CSRF
+Cross-Site Request Forgery (CSRF) Protection
+flask-wtf
+
+CSRF
+Cross-Site Request Forgergy 
+attack
+occurs when a malicious website sends requests to a different website
+on which the victim is logged in
+
+encrypted token
+used to verify authenticity of [POST] requests w/ form data
+e.g.
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'hard to guess string'
+
+Pg.38
+SECRET_KEY
+general-purpose encryption key used by Flask
+
+IMPORTANT
+security: secret key should be stored in an environment variable
+[Chp.7]
+
+Pg.44
+IMPORTANT
+never leave a POST request as last request sent by the browser
+send a redirect instead of a normal response
+now last request = GET
+Post/Redirect/Get pattern
+
+Store any data for redirect in user session [request context]
+private storage available to each connected client
+
+Pg.45
+session dictionary
+user sessions are stored in client-side cookies that are 
+cryptographically signed using configured SECRET_KEY
+
+any tampering with the cookie content renders signature invalid
+thus invalidating the session
 
