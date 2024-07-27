@@ -592,3 +592,54 @@ Rich Internet Applications
 
 Server provides client w/ data retrieval and storage services
 server becomes a web service or API
+
+REST
+Representational State Transfer
+popular for web applications familiar model of the WWW
+
+Flask
+ideal framework to build RESTful web services due to lightweight nature
+
+Pg.175
+6x charactereistics
+Client-Server
+Stateless
+Cache
+Uniform Interface	HTTP protocol
+Layered System
+Code-on-Demand
+
+Pg.176
+Resources are Everything
+resource
+item of interest in the domain of the application
+
+unique URL that represents it [resource]
+/api/posts
+/api/posts/12345
+/api/posts/12345/comments/
+
+IMPORTANT
+Flask applies special treatment to routes that end with /
+If client requests URL w/o trailing slash and the only matching route has trailing slash
+then Flask will auto respond w/ redirect to the trailing slasH URL
+
+Pg.177
+Request Methods
+HTTP request methods in RESTful APIs
+GET
+POST
+PUT
+DELETE
+
+If the client invokes a method that is not supported for a given resource 
+then a response with the 405 statuscode for “Method Not Allowed” should be returned.
+
+Request and Response Bodies
+Content-Type header in requests + responses indicate format
+resource is encoded in the body
+
+Pg.178
+2x formats used w/ REST
+JSON	JavaScript Object Notation
+XML	eXtensible Markup Language
