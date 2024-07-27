@@ -148,3 +148,151 @@ cryptographically signed using configured SECRET_KEY
 any tampering with the cookie content renders signature invalid
 thus invalidating the session
 
+
+Chp.5
+Pg.49
+NoSQL
+document-orientated + key/value DBs
+
+Pg.50
+collections	instead of tables
+documents	instead of rows
+
+Denormalization
+reduce number of tables at expense of data duplication
+
+Pg.51
+SQLAlchemy
+higher level Python objecgs instead of DB entities
+e.g. tables, documents or query languages
+
+Abstraction layers
+ORM	Object Relational Mappers
+ODM	Object Document Mappers
+
+transparen conversion high-level OO ops into low-level DB instructions
+
+Pg.52
+SQLAlchmeny ORM
+Postres, MySQL, SQLite
+
+Flask integration
+Flask-SQLAlchemy: the Flask extension wrapper for SQLAlchemy
+
+pip install flask-sqlalchemy
+
+Pg.53
+URLs
+Postgres postgresql://username:password@hostname/database
+SQLALCHEMY_DATABASE_URI
+
+SQLALCHEMY_COMMIT_ON_TEARDOWN
+True
+auto commit DB changes end-of-each request
+
+Pg.54
+model
+persistent entities in application
+Python class w/ attributes match DB table columns
+
+IMPORTANT
+convention = use plurals for table names
+SQLAlchemy column types
+
+Pg.55
+SQLAlchemy column option
+
+Flask-SQLAlchemy requires all models to define a primary key column
+which is normally named id
+
+Pg.56
+relationshops
+
+Pg.57
+SQLAlchemy relationship options
+one-to-one	uselist=False
+many-to-many	association table
+
+Pg.58
+Python shell
+python hello.py shell
+
+Pg.59
+DB session
+[transactions]
+
+changes to DB managed thru DB session
+Flask-SQLAlchemy provides as db.session
+objects to be written to DB must be added to DB sesson
+
+db.session.add_all([admin_role, mod_role, user_role, user_john, user_susan, user_david])
+
+write objects to DB
+db.session.commit()
+
+db.session.rollback()
+is called, any objects that were added to the database session are
+restored to the state they have in the database
+
+Pg.60
+Add row
+db.session.add(admin_role)
+
+Delete row
+db.session.delete(mod_role)
+
+Query row
+Role.query.all()
+filters
+User.query.filter_by(role=user_role).all()
+
+SQL query
+str(User.query.filter_by(role=user_role))
+'SELECT users.id AS users_id, users.username AS users_username,
+users.role_id AS users_role_id FROM users WHERE :param_1 = users.role_id'
+
+Pg.61
+user_role = Role.query.filter_by(name='User').first()
+
+Common SQLAlchemy query filters
+
+all()
+cause query to execute
+common SQLAlchemy query executors
+
+Pg.62
+lazy = 'dynamic' argument to request that the query is not
+users = db.relationship('User', backref='role', lazy='dynamic')
+
+Pg.63
+Integration with the Python Shell
+make_context callback function
+
+Pg.64
+Database Migrations with Flask-Migrate
+database migration framework
+changes to database schema
+
+Alembic
+book uses flask-migrate
+
+Pg.65
+Alembic
+migration script
+upgrade()		DB changes part of migration
+downgrade()		removes them
+
+alembic
+revision + migrate commands
+e.g.
+python hello.py db migrate -m "initial migration"
+vs. our example
+alembic revision --autogenerate -m "Create initial tables"
+
+Pg.66
+Upgrading the Database
+db upgrade
+vs. our example
+alembic upgrade head
+
+
