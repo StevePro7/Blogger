@@ -643,3 +643,37 @@ Pg.178
 2x formats used w/ REST
 JSON	JavaScript Object Notation
 XML	eXtensible Markup Language
+
+
+
+207
+setUpclass
+tearDownClass
+
+believe these are equivalent to
+TestFixtureSetUp / TearDown
+
+
+221
+development web server Flask [default] will perform poorly because it was not
+designed to run in a Production environment
+
+TWO production ready web servers work will w/ Flask applications
+01.	Gunicorn
+02.	uWSGI
+
+(venv) $ pip install gunicorn
+(venv) $ gunicorn manage:app
+
+Note that Gunicorn uses port 8000 by default, not 5000 like Flask.
+
+Pg.224
+requirements.txt
+psycopg2 package to enable Postgres database
+support, and the Gunicorn web server.
+
+gunicorn==18.0
+psycopg2==2.5.1
+
+Pg.223
+Enabling Secure HTTP with Flask-SSLify
