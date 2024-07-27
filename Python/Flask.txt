@@ -436,7 +436,159 @@ tearDown()
 database and the application context are removed
 
 Pg.85
+Database Setup
 When working with Flask-Migrate to keep track of migrations, da‐
 tabase tables can be created or upgraded to the latest revision with a single command:
 (venv) $ python manage.py db upgrade
-Database Setup
+
+
+
+PART-Ii
+Chp.8
+Pg.89
+Flask-Login
+Werkzeug
+itsdangerous
+
+Pg.90
+Password Security
+Don't store password in DB
+Store HASH of password in DB
+
+Hashing Passwords with Werkzeug
+Werkzeug’s security module conveniently implements secure password hashing
+
+Pg.92
+Creating an Authentication Blueprint
+blueprints define routes in global scope after the creation of application
+was moved into factory function
+e.g.
+auth blueprint
+from flask import Blueprint
+auth = Blueprint('auth', __name__)
+
+pg.93
+The auth blueprint needs to be attached to the application in the create_app() factory
+
+def create_app(config_name):
+	from .auth import auth as auth_blueprint
+	app.register_blueprint(auth_blueprint, url_prefix='/auth')
+	return app
+
+Pg.94
+User Authentication with Flask-Login
+pip install flask-login
+
+Pg.95
+Protecting Routes
+protect route so can only be accessed by authenticated users
+@login_required decorator
+
+from flask.ext.login import login_required
+@app.route('/secret')
+@login_required
+def secret():
+	return 'Only auth users'
+	
+Account Confirmation
+Pg.101
+Generating Confirmation Tokens with itsdangerous
+
+Itsdangerous provides several types of token generators. Among them, the class
+TimedJSONWebSignatureSerializer generates JSON Web Signatures (JWS) with a
+time expiration. 
+
+The constructor of this class takes an encryption key as argument,
+which in a Flask application can be the configured SECRET_KEY.
+	
+Chp.9
+User Roles
+Pg.111
+user role here = hybrid btwn discrete roles and permissions
+roles defined in terms of permissions
+
+Pg.112
+Application permissions
+
+Pg.113
+Example 9-3. app/models.py: Create roles in the database
+class Role(db.Model):
+
+Role Assignment
+Role Verification
+
+Chp.10
+User Profiles
+
+Pg.119
+User Profile
+
+IMPORTANT
+last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
+
+same as our app
+Timestamps are given a default value of the current time. 
+Note that datetime.utcnow is missing the () at the end.
+
+Pg.127
+User Avatars
+Gravatar
+
+Chp.11
+Blog Posts
+
+Chp.12
+Followers
+Pg.150
+Many-to-Many Relationships
+
+association table
+registrations
+
+Pg.151
+m-2-m similar to o-2-m but additional secondary argument
+must be set to the association table
+
+relationshop can be defined w/ backref argument
+
+classes uses list for m-2-m
+e.g.
+>>> s.classes.append(c)
+>>> db.session.add(s)	
+
+Queries
+>>> s.classes.all()
+>>> c.students.all()
+
+Self-Referential Relationships
+A relationship in which both sides belong to the same table is said to be self-
+referential.
+
+Pg.152
+Advanced Many-to-Many Relationships
+backref
+
+Pg.153
+The lazy argument for the back references is specified as joined . This lazy mode causes
+the related object to be loaded immediately from the join query.
+
+Pg.154
+lazy
+joined
+
+Pg.159
+return db.session.query(Post).select_from(Follow).\
+	filter_by(follower_id=self.id).\
+	join(Post, Follow.followed_id == Post.author_id)
+	
+Chp.13
+User Comments
+
+Chp.14
+APIs
+Pg.175
+RAI
+Rich Internet Applications
+
+Server provides client w/ data retrieval and storage services
+server becomes a web service or API
