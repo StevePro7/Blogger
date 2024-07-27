@@ -5,6 +5,7 @@ Flask_Web_Development_Developing
 git clone https://github.com/miguelgrinberg/flasky.git
 
 
+PART-I
 Chp.1
 
 Chp.2
@@ -296,3 +297,146 @@ vs. our example
 alembic upgrade head
 
 
+CHp.6	Email
+pip install flask-mail
+
+Chp.7 	Application structure
+Pg.75
+similar project structure
+app		Flass application
+migrations	DB migration scripts
+tests		unit / integration tests
+.venv		virtual environment
+
+requirements.txt	package dependencies
+config.py		config settings
+manage.py		app tasks mgt
+
+Pg.76
+config.py
+
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+class Config:
+SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+
+Pg.77
+Using an Application Factory
+
+delay creation of application into a factory function
+
+create_app()
+application factory
+
+Pg.78
+Pg.79
+def create_app() -> Flask:
+	app = Flask(__name__)
+	# ...
+	return app
+
+factory function returns the created application instance
+except
+routes and custom error page handlers... next
+
+
+Implementing Application Functionality in a Blueprint
+app created at runtime = problem
+app.route decorator begins to exist only after create_app() is invoked,
+which is too late
+
+Solution: blueprints	["delayed" routes]
+
+blueprint
+similar to application in that it can also define routes
+difference = routes associated with blueprint = dormant state
+until is registered with an applcation
+at whcih point the routes become part of it [the Flask application]
+
+Blueprint creation
+from flask import Blueprint
+
+Pg.80
+Blueprints are created by instantiating an object Blueprint
+ctor
+Blueprint name and module	package where blueprint located
+
+usually module [2nd arg]	__name__
+
+routes
+error handlers
+
+bluieprint registered w/ application	[inside create_app()] factory function
+
+NB: not used in our app
+app_errorhandler 
+app.register_blueprint(blueprint)
+
+but does have
+@blueprint.route("/")
+@blueprint.errorhandler()
+
+Pg.81
+route decorator comes from the blueprint
+
+endpoint name of the route
+application based routes defaults name for view function
+but
+blueprints: Flask applies a namespace to all the endpoints
+coming from a blueprint so multple blueprints can define view functions
+w/ the same endpoint names w/o collisions
+
+NB: could not find
+url_for()
+
+Pg.82
+manage.py
+script creates Flask application
+configuration defined
+Flask-Script
+Flask-Migrate initialized
+
+NB:
+whole shebang
+#!/usr/bin/env python
+
+execute script
+./manage.py
+
+instead of
+python manage.py
+
+Requirements file
+Applications must include requirements.txt to record all package dependencies
+with exact version numbers
+
+pip freeze >requirements.txt
+pip install -r requirements.txt
+
+Pg.83-84
+Unit Tests
+import unittest
+
+def setUp(self):
+self.app = create_app('testing')
+self.app_context = self.app.app_context()
+self.app_context.push()
+db.create_all()
+
+setup()
+creates an application configured for testing and activates its context
+creates a new database that tests can use
+
+
+def tearDown(self):
+db.session.remove()
+db.drop_all()
+self.app_context.pop()
+tearDown()
+database and the application context are removed
+
+Pg.85
+When working with Flask-Migrate to keep track of migrations, da‐
+tabase tables can be created or upgraded to the latest revision with a single command:
+(venv) $ python manage.py db upgrade
+Database Setup
