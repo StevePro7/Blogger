@@ -832,15 +832,105 @@ indicating that a new token needs to be obtained
 Part-III
 Chp.15
 
-207
+Pg.197
+(venv) $ pip install coverage
+
+Pg.199
+(venv) $ python manage.py test --coverage	
+
+Pg.200
+The Flask Test Client
+access Flask context globals such as request or session
+
+Flask has test client to replicate the environment that exists when an application
+is running inside a web server allowing tests to act as clients and send requests
+
+requests are received and routed to the appropriate view functions
+from which responses are generated and returned
+
+Testing Web Applications
+Pg.201
+Ex15-2
+self.client instance variable added to the test case = Flask test client object
+object exposes methods that issue requests into the application
+
+Pg.202
+NB
+disable CSRF protection in test configuration
+
+Pg.205
+IMPORTANT
+any requests that send data in the body must encode it with json.dumps()
+because the Flask test client does not automatically encode to JSON
+
+Likewise response bodies are also returned in JSON format and must be decoded
+with json.loads() before they can be inspected
+
+Pg.207
 setUpclass
 tearDownClass
 
 believe these are equivalent to
 TestFixtureSetUp / TearDown
 
+Chp.16
+Pg.211
+Logging Slow Database Performance
 
-221
+Flask-SQLAlchemy has an option to record stats about DB queries issue during request
+
+from flask.ext.sqlalchemy import get_debug_queries
+after_app_request handler
+
+get_debug_queries() enabled only in debug mode
+
+Pg.212
+SQLALCHEMY_RECORD_QUERIES
+
+Pg.213
+Source Code Profiling
+
+Flask's development web server [Werkzeug] optionally enable Python profiler
+for each request
+e.g.
+"""Start the application under the code profiler."""
+from werkzeug.contrib.profiler import ProfilerMiddleware
+app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length],
+profile_dir=profile_dir)
+
+Chp.17
+Deployment
+Pg.215	
+deploy command
+
+Pg.216
+Logging of Errors During Production
+Flask writes to log file
+
+Startup
+Flask creates an instance of Python logging.logger class and attaches to
+application instance
+ 
+Example 17-2 configure a
+logging handler that sends the errors 
+tells Flask-SQLAlchemy to enable recording of query stats
+
+Pg.217
+application logger configure to log errors
+
+Cloud Deployment
+Heroku
+
+Pg.220
+# log to stderr
+import logging
+from logging import StreamHandler
+file_handler = StreamHandler()
+file_handler.setLevel(logging.WARNING)
+app.logger.addHandler(file_handler)
+
+Pg.221
+Running a production web server
 development web server Flask [default] will perform poorly because it was not
 designed to run in a Production environment
 
@@ -853,7 +943,7 @@ TWO production ready web servers work will w/ Flask applications
 
 Note that Gunicorn uses port 8000 by default, not 5000 like Flask.
 
-Pg.224
+Pg.222
 requirements.txt
 psycopg2 package to enable Postgres database
 support, and the Gunicorn web server.
@@ -863,3 +953,40 @@ psycopg2==2.5.1
 
 Pg.223
 Enabling Secure HTTP with Flask-SSLify
+
+User credentials values can be intercepted during travel by third party
+prevent user credentials from being stolen it is necessary to secure HTTP
+which encrypts all communication btwn clients and server using public key
+cryptography
+
+Pg.224
+Support for SSL needs to be enabled only in production mode
+NB:
+Heroku book uses
+clients do not connect to hosted applications directly but to a reverse proxy server
+that redirects requests into the applications
+
+Pg.225
+Proxy servers pass info that describes original request from the client to the
+redirected web servers thru custom HTTP headers to tell whether use communicating
+w/ applciation over SSL
+
+Werkzeug provides WSGI middleware that checks custom headers from the proxy server
+and updates the request object so that is_secure reflects security of request
+
+Pg.227
+Summary
+Install production-read web server such as Gunicorn or uWSGI
+Purchase install configure SSL certificate to enable secure HTTP
+Instlal a front-end reverse proxy web server [Apache] that will serve static files directly and forward other requests into application's web server listening on private port
+
+Pg.228
+Setting Up Logging
+Unix-based servers, logging can be sent the syslog daemon
+thus
+Pg.229
+application logs will be written to
+/var/log/messages
+
+syslog service configure to write a separate log file or send logs to a
+different machine if necessary
