@@ -1,0 +1,32 @@
+GYMnasium pytest
+01-Aug-2024
+
+
+~/GitHubX/Farama-Foundation/Gymnasium
+
+test_jax.py
+right click file
+Run / Debug
+OK
+
+but
+test_rendering.py
+repeat
+error!
+pygame ModuleNotFound
+e.g.
+https://github.com/Farama-Foundation/Gymnasium/blob/main/docs/tutorials/gymnasium_basics/environment_creation.py
+~/GitHubX/Farama-Foundation/Gymnasium/docs/tutorials/gymnasium_basics
+
+so simply issue command
+pip install pygame
+
+Re-run
+test_rendering.py
+OK
+
+NB: can debug step thru code also e.g.
+@pytest.mark.parametrize(
+    "spec", render_mode_env_specs, ids=[spec.id for spec in render_mode_env_specs]
+)
+def test_render_modes(spec):
