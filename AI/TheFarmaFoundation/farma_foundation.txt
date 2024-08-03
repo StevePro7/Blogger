@@ -75,6 +75,16 @@ use the gy package directly but not be able to debug step thru code
 pip install "gym[atari, accept-rom-license]"
 
 
+ATARI
+https://gymnasium.farama.org/environments/atari
+
+Important
+Atari uses ALE [Arcade Learningg Environment
+therefore Atari samples must include the following
+
+pip install gymnasium[atari]
+pip install gymnasium[accept-rom-license]
+
 Reference:
 https://stackoverflow.com/questions/76150278/getting-an-error-trying-to-import-environment-openai-gym
 pip install "gym[atari, accept-rom-license]"
