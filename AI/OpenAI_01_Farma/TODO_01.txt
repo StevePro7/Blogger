@@ -17,3 +17,50 @@ that says goto FF Gymnasium
 //Gymnasium - check for Tensorflow
 //can't see any ref for Tensorflow
 //~/GitHubX/Farama-Foundation/Gymnasium
+
+
+
+
+Setup simple example 01.
+e.g.
+Frozen Lake
+https://www.youtube.com/watch?v=Vrro7W7iW2w
+
+pip install gym
+pip install gym[toy_text]
+
+import gym
+
+env=gym.make("FrozenLake-v1", render_mode="human")
+env.reset()
+env.render()
+
+env.observation_space
+env.action_space
+
+randomAction = env.action_space.sample() 
+returnValue = env.step(randomAction)
+
+NB:
+env.P[0][1]
+P[State][Action]
+
+
+
+Setup simple example 02.
+https://www.youtube.com/watch?v=tkDIb8yl69g
+
+pip install gym
+pip install gym[atari]
+
+import gym
+import keyboard
+import time
+import matplotlib.pyplot as plt
+
+env=gym.make(...)
+num_actions = env.action_space.n
+meaning = env.unwrapped_get_action_meanings()
+
+plt.figure(figsize=(8, 8))
+plt.imshow(obs)
