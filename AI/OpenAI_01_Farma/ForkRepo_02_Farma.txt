@@ -1,0 +1,73 @@
+Fork Repo Farma 02
+07-Aug-2024
+
+Reference
+farma_foundationGIT.txt
+/home/stevepro/GitHub/StevePro7/Blogger/AI/TheFarmaFoundation
+
+
+cd /home/stevepro/GitHub/SteveProXNA
+git clone git@github.com:SteveProXNA/Gymnasium.git
+
+git config --global --get user.name
+git config --global user.name "SteveProXNA"
+
+git config --global --get user.email
+git config --global user.email "steven_boland@hotmail.com"
+
+
+Upstream
+git remote -v
+git remote add upstream git@github.com:Farama-Foundation/Gymnasium.git
+
+Launch PyCharm
+Prompt to create Virtual Envirooment
+OK
+
+source bin activate
+
+git checkout 81b87efb9f011e975f3b646bab6b7871c522e15e
+fatal: reference is not a tree: 81b87efb9f011e975f3b646bab6b7871c522e15e
+
+SOLN
+https://stackoverflow.com/questions/14872486/retrieve-specific-commit-from-a-remote-git-repository
+
+
+git fetch --depth=1 git@github.com:Farama-Foundation/Gymnasium.git 81b87efb9f011e975f3b646bab6b7871c522e15e
+git checkout 81b87efb9f011e975f3b646bab6b7871c522e15e
+
+N/A
+git log | grep 81b87efb9f011e975f3b646bab6b7871c522e15e
+
+
+git status
+HEAD detached at 81b87efb
+nothing to commit, working tree clean
+
+OR
+git branch
+* (HEAD detached at 81b87efb)
+
+
+git checkout -b GymnasiumGameExamples 81b87efb9f011e975f3b646bab6b7871c522e15e
+git push --set-upstream origin GymnasiumGameExamples
+
+NB:
+ensure I have the correct id_rsa.pub at ~/.ssh
+
+
+Pull Request guidelines
+https://github.com/Farama-Foundation/Gymnasium/blob/4a85589b92af3d5e128eca99895c7e0d56babebf/CONTRIBUTING.md
+
+AND
+PULL_REQUEST_TEMPLATE.md
+/home/stevepro/GitHub/SteveProXNA2/Gymnasium/.github
+
+Right click top level Gymnasium
+New | Python Packages
+examples
+
+
+pip install -r docs/requirements.txt
+pip install --upgrade pip
+stevepro.py

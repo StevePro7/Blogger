@@ -49,3 +49,17 @@ git push --set-upstream origin GymGameExamples:GymGameExamples
 Launch PyCharm
 Open
 /home/stevepro/GitHub/SteveProXNA/Gymnasium
+
+Right click top level Gymnasium
+New | Python Packages
+examples
+ALL worked out-of-the-box except
+ATari
+
+
+git log | grep 81b87efb9f011e975f3b646bab6b7871c522e15e
+git fetch --depth=1 git@github.com:Farama-Foundation/Gymnasium.git 81b87efb9f011e975f3b646bab6b7871c522e15e
+git checkout 81b87efb9f011e975f3b646bab6b7871c522e15e
+
+
+GymnasiumGameExamples
