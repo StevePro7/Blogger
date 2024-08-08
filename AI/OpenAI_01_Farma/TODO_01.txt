@@ -21,7 +21,7 @@ that says goto FF Gymnasium
 
 
 
-Setup simple example 01.
+Setup simple example 01.	Frozen Lake	Toy Text
 e.g.
 Frozen Lake
 https://www.youtube.com/watch?v=Vrro7W7iW2w
@@ -47,7 +47,7 @@ P[State][Action]
 
 
 
-Setup simple example 02.
+Setup simple example 02.	Breakout	Atari
 https://www.youtube.com/watch?v=tkDIb8yl69g
 
 pip install gym
@@ -64,3 +64,9 @@ meaning = env.unwrapped_get_action_meanings()
 
 plt.figure(figsize=(8, 8))
 plt.imshow(obs)
+
+
+
+Frozen Lake | Q-Learning
+How Q-Learning "Learns" In Gymnasium FrozenLake-v1 | Reinforcement Learning Basics
+https://www.youtube.com/watch?v=gbhXXKJdc7c
