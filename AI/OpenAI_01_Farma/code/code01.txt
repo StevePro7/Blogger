@@ -23,3 +23,12 @@ for _ in range(1000):
     if terminated or truncated:
         observation, info = env.reset()
 env.close()
+
+
+<table width="100%" border="1">
+<tr><td>
+&nbsp;pip install gym<br />
+&nbsp;pip install gym[classic_control]<br />
+&nbsp;pip install --upgrade pip<br />
+</tr></td>
+</table>
