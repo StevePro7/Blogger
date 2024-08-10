@@ -1,0 +1,25 @@
+HelloCartPoleGym
+10-Aug-2024
+
+Ref:
+https://github.com/openai/gym
+
+Launch PyCharm | New Project | Name: HelloCartPoleGym Location: ~/
+
+source .venv/bin/activate
+
+pip install gym
+pip install gym[classic_control]
+pip install --upgrade pip
+
+
+import gym
+env = gym.make("CartPole-v1", render_mode="human")
+observation, info = env.reset(seed=42)
+
+for _ in range(1000):
+    action = env.action_space.sample()
+    observation, reward, terminated, truncated, info = env.step(action)
+    if terminated or truncated:
+        observation, info = env.reset()
+env.close()
