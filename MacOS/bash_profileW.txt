@@ -1,0 +1,26 @@
+# https://support.apple.com/en-us/102360
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Show always fullpath on terminal
+# https://superuser.com/questions/239994/how-to-have-full-directory-path-always-shown-in-mac-terminal-like-linux-termina
+export PS1='\u@\h:\w$ '
+
+# Docker
+alias d='docker'
+
+# Kubernetes
+alias k='kubectl'
+source <(kubectl completion bash)
+#complete -o default -F __start_kubectl k
+complete -F __start_kubectl k
+
+# Setting PATH for Python 3.12
+PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
+export PATH
+
+# Show / Hide files
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'

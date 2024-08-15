@@ -8,19 +8,70 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # https://superuser.com/questions/239994/how-to-have-full-directory-path-always-shown-in-mac-terminal-like-linux-termina
 export PS1='\u@\h:\w$ '
 
+# pgAdmin
+alias tunnel-application-db
+alias tunnel-analytics-db
+
 # Docker
 alias d='docker'
 
 # Kubernetes
 alias k='kubectl'
-source <(kubectl completion bash)
-#complete -o default -F __start_kubectl k
 complete -F __start_kubectl k
+source /opt/homebrew/etc/profile.d/bash_completion.sh
+source <(kubectl completion bash)
+
+#source <(kubectl completion bash } sed 's/kubectl/k/g')
+#complete -o default -F __start_kubectl k
+
 
 # Setting PATH for Python 3.12
+# The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
 export PATH
+
+# Python
+alias sba='source .venv/bin/activate'
+# Setting PATH for Python 3.12
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
+export PATH
+
+# Git
+alias gfp='git fetch --prune'
+
+# The next line updaes PATH for the Google Cloud SDK.
+if [ -f '/Users/XX12345/Downloads/google-cloud-sdk/path.bash.inc' ]; then . /Users/XX12345/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enabled shell command completion for gcloud
+if [ -f '/Users/XX12345/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . /Users/XX12345/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 
 # Show / Hide files
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+# >>> conda initialize >>>
+# !! Contents within this block ae managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda` 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH='/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unsed __conda_setup
+# <<< conda initialize <<<
+
+
+ARCHIVE
+# Kubernetes
+#alias k='kubectl'
+#source <(kubectl completion bash)
+#complete -o default -F __start_kubectl k
+#complete -F __start_kubectl k
+
+# Python
+# /usr/local/bin/python3.12
