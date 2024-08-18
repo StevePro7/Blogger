@@ -1,0 +1,69 @@
+YouTube 01b
+18-Aug-2024
+
+
+Gym
+Aleksandar Haber	28.17
+Introduction to OpenAI Gym and Frozen Lake Environment in Python- Reinforcement Learning Tutorial
+https://www.youtube.com/watch?v=Vrro7W7iW2w	
+
+Frozen Lake
+transitional state properties
+P[State][Action]
+
+github
+https://github.com/AleksandarHaber/Introduction-to-OpenAI-Gym-Python-Library-and-Frozen-Lake-Reinforcement-Learning-Environment?tab=readme-ov-file
+
+
+Aleksandar Haber	19:22
+Intro to Atari Game OpenAI Gym Environment - Reinforcement Learning for Computer Games
+https://www.youtube.com/watch?v=tkDIb8yl69g
+
+Breakout
+
+
+TODO
+pip install ATARI
+
+import gym as gym
+import keyboard
+import time
+import matplotlib.pyplot as plt
+
+env = gym.make("ALE/Breakout-v5", render_mode='human',
+		full_action_space=False, repeat_action_probability=0.1, obs_type='rgb')
+
+env.reset()
+
+num_actions = env.action_space.n
+
+meaning = env.unwrapped.get_action_meanings()
+# ['NOOP', 'FIRE', 'RIGHT', 'LEFT']
+# [ 0,      1,      2,       3    ]
+
+# Keys
+# 'w' nothing
+# 's' start
+# 'd' right
+3 'a' left
+
+actionDict = {'w': 0, 's': 1, 'd': 2, 'a': 3}
+
+obs, reward, terminated, truncated, info = env.step(0)
+
+plt.figure(figsize=(8, 8))
+plt.imshow(obs)
+
+totalReward = 0
+while True:
+	event = keyboard.read_event()
+	if actionDict.get(event.name, -1) != -1:
+		obs, reward, terminated, truncated, info = env.step(actionDict.get(event.name, -1))
+	totalReward = totalReward + reward
+	env.render()
+	time.sleep(0.05)
+
+env.reset()
+env.close() 
+
+
