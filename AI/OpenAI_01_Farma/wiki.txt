@@ -13,29 +13,15 @@ Let's check it out!
 <br /><br />
   
 <u>Gym</u><br />
-https://github.com/openai/gym
-  Gym is an open source Python library for developing and comparing reinforcement learning algorithms by providing a standard API to communicate between learning algorithms and environments.
-  <br><br>
-https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3
-  <br>
-OpenAI Gym soon became widely adopted by the community for creating and training RL algorithms in various environments.  
-  <br><br>
-  Gym: developed by OpenAI
-  <br>
-  https://www.linkedin.com/pulse/exploring-differences-gym-gymnasium-environments-learning-sabir-ali
-  <br>
-one of the most widely used libraries for creating environments for reinforcement learning.
-Gym provides a wide range of environments, including classic control problems, Atari games, and robotic environments.
-  It also includes a set of tools for monitoring and evaluating the performance of reinforcement learning agents.
-
-  <br><br>
-  GYM Example: CartPole then Frozen Lake
+<br><br>
+GYM Example: CartPole then Frozen Lake
   <br><br>
 https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3
   <br>
   The main problem with Gym, however, was the lack of maintenance. OpenAI didn't allocate substantial resources for the development of Gym since its inception seven years earlier, and, by 2020, it simply wasn't maintained. 
 <br><br>
-  <br><br> 
+<br><br>
+
 <u>Gymnasium</u><br />
   Gymnasium
   https://gymnasium.farama.org
@@ -48,20 +34,6 @@ Gymnasium is an open source Python library for developing and comparing reinforc
   GYM Example: CartPole then Frozen Lake
   <br><br> 
   
-<b>Differences</b><br />
-While both Gym and Gymnasium are powerful tools for creating environments for reinforcement learning, it makes more sense to prefer Gymnasium going forward as there is technically no future support for Gym.
-  <br><br>
-  environments
-  https://www.linkedin.com/pulse/exploring-differences-gym-gymnasium-environments-learning-sabir-ali
-  
-  sense
-  https://ai.stackexchange.com/questions/41763/should-i-make-my-environment-with-gym-or-gymnasium
-  <br><br>
-  
-  documentation
-https://www.gymlibrary.dev
-https://www.gymlibrary.dev/api/core
-Note: be aware that old documentation will have <i>import gym</i> which the convention going forward is to be replaced with <i>import gymnasium as gym</i>.
-  
+
   
 </span>
