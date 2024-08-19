@@ -13,6 +13,15 @@ pip install gym[classic_control]
 pip install --upgrade pip
 
 
+<table width="100%" border="1">
+<tr><td>
+&nbsp;pip install gym<br />
+&nbsp;pip install gym[classic_control]<br />
+&nbsp;pip install --upgrade pip<br />
+</tr></td>
+</table>
+
+
 import gym
 env = gym.make("CartPole-v1", render_mode="human")
 observation, info = env.reset(seed=42)
@@ -23,12 +32,3 @@ for _ in range(1000):
     if terminated or truncated:
         observation, info = env.reset()
 env.close()
-
-
-<table width="100%" border="1">
-<tr><td>
-&nbsp;pip install gym<br />
-&nbsp;pip install gym[classic_control]<br />
-&nbsp;pip install --upgrade pip<br />
-</tr></td>
-</table>
