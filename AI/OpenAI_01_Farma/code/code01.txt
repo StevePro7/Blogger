@@ -32,3 +32,20 @@ for _ in range(1000):
     if terminated or truncated:
         observation, info = env.reset()
 env.close()
+
+
+
+<table width="100%" border="1">
+<tr><td>
+&nbsp;import gym<br />
+&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
+&nbsp;observation, info = env.reset(seed=42)<br />
+&nbsp;<br />
+&nbsp;for _ in range(1000):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</tr></td>
+</table>

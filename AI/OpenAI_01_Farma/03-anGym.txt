@@ -1,15 +1,39 @@
 <span style="font-family:verdana;font-size:85%;">
 
 <u>Gym</u><br />
-
 GYM Example: CartPole
-
-
-
-<u>Gymnasium</u><br />
-
-Gymnasium Example: CartPole
-
-
-
+<br>
+https://github.com/openai/gym
+<br>
+Launch PyCharm | New Project | Name: HelloCartPoleGym Location: ~/
+<br>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s800/PyCharmGym.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s600/PyCharmGym.png"/></a>
+<br>  
+source .venv/bin/activate
+<br />
+<table width="100%" border="1">
+<tr><td>
+&nbsp;pip install gym<br />
+&nbsp;pip install gym[classic_control]<br />
+&nbsp;pip install --upgrade pip<br />
+</tr></td>
+</table>
+<br />
+CODE
+<table width="100%" border="1">
+<tr><td>
+&nbsp;import gym<br />
+&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
+&nbsp;observation, info = env.reset(seed=42)<br />
+&nbsp;<br />
+&nbsp;for _ in range(1000):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</tr></td>
+</table>
+<br />
+  
 </span>
