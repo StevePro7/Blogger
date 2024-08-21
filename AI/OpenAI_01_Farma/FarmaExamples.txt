@@ -7,3 +7,24 @@ FarmaCheatSheet
 
 IMPORTANT: if Python Interpreter not set and/or Virtual Environment not available then:
 File | Settings... | Project: Python Interpreter | Add Interpreter | Add Local Interpreter
+
+
+
+REMEMBER
+if you have issues with the Virtual Environment then you may be prompted to pip install...
+
+ClassicControl
+pip install gymnasium[classic-control]
+
+Toy Text
+pip install gymnasium[toy-text]
+
+Box2D
+pip install gymnasium[box2d]
+
+MuJoCo
+pip install gymnasium[mujoco]
+
+Atari
+pip install gymnasium[atari]
+pip install gymnasium[accept-rom-license]
