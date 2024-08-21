@@ -1,0 +1,34 @@
+Fork Repo Farma 03
+21-Aug-2024
+
+TODO
+fork repo but I do NOT have the important tag out-of-the box!!
+v0.29.1
+git fetch --tags
+
+SUMMARY
+very much like OpenAI Testing but we do not need to install gymnasium
+as the source code is there
+
+IMPORTANT
+all work on main except Atari which needs v0.29.1 tag
+
+git tags
+git checkout tags/v0.29.1
+
+Pre-Requisites
+pip install -r docs/requirements.txt
+pip install --upgrade pip
+
+ClassicControl
+ToyText
+
+Box2D
+pip install Box2D
+
+muJoCo
+pip install mujoco==2.3.0
+
+Atari
+pip install gymnasium[atari]
+pip install gymnasium[accept-rom-license]
