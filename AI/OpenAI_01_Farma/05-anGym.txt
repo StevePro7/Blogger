@@ -7,40 +7,21 @@ Gym provides a wide range of <a href="https://www.linkedin.com/pulse/exploring-d
 <br /><br />
 <b>Hello Gym</b><br />
 Creating a <a href="https://github.com/openai/gym">Gym</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | Name: HelloCartPoleGym [~/]
-<!--
 <br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s800/PyCharmGym.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s600/PyCharmGym.png"/></a>
--->
 <br />
 <table width="99%" border="1">
-<tr>
-<td>
-&nbsp;source .venv/bin/activate<br />
-&nbsp;pip install --upgrade pip<br />
-</td>
-<td>
+<tr><td>
 &nbsp;pip install gym<br />
 &nbsp;pip install gym[classic_control]<br />
-</td>
-</tr>
-</table>
-<br />
-CODE
-<table width="100%" border="1">
-<tr><td>
-&nbsp;import gym<br />
-&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
-&nbsp;observation, info = env.reset(seed=42)<br />
-&nbsp;<br />
-&nbsp;for _ in range(1000):<br />
-&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
-&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
-&nbsp;env.close()<br />
+&nbsp;pip install --upgrade pip<br />
 </tr></td>
-</table>  
+</table>
 YouTube videos online also introduce OpenAI Gym but include <a href="https://www.youtube.com/watch?v=Vrro7W7iW2w">Frozen Lake</a> environment and <a href="https://www.youtube.com/watch?v=tkDIb8yl69g">Atari Breakout</a>.
 <br /><br />
-  
+
+
+<b>Hello Gymnasium</b><br />
+Creating <a href="https://github.com/Farama-Foundation/Gymnasium">/Gymnasium</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | HelloCartPoleGymnasium
+  <br /><br />
 </span>
