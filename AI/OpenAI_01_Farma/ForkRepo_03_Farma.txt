@@ -1,7 +1,26 @@
 Fork Repo Farma 03
-21-Aug-2024
+22-Aug-2024
 
-TODO
+Want to get tag v0.29.1 from remote
+https://stackoverflow.com/questions/16678072/fetching-all-tags-from-a-remote-with-git-pull
+
+git fetch --tags --prune --prune-tags
+git fetch --all
+
+git tag | grep 29
+v0.29.0
+v0.29.1
+
+RESUME
+git tags
+git checkout tags/v0.29.1
+
+Pre-Requisites
+pip install -r docs/requirements.txt
+pip install --upgrade pip
+
+
+21-Aug-2024
 fork repo but I do NOT have the important tag out-of-the box!!
 v0.29.1
 git fetch --tags
