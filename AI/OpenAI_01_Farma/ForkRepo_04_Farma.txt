@@ -1,0 +1,85 @@
+GIT clone setup
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git config --global --get user.name<br />
+&nbsp;git config --global --get user.email<br />
+</td>
+<td>
+&nbsp;git config --global user.name "SteveProXNA"<br />
+&nbsp;git config --global user.email "steven_boland@hotmail.com"<br />
+</td>
+</tr>
+</table>
+<br />
+
+
+GIT remote -v
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git remote -v<br />
+</td>
+<td>
+&nbsp;git remote add upstream git@github.com:Farama-Foundation/Gymnasium.git<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;origin<br />
+&nbsp;origin<br />
+</td>
+<td>
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (push)<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;upstream<br />
+&nbsp;upstream<br />
+</td>
+<td>
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (push)<br />
+</td>
+</tr>	
+</table>
+<br />
+
+
+Pre-reqs | Classic Control | Toy Text
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;pip install -r requirements.txt<br /></td>
+<td>&nbsp;pip install --upgrade pip<br /></td>
+</tr>
+</table>
+<br />
+
+<b>Box2D</b><br />
+<table width="99%" border="1">
+<tr>
+<td colspan="2">&nbsp;pip install gymnasium</td>
+<td colspan="2">&nbsp;pip install mujoco==2.3.0</td>
+</tr>
+</table>
+<br />
+
+<b>MuJoCo</b><br />
+<table width="99%" border="1">
+<tr>
+<td colspan="2">&nbsp;pip install gymnasium</td>
+<td colspan="2">&nbsp;pip install mujoco==2.3.0</td>
+</tr>
+</table>
+<br />
+
+<b>Atari</b><br />
+<table width="99%" border="1">
+<tr>
+<td colspan="2">&nbsp;pip install gymnasium[atari]</td>
+<td colspan="2">&nbsp;pip install gymnasium[accept-rom-license]</td>
+</tr>
+</table>
+<br />
