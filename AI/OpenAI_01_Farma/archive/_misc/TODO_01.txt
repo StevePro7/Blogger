@@ -1,16 +1,17 @@
 TODO 01
 01-Aug-2024
 
-01.
-Frozen Lake
-coonsoldiate all examples
 
-ditto with Taxi
+//01.
+//Frozen Lake
+//coonsoldiate all examples
+
+//ditto with Taxi
 
 
-02.
-Find that Gym web page 
-that says goto FF Gymnasium
+//02.
+//Find that Gym web page 
+//that says goto FF Gymnasium
 
 
 03.
@@ -21,14 +22,16 @@ that says goto FF Gymnasium
 
 
 
-Setup simple example 01.	Frozen Lake	Toy Text
-e.g.
-Frozen Lake
-https://www.youtube.com/watch?v=Vrro7W7iW2w
+//Setup simple example 01.	Frozen Lake	Toy Text
+//e.g.
+//Frozen Lake
+//https://www.youtube.com/watch?v=Vrro7W7iW2w
 
-pip install gym
-pip install gym[toy_text]
+//pip install gym
+//pip install gym[toy_text]
 
+
+/**
 import gym
 
 env=gym.make("FrozenLake-v1", render_mode="human")
@@ -65,8 +68,4 @@ meaning = env.unwrapped_get_action_meanings()
 plt.figure(figsize=(8, 8))
 plt.imshow(obs)
 
-
-
-Frozen Lake | Q-Learning
-How Q-Learning "Learns" In Gymnasium FrozenLake-v1 | Reinforcement Learning Basics
-https://www.youtube.com/watch?v=gbhXXKJdc7c
+**/
