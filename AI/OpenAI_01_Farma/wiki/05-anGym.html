@@ -13,12 +13,33 @@ Creating a <a href="https://github.com/openai/gym">Gym</a> environment e.g. Cart
 <!-- -->
 <br />
 <table width="99%" border="1">
-<tr><td>
+<tr>
+<td>
+&nbsp;source .venv/bin/activate<br />
+&nbsp;pip install --upgrade pip<br />
+</td>
+<td>
 &nbsp;pip install gym<br />
 &nbsp;pip install gym[classic_control]<br />
-&nbsp;pip install --upgrade pip<br />
-</tr></td>
+</td>
+</tr>
 </table>
+<br />
+CODE
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import gym<br />
+&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
+&nbsp;observation, info = env.reset(seed=42)<br />
+&nbsp;<br />
+&nbsp;for _ in range(1000):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</tr></td>
+</table>  
 YouTube videos online also introduce OpenAI Gym but include <a href="https://www.youtube.com/watch?v=Vrro7W7iW2w">Frozen Lake</a> environment and <a href="https://www.youtube.com/watch?v=tkDIb8yl69g">Atari Breakout</a>.
 <br /><br />
 
@@ -63,5 +84,8 @@ CODE
 </tr></td>
 </table>  
 <br />
+
+<i>Differences</i><br />
+While both Gym and Gymnasium are powerful tools for creating <a href="https://www.linkedin.com/pulse/exploring-differences-gym-gymnasium-environments-learning-sabir-ali">environments</a> for reinforcement learning, it makes more <a href="https://ai.stackexchange.com/questions/41763/should-i-make-my-environment-with-gym-or-gymnasium">sense</a> to prefer Gymnasium going forward as technically future support for Gym there is none.  Note: old <i>import gym</i> <a href="https://www.gymlibrary.dev">documentation</a> is replaced with <i>import gymnasium as gym</i> convention going forward.
 
 </span>
