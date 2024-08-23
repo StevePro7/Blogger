@@ -1,0 +1,33 @@
+CLIon Debug
+23-Aug-2024
+
+IMPORTANT
+I had already built the software from the YT video
+
+gym-retro-integration
+/home/stevepro/GitHubX/openai/retro
+
+CLion
+Launch Gym Retro
+
+Go to File > Settings > Build, Execution, Deployment > CMake
+/home/stevepro/GitHubX/openai/retro
+CMakeLists.txt
+
+
+MAIN entry point
+main.cpp
+/home/stevepro/GitHubX/openai/retro/src/ui
+
+int main(int argc, char* argv[]) {
+
+Choose target in drop down
+e.g
+nes | Debug
+F5
+
+Popup
+Enter executable in drop down list
+gym-retro-integration
+
+Debug break step thru code!!
