@@ -1,0 +1,66 @@
+TODO - replace Farma with Retro
+
+<span style="font-family:verdana;font-size:85%;">
+
+<u>Pull Request</u><br />
+Finally, submit Pull Request: upload Farma examples.  Navigate to source <a href="https://github.com/Farama-Foundation/Gymnasium">Gymnasium</a> repo | Create new fork
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s1089/ForkFarma02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s600/ForkFarma02.png"/></a>
+-->
+<br />
+Git clone the forked Gymnasium source code repository and setup the following Git username and user email
+<br />
+<!--  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git config --global --get user.name<br />
+&nbsp;git config --global --get user.email<br />
+</td>
+<td>
+&nbsp;git config --global user.name "SteveProXNA"<br />
+&nbsp;git config --global user.email "steven_boland@hotmail.com"<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+Next, configure the Gymnasium upstream destination code repository in order to complete the Pull Request:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git remote -v<br />
+</td>
+<td>
+&nbsp;git remote add upstream git@github.com:Farama-Foundation/Gymnasium.git<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;origin<br />
+&nbsp;origin<br />
+</td>
+<td>
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (push)<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;upstream<br />
+&nbsp;upstream<br />
+</td>
+<td>
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (push)<br />
+</td>
+</tr>	
+</table>
+-->
+<br />
+
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s1114/ForkFarma05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s600/ForkFarma05.png"/></a>
+</span>
