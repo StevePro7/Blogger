@@ -1,0 +1,64 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+<u>Pull Request</u><br />
+Finally, submit Pull Request to upload examples.  Navigate to <a href="https://github.com/openai/retro">Open AI Retro</a> source repo and Create new fork
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirBgvFyAzDVLKkrdWFKptj4HBTVhsnIEzz_EE7Opk_IhncD4ox8joKL6wyNamWSOzsy3u_wpFgSTkfb7t0fU-YFfo5oH9c8ULFUJuoEm_zcGqFTFlCQNouLpkUXbc_ym7pTSgt-OM7tHkM2pa2eCWAhPSZGtvmCfYE27T6-q5onGF-E-j6Hl8PpcwabKo/s1103/ForkRetro02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirBgvFyAzDVLKkrdWFKptj4HBTVhsnIEzz_EE7Opk_IhncD4ox8joKL6wyNamWSOzsy3u_wpFgSTkfb7t0fU-YFfo5oH9c8ULFUJuoEm_zcGqFTFlCQNouLpkUXbc_ym7pTSgt-OM7tHkM2pa2eCWAhPSZGtvmCfYE27T6-q5onGF-E-j6Hl8PpcwabKo/s600/ForkRetro02.png"/></a>
+-->
+<br />
+Git clone Open AI forked Retro source code repository and setup the following Git username and user email
+<br />
+<!--  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git config --global --get user.name<br />
+&nbsp;git config --global --get user.email<br />
+</td>
+<td>
+&nbsp;git config --global user.name "SteveProXNA"<br />
+&nbsp;git config --global user.email "steven_boland@hotmail.com"<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+Next, configure Open AI Retro upstream destination code repository in order to complete the Pull Request:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git remote -v<br />
+</td>
+<td>
+&nbsp;git remote add upstream git@github.com/openai/retro.git<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;origin<br />
+&nbsp;origin<br />
+</td>
+<td>
+&nbsp;git@github.com:SteveProXNA/retro.git (fetch)<br />
+&nbsp;git@github.com:SteveProXNA/retro.git (push)<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;upstream<br />
+&nbsp;upstream<br />
+</td>
+<td>
+&nbsp;git@github.com:openai/retro.git (fetch)<br />
+&nbsp;git@github.com:openai/retro.git (push)<br />
+</td>
+</tr>	
+</table>
+<!-- -->
+<br />
+
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2KEJMULF8i5rAPJJAtpRzOHP2Qljb-Mzo4HVZduOrvf7L_QWae-ZFNKFtWkcOO9Uu_i61MQdLNkxZx9GbD-ltVilRJWNsVTRWh-zFNjtcDompxfvDP42w3ABHBo3liSUz1xFGAV8IcYPRwB5dG5gqoQ1wmMRlt7BtDyH_epjNYQpI2RTx13Q4e0a1iwc/s990/ForkRetro05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2KEJMULF8i5rAPJJAtpRzOHP2Qljb-Mzo4HVZduOrvf7L_QWae-ZFNKFtWkcOO9Uu_i61MQdLNkxZx9GbD-ltVilRJWNsVTRWh-zFNjtcDompxfvDP42w3ABHBo3liSUz1xFGAV8IcYPRwB5dG5gqoQ1wmMRlt7BtDyH_epjNYQpI2RTx13Q4e0a1iwc/s600/ForkRetro05.png"/></a>
+</span>  
