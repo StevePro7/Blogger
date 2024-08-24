@@ -1,0 +1,55 @@
+Farma Foundation compare
+24-Aug-2024
+
+POTENTIAL SOLUTION
+open fork
+~/GitHub/SteveProXNA2/Gymnasium
+
+delete all contents
+copy all contents from here
+
+~/GitHubX/Farama-Foundation/Gymnasium
+including venv
+~/GitHubX/Farama-Foundation/Gymnasium/.venv
+
+
+WORKS
+~/GitHubX/Farama-Foundation/Gymnasium
+~/GitHubX/Farama-Foundation/Gymnasium/.venv
+Python 3.8 (Gymnasium)	v0.29.1
+
+does not work
+~/GitHub/SteveProXNA/Gymnasium
+Python 3.8	v0.29.1
+
+
+Repeat from scratch
+01.
+cd /home/stevepro/GitHub3/Farama-Foundation
+git clone https://github.com/Farama-Foundation/Gymnasium.git
+
+Add new interpreter
+sba
+Python packages | examples
+stevepro.py
+    raise error.NamespaceNotFound(f"Namespace {ns} not found. {suggestion_msg}")
+gymnasium.error.NamespaceNotFound: Namespace ALE not found. Have you installed the proper package for ALE?
+
+
+git fetch --depth=1 git@github.com:Farama-Foundation/Gymnasium.git 81b87efb9f011e975f3b646bab6b7871c522e15e
+git checkout 81b87efb9f011e975f3b646bab6b7871c522e15e
+
+
+
+IMPORTANT
+the one that works
+~/GitHubX/Farama-Foundation/Gymnasium
+
+it seems to be isolated to the Pip venv
+Python 3.8 (Gymnasium)
+
+if I switch to Python 3.8 /usr/bin/python then it gives the same error as above
+
+
+
+
