@@ -1,0 +1,79 @@
+Fork Repo04
+24-Aug-2024
+
+References:
+
+openai_retro02.txt
+openai_retro03.txt
+~/StevePro7/Blogger/AI/OpenAI_Retro
+
+./CLionDebug.txt
+
+
+TODO
+clone fork instructions from OpenAI_01_farma
+cd ~/GitHub/SteveProXNA
+git remote -v
+git remote add upstream git@github.com:openai/retro.git
+
+
+01.
+openai_retro02.txt
+openai_retro03.txt
+
+
+IMPORTANT - openai retro build emulator
+OpenAI game integration tool - part 1
+https://www.youtube.com/watch?v=lPYWaUAq_dY
+
+he got the info to Install Retro UI from source on Linux from here
+https://retro.readthedocs.io/en/latest/developing.html#install-retro-ui-from-source
+
+
+Launch terminal
+cd ~/GitHub/SteveProXNA/retro
+
+sudo apt-get update
+sudo apt-get install capnproto
+sudo apt-get install libcapnp-dev
+
+sudo apt-get install libqt5opengl5-dev
+sudo apt-get install qtbase5-dev
+sudo apt-get autoremove
+
+cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY
+make -j$(grep -c ^processor /proc/cpuinfo)
+./gym-retro-integration
+
+
+02.
+CLion
+Open Project
+~/GitHub/SteveProXNA/retro
+
+//Go to File > Settings > Build, Execution, Deployment > CMake
+//CMakeLists.txt
+//OR
+Open file
+CMakeLists.txt
+~/GitHub/SteveProXNA/retro
+Trust Project
+OK
+
+IMPORTANT
+Now there are many options in the Edit configurations drop down list
+e.g.
+gym-retro-integration | Debug
+
+
+Open file
+main.cpp
+~/GitHub/SteveProXNA/retro/src/ui
+
+int main(int argc, char* argv[])
+{
+}
+
+Set breakpoint
+Debug
+IMAGE
