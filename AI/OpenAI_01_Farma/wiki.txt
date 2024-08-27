@@ -1,5 +1,14 @@
 <span style="font-family:verdana;font-size:85%;">
-TODO Atari
+Finally, in order to integrate Atari game examples I found this only worked cut from tag v0.29.1 [81b87ef]
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;git fetch --tags --prune --prune-tags<br />&nbsp;git fetch --all<br /></td>
+<td width="50%">&nbsp;git tag | grep v0.29.1<br />&nbsp;git checkout tags/v0.29.1<br /></td>
+</tr>
+<table>
+<br />
+It seems after tag v0.29.1 any Atari game may throw the following: <i>gymnasium.error.NamespaceNotFound: Namespace ALE not found. Have you installed the proper package for ALE?</i>.  Resume Atari setup as before:
 <br />
 <table width="99%" border="1">
 <tr>
@@ -8,13 +17,9 @@ TODO Atari
 </tr>
 </table>
 <br />
-<table width="99%" border="1">
-<tr>
-<td width="50%">&nbsp;git fetch --tags --prune --prune-tags<br />&nbsp;git fetch --all<br /></td>
-<td width="50%">&nbsp;git tag | grep v0.29.1<br />&nbsp;git checkout tags/v0.29.1<br /></td>
-</tr>
-<table>
-<br /><br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFtqbvv956Yqh3lT0AvgbvNhEsUP6bB-6-KsjvAWyI3dw_Z-8rg6LVjBdTX-zO2xLXLjRlD7_4Mo1An2GqJx7Eexlhdr1KlazZsUzI2ZO0-3Xg9LOtkxUveIaLsfN5IfzI6c95hAOfCSeg1lqfFI7MqcrngR1Yhv67RnHvZJjY7jO89GQoXXOvVsx9jOg/s858/Pacman-v5.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFtqbvv956Yqh3lT0AvgbvNhEsUP6bB-6-KsjvAWyI3dw_Z-8rg6LVjBdTX-zO2xLXLjRlD7_4Mo1An2GqJx7Eexlhdr1KlazZsUzI2ZO0-3Xg9LOtkxUveIaLsfN5IfzI6c95hAOfCSeg1lqfFI7MqcrngR1Yhv67RnHvZJjY7jO89GQoXXOvVsx9jOg/s600/Pacman-v5.png"/></a>
+<br />
+  <br><br><br>
 <u>Retrospectives</u><br />
 In Jan-2020 <a href="https://steveproxna.blogspot.com/2020/01/retrospective-xi.html">Retrospective XI</a>, we learned about an interesting development connecting Artificial Intelligence and retro video games leveraging Reinforcement Learning.  In Jan-2021 <a href="https://steveproxna.blogspot.com/2021/01/retrospective-xii.html">Retrospective XII</a>, we then discussed video games as an interesting field of <a href="https://www.youtube.com/watch?v=vufTSJbzKGU">study</a> and retro game development of Pacman and Doom clones as an excellent avenue to pursue with regards to future applications in software with Artificial Intelligence and RL.
 <br /><br />
