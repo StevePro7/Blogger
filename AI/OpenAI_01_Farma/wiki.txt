@@ -14,62 +14,19 @@ TODO Atari
 <td width="50%">&nbsp;git tag | grep v0.29.1<br />&nbsp;git checkout tags/v0.29.1<br /></td>
 </tr>
 <table>
-  <br><br>
-Launch PyCharm | Open Gymnasium | Create virtual environment | Install requirements	as pre-requisites:
-<br />
-<!--
-<table width="99%" border="1">
-<tr>
-<td width="50%">
-&nbsp;pip install -r docs/requirements.txt<br />
-</td>
-<td>
-&nbsp;pip install --upgrade pip<br />
-</td>
-</tr>
-</table>
--->
-<br />
-Uncomment game from ClassicControl sub-directory files.txt or ToyText files.txt.  Open main.py.  Run script:  
-<br />
-<!--
-<table width="99%">  
-<tr>
-<td valign="top" width="40%">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s602/CartPole-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s600/CartPole-v1.png"/></a>
-</td>
-<td valign="top" width="40%">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s602/FrozenLake-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s600/FrozenLake-v1.png"/></a>
-</td>
-</tr>
-</table>
-<br />
--->
-<br />
-Install Box2D and MuJoCo dependencies.  Uncomment game from Box2D files.txt or MuJoCo.  Run main.py:
-<br />
-<!--
-<table width="99%" border="1">
-<tr>
-<td width="50%">&nbsp;<b>Box2D</b><br />&nbsp;pip install Box2D<br /></td>
-<td width="50%">&nbsp;<b>MuJoCo</b><br />&nbsp;pip install mujoco==2.3.0<br /></td>
-</tr>
-<table>
--->
-<br />
-<!--
-<table width="99%">  
-<tr>
-<td valign="top" width="40%">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s602/LunarLander-v2.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s600/LunarLander-v2.png"/></a>
-</td>
-<td valign="top" width="40%">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s602/Ant-v4.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s600/Ant-v4.png"/></a>
-</td>
-</tr>
-</table>
--->
 <br /><br />
+<u>Retrospectives</u><br />
+In Jan-2020 <a href="https://steveproxna.blogspot.com/2020/01/retrospective-xi.html">Retrospective XI</a>, we learned about an interesting development connecting Artificial Intelligence and retro video games leveraging Reinforcement Learning.  In Jan-2021 <a href="https://steveproxna.blogspot.com/2021/01/retrospective-xii.html">Retrospective XII</a>, we then discussed video games as an interesting field of <a href="https://www.youtube.com/watch?v=vufTSJbzKGU">study</a> and retro game development of Pacman and Doom clones as an excellent avenue to pursue with regards to future applications in software with Artificial Intelligence and RL.
+<br /><br />
+Consequently, in the previous post, we disovered how to debug step thru cloned versions of Doom to better understand the original source code: an important pre-requisite to extend knowledge for further research in reinforcement learning, in particular.  For example, <a href="https://vizdoom.cs.put.edu.pl">ViZDoom</a> allows developing AI bots that play Doom using visual data.  In 2022, <a href="https://github.com/Farama-Foundation/ViZDoom?tab=readme-ov-file">ViZDoom</a> joined Farama Foundation featuring new <a href="https://gymnasium.farama.org">Gymnasium</a> environment wrappers.
+<br /><br />
+
+<u>Summary</u><br />
+To summarize, we have now setup Gymnasium environments for Classic Control, Toy Text, Box 2D, MuJo Co and Atari.  NB: all Atari <a href="https://github.com/Farama-Foundation/Arcade-Learning-Environment">environments</a> leverage the Atari Arcade Learning Environment [ALE] emulator Stella.
+<br /><br />
+In fact, reverting back to OpenAI which hosts the <a href="https://github.com/openai/retro">Retro</a> Git source code repository, also including Emulated Systems like Atari.  However, Retro also includes many other Emulated Systems we have developed for in the past including Nintendo GameBoy / GameBoy Color, Sega MegaDrive and or course the Sega Master System!  This will be the topic of the next post.
+
+  <br /><br />
     
 <a href="https://en.wikipedia.org/wiki/OpenAI">OpenAI</a> is an American Artificial Intelligence [<a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</a>] research organization founded Dec-2015 head-quartered in San Francisco.  In April 2016, OpenAI released a public beta of "<a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">OpenAI Gym</a>": its platform for reinforcement learning research.  Reinforcement Learning [<a href="https://en.wikipedia.org/wiki/Reinforcement_learning">RL</a>] is an interdisciplinary area of machine learning and optimal control concerned with how an agent takes action in environment in order to maximize cumulative rewards.
 <br /><br />
@@ -365,5 +322,59 @@ Next, configure the Gymnasium upstream destination code repository in order to c
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s1114/ForkFarma05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s600/ForkFarma05.png"/></a>
 -->
 <br />
-  
+Launch PyCharm | Open Gymnasium | Create virtual environment | Install requirements	as pre-requisites:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;pip install -r docs/requirements.txt<br />
+</td>
+<td>
+&nbsp;pip install --upgrade pip<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+Uncomment game from ClassicControl sub-directory files.txt or ToyText files.txt.  Open main.py.  Run script:  
+<br />
+<!--
+<table width="99%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s602/CartPole-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s600/CartPole-v1.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s602/FrozenLake-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s600/FrozenLake-v1.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+Install Box2D and MuJoCo dependencies.  Uncomment game from Box2D files.txt or MuJoCo.  Run main.py:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;<b>Box2D</b><br />&nbsp;pip install Box2D<br /></td>
+<td width="50%">&nbsp;<b>MuJoCo</b><br />&nbsp;pip install mujoco==2.3.0<br /></td>
+</tr>
+<table>
+-->
+<br />
+<!--
+<table width="99%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s602/LunarLander-v2.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s600/LunarLander-v2.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s602/Ant-v4.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s600/Ant-v4.png"/></a>
+</td>
+</tr>
+</table>
+-->
+<br /><br />
 </span>
