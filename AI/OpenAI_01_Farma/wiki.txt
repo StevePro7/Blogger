@@ -1,6 +1,23 @@
 <span style="font-family:verdana;font-size:85%;">
+TODO Atari
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;pip install gymnasium[atari]</td>
+<td width="50%">&nbsp;pip install gymnasium[accept-rom-license]</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;git fetch --tags --prune --prune-tags<br />&nbsp;git fetch --all<br /></td>
+<td width="50%">&nbsp;git tag | grep v0.29.1<br />&nbsp;git checkout tags/v0.29.1<br /></td>
+</tr>
+<table>
+  <br><br>
 Launch PyCharm | Open Gymnasium | Create virtual environment | Install requirements	as pre-requisites:
 <br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td width="50%">
@@ -11,8 +28,9 @@ Launch PyCharm | Open Gymnasium | Create virtual environment | Install requireme
 </td>
 </tr>
 </table>
+-->
 <br />
-Uncomment game from Classic Control sub-directory files.txt or Toy Text files.txt.  Open main.py.  Run script:  
+Uncomment game from ClassicControl sub-directory files.txt or ToyText files.txt.  Open main.py.  Run script:  
 <br />
 <!--
 <table width="99%">  
@@ -29,13 +47,17 @@ Uncomment game from Classic Control sub-directory files.txt or Toy Text files.tx
 -->
 <br />
 Install Box2D and MuJoCo dependencies.  Uncomment game from Box2D files.txt or MuJoCo.  Run main.py:
+<br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td width="50%">&nbsp;<b>Box2D</b><br />&nbsp;pip install Box2D<br /></td>
-<td width="50%">>&nbsp;<b>MuJoCo</b><br />&nbsp;pip install mujoco==2.3.0<br /></td>
+<td width="50%">&nbsp;<b>MuJoCo</b><br />&nbsp;pip install mujoco==2.3.0<br /></td>
 </tr>
-<table
+<table>
+-->
 <br />
+<!--
 <table width="99%">  
 <tr>
 <td valign="top" width="40%">
@@ -46,7 +68,7 @@ Install Box2D and MuJoCo dependencies.  Uncomment game from Box2D files.txt or M
 </td>
 </tr>
 </table>
-  
+-->
 <br /><br />
     
 <a href="https://en.wikipedia.org/wiki/OpenAI">OpenAI</a> is an American Artificial Intelligence [<a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</a>] research organization founded Dec-2015 head-quartered in San Francisco.  In April 2016, OpenAI released a public beta of "<a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">OpenAI Gym</a>": its platform for reinforcement learning research.  Reinforcement Learning [<a href="https://en.wikipedia.org/wiki/Reinforcement_learning">RL</a>] is an interdisciplinary area of machine learning and optimal control concerned with how an agent takes action in environment in order to maximize cumulative rewards.
@@ -283,13 +305,13 @@ There are five <a href="https://gymnasium.farama.org/environments/classic_contro
 <u>Pull Request</u><br />
 Finally, submit Pull Request: upload Farma examples.  Navigate to source <a href="https://github.com/Farama-Foundation/Gymnasium">Gymnasium</a> repo | Create new fork
 <br />
-<!-- -->
+<!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s1089/ForkFarma02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s600/ForkFarma02.png"/></a>
-<!-- -->
+-->
 <br />
 Git clone the forked Gymnasium source code repository and setup the following Git username and useremail
 <br />
-<!-- -->  
+<!--  
 <table width="99%" border="1">
 <tr>
 <td>
@@ -302,11 +324,11 @@ Git clone the forked Gymnasium source code repository and setup the following Gi
 </td>
 </tr>
 </table>
-<!-- -->
+-->
 <br />
 Next, configure the Gymnasium upstream destination code repository in order to complete the <a href="https://github.com/Farama-Foundation/Gymnasium/pull/1150">Pull Request</a>:
 <br />
-<!-- -->
+<!--
 <table width="99%" border="1">
 <tr>
 <td>
@@ -337,12 +359,11 @@ Next, configure the Gymnasium upstream destination code repository in order to c
 </td>
 </tr>	
 </table>
-<!-- -->
+-->
 <br />
-
+<!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s1114/ForkFarma05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s600/ForkFarma05.png"/></a>
-
->
+-->
 <br />
   
 </span>
