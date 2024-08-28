@@ -1,0 +1,388 @@
+<span style="font-family:verdana;font-size:85%;">
+    
+<a href="https://en.wikipedia.org/wiki/OpenAI">OpenAI</a> is an American Artificial Intelligence [<a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</a>] research organization founded Dec-2015 head-quartered in San Francisco.  In April 2016, OpenAI released a public beta of "<a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">OpenAI Gym</a>": its platform for reinforcement learning research.  Reinforcement Learning [<a href="https://en.wikipedia.org/wiki/Reinforcement_learning">RL</a>] is an interdisciplinary area of machine learning and optimal control concerned with how an agent takes action in environment in order to maximize cumulative rewards.
+<br /><br />
+In 2021, the non-profit organization Farama Foundation took over <a href="https://github.com/openai/gym">Gym</a>.  They <a href="https://farama.org/Announcing-The-Farama-Foundation">introduced</a> new features into Gym and renamed the library to <a href="https://github.com/Farama-Foundation/Gymnasium">Gymnasium</a> where the future maintenance of OpenAI Gym will take place.  
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJqR9yBBF4dGCoY6dNX45Ono8BSMqdomUCobeFzcozXDf3e1qtRy0yIxxzhF2tt5U86rfhuCaE23t3mYZgLirGiBCk1roS3wHIwSCyCOyJhX4I2_boz0u2RF46PNGN1Rk8S4nhiCQfQwphBKHaOK06GJAjgQYCFn4GaUnoT3_8y1Lker5fjGPI_yWJebg/s858/Breakout-Atari.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJqR9yBBF4dGCoY6dNX45Ono8BSMqdomUCobeFzcozXDf3e1qtRy0yIxxzhF2tt5U86rfhuCaE23t3mYZgLirGiBCk1roS3wHIwSCyCOyJhX4I2_boz0u2RF46PNGN1Rk8S4nhiCQfQwphBKHaOK06GJAjgQYCFn4GaUnoT3_8y1Lker5fjGPI_yWJebg/s600/Breakout-Atari.png"/></a>
+<br />
+-->
+Let's check it out!  
+<br /><br />
+  
+<u>Gym</u><br />
+<a href="https://github.com/openai/gym">OpenAI Gym</a> is an open source Python library for developing reinforcement learning algorithms by providing standard API to communicate between algorithms and environments.  Gym soon became widely <a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">adopted</a> by the community for creating and training algorithms in various environments for AI Reinforcement Learning.   
+<br /><br />
+Gym provides a wide range of <a href="https://www.linkedin.com/pulse/exploring-differences-gym-gymnasium-environments-learning-sabir-ali">environments</a>, including classic control problems, Atari games, and robotics.  Gym also includes set of tools for monitoring and evaluating performance of reinforcement learning agents.
+<br /><br />
+<b>Hello Gym</b><br />
+Creating a <a href="https://github.com/openai/gym">Gym</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | Name: HelloCartPoleGym [~/]
+<!--
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s800/PyCharmGym.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s600/PyCharmGym.png"/></a>
+-->
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;source .venv/bin/activate<br />
+&nbsp;pip install --upgrade pip<br />
+</td>
+<td>
+&nbsp;pip install gym<br />
+&nbsp;pip install gym[classic_control]<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+CODE
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import gym<br />
+&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
+&nbsp;observation, info = env.reset(seed=42)<br />
+&nbsp;<br />
+&nbsp;for _ in range(1000):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</tr></td>
+</table>
+-->
+YouTube videos online also introduce OpenAI Gym but include <a href="https://www.youtube.com/watch?v=Vrro7W7iW2w">Frozen Lake</a> environment and <a href="https://www.youtube.com/watch?v=tkDIb8yl69g">Atari Breakout</a>.
+<br /><br />
+<br />
+
+<u>Gymnasium</u><br />
+The main problem with Gym was the lack of <a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">maintenance</a>: OpenAI did not allocate substantial resources for the development of Gym since its inception seven years earlier, and, by2020, it simply was not maintained.
+<br /><br />
+<a href="https://gymnasium.farama.org">Gymnasium</a> is a maintained fork of the OpenAI Gym library. The Gymnasium interface is simple, pythonic, and capable of representing general RL problems with a compatibility wrapper for old Gym environments:
+<br /><br />
+<b>Hello Gymnasium</b><br />
+Creating <a href="https://github.com/Farama-Foundation/Gymnasium">/Gymnasium</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | HelloCartPoleGymnasium
+<!--
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrCtegmxsCyyUxkHw-DwP6kq7zpxFr7HwS-TJt8c0k9XY9WL42ndIB63rReQuzogmEzpQ4VixqHuL0j4FkXWWsJgiKn2KDoBAPRU0CF_HBhPzeoM5PmAofENH969LJte7Y0UqDly0CQC8qoO3ECUxj-uaK_R_MYzhi3HoaUDvWVU5PRuyFj0NMqtZ_z1s/s800/PyCharmGymnasium.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrCtegmxsCyyUxkHw-DwP6kq7zpxFr7HwS-TJt8c0k9XY9WL42ndIB63rReQuzogmEzpQ4VixqHuL0j4FkXWWsJgiKn2KDoBAPRU0CF_HBhPzeoM5PmAofENH969LJte7Y0UqDly0CQC8qoO3ECUxj-uaK_R_MYzhi3HoaUDvWVU5PRuyFj0NMqtZ_z1s/s600/PyCharmGymnasium.png"/></a>
+-->
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;source .venv/bin/activate<br />
+&nbsp;pip install --upgrade pip<br />
+</td>
+<td>
+&nbsp;pip install gymnasium</br>
+&nbsp;pip install gymnasium[classic-control]</br>
+</td>
+</tr>
+</table>
+-->
+<br />
+CODE
+<!--  
+<br />  
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import gymnasium as gym<br />
+&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
+&nbsp;observation, info = env.reset(seed=42)<br />
+&nbsp;<br />
+&nbsp;for _ in range(1000):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</tr></td>
+</table>
+-->
+<br />
+
+<i>Differences</i><br />
+While both Gym and Gymnasium are powerful tools for creating <a href="https://www.linkedin.com/pulse/exploring-differences-gym-gymnasium-environments-learning-sabir-ali">environments</a> for reinforcement learning, it makes more <a href="https://ai.stackexchange.com/questions/41763/should-i-make-my-environment-with-gym-or-gymnasium">sense</a> to prefer Gymnasium going forward as technically future support for Gym there is none.  Note: old <i>import gym</i> <a href="https://www.gymlibrary.dev">documentation</a> is replaced with <i>import gymnasium as gym</i> convention going forward.
+<br /><br />
+<br />
+
+<u>Farma Examples</u><br />
+Complete all Farma examples!  Create <a href="https://github.com/SteveProXNA/OpenAItesting">OpenAI Test</a> repo.  Launch PyCharm | New Project | FarmaCheatSheet
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3-m7PwIYUng7ZtBzbXQibbhak-QH0YwxJWgQ_qW8JKnPyjjyo6r3hkXRebMPVl6eOGieA5CUYO9BoA5bZ5C6JOFssKKlQov9-vW9W7miCUmLxx13QjCsEsl46H9entPxZLmcIwQ3luclAQjgGZijRSJqzMUziOKIszAoqJ46nl5CVEwdQ0J6YZSJYMbI/s800/FarmaCheatSheetProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3-m7PwIYUng7ZtBzbXQibbhak-QH0YwxJWgQ_qW8JKnPyjjyo6r3hkXRebMPVl6eOGieA5CUYO9BoA5bZ5C6JOFssKKlQov9-vW9W7miCUmLxx13QjCsEsl46H9entPxZLmcIwQ3luclAQjgGZijRSJqzMUziOKIszAoqJ46nl5CVEwdQ0J6YZSJYMbI/s600/FarmaCheatSheetProject.png"/></a>
+-->
+<br />
+IMPORTANT<br />
+If Python Interpreter not set and/or Virtual Environment not available then choose File | Settings... | Project: Python Interpreter | Add Interpreter | Add Local Interpreter.  Launch terminal: <b>source .venv/bin/activate</b>.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfK5K-It4p-AvcUzn6cGu0t3tYUCuQiuPIP0jX48TfuMbaUQl-bbm3XjmWxnoZ62id0a69xwTd_zV2t_A407ROmTDt8eMftpaWvTmQ_31D1OI6vwH1aUWPF2I1PamNX9VaVU7QZwcwVOVESgMfwupisoHQvIFys0cDYITqEr-nT-PI-DCh828kwGACQp4/s1028/FarmaCheatSheetVenv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfK5K-It4p-AvcUzn6cGu0t3tYUCuQiuPIP0jX48TfuMbaUQl-bbm3XjmWxnoZ62id0a69xwTd_zV2t_A407ROmTDt8eMftpaWvTmQ_31D1OI6vwH1aUWPF2I1PamNX9VaVU7QZwcwVOVESgMfwupisoHQvIFys0cDYITqEr-nT-PI-DCh828kwGACQp4/s600/FarmaCheatSheetVenv.png"/></a>
+-->
+<br />
+Copy the official Gymnasium <i><a href="">requirements.txt</a></i> from the Farma Foundation GitHub repository docs directory:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;pip install -r requirements.txt<br />
+</td>
+<td>
+&nbsp;pip install --upgrade pip<br />
+</td>
+</tr>
+</table>
+<br />
+
+<b>Classic Control</b><br />
+There are five <a href="https://gymnasium.farama.org/environments/classic_control">Classic Control</a> environments which are stochastic in terms of initial state within given range.
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td colspan="4">&nbsp;pip install gymnasium</td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ClassicControl/Acrobot-v1.py'>Acrobot-v1</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ClassicControl/CartPole-v1.py'>CartPole-v1</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ClassicControl/MountainCar-v0.py'>MountainCar-v0</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ClassicControl/Pendulum-v1.py'>Pendulum-v1</a></td></tr>
+</table>
+-->
+<br />
+
+<b>Toy Text</b><br />
+<a href="https://gymnasium.farama.org/environments/toy_text">Toy Text</a> environments are designed to be extremely simple, with small discrete state and action spaces, and hence easy to learn. They are suitable for debugging implementations of reinforcement learning algorithms.
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td colspan="4">&nbsp;pip install gymnasium</td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ToyText/Blackjack-v1.py'>Blackjack-v1</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ToyText/CliffWalking-v0.py'>CliffWalking-v0</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ToyText/FrozenLake-v1.py'>FrozenLake-v1</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/ToyText/Taxi-v3.py'>Taxi-v3</a></td></tr>
+</table>
+-->
+<br />
+
+<b>Box2D</b><br />
+<a href="https://gymnasium.farama.org/environments/box2d">Box2D</a> environments involve toy games based around box2d physics control and PyGame-based rendering.
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td colspan="2">&nbsp;pip install gymnasium</td>
+<td colspan="2">&nbsp;pip install mujoco==2.3.0</td>
+</tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/BipedalWalker-v3.py'>BipedalWalker-v3</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/CarRacing-v2.py'>CarRacing-v2</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/LunarLander-v2.py'>LunarLander-v2</a></td></tr>
+</table>
+-->
+<br />
+
+<b>MuJoCo</b><br />
+<a href="https://gymnasium.farama.org/environments/mujoco">MuJoCo</a> [Multi-Joint dynamics with Contact] is physics engine for facilitating research and development in robotics, biomechanics, graphics and animation, also areas where fast and accurate simulation is needed.  
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td colspan="2">&nbsp;pip install gymnasium</td>
+<td colspan="2">&nbsp;pip install mujoco==2.3.0</td>
+</tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/Ant-v4.py'>Ant-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/Humanoid-v4.py'>Humanoid-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/InvertedPendulum-v4.py'>InvertedPendulum-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/Swimmer-v4.py'>Swimmer-v4</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/HalfCheetah-v4.py'>HalfCheetah-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/HumanoidStandup-v4.py'>HumanoidStandup-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/Pusher-v4.py'>Pusher-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/Walker2d-v4.py'>Walker2d-v4</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/Hopper-v4.py'>Hopper-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/InvertedDoublePendulum-v4.py'>InvertedDoublePendulum-v4</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/MuJoCo/Reacher-v4.py'>Reacher-v4</a></td><td>&nbsp;</td></tr>
+</table>
+-->
+<br />
+<b>Atari</b><br />
+<a href="https://gymnasium.farama.org/environments/atari">Atari</a> environments are simulated via the Arcade Learning Environment (ALE) through the Stella emulator.
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td colspan="2">&nbsp;pip install gymnasium[atari]</td>
+<td colspan="2">&nbsp;pip install gymnasium[accept-rom-license]</td>
+</tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Adventure-v5.py'>Adventure-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Defender-v5.py'>Defender-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/KeystoneKapers-v5.py'>KeystoneKapers-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Seaquest-v5.py'>Seaquest-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/AirRaid-v5.py'>AirRaid-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/DemonAttack-v5.py'>DemonAttack-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/KingKong-v5.py'>KingKong-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/SirLancelot-v5.py'>SirLancelot-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Alien-v5.py'>Alien-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/DonkeyKong-v5.py'>DonkeyKong-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Klax-v5.py'>Klax-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Skiing-v5.py'>Skiing-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Amidar-v5.py'>Amidar-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/DoubleDunk-v5.py'>DoubleDunk-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Koolaid-v5.py'>Koolaid-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Solaris-v5.py'>Solaris-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Assault-v5.py'>Assault-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Earthworld-v5.py'>Earthworld-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Krull-v5.py'>Krull-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/SpaceInvaders-v5.py'>SpaceInvaders-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Asterix-v5.py'>Asterix-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/ElevatorAction-v5.py'>ElevatorAction-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/KungFuMaster-v5.py'>KungFuMaster-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/SpaceWar-v5.py'>SpaceWar-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Asteroids-v5.py'>Asteroids-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Enduro-v5.py'>Enduro-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/LaserGates-v5.py'>LaserGates-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/StarGunner-v5.py'>StarGunner-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Atlantis-v5.py'>Atlantis-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Entombed-v5.py'>Entombed-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/LostLuggage-v5.py'>LostLuggage-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Superman-v5.py'>Superman-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Atlantis2-v5.py'>Atlantis2-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Et-v5.py'>Et-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/MarioBros-v5.py'>MarioBros-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Surround-v5.py'>Surround-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Backgammon-v5.py'>Backgammon-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/FishingDerby-v5.py'>FishingDerby-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/MiniatureGolf-v5.py'>MiniatureGolf-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Tennis-v5.py'>Tennis-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/BankHeist-v5.py'>BankHeist-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/FlagCapture-v5.py'>FlagCapture-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/MontezumaRevenge-v5.py'>MontezumaRevenge-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Tetris-v5.py'>Tetris-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/BasicMath-v5.py'>BasicMath-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Freeway-v5.py'>Freeway-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/MrDo-v5.py'>MrDo-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/TicTacToe3D-v5.py'>TicTacToe3D-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/BattleZone-v5.py'>BattleZone-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Frogger-v5.py'>Frogger-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/MsPacman-v5.py'>MsPacman-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/TimePilot-v5.py'>TimePilot-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/BeamRider-v5.py'>BeamRider-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Frostbite-v5.py'>Frostbite-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/NameThisGame-v5.py'>NameThisGame-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Trondead-v5.py'>Trondead-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Berzerk-v5.py'>Berzerk-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Galaxian-v5.py'>Galaxian-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Othello-v5.py'>Othello-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Turmoil-v5.py'>Turmoil-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Blackjack-v5.py'>Blackjack-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Gopher-v5.py'>Gopher-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Pacman-v5.py'>Pacman-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Tutankham-v5.py'>Tutankham-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Bowling-v5.py'>Bowling-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Gravitar-v5.py'>Gravitar-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Phoenix-v5.py'>Phoenix-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/UpNDown-v5.py'>UpNDown-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Boxing-v5.py'>Boxing-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Hangman-v5.py'>Hangman-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Pitfall-v5.py'>Pitfall-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Venture-v5.py'>Venture-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Breakout-v5.py'>Breakout-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/HauntedHouse-v5.py'>HauntedHouse-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Pitfall2-v5.py'>Pitfall2-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/VideoCheckers-v5.py'>VideoCheckers-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Carnival-v5.py'>Carnival-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Hero-v5.py'>Hero-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Pong-v5.py'>Pong-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/VideoChess-v5.py'>VideoChess-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Casino-v5.py'>Casino-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/HumanCannonball-v5.py'>HumanCannonball-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Pooyan-v5.py'>Pooyan-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/VideoCube-v5.py'>VideoCube-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Centipede-v5.py'>Centipede-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/IceHockey-v5.py'>IceHockey-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/PrivateEye-v5.py'>PrivateEye-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/VideoPinball-v5.py'>VideoPinball-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/ChopperCommand-v5.py'>ChopperCommand-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Jamesbond-v5.py'>Jamesbond-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Qbert-v5.py'>Qbert-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/WizardOfWor-v5.py'>WizardOfWor-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/CrazyClimber-v5.py'>CrazyClimber-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/JourneyEscape-v5.py'>JourneyEscape-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Riverraid-v5.py'>Riverraid-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/WordZapper-v5.py'>WordZapper-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Crossbow-v5.py'>Crossbow-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Kaboom-v5.py'>Kaboom-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/RoadRunner-v5.py'>RoadRunner-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/YarsRevenge-v5.py'>YarsRevenge-v5</a></td></tr>
+<tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Darkchambers-v5.py'>Darkchambers-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Kangaroo-v5.py'>Kangaroo-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Robotank-v5.py'>Robotank-v5</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Atari/Zaxxon-v5.py'>Zaxxon-v5</a></td></tr>
+</table>
+-->
+<br />
+<br />
+
+<u>Pull Request</u><br />
+Finally, submit Pull Request: upload Farma examples.  Navigate to source <a href="https://github.com/Farama-Foundation/Gymnasium">Gymnasium</a> repo | Create new fork
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s1089/ForkFarma02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s600/ForkFarma02.png"/></a>
+-->
+<br />
+Git clone the forked Gymnasium source code repository and setup the following Git username and useremail
+<br />
+<!--  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git config --global --get user.name<br />
+&nbsp;git config --global --get user.email<br />
+</td>
+<td>
+&nbsp;git config --global user.name "SteveProXNA"<br />
+&nbsp;git config --global user.email "steven_boland@hotmail.com"<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+Next, configure the Gymnasium upstream destination code repository in order to complete the <a href="https://github.com/Farama-Foundation/Gymnasium/pull/1150">Pull Request</a>:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git remote -v<br />
+</td>
+<td>
+&nbsp;git remote add upstream git@github.com:Farama-Foundation/Gymnasium.git<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;origin<br />
+&nbsp;origin<br />
+</td>
+<td>
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (push)<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;upstream<br />
+&nbsp;upstream<br />
+</td>
+<td>
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (push)<br />
+</td>
+</tr>	
+</table>
+-->
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s1114/ForkFarma05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s600/ForkFarma05.png"/></a>
+-->
+<br />
+Launch PyCharm | Open Gymnasium | Create virtual environment | Install requirements	as pre-requisites:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;pip install -r docs/requirements.txt<br />
+</td>
+<td>
+&nbsp;pip install --upgrade pip<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+Uncomment game from <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/ClassicControl">ClassicControl</a> sub-directory files.txt or <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/ToyText">ToyText</a> files.txt.  Open main.py.  Run script:  
+<br />
+<!--
+<table width="99%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s602/CartPole-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s600/CartPole-v1.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s602/FrozenLake-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s600/FrozenLake-v1.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+-->
+<br />
+Install Box2D and MuJoCo dependencies.  Uncomment game from <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/Box2D">Box2D</a> files.txt or <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/MuJoCo">MuJoCo</a>.  Run main.py:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;<b>Box2D</b><br />&nbsp;pip install Box2D<br /></td>
+<td width="50%">&nbsp;<b>MuJoCo</b><br />&nbsp;pip install mujoco==2.3.0<br /></td>
+</tr>
+<table>
+-->
+<br />
+<!--
+<table width="99%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s602/LunarLander-v2.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s600/LunarLander-v2.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s602/Ant-v4.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s600/Ant-v4.png"/></a>
+</td>
+</tr>
+</table>
+-->
+<br />
+Finally, in order to integrate <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/Atari">Atari</a> game examples I found this only worked cut from <b>tag v0.29.1</b> [<a href="https://github.com/Farama-Foundation/Gymnasium/commit/81b87efb9f011e975f3b646bab6b7871c522e15e">81b87ef</a>]:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;git fetch --tags --prune --prune-tags<br />&nbsp;git fetch --all<br /></td>
+<td width="50%">&nbsp;git tag | grep v0.29.1<br />&nbsp;git checkout tags/v0.29.1<br /></td>
+</tr>
+<table>
+-->
+<br />
+It seems after tag v0.29.1 any Atari game may throw the following: <i>gymnasium.error.NamespaceNotFound: Namespace ALE not found. Have you installed the proper package for ALE?</i>.  Resume Atari tag v0.29.1 setup:
+<!--
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;pip install gymnasium[atari]</td>
+<td width="50%">&nbsp;pip install gymnasium[accept-rom-license]</td>
+</tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWIXMNtSApW2CvkMAWDmE9eXsW6yYq93_QZDJ8M8sL4e3FX_qpF51UnqZkTy6XL16ACJcOGN4YHWl0eggWfcG9eMGWQ7Di-pcefDrELdHOSZJIh_6BdWVMmsmQIoWXq0HimVQlRdRnZp0afIbOcorVtUT0CZOcTkjDxFQgYZzisOPpM6tb0a6-wSWh-bg/s856/Pacman-v5.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWIXMNtSApW2CvkMAWDmE9eXsW6yYq93_QZDJ8M8sL4e3FX_qpF51UnqZkTy6XL16ACJcOGN4YHWl0eggWfcG9eMGWQ7Di-pcefDrELdHOSZJIh_6BdWVMmsmQIoWXq0HimVQlRdRnZp0afIbOcorVtUT0CZOcTkjDxFQgYZzisOPpM6tb0a6-wSWh-bg/s600/Pacman-v5.png"/></a>
+-->
+<br /><br />
+
+<u>Retrospectives</u><br />
+In Jan-2020 <a href="https://steveproxna.blogspot.com/2020/01/retrospective-xi.html">Retrospective XI</a>, we learned about an interesting development connecting Artificial Intelligence and retro video games leveraging Reinforcement Learning.  In Jan-2021 <a href="https://steveproxna.blogspot.com/2021/01/retrospective-xii.html">Retrospective XII</a>, we then discussed video games as an interesting field of <a href="https://www.youtube.com/watch?v=vufTSJbzKGU">study</a> and retro game development of Pacman and Doom clones as an excellent avenue to pursue with regards to future applications in software with Artificial Intelligence and RL.
+<br /><br />
+Consequently, in the previous post, we disovered how to debug step thru cloned versions of Doom to better understand the original source code: an important pre-requisite to extend knowledge for further research in reinforcement learning, in particular.  For example, <a href="https://vizdoom.cs.put.edu.pl">ViZDoom</a> allows developing AI bots that play Doom using visual data.  In 2022, <a href="https://github.com/Farama-Foundation/ViZDoom?tab=readme-ov-file">ViZDoom</a> joined Farama Foundation featuring new <a href="https://gymnasium.farama.org">Gymnasium</a> environment wrappers.
+<br /><br />
+<br />
+
+<u>Summary</u><br />
+To summarize, we have now setup Gymnasium environments for Classic Control, Toy Text, Box 2D, MuJo Co and Atari.  NB: all Atari <a href="https://github.com/Farama-Foundation/Arcade-Learning-Environment">environments</a> leverage the Atari Arcade Learning Environment [ALE] emulator Stella.
+<br /><br />
+In fact, reverting back to OpenAI which hosts the <a href="https://github.com/openai/retro">Retro</a> Git source code repository, also including Emulated Systems like Atari.  However, Retro also includes many other Emulated Systems we have developed for in the past including <a href="https://steveproxna.blogspot.com/2023/11/gbdk-programming-sample.html">Nintendo</a> GameBoy / GameBoy Color, Sega <a href="https://steveproxna.blogspot.com/2020/11/sgdk-programming-sample.html">MegaDrive</a> and or course the Sega <a href="https://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Master System</a>!  This will be the topic of the next post.  
+
+</span>
