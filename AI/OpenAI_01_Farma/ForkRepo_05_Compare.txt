@@ -51,5 +51,86 @@ Python 3.8 (Gymnasium)
 if I switch to Python 3.8 /usr/bin/python then it gives the same error as above
 
 
+26-Aug-2024
+the one that works
+~/GitHubX/Farama-Foundation/Gymnasium
+git branch
+* (HEAD detached at v0.29.1)
+git log | more
+commit 81b87efb9f011e975f3b646bab6b7871c522e15e
 
 
+cd /home/stevepro/GitHub3/Farama-Foundation
+git clone https://github.com/Farama-Foundation/Gymnasium.git
+git checkout v0.29.1
+
+Launch PyCharm
+Open project
+/home/stevepro/GitHub3/Farama-Foundation
+
+
+~/GitHub/SteveProXNA2/Gymnasium
+git config --global user.name "SteveProXNA"
+git config --global user.email "steven_boland@hotmail.com"
+git fetch --tags --prune --prune-tags
+git fetch --all
+
+git checkout v0.29.1
+git branch
+git log | more
+
+
+Copy over virtual environment that worked
+set as base interpreter
+~/GitHubX/Farama-Foundation/Gymnasium/.venv/bin/python
+
+Follow similar README.md
+https://github.com/SteveProXNA/OpenAItesting/tree/main/FarmaCheatSheet
+
+Add examples package
+pip install --upgrade pip
+pip install -r docs/requirements.txt
+
+Run Classic Control Acrobot-v1
+Run Toy Text        Taxi-v3
+
+pip install Box2D
+Run Box2D           BipedalWalker-v3
+
+pip install mujoco==2.3.0
+Run MuJoCo          Ant-v4
+
+pip install gymnasium[atari]
+pip install gymnasium[accept-rom-license]
+Run Atari           ALE/Zaxxon-v5
+
+
+
+git checkout v0.29.1
+git branch
+git log | more
+git checkout -b GymnasiumGameExamples
+git push --set-upstream origin GymnasiumGameExamples
+
+
+IMPORTANT
+cannot seem to submit PR with destination branch v0.29.1
+therefore can cut branch off main and all will run except Atari
+which will give the following Traceback
+
+
+/home/stevepro/GitHubX/Farama-Foundation/Gymnasium/.venv/bin/python /home/stevepro/GitHub3/Farama-Foundation/Gymnasium/examples/stevepro.py
+Traceback (most recent call last):
+  File "/home/stevepro/GitHub3/Farama-Foundation/Gymnasium/examples/stevepro.py", line 13, in <module>
+    env = gym.make(name, render_mode="human")
+  File "/home/stevepro/GitHub3/Farama-Foundation/Gymnasium/gymnasium/envs/registration.py", line 687, in make
+    env_spec = _find_spec(id)
+  File "/home/stevepro/GitHub3/Farama-Foundation/Gymnasium/gymnasium/envs/registration.py", line 531, in _find_spec
+    _check_version_exists(ns, name, version)
+  File "/home/stevepro/GitHub3/Farama-Foundation/Gymnasium/gymnasium/envs/registration.py", line 397, in _check_version_exists
+    _check_name_exists(ns, name)
+  File "/home/stevepro/GitHub3/Farama-Foundation/Gymnasium/gymnasium/envs/registration.py", line 360, in _check_name_exists
+    _check_namespace_exists(ns)
+  File "/home/stevepro/GitHub3/Farama-Foundation/Gymnasium/gymnasium/envs/registration.py", line 354, in _check_namespace_exists
+    raise error.NamespaceNotFound(f"Namespace {ns} not found. {suggestion_msg}")
+gymnasium.error.NamespaceNotFound: Namespace ALE not found. Have you installed the proper package for ALE?
