@@ -1,0 +1,141 @@
+<u>Pull Request</u><br />
+Finally, submit Pull Request: upload Farma examples.  Navigate to source <a href="https://github.com/Farama-Foundation/Gymnasium">Gymnasium</a> repo | Create new fork
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s1089/ForkFarma02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDPVyRMHD_wiO-tPjVJKEGYaCJEtGg8sL-jnpIMQiTcMIscRR7lzYEtIrCAYAuJV-suM0QkEdXHf3n17DIRhsRJY2MoUjJuol1ulIcCf9OT6G9oZsXN3vpEJ4TthB2srOqpNDo11urmuCv_CDNpOQFaCOcK63f4BB_tfVlSOaMCnn21zRarRPWZhpYifE/s600/ForkFarma02.png"/></a>
+<!-- -->
+<br />
+Git clone the forked Gymnasium source code repository and setup the following Git username and useremail
+<br />
+<!-- -->  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git config --global --get user.name<br />
+&nbsp;git config --global --get user.email<br />
+</td>
+<td>
+&nbsp;git config --global user.name "SteveProXNA"<br />
+&nbsp;git config --global user.email "steven_boland@hotmail.com"<br />
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Next, configure the Gymnasium upstream destination code repository in order to complete the <a href="https://github.com/Farama-Foundation/Gymnasium/pull/1150">Pull Request</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git remote -v<br />
+</td>
+<td>
+&nbsp;git remote add upstream git@github.com:Farama-Foundation/Gymnasium.git<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;origin<br />
+&nbsp;origin<br />
+</td>
+<td>
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:SteveProXNA/Gymnasium.git (push)<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;upstream<br />
+&nbsp;upstream<br />
+</td>
+<td>
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (fetch)<br />
+&nbsp;git@github.com:Farama-Foundation/Gymnasium.git (push)<br />
+</td>
+</tr>	
+</table>
+<!-- -->
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s1114/ForkFarma05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0vbpCoK0cjW-ZsVYObyL9QOXiYiyT_EbbPBXcVEiBFzVa58aJ4l0OhF_mvfruyapD7FzNHkURJIT0LcVr2I221Nd-9fONXEgEeqAMi_IQX2a7mL9Vw8EUrGoD49rr4Fcv7NCzaUpFX_VaI8qE5nkS3pMi_bpR3JS4Sa7fOVV10lQvqK7YgWVMHCnPns4/s600/ForkFarma05.png"/></a>
+<!-- -->
+<br />
+Launch PyCharm | Open Gymnasium | Create virtual environment | Install requirements	as pre-requisites:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;pip install -r docs/requirements.txt<br />
+</td>
+<td>
+&nbsp;pip install --upgrade pip<br />
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Uncomment game from <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/ClassicControl">ClassicControl</a> sub-directory files.txt or <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/ToyText">ToyText</a> files.txt.  Open main.py.  Run script:  
+<br />
+<!-- -->
+<table width="99%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s602/CartPole-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuodvasDS5xqKgUgNDB-tgtZ0s2nQHWgqh4youZJJwNdinw5BUnh7m9l2yuCseUZQocRjKJTRJ2iyklFBmEgK8bsJPG_TU352X6nydrNvXvlYymaHt5O5K33nujl5tGuFLKwJIE0tTQjpFfDyvMSL5BlNHegD0xbJP_KiQIcpFPSz2OAkt_4VofyPaAo0/s600/CartPole-v1.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s602/FrozenLake-v1.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMrfoPxOvmF1gcw5FbMv9V28olf6HespNcpCB1QXmgY3MZ7a7ZVqo7nQ3b150nLJOHO-1AQ11oA3gScyKlrC7AoHjDyBAaadQVKIpBrDRPDCQUsa6_6KiF1aP630e2HdoVuMrct9tRLtWRYMoqw6J9BDsJdxR3KLlhZswFAnqXGntoKLvh-owEVvZOlkQ/s600/FrozenLake-v1.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+<!-- -->
+<br />
+Install Box2D and MuJoCo dependencies.  Uncomment game from <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/Box2D">Box2D</a> files.txt or <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/MuJoCo">MuJoCo</a>.  Run main.py:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;<b>Box2D</b><br />&nbsp;pip install Box2D<br /></td>
+<td width="50%">&nbsp;<b>MuJoCo</b><br />&nbsp;pip install mujoco==2.3.0<br /></td>
+</tr>
+<table>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s602/LunarLander-v2.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgylj3jUcvVtNCwEg8dLYmQrCRXebm8eNTRagPJpk6eG6-tKBnY2ZdR0reGMy4i3HggLjyfmhATMG8KZZappGuxVyltWj7sx9jUVGvIH3YXS5ipa2FTVfJX1XqKKVO60rR60xWJ5k8tI6OpTy5i88Fx1gz4lcFN43MgDeX3rP17s6xUDnF287Xw20R-e-8/s600/LunarLander-v2.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s602/Ant-v4.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZdt33_ZhMZdlE0xWNb944OiiKhMTyuHnCrIe33XtFlx_nmlqdjhMtPNDcoBW-WHBo0XChJ0v3aJR-Aq5T3o1P70P4D5JqZgCX4SLm9LaJpeSRlRmIe0eA9aGM15w_0DeizbXQ5owDTySlUowmLO3SX1pLDZAmdyWGnNceoSzX2Ta7YfterEyQAhBkdXQ/s600/Ant-v4.png"/></a>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Finally, in order to integrate <a href="https://github.com/SteveProXNA/Gymnasium/tree/GymnasiumGameExamples/examples/Atari">Atari</a> game examples I found this only worked cut from <b>tag v0.29.1</b> [<a href="https://github.com/Farama-Foundation/Gymnasium/commit/81b87efb9f011e975f3b646bab6b7871c522e15e">81b87ef</a>]:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;git fetch --tags --prune --prune-tags<br />&nbsp;git fetch --all<br /></td>
+<td width="50%">&nbsp;git tag | grep v0.29.1<br />&nbsp;git checkout tags/v0.29.1<br /></td>
+</tr>
+<table>
+<!-- -->
+<br />
+It seems after tag v0.29.1 any Atari game may throw the following: <i>gymnasium.error.NamespaceNotFound: Namespace ALE not found. Have you installed the proper package for ALE?</i>.  Resume Atari tag v0.29.1 setup:
+<!-- -->
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;pip install gymnasium[atari]</td>
+<td width="50%">&nbsp;pip install gymnasium[accept-rom-license]</td>
+</tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWIXMNtSApW2CvkMAWDmE9eXsW6yYq93_QZDJ8M8sL4e3FX_qpF51UnqZkTy6XL16ACJcOGN4YHWl0eggWfcG9eMGWQ7Di-pcefDrELdHOSZJIh_6BdWVMmsmQIoWXq0HimVQlRdRnZp0afIbOcorVtUT0CZOcTkjDxFQgYZzisOPpM6tb0a6-wSWh-bg/s856/Pacman-v5.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWIXMNtSApW2CvkMAWDmE9eXsW6yYq93_QZDJ8M8sL4e3FX_qpF51UnqZkTy6XL16ACJcOGN4YHWl0eggWfcG9eMGWQ7Di-pcefDrELdHOSZJIh_6BdWVMmsmQIoWXq0HimVQlRdRnZp0afIbOcorVtUT0CZOcTkjDxFQgYZzisOPpM6tb0a6-wSWh-bg/s600/Pacman-v5.png"/></a>
+<!-- -->
+<br /><br />

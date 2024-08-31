@@ -1,3 +1,107 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<a href="https://en.wikipedia.org/wiki/OpenAI">OpenAI</a> is an American Artificial Intelligence [<a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</a>] research organization founded Dec-2015 head-quartered in San Francisco.  In April 2016, OpenAI released a public beta of "<a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">OpenAI Gym</a>": its platform for reinforcement learning research.  Reinforcement Learning [<a href="https://en.wikipedia.org/wiki/Reinforcement_learning">RL</a>] is an interdisciplinary area of machine learning and optimal control concerned with how an agent takes action in environment in order to maximize cumulative rewards.
+<br /><br />
+In 2021, the non-profit organization Farama Foundation took over <a href="https://github.com/openai/gym">Gym</a>.  They <a href="https://farama.org/Announcing-The-Farama-Foundation">introduced</a> new features into Gym and renamed the library to <a href="https://github.com/Farama-Foundation/Gymnasium">Gymnasium</a> where the future maintenance of OpenAI Gym will take place.  
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJqR9yBBF4dGCoY6dNX45Ono8BSMqdomUCobeFzcozXDf3e1qtRy0yIxxzhF2tt5U86rfhuCaE23t3mYZgLirGiBCk1roS3wHIwSCyCOyJhX4I2_boz0u2RF46PNGN1Rk8S4nhiCQfQwphBKHaOK06GJAjgQYCFn4GaUnoT3_8y1Lker5fjGPI_yWJebg/s858/Breakout-Atari.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJqR9yBBF4dGCoY6dNX45Ono8BSMqdomUCobeFzcozXDf3e1qtRy0yIxxzhF2tt5U86rfhuCaE23t3mYZgLirGiBCk1roS3wHIwSCyCOyJhX4I2_boz0u2RF46PNGN1Rk8S4nhiCQfQwphBKHaOK06GJAjgQYCFn4GaUnoT3_8y1Lker5fjGPI_yWJebg/s600/Breakout-Atari.png"/></a>
+<br />
+-->
+Let's check it out!  
+<br /><br />
+  
+<u>Gym</u><br />
+<a href="https://github.com/openai/gym">OpenAI Gym</a> is an open source Python library for developing reinforcement learning algorithms by providing standard API to communicate between algorithms and environments.  Gym soon became widely <a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">adopted</a> by the community for creating and training algorithms in various environments for AI Reinforcement Learning.   
+<br /><br />
+Gym provides a wide range of <a href="https://www.linkedin.com/pulse/exploring-differences-gym-gymnasium-environments-learning-sabir-ali">environments</a>, including classic control problems, Atari games, and robotics.  Gym also includes set of tools for monitoring and evaluating performance of reinforcement learning agents.
+<br /><br />
+<b>Hello Gym</b><br />
+Creating a <a href="https://github.com/openai/gym">Gym</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | Name: HelloCartPoleGym [~/]
+<!--
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s800/PyCharmGym.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz23ZPuemgjHLxN92RJFxBe5jh0PShqK97ssdTa-XTStYtC0lWRTE_w2EgAnrk3Al8CxJ8S8RJ2lp6aoUW2nf0O0WCzcQx1kAuX9rM8ndyXFZpb3j-O6o6G6_B4Q-lK6mwe2UQ67Kts8scCO0SKu9HYx9GbbBCD9mamfR34Kb0zKNnRhUHw5vlHRJDrVU/s600/PyCharmGym.png"/></a>
+-->
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;source .venv/bin/activate<br />
+&nbsp;pip install --upgrade pip<br />
+</td>
+<td>
+&nbsp;pip install gym<br />
+&nbsp;pip install gym[classic_control]<br />
+</td>
+</tr>
+</table>
+<br />
+CODE
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import gym<br />
+&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
+&nbsp;observation, info = env.reset(seed=42)<br />
+&nbsp;<br />
+&nbsp;for _ in range(1000):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</tr></td>
+</table>  
+YouTube videos online also introduce OpenAI Gym but include <a href="https://www.youtube.com/watch?v=Vrro7W7iW2w">Frozen Lake</a> environment and <a href="https://www.youtube.com/watch?v=tkDIb8yl69g">Atari Breakout</a>.
+<br /><br />
+<br />
+
+<u>Gymnasium</u><br />
+The main problem with Gym was the lack of <a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">maintenance</a>: OpenAI did not allocate substantial resources for the development of Gym since its inception seven years earlier, and, by2020, it simply was not maintained.
+<br /><br />
+<a href="https://gymnasium.farama.org">Gymnasium</a> is a maintained fork of the OpenAI Gym library. The Gymnasium interface is simple, pythonic, and capable of representing general RL problems with a compatibility wrapper for old Gym environments:
+<br /><br />
+<b>Hello Gymnasium</b><br />
+Creating <a href="https://github.com/Farama-Foundation/Gymnasium">/Gymnasium</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | HelloCartPoleGymnasium
+<!--
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrCtegmxsCyyUxkHw-DwP6kq7zpxFr7HwS-TJt8c0k9XY9WL42ndIB63rReQuzogmEzpQ4VixqHuL0j4FkXWWsJgiKn2KDoBAPRU0CF_HBhPzeoM5PmAofENH969LJte7Y0UqDly0CQC8qoO3ECUxj-uaK_R_MYzhi3HoaUDvWVU5PRuyFj0NMqtZ_z1s/s800/PyCharmGymnasium.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrCtegmxsCyyUxkHw-DwP6kq7zpxFr7HwS-TJt8c0k9XY9WL42ndIB63rReQuzogmEzpQ4VixqHuL0j4FkXWWsJgiKn2KDoBAPRU0CF_HBhPzeoM5PmAofENH969LJte7Y0UqDly0CQC8qoO3ECUxj-uaK_R_MYzhi3HoaUDvWVU5PRuyFj0NMqtZ_z1s/s600/PyCharmGymnasium.png"/></a>
+-->
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;source .venv/bin/activate<br />
+&nbsp;pip install --upgrade pip<br />
+</td>
+<td>
+&nbsp;pip install gymnasium</br>
+&nbsp;pip install gymnasium[classic-control]</br>
+</td>
+</tr>
+</table>
+<br />
+CODE
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import gymnasium as gym<br />
+&nbsp;env = gym.make("CartPole-v1", render_mode="human")<br />
+&nbsp;observation, info = env.reset(seed=42)<br />
+&nbsp;<br />
+&nbsp;for _ in range(1000):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</tr></td>
+</table>  
+<br />
+
+<i>Differences</i><br />
+While both Gym and Gymnasium are powerful tools for creating <a href="https://www.linkedin.com/pulse/exploring-differences-gym-gymnasium-environments-learning-sabir-ali">environments</a> for reinforcement learning, it makes more <a href="https://ai.stackexchange.com/questions/41763/should-i-make-my-environment-with-gym-or-gymnasium">sense</a> to prefer Gymnasium going forward as technically future support for Gym there is none.  Note: old <i>import gym</i> <a href="https://www.gymlibrary.dev">documentation</a> is replaced with <i>import gymnasium as gym</i> convention going forward.
+<br /><br />
+<br />
+
 <u>Farma Examples</u><br />
 Complete all Farma examples!  Create <a href="https://github.com/SteveProXNA/OpenAItesting">OpenAI Test</a> repo.  Launch PyCharm | New Project | FarmaCheatSheet
 <br />
@@ -55,7 +159,7 @@ There are five <a href="https://gymnasium.farama.org/environments/classic_contro
 <table width="99%" border="1">
 <tr>
 <td colspan="2">&nbsp;pip install gymnasium</td>
-<td colspan="2">&nbsp;pip install Box2D</td>
+<td colspan="2">&nbsp;pip install mujoco==2.3.0</td>
 </tr>
 <tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/BipedalWalker-v3.py'>BipedalWalker-v3</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/CarRacing-v2.py'>CarRacing-v2</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/LunarLander-v2.py'>LunarLander-v2</a></td></tr>
 </table>
@@ -116,3 +220,5 @@ There are five <a href="https://gymnasium.farama.org/environments/classic_contro
 -->
 <br />
 <br />
+
+</span>
