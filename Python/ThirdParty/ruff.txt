@@ -1,0 +1,20 @@
+ruff
+02-Sep-2024
+
+Supercharge your Python Code with Ruff
+https://medium.com/bitgrit-data-science-publication/supercharge-your-python-code-with-ruff-4c75b890ed40
+
+
+pip install ruff
+
+ruff check .
+ruff check <filename.py>
+
+ruff check --fix .
+ruff format .
+
+ruff check --select I --fix
+# SORTS imports
+
+Reference:
+https://docs.astral.sh/ruff/formatter/#sorting-imports
