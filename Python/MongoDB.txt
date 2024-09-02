@@ -1,0 +1,39 @@
+Mongo DB
+02-Sep-2024
+
+docker run mongo
+pulls mongo docker image
+
+Mongo SH
+https://www.mongodb.com/docs/mongodb-shell/install/#std-label-mdb-shell-install
+
+Ubuntu 20.04 (Focal)
+wget -qO- https://www.mongodb.org/static/pgp/server-7.0.asc | sudo tee /etc/apt/trusted.gpg.d/server-7.0.asc
+
+sudo apt-get install gnupg
+wget -qO- https://www.mongodb.org/static/pgp/server-7.0.asc | sudo tee /etc/apt/trusted.gpg.d/server-7.0.asc
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+sudo apt-get update
+sudo apt-get install -y mongodb-mongosh
+
+** may not work **
+sudo apt-get install -y mongodb-mongosh-shared-openssl11
+sudo apt-get install -y mongodb-mongosh-shared-openssl3
+
+mongosh --version
+
+
+Now run mongo "properly"
+VS Code
+right click mongo image
+Run interactive
+OR
+docker run --rm -it -p 27017:27017/tcp mongo:latest
+
+mongosh
+show tables
+db.getCollectionNames()
+use testdb
+db.testdb.find()
