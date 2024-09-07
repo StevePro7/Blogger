@@ -29,3 +29,63 @@ improved throughput
 
 
 Utilize material view
+https://en.wikipedia.org/wiki/Materialized_view
+DB object that contains the result of a query
+
+material view
+similar to view except it stores its values on disk
+opp. fetching data every time when query view
+
+
+Analyze query execution plan
+EXPLAIN command
+
+e.g.
+correlated subquery
+QUERY PLAN                                                                                                          |
+--------------------------------------------------------------------------------------------------------------------+
+Seq Scan on employee e1  (cost=0.00..16339.60 rows=270 width=68) (actual time=0.045..0.063 rows=4 loops=1)          |
+  Filter: (salary > (SubPlan 1))                                                                                    |
+  Rows Removed by Filter: 7                                                                                         |
+  SubPlan 1                                                                                                         |
+    ->  Aggregate  (cost=20.14..20.15 rows=1 width=32) (actual time=0.004..0.004 rows=1 loops=11)                   |
+          ->  Seq Scan on employee e2  (cost=0.00..20.12 rows=4 width=32) (actual time=0.001..0.001 rows=6 loops=11)|
+                Filter: (department_id = e1.department_id)                                                          |
+                Rows Removed by Filter: 5                                                                           |
+Planning Time: 0.153 ms                                                                                             |
+Execution Time: 0.090 ms
+
+Sequential scan     employee    e1      1 time      loops=1
+Sequential scan     employee    e2      11 times    loops=11
+Aggregate calc      11 times    once for each row in e1
+
+
+vs. JOIN
+QUERY PLAN                                                                                                             |
+-----------------------------------------------------------------------------------------------------------------------+
+Hash Join  (cost=29.15..49.39 rows=270 width=68) (actual time=0.038..0.041 rows=4 loops=1)                             |
+  Hash Cond: (e1.department_id = employee.department_id)                                                               |
+  Join Filter: (e1.salary > (avg(employee.salary)))                                                                    |
+  Rows Removed by Join Filter: 7                                                                                       |
+  ->  Seq Scan on employee e1  (cost=0.00..18.10 rows=810 width=72) (actual time=0.004..0.005 rows=11 loops=1)         |
+  ->  Hash  (cost=26.65..26.65 rows=200 width=36) (actual time=0.024..0.025 rows=3 loops=1)                            |
+        Buckets: 1024  Batches: 1  Memory Usage: 9kB                                                                   |
+        ->  HashAggregate  (cost=22.15..24.65 rows=200 width=36) (actual time=0.015..0.017 rows=3 loops=1)             |
+              Group Key: employee.department_id                                                                        |
+              Batches: 1  Memory Usage: 40kB                                                                           |
+              ->  Seq Scan on employee  (cost=0.00..18.10 rows=810 width=36) (actual time=0.001..0.002 rows=11 loops=1)|
+Planning Time: 0.163 ms                                                                                                |
+Execution Time: 0.100 ms
+
+Sequential scan     employee    e1      1 time      loops=1
+Sequential scan     employee    e1      1 time      loops=1
+Hash aggregate                          1 time
+Hash join                               1 time
+
+AVG fn executed 11x times for the first query
+
+
+Indexes
+WHERE
+JOIN
+ORDER BY
