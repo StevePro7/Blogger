@@ -1,0 +1,116 @@
+SQL Arch
+06-Sep-2024
+Optimizing PostgreSQL Queries: From 300 Seconds to 2 Seconds for Billions of Records
+https://medium.com/@code-geass/optimizing-postgresql-queries-from-300-seconds-to-2-seconds-for-billions-of-records-e6571a137a1a#first-optimization-indexes
+
+partial article
+gOOGLE
+
+Optimizing Performance and Scalability: PostgreSQL’s Journey with Billions of Device Records in a Fraud Management Application
+https://medium.com/@BioCatchTechBlog/optimizing-performance-and-scalability-postgresqls-journey-with-billions-of-device-records-in-a-2bf1b1c62117
+
+02-Sep-2024
+
+RDBMS re-architecture best practices
+Partitioning: Implement table partitioning to improve query performance and manage large datasets effectively.
+Indexing: Analyze query patterns and create appropriate indexes. Avoid over-indexing as it can degrade write performance.
+
+Query Optimization: Analyze and optimize SQL queries. Use EXPLAIN plans to understand how queries are executed.
+Caching: Implement caching mechanisms at different levels (query results, database results, etc.) to reduce load on the database.
+Connection Pooling: Use connection pooling to manage database connections efficiently and reduce overhead.
+
+Horizontal Scaling: Implement sharding or replication to scale out the database across multiple servers.
+Database Clustering: Use clustering solutions like MySQL Cluster, PostgreSQL's logical replication, or similar technologies to achieve high availability and scalability.
+Cloud Solutions: Consider leveraging cloud-based RDBMS solutions (e.g., Amazon RDS, Google Cloud SQL) for scalable infrastructure.
+
+
+example of database table partitioning in Postgres to improve query performance
+example of sales table parent that partitions data stored in 2022 table vs. 2023 table
+
+
+postgres index tuning wizard how do I know what index to add to a table
+Analyze Query Performance with EXPLAIN and EXPLAIN ANALYZE
+
+Look for Sequential Scans: If the query plan shows a sequential scan on a large table, it might indicate that an index could improve performance.
+Check for Filter Conditions: Pay attention to the WHERE clause and JOIN conditions. These often benefit from indexes.
+
+Query logs          pgBadger
+pg_stat_statements
+pg_trgm             ILIKE
+pg_stat_user_indexes
+
+pgAdmin: The popular PostgreSQL management tool provides insights and recommendations for indexes.
+
+
+
+postgres how to better understand explain and explain analyze
+Seq scan
+Index scan
+Index Only scan
+
+
+Tools
+pgHero
+
+
+Connection Pooling
+How do I implement connection pooling with Postgres and Python Flask REST Web API application
+
+Flask-SQLAlchemy
+psycopg2
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://your_user:your_password@your_host/your_database'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_POOL_SIZE'] = 20  # Maximum number of connections in the pool
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = 30  # Timeout for getting a connection from the pool
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 1800  # Recycle connections after 30 minutes
+
+
+
+how to measure database performance before and after connection pooling
+query response time time taken / query
+throughput          no query / sec
+connection time
+CPU + membory usage
+No. active connections
+
+pg_stat_statements
+pgBadger            logs
+pganalyze
+
+JMeter              load testing tool
+
+
+postgres how to implement database caching
+Caching in Flask application    Redis
+
+Materialized Views
+Materialized Views store the results of a query physically and can be refreshed periodically
+Materialized Views can act as a cache for complex expensive queries
+
+
+how to implement database sharding in postgres
+break large table of data into smaller manageable pieces = shards
+usually shard on PK
+
+
+difference between database partitioning and database sharding
+
+partitioning
+same database
+data distributed based on column e.g. date
+
+sharding
+separate databases
+data distributed based on UserID or geographical location
+
+
+
+SUMMARY
+db partitioning based on column e.g. create_at date
+
+query explain + explain analyze
+index
+
+DB connection pooling
+Flask SQL Alchemy config

@@ -1,0 +1,31 @@
+Performance
+07-Sep-2024
+
+In Search of Improving Database Performance: A Comprehensive Guide with 8 Key Strategies
+https://levelup.gitconnected.com/in-search-of-improving-database-performance-a-comprehensive-guide-with-8-key-strategies-3496f2262cdb
+
+Execution Order
+FROM
+JOIN
+WHERE
+GROUP BY
+HAVING
+SELECT
+ORDER BY
+OFFSET
+LIMIT
+
+
+Correlated subquery
+subquery that uses values from the outer query
+
+expensive because nested query will be executed for every outer row
+consider using JOIN instead
+
+
+Apply batching
+reduced network latency
+improved throughput
+
+
+Utilize material view
