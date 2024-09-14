@@ -69,7 +69,7 @@ The main problem with Gym was the lack of <a href="https://wandb.ai/mukilan/intr
 Creating <a href="https://github.com/Farama-Foundation/Gymnasium">/Gymnasium</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | HelloCartPoleGymnasium
 <!-- -->
 <br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgQM_RjJcX6kI8nzyt0TADpI_ea4k92LBYGRLaIboIuvk_iB9fqhXDOpfpwztJecdRkApQvmzeSI7fRJgw7D_pLHIqgJisIrwcLgn_ZkZix2ILTVIwoKnQ-FnSF4zwDA3z35EmFr3APtTK2JaSw6yiFkRjF71zwwQvjd_6Pm7Bg1cPeTPJ9sfBVrh0Udc/s800/PyCharmGymnasium.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgQM_RjJcX6kI8nzyt0TADpI_ea4k92LBYGRLaIboIuvk_iB9fqhXDOpfpwztJecdRkApQvmzeSI7fRJgw7D_pLHIqgJisIrwcLgn_ZkZix2ILTVIwoKnQ-FnSF4zwDA3z35EmFr3APtTK2JaSw6yiFkRjF71zwwQvjd_6Pm7Bg1cPeTPJ9sfBVrh0Udc/s600/PyCharmGymnasium.png"/></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgQM_RjJcX6kI8nzyt0TADpI_ea4k92LBYGRLaIboIuvk_iB9fqhXDOpfpwztJecdRkApQvmzeSI7fRJgw7D_pLHIqgJisIrwcLgn_ZkZix2ILTVIwoKnQ-FnSF4zwDA3z35EmFr3APtTK2JaSw6yiFkRjF71zwwQvjd_6Pm7Bg1cPeTPJ9sfBVrh0Udc/s800/PyCharmGymnasium.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgQM_RjJcX6kI8nzyt0TADpI_ea4k92LBYGRLaIboIuvk_iB9fqhXDOpfpwztJecdRkApQvmzeSI7fRJgw7D_pLHIqgJisIrwcLgn_ZkZix2ILTVIwoKnQ-FnSF4zwDA3z35EmFr3APtTK2JaSw6yiFkRjF71zwwQvjd_6Pm7Bg1cPeTPJ9sfBVrh0Udc/s600/PyCharmGymnasium.png"/></a>a>
 <!-- -->
 <br />
 <!-- -->
@@ -169,7 +169,7 @@ There are five <a href="https://gymnasium.farama.org/environments/classic_contro
 <table width="99%" border="1">
 <tr>
 <td colspan="2">&nbsp;pip install gymnasium</td>
-<td colspan="2">&nbsp;pip install Box2D</td>
+<td colspan="2">&nbsp;pip install mujoco==2.3.0</td>
 </tr>
 <tr><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/BipedalWalker-v3.py'>BipedalWalker-v3</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/CarRacing-v2.py'>CarRacing-v2</a></td><td>&nbsp;<a href='https://github.com/SteveProXNA/OpenAItesting/blob/main/FarmaCheatSheet/Box2D/LunarLander-v2.py'>LunarLander-v2</a></td></tr>
 </table>
@@ -375,7 +375,7 @@ It seems after tag v0.29.1 any Atari game may throw the following: <i>gymnasium.
 <u>Retrospectives</u><br />
 In Jan-2020 <a href="https://steveproxna.blogspot.com/2020/01/retrospective-xi.html">Retrospective XI</a>, we learned about an interesting development connecting Artificial Intelligence and retro video games leveraging Reinforcement Learning.  In Jan-2021 <a href="https://steveproxna.blogspot.com/2021/01/retrospective-xii.html">Retrospective XII</a>, we then discussed video games as an interesting field of <a href="https://www.youtube.com/watch?v=vufTSJbzKGU">study</a> and retro game development of Pacman and Doom clones as an excellent avenue to pursue with regards to future applications in software with Artificial Intelligence and RL.
 <br /><br />
-Consequently, in the previous <a href="https://steveproxna.blogspot.com/2024/08/doom-code-walkthru.html">post</a>, we disovered how to debug step thru cloned versions of Doom to better understand the original source code: an important pre-requisite to extend knowledge for further research in reinforcement learning, in particular.  For example, <a href="https://vizdoom.cs.put.edu.pl">ViZDoom</a> allows developing AI bots that play Doom using visual data.  In 2022, <a href="https://github.com/Farama-Foundation/ViZDoom?tab=readme-ov-file">ViZDoom</a> joined Farama Foundation featuring new <a href="https://gymnasium.farama.org">Gymnasium</a> environment wrappers.
+Consequently, in the previous post, we disovered how to debug step thru cloned versions of Doom to better understand the original source code: an important pre-requisite to extend knowledge for further research in reinforcement learning, in particular.  For example, <a href="https://vizdoom.cs.put.edu.pl">ViZDoom</a> allows developing AI bots that play Doom using visual data.  In 2022, <a href="https://github.com/Farama-Foundation/ViZDoom?tab=readme-ov-file">ViZDoom</a> joined Farama Foundation featuring new <a href="https://gymnasium.farama.org">Gymnasium</a> environment wrappers.
 <br /><br />
 <br />
 
