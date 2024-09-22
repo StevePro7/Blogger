@@ -1,3 +1,9 @@
+CALCULATE rom.sha
+sha256sum rom.md > rom.sha
+
+Reference:
+https://www.baeldung.com/linux/sha-256-from-command-line
+
 
 cd ~/GitHubX/openai/retro/retro/data/stable/
 find -L -type d | grep -i Genesis | sort
@@ -9,7 +15,7 @@ find -L -type d | grep -i Genesis | sort
 Revenge of Shinobi, The (USA, Europe) (Rev B).md
 ./RevengeOfShinobi-Genesis
 
-./SonicAndKnuckles-Genesis
+
 ./SonicTheHedgehog2-Genesis
 Sonic The Hedgehog 2 (World) (Rev A).md
 
@@ -47,5 +53,5 @@ GhoulsNGhosts
 ./GoldenAxeIII-Genesis
 GoldenAxeIII
 
-./StreetFighterIISpecialChampionEdition-Genesis
-Street Fighter 2 Special Champion Edition (E) [!]
+//./StreetFighterIISpecialChampionEdition-Genesis
+//Street Fighter 2 Special Champion Edition (E) [!]
