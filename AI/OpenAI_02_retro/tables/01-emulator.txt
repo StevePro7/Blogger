@@ -1,0 +1,30 @@
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;sudo apt-get update<br />
+&nbsp;sudo apt-get install capnproto<br />
+&nbsp;sudo apt-get install libcapnp-dev<br />
+</td>
+<td>
+&nbsp;sudo apt-get install libqt5opengl5-dev<br />
+&nbsp;sudo apt-get install qtbase5-dev<br />
+&nbsp;sudo apt-get autoremove<br />
+</td>
+</tr>
+</table>
+<br />
+ 
+
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;cd ~/GitHub/SteveProXNA/retro<br />
+&nbsp;cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY<br />
+</td>
+<td>
+&nbsp;make -j$(grep -c ^processor /proc/cpuinfo)<br />
+&nbsp;./gym-retro-integration<br />
+</td>
+</tr>
+</table>
+<br />

@@ -36,11 +36,11 @@ IMPORTANT - openai retro build emulator
 OpenAI game integration tool - part 1
 https://www.youtube.com/watch?v=lPYWaUAq_dY
 
-git clone https://github.com/openai/retro
-cd retro
-cmake . -DBUILD_UI=ON -UPVLIB_DIRECTORY
-make -j$(grep -c ^processor /proc/cpuinfo)
-./gym-retro-integration
+//git clone https://github.com/openai/retro
+//cd retro
+//cmake . -DBUILD_UI=ON -UPVLIB_DIRECTORY
+//make -j$(grep -c ^processor /proc/cpuinfo)
+//./gym-retro-integration
 
 
 Setup an openAI training environment with gym-retro and NEAT in Windows 7

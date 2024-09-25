@@ -44,7 +44,7 @@ CODE
 &nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
 &nbsp;env.close()<br />
-</tr></td>
+</td></tr>
 </table>
 YouTube videos online also introduce OpenAI Gym but include <a href="https://www.youtube.com/watch?v=Vrro7W7iW2w">Frozen Lake</a> environment and <a href="https://www.youtube.com/watch?v=tkDIb8yl69g">Atari Breakout</a>.
 <br /><br />
@@ -66,8 +66,8 @@ Creating <a href="https://github.com/Farama-Foundation/Gymnasium">/Gymnasium</a>
 &nbsp;pip install --upgrade pip<br />
 </td>
 <td>
-&nbsp;pip install gymnasium</br>
-&nbsp;pip install gymnasium[classic-control]</br>
+&nbsp;pip install gymnasium<br />
+&nbsp;pip install gymnasium[classic-control]<br />
 </td>
 </tr>
 </table>
@@ -86,7 +86,7 @@ CODE
 &nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
 &nbsp;env.close()<br />
-</tr></td>
+</td></tr>
 </table>
 <br />
 <i>Differences</i><br />
