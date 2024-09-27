@@ -116,6 +116,7 @@ python examples/random_agent.py --game Airstriker-Genesis --state Level1
 ERROR #1
 AttributeError: module 'gym.utils.seeding' has no attribute 'hash_seed'
 https://stackoverflow.com/questions/73710249/openai-gym-retro-error-attributeerror-module-gym-utils-seeding-has-no-attri
+ pip uninstall -y gym
 pip install gym==0.25.2
 
 
@@ -124,8 +125,76 @@ from gym.envs.classic_control.rendering import SimpleImageViewer
 ModuleNotFoundError: No module named 'gym.envs.classic_control.rendering'
 
 https://www.reddit.com/r/reinforcementlearning/comments/uklf29/no_module_named_gymenvsclassic_controlrendering
-pip uninstall gym
+ pip uninstall -y gym
+pip install gym==0.21.0
+
+pip3 install setuptools==65.5.0
+RE-run but only got small blank blue screen
+
+
+NEW
+ERROR: No matching distribution found for gym==0.21.0
+
+https://github.com/openai/gym/issues/3176
+pip3 install setuptools==65.5.0
+
+
+https://github.com/openai/gym/issues/3200
+
+
+3.4.0.14
+
+
+pip install setuptools==65.5.0
+pip install wheel==0.38.4
 pip install gym==0.21.0
 
 
-RE-run but only got small blank blue screen
+
+Collecting gym==0.21.0
+  Using cached gym-0.21.0-py3-none-any.whl
+
+WARNING: Ignoring version 0.21.0 of gym since it has invalid metadata:
+Requested gym==0.21.0 from file:///home/stevepro/.cache/pip/wheels/27/6d/b3/a3a6e10704795c9b9000f1ab2dc480dfe7bed42f5972806e73/gym-0.21.0-py3-none-any.whl has invalid metadata: Expected matching RIGHT_PARENTHESIS for LEFT_PARENTHESIS, after version specifier
+    opencv-python (>=3.) ; extra == 'all'
+                  ~~~~^
+Please use pip<24.1 if you need to use this version.
+ERROR: Could not find a version that satisfies the requirement gym==0.21.0 (from versions: 0.0.2, 0.0.3, 0.0.4, 0.0.5, 0.0.6, 0.0.7, 0.1.0, 0.1.1, 0.1.2, 0.1.3, 0.1.4, 0.1.5, 0.1.6, 0.1.7, 0.2.0, 0.2.1, 0.2.2, 0.2.3, 0.2.4, 0.2.5, 0.2.6, 0.2.7, 0.2.8, 0.2.9, 0.2.10, 0.2.11, 0.2.12, 0.3.0, 0.4.0, 0.4.1, 0.4.2, 0.4.3, 0.4.4, 0.4.5, 0.4.6, 0.4.8, 0.4.9, 0.4.10, 0.5.0, 0.5.1, 0.5.2, 0.5.3, 0.5.4, 0.5.5, 0.5.6, 0.5.7, 0.6.0, 0.7.0, 0.7.1, 0.7.2, 0.7.3, 0.7.4, 0.8.0.dev0, 0.8.0, 0.8.1, 0.8.2, 0.9.0, 0.9.1, 0.9.2, 0.9.3, 0.9.4, 0.9.5, 0.9.6, 0.9.7, 0.10.0, 0.10.1, 0.10.2, 0.10.3, 0.10.4, 0.10.5, 0.10.8, 0.10.9, 0.10.11, 0.11.0, 0.12.0, 0.12.1, 0.12.4, 0.12.5, 0.12.6, 0.13.0, 0.13.1, 0.14.0, 0.15.3, 0.15.4, 0.15.6, 0.15.7, 0.16.0, 0.17.0, 0.17.1, 0.17.2, 0.17.3, 0.18.0, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.22.0, 0.23.0, 0.23.1, 0.24.0, 0.24.1, 0.25.0, 0.25.1, 0.25.2, 0.26.0, 0.26.1, 0.26.2)
+ERROR: No matc distribution found for gym==0.21.0
+
+
+
+pip install pip==24.1
+pip install opencv-python>=3
+
+
+This seemed to work for install gym 0.21.0
+https://github.com/openai/gym/issues/3202
+
+
+pip install git+https://github.com/openai/gym.git@9180d12e1b66e7e2a1a622614f787a6ec147ac40
+
+
+
+Migration guide
+https://gymnasium.farama.org/content/migration-guide
+
+Gymnasium is a fork of OpenAI Gym v26, which introduced a large breaking change from Gym v21.
+
+
+Should I try this
+https://github.com/Farama-Foundation/stable-retro
+
+
+
+/home/stevepro/GitHubX/Farama-Foundation/stable-retro/.venv
+/home/stevepro/GitHubX/Farama-Foundation/stable-retro/setup.py
+
+stevenb.py
+updated the code a bit
+
+openai_retor02.txt
+
+cd stable-retro/
+cmake . -DBUILD_UI=ON -UPVLIB_DIRECTORY
+
