@@ -1,0 +1,60 @@
+28-Sep-2024
+
+HELLO Stable-Retro
+/home/stevepro/Steven/Python/RetroTest02
+
+Launch PyCharm
+source .venv/bin/activate
+
+
+Reference
+https://github.com/Farama-Foundation/stable-retro
+
+
+pip install stable-retro
+pip install --upgrade pip
+
+pip list | grep gym
+gymnasium            0.29.1
+
+pip list | grep retro
+stable-retro         0.9.2
+
+
+main.py
+
+import retro
+
+def main():
+    env = retro.make(game='Airstriker-Genesis')
+    #env = retro.make(game='AlteredBeast-Genesis')
+    obs = env.reset()
+    while True:
+        ac = env.action_space.sample()
+        ob, rew, terminated, truncated, info = env.step(ac)
+        env.render()
+        if terminated:
+            obs = env.reset()
+    env.close()
+
+if __name__ == "__main__":
+    main()
+    
+    
+
+F5
+Airstriker
+
+
+
+IMPORTANT
+If you want to play another game then you must copy the ROM file to the Virtual Environment
+retro data directory e.g.
+
+DEST
+/home/stevepro/Steven/Python/RetroTest02/.venv/lib/python3.8/site-packages/retro/data/stable/AlteredBeast-Genesis
+
+SRCE
+/home/stevepro/GitHubX/openai/retro/retro/data/stable/AlteredBeast-Genesis
+
+

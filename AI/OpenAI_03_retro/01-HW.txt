@@ -1,0 +1,121 @@
+28-Sep-2024
+
+HELLO Gym-Retro
+/home/stevepro/Steven/Python/RetroTest01
+
+Launch PyCharm
+source .venv/bin/activate
+.venv/lib/python3.8/site-packages/retro/data/__init__.py:270
+
+
+pip install gym-retro
+pip install --upgrade pip
+
+pip list | grep gym
+gym                0.26.2
+gym-notices        0.0.8
+gym-retro          0.8.0
+
+
+main.py
+
+
+F5
+01.
+AttributeError: module 'gym.utils.seeding' has no attribute 'hash_seed'
+
+SOLN
+https://stackoverflow.com/questions/73710249/openai-gym-retro-error-attributeerror-module-gym-utils-seeding-has-no-attri
+pip uninstall -y gym
+pip install gym==0.25.2
+
+
+02.
+ModuleNotFoundError: No module named 'gym.envs.classic_control.rendering'
+
+SOLN
+https://www.reddit.com/r/reinforcementlearning/comments/uklf29/no_module_named_gymenvsclassic_controlrendering
+pip uninstall -y gym
+pip install gym==0.21.0
+
+
+03.
+ERROR: Could not find a version that satisfies the requirement gym==0.21.0 (from versions: 0.0.2, 0.0.3, 0.0.4, 0.0.5, 0.0.6, 0.0.7, 0.1.0, 0.1.1, 0.1.2, 0.1.3, 0.1.4, 0.1.5, 0.1.6, 0.1.7, 0.2.0, 0.2.1, 0.2.2, 0.2.3, 0.2.4, 0.2.5, 0.2.6, 0.2.7, 0.2.8, 0.2.9, 0.2.10, 0.2.11, 0.2.12, 0.3.0, 0.4.0, 0.4.1, 0.4.2, 0.4.3, 0.4.4, 0.4.5, 0.4.6, 0.4.8, 0.4.9, 0.4.10, 0.5.0, 0.5.1, 0.5.2, 0.5.3, 0.5.4, 0.5.5, 0.5.6, 0.5.7, 0.6.0, 0.7.0, 0.7.1, 0.7.2, 0.7.3, 0.7.4, 0.8.0.dev0, 0.8.0, 0.8.1, 0.8.2, 0.9.0, 0.9.1, 0.9.2, 0.9.3, 0.9.4, 0.9.5, 0.9.6, 0.9.7, 0.10.0, 0.10.1, 0.10.2, 0.10.3, 0.10.4, 0.10.5, 0.10.8, 0.10.9, 0.10.11, 0.11.0, 0.12.0, 0.12.1, 0.12.4, 0.12.5, 0.12.6, 0.13.0, 0.13.1, 0.14.0, 0.15.3, 0.15.4, 0.15.6, 0.15.7, 0.16.0, 0.17.0, 0.17.1, 0.17.2, 0.17.3, 0.18.0, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.22.0, 0.23.0, 0.23.1, 0.24.0, 0.24.1, 0.25.0, 0.25.1, 0.25.2, 0.26.0, 0.26.1, 0.26.2)
+ERROR: No matching distribution found for gym==0.21.0
+
+SOLN
+This seemed to work for install gym 0.21.0
+https://github.com/openai/gym/issues/3202
+
+pip install git+https://github.com/openai/gym.git@9180d12e1b66e7e2a1a622614f787a6ec147ac40
+
+
+pip list | grep gym
+gym                0.21.0
+gym-notices        0.0.8
+gym-retro          0.8.0
+
+
+
+IMPORTANT
+If you want to play another game then you must copy the ROM file to the Virtual Environment
+retro data directory e.g.
+
+DEST
+/home/stevepro/Steven/Python/RetroTest01/.venv/lib/python3.8/site-packages/retro/data/stable/AlteredBeast-Genesis
+
+SRCE
+/home/stevepro/GitHubX/openai/retro/retro/data/stable/AlteredBeast-Genesis
+
+
+
+
+main.py
+import retro
+
+def main():
+    #env = retro.make(game='Airstriker-Genesis')
+    env = retro.make(game='AlteredBeast-Genesis')
+    obs = env.reset()
+    while True:
+        obs, rew, done, info = env.step(env.action_space.sample())
+        env.render()
+        if done:
+            obs = env.reset()
+    env.close()
+
+if __name__ == "__main__":
+    main()
+    
+    
+    
+    
+ARCHIVE
+
+Learning to Use Open-AI Retro - E1 - Open-AI and NEAT Tutorial
+https://www.youtube.com/watch?v=CFa6NhLgeL0
+
+https://github.com/openai/retro
+
+
+Install from binary
+pip install gym-retro
+
+Install from source
+
+cd ~/GitHub3/openai
+git clone https://github.com/openai/retro gym-retro
+python -m venv gym-retro
+renane gym-retro .venv
+source .venv/bin/activate
+
+pip list | grep gym
+gym                           0.21.0
+gym-notices                   0.0.8
+gym-retro                     0.8.0
+gymnasium                     0.29.0
+
+
+Launch PyCharm
+run tests
+pip install pytest
