@@ -1,0 +1,27 @@
+28-Sep-2024
+
+MAKE UI
+
+OpenAI game integration tool - part 1
+https://www.youtube.com/watch?v=lPYWaUAq_dY
+
+cd /home/stevepro/GitHub3/Farama-Foundation
+git clone https://github.com/Farama-Foundation/stable-retro.git
+
+
+//build package from source
+cmake . -DCMAKE_PREFIX_PATH=/usr/local/opt/qt -DBUILD_UI=ON -UPYLIB_DIRECTORY
+make -j$(sysctl hw.ncpu | cut -d: -f2)
+
+ERROR
+//open "Gym Retro Integration.app"
+
+
+sudo apt-get update
+sudo apt-get install python3 python3-pip git zlib1g-dev libopenmpi-dev ffmpeg
+
+
+Could NOT find BZip2 (missing: BZIP2_LIBRARIES BZIP2_INCLUDE_DIR) 
+
+https://stackoverflow.com/questions/32041015/ros-compilation-fails-due-to-bzip2-libraries
+sudo apt-get install libbz2-dev

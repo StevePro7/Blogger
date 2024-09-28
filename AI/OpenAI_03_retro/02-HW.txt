@@ -1,5 +1,9 @@
 28-Sep-2024
 
+TODO
+HW is like 
+trivial_random_agent.py
+
 HELLO Stable-Retro
 /home/stevepro/Steven/Python/RetroTest02
 
@@ -22,7 +26,26 @@ stable-retro         0.9.2
 
 
 main.py
+NEW
+import retro
 
+def main():
+    env = retro.make(game="Airstriker-Genesis")
+    #env = retro.make(game="SonicTheHedgehog-Genesis")
+
+    env.reset()
+    while True:
+        action = env.action_space.sample()
+        observation, reward, terminated, truncated, info = env.step(action)
+        env.render()
+        if terminated or truncated:
+            env.reset()
+    env.close()
+    
+if __name__ == "__main__":
+    main()
+    
+OLD
 import retro
 
 def main():

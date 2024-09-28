@@ -1,0 +1,41 @@
+28-Sep-2024
+
+MAKE UI
+
+OpenAI game integration tool - part 1
+https://www.youtube.com/watch?v=lPYWaUAq_dY
+
+cd /home/stevepro/GitHub3/openai
+git clone https://github.com/openai/retro
+
+Launch terminal
+//sudo apt-get update
+//sudo apt-get install capnproto
+//sudo apt-get install libcapnp-dev
+//sudo apt-get install libqt5opengl5-dev
+//sudo apt-get install qtbase5-dev
+//sudo apt-get autoremove
+
+cd /home/stevepro/GitHubX/openai
+git clone https://github.com/openai/retro.git
+cd retro
+cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY
+//Build files have been written to: /home/stevepro/GitHubX/openai/retro
+make -j$(grep -c ^processor /proc/cpuinfo)
+./gym-retro-integration
+
+
+
+CLion
+Launch Gym Retro
+
+Go to File > Settings > Build, Execution, Deployment > CMake
+/home/stevepro/GitHubX/openai/retro
+CMakeLists.txt
+
+
+OR
+Open main.cpp
+
+main.cpp
+/home/stevepro/GitHub3/openai/retro/src/ui
