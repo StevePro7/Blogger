@@ -1,0 +1,16 @@
+CODE
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import retro<br />
+&nbsp;env = retro.make(game="Airstriker-Genesis")<br />
+&nbsp;observation, info = env.reset()<br />
+&nbsp;<br />
+&nbsp;while True:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</td></tr>
+</table>
