@@ -1,10 +1,12 @@
-<b>Hello Gym-Retro</b><br />
-Creating a <a href="https://github.com/openai/gym">Gym</a> environment e.g. Cart Pole.  Launch PyCharm | New Project | Name: HelloCartPoleGym [~/]
-<br />
 
+<b>Hello Gym Retro</b><br />
+Create new Hello Gym Retro type environment.  Launch PyCharm | New Project | Name: HelloGymRetro [~/]
+<br />
+<!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdSdgYzbDsRlAkMUCrUAVg_wlqmeoK_DWAX9dbwPzMzWBPVWNTpsGYGyYMYdC_53SeQNYXG1DOdjOBnR9gBmXfMzh3AqhPgKR8fK_GxmxOqPyi4WxXXb1hOGRw8T4gqJNXknJJbZGymne8fOA85SzjXxC0QKfZbUlwn5uN-B4BJZ5ao05OUJsIApV_sZY/s800/HelloGymRetro.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdSdgYzbDsRlAkMUCrUAVg_wlqmeoK_DWAX9dbwPzMzWBPVWNTpsGYGyYMYdC_53SeQNYXG1DOdjOBnR9gBmXfMzh3AqhPgKR8fK_GxmxOqPyi4WxXXb1hOGRw8T4gqJNXknJJbZGymne8fOA85SzjXxC0QKfZbUlwn5uN-B4BJZ5ao05OUJsIApV_sZY/s600/HelloGymRetro.png"/></a>
-
+-->
 <br />
+<!--
 <table width="99%" border="1">
 <tr>
 <td>
@@ -16,9 +18,10 @@ Creating a <a href="https://github.com/openai/gym">Gym</a> environment e.g. Cart
 </tr>
 </table>
 <br />
-
+-->
 CODE
 <br />
+<!--
 <table width="99%" border="1">
 <tr><td>
 &nbsp;import retro<br />
@@ -33,4 +36,12 @@ CODE
 &nbsp;env.close()<br />
 </td></tr>
 </table>
+-->
 <br />
+IPMORTANT - TODO complete 3x issues => 01-HW.txt
+<br />
+AttributeError: module 'gym.utils.seeding' has no attribute 'hash_seed'
+<br />
+ModuleNotFoundError: No module named 'gym.envs.classic_control.rendering'
+<br />
+pip install git+https://github.com/openai/gym.git@9180d12e1b66e7e2a1a622614f787a6ec147ac40  
