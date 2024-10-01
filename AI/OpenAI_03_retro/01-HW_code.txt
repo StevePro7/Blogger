@@ -9,8 +9,25 @@ CODE
 &nbsp;while True:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
 &nbsp;&nbsp;&nbsp;&nbsp;observation, reward, done, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;env.render()<br />
 &nbsp;&nbsp;&nbsp;&nbsp;if done:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation = env.reset()<br />
 &nbsp;env.close()<br />
 </td></tr>
 </table>
+
+
+
+
+UNFORMATTED
+
+import retro
+env = retro.make(game="Airstriker-Genesis")
+observation = env.reset()
+while True:
+    action = env.action_space.sample()
+    observation, reward, done, info = env.step(action)
+    env.render()
+    if done:
+        obs = env.reset()
+env.close()
