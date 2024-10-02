@@ -9,12 +9,12 @@ Create Hello Stable Retro type environment.  Launch PyCharm | New Project | Name
 <!--
 <table width="99%" border="1">
 <tr>
-<td>
-&nbsp;pip install stable-retro<br />
-</td>
-<td>
-&nbsp;pip install --upgrade pip<br />
-</td>
+<td>&nbsp;python -m venv .venv<br /></td>
+<td>&nbsp;pip install stable-retro<br /></td>
+</tr>
+<tr>
+<td>&nbsp;source .venv/bin/activate<br /></td>
+<td>&nbsp;pip install --upgrade pip<br /></td>
 </tr>
 </table>
 <br />
