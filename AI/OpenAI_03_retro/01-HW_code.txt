@@ -24,6 +24,7 @@ UNFORMATTED
 import retro
 env = retro.make(game="Airstriker-Genesis")
 observation = env.reset()
+
 while True:
     action = env.action_space.sample()
     observation, reward, done, info = env.step(action)

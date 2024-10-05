@@ -1,0 +1,71 @@
+ERRORS X3
+
+01.
+<table width="99%" border="1">
+<tr>
+<td>ERROR #1</td>
+<td colspan="2">
+&nbsp;AttributeError: module 'gym.utils.seeding' has no attribute 'hash_seed'<br />
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://stackoverflow.com/questions/73710249/openai-gym-retro-error-attributeerror-module-gym-utils-seeding-has-no-attri">Solution</a></td>
+<td>&nbsp;pip uninstall -y gym</td>
+<td>&nbsp;pip install gym==0.25.2</td>
+</tr>
+</table>
+<br />
+
+
+02.
+<table width="99%" border="1">
+<tr>
+<td>ERROR #2</td>
+<td colspan="2">
+&nbsp;ModuleNotFoundError: No module named 'gym.envs.classic_control.rendering'<br />
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://www.reddit.com/r/reinforcementlearning/comments/uklf29/no_module_named_gymenvsclassic_controlrendering">Solution</a></td>
+<td>&nbsp;pip uninstall -y gym</td>
+<td>&nbsp;pip install gym==0.21.0</td>
+</tr>
+</table>
+<br />
+
+
+03.
+<table width="99%" border="1">
+<tr>
+<td>ERROR #3</td>
+<td>
+&nbsp;ERROR: Could not find a version that satisfies the requirement gym==0.21.0 <br />
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://github.com/openai/gym/issues/3202">Solution</a></td>
+<td>&nbsp;pip install git+https://github.com/openai/gym.git@9180d12e1b66e7e2a1a622614f787a6ec147ac40</td>
+</tr>
+</table>
+<br />
+
+
+03b.
+<table width="99%" border="1">
+<tr>
+<td>ERROR #3</td>
+<td>
+&nbsp;ERROR: No matching distribution found for gym==0.21.0<br />
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://github.com/openai/gym/issues/3202">Solution</a></td>
+<td>&nbsp;pip install git+https://github.com/openai/gym.git@9180d12e1b66e7e2a1a622614f787a6ec147ac40</td>
+</tr>
+</table>
+<br />
+
+
+
+NB: alternate error #3
+ERROR: Could not find a version that satisfies the requirement gym==0.21.0 
