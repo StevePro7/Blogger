@@ -1,0 +1,38 @@
+cd ~/GitHub/SteveProXNA
+git clone git@github.com:SteveProXNA/stable-retro.git
+
+//cd stable-retro
+
+
+Launch PyCharm
+Open project ~/GitHub/SteveProXNA/stable-retro
+
+
+IMPORTANT
+If Python Interpreter not set and/or Virtual Environment not available then choose File | Settings... | Project: Python Interpreter | Add Interpreter | Add Local Interpreter. Launch terminal: source .venv/bin/activate.
+
+
+StableRetroVenv.png
+/home/stevepro/GitHub/StevePro7/Blogger/AI/OpenAI_02_retro/images/linuxNEW
+
+
+resume
+05-FFdebug.txt
+/home/stevepro/GitHub/StevePro7/Blogger/AI/OpenAI_03_retro
+
+
+pip install -e .
+pip install --upgrade pip
+
+Can run the following scripts
+base
+/home/stevepro/GitHub/SteveProXNA2/stable-retro/retro/examples
+
+Ensure you copy the designated ROM into destination folder
+
+/home/stevepro/GitHub/SteveProXNA2/stable-retro/retro/data/stable/<game>
+
+
+TODO table
+ppo.py			pip install stable-baselines3
+retro_interactive.py	pip install baselines
