@@ -14,3 +14,19 @@ CODE
 &nbsp;env.close()<br />
 </td></tr>
 </table>
+
+
+
+
+UNFORMATTED
+
+import retro
+env = retro.make(game="Airstriker-Genesis")
+observation, info = env.reset()
+
+while True:
+    action = env.action_space.sample()
+    observation, reward, terminated, truncated, info = env.step(action)
+    if terminated or truncated:
+        observation, info = env.reset()
+env.close()
