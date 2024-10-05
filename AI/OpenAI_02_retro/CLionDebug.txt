@@ -31,3 +31,29 @@ Enter executable in drop down list
 gym-retro-integration
 
 Debug break step thru code!!
+
+
+TESTS
+/home/stevepro/GitHubX/openai/retro/tests
+
+Not sure how the C++ tests got built
+most likely via building the project via CMakeLists [above]
+
+Launch CLion
+Edit configurations debug drop down
+scroll down to section near bottom
+under All CTest
+
+there will be one test target per C++ translation unit
+e.g.
+data.cpp		test-data
+emulator.cpp		test-emulator
+
+The test-* is the built binary via Gtest
+Choose anyone
+e.g.
+test-data
+set breakpoint in tests/data.cpp
+
+F5
+Debug step thru the code!
