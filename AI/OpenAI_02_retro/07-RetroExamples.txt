@@ -1,55 +1,44 @@
 <span style="font-family:verdana;font-size:85%;">  
 
 <u>Retro Examples</u><br />
-<!-- -->
 Complete all Retro examples!  Extend <a href="https://github.com/SteveProXNA/OpenAItesting">OpenAI Test</a> repo.  Launch PyCharm | New Project | RetroCheatSheet
-<br /><br />
-TODO - Pic 01 - New Project Name: RetroCheatSheet Location: ~/GitHub/SteveProXNA/OpenAItesting
 <br />
+<!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJS05ETesbaDzt487QaxDfZk80VjSM9xEBXfX9E5P9o_i1Ur5pYgomk3hnaScMRHCkd1RQaooCw_hjsSwCfUwnW1PKS-fg-iP7fuQZX9IIdcXX0q4d4_ug8Q-9NEcRI9qtuR1eFfY97WErQQi8jgJEQCpROFyGoAiua3c7BiqiRgSE8FDliT2OvzlKLe4/s800/RetroCheatSheetProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJS05ETesbaDzt487QaxDfZk80VjSM9xEBXfX9E5P9o_i1Ur5pYgomk3hnaScMRHCkd1RQaooCw_hjsSwCfUwnW1PKS-fg-iP7fuQZX9IIdcXX0q4d4_ug8Q-9NEcRI9qtuR1eFfY97WErQQi8jgJEQCpROFyGoAiua3c7BiqiRgSE8FDliT2OvzlKLe4/s600/RetroCheatSheetProject.png"/></a>
-
-
+-->  
 <br />
 IMPORTANT<br />
 If Python Interpreter not set and/or Virtual Environment not available then choose File | Settings... | Project: Python Interpreter | Add Interpreter | Add Local Interpreter.  Launch terminal: <b>source .venv/bin/activate</b>.  
 <br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTp3AM9KZWRI1YqTljzJvp04S-jdJ0DPRCQSMcTlv3IJPLcnDjcfIybol_nl-cLyr6Y_YoaHW685dtNPCkPveOpZSPiDCymQXZ5OiurykWpKOzZqJ5ImiBJo4Jk230Mn_4wfexA9P43PhWvTEyb0Tv-TYCt70gfHshZt7KrmYA0S46SLUWDXd9Z30-3Fo/s1028/RetroCheatSheetVenv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTp3AM9KZWRI1YqTljzJvp04S-jdJ0DPRCQSMcTlv3IJPLcnDjcfIybol_nl-cLyr6Y_YoaHW685dtNPCkPveOpZSPiDCymQXZ5OiurykWpKOzZqJ5ImiBJo4Jk230Mn_4wfexA9P43PhWvTEyb0Tv-TYCt70gfHshZt7KrmYA0S46SLUWDXd9Z30-3Fo/s600/RetroCheatSheetVenv.png"/></a>  
-
-  
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTp3AM9KZWRI1YqTljzJvp04S-jdJ0DPRCQSMcTlv3IJPLcnDjcfIybol_nl-cLyr6Y_YoaHW685dtNPCkPveOpZSPiDCymQXZ5OiurykWpKOzZqJ5ImiBJo4Jk230Mn_4wfexA9P43PhWvTEyb0Tv-TYCt70gfHshZt7KrmYA0S46SLUWDXd9Z30-3Fo/s1028/RetroCheatSheetVenv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTp3AM9KZWRI1YqTljzJvp04S-jdJ0DPRCQSMcTlv3IJPLcnDjcfIybol_nl-cLyr6Y_YoaHW685dtNPCkPveOpZSPiDCymQXZ5OiurykWpKOzZqJ5ImiBJo4Jk230Mn_4wfexA9P43PhWvTEyb0Tv-TYCt70gfHshZt7KrmYA0S46SLUWDXd9Z30-3Fo/s600/RetroCheatSheetVenv.png"/></a>
+-->
 <br />
-TODO - Pic 02 - Add Python Interpreter Location: ~/GitHub/SteveProXNA/OpenAItesting/.venv
-<br />
-<!-- TODO delete as no londer required  
+Setup ROMs: copy Sega ROM files from the <a href="https://github.com/SteveProXNA/OpenAItesting/tree/main/RetroCheatSheet/data">data</a> directory to Virtual Environment via the <a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/copy_files.py">copy_files.py</a> script
 <br />
 <table width="99%" border="1">
 <tr>
-<td width="50%">&nbsp;python -m venv .venv<br /></td>
-<td width="50%">&nbsp;pip install stable-retro<br /></td>
-</tr>
-<tr>
-<td width="50%">&nbsp;source .venv/bin/activate<br /></td>
-<td width="50%">&nbsp;pip install --upgrade pip<br /></td>
+<td width="50%">
+&nbsp;mkdir data<br />
+&nbsp;mkdir examples<br />
+</td>
+<td width="50%">
+&nbsp;cd examples<br />
+&nbsp;python copy_files.py<br />
+</td>
 </tr>
 </table>
 <br />
--->
-<br />
-TODO - copy files python script
-<br /><br />
   
 <b>Sega Master System</b><br />
-TODO - one liner about these games
+Launch retro games for the Sega Master System 8-bit video game console with <b>.sms</b> supported ROM types:
 <br />
-<!-- TODO delete as no londer required  
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td width="50%">&nbsp;pip install stable-retro<br /></td>
 <td width="50%">&nbsp;pip install --upgrade pip<br /></td>
 </tr>
-</table>
-<br />
--->
-<table width="99%" border="1">
 <tr>
 <td width="50%">&nbsp;<a href="https://github.com/StevePro7/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/AlienSyndrome-Sms.py">AlienSyndrome-Sms</a></td>
 <td width="50%">&nbsp;<a href="https://github.com/StevePro7/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/RType-Sms.py">RType-Sms</a></td>
@@ -105,18 +94,13 @@ TODO - one liner about these games
 <!-- -->
 <br />
 <b>Sega Genesis</b><br />
-TODO - one liner about these games
+Launch retro games for the Sega Genesis [MD] 16-bit video game console with <b>.md</b> supported ROM types:
 <br />
-<!-- TODO delete as no londer required  
 <table width="99%" border="1">
 <tr>
 <td width="50%">&nbsp;pip install stable-retro<br /></td>
 <td width="50%">&nbsp;pip install --upgrade pip<br /></td>
 </tr>
-</table>
-<br />
--->
-<table width="99%" border="1">
 <tr>
 <td width="50%">&nbsp;<a href="https://github.com/StevePro7/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/AlteredBeast-Genesis.py">AlteredBeast-Genesis</a></td>
 <td width="50%">&nbsp;<a href="https://github.com/StevePro7/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/SonicTheHedgehog2-Genesis.py">SonicTheHedgehog2-Genesis</a></td>
