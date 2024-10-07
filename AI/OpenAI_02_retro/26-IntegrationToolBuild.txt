@@ -1,0 +1,57 @@
+01. developing.rst
+/home/stevepro/GitHubX/openai/retro/docs
+
+02. developing.rst
+/home/stevepro/GitHubX/Farama-Foundation/stable-retro/docs
+
+
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;sudo apt-get update<br />
+&nbsp;sudo apt-get install capnprotoe<br />
+&nbsp;sudo apt-get install libcapnp-dev<br />
+&nbsp;sudo apt-get install libqt5opengl5-dev<br />
+&nbsp;sudo apt-get install qtbase5-dev<br />
+</td>
+</tr>
+<tr>
+<td width="50%">
+sudo apt-get install zlib1g-dev
+&nbsp;sudo apt-get install zlib1g-dev<br />
+&nbsp;sudo apt autoremove<br />
+&nbsp;cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY<br />
+&nbsp;make -j$(grep -c ^processor /proc/cpuinfo)<br />
+&nbsp;./gym-retro-integration<br />
+</td>
+</tr>
+</table>
+<br />
+
+
+sudo apt-get update
+sudo apt-get install capnproto
+sudo apt-get install libcapnp-dev
+sudo apt-get install libqt5opengl5-dev
+sudo apt-get install qtbase5-dev
+
+sudo apt-get install zlib1g-dev
+sudo apt-get autoremove
+cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY
+make -j$(grep -c ^processor /proc/cpuinfo)
+./gym-retro-integration
+
+
+
+
+sudo apt-get install
+capnproto
+libcapnp-dev
+libqt5opengl5-dev
+qtbase5-dev
+zlib1g-dev
+
+cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY
+make -j$(grep -c ^processor /proc/cpuinfo)
+./gym-retro-integration
+
