@@ -1,0 +1,377 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In the previous <a href="https://steveproxna.blogspot.com/2024/09/openai-farma-cheat-sheet.html">post</a>, we checked out <a href="https://github.com/openai/gym">OpenAI Gym</a>: an open source library in Python used for reinforcement learning algorithms development to communicate between environments such as classic Atari video games.
+<br /><br />
+In the this post, we check out <a href="https://github.com/openai/retro">OpenAI Retro</a>: source code repository which lets you turn classic video games into Gym environments for reinforcement learning with classic Atari video games and many other Emulated Systems including: <a href="https://steveproxna.blogspot.com/2023/11/gbdk-programming-sample.html">Nintendo</a> GameBoy / GameBoy Color, the Sega <a href="https://steveproxna.blogspot.com/2020/11/sgdk-programming-sample.html">MegaDrive</a> and the Sega <a href="https://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Master System</a>.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPg5lDn5BIDcj0-l8C-P-tTwHoFTFbPHaOFt0LcF-7Oc7-5teLiMO0y9Od48m4ZJRZ5IXWBQczz1YQ-V4DhZ-I3Xg6kkxdhj6qv52OWb1IALk1TXgRYu24MELKHgpGyj_b4NVMJ9nd-bLnHD2U8NwvhyphenhyphenUrB7K3OKx6kFoSXBNTSQk-H3KSjfllSXJmGVE/s1856/Strider-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPg5lDn5BIDcj0-l8C-P-tTwHoFTFbPHaOFt0LcF-7Oc7-5teLiMO0y9Od48m4ZJRZ5IXWBQczz1YQ-V4DhZ-I3Xg6kkxdhj6qv52OWb1IALk1TXgRYu24MELKHgpGyj_b4NVMJ9nd-bLnHD2U8NwvhyphenhyphenUrB7K3OKx6kFoSXBNTSQk-H3KSjfllSXJmGVE/s600/Strider-Genesis.png"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+
+<u>Gym Retro</u></br />
+In May 2018, Open AI announce <a href="https://openai.com/index/gym-retro">Gym Retro</a>: a platform for reinforcement learning research on classic 8-bit and 16-bit video games.  The release includes games from the Sega Genesis and Sega Master System, and Nintendo’s NES, SNES, and Game Boy consoles.  The release also includes an <a href="https://retro.readthedocs.io/en/latest/integration.html">Integration Tool</a> that lets you create save states, find memory locations + design scenarios that reinforcement learning agents can solve.   
+<br /><br />
+
+<b>Hello Gym Retro</b><br />
+Create new Hello Gym Retro type environment.  Launch PyCharm | New Project | Name: HelloGymRetro [~/]
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdSdgYzbDsRlAkMUCrUAVg_wlqmeoK_DWAX9dbwPzMzWBPVWNTpsGYGyYMYdC_53SeQNYXG1DOdjOBnR9gBmXfMzh3AqhPgKR8fK_GxmxOqPyi4WxXXb1hOGRw8T4gqJNXknJJbZGymne8fOA85SzjXxC0QKfZbUlwn5uN-B4BJZ5ao05OUJsIApV_sZY/s800/HelloGymRetro.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdSdgYzbDsRlAkMUCrUAVg_wlqmeoK_DWAX9dbwPzMzWBPVWNTpsGYGyYMYdC_53SeQNYXG1DOdjOBnR9gBmXfMzh3AqhPgKR8fK_GxmxOqPyi4WxXXb1hOGRw8T4gqJNXknJJbZGymne8fOA85SzjXxC0QKfZbUlwn5uN-B4BJZ5ao05OUJsIApV_sZY/s600/HelloGymRetro.png"/></a>
+-->
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;python -m venv .venv<br /></td>
+<td width="50%">&nbsp;pip install gym-retro<br /></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;source .venv/bin/activate<br /></td>
+<td width="50%">&nbsp;pip install --upgrade pip<br /></td>
+</tr>
+</table>
+<br />
+-->
+CODE
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import retro<br />
+&nbsp;env = retro.make(game="Airstriker-Genesis")<br />
+&nbsp;observation = env.reset()<br />
+&nbsp;<br />
+&nbsp;while True:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, done, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;env.render()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if done:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation = env.reset()<br />
+&nbsp;env.close()<br />
+</td></tr>
+</table>
+-->
+<br />
+IPMORTANT
+<br />
+At the time of this writing you may experience the following errors.  Here are errors encountered + solutions:  
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;ERROR #1</td>
+<td colspan="2">
+&nbsp;AttributeError: module 'gym.utils.seeding' has no attribute 'hash_seed'<br />
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://stackoverflow.com/questions/73710249/openai-gym-retro-error-attributeerror-module-gym-utils-seeding-has-no-attri">Solution</a></td>
+<td>&nbsp;pip uninstall -y gym</td>
+<td>&nbsp;pip install gym==0.25.2</td>
+</tr>
+</table>
+<br />
+
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;ERROR #2</td>
+<td colspan="2">
+&nbsp;ModuleNotFoundError: No module named 'gym.envs.classic_control.rendering'<br />
+</td>
+</tr>
+<tr>
+<td>&nbsp;<a href="https://www.reddit.com/r/reinforcementlearning/comments/uklf29/no_module_named_gymenvsclassic_controlrendering">Solution</a></td>
+<td>&nbsp;pip uninstall -y gym</td>
+<td>&nbsp;pip install gym==0.21.0</td>
+</tr>
+</table>
+<br />
+
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;ERROR #3&nbsp</td>
+<td>
+&nbsp;ERROR: Could not find a version that satisfies the requirement gym==0.21.0 <br />
+</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/openai/gym/issues/3202">Solution</a></td>
+<td>&nbsp;pip install<br />&nbsp;git+https://github.com/openai/gym.git@9180d12e1b66e7e2a1a622614f787a6ec147ac40</td>
+</tr>
+</table>
+-->
+<br />
+<u>Stable Retro</u></br />
+TODO - complete 05-Interim.txt
+<br /><br />
+
+<b>Hello Stable Retro</b><br />
+Create Hello Stable Retro type environment.  Launch PyCharm | New Project | Name: HelloStableRetro [~/]
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiar5WXrKel7pqEC7XB0eoD7QrWZUJiMPLqo2o1oDNkm1wy7deRL0mdwjOCrXuAPfM_38VXT6Y5jepRZYrsmamfHVtU5pxpvQcqdm_MeIDTJYBr-M-3drN3XsPF8XqUREW3xMx-mtIPzs_mtgOM5nyJiaFD0BgmrRkMVTvJn8oPSFxt2R_VF7HiaI_Vk5s/s800/HelloStableRetro.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiar5WXrKel7pqEC7XB0eoD7QrWZUJiMPLqo2o1oDNkm1wy7deRL0mdwjOCrXuAPfM_38VXT6Y5jepRZYrsmamfHVtU5pxpvQcqdm_MeIDTJYBr-M-3drN3XsPF8XqUREW3xMx-mtIPzs_mtgOM5nyJiaFD0BgmrRkMVTvJn8oPSFxt2R_VF7HiaI_Vk5s/s600/HelloStableRetro.png"/></a>
+ -->
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;python -m venv .venv<br /></td>
+<td width="50%">&nbsp;pip install stable-retro<br /></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;source .venv/bin/activate<br /></td>
+<td width="50%">&nbsp;pip install --upgrade pip<br /></td>
+</tr>
+</table>
+<br />
+ -->
+CODE
+<!--
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;import retro<br />
+&nbsp;env = retro.make(game="Airstriker-Genesis")<br />
+&nbsp;observation, info = env.reset()<br />
+&nbsp;<br />
+&nbsp;while True:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;action = env.action_space.sample()<br />
+&nbsp;&nbsp;&nbsp;&nbsp;observation, reward, terminated, truncated, info = env.step(action)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
+&nbsp;env.close()<br />
+</td></tr>
+</table>
+-->
+<br /><br />
+
+<u>Retro Examples</u><br />
+Complete all Retro examples!  Extend <a href="https://github.com/SteveProXNA/OpenAItesting">OpenAI Test</a> repo.  Launch PyCharm | New Project | RetroCheatSheet
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJS05ETesbaDzt487QaxDfZk80VjSM9xEBXfX9E5P9o_i1Ur5pYgomk3hnaScMRHCkd1RQaooCw_hjsSwCfUwnW1PKS-fg-iP7fuQZX9IIdcXX0q4d4_ug8Q-9NEcRI9qtuR1eFfY97WErQQi8jgJEQCpROFyGoAiua3c7BiqiRgSE8FDliT2OvzlKLe4/s800/RetroCheatSheetProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJS05ETesbaDzt487QaxDfZk80VjSM9xEBXfX9E5P9o_i1Ur5pYgomk3hnaScMRHCkd1RQaooCw_hjsSwCfUwnW1PKS-fg-iP7fuQZX9IIdcXX0q4d4_ug8Q-9NEcRI9qtuR1eFfY97WErQQi8jgJEQCpROFyGoAiua3c7BiqiRgSE8FDliT2OvzlKLe4/s600/RetroCheatSheetProject.png"/></a>
+-->  
+<br />
+IMPORTANT<br />
+If Python Interpreter not set and/or Virtual Environment not available then choose File | Settings... | Project: Python Interpreter | Add Interpreter | Add Local Interpreter.  Launch terminal: <b>source .venv/bin/activate</b>.  
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTp3AM9KZWRI1YqTljzJvp04S-jdJ0DPRCQSMcTlv3IJPLcnDjcfIybol_nl-cLyr6Y_YoaHW685dtNPCkPveOpZSPiDCymQXZ5OiurykWpKOzZqJ5ImiBJo4Jk230Mn_4wfexA9P43PhWvTEyb0Tv-TYCt70gfHshZt7KrmYA0S46SLUWDXd9Z30-3Fo/s1028/RetroCheatSheetVenv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTp3AM9KZWRI1YqTljzJvp04S-jdJ0DPRCQSMcTlv3IJPLcnDjcfIybol_nl-cLyr6Y_YoaHW685dtNPCkPveOpZSPiDCymQXZ5OiurykWpKOzZqJ5ImiBJo4Jk230Mn_4wfexA9P43PhWvTEyb0Tv-TYCt70gfHshZt7KrmYA0S46SLUWDXd9Z30-3Fo/s600/RetroCheatSheetVenv.png"/></a>
+-->
+<br />
+Setup ROMs: copy Sega ROM files from the <a href="https://github.com/SteveProXNA/OpenAItesting/tree/main/RetroCheatSheet/data">data</a> directory to Virtual Environment via the <a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/copy_files.py">copy_files.py</a> script
+<br />
+<!--  
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;mkdir data<br />
+&nbsp;mkdir examples<br />
+</td>
+<td width="50%">
+&nbsp;cd examples<br />
+&nbsp;python copy_files.py<br />
+</td>
+</tr>
+</table>
+-->  
+<br />  
+<b>Sega Master System</b><br />
+Launch retro games for the Sega Master System 8-bit video game console with <b>.sms</b> supported ROM types:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;pip install stable-retro<br /></td>
+<td width="50%">&nbsp;pip install --upgrade pip<br /></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/AlienSyndrome-Sms.py">AlienSyndrome-Sms</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/RType-Sms.py">RType-Sms</a></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/BladeEagle-Sms.py">BladeEagle-Sms</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/Shinobi-Sms.py">Shinobi-Sms</a></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/DickTracy-Sms.py">DickTracy-Sms</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/SonicTheHedgehog-Sms.py">SonicTheHedgehog-Sms</a></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/JamesPond2CodenameRoboCod-Sms.py">JamesPond2CodenameRoboCod-Sms</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Sms/TransBot-Sms.py">TransBot-Sms</a></td>
+</tr>
+</table>
+-->
+<!--<br />-->
+<!--  
+<table width="99%">
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguIvwlj2n5mlq54oUl7_894BwFf6lNalVFf-6QvgmAwICjoKXkgythmIygAzI0_6nqh5UIkG2rxyyaF_o61LaW8VkbcuoTVDrVlRuXLFZJtx8HxCY7_34XqVhhpzDbwEtdiSPg7n2DbRNdI79VtI0XwHLwpceC-AtMGkzRc2gvAeHXWWcxVtxBqeGD60A/s256/AlienSyndrome-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguIvwlj2n5mlq54oUl7_894BwFf6lNalVFf-6QvgmAwICjoKXkgythmIygAzI0_6nqh5UIkG2rxyyaF_o61LaW8VkbcuoTVDrVlRuXLFZJtx8HxCY7_34XqVhhpzDbwEtdiSPg7n2DbRNdI79VtI0XwHLwpceC-AtMGkzRc2gvAeHXWWcxVtxBqeGD60A/s600/AlienSyndrome-Sms.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9Vo6N4oeGeCucDq8WT3tSEDXC-RmxWeYz1M3uG5EmOtaQ6mkxftG-UqRk_IW6oVg5l2vbzR3-4mrybJ4CnqdMbAGtLaEqNTCz-SqbzqzUNHYWuhONCgzOci2sLNisIFxDVgF8-V3Kw7eJiTczL0LeCt3BrJhGRHDBt6vwlDQ17Y2Yo_E0uJsjmZsEIUo/s256/BladeEagle-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9Vo6N4oeGeCucDq8WT3tSEDXC-RmxWeYz1M3uG5EmOtaQ6mkxftG-UqRk_IW6oVg5l2vbzR3-4mrybJ4CnqdMbAGtLaEqNTCz-SqbzqzUNHYWuhONCgzOci2sLNisIFxDVgF8-V3Kw7eJiTczL0LeCt3BrJhGRHDBt6vwlDQ17Y2Yo_E0uJsjmZsEIUo/s600/BladeEagle-Sms.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5XSKyV1fpr1xFqFfvbRUHYXRSMuKhgqP4NhB1qkHUBmtpLEcN5HEYRvOvQBy7Ug1UgPGDSzpwXWghoVaBKGJ_L6rKaxzNybKYb03jLJlEU5V963Ah_PGKM5SkfKgexfmy0gXre5DbbBndISGJ73_hobDfjRKcZUMBfH9GCrhwChXkjP9ac632NkZfUC4/s256/DickTracy-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5XSKyV1fpr1xFqFfvbRUHYXRSMuKhgqP4NhB1qkHUBmtpLEcN5HEYRvOvQBy7Ug1UgPGDSzpwXWghoVaBKGJ_L6rKaxzNybKYb03jLJlEU5V963Ah_PGKM5SkfKgexfmy0gXre5DbbBndISGJ73_hobDfjRKcZUMBfH9GCrhwChXkjP9ac632NkZfUC4/s600/DickTracy-Sms.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxqdzjDOVxdcZxmaVqmo44sfoROGHdVV5BHY9C5dKtI2NGi_XmNqp_QGrnGWW0PSYP3IFOzOVAUnp7mObRsh98PYCD0yPYoxo1HDOm8hcNlat9xwla0Wuafu4YENDVBGDxw1t21O0GjYuoufytc0HnbGV3B_wNd1F09NR9KriMKUNrAG2UJ36Ad_Hr4Ow/s256/JamesPond2CodenameRoboCod-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxqdzjDOVxdcZxmaVqmo44sfoROGHdVV5BHY9C5dKtI2NGi_XmNqp_QGrnGWW0PSYP3IFOzOVAUnp7mObRsh98PYCD0yPYoxo1HDOm8hcNlat9xwla0Wuafu4YENDVBGDxw1t21O0GjYuoufytc0HnbGV3B_wNd1F09NR9KriMKUNrAG2UJ36Ad_Hr4Ow/s600/JamesPond2CodenameRoboCod-Sms.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbHXtPtOjAdZRoJR6uMT80aRpW9uB5J6-lN2ue4cyll-AOeoz3Pv3zf8NVk9angEc-YhC9p3W1IomGiui4coe8BQk3R74QG0mKq9ljzCWDU2cwa5eBcfADm28db9CXKMghZ9un9qKeWDJt1wzoOp8dV8AfCd_pOGInQUOfBsxNvr964y84U-7yNN5V_UE/s256/RType-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbHXtPtOjAdZRoJR6uMT80aRpW9uB5J6-lN2ue4cyll-AOeoz3Pv3zf8NVk9angEc-YhC9p3W1IomGiui4coe8BQk3R74QG0mKq9ljzCWDU2cwa5eBcfADm28db9CXKMghZ9un9qKeWDJt1wzoOp8dV8AfCd_pOGInQUOfBsxNvr964y84U-7yNN5V_UE/s600/RType-Sms.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBq8cEj8S1Dl5GeSjZWmLsCN-pjErT9wqUCp_pOYx8XXDTvISNtVD80-viO-QrjQZrgh_tyUeP_qI_syKa0QjUbX4ueMhs5F6VdrotpxdgPTzeEccPofk4u4kTzqxJDL4yj70jMvCiz4afjAOQZ5-HKgeRwjs9rqV_WXKkrIImBmYZUeoRAB8-bAyxHr0/s256/Shinobi-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBq8cEj8S1Dl5GeSjZWmLsCN-pjErT9wqUCp_pOYx8XXDTvISNtVD80-viO-QrjQZrgh_tyUeP_qI_syKa0QjUbX4ueMhs5F6VdrotpxdgPTzeEccPofk4u4kTzqxJDL4yj70jMvCiz4afjAOQZ5-HKgeRwjs9rqV_WXKkrIImBmYZUeoRAB8-bAyxHr0/s600/Shinobi-Sms.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgco_IrLnOlBMLfbde-0uOBCZn4nMw64c_FPNRIQmSPncNRjVxIq6BvIYU-YW3F_Nfj-ByOXYC6t0ZcnBDHqCOPVV1nhU2PxSjjXt3L43Leq_s8_ZqOcI5yQ812XUV6PL56ghY69GGPt8Rk-DMFEBULYSMik_KpX0pwaQkpTVNPiAY6COUHIZVrEys0VlA/s256/SonicTheHedgehog-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgco_IrLnOlBMLfbde-0uOBCZn4nMw64c_FPNRIQmSPncNRjVxIq6BvIYU-YW3F_Nfj-ByOXYC6t0ZcnBDHqCOPVV1nhU2PxSjjXt3L43Leq_s8_ZqOcI5yQ812XUV6PL56ghY69GGPt8Rk-DMFEBULYSMik_KpX0pwaQkpTVNPiAY6COUHIZVrEys0VlA/s600/SonicTheHedgehog-Sms.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi19HvgCH9d07DfOVGHWtMRnW31CaI3IxxM_7M1z6ori7OrX-dPQoT8YKpNDcWO7KXk2CvrQXdXMlBItohhPyZhgJqlpTCsTBFq1gQaBMuqSIcT3iO9S1JHNRhqHnFLbuFx5DmMhgDsd6-Y-QhTu3FIxuPo9XzGwW7RvBgVJcMUJgXDg88PGJQs27NUYQ0/s256/Transbot-Sms.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi19HvgCH9d07DfOVGHWtMRnW31CaI3IxxM_7M1z6ori7OrX-dPQoT8YKpNDcWO7KXk2CvrQXdXMlBItohhPyZhgJqlpTCsTBFq1gQaBMuqSIcT3iO9S1JHNRhqHnFLbuFx5DmMhgDsd6-Y-QhTu3FIxuPo9XzGwW7RvBgVJcMUJgXDg88PGJQs27NUYQ0/s600/Transbot-Sms.png"/></a>
+</td>
+</tr>
+</table>
+-->
+<br />
+<b>Sega Genesis</b><br />
+Launch retro games for the Sega Genesis [MD] 16-bit video game console with <b>.md</b> supported ROM types:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;pip install stable-retro<br /></td>
+<td width="50%">&nbsp;pip install --upgrade pip<br /></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/AlteredBeast-Genesis.py">AlteredBeast-Genesis</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/SonicTheHedgehog2-Genesis.py">SonicTheHedgehog2-Genesis</a></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/Flicky-Genesis.py">Flicky-Genesis</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/SonicTheHedgehog3-Genesis.py">SonicTheHedgehog3-Genesis</a></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/GhoulsnGhosts-Genesis.py">GhoulsnGhosts-Genesis</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/StreetsOfRage2-Genesis.py">StreetsOfRage2-Genesis</a></td>
+</tr>
+<tr>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/RevengeOfShinobi-Genesis.py">RevengeOfShinobi-Genesis</a></td>
+<td width="50%">&nbsp;<a href="https://github.com/SteveProXNA/OpenAItesting/blob/main/RetroCheatSheet/examples/Genesis/Strider-Genesis.py">Strider-Genesis</a></td>
+</tr>
+</table>
+-->
+<!--<br />-->
+<!--
+<table width="100%">
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiq_sCV31P7J5ePExSbnVkbowOWbTv29s7ZXtiN9-RwbHtAxN68J9Y13tiNDrXS2eP9wu4LTh_uH4O4bnGt3YS8v7qPB0arat1eSPilg7xilXjOhXmnZuh-ImBtBYysMeJaC2hGdoSOSQ7XxyKzHAXt0CKsrJ93A_XZYXHxk6ppRM9cpqiVFHdnhjvnmY/s320/AlteredBeast-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiq_sCV31P7J5ePExSbnVkbowOWbTv29s7ZXtiN9-RwbHtAxN68J9Y13tiNDrXS2eP9wu4LTh_uH4O4bnGt3YS8v7qPB0arat1eSPilg7xilXjOhXmnZuh-ImBtBYysMeJaC2hGdoSOSQ7XxyKzHAXt0CKsrJ93A_XZYXHxk6ppRM9cpqiVFHdnhjvnmY/s600/AlteredBeast-Genesis.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD9K0Pu4cfhWmN95VNIAGz6tHVeFv8ENeOz9D-V4M2KamWaqNvVh_d4WqfPOh5jBiSMB6VdC7fBTIHtMx9jOiZs3oBlG30qFL-aDPsh51xRQC0sqVIaeNVPp5R88NmReubvwVR6t5x_injzXw2sb3e71CcMbiexqgFfG2xf4wdjnYxX5doGTVzCTtHIqc/s320/Flicky-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD9K0Pu4cfhWmN95VNIAGz6tHVeFv8ENeOz9D-V4M2KamWaqNvVh_d4WqfPOh5jBiSMB6VdC7fBTIHtMx9jOiZs3oBlG30qFL-aDPsh51xRQC0sqVIaeNVPp5R88NmReubvwVR6t5x_injzXw2sb3e71CcMbiexqgFfG2xf4wdjnYxX5doGTVzCTtHIqc/s600/Flicky-Genesis.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv750Y48-_VMNmVtbUM-CT135MqHzncBZpmBlSrtKVuzoNpmJi39Awh5qoVBgwOOHN3xwMAY3Oa-OwZLbM9Mh9xf31XmynEMQ4xs96c1cPoStB9PYhIQbeNm6KgA5I8ayPbBh_8tQYGYzsV-4OZ8qA4HZOzx87vhkF0QLWtC8ap4Xe-_A18hdawtE-dzU/s320/GhoulsnGhosts-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv750Y48-_VMNmVtbUM-CT135MqHzncBZpmBlSrtKVuzoNpmJi39Awh5qoVBgwOOHN3xwMAY3Oa-OwZLbM9Mh9xf31XmynEMQ4xs96c1cPoStB9PYhIQbeNm6KgA5I8ayPbBh_8tQYGYzsV-4OZ8qA4HZOzx87vhkF0QLWtC8ap4Xe-_A18hdawtE-dzU/s600/GhoulsnGhosts-Genesis.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmTF9zOFbhF1wGIBM1vjj3NZY4YfUVQdUkMEwhajfy-VRNbUGnYpn64I9xn_d3Y34eVaqTIqAHZGylcmbm8XAWF5FWZNMbjl_zrZ5ERjyy7dTGtXuh7Xtpwhv-j1pnextyT8VlkGrMA3F_f3vq3j8onD4hSH9XiZiSrdQtNOm99zIGUezAREUKY7sKOzg/s320/RevengeOfShinobi-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmTF9zOFbhF1wGIBM1vjj3NZY4YfUVQdUkMEwhajfy-VRNbUGnYpn64I9xn_d3Y34eVaqTIqAHZGylcmbm8XAWF5FWZNMbjl_zrZ5ERjyy7dTGtXuh7Xtpwhv-j1pnextyT8VlkGrMA3F_f3vq3j8onD4hSH9XiZiSrdQtNOm99zIGUezAREUKY7sKOzg/s600/RevengeOfShinobi-Genesis.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimMC2BTDo7xYUIRM00tdghsxUpM5wrByYsLSGLnh1Xu6KjzCuz8MuKJH5RhoBCp10Jjm7Gpg2nIq06dSK5jadev-2TYH1OiVFRdkjP8FFQRLgBkUxmrPoifT1Gz7qB9scgGSu8NNVWx7Pu7qsgjllUZwTKZ-HEs7Ta5jom6zE1g6QNLcNYUmfhhAMMrPY/s320/SonicTheHedgehog2-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimMC2BTDo7xYUIRM00tdghsxUpM5wrByYsLSGLnh1Xu6KjzCuz8MuKJH5RhoBCp10Jjm7Gpg2nIq06dSK5jadev-2TYH1OiVFRdkjP8FFQRLgBkUxmrPoifT1Gz7qB9scgGSu8NNVWx7Pu7qsgjllUZwTKZ-HEs7Ta5jom6zE1g6QNLcNYUmfhhAMMrPY/s600/SonicTheHedgehog2-Genesis.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPIIjFczf4pmMckshYcr_8wlJ0Q6lRQe-LmXzPetlYMNPhB_LGkl68T-W2Ak-k8Jw-ma3aiJOnlp16fNA0zxOPP26F0D9t8SRF2Pg7QOMsCazDDUpP3E1VKeV8LMwM26b1FNLlvbCVmXLt2hyLbtizXPXOUpDlE6oUDBpTjHMmakxCqP-k2V12Q13WGGo/s320/SonicTheHedgehog3-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPIIjFczf4pmMckshYcr_8wlJ0Q6lRQe-LmXzPetlYMNPhB_LGkl68T-W2Ak-k8Jw-ma3aiJOnlp16fNA0zxOPP26F0D9t8SRF2Pg7QOMsCazDDUpP3E1VKeV8LMwM26b1FNLlvbCVmXLt2hyLbtizXPXOUpDlE6oUDBpTjHMmakxCqP-k2V12Q13WGGo/s600/SonicTheHedgehog3-Genesis.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim1BH-74ntg6Ma6s9Ap1HsOlXW4G5f1Ek7c2rYTH7vVjHszpBnumxUVwYDGqagNgIuzopyqJNYXow7Mj_ZDa7J_MUtk62XVJAMoEi58lqsVdYs-zHZKa7sE-CBe6aXFm6FzIGHQZ1LZodro8ut1DSfNTfCINHUctjTRHS58HYFr2khF3ocwOnH2VuTDRM/s320/StreetsOfRage2-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim1BH-74ntg6Ma6s9Ap1HsOlXW4G5f1Ek7c2rYTH7vVjHszpBnumxUVwYDGqagNgIuzopyqJNYXow7Mj_ZDa7J_MUtk62XVJAMoEi58lqsVdYs-zHZKa7sE-CBe6aXFm6FzIGHQZ1LZodro8ut1DSfNTfCINHUctjTRHS58HYFr2khF3ocwOnH2VuTDRM/s600/StreetsOfRage2-Genesis.png"/></a>
+</td>
+<td valign="top" width="50%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbNPv0UBNMtyZcSXLe9DQvZdEY4LmXRIfqIKxt_hCeWKspSQFH0rpS30_xSLhBpv6RCzyAXyUDC1piy4Eaf-LqBqIUWg1ya7DAeCqRM6D_da-tGPT8LJZjM1nswUSS4YVBIuj__mwUc6By0cB5j3fvKctPKN7i8d1gkQQ9cFj1o1km2ncMr9HBhqbaGps/s320/Strider-Genesis.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbNPv0UBNMtyZcSXLe9DQvZdEY4LmXRIfqIKxt_hCeWKspSQFH0rpS30_xSLhBpv6RCzyAXyUDC1piy4Eaf-LqBqIUWg1ya7DAeCqRM6D_da-tGPT8LJZjM1nswUSS4YVBIuj__mwUc6By0cB5j3fvKctPKN7i8d1gkQQ9cFj1o1km2ncMr9HBhqbaGps/s600/Strider-Genesis.png"/></a>
+</td>
+</tr>
+</table>
+-->
+<br />
+
+<u>Pull Request</u><br />
+Finally, setup Pull Request for future contributions.  Navigate to <a href="https://github.com/Farama-Foundation/stable-retro">stable-retro</a> source repo and Create new fork
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8VxWO4o0fC86pHr5yvjYlSnp0z08QJETcv7ezILRV97KKR7KmVN_wmsX6X8_ozRWiKKITYakeXisNG_ipQTFOE259tIM2odxjg11Up5JBacs9XB5vhQF5nYOTnqax3eP56MRnsU-GJsY-qx6t1PlbLq6a13AnYZajPEP9Y-fYPBmOIKtgIzT-xWNT6Xc/s960/ForkRetro02.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8VxWO4o0fC86pHr5yvjYlSnp0z08QJETcv7ezILRV97KKR7KmVN_wmsX6X8_ozRWiKKITYakeXisNG_ipQTFOE259tIM2odxjg11Up5JBacs9XB5vhQF5nYOTnqax3eP56MRnsU-GJsY-qx6t1PlbLq6a13AnYZajPEP9Y-fYPBmOIKtgIzT-xWNT6Xc/s600/ForkRetro02.png"/></a>
+-->
+<br />
+Git clone the stable-retro forked source code repository and setup the following Git username and user email
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git config --global --get user.name<br />
+&nbsp;git config --global --get user.email<br />
+</td>
+<td>
+&nbsp;git config --global user.name "SteveProXNA"<br />
+&nbsp;git config --global user.email "steven_boland@hotmail.com"<br />
+</td>
+</tr>
+</table>
+ -->
+<br />
+Next, configure the stable-retro upstream destination code repository in order to complete the Pull Request:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;git remote -v<br />
+</td>
+<td>
+&nbsp;git remote add upstream git@github.com:Farama-Foundation/stable-retro.git<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;origin<br />
+&nbsp;origin<br />
+</td>
+<td>
+&nbsp;git@github.com:SteveProXNA/stable-retro.git (fetch)<br />
+&nbsp;git@github.com:SteveProXNA/stable-retro.git (push)<br />
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;upstream<br />
+&nbsp;upstream<br />
+</td>
+<td>
+&nbsp;git@github.com:Farama-Foundation/stable-retro.git (fetch)<br />
+&nbsp;git@github.com:Farama-Foundation/stable-retro.git (push)<br />
+</td>
+</tr>	
+</table>
+-->
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlUSVFCkjK3s1xovOLU6rutW2a0boHTsdMk7-6Sr2sy6FWDzlPSQawUlPBjBOaTshnDP2OvN-WF65pfgelU1rnEmd6JVJvNow4t-pmMns_n4ScPGujT2Y3UrxTK8Nu6bXs66IgGim5y5iAbuBBLaJ9-Ni3nCf8lmUtwB5z4tZgBHYPN1oDAXEmhCe33Dc/s1168/ForkRetro05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlUSVFCkjK3s1xovOLU6rutW2a0boHTsdMk7-6Sr2sy6FWDzlPSQawUlPBjBOaTshnDP2OvN-WF65pfgelU1rnEmd6JVJvNow4t-pmMns_n4ScPGujT2Y3UrxTK8Nu6bXs66IgGim5y5iAbuBBLaJ9-Ni3nCf8lmUtwB5z4tZgBHYPN1oDAXEmhCe33Dc/s600/ForkRetro05.png"/></a>
+-->
+<br />
+
+</span>

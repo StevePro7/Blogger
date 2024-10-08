@@ -44,13 +44,13 @@ CODE
 &nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
 &nbsp;env.close()<br />
-</tr></td>
+</td></tr>
 </table>
 YouTube videos online also introduce OpenAI Gym but include <a href="https://www.youtube.com/watch?v=Vrro7W7iW2w">Frozen Lake</a> environment and <a href="https://www.youtube.com/watch?v=tkDIb8yl69g">Atari Breakout</a>.
 <br /><br />
 <br />
 <u>Gymnasium</u><br />
-The main problem with Gym was the lack of <a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">maintenance</a>: OpenAI did not allocate substantial resources for the development of Gym since its inception seven years earlier and, by 2020, it simply was not maintained.
+The main problem with Gym was the lack of <a href="https://wandb.ai/mukilan/intro_to_gym/reports/A-Gentle-Introduction-to-OpenAI-Gym--VmlldzozMjg5MTA3">maintenance</a>: OpenAI did not allocate substantial resources for the development of Gym since its inception seven years earlier, and, by2020, it simply was not maintained.
 <br /><br />
 <a href="https://gymnasium.farama.org">Gymnasium</a> is a maintained fork of the OpenAI Gym library. The Gymnasium interface is simple, pythonic, and capable of representing general RL problems with a compatibility wrapper for old Gym environments:
 <br /><br />
@@ -66,8 +66,8 @@ Creating <a href="https://github.com/Farama-Foundation/Gymnasium">/Gymnasium</a>
 &nbsp;pip install --upgrade pip<br />
 </td>
 <td>
-&nbsp;pip install gymnasium</br>
-&nbsp;pip install gymnasium[classic-control]</br>
+&nbsp;pip install gymnasium<br />
+&nbsp;pip install gymnasium[classic-control]<br />
 </td>
 </tr>
 </table>
@@ -86,7 +86,7 @@ CODE
 &nbsp;&nbsp;&nbsp;&nbsp;if terminated or truncated:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;observation, info = env.reset()<br />
 &nbsp;env.close()<br />
-</tr></td>
+</td></tr>
 </table>
 <br />
 <i>Differences</i><br />
