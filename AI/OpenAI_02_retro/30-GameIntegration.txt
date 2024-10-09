@@ -1,0 +1,54 @@
+As per the official Gym Retro 
+
+docs
+https://retro.readthedocs.io/en/latest/index.html
+
+Game Integration
+https://retro.readthedocs.io/en/latest/integration.html
+
+Integrating a game means taking a video game ROM file and setting it up as a reinforcement learning environment by defining 3 things:
+
+A starting state
+A reward function
+A done condition
+
+
+
+but in order to integrate a new game we must have the Game Integration tool built and setup.
+
+Here is a great video to help
+OpenAI game integration tool - part 1
+https://www.youtube.com/watch?v=lPYWaUAq_dY
+
+26-IntegrationToolBuild.txt
+TABLE
+
+
+./gym-retro-integration
+PIC
+gym-retro-integration.png
+linuxNew
+
+
+Launch CLion
+28-Integration
+
+If you'd like more info - how to reverse engineer UI then debug step thru code
+Open main.cpp
+
+SelectCMakeLists01
+SelectCMakeLists02
+
+gym-retro-integration-debug
+
+Also can step thru C++ test
+gym-retro-integration-tests
+
+
+TODO
+list the game files that can be used
+
+SMS	Sega Master System
+MD	MegaDrive
+etc.
+

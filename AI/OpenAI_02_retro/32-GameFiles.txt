@@ -1,0 +1,19 @@
+Game Integration
+https://retro.readthedocs.io/en/latest/integration.html
+
+
+State file
+This is a savestate from the beginning of the game, restarting the environment will put the agent at this point in the game
+
+
+data.json
+This file defines the list of game-related variables that python can see based on their memory addresses in the games
+
+
+
+scenario.json
+This file defines the reward function and done condition using the variables defined in data.json
+
+
+metadata.json
+This file defines the default starting state if no state is specified by the user as well as some miscellaneous debugging information.
