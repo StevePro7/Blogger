@@ -1,0 +1,29 @@
+<span style="font-family:verdana;font-size:85%;">
+ 
+<u>Game Integration</u><br />
+As per the official Gym Retro <a href="https://retro.readthedocs.io/en/latest/integration.html">docs</a> Integrating a game means taking a video game ROM file and setting it up as a reinforcement learning environment by defining 3 things: #1 A starting state, #2 A reward function, #3 A done condition.  However, in order to integrate a new game we must have the Game Integration tool <a href="https://github.com/SteveProXNA/stable-retro/blob/master/docs/developing.md#linux">setup</a>.
+<br /><br />
+<b>Integration UI</b><br />
+Follow instructions as per <a href="https://www.youtube.com/watch?v=lPYWaUAq_dY">video</a> to install all dependencies then build Game Integration UI tool and launch: 
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;sudo apt-get update<br />
+&nbsp;sudo apt-get install capnprotoe<br />
+&nbsp;sudo apt-get install libcapnp-dev<br />
+&nbsp;sudo apt-get install libqt5opengl5-dev<br />
+&nbsp;sudo apt-get install qtbase5-dev<br />
+</td>
+<td width="50%">
+&nbsp;sudo apt-get install zlib1g-dev<br />
+&nbsp;sudo apt autoremove<br />
+&nbsp;cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY<br />
+&nbsp;make -j$(grep -c ^processor /proc/cpuinfo)<br />
+&nbsp;./gym-retro-integration<br />
+</td>
+</tr>
+</table>
+<!--<br />-->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitrgpRmJc8qiIt-b8S6W2NgllKTfrzpp1Jrk0v_aOwfcP4_nf9MlkqfMdO16OaWIV4UE4OkafeVYtWH5uowMi4dtm8kG1JnmLa-xcRfYbXpsAUVOW29fpFA1G1PaScUTZ6J5WeOKVHoPJeqxWAg4vtjvmXnUQuH0aHbV-wTzyUXZ6hoJcjgGTeFxjprxs/s1055/gym-retro-integration.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitrgpRmJc8qiIt-b8S6W2NgllKTfrzpp1Jrk0v_aOwfcP4_nf9MlkqfMdO16OaWIV4UE4OkafeVYtWH5uowMi4dtm8kG1JnmLa-xcRfYbXpsAUVOW29fpFA1G1PaScUTZ6J5WeOKVHoPJeqxWAg4vtjvmXnUQuH0aHbV-wTzyUXZ6hoJcjgGTeFxjprxs/s600/gym-retro-integration.png"/></a>
+</span>
