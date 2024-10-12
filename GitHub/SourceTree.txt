@@ -1,0 +1,48 @@
+Source Tree 
+11-Oct-2024
+
+
+01.
+Red Exclamation
+
+Reference:
+https://community.atlassian.com/t5/Sourcetree-questions/What-does-the-red-mark-on-the-Remote-Icon-in-the-menu-bar-mean/qaq-p/1365920
+
+I saw red exclamation on the Remote icon
+Here is the fix
+
+Tools menu | Authentication
+Add
+
+StevePro7@githum.com
+Username	StevePro7
+Authentication	OAuth
+Protocol	HTTPS
+
+Add
+Hosting service	GitHub
+Host URL	https://github.com
+Preferred 	HTTPS
+protocol
+
+Authentication	OAuth
+Username
+
+click Refresh OAuth Token
+
+IMPORTANT
+ensure that Firefox is the default browser
+Login to GitHub
+OK
+
+Now go back to repo that has the red exclamation on Remote icon
+Repository settings
+Remote
+origin		https://StevePro7@github.com/StevePro7/Blogger.git
+
+Edit
+Remote Account
+StevePro7
+OK
+
+Now the Red Exclamation disappears!
