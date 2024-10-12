@@ -4,8 +4,32 @@
 Now that we have built the Game Integration tool setup either directly from the CLI and/or built from source it is now possible to integrate new games into Gym-Retro.  This process involves: #1 Creating states for Gym Retro environment to load, #2 Inspect ROM memory for points of interest, #3 Find those address and types.
 <br /><br />
 The following videos on OpenAI Game Integration tool Part 1, Part 2, Part 3 give some excellent examples on how to implement this process + create the following necessary files in order to Integrate brand new games:
-<br /><br />
-TODO - complete table here! 40-GameFiles.txt
-<br /><br />
-
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;State file&nbsp;</td>
+<td>&nbsp;Savestate from game beginning.  Restart the environment puts agent at this point in the game</td>
+</tr>
+<tr>
+<td>&nbsp;data.json
+</td>
+<td>&nbsp;Defines the list of game-related variables that Python sees based on game memory addresses</td>
+</tr>
+<tr>
+<td>&nbsp;scenario
+</td>
+<td>&nbsp;JSON file defines the reward function and done condition using variables defined at data.json
+</td>
+</tr>
+<tr>
+<td>&nbsp;metadata
+</td>
+<td>&nbsp;JSON file defines starting state if no state specified by user and miscellaneous debugging info
+</td>
+</tr>
+</table>
+  
+<br />
+  
 </span>
