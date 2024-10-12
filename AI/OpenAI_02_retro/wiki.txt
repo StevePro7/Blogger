@@ -429,4 +429,111 @@ Navigate to the <a href="https://github.com/SteveProXNA/stable-retro/tree/master
 -->
 <br />
 <br />
+
+<u>Game Integration</u><br />
+As per the official Gym Retro <a href="https://retro.readthedocs.io/en/latest/integration.html">docs</a> Integrating a game means taking a video game ROM file and setting it up as a reinforcement learning environment by defining 3 things: #1 A starting state, #2 A reward function, #3 A done condition.  However, in order to integrate a new game we must have the Game Integration tool <a href="https://github.com/SteveProXNA/stable-retro/blob/master/docs/developing.md#linux">setup</a>.
+<br /><br />
+<b>Integration UI</b><br />
+Follow instructions as per <a href="https://www.youtube.com/watch?v=lPYWaUAq_dY">video</a> to install all dependencies then build Game Integration UI tool and launch: 
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;sudo apt-get update<br />
+&nbsp;sudo apt-get install capnproto<br />
+&nbsp;sudo apt-get install libcapnp-dev<br />
+&nbsp;sudo apt-get install libqt5opengl5-dev<br />
+&nbsp;sudo apt-get install qtbase5-dev<br />
+</td>
+<td width="50%">
+&nbsp;sudo apt-get install zlib1g-dev<br />
+&nbsp;sudo apt autoremove<br />
+&nbsp;cmake . -DBUILD_UI=ON -UPYLIB_DIRECTORY<br />
+&nbsp;make -j$(grep -c ^processor /proc/cpuinfo)<br />
+&nbsp;./gym-retro-integration<br />
+</td>
+</tr>
+</table>
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitrgpRmJc8qiIt-b8S6W2NgllKTfrzpp1Jrk0v_aOwfcP4_nf9MlkqfMdO16OaWIV4UE4OkafeVYtWH5uowMi4dtm8kG1JnmLa-xcRfYbXpsAUVOW29fpFA1G1PaScUTZ6J5WeOKVHoPJeqxWAg4vtjvmXnUQuH0aHbV-wTzyUXZ6hoJcjgGTeFxjprxs/s1055/gym-retro-integration.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitrgpRmJc8qiIt-b8S6W2NgllKTfrzpp1Jrk0v_aOwfcP4_nf9MlkqfMdO16OaWIV4UE4OkafeVYtWH5uowMi4dtm8kG1JnmLa-xcRfYbXpsAUVOW29fpFA1G1PaScUTZ6J5WeOKVHoPJeqxWAg4vtjvmXnUQuH0aHbV-wTzyUXZ6hoJcjgGTeFxjprxs/s600/gym-retro-integration.png"/></a>
+<br />
+-->
+<br />
+<i>Supported ROMs</i><br />
+<a href="https://en.wikipedia.org/wiki/ROM_image">ROM</a> files contain the game itself.  Each system has a unique file extension to denote the compatible system:
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;<b>EXTN</b></td><td>&nbsp;<b>SYSTEM</b></td><td>&nbsp;<b>EXAMPLE</b></td></tr>
+<tr><td>&nbsp;a26</td><td>&nbsp;Atari 2600</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/automaton.a26">automaton.a26</a></td></tr>
+<tr><td>&nbsp;gb</td><td>&nbsp;Nintendo Game Boy</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/dox-fire.gb">dox-fire.gb</a></td></tr>
+<tr><td>&nbsp;gba</td><td>&nbsp;Nintendo Game Boy Advance</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/Vantage-LostMarbles.gba">Vantage-LostMarbles.gba</a></td></tr>
+<tr><td>&nbsp;gg</td><td>&nbsp;Sega Game Gear</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/benryves-SegaTween.gg">benryves-SegaTween.gg</a></td></tr>
+<tr><td>&nbsp;md</td><td>&nbsp;Sega Genesis [Mega Drive]</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/Dekadence-Dekadrive.md">Dekadence-Dekadrive.md</a></td></tr>
+<tr><td>&nbsp;nes</td><td>&nbsp;Nintendo Entertainment System [Famicom]</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/Dr88-FamiconIntro.nes">Dr88-FamiconIntro.nes</a></td></tr>
+<tr><td>&nbsp;pce</td><td>&nbsp;NEC TurboGrafx-16 [PC Engine]</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/chrisc-512_Colours.pce">chrisc-512_Colours.pce</a></td></tr>
+<tr><td>&nbsp;sfc</td><td>&nbsp;Super Nintendo Entertainment System [Super Famicom]</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/Anthrox-SineDotDemo.sfc">Anthrox-SineDotDemo.sfc</a></td></tr>
+<tr><td>&nbsp;sms</td><td>&nbsp;Sega Master System</td><td>&nbsp;<a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/roms/blind-happy10.sms">blind-happy10.sms</a></td></tr>
+</table>
+<br /><br />
+
+Launch CLion | Open Stable-Retro.  Navigate to <b>src/ui</b> folder.  Open <a href="https://github.com/SteveProXNA/stable-retro/blob/master/src/ui/main.cpp">main.cpp</a>.  Click "Select CMakeLists.txt":
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1Vrfi-B9Y0-tnvxH9lcEjhQzq4DL-zHMune-S3HPZapo1tQhB8sPUKUlR7c_HKsPmjNoVQ1ry0OkP0CEPijk3PKZSfCmy20CSoAygSmpNbIJ5fqkIsUfCepGkONz2Sv2kmE6267rFFw_IqRHzrkVDDonH_qvbNNxKv7VuNEvGrJVPyo4mXAUSsuKAKqY/s979/SelectCMakeLists01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1Vrfi-B9Y0-tnvxH9lcEjhQzq4DL-zHMune-S3HPZapo1tQhB8sPUKUlR7c_HKsPmjNoVQ1ry0OkP0CEPijk3PKZSfCmy20CSoAygSmpNbIJ5fqkIsUfCepGkONz2Sv2kmE6267rFFw_IqRHzrkVDDonH_qvbNNxKv7VuNEvGrJVPyo4mXAUSsuKAKqY/s600/SelectCMakeLists01.png"/></a>
+-->
+<br />
+Navigate to <a href="https://github.com/SteveProXNA/stable-retro/blob/master/CMakeLists.txt">CMakeLists.txt</a> file | OK | Trust Project.  Afterwards CLion will index the project and update all symbols.  Click Edit configurations drop down list.  Choose gym-retro-integration | Debug.  Click Debug icon:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmrdKo5Zl7dboWF6fRSOHMobQr7uTDIdvTDtCPMeHxgCnNrLe__guVJL7NVQngEUP0ZJHO55xnDm40NIXqOLQ8xlGJ-rBipq-zDnVcDpaTfRYI4UMm-wfld-dNC2tMwnCNQWpLFGLaJGxs9BaL8XlASahiddeeSEa7OKium2H9uxRxaMtJsRWtMdAWt7Q/s1040/gym-retro-integration-debug.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmrdKo5Zl7dboWF6fRSOHMobQr7uTDIdvTDtCPMeHxgCnNrLe__guVJL7NVQngEUP0ZJHO55xnDm40NIXqOLQ8xlGJ-rBipq-zDnVcDpaTfRYI4UMm-wfld-dNC2tMwnCNQWpLFGLaJGxs9BaL8XlASahiddeeSEa7OKium2H9uxRxaMtJsRWtMdAWt7Q/s600/gym-retro-integration-debug.png"/></a>
+-->
+<br />
+Finally, debug tests.  Navigate to <b>tests</b> folder.  Open <a href="https://github.com/SteveProXNA/stable-retro/blob/master/tests/data.cpp">data.cpp</a>.  Choose tests-data | Debug.  Click Debug icon:  
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8H2yhl_zDDGIHNHNfxyyvozvjT95YOsgMpVxiJcKty49mGju62FhyphenhyphenjYc_net2zugwYAR5i4bS7Z2Bx_Xef0z7sI3hdiWSt_bcXJApIRu8oR5RVMVUUFawh0IbTIAMX88o89KY8iisNtUg6xe4Hzg5nSB4pahq660TTS-QyEn8Nv8uq8t3pTM37INgDUc/s1040/gym-retro-integration-tests.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8H2yhl_zDDGIHNHNfxyyvozvjT95YOsgMpVxiJcKty49mGju62FhyphenhyphenjYc_net2zugwYAR5i4bS7Z2Bx_Xef0z7sI3hdiWSt_bcXJApIRu8oR5RVMVUUFawh0IbTIAMX88o89KY8iisNtUg6xe4Hzg5nSB4pahq660TTS-QyEn8Nv8uq8t3pTM37INgDUc/s600/gym-retro-integration-tests.png"/></a>
+<br />
+-->
+
+<br />
+<u>Process</u><br />
+Now that we have built the Game Integration tool setup either directly from the <a href="https://en.wikipedia.org/wiki/Command-line_interface">CLI</a> and/or built from source it is now possible to <a href="https://medium.com/aureliantactics/integrating-new-games-into-retro-gym-12b237d3ed75">integrate</a> new games into Gym-Retro.  This process involves: #1 Creating states for Gym Retro environment to load, #2 Inspect ROM memory for points of interest, #3 Find those address and types.
+<br /><br />
+The following videos on OpenAI Game Integration tool <a href="https://www.youtube.com/watch?v=lPYWaUAq_dY">Part 1</a>, <a href="https://www.youtube.com/watch?v=RZhf_ovCNWk">Part 2</a>, <a href="https://www.youtube.com/watch?v=kZAxM7QIq6k">Part 3</a> give some excellent examples on how to implement this process + create the following necessary files in order to Integrate brand new games:
+<br /><br />
+<b>Files</b><br />
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;State file&nbsp;</td>
+<td>&nbsp;Savestate from game beginning.  Restart the environment puts agent at this point in the game</td>
+</tr>
+<tr>
+<td>&nbsp;data.json
+</td>
+<td>&nbsp;Defines the list of game-related variables that Python sees based on game memory addresses</td>
+</tr>
+<tr>
+<td>&nbsp;scenario
+</td>
+<td>&nbsp;JSON file defines the reward function and done condition using variables defined at data.json
+</td>
+</tr>
+<tr>
+<td>&nbsp;metadata
+</td>
+<td>&nbsp;JSON file defines starting state if no state specified by user and miscellaneous debugging info
+</td>
+</tr>
+</table>
+<br />
+<br />
+
+<u>Summary</u><br />
+To summarize, we have now setup Stable Retro environments for classic 8-bit video game systems like the Sega Master System and 16-bit video game systems like the Sega Genesis [MD] the next step would be to use reinforcement learning to train a bot to play classic emulated video games using this Gym Retro <a href="https://github.com/andruschak/openai-gym-retro">setup</a>.
+<br /><br />
+Consequently, Python <a href="https://neat-python.readthedocs.io/en/latest">NEAT</a> is a popular library for training neural networks using genetic algorithms.  There is an excellent Open AI and NEAT <a href="https://www.youtube.com/playlist?list=PLTWFMbPFsvz3CeozHfeuJIXWAJMkPtAdS">Tutorial</a> series that integrates Sonic the Hedgehog as a testbed for applied reinforcement learning to provide a rich, rewarding, and visually complex environment that is well-suited for evolving neural networks.  Ultimate goal: would be to use this as inspiration to integrate more Indie games!
+
+
+
 </span>
