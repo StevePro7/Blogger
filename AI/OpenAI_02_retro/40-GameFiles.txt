@@ -17,3 +17,29 @@ This file defines the reward function and done condition using the variables def
 
 metadata.json
 This file defines the default starting state if no state is specified by the user as well as some miscellaneous debugging information.
+
+
+
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;State file&nbsp;</td>
+<td>&nbsp;Savestate from game beginning.  Restart the environment puts agent at this point in the game</td>
+</tr>
+<tr>
+<td>&nbsp;data.json
+</td>
+<td>&nbsp;Defines the list of game-related variables that Python sees based on game memory addresses</td>
+</tr>
+<tr>
+<td>&nbsp;scenario
+</td>
+<td>&nbsp;JSON file defines the reward function and done condition using variables defined at data.json
+</td>
+</tr>
+<tr>
+<td>&nbsp;metadata
+</td>
+<td>&nbsp;JSON file defines starting state if no state specified by user and miscellaneous debugging info
+</td>
+</tr>
+</table>
