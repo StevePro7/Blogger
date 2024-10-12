@@ -377,4 +377,56 @@ Next, configure the stable-retro upstream destination code repository in order t
 -->
 <br />
 
+Launch PyCharm | Open Stable-Retro | Create virtual environment | Pip install all dependencies as required:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;pip install -e .<br />
+</td>
+<td>
+&nbsp;pip install --upgrade pip<br />
+</td>
+</tr>
+</table>
+-->
+<br />
+IMPORTANT<br />
+If Python Interpreter not set and/or Virtual Environment not available then choose File | Settings... | Project: Python Interpreter | Add Interpreter | Add Local Interpreter.  Launch terminal: <b>source .venv/bin/activate</b>.  
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhklqJyB2zdNqzpUNuZK0_1w23t5vpIa1g76MxeuAxkYLKz7aQ8N8G-ZImdd6XbLIJJSjojfapdacR2fxVDDvRB4IyiJhY6w0QNGoTGRRFC-aZjignRYfc62jWk7qzo2ODxeDdrS_rZEMtnSPHEaTySdDjJy5-q8XgWxXW3Oedh-o0jGLioy4hZq9A8wDg/s1028/StableRetroVenv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhklqJyB2zdNqzpUNuZK0_1w23t5vpIa1g76MxeuAxkYLKz7aQ8N8G-ZImdd6XbLIJJSjojfapdacR2fxVDDvRB4IyiJhY6w0QNGoTGRRFC-aZjignRYfc62jWk7qzo2ODxeDdrS_rZEMtnSPHEaTySdDjJy5-q8XgWxXW3Oedh-o0jGLioy4hZq9A8wDg/s600/StableRetroVenv.png"/></a>
+<br />
+-->
+<br />
+<b>Examples</b><br />
+Navigate to the <a href="https://github.com/SteveProXNA/stable-retro/tree/master/retro/examples">examples</a> sub-directory.  Checkout <a href="https://github.com/SteveProXNA/stable-retro/blob/master/retro/examples/trivial_random_agent.py">trivial_random_agent.py</a> which should resemble the Hello Stable-Retro program above.  Airstriker-Genesis ROM is included by default.  Copy your Sega games into the corresponding <a href="https://github.com/SteveProXNA/stable-retro/tree/master/retro/data">data</a> directory stable | game directory.  Update name to the game ROM name.  Execute script! 
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKtFPBHqFB5caLiqALuZIUjz_YizrDwV4HV0aUwx8XtPvB6jFuFWgdC9_gNrHkHBAbu7HMlYfnitnC2ARa2YeUGAhmulYIIsoGdNZOJlVUjIzJPMsfw-PLMlWCWqMKO25rKtdR5tP6RpWpim4xXKbTEvrqKdF70Zo0wy_TbIjdYdjeEkPbrGYK84NjrJc/s1009/PyCharmDebugGames.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKtFPBHqFB5caLiqALuZIUjz_YizrDwV4HV0aUwx8XtPvB6jFuFWgdC9_gNrHkHBAbu7HMlYfnitnC2ARa2YeUGAhmulYIIsoGdNZOJlVUjIzJPMsfw-PLMlWCWqMKO25rKtdR5tP6RpWpim4xXKbTEvrqKdF70Zo0wy_TbIjdYdjeEkPbrGYK84NjrJc/s600/PyCharmDebugGames.png"/></a>
+<br />
+-->
+<br />
+<b>Tests</b><br />
+Navigate to the <a href="https://github.com/SteveProXNA/stable-retro/tree/master/tests/test_python">test_python</a> sub-diretory.  Open any test file | right click | Run test or Debug test to step thru source code.  Important: you may need to install the pytest package if you get usual ModuleNotFound error:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+&nbsp;pip install pytest<br />
+</td>
+<td>
+&nbsp;pip install --upgrade pip<br />
+</td>
+</tr>
+</table>
+<br />
+-->
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4mrkMSb0-L771AIHOQQYGEo_xMOEVk3dY1jeIpTvV4q6su0H1HqqwdAO3dtgqsBHRLM6qsEw0Np4tsY7W4uuz2RfBCFKV8a2_qoGVg2-sFamRP1GqMK4Sib6A02PadukuhRoHSx72O4ZC5blILsPRBKyvA7e3drbQE45VPROT65w2fmSV8-mxXMstGoQ/s1009/PyCharmDebugTests.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4mrkMSb0-L771AIHOQQYGEo_xMOEVk3dY1jeIpTvV4q6su0H1HqqwdAO3dtgqsBHRLM6qsEw0Np4tsY7W4uuz2RfBCFKV8a2_qoGVg2-sFamRP1GqMK4Sib6A02PadukuhRoHSx72O4ZC5blILsPRBKyvA7e3drbQE45VPROT65w2fmSV8-mxXMstGoQ/s600/PyCharmDebugTests.png"/></a>
+-->
+<br />
+<br />
 </span>
