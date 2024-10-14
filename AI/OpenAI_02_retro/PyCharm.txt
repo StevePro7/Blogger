@@ -10,3 +10,22 @@ python -m venv .venv
 source .venv/bin/activate
 
 
+pip install -e .
+pip install --upgrade pip
+
+
+TESTs
+pip install pytest
+
+
+CLion
+This is the reason why the name changes to Gym Retro
+
+
+CMakeLists.txt
+project("Gym Retro" VERSION ${PROJECT_VERSION})
+
+load this file and the project name changes!
+
+Reference:
+https://stackoverflow.com/questions/33066772/in-clion-how-can-i-rename-a-project
