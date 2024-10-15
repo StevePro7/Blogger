@@ -1,0 +1,25 @@
+PyCharm 02
+15-Oct-2024
+
+
+Launch PyCharm
+/home/stevepro/GitHub/SteveProXNA2/OpenAItesting/RetroCheatSheet
+
+
+python -m venv .venv
+source .venv/bin/activate
+
+
+pip install --upgrade pip
+pip install stable-retro
+
+cd examples
+python examples/copy_files.py
+
+
+IMPORTANT
+when get errors then just revert the default Python interpreter to
+RetroCheatSheet
+
+as was created before - not sure why this works as the pip list
+is the same
