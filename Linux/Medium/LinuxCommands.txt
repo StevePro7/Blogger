@@ -1,0 +1,61 @@
+5 Linux Command Tricks That Will Change Your Life as a Programmer
+16-Oct-2024
+
+https://levelup.gitconnected.com/5-linux-command-tricks-that-will-change-your-life-as-a-programmer-825a4524218a
+
+
+01.
+Creating Multiple Combinations of Folders with mkdir and Braces {}
+mkdir -p {dev,test,prod}/{backend,frontend}
+
+OUTPUT
+dev/
+  backend/
+  frontend/
+test/
+  backend/
+  frontend/
+prod/
+  backend/
+  frontend/
+  
+  
+02.
+Navigate Back with cd - Instead of Repeatedly Using cd ..
+
+NO
+cd ..
+cd ..
+cd ..
+cd ..
+
+YES
+cd ~
+
+
+03.
+Create Multiple Files Quickly with touch and a Range of Numbers
+touch test{1..100}.txt
+
+OUTPUT
+100X testX.txt files
+
+
+04.
+Real-Time File Updates with tail -f
+tail -f error_file.log
+tail -f error_file.log | grep "ERROR"
+
+
+05.
+Review Recent Commands with history 5
+history 5
+history 25
+
+
+CONCLUSION
+mkdir 		with braces to create multiple folders in one go.
+cd - 		to quickly jump back to your previous directory.
+touch 		with a range to create multiple files at once.
+tail -f 	to follow log files in real-time.
+history 5 	to recall and re-execute recent commands.
