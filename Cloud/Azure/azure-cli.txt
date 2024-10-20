@@ -32,7 +32,7 @@ export AZ_SP_ID=	<appId>
 export AZ_SP_PASSWORD=	<password>
 export AZ_TENANT_ID=	<tenant>
 
-
+az account list
 
 # find your sp app id
 az ad sp list --display-name ${USER}-sp --query "[0].appId"
