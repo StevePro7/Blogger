@@ -22,3 +22,16 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
+
+
+Install aws iam authenticator
+https://weaveworks-gitops.awsworkshop.io/60_workshop_6_ml/00_prerequisites.md/50_install_aws_iam_auth.html
+
+curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/aws-iam-authenticator
+chmod +x ./aws-iam-authenticator
+sudo mv ./aws-iam-authenticator /usr/local/bin
+aws-iam-authenticator help
+
+
+EXAMPLE to install AWS-EKS cluster
+https://dev.to/rasankhalsa/deploying-kubernetes-cluster-with-yaml-on-aws-eks-2561
