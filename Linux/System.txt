@@ -1,0 +1,12 @@
+System
+22-Oct-2024
+
+uname -a
+
+Is my Linux laptop amd64 compatible?
+https://askubuntu.com/questions/133111/how-can-i-check-if-my-cpu-is-amd64-compatible
+
+ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
+echo $ARCH
+
+
