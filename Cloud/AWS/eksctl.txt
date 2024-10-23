@@ -35,3 +35,23 @@ aws-iam-authenticator help
 
 EXAMPLE to install AWS-EKS cluster
 https://dev.to/rasankhalsa/deploying-kubernetes-cluster-with-yaml-on-aws-eks-2561
+
+cluster.yaml
+https://github.com/eksctl-io/eksctl/tree/main/examples
+
+eksctl create cluster -f cluster.yaml --dry-run
+eksctl create cluster -f cluster.yaml
+
+
+ERROR
+Error: getting availability zones: error getting availability zones for region
+operation error EC2: DescribeAvailabilityZones, https response error StatusCode
+
+04
+Error: operation error EC2: DescribeVpcs, https response error StatusCode: 403,
+api error UnauthorizedOperation: You are not authorized to perform this operation.
+User: arn:aws:iam::<account_id>>:user/<user>> is not authorized to perform:
+ec2:DescribeVpcs because no identity-based policy allows the ec2:DescribeVpcs action
+
+05
+Error: nodeGroups[0].overrideBootstrapCommand is required when using a custom AMI based on AmazonLinux2 (nodeGroups[0].ami)
