@@ -1,0 +1,53 @@
+AWS-CLI resources
+23-Oct-2024
+
+Linux terminal
+aws sso login
+aws --version
+
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
+aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table
+aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table
+aws s3 ls
+
+aws iam list-users --query 'Users[*].UserName' --output table
+aws iam list-roles --query 'Roles[*].RoleName' --output table
+aws iam list-policies --query 'Policies[*].PolicyName' --output table
+
+aws rds describe-db-instances --query 'DBInstances[*].DBInstanceIdentifier' --output table
+aws lambda list-functions --query 'Functions[*].FunctionName' --output table
+aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --query 'StackSummaries[*].StackName' --output table
+aws ec2 describe-vpcs --query 'Vpcs[*].VpcId' --output table
+
+aws elb describe-load-balancers --query 'LoadBalancerDescriptions[*].LoadBalancerName' --output table
+aws elbv2 describe-load-balancers --query 'LoadBalancers[*].LoadBalancerName' --output table
+
+aws route53 list-hosted-zones --query 'HostedZones[*].Name' --output table
+aws ecs list-clusters --query 'clusterArns' --output table
+aws ecr describe-repositories --query 'repositories[*].repositoryName' --output table
+aws sns list-topics --query 'Topics[*].TopicArn' --output table
+aws sqs list-queues --query 'QueueUrls' --output table
+
+aws elasticbeanstalk describe-environments --query 'Environments[*].EnvironmentName' --output table
+aws cloudwatch describe-alarms --query 'MetricAlarms[*].AlarmName' --output table
+aws ssm describe-parameters --query 'Parameters[*].Name' --output table
+aws eks list-clusters --query 'clusters' --output table
+aws ec2 describe-addresses --query 'Addresses[*].PublicIp' --output table
+
+
+
+#!/bin/bash
+
+echo "Checking for EC2 instances..."
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
+
+echo "Checking for S3 buckets..."
+aws s3 ls
+
+echo "Checking for RDS instances..."
+aws rds describe-db-instances --query 'DBInstances[*].DBInstanceIdentifier' --output table
+
+echo "Checking for VPCs..."
+aws ec2 describe-vpcs --query 'Vpcs[*].VpcId' --output table
+
+# Add other checks similarly
