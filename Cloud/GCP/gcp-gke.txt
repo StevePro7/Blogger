@@ -1,0 +1,50 @@
+GCP GKE
+24-Oct-2024
+
+gcp gke gcloud container clusters create tutorial
+https://cloud.google.com/sdk/gcloud/reference/container/clusters/create
+https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+
+
+thorough example:
+
+gcloud container clusters create ${CLUSTER_NAME}
+	--enable-intra-node-visibility 
+	--enable-network-policy
+        --project=SteveProProject 
+	--region=europe-west1
+	--zone=europe-west1
+        --num-nodes=3
+	--machine-type=# TODO - get machine type
+	--image-type # TODO - get image type
+        --cluster-version=v1.21.3
+	--release-channel=None
+        --no-enable-stackdriver-kubernetes
+        --network=default
+	--subnetwork=default
+        --labels=prefix=${CLUSTER_NAME},created-by=${USER}
+        --quiet --verbosity debug
+       
+
+gcloud container clusters get-credentials ${CLUSTER_NAME}
+        --project=SteveProProject 
+	--region=eu-west-1
+	--zone=eu-west-1a
+        --quiet --verbosity debug
+
+
+IMPORTANT
+gcloud compute machine-types list
+gcloud container get-server-config
+
+Release channel
+https://cloud.google.com/kubernetes-engine/docs/how-to/release-channels
+https://cloud.google.com/sdk/gcloud/reference/container/clusters/create
+rapid, regular, extended, stable, None
+
+
+Manual
+https://medium.com/@use.abhiram/creating-a-kubernetes-cluster-in-google-cloud-platform-gcp-eed2a19a4a1a
+
+https://console.cloud.google.com 
+and navigate to the “Kubernetes Engine” section under the “Compute” category.
