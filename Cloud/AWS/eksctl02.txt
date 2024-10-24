@@ -214,3 +214,13 @@ DELETE
 aws eks list-clusters --query 'clusters' --output table
 cluster-2
 eksctl delete cluster --name  cluster-2 --region eu-west-1 --force --parallel 10
+
+2024-10-24 14:03:26 [ℹ]  deleting EKS cluster "cluster-2"
+2024-10-24 14:03:27 [ℹ]  will drain 1 unmanaged nodegroup(s) in cluster "cluster-2"
+2024-10-24 14:03:27 [ℹ]  starting parallel draining, max in-flight of 10
+2024-10-24 14:03:27 [ℹ]  cordon node "ip-192-168-3-67.eu-west-1.compute.internal"
+2024-10-24 14:04:30 [!]  1 pods are unevictable from node ip-192-168-3-67.eu-west-1.compute.internal
+
+
+There was a coredns pod that was pending so I decided to scale the coredns deployment to 0 replicas
+kubectl scale --replicas=0 deployment/coredns
