@@ -8,6 +8,12 @@ aws --version
 LONG LIST of polices
 aws iam list-policies --query 'Policies[*].PolicyName' --output table
 
+DEFAULUT
+instance    i-040d212aba980a34a
+cluster     TestCluster
+VPC         vpc-019266fb4fa9f2e55
+Sec grp     sg-006a26ec5d4b0f51d
+
 
 aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
 aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table
