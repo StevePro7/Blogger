@@ -57,11 +57,12 @@ RNN [Recurrent Neural Networks] excelled in sequential data processing, such as 
 These technologies laid the foundation for gen AI.
 
 
-LLMs
-advanced AI systems designed to understand the intricacies of human language and to generate
-intelligent, creative responses when queried
-Successful LLMs are trained on enormous data sets
+//LLMs
+//advanced AI systems designed to understand the intricacies of human language and to generate
+//intelligent, creative responses when queried
+//Successful LLMs are trained on enormous data sets
 
+LLMs
 LLMs are advanced AI systems trained on enormous data sets and designed to understand the intricacies of
 human language /*and*/ to generate intelligent, creative responses when queried.
 
@@ -123,3 +124,84 @@ to harness and protect enterprise data for gen AI initiatives is
 to consolidate disparate sources into a cloud data platform that
 provides strong security and governance for data and the models
 customized with that data.
+
+
+Chp.02
+categorize LLMs
+
+Foundation models
+task-specific
+domain-specific
+
+Generative Pre-trained Transformer
+optimized for conversational interactions within the ChatGPT LLM platform
+
+
+Pg.12
+Examples of Large Language Models
+Open AI         GPT
+Google          BERT        Bidirectional Encoder Representations from Transformers
+Meta            Llama       Large Language Model Meta AI
+Meta AI         Code Llama
+Snowflake       Snowflake Copilot
+Carnegie Uni    XLNet
+
+
+Pg.13
+IMPORTANT
+2023 Bloomberg Intelligence report
+GenAI market is poised to explode, growing to $1.3 trillion over the next 10 years
+//from a market size of just $40 billion in 2022 - a compound annual growth of 42%
+
+
+Pg.14
+Neural networks key component to AI systems
+but
+today's AI models also have "attention mechanism" that help encoder + decoder work together more effectively
+Encoder     understands input
+Decoder     generates  output
+
+based on transformer architecture
+power lies on capability to learn relevance of each word to all other words
+
+
+Pg.15
+Prompt
+text you provide to a [large] language model
+
+Completion
+prompt given to the model which then generates an answer
+
+Inference
+process of using model to generate text
+
+
+Reinforcment Learning
+[with human feedback] helps guide the model's output
+
+
+Pg.16
+Vecotr embeddings
+LLM => large datasets => represented in vector form
+i.e.
+words are represented by numbers in multi-dimensional space
+this makes it easier for models to compare and analyze information
+
+Vector DBs
+store data as mathematical representations that can be easily parsed by ML models
+enable GenAI systems to quickly retrieve relevant data during generation + inference processes
+
+Ensure data platform includes vector search functionality that helps contextualize LLMs
+with your data such as RAG [Retrieval-Augmented Generation]
+
+
+Pg.17
+Developer tools + framworks
+OpenAI GPT Playground
+Snowflaked Cortex
+Hugging Face Transformer Library
+
+
+Pg.18
+Blob        Binary Objects
+unstructured data
