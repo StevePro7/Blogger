@@ -205,3 +205,94 @@ Hugging Face Transformer Library
 Pg.18
 Blob        Binary Objects
 unstructured data
+
+
+Chp.03
+Parameters      LLM
+Pg.21
+trainable variables in an LLM
+
+more params = more "knowledge" but
+fewer params consume fewer [compute] resources + faster to fine-tune + deploy
+
+LLM criteria
+
+
+Pg.22
+Tailor LLM to meet specific needs
+ICL             In-context learning         dynamically update understanding during conversation
+
+RAG             Retrieval-Augment Generation
+combines retrieval + generation models to surface new relevant data as part of a prompt
+
+RLHF
+Reinforcement learning from human feedback
+provide model w/ feedback from human evaluators who guide and improve its responses
+
+
+Pg.23
+ICL example
+use ICL to train a customer support chatbot on company-specific documents, emails, tech support tickets
+hels respond more effectively to Qs about Org products + services
+
+
+RAG
+leverages pretrained language mode in conjunction with large scale vector search system to enhance
+content generation process
+e.g. failure to recognize facts + events that took place after model was trained
+
+RAG
+accesses up-to-date info by retrieving relevant data stored as vectors
+[numerical representation of the data for fast retrieval]
+e.g.
+might use RAG to generate purchase recommendations in a chat by allowing it to retrieve info
+on customer state preferences and purchase history enabling more personalized interactions
+
+
+Pg.24
+Fine-tuning Language models
+enables you to adapt an LLM to particular tasks by updating parameters of a pretrained model
+empowers users to shape LLMs according to their preferences and achieve better results in apps
+also
+build customized solutions building on top of existing foundation model
+rather than training new model from scratch
+
+
+Pg.25
+RLHF
+Reinforcement learning from human feedback
+form of fine-tuning to guide the learning process and further enhance the performance and behavior of the model
+//with the goal of improving its responses over time
+
+IMPORTANT
+Many LLM creators use Reinforcement Learning [this technique RLHF] to teach their chatbots to carry on
+realistic conversations - such as to engage in dialogue rather than just one-off responses
+
+RLHF benefits
+train models to:
+- better understand [human] prompts
+- generate more humanlike responses
+- ensure model aligns w/ your preferences
+- minimize risk of harmful content
+e.g. train model to avoid toxic language or avoid sensitive topics
+
+IMPORTANT
+examples:
+Tuning models to learn preferences creates exciting new applications of GenAI technology:
+e.g.
+Healthcare
+leverage patient data and clinical expertise to create personalized treatment plans
+resulting in more effective and precise medical interventions
+
+TIP
+RLHF import model performance over original pre-trained version
+
+
+Pg.25
+Vector DB
+each word mapped to token ID => transformed into a vector
+math rep enables efficient storage / retrieval / search of data
+
+Assign unique key to each vector the DB allows for quick + direct access to content
+valuable for RAG where rapid retrieval + matching vectors allow model to discover
+semantically related text e.g. product customer searched for previously
