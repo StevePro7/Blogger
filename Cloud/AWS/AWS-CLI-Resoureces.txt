@@ -5,6 +5,10 @@ Linux terminal
 aws sso login
 aws --version
 
+LONG LIST of polices
+aws iam list-policies --query 'Policies[*].PolicyName' --output table
+
+
 aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
 aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table
 aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table
@@ -12,7 +16,6 @@ aws s3 ls
 
 aws iam list-users --query 'Users[*].UserName' --output table
 aws iam list-roles --query 'Roles[*].RoleName' --output table
-aws iam list-policies --query 'Policies[*].PolicyName' --output table
 
 aws rds describe-db-instances --query 'DBInstances[*].DBInstanceIdentifier' --output table
 aws lambda list-functions --query 'Functions[*].FunctionName' --output table
@@ -34,6 +37,10 @@ aws ssm describe-parameters --query 'Parameters[*].Name' --output table
 aws eks list-clusters --query 'clusters' --output table
 aws ec2 describe-addresses --query 'Addresses[*].PublicIp' --output table
 
+
+Cloud Formation
+aws cloudformation list-stacks
+aws cloudformation delete-stack --stack-name "eksctl-cluster-1-cluster"
 
 
 #!/bin/bash

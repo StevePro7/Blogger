@@ -1,0 +1,216 @@
+eksctl 02
+24-Oct-2024
+
+EXAMPLE to install AWS-EKS cluster
+https://dev.to/rasankhalsa/deploying-kubernetes-cluster-with-yaml-on-aws-eks-2561
+
+eksctl create cluster -f cluster.yaml --dry-run
+eksctl create cluster -f cluster.yaml
+
+cluster.yaml
+https://github.com/eksctl-io/eksctl/tree/main/examples
+cd ~/GitHubX/eksctl-io/eksctl/examples
+eksctl create cluster -f 01-simple-cluster.yaml
+
+
+ERROR
+Error: getting availability zones: error getting availability zones for region
+operation error EC2: DescribeAvailabilityZones, https response error StatusCode
+
+Error: getting availability zones: error getting availability zones for region eu-north-1: operation error EC2: DescribeAvailabilityZones, https response error StatusCode: 403
+
+https://stackoverflow.com/questions/60438285/error-getting-availability-zones-when-trying-to-create-eks-cluster
+
+aws ec2 describe-availability-zones
+aws ec2 describe-instance-type-offerings --location-type availability-zone  --filters Name=instance-type,Values=c5.xlarge --region eu-west-1 --output table
+
+
+https://eksctl.io/usage/custom-ami-support
+
+
+aws eks which arn aws iam aws policy has  DescribeAvailabilityZones
+
+
+PROGRESS
+AmazonEKSClusterPolicy has DescribeAvailabilityZones permission
+ARN: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+
+IAM | Users | SteveProXNA
+create new group    EKS-CTL
+Permissions
+AdministratorAccess-Amplify
+AmazonEKSClusterPolicy
+
+eksctl create cluster -f cluster.yaml --dry-run
+NEW error
+Error: getting availability zones: unable to list offerings for instance types operation error EC2: DescribeInstanceTypeOfferings, https response error StatusCode: 403
+
+DescribeInstanceTypeOfferings
+ARN: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+ARN: arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+ARN: arn:aws:iam::aws:policy/AmazonEC2FullAccess
+
+IAM | User groups | EKS-CTL
+Add permissions | Attach policies
+AmazonEC2FullAccess
+
+
+eksctl create cluster -f 01-simple-cluster.yaml --dry-run
+eksctl create cluster -f 01-simple-cluster.yaml
+
+
+ERROR
+Error: unable to determine AMI to use: error getting AMI from SSM Parameter Store: operation error SSM: GetParameter, https response error StatusCode: 400, RequestID: 0610dc37-6253-4b45-abcd-57be79833d19, api error AccessDeniedException: User: arn:aws:iam::476230071208:user/SteveProXNA is not authorized to perform: ssm:GetParameter on resource: arn:aws:ssm:us-east-1::parameter/aws/service/eks/optimized-ami/1.30/amazon-linux-2/recommended/image_id because no identity-based policy allows the ssm:GetParameter action. please verify that AMI Family is supported
+
+ARN: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+ARN: arn:aws:iam::aws:policy/AmazonEKSNodePolicy
+
+IAM | User groups | EKS-CTL
+Create inline policy
+SteveProSSmParams
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"ssm:GetParameter",
+				"ssm:GetParameters"
+			],
+			"Resource": "arn:aws:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "ec2:DescribeImages",
+			"Resource": "*"
+		}
+	]
+
+
+NEW error
+2024-10-24 12:13:44 [✖]  creating CloudFormation stack "eksctl-cluster-1-cluster": operation error CloudFormation: CreateStack, https response error StatusCode: 403, RequestID: 016a1f49-9a7d-41fc-be5d-e627a8bd8965, api error AccessDenied: User: arn:aws:iam::476230071208:user/SteveProXNA is not authorized to perform: cloudformation:CreateStack on resource: arn:aws:cloudformation:eu-west-1:476230071208:stack/eksctl-cluster-1-cluster/* because no identity-based policy allows the cloudformation:CreateStack action
+
+
+1 error(s) occurred and cluster hasn't been created properly, you may wish to check CloudFormation console
+
+Changed cluster YAML
+cloudWatch:
+    clusterLogging:
+        enableTypes: ["all"]
+
+
+
+2024-10-24 12:23:02 [✖]  AWS::EC2::RouteTable/PrivateRouteTableEUWEST1C: CREATE_FAILED – "Resource creation cancelled"
+2024-10-24 12:23:02 [✖]  AWS::EC2::RouteTable/PrivateRouteTableEUWEST1B: CREATE_FAILED – "Resource creation cancelled"
+2024-10-24 12:23:02 [✖]  AWS::EC2::RouteTable/PrivateRouteTableEUWEST1A: CREATE_FAILED – "Resource creation cancelled"
+2024-10-24 12:23:02 [✖]  AWS::EC2::NatGateway/NATGateway: CREATE_FAILED – "Resource creation cancelled"
+2024-10-24 12:23:02 [✖]  AWS::EC2::RouteTable/PublicRouteTable: CREATE_FAILED – "Resource creation cancelled"
+2024-10-24 12:23:02 [✖]  AWS::EKS::Cluster/ControlPlane: CREATE_FAILED – "Resource handler returned message: \"User: arn:aws:iam::476230071208:user/SteveProXNA is not authorized to perform: eks:CreateCluster on resource: arn:aws:eks:eu-west-1:476230071208:cluster/cluster-1 (Service: Eks, Status Code: 403, Request ID: 7e1a7990-3691-4e10-9e39-d02b285d36ee)\" (RequestToken: a685eafa-4afe-053f-e317-b5740bee7d6a, HandlerErrorCode: AccessDenied)"
+
+
+2024-10-24 12:24:05 [✖]  creating CloudFormation stack "eksctl-cluster-1-cluster": operation error CloudFormation:
+CreateStack, https response error StatusCode: 400, RequestID: 85c4b26c-08d8-4861-9f2d-423c6c41d28f,
+AlreadyExistsException: Stack [eksctl-cluster-1-cluster] already exists
+
+aws cloudformation list-stacks
+aws cloudformation delete-stack --stack-name "eksctl-cluster-1-cluster"
+
+https://github.com/eksctl-io/eksctl/issues/319
+Attached AdministratorAccess to EKS-CTL
+
+
+
+
+eksctl create cluster -f 01-simple-cluster.yaml
+2024-10-24 12:37:47 [ℹ]  eksctl version 0.194.0
+2024-10-24 12:37:47 [ℹ]  using region eu-west-1
+2024-10-24 12:37:48 [ℹ]  setting availability zones to [eu-west-1b eu-west-1a eu-west-1c]
+2024-10-24 12:37:48 [ℹ]  subnets for eu-west-1b - public:192.168.0.0/19 private:192.168.96.0/19
+2024-10-24 12:37:48 [ℹ]  subnets for eu-west-1a - public:192.168.32.0/19 private:192.168.128.0/19
+2024-10-24 12:37:48 [ℹ]  subnets for eu-west-1c - public:192.168.64.0/19 private:192.168.160.0/19
+2024-10-24 12:37:48 [ℹ]  nodegroup "ng-1" will use "ami-0b990b45de2170e93" [AmazonLinux2/1.30]
+2024-10-24 12:37:48 [ℹ]  using Kubernetes version 1.30
+2024-10-24 12:37:48 [ℹ]  creating EKS cluster "cluster-2" in "eu-west-1" region with un-managed nodes
+2024-10-24 12:37:48 [ℹ]  1 nodegroup (ng-1) was included (based on the include/exclude rules)
+2024-10-24 12:37:48 [ℹ]  will create a CloudFormation stack for cluster itself and 1 nodegroup stack(s)
+2024-10-24 12:37:48 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+2024-10-24 12:37:48 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=eu-west-1 --cluster=cluster-2'
+2024-10-24 12:37:48 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "cluster-2" in "eu-west-1"
+2024-10-24 12:37:48 [ℹ]  configuring CloudWatch logging for cluster "cluster-2" in "eu-west-1" (enabled types: api, audit, authenticator, controllerManager, scheduler & no types disabled)
+2024-10-24 12:37:48 [ℹ]  default addons vpc-cni, kube-proxy, coredns were not specified, will install them as EKS addons
+2024-10-24 12:37:48 [ℹ]
+2 sequential tasks: { create cluster control plane "cluster-2",
+    2 sequential sub-tasks: {
+        2 sequential sub-tasks: {
+            1 task: { create addons },
+            wait for control plane to become ready,
+        },
+        create nodegroup "ng-1",
+    }
+}
+2024-10-24 12:37:48 [ℹ]  building cluster stack "eksctl-cluster-2-cluster"
+2024-10-24 12:37:49 [ℹ]  deploying stack "eksctl-cluster-2-cluster"
+2024-10-24 12:38:19 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:38:49 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:39:49 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:40:50 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:41:50 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:42:50 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:43:51 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:44:51 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:45:51 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:46:51 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-cluster"
+2024-10-24 12:46:53 [!]  recommended policies were found for "vpc-cni" addon, but since OIDC is disabled on the cluster, eksctl cannot configure the requested permissions; the recommended way to provide IAM permissions for "vpc-cni" addon is via pod identity associations; after addon creation is completed, add all recommended policies to the config file, under `addon.PodIdentityAssociations`, and run `eksctl update addon`
+2024-10-24 12:46:53 [ℹ]  creating addon
+2024-10-24 12:46:54 [ℹ]  successfully created addon
+2024-10-24 12:46:54 [ℹ]  creating addon
+2024-10-24 12:46:55 [ℹ]  successfully created addon
+2024-10-24 12:46:55 [ℹ]  creating addon
+2024-10-24 12:46:56 [ℹ]  successfully created addon
+2024-10-24 12:48:57 [ℹ]  building nodegroup stack "eksctl-cluster-2-nodegroup-ng-1"
+2024-10-24 12:48:57 [ℹ]  --nodes-min=1 was set automatically for nodegroup ng-1
+2024-10-24 12:48:57 [ℹ]  --nodes-max=1 was set automatically for nodegroup ng-1
+2024-10-24 12:48:58 [ℹ]  deploying stack "eksctl-cluster-2-nodegroup-ng-1"
+2024-10-24 12:48:58 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-nodegroup-ng-1"
+2024-10-24 12:49:28 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-nodegroup-ng-1"
+2024-10-24 12:50:23 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-nodegroup-ng-1"
+2024-10-24 12:51:32 [ℹ]  waiting for CloudFormation stack "eksctl-cluster-2-nodegroup-ng-1"
+2024-10-24 12:51:32 [ℹ]  waiting for the control plane to become ready
+2024-10-24 12:51:32 [✔]  saved kubeconfig as "/home/stevepro/.kube/config"
+2024-10-24 12:51:32 [ℹ]  no tasks
+2024-10-24 12:51:32 [✔]  all EKS cluster resources for "cluster-2" have been created
+2024-10-24 12:51:32 [ℹ]  nodegroup "ng-1" has 1 node(s)
+2024-10-24 12:51:32 [ℹ]  node "ip-192-168-3-67.eu-west-1.compute.internal" is ready
+2024-10-24 12:51:32 [ℹ]  waiting for at least 1 node(s) to become ready in "ng-1"
+2024-10-24 12:51:32 [ℹ]  nodegroup "ng-1" has 1 node(s)
+2024-10-24 12:51:32 [ℹ]  node "ip-192-168-3-67.eu-west-1.compute.internal" is ready
+2024-10-24 12:51:32 [✔]  created 1 nodegroup(s) in cluster "cluster-2"
+2024-10-24 12:51:32 [✔]  created 0 managed nodegroup(s) in cluster "cluster-2"
+2024-10-24 12:51:33 [ℹ]  kubectl command should work with "/home/stevepro/.kube/config", try 'kubectl get nodes'
+2024-10-24 12:51:33 [✔]  EKS cluster "cluster-2" in "eu-west-1" region is ready
+
+
+eksctl create cluster -f eksctl;cluster.yaml --dry-run
+eksctl create cluster -f eksctl-cluster.yaml
+
+KUBECONFIG
+~/.kube/config
+
+
+Deploy application
+Reference: https://gitlab.com/SteveProXNA/gitlabcheatsheet
+
+kubectl create ns test-ns
+kubectl config set-context --current --namespace=test-ns
+
+cd ~/GitLab/SteveProXNA/gitlabcheatsheet
+kubectl apply -f Kubernetes.yaml
+
+kubectl port-forward service/flask-api-service 8080:80
+curl http://localhost:8080
+
+
+DELETE
+aws eks list-clusters --query 'clusters' --output table
+cluster-2
+eksctl delete cluster --name  cluster-2 --region eu-west-1 --force --parallel 10

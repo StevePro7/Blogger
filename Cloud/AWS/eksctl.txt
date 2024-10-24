@@ -55,3 +55,21 @@ ec2:DescribeVpcs because no identity-based policy allows the ec2:DescribeVpcs ac
 
 05
 Error: nodeGroups[0].overrideBootstrapCommand is required when using a custom AMI based on AmazonLinux2 (nodeGroups[0].ami)
+
+
+AWS Dashboard
+IAM | Users | SteveProXNA
+Permissions | Add Permission
+Attach policies directly
+AdministratorAccess
+JSON
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
