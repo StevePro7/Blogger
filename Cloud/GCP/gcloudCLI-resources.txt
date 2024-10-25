@@ -1,0 +1,34 @@
+gcloud CLI resources
+25-Oct-2024
+
+gcloud container clusters list
+gcloud container clusters describe CLUSTER_NAME --region REGION
+
+REGIONS
+gcloud compute regions list | grep -i europe
+europe-west1
+
+gcloud compute zones list | grep -i europe-west1
+europe-west1-b
+
+
+gcloud container node-pools list --region europe-west1
+gcloud container node-pools list --cluster CLUSTER_NAME --region REGION
+
+gcloud compute instances list
+gcloud compute instances list --filter="metadata.items.key['cluster-name']='CLUSTER_NAME'"
+
+gcloud compute disks list
+gcloud compute disks list --filter="labels.kubernetes-io-cluster-CLUSTER_NAME=owned"
+
+gcloud compute forwarding-rules list
+gcloud compute forwarding-rules list --filter="description:k8s"
+
+gcloud compute firewall-rules list
+gcloud compute firewall-rules list --filter="network:default"  # Replace `default` with your network if different.
+
+gcloud compute addresses list
+gcloud compute addresses list --filter="description:k8s"
+
+OPTIONAL
+gcloud container clusters describe CLUSTER_NAME --region REGION --format="get(loggingService,monitoringService)"

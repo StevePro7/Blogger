@@ -1,0 +1,35 @@
+GCP GKE 02
+25-Oct-2024
+
+Simple example
+
+CREATE
+gcloud container clusters create example-cluster    \
+    --zone europe-west1-b                           \
+    --num-nodes 3                                   \
+    --machine-type e2-medium                        \
+    --image-type COS_CONTAINERD
+
+
+CRITICAL: ACTION REQUIRED: gke-gcloud-auth-plugin, which is needed for continued use of kubectl, was not found or is not executable. Install gke-gcloud-auth-plugin for use with kubectl by following https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#install_plugin
+
+Strange
+the gcp-gke cluster did provision!
+
+
+Coult try this next time
+gcloud components install gke-gcloud-auth-plugin
+gke-gcloud-auth-plugin --version
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+Reference
+https://github.com/actions/runner-images/issues/6778
+
+
+DESTROY
+gcloud container clusters delete example-cluster --zone europe-west1-b
+
+OR
+gcloud container clusters delete example-cluster    \
+    --zone europe-west1-b                           \
+    --async --quiet --verbosity debug
