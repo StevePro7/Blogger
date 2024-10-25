@@ -1,8 +1,14 @@
 gcloud CLI resources
 25-Oct-2024
 
+SUMMARY
 gcloud container clusters list
-gcloud container clusters describe CLUSTER_NAME --region REGION
+gcloud compute instances list
+gcloud compute disks list
+gcloud compute forwarding-rules list
+gcloud compute firewall-rules list
+gcloud compute addresses list
+
 
 REGIONS
 gcloud compute regions list | grep -i europe
@@ -10,6 +16,9 @@ europe-west1
 
 gcloud compute zones list | grep -i europe-west1
 europe-west1-b
+
+gcloud container clusters list
+gcloud container clusters describe CLUSTER_NAME --region REGION
 
 
 gcloud container node-pools list --region europe-west1
