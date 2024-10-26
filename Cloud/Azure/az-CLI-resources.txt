@@ -1,0 +1,18 @@
+azure CLI Resources
+26-Oct-2024
+
+az resource list
+
+(ResourceGroupNotFound) Resource group 'stevepro-dev-cluster' could not be found.
+Code: ResourceGroupNotFound
+Message: Resource group 'stevepro-dev-cluster' could not be found.
+
+ISSUE
+cat ~/.azure/config
+
+[defaults]
+group = stevepro-dev-cluster
+
+
+
+az aks show --resource-group <resource-group> --name <cluster-name> --query nodeResourceGroup -o tsv
