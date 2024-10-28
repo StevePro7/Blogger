@@ -1,0 +1,38 @@
+Objectives
+28-Oct-2024
+
+
+Python C/C++ PyBind11
+OpenAI - retro RL [home] and GenAI [work]
+
+DevOps: provision more clusters e.g. kubeadm and document
+Soln Arch: DevOps certification?  AIops, MLops, LLMops??
+
+
+
+PyBind11
+Medium
+PyBind11: A Beginner’s Guide to Setting Up C++ and Python Projects
+https://levelup.gitconnected.com/pybind11-a-beginners-guide-to-setting-up-c-and-python-projects-1de2f04465e9
+
+Python popularity for data science is undeniable
+but Python is not really the fastest when it comes to operating at scale
+
+What can be done to harness power in Python in a real-world system,
+maybe use multi-threading, or just make the code magnitutes faster?
+
+Call C/C++ code from Python!
+Options:
+01. Python/C API
+https://docs.python.org/3/c-api/index.html
+
+02. FFI Foreign Function Interfaces
+ctypes  PyObject
+https://docs.python.org/3/library/ctypes.html
+
+CFFI documentation
+https://cffi.readthedocs.io/en/stable
+
+03. Boost.Python OR PyBind
+https://www.boost.org/doc/libs/1_85_0/libs/python/doc/html/index.html
+https://github.com/pybind/pybind11
