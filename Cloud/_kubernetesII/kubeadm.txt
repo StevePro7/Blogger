@@ -1,0 +1,72 @@
+kubeadm
+29-Oct-2024
+
+https://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html
+
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+kubeadm version
+
+kubeadm version: &version.Info{Major:"1", Minor:"24", GitVersion:"v1.24.2", GitCommit:"f66044f4361b9f1f96f0053dd46cb7dce5e990a8", GitTreeState:"clean", BuildDate:"2022-06-15T14:20:54Z", GoVersion:"go1.18.3", Compiler:"gc", Platform:"linux/amd64"}
+
+
+sudo apt-get install -y kubelet kubeadm kubectl --allow-change-held-packages --allow-unauthenticated
+
+
+sudo kubeadm init --v=5
+
+files exist
+/etc/kubernetes/manifests
+so I moved them here
+/home/stevepro/Steven/Kubernetes/etc/kubernetes/manifests
+
+sudo kubeadm init --v=5
+[ERROR ImagePull]: failed to pull image registry.k8s.io/kube-scheduler:v1.26.15: output: time="2024-10-29T20:03:47Z" level=fatal msg="unable to determine image API version: rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing dial unix /var/run/dockershim.sock: connect: no such file or directory\""
+
+
+
+KUBELET
+kubelet --container-runtime-endpoint=unix:///run/containerd/containerd.sock
+
+got some error about key pair
+E1029 20:09:35.402018   20866 run.go:74] "command failed" err="failed to construct kubelet dependencies: error reading /var/lib/kubelet/pki/kubelet.key, certificate and key must be supplied as a pair"
+
+chatGPT error
+did the following
+
+ls -l /var/lib/kubelet/pki/kubelet.*
+
+sudo chown root:root /var/lib/kubelet/pki/kubelet.*
+sudo chmod 600 /var/lib/kubelet/pki/kubelet.*
+
+sudo kubeadm init phase certs kubelet
+ERROR
+unknown command "kubelet" for "kubeadm init phase certs"
+
+kubelet
+E1029 20:11:37.606954   21045 run.go:74] "command failed" err="failed to validate kubelet flags: the container runtime endpoint address was not specified or empty, use --container-runtime-endpoint to set"
+
+so try again - but as root
+sudo kubelet --container-runtime-endpoint=unix:///run/containerd/containerd.sock
+
+
+kubelet
+"Skipping pod synchronization" err="PLEG is not healthy: pleg has yet to be successful"
+
+PLEG
+Pod Lifecycle Event Generator
+
+cat /etc/containerd/config.toml
+
+
+changed this
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+  SystemdCgroup = true
+true
