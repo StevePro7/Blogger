@@ -57,6 +57,16 @@ so try again - but as root
 sudo kubelet --container-runtime-endpoint=unix:///run/containerd/containerd.sock
 
 
+sudo apt update
+sudo apt install -y containerd
+
+sudo mkdir -p /etc/containerd
+sudo containerd config default | sudo tee /etc/containerd/config.toml
+sudo systemctl restart containerd
+
+sudo swapoff -a
+
+
 kubelet
 "Skipping pod synchronization" err="PLEG is not healthy: pleg has yet to be successful"
 
@@ -70,3 +80,83 @@ changed this
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
   SystemdCgroup = true
 true
+
+
+reboot
+d system prune -a
+
+kubelet --version
+Kubernetes v1.26.0
+
+kubectl version
+Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.2", GitCommit:"092fbfbf53427de67cac1e9fa54aaa09a28371d7", GitTreeState:"clean", BuildDate:"2021-06-16T12:59:11Z", GoVersion:"go1.16.5", Compiler:"gc", Platform:"linux/amd64"}
+
+kubeadm version
+kubeadm version: &version.Info{Major:"1", Minor:"26", GitVersion:"v1.26.0", GitCommit:"b46a3f887ca979b1a5d14fd39cb1af43e7e5d12d", GitTreeState:"clean", BuildDate:"2022-12-08T19:57:06Z", GoVersion:"go1.19.4", Compiler:"gc", Platform:"linux/amd64"}
+
+
+
+sudo kubeadm init --cri-socket /run/containerd/containerd.sock --v=5
+
+
+
+sudo kubelet --container-runtime-endpoint=unix:///run/containerd/containerd.sock
+err="failed to run Kubelet: running with swap on is not supported, please disable swap! or set --fail-swap-onflag to false. /proc/swaps contained: [Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority /swapfile                               file\t\t2097148\t\t0\t\t-2]"
+
+
+sudo systemctl restart containerd
+sudo systemctl restart kubelet
+
+
+
+sudo systemctl status kubelet
+sudo systemctl status containerd
+
+sudo kubelet --container-runtime-endpoint=unix:///run/containerd/containerd.sock
+
+
+sudo kubeadm init --cri-socket /run/containerd/containerd.sock --v=5
+Error while dialing dial unix /var/run/dockershim.sock: connect: no such file or directory\""
+
+
+
+kubeadm init --ignore-preflight-errors cri
+
+sudo kubelet --container-runtime-endpoint=unix:///var/run/docker.sock
+
+sudo kubeadm init --cri-socket /var/run/docker.sock
+sudo kubeadm init --cri-socket /run/containerd/containerd.sock
+
+
+
+INTERESTING?
+https://kubernetes.io/docs/tasks/administer-cluster/migrating-from-dockershim/change-runtime-containerd
+/var/lib/kubelet/kubeadm-flags.env
+
+https://kubernetes.io/docs/tasks/administer-cluster/migrating-from-dockershim/change-runtime-containerd
+KUBELET_KUBEADM_ARGS="--container-runtime=remote --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock --pod-infra-container-image=k8s.gcr.io/pause:3.7
+
+
+Upgraded kubectl to 1.27
+
+
+DOCKER
+installed docker again
+
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo docker --version
+
+
+sudo kubeadm init --v=t
+
+NEW error
+ERROR CRI]: container runtime is not running: output: E1029 21:24:58.237161   22796 remote_runtime.go:948] "Status from runtime service failed" err="rpc error: code = Unimplemented desc = unknown service runtime.v1alpha2.RuntimeService"
+time="2024-10-29T21:24:58Z" level=fatal msg="getting status of runtime: rpc error: code = Unimplemented desc = unknown service runtime.v1alpha2.RuntimeService"
+, error: exit status 1
