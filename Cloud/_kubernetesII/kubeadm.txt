@@ -160,3 +160,44 @@ NEW error
 ERROR CRI]: container runtime is not running: output: E1029 21:24:58.237161   22796 remote_runtime.go:948] "Status from runtime service failed" err="rpc error: code = Unimplemented desc = unknown service runtime.v1alpha2.RuntimeService"
 time="2024-10-29T21:24:58Z" level=fatal msg="getting status of runtime: rpc error: code = Unimplemented desc = unknown service runtime.v1alpha2.RuntimeService"
 , error: exit status 1
+
+
+SOLN?
+https://www.reddit.com/r/kubernetes/comments/utiymt/kubeadm_init_running_into_issue_error_cri/
+
+
+sudo rm /etc/containerd/config.toml
+sudo systemctl restart containerd
+sudo kubeadm init
+
+
+
+SUMMARY
+if there is no file here /etc/containerd
+OR the file /etc/containerd/config.toml is the result of this
+
+sudo su
+containerd config default | tee /etc/containerd/config.toml
+sed -e 's/SystemdCgroup = false/SystemdCgroup = true/g' -i /etc/containerd/config.toml
+systemctl restart containerd
+
+Ref
+https://k21academy.com/docker-kubernetes/container-runtime-is-not-running/
+
+then will get the docker.shim error
+	[ERROR ImagePull]: failed to pull image registry.k8s.io/coredns/coredns:v1.9.3: output: time="2024-10-29T22:00:17Z" level=fatal msg="unable to determine image API version: rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing dial unix /var/run/dockershim.sock: connect: no such file or directory\""
+
+
+If I have the config.toml file with	the following then I will get
+container runtime not running
+
+
+
+Job for containerd.service failed because the control process exited with error code.
+See "systemctl status containerd.service" and "journalctl -xe" for details.
+
+
+STATUS
+systemctl status containerd.service
+systemctl status kubelet.service
+journalctl -xe
