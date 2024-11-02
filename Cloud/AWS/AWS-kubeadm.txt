@@ -29,3 +29,46 @@ install.sh
 Installs Terraform
 1.3.7
 cd ec2-simplek8s
+
+
+ISSUES
+documented offline in
+Test-aws-kubeadm
+~/Steven/GXlxxg/xxtxxk/
+
+
+Summary of issues
+Incorrect region - example uses us-west-1 where our default is eu-west-1
+Modified the KeyPair info when didn't need to - the issue was region as ^^
+
+NB: once an error encountered - retry would throw this error as k8s_role exists
+and was trying to re-create - here are some commands to delete this role:
+
+aws iam list-roles --query 'Roles[*].RoleName' | grep k8s_role
+aws iam list-attached-role-policies --role-name k8s_role --query "AttachedPolicies[*].PolicyArn"
+
+aws iam detach-role-policy --role-name k8s_role --policy-arn <policy_name_01>
+aws iam detach-role-policy --role-name k8s_role --policy-arn <policy_name_02>
+
+aws iam list-role-policies --role-name k8s_role --query "PolicyNames"
+aws iam delete-role-policy --role-name <role-name> --policy-name <policy-name>
+
+aws iam list-roles --query 'Roles[*].RoleName' | grep k8s_role
+aws iam delete-role --role-name k8s_role
+
+ERROR
+An error occurred (DeleteConflict) when calling the DeleteRole operation: Cannot delete entity, must remove roles from instance profile first.
+
+aws iam list-instance-profiles-for-role --role-name k8s_role
+aws iam remove-role-from-instance-profile --instance-profile-name k8s_profile --role-name k8s_role
+aws iam delete-instance-profile --instance-profile-name k8s_profile
+
+Delete the role
+aws iam list-roles --query 'Roles[*].RoleName' | grep k8s_role
+aws iam delete-role --role-name k8s_role
+
+
+Pre-empt that the AMI in example not available in eu-west-1 region
+so change this value
+aws ec2 describe-images --owners amazon --region eu-west-1 --query "Images[*].[ImageId,Name,Description]" --output table
+ami = "ami-00ee2148b71f6cd44"
