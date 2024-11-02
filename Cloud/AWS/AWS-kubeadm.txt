@@ -1,0 +1,31 @@
+AWS kubeadm
+02-Nov-2024
+
+Terraform scripts to create a K8s Cluster using “kubeadm” in AWS from scratch
+https://rangapv.medium.com/terraform-scripts-to-create-a-k8s-cluster-using-kubeadm-in-aws-from-scratch-72fba6133797
+
+cd ~/.aws
+cat credentials
+aws_access_key_id
+aws_secret_access_key
+
+Private/Public ssh key in the Openssl format
+
+Addendum1: To create the key.pem file for Terraform
+https://rangapv.medium.com/addendum1-to-create-the-key-pem-file-for-terraform-356ae07d2e87
+
+AWS Dashboard
+EC2
+Key Paris
+Create key pair
+SteveProKeyPair
+RSA
+.pem
+Download .pem file
+chmod 400 SteveProKeyPair.pem
+
+git clone https://github.com/rangapv/tf.git
+install.sh
+Installs Terraform
+1.3.7
+cd ec2-simplek8s
