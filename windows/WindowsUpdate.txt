@@ -1,0 +1,40 @@
+Windows Update
+04-Nov-2024
+
+For ages was getting the red exclamation
+your PC does not have the latest updates
+
+
+SUMMARY
+this worked:
+
+Manual download updates
+https://www.microsoft.com/en-us/software-download/windows10
+
+
+Reboot - now got green tick
+click button and get latest updates
+
+Reboot - click button - up-to-date
+
+
+
+Tried this beforehand
+net stop wuauserv
+net stop cryptSvc
+net stop bits
+net stop msiserver
+
+del /f /s /q %windir%\SoftwareDistribution
+
+
+net start wuauserv
+net start cryptSvc
+net start bits
+net start msiserver
+
+
+sfc /scannow
+
+DISM /Online /Cleanup-Image /RestoreHealth
+
