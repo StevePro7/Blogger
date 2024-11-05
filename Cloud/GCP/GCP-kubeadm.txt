@@ -5,3 +5,117 @@ GCP kubeadm
 Manual installation + setup
 Comprehensive Guide: Setting Up a Kubernetes(kubeadm) Cluster on Google Cloud Platform
 https://medium.com/@mehmetdenizli/comprehensive-guide-setting-up-a-kubernetes-cluster-on-google-cloud-platform-d31e213685d5
+
+https://console.cloud.google.com
+
+1. Creating a GCP Account and Signing In
+gcloud projects list
+steveproproject
+
+
+2. Creating a GCP Project and VM Instances
+Creating a VM (Virtual Machine)
+
+Compute Engine
+VM Instances
+Create instance
+master-node
+europe-west-1
+europe-west-1b
+
+Boot disk
+ubuntu
+
+master-node
+worker-node
+
+
+3. Kubernetes installation
+curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
+
+
+sudo hostnamectl set-hostname K8s-Master && bash
+sudo hostnamectl set-hostname K8s-Worker && bash
+
+
+Docker
+sudo apt-get install -y docker.io
+sudo usermod -aG docker $USER
+newgrp docker
+sudo chmod 777 /var/run/docker.sock
+
+
+Packages
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+sudo mkdir -p /etc/apt/keyrings/
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+
+k8s components
+sudo apt-get update
+sudo apt-get install -y kubelet=1.29.0-1.1 kubeadm=1.29.0-1.1 kubernetes-cni
+sudo apt-mark hold kubelet kubeadm kubectl
+
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+
+kernel modules
+sudo cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+modprobe overlay
+modprobe br_netfilter
+
+
+System settings
+sudo cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+sudo sysctl --system
+
+
+Containerd
+sudo apt update
+sudo apt install -y containerd
+sudo systemctl start containerd
+sudo systemctl enable containerd
+sudo mkdir -p /etc/containerd
+sudo containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
+sudo systemctl restart containerd
+sudo systemctl status containerd
+
+
+sudo kubeadm config images pull
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=All
+
+Your Kubernetes control-plane has initialized successfully!
+
+
+kubeconfig
+sudo mkdir -p /home/$USER/.kube
+sudo cp -i /etc/kubernetes/admin.conf /home/$USER/.kube/config
+sudo chown $USER:$USER /home/$USER/.kube/config
+
+
+Networking + storage plugins
+sudo su - $USER -c 'kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml'
+sudo su - $USER -c 'kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.26/deploy/local-path-storage.yaml'
+sudo -i -u $USER kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
+
+sudo kubeadm token create --print-join-command
+Now on VM can see control-plane Ready
+kubectl get no
+NAME         STATUS   ROLES           AGE     VERSION
+k8s-worker   Ready    control-plane   4m52s   v1.29.0

@@ -14,6 +14,12 @@ gcloud compute firewall-rules list
 gcloud compute addresses list
 
 
+default-allow-icmp      default  INGRESS    65534     icmp                                False
+default-allow-internal  default  INGRESS    65534     tcp:0-65535,udp:0-65535,icmp        False
+default-allow-rdp       default  INGRESS    65534     tcp:3389                            False
+default-allow-ssh       default  INGRESS    65534     tcp:22                              False
+
+
 REGIONS
 gcloud compute regions list | grep -i europe
 europe-west1
