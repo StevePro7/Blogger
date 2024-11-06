@@ -15,3 +15,17 @@ this is GCP so seems like could be similar to article #2
 Kubernetes tutorial: How to install a cluster on Ubuntu with kubeadm?
 https://www.youtube.com/watch?v=wIZamzt7MkM
 another manual install similar to instructions from artcle #2
+
+
+
+IMPORTANT
+https://medium.com/@mehmetdenizli/comprehensive-guide-setting-up-a-kubernetes-cluster-on-google-cloud-platform-d31e213685d5
+
+following all the instructions I was able to provision an AWS-kubeadm cluster
+NB: I did need to copy the admin.conf file to the standard location
+/etc/kubernetes/admin.conf
+/home/$USER/.kube/config
+
+But I got permission denied - the reason was because KUBECONFIG was pointing to source
+need to update this to point to the destination i.e
+export KUBECONFIG=/home/$USER/.kube/config
