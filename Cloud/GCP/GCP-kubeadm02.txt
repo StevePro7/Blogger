@@ -29,3 +29,23 @@ NB: I did need to copy the admin.conf file to the standard location
 But I got permission denied - the reason was because KUBECONFIG was pointing to source
 need to update this to point to the destination i.e
 export KUBECONFIG=/home/$USER/.kube/config
+
+
+SCRATCH PAD
+gcloud compute scp <INSTANCE_NAME>:/etc/kubernetes/admin.conf <LOCAL_PATH> --zone <ZONE>
+
+
+COPY kubeconfig back to localhost - but could not connect remotely
+gcloud compute instances list
+gcloud compute scp master-node:/etc/kubernetes/admin.conf ~/.kube/config --zone europe-west1-d
+
+
+gcloud compute scp master-node:/home/steven_boland/.kube/config ~/.kube/config --zone europe-west1-d
+
+
+gcloud compute firewall-rules create allow-k8s-api --allow tcp:6443 --target-tags <INSTANCE_TAG> --network <NETWORK_NAME>
+
+
+
+
+gcloud compute ssh master-node --zone europe-west1-d -- -L 6443:localhost:6443
