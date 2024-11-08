@@ -1,0 +1,36 @@
+Notes 01
+08-Nov-2024
+
+Files from previous project
+find -L -not -path './.venv/*' -type f -name '*.py' -exec grep -Hni 'from sklearn' {} \; > output.txt
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import classification_report
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import RobustScaler
+from sklearn.pipeline import Pipeline
+from sklearn.svm import LinearSVC
+
+from tensorflow import keras
+from xgboost import XGBClassifier
+
+
+TUTORIAL
+Scikit-Learn Tutorial: How to Install & Scikit-Learn Examples
+https://www.guru99.com/scikit-learn-tutorial.html
+
+
+
+data.csv
+Pima Indians Diabetes Database
+https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+
+
+1. Loading and Understanding the Data
+2. Conducting Exploratory Data Analysis (EDA) and Data Visualization
+3. Data Preprocessing
+4. Feature Selection and Engineering
+5. Model Selection and Training with scikit-learn
+6. Model Evaluation and Hyperparameter Tuning

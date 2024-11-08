@@ -1,0 +1,133 @@
+Notes 02
+08-Nov-2024
+
+
+1. Loading and Understanding the Data
+import pandas as pd
+
+# Load data
+data = pd.read_csv('path/to/your/data.csv')
+
+# View the first few rows
+data.head()
+
+# Check for any missing values and data types
+data.info()
+
+
+2. Conducting Exploratory Data Analysis (EDA) and Data Visualization
+data.describe()
+
+
+import matplotlib.pyplot as plt
+
+# Histogram of a specific column
+data['column_name'].hist(bins=30)
+plt.xlabel('Column Name')
+plt.ylabel('Frequency')
+plt.title('Distribution of Column')
+plt.show()
+
+
+import seaborn as sns
+
+# Correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(data.corr(), annot=True, cmap='coolwarm')
+plt.title('Feature Correlations')
+plt.show()
+
+
+# Scatter plot for two features
+plt.scatter(data['feature1'], data['feature2'], c=data['target'])
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.title('Feature1 vs Feature2')
+plt.show()
+
+# Pair plot
+sns.pairplot(data, hue='target')
+plt.show()
+
+
+# Visualizing missing values
+plt.figure(figsize=(10, 6))
+sns.heatmap(data.isnull(), cbar=False, cmap='viridis')
+plt.title('Missing Values Heatmap')
+plt.show()
+
+
+3. Data Preprocessing
+# Drop rows or fill in missing values
+data = data.dropna()  # or use data.fillna(method='ffill')
+
+data = pd.get_dummies(data, drop_first=True)
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+numerical_features = ['feature1', 'feature2']  # replace with your features
+data[numerical_features] = scaler.fit_transform(data[numerical_features])
+
+
+4. Feature Selection and Engineering
+# Example: Using correlation threshold for feature selection
+correlation_matrix = data.corr()
+high_corr = correlation_matrix.index[abs(correlation_matrix["target"]) > 0.5]
+data = data[high_corr]
+
+
+5. Model Selection and Training with scikit-learn
+from sklearn.model_selection import train_test_split
+
+X = data.drop('target', axis=1)
+y = data['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+
+models = {
+    "Logistic Regression": LogisticRegression(),
+    "Random Forest": RandomForestClassifier(),
+    "SVM": SVC()
+}
+results = {}
+for model_name, model in models.items():
+    model.fit(X_train, y_train)
+    results[model_name] = model.score(X_test, y_test)
+
+print(results)
+
+
+from sklearn.metrics import classification_report
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print(classification_report(y_test, y_pred))
+
+
+6. Model Evaluation and Hyperparameter Tuning
+from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(RandomForestClassifier(), X, y, cv=5)
+print(scores.mean())
+
+
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    'n_estimators': [100, 200, 300],
+    'max_depth': [10, 20, None]
+}
+grid_search = GridSearchCV(RandomForestClassifier(), param_grid, cv=5)
+grid_search.fit(X_train, y_train)
+print(grid_search.best_params_)
+
+
+best_model = grid_search.best_estimator_
+y_pred_test = best_model.predict(X_test)
+print(classification_report(y_test, y_pred_test))
