@@ -1,17 +1,41 @@
 Notes 01
 09-Nov-2024
 
-Notes from yesterday as practical
-EDA and Model Training
+diabetes.csv
+Pima Indians Diabetes Database
+https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
 
-NB: will try all these examples using Base Conda [mini conda]
-New Project
-Base Conda
-/home/stevepro/miniconda3/bin/conda
 
-Activate conda environment
-source ~/miniconda3/bin/activate
-conda list
+Follow up notes from yesterday - theory from kaggle.com
 
-Deactivate conda environment
-conda deactivate
+IMPORTANT
+target = Outcome
+binary classifier
+outcome is either 0 or 1
+0   represents healthy people
+1   those with diabetes
+
+Diabetes is a chronic disease that occurs either when the pacreas does not
+produce enough insulin or when the body cannot effectively use the insulin
+it produces
+
+1x Dependent    [target]    variable
+8x Independent  [predictor] variables
+1. Pregnancies                  0-17
+2. Glucose                      0-199   mg/dL       milligrams per deciliter
+3. Blood pressure               0-122   mmHg        millimeters per mercury
+4. Skin thickness               0-99    mm          tricep skin fold
+5. Insulin                      0-846   mcU/mL      microunits per millileter
+6. BMI                          0-67.1  kg/m2       body mass index = weight kg / sq(height=m)
+7. DiabetesPedigreeFunction     0.078-2.42
+8. Age                          21-81yrs
+
+DiabetesPedigreeFunction
+function that scores the probability of diabetes based of family history
+realistic range = 0.08 to 2.42
+
+
+DISCOVERY
+When google DiabetesPedigreeFunction discovered this PDF
+Diagnosing Diabetes with Machine Learning Techniques
+https://dergipark.org.tr/en/download/article-file/1970853
