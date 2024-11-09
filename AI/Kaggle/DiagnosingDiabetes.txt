@@ -1,6 +1,13 @@
 DiagnosingDiabetes
 09-Nov-2024
 
+REMEMBER Supervised Machine Learning
+https://www.guru99.com/machine-learning-tutorial.html
+
+Classification  predict discrete value - gender of new customer based existing customer data e.g. classify new customer Male/Female
+Regression      predict continuous value estimate price of financial stock with the lowest possible error based on financial inputs
+
+
 INTRODUCTION
 768 records
 500 healthy     Outcome=0
@@ -80,3 +87,76 @@ higher probability of Outcome=1
 MATERIALS AND METHODS
 modelling process was analyzed and evaluated with various classifier
 models, accuracy, precision, recall, and F1 score performance metrics
+
+Pre-processing
+steps to transfer raw data into clean + organized dataset
+evaluate and improve data quality to allow reliable analysis
+
+Techniques
+- min-max
+- variance
+- deviation
+- standardization
+- mean scaling
+- elimination of missing values in the data set
+- outliers were remvoed from the dataset
+
+IMPORTANT
+Data containing missing, outlier and not possible value '0' were replaced with mean values
+
+
+Feature Engineering
+task of improving predictive modelling performance by transforming the feature space in a dataset
+extract new features for machine learning models from raw data
+e.g.
+One-Hot Encoding and Robust Scaler methods
+
+
+The architecture of the proposed model
+
+Random Forest
+combines decision trees and bagging methods
+flexible machine learning method used for regression or classification problems
+combines a large number of decision trees to obtain more accurate prediction
+
+Gradient Boosting
+used for regression or classification problems
+each tree is grown using information from previously grown trees
+
+XGB [eXtremem Gradient Boosting]
+efficient optimization of the Gradient Boosting technique
+approach to find the best decision tree model to achieve higher speed and better performance
+
+LGBM
+Lightly Gradient Boosting Machine
+decision tree approach with low memory consumption and providing high accuracy
+model uses a histogram-based algorithm on high dimensional data to
+speed up the computation time and avoid overloading the prediction system
+
+Decision Tree
+data is continuously divided according to a certain parameter
+used to divide a data set into smaller clusters by applying rules
+nodes   where data is divided
+leaves  represent decisions
+tree structure used is easy to understand and interpret as it can be visualized
+
+AdaBoost
+combines many relatively weak and erroneous rules to create an accurate prediction rule
+
+Support Vector Machine [SVM]
+high accuracy machine learning method used for classification
+SVM is divided into two as linear or nonlinear via decision line
+decision function obtained from the training data
+
+Logistic Regression
+classification algorithm to analyze dataset
+determines an outcome and has independent variables
+used in medicine, biology, and economics
+
+kNN [k Nearest Neighbor]
+k value determines the number of elements in the classification
+searches for the nearest neighbours in the dataset while estimating
+
+Naive Bayes
+Bayes' theorem, used in solving classification problems
+probabilistic classifier; that is, it makes predictions based on the probability of an object
