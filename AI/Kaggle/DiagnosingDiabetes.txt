@@ -1,0 +1,82 @@
+DiagnosingDiabetes
+09-Nov-2024
+
+INTRODUCTION
+768 records
+500 healthy     Outcome=0
+268 diabetes    Outcome=1
+
+Ten different algorithms
+Most successful
+Random Forest algorithm 90.1% accuracy
+
+Decision Tree algorithm
+
+The model is designed with Decision Tree, Artificial Neural Networks, Logistic Regression, Random Forest,
+and Naive Bayes algorithms
+
+98.8% accuracy using the AdaBoost classifie
+C4.5 decision tree, achieved an accuracy of 73.5% to predict diabetes
+
+89% accuracy for diabetes prediction with the SVM-linear model
+
+
+Ten machine learning algorithms.
+in order of accuracy:
+
+01. Random Forest
+02. Gradient Boosting
+03. XGB
+04. LGBM
+05. Decision Tree
+06. AdaBoost
+07. Support Vector Machine
+08. Logistic Regression
+09. kNN
+10. Naive Bayes algorithms
+
+
+EXPLORATORY DATA ANALYSIS
+analyzing datasets using visual methods to summarise their key features and seeing what the data
+can say beyond the task of modelling or hypothesis testing
+
+EDA aims to perform initial investigations on data before formal modelling and graphical representations and
+visualizations to discover patterns, review assumptions, and test hypotheses
+
+
+iMPOSSIBLE values
+Glucose, BloodPressure, SkinThickness, Insulin, BMI
+include the value 0 which is not possible in practice thus need to be corrected
+all impossible values were corrected by replacing them with mean values at the pre-processing stage
+
+
+DiabetesPedigreeFunction
+function that scores the probability of diabetes based on family history
+realistic range of 0.08 to 2.42
+
+Outcome = target
+0   represents healthy people
+1   represents those with diabetes
+
+
+Data visualizations
+visual representation of quantitative data for communication and analysis
+
+Heatmaps
+used to cross-examine multivariate data, show variance between variables,
+show whether any variables are similar to each other, and detect whether there
+is a correlation between variables
+
+Most variables are more likely to have non-linear relationships
+
+Glucose is the best indicator of diabetes
+
+higher number of Glucose, BMI, Age, Pregnancies and DiabetesPedigreeFunction
+means higher number of diabetes patients
+i.e.
+higher probability of Outcome=1
+
+
+MATERIALS AND METHODS
+modelling process was analyzed and evaluated with various classifier
+models, accuracy, precision, recall, and F1 score performance metrics
