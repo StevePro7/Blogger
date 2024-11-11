@@ -1,0 +1,14 @@
+MFA
+11-Nov-2024
+
+Google Authenticator
+if getting the following error:
+Invalid TOTP code. Your device time may be out of sync.
+
+On Android
+1) Go to the main menu on the Google Authenticator application
+2) Tap More -> Settings
+3) Tap Time correction for codes
+4) Tap Sync now
+
+Example: I experienced this when I tried to setup pypi.org MFA
