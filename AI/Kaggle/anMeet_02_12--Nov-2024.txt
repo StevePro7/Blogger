@@ -1,0 +1,96 @@
+Meetup
+12-Nov-2024
+
+Imputer
+I saw mean on some examples but if skew data then maybe choose median
+and the max value
+
+
+Correlation with the Outcome [target]
+
+which feature more close to the outcome?
+feature
+
+df.corr()
+
+which features are important?
+
+Feature scaling
+
+Logistic Regression
+basic linear test
+decision boundary
+
+Diabetes
+binary classifier
+right   diabetes    1
+left    healthy     0
+
+
+Model
+accuracy = not good meaure
+
+Confusion matrix
+2x2 matric
+TN TP       True  Neg   True  Pos
+FN FP       False Net   False Pos
+
+Recall vs. Precision
+what have predicted
+e.g. cancer example
+FP      treatment
+FN      game over
+
+Recall
+Binary classification
+taxes example
+
+
+AUC
+Area Under Curve
+45 degree line
+
+Area [rule]
+max is better
+
+
+Random Forest
+if true else if ...
+data structure = tree
+Many decision trees working together
+
+Logistic
+train model
+
+Train Test evaluation split
+Train data
+8/10  train
+2/10  train
+
+8 into 4
+
+X_train     9x inputs
+Y_train     1x outcome  healthy vs. diabetes
+
+X_test      9x inputs
+Y_test      1x outcome  of test
+
+y_pred      evaluate( y_test )
+
+
+Random Forest
+lots of parameters to tweak
+
+learning curve
+Random Search
+
+grid = randomly get score
+e.g.
+Accuracy
+1000 steps
+
+
+Logistic Regression
+70/30 split
+random_state = 42
+stratify = y        True
