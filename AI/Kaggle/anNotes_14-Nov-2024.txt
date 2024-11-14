@@ -64,12 +64,31 @@ types of errors and measure key metrics like accuracy precision recall and F1 sc
 
 TP  Predict +ve Actual +ve
 TN  Predict -ve Actual -ve
-FP  Predict +ve Actual -ve      diagnosed cancer but don't have but have treatment
-FN  Predict -ve Actual +ve      not diagnosed cancer but you do have = game over
+FP  Predict +ve Actual -ve      diagnosed cancer but don't have but have treatment          Type  I error
+FN  Predict -ve Actual +ve      not diagnosed cancer but you do have = game over            Type II error
 
 High TP + TN    indicate model performs well
 High FP         model tendency to label -ve as +ve
 High FN         model often misses +ve cases
+
+
+03. cross validation
+EDA
+Test06.py
+
+GPT
+stats technique in ML used to evaluate the performance of a model
+divide the data into multiple subsets [folds] and train and test
+the model on these subsets [folds] in a systematic way
+
+approach provides a more reliable way to estimate model's performance
+compared to a single train-test split
+
+assesses how well a model generalizes unseen data + help avoid overfitting
+and supporting model selection
+
+useful when you want reliable estimates w/o holding large portion of data
+in a fixed test set
 
 
 SUMMARY
@@ -84,3 +103,43 @@ sklearn     classification_report   precision vs. recall
 NOTE
 sklearn     library has many algorithms that can be used to train models
 xgboost     library ideal for high-performing model for tabular data
+
+
+METHOD
+https://www.kaggle.com/code/shrutimechlearn/step-by-step-diabetes-classification
+
+OSEMN Pipeline
+O - Obtaining our data
+S - Scrubbing / Cleaning our data
+E - Exploring / Visualizing our data will allow us to find patterns and trends
+M - Modeling our data will give us our predictive power as a wizard
+N - Interpreting our data
+
+Obtain data
+
+Basic EDA and statistical analysis
+Following columns or variables have an invalid zero value
+Histogram       single value
+Scatter plot    compare 2x features to visualize correlation
+Heatmap         correlation_matrix  seaborn
+- feature selection     orrelation helps select only the most relevant features
+- feature engineering   create new features based on data patterns
+Scale data      StandardScaler      sklearn
+
+Test Train Split and Cross Validation methods
+train_test_split
+algorithm.fit()
+
+Choose algorithm to train model
+- result visualization
+- fit
+- score
+Model Performance Analysis  confusion_matrix
+algorithm.predict()
+
+Classification Report       classification_report
+ROC - AUC                   sklearn.metrics.roc_curve
+algorithm.predict()
+
+Hyper Parameter optimization
+new_algo.fit()
