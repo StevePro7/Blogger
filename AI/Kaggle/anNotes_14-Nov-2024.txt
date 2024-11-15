@@ -1,32 +1,17 @@
 Notes
 14-Nov-2024
 
-01.     classification_report
-Precision vs. Recall
-classification_report(y_test, y_pred)
-e.g.
-precision    recall  f1-score   support
+SUMMARY
 
-Ref
-anMeet_02_12--Nov-2024.txt
+01. correlation_matrix			df.corr()
+02. confusion_matrix			from sklearn.metrics import confusion_matrix
+03. classification_report		from sklearn.metrics import classification_report
+04. cross_validation			from sklearn.model_selection import cross_val_score
 
-EDA ModelTraining
-Test05.py
-Test06.py
-
-GPT
-Precision + Recall
-two key metrics used to evaluate the performance of a classification model
-esp. where imbalanced classes or FP or FN have different costs
-
-Precision       positive predictive value
-measures how accurate the model's positive predictions are
-
-Recall          sensitivity or true positive rate
-measures the model's ability to corretly identify all postive instances in dataset
+from sklearn.model_selection import train_test_spli
 
 
-02. correlation_matrix
+01. correlation_matrix
 df.corr()
 
 Ref
@@ -52,7 +37,7 @@ Applications
 - multicollinearity can destabilize the model in linear regression
 
 
-03. confusion_matrix
+02. confusion_matrix
 anMeet_02_12--Nov-2024
 
 GPT
@@ -64,15 +49,40 @@ types of errors and measure key metrics like accuracy precision recall and F1 sc
 
 TP  Predict +ve Actual +ve
 TN  Predict -ve Actual -ve
-FP  Predict +ve Actual -ve      diagnosed cancer but don't have but have treatment          Type  I error
-FN  Predict -ve Actual +ve      not diagnosed cancer but you do have = game over            Type II error
+FP  Predict +ve Actual -ve      diagnosed cancer but don't have it but have treatment		Type  I error
+FN  Predict -ve Actual +ve      not diagnosed cancer but you do have it = game over		Type II error
 
 High TP + TN    indicate model performs well
-High FP         model tendency to label -ve as +ve
-High FN         model often misses +ve cases
+High FP         model tendency to predict actual -ve as +ve
+High FN         model often misses actual +ve cases
 
 
-03. cross validation
+03. classification_report
+Precision vs. Recall
+classification_report(y_test, y_pred)
+e.g.
+precision    recall  f1-score   support
+
+Ref
+anMeet_02_12--Nov-2024.txt
+
+EDA ModelTraining
+Test05.py
+Test06.py
+
+GPT
+Precision + Recall
+two key metrics used to evaluate the performance of a classification model
+esp. where imbalanced classes or FP or FN have different costs
+
+Precision       positive predictive value
+measures how accurate the model's positive predictions are
+
+Recall          sensitivity or true positive rate
+measures the model's ability to corretly identify all postive instances in dataset
+
+
+04. confusion_matrix
 EDA
 Test06.py
 
@@ -97,6 +107,7 @@ Pandas      dataFrame   info about data
 Matplot     visualize data
 Seaborn     correlation matrix  understand how data is related      df.corr()
 sklearn     implement machine learning models
+sklearn	    confusion_matrix
 sklearn     train_test_split
 sklearn     classification_report   precision vs. recall
 
