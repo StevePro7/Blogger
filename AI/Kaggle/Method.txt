@@ -1,0 +1,46 @@
+Method
+15-Nov-2024
+
+combine 2x GPTs
+
+1. Load the data
+
+2. EDA
+Check Missing Values: 
+Handle Missing Values		Impute or drop missing values.
+Normalize/Scale Features	optional
+
+3. Data Processing
+Correlations			heatmap	df.corr()
+Checking Relationships
+Identifying Missing Values	heatmap
+Handling Missing Values		Impute missing values or drop columns with too many missing values
+Feature Scaling			StandardScaler
+
+4. Feature Selection		select only the most relevant features
+correlation_matrix = data.corr()
+
+5. Split dataset
+train_test_split
+choose algorithm		LogisticRegression
+train model			model.fit(X_train, y_train)
+make predictions		y_pred = model.predict(X_test)
+
+6. Evaluate model [performance]
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+classification_report(y_test, y_pred)		Precision vs. Recall
+confusion_matrix(y_test, y_pred)
+
+ROC Curve
+y_pred_prob = model.predict_proba(X_test)[:, 1]
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob)
+roc_auc = auc(fpr, tpr)
+
+7. Hyperparameter tuning
+cross validation
+scores = cross_val_score(RandomForestClassifier(), X, y, cv=5)
+scores.mean()
+
+grid_search = GridSearchCV(RandomForestClassifier(), param_grid, cv=5)
+grid_search.fit(X_train, y_train)

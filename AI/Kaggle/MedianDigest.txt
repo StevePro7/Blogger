@@ -1,0 +1,70 @@
+Median Digest
+15-Nov-2024
+
+Exploratory Data Analysis(EDA) and Classification on PIMA Indian Diabetes DataSet
+https://medium.com/crossml/exploratory-data-analysis-eda-and-classification-on-pima-indian-diabetes-dataset-e4c649a666e9
+
+https://github.com/crossml/diabetes_classfication
+https://github.com/crossml/diabetes_classfication/blob/main/classification.ipynb
+
+
+Here ,Min value in Glucose,BloodPressure,SkinThickness,Insulin and BMI columns are 0,which isn’t possible ,hence the zeros represent the missing values here.
+
+
+Correlation matrix	heatmap
+data is free from multicollinearity
+
+df.groupby(‘Outcome’).mean()
+df.groupby(‘Outcome’).mean().T.plot(figsize=(12,4))
+
+
+sns.countplot(x=’Outcome’,data=df)
+Hence,the dataset isn’t imbalanced.
+
+
+Univariate plotting
+IMPUTE missing values
+normal distribution		mean
+skewed distribution		median
+
+IMPORTANT
+KNN Imputer for these features,as using mean/median is leading to a lot of outliers in the data
+
+
+Outliers
+Boxplots to check for outliers(after filling the missing values)
+
+We have to remove/replace the outliers to get better accuracy	
+
+
+Bivariate plots
+Pair Plot:A pairs plot allows us to visualize the relationships between two variables as well as to see the distribution of each variable.
+
+sns.pairplot(data=df2,kind=’scatter’)
+sns.pairplot(data=df2,hue=’Outcome’)
+
+...
+
+Classification
+Applying model to the data…
+train_test_split
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+
+e.g.
+model_final = RandomForestClassifier(criterion= 'gini',max_depth= 4,max_features='log2',n_estimators=100)
+model_final.fit(x_train, y_train)
+y_pred1 = model_final.predict(x_test)
+
+
+Heatmap
+sns.heatmap(pd.DataFrame(confusion_matrix(y_test,y_pred1)),annot=True)
+plt.show()
+
+
+Cross validation to find mean accuracy
+
+from sklearn.model_selection import cross_val_score
+score = cross_val_score(model_final, x, y, cv=5)
+socre.mean()
