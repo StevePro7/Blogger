@@ -4,8 +4,8 @@ Notes
 SUMMARY
 
 01. correlation_matrix			df.corr()
-02. confusion_matrix			from sklearn.metrics import confusion_matrix
-03. classification_report		from sklearn.metrics import classification_report
+02. classification_report		from sklearn.metrics import classification_report
+03. confusion_matrix			from sklearn.metrics import confusion_matrix
 04. cross_validation			from sklearn.model_selection import cross_val_score
 
 from sklearn.model_selection import train_test_spli
@@ -37,27 +37,7 @@ Applications
 - multicollinearity can destabilize the model in linear regression
 
 
-02. confusion_matrix
-anMeet_02_12--Nov-2024
-
-GPT
-table used to evaluate performance of a classification model by comparing
-predicted labels to actual labels
-
-breakdown of model's performance across different classes helping identify
-types of errors and measure key metrics like accuracy precision recall and F1 score
-
-TP  Predict +ve Actual +ve
-TN  Predict -ve Actual -ve
-FP  Predict +ve Actual -ve      diagnosed cancer but don't have it but have treatment		Type  I error
-FN  Predict -ve Actual +ve      not diagnosed cancer but you do have it = game over		Type II error
-
-High TP + TN    indicate model performs well
-High FP         model tendency to predict actual -ve as +ve
-High FN         model often misses actual +ve cases
-
-
-03. classification_report
+02. classification_report
 Precision vs. Recall
 classification_report(y_test, y_pred)
 e.g.
@@ -80,6 +60,26 @@ measures how accurate the model's positive predictions are
 
 Recall          sensitivity or true positive rate
 measures the model's ability to corretly identify all postive instances in dataset
+
+
+03. confusion_matrix
+anMeet_02_12--Nov-2024
+
+GPT
+table used to evaluate performance of a classification model by comparing
+predicted labels to actual labels
+
+breakdown of model's performance across different classes helping identify
+types of errors and measure key metrics like accuracy precision recall and F1 score
+
+TP  Predict +ve Actual +ve
+TN  Predict -ve Actual -ve
+FP  Predict +ve Actual -ve      diagnosed cancer but don't have it but have treatment		Type  I error
+FN  Predict -ve Actual +ve      not diagnosed cancer but you do have it = game over		Type II error
+
+High TP + TN    indicate model performs well
+High FP         model tendency to predict actual -ve as +ve
+High FN         model often misses actual +ve cases
 
 
 04. confusion_matrix
