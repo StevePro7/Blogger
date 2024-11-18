@@ -1,5 +1,4 @@
-<span style="font-family:verdana;font-size:85%;">
-  
+<span style="font-family:verdana;font-size:85%;">  
 In the previous <a href="https://steveproxna.blogspot.com/2024/09/openai-farma-cheat-sheet.html">post</a>, we checked out <a href="https://github.com/openai/gym">OpenAI Gym</a>: an open source library in Python used for reinforcement learning algorithms development to communicate between environments such as classic Atari video games.
 <br /><br />
 In the this post, we check out <a href="https://github.com/openai/retro">OpenAI Retro</a>: source code repository which lets you turn classic video games into Gym environments for reinforcement learning with classic Atari video games and many other Emulated Systems including: <a href="https://steveproxna.blogspot.com/2023/11/gbdk-programming-sample.html">Nintendo</a> GameBoy / GameBoy Color, the Sega <a href="https://steveproxna.blogspot.com/2020/11/sgdk-programming-sample.html">MegaDrive</a> and the Sega <a href="https://steveproxna.blogspot.com/2022/07/devkitsms-programming-sample-v.html">Master System</a>.
@@ -10,11 +9,9 @@ In the this post, we check out <a href="https://github.com/openai/retro">OpenAI 
 <br />
 Let's check it out!
 <br /><br />
-
 <u>Gym Retro</u></br />
 In May 2018, Open AI announce <a href="https://openai.com/index/gym-retro">Gym Retro</a>: a platform for reinforcement learning research on classic 8-bit and 16-bit video games.  The release includes games from the Sega Genesis and Sega Master System, and Nintendo’s NES, SNES, and Game Boy consoles.  The release also includes an <a href="https://retro.readthedocs.io/en/latest/integration.html">Integration Tool</a> that lets you create save states, find memory locations + design scenarios that reinforcement learning agents can solve.   
 <br /><br />
-
 <b>Hello Gym Retro</b><br />
 Create new Hello Gym Retro type environment.  Launch PyCharm | New Project | Name: HelloGymRetro [~/]
 <br />
@@ -74,7 +71,6 @@ At the time of this writing you may experience the following errors.  Here are e
 </tr>
 </table>
 <br />
-
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;ERROR #2</td>
@@ -89,7 +85,6 @@ At the time of this writing you may experience the following errors.  Here are e
 </tr>
 </table>
 <br />
-
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;ERROR #3&nbsp</td>
@@ -104,19 +99,17 @@ At the time of this writing you may experience the following errors.  Here are e
 </table>
 <!-- -->
 <br />
-
 <u>Stable Retro</u></br />
 As per previous <a href="https://steveproxna.blogspot.com/2024/09/openai-farma-cheat-sheet.html">post</a>, we learned that the lack of maintenance for OpenAI Gym prompted <a href="https://gymnasium.farama.org/index.html">Gymnasium</a>: which is an open source fork of the OpenAI Gym library maintained by The <a href="https://farama.org">Farama Foundation</a>.  As Gym Retro built upon an unmaintained version of the OpenAI Gym library then this may explain errors encountered above <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
 <br /><br />
 Similarly, like Gym Retro built upon OpenAI Gym, <a href="https://stable-retro.farama.org">Stable Retro</a> is built upon Farama Foundation Gymnasium.  <a href="https://github.com/Farama-Foundation/stable-retro">Stable Retro</a> lets you convert classic video games into Gymnasium environments for Reinforcement Learning!
 <br /><br />
-
 <b>Hello Stable Retro</b><br />
 Create Hello Stable Retro type environment.  Launch PyCharm | New Project | Name: HelloStableRetro [~/]
 <br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiar5WXrKel7pqEC7XB0eoD7QrWZUJiMPLqo2o1oDNkm1wy7deRL0mdwjOCrXuAPfM_38VXT6Y5jepRZYrsmamfHVtU5pxpvQcqdm_MeIDTJYBr-M-3drN3XsPF8XqUREW3xMx-mtIPzs_mtgOM5nyJiaFD0BgmrRkMVTvJn8oPSFxt2R_VF7HiaI_Vk5s/s800/HelloStableRetro.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiar5WXrKel7pqEC7XB0eoD7QrWZUJiMPLqo2o1oDNkm1wy7deRL0mdwjOCrXuAPfM_38VXT6Y5jepRZYrsmamfHVtU5pxpvQcqdm_MeIDTJYBr-M-3drN3XsPF8XqUREW3xMx-mtIPzs_mtgOM5nyJiaFD0BgmrRkMVTvJn8oPSFxt2R_VF7HiaI_Vk5s/s600/HelloStableRetro.png"/></a>
- <!-- -->
+<!-- -->
 <br />
 <!-- -->
 <table width="99%" border="1">
@@ -150,7 +143,6 @@ CODE
 </table>
 <!-- -->
 <br />
-
 <u>Retro Examples</u><br />
 Complete all Retro examples!  Extend <a href="https://github.com/SteveProXNA/OpenAItesting">OpenAI Test</a> repo.  Launch PyCharm | New Project | RetroCheatSheet
 <br />
@@ -379,7 +371,6 @@ Next, configure the stable-retro upstream destination code repository in order t
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlUSVFCkjK3s1xovOLU6rutW2a0boHTsdMk7-6Sr2sy6FWDzlPSQawUlPBjBOaTshnDP2OvN-WF65pfgelU1rnEmd6JVJvNow4t-pmMns_n4ScPGujT2Y3UrxTK8Nu6bXs66IgGim5y5iAbuBBLaJ9-Ni3nCf8lmUtwB5z4tZgBHYPN1oDAXEmhCe33Dc/s1168/ForkRetro05.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlUSVFCkjK3s1xovOLU6rutW2a0boHTsdMk7-6Sr2sy6FWDzlPSQawUlPBjBOaTshnDP2OvN-WF65pfgelU1rnEmd6JVJvNow4t-pmMns_n4ScPGujT2Y3UrxTK8Nu6bXs66IgGim5y5iAbuBBLaJ9-Ni3nCf8lmUtwB5z4tZgBHYPN1oDAXEmhCe33Dc/s600/ForkRetro05.png"/></a>
 <!-- -->
 <br />
-
 Launch PyCharm | Open Stable-Retro | Create virtual environment | Pip install all dependencies as required:
 <br />
 <!-- -->
@@ -431,7 +422,6 @@ Navigate to the <a href="https://github.com/SteveProXNA/stable-retro/tree/master
 <!-- -->
 <br /><br />
 <br />
-
 <u>Game Integration</u><br />
 As per the official Gym Retro <a href="https://retro.readthedocs.io/en/latest/integration.html">docs</a> Integrating a game means taking a video game ROM file and setting it up as a reinforcement learning environment by defining 3 things: #1 A starting state, #2 A reward function, #3 A done condition.  However, in order to integrate a new game we must have the Game Integration tool <a href="https://github.com/SteveProXNA/stable-retro/blob/master/docs/developing.md#linux">setup</a>.
 <br /><br />
@@ -479,7 +469,6 @@ Follow instructions as per <a href="https://www.youtube.com/watch?v=lPYWaUAq_dY"
 </table>
 <br />
 <!--<br />-->
-
 Launch CLion | Open Stable-Retro.  Navigate to <b>src/ui</b> folder.  Open <a href="https://github.com/SteveProXNA/stable-retro/blob/master/src/ui/main.cpp">main.cpp</a>.  Click "Select CMakeLists.txt":
 <br />
 <!-- -->
@@ -498,7 +487,6 @@ Finally, debug tests.  Navigate to <b>tests</b> folder.  Open <a href="https://g
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8H2yhl_zDDGIHNHNfxyyvozvjT95YOsgMpVxiJcKty49mGju62FhyphenhyphenjYc_net2zugwYAR5i4bS7Z2Bx_Xef0z7sI3hdiWSt_bcXJApIRu8oR5RVMVUUFawh0IbTIAMX88o89KY8iisNtUg6xe4Hzg5nSB4pahq660TTS-QyEn8Nv8uq8t3pTM37INgDUc/s1040/gym-retro-integration-tests.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8H2yhl_zDDGIHNHNfxyyvozvjT95YOsgMpVxiJcKty49mGju62FhyphenhyphenjYc_net2zugwYAR5i4bS7Z2Bx_Xef0z7sI3hdiWSt_bcXJApIRu8oR5RVMVUUFawh0IbTIAMX88o89KY8iisNtUg6xe4Hzg5nSB4pahq660TTS-QyEn8Nv8uq8t3pTM37INgDUc/s600/gym-retro-integration-tests.png"/></a>
 <br />
 <!-- -->
-
 <br />
 <u>Process</u><br />
 Now that we have built the Game Integration tool setup either directly from the <a href="https://en.wikipedia.org/wiki/Command-line_interface">CLI</a> and/or built from source it is now possible to <a href="https://medium.com/aureliantactics/integrating-new-games-into-retro-gym-12b237d3ed75">integrate</a> new games into Gym-Retro.  This process involves: #1 Creating states for Gym Retro environment to load, #2 Inspect ROM memory for points of interest, #3 Find those address and types.
@@ -531,10 +519,8 @@ The following videos on OpenAI Game Integration tool <a href="https://www.youtub
 </table>
 <br />
 <br />
-
 <u>Summary</u><br />
 To summarize, we have now setup Stable Retro environments for classic 8-bit video game systems like the Sega Master System and 16-bit video game systems like the Sega Genesis [MD] the next step would be to use reinforcement learning to train a bot to play classic emulated video games using this Gym Retro <a href="https://github.com/andruschak/openai-gym-retro">setup</a>.
 <br /><br />
 Consequently, Python <a href="https://neat-python.readthedocs.io/en/latest">NEAT</a> is a popular library for training neural networks using genetic algorithms.  There is an excellent Open AI and NEAT <a href="https://www.youtube.com/playlist?list=PLTWFMbPFsvz3CeozHfeuJIXWAJMkPtAdS">Tutorial</a> series that integrates Sonic the Hedgehog as a testbed for applied reinforcement learning to provide a rich, rewarding, and visually complex environment that is well-suited for evolving neural networks.  Ultimate goal: would be to use this as inspiration to integrate more Indie games!
-
 </span>
