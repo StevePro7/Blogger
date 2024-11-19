@@ -75,7 +75,7 @@ types of errors and measure key metrics like accuracy precision recall and F1 sc
 TP  Predict +ve Actual +ve
 TN  Predict -ve Actual -ve
 FP  Predict +ve Actual -ve      diagnosed cancer but don't have it but have treatment		Type  I error
-FN  Predict -ve Actual +ve      not diagnosed cancer but you do have it = game over		Type II error
+FN  Predict -ve Actual +ve      not diagnosed cancer but you do have it = game over		    Type II error
 
 High TP + TN    indicate model performs well
 High FP         model tendency to predict actual -ve as +ve
@@ -137,7 +137,7 @@ Heatmap         correlation_matrix  seaborn
 - feature engineering   create new features based on data patterns
 Scale data      StandardScaler      sklearn
 
-Test Train Split and Cross Validation methods
+Train Test Split and Cross Validation methods
 train_test_split
 algorithm.fit()
 
