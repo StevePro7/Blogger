@@ -1,6 +1,56 @@
 AWS CLI SSO
-20-Oct-2024
+24-Nov-2024
 
+IAM
+Users | SteveProXNA | Security credentials
+https://us-east-1.console.aws.amazon.com/iam/home?region=eu-west-1#/users/details/SteveProXNA?section=security_credentials
+StevenSSO
+
+https://us-east-1.console.aws.amazon.com/iam/home?region=eu-west-1#/users/details/SteveProXNA/mfa
+
+Enable console access
+Pwd4
+
+
+aws s3 ls --profile AdministratorAccess-476230071208
+
+
+SUMMARY
+in the end I just disabled MFA on AWS SSO
+as the MFA codes would never sync!!
+
+
+
+SSO info
+https://eu-west-1.console.aws.amazon.com/singlesignon/home?region=eu-west-1#!/instances/68040f5f581e1411/dashboard
+
+Terminal
+aws configure sso
+
+SSO start URL		https://476230071208.signin.aws.amazon.com/console
+SSO region	eu-west-1
+
+
+https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056
+
+https://us-east-1.console.aws.amazon.com/singlesignon/home?region=eu-west-1#!/
+
+https://eu-west-1.console.aws.amazon.com/singlesignon/home?region=eu-west-1#!/instances/68040f5f581e1411/dashboard
+
+AWS access portal URL
+https://d-9367433c51.awsapps.com/start
+
+
+
+Tried to setup access key
+https://us-east-1.console.aws.amazon.com/iam/home?region=eu-west-1#/security_credentials
+
+Medium
+https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056
+aws configure sso
+
+
+20-Oct-2024
 Linux terminal
 aws sso login
 
@@ -42,6 +92,7 @@ Search for SSO
 IAM Identity Center
 
 https://us-east-1.console.aws.amazon.com/iamv2/home?region=eu-west-1#/instances/68040f5f581e1411/organization/accounts
+https://eu-west-1.console.aws.amazon.com/singlesignon/organization/home?region=eu-west-1#/instances/68040f5f581e1411/accounts
 
 I added user	SteveProXNA
 I added group	SteveProGroup
