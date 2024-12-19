@@ -1,0 +1,24 @@
+Asset2 Banks
+19-Dec-2024
+
+
+Finally tried asset2banks!
+
+OLD
+folder2c bank2 bank2 2
+
+NEW
+assets2banks bank2 --firstbank=2
+
+
+Differences
+main diff is that the header files specifies the bounded array
+e.g.
+OLD
+extern const unsigned char level1_metatiles_bin[];
+
+NEW
+extern const unsigned char level1_metatiles_bin[952];
+
+
+Plus there are less line gaps between the entries
