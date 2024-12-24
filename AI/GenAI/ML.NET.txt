@@ -2,3 +2,98 @@ ML.NET
 24-Dec-2024
 
 https://github.com/PacktPublishing/Hands-On-Machine-Learning-with-ML.NET
+
+
+Chp.01
+ASIC	Application-Specific Integrated Circuits
+TPU	Tensor Processing Units
+
+2018
+Machine learning to data is what refining plants are to oil.
+
+Model Building process
+- Problem statement
+- Feature engineering
+- Obtain dataset
+- Feature extraction
+- Model training
+- Model evaluation
+
+
+Problem statement
+The five Ws of Who, What, When, Where, and Why
+
+
+Feature engineering
+features as
+components or attributes of the problem you wish to solve
+features are one of the biggest impacts on your
+model's performance
+
+feature importance
+is used to determine what features are actually driving your predictions
+
+
+Obtain datasets
+A dataset is used to train the model on what the output
+should be
+
+overfitting
+your dataset is composed of all the same data
+points and your model will not be able to properly predict
+
+A diverse but representative dataset is required for machine
+learning algorithms to properly build a production-ready model
+
+
+Feature extraction
+Feature extraction, depending on the size of your dataset and your features,
+could be one of the most time-consuming elements of the model building process
+
+
+Model training
+After feature extraction, you are now prepared to train your model
+
+
+Model evaluation
+model evaluation is to hold out a portion of your dataset for evaluation. The idea behind this
+is to take known data, submit it to your trained model, and measure the efficacy of your model
+
+
+Supervised ML
+passing the known outputs as part of the training to the model.
+labelling
+
+Unsupervised ML
+typical use case is when figuring out the input
+and output labels proves to be difficult
+
+
+ML Algorithms
+- Binary classification
+- Regression
+- Anomaly detection
+- Clustering
+- Matrix factorization
+
+Binary classification
+output of a model trained with a binary classification algorithm will return a true or false conviction
+
+Regression
+return a real value as opposed to a binary algorithm or ones that return from a set of specific values
+
+NB: 
+linear		return predicted value
+logistic	return probability of outcome occurring
+
+Anomaly detection
+looks for unexpected events in the data submitted
+to the model
+
+Clustering	Unsupervised ML
+offer a unique solution to problems
+where finding the closest match to related items is the desired solution.
+
+Matrix factorization
+provides a powerful and easy-to-use
+algorithm for providing recommendations
