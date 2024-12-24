@@ -8,7 +8,7 @@ SUMMARY
 03. confusion_matrix			from sklearn.metrics import confusion_matrix
 04. cross_validation			from sklearn.model_selection import cross_val_score
 
-from sklearn.model_selection import train_test_spli
+from sklearn.model_selection import train_test_split
 
 
 01. correlation_matrix
@@ -133,7 +133,7 @@ Following columns or variables have an invalid zero value
 Histogram       single value
 Scatter plot    compare 2x features to visualize correlation
 Heatmap         correlation_matrix  seaborn
-- feature selection     orrelation helps select only the most relevant features
+- feature selection     correlation helps select only the most relevant features
 - feature engineering   create new features based on data patterns
 Scale data      StandardScaler      sklearn
 

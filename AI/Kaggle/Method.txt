@@ -23,7 +23,7 @@ correlation_matrix = data.corr()
 5. Split dataset
 train_test_split
 choose algorithm		LogisticRegression
-train model			    model.fit(X_train, y_train)
+train model			model.fit(X_train, y_train)
 make predictions		y_pred = model.predict(X_test)
 
 6. Evaluate model [performance]
