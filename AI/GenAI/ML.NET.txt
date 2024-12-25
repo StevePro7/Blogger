@@ -174,9 +174,12 @@ binary classification
 define 4x prediction types
 TN	True  negative	  properly classified Neg
 TP	True  positive	  properly classified Pos
+							CANCER
+FN	False negative	improperly classified Neg	game over
+FP	False positive	improperly classified Pos  	treatment
 
-FN	False negative	improperly classified Neg
-FP	False positive	improperly classified Pos  
+IMP!
+remember "confusion matrix"
 
 
 Metric #1	Accuracy
@@ -188,7 +191,7 @@ Metric #2	Precision
 proportion of true results over all positive results in a model
 e.g.
 precision = 1	no FP	false positives		ideal
-FP e.g. misclassifying file as malicious when is benign
+FP e.g. misclassifying file as malignant when is benign
 
 Metric #3	Recall
 fraction of all correct results returned by the model
