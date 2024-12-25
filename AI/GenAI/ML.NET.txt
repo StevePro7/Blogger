@@ -97,3 +97,54 @@ where finding the closest match to related items is the desired solution.
 Matrix factorization
 provides a powerful and easy-to-use
 algorithm for providing recommendations
+
+
+ONNX
+Open Neural Network eXchange
+
+CNTK
+CogNitive ToolKit
+
+
+Chap.02
+create + train ML model
+
+Binary Logistic Regression Classification model
+SDCA
+Stochastic Dual Coordinate Ascent
+
+SDCA = the algorithm
+
+Project architecture
+Model runs
+
+
+Trainer
+model building and evaluation code
+
+Predictor
+code to run predictions w/ a trained model
+
+
+RestaurantFeedback
+structured input to feed data pipeline
+passed into training phase and trained model
+
+label + text
+
+
+RestaurantPrediction
+output properties from model runs
+
+prediction + probability + score
+
+
+Trainer
+load training data		LoadCSV
+builds train and test set	TrainTestSplit
+creates pipeline		Fit		train the model
+saves model
+evaluates model			Evaluate
+
+
+TTS = 20% or 0.2 by default
