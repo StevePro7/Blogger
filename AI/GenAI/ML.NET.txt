@@ -148,3 +148,114 @@ evaluates model			Evaluate
 
 
 TTS = 20% or 0.2 by default
+
+
+Predictor
+provides prediction support
+run the model given input
+
+load model
+chapter02.mdl
+
+create prediction object using input / output
+input	RestaurantFeedback,
+output	RestaurantPrediction
+
+predict output i.e. -ve or +ve result
+based on input
+
+
+Evaluate model
+each model type [algorithm] uses different metrics to concentrate
+on when analyzing the performance of a model
+e.g.
+binary classification
+
+define 4x prediction types
+TN	True  negative	  properly classified Neg
+TP	True  positive	  properly classified Pos
+
+FN	False negative	improperly classified Neg
+FP	False positive	improperly classified Pos  
+
+
+Metric #1	Accuracy
+commonly used metric when evaluate model
+calculated as ratio of correctly classified
+predictions to total classifications
+
+Metric #2	Precision
+proportion of true results over all positive results in a model
+e.g.
+precision = 1	no FP	false positives		ideal
+FP e.g. misclassifying file as malicious when is benign
+
+Metric #3	Recall
+fraction of all correct results returned by the model
+e.g.
+recall = 1	no FN	false negatives		ideal
+FN e.g. classifying something negative when should be positive
+
+Metric #4	F-score
+utilizes both precision and recall
+produces weighted average based on FP and FN
+
+give another perspective on model performance
+compared to simply looking at accuracy
+
+range 0-1	ideal = 1
+
+
+AUC
+Area Under Curve
+area under plotted graph with
+
+X-axis	FP	false positives
+Y-axis	TP	 true positives
+e.g.
+binary classifier model
+returned AUC value btwn 0 and 1
+i.e.	100%
+
+
+Average Log Loss
+expresses the penalty for wrong results in a single number
+taking the difference btwn true classification and the one
+the model predicts
+
+Training Log Loss
+represents the uncertainty of the model using probability
+vs. the known values
+NB: low numbers = better
+
+
+GPT
+difference btwn model and algorithm
+e.g.
+Binary Classification [model]
+
+Binary Classification
+type of problem where task = classify data into one of two categories
+
+Binary Classifier
+model that is trained to make these two-class predictions
+
+Algorithm
+process or method used to train the model
+e.g.
+logistic regression uses gradient descent to optimize model parameters
+support vector machine uses optimization techniques to find best hyperplane
+
+
+SUMMARY
+Binary classifier	model that outputs one of two classes
+Algorithm		method used to train the model
+
+e.g.
+logistic regression = 	algorithm
+when logistic regression [algorithm] used to classify data into two
+classes =		binary classifier
+
+
+
+Chap.03
