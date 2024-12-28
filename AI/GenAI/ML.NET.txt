@@ -262,3 +262,99 @@ classes =		binary classifier
 
 
 Chap.03
+Trainers
+
+Regression Model application
+Linear Regression	predict employee attrition
+Logistic Regression	perform basic static file analysis
+
+regression models
+9x linear regression trainers
+
+FastTreeRegressionTrainer
+FastTreeTweedieTrainer
+FastForestRegressionTrainer
+GamRegressionTrainer
+LbfgsPoissonRegressionTrainer
+LightGbmRegressionTrainer
+OlsTrainer
+OnlineGradientDescentTrainer
+SdcaRegressionTrainer
+
+
+binary logistic regression trainers:
+4x logistic regression trainers
+
+LbfgsLogisticRegressionBinaryTrainer
+SdcaLogisticRegressionBinaryTrainer
+SdcaNonCalibratedBinaryTrainer
+SymbolicSgdLogisticRegressionBinaryTrainer
+
+logistic regression
+boolean value
+pre-defined range of values
+
+linear regression
+unknown numeric value e.g. employment duration
+
+
+Choose linear regression trainer
+FastTree	utilize neighbor joining
+LightGBM	utilize GOSS Gradient-based One Side Sampling
+
+
+Choose logistic regression trainer
+all return binary classification
+
+L-BFGS		train + predict in low memory environment
+SDCA		optimized for scalability in training
+Symbolic	minimizes the error function
+
+
+Regression Model application #1
+Linear Regression
+SDCA
+Stochastic	unpredictability to predict error function
+Dual Co-ord	two variables coupled when training the model
+Ascent		maximizing the value of the error function
+
+
+Trainer
+NormalizeMeanVariance
+normalize on both mean and variance
+subtract mean from input data and divide value by the variance
+nullify outliers so model isn't skewed
+
+Program
+train
+Project Properties | Debug
+train ..\..\..\Data\sampledata.csv
+
+Loss Function: 266.27
+Mean Absolute Error: 14.01
+Mean Squared Error: 266.27
+RSquared: -0.51
+Root Mean Squared Error: 16.32
+
+predict
+Project Properties | Debug
+predict ..\..\..\Data\input.json
+
+Based on input json:
+{
+"durationInMonths": 0.0,
+"isMarried": 0,
+"bsDegree": 1,
+"msDegree": 1,
+"yearsExperience": 2,
+"ageAtHire": 29,
+"hasKids": 0,
+"withinMonthOfVesting": 0,
+"deskDecorations": 1,
+"longCommute": 1
+}
+The employee is predicted to work 25.73 months
+
+
+Regression Model application #2
+Logistic regression
