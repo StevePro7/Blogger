@@ -313,6 +313,9 @@ Symbolic	minimizes the error function
 
 Regression Model application #1
 Linear Regression
+
+var trainer = MlContext.Regression.Trainers.Sdca();
+
 SDCA
 Stochastic	unpredictability to predict error function
 Dual Co-ord	two variables coupled when training the model
@@ -358,3 +361,84 @@ The employee is predicted to work 25.73 months
 
 Regression Model application #2
 Logistic regression
+
+var trainer = MlContext.BinaryClassification.Trainers.SdcaLogisticRegression();
+
+true being malicious and false being benign
+
+
+Trainer
+FeaturizeText transform builds NGrams from strings data extracted from files
+NGrams
+popular method to create vectors from a string and feed into the model
+breaks longer string into ranges of characters based on NGram parameter
+
+extract temp_data
+train ..\..\..\Data\sampledata.csv
+
+Evaluating regression model
+poorly trained model with only provide inaccurate predictions
+
+calcluate model accuracy based on test set at time of training
+gives an idea how well model will perform in Prod environment
+
+
+Regression Metrics
+Loss function
+Mean absolute error
+Mean squared error
+R-squared
+Root mean squared error
+
+
+Loss function
+set when regression trainer initialized
+SDCA default to SquaredLoss NOT TweedieLoss or PoissonLoss
+
+
+Mean squared error	MSE
+measure of average of the square of errors
+best used to evaluate models when outliers are critical to prediction
+
+
+Mean absolute error	MAE
+sums the distances btwn points and the prediction lines as
+opposed to computing the mean
+
+IMPORTANT
+mean bias error
+two data points equidistant from the line
+one above and one below - this would balance out with
+positive and negative value
+
+
+R-squared		coefficient of determination
+represent how accurate the prediction is compared to the test set
+calculated by taking the sumo f the distance btwn every data point
+and the mean squared - subtracting them and then squaring it
+
+IMP
+high values != model performance	overfitting
+e.g.
+lot of features fed to the model = model more complex
+OR
+simply not enough diversity in the training and test sets
+thus test set = same range of values = overfitting
+
+
+Root mean squared error	RMSE
+distance btwn predicted and actual values
+RMSE takes a mean of all those distances, square that value,
+and takes the square root
+value < 180 = good model
+
+Summary
+linear regression
+application using SDCA and ML.NET to predict employee attrition
+
+logistic regression
+application using SDCA and ML.NET to provide file classification
+
+
+
+Chap.04
