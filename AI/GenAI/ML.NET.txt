@@ -1,4 +1,4 @@
-ML.NET
+
 24-Dec-2024
 
 https://github.com/PacktPublishing/Hands-On-Machine-Learning-with-ML.NET
@@ -442,3 +442,146 @@ application using SDCA and ML.NET to provide file classification
 
 
 Chap.04
+binary classification
+01. car price good or not				0 or 1
+02. multi-class classification app categorizes email	range labels
+
+binary classification models
+
+AveragedPerceptronTrainer
+SdcaLogisticRegressionBinaryTrainer
+SdcaNonCalibratedBinaryTrainer	
+SymbolicSgdLogisticRegressionBinaryTrainer
+LbfgsLogisticRegressionBinaryTrainer
+LightGbmBinaryTrainer
+FastTreeBinaryTrainer
+FastForestBinaryTrainer
+GamBinaryTrainer
+FieldAwareFactorizationMachineTrainer
+PriorTrainer
+LinearSvmTrainer
+
+
+mulit-class classifiers
+
+LightGbmMulticlassTrainer
+SdcaMaximumEntropyMulticlassTrainer
+SdcaNonCalibratedMulticlassTrainer
+LbfgsMaximumEntropyMulticlassTrainer
+NaiveBayesMulticlassTrainer
+OneVersusAllTrainer
+PairwiseCouplingTrainer
+
+Ex
+01.	FastTreeBinaryTrainer
+02.	SdcaMaximumEntropyMulticlassTrainer
+
+remember prediction output type will help decide btwn
+binary or multi-class classification
+
+best
+binary classification trainers
+SDCA, LightGBM, and FastTree
+
+multi-class classification trainers
+LightGBM and SDCA
+
+
+Ex01
+FastTree based on MART
+Multiple Additive Regression Trees
+gradient boosting algorithm
+
+Gradient boosting
+popular technique in which a series of trees are built in a
+step-wise manner before ultimately selecting the best tree
+
+MART
+learning an ensemble or regression trees that use scaler
+values in their leaves
+
+NB: output
+PredictedLabel property contains our classification result
+
+
+Trainer uses NormalizeMeanVariance
+
+BV:
+tweak no. leaves and no. trees to see how both the model
+metrics and your prediction probability percentage changes
+
+
+Program
+train ..\..\..\Data\sampledata.csv ..\..\..\Data\testdata.csv
+
+Accuracy: 88.89%
+Area Under Curve: 100.00%
+Area under Precision recall Curve: 100.00%
+F1Score: 87.50%
+LogLoss: 2.19
+LogLossReduction: -1.19
+PositivePrecision: 1
+PositiveRecall: .78
+NegativePrecision: .82
+NegativeRecall: 100.00%
+
+input.json
+predict input.json
+
+Based on input json:
+{
+"HasSunroof":0,
+"HasAC":0,
+"HasAutomaticTransmission":0,
+"Amount":1300
+}
+The car price is a good deal, with a 100% confidence
+
+
+Ex02	emails
+orders
+spam
+friend
+
+SdcaMaximumEntropy trainer
+SDCA
+uses empirical risk minimization which optimizes based
+on the training data
+potential outliers or anomalies to affect the predict performance
+thus
+provide trainer w/ ample sampling data to avoid overfitting and
+potential errors when predicting the ddata
+NB:
+SdcaMaximumEntropy trainer
+does require normalization
+
+pipeline mapping input properties to FeaturizeText transformations
+before appending the SDCA trainer
+
+Program
+train ..\..\..\Data\sampledata.csv ..\..\..\Data\testdata.csv
+
+MicroAccuracy: 1
+MacroAccuracy: 1
+LogLoss: .1
+LogLossReduction: .856
+
+
+input.json
+{
+"Subject":"hello",
+"Body":"how is it?",
+"Sender":"joe@gmail.com"
+}
+
+
+predict .\input.json
+
+Based on input json:
+{
+"Subject":"hello",
+"Body":"how is it?",
+"Sender":"joe@gmail.com"
+}
+
+The email is predicted to be a "friend"
