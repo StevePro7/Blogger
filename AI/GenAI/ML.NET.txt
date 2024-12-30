@@ -667,3 +667,83 @@ proper evaluation of classification models
 
 
 Chap.05
+k-means
+unsupervised ML algorithm
+e.g.
+type of file via content
+
+use cases
+output categorizes similar outputs into groups of similar data points
+
+k-means trainer
+based on Yinyang method not classic k-means impl
+all input normalized into single feature vector
+
+Clustering
+distances btwn data point and each cluster are measures which cluster
+the model will return
+centroid = center point of each of htese clusters
+k-means
+calculates the distance to the data point
+the smallest of these values is the predicted cluster
+
+
+PredictedClusterId property stores the closest cluster found
+prediction returns, including the Euclidean distances
+
+Program
+extract ..\..\..\TrainingData\ ..\..\..\TestData\
+
+train ..\..\..\Data\sampledata.csv ..\..\..\Data\testdata.csv
+Average Distance: NaN
+Davies Bould Index: 0
+Normalized Mutual Information: NaN
+
+predict .\chapter05.exe
+
+Based on input file: .\chapter05.exe
+
+Feature Extraction: 0,1,1,0
+
+The file is predicted to be a Executable
+
+Distances from all clusters:
+Executable: 0
+Script: 2
+Document: 2
+
+
+Evaluate k-means model
+attributes calculate model accuracy based on test set at the time
+of training to give you an idea how well model will perform in Prod
+
+e.g.
+ClusteringMetrics
+
+Average distance
+The Davies-Bouldin index
+Normalized mutual information
+
+
+Average distance		Avg score
+distance from center of cluster to test data
+if value = 0 then features create distinct clusters
+if poor prediction performance then increase the no. clusters
+
+The Davies-Bouldin index
+measure for the quality of the clustering
+ranging from 0 to 1
+if value = 0 then ideal
+
+Normalized mutual information
+used to measure mututal dependence of the feature variables
+value range 0 to 1
+if closer to or equal to 1 = ideal
+
+Summary
+clustering app useing k-means to predict file type
+evaluate k-means clustering model to achieve proper evaluation
+of a k-means clustering model
+
+
+Chap.06
