@@ -585,3 +585,85 @@ Based on input json:
 }
 
 The email is predicted to be a "friend"
+
+
+Evaluating classification model
+attributes to calculate model accuracy
+based on a test set at the time of training
+indicate how well model will perform
+
+e.g.
+CalibratedBinaryClassificationMetrics
+
+Accuracy
+Area Under ROC Curve
+F1 Score
+Area Under Precision-Recall Curve
+
+MulticlassClassificationMetrics
+used in the multi-class classification app
+
+Micro Accuracy
+Macro Accuracy
+Log Loss
+Log-Loss Reduction
+
+
+Accuracy
+proportion of correct to incorrect predictions in test dataset
+close to 100% but not 100%
+if 100% then overfitting
+
+
+Area Under ROC Curve	AUC	area under curve
+close to 100%
+if < 50% then model needs more features / training data
+
+
+F1 Score
+harmonic mean of both precision and recall
+close to 100% is preferred
+0 = precision completely inaccurate
+binary classification = 87.50%
+
+
+Area Under Precision-Recall Curve	AUPRC
+measure of successful prediction
+value should be inspected when dataset is imbalanced
+[into one classification]
+close t9 100% preferred as this indicates high recall
+
+
+Micro Accuracy
+evaluates if every sample-class pair contributes equally to the
+accuracy metric
+value close to or equal 1 preferred
+
+Macro Accuracy
+evaluates if every class pair contributes equally to the
+accuracy metric
+value close to or equal 1 preferred
+
+Log Loss
+evaluation metric describing accuracy of the classifier
+takes into account the difference btwn model prediction
+and the actual classification
+value close to or equal 0 preferred as indicates model prediction
+on the test set is perfect
+
+Log-Loss Reduction
+evaluation metric describing accuracy of the classifier as
+compared to random prediction
+value close to or equal 1 preferred
+
+
+SUMMARY
+trained binary classification using FastTree to predict car price
+and
+multi-class classification using SDCA trainer to categorize emails
+
+evalue classification model using various properties to achieve
+proper evaluation of classification models
+
+
+Chap.05
