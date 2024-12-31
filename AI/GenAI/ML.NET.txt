@@ -747,3 +747,157 @@ of a k-means clustering model
 
 
 Chap.06
+Ex
+login attempts
+time series in network traffic
+
+Anomaly Detection
+Unsupervised ML algorithm
+train on data and look for data that does not fit the normal data
+
+AD
+data is available but it is unknown whether there is an anomaly in the data
+
+examples
+sales forecasting
+stock market
+fraud detection
+cyber security: network traffic login histroy
+
+randomized PCA trainer
+requires normalization of the values
+
+PredictedLabel
+indicates a valid anomalhy based on the threshold set
+
+NB:
+AD algorithm uses eigenvectors to estimate the subspace containing
+the normal class and then computes the normalized difference btwn
+the actual feature vector and the projected feature in that subspace
+
+Algorithm finds edge cases if computed error is not close to 0
+
+
+Time series
+transforms are grouped in the TimeSeriesCatalog class
+
+DetectAnomalyBySrCnn
+DetectChangePointBySsa
+DetectIidChangePoint
+DetectIidSpike
+DetectSpikeBySsa
+ForecastBySsa
+
+SSA
+Singular Spectrum Analysis
+
+Time series example looks for spikes in network transfer over time via
+DetectSpikeBySsa
+
+Ex06 time series
+train ..\..\..\Data\sampledata.csv
+
+predict ..\..\..\Data\testdata.csv
+Based on input file (..\..\..\Data\testdata.csv):
+HOST: laptop TIMESTAMP: 22/11/2019 11:13:23 TRANSFER: 1000 ALERT: 0 SCORE: 46.07 P-VALUE: 0.50
+HOST: laptop TIMESTAMP: 23/11/2019 11:13:23 TRANSFER: 1100 ALERT: 0 SCORE: 131.36 P-VALUE: 0.00
+HOST: laptop TIMESTAMP: 24/11/2019 11:13:23 TRANSFER: 1200 ALERT: 0 SCORE: 180.44 P-VALUE: 0.06
+HOST: laptop TIMESTAMP: 25/11/2019 11:13:23 TRANSFER: 1300 ALERT: 0 SCORE: 195.42 P-VALUE: 0.17
+HOST: laptop TIMESTAMP: 26/11/2019 11:13:23 TRANSFER: 1400 ALERT: 0 SCORE: 201.15 P-VALUE: 0.22
+HOST: laptop TIMESTAMP: 27/11/2019 11:13:23 TRANSFER: 3000 ALERT: 1 SCORE: 1365.42 P-VALUE: 0.00
+HOST: laptop TIMESTAMP: 28/11/2019 11:13:23 TRANSFER: 1500 ALERT: 0 SCORE: -324.58 P-VALUE: 0.11
+HOST: laptop TIMESTAMP: 29/11/2019 11:13:23 TRANSFER: 1600 ALERT: 0 SCORE: -312.93 P-VALUE: 0.25
+
+
+alert	nonzero = anomaly
+score	numeric representation of the anomaly score
+p-value	distance btwn current point and the average point	0 = spike
+
+
+Ex	AD app
+login anomaly detector
+
+AD classification using the randomized PCA trainer
+RandomizedPcaTrainer
+
+evaluate the trained model using the test dataset
+
+Program
+train ..\..\..\Data\sampledata.csv ..\..\..\Data\testdata.csv
+
+Area Under Curve: 78.12%
+Detection at FP Count: 1
+
+input.json
+{
+  "UserID": 0, 
+  "CorporateNetwork": 1, 
+  "HomeNetwork": 0,
+  "WithinWorkHours": 1, 
+  "WorkDay": 1
+}
+
+predict input.json
+
+Based on input json:
+{
+  "UserID": 0,
+  "CorporateNetwork": 1,
+  "HomeNetwork": 0,
+  "WithinWorkHours": 1,
+  "WorkDay": 1
+}
+The login history is normal, with a 0.00 outlier score
+
+Evaluating randomized PCA model
+poorly trained model will only provide inaccurate predictions
+
+popular attributes to calculate model accuracy based on a
+test set at the time of training to give idea how well the
+model will perform in PROD
+
+AnomalyDetectionMetrics
+Area under the ROC curve
+Detection rate at false positive count
+
+Area under the ROC curve		similar to regression
+ROC	Receiver Operating Characteristic
+computed area = chance algorithm [randomized PCA] scores positive
+instance higher that negative one both chosen randomly to better
+evaluate the data
+
+Number close to 100% is ideal value
+value close to 0%  shows false positives
+
+IMPORTANT
+Pg.129
+shows area under data curve in btwn the random guessing line
+is the area under the ROC curve data metric
+
+
+Detection rate at false positive count
+detection rate of K false positives
+
+FP false positive in an anomaly detection would be to consider a
+data point an anomaly when in fact it was not
+
+rate computed by
+detection rate of K falose positives = X / Y
+
+X	top test samples based on the scores in anomaly detection
+	top true positives	more likely to be anomalies
+
+Y	total number of anomalies in the test data regardless of score value
+	not filtering points that look suspicious or not
+	could be high if no. FP high in training data
+
+In Prod ensure data close to Prod as poss to avoid overfitting or
+underfitting to anomalies
+
+SUMMARY
+anomaly detection using randomized PCA algorithm
+evaluate AD model using properties exposed to achieve proper
+evaluation of AD model
+
+
+Chap.07
