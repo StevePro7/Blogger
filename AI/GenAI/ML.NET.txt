@@ -901,3 +901,94 @@ evaluation of AD model
 
 
 Chap.07
+matrix factorization
+unsupervised ML algorithm
+
+predict music recommendations based on sample training data
+
+applications
+Music recommendations
+Product recommendations
+Movie recommendations
+Book recommendations
+
+cold start problem
+
+matrix factorization trainer requires both normalization of the values and
+caching
+
+Program
+train ..\..\..\Data\sampledata.csv ..\..\..\Data\testdata.csv
+
+Matrix Factorization Evaluation:
+
+Loss Function: 0.129
+Mean Absolute Error: 0.279
+Mean Squared Error: 0.129
+R Squared: 0.929
+Root Mean Squared Error: 0.359
+
+input.json
+predict input.json
+
+Based on input:
+Label: 3 | MusicID: 4 | UserID: 10
+The music is not recommended
+
+
+Evaluate matrix factorization model
+
+RegressionMetrics
+Loss function
+Mean Squared Error (MSE)
+Mean Absolute Error (MAE)
+R-squared
+Root Mean Squared Error (RMSE)
+
+
+Loss function
+default SquaredLossRegression
+
+
+Mean Squared Error (MSE)
+measure of the average of the squares of the errors
+smaller the value the better the fitting = more accuated predictions
+best used to evaluate models when outliers critical to prediction output
+
+
+Mean Absolute Error (MAE)
+sums the differences btwn the points and the prediction lines
+as opposed to computing the mean
+
+best used to evaluate models when outliers are considered anomalies
+and shouldn't be counted in evaluating model's performance
+
+NB: MBE	Mean Bias Error
+when equal +ve distance and -ve distance = balanced out
+
+
+R-squared
+co-efficient of determination
+how well prediction compares to the test set
+
+R- squared = difference btwn each predicted value and actual value, 
+squaring that difference, then summing squares for each pair of points
+
+
+Root Mean Squared Error (RMSE)
+red dots	actual values from test set
+blue dots	predicted values
+
+X = distance btwn predicted and actual values
+
+RMSE takes mean of all those distance, squares that value
+and takes the square root
+
+value < 180 = good model
+
+SUMMARY
+matrix factorization application to predict music recommendations
+evaluate matrix factorization model via various properties exposed
+to achieve a proper evaluation of a matrix factorization model
+
+
