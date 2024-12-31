@@ -1011,3 +1011,13 @@ Chap.09
 trainingfolderpath ..\..\..\..\TrainingData\ testingfolderpath ..\..\..\..\TestData\
 
 action training trainingfilename ..\..\..\..\sampledata.data testingfilename ..\..\..\..\testdata.data
+
+
+Chap.10
+TrainingFileName ..\..\..\..\Data\trainingURLList.csv TestingFileName ..\..\..\..\Data\testingURLList.csv
+
+ModelFileName webcontentclassifier.mdl Action TRAINING TrainingFileName ..\..\..\..\Data\sampledata.csv TestingFileName ..\..\..\..\Data\testdata.csv
+
+Entropy: 0.9852281360342516
+Log Loss: 0.7991615914213641
+Log Loss Reduction: 0.18885630424831765
