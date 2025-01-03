@@ -1021,3 +1021,59 @@ ModelFileName webcontentclassifier.mdl Action TRAINING TrainingFileName ..\..\..
 Entropy: 0.9852281360342516
 Log Loss: 0.7991615914213641
 Log Loss Reduction: 0.18885630424831765
+
+
+Section4
+Chap.11
+
+3x components of training a model:
+01. feature engineering
+02. sample gathering
+03. creating a training pipeline
+
+
+01. feature engineering
+features
+one of the most important components
+in the model building process
+e.g.
+cybersecurity = steganography
+hiding data within a container
+i.e.
+hide malicious payloads in files that would otherwise be ignored
+
+
+PNG
+Portable Network Graphics
+
+
+02. sample gathering
+Obtain dataset
+www.virustotal.com
+
+
+03. creating a training pipeline
+1. prepare data
+2. train model
+3. validate model
+4. deploy model
+
+Speed
+training set and hyper-parameters in order to test various combinations
+
+Repeatability
+model can be rebuilt give the same dataset, features, and hyper-parameters
+
+Version and tracking or comparisons
+track progress
+track trends in efficacy
+
+Quality Assurance
+automated suite of tests w/ specific ranges of efficacy to keep within
+
+
+ML platforms
+Azure ML
+
+
+Chap.12
