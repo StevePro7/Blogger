@@ -1,6 +1,27 @@
 Source Tree 02
 08-Jan-2025
 
+UPDATE
+I did all below but STILL kept getting prompted to enter username password
+
+Hopefully this solved the issue once and for all!
+
+Reference:
+https://community.atlassian.com/t5/Sourcetree-questions/Why-does-Sourcetree-not-allow-me-to-delete-my-Github-password/qaq-p/787525
+
+
+The problem was the account
+visual studio http saved password
+
+this must be removed via the Windows Credential Mgr
+Start | run | Credential Mgr
+
+Windows credentials
+scroll down to the two entries
+
+GitHub for Visual Studio HTTPS
+Remove
+
 
 01.
 Password popup keeps prmpting
