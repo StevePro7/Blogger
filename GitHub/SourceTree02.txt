@@ -1,0 +1,40 @@
+Source Tree 02
+08-Jan-2025
+
+
+01.
+Password popup keeps prmpting
+
+Reference
+https://stackoverflow.com/questions/68191968/source-tree-fix-for-git-password-authentication-is-temporarily-disabled-as-part
+
+
+First, post 2021 must use token [PAT] not username and password
+e.g.
+Tools | Options | Authentication | Add
+github.com
+OAuth
+SteveProXNA
+
+
+However, still being prompted for password - so try this
+
+Click repo | Settings | origin | Edit
+
+IMPORTANT
+the wrong account was selected - StevePro7 - update to SteveProXNA
+
+close Source Tree and re-open
+
+NB: ensure the URL
+https://github.com/SteveProXNA/awesome-megadrive.git
+
+
+NB: some answer suggest putting the personal access token in the URL
+https://{personal-access-token>@github.com}/{<my-repo>}.git>
+
+OR
+remove the origin first then re-add
+
+git remote remove origin
+https://{personal-access-token>@github.com}/{<my-repo>}.git>
