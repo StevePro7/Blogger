@@ -1,0 +1,70 @@
+VNC Server
+11-Jan-2025
+
+
+Had A LOT of issues trying to ping Linux host from Windows host
+
+Gateway		192.168.15.1
+
+Windows PC	192.168.15.41
+Linux Host	192.168.15.50
+
+Windows
+ping 192.168.15.50
+
+tries to resolve to Windows host 192.168.15.40
+but with
+
+Destination host unreachable
+
+
+Thus VNC View cannot connect
+
+
+Chat GPT
+Windows 10 ping 192.168.15.50 destination host unreachable
+
+
+Finally this seemed to work
+
+Windows
+cmd
+Run as Administrator
+
+netsh advfirewall set allprofiles state off
+
+ping 192.168.15.50
+Reply!!
+
+netsh advfirewall set allprofiles state on
+ping 192.168.15.50
+Reply!!
+
+
+Now all working fine
+
+other things I did do
+
+ipconfig /flushdns
+
+hosts
+C:\Windows\system32\Drivers\etc
+
+Alienware	192.168.15.50
+
+
+LINUX
+Terminal
+
+sudo x11vnc -usepw &
+
+sudo x11vnc -xkb -noxrecord -noxfixes -noxdamage -display :0 -auth /var/run/lightdm/root/:0 -usepw
+
+Ctrl+Z
+
+sudo fuser -k 5900/tcp
+sudo fuser -k 5901/tcp
+
+
+sudo x11vnc -xkb -noxrecord -rfbport 5901 -noxfixes -noxdamage -display :0 -auth /var/run/lightdm/root/:0 -usepw
+
