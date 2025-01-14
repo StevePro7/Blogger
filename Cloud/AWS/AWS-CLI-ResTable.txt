@@ -1,0 +1,28 @@
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+&nbsp;aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table<br />
+&nbsp;aws ec2 describe-addresses --query 'Addresses[*].PublicIp' --output table<br />
+&nbsp;aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table<br />
+&nbsp;aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table<br />
+&nbsp;aws ec2 describe-vpcs --query 'Vpcs[*].VpcId' --output table<br />
+&nbsp;aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE<br />&nbsp;--query 'StackSummaries[*].StackName' --output table<br />
+&nbsp;aws cloudwatch describe-alarms --query 'MetricAlarms[*].AlarmName' --output table<br />
+&nbsp;aws ecr describe-repositories --query 'repositories[*].repositoryName' --output table<br />
+&nbsp;aws ecs list-clusters --query 'clusterArns' --output table<br />
+&nbsp;aws eks list-clusters --query 'clusters' --output table<br />
+&nbsp;aws elasticbeanstalk describe-environments --query 'Environments[*].EnvironmentName' --output table<br />
+&nbsp;aws elb describe-load-balancers --query 'LoadBalancerDescriptions[*].LoadBalancerName' --output table<br />
+&nbsp;aws elbv2 describe-load-balancers --query 'LoadBalancers[*].LoadBalancerName' --output table<br />
+&nbsp;aws iam list-roles --query 'Roles[*].RoleName' --output table<br />
+&nbsp;aws iam list-users --query 'Users[*].UserName' --output table<br />
+&nbsp;aws lambda list-functions --query 'Functions[*].FunctionName' --output table<br />
+&nbsp;aws rds describe-db-instances --query 'DBInstances[*].DBInstanceIdentifier' --output table<br />
+&nbsp;aws route53 list-hosted-zones --query 'HostedZones[*].Name' --output table<br />
+&nbsp;aws s3 ls<br />
+&nbsp;aws sns list-topics --query 'Topics[*].TopicArn' --output table<br />
+&nbsp;aws sqs list-queues --query 'QueueUrls' --output table<br />
+&nbsp;aws ssm describe-parameters --query 'Parameters[*].Name' --output table<br />
+</td>
+</tr>
+</table>
