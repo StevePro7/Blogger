@@ -6,7 +6,7 @@
 &nbsp;aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table<br />
 &nbsp;aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table<br />
 &nbsp;aws ec2 describe-vpcs --query 'Vpcs[*].VpcId' --output table<br />
-&nbsp;aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE<br />&nbsp;--query 'StackSummaries[*].StackName' --output table<br />
+&nbsp;aws cloudformation list-stacks --query 'StackSummaries[*].StackName' --output table<br />  
 &nbsp;aws cloudwatch describe-alarms --query 'MetricAlarms[*].AlarmName' --output table<br />
 &nbsp;aws ecr describe-repositories --query 'repositories[*].repositoryName' --output table<br />
 &nbsp;aws ecs list-clusters --query 'clusterArns' --output table<br />
@@ -25,4 +25,4 @@
 &nbsp;aws ssm describe-parameters --query 'Parameters[*].Name' --output table<br />
 </td>
 </tr>
-</table>
+</table>  
