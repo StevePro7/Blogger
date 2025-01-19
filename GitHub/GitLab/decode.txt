@@ -3,3 +3,28 @@ https://cloudifydevops.com/secured-gitlab-pipeline-with-base64
 
 base64 decode
 echo "insert_your_variable" | base64 -d
+
+
+EXAMPLE
+https://www.base64encode.org
+SP4
+get the value
+
+https://gitlab.com/SteveProXNA/gitlabcheatsheet
+Settings | CI/CD | Variables
+CI_REGISTRY_CODE
+encoded docker pwd
+
+
+Test manually from Linux terminal
+export CI_REGISTRY_CODE="<redacted>"
+export CI_REGISTRY_PASS=`echo "${CI_REGISTRY_CODE}" | base64 -d`
+export CI_REGISTRY_HOST=docker.io
+
+
+docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASS} ${CI_REGISTRY_HOST}
+Login succeeded
+
+
+Now update the ENV Var as per GitLab CI/CD
+pipeline should be able to log in to Docker Hub
