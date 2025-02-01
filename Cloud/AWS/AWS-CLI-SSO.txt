@@ -14,6 +14,10 @@ Pwd4
 
 aws s3 ls --profile AdministratorAccess-476230071208
 
+IMPORTANT
+Q. what is my AWS ACCOUNT ID?
+A. echo `aws sts get-caller-identity --query 'Account' --output text`
+
 
 SUMMARY
 in the end I just disabled MFA on AWS SSO
