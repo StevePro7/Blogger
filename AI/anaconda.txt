@@ -29,3 +29,56 @@ Interpreter type:	Base conda
 Path to conda		~/miniconda3/bin/conda
 
 source ~/miniconda3/bin/activate
+
+
+
+IMPLEMENTATION
+Reference
+https://www.hostinger.com/tutorials/how-to-install-anaconda-on-ubuntu
+
+sudo apt-get update
+cd /tmp
+wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+bash Anaconda3-2022.05-Linux-x86_64.sh
+
+Default location
+/home/stevepro/anaconda3
+
+Press Enter
+
+For example:
+        $ conda install scikit-learn-intelex
+        $ python -m sklearnex my_application.py
+
+conda init
+
+source ~/.bashrc
+conda info
+
+conda update conda
+conda update anaconda
+
+
+
+UNINSTALL
+conda install anaconda-clean
+anaconda-clean
+
+conda deactivate
+
+
+
+touch Anaconda.desktop
+
+Desktop
+[Desktop Entry]
+Type=Application
+Name=Anaconda
+Exec=anaconda-navigator
+Terminal=false
+Icon=/home/stevepro/anaconda3/lib/python3.9/site-packages/anaconda_navigator/static/images/anaconda-icon-256x256.png
+
+
+sudo cp Anaconda.desktop /usr/share/applications/
+
+sudo echo "PATH=$PATH:/home/stevepro/anaconda3/bin" >> /etc/environment
