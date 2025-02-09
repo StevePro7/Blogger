@@ -11,26 +11,26 @@ thorough example:
 gcloud container clusters create ${CLUSTER_NAME}
 	--enable-intra-node-visibility 
 	--enable-network-policy
-        --project=SteveProProject 
+    --project=SteveProProject
 	--region=europe-west1
 	--zone=europe-west1
-        --num-nodes=3
+    --num-nodes=3
 	--machine-type=# TODO - get machine type
 	--image-type # TODO - get image type
-        --cluster-version=v1.21.3
+    --cluster-version=v1.21.3
 	--release-channel=None
-        --no-enable-stackdriver-kubernetes
-        --network=default
+    --no-enable-stackdriver-kubernetes
+    --network=default
 	--subnetwork=default
-        --labels=prefix=${CLUSTER_NAME},created-by=${USER}
-        --quiet --verbosity debug
+    --labels=prefix=${CLUSTER_NAME},created-by=${USER}
+    --quiet --verbosity debug
        
 
 gcloud container clusters get-credentials ${CLUSTER_NAME}
-        --project=SteveProProject 
+    --project=SteveProProject
 	--region=eu-west-1
 	--zone=eu-west-1a
-        --quiet --verbosity debug
+    --quiet --verbosity debug
 
 
 IMPORTANT
