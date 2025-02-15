@@ -38,3 +38,51 @@ each bound function is given
 
 
 setup.py
+setup build system
+
+ext_modules
+~\GitHub\StevePro9\PythonSetup\PyBind\DebugEX00
+
+Extension class
+defines a Python extension module
+list of the source files are included to reference C++ code
+
+~\GitHub\StevePro7\FelixTesting\python\pybind\test01
+pybind11.get_include()
+language=C++
+
+
+python setup.py build
+compiles the C++ code and generate Python modele
+example.cpython-<version>-<platform>.so
+
+python setup.py install
+installs the module allowing you to import it
+
+
+Use the Created Python Module
+exmple.py
+
+
+Advanced Topics (Class and NumPy)
+
+Python allows you to bind C++ classes enabling object-orientated programming features in Python
+
+pybind11::class_<Calculator>(m, "Calculator")
+py::class_<PyRetroEmulator>(m, "RetroEmulator")
+
+Pybind11 code binds the C++ class to Python
+pybind11:class_ is used to bind the C++ class
+
+
+Using NumPy
+Pybind11 also provides support for integrating with NumPy:
+pwerful library for numerical computing in Python
+
+particularly useful for applications that require manipulating large arrays od data efficiently
+
+
+CONCLUSION
+Pybind11 simplifies bridging the gap between Python and C++ enabling developers to build high-performance Python-friendly extensions
+
+Here can combine the power of C++ with the simplicity of Python unlocking new possibilities in your projects
