@@ -16,3 +16,21 @@ group = stevepro-dev-cluster
 
 
 az aks show --resource-group <resource-group> --name <cluster-name> --query nodeResourceGroup -o tsv
+
+
+
+Chat GPT
+Azure az command line interface
+list the most useful az commands to list all resources have been provisioned
+
+
+az resource list --output table
+az resource list --resource-type "Microsoft.Compute/virtualMachines" --output table
+az group list --output table
+az vm list --output table
+az storage account list --output table
+az network public-ip list --output table
+
+
+Delete resource group
+az group delete --name NetworkWatcherRG
