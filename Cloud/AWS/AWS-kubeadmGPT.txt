@@ -151,3 +151,93 @@ terraform plan
 terraform apply -auto-approve
 terraform destroy
 
+
+
+
+main.tf
+part II public subnet
+provider "aws" {
+  region = "eu-west-1"  # Adjust as necessary
+}
+
+# Create a VPC
+resource "aws_vpc" "k8s_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
+
+# Create a public subnet for EC2 instances
+resource "aws_subnet" "k8s_public_subnet" {
+  vpc_id            = aws_vpc.k8s_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+  availability_zone  = "eu-west-1a"  # Adjust as necessary
+}
+
+# Create an Internet Gateway and attach to the VPC
+resource "aws_internet_gateway" "k8s_internet_gateway" {
+  vpc_id = aws_vpc.k8s_vpc.id
+}
+
+# Security group to allow SSH and Kubernetes traffic
+resource "aws_security_group" "k8s_sg" {
+  vpc_id = aws_vpc.k8s_vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # Open to the internet for SSH (limit in production)
+  }
+
+  ingress {
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 10250
+    to_port     = 10255
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+# EC2 Instance for Kubernetes Master in the public subnet
+resource "aws_instance" "k8s_master" {
+  ami                    = "ami-xxxxxxxxxxxxxxxxx"  # Replace with the correct AMI ID
+  instance_type          = "t2.medium"
+  subnet_id              = aws_subnet.k8s_public_subnet.id
+  vpc_security_group_ids = [aws_security_group.k8s_sg.id]
+  key_name               = "master_ssh_key"  # Ensure this key exists in AWS
+  user_data              = file("master.sh")
+
+  associate_public_ip_address = true  # Ensure the instance gets a public IP
+  tags = {
+    Name = "k8s-master"
+  }
+}
+
+# EC2 Instances for Kubernetes Workers in the public subnet
+resource "aws_instance" "k8s_worker" {
+  count                  = 2
+  ami                    = "ami-xxxxxxxxxxxxxxxxx"  # Replace with the correct AMI ID
+  instance_type          = "t2.medium"
+  subnet_id              = aws_subnet.k8s_public_subnet.id
+  vpc_security_group_ids = [aws_security_group.k8s_sg.id]
+  key_name               = "master_ssh_key"
+  user_data              = file("worker.sh")
+
+  associate_public_ip_address = true  # Ensure the worker nodes get public IPs
+  tags = {
+    Name = "k8s-worker-${count.index + 1}"
+  }
+}
