@@ -1,0 +1,153 @@
+AWS kubeadm GPT
+15-Feb-2025
+
+provision aws kubeadm cluster using terraform example
+
+
+main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Change as needed
+}
+
+# Create a VPC
+resource "aws_vpc" "k8s_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
+
+# Create a subnet
+resource "aws_subnet" "k8s_subnet" {
+  vpc_id            = aws_vpc.k8s_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+}
+
+# Security group allowing SSH and Kubernetes traffic
+resource "aws_security_group" "k8s_sg" {
+  vpc_id = aws_vpc.k8s_vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # Restrict in production
+  }
+
+  ingress {
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 10250
+    to_port     = 10255
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+# EC2 Instance for Kubernetes Master
+resource "aws_instance" "k8s_master" {
+  ami                    = "ami-0c55b159cbfafe1f0"  # Ubuntu AMI, update as needed
+  instance_type          = "t2.medium"
+  subnet_id              = aws_subnet.k8s_subnet.id
+  vpc_security_group_ids = [aws_security_group.k8s_sg.id]
+  key_name               = "my-key"  # Update with your SSH key
+  user_data              = file("master.sh")
+
+  tags = {
+    Name = "k8s-master"
+  }
+}
+
+# EC2 Instances for Kubernetes Workers
+resource "aws_instance" "k8s_worker" {
+  count                  = 2
+  ami                    = "ami-0c55b159cbfafe1f0"
+  instance_type          = "t2.medium"
+  subnet_id              = aws_subnet.k8s_subnet.id
+  vpc_security_group_ids = [aws_security_group.k8s_sg.id]
+  key_name               = "my-key"
+  user_data              = file("worker.sh")
+
+  tags = {
+    Name = "k8s-worker-${count.index + 1}"
+  }
+}
+
+
+
+
+master.sh
+#!/bin/bash
+set -e
+
+# Update and install required packages
+apt update && apt install -y apt-transport-https curl
+
+# Install Docker
+apt install -y docker.io
+systemctl enable docker && systemctl start docker
+
+# Add Kubernetes repository
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+apt update
+
+# Install Kubernetes components
+apt install -y kubeadm kubelet kubectl
+systemctl enable kubelet
+
+# Initialize the cluster
+kubeadm init --pod-network-cidr=192.168.0.0/16 > /tmp/kubeadm-init.log
+
+# Setup kubeconfig for root user
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
+
+# Apply network plugin
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+
+
+
+worker.sh
+#!/bin/bash
+set -e
+
+# Update and install required packages
+apt update && apt install -y apt-transport-https curl
+
+# Install Docker
+apt install -y docker.io
+systemctl enable docker && systemctl start docker
+
+# Add Kubernetes repository
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+apt update
+
+# Install Kubernetes components
+apt install -y kubeadm kubelet kubectl
+systemctl enable kubelet
+
+# Join the cluster (this token should be manually updated)
+kubeadm join <MASTER_PRIVATE_IP>:6443 --token <TOKEN> --discovery-token-ca-cert-hash sha256:<HASH>
+
+
+
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+terraform destroy
+
