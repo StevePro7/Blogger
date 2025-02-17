@@ -35,3 +35,32 @@ ami-004ebf09bdc6fe478
 
 Reference:
 https://eu-west-1.console.aws.amazon.com/ec2/home?region=eu-west-1#Images:visibility=public-images;search=:Debian;v=3;$case=tags:false%5C,client:false;$regex=tags:false%5C,client:false
+
+SUMMARY
+This AMI works such that I can connect to it after it is initialized
+ami-003fd7303eebf0134
+
+but is a RHEL image
+i.e.
+sudo yum update
+
+Remember these commands confirm the distro
+cat /etc/os-release
+ID_LIKE="centos rhel fedora"
+
+
+
+Try this - is Debian?
+ami-00324975410372077
+debian-11-amd64-20230601-1398-a264997c-d509-4a51-8e85-c2644a3f8ba2
+
+No - would not work because this is AWS Marketplace
+
+
+Filter by ubuntu
+ami-001f2b6c1d0b2dfb2
+
+WORKed
+this one worked and SSH into master node after initialization
+e.g.
+ssh -i master_ssh_key ubuntu@52.214.157.190
