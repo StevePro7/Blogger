@@ -1,0 +1,61 @@
+pytest GPT 02
+18-Feb-2025
+
+
+01. patch() APIs
+return_value		gets / sets return value mock object should return when called
+side_effect		sets side effect for the mock object function, exception, iterable
+assert_called_once_with(*args, **kwargs)	asserts mock was called exactly once
+assert_called_with(*args, **kwargs)		asserts mock was called at least once
+assert_called()					asserts mock was called at least once
+assert_any_call(*args, **kwargs)		asserts mock was called at least once	
+call_count					gets the number of times mock called
+call_args					retrieves args mock last called with
+call_args_list					retrieves list of args passed to mock each call
+reset_mock					resets teh mock object to initial state
+configure_mock(**kwargs)			configures mock ojbect after created
+assert_not_called()				asserts mock was not called
+mock_add_spec(spec)				adds spec to mock object
+assert_has_calls(call_list, any_order=False)	asserts mock called w/ specified list of calls
+
+
+02. Mock and MagicMock
+majority of APIs listed for patch apply to unittest mock.Mock and mock.MagicMock
+both are core classes that patch uses under the hood to create mock objects i.e
+they support all the same methods and behaviors
+
+
+Mock
+standard mock object
+basic functionality
+set return values, check call args, reset mock
+
+MagicMock
+additional "magic"methods
+__getitem__, __iter__, __call__
+useful when you need to mock objects like Python dictionary or callable objects
+e.g.
+mock = MagicMock()
+mock.__getitem__.return_value = "some value"
+OR
+mock.return_value = "some value"
+print(mock())
+
+
+Set side_effect for more complex behavior in callable mocks
+e.g.
+mock.side_effect = lambda x: x * 2
+print(mock())	# 10
+
+
+SUMMARY
+Mock and MagicMock both support all the patch-related APIs like
+return_value, side_effect, assert_called_once_with
+
+MagicMock has additional support for magic methods not available in Mock
+therefore more suitable for mocking objects that need to behave like
+collection objects OR callable objects
+
+patch uses Mock or MagicMock to create mock objects so when you patch
+functions or classes then you'll have access to all the mock APIs in
+your test

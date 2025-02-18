@@ -1,0 +1,47 @@
+pytest GPT 01
+18-Feb-2025
+
+
+01.	@pytest.fixture()
+pytest list all the @pytest.fixture scope options explain each one thanks
+
+@pytest.fixture()
+controls how long the fixture lasts
+e.g.
+
+function	created once per test function	[default]
+class		created once per test class
+module		created once per test module	[Python file]
+package		created once per test package	[directory of tests]
+session		created once per test session	[entire run of tests]
+
+
+02.	@pytest.patch()
+explain exactly what unittest mock patch does with an example
+from unittest.mock import patch
+
+patch() function allows you to replace [mock] an object or functionwith a mock during a test
+mock external dependency e.g. real network call, access database
+
+
+patch
+replace target object [function, method, class] with mock object
+control mock object behavior e.g. return value or side effect
+check if mock was called as expected [args, number of calls]
+test complete = patch undone and original object restored
+
+return_value		set return value of the mock to simulate actually function call
+assert_called_once_with	ensures function was called exactly once
+
+
+decorator
+@patch('my_module.requests.get')
+def test_fetch_data(self, mock_get):
+
+context manager
+with patch('my_module.requests.get') as mock_get:
+  mock_response = mock_get.return_value
+
+class
+@patch.object(MyClass, 'method_to_mock')  # Patching an instance method
+def test_call_method(self, mock_method):

@@ -1,0 +1,28 @@
+pytest Tut 01
+18-Feb-2025
+
+https://www.tutorialspoint.com/pytest/index.htm
+
+pytest -k <markername>
+@pytest.mark.<markername>
+
+
+@pytest.fixture
+fixtures = functions run before each test
+
+
+conftest.py
+fixture available to multiple test files
+
+
+@pytest.mark.parametrize
+parameterizing a test = run the test against multiple sets of inputs
+
+
+@pytest.mark.xfail
+@pytest.mark.skip
+
+
+Run tests in parallel
+pip install pytest-xdist
+pytest -n 3
