@@ -1,0 +1,152 @@
+Python Libraries for Data Clean-Up
+19-Feb-2025
+
+https://python.plainenglish.io/python-libraries-for-data-clean-up-c5d2c3614e33
+
+
+Clean your data with these 8 python libraries
+https://www.youtube.com/watch?v=WttMVZw5OuM
+
+
+1. Pandas
+1. Handling Missing Values
+df.dropna() 
+df.fillna()
+
+
+2. Removing Duplicates
+df.drop_duplicates()
+
+
+3. Data Transformation
+df.apply()
+
+4. Filtering Data
+df.query()
+df[df[‘column’] > value]
+
+
+5. Merging and Joining
+df.merge()
+df.join()
+
+
+6. Grouping and Aggregating
+df.groupby() 
+aggregate sum()
+aggregate mean()
+aggregate count()
+
+
+7. Pivot Tables
+pd.pivot_table()
+
+
+8. Datetime Conversion
+pd.to_datetime()
+
+
+9. String Operation
+df[‘column’].str.contains()
+df[‘column’].str.replace()
+
+
+10. Sorting Data
+df.sort_values()
+
+
+11. Reshaping Data
+melt()
+pivot()
+
+
+12. Handling Categorical Data
+pd.Categorical()
+
+
+13. Rolling Statistics: 
+df.rolling(window=3).mean(), 
+
+
+
+2. NumPy
+1. Handling Missing Data
+np.nan 
+np.isnan()
+
+
+2. Array Operations
+np.add()
+np.subtract()
+np.multiply()
+np.divide()
+
+
+3. Sorting and Searching
+np.sort()
+np.searchsorted()
+
+
+4. Boolean Indexing
+array[array > value]
+
+
+5. Statistical Functions
+np.mean()
+np.median()
+np.std()
+
+
+6. Data Type Conversion
+array.astype(np.float64)
+
+
+7. Broadcasting
+array_1d + array_2d
+
+
+8. Matrix Operations
+np.dot()
+np.matmul()
+np.linalg.inv()
+
+
+9. Random Sampling
+np.random.rand()
+np.random.randint()
+
+
+10. Array Reshaping: 
+reshape()
+ravel()
+flatten()
+
+
+11. Clipping Values
+np.clip()
+
+
+12. Unique Values
+np.unique()
+
+
+
+3. SciPy
+1. Interpolation
+2. Signal Processing
+3. Statistics
+4. Optimization
+5. Sparse Matrices
+6. Linear Algebra
+7. Clustering
+8. Integration
+9. Special Functions
+10. Image Processing
+
+
+
+4. Pyjanitor
+5. DataPrep
+6. Great Expectations
+7. Pandera
+8. Dask
