@@ -1,0 +1,299 @@
+<span style="font-family:verdana;font-size:85%;">
+In the previous <a href="https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html">post</a> we checked out MacOS Setup Cheat Sheet to seamlessly transfer all keyboard shortcuts from Windows to Mac.  Now we would like to transfer all Application navigation as <a href="https://en.wikipedia.org/wiki/Apple_M1">M1</a> powered MacBooks are more appealing for <a href="https://medium.com/@abhishek.quicktech/why-companies-run-better-on-a-mac-than-on-windows-61272da87980">companies</a> than ever.  Especially with the rise of <a href="https://www.linkedin.com/pulse/apple-m1-m2-chips-what-good-deep-learning-denovo-team-fydrf">A.I.</a> requirements for faster data access.  
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiq1YSFVTPkHH46ynNtUAc_Ab4T0F-zolbEIqa7qmPcjHnQ0jo0f2YUfOv-m63uFKNo8myj1HxgYrzBtgeQgy4Wn-kvdEmNotzwNqJkVzhNIStf0Lvf1-8KcRn2-MpXQeLNFU67rUCX6mcXFcYy0Ad3k6p2MAtn8z07MGP45tme7HX16ZiC8zjMc3SLd4Q/s1280/MacOSX.png"><img alt="" border="0" width="98%" height="275px" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiq1YSFVTPkHH46ynNtUAc_Ab4T0F-zolbEIqa7qmPcjHnQ0jo0f2YUfOv-m63uFKNo8myj1HxgYrzBtgeQgy4Wn-kvdEmNotzwNqJkVzhNIStf0Lvf1-8KcRn2-MpXQeLNFU67rUCX6mcXFcYy0Ad3k6p2MAtn8z07MGP45tme7HX16ZiC8zjMc3SLd4Q/s600/MacOSX.png"/></a>
+<br />
+Let's check it out!
+<br /><br />
+<u>Navigation</u><br />
+In the previous post, we began looking at using keyboard <a href="https://support.apple.com/en-us/HT201236">shortcuts</a> on Mac.  Now we would like to compare document shortcuts that we are used to for navigation on Windows however now using Ctrl instead of Cmd:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;Home</td>	
+<td valign="top">&nbsp;Move to beg of line</td>
+<td valign="top">&nbsp;Ctrl + Home</td>	
+<td valign="top">&nbsp;Move to beg of file</td>
+</tr>
+<tr> 
+<td valign="top">&nbsp;End</td>
+<td valign="top">&nbsp;Move to end of line</td>
+<td valign="top">&nbsp;Ctrl + End</td>	
+<td valign="top">&nbsp;Move to end of file</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Ctrl + Left</td>
+<td valign="top">&nbsp;Move to prev word</td>
+<td valign="top">&nbsp;Ctrl + Shift + Left</td>
+<td valign="top">&nbsp;Select the prev word</td>
+</tr>
+<tr>  
+<td valign="top">&nbsp;Ctrl + Right</td>
+<td valign="top">&nbsp;Move to next word</td>
+<td valign="top">&nbsp;Ctrl + Shift + Right</td>
+<td valign="top">&nbsp;Select the next word</td>
+</tr>
+<tr> 
+<td valign="top">&nbsp;Shift + Home</td>
+<td valign="top">&nbsp;Select to beg of line</td>
+<td valign="top">&nbsp;Ctrl + Shift + Home</td>	
+<td valign="top">&nbsp;Select to beg of file</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;Shift + End</td>
+<td valign="top">&nbsp;Select to end of line</td>
+<td valign="top">&nbsp;Ctrl + Shift + End</td>
+<td valign="top">&nbsp;Select to end of file</td>
+</tr>
+</table>
+The main issue is there doesn't seem to be generic shortcut mapping; navigation seems application specific!
+<br /><br />
+<u>TextEdit</u><br />
+The Mac text system uses generalized key <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html">bindings</a> mechanism that is completely re-mappable by all users.  The standard bindings include all system defaults but you can override bindings in your own custom dict file:
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;<b>SYSTEM</b></td><td>&nbsp;/System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict</td></tr>
+<tr><td>&nbsp;<b>CUSTOM</b></td><td>&nbsp;~/Library/KeyBindings/DefaultKeyBinding.dict</td></tr>
+</table>
+<br />
+Here is <a href="https://ss64.com/mac/syntax-keybindings.html">how to</a> override MacOS key bindings:  Launch Terminal and create new a <i>DefaultKeyBinding.dict</i> file:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;sudo bash<br />
+&nbsp;mkdir -p ~/Library/KeyBindings<br />
+&nbsp;touch ~/Library/KeyBindings/DefaultKeyBinding.dict<br />
+&nbsp;open -e ~/Library/KeyBindings/DefaultKeyBinding.dict<br />
+</td>
+</tr>
+</table>
+<br />
+Typically, the default key bindings for the Home and End <a href="https://www.evansweb.info/2005/03/24/mac-os-x-and-home-end-keys">keys</a> in MacOS are different to any other operating system.  Thus you may like to <a href="https://medium.com/@elhayefrat/how-to-fix-the-home-and-end-buttons-for-an-external-keyboard-in-mac-4da773a0d3a2">fix</a> the Home and End buttons first and in combination with Shift and Ctrl keys.
+<br /><br />
+Next key bindings that may not be working is to move <a href="https://apple.stackexchange.com/questions/428543/defaultkeybinding-dict-method-not-working-to-move-cursor-from-word-to-wordwhich">cursor</a> from word to word.  Integrate <a href="https://forum.keyboardmaestro.com/t/os-x-text-system-keybindings/4929/1">Keycode</a> Modifier learnt from the previous <a href="https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html">post</a> to complete custom dict file to change all MasOS key <a href="https://blog.victormendonca.com/2020/04/27/how-to-change-macos-key-bindings">bindings</a>.  Here is my file: 
+<br />
+<table width="100%" border="1">
+<tr>
+<td>
+<table width="100%">
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"\UF729" = </td><td>&nbsp;"moveToBeginningOfLine:"</td><td>&nbsp;/* Home Button*/</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"\UF72B" = </td><td>&nbsp;"moveToEndOfLine:"</td><td>&nbsp;/* End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"$\UF729" = </td><td>&nbsp;"moveToBeginningOfLineAndModifySelection:"</td><td>&nbsp;/* Shift+ Home Button */ </td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"$\UF72B" = </td><td>&nbsp;"moveToEndOfLineAndModifySelection:"</td><td>&nbsp;/* Shift+ End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF729" = </td><td>&nbsp;"moveToBeginningOfDocument:"</td><td>&nbsp;/* Ctrl + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF729" = </td><td>&nbsp;"moveToBeginningOfDocument:"</td><td>&nbsp;/* Alt + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF729" = </td><td>&nbsp;"moveToBeginningOfDocument:"</td><td>&nbsp;/* Win + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF72B" = </td><td>&nbsp;"moveToEndOfDocument:"</td><td>&nbsp;/* Ctrl + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF72B" = </td><td>&nbsp;"moveToEndOfDocument:"</td><td>&nbsp;/* Alt + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF72B" = </td><td>&nbsp;"moveToEndOfDocument:"</td><td>&nbsp;/* Win + End  Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF729" = </td><td>&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF729" = </td><td>&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF729" = </td><td>&nbsp;"moveToBeginningOfDocumentAndModifySelection:"</td><td>&nbsp;/* Win  + Shift + Home Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF72B" = </td><td>&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF72B" = </td><td>&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF72B" = </td><td>&nbsp;"moveToEndOfDocumentAndModifySelection:"</td><td>&nbsp;/* Win + Shift + End Button */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF702" = </td><td>&nbsp;"moveWordLeft:"</td><td>&nbsp;/* Ctrl + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF702" = </td><td>&nbsp;"moveWordLeft:"</td><td>&nbsp;/* Alt + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF702" = </td><td>&nbsp;"moveWordLeft:"</td><td>&nbsp;/* Win + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@\UF703" = </td><td>&nbsp;"moveWordRight:"</td><td>&nbsp;/* Ctrl + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^\UF703" = </td><td>&nbsp;"moveWordRight:"</td><td>&nbsp;/* Alt + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~\UF703" = </td><td>&nbsp;"moveWordRight:"</td><td>&nbsp;/* Win + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF702" = </td><td>&nbsp;"moveWordLeftAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF702" = </td><td>&nbsp;"moveWordLeftAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF702" = </td><td>&nbsp;"moveWordLeftAndModifySelection:"</td><td>&nbsp;/* Win + Shift + Left */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"@$\UF703" = </td><td>&nbsp;"moveWordRightAndModifySelection:"</td><td>&nbsp;/* Ctrl + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"^$\UF703" = </td><td>&nbsp;"moveWordRightAndModifySelection:"</td><td>&nbsp;/* Alt + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"~$\UF703" = </td><td>&nbsp;"moveWordRightAndModifySelection:"</td><td>&nbsp;/* Win + Shift + Right */</td></tr>
+<tr><td valign="top">&nbsp;}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+</td>
+</tr>
+</table>
+For completeness, here is a thorough KeyBindings <a href="http://xahlee.info/kbd/osx_keybinding.html">tutorial</a> explaining MacOS Keybinding <a href="http://xahlee.info/kbd/osx_keybinding_key_syntax.html">Key Syntax</a> and the <a href="http://xahlee.info/kbd/osx_keybinding_action_code.html">Action Code</a>.  Detailed <a href="https://web.archive.org/web/20160314030051/http://osxnotes.net/keybindings.html">DefaultKeyBinding</a>.dict examples shared online by users <a href="https://gist.github.com/Belphemur/5a45ce6826c609a65421cc10a1e607c1">Belphemu</a>, <a href="https://gist.github.com/trusktr/1e5e516df4e8032cbc3d">trusktr</a> and <a href="https://gist.github.com/zsimic/1367779">zsimic</a>.
+<br /><br />
+Finally, in researching Default Key Bindings many posts promote <a href="https://karabiner-elements.pqrs.org">Karabiner-Elements</a> as a powerful keyboard customizer for macOS.  However, it has been <a href="https://www.reddit.com/r/MacOS/comments/mxq20w/option_leftright_arrows_remapped_to">recommended</a> <b>not</b> to use on M1 hardware due to kernel panics.
+<br /><br />
+<u>Terminal</u><br />
+Ideally we would like to update navigation on Terminal due to frequent use: Terminal | Settings... | Profiles.  Keyboard tab customize Key and Action settings.  Check <i>Use Option as Meta Key</i> to "<a href="https://stackoverflow.com/questions/327664/mac-os-x-terminal-map-optiondelete-to-backward-delete-word">backward delete word</a>".  Unfortunately, Terminal navigation not aligned therefore will prefer IDEs like VS Code or PyCharm terminals.
+<br /><br />
+<u>VS Code</u><br />
+Visual Studio Code is a cross-platform code <a href="https://code.visualstudio.com/docs/editor/whyvscode">editor</a> available on Windows, Linux and Mac.  However, unlike the TextEdit, VS Code does not <a href="https://github.com/microsoft/vscode/issues/111950">respect</a> DefaultKeyBinding.dict on MacOS.  Therefore, <a href="https://stackoverflow.com/questions/33791097/how-can-i-change-keyboard-shortcut-bindings-in-visual-studio-code">change</a> keyboard shorcuts!
+<br /><br />
+Customize VS Code keybindings to align navigation: Launch VS Code | Settings | Keyboard Shortcuts | Add:
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;<b>Command</b></td><td>&nbsp;<b>Keybinding</b></td><td>&nbsp;<b>Description</b></td></tr>
+<tr><td valign="top">&nbsp;cursorTop</td><td>&nbsp;Ctrl + Home</td><td>&nbsp;Move to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottom</td><td>&nbsp;Ctrl + End</td><td>&nbsp;Move to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeft</td><td>&nbsp;Ctrl + Left</td><td>&nbsp;Move to prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRight</td><td>&nbsp;Ctrl + Right</td><td>&nbsp;Move to next word</td></tr>
+<tr><td valign="top">&nbsp;cursorTopSelect</td><td>&nbsp;Ctrl + Shift + Home</td><td>&nbsp;Select to beg of file</td></tr>
+<tr><td valign="top">&nbsp;cursorBottomSelect</td><td>&nbsp;Ctrl + Shift + End</td><td>&nbsp;Select to end of file</td></tr>
+<tr><td valign="top">&nbsp;cursorWordLeftSelect</td><td>&nbsp;Ctrl + Shift + Left</td><td>&nbsp;Select the prev word</td></tr>
+<tr><td valign="top">&nbsp;cursorWordRightSelect</td><td>&nbsp;Ctrl + Shift + Right</td><td>&nbsp;Select the next word</td></tr>
+<tr><td valign="top">&nbsp;deleteWordLeft</td><td>&nbsp;Alt + Backspace</td><td>&nbsp;Delete the prev word</td></tr>
+</table>
+<br />
+Continue to customize Menu keyboard shortcuts that one is accustomed to aligning VS Code navigation e.g.:
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;<b>Command</b></td><td>&nbsp;<b>Keybinding</b></td><td>&nbsp;<b>Description</b></td></tr>
+<tr><td valign="top">&nbsp;File: Open Folder...</td><td>&nbsp;Ctrl + K Ctrl + O</td><td>&nbsp;workbench.action.files.openFolderViaWorkspace</td></tr>
+<tr><td valign="top">&nbsp;Terminal: Clear</td><td>&nbsp;Ctrl + L</td><td>&nbsp;workbench.action.terminal.clear</td></tr>
+<tr><td valign="top">&nbsp;Terminal: Create New Terminal</td><td>&nbsp;Ctrl + Shift + T</td><td>&nbsp;workbench.action.terminal.new</td></tr>
+</table>
+<br />
+The <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindings</a> for VS Code are updated in <i>~/Library/Application\ Support/Code/User/keybindings.json</i> file.  Update keybindings.json directly for Terminal keyboard shortcuts like <a href="https://stackoverflow.com/questions/57824640/how-to-delete-the-prior-word-with-vs-code-terminal">delete</a> word prior + cursor <a href="https://apple.stackexchange.com/questions/336382/how-can-i-make-ctrlright-left-arrow-jump-words-in-visual-studio-code">movement</a>:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+<table width="99%">
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"alt+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+backspace",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001b\u007f" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+left",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001bb" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+right",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u001bf" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+z",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u0003" },</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;}</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br />  
+<u>PyCharm Community</u><br />
+Align PyCharm Keymap to VS Code Keymap for consistent keyboard shortcuts and developer IDE experience.  In the "Welcome to PyCharm" popup choose Plugins | VSCode Keymap | Install. Navigate back to Customize.  Under Keymap change default value VSCode (macOS). Now <b>most</b> VS Code shortcuts will work like Windows.
+<br />
+<table width="100%" border="1">
+<tr>
+<td>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIPiZRtbCmjc4VVuvn-yVVkrFPlLAIGwpDRNFsfc6r-sRV6qmh3PcXZuc7tByM1v1QEdAyKcr95Yl7pTp3-BCsr7Nk0Rnt-RemYDzxFxDb3KXFTyK84Ub3Q4lsqc3hJYLgYihulZchKCeuV5WfPVqttdwP72gfGGZpP7-xGaub-lzRNN3XW2CWqytBXGM/s980/VSCodekeymap01.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIPiZRtbCmjc4VVuvn-yVVkrFPlLAIGwpDRNFsfc6r-sRV6qmh3PcXZuc7tByM1v1QEdAyKcr95Yl7pTp3-BCsr7Nk0Rnt-RemYDzxFxDb3KXFTyK84Ub3Q4lsqc3hJYLgYihulZchKCeuV5WfPVqttdwP72gfGGZpP7-xGaub-lzRNN3XW2CWqytBXGM/s600/VSCodekeymap01.png"/></a>
+</td>
+<td>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit4hn7b3yCPKaPab8yR_EWt0Ex-qfirlAUx-tOxlA0ZJmz-2YdSIJnzNCVwTilyv5zr3r0yjGUJ2nzT2AvbsPrItNn2JCChsf_0pPXH46Zvz5sJ1GblCxF0edJt4Pez7-pAIejlU77v5Isb-eUzUbepPx6ZWiHHvYmIDN6TERUA0Zx11KBsebYakm1Eyw/s981/VSCodekeymap02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEit4hn7b3yCPKaPab8yR_EWt0Ex-qfirlAUx-tOxlA0ZJmz-2YdSIJnzNCVwTilyv5zr3r0yjGUJ2nzT2AvbsPrItNn2JCChsf_0pPXH46Zvz5sJ1GblCxF0edJt4Pez7-pAIejlU77v5Isb-eUzUbepPx6ZWiHHvYmIDN6TERUA0Zx11KBsebYakm1Eyw/s600/VSCodekeymap02.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+However, in order to better align full navigation, update the following from PyCharm | Settings... | Keymap:
+<br />
+<table width="100%" border="1">
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start</td><td>&nbsp;Ctrl + Home</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text End</td><td>&nbsp;Ctrl + End</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text Start with Selection</td><td>&nbsp;Ctrl + Shift + Home</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Text End with Selection</td><td>&nbsp;Ctrl + Shift + End</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Previous Word</td><td>&nbsp;Ctrl + Left</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Next Word</td><td>&nbsp;Ctrl + Right</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Previous Word with Selection</td><td>&nbsp;Ctrl + Shift + Left</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Caret to Next Word with Selection</td><td>&nbsp;Ctrl + Shift + Right</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Up and Scroll with Selection</td><td>&nbsp;Ctrl + Shift + Up</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Move Down and Scroll with Selection</td><td>&nbsp;Ctrl + Shift + Down</td></tr>
+<tr><td valign="top">&nbsp;Editor Actions</td><td>&nbsp;Delete to Word Start</td><td>&nbsp;Alt + Backspace</td></tr>
+<tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Back</td><td>&nbsp;Alt + Up</td></tr>
+<tr><td valign="top">&nbsp;Main Menu</td><td>&nbsp;Navigate Forward</td><td>&nbsp;Alt + Down</td></tr>
+</table>
+IMPORTANT: typically use Alt + Left to Navigate Back but this is now doubled to Move Word left as priority!
+<br /><br />
+NOTE<br />
+If Ctrl + Shift + O launches Symbols then remove duplicate: Choose Settings | Keymap | filter as "symbol". Double click Navigate | Go to Symbol | Edit | Remove Ctrl+Shift+O | Apply | OK. Repeat this as necessary.
+<br /><br /> 
+<u>Excel</u><br />
+Keyboard <a href="https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f#PickTab=Windows">shortcuts</a> in Excel like Ctrl+Home and Ctrl+End won't work so prefer to use arrow keys to navigate
+<br />
+<table width="100%" border="1">	
+<tr><td valign="top">&nbsp;Ctrl + Left</td><td>&nbsp;Move to first cell of selected row</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Right</td><td>&nbsp;Move to last cell of selected row</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Up</td><td>&nbsp;Move to first cell of selected column</td></tr>
+<tr><td valign="top">&nbsp;Ctrl + Down</td><td>&nbsp;Move to last cell of selected column</td></tr>
+</table>
+<br />
+<u>PostgreSQL</u><br />
+<a href="https://www.postgresql.org">PostgreSQL</a> is preferred by companies because it offers data types not found in MySQL.  Plus MySQL can be used for web-based/online or mapping functions, whereas PostgreSQL is <a href="https://kruschecompany.com/postgresql-vs-mysql">recommended</a> for large analytical processes.
+<br /><br />
+<b>Postgres</b><br />
+<a href="https://www.youtube.com/watch?v=wTqosS71Dc4">Setup</a> a local PostgreSQL database server on <a href="https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database#setting-up-postgresql-on-macos">Mac</a> OS/X.  <a href="https://postgresapp.com/downloads.html">Download</a> Postgres.app <a href="https://github.com/PostgresApp/PostgresApp/releases/download/v2.7.2/Postgres-2.7.2-16.dmg">PostgreSQL 16</a> (Universal).
+<br /><br />
+<b>pgAdmin</b><br />
+<a href="https://www.pgadmin.org/download/pgadmin-4-macos">Download</a> and install local <a href="https://www.pgadmin.org">pgAdmin</a> database client on <a href="https://www.postgresql.org/ftp/pgadmin/pgadmin4/v8.6/macos">Mac</a> OS/X to administer and PostgreSQL <a href="https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v8.6/macos/pgadmin4-8.6-arm64.dmg">instances</a>.
+<br /><br />
+<u>PyCharm Professional</u><br />
+After installing Postgres server one can use pgAdmin client for data access.  However, it seems challenging to customize navigation here.  An excellent alternative is Database Tools + SQL <a href="https://www.jetbrains.com/help/pycharm/postgresql.html">plugin</a> available from PyCharm.
+<br /><br />  
+This plugin is available only in PyCharm Professional but may prove to be a valuable investment longterm <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>PyCharm Community</b></td>
+<td valign="top">&nbsp;<b>PyCharm Professional</b></td>
+</tr>
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkaIYm2wy4jbMF-RGqe-7lailnzgSLwlpcVct76K9Lk9f8LhDj7NvlZ_9Dl-sQrQaKExNPeiBvITMc2GL852sKr6I9HypIBEKhna8vQfG2Z5UbIHMtDyFOdNI9DtG3tj8bkPvGjV7zXdGULSmVCqSjMaYgDdejgVoCkF88Qo2rDkvowOYnjZNmkzkcGTc/s730/00-DatabaesToolsCE.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkaIYm2wy4jbMF-RGqe-7lailnzgSLwlpcVct76K9Lk9f8LhDj7NvlZ_9Dl-sQrQaKExNPeiBvITMc2GL852sKr6I9HypIBEKhna8vQfG2Z5UbIHMtDyFOdNI9DtG3tj8bkPvGjV7zXdGULSmVCqSjMaYgDdejgVoCkF88Qo2rDkvowOYnjZNmkzkcGTc/s600/00-DatabaesToolsCE.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgilr4GMj_WPyKvePmd5U4WR7BNjn0wQ1xDKTajthEgEv7eCzp9aKdLMyUd27_wB-Wgu2L4BcsOngLV6EzfLiDUkXiAZFVDFXdnYEoeXB53XuUkNt5pPDN135DqMhxRUKlv6lBLkZcsbE4TSOHXvmZr2IEAat7_FxBN8l14a9f0JNgJKKvVKPr6tsiJjdM/s725/01-DatabaseToolsProf.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgilr4GMj_WPyKvePmd5U4WR7BNjn0wQ1xDKTajthEgEv7eCzp9aKdLMyUd27_wB-Wgu2L4BcsOngLV6EzfLiDUkXiAZFVDFXdnYEoeXB53XuUkNt5pPDN135DqMhxRUKlv6lBLkZcsbE4TSOHXvmZr2IEAat7_FxBN8l14a9f0JNgJKKvVKPr6tsiJjdM/s600/01-DatabaseToolsProf.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+<a href="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1">Download</a> and install PyCharm Professional for <a href="https://www.jetbrains.com/pycharm/download/?section=mac">macOS</a>.  Launch PyCharm Professional.  Import Settings from PyCharm Community Edition.  Thus you should have all navigation aligned!  Note the Database Tools + SQL plugin will be enabled by default.  Interesting plugins PostgreSQL Debugger and SQL Optimizer + Indexing.
+<br /><br />
+Connect to database: View menu | Database | Click "+" | Data Source | PostgreSQL.  Enter credentials | OK.
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiznRAKflWQHhAcaEjCmcjlWXXzs6LEqMnZ2UBHkwehdEgP83AtOBOdltQgJt1Tc8IdeRO2OgbV6_IQimXKt-Jxsj6WNEvLqlIAIxNzXHyfITGedzgJ5F4BxUPGriUb9mu9lpkIxpMPYyqtrvIGnumptbj7ktNo3QUra3dhh7LewiUmP8zyZwfmV2azbgM/s563/02-DataSource.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiznRAKflWQHhAcaEjCmcjlWXXzs6LEqMnZ2UBHkwehdEgP83AtOBOdltQgJt1Tc8IdeRO2OgbV6_IQimXKt-Jxsj6WNEvLqlIAIxNzXHyfITGedzgJ5F4BxUPGriUb9mu9lpkIxpMPYyqtrvIGnumptbj7ktNo3QUra3dhh7LewiUmP8zyZwfmV2azbgM/s600/02-DataSource.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje65CiY8KDxIMk9DxH42Bppg7fcIB9iQmi-kl1yyBIoKPbVYGvU4fGReMujlAlSK6Tn3RUwTsxT8B-80U7IJx_ikuc1kPjvCEBjmBOlJGwqK0pmK1DTGW7lRW3I1KO1Nsj9h0Pc6kBi96X1RYt-QhE7yXD53IRMKQKfl6felKnK3j13O8ViK4SL1b2paw/s551/03-DatabaseConnection.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje65CiY8KDxIMk9DxH42Bppg7fcIB9iQmi-kl1yyBIoKPbVYGvU4fGReMujlAlSK6Tn3RUwTsxT8B-80U7IJx_ikuc1kPjvCEBjmBOlJGwqK0pmK1DTGW7lRW3I1KO1Nsj9h0Pc6kBi96X1RYt-QhE7yXD53IRMKQKfl6felKnK3j13O8ViK4SL1b2paw/s600/03-DatabaseConnection.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+Checkout the PyCharm <a href="https://www.jetbrains.com/help/pycharm/run-a-query.html">documentation</a> to Run queries.  Align F5 to Execute queries similar to SQL Server Mgt Studio: Settings | Keymap | Database | Console Toolbar | Execute.  Right click | Add keyboard shortcut | F5.
+<br /><br />
+Checkout the PyCharm <a href="https://www.jetbrains.com/help/pycharm/code-style-sql-case.html">documentation</a> to update Word Case as per SQL convention: Settings | Editor | Code Style | SQL | PostgreSQL.  Inherit general SQL style	DISABLE | Word Case | Keywords To upper.  Also update Code Completion as Ctrl + Space: Settings | Keymap | Main Menu | Code | Code Completion | Ctrl + Space.
+<br />
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgidazDfD8fbnvwFRL_-ZsLrbmzFoeKYZJGeutzzJM7StXIk9RA3r9Fp7yDmpJFeGp-_WGGFYgFd_Ngm5hs-ihlLNJMDKbq86H0gJH1daq9EQEL_TTwP08PwcoYFbYkzY1fKGZcw7hY8s5KBuPbXroJbJbMLa7XPfHmSggzSVVblAuSg5raQO3xNBCkV7A/s673/04-DatabaseCodeStyle.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgidazDfD8fbnvwFRL_-ZsLrbmzFoeKYZJGeutzzJM7StXIk9RA3r9Fp7yDmpJFeGp-_WGGFYgFd_Ngm5hs-ihlLNJMDKbq86H0gJH1daq9EQEL_TTwP08PwcoYFbYkzY1fKGZcw7hY8s5KBuPbXroJbJbMLa7XPfHmSggzSVVblAuSg5raQO3xNBCkV7A/s600/04-DatabaseCodeStyle.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQG8vMhAHzMxB1KsziTkdjysWQ-D8ponte1j4n3d7pF7_KcEEi0nLYHmthwaqUIPSRdrFxato_M2SqHzZ85Tc2WbjxFvCbbVlqLWqm1V4teotuSLuNT3i2UB0PSjNiLsWOqgrNGHVnVUYPCsu9qCykSzxF5k4oYZDC7mB14nH2LkjNd1CLGjRSYGVN1DU/s652/05-CodeCompletion.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQG8vMhAHzMxB1KsziTkdjysWQ-D8ponte1j4n3d7pF7_KcEEi0nLYHmthwaqUIPSRdrFxato_M2SqHzZ85Tc2WbjxFvCbbVlqLWqm1V4teotuSLuNT3i2UB0PSjNiLsWOqgrNGHVnVUYPCsu9qCykSzxF5k4oYZDC7mB14nH2LkjNd1CLGjRSYGVN1DU/s600/05-CodeCompletion.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+Finally in Settings | Editor | General | Code Completion enable the following options: Automatically insert single suggestions, Sort suggestions alphabetically, Show suggestions as you type, Match case: First letter.
+<br /><br />
+<u>Summary</u><br />
+To summarize, armed with this knowledge we have setup the MacOS to better align keyboard shortcuts and application navigation techniques accumulated from years of Windows development experience.  From here, we are in now an excellent position to leverage the M1 chip for faster data access as per A.I. requirements!  
+
+</span>
