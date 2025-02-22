@@ -1,0 +1,28 @@
+SSL ignore
+22-Feb-2025
+
+Ignore SSL error when connected to a VPN and create virtual environment
+pip install etc.
+
+
+01.
+Pip - create following file
+mkdir -p ~/.pip
+touch ~/.pip/pip.conf
+
+Add trusted hosts
+gedit ~/.pip/pip.conf
+[global]
+trusted-host =	pypi.org
+		files.pythonhosted.org
+
+
+02.
+Conda - amend file
+gedit ~/.condarc
+
+Add ssl_verfiy: false
+ssl_verfiy: false
+# Add default channel
+channels:
+  - defaults
