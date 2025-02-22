@@ -180,6 +180,14 @@ The <a href="https://code.visualstudio.com/docs/getstarted/keybindings">keybindi
 <tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.terminal.sendSequence",</td></tr>
 <tr><td valign="top">&nbsp;</td><td>&nbsp;"args":</td><td>&nbsp;{ "text": "\u0003" },</td></tr>
 <tr><td valign="top">&nbsp;</td><td>&nbsp;"when":</td><td>&nbsp;"terminalFocus"</td></tr>
+<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"cmd+f5",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.debug.start",</td></tr>
+<tr><td valign="top">&nbsp;},</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;{</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"key":</td><td>&nbsp;"f5",</td></tr>
+<tr><td valign="top">&nbsp;</td><td>&nbsp;"command":</td><td>&nbsp;"workbench.action.debug.continue",</td></tr>
 <tr><td valign="top">&nbsp;}</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 </table>
 </td>
