@@ -32,31 +32,29 @@ sudo ./aws/install
 aws --version
 
 
-
 02. az cli
-Install Azure CLI on macOS
-https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
+Install the Azure CLI on Linux
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux
 
-Install with Homebrew
+Choose an installation method
+apt (Ubunuty, Debian)
+
+Install Azure CLI
 Terminal
-brew update && brew install azure-cli
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az version
 
 
 03. gcloud
 Install the gcloud CLI
-https://cloud.google.com/sdk/docs/install
-
-macOS tab
-macOS 64-bit
-(ARM64, Apple silicon)
-https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-arm.tar.gz
+https://cloud.google.com/sdk/docs/install#linux
 
 Terminal
 cd ~/Downloads
-
-Right click google-cloud-cli-darwin-arm.tar.gz | Open With | Archive Utility app
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
+tar -xf google-cloud-cli-linux-x86_64.tar.gz
 cd google-cloud-sdk
 ./install.sh
 
+gcloud init
 gcloud version
