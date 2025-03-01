@@ -1,0 +1,59 @@
+Command Line Interfaces MAC
+01-Mar-2025
+
+AWS
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+Azure
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
+
+GCP
+https://cloud.google.com/sdk/docs/install#mac
+
+
+
+Reference:
+Back | wiki | xx | 01 | CLI
+
+
+
+MAC
+01. aws cli
+Installing or updating to the latest version of the AWS CLI
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+macOS tab | GUI installer
+In your browser, download the macOS pkg file: 
+https://awscli.amazonaws.com/AWSCLIV2.pkg
+
+Terminal
+aws --version
+
+
+02. az cli
+Install Azure CLI on macOS
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
+
+Install with Homebrew
+Terminal
+brew update && brew install azure-cli
+az version
+
+
+03. gcloud
+Install the gcloud CLI
+https://cloud.google.com/sdk/docs/install
+
+macOS tab
+macOS 64-bit
+(ARM64, Apple silicon)
+https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-arm.tar.gz
+
+Terminal
+cd ~/Downloads
+
+Right click google-cloud-cli-darwin-arm.tar.gz | Open With | Archive Utility app
+cd google-cloud-sdk
+./install.sh
+
+gcloud version
