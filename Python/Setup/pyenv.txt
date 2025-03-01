@@ -1,0 +1,57 @@
+pyenv
+01-Mar-2025
+
+MAC
+brew install pyenv
+mkdir -p ~/.pyenv
+
+
+open .bash_profile
+export PATH="$HOME/.pyenv/bin:$PATH"
+if which pyenv > /dev/null; then
+	eval "$(pyenv init --path)"
+	eval "$(pyenv init -)"
+fi
+
+
+source ~/.bash_profile
+
+
+pyenv install --list
+
+pyenv install 3.10.4
+pyenv versions
+
+pyenv global 3.10.4
+python --version
+
+
+brew install pyenv-virtualenv
+
+open .bash_profile
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+source ~/.bash_profile
+
+
+XXXX project
+~/.pyenv/versions/3.10.4/bin/python
+
+Before was
+/usr/local/bin/python3.12
+
+
+pyenv virtualenv 3.10.4 .venv
+pyenv activate .venv
+pyenv deactivate 
+
+~/.pyenv/versions/3.10.4/envs/.venv/bin/python -m pip install --upgrade pip
+
+
+Try again but project didn't work
+Had to choose the "correct" python interpreter
+e.g.
+Python 3.10
+virtualenv at
+~/.pyenv/versions/.venv
