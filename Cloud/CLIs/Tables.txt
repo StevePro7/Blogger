@@ -33,3 +33,42 @@ LINUX
 </td></tr>
 </table>
 <br />
+
+
+
+MAC
+01. aws cli
+<table width="99%" border="1">
+<tr><td>
+&nbsp;aws --version<br />
+</td></tr>
+</table>
+<br />
+
+
+02. az cli
+<table width="99%" border="1">
+<tr><td>
+&nbsp;brew update && brew install azure-cli<br />
+&nbsp;az version<br />
+</td></tr>
+</table>
+<br />
+
+
+03. gcloud
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-arm.tar.gz<br />
+&nbsp;tar -xf google-cloud-cli-darwin-arm.tar.gz<br />
+&nbsp;cd google-cloud-sdk<br />
+&nbsp;./install.sh<br />
+&nbsp;gcloud init<br />
+&nbsp;gcloud version<br />
+</td></tr>
+</table>
+<br />
+
+
+Windows
+no tables!!
