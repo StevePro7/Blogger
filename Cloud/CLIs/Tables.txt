@@ -1,0 +1,35 @@
+LINUX
+01. aws cli
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"<br />
+&nbsp;unzip awscliv2.zip<br />
+&nbsp;sudo ./aws/install<br />
+&nbsp;aws --version<br />
+</td></tr>
+</table>
+<br />
+
+
+02. az cli
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash<br />
+&nbsp;az version<br />
+</td></tr>
+</table>
+<br />
+
+
+03. gcloud
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz<br />
+&nbsp;tar -xf google-cloud-cli-linux-x86_64.tar.gz<br />
+&nbsp;cd google-cloud-sdk<br />
+&nbsp;./install.sh<br />
+&nbsp;gcloud init<br />
+&nbsp;gcloud version<br />
+</td></tr>
+</table>
+<br />
