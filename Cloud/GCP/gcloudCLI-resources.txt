@@ -1,3 +1,5 @@
+
+
 gcloud CLI resources
 25-Oct-2024
 
@@ -48,6 +50,13 @@ gcloud compute firewall-rules list --filter="network:default"  # Replace `defaul
 
 gcloud compute addresses list
 gcloud compute addresses list --filter="description:k8s"
+
+gcloud storage buckets list
+gcloud storage ls
+gcloud storage ls gs://steveprobucket
+gcloud storage ls gs://steveprobucket/steveprofolder
+//steveprobucket/steveprofolder/steveprotestfile.txt
+
 
 OPTIONAL
 gcloud container clusters describe CLUSTER_NAME --region REGION --format="get(loggingService,monitoringService)"
