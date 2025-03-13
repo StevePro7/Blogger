@@ -5,23 +5,35 @@ gcp gke gcloud container clusters create tutorial
 https://cloud.google.com/sdk/gcloud/reference/container/clusters/create
 https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
 
+USER				stevepro
+CLUSTER_NAME			stevepro-gcp-gke 
+GOOGLE_NODE_MACHINE_TYPE	e2-standard-2
 
+TODO 
+check cluster-version	v1.21.3	OR 1.30.9-gke.1127000 
+and these old versions
+	--region=europe-west1
+	--zone=europe-west1
+	
 thorough example:
 
 gcloud container clusters create ${CLUSTER_NAME}
-	--enable-intra-node-visibility 
-	--enable-network-policy
     --project=SteveProProject
-	--region=europe-west1
-	--zone=europe-west1
-    --num-nodes=3
-	--machine-type=# TODO - get machine type
-	--image-type # TODO - get image type
+	--region=eu-west-1
+	--zone=eu-west-1a
+	--machine-type=${GOOGLE_NODE_MACHINE_TYPE}  
+	--disk-type pd-standard
     --cluster-version=v1.21.3
-	--release-channel=None
-    --no-enable-stackdriver-kubernetes
+#	--release-channel=None
+#   --no-enable-stackdriver-kubernetes
+    --num-nodes=3
     --network=default
-	--subnetwork=default
+	--create-subnetwork=name=stevepro-gcp-gke-subnet,range=/28 
+	--enable-ip-alias 
+    --enable-intra-node-visibility
+    --logging=NONE
+    --monitoring=NONE
+	--enable-network-policy
     --labels=prefix=${CLUSTER_NAME},created-by=${USER}
     --quiet --verbosity debug
        
