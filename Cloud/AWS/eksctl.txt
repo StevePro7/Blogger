@@ -1,75 +1,25 @@
 eksctl
-22-Oct-2024
+12-Mar-2025
 
 
 https://github.com/eksctl-io/eksctl
 
 
-ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
-echo $ARCH
+COMMAND #01
+create ~/stevepro-awseks/cluster.yaml
 
 
-# for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
-ARCH=amd64
-PLATFORM=$(uname -s)_$ARCH
-
-curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
-
-# (Optional) Verify checksum
-curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
-
-tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
-
-sudo mv /tmp/eksctl /usr/local/bin
-eksctl version
+COMMAND #02
+eksctl create cluster -f ~/stevepro-awseks/cluster.yaml
+    --kubeconfig ~/stevepro-awseks/kubeconfig
+    --verbose 5
 
 
-Install aws iam authenticator
-https://weaveworks-gitops.awsworkshop.io/60_workshop_6_ml/00_prerequisites.md/50_install_aws_iam_auth.html
-
-curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/aws-iam-authenticator
-chmod +x ./aws-iam-authenticator
-sudo mv ./aws-iam-authenticator /usr/local/bin
-aws-iam-authenticator help
-
-
-EXAMPLE to install AWS-EKS cluster
-https://dev.to/rasankhalsa/deploying-kubernetes-cluster-with-yaml-on-aws-eks-2561
-
-cluster.yaml
-https://github.com/eksctl-io/eksctl/tree/main/examples
-
-eksctl create cluster -f cluster.yaml --dry-run
-eksctl create cluster -f cluster.yaml
-
-
-ERROR
-Error: getting availability zones: error getting availability zones for region
-operation error EC2: DescribeAvailabilityZones, https response error StatusCode
-
-04
-Error: operation error EC2: DescribeVpcs, https response error StatusCode: 403,
-api error UnauthorizedOperation: You are not authorized to perform this operation.
-User: arn:aws:iam::<account_id>>:user/<user>> is not authorized to perform:
-ec2:DescribeVpcs because no identity-based policy allows the ec2:DescribeVpcs action
-
-05
-Error: nodeGroups[0].overrideBootstrapCommand is required when using a custom AMI based on AmazonLinux2 (nodeGroups[0].ami)
-
-
-AWS Dashboard
-IAM | Users | SteveProXNA
-Permissions | Add Permission
-Attach policies directly
-AdministratorAccess
-JSON
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "*",
-            "Resource": "*"
-        }
-    ]
-}
+COMMAND #03
+eksctl scale nodegroup
+    --cluster=stevepro-aws-eks
+    --name=stevepro-aws-eks
+    --nodes=3
+    --nodes-min=0
+    --nodes-max=3
+    --verbose 5
