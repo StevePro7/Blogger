@@ -1,4 +1,27 @@
 PyCharm
+15-Mar-2025
+
+2x PyCharm Debugger options configured today!
+
+01. pycharm debug how to prevent python debugger extensions "cython" popup
+This annoying popup everytime hit F5 to debug step thru Python code in PyCharm
+
+Here is the fix:
+PyCharm | Settings | search for Cython
+OR
+Appearance & Behavior
+scroll down to "Python debugger native extensions available"
+Change Popup type to "No popup"
+
+
+02. PyCharm how to hide Debugger pane after complete debug session:
+PyCharm | Settings
+Build, Execution, Deployment
+Debugger
+Hide debug window on process termination
+CHECKED
+
+
 01-Mar-2025
 On Linux today I updated PyCharm via the Ubuntu software center but afterwards clicking
 any project in the list would not open - just flashed and reverted back to project list
