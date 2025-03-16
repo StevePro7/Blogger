@@ -87,3 +87,13 @@ eksctl delete cluster           \
 IMPORTANT
 2025-03-16 18:56:34 [!]  2 pods are unevictable from node ip-192-168-15-95.eu-west-1.compute.internal
 manually Ctrl+C to quit
+
+Therefore may have to manually delete the following resources on the AWS dashboard
+NAT Gateway
+EC2 instance
+VPC instances
+
+eksctl get nodegroup --cluster stevepro-aws-eks
+eksctl delete nodegroup --cluster stevepro-aws-eks --name <nodegroup-name>
+
+NB: did eventually delete all EC2 instances thus coudl delete VPC !!

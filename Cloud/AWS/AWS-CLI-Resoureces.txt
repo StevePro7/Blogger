@@ -16,6 +16,8 @@ Sec grp     sg-006a26ec5d4b0f51d
 
 
 aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
+aws ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,State.Name,InstanceType]' --output table
+
 aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table
 aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table
 aws s3 ls
