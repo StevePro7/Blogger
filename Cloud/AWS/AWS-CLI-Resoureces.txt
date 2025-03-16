@@ -20,9 +20,6 @@ aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table
 aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table
 aws s3 ls
 
-aws iam list-users --query 'Users[*].UserName' --output table
-aws iam list-roles --query 'Roles[*].RoleName' --output table
-
 aws rds describe-db-instances --query 'DBInstances[*].DBInstanceIdentifier' --output table
 aws lambda list-functions --query 'Functions[*].FunctionName' --output table
 aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --query 'StackSummaries[*].StackName' --output table
@@ -42,6 +39,10 @@ aws cloudwatch describe-alarms --query 'MetricAlarms[*].AlarmName' --output tabl
 aws ssm describe-parameters --query 'Parameters[*].Name' --output table
 aws eks list-clusters --query 'clusters' --output table
 aws ec2 describe-addresses --query 'Addresses[*].PublicIp' --output table
+
+
+aws iam list-users --query 'Users[*].UserName' --output table
+aws iam list-roles --query 'Roles[*].RoleName' --output table
 
 
 Cloud Formation
