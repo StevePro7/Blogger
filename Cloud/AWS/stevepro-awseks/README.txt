@@ -74,6 +74,12 @@ kubectl port-forward service/flask-api-service 8080:80
 curl http://localhost:8080
 
 
+TODO
+Reference:
+CalicoRoutingModes
+ssh -i master_ssh_key ubuntu@54.194.208.80
+
+
 # 04 delete
 kubectl delete -f Kubernetes.yaml
 

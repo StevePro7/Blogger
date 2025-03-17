@@ -17,6 +17,10 @@ eksctl create cluster -f ~/stevepro-awseks02/cluster.yaml \
 KUBECONFIG
 cp ~/stevepro-awseks02/kubeconfig ~/.kube/config
 
+
+./kubectl-ssh node ip-192-168-14-103.eu-west-1.compute.internal
+
+
 TESTING
 Deploy application
 Reference: https://gitlab.com/SteveProXNA/gitlabcheatsheet
@@ -31,17 +35,11 @@ kubectl apply -f Kubernetes.yaml
 kubectl port-forward service/flask-api-service 8080:80
 curl http://localhost:8080
 
-
-Reference:
-CalicoRoutingModes
-ssh -i ~/stevepro-awseks/master_ssh_key ubuntu@node_host
-
-
 # 04 delete
 kubectl delete -f Kubernetes.yaml
 
 eksctl delete cluster           \
-    --name=stevepro-aws-eks     \
+    --name=stevepro-aws-eks02   \
     --region eu-west-1          \
     --force
 
@@ -59,3 +57,11 @@ eksctl get nodegroup --cluster stevepro-aws-eks
 eksctl delete nodegroup --cluster stevepro-aws-eks --name <nodegroup-name>
 
 NB: did eventually delete all EC2 instances thus coudl delete VPC !!
+
+
+eksctl delete cluster --name  stevepro-aws-eks02 --region eu-west-1 --force
+
+Terminate
+EC2
+NAT gateway
+VPI

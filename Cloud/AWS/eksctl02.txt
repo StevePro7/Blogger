@@ -227,4 +227,4 @@ There was a coredns pod that was pending so I decided to scale the coredns deplo
 kubectl scale --replicas=0 deployment/coredns
 
 Now delete will work
-eksctl delete cluster --name  cluster-2 --region eu-west-1 --force --parallel 10
+eksctl delete cluster --name  cluster-2 --region eu-west-1 --force
