@@ -23,14 +23,23 @@ Chat GPT
 Azure az command line interface
 list the most useful az commands to list all resources have been provisioned
 
-
 az resource list --output table
+az resource list --resource-group <resource-group-name> --output table
+az resource list --query "[?location=='westeurope']" --output table
 az resource list --resource-type "Microsoft.Compute/virtualMachines" --output table
+
 az group list --output table
 az vm list --output table
+az vm list --resource-group <resource-group-name> --output table
+
+az aks list --output table
+az container list --output table
+
 az storage account list --output table
 az network public-ip list --output table
 
+OTHERS
+az account list --output table
 
 Delete resource group
 az group delete --name NetworkWatcherRG
