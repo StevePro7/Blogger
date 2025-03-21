@@ -15,17 +15,15 @@
 
 
 
-TODO - get the re-auth
-
 <table width="100%" border="1">
 <tr>
 <td valign="top">
 &nbsp;gcloud auth login<br />
-&nbsp;TODO gcloud auth login<br />
+&nbsp;gcloud auth application-default login<br />
 </td>
 <td valign="top">
 &nbsp;gcloud auth configure-docker<br />
-&nbsp;gcloud auth application-default login<br />
+&nbsp;gcloud config set project SteveProProject<br />
 </td>  
 </tr>
 </table>

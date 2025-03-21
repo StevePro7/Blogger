@@ -4,8 +4,10 @@ gcloud CLI resources
 25-Oct-2024
 
 gcloud auth login
-gcloud auth configure-docker
 gcloud auth application-default login
+gcloud auth configure-docker
+gcloud config set project SteveProProject
+
 
 SUMMARY
 gcloud container clusters list
