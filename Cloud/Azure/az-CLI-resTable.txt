@@ -1,0 +1,34 @@
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+&nbsp;az resource list --output table<br />
+&nbsp;az resource list --query "[?location=='westeurope']" --output table<br />
+&nbsp;az group list --output table<br />
+&nbsp;az vm list --output table<br />
+&nbsp;az vm list --resource-group <resource-group-name> --output table<br />
+&nbsp;az group list --output table<br />
+&nbsp;az aks list --output table<br />
+&nbsp;az container list --output table<br />
+&nbsp;az storage account list --output table<br />
+&nbsp;az network public-ip list --output table<br />
+</td>
+</tr>
+</table>
+
+
+STAND ALONE
+az account list --output table	&nbsp;az account list --output table<br />
+
+
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+&nbsp;az resource list --resource-group <resource-group-name> --output table<br />
+&nbsp;az resource list --resource-type "Microsoft.Compute/virtualMachines" --output table<br />
+&nbsp;az vm list --resource-group <resource-group-name> --output table<br />
+&nbsp;az aks show --resource-group <resource-group> --name <cluster-name> --query nodeResourceGroup -o tsv<br />
+</td>
+</tr>
+</table>
+
+
