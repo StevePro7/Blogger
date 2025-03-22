@@ -1,0 +1,397 @@
+<span style="font-family:verdana;font-size:85%;">
+In 2016, we checked out <a href="http://steveproxna.blogspot.com/2016/08/github-cheat-sheet.html">GitHub Cheat Sheet</a>: a distributed version control system for Open Source projects.  Now we will explore differences in GitLab to streamline collaborative workflow and leverage <a href="https://www.bomberbot.com/devops/automate-your-software-development-lifecycle-with-gitlab-ci-cd">CI/CD pipelines</a>.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s713/GitLab.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s600/GitLab.png"/></a>
+<br />
+Let's check it out!
+<br /><br /> 
+<u>GitLab</u><br />
+As per previous post assumes an account setup on <a href="https://github.com/SteveProXNA">github.com</a>.  Create an account on <a href="https://gitlab.com/SteveProXNA">gitlab.com</a> if you have not already done so.  As GitLab also uses underlying git we setup the following on localhost for development:
+<br /><br />
+<b>SSH Keys</b><br />
+An SSH key is an access credential for the SSH network protocol.  Git supports both RSA and ED25519 keys.  Launch Terminal.  Issue the following commands to <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">generate</a> new SSH key and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent">adding</a> SSH key to ssh-agent:
+<br />
+<br />
+<table width="100%" border="1">
+<tr>
+<td>&nbsp;<b>RSA</b></td>
+<td>&nbsp;<b>ED25519</b></td>
+</tr>
+<tr>
+<td>&nbsp;cd ~/.ssh</td>
+<td>&nbsp;cd ~/.ssh</td>
+</tr>
+<tr>
+<td>&nbsp;ssh-keygen -t rsa -b 4096 -C "steven_boland@hotmail.com"</td>
+<td>&nbsp;ssh-keygen -t ed25519 -C &lt;email&gt;</td>
+</tr>
+<tr>
+<td>&nbsp;Passphrase &lt;redacted&gt;</td>
+<td>&nbsp;Passphrase &lt;redacted&gt;</td>
+</tr>
+<tr>
+<td>&nbsp;eval "$(ssh-agent -s)"</td>
+<td>&nbsp;eval "$(ssh-agent -s)"</td>
+<tr>
+<td>&nbsp;ssh-add ~/.ssh/id_rsa</td>
+<td>&nbsp;ssh-add ~/.ssh/id_ed25519</td>
+</tr>
+<tr>
+<td>&nbsp;xclip -selection clipboard < ~/.ssh/id_rsa.pub</td>
+<td>&nbsp;xclip -selection clipboard < &lt;key&gt;</td>
+</tr>
+</table>
+<br />
+IMPORTANT:<br />
+If <b>xclip</b> is not installed then issue 2x commands: <i>sudo apt-get update</i> and <i>sudo apt-get install xclip</i>.  Finally, navigate to github.com Settings | <a href="https://github.com/settings/keys">SSH and GPG</a> keys | New SSH key | Paste contents from id_rsa.pub here.
+<br /><br />
+<b>Personal Access Token</b><br />
+If you favor HTTPS then Personal Access Tokens offer security benefits over password-based <a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations">authentication</a>.  Launch <a href="https://gitlab.com/SteveProXNA">gitlab.com</a>.  Navigate to Edit Profile | Access Tokens | Add new token.  <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token">Create</a> personal access token.
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1wDKBpfmtIOFqgzXHsQvpzgwfg2xeZeES03OwSDC5IbM9Xl9IXSHD2TgaAciFgM4-1LUHfIVBtyg9N1YWtCH6VE9j6DOh9ih1U2QD34xiDnz4aQrOsYIBUIWEZh2CYafvGcMQWdYBit42VQlt6TJ-YiuM7q31-yX45cvAhtmWEfaeIkdvJ13bemSxgzQ/s1209/PersonalAccessToken.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1wDKBpfmtIOFqgzXHsQvpzgwfg2xeZeES03OwSDC5IbM9Xl9IXSHD2TgaAciFgM4-1LUHfIVBtyg9N1YWtCH6VE9j6DOh9ih1U2QD34xiDnz4aQrOsYIBUIWEZh2CYafvGcMQWdYBit42VQlt6TJ-YiuM7q31-yX45cvAhtmWEfaeIkdvJ13bemSxgzQ/s600/PersonalAccessToken.png"/></a>
+<br />
+After new Personal Access Token is created upload into source control software for example Source Tree on Windows and Mac OS/X and JetBrains products on Linux that integrate Git like PyCharm for Python etc etc.
+<br /><br />
+<i>Source Tree</i><br />
+Launch Source Tree | Settings | Accounts Add... | Enter the following details | Paste personal access token:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoe_STkSKCChQRNh1KuIAge9dKx-bfQwgfkfjHIL5PaNb8l808ZXcgnAXuc-aXAuHpvc6EHuXl0c9lAXZNo35ItpFq212AjWZy6VHmZF-gMbN7srBtvQlT1Q0fjw4LTvzg1XlymKxmj1CU6t6hqg8YreD5rj2R1UHOYRPEneO19XZO-oS1vzvWuoYaEEE/s476/PrivateToken.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoe_STkSKCChQRNh1KuIAge9dKx-bfQwgfkfjHIL5PaNb8l808ZXcgnAXuc-aXAuHpvc6EHuXl0c9lAXZNo35ItpFq212AjWZy6VHmZF-gMbN7srBtvQlT1Q0fjw4LTvzg1XlymKxmj1CU6t6hqg8YreD5rj2R1UHOYRPEneO19XZO-oS1vzvWuoYaEEE/s600/PrivateToken.png"/></a>
+<br />  
+<i>JetBrains IDE</i><br />
+Launch PyCharm | File | Settings... | Version Control | GitLab.  Click "+" button | Enter GitLab token | Log In:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s1022/JetBrainsLogin.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoLlhDerqsiX9yoLP66MwbrbaejlN-ySRugsaaq7iI_qphyZtk5QRdbfFSmjf5X2VdSfTtBNshBro-2bnECxgnxw6QKhS_H2dREDshBhlyLMtyT6gTP92WXsWJMObXvFEd5DlWXEc_awf2CzQSU520-nPlj_SRwuS3W1Iau_Dx4ACN0Lph8Xl0Ozz6dYg/s600/JetBrainsLogin.png"/></a>
+<br /><br />
+<u>Example</u><br />
+In 2021, we coded an <a href="http://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html">example</a> from scratch as full end-to-end Web API demo on local host, in Docker and Kubernetes.  Let's replicate with <a href="https://blog.devops.dev/ci-cd-using-gitlab-and-docker-python-app-example-3f19ef26c2e8">Python Flask API</a> but this time include Gitlab CI/CD deployment pipelines.
+<br /><br />
+Navigate to <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet">gitlab.com</a>.  Create blank project.  Launch PyCharm.  Create the new project <b>gitlabcheatsheet</b>.
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdqqC9Y8zFXYnH6fLnE-19x2NGdufNlAk-nntpH5zPwPlwNndYqJTD4qdIdbbyvxRlA4ZgBM1eZPb9lm1KBGK2uEZMx0mWjp-dS3WKKn2MZprE8NZ4gSsV3nFPuprhcLKi4WeXEADweRIJEPqGYPvAb52ySN6YHUApCDexLsM8BGZc8TxTVTwINjLRMk0/s925/BlankProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdqqC9Y8zFXYnH6fLnE-19x2NGdufNlAk-nntpH5zPwPlwNndYqJTD4qdIdbbyvxRlA4ZgBM1eZPb9lm1KBGK2uEZMx0mWjp-dS3WKKn2MZprE8NZ4gSsV3nFPuprhcLKi4WeXEADweRIJEPqGYPvAb52ySN6YHUApCDexLsM8BGZc8TxTVTwINjLRMk0/s600/BlankProject.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT5O32B_bQ_V4w6igR5jnHlotjLGjl_CEkwFYMQxQLP5m6bSNFwmBcjZXvr1szF236wl5eTdnG5DOKqD-QCof3PK1u5ta_J0eKDKC3SBSaOulD9MRu0-yEjwbuunmmfMhgOdMw1Q6XHN4C0EOc3L36x39slpEvqlDts_qL-P1K3E3r4ORxdKeMRZu_YNA/s800/NewProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT5O32B_bQ_V4w6igR5jnHlotjLGjl_CEkwFYMQxQLP5m6bSNFwmBcjZXvr1szF236wl5eTdnG5DOKqD-QCof3PK1u5ta_J0eKDKC3SBSaOulD9MRu0-yEjwbuunmmfMhgOdMw1Q6XHN4C0EOc3L36x39slpEvqlDts_qL-P1K3E3r4ORxdKeMRZu_YNA/s600/NewProject.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+Enter <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a> code.  Install <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/requirements.txt">packages</a>.  Press F5 to debug.  Launch Terminal | curl <b>http://localhost:8080</b>
+<br />
+<table border="1" width="99%">
+<tr>
+<td>&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">main.py</a></b></td>
+<td>&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockerfile</a></b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;from flask import Flask
+&nbsp;app = Flask(__name__)
+&nbsp;@app.route('/')
+&nbsp;def root():
+&nbsp;    return "Hello World (Python)!\n"
+&nbsp;if __name__ == "__main__":
+&nbsp;    app.run(host="0.0.0.0", port=8080)
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;FROM python:3-alpine
+&nbsp;WORKDIR /service
+&nbsp;COPY requirements.txt .
+&nbsp;RUN pip install -r requirements.txt
+&nbsp;COPY . ./
+&nbsp;EXPOSE 8080
+&nbsp;ENTRYPOINT ["python3", "main.py"]
+</pre>
+</td>
+</tr>
+</table>
+<br />
+Code <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockefile</a>.  Launch Terminal | Enter the following Docker commands | curl <b>http://localhost:8080</b>  
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."<br />
+&nbsp;docker run --rm -d -p 8080:8080/tcp flask-api:latest --name "flask-api"<br />
+</td>
+</tr>
+</table>
+<br />
+Create local <a href="https://kind.sigs.k8s.io">KinD</a> cluster.  Enter all the following <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes</a> Deployment and Service YAML configuration:
+<br />
+<table border="1" width="99%">
+<tr>
+<td colspan="2">&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code">
+&nbsp;--- Deployment
+&nbsp;apiVersion: apps/v1
+&nbsp;kind: Deployment
+&nbsp;metadata:
+&nbsp;  name: flask-api-deployment
+&nbsp;  namespace: test-ns
+&nbsp;spec:
+&nbsp;  replicas: 1
+&nbsp;  selector:
+&nbsp;    matchLabels:
+&nbsp;      app: flask-api
+&nbsp;  template:
+&nbsp;    metadata:
+&nbsp;      labels:
+&nbsp;        app: flask-api
+&nbsp;    spec:
+&nbsp;      containers:
+&nbsp;        - name: flask-api
+&nbsp;          image: flask-api:latest
+&nbsp;          imagePullPolicy: Never
+&nbsp;          ports:
+&nbsp;            - containerPort: 8080
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code">
+&nbsp;--- Service
+&nbsp;apiVersion: v1
+&nbsp;kind: Service
+&nbsp;metadata:
+&nbsp;  name: flask-api-service
+&nbsp;  namespace: test-ns
+&nbsp;spec:
+&nbsp;  selector:
+&nbsp;    app: flask-api
+&nbsp;  type: NodePort
+&nbsp;  ports:
+&nbsp;    - protocol: TCP
+&nbsp;      port: 80
+&nbsp;      targetPort: 8080
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</pre>
+</td>
+</tr>
+</table>
+<br />
+Finally test: Launch Terminal | Enter the following Kubernetes commands | curl <b>http://localhost:8080</b>
+<br />
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kind load docker-image flask-api:latest --name flask-cluster<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td>
+</tr>
+</table>
+<br /> 
+<u>Cluster</u><br />
+Extend example but this time include Gitlab CI/CD deployment pipelines.  Ensure you have all Pre-Requisites:
+<br />
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;Python 3.8<br />
+&nbsp;<a href="https://gitlab.com/SteveProXNA">GitLab</a> account [CI/CD]<br />
+&nbsp;Microsoft <a href="https://portal.azure.com">Azure</a> subscription [AZ CLI]<br />
+&nbsp;VS Code Docker + Kubernetes <br />
+</td>
+<td>
+&nbsp;<a href="https://hub.docker.com/u/steveproxna">Docker</a> Hub account<br />
+&nbsp;Kubernetes in Docker [KinD]<br />
+&nbsp;docker [CLI]<br />
+&nbsp;kubectl [CLI]<br />
+</td>
+</tr>
+</table>
+<br />
+<b>Azure AKS</b><br />
+Launch Terminal | Login to Azure portal.  Enter commands to extract Service Principal and generate SSH key:
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;az login<br />
+&nbsp;az ad sp create-for-rbac --name ${USER}-sp<br />
+&nbsp;cd ~/.ssh<br />
+</td>
+<td>
+&nbsp;ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key<br />
+&nbsp;eval $(ssh-agent -s)<br />
+&nbsp;ssh-add master_ssh_key<br />
+</td>
+</tr>
+</table>
+<br />
+Export the following environment variables.  Note: use the Service Principal information for first 3x ENV VARs
+<br />
+<table width="100%" border="1">
+<tr>
+<td>
+&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;<br />
+&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;<br />
+&nbsp;export AZ_TENANT_ID=&lt;value_from_tenant<br />
+&nbsp;export CLUSTER_NAME=stevepro-dev-cluster<br />
+&nbsp;export CLUSTER_NODES=3<br />
+&nbsp;export MASTER_SSH_KEY=~/.ssh/master_ssh_key.pub<br />
+</td>
+<td>
+&nbsp;export AZ_NETWORK_MODE=transparent<br />
+&nbsp;export AZ_CREATE_MODE=AKS<br />
+&nbsp;export AZ_LB_SKU=standard<br />
+&nbsp;export AZ_VM_SIZE=Standard_D2s_v3<br />
+&nbsp;export AZ_LOCATION=northeurope<br />
+&nbsp;export KUBERNETES_VERSION=1.28<br />
+</td>
+</tr>
+</table>
+<br />
+Create the Azure resource group then finally create the AKS cluster.  Note: this process can take few minutes
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;az group create --name ${CLUSTER_NAME} --location ${AZ_LOCATION} --debug
+</td>
+</tr>
+<tr>
+<td valign="top">
+&nbsp;az aks create --name ${CLUSTER_NAME} --resource-group ${CLUSTER_NAME} \<br />
+&nbsp; --dns-name-prefix ${CLUSTER_NAME} --node-count ${CLUSTER_NODES} \<br />
+&nbsp; --node-vm-size ${AZ_VM_SIZE} --kubernetes-version ${KUBERNETES_VERSION} \<br />
+&nbsp; --ssh-key-value ${MASTER_SSH_KEY} --service-principal ${AZ_SP_ID} \<br />
+&nbsp; --client-secret ${AZ_SP_PASSWORD} --load-balancer-sku ${AZ_LB_SKU} \<br />
+&nbsp; --network-plugin azure --debug<br />
+</td>
+</tr>
+</table>
+<br />
+Finally, execute following commands to download + export <b>KUBECONFIG</b> file on localhost and setup context
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;export KUBECONFIG=~/.kube/config<br />
+&nbsp;az aks get-credentials --name ${CLUSTER_NAME} \<br />
+&nbsp; --resource-group ${CLUSTER_NAME} --file ${KUBECONFIG}<br />
+&nbsp;kubectl create ns test-ns<br />
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+</td>
+</tr>
+</table>
+<br />
+<b>Pipeline</b><br />
+Follow this <a href="https://docs.gitlab.com/ee/ci/quick_start">tutorial</a> to create and run your first GitLab CI/CD pipeline.  Create <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/.gitlab-ci.yml">.gitlab-ci.yml</a></b> file at root the of the project directory.  Refactor all YAML configuration in files beneath the <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/cicd">cicd</a></b> directory.  <a href="https://robinjanke1.medium.com/automating-helm-chart-builds-and-deployment-with-gitlab-ci-cd-2dbfad30a86c">Automate</a> CI/CD to the Kubernetes cluster using <b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/tree/main/helm">helm</a></b> charts.  This way, multiple environments can be targeted and customized.
+<br /><br />
+<b>Variables</b><br />
+Navigate to gitlab.com | Settings | CI/CD | Variables.  Enter all GitLab <a href="https://docs.gitlab.com/ee/ci/variables/predefined_variables.html ">Variables</a> here e.g. Docker registry host and username.  <a href="https://cloudifydevops.com/secured-gitlab-pipeline-with-base64">Secure</a> sensitive information like Docker password using Base64.  Add <b>KUBECONFIG</b>:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s883/CICDvariables.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTGUUUNMTyMV4kq_Y2SJizIsd4oE-xkATtYVeR1h16opxVtVz-CJ_rLS0mj8LNe9TX1Zqd8myjR4jUUx5Hl3KHWWig2-ZZVdqiGu7JQ5sZ8ANp8nk7z17VcVTzLAGpPNvICDI8gf2nWsj7Xs45v-uA3beTPlmhyphenhyphenf7EsOpEybKGswa358EKVViAR57vR60/s600/CICDvariables.png"/></a>
+<br />
+<b>Deployment</b><br />
+<a href="https://cto.ai/blog/using-gitlab-ci-cd-with-a-kubernetes-cluster">Trigger</a> CI/CD pipeline.  Launch Terminal | Repeat <i>kubectl port-forward</i>.  Test: curl <b>http://localhost:8080</b>
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCMB-DtZzsybnDWbna8rv5wVUDH8hyphenhyphenzJkQy2GpQBT1c8pNwDOBrLwc-fF4jJsYdlT1-NdMRboAEKPhsTwOw5p7SnCT35Nzxbq3bjuNUlbYdzd_PeCS9VFTJLPKzsAVXPCM_GPK7UaCBSAY9CftH7W95-viOtbcczXsE70UwDlxK51tBqvWQ2Fc7g_VWXU/s770/BuildPipelines.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCMB-DtZzsybnDWbna8rv5wVUDH8hyphenhyphenzJkQy2GpQBT1c8pNwDOBrLwc-fF4jJsYdlT1-NdMRboAEKPhsTwOw5p7SnCT35Nzxbq3bjuNUlbYdzd_PeCS9VFTJLPKzsAVXPCM_GPK7UaCBSAY9CftH7W95-viOtbcczXsE70UwDlxK51tBqvWQ2Fc7g_VWXU/s600/BuildPipelines.png"/></a>  
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td>
+</tr>
+</table>
+<br />
+<u>GitFlow</u><br />
+<a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow</a> is an alternative Git branching model that involves the use of feature branches and multiple primary branches.  Here is practical <a href="https://hackernoon.com/from-git-flow-to-cicd-a-practical-guide-to-implement-git-workflow">guide</a> to implement GitFlow using GitLab with the corresponding git commands.
+<br /><br />
+Launch <a href="https://gitlab.com">gitlab.com</a>.  Create new project.  Default branch will be main.  Git clone repository to localhost.  For completeness cut initial Tag 0.1.  In SourceTree setup GitFlow: Repository | Git-flow | Initialize Repository:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s413/sourcetree.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGW7oKKtSjFsTDDBWddpfXELIMOcA0KHDwkzj2oWSZkBuVppHEr7Rxg_tUR55avW0pOw0o-e9yWdfbboCm6RMazX77GbKBIRofpVl1UYdQ4cz5xs6PSLckEGqbiGjSWstXElPHRF-8v5qHGAC0oH1xOLd2si-_zZCkj6dBmydnftN8fVrwUdqT_LqNcw/s600/sourcetree.png"/></a>
+<br />
+In gitlab.com set develop as default branch: GitLab | Setttings | Repository | Branch defaults | <b>develop</b>.
+<br />
+<table width="99%" border="1">
+<tr><td>
+<table width="99%" border="0">
+<tr><td>&nbsp;<b>FEATURE</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout -b feature/my-feature develop</td><td>&nbsp;# cut feature branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin feature/my-feature</td><td>&nbsp;# push feature to remote</td></tr>
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff feature/my-feature</td><td>&nbsp;# merge feature to develop</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# push develop to remote</td></tr>
+<tr><td>&nbsp;<b>FEATURE</b> [end]</td></tr>
+<tr><td>&nbsp;git branch -d feature/my-feature</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d feature/my-feature</td><td>&nbsp;# delete remote branch</td></tr>
+<tr><td>&nbsp;<b>RELEASE</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout -b release/1.0 develop</td><td>&nbsp;# cut release branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin release/1.0</td><td>&nbsp;# push release to remote</td></tr>
+<tr><td>&nbsp;<b>BUGFIX</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout -b bugfix/1.0 release/1.0</td><td>&nbsp;# cut bugfix branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin bugfix/1.0</td><td>&nbsp;# push bugfix to remote</td></tr>
+<tr><td>&nbsp;git checkout release/1.0</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff bugfix/1.0</td><td>&nbsp;# merge bugfix to release</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# push release to remote</td></tr>
+<tr><td>&nbsp;<b>BUGFIX</b> [end]</td></tr>
+<tr><td>&nbsp;git branch -d bugfix/1.0</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d bugfix/1.0</td><td>&nbsp;# delete remote branch</td></tr>
+<tr><td>&nbsp;<b>RELEASE</b> [end]</td></tr>
+<tr><td>&nbsp;git checkout main</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff release/1.0</td><td>&nbsp;# merge release to main</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync release with main</td></tr>
+<tr><td>&nbsp;git tag -a 1.0 -m "Tag 1.0"</td><td>&nbsp;# cut tag 1.0 off main</td></tr>
+<tr><td>&nbsp;git push origin tag 1.0</td><td>&nbsp;# push tag 1.0 to remote</td></tr>
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff release/1.0</td><td>&nbsp;# merge release to develop</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync release with develop</td></tr>
+<tr><td>&nbsp;git branch -d release/1.0</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d release/1.0</td><td>&nbsp;# delete remote branch</td></tr>
+<tr><td>&nbsp;<b>HOTFIX</b> [start]</td></tr>
+<tr><td>&nbsp;git checkout main</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git checkout -b hotfix/1.1 main</td><td>&nbsp;# cut hotfix branch</td></tr>
+<tr><td>&nbsp;git push --set-upstream origin hotfix/1.1</td><td>&nbsp;# push hotfix to remote</td></tr>
+<tr><td>&nbsp;<b>HOTFIX</b> [end]</td></tr>
+<tr><td>&nbsp;git checkout main</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff hotfix/1.1</td><td>&nbsp;# merge hotfix to main</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync hotfix with main</td></tr>
+<tr><td>&nbsp;git tag -a 1.1 -m "Tag 1.1"</td><td>&nbsp;# cut Tag 1.1 off main</td></tr>
+<tr><td>&nbsp;git push origin tag 1.1</td><td>&nbsp;# push Tag 1.1 to remote</td></tr>
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;git merge --no-ff hotfix/1.1</td><td>&nbsp;# merge hotfix to develop</td></tr>
+<tr><td>&nbsp;git push</td><td>&nbsp;# sync hotfix with develop</td></tr>
+<tr><td>&nbsp;git branch -d hotfix/1.1</td><td>&nbsp;# delete local branch</td></tr>
+<tr><td>&nbsp;git push origin -d hotfix/1.1</td><td>&nbsp;# delete remote branch</td></tr>
+</table>
+</td></tr>
+</table>
+<br />
+IMPORTANT - you can compare two branches [source vs. target] anytime issuing the following commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<table width="99%" border="0">
+<tr><td>&nbsp;git checkout develop</td><td>&nbsp;# source branch</td></tr>
+<tr><td>&nbsp;git diff --name-only main</td><td>&nbsp;# target branch</td></tr>
+<tr><td align="center">&nbsp;<b>OR</b></td><td>&nbsp;# target branch</td></tr>
+<tr><td>&nbsp;git diff-tree --no-commit-id --name-only -r main..develop</td><td>&nbsp;# source vs. target branch</td></tr>
+</table>
+</td></tr>
+</table>
+<br />
+<u>Summary</u><br />
+To summarize, now that we have discussed the <a href="https://www.geeksforgeeks.org/difference-between-gitlab-and-github">differences</a> between GitHub and GitLab, we have extended our previous end-to-end Web API demo on local host, in Docker and Kubernetes but now leveraged GitLab CI/CD pipelines to automate deployments to the cloud.  Our next steps would be more GitFlow integration: Replicate deployments across multiple environments and complete the full Software Development LifeCyle!
+</span>
