@@ -1,0 +1,81 @@
+Reference:
+https://gitlab.com/SteveProXNA/gitlabcheatsheet
+
+TODO - TEXT
+
+<table border="1" width="99%">
+<tr>
+<td colspan="2">&nbsp;<b><a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes.yaml</a></b></td>
+</tr>
+<tr>
+<td>
+<pre class="csharp" name="code" style="font-size: 10px;">
+&nbsp;--- Deployment
+&nbsp;apiVersion: apps/v1
+&nbsp;kind: Deployment
+&nbsp;metadata:
+&nbsp;  name: flask-api-deployment
+&nbsp;  namespace: test-ns
+&nbsp;spec:
+&nbsp;  replicas: 1
+&nbsp;  selector:
+&nbsp;    matchLabels:
+&nbsp;      app: flask-api
+&nbsp;  template:
+&nbsp;    metadata:
+&nbsp;      labels:
+&nbsp;        app: flask-api
+&nbsp;    spec:
+&nbsp;      containers:
+&nbsp;        - name: flask-api
+&nbsp;          image: flask-api:latest
+&nbsp;          imagePullPolicy: Never
+&nbsp;          ports:
+&nbsp;            - containerPort: 8080
+</pre>
+</td>
+<td>
+<pre class="csharp" name="code" style="font-size: 10px;">
+&nbsp;--- Service
+&nbsp;apiVersion: v1
+&nbsp;kind: Service
+&nbsp;metadata:
+&nbsp;  name: flask-api-service
+&nbsp;  namespace: test-ns
+&nbsp;spec:
+&nbsp;  selector:
+&nbsp;    app: flask-api
+&nbsp;  type: NodePort
+&nbsp;  ports:
+&nbsp;    - protocol: TCP
+&nbsp;      port: 80
+&nbsp;      targetPort: 8080
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</pre>
+</td>
+</tr>
+</table>
+
+TODO - TEXT
+
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."<br />
+&nbsp;<br />
+&nbsp;kubectl create ns test-ns
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td>
+</tr>
+</table>
