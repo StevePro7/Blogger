@@ -2,7 +2,34 @@ README table
 23-Mar-2025
 
 
-# 01	create cluster
+# 00	security principal
+az login
+az ad sp create-for-rbac --name ${USER}-sp --skip-assignment
+
+OUTPUT
+<pre style="font-size: 12px;">
+&nbsp;{
+&nbsp;    "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;    "displayName": "stevepro-sp",
+&nbsp;    "name": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;    "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;    "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;}
+</pre>
+
+export AZ_SP_ID=<value_from_appId>
+export AZ_SP_PASSWORD=<value_from_password>
+
+
+# 01	create group
+#az group create --name ${CLUSTER_NAME} --location ${AZ_LOCATION} --debug
+
+<pre style="font-size: 12px;">
+&nbsp;az group create --name stevepro-azraks --location northeurope --debug
+</pre>
+
+
+# 02	create cluster
 <pre style="font-size: 12px;">
 &nbsp;az aks create --name stevepro-azraks			\
 &nbsp;    --resource-group stevepro-azraks			\
