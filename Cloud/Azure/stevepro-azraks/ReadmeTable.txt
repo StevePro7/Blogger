@@ -3,48 +3,17 @@ README table
 
 
 # 01	create cluster
-
 <pre style="font-size: 12px;">
 &nbsp;az aks create --name stevepro-azraks			\
 &nbsp;    --resource-group stevepro-azraks			\
 &nbsp;    --dns-name-prefix stevepro-azraks			\
-
-&nbsp;    --verbose 5
-&nbsp;    --verbose 5
-&nbsp;    --verbose 5
-&nbsp;    --verbose 5
-&nbsp;    --verbose 5
-&nbsp;    --verbose 5
-&nbsp;    --verbose 5
-&nbsp;    --verbose 5&nbsp;    --verbose 5
+&nbsp;    --node-count 3					\
+&nbsp;    --node-vm-size Standard_D2s_v3			\
+&nbsp;    --kubernetes-version 1.28				\
+&nbsp;    --ssh-key-value ~/.ssh/master_ssh_key.pub		\
+&nbsp;    --service-principal ${AZ_SP_ID}			\
+&nbsp;    --client-secret ${AZ_SP_PASSWORD}			\
+&nbsp;    --load-balancer-sku standard			\
+&nbsp;    --network-plugin azure --debug
 </pre>
-
-eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
-    --kubeconfig ~/stevepro-awseks/kubeconfig           \
-    --verbose 5
-
-
-# 03	scale nodegroup
-<pre style="font-size: 12px;">
-&nbsp;eksctl scale nodegroup          \
-&nbsp;    --cluster=stevepro-aws-eks  \
-&nbsp;    --name=stevepro-aws-eks     \
-&nbsp;    --nodes=3                   \
-&nbsp;    --nodes-min=0               \
-&nbsp;    --nodes-max=3               \
-&nbsp;    --verbose 5
-</pre>
-
-
-# 04 delete
-kubectl delete -f Kubernetes.yaml
-
-<pre style="font-size: 12px;">
-&nbsp;eksctl delete cluster           \
-&nbsp;    --name=stevepro-aws-eks     \
-&nbsp;    --region eu-west-1          \
-&nbsp;    --force                     \
-&nbsp;    --parallel 10
-</pre>
-
 
