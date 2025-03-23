@@ -1,0 +1,17 @@
+Reference:
+https://gitlab.com/SteveProXNA/gitlabcheatsheet
+
+TODO - TEXT
+
+<table border="1" width="99%">
+<tr>
+<td valign="top">
+&nbsp;cd ~/.ssh<br />
+&nbsp;ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key<br />
+</td>
+<td>
+&nbsp;eval $(ssh-agent -s)<br />
+&nbsp;ssh-add master_ssh_key<br />
+</td>
+</tr>
+</table>
