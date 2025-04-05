@@ -1,0 +1,47 @@
+ML Ops
+24-Dec-2024
+
+Chat GPT
+MLOps
+integrates key principles and practices of DevOps and ML while addressing the unique challenges of deploying and managing ML models in Prod environment
+
+
+DevOps
+Automation
+MLOps extends to automating parts of ML workflow
+[data preprocessing, model training, testing, deployment]
+
+Collaboration
+MLOps fosters collaboration btwn data scientists, engineers, Ops teams
+
+CI/CD
+ML ensuring models continuously integrated, tested, deployed => pipeline
+
+
+ML
+MLOps adds layer of handling models
+[training, fine-tuning and versioning]
+
+Data Mgt
+data pipelines: ensure data used in training and testing models
+is consistent and reliable
+ML models depend  on data quality, data drift - continuously monitored
+
+Retrain
+MLOps models monitored once deployed to track performance
+ensure they remain accurate over time: retrain or update based on new data
+or changing environments
+
+
+SUMMARY
+MLOps incorporates DevOps + introduces ML-specific concerns e.g.
+managing models, data pipelines, continuous training
+focused on the lifecycle of ML models
+
+
+
+Linked IN
+GCP Vertex AI offerings may be better than other Cloud competitors
+Kubeflow and MLflow are solid offerings for open source but limited
+
+start with GCP Vertex AI and work from that...
