@@ -56,5 +56,33 @@ Right click google-cloud-cli-darwin-arm.tar.gz | Open With | Archive Utility app
 cd google-cloud-sdk
 ./install.sh
 
+IMPORTANT
+when prompted enter the following
+N	help GCP
+Y	insta
+Enter	~/.bash_profile
+
+N	Python modules install
+Why?	because may get SSL: CERTIFICATE_VERIFY_FAILED
+seems like not important
+
+
 gcloud init
+
+close Terminal and re-open
 gcloud version
+
+
+Traceback
+https://cloud.google.com/sdk/docs/install
+
+To install or remove components at your current SDK version
+$ gcloud components update
+
+$ gcloud components install COMPONENT_ID
+$ gcloud components remove  COMPONENT_ID
+
+
+commands
+gcloudCLI.txt
+gcloudCLI-resources.txt
