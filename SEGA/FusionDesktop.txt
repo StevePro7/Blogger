@@ -1,0 +1,44 @@
+Ubuntu Linux
+12-Par-2025
+
+Sega Master System
+double click SMS file and auto launch as Kega Fusion like Windows
+
+
+Launch gedit
+
+[Desktop Entry]
+Name=Kega Fusion
+Exec=/home/yourusername/KegaFusion/Fusion %f
+Type=Application
+Terminal=false
+MimeType=application/x-genesis-rom;application/x-sms-rom;
+Icon=emulator
+Categories=Game;Emulator;
+
+
+Save
+~/.local/share/applications/kegafusion.desktop
+
+
+
+mkdir -p ~/.local/share/mime/packages
+
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-sms-rom">
+    <comment>Sega Master System ROM</comment>
+    <glob pattern="*.sms"/>
+  </mime-type>
+</mime-info>
+
+Save
+~/.local/share/mime/packages/sms-rom.xml
+
+
+update-mime-database ~/.local/share/mime
+xdg-mime default kegafusion.desktop application/x-sms-rom
+
+
+Double click SMS file
+Now auto launches in Kega Fusion
