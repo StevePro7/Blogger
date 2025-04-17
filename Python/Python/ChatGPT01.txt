@@ -1,0 +1,54 @@
+Chat GPT
+17-Apr-2025
+
+01. What are dataclasses?
+Regular class with @dataclass which auto generates common dunder methods
+
+
+02. What is the pandera package?
+data validation library for Pandas DF
+like schema validator [pydantic]
+
+
+03. What is difference between BaseModel and BaseSettings?	[pydantic]
+
+BaseModel
+used to define and validate structured data
+like JSON payloads, API inputs/outputs
+used to serialize / deserialize objects
+
+BaseSettings
+subclass of BaseModel
+built for application settings / configuration
+esp. loading from ENV VARs .env files OS config
+
+
+04. What are metaclasses?
+class that creates classes
+
+use metaclasses when 
+- you're building ORMs or APIs
+- you want to control how classes are built
+- you need something beyond what decorators or class inheritance can do
+
+
+05. What are Mixin classes?
+type of class that is used to add specific behaviour or functionality to other classes
+meant to be inherited by other classes to provide extrac functionality - not instantiated on their own
+
+NOTE
+- are meant to stand alone [no instantiations]
+- don't contain state [no __init__]
+- focus on adding a specific piece of functionality
+
+
+06. Ducktyping
+can I proactively check if function has attribute before invoking?
+use hasattr()
+
+
+07. What are descriptors?
+descriptors are mechanism that allows for custom behaviour when accessing or modifying an attribute of a class
+__get__
+__set__
+__delete__
