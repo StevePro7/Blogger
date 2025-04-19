@@ -1,8 +1,10 @@
 <a href="https://learn.microsoft.com/en-us/cli/azure">Azure CLI</a><br />
 The Azure Command Line Interface is a set of commands used to create and manage Azure resources.  The CLI is available across services designed to get working with Azure quickly with an emphasis on automation.
-<br />
+<br /><br />
 
-Linux<br />
+<b>Linux</b><br />
+Install the Azure CLI on Linux | Choose an installation method e.g. apt (Ubunuty, Debian) | Launch Terminal
+<br />
 <table width="99%" border="1">
 <tr><td>
 &nbsp;curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash<br />
@@ -10,7 +12,9 @@ Linux<br />
 </table>
 <br />
 
-Mac OS/X<br />
+<b>Mac OS/X</b><br />
+Install Azure CLI on Mac OS/X | Install with Homebrew | Install Homebrew if you haven't already!
+<br />
 <table width="99%" border="1">
 <tr><td>
 &nbsp;brew update && brew install azure-cli<br />
@@ -18,17 +22,22 @@ Mac OS/X<br />
 </table>
 <br />
 
-Windows<br />
+<b>Windows</b><br />
+Install Azure CLI on Windows | Microsoft Install (MSI) | Download the Latest MSI of the Azure CLI (64-bit)
+<br />
+<!--
 <table width="99%" border="1">
 <tr><td>
 &nbsp;Download and install https://aka.ms/installazurecliwindowsx64<br />
 </td></tr>
 </table>
+-->
 <br />
   
-TEST<br />
+<i>Version</i><br />
 <table width="99%" border="1">
 <tr><td>
 &nbsp;az version<br />
 </td></tr>
 </table>
+<br />
