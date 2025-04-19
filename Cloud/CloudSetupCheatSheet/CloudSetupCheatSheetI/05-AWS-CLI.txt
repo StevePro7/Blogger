@@ -1,0 +1,47 @@
+<a href="https://aws.amazon.com/cli">AWS CLI</a><br />
+The AWS Command Line Interface is a unified tool used to manage your AWS services.  Use the AWS CLI tool to download configure and control AWS services from the command line and automate them through scripts.
+<br /><br />
+  
+<b>Linux</b><br />
+Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a> on Linux | Linux tab | Command line installer - Linux x86 (64-bit) | Launch the Terminal
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"<br />
+&nbsp;unzip awscliv2.zip<br />
+&nbsp;sudo ./aws/install<br />
+</td></tr>
+</table>
+<br />
+  
+<b>Mac OS/X</b><br />
+Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a> on MacOS/X | macOS tab | GUI installer | Download the macOS pkg file <a href="https://awscli.amazonaws.com/AWSCLIV2.pkg">AWSCLIV2.pkg</a>
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://awscli.amazonaws.com/AWSCLIV2.pkg<br />
+</td></tr>
+</table>
+-->
+<br />
+  
+<b>Windows</b><br />
+Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a> on Windows | Windows tab | Download MSI | Download Windows (64-bit) <a href="https://awscli.amazonaws.com/AWSCLIV2.msi">AWSCLIV2.msi</a>
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://awscli.amazonaws.com/AWSCLIV2.msi<br />
+</td></tr>
+</table>
+-->
+<br />
+  
+After installing the AWS  CLI on Linux, Mac OS/X, Windows confirm the current working version of the CLI:
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;aws --version<br />
+</td></tr>
+</table>
+<br />
