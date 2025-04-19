@@ -1,11 +1,11 @@
 Command Line Interfaces LINUX
 21-Jan-2025
 
-AWS
-https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-
 Azure
 https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux
+
+AWS
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
 GCP
 https://cloud.google.com/sdk/docs/install#linux
@@ -18,7 +18,20 @@ Back | wiki | xx | 01 | CLI
 
 
 LINUX
-01. aws cli
+01. az cli
+Install the Azure CLI on Linux
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux
+
+Choose an installation method
+apt (Ubunuty, Debian)
+
+Install Azure CLI
+Terminal
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az version
+
+
+02. aws cli
 Installing or updating to the latest version of the AWS CLI
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
@@ -30,19 +43,6 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 aws --version
-
-
-02. az cli
-Install the Azure CLI on Linux
-https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux
-
-Choose an installation method
-apt (Ubunuty, Debian)
-
-Install Azure CLI
-Terminal
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az version
 
 
 03. gcloud

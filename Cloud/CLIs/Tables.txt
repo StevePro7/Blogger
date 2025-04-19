@@ -1,21 +1,21 @@
 LINUX
-01. aws cli
+01. az cli
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash<br />
+&nbsp;az version<br />
+</td></tr>
+</table>
+<br />
+
+
+02. aws cli
 <table width="99%" border="1">
 <tr><td>
 &nbsp;curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"<br />
 &nbsp;unzip awscliv2.zip<br />
 &nbsp;sudo ./aws/install<br />
 &nbsp;aws --version<br />
-</td></tr>
-</table>
-<br />
-
-
-02. az cli
-<table width="99%" border="1">
-<tr><td>
-&nbsp;curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash<br />
-&nbsp;az version<br />
 </td></tr>
 </table>
 <br />
@@ -37,20 +37,21 @@ LINUX
 
 
 MAC
-01. aws cli
+01. az cli
 <table width="99%" border="1">
 <tr><td>
-&nbsp;aws --version<br />
+&nbsp;brew update && brew install azure-cli<br />
+&nbsp;az version<br />
 </td></tr>
 </table>
 <br />
 
 
-02. az cli
+02. aws cli
 <table width="99%" border="1">
 <tr><td>
-&nbsp;brew update && brew install azure-cli<br />
-&nbsp;az version<br />
+&nbsp;Download and install https://awscli.amazonaws.com/AWSCLIV2.pkg<br />
+&nbsp;aws --version<br />
 </td></tr>
 </table>
 <br />
@@ -71,4 +72,33 @@ MAC
 
 
 Windows
-no tables!!
+01. az cli
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://aka.ms/installazurecliwindowsx64<br />
+&nbsp;az version<br />
+</td></tr>
+</table>
+<br />
+
+
+02. aws cli
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://awscli.amazonaws.com/AWSCLIV2.msi<br />
+&nbsp;aws --version<br />
+</td></tr>
+</table>
+<br />
+
+
+03. gcloud
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe<br />
+&nbsp;gcloud init<br />
+&nbsp;gcloud version<br />
+</td></tr>
+</table>
+<br />
+

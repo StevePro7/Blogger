@@ -1,11 +1,13 @@
 Command Line Interfaces MAC
 01-Mar-2025
 
+Azure
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
+
+
 AWS
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
-Azure
-https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
 
 GCP
 https://cloud.google.com/sdk/docs/install#mac
@@ -18,7 +20,17 @@ Back | wiki | xx | 01 | CLI
 
 
 MAC
-01. aws cli
+01. az cli
+Install Azure CLI on macOS
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
+
+Install with Homebrew
+Terminal
+brew update && brew install azure-cli
+az version
+
+
+02. aws cli
 Installing or updating to the latest version of the AWS CLI
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
@@ -29,15 +41,6 @@ https://awscli.amazonaws.com/AWSCLIV2.pkg
 Terminal
 aws --version
 
-
-02. az cli
-Install Azure CLI on macOS
-https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos
-
-Install with Homebrew
-Terminal
-brew update && brew install azure-cli
-az version
 
 
 03. gcloud
@@ -59,7 +62,7 @@ cd google-cloud-sdk
 IMPORTANT
 when prompted enter the following
 N	help GCP
-Y	insta
+Y	install
 Enter	~/.bash_profile
 
 N	Python modules install
