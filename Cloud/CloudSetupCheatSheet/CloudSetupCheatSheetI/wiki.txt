@@ -1,6 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-In 2024, we checked out GitLab Cheat Sheet to streamline collaborative team workflows that leverage CI/CD pipelines.  Now, we will explain cluster provisioning process for managed cloud providers: <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a> + <a href="https://console.cloud.google.com">GCP</a>.
+In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab-cheat-sheet.html">GitLab Cheat Sheet</a> to streamline collaborative team workflows that leverage CI/CD pipelines.  Now, we will explain cluster provisioning process for managed cloud providers: <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a> + <a href="https://console.cloud.google.com">GCP</a>.
 <br />
 <!--  
 <table width="99%" border="1">
@@ -46,5 +46,144 @@ This blog post assumes an <a href="https://portal.azure.com">Azure</a>, <a href=
 </table>
 -->
 <br />
+ 
+<a href="https://aws.amazon.com/cli">AWS CLI</a><br />
+The AWS Command Line Interface is a unified tool used to manage your AWS services.  Use the AWS CLI tool to download configure and control AWS services from the command line and automate them through scripts.
+<br /><br />
+<b>Linux</b><br />
+Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a> on Linux | Linux tab | Command line installer - Linux x86 (64-bit) | Launch the Terminal
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"<br />
+&nbsp;unzip awscliv2.zip<br />
+&nbsp;sudo ./aws/install<br />
+</td></tr>
+</table>
+<br />
+<b>Mac OS/X</b><br />
+Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a> on MacOS/X | macOS tab | GUI installer | Download the macOS pkg file <a href="https://awscli.amazonaws.com/AWSCLIV2.pkg">AWSCLIV2.pkg</a>
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://awscli.amazonaws.com/AWSCLIV2.pkg<br />
+</td></tr>
+</table>
+-->
+<br />
+<b>Windows</b><br />
+Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a> on Windows | Windows tab | Download MSI | Download Windows (64-bit) <a href="https://awscli.amazonaws.com/AWSCLIV2.msi">AWSCLIV2.msi</a>
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://awscli.amazonaws.com/AWSCLIV2.msi<br />
+</td></tr>
+</table>
+-->
+<br />
+After installing the AWS  CLI on Linux, Mac OS/X, Windows confirm the current working version of the CLI:
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;aws --version<br />
+</td></tr>
+</table>
+<br /><br />
   
+<a href="https://learn.microsoft.com/en-us/cli/azure">Azure CLI</a><br />
+The Azure Command Line Interface is a set of commands used to create and manage Azure resources.  The CLI is available across services designed to get working with Azure quickly with an emphasis on automation.
+<br /><br />
+<b>Linux</b><br />
+Install the <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux">Azure CLI</a> on Linux | Choose an installation method e.g. apt (Ubunuty, Debian) | Launch Terminal
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash<br />
+</td></tr>
+</table>
+<br />
+<b>Mac OS/X</b><br />
+Install <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos">Azure CLI</a> on Mac OS/X | Install with Homebrew | Install <a href="https://docs.brew.sh/Installation.html">Homebrew</a> manager if you haven't already!
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;brew update && brew install azure-cli<br />
+</td></tr>
+</table>
+<br />
+<b>Windows</b><br />
+Install <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows">Azure CLI</a> on Windows | Microsoft Install (MSI) | Download the Latest MSI of the <a href="https://aka.ms/installazurecliwindowsx64">Azure CLI</a> (64-bit)
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://aka.ms/installazurecliwindowsx64<br />
+</td></tr>
+</table>
+-->
+<br />  
+After installing the Azure CLI on Linux, Mac OS/X, Windows confirm the current working version of the CLI:
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;az version<br />
+</td></tr>
+</table>
+<br /><br />
+  
+<a href="https://cloud.google.com/cli">GCP CLI</a><br />
+The GCP Command Line Interface is used to create and manage Google Cloud resources + services directly from the command line and to perform common platform tasks faster by controlling cloud resources at scale.
+<br />
+<br />
+<b>Linux</b><br />
+Install the <a href="https://cloud.google.com/sdk/docs/install#linux">gcloud CLI</a> | Linux tab | Platform Linux 64-bit (x86_64) | Launch Terminal + execute commands:
+<br />
+<table width="99%" border="1">
+<tr><td colspan="2">
+&nbsp;curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz<br />
+&nbsp;tar -xf google-cloud-cli-linux-x86_64.tar.gz<br />
+</td></tr>
+<tr>
+<td width="50%">&nbsp;cd google-cloud-sdk</td>
+<td>&nbsp;./install.sh</td>
+</tr>  
+</table>
+<br />
+<b>Mac OS/X</b><br />
+Install the <a href="https://cloud.google.com/sdk/docs/install#mac">gcloud CLI</a> | macOS tab | Platform macOS macOS 64-bit (ARM64, Apple silicon) | Launch Terminal
+<br />  
+<table width="99%" border="1">
+<tr><td colspan="2">
+&nbsp;curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-arm.tar.gz<br />
+&nbsp;tar -xf google-cloud-cli-darwin-arm.tar.gz<br />
+</td></tr>
+<tr>
+<td width="50%">&nbsp;cd google-cloud-sdk</td>
+<td>&nbsp;./install.sh</td>
+</tr>  
+</table>
+<br />
+<b>Windows</b><br />
+Install the <a href="https://cloud.google.com/sdk/docs/install#windows">gcloud CLI</a> | Windows tab | Download the Google Cloud CLI installer <a href="https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe">GoogleCloudSDKInstaller.exe</a>
+<br />
+<!--  
+<table width="99%" border="1">
+<tr><td>
+&nbsp;Download and install https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe<br />
+</td></tr>
+</table>
+-->
+<br />
+After installing the gcloud CLI on Linux, Mac OS/X, Windows confirm the current working version of the CLI:
+<br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;gcloud init</td>
+<td>&nbsp;gcloud version</td>
+</tr>
+</table>
+<br />
+<br />
+TEST
 </span>
