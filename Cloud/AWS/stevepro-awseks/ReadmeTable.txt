@@ -18,19 +18,16 @@ create ~/stevepro-awseks/cluster.yaml
 &nbsp;    clusterLogging:
 &nbsp;      enableTypes: ["all"]
 </pre>
+<br />
 
 
 # 02	create cluster
-
 <pre style="font-size: 12px;">
 &nbsp;eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
 &nbsp;    --kubeconfig ~/stevepro-awseks/kubeconfig           \
 &nbsp;    --verbose 5
 </pre>
-
-eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
-    --kubeconfig ~/stevepro-awseks/kubeconfig           \
-    --verbose 5
+<br />
 
 
 # 03	scale nodegroup
@@ -55,5 +52,12 @@ kubectl delete -f Kubernetes.yaml
 &nbsp;    --force                     \
 &nbsp;    --parallel 10
 </pre>
+<br />
 
+
+
+ARCHIVE
+eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
+    --kubeconfig ~/stevepro-awseks/kubeconfig           \
+    --verbose 5
 

@@ -33,3 +33,25 @@ OR
 gcloud container clusters delete example-cluster    \
     --zone europe-west1-b                           \
     --async --quiet --verbosity debug
+
+
+
+WIP
+# 02	create cluster
+<pre style="font-size: 12px;">
+&nbsp;gcloud container clusters create example-cluster    \
+&nbsp;    --zone europe-west1-b                           \
+&nbsp;    --num-nodes 3                                   \
+&nbsp;    --machine-type e2-medium                        \
+&nbsp;    --image-type COS_CONTAINERD
+</pre>
+<br />
+
+
+# 02	delete cluster
+<pre style="font-size: 12px;">
+&nbsp;gcloud container clusters delete example-cluster    \
+&nbsp;    --zone europe-west1-b                           \
+&nbsp;    --async --quiet --verbosity debug
+</pre>
+<br />

@@ -1,4 +1,33 @@
-<table width="100%" border="1">
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;gcloud auth login<br />
+&nbsp;gcloud auth application-default login<br />
+</td>
+<td valign="top">
+&nbsp;gcloud auth configure-docker<br />
+&nbsp;gcloud config set project SteveProProject<br />
+</td>  
+</tr>
+</table>
+<br />
+
+
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;gcloud compute regions list<br />
+&nbsp;gcloud compute zones list<br />
+</td>
+<td valign="top">
+&nbsp;gcloud container clusters list<br />
+&nbsp;gcloud container clusters describe CLUSTER_NAME --region REGION<br />
+</td>  
+</tr>
+</table>
+<br />
+
+<table width="99%" border="1">
 <tr>
 <td valign="top">
 &nbsp;gcloud compute instances list<br />
@@ -12,18 +41,4 @@
 </td>  
 </tr>
 </table>
-
-
-
-<table width="100%" border="1">
-<tr>
-<td valign="top">
-&nbsp;gcloud auth login<br />
-&nbsp;gcloud auth application-default login<br />
-</td>
-<td valign="top">
-&nbsp;gcloud auth configure-docker<br />
-&nbsp;gcloud config set project SteveProProject<br />
-</td>  
-</tr>
-</table>
+<br />

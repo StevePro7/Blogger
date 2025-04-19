@@ -16,6 +16,7 @@ OUTPUT
 &nbsp;    "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;}
 </pre>
+<br />
 
 export AZ_SP_ID=<value_from_appId>
 export AZ_SP_PASSWORD=<value_from_password>
@@ -27,7 +28,7 @@ export AZ_SP_PASSWORD=<value_from_password>
 <pre style="font-size: 12px;">
 &nbsp;az group create --name stevepro-azraks --location northeurope --debug
 </pre>
-
+<br />
 
 # 02	create cluster
 <pre style="font-size: 12px;">
@@ -43,4 +44,18 @@ export AZ_SP_PASSWORD=<value_from_password>
 &nbsp;    --load-balancer-sku standard			\
 &nbsp;    --network-plugin azure --debug
 </pre>
+<br />
 
+
+# 03	delete cluster
+<pre style="font-size: 12px;">
+&nbsp;az aks delete --name stevepro-azraks			\
+&nbsp;    --resource-group stevepro-azraks
+</pre>
+<br />
+
+
+IMPORTANT
+Delete the resource group from portal.azure.com
+OR
+az aks delete --name <cluster-name> --resource-group <resource-group-name>
