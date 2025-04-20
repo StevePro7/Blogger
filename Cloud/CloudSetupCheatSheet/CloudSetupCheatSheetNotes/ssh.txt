@@ -1,0 +1,19 @@
+20-Apr-2025
+
+01.
+ssh -i into Node
+Reference:
+03-Amazon
+k get po -o wide
+cd /path/to/master_ssh_key
+ssh -i master_ssh_key ec2-user@node-ip-address
+ssh -i master_ssh_key ubuntu@node-ip-address
+ssh -i master_ssh_key root@node-ip-address
+
+
+02.
+shell into Node
+Reference:
+Linux Networking
+cd ~/GitHub/luksa/kubectl-plugins
+./kubectl-ssh node node-ip-address
