@@ -11,7 +11,7 @@ gcloud container clusters create stevepro-gcp-gke   \
 
 COMMAND #02 Credentials
 gcloud container clusters get-credentials stevepro-gcp-gke	\
-    --project=steveproproject 					\
+    --project=steveproproject					\
     --zone=europe-west1-b					\
     --quiet --verbosity debug
 
@@ -20,3 +20,13 @@ COMMAND #03 Destroy
 gcloud container clusters delete stevepro-gcp-gke   \
     --zone europe-west1-b                           \
     --async --quiet --verbosity debug
+
+
+
+cd ~/GitHub/luksa/kubectl-plugins
+./kubectl-ssh node
+
+ip addr
+ip route
+ip link show
+ip rule show

@@ -1,16 +1,8 @@
 README table
 23-Mar-2025
 
-# 01	Create
-<pre style="font-size: 12px;">
-&nbsp;gcloud container clusters create stevepro-gcp-gke   \
-&nbsp;    --zone europe-west1-b                           \
-&nbsp;    --num-nodes 3                                   \
-&nbsp;    --machine-type e2-medium                        \
-&nbsp;    --image-type COS_CONTAINERD
-</pre>
-<br />
-
+COMMAND #01 Create
+create ~/stevepro-awseks/cluster.yaml
 
 <pre style="font-size: 12px;">
 &nbsp;kind: ClusterConfig
@@ -38,11 +30,34 @@ README table
 <br />
 
 
-
-# 03 Destroy
+# 03	scale nodegroup
 <pre style="font-size: 12px;">
-&nbsp;gcloud container clusters delete example-cluster    \
-&nbsp;    --zone europe-west1-b                           \
-&nbsp;    --async --quiet --verbosity debug
+&nbsp;eksctl scale nodegroup          \
+&nbsp;    --cluster=stevepro-aws-eks  \
+&nbsp;    --name=stevepro-aws-eks     \
+&nbsp;    --nodes=3                   \
+&nbsp;    --nodes-min=0               \
+&nbsp;    --nodes-max=3               \
+&nbsp;    --verbose 5
+</pre>
+
+
+# 04 delete
+kubectl delete -f Kubernetes.yaml
+
+<pre style="font-size: 12px;">
+&nbsp;eksctl delete cluster           \
+&nbsp;    --name=stevepro-aws-eks     \
+&nbsp;    --region eu-west-1          \
+&nbsp;    --force                     \
+&nbsp;    --parallel 10
 </pre>
 <br />
+
+
+
+ARCHIVE
+eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
+    --kubeconfig ~/stevepro-awseks/kubeconfig           \
+    --verbose 5
+
