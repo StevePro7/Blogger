@@ -25,14 +25,21 @@ export AZ_SP_PASSWORD=<value_from_password>
 # 01	create group
 #az group create --name ${CLUSTER_NAME} --location ${AZ_LOCATION} --debug
 
+<table width="99%" border="1">
+<tr><td>
 <pre style="font-size: 12px;">
-&nbsp;az group create --name stevepro-azraks --location northeurope --debug
+&nbsp;&nbsp;az group create --name stevepro-azraks --location northeurope --debug
 </pre>
+</td></tr>
+</table>
 <br />
 
+
 # 02	create cluster
+<table width="99%" border="1">
+<tr><td>
 <pre style="font-size: 12px;">
-&nbsp;az aks create --name stevepro-azraks			\
+&nbsp;&nbsp;az aks create --name stevepro-azraks			\
 &nbsp;    --resource-group stevepro-azraks			\
 &nbsp;    --dns-name-prefix stevepro-azraks			\
 &nbsp;    --node-count 3					\
@@ -44,14 +51,20 @@ export AZ_SP_PASSWORD=<value_from_password>
 &nbsp;    --load-balancer-sku standard			\
 &nbsp;    --network-plugin azure --debug
 </pre>
+</td></tr>
+</table>
 <br />
 
 
 # 03	delete cluster
+<table width="99%" border="1">
+<tr><td>
 <pre style="font-size: 12px;">
-&nbsp;az aks delete --name stevepro-azraks			\
+&nbsp;&nbsp;az aks delete --name stevepro-azraks			\
 &nbsp;    --resource-group stevepro-azraks
 </pre>
+</td></tr>
+</table>
 <br />
 
 
