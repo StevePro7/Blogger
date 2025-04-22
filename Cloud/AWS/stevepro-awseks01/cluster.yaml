@@ -42,6 +42,6 @@ nodeGroups:
     maxSize: 3
     ssh:
       allow: true
-      publicKeyPath: /home/stevepro/stevepro-awseks/master_ssh_key.pub   
+      publicKeyPath: ~/.ssh/master_ssh_key.pub   
     preBootstrapCommands:
       - "true"

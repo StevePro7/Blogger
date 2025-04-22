@@ -19,10 +19,10 @@ mkdir -p stevepro-awseks
 
 
 # 00 Add master key
-cd ~/stevepro-awseks
-ssh-keygen -t rsa -b 4096 -N '' -f ~/stevepro-awseks/master_ssh_key
+cd ~/.ssh
+ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/master_ssh_key
 eval $(ssh-agent -s)
-ssh-add ~/stevepro-awseks/master_ssh_key
+ssh-add ~/.ssh/master_ssh_key
 
 
 # 01
