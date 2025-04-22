@@ -77,8 +77,10 @@ curl http://localhost:8080
 
 TODO
 Reference:
-CalicoRoutingModes
+RoutingModes
 ssh -i master_ssh_key ubuntu@54.194.208.80
+OR
+ssh -i ~/.ssh/master_ssh_key ec2-user@34.255.0.16
 
 
 # 04 delete
