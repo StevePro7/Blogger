@@ -1,0 +1,21 @@
+TODO
+22-Apr-2025
+
+
+Kubernetes.yaml
+GitLab/SteveProXNA/gitlabcheatsheet
+
+
+UPDATE
+
+    spec:
+      containers:
+        - name: flask-api
+          image: steveproxna/flask-api:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
