@@ -10,7 +10,7 @@ check all the resources to ensure everything is clean
 
 https://aws.amazon.com
 Sign in using root user email | Root user
-../AWS-CLI-Resoureces.txt
+../AWS-CLI-Resources.txt
 ../AWS-CLI-SSO.txt
 
 PROCESS

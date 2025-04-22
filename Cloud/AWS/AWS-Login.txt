@@ -4,7 +4,40 @@ AWS Login
 https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/account?nc2=h_m_ma
 
 
-aws.amazon.com
+AWS Login
+https://aws.amazon.com | Sign In | Sign in using root user email
+Root user
+Root user email address
+steven_boland@hotmail.com
+Next
+Enter password
+
+
+AWS SSO
+How to set up AWS CLI with AWS Single Sign-On (SSO)
+https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056
+
+Terminal
+aws configure sso
+
+Enter the following as per prompts
+sso_start_url = https://stevepro.awsapps.com/start
+sso_region = eu-west-1
+sso_account_id = 4xxxxxxxxxx8
+sso_role_name = AdministratorAccess
+region = eu-west-1
+output = json
+
+
+Terminal
+aws sso login
+In the browser | Confirm and continue
+Enter username and password
+Allow access to your data? | Allow
+Close browser window
+
+Multi-factor authentication
+Enter MFA code
 My Account
 AWS Management Console
 
@@ -14,3 +47,10 @@ p4
 
 Authenticator app
 Amazon Web Services: Authapp
+OR
+Google Authenticator app
+
+
+IMPORTANT
+22-Apr-2025
+disable MFA
