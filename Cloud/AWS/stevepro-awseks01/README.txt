@@ -16,17 +16,18 @@ Sign in using root user email | Root user
 PROCESS
 cd
 mkdir -p stevepro-awseks
+create ~/stevepro-awseks/cluster.yaml
 
 
 # 00 Add master key
-cd ~/.ssh
-ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/master_ssh_key
+cd ~/stevepro-awseks
+ssh-keygen -t rsa -b 4096 -N '' -f ~/stevepro-awseks/master_ssh_key
 eval $(ssh-agent -s)
-ssh-add ~/.ssh/master_ssh_key
+ssh-add ~/stevepro-awseks/master_ssh_key
 
 
 # 01
-create ~/stevepro-awseks/cluster.yaml
+mkdir ~/stevepro-awseks/cluster.yaml
 
 # 02
 eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
@@ -103,3 +104,7 @@ eksctl get nodegroup --cluster stevepro-aws-eks
 eksctl delete nodegroup --cluster stevepro-aws-eks --name <nodegroup-name>
 
 NB: did eventually delete all EC2 instances thus coudl delete VPC !!
+
+
+CLEANUP
+rm -rf ~/stevepro-awseks

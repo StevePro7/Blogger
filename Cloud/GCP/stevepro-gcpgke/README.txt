@@ -30,3 +30,18 @@ ip addr
 ip route
 ip link show
 ip rule show
+
+
+TESTING
+Deploy application
+Reference: https://gitlab.com/SteveProXNA/gitlabcheatsheet
+
+kubectl create ns test-ns
+kubectl config set-context --current --namespace=test-ns
+
+cd ~/GitLab/SteveProXNA/gitlabcheatsheet
+docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."
+kubectl apply -f Kubernetes.yaml
+
+kubectl port-forward service/flask-api-service 8080:80
+curl http://localhost:8080

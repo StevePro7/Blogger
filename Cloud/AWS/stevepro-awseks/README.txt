@@ -3,10 +3,10 @@ AWS EKS
 
 PROCESS
 cd
-mkdir -p stevepro-awseks02
+mkdir -p stevepro-awseks
 
 # 01
-create ~/stevepro-awseks02/cluster.yaml
+create ~/stevepro-awseks/cluster.yaml
 
 # 02
 eksctl create cluster -f ~/stevepro-awseks02/cluster.yaml \
@@ -65,3 +65,7 @@ Terminate
 EC2
 NAT gateway
 VPI
+
+
+CLEANUP
+rm -rf ~/stevepro-awseks
