@@ -1,0 +1,28 @@
+<a href="https://eksctl.io">eksctl</a><br />
+Command-line tool that abstracts complexity involved in setting up AWS EKS clusters.  Here is how to install:
+<br /><br />
+<b>Linux</b><br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl --silent --location "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$(uname <br />&nbsp;-s)_amd64.tar.gz" | tar xz -C /tmp<br />
+&nbsp;sudo mv /tmp/eksctl /usr/local/bin<br />
+</td></tr>
+</table>
+<br />
+<b>Mac OS/X</b><br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;brew tap eksctl-io/eksctl</td>
+<td>&nbsp;brew install eksctl</td>
+</tr>
+</table>
+<br />
+<b>Windows</b><br />
+<table width="99%" border="1">
+<tr>
+<td width="50%">&nbsp;Launch Powershell</td>
+<td>&nbsp;choco install eksctl</td>
+</tr>
+</table>
+<br />
+<br />

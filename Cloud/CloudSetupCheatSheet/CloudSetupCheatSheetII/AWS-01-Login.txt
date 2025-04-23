@@ -4,6 +4,23 @@ AWS Login
 https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/account?nc2=h_m_ma
 
 
+TABLE
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sso_start_url = https://stevepro.awsapps.com/start
+&nbsp;&nbsp;sso_region = eu-west-1
+&nbsp;&nbsp;sso_account_id = 4xxxxxxxxxx8
+&nbsp;&nbsp;sso_role_name = AdministratorAccess
+&nbsp;&nbsp;region = eu-west-1
+&nbsp;&nbsp;output = json
+</pre>
+</td></tr>
+</table>
+<br />
+
+
+
 AWS Login
 https://aws.amazon.com | Sign In | Sign in using root user email
 Root user
@@ -20,6 +37,8 @@ https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso
 Terminal
 aws configure sso
 
+TABLE
+
 Enter the following as per prompts
 sso_start_url = https://stevepro.awsapps.com/start
 sso_region = eu-west-1
@@ -27,6 +46,7 @@ sso_account_id = 4xxxxxxxxxx8
 sso_role_name = AdministratorAccess
 region = eu-west-1
 output = json
+
 
 
 Terminal
