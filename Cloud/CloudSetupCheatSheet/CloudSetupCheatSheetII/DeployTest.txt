@@ -28,7 +28,7 @@ TODO - TEXT
 &nbsp;    spec:
 &nbsp;      containers:
 &nbsp;        - name: flask-api
-&nbsp;          image: flask-api:latest
+&nbsp;          image: steveproxna/flask-api:latest
 &nbsp;          imagePullPolicy: Never
 &nbsp;          ports:
 &nbsp;            - containerPort: 8080
