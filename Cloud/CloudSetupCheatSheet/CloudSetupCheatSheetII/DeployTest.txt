@@ -9,7 +9,7 @@ TODO - TEXT
 </tr>
 <tr>
 <td>
-<pre class="csharp" name="code" style="font-size: 10px;">
+<pre class="csharp" name="code" style="font-size: 12px;">
 &nbsp;--- Deployment
 &nbsp;apiVersion: apps/v1
 &nbsp;kind: Deployment
@@ -35,7 +35,7 @@ TODO - TEXT
 </pre>
 </td>
 <td>
-<pre class="csharp" name="code" style="font-size: 10px;">
+<pre class="csharp" name="code" style="font-size: 12px;">
 &nbsp;--- Service
 &nbsp;apiVersion: v1
 &nbsp;kind: Service
@@ -62,20 +62,28 @@ TODO - TEXT
 </td>
 </tr>
 </table>
+<br />
 
 TODO - TEXT
+
+TESTING
+Deploy application
+Reference: https://gitlab.com/SteveProXNA/gitlabcheatsheet
 
 <table border="1" width="99%">
 <tr>
 <td>
-&nbsp;docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."<br />
-&nbsp;<br />
-&nbsp;kubectl create ns test-ns
+&nbsp;kubectl create ns test-ns<br />
 &nbsp;kubectl config set-context --current --namespace=test-ns<br />
 &nbsp;kubectl apply -f Kubernetes.yaml<br />
-&nbsp;<br />
 &nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
 &nbsp;curl http://localhost:8080<br />
 </td>
 </tr>
 </table>
+
+
+ARCHIVE
+remove this text from table as will pull from hub.docker.com	steveproxna
+&nbsp;docker build --pull --rm -f "Dockerfile" -t flask-api:latest "."<br />
+&nbsp;<br />
