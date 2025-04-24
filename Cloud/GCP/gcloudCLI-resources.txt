@@ -62,3 +62,8 @@ gcloud storage ls gs://steveprobucket/steveprofolder
 
 OPTIONAL
 gcloud container clusters describe CLUSTER_NAME --region REGION --format="get(loggingService,monitoringService)"
+
+
+Mac OS/X
+gcloud components update
+gcloud components update --version 519.0.0
