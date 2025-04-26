@@ -29,8 +29,8 @@ create ~/stevepro-awseks/cluster.yaml
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;&nbsp;eksctl create cluster -f ~/stevepro-awseks/cluster.yaml	\
-&nbsp;    --kubeconfig ~/stevepro-awseks/kubeconfig			\
+&nbsp;&nbsp;eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
+&nbsp;    --kubeconfig ~/stevepro-awseks/kubeconfig                 \
 &nbsp;    --verbose 5
 </pre>
 </td></tr>

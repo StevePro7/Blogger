@@ -1,0 +1,57 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+Azure AKS<br /><br>
+TODO - blurb on Azure AKS cluster
+<br>
+az login
+<br>
+Cloud | Azure | az-CLI-resTable - get resources beforehand | 
+<br>
+<!--  
+<table width="100%" border="1">
+<tr>
+<td valign="top">
+&nbsp;az account list --output table<br />
+&nbsp;az group list --output table<br />
+&nbsp;az resource list --output table<br />
+&nbsp;az resource list --query "[?location=='northeurope']" --output table<br />
+&nbsp;az vm list --output table<br />
+&nbsp;az vm list --resource-group <resource-group-name> --output table<br />
+&nbsp;az aks list --output table<br />
+&nbsp;az container list --output table<br />
+&nbsp;az storage account list --output table<br />
+&nbsp;az network public-ip list --output table<br />
+</td>
+</tr>
+</table>
+-->
+<br>
+Cloud | Azure | stevepro-azraks-easy | ReadmeTable
+
+# 01 create RG stevepro-azraks-rg
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az group create --location northeurope --name stevepro-azraks-rg
+</pre>
+</td></tr>
+</table>
+<br />
+  
+# 02 create ~/stevepro-azraks/
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az aks create                                   \
+&nbsp;&nbsp;    --resource-group stevepro-azraks-rg         \
+&nbsp;&nbsp;	--name stevepro-azraks                      \
+&nbsp;&nbsp;    --node-count 1                              \
+&nbsp;&nbsp;    --ssh-key-value ~/.ssh/master_ssh_key.pub
+</pre>
+</td></tr>
+</table>
+<br />
+
+</span>

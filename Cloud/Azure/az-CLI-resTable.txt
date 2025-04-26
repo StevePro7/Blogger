@@ -1,12 +1,12 @@
 <table width="100%" border="1">
 <tr>
 <td valign="top">
-&nbsp;az resource list --output table<br />
-&nbsp;az resource list --query "[?location=='westeurope']" --output table<br />
+&nbsp;az account list --output table<br />
 &nbsp;az group list --output table<br />
+&nbsp;az resource list --output table<br />
+&nbsp;az resource list --query "[?location=='northeurope']" --output table<br />
 &nbsp;az vm list --output table<br />
 &nbsp;az vm list --resource-group <resource-group-name> --output table<br />
-&nbsp;az group list --output table<br />
 &nbsp;az aks list --output table<br />
 &nbsp;az container list --output table<br />
 &nbsp;az storage account list --output table<br />

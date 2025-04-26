@@ -1,6 +1,20 @@
 azure CLI Resources
 26-Oct-2024
 
+ALIGN
+az account list --output table
+az group list --output table<br />
+az resource list --output table<br />
+az resource list --query "[?location=='northeurope']" --output table<br />
+az vm list --output table<br />
+az vm list --resource-group <resource-group-name> --output table<br />
+az aks list --output table<br />
+az container list --output table<br />
+az storage account list --output table<br />
+az network public-ip list --output table<br />
+
+
+OTHERS
 az resource list
 
 (ResourceGroupNotFound) Resource group 'stevepro-dev-cluster' could not be found.
