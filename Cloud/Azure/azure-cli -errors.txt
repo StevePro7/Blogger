@@ -1,0 +1,25 @@
+azure CLI errors
+24-Apr-2025
+
+Mac OS/X
+10.15.7
+
+brew install azure-cli
+ERRORS
+
+curl: (35) error:1400442E:SSL routines:CONNECT_CR_SRVR_HELLO:tlsv1 alert protocol version
+Error: azure-cli: Failed to download resource "libsodium"
+Download failed: https://download.libsodium.org/libsodium/releases/libsodium-1.0.20.tar.gz
+
+
+sw_vers
+brew upgrade
+
+brew install openssl curl
+
+brew install libsodium
+
+
+brew link --force curl
+echo 'export PATH="/usr/local/opt/curl/bin:$PATH"' >> ~/.bash_profile
+source /Users/stevepro/.bash_profile
