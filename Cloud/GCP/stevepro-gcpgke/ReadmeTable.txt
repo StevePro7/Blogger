@@ -7,7 +7,7 @@ COMMAND #01 Create
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;gcloud container clusters create stevepro-gcp-gke	\
 &nbsp;    --zone europe-west1-b				\
-&nbsp;    --num-nodes 3					\
+&nbsp;    --num-nodes 1					\
 &nbsp;    --machine-type e2-medium				\
 &nbsp;    --image-type COS_CONTAINERD
 </pre>

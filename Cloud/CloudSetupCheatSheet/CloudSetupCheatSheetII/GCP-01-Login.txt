@@ -1,0 +1,104 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+GCP<br /><br>
+TODO - blurb on Azure GKE cluster
+<br>
+TODO - here are 2x commands to familiarize regions + zones in GCP
+<br>
+gcloud compute regions list
+gcloud compute zones list
+<br>
+01 - login - gcloudCLI-resources.txt | gcloudCLI-resTable.txt
+<br>
+<!--  
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;gcloud auth login<br />
+&nbsp;gcloud auth application-default login<br />
+</td>
+<td valign="top">
+&nbsp;gcloud auth configure-docker<br />
+&nbsp;gcloud config set project SteveProProject<br />
+</td>  
+</tr>
+</table>
+-->
+<br />
+
+02 - resources before hand
+<br>
+<!--  
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;gcloud compute instances list<br />
+&nbsp;gcloud compute disks list<br />
+&nbsp;gcloud compute forwarding-rules list<br />
+</td>
+<td valign="top">
+&nbsp;gcloud compute firewall-rules list<br />
+&nbsp;gcloud compute addresses list<br />
+&nbsp;gcloud container clusters list<br />
+</td>  
+</tr>
+</table>
+-->
+<br />
+  
+COMMAND #01 Create
+<br>
+<!--  
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;gcloud container clusters create stevepro-gcp-gke	\
+&nbsp;    --zone europe-west1-b				\
+&nbsp;    --num-nodes 1					\
+&nbsp;    --machine-type e2-medium				\
+&nbsp;    --image-type COS_CONTAINERD
+</pre>
+</td></tr>
+</table>
+-->
+<br />  
+  
+COMMAND #02 Credentials
+<br>
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;gcloud container clusters get-credentials stevepro-gcp-gke	\
+&nbsp;    --zone=europe-west1-b					\
+&nbsp;    --quiet --verbosity debug
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+  
+IMPORTANT - if you do not have gke gcloud auth plugin then install - TODO
+<br>
+gcloud components install gke-gcloud-auth-plugin
+gke-gcloud-auth-plugin --version
+<br>
+<br>
+TODO - DeployTest TEXT
+<br>
+<table border="1" width="99%">
+<tr>
+<td>
+&nbsp;kubectl create ns test-ns<br />
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td>
+</tr>
+</table>
+  
+  
+  
+  
+</span>

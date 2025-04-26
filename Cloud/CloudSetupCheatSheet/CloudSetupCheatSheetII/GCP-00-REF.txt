@@ -1,0 +1,36 @@
+GCP-GKE Reference
+26-Apr-2025
+
+GCP
+~\GitHub\StevePro7\Blogger\Cloud\CloudSetupCheatSheet\CloudSetupCheatSheetII
+
+
+README.txt
+ReadmeTable.txt
+~\GitHub\StevePro7\Blogger\Cloud\GCP\stevepro-gcpgke
+
+
+README.md
+~\GitHub\StevePro7\CloudTesting\CloudCheatSheet\CloudCheatSheet02\stevepro-gcpgke-easy
+
+
+DeployTest
+
+
+IMPORTANT
+gcloud container clusters get-credentials stevepro-gcp-gke  \
+    --zone=europe-west1-b                                   \
+    --quiet --verbosity debug
+
+
+Unable to connect to the server: getting credentials: exec: executable gke-gcloud-auth-plugin not found
+
+It looks like you are trying to use a client-go credential plugin that is not installed.
+
+To learn more about this feature, consult the documentation available at:
+      https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins
+
+Install gke-gcloud-auth-plugin for use with kubectl by following https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#install_plugin
+
+gke-gcloud-auth-plugin --version
+gcloud components install gke-gcloud-auth-plugin

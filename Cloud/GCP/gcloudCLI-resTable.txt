@@ -1,3 +1,4 @@
+01 - login
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -13,20 +14,7 @@
 <br />
 
 
-<table width="99%" border="1">
-<tr>
-<td valign="top">
-&nbsp;gcloud compute regions list<br />
-&nbsp;gcloud compute zones list<br />
-</td>
-<td valign="top">
-&nbsp;gcloud container clusters list<br />
-&nbsp;gcloud container clusters describe CLUSTER_NAME --region REGION<br />
-</td>  
-</tr>
-</table>
-<br />
-
+02 - resources
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -38,6 +26,22 @@
 &nbsp;gcloud compute firewall-rules list<br />
 &nbsp;gcloud compute addresses list<br />
 &nbsp;gcloud container clusters list<br />
+</td>  
+</tr>
+</table>
+<br />
+
+
+ARCHIVE
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;gcloud compute regions list<br />
+&nbsp;gcloud compute zones list<br />
+</td>
+<td valign="top">
+&nbsp;gcloud container clusters list<br />
+&nbsp;gcloud container clusters describe CLUSTER_NAME --region REGION<br />
 </td>  
 </tr>
 </table>

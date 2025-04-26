@@ -1,0 +1,86 @@
+AWS EKS Reference
+22-Oct-2024
+
+AWS
+AWS-Login.txt
+~\GitHub\StevePro7\Blogger\Cloud\AWS
+
+README.txt
+ReadmeTable.txt
+~\GitHub\StevePro7\Blogger\Cloud\AWS\stevepro-awseks
+
+
+README.md
+~\GitHub\StevePro7\CloudTesting\CloudCheatSheet\CloudCheatSheet01\stevepro-azraks-easy
+
+
+TABLE
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sso_start_url = https://stevepro.awsapps.com/start
+&nbsp;&nbsp;sso_region = eu-west-1
+&nbsp;&nbsp;sso_account_id = 4xxxxxxxxxx8
+&nbsp;&nbsp;sso_role_name = AdministratorAccess
+&nbsp;&nbsp;region = eu-west-1
+&nbsp;&nbsp;output = json
+</pre>
+</td></tr>
+</table>
+<br />
+
+
+
+AWS Login
+https://aws.amazon.com | Sign In | Sign in using root user email
+Root user
+Root user email address
+steven_boland@hotmail.com
+Next
+Enter password
+
+
+AWS SSO
+How to set up AWS CLI with AWS Single Sign-On (SSO)
+https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056
+
+Terminal
+aws configure sso
+
+TABLE
+
+Enter the following as per prompts
+sso_start_url = https://stevepro.awsapps.com/start
+sso_region = eu-west-1
+sso_account_id = 4xxxxxxxxxx8
+sso_role_name = AdministratorAccess
+region = eu-west-1
+output = json
+
+
+
+Terminal
+aws sso login
+In the browser | Confirm and continue
+Enter username and password
+Allow access to your data? | Allow
+Close browser window
+
+Multi-factor authentication
+Enter MFA code
+My Account
+AWS Management Console
+
+Sign in using root email
+steven_boland@hotmail.com
+p4
+
+Authenticator app
+Amazon Web Services: Authapp
+OR
+Google Authenticator app
+
+
+IMPORTANT
+22-Apr-2025
+disable MFA
