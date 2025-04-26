@@ -5,26 +5,6 @@ Chat GPT
 azure aks what is the minimal az aks create required to create an Azure AKS cluster?
 
 
-SUMMARY
-01.
-az group create --name stevepro-azraks-rg --location northeurope
-
-02.
-az aks create \
-  --resource-group stevepro-azraks-rg \
-  --name stevepro-azraks  \
-  --node-count 1 \
-  --ssh-key-value ~/.ssh/master_ssh_key.pub	
-  
-03.
-az aks get-credentials --resource-group stevepro-azraks-rg --name stevepro-azraks
-
-04.
-az aks delete --name stevepro-azraks            \
-    --resource-group stevepro-azraks
-
-
-DETAIL
 az aks create \
   --resource-group <RESOURCE_GROUP_NAME> \
   --name <CLUSTER_NAME> \
@@ -49,8 +29,28 @@ i.e.
 
 
 
+SUMMARY
 
-DETAILED
-Kubernetes [remote]
 az group create --name stevepro-azraks-rg --location northeurope --debug
 
+az aks create \
+  --resource-group stevepro-azraks-rg \
+  --name stevepro-azraks  \
+  --node-count 1 \
+  --ssh-key-value ~/.ssh/master_ssh_key.pub	
+  
+
+az aks get-credentials --resource-group stevepro-azraks-rg --name stevepro-azraks
+
+
+
+WINDOWS
+az aks create --resource-group stevepro-azraks-rg --name stevepro-azraks --node-count 1 --enable-managed-identity --generate-ssh-keys --debug
+
+cli.azure.cli.core.util : Values of identifierUris property must use a verified domain of the organization or its subdomain: 'https://7096c9.stevepro-a-stevepro-azraks--5582f1.northeurope.cloudapp.azure.com'
+Values of identifierUris property must use a verified domain of the organization or its subdomain: 'https://7096c9.stevepro-a-stevepro-azraks--5582f1.northeurope.cloudapp.azure.com'
+
+
+az identity create --resource-group stevepro-azraks-rg --name stevepro-id
+
+az aks create --resource-group stevepro-azraks-rg --name stevepro-azraks --node-count 1 --identity-user-assigned stevepro-id --generate-ssh-keys --debug

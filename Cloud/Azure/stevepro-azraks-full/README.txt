@@ -1,12 +1,13 @@
-AWS EKS
+AZR AKS
 17-Mar-2025
 
 PROCESS
 cd
-mkdir -p stevepro-awseks02
+mkdir -p stevepro-azraks
 
-# 01
-create ~/stevepro-awseks02/cluster.yaml
+# 00	security principal
+az login
+az ad sp create-for-rbac --name stevepro-sp --skip-assignment
 
 # 02
 eksctl create cluster -f ~/stevepro-awseks02/cluster.yaml \

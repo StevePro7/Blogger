@@ -3,15 +3,14 @@ azure CLI Resources
 
 ALIGN
 az account list --output table
-az group list --output table<br />
-az resource list --output table<br />
-az resource list --query "[?location=='northeurope']" --output table<br />
-az vm list --output table<br />
-az vm list --resource-group <resource-group-name> --output table<br />
-az aks list --output table<br />
-az container list --output table<br />
-az storage account list --output table<br />
-az network public-ip list --output table<br />
+az group list --output table
+az resource list --output table
+az resource list --query "[?location=='northeurope']" --output table
+az vm list --output table
+az aks list --output table
+az container list --output table
+az storage account list --output table
+az network public-ip list --output table
 
 
 OTHERS
