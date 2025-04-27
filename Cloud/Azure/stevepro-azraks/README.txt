@@ -12,8 +12,10 @@ ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key
 eval $(ssh-agent -s)
 ssh-add master_ssh_key
 
+
 PreReqs
 az login
+
 
 Check resources
 az account list --output table
@@ -30,8 +32,10 @@ az network public-ip list --output table
 00 create resource group
 az group create --name stevepro-azraks-rg --location northeurope --debug
 
+
 00 create security principal
 az ad sp create-for-rbac --name ${USER}-sp --skip-assignment
+
 
 01 OUTPUT
 {
@@ -41,6 +45,7 @@ az ad sp create-for-rbac --name ${USER}-sp --skip-assignment
     "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
     "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 }
+
 
 01 EXPORT
 export AZ_SP_ID=<value_from_appId>
@@ -59,7 +64,8 @@ az aks create --name stevepro-azraks            \
     --load-balancer-sku standard                \
     --network-plugin azure --debug
 
-04 get credentials
+
+03 get credentials
 export KUBECONFIG=~/.kube/config
 az aks get-credentials --name stevepro-azraks   \
 	--resource-group stevepro-azraks-rg --file ${KUBECONFIG}

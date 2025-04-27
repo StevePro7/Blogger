@@ -70,38 +70,36 @@ Check resources
 <br />
 
 
-01 OUTPUT
+00 OUTPUT
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;{
+&nbsp;&nbsp;{
 &nbsp;    "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "displayName": "stevepro-sp",
 &nbsp;    "name": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-&nbsp;}
+&nbsp;&nbsp;}
 </pre>
 </td></tr>
 </table>
 <br />
 
 
-01 EXPORT
+00 EXPORT
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;export AZ_SP_ID=<value_from_appId>
-&nbsp;export AZ_SP_PASSWORD=<value_from_password>
+&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;
+&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;
 </pre>
 </td></tr>
 </table>
 <br />
-export AZ_SP_ID=<value_from_appId>
-export AZ_SP_PASSWORD=<value_from_password>
 
 
-# 02	create cluster
+# 01	create cluster
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -122,7 +120,7 @@ export AZ_SP_PASSWORD=<value_from_password>
 <br />
 
 
-03 get credentials
+02 get credentials
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -135,7 +133,52 @@ export AZ_SP_PASSWORD=<value_from_password>
 <br />
 
 
-# 05	delete cluster
+COMMAND #03 DeployTest
+<br>TODO - text
+<br>
+<table border="1" width="99%">
+<tr><td>
+&nbsp;kubectl create ns test-ns<br />
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td></tr>
+</table>
+<br />
+
+
+COMMAND #04 Shell into Node
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p ~/GitHub/luksa
+&nbsp;&nbsp;cd ~/GitHub/luksa
+&nbsp;&nbsp;git clone https://github.com/luksa/kubectl-plugins.git
+&nbsp;&nbsp;cd kubectl-plugins
+&nbsp;&nbsp;chmod +x kubectl-ssh
+&nbsp;&nbsp;kubectl get nodes
+&nbsp;&nbsp;./kubectl-ssh node gke-stevepro-gcp-gke-default-pool-0b4ca8ca-sjpj
+</pre>
+</td></tr>
+</table>
+<br />
+
+
+COMMAND #05 Cleanup
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl delete -f Kubernetes.yaml
+&nbsp;&nbsp;kubectl delete ns test-ns
+</pre>
+</td></tr>
+</table>
+<br />
+  
+
+
+# 06	delete cluster
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
