@@ -160,6 +160,21 @@ create ~/stevepro-awseks/cluster.yaml
 <br />
 
 
+COMMAND #03 DeployTest
+<br>TODO - text
+<br>
+<table border="1" width="99%">
+<tr><td>
+&nbsp;kubectl create ns test-ns<br />
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td></tr>
+</table>
+<br />
+
+
 # 06 delete
 kubectl delete -f Kubernetes.yaml
 <table width="99%" border="1">
