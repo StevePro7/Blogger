@@ -69,6 +69,7 @@ Check resources
 </td>
 </tr>
 </table>
+<br />
 
 
 Kubernetes [remote]
