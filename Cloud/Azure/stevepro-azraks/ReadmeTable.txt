@@ -47,6 +47,7 @@ Check resources
 </table>
 <br />
 
+
 00 create resource group
 <table width="99%" border="1">
 <tr><td>
@@ -57,6 +58,7 @@ Check resources
 </table>
 <br />
 
+
 00 create security principal
 <table width="99%" border="1">
 <tr><td>
@@ -66,6 +68,7 @@ Check resources
 </td></tr>
 </table>
 <br />
+
 
 01 OUTPUT
 <table width="99%" border="1">
@@ -82,6 +85,7 @@ Check resources
 </td></tr>
 </table>
 <br />
+
 
 01 EXPORT
 <table width="99%" border="1">
@@ -101,7 +105,7 @@ export AZ_SP_PASSWORD=<value_from_password>
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;&nbsp;az aks create --name stevepro-azraks            \
+&nbsp;&nbsp;az aks create --name stevepro-azraks                 \
 &nbsp;    --resource-group stevepro-azraks-rg               \
 &nbsp;    --dns-name-prefix stevepro-azraks                 \
 &nbsp;    --node-count 3                                    \
@@ -118,11 +122,24 @@ export AZ_SP_PASSWORD=<value_from_password>
 <br />
 
 
+03 get credentials
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export KUBECONFIG=~/.kube/config
+&nbsp;&nbsp;az aks get-credentials --name stevepro-azraks        \
+&nbsp;    --resource-group stevepro-azraks-rg --file ${KUBECONFIG}
+</pre>
+</td></tr>
+</table>
+<br />
+
+
 # 05	delete cluster
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;&nbsp;az aks delete --name stevepro-azraks            \
+&nbsp;&nbsp;az aks delete --name stevepro-azraks                 \
 &nbsp;    --resource-group stevepro-azraks-rg
 </pre>
 </td></tr>
@@ -130,6 +147,9 @@ export AZ_SP_PASSWORD=<value_from_password>
 <br />
 
 
+
+
+ARCHIVE
 IMPORTANT
 Delete the resource group from portal.azure.com
 OR
