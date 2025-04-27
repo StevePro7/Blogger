@@ -16,6 +16,31 @@ Sec grp     sg-006a26ec5d4b0f51d
 
 
 aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
+aws ec2 describe-addresses --query 'Addresses[*].PublicIp' --output table
+aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table
+aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table
+aws ec2 describe-vpcs --query 'Vpcs[*].VpcId' --output table
+aws cloudformation list-stacks --query 'StackSummaries[*].StackName' --output table  
+aws cloudwatch describe-alarms --query 'MetricAlarms[*].AlarmName' --output table
+aws ecr describe-repositories --query 'repositories[*].repositoryName' --output table
+aws ecs list-clusters --query 'clusterArns' --output table
+aws eks list-clusters --query 'clusters' --output table
+aws elasticbeanstalk describe-environments --query 'Environments[*].EnvironmentName' --output table
+aws elb describe-load-balancers --query 'LoadBalancerDescriptions[*].LoadBalancerName' --output table
+aws elbv2 describe-load-balancers --query 'LoadBalancers[*].LoadBalancerName' --output table
+aws iam list-roles --query 'Roles[*].RoleName' --output table
+aws iam list-users --query 'Users[*].UserName' --output table
+aws lambda list-functions --query 'Functions[*].FunctionName' --output table
+aws rds describe-db-instances --query 'DBInstances[*].DBInstanceIdentifier' --output table
+aws route53 list-hosted-zones --query 'HostedZones[*].Name' --output table
+aws s3 ls
+aws sns list-topics --query 'Topics[*].TopicArn' --output table
+aws sqs list-queues --query 'QueueUrls' --output table
+aws ssm describe-parameters --query 'Parameters[*].Name' --output table
+
+
+ARCHIVE
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
 aws ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,State.Name,InstanceType]' --output table
 
 aws ec2 describe-volumes --query 'Volumes[*].VolumeId' --output table
@@ -39,6 +64,8 @@ aws sqs list-queues --query 'QueueUrls' --output table
 aws elasticbeanstalk describe-environments --query 'Environments[*].EnvironmentName' --output table
 aws cloudwatch describe-alarms --query 'MetricAlarms[*].AlarmName' --output table
 aws ssm describe-parameters --query 'Parameters[*].Name' --output table
+
+
 aws eks list-clusters --query 'clusters' --output table
 aws ec2 describe-addresses --query 'Addresses[*].PublicIp' --output table
 

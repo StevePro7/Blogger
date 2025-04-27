@@ -19,31 +19,88 @@ mkdir -p stevepro-awseks
 create ~/stevepro-awseks/cluster.yaml
 
 
-# 00 Add master key
+Add master key
 cd ~/stevepro-awseks
 ssh-keygen -t rsa -b 4096 -N '' -f ~/stevepro-awseks/master_ssh_key
 eval $(ssh-agent -s)
 ssh-add ~/stevepro-awseks/master_ssh_key
 
 
-# 01
+eksctl
+curl --silent --location "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+
+
+Pre-Requisites
+aws sso login
+
+
+Check resources
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId' --output table
+...
+aws ssm describe-parameters --query 'Parameters[*].Name' --output table
+
+
+# 00
 mkdir ~/stevepro-awseks/cluster.yaml
 
+
+# 01
+eksctl create cluster -f ~/stevepro-awseks/cluster.yaml   \
+    --kubeconfig ~/stevepro-awseks/kubeconfig             \
+    --verbose 5
+
 # 02
-eksctl create cluster -f ~/stevepro-awseks/cluster.yaml \
-    --kubeconfig ~/stevepro-awseks/kubeconfig           \
+eksctl scale nodegroup                                    \
+    --cluster=stevepro-aws-eks                            \
+    --name=stevepro-aws-eks                               \
+    --nodes=3                                             \
+    --nodes-min=0                                         \
+    --nodes-max=3                                         \
     --verbose 5
 
-# 03
-eksctl scale nodegroup          \
-    --cluster=stevepro-aws-eks  \
-    --name=stevepro-aws-eks     \
-    --nodes=3                   \
-    --nodes-min=0               \
-    --nodes-max=3               \
-    --verbose 5
 
-OUTPUT
+
+# 06 delete
+kubectl delete -f Kubernetes.yaml
+```
+eksctl delete cluster                                     \
+    --name=stevepro-aws-eks                               \
+    --region eu-west-1                                    \
+    --force
+```
+
+
+COMMAND #03 DeployTest
+```
+kubectl create ns test-ns
+kubectl config set-context --current --namespace=test-ns
+kubectl apply -f Kubernetes.yaml
+kubectl port-forward service/flask-api-service 8080:80
+curl http://localhost:8080
+```
+
+
+COMMAND #04 Shell into Node - TODO
+Ref: 
+~\GitHub\StevePro7\Blogger\Cloud\CloudSetupCheatSheet\CloudSetupCheatSheetI\archive\CloudSetupCheatSheetNotes
+```
+k get po -o wide
+cd /path/to/master_ssh_key
+ssh -i master_ssh_key ec2-user@node-ip-address
+ssh -i master_ssh_key ubuntu@node-ip-address
+ssh -i master_ssh_key root@node-ip-address
+```
+
+
+COMMAND #05 Cleanup
+```
+kubectl delete -f Kubernetes.yaml
+kubectl delete ns test-ns
+```
+
+
+ARCHIVE
 aws ecs list-clusters --query 'clusterArns' --output table
 stevepro-aws-eks
 
