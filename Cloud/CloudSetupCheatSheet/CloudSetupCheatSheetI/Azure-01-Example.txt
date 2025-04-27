@@ -1,14 +1,28 @@
 <span style="font-family:verdana;font-size:85%;">
   
-GCP<br /><br>
-TODO - blurb on GCP GKE cluster
+AKS<br /><br>
+TODO - blurb on Azure AKS cluster
 <br>
-TODO - here are 2x commands to familiarize regions + zones in GCP
+
+TODO - Master SSH Key
 <br>
-gcloud compute regions list
-gcloud compute zones list
+<table border="1" width="99%">
+<tr>
+<td valign="top" width="60%">
+&nbsp;cd ~/.ssh<br />
+&nbsp;ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key<br />
+</td>
+<td>
+&nbsp;eval $(ssh-agent -s)<br />
+&nbsp;ssh-add master_ssh_key<br />
+</td>
+</tr>
+</table>
+<br />
+<br />
+
 <br>
-01 - login - gcloudCLI-resources.txt | gcloudCLI-resTable.txt
+01 - login - az login
 <br>
 <!--  
 <table width="99%" border="1">
