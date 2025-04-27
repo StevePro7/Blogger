@@ -7,7 +7,7 @@ gcloud container clusters create stevepro-gcp-gke
     --zone=europe-west1-b  
     --machine-type=e2-standard-2  
     --disk-type pd-standard 
-    --cluster-version=1.30.9-gke.1127000 
+    --cluster-version=1.30.10-gke.1070000
     --num-nodes=3 
     --network=default 
     --create-subnetwork=name=stevepro-gcp-gke-subnet,range=/28 
@@ -17,8 +17,8 @@ gcloud container clusters create stevepro-gcp-gke
     --monitoring=NONE 
     --enable-network-policy 
     --labels=prefix=stevepro-gcp-gke,created-by=${USER}
-    --quiet --verbosity debug 
     --no-enable-managed-prometheus
+    --quiet --verbosity debug 
 
 
 COMMAND #02 Credentials

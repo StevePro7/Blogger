@@ -1,5 +1,6 @@
 README table
 23-Mar-2025
+
 COMMAND #01 Create
 <table width="99%" border="1">
 <tr><td>
@@ -19,6 +20,7 @@ COMMAND #01 Create
 &nbsp;    --monitoring=NONE                                             \
 &nbsp;    --enable-network-policy                                       \
 &nbsp;    --labels=prefix=stevepro-gcp-gke,created-by=${USER}           \
+&nbsp;    --no-enable-managed-prometheus                                \
 &nbsp;    --quiet --verbosity debug
 </pre>
 </td></tr>

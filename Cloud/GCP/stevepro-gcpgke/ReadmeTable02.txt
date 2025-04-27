@@ -17,6 +17,7 @@ COMMAND #01 Create
 &nbsp;    --monitoring=NONE                                             \
 &nbsp;    --enable-network-policy                                       \
 &nbsp;    --labels=prefix=stevepro-gcp-gke,created-by=${USER}           \
+&nbsp;    --no-enable-managed-prometheus                                \
 &nbsp;    --quiet --verbosity debug
 </pre>
 </td></tr>
