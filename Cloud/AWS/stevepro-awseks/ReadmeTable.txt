@@ -175,6 +175,35 @@ COMMAND #03 DeployTest
 <br />
 
 
+COMMAND #04 Shell into Node - TODO
+Ref: 
+~\GitHub\StevePro7\Blogger\Cloud\CloudSetupCheatSheet\CloudSetupCheatSheetI\archive\CloudSetupCheatSheetNotes
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl get po -o wide
+&nbsp;&nbsp;cd ~/.ssh
+&nbsp;&nbsp;ssh -i master_ssh_key ec2-user@node-ip-address
+# &nbsp;&nbsp;ssh -i master_ssh_key ubuntu@node-ip-address
+# &nbsp;&nbsp;ssh -i master_ssh_key root@node-ip-address
+</pre>
+</td></tr>
+</table>
+<br />
+
+
+COMMAND #05 Cleanup
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl delete -f Kubernetes.yaml
+&nbsp;&nbsp;kubectl delete ns test-ns
+</pre>
+</td></tr>
+</table>
+<br />
+
+
 # 06 delete
 kubectl delete -f Kubernetes.yaml
 <table width="99%" border="1">
