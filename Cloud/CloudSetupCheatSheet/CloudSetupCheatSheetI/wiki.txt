@@ -1,5 +1,169 @@
 <span style="font-family:verdana;font-size:85%;">
   
+<u>Azure AKS</u><br />
+Microsoft provides Azure Kubernetes Services as fully managed Kubernetes container orchestration service.
+<br />
+TODO - add another sentence explaining next section with URL to source code in GitHub...
+  
+<br /><br />
+<b>Pre-requisites</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az login
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Check Resources</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az account list --output table
+&nbsp;&nbsp;az group list --output table
+&nbsp;&nbsp;az resource list --output table
+&nbsp;&nbsp;az resource list --query "[?location=='northeurope']" --output table
+&nbsp;&nbsp;az vm list --output table
+&nbsp;&nbsp;az aks list --output table
+&nbsp;&nbsp;az container list --output table
+&nbsp;&nbsp;az storage account list --output table
+&nbsp;&nbsp;az network public-ip list --output table
+</pre>
+</td></tr>
+</table>
+<br />
+  
+<b>Resource Group</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az group create --name stevepro-azraks-rg --location northeurope --debug
+</pre>
+</td></tr>
+</table>
+<br />
+  
+<b>Security Principal</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az ad sp create-for-rbac --name ${USER}-sp --skip-assignment
+</pre>
+</td></tr>
+</table>
+<br /> 
+<b>Output</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;{
+&nbsp;    "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;    "displayName": "stevepro-sp",
+&nbsp;    "name": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;    "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;    "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />
+  
+<b>Export</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;
+&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Create Cluster</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az aks create --name stevepro-azraks                 \
+&nbsp;    --resource-group stevepro-azraks-rg               \
+&nbsp;    --dns-name-prefix stevepro-azraks                 \
+&nbsp;    --node-count 3                                    \
+&nbsp;    --node-vm-size Standard_D2s_v3                    \
+&nbsp;    --kubernetes-version 1.28                         \
+&nbsp;    --ssh-key-value ~/.ssh/master_ssh_key.pub         \
+&nbsp;    --service-principal ${AZ_SP_ID}                   \
+&nbsp;    --client-secret ${AZ_SP_PASSWORD}                 \
+&nbsp;    --load-balancer-sku standard                      \
+&nbsp;    --network-plugin azure --debug
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Get Credentials</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export KUBECONFIG=~/.kube/config
+&nbsp;&nbsp;az aks get-credentials --name stevepro-azraks        \
+&nbsp;    --resource-group stevepro-azraks-rg --file ${KUBECONFIG}
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Deploy Test</b><br />
+<table border="1" width="99%">
+<tr><td>
+&nbsp;kubectl create ns test-ns<br />
+&nbsp;kubectl config set-context --current --namespace=test-ns<br />
+&nbsp;kubectl apply -f Kubernetes.yaml<br />
+&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
+&nbsp;curl http://localhost:8080<br />
+</td></tr>
+</table>
+<br />
+  
+<b>Shell into Node</b><br />
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p ~/GitHub/luksa
+&nbsp;&nbsp;cd ~/GitHub/luksa
+&nbsp;&nbsp;git clone https://github.com/luksa/kubectl-plugins.git
+&nbsp;&nbsp;cd kubectl-plugins
+&nbsp;&nbsp;chmod +x kubectl-ssh
+&nbsp;&nbsp;kubectl get nodes
+&nbsp;&nbsp;./kubectl-ssh node gke-stevepro-gcp-gke-default-pool-0b4ca8ca-sjpj
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Cleanup</b><br />
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl delete -f Kubernetes.yaml
+&nbsp;&nbsp;kubectl delete ns test-ns
+</pre>
+</td></tr>
+</table>
+<br />
+  
+<b>Delete Cluster</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az aks delete --name stevepro-azraks                 \
+&nbsp;    --resource-group stevepro-azraks-rg
+</pre>
+</td></tr>
+</table>
+<br />
+
+<br /><br />
+  
 In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab-cheat-sheet.html">GitLab Cheat Sheet</a> to streamline collaborative team workflows that leverage CI/CD pipelines.  Now, we will explain cluster provisioning process for managed cloud providers: <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a> + <a href="https://console.cloud.google.com">GCP</a>.
 
 <br />
@@ -21,7 +185,7 @@ In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab
 <br />
 Let's check it out!  
 <br /><br />
-<u>Pre-Requisites</u><br />
+<u>Pre-requisites</u><br />
 This blog post assumes an <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a>, <a href="https://console.cloud.google.com">GCP</a> account is setup.  The following links document paid or free tier:
 <br />
 <!--
