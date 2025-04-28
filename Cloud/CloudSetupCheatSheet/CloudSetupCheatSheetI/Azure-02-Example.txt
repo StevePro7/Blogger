@@ -71,8 +71,8 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;
-&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;
+&nbsp;&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;
+&nbsp;&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;
 </pre>
 </td></tr>
 </table>
@@ -121,7 +121,17 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 </td></tr>
 </table>
 <br />
-  
+
+<b>Output</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;Hello World (Python)!
+</pre>
+</td></tr>
+</table>
+<br />
+
 <b>Shell into Node</b><br />
 <table border="1" width="99%">
 <tr><td>

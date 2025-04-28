@@ -95,8 +95,8 @@ Check resources
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;
-&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;
+&nbsp;&nbsp;export AZ_SP_ID=&lt;value_from_appId&gt;
+&nbsp;&nbsp;export AZ_SP_PASSWORD=&lt;value_from_password&gt;
 </pre>
 </td></tr>
 </table>
@@ -147,6 +147,16 @@ COMMAND #03 DeployTest
 &nbsp;&nbsp;kubectl apply -f Kubernetes.yaml<br />
 &nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
 &nbsp;&nbsp;curl http://localhost:8080<br />
+</td></tr>
+</table>
+<br />
+
+<b>Output</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;Hello World (Python)!
+</pre>
 </td></tr>
 </table>
 <br />
