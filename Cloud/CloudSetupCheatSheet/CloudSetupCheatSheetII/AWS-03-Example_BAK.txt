@@ -1,8 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
 
-<u>AWS EKS</u><br />
-Amazon provides Elastic Kubernetes Service as a fully managed Kubernetes container orchestration service.  Follow all instructions below in order to provision a Kubernetes cluster and test its functionality end-to-end.
-<br /><br />
+AWS<br /><br>
+TODO - blurb on Amazon AWS cluster
+<br>
 
 
 Pre-Requisites
@@ -142,11 +142,13 @@ COMMAND #03 DeployTest
 <br>
 <table border="1" width="99%">
 <tr><td>
-&nbsp;kubectl create ns test-ns<br />
-&nbsp;kubectl config set-context --current --namespace=test-ns<br />
-&nbsp;kubectl apply -f Kubernetes.yaml<br />
-&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
-&nbsp;curl http://localhost:8080<br />
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl create ns test-ns
+&nbsp;&nbsp;kubectl config set-context --current --namespace=test-ns
+&nbsp;&nbsp;kubectl apply -f Kubernetes.yaml
+&nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
 </td></tr>
 </table>
 <br />

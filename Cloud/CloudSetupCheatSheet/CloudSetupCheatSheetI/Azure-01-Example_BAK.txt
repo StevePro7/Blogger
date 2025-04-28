@@ -139,14 +139,15 @@ Check resources
 
 COMMAND #03 DeployTest
 <br>TODO - text
-<br>
 <table border="1" width="99%">
 <tr><td>
-&nbsp;&nbsp;kubectl create ns test-ns<br />
-&nbsp;&nbsp;kubectl config set-context --current --namespace=test-ns<br />
-&nbsp;&nbsp;kubectl apply -f Kubernetes.yaml<br />
-&nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80<br />
-&nbsp;&nbsp;curl http://localhost:8080<br />
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl create ns test-ns
+&nbsp;&nbsp;kubectl config set-context --current --namespace=test-ns
+&nbsp;&nbsp;kubectl apply -f Kubernetes.yaml
+&nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
 </td></tr>
 </table>
 <br />
