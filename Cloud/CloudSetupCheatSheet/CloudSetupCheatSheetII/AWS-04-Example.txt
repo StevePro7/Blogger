@@ -1,9 +1,6 @@
-<span style="font-family:verdana;font-size:85%;">
-
 <u>AWS EKS</u><br />
 Amazon provides Elastic Kubernetes Service as a fully managed Kubernetes container orchestration service.  Follow all instructions below in order to provision a Kubernetes cluster and test its functionality end-to-end.
 <br /><br />
-
 
 Pre-Requisites
 <table width="99%" border="1">
@@ -15,7 +12,6 @@ Pre-Requisites
 </table>
 <br />
 
-  
 <b>Check Resources</b><br />
 <table width="99%" border="1">
 <tr>
@@ -46,7 +42,6 @@ Pre-Requisites
 </tr>
 </table>
 <br />
-  
   
 <b>Cluster YAML</b><br />
 <table width="99%" border="1">
@@ -104,7 +99,6 @@ Pre-Requisites
 </table>
 <br />
 
-
 <b>Create Cluster</b><br />
 <table width="99%" border="1">
 <tr><td>
@@ -116,9 +110,8 @@ Pre-Requisites
 </td></tr>
 </table>
 <br />
-  
 
-# 02	scale nodegroup
+<b>Scale Nodegroup</b><br />
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -134,10 +127,7 @@ Pre-Requisites
 </table>
 <br />
 
-  
-COMMAND #03 DeployTest
-<br>TODO - text
-<br>
+<b>Deploy Test</b><br />
 <table border="1" width="99%">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -162,7 +152,6 @@ COMMAND #03 DeployTest
 <br />
 
 <b>Shell into Node</b><br />
-Ref: 
 ~\GitHub\StevePro7\Blogger\Cloud\CloudSetupCheatSheet\CloudSetupCheatSheetI\archive\CloudSetupCheatSheetNotes
 <table border="1" width="99%">
 <tr><td>
@@ -188,7 +177,6 @@ Ref:
 </table>
 <br />
   
-  
 <b>Delete Cluster</b><br />
 <table width="99%" border="1">
 <tr><td>
@@ -201,6 +189,3 @@ Ref:
 </td></tr>
 </table>
 <br />
-  
-  
-</span>
