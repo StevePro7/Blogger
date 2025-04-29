@@ -1,0 +1,132 @@
+Azure updates
+29-Apr-2025
+
+
+az aks create --name stevepro-azraks            \
+    --resource-group stevepro-azraks-rg         \
+    --dns-name-prefix stevepro-azraks           \
+    --node-count 3                              \
+    --node-vm-size Standard_D2s_v3              \
+    --kubernetes-version 1.31                   \
+    --ssh-key-value ~/.ssh/master_ssh_key.pub   \
+    --service-principal ${AZ_SP_ID}             \
+    --client-secret ${AZ_SP_PASSWORD}           \
+    --load-balancer-sku standard                \
+    --network-plugin azure --debug
+
+
+# az aks get-credentials --name stevepro-azraks  --resource-group stevepro-azraks-rg --file ${KUBECONFIG}    
+
+az aks get-credentials --name stevepro-azraks  --resource-group stevepro-azraks-rg --file ~/.kube/config
+
+
+# az aks get-credentials --name stevepro-azraks  --resource-group stevepro-azraks-rg --file config
+
+
+
+kubectl create ns test-ns
+kubectl config set-context --current --namespace=test-ns
+kubectl apply -f Kubernetes.yaml
+kubectl port-forward service/flask-api-service 8080:80
+curl http://localhost:8080
+
+
+
+mkdir -p ~/GitHub/luksa
+cd ~/GitHub/luksa
+git clone https://github.com/luksa/kubectl-plugins.git
+cd kubectl-plugins
+chmod +x kubectl-ssh
+kubectl get nodes
+./kubectl-ssh node aks-nodepool1-20972701-vmss000000
+
+
+kubectl get nodes
+~\GitLab\SteveProXNA\gitlabcheatsheet>kubectl get nodes
+NAME                                STATUS   ROLES    AGE   VERSION
+aks-nodepool1-20972701-vmss000000   Ready    <none>   13m   v1.31.7
+aks-nodepool1-20972701-vmss000001   Ready    <none>   13m   v1.31.7
+aks-nodepool1-20972701-vmss000002   Ready    <none>   13m   v1.31.7
+
+
+kubectl delete -f Kubernetes.yaml
+kubectl delete ns test-ns
+
+
+az aks delete --name stevepro-azraks      --resource-group stevepro-azraks-rg
+
+
+
+RESOURCES
+az account list --output table
+az group list --output table
+az resource list --output table
+az resource list --query "[?location=='northeurope']" --output table
+az vm list --output table
+az aks list --output table
+az container list --output table
+az storage account list --output table
+az network public-ip list --output table
+
+
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az account list --output table
+A few accounts are skipped as they don't have 'Enabled' state. Use '--all' to display them.
+Name           CloudName    SubscriptionId                        State    IsDefault
+-------------  -----------  ------------------------------------  -------  -----------
+Free Trial     AzureCloud   aad677ce-c027-491b-a646-92704d2ea069  Enabled  False
+Pay-As-You-Go  AzureCloud   5582f145-f8d1-4dbb-9f21-35933d44dcad  Enabled  True
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az group list --output table
+Name                                               Location     Status
+-------------------------------------------------  -----------  ---------
+stevepro-azraks-rg                                 northeurope  Succeeded
+MC_stevepro-azraks-rg_stevepro-azraks_northeurope  northeurope  Succeeded
+NetworkWatcherRG                                   northeurope  Succeeded
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az resource list --output table
+Name                                  ResourceGroup                                      Location     Type                                        Status
+------------------------------------  -------------------------------------------------  -----------  ------------------------------------------  --------
+stevepro-azraks                       stevepro-azraks-rg                                 northeurope  Microsoft.ContainerService/managedClusters
+a1934a47-1b81-4f4b-b712-cd296bd7cf5a  MC_stevepro-azraks-rg_stevepro-azraks_northeurope  northeurope  Microsoft.Network/publicIPAddresses
+kubernetes                            MC_stevepro-azraks-rg_stevepro-azraks_northeurope  northeurope  Microsoft.Network/loadBalancers
+aks-agentpool-39069996-nsg            MC_stevepro-azraks-rg_stevepro-azraks_northeurope  northeurope  Microsoft.Network/networkSecurityGroups
+aks-vnet-39069996                     MC_stevepro-azraks-rg_stevepro-azraks_northeurope  northeurope  Microsoft.Network/virtualNetworks
+NetworkWatcher_northeurope            NetworkWatcherRG                                   northeurope  Microsoft.Network/networkWatchers
+aks-nodepool1-20972701-vmss           MC_stevepro-azraks-rg_stevepro-azraks_northeurope  northeurope  Microsoft.Compute/virtualMachineScaleSets
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az resource list --query "[?location=='northeurope']" --output table
+Location     Name                                  ResourceGroup
+-----------  ------------------------------------  -------------------------------------------------
+northeurope  stevepro-azraks                       stevepro-azraks-rg
+northeurope  a1934a47-1b81-4f4b-b712-cd296bd7cf5a  MC_stevepro-azraks-rg_stevepro-azraks_northeurope
+northeurope  kubernetes                            MC_stevepro-azraks-rg_stevepro-azraks_northeurope
+northeurope  aks-agentpool-39069996-nsg            MC_stevepro-azraks-rg_stevepro-azraks_northeurope
+northeurope  aks-vnet-39069996                     MC_stevepro-azraks-rg_stevepro-azraks_northeurope
+northeurope  NetworkWatcher_northeurope            NetworkWatcherRG
+northeurope  aks-nodepool1-20972701-vmss           MC_stevepro-azraks-rg_stevepro-azraks_northeurope
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az vm list --output table
+
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az aks list --output table
+Name             Location     ResourceGroup       KubernetesVersion    ProvisioningState    Fqdn
+---------------  -----------  ------------------  -------------------  -------------------  --------------------------------------------------
+stevepro-azraks  northeurope  stevepro-azraks-rg  1.31.7               Succeeded            stevepro-azraks-f6a8fnqs.hcp.northeurope.azmk8s.io
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az container list --output table
+
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az storage account list --output table
+
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>az network public-ip list --output table
+Name                                  ResourceGroup                                      Location     Zones    Address          AddressVersion    AllocationMethod    IdleTimeoutInMinutes    ProvisioningState
+------------------------------------  -------------------------------------------------  -----------  -------  ---------------  ----------------  ------------------  ----------------------  -------------------
+a1934a47-1b81-4f4b-b712-cd296bd7cf5a  MC_stevepro-azraks-rg_stevepro-azraks_northeurope  northeurope           128.251.118.141  IPv4              Static              4                       Succeeded
+
+~\GitLab\SteveProXNA\gitlabcheatsheet>
+
+
+
+
