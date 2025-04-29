@@ -1,8 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
   
 In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab-cheat-sheet.html">GitLab Cheat Sheet</a> to streamline collaborative team workflows that leverage CI/CD pipelines.  Now, we will explain cluster provisioning process for managed cloud providers: <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a> + <a href="https://console.cloud.google.com">GCP</a>.
-<br />
 
+<br />
+<!--  
 <table width="99%" border="1">
 <tr>
 <td>
@@ -16,13 +17,14 @@ In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab
 </td>
 </tr>
 </table>
+-->
+<br />
 Let's check it out!  
-<br />
-<br />
+<br /><br />
 <u>Pre-Requisites</u><br />
 This blog post assumes an <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a>, <a href="https://console.cloud.google.com">GCP</a> account is setup.  The following links document paid or free tier:
 <br />
-
+<!--
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<b>Azure [Microsoft]</b></td>
@@ -43,13 +45,13 @@ This blog post assumes an <a href="https://portal.azure.com">Azure</a>, <a href=
 <td>&nbsp;<a href="https://k21academy.com/google-cloud/create-google-cloud-free-tier-account">FREE</a> Tier Account</td>
 </tr>
 </table>
-
+-->
 <br />
   
 <a href="https://learn.microsoft.com/en-us/cli/azure">Azure CLI</a><br />
 The Azure Command Line Interface is a set of commands used to create and manage Azure resources.  The CLI is available across services designed to get working with Azure quickly with an emphasis on automation.
 <br />
-
+<!--
 <br />
 <b>Linux</b><br />
 Install the <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux">Azure CLI</a> on Linux | Choose an installation method e.g. apt (Ubunuty, Debian) | Launch Terminal
@@ -86,13 +88,13 @@ After installing the Azure CLI on Linux, Mac OS/X, Windows confirm the current w
 </td></tr>
 </table>
 <br />
-
+-->
 <br />
   
 <a href="https://aws.amazon.com/cli">AWS CLI</a><br />
 The AWS Command Line Interface is a unified tool used to manage your AWS services.  Use the AWS CLI tool to download configure and control AWS services from the command line and automate them through scripts.
 <br />
-
+<!--
 <br />
 <b>Linux</b><br />
 Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a> on Linux | Linux tab | Command line installer - Linux x86 (64-bit) | Launch the Terminal
@@ -130,13 +132,13 @@ After installing the AWS  CLI on Linux, Mac OS/X, Windows confirm the current wo
 </td></tr>
 </table>
 <br />
-
+-->
 <br />  
   
 <a href="https://cloud.google.com/cli">GCP CLI</a><br />
 The GCP Command Line Interface is used to create and manage Google Cloud resources + services directly from the command line and to perform common platform tasks faster by controlling cloud resources at scale.
 <br />
-
+<!--
 <br />
 <b>Linux</b><br />
 Install the <a href="https://cloud.google.com/sdk/docs/install#linux">gcloud CLI</a> | Linux tab | Platform Linux 64-bit (x86_64) | Launch Terminal + execute commands:
@@ -184,13 +186,13 @@ After installing the gcloud CLI on Linux, Mac OS/X, Windows confirm the current 
 </tr>
 </table>
 <br />
-
+-->  
 <br />
 
 <u>Master Key</u><br />
 Next, create master SSH key for secure, automated and controlled access to your Kubernetes infrastructure:
 <br />
-
+<!--
 <table border="1" width="99%">
 <tr>
 <td valign="top" width="60%">
@@ -204,13 +206,13 @@ Next, create master SSH key for secure, automated and controlled access to your 
 </tr>
 </table>
 <br />
-
+-->
 <br />
 
 <a href="https://learn.microsoft.com/en-us/azure/aks">Azure AKS</a><br />
 Microsoft provides Azure Kubernetes Services as fully managed Kubernetes container orchestration service.  Follow all instructions below in order to provision a Kubernetes cluster and end-to-end test its functionality. 
 <br />
-
+<!--
 <br />
 
 <b>Pre-Requisites</b><br />
@@ -379,7 +381,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 </pre>
 </td></tr>
 </table>
-
+-->  
 <br />
 
 <u>Summary</u><br />
