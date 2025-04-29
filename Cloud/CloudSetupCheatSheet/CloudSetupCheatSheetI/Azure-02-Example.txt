@@ -30,7 +30,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 </table>
 <br />
   
-<b>Resource Group</b><br />
+<b>Create Group</b><br />
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -165,6 +165,17 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;az aks delete --name stevepro-azraks                 \
 &nbsp;    --resource-group stevepro-azraks-rg
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Delete Group</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az group delete --name stevepro-azraks-rg --yes --no-wait
+&nbsp;&nbsp;az group delete --name NetworkWatcherRG --yes --no-wait
 </pre>
 </td></tr>
 </table>
