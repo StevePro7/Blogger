@@ -48,7 +48,8 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 </pre>
 </td></tr>
 </table>
-<br /> 
+<br />
+
 <b>Output</b><br />
 <table width="99%" border="1">
 <tr><td>
@@ -56,7 +57,6 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 &nbsp;&nbsp;{
 &nbsp;    "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "displayName": "stevepro-sp",
-&nbsp;    "name": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;&nbsp;}
@@ -85,7 +85,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 &nbsp;    --dns-name-prefix stevepro-azraks                 \
 &nbsp;    --node-count 3                                    \
 &nbsp;    --node-vm-size Standard_D2s_v3                    \
-&nbsp;    --kubernetes-version 1.28                         \
+&nbsp;    --kubernetes-version 1.31                         \
 &nbsp;    --ssh-key-value ~/.ssh/master_ssh_key.pub         \
 &nbsp;    --service-principal ${AZ_SP_ID}                   \
 &nbsp;    --client-secret ${AZ_SP_PASSWORD}                 \
@@ -102,7 +102,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;export KUBECONFIG=~/.kube/config
 &nbsp;&nbsp;az aks get-credentials --name stevepro-azraks        \
-&nbsp;    --resource-group stevepro-azraks-rg --file ${KUBECONFIG}
+&nbsp;    --resource-group stevepro-azraks-rg --file ~/.kube/config
 </pre>
 </td></tr>
 </table>
@@ -142,7 +142,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 &nbsp;&nbsp;cd kubectl-plugins
 &nbsp;&nbsp;chmod +x kubectl-ssh
 &nbsp;&nbsp;kubectl get nodes
-&nbsp;&nbsp;./kubectl-ssh node gke-stevepro-gcp-gke-default-pool-0b4ca8ca-sjpj
+&nbsp;&nbsp;./kubectl-ssh node aks-nodepool1-20972701-vmss000000
 </pre>
 </td></tr>
 </table>
