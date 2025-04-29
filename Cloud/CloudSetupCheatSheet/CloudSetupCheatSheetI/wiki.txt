@@ -2,7 +2,7 @@
   
 In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab-cheat-sheet.html">GitLab Cheat Sheet</a> to streamline collaborative team workflows that leverage CI/CD pipelines.  Now, we will explain cluster provisioning process for managed cloud providers: <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a> + <a href="https://console.cloud.google.com">GCP</a>.
 <br />
-
+<!--
 <table width="99%" border="1">
 <tr>
 <td>
@@ -184,7 +184,7 @@ After installing the gcloud CLI on Linux, Mac OS/X, Windows confirm the current 
 </tr>
 </table>
 <br />
-
+-->
 <br />
 
 <u>Master Key</u><br />
@@ -241,7 +241,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 </table>
 <br />
   
-<b>Resource Group</b><br />
+<b>Create Group</b><br />
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -259,7 +259,8 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 </pre>
 </td></tr>
 </table>
-<br /> 
+<br />
+
 <b>Output</b><br />
 <table width="99%" border="1">
 <tr><td>
@@ -267,7 +268,6 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 &nbsp;&nbsp;{
 &nbsp;    "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "displayName": "stevepro-sp",
-&nbsp;    "name": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;    "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
 &nbsp;&nbsp;}
@@ -296,7 +296,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 &nbsp;    --dns-name-prefix stevepro-azraks                 \
 &nbsp;    --node-count 3                                    \
 &nbsp;    --node-vm-size Standard_D2s_v3                    \
-&nbsp;    --kubernetes-version 1.28                         \
+&nbsp;    --kubernetes-version 1.31                         \
 &nbsp;    --ssh-key-value ~/.ssh/master_ssh_key.pub         \
 &nbsp;    --service-principal ${AZ_SP_ID}                   \
 &nbsp;    --client-secret ${AZ_SP_PASSWORD}                 \
@@ -313,7 +313,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;export KUBECONFIG=~/.kube/config
 &nbsp;&nbsp;az aks get-credentials --name stevepro-azraks        \
-&nbsp;    --resource-group stevepro-azraks-rg --file ${KUBECONFIG}
+&nbsp;    --resource-group stevepro-azraks-rg --file ~/.kube/config
 </pre>
 </td></tr>
 </table>
@@ -353,7 +353,7 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 &nbsp;&nbsp;cd kubectl-plugins
 &nbsp;&nbsp;chmod +x kubectl-ssh
 &nbsp;&nbsp;kubectl get nodes
-&nbsp;&nbsp;./kubectl-ssh node gke-stevepro-gcp-gke-default-pool-0b4ca8ca-sjpj
+&nbsp;&nbsp;./kubectl-ssh node aks-nodepool1-20972701-vmss000000
 </pre>
 </td></tr>
 </table>
@@ -379,7 +379,17 @@ Microsoft provides Azure Kubernetes Services as fully managed Kubernetes contain
 </pre>
 </td></tr>
 </table>
+<br />
 
+<b>Delete Group</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;az group delete --name stevepro-azraks-rg --yes --no-wait
+&nbsp;&nbsp;az group delete --name NetworkWatcherRG --yes --no-wait
+</pre>
+</td></tr>
+</table>
 <br />
 
 <u>Summary</u><br />
