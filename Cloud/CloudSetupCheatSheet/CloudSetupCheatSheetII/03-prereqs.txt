@@ -1,0 +1,20 @@
+<u>Pre-Requisites</u><br />
+This blog post assumes an <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a>, <a href="https://console.cloud.google.com">GCP</a> account is setup plus all the corresponding <a href="https://seroter.com/2020/09/15/lets-compare-the-cli-experiences-offered-by-aws-microsoft-azure-and-google-cloud-platform">CLIs</a> are configured!
+
+<br /><br />
+<u>Master Key</u><br />
+Next, create master SSH key for secure, automated and controlled access to your Kubernetes infrastructure:
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top" width="60%">
+&nbsp;cd ~/.ssh<br />
+&nbsp;ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key<br />
+</td>
+<td>
+&nbsp;eval $(ssh-agent -s)<br />
+&nbsp;ssh-add master_ssh_key<br />
+</td>
+</tr>
+</table>
+<br />
