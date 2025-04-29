@@ -138,8 +138,9 @@ IMPORTANT - if you do not have the following <i>gke gcloud auth plugin</i> then 
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;&nbsp;az aks delete --name stevepro-azraks                 \
-&nbsp;    --resource-group stevepro-azraks-rg
+&nbsp;&nbsp;gcloud container clusters delete stevepro-gcp-gke                \
+&nbsp;    --zone europe-west1-border                                    \
+&nbsp;    --quiet --verbosity debug
 </pre>
 </td></tr>
 </table>

@@ -1,10 +1,159 @@
 <span style="font-family:verdana;font-size:85%;">
   
-In the previous post, we checked out Cloud Cheat Sheet to explain cluster provisioning process for managed cloud providers such as <a href="https://learn.microsoft.com/en-us/azure/aks">Azure AKS</a>.  Now we will resume to provision clusters: <a href="https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html">Amazon EKS</a> and <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview">Google GKE</a>.
+<a href="https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview">Google GKE</a><br />
+Google provides the Google Kubernetes Engine as fully managed Kubernetes container orchestration service.  Follow all instructions below in order to provision a Kubernetes cluster and test its functionality end-to-end.
+<br /><br />
+
+<b>Pre-Requisites</b><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;&nbsp;gcloud auth login<br />
+&nbsp;&nbsp;gcloud auth application-default login<br />
+</td>
+<td valign="top">
+&nbsp;&nbsp;gcloud auth configure-docker<br />
+&nbsp;&nbsp;gcloud config set project SteveProProject<br />
+</td>  
+</tr>
+</table>
 <br />
 
+<b>Check Resources</b><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;&nbsp;gcloud compute instances list<br />
+&nbsp;&nbsp;gcloud compute disks list<br />
+&nbsp;&nbsp;gcloud compute forwarding-rules list<br />
+</td>
+<td valign="top">
+&nbsp;&nbsp;gcloud compute firewall-rules list<br />
+&nbsp;&nbsp;gcloud compute addresses list<br />
+&nbsp;&nbsp;gcloud container clusters list<br />
+</td>  
+</tr>
+</table>
 <br />
-<!--  -->
+  
+<b>Create Cluster</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;&nbsp;gcloud container clusters create stevepro-gcp-gke               \
+&nbsp;    --project=steveproproject                                     \
+&nbsp;    --zone europe-west1-b                                         \
+&nbsp;    --machine-type=e2-standard-2                                  \
+&nbsp;    --disk-type pd-standard                                       \
+&nbsp;    --cluster-version=1.30.10-gke.1070000                         \
+&nbsp;    --num-nodes 3                                                 \
+&nbsp;    --network=default                                             \
+&nbsp;    --create-subnetwork=name=stevepro-gcp-gke-subnet,range=/28    \
+&nbsp;    --enable-ip-alias                                             \
+&nbsp;    --enable-intra-node-visibility                                \
+&nbsp;    --logging=NONE                                                \
+&nbsp;    --monitoring=NONE                                             \
+&nbsp;    --enable-network-policy                                       \
+&nbsp;    --labels=prefix=stevepro-gcp-gke,created-by=${USER}           \
+&nbsp;    --no-enable-managed-prometheus                                \
+&nbsp;    --quiet --verbosity debug
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Get Credentials</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;gcloud container clusters get-credentials stevepro-gcp-gke       \
+&nbsp;    --zone=europe-west1-b                                         \
+&nbsp;    --quiet --verbosity debug
+</pre>
+</td></tr>
+</table>
+<br />
+
+IMPORTANT - if you do not have the following <i>gke gcloud auth plugin</i> then execute the following commands:
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;gcloud components install gke-gcloud-auth-plugin
+&nbsp;&nbsp;gke-gcloud-auth-plugin --version
+</pre>
+</td></tr>
+</table>
+<br />
+  
+<b>Deploy Test</b><br />
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl create ns test-ns
+&nbsp;&nbsp;kubectl config set-context --current --namespace=test-ns
+&nbsp;&nbsp;kubectl apply -f Kubernetes.yaml
+&nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Output</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;Hello World (Python)!
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Shell into Node</b><br />
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p ~/GitHub/luksa
+&nbsp;&nbsp;cd ~/GitHub/luksa
+&nbsp;&nbsp;git clone https://github.com/luksa/kubectl-plugins.git
+&nbsp;&nbsp;cd kubectl-plugins
+&nbsp;&nbsp;chmod +x kubectl-ssh
+&nbsp;&nbsp;kubectl get nodes
+&nbsp;&nbsp;./kubectl-ssh node gke-stevepro-gcp-gke-default-pool-0b4ca8ca-sjpj
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Cleanup</b><br />
+<table border="1" width="99%">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kubectl delete -f Kubernetes.yaml
+&nbsp;&nbsp;kubectl delete ns test-ns
+</pre>
+</td></tr>
+</table>
+<br />
+  
+<b>Delete Cluster</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;gcloud container clusters delete stevepro-gcp-gke                \
+&nbsp;    --zone europe-west1-border                                    \
+&nbsp;    --quiet --verbosity debug
+</pre>
+</td></tr>
+</table>
+<br />
+
+  
+  <br><br><br>
+  
+In the previous post, we checked out Cloud Cheat Sheet to explain cluster provisioning process for managed cloud providers such as <a href="https://learn.microsoft.com/en-us/azure/aks">Azure AKS</a>.  Now we will resume to provision clusters: <a href="https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html">Amazon EKS</a> and <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview">Google GKE</a>.
+<br />
+<!--  
 <table width="99%" border="1">
 <tr>
 <td>
@@ -18,9 +167,30 @@ In the previous post, we checked out Cloud Cheat Sheet to explain cluster provis
 </td>
 </tr>
 </table>
-<!--  -->
-
+-->
 Let's check it out!  
-<br /><br />
+<br />
+<br />
 
+<u>Pre-Requisites</u><br />
+This blog post assumes an <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a>, <a href="https://console.cloud.google.com">GCP</a> account is setup plus all the corresponding <a href="https://seroter.com/2020/09/15/lets-compare-the-cli-experiences-offered-by-aws-microsoft-azure-and-google-cloud-platform">CLIs</a> are configured!
+
+<br /><br />
+<u>Master Key</u><br />
+Next, create master SSH key for secure, automated and controlled access to your Kubernetes infrastructure:
+<br />
+<table border="1" width="99%">
+<tr>
+<td valign="top" width="60%">
+&nbsp;cd ~/.ssh<br />
+&nbsp;ssh-keygen -t rsa -b 4096 -N '' -f master_ssh_key<br />
+</td>
+<td>
+&nbsp;eval $(ssh-agent -s)<br />
+&nbsp;ssh-add master_ssh_key<br />
+</td>
+</tr>
+</table>
+<br />
+  
 </span>
