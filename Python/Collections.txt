@@ -4,38 +4,46 @@ collections
 Reference: PythonFundamentals
 Python programming language has four collection data types- 
 01. list		[]
-02. dictionary		{}
-03. tuple		()	parentheses
-04. sets		{}	curly braces
+02. tuple		()	parentheses
+03. sets		{}	curly braces
+04. dictionary		{}
  
 my_tuple	= (1, 2, 3, 4, 5)
 my_set 	    	= {1, 2, 3, 4, 5}
 
 
-01. lists	mutable
+SUMMARY		Ordered		Mutable		Duplicates	Example
+List		Yes		Yes		Yes		[1, 2, 3]
+Tuple		Yes		No		Yes		(1, 2, 3)
+Set		No		Yes		No		{1, 2, 3}
+Dict		Yes*		Yes		Keys: No	{'a':1,'b':2}
+
+* Python 3.6+ preserves insertion order
+
+
+01. list	mutable
 []		square bracekts
 mutable sequence of objects
 
 
-02. dicts	mutable
+02.
+tuple		immutable
+()		parentheses
+ordered collection of immutable sequence of arbitrary objects	[duplicates]
+
+
+03. set		mutable	
+{}		curly braces
+unordered collection of unique mutable objects
+
+
+04. dict	mutable
 {}		curly braces
 mutable mapping of immutable keys to mutable objects
 
 
-03.
-tuples		immutable
-()		parentheses
-immutable sequence of arbitrary objects
-
-
-04. sets	immutable	
-{}		curly braces
-unordered collection of unique immutable objects
-
-
 NB:
 strings	immutable
-
 
 
 Zip
