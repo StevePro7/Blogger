@@ -16,16 +16,23 @@ Descriptor
 Python object that defines __get__() __set__() or __delete__()	manage attribute access
 
 Dataclass	class primarily used for storing data w/ __init__(), __repr__(), __eq__()
-Metaclass	class of a class - defines how class created and customize creation
+Metaclass	class of a class - defines how class created and customizes creation
 
 Callable	__call__() allows objects to behave and be invoked like functions
 lambda		anonymous function [multiple args] execute single expression	[statement]
+
+List comprehension	concise way to create lists in a single line of code
+Generator comprehension	similar but produces one value at a time	memory efficient
 
 Iterator
 object that returns one element at a time from a collection	__iter__() and __next__()
 
 Generator
 special type of iterator that returns one value at a time lazily using yield keyword
+
+Context Manager
+object that defines methods to setup and tear down a resource using the "with" statement
+__enter__() and __exit__()
 
 GIL
 mutex that allows only one thread to execute Python bytecode at a time
@@ -44,3 +51,7 @@ multiprocessing	Python uses multiple processes eeach with own Python interpreter
 foo()		public
 _foo		protected
 __foo		private
+
+Memory
+reference counting	each object in memory has reference to track = when zero object is deleted
+garbage collection	component that checks for objects no longer in use and frees their memory
