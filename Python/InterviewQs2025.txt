@@ -2,3 +2,45 @@ InterviewQs 2025
 15-May-2024
 
 https://www.interviewbit.com/python-interview-questions
+
+
+Python script = file run directly whereas module like library intended to be imported and used
+
+__new__		creates the object returning the instance
+__init__	initializes the object after it's created
+
+Decorator
+Python function that modifies behavior or another function [or class] using @decorator syntax
+
+Descriptor
+Python object that defines __get__() __set__() or __delete__()	manage attribute access
+
+Dataclass	class primarily used for storing data w/ __init__(), __repr__(), __eq__()
+Metaclass	class of a class - defines how class created and customize creation
+
+Callable	__call__() allows objects to behave and be invoked like functions
+lambda		anonymous function [multiple args] execute single expression	[statement]
+
+Iterator
+object that returns one element at a time from a collection	__iter__() and __next__()
+
+Generator
+special type of iterator that returns one value at a time lazily using yield keyword
+
+GIL
+mutex that allows only one thread to execute Python bytecode at a time
+[limiting true parallelism in multi-thread programs]
+
+Coroutine
+special function used in asynchronous programming defined with async that can pause and 
+resume execution using await
+
+asyncio		concurrent I/O bound tasks	single thread w/ non-blocking async/await syntax
+multithreading	multiple OS threads for concurrency but [GIL] only one thread executes Python bytecode at a time
+
+multiprocessing	Python uses multiple processes eeach with own Python interpreter for parallelism
+		ProcessPoolExecutor vs. ThreadPoolExecutor for legacy packages not support async/await
+
+foo()		public
+_foo		protected
+__foo		private
