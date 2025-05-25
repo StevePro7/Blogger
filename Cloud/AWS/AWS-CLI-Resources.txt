@@ -5,6 +5,11 @@ Linux terminal
 aws sso login
 aws --version
 
+Users + Org
+aws iam list-users
+aws organizations list-accounts
+
+
 LONG LIST of polices
 aws iam list-policies --query 'Policies[*].PolicyName' --output table
 
