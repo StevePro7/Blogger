@@ -63,3 +63,13 @@ if [ -f '~/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '~/Downloads/goog
 
 # The next line enables shell command completion for gcloud.
 if [ -f '~/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '~/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+
+# poetry
+alias poetry='/Users/stevepro/.local/bin/poetry'
+
+# poetry SSL verify ignore
+export POETRY_HTTP_CA_CERT=""
+export CURL_CA_BUNDLE=""
+export REQUESTS_CA_BUNDLE=""
+export PYTHONHTTPSVERFIY=0
