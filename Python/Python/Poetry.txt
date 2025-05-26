@@ -77,5 +77,16 @@ cd folder
 poetry new hello-world
 
 PyCharm
+New project
+Python 3.12
+Poetry
+/home/stevepro/.local/bin/poetry
 
+Terminal 
+poetry add flask
 
+If complains that version too low e.g. 3.8 then update pyproject.toml to 3.9
+requires-python = ">=3.9"
+
+and retry - maybe also do this if necessary	
+poetry init
