@@ -51,3 +51,31 @@ Install Poetry via Pip
 Update ~/.bash_profile
 # poetry
 alias poetry='/Users/stevepro/.local/bin/poetry'
+
+
+OR
+curl -sSL https://install.python-poetry.org | python3 -
+
+
+IMPORTANT
+if you get SSL error
+SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed
+
+Then do this - assume you have Home-brew installed
+
+python3 -m pip install --upgrade certifi
+export SSL_CERT_FILE=$(python3 -m certifi)
+
+Test SSL
+python3 -c "import urllib.request; print(urllib.request.urlopen('https://pypi.org').read())"
+
+Now repeat
+
+
+Hello World
+cd folder
+poetry new hello-world
+
+PyCharm
+
+
