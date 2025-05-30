@@ -4,13 +4,13 @@ AWS Login<br />
 Navigate to <a href="https://aws.amazon.com">https://aws.amazon.com</a> | Sign In | Sign in using root user email.  Root user | Root user email address e.g.
 steven_boland@hotmail.com | Next | Enter password.  Setup AWS Multi-Factor <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html">Authentication</a>.
 <br /><br />
+  
 AWS Single Sign On<br />
-Accessing AWS clusters programmatically is recommened to <a href="https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056">setup</a> and configure AWS SSO.  Launch Terminal:
+Accessing AWS clusters programmatically is recommened to <a href="https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056">setup</a> and configure AWS SSO.  Example config:
 <br />
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;&nbsp;aws sso login
 &nbsp;&nbsp;sso_start_url = https://stevepro.awsapps.com/start
 &nbsp;&nbsp;sso_region = eu-west-1
 &nbsp;&nbsp;sso_account_id = 4xxxxxxxxxx8
@@ -20,9 +20,7 @@ Accessing AWS clusters programmatically is recommened to <a href="https://pushka
 </pre>
 </td></tr>
 </table>
-In the browser | Confirm and continue | Enter username and password | Allow access to your data? | Allow
-
-  <br />  
+<br />  
   
 <br /><br />
 </span>
