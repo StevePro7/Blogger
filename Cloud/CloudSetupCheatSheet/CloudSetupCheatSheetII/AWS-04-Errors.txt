@@ -1,0 +1,72 @@
+AWS Errors
+30-May-2025
+
+Reference
+AWS
+eksctl01.txt
+eksctl02.txt
+
+
+01.
+Error: getting availability zones: error getting availability zones for region
+operation error EC2: DescribeAvailabilityZones, https response error StatusCode: 403
+
+
+https://stackoverflow.com/questions/60438285/error-getting-availability-zones-when-trying-to-create-eks-cluster
+
+
+AWS Dashboard
+IAM | Users | SteveProXNA
+Permissions | Add Permission
+Attach policies directly
+AdministratorAccess
+JSON
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+
+
+
+02.
+Error: unable to determine AMI to use: error getting AMI from SSM Parameter Store: operation error SSM: GetParameter, https response error StatusCode: 400
+
+https://stackoverflow.com/questions/65653103/aws-system-manager-getparameters-permission-being-implicitly-denied
+
+
+AWS Dashboard
+IAM | Users | SteveProXNA
+create new group    EKS-CTL
+Permissions
+AdministratorAccess-Amplify
+AmazonEKSClusterPolicy
+
+
+IAM | User groups | EKS-CTL
+Create inline policy
+SteveProSSmParams
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+		"ssm:GetParameter",
+		"ssm:GetParameters"
+            ],
+            "Resource": "arn:aws:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:DescribeImages",
+            "Resource": "*"
+        }
+    ]
+}
+
