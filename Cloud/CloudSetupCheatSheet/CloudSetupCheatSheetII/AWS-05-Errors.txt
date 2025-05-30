@@ -1,0 +1,54 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+<b>ERRORS</b><br />
+<i>Error: getting availability zones for region operation error EC2: DescribeAvailabilityZones, StatusCode: 403</i>
+  <br /><br />
+Reference: Dashboard | IAM | Users | SteveProXNA | Permissions | Add Permission | AdministratorAccess
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;{
+&nbsp;    "Version": "2012-10-17",
+&nbsp;    "Statement": [
+&nbsp;        {
+&nbsp;            "Effect": "Allow",
+&nbsp;            "Action": "*",
+&nbsp;            "Resource": "*"
+&nbsp;        }
+&nbsp;    ]
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />
+<br />
+
+02.<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;{
+&nbsp;    "Version": "2012-10-17",
+&nbsp;    "Statement": [
+&nbsp;        {
+&nbsp;            "Effect": "Allow",
+&nbsp;            "Action": ],
+&nbsp;                "ssm:GetParameter",
+&nbsp;                "ssm:GetParameters"
+&nbsp;            ],
+&nbsp;            "Resource": "arn:aws:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
+&nbsp;        },
+&nbsp;        {
+&nbsp;            "Effect": "Allow",
+&nbsp;            "Action": "ec2:DescribeImages",
+&nbsp;            "Resource": "*"
+&nbsp;        }
+&nbsp;    ]
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />
+<br />
+</span>
