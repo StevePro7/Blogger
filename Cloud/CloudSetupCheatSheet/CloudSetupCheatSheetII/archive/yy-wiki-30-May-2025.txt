@@ -25,57 +25,6 @@ Let's check it out!
 This blog post assumes an <a href="https://portal.azure.com">Azure</a>, <a href="https://aws.amazon.com">AWS</a>, <a href="https://console.cloud.google.com">GCP</a> account is <a href="https://steveproxna.blogspot.com/2025/05/cloud-setup-cheat-sheet.html">setup</a> plus all the corresponding <a href="https://seroter.com/2020/09/15/lets-compare-the-cli-experiences-offered-by-aws-microsoft-azure-and-google-cloud-platform">CLIs</a> are configured!
 
 <br /><br />
-<u>AWS Login</u><br />
-Navigate to <a href="https://aws.amazon.com">https://aws.amazon.com</a> | Sign In | Sign in using root user email.  Root user | Root user email address e.g.
-steven_boland@hotmail.com | Next | Enter password.  Setup AWS Multi-Factor <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html">Authentication</a>.
-<br /><br />
-  
-<u>AWS Single Sign On</u><br />
-Accessing AWS clusters programmatically is recommened to <a href="https://pushkar-sre.medium.com/how-to-set-up-aws-cli-with-aws-single-sign-on-sso-acf4dd88e056">setup</a> and configure AWS SSO.  Example config:
-<br />
-<table width="99%" border="1">
-<tr><td>
-<pre style="font-size: 12px;">
-&nbsp;&nbsp;sso_start_url = https://stevepro.awsapps.com/start
-&nbsp;&nbsp;sso_region = eu-west-1
-&nbsp;&nbsp;sso_account_id = 4xxxxxxxxxx8
-&nbsp;&nbsp;sso_role_name = AdministratorAccess
-&nbsp;&nbsp;region = eu-west-1
-&nbsp;&nbsp;output = json
-</pre>
-</td></tr>
-</table>
-<br />  
-  
-<a href="https://eksctl.io">eksctl</a><br />
-Command-line tool that abstracts complexity involved in setting up AWS EKS clusters.  Here is how to install:
-<br /><br />
-<b>Linux</b><br />
-<table width="99%" border="1">
-<tr><td>
-&nbsp;curl --silent --location "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$(uname <br />&nbsp;-s)_amd64.tar.gz" | tar xz -C /tmp<br />
-&nbsp;sudo mv /tmp/eksctl /usr/local/bin<br />
-</td></tr>
-</table>
-<br />
-<b>Mac OS/X</b><br />
-<table width="99%" border="1">
-<tr>
-<td width="50%">&nbsp;brew tap eksctl-io/eksctl</td>
-<td>&nbsp;brew install eksctl</td>
-</tr>
-</table>
-<br />
-<b>Windows</b><br />
-<table width="99%" border="1">
-<tr>
-<td width="50%">&nbsp;Launch Powershell</td>
-<td>&nbsp;choco install eksctl</td>
-</tr>
-</table>
-<br />
-<br />
-
 <u>Master Key</u><br />
 Next, create master SSH key for secure, automated and controlled access to your Kubernetes infrastructure:
 <br />
@@ -92,7 +41,7 @@ Next, create master SSH key for secure, automated and controlled access to your 
 </tr>
 </table>
 <br />
-<br />  
+<br />
 
 <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview">Google GKE</a><br />
 Google provides the Google Kubernetes Engine as fully managed Kubernetes container orchestration service.  Follow all instructions below in order to provision a Kubernetes cluster and test its functionality end-to-end.
