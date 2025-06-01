@@ -1,0 +1,45 @@
+LIMITATION - localhost
+<br />
+Hello World fine for localhost but has limitations
+<br /><br />
+
+1. Limitations:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Everything is on localhost - Cloud Computing typically requires Kubernetes cluster(s)
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually build Docker image from the Dockerfile
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually push Docker image to container registry
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually deploy running Docker container into Kubernetes cluster [typically Deployment exposed as Service]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+All Kubernetes resource values are hardcoded into declarative YAML file [again Deployment exposed as Service]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+No facility to scale deployment across multiple environments: DEV, UAT, Prod
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Environment variables can be injected but is a brittle and cumbersome process
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+No real immediate and secure way to inject secret information into deployment [e.g. Database password]
+<br />
+</td>
+</tr>
+</table>
+<br />  
+  
+2. Solution:
+<br />
+Integrate GitLab CI/CD pipeline to solve these issues and automate build and deployment process!
+  
+<br />
+This will be the topic of the next post.

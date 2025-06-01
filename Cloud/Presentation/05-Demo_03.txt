@@ -1,0 +1,28 @@
+DEMO - Kubernetes commands
+<br />
+Verify in Visual Studio Code
+<br /><br />
+
+Commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Load image into KinD cluster
+&nbsp;&nbsp;kind load docker-image flask-api:latest --name flask-cluster
+&nbsp;&nbsp;# Setup KinD cluster
+&nbsp;&nbsp;kubectl create ns test-ns
+&nbsp;&nbsp;kubectl config set-context --current --namespace=test-ns
+&nbsp;&nbsp;# Rollout Kubernetes Deployment and Service resources
+&nbsp;&nbsp;kubectl apply -f Kubernetes.yaml
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
+</td></tr>
+</table>
+<br />
+
+TODO
+03-deployment.png
+<br />
+  
