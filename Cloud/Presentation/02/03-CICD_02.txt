@@ -1,0 +1,30 @@
+14. SOLUTION - GitLab CI/CD [cicd]
+<br />
+CI/CD pipeline components
+<br /><br />
+
+1. Components
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Generic Variables used in all environments and environment specific variables to build software
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Rules that can be used to automate deployments to "lower" environments [DEV] vs. Manual deployments
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML that builds the Docker image and push image to container registry
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML that has instructions on how to deploy latest built Docker image to Kubernetes cluster
+<br />
+</td>
+</tr>
+</table>
+
+<br />
+TODO
+06-environments.png
+07-deployment-rules.png
+<br /> 
