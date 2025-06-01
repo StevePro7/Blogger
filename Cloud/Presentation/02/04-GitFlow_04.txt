@@ -1,0 +1,25 @@
+19. WORKFLOW - GitFlow SDLC
+<br />
+Development / Deployment Workflow [using GitFlow]
+<br /><br />
+
+1. GitFlow
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Once release candidate is stable / all bugs fixed:
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+then submit Pull Request release branch to main
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+This action will build pipeline but NOT deploy!!
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+We will manually deploy to Prod when agreed [w/ stakeholders]
+<br />
+  
+</td>
+</tr>
+</table>
