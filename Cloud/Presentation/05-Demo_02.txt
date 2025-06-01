@@ -1,0 +1,33 @@
+DEMO - Docker commands
+<br />
+Verify in VS Code
+<br /><br />
+
+Commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Create KinD cluster
+&nbsp;&nbsp;kind create cluster --name flask-cluster
+&nbsp;&nbsp;# Create Dockerfile | Build Docker image
+&nbsp;&nbsp;docker buiild --pull -rm -f "Dockerfile" -t flask-api:latest "."
+&nbsp;&nbsp;# Execute Docker container
+&nbsp;&nbsp;docker run --rm -d -p 8080:8080/tcp flask-api:latest
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
+</td></tr>
+</table>
+<br />
+
+TODO
+02-Dockerfile.png
+<br />
+  
+<br />
+KinD = Kubernetes in Docker
+<br />
+tool for running local Kubernetes cluster using Docker container "nodes" duringg development
+
+  
