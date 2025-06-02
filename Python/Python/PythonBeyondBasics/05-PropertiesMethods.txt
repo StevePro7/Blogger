@@ -1,0 +1,216 @@
+https://app.pluralsight.com/course-player?clipId=1a45b080-ef3d-4b2f-af5e-b5eb8233591b
+20/04/2020
+
+class attributes vs. instance attributes
+
+shipping.py
+
+
+would like attribute that is shared across the class rather than each instance of the class
+e.g.
+class attribute
+
+        self.serial = ShippingContainer.next_serial
+        ShippingContainer.next_serial += 1
+
+    print(ShippingContainer.next_serial)
+    print(c3.next_serial)
+
+
+IMPORTANT
+this can be done using self but is more confusing because self is for instance attributes and we want class attribute and self would create an instance attrbiute that would hide the class attribute
+
+aelf.attr = something
+
+always creates an instance attribute never a class attribute
+
+print(c5.bic)
+BOBU0013419
+
+
+static methods with the @staticmethod decorator
+update shipping.py
+
+@staticmethod
+    def _get_next_serial():
+        result = ShippingContainer.next_serial
+        ShippingContainer.next_serial += 1
+        return result
+
+    def __init__(self, owner_code, contents):
+        self.serial = ShippingContainer._get_next_serial()
+
+
+IMPORTANT
+static here is analoguous to static in C and C++
+
+
+#class methods with the @classmethod decorator
+shipping01.py
+
+@classmethod
+    def _get_next_serial(cls):
+        result = ShippingContainer.next_serial
+        cls.next_serial += 1
+        return result
+
+
+@staticmethod
+no access needed to either class or instance objects
+most likely an implementation detail of the class
+may be able to be moved to become a module-scope function
+
+@classmethod
+requires access to the class object to call other class methods or the constructor
+
+
+class methods for named constructors
+OR
+factory function
+
+
+shipping01.py
+@classmethod
+    def create_empty(cls, owner_code):
+        return cls(owner_code, contents=None)
+
+
+This technique allows us to support many functions that "look" like constructors
+
+
+
+static methods with inheritance
+static methods can be overridden in sub classes
+
+shipping_ref.py
+
+
+Statics
+ShippingContainer._make_bic_code("MAE", 1234)
+Out[3]: 'MAEU0012349'
+
+RefrigeratorShippingContainer._make_bic_code("MAE", 1234)
+Out[5]: 'MAER0012347'
+
+
+Instances
+c = ShippingContainer("ESC", 'texttiles')
+c._make_bic_code("MAE", 1234)
+Out[7]: 'MAEU0012349'
+
+r = RefrigeratorShippingContainer("ESC", "pass")
+r._make_bic_code("MAE", 1234)
+Out[9]: 'MAER0012347'
+
+
+so modify base class __init__() to use polymorphic dispatch of the static method by calling thru the instance self
+
+e.g.
+def __init__(self, owner_code, contents):
+        self.owner_code = owner_code
+        self.contents = contents
+        self.bic = self._make_bic_code(
+            self.owner_code,
+            serial=ShippingContainer._get_next_serial())
+
+
+BOBU0013419
+REFR0013422
+
+
+now we get polymorphic bic generation from the single constructor implementation
+
+
+Be aware then by calling static method thru the class you prevent them from being overridden from the p.o.v of the base class
+
+if you need polymorphic dispatch of static method invocations then call the self instance
+
+
+class methods with inheritance
+e.g.
+
+the base class __init__() method from Shipping inherits into the sub class RefrigeratorShipping01.py
+
+
+TypeError: __init__() missing 1 required positional argument: 'celsius'
+
+
+however we can use *args and **kwargs to work around this 
+and forward them to the unmodified constructors
+
+only issue is that you can now modify self.celsius outside the factory function
+
+
+Encapsulation using @property decorator
+@property decorator converts celsius() method to something that behaves like an attribute 
+
+@property decorator can be used to transform getter methods so they can be called as if they were attributes
+
+now if we attempt to assign to the attribute we get an AttributeError because the attribute can't be set
+    r4.celsius = -5.0
+AttributeError: can't set attribute
+
+
+To make attribute assignment work we need to define a setter which uses another decorator
+example
+
+class Example
+	@property
+	def p(self):
+		return self._p
+
+	@p.setter
+	def p(self, value):
+		self._p = value
+
+
+The new decorator "setter" must always be accessed via the property object
+hence @p.setter
+
+Decorating our setter function with @p.setter decorator causes the property object to be modified associating it with our setter method in addition to our getter method
+
+Property can be used like an attribute
+celsius and fahrenheit
+
+
+Inheritance
+interaction with the @property decorator
+
+
+Chained operators
+relational operators
+a < b < c
+
+equivalent to
+(a < b) and (b < c)
+
+
+
+    @classmethod
+    def _get_next_serial(cls):
+        result = cls.next_serial
+        cls.next_serial += 1
+        return result
+
+
+
+Hierarchy complexities setters
+use Properties and the Template Method to overcome short comings
+
+shipping_07.py
+shows an example of the template method pattern to remove the ugly overridden and complex setter properties
+
+
+SUMMARY
+covered distinction between class attributes and instance attributes
+class attributes are shared amongst all instances of the class
+shown how to refer to class attributes by fully qualifying class name
+warned of dangers to assign to class attribute thru the self instance
+[which actually creates a new instance attribute]
+@staticmethod decorator to define methods within class which do not depend on either the class of instance objects
+@classmethod decorator to define methods which operate on the class object rather than instance objects
+who named constructors using @classmethod
+shown how @staticmethod and @classmethod decorator behave with respect to inheritance
+both @staticmethod and @classmethod support polymorphic method dispatch when invoked thru an instance rather than a class
+introduced @property to wrap attributes with getters and optional setter methods
+demo easy way to override properties by having them deferred to regular methods so they can be overridden - an example of the template method design pattern

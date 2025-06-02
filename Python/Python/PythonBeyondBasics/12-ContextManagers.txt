@@ -1,0 +1,584 @@
+https://app.pluralsight.com/course-player?clipId=db6aea70-d600-446f-90fd-23286055120b
+03/06/2020
+
+
+Context Managers
+those statements designed to be used in with statements
+
+context manager
+an object designed to be used in a with-statement
+
+with context-manager:
+	body
+
+
+BUT there is more
+with context-manager:
+	context-manager.begin()
+	body
+	context-manager.end()
+
+
+can think of this as
+with context-manager:
+	setup()
+	body
+	teardown()
+
+with context-manager:
+	construction()
+	body
+	destruction()
+
+with context-manager:
+	allocation()
+	body
+	deallocation()
+
+
+This module prefers the syntax
+with context-manager:
+	enter()
+	body
+	exit()
+
+
+NOTE: enter() and exit() code executes no matter how the body code terminates
+sounds like RAII
+
+A context-manager ensures that resources are properly and automatically managed
+
+enter()	prepares the manager for use
+exit()		cleans it up
+
+
+e.g.
+with open('important_data.txt', 'w') as f:
+	f.write('This is the text')
+
+the file always closes after the body code executes because files are context managers
+file exit() code closes the file
+
+
+Context Manager protocol
+for an object to be a context manager it needs to support the following methods:
+
+__enter__(self)
+__exit__(self, exc_type, exc_val, exc_tb)
+
+
+with expression as x:
+	body
+
+
+expression must evaluate to a context manager
+i.e. an object that supports enter() and exit()
+
+when __enter__() executes successfully it has a return value bound to x when there is an "as" clause
+
+IMPORTANT
+the value of expression.__enter__() is bound to x
+NOT the value of expression
+
+the __exit__() is called after the code block within the with statement
+either normally or if exception is thrown
+
+NB:
+exception information is passed to __exit__()
+
+
+lcm.py
+Python console
+with LoggingContextManager() as x:
+  ...:     print(x)
+  ...:     
+<lcm.LoggingContextManager object at 0x0000026312F45518>
+
+
+>>> with LoggingContextManager() as x:
+...   print(x)
+...
+You are in a with block!
+<lcm.LoggingContextManager object at 0x0000028F792AC5F8>
+
+
+Normal execution
+>>> from lcm import *
+
+>>> with LoggingContextManager() as x:
+...   print(x)
+...
+LoggingContextManager.__enter__()
+<lcm.LoggingContextManager object at 0x0000013BA82DD898>
+LoggingContextManager.__exit__(None, None, None)
+
+
+Exception thrown
+>>> with LoggingContextManager() as x:
+...   raise ValueError('Something went wrong')
+...   print(x)
+...
+LoggingContextManager.__enter__()
+LoggingContextManager.__exit__(<class 'ValueError'>, Something went wrong, <traceback object at 0x0000013BA82F4308>)
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+ValueError: Something went wrong
+
+
+__enter__()
+called before entering with-statement body
+return value bound to as variable
+can return value of any type
+commonly returns context-manager itself
+
+
+>>> with open('test_data.txt', 'r') as f:
+...   data = f.read()
+...   print(data)
+...
+test data
+
+
+file.__enter__() must be returning the file object itself
+
+Example
+>>> f = open('a_file', 'w')
+>>> with f as g:
+...   print(f is g)
+...
+True
+
+
+__exit__()
+called when with-statement body exits
+
+__exit__(self, exc_type, exc_val, exc_tb)
+
+exc_type	exception type
+exc_val	exception value
+exc_tb		exception traceback
+
+_exit__() can check type for None to see if an exception was thrown
+
+
+lcm02.py
+checks if exception thrown
+
+>>> from lcm import *
+>>> with LoggingContextManager():
+...   pass
+...
+LoggingContextManager.__enter__()
+LoggingContextManager.__exit__(None, None, None)
+>>>
+>>> with LoggingContextManager():
+...   raise ValueError('Core meltdown')
+...
+LoggingContextManager.__enter__()
+LoggingContextManager.__exit__(<class 'ValueError'>, Core meltdown, <traceback object at 0x000001AD9FA3A0C8>)
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+ValueError: Core meltdown
+
+
+__exit__() Exception propagation
+By default __exit__() propagates exceptions thrown from the with-statement code block
+
+e.g.
+>>> try:
+...   with LoggingContextManager():
+...     raise ValueError('The system is down!')
+... except ValueError:
+...   print('error detected')
+...
+LoggingContextManager.__enter__()
+LoggingContextManager.__exit__(<class 'ValueError'>, The system is down!, <traceback object at 0x000001C7228B6CC8>)
+error detected
+
+
+If __exit__() returns False then the exception is propagated
+
+__exit__() answers the question:
+"should the with-statement swallow exceptions?"
+
+remember
+by default functions return None
+None evalutes to False
+
+i.e.
+__exit__() which doesn't return anything [is the same as None] is instructing the with statement to propagate exceptions
+
+
+IMPORTANT
+__exit__() should never explicitly re-raise exceptions [it receives]
+best to return False here and let with statement re-raise that exception
+
+__exit__() should only raise exceptions if it fails itself
+
+
+PEP343
+defines context managers
+www.python.org/dev/peps/pep-0343
+
+e.g.
+with-statement expansion
+
+mgr = (EXPR)
+exit = type(mgr).__exit__  # Not calling it yet
+value = type(mgr).__enter__(mgr)
+exc = True
+try:
+    try:
+        VAR = value  # Only if "as VAR" is present
+        BLOCK
+    except:
+        # The exceptional case is handled here
+        exc = False
+        if not exit(mgr, *sys.exc_info()):
+            raise
+        # The exception is swallowed if exit() returns true
+finally:
+    # The normal and non-local-goto cases are handled here
+    if exc:
+        exit(mgr, None, None, None)
+
+
+contextlib
+standard library module for working with context managers
+
+"provides utilities for common tasks involving the with statement"
+
+
+contextlib.contextmanager
+a decorator you can use to create new context managers
+
+
+@contextlib.contextmanager
+def my_context_manager():
+	# <ENTER>				// __enter__()
+	try:
+		yield [value]			// like __enter__() return statement
+		# <NORMAL EXIT>		// normal exit from with-block
+	except:
+		# <EXCEPTIONAL EXIT>		// exceptional exit from with-block
+		raise
+
+with my_context_manager() as x:
+	# ...
+
+
+context manager lets you define context-managers with simple control flow
+It allows you to leverage the statefulness of generators
+
+i.e.
+remember generators remember their state across calls to yield
+
+lcm03.py
+Normal
+>>> from lcm03 import *
+>>> with logging_context_manager() as x:
+...   print(x)
+...
+LoggingContextManager.__enter__()
+You are in a with-block
+logging_context_manager: normal exit
+
+
+Exceptional
+>>> with logging_context_manager() as x:
+...   raise ValueError('Something went wrong')
+...
+LoggingContextManager.__enter__()
+logging_context_manager: exceptional exit
+
+
+NOTE
+context manager did NOT propagate the ValueError after it completed
+
+
+contextmanager
+use standard exception handling to propagate exceptions
+explicit re-raise or don't catch to propagate exceptions
+swallow exceptions by not re-raising them
+
+e.g.
+>>> from lcm04 import *
+>>> with logging_context_manager() as x:
+...   raise ValueError('Something went wrong')
+...
+LoggingContextManager.__enter__()
+logging_context_manager: exceptional exit
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+ValueError: Something went wrong
+
+
+
+Multiple context managers
+with-statements can use as many context-managers as you need
+
+e.g.
+with cm1() as a, cmd2() as b, ...:
+	BODY
+
+
+is the same as
+with cm1() as a:
+	with cm2() as b:
+		BODY
+
+
+nest.py
+>>> with nest_test('outer'), nest_test('inner'):
+...   print('BODY')
+...
+Entering outer
+Entering inner
+BODY
+Exiting inner
+Exiting outer
+
+
+this gives the same output as a nested form
+>>> from nest import *
+>>> with nest_test('outer'):
+...   with nest_test('inner'):
+...     print('BODY')
+...
+Entering outer
+Entering inner
+BODY
+Exiting inner
+Exiting outer
+
+
+nest02.py
+>>> from nest02 import *
+>>> with nest_test('outer') as n1, nest_test('inner, nested in ' + n1):
+...   print('BODY')
+...
+Entering outer
+Entering inner, nested in outer
+BODY
+Exiting inner, nested in outer
+Exiting outer
+
+
+Again, you would receive the same output with nested with statements
+
+Exceptions propagated from inner context managers will be seen by outer context managers
+e.g.
+prop.py
+
+here we can see how an outer context manager swallows exceptions so an inner context manager never sees them
+>>> from prop import *
+>>> with propagater('outer', True), propagater('inner', False):
+...   raise TypeError('Cannot convert lead into gold.')
+...
+inner received an exception!
+outer exited normally.
+
+vs.
+>>> from prop import *
+>>> with propagater('outer', False), propagater('inner', True):
+...   raise TypeError('Cannot convert lead into gold.')
+...
+inner received an exception!
+outer received an exception!
+
+
+Don't pass a list
+Don't pass a list or some other sequence of context managers
+otherwise you may see some obscure error messages
+
+>>> with [nest_test('a'), nest_test('b')]:
+...   pass
+...
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: __enter__
+
+The problem is that Python tries to use verbatim what is passed in as a context manager
+which doesn't work well for list [or collection] types
+
+
+IMPORTANT
+lists are not context managers
+
+
+fix
+>>> with nest_test('a'), nest_test('b'):
+...   pass
+...
+Entering a
+Entering b
+Exiting b
+Exiting a
+
+another option is to use line continuation
+e.g.
+>>> with nest_test('a'), \
+...      nest_test('b'), \
+...      nest_test('c'):
+...   pass
+...
+Entering a
+Entering b
+Entering c
+Exiting c
+Exiting b
+Exiting a
+
+
+Duck Tails
+creating context managers is easy
+so
+let's model database transactions
+
+db directory
+e.g.
+>>> from db.connection import *
+>>> from db.transaction import *
+>>> conn = Connection()
+>>> xact = Transaction(conn)
+starting transaction 0
+>>> xact.commit()
+committing transaction 0
+
+
+Last example is flawed because it never commits the transaction
+and even if we do complete it can be tricky in the face of exception
+
+Therefore, replace with context manager that commits transaction if successful otherwise rollback if there are exceptions
+
+db directory updated
+
+01.
+>>> from db.connection import *
+>>> from db.transaction import *
+>>> conn = Connection()
+>>> try:
+...   with start_transaction(conn) as tx:
+...     X = 1 + 1
+...     raise ValueError()
+...     y = x + 2
+...     print('transaction 0 = ', x, y)
+... except ValueError:
+...   print('oops! transaction 0 failed')
+...
+starting transaction 0
+rolling back transaction 0
+oops! transaction 0 failed
+
+
+02.
+>>> try:
+...   with start_transaction(conn) as tx:
+...     X = 1 + 1
+...     y = x + 2
+...     print('transaction 1 = ', x, y)
+... except ValueError:
+...   assert False
+...
+starting transaction 1
+rolling back transaction 1
+
+
+03.
+try again without exception
+>>> try:
+...   with start_transaction(conn) as tx:
+...     x = 1 + 1
+...     y = x + 2
+...     print('transaction 2 = ', x, y)
+... except ValueError:
+...   assert False
+...
+starting transaction 2
+transaction 2 =  2 4
+committing transaction 2
+
+
+SUMMARY
+context managers are objects designed to work with "with" statements
+the expression of a with statement must evaluate to a context manager
+context managers have code that is run before and after code blocks
+context managers are useful for resource management
+
+files are a common example of context managers
+context manager protocols involves two methods: __enter__() and __exit__(exc_type, exc_val, exc_tb)
+
+__enter__() is called before the with block
+the return value of the expression is bound to the name in the optional "as" clause in the with statement
+if __enter__() raises an exception then the with block is never entered
+__enter__() often returns its own self but this is not required
+
+context manager __exit__() method calls when with block terminates
+__exit__() is called when the with block terminates normally and exceptionally
+if with block exits with exception then __exit__() is called with exception type, value, and traceback of ex as args
+if with block exits without exception then __exit__() is called with None as those args
+__exit__() can respond to normal vs. exceptional with blocks by checking its args
+
+if __exit__() returns value that evaluates to False then with block will propagate that exception
+if __exit__() returns value that evaluates to True then any exception gen'd by with block will be swallowed
+
+as functions by default return None then exceptions will also by default propagate exceptions
+__exit__() should not explicitly re-raise exception and ex args
+__exit__() should only raise exceptions if the problem occurred in the method itself
+
+PEP 343 is org. PEP defining with statements
+
+contextlib provides utilities for working with "with" statements
+contextlib.contextmanager is decorator used for creating context manager factories out of generator functions
+e.g.
+@contextlib.contextmanager
+def generator_function():
+
+contextmanager generator yields a value which will be bound to name in optional "as" clause
+e.g.
+yield as_variable
+
+execution moves from context manager generator to the with block when the yield statement is executed
+execution returns from the with block to the yield call when the with block terminates
+
+all code in context manager generator before the yield is equivalent to __enter__() method
+if an exception is raised in the with block then it is re-raised at the yield statement in the context manager generator
+
+the code executed after the yield in a context manager generator is equivalent to __exit__() method
+if context manager generator wants to propagate an exception then it needs to explicitly re-raise it
+
+e.g.
+@contextlib.contextmanager
+def generator_function():
+	# <ENTER>
+	try:
+		yield as_variable
+		# <NORMAL EXIT>
+	except:
+		# <EXCEPTION EXIT>
+		raise
+
+
+with statements can take more than one context manager
+e.g.
+with cm1() as a, cm2() as b:
+	BODY
+
+this syntax is equivalent to nested with statements
+e.g.
+with cm1() as a:
+	with cm2() as b:
+		BODY
+
+later context managers are nested inside earlier ones
+names bound in earlier context managers can be used when creating later ones
+
+with multiple context managers later context managers can swallow exceptions such that earlier context managers never see them
+if mistakingly pass a list or other sequence type to with statement the outcome may be surprising to get AttributeError
+
+to put multiple context managers on different lines use line continuations
+e.g.
+with cm1() as a, \
+with cm2() as b, \
+with cm3() as c \
+	BODY

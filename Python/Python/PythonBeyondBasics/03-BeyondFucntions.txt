@@ -1,0 +1,440 @@
+https://app.pluralsight.com/course-player?clipId=54f75099-238c-4c8f-976a-ee381696660d
+18/04/2020
+
+__call__()
+make functions callable objects
+
+
+Resolver
+cd D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\02\02a\resolver
+python
+>>> from resolver import Resolver
+>>> resolve = Resolver()
+>>> resolve('sixty-north.com')
+'93.93.131.30'
+
+this is because impl __call__() can be called like a function
+syntatic sugar for
+resolve.__call__('sixty-north.com')
+'93.93.131.30'
+
+
+>>> resolve._cache
+{'sixty-north.com': '93.93.131.30'}
+
+>>> resolve('steveproxna.blogspot.com')
+'74.125.193.132'
+>>> resolve._cache
+{'sixty-north.com': '93.93.131.30', 'steveproxna.blogspot.com': '74.125.193.132'}
+
+
+Timing
+from timeit import timeit
+timeit(setup="from __main__ import resolve", stmt="resolve('python.org')", number=1)
+0.01746319999998036
+3.399999997100167e-06
+
+print("{:f}".format(_))
+>>> print("{:f}".format(_))
+0.000003
+
+
+new methods
+python
+>>> from resolver import Resolver
+>>> resolve = Resolver()
+>>> resolve('sixty-north.com')
+'93.93.131.30'
+>>> resolve.has_host('bob.com')
+False
+>>> resolve.has_host('sixty-north.com')
+True
+>>> resolve.clear()
+>>> resolve.has_host('sixty-north.com')
+False
+
+
+__call__()
+Callable instances
+can be used to define classes when instantiated can be called using regular function calling syntax
+useful when we want to maintain state between function calls and use optional attribute + methods to query + modify that stage
+
+
+Callable classes
+>>> from resolver import Resolver
+>>> resolve = Resolver()
+
+here
+Resolver	a class
+()		calling
+
+Calling a class invokes the constructor
+show differences btwn class + instances
+
+>>> from resolver import Resolver
+>>> Resolver
+<class 'resolver.Resolver'>
+
+
+>>> def sequence_class(immutable):
+...   if immutable:
+...     cls = tuple
+...   else:
+...     cls = list
+...   return cls
+
+>>> seq = sequence_class(immutable=True)
+>>> t = seq("Timbuktu")
+>>> t
+('T', 'i', 'm', 'b', 'u', 'k', 't', 'u')
+>>> type(t)
+<class 'tuple'>
+
+
+Conditional expression
+result = true_value if condition else false_value
+
+>>> def sequence_class(immutable):
+...   return tuple if immutable else list
+...
+>>> seq = sequence_class(immutable=False)
+>>> s = seq("Auckland")
+>>> s
+['A', 'u', 'c', 'k', 'l', 'a', 'n', 'd']
+>>> type(s)
+<class 'list'>
+
+
+LAMBDAS
+want to create simple callable object usually to pass to a function without def() and code block
+callable object does not need to be bound to a name if passing directly to a function:
+
+an anonymous function would suffice : introduce Lambdas OR lambda functions
+However, like comprehensions, lambdas can ofsucate code
+
+
+Example
+sorted()
+need to pass callable object as key argument of sorted()
+can use lambda to pass in w/o creating function name for it
+
+>>> guitarists = ['Joe Satriani', 'Steve Vai', 'Eddie Van Halen']
+>>> sorted(guitarists, key=lambda name: name.split()[-1])
+['Eddie Van Halen', 'Joe Satriani', 'Steve Vai']
+
+>>> last_name = lambda name: name.split()[-1]
+>>> last_name
+<function <lambda> at 0x0091E660>
+
+>>> last_name('Kirk Hammett')
+'Hammett'
+
+
+Here is the def() function equivalent
+>>> def first_name(name):
+...   return name.split()[0]
+...
+>>> first_name('Paul Gilbert')
+'Paul'
+
+
+Comparison
+def()
+statement which defines a function and binds it to a name
+must have a name
+arguments delimited by parentheses separated by commas
+zero or more args supported	zero args => empty parantheses
+body is an indented block of statements
+A return statement is required to return anything other than None
+Regular functions can have docstrings
+Easy to access for testing
+
+
+Lambda
+expression which evaluates to a fuction and returns a function object
+anonymous
+argument list terminated by colon separated by commas
+zero or more args supported	zero args => lambda:
+body is a single expression
+return value is given by the body expression.  No return statement is permitted
+Lambdas cannot have docstrings
+Awkward or impossible to test	because they are anonymous functions + can't be retrieved so make Lambda expressions simple
+
+
+The built-in callable() function
+determine by return True or False
+
+>>> def is_even(x):
+...   return x % 2 == 0
+...
+>>> callable(is_even)
+True
+>>> is_odd = lambda x: x % 2 == 1
+>>> callable(is_odd)
+True
+>>>
+
+
+class is callable because calling class invokes constructor
+methods are callable
+
+e.g.
+>>> callable(list)
+True
+>>> callable(list.append)
+True
+
+
+Instance object can be made callable by defining the __call__() method
+e.g.
+>>> class CallMe:
+...   def __call__(self):
+...     print("Called!")
+...
+>>> call_me = CallMe()
+>>> callable(call_me)
+True
+
+
+Not everything is callable e.g. strings
+>>> callable("Hello World")
+False
+
+
+Extended formal argument syntax
+def extended(*args, **kwargs):
+
+format arguments
+arguments at the function definition site
+
+e.g.
+print()
+can accept 0, 1, x arguments
+
+or str format function
+Here learn functions esp. callables that can accept variable num of postional and/or keyword arguments
+
+define function that accepts an arbitrary no. of args
+def hyper(*args):
+
+called "star args"
+
+
+>>> def hypervolume(*args):
+...   print(args)
+...   print(type(args))
+...
+>>> hypervolume(3, 4)
+(3, 4)
+<class 'tuple'>
+>>>
+
+
+>>> def hypervolume(*lengths):
+...   i = iter(lengths)
+...   v = next(i)
+...   for length in i:
+...     v *= length
+...   return v
+...
+>>> hypervolume(2, 4)
+8
+>>> hypervolume(2, 4, 6)
+48
+>>> hypervolume(2, 4, 6, 8)
+384
+>>> hypervolume(1)
+1
+>>> hypervolume()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in hypervolume
+StopIteration
+
+
+Amendment
+>>> def hypervolume(length, *lengths):
+...   v = length
+...   for item in lengths:
+...     v *= item
+...   return v
+...
+>>> hypervolume(3, 5, 7, 9)
+945
+>>> hypervolume(3, 5, 7)
+105
+>>> hypervolume(3, 5)
+15
+>>> hypervolume(3)
+3
+>>> hypervolume()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: hypervolume() missing 1 required positional argument: 'length'
+
+
+Consider practice:
+use regular positional argument(s) for required parameters and *args to deal with any extra [optional] arguments
+
+
+REMEMBER
+that there are 2x types of input arguments to function: positional + keyword
+*args		only collects variable number of positional arguments
+**kwargs	only collects variable number of key/word arguments
+
+
+arbitrary keyword arguments can be accepted by callables that use **kwargs syntax
+
+Example
+>>> def tag(name, **kwargs):
+...   print(name)
+...   print(kwargs)
+...   print(type(kwargs))
+...
+>>> tag('img', src="monet.jpg", alt="Sunrise by", border=1)
+img
+{'src': 'monet.jpg', 'alt': 'Sunrise by', 'border': 1}
+<class 'dict'>
+
+
+>>> def tag(name, **attributes):
+...   result = '<' + name
+...   for key, value in attributes.items():
+...     result += ' {k}="{v}"'.format(k=key, v=str(value))
+...   result += '>'
+...   return result
+...
+>>> tag('img', src="monet.jpg", alt="Sunrise by", border=1)
+'<img src="monet.jpg" alt="Sunrise by" border="1">'
+
+
+IMPORTANT
+fixed positional args first
+variable positional *args next
+variable positional **kwargs last
+
+default args must be specified before optional args at the call site
+Extended formal argument syntax apply equally to regular functions, lambdas and other callables
+
+
+Extended actual argument syntax
+extend(*args, **kwardg)
+
+example
+print_args.py
+
+python
+from print_args import *
+>>> t = (11, 12, 13, 14)
+>>> print_args(*t)
+11
+12
+(13, 14)
+
+
+color
+>>> from print_args import *
+>>> k = {'red':21, 'green':68, 'blue':120, 'alpha':52}
+>>> color(**k)
+r =  21
+g =  68
+b =  120
+{'alpha': 52}
+
+
+NB: dict uses **kwargs syntax
+e.g.
+>>> d = dict(red=22, green=69, blue=127, alpha=255)
+>>> color(**d)
+r =  22
+g =  69
+b =  127
+{'alpha': 255}
+
+
+
+Forwarding Arguments
+one of the most common uses of *args and **kwargs is to used them to forward arguments from one function to another function
+NB: I see this in AIL a lot
+
+
+>>> from print_args import *
+>>> int("ff", base=16)
+255
+
+>>> trace(int, "ff", base=16)
+args =  ('ff',)
+kwargs =  {'base': 16}
+result =  255
+255
+
+
+Transposing Tables
+zip builtin function can combine 2x iterable series element wise into 1x series of tuples
+
+e.g. from Python Fundamentals course
+>>> sunday = [12, 14, 15, 15]
+>>> monday = [22, 24, 25, 25]
+
+>>> for item in zip(sunday, monday):
+...   print(item)
+...
+(12, 22)
+(14, 24)
+(15, 25)
+(15, 25)
+
+>>> tuesday= [32, 34, 35, 35]
+>>> daily = [sunday, monday, tuesday]
+
+>>> from pprint import pprint as pp
+>>> pp(daily)
+[[12, 14, 15, 15], [22, 24, 25, 25], [32, 34, 35, 35]]
+
+
+so
+Extended Call Syntax
+allows us to apply any iterable series to function call arguments using * prefix	
+*args
+
+e.g.
+>>> for item in zip(*daily):
+...   print(item)
+...
+(12, 22, 32)
+(14, 24, 34)
+(15, 25, 35)
+(15, 25, 35)
+
+OR
+>>> transposed = list(zip(*daily))
+>>> pp(transposed)
+[(12, 22, 32), (14, 24, 34), (15, 25, 35), (15, 25, 35)]
+
+
+this converts cols into rows and rows into cols
+an operation known as transposition via zip(*args)
+
+
+SUMMARY
+Functions can be generalized into the notion of callables
+Can make callable objects from instances by implementing __call__() method	can then invoke the object as if it were fn.
+Use this technique to define functions that maintain state e.g. caches between calls
+can also use attributes and methods to query + modify any state
+Whenever we create an object by invoking ctor we are in fact calling a class object	class objects are themselves callable
+class objects can be used like any other callable object incl. being passed to and returned from functions
+A single expression can be used as a callable by creating a lambda which is an anonymous callable
+Lambdas are most frequently used inline + passed directly as args to other functions
+Lambda arg list is NOT enclosed in parentheses + lambda body is restricted to being single expression => value is returned
+Callable objects can be detected using builtin callable() predicate function
+Extended arg syntax allows arbitrary positional arguments to be accepted using *args syntax in the callable definition
+NB: this results in args being packaged into a tuple
+Similarly arbitrary keyword args can be accepted using **kwargs syntax which results in keyword args packaged into dict
+Extended call syntax allows us to unpack iterable series + mappings into positional + keyword args respectively
+Args are unpacked and repacked as necessary
+*args and **kwargs can be combined into mandatory positional and keyword args in well defined order
+timeit module can be used to time small code snippets
+Python supports conditional expressions result = true_value if condition else false_value
+zip uses extended argument syntax to accept an arbitrary number of iterable series as arguments
+combine zip with extended call syntax can transpose 2x iterable series of data to convert rows to cols and cols to rows
+zip(*args) is used widely enough you must be able to recognize 

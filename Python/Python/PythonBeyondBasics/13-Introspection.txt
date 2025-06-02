@@ -1,0 +1,352 @@
+https://app.pluralsight.com/course-player?clipId=dfab34b1-38fe-4366-909d-fa10dfe2f7ff
+03/06/2020
+
+
+Introspection in Python is like Reflection in C#/.NET
+
+
+Introspection
+the ability of a program to examine its own structure and state
+process of looking inward to perform self-examination
+
+
+Introspecting types
+e.g.
+type
+
+>>> i = 7
+>>> type(i)
+<class 'int'>
+
+>>> int
+<class 'int'>
+
+>>> repr(int)
+"<class 'int'>"
+>>> type(i) is int
+True
+
+>>> type(i)(78)
+78
+
+IMPORTANT
+the type of type is type
+
+e.g.
+>>> type(type(i))
+<class 'type'>
+>>>        
+
+OR
+>>> i.__class__
+<class 'int'>
+>>> i.__class__.__class__
+<class 'type'>
+>>> i.__class__.__class__.__class__
+<class 'type'>
+
+confirming that type is its own type
+
+also
+>>> issubclass(type, object)
+True
+>>> type(object)
+<class 'type'>
+
+what this means is that type and object are fundamental to the Python object model
+neither can exist standalone with the other
+
+issubclass() performs introspection similar to isinstance
+e.g.
+>>> isinstance(i, int)
+True
+
+
+In general, type tests should be avoided in Python but if you must do then use
+issubclass() or isinstance() rather than direct comparisons of type objects
+
+
+Introspecting Objects
+>>> i = 7
+>>> dir(i)
+['__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__class__', '__delattr__', '__dir__', '__divmod__', '__doc__', '__eq__', '__float__', '__floor__', '__floordiv__', '__format__', '__ge__', '__getattribute__', '__getnewargs__', '__gt__', '__hash__', '__index__', '__init__', '__init_subclass__', '__int__', '__invert__', '__le__', '__lshift__', '__lt__', '__mod__', '__mul__', '__ne__', '__neg__', '__new__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__round__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'from_bytes', 'imag', 'numerator', 'real', 'to_bytes']
+
+methods are attributes - they are callable attributes
+note that int type has attributes like 
+fraction i.e. numerator and denominator
+
+e.g.
+>>> getattr(i, 'denominator')
+1
+>>> i.denominator
+1
+r
+Note conjugate tells what type of attribute
+>>> getattr(i, 'conjugate')
+<built-in method conjugate of int object at 0x00007FFFEAA99400>
+
+i.e. here if method
+
+can check if type is callable by using:
+>>> callable(getattr(i, 'conjugate'))
+True
+
+i.e.
+is callable method
+
+
+There is enough info to discover anything about an object in Python
+e.g.
+>>> i.conjugate.__class__.__name__
+'builtin_function_or_method'
+
+
+Trying to access attribute that does not exists results in AttributeError
+e.g.
+>>> getattr(i, 'index')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'int' object has no attribute 'index'
+
+
+Can determine if particular object has an attribute of a given name using hasattr()
+e.g.
+>>> hasattr(i, 'bit_length')
+True
+>>> hasattr(i, 'index')
+False
+
+
+Introspection favors
+Easier to Ask for Forgiveness than Permission
+
+over
+Look Before You Leap
+
+because try-catch is faster than hasattr() because hasattr() has built-in exception handling anyway
+
+
+numerals.py
+converts 17/3 into 5+2/3
+
+e.g.
+>>> from numerals import *
+>>> from fractions import Fraction
+>>> mixed_numeral(Fraction('11/10'))
+(1, Fraction(1, 10))
+
+BUT
+>>> mixed_numeral(1.7)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\13\13a\numerals.py", line 5, in mixed_numeral
+    raise TypeError('{} is not a rational number'.format(vulgar))
+TypeError: 1.7 is not a rational number
+
+
+numerals02 employs "Easier to Ask for Forgiveness than Permission"
+e.g.
+
+>>> from numerals02 import *
+>>> from fractions import Fraction
+>>> mixed_numeral(1.7)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\13\13a\numerals02.py", line 4, in mixed_numeral
+    integer = vulgar.numerator // vulgar.denominator
+AttributeError: 'float' object has no attribute 'numerator'
+
+now an AttributeError is raised
+
+
+numerals03
+best of both worlds
+
+e.g.
+>>> from numerals03 import *
+>>> from fractions import Fraction
+>>> mixed_numeral(1.7)
+Traceback (most recent call last):
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\13\13a\numerals03.py", line 5, in mixed_numeral
+    integer = vulgar.numerator // vulgar.denominator
+AttributeError: 'float' object has no attribute 'numerator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\13\13a\numerals03.py", line 9, in mixed_numeral
+    raise TypeError("{} is not a rational number".format(vulgar)) from e
+TypeError: 1.7 is not a rational number
+
+
+this approach yields the maximum amount of info about what went wrong and why
+AttributeError direct cause of the TypeError
+
+
+Introspecting Scopes
+e.g.
+>>> globals()
+{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
+
+
+>>> a = 42
+>>> globals()
+{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 42}
+
+
+globals() doesn't just represent the global namespace, it IS the global namespace
+e.g.
+>>> globals()['tau'] = 6.283
+>>> tau
+6.283
+>>> tau / 2
+3.1415
+
+
+locals()
+>>> locals()
+{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'a': 42, 'tau': 6.283}
+
+in the REPL locals() represents the same as globals()
+
+Another example
+>>> def report_scope(arg):
+...   from pprint import pprint as pp
+...   x = 496
+...   pp(locals(), width=10)	
+...
+>>>
+>>> report_scope(42)
+{'arg': 42,
+ 'pp': <function pprint at 0x0000025784CA2598>,
+ 'x': 496}
+
+
+Recall extended function call syntax allows us to unpack function dictionary into function keyword args
+e.g.
+>>> name = "StevePro Studios"
+>>> age = 28
+>>> country = "New Zealand"
+>>> "{name} is {age} yrs from {country}".format(**locals())
+'StevePro Studios is 28 yrs from New Zealand'
+
+However use this sparingly!
+
+
+inspect module
+contains advanced tools for introspection in Python
+
+e.g.
+>>> import inspect
+>>> import sorted_set
+>>> inspect.ismodule(sorted_set)
+True
+
+inspect getmembers()
+returns members as a list of name value pairs
+e.g.
+>>> inspect.getmembers(sorted_set)
+
+returns vast list including everything in the module namespace including all the built-ins
+
+
+therefore another option is
+>>> dir(inspect)
+
+
+filter for just classes
+>>> inspect.getmembers(sorted_set, inspect.isclass)
+[('Sequence', <class 'collections.abc.Sequence'>), ('Set', <class 'collections.abc.Set'>), ('SortedSet', <class 'sorted_set.SortedSet'>), ('chain', <class 'itertools.chain
+'>)]
+
+Note all the classes used to built sorted_set are listed here including itertools.chain
+because they are part of the import list used to define sorted_list
+
+so you can do things like this:
+>>> from sorted_set import chain
+>>> list(chain([1, 2, 3], [4, 5, 6]))
+[1, 2, 3, 4, 5, 6]
+
+
+more examples
+>>> inspect.getmembers(sorted_set.SortedSet, inspect.isfunction)
+
+let's retrieve signature for __init__() on the class
+>>> init_sig = inspect.signature(sorted_set.SortedSet.__init__)
+>>> init_sig
+<Signature (self, items=None)>
+>>> init_sig.parameters
+mappingproxy(OrderedDict([('self', <Parameter "self">), ('items', <Parameter "items=None">)]))
+
+
+and can query individual parameter values
+>>> repr(init_sig.parameters['items'].default)
+'None'
+
+>>> str(init_sig)
+'(self, items=None)'
+
+
+However, some Python modules written in C do not support this type of introspection
+e.g.
+>>> inspect.signature(abs)
+<Signature (x, /)>
+
+
+Duck Tails
+An object introspection tool
+
+Create our own custom type similar to getmembers()
+introspector.py
+dump()
+
+inspect.getdoc(obj)
+
+list of attributes
+
+
+print_table(seq of seq, *headers)
+2nd arg accepts as many string args as necc for the column headings
+
+use extended argument syntax to accept any number of header arguments
+e.g.
+*headers
+
+column_specs uses format specifiers and {{:{w}}} which uses {{ as double escaping }}
+with generator expression
+
+use format spec to print the column headers using extended argument unpacking
+use rules to provider to separate headers from the data below
+
+>>> from introspector import dump
+>>> dump(7)
+
+worked but got error in full_sig()...!!
+
+
+SUMMARY
+Investigate the type of objects using type function
+type = the type of type
+
+type() is similar to __class__()
+object and type are the foundation of Python
+
+dir(obj)
+getattr(obj, name)
+hasattr(obj, name)		
+
+show if object is callable using __callable__(obj)
+
+retrieve name using obj.__name__
+
+hasattr(obj, name) employs Look Before You Leap
+but for introspection is easier to ask for forgiveness than permission
+
+globals() and locals() to access namespace dictionaries
+
+Python inspect module and used to extract info about certain types of module and class attributes
+
+inspect.signature(method) used to extract function signatures
+
+Finished with Introspection tool to demo features in this and other modules in this course

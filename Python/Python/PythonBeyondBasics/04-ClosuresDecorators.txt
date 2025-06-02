@@ -1,0 +1,521 @@
+https://app.pluralsight.com/player?course=python-beyond-basics&author=austin-bingham&name=python-beyond-basics-m03&clip=0&mode=live
+20/04/2020
+
+local functions
+functions defined in other functions
+function decorators
+
+def
+define new functions
+executed at runtime
+
+
+methods
+module scope or inside class
+
+
+Python allows you to define functions in other functions
+local functions
+
+e.g.
+>>> from localfunc import *
+>>> sort_by_last_letter(['hello', 'from', 'a', 'local', 'function'])
+['a', 'local', 'from', 'function', 'hello']
+
+
+local function is created / run each time outer function calls it
+e.g.
+>>> from localfunc import *
+>>> sort_by_last_letter(['hello', 'from', 'a', 'local', 'function'])
+<function sort_by_last_letter.<locals>.last_letter at 0x00D60930>
+['a', 'local', 'from', 'function', 'hello']
+>>> sort_by_last_letter(['hello', 'from', 'a', 'local', 'function'])
+<function sort_by_last_letter.<locals>.last_letter at 0x0115E6A8>
+['a', 'local', 'from', 'function', 'hello']
+
+
+LEGB rule
+local enclosing, global, bult-in
+
+e.g.
+>>> from localfunc import *
+>>> outer()
+global param local
+
+
+local functions are not containing members of outer functions
+they are local name bindings in the function body
+
+e.g.
+>>> outer.inner()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'inner'
+
+
+local functions:
+Useful for specialized, one-off functions
+Aid in code organization and readdability
+Similar to lambdas but more general
+Many contain multiple expressions
+May contain statements
+
+
+Returning functions
+local fns can be returned
+e.g.
+>>> lf = enclosing()
+>>> lf()
+local func
+
+First-class functions
+functions can be treated like any other object
+
+
+CLOSURES
+prev funs don't interact with the enclosing scope
+but local functions can reference bindings in their enclosing scope via LEGB rule
+
+local functions can also be returned from their defining scope and executed in another scope
+
+Q: how does local function use bindings to objects defined in a scope that no longer exists?
+
+i.e.
+once a local function is returned from its enclosing scope that enclosing scope is gone along with any local objects it defined, how can the local function operate without that enclosing scope?
+
+A.
+Closures
+i.e. local function forms a closure
+
+Closures maintain references to objects from ealrier scopes
+A closure remembers objects from an enclosing scope what local function needs
+
+The local functions "closes over" the objects it needs preventing them from being garbage collected
+
+Python impls closures with __closure__
+
+e.g.
+def enclosing():
+    x = 'closed over'
+    def local_func():
+        print(x)
+    return local_func
+
+
+>>> from closures import *
+>>> lf = enclosing()
+>>> lf()
+closed over
+>>> lf.__closure__
+(<cell at 0x02F633F0: str object at 0x034DF228>,)
+
+
+If a function closes over any objects then that function has a __closure__ attribute which maintains the necessary references to those objects
+
+Above the closure is refering to a single object "x" variable defined in the function that defined lf
+
+this proves that local functions can safely use objects from their enclosing scope;
+How is this useful?
+
+
+Function Factory
+function that returns new specialized functions
+
+functions that return other functions
+specialized based on arguments to the factory
+
+combination of runtime function definitions and closures makes this possible
+
+
+03a
+raise_to_exp
+returns a function that raises its exponent to that exponent
+Python will create a closure to refer to raise_to_exp object
+
+e.g.
+>>> from raise_to import raise_to
+>>> square = raise_to(2)
+>>> square.__closure__
+(<cell at 0x005F3430: int object at 0x78956470>,)
+>>> square(5)
+25
+>>> square(9)
+81
+
+>>> cube = raise_to(3)
+>>> cube(3)
+27
+>>> cube(10)
+1000
+
+
+Nonlocal Keyword
+determines how names are resolved in Python when we want the values to which those names refer
+however
+LEGB does not apply when making new bindings
+
+e.g.
+enclosing.py
+local() creates a new binding for message which only applies in that function
+
+
+global
+introduces names from global namespace into the local namespace
+introduce global message binding into local()
+
+global msg1 global
+enclosing msg1 enclosing
+enclosing msg2 enclosing
+global msg2 local
+
+But 
+Q. How can you do the opposite?
+i.e. have local() message variable update same variable in enclosing()
+
+A.
+nonlocal
+introduces names from the enclosing namespace into the local namespace
+nonlocal searches the enclosing ns from inner to the outer for the name you give it
+when it finds a match that binding is introduced to the scope where nonlocal was invoked
+
+e.g.
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        nonlocal message
+        message = 'local'
+
+global msg1 global
+enclosing msg1 enclosing
+enclosing msg2 local
+global msg2 global
+
+see that local() is indeed changing the binding from enclosing()
+
+
+IMPORTANT
+there will be an error when using nonlocal when there's no matching enclosing binding
+
+nonlocal
+introduce names from the enclosing namespace into the local namespace
+
+
+def enclosing():
+    message = 'enclosing'
+
+    def local():
+        nonlocal no_such_name
+        message = 'local'
+
+    nonlocal no_such_name
+    ^
+SyntaxError: no binding for nonlocal 'no_such_name' found
+
+
+more practical example
+make_timer.py
+
+PyCharm
+Python Console
+from make_timer import make_timer
+
+t = make_timer()
+t()
+Out[7]: 2.042841672897339
+
+
+each call to make_timer() makes a new individual timer object
+prove by creating multiple timers
+
+
+Decorators
+modify or enhance functions without changing their definition [non-intrusive way]
+
+decorator implemented as callables that take and return other callables
+OR
+think of decorators as function that takes a function as an argument and returns another function
+
+Syntax
+@my_decorator
+def my_function():
+
+"@" symbol used in Python to apply decorator
+e.g.
+@my_decorator
+def my_function(x, y):
+	return x + y
+
+
+def my_decorator(f):
+	return new_f
+
+Compile the base function "my_function"
+produces new function object
+Python passes this function object to function my_decorator
+
+remember decorators take callable objects as their only argument
+and required to return a callable object as well
+
+After calling decorator with original function object Python takes the return value from the decorator and binds it to the name of the original function
+
+
+Decorator
+replace, enhance, or modify existing functions
+does not change the original function
+calling code does not need to change
+decorator mechanism uses the modified function's original name
+
+
+Example
+escape_unicode()
+only argument is f - the argument to be decorated
+wrap() is just list f() except it escapes ascii characters
+
+decorators return new callable - here the new callable is wrap
+by using closures wrap is able to use parameter f even after escape_unicode has returned
+
+
+>>> from escape_unicode import *
+>>> northern_city()
+"'Ch\\xe8'"
+
+
+We've seen functions as decorators...
+but other objects can be decorators as well
+
+
+Class objects
+classes are callable
+
+class MyDec:
+	def __init__(self, f):
+
+	def __call__(self):
+
+
+@MyDec
+def func();
+
+
+so by using a class object as a decorator you replace the decoratored function with a new instance of the class because the function to be decorated will be passed to the constructor => the initializer __init__()
+
+but the instance must be callable
+i.e. implement
+def __call__(self):
+
+Example
+call_count.py
+
+>>> from call_count import hello
+>>> hello('stevepro')
+Hello stevepro
+>>> hello.count
+1
+
+
+
+Another common decorator is class instance
+class AnotherDec:
+	def __call__(self, f):
+		def wrap():
+		return wrap
+
+
+Decorating with an instance calls the instance
+@AnotherDec()
+def func():
+
+the return value of __call__ must be callable
+
+Example
+tracer.py
+instances of trace can be used as decorator
+
+
+PyCharm
+Python Console
+from tracer import rotate_list, tracer
+l = [1, 2, 3]
+l = rotate_list(l)
+Calling <function rotate_list at 0x000001B6991B5F28>
+l
+Out[7]: [3, 1, 2]
+tracer.enabled = False
+l = rotate_list(l)
+l
+Out[12]: [2, 3, 1]
+
+
+Multiple decorators
+@decorator1
+@decorator2
+@decorator3
+def some_function():
+	...
+
+
+processed in reversed order
+so decorator3 passed to some_function() and returned which is passed to decorator2 and so on
+
+Example
+@tracer
+@escape_unicode
+def norwegian_island(maker):
+	return name + "oy"
+
+>>> from island_maker import norwegian_island
+>>> norwegian_island('Llama')
+Calling <function IslandMaker.make_island at 0x103af3170>
+Llama\\x48y
+
+>>> from island_maker import tracer
+>>> tracer.enabled = False
+
+
+Decorating Methods
+all examples thus far have decorated functions but can decorate methods also
+i.e. class functions
+
+
+class IslandMaker;
+	def __init__(self, suffix):
+		self.suffix = suffix
+
+	@tracer
+	def make_island(self, name):
+		return name + self.suffix
+
+
+>>> from island_maker import IslandMaker
+>>> im = IslandMaker(' Island')
+>>> im.make_island('Python')
+Calling <function IslandMaker.make_island at 0x103af3170>
+Out[5]: 'Python Island'
+
+
+functools.wrap()
+Naive decorators can lose important metadata
+
+Decorators replace a function with another callable object
+powerful technique for adding functionality in modular maintainable way
+
+Subtle problem:
+by naively replacing a function with another callable we can lose important metadata
+
+noop.py
+>>> help(hello)
+Help on function noop_wrapper in module noop:
+
+noop_wrapper()
+
+>>> hello.__name__
+'noop_wrapper'
+>>> hello.__doc__
+>>>
+
+lose the original name and docstring
+
+
+"Fix"
+def noop(f):
+    def noop_wrapper():
+        return f()
+
+    noop_wrapper.__name__ = f.__name__
+    noop_wrapper.__doc__ = f.__doc__
+    return noop_wrapper
+
+>>> help(hello)
+Help on function hello in module noop:
+
+hello()
+
+>>> hello.__name__
+'hello'
+
+
+But better way is to use 
+functools.wraps()
+
+properly update metadata on wrapped functions
+
+>>> from noop import *
+>>> help(hello)
+Help on function hello in module noop:
+
+hello()
+
+>>> hello.__name__
+'hello'
+
+
+Decorators are a powerful tool
+Decorators are widely used in Python
+It's possible to overuse decorators be mindful
+They can improve maintainability, increase clarity + reduce complexity
+
+
+Validating Arguments
+non negative example
+
+e.g.
+create_list.py
+>>> from create_list import create_list
+>>> create_list('a', 3)
+['a', 'a', 'a']
+>>> create_list(123, -63)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\03\03a\create_list.py", line 5, in wrap
+    raise ValueError('Argument {} must be non-negative'.format(index))
+ValueError: Argument 1 must be non-negative
+
+
+IMPORTANT
+check_non_negative is not a decorator
+
+A decorator is a callable object that takes a callable object as an argument and returns a callable object
+whereas
+check_non_negative takes an integer as a parameter and returns a function;
+nested validator function
+
+the return value of check_non_negative is the actual decorator
+Python takes check_non_negative return value and passes our function create_list to it
+
+
+validator(f) looks like other decorator functions in this module
+the wrapped fuction formed by validator creates a closure of f [the decorated function] AND index passed to check_non_negative()
+
+
+
+SUMMARY
+def is executed at runtime
+def defines a function in scope it's called which can be inside other functions
+functions define inside other functions = local functions
+A new local function is created each time the containing function is executed
+local functions are like any other local name bindings treated like any other object
+local functions can access names in other scopes using the LEGB rule
+enclosing scope for local function includes the parameters of its enclosing function
+local functions can be useful for code organization
+local functions are similar to lambdas but are more general and powerful
+functions can return other functions including local functions defined in their body
+closures allow local functions to access objects from scopes which are terminated 
+closures ensure that objects from terminated scopes are not garbage collected
+functions with closures have a special __closure__ attribute
+local functions and closures are the keys to implementing function factories which are functions that create other functions
+function decorators are used to modify existing behavior of functions w/o having to change them directly
+decorators are callable objects which accept single callable object as an argument and returns a new callable object
+Use "@" symbol to apply decorator to functions
+decorator can enhance readability, maintainability and scalability of designs
+decorator can be any type of callable objects
+__name__ and __doc__ of decorator replace org. function version
+functools.wrap() can be used to align properly
+can apply multiple decorators to function but will be impl'd in reverse order
+to parameterize decorators you need a function that creates decorators
+local functions can create closures over objects in any number of enclosing scopes
+
+
+IMPORTANT
+closures allow local functions to access objects from scopes which are terminated
+closures ensure that objects from terminated scopes are not garbage collected

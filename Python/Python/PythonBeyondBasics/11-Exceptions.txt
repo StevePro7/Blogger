@@ -1,0 +1,354 @@
+https://app.pluralsight.com/player?course=python-beyond-basics&author=robert-smallshire&name=python-beyond-basics-m10&clip=0&mode=live
+02/06/2020
+
+
+handler.py
+Omitting the exception class catches all exceptions
+Always specify an exception type
+
+
+Exceptions are arranged in an inheritance hierarchy
+
+examples
+>>> s = [1, 4, 6]
+>>> s[5]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+
+
+>>> d = dict(a=65, b=66, c=67)
+>>> d['x']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'x'
+
+
+Compare exception hierarchies
+>>> IndexError.mro()
+[<class 'IndexError'>, <class 'LookupError'>, <class 'Exception'>, <class 'BaseException'>, <class 'object'>]
+
+>>> KeyError.mro()
+[<class 'KeyError'>, <class 'LookupError'>, <class 'Exception'>, <class 'BaseException'>, <class 'object'>]
+
+
+lookups.py
+
+
+https://docs.python.org/3.3/library/exceptions.html
+https://docs.python.org/3.3/library/exceptions.html#exception-hierarchy
+
+
+best practice is to handle specific exception
+i.e. do not simply handle Exception base class as may hide various issues
+
+
+Exception payloads
+
+
+index.py
+>>> from median import median
+>>> median([1, 3, 5, 7, 9])
+5
+>>> median([2, 4, 6, 8])
+5.0
+>>> median([])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\11\11a\median.py", line 7, in median
+    return (items[median_index] + items[median_index + 1]) / 2.0
+IndexError: list index out of range
+
+IndexError which contains a message payload including the stack trace
+replace with guard clause which provides more informative message
+
+
+Can programmatically retrieve the args from the exception payload
+
+IMPORTANT
+only pass single instruction to exception constructors
+PEP352
+
+which means exception args should always expect to be single value instead of args[0]
+
+there are exceptions tho' e.g. UnicodeError which has 5x attributes
+unicode.py
+
+
+Defining new exceptions
+
+e.g.
+heron.py
+
+>>> from heron import *
+>>> triangle_area(3, 4, 5)
+6.0
+>>> triangle_area(3, 4, 10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\11\11a\heron.py", line 5, in triangle_area
+    a = math.sqrt(p * (p - a) * (p - b) * (p - c))
+ValueError: math domain error
+
+
+TriangleError inherits from Exception which means it already inherits
+__init__()
+__str__()
+__repr__()
+
+but we modify the code and override __str__ and __repr__ to get access to attributes that fail
+>>> from heron import *
+>>> triangle_area(3, 4, 10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\11\11a\heron.py", line 22, in triangle_area
+    raise TriangleError("Illegal triangle", sides)
+heron.TriangleError: 'Illegal triangle' for sides (3, 4, 10)
+
+
+
+Chaining Exceptions
+01.
+Implicit chaining
+an exception occurs while processing another exception
+uses __context__
+
+02.
+Explicit chaining
+deliberately change exception caught into another exception
+
+may want to keep reference to original exception
+
+
+01.
+Implicit
+heron02.py
+
+During handling of the above exception, another exception occurred:
+
+TriangleError has been attached to the __context__ of the UnsupportedOperation exception
+io.UnsupportedOperation: not writable
+
+'Illegal triangle' for sides (3, 4, 10)
+not writable
+True
+
+
+02.
+Explicit
+chaining.py
+
+NOTE
+raise InclinationError("Slope cannot be vertical") from e
+
+associates the original error with the new [converted] error
+
+Explicit chaining uses __cause__ to work
+
+
+>>> from chaining import *
+>>> inclination(0, 5)
+
+ZeroDivisionError: division by zero
+The above exception was the direct cause of the following exception:
+chaining.InclinationError: Slope cannot be vertical
+
+
+>>> try:
+...   inclination(0, 5)
+... except InclinationError as e:
+...   print(e)
+...   print(e.__cause__)
+...
+Slope cannot be vertical
+division by zero
+
+
+Explicit chaining can improve diagnostics and aid debugging
+
+
+Tracebacks
+__traceback__
+chaining02.py
+
+(base) D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\11\11a>python chaining02.py
+<traceback object at 0x000001412C002488>
+  File "chaining02.py", line 14, in main
+    inclination(0, 5)
+  File "chaining02.py", line 10, in inclination
+    raise InclinationError("Slope cannot be vertical") from e
+Finished
+
+
+traceback is useful for diagnostic info and debugging
+
+IMPORTANT
+do not keep references to __traceback__ beyond the scope of the except block
+i.e. for later use
+
+because the traceback object contains references to all the stackframe objects which comprise the callstack
+therefore will be large and not necc garbage collected
+
+prefer to render __traceback__ to a string
+
+e.g.
+(base) D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\11\11a>python chaining02.py
+<traceback object at 0x0000019D6DB82488>
+  File "chaining02.py", line 14, in main
+    inclination(0, 5)
+  File "chaining02.py", line 10, in inclination
+    raise InclinationError("Slope cannot be vertical") from e
+['  File "chaining02.py", line 14, in main\n    inclination(0, 5)\n', '  File "chaining02.py", line 10, in inclination\n    raise InclinationError("Slope cannot be ver
+tical") from e\n']
+Finished
+
+
+Checking invariants with Assertions
+assert condition [, message]
+
+False	=> AssertionError
+causes program to terminate
+if message is supplied then it is used as the exception payload
+
+e.g.
+>>> assert False, "The condition was false"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AssertionError: The condition was false
+
+
+AssertionError gives convenient means for monitoring program invariance
+which are conditions which should always be true
+
+Example of using assert for internal invariance
+internal.py
+
+
+assert helpful for clone and modify programming
+i.e. copy n' paste
+
+
+NOTE
+assertion should NOT be used to validate arguments to a function
+only to detect the implementation of the function is incorrect
+
+
+Class invariants
+revisit SortedSet
+add assert statements esp. if want to implement mutable version of SortedSet
+e.g.
+sorted_set.py
+
+
+Assertion Performance
+measuring SortedSet.count() performance with active assertions without -O option
+e.g.
+python -m timeit -n 1 -s "from random import randrange; from sorted_set import S
+ortedSet; s = SortedSet(randrange(1000) for _ in range(2000))" "[s.count(i) for i in range(1000)]"
+1 loop, best of 5: 848 msec per loop
+
+
+measuring SortedSet.count() performance without active assertions, with -O options
+e.g.
+python -O -m timeit -n 1 -s "from random import randrange; from sorted_set impor
+t SortedSet; s = SortedSet(randrange(1000) for _ in range(2000))" "[s.count(i) for i in range(1000)]"
+1 loop, best of 5: 969 usec per loop
+
+
+Duck Tails
+Assertions can be used to assert we are returning what we think we are returning
+
+wrapper.py
+>>> from wrapper import *
+>>> wrap(sega_master_system, 25)
+'The Sega Master System\n(SMS)[c] is a\nthird-generation 8-bit home\nvideo game console\nmanufactured by Sega. It was\noriginally a remodeled\nexport version of the Se
+ga\nMark III, the third iteration\nof the SG-1000 series of\nconsoles, which was released\nin Japan in 1985 and featured\nenhanced graphical\ncapabilities over its\npr
+edecessors. The Master\nSystem launched in North\nAmerica in 1986, followed by\nEurope in 1987, and Brazil in\n1989. A Japanese version of\nthe Master System was also\
+nlaunched in 1987, which\nfeatures a few enhancements\nover the export models (and by\nproxy the original Mark III):\na built-in FM audio chip, a\nrapid-fire switch, a
+nd a\ndedicated port for the 3D\nglasses. A cost-reduced\nmodel known as the Master\nSystem II was released in 1990\nin North America and Europe.'
+
+>>> print(_)
+The Sega Master System
+(SMS)[c] is a
+third-generation 8-bit home
+video game console
+manufactured by Sega. It was
+originally a remodeled
+export version of the Sega
+Mark III, the third iteration
+of the SG-1000 series of
+consoles, which was released
+in Japan in 1985 and featured
+enhanced graphical
+capabilities over its
+predecessors. The Master
+System launched in North
+America in 1986, followed by
+Europe in 1987, and Brazil in
+1989. A Japanese version of
+the Master System was also
+launched in 1987, which
+features a few enhancements
+over the export models (and by
+proxy the original Mark III):
+a built-in FM audio chip, a
+rapid-fire switch, and a
+dedicated port for the 3D
+glasses. A cost-reduced
+model known as the Master
+System II was released in 1990
+in North America and Europe.
+
+
+assert all(len(line) <= line_length for line in result.splitlines())
+
+>>> from wrapper import *
+>>> wrap(sega_master_system, 25)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\11\11a\wrapper.py", line 13, in wrap
+    assert all(len(line) <= line_length for line in result.splitlines())
+AssertionError
+
+
+Fix #01
+current_line_length += len(word) + len(' ')
+
+
+>>> wrap(sega_master_system, -1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\11\11a\wrapper.py", line 13, in wrap
+    assert all(len(line) <= line_length for line in result.splitlines())
+AssertionError
+
+
+Don't use assertions for checking arguments
+
+
+SUMMARY
+Do not handle ALL exceptions e.g. system exit like KeyboardInterrupt 
+Always specify an exception type with except but don't be too general
+
+				Base Ex
+KeyboardInterrupt		Exception		SystemExit
+
+Never catch BaseException since they have subclasses which may produce programming errors
+e.g. IndentationError
+
+CustomException inherit from Exception
+
+
+show Exception payloads work
+use to define your own exception class by inherting from Exception
+
+Implement richer exception types by accepting additional args and provide attributes on custom exceptions
+
+Exception chaining for implicitly chained exceptions using __context__ attribute on successor exception objects
+and explicitly chained exceptions which set __cause__ attribute on successor exception objects
+
+Extract traceback objects using __traceback__ attribute of exceptions
+render tracebacks to strings rather than keep references to them to avoid space leak problems e.g. large object graphs
+
+Assertions
+when to use to create robust programs and modules easy to diagnose and debug

@@ -1,0 +1,620 @@
+https://app.pluralsight.com/course-player?clipId=54557aca-b0a2-438b-b586-b4132779c350
+25/04/2020
+
+
+Comprehensions
+short-hand syntax for creating collections and iterable objects
+of various types
+
+e.g.
+list comprehensions creates a new list object from an existing sequence
+
+>>> l = [i * 2 for i in range(10)]
+>>> l
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+range sequence [0-9] and create a new list where each entry is twice  the value of the original sequence
+
+
+list is like any normal list
+
+>>> type(l)
+<class 'list'>
+>>> dir(l)
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+>>>     
+
+>>> l.append(42)
+>>> l
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 42]
+
+
+There are comprehension syntaxes for creating dictionaries, sets and  generators [as well as lists]
+
+e.g.
+>>> d = {i: i * 2 for i in range(10)}
+>>> d
+{0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10, 6: 12, 7: 14, 8: 16, 9: 18}
+>>> type(d)
+<class 'dict'>
+
+>>> s = {i for i in range(10)}
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+>>> type(s)
+<class 'set'>
+
+>>> g = (i for i in range(10))
+>>> type(g)
+<class 'generator'>
+
+
+Comprehensions can use multiple input sequences and multiple if-clauses
+
+e.g.
+two input ranges
+
+>>> [(x, y) for x in range(5) for y in range(3)]
+[(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2)]
+
+read as set of nested for loops
+
+for x in range(5)	earlier for-clause
+for y in range(3)	later for-clause
+
+>>> points = []
+>>> for x in range(5):
+...   for y in range(5):
+...     points.append((x, y))
+...
+>>> points
+[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (2, 0), (2, 1), (2, 2), (2, 3), (2, 4), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4)]
+
+
+Benefits of comprehensions
+* container populates "atomically"
+* allows Python to optimize creation
+* more readable
+
+don't need to create the list variable and repeatedly append elements to it
+
+
+Limit of comprehensions
+>>> values = [x / (x - y) for x in range(100) if x > 50 for y in range(100) if x - y != 0]
+
+reformat
+values = [x / (x - y)
+	 for x in range(100)
+	 if x > 50 
+	 for y in range(100)
+	 if x - y != 0]     
+
+
+Non comprehension format is like this:
+
+
+>>> values = []
+>>> for x in range(100):
+...   if x > 50:
+...     for y in range(100):
+...       if x - y != 0:
+...         values.append(x / (x - y))
+
+
+x can be bound to use earlier
+e.g.
+
+>>> [(x, y) for x in range(10) for y in range(x)]
+[(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (8, 0), (8, 1), (8, 2), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7), (9, 0), (9, 1), (9, 2), (9, 3), (9, 4), (9, 5), (9, 6), (9, 7), (9, 8)]
+>>>                                                                                                               
+
+if confusing then think of this as a set of nested for loops
+it's entirely natural for the inner loop to refer to the outer
+
+>>> result = []
+>>> for x in range(10):
+...   for y in range(x):
+...     result.append((x, y))
+
+
+Nested comprehensions
+comprehensions can be nested inside other comprehensions
+
+i.e.
+each element in a comprehension can itself be a comprehension
+
+e.g.
+>>> val = [[y * 3 for y in range(x)] for x in range(10)]
+>>> val
+[[], [0], [0, 3], [0, 3, 6], [0, 3, 6, 9], [0, 3, 6, 9, 12], [0, 3, 6, 9, 12, 15], [0, 3, 6, 9, 12, 15, 18], [0, 3, 6, 9, 12, 15, 18, 21], [0, 3, 6, 9, 12, 15, 18, 21, 24]]
+
+the outer comprehension uses another comprehension to create a list for each entry in its result
+
+rather than a flat list this produces a list of lists
+
+Expansion
+>>> outer = []
+>>> for x in range(10):
+...   inner = []
+...   for y in range(x):
+...     inner.append(y * 3)
+...   outer.append(inner)
+...
+>>> print(outer)
+[[], [0], [0, 3], [0, 3, 6], [0, 3, 6, 9], [0, 3, 6, 9, 12], [0, 3, 6, 9, 12, 15], [0, 3, 6, 9, 12, 15, 18], [0, 3, 6, 9, 12, 15, 18, 21], [0, 3, 6, 9, 12, 15, 18, 21, 24]]
+
+
+Simiilar to but different from multi sequence comprehensions
+both forms involve more than one iteration loop but the structures they produce are very different
+
+
+All comprehensions nest in the same way
+e.g.
+>>> { x * y for x in range(10) for y in range(10)}
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 24, 25, 27, 28, 30, 32, 35, 36, 40, 42, 45, 48, 49, 54, 56, 63, 64, 72, 81}
+>>>
+>>> g = ((x, y) for x in range(10) for y in range(x))
+>>> type(g)
+<class 'generator'>
+>>> list(g)
+[(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (8, 0), (8, 1), (8, 2), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7), (9, 0), (9, 1), (9, 2), (9, 3), (9, 4), (9, 5), (9, 6), (9, 7), (9, 8)]
+
+
+Iteration and iterables
+sequence of elements that can be accessed one at a time in order
+
+ideas developed in functional programming
+functional style Python
+
+e.g.
+map()
+apply a funcction to every element in a sequence producing a new sequence
+
+given a function and a sequence of objects it calls the function for every element in the sequence producing a new sequence containting the return values of the functions
+
+in other words
+we map a function over a sequence to produce a new sequence
+
+e.g.
+map(ord, 'The quick brown fox')
+
+map() is lazy
+it only produces values as they're needed
+
+the map object returned from map is an iterator object
+only by iterating over it will you produce output
+
+
+VS Code
+Terminal
+>> from tracer import Trace
+>>> result = map(Trace()(ord), 'The quick brown fox')
+>>> result
+<map object at 0x0000020E737DBB00>
+>>> next(result)
+Calling <built-in function ord>
+84
+>>> next(result)
+Calling <built-in function ord>
+104
+>>> next(result)
+Calling <built-in function ord>
+101
+>>> next(result)
+Calling <built-in function ord>
+32
+
+
+OR
+>>> list(map(ord, 'The quick brown fox'))
+[84, 104, 101, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120]
+>>>
+
+OR
+>>> for o in map(ord, 'The quick brown fox'):
+...   print(o)
+...
+84
+104
+101
+113
+117
+105
+99
+107
+32
+98
+114
+111
+119
+110
+32102
+111
+120
+
+
+map's lazy evaluation require you to iterate over its return value in order to actually produce the output sequence
+
+until you access the values in the sequence, they are not evaluated 
+
+
+Multiple input sequences
+map() can accept any number of input sequences
+the number of input sequences must match the number of function arguments
+
+if the function requires two input arguments then you must provide two input sequences to map
+
+
+what map does with multiple input sequences is to take an element from each input sequence and pass its corresponding argument to the map function to produce each output value
+
+foreach output value that map needs to produce it takes the next element from each input sequence and then passes these in order as the args to the mapped function and the return value from the function is the next output for map()
+
+
+EXAMPLE
+>>> sizes = ['small', 'medium', 'large']
+>>> colors = ['lavender', 'teal', 'orange']
+>>> animals = ['koala', 'platypus', 'salamander']
+>>>
+>>> def combine(size, color, animal):
+...   return '{} {} {}'.format(size, color, animal)
+...
+>>> list(map(combine, sizes, colors, animals))
+['small lavender koala', 'medium teal platypus', 'large orange salamander']
+
+
+OR
+>>> import itertools
+>>> def combine(quantity, size, color, animal):
+...   return '{} x {} {} {}'.format(quantity, size, color, animal)
+...
+>>> list(map(combine, itertools.count(), sizes, colors, animals))
+['0 x small lavender koala', '1 x medium teal platypus', '2 x large orange salamander']
+
+
+map() vs. comprehensions
+e.g.
+>>> [str(i) for i in range(5)]
+['0', '1', '2', '3', '4']
+>>> list (map(str, range(5)))
+['0', '1', '2', '3', '4']
+
+OR
+>>> i = (str(i) for i in range(5))
+>>> list(i)
+['0', '1', '2', '3', '4']
+>>> i = map(str, range(5))
+>>> list(i)
+['0', '1', '2', '3', '4']
+
+people feel comprehension may look cleaner whereas others like the functional approach
+
+
+filter()
+apply a function to each element in a sequence, constructing a new sequence with the elements for which the function returns True
+
+like map() filter() applies a function to each element in the sequence and produces its results lazily
+
+unlike map() filter() only accepts a single input sequence and the function it takes must also only accept a single input argument
+
+e.g.
+filter(function, input sequence)
+
+filter(is_odd, [1, 2, 3, 4, 5]) = [1, 3, 5]
+
+filter returns an iterable object of type filter
+filter applies its first argument to each element in the input sequence and the output returns sequence for each filter returns True
+
+
+e.g.
+using lambda
+>>> positives = filter(lambda x: x > 0, [1, -5, 0, 6, -2, 8])
+>>> positives
+<filter object at 0x00000200291F1B38>
+>>> list(positives)
+[1, 6, 8]
+
+remember result from filter is a lazy iterable so must use list() or something else to force evaluation of the results
+
+
+Passing None as the first argument to filter() will remove elements which evaluate to False
+
+e.g.
+>>> trues = filter(None, [0, 1, False, True, [], [1, 2, 3], '', 'hello'])
+>>> list(trues)
+[1, True, [1, 2, 3], 'hello']
+
+
+map() and filter() return lazily evaluated objects
+their results must be "forced" using list objects
+
+
+functools.reduce()
+repeatedly apply a function to the elements of a sequence reducing them to a single value
+
+reduce() is equivalent to
+functional programming fold
+
+or
+LINQ aggregate()
+
+C++ STL
+std::accumulate()
+
+
+Example
+standard library operator module contains function equivalents to infix operators
+
+>>> from functools import reduce
+>>> import operator
+>>> reduce(operator.add, [1, 2, 3, 4, 5])
+15
+>>>
+>>> numbers = [1, 2, 3, 4, 5]
+>>> accumulator = operator.add(numbers[0], numbers[1])
+>>> for item in numbers[2:]:
+...   accumulator = operator.add(accumulator, item)
+...
+>>> accumulator
+
+
+another example
+>>> def mul(x, y):
+...   print('mul {} {}'.format(x, y))
+...   return x * y
+...
+>>> reduce(mul, range(1, 10))
+mul 1 2
+mul 2 3
+mul 6 4
+mul 24 5
+mul 120 6
+mul 720 7
+mul 5040 8
+mul 40320 9
+362880
+
+
+NOTES
+>>> reduce(mul, [])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: reduce() of empty sequence with no initial value
+>>> reduce(mul, [1])
+1
+
+
+Optional initial value is conceptually just added to the start of the input sequence
+
+the optional value serves as the first accumulator value for the reduction
+
+>>> values = [1, 2, 3]
+>>> reduce(operator.add, values, 0)
+6
+>>> values = []
+>>> reduce(operator.add, values, 0)
+0
+>>> values = [1, 2, 3]
+>>> reduce(operator.add, values, 0)
+6
+>>> reduce(operator.mul, values, 1)
+6
+
+
+Combining map() and reduce()
+e.g.
+map_reduce.py
+dict maps word to the num of times that word was found in document
+
+>>> from map_reduce import *
+>>> count_words('It was the best of times, it was the worst of times.')
+{'it': 2, 'was': 2, 'the': 2, 'best': 1, 'of': 2, 'times': 2, 'worst': 1}
+
+
+>>> from functools import reduce
+>>> from map_reduce import combine_counts, counts
+>>> total_counts = reduce(combine_counts, counts)
+>>> total_counts
+{'hhh': 1, 'iii': 1, 'jjj': 1, 'kkk': 1, 'lll': 1}
+
+
+Iteration protocols
+iter()
+create an iterator
+
+next()
+get next element in sequence
+
+StoIteration
+signal the end of the sequence
+
+
+iterable
+an object which implements the __iter__() method
+
+iterator
+an object which implements the iterable protocol
+
+i.e.
+all iterators MUST implement methods
+__iter__()
+__next__()
+
+e.g.
+example_iterator.py
+
+>>> from example_iterator import ExampleIterator
+>>> i = ExampleIterator()
+>>> next(i)
+1
+>>> next(i)
+2
+>>> next(i)
+3
+>>> next(i)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\08\08a\example_iterator.py", line 11, in __next__
+    raise StopIteration()
+StopIteration
+
+
+since iterators are also iterables we can use our example iterator in a for loop
+
+>>> for i in ExampleIterator():
+...   print(i)
+...
+1
+2
+3
+
+
+Putting the Protocols together
+iterable and iterator
+
+example_iterator02.py
+from example_iterator02 import *
+>>> for i in ExampleIterable():
+...   print(i)
+...
+1
+2
+3
+
+>>> [i * 3 for i in ExampleIterable()]
+[3, 6, 9]
+
+
+Alternative Iterable protocol
+the alternative iterable protocol works with any object that supports consecutive integer indexing via __getitem__()
+
+e.g.
+alt_iterator.py
+
+>>> from alt_iterable import *
+>>> [i for i in AlternateIterable()]
+[1, 2, 3]
+
+
+Extended iter() format
+iter(callable, sentinel)
+
+callable object that zero [or more] arguments
+sentinel	iteration stops when callable produces this value
+
+iter() calls callable to produce values
+
+Extended iter() is often used for creating infinite sequences from existing functions
+
+e.g.
+>>> import datetime
+>>> i = iter(datetime.datetime.now, None)
+>>> next(i)
+datetime.datetime(2020, 4, 25, 16, 34, 0, 732090)
+>>> next(i)
+datetime.datetime(2020, 4, 25, 16, 34, 2, 355896)
+>>> next(i)
+datetime.datetime(2020, 4, 25, 16, 34, 2, 708270)
+
+OR
+with open('ending_file.txt', 'rt') as f:
+  for line in iter(lambda: f.readline().strip(), 'END'):
+  print(line)
+
+
+
+Duck Tails
+real world iterables
+
+e.g.
+Sensor data
+sensor.py
+>>> import sensor
+2020-04-25 16:39:40.950319 0.4936161575384619
+2020-04-25 16:39:41.951874 0.13526603634725387
+2020-04-25 16:39:42.952344 0.11853766857286285
+
+
+SUMMARY
+Comprehensions can process more than one input sequence
+items = [(x,y) for x in xs for y in ys]
+
+multiple input sequences and comprehensions work like nested for loops
+items = []
+for x in xs:
+  for y in ys:
+    items.append((x, y))
+
+
+later clauses in a comprehension can reference variables bound to in earlier clauses
+items = [(x, y) for x in xs for y in range(x)]
+
+Comprehensions can also have multiple if clauses inter dispersed with the for clauses
+items = [x / (x - y)
+	for x in xs
+	if x > 50
+	for y in ys
+	if x - y != 0]
+
+
+Comprehensions can also appear in the result expression of 
+comprehensions resulting in nested sequences
+
+list_of_lists = [[y * 3 for y in ys] for x in xs]
+
+
+Python provides a number of functional style tools for working with iterators
+
+map(item_transforming_function, iterable)
+map() calls a function for each element in its input sequence
+map() returns an iterable object not a fully evaluated collection
+map() results are lazily evaluated meaning you must access them to force their calculation
+map() results are typically evaluated thru the use of iteration constructs such as for loops
+
+map(item_transforming_function, iterable1, iterable2)
+you must provide as many input sequences to map as the callable argument has parameters
+map takes one element from each input sequence from each output element it produces
+map stops producing output when it shortest input sequence is exhausted
+map can be used to implement the same behavior as comprehensions in some cases
+
+filter(predicate_function, iterable)
+filer selects values from an input sequence which matches a specified criteria
+filer passes each element of its input sequence to the function argument
+filer returns an iterable input elements for which it is truthy
+like map, filter produces its output lazily
+if you pass None as the first argument to filter then it yields the input values which evaluate to True in a boolean context
+
+functools.reduce(function, iterable)
+reduce accumulatively applies a function to the elements of an input sequence
+reduce calls the input function with two arguments: the accumulated result so far and the next element in the sequence
+reduce is a generalization of summation
+reduce returns the accumulated result after all of the input has been processed
+if you pass an empty sequence to reduce it will raise a TypeError
+reduce accepts an optional initial value argument
+
+functools.reduce(function, iterable, initialzer)
+this initial value is conceptually added to the front of the input sequence
+the initial value is returned if the input sequence is empty
+
+the map() and reduce() functions in Python are related to the ideas in the map-reduce algorithm
+
+
+Iteration protocol
+Python next() function calls __next__() on its argument
+
+iterators in Python must support __next__() method
+__next__() must return the next item in the sequence or raise StopIteration if it [the sequence] is exhausted
+
+
+Iterable protocol
+Python iter() functions calls __iter__() on its argument
+iterables in Python must support __iter__() method
+__iter__() should return an iterator for the iterable object
+objects with __getitem__() method that accepts consecutive integer indices starting at zero are also iterable
+iterables implemented via __getitem__() must raise IndexError when they're exhausted 
+
+iter(callable, sentinel)
+the extended form of iter() accepts a zero argument callable and a sentinel value 
+extended iter() repeatedly calls the callable argument until it returns the sentinel value
+the values produced by extended iter() are those returned from the callable
+one use case for extended iter() is to iterate using simple functions
+protocol conforming iterators must also be iterable

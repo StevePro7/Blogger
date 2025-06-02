@@ -1,0 +1,380 @@
+https://app.pluralsight.com/player?course=python-beyond-basics&author=austin-bingham&name=python-beyond-basics-m01&clip=0&mode=live
+17/04/2020
+
+Packages
+structure to program as grows beyond simple modules
+
+
+Modules
+corresponds to single source file
+load modules using import keyword
+
+Module reps by <class module>
+
+
+Package
+special type of module
+a module which can contain other modules
+package can contain other modules including other packages
+define hierarchies of modules
+e.g.
+standard library
+
+
+REPL
+import urllib
+import urllib.request
+type(urllib)		package
+type(urllib.request)	module
+
+urllib.__path__
+__path__ where urllib searches to find nested modules
+
+Packages are generally directories
+Modules are generally files
+
+
+How does Python locate modules?
+sys.path
+list of directories Python searches for modules
+
+sys.path[0]
+''
+sys.path[-5:]
+
+
+ModuleNotFoundError: No module named 'path_test'
+
+PYTHONPATH
+Environment variable listing paths added to sys.path
+
+Uses the same format as your system PATH variable
+export PYTHONPATH=<directory>
+set PYTHONPATH=<directory>
+
+https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH
+https://docs.python.org/3/library/sys.html#sys.path
+
+PYTHONPATH in VS Code
+https://developpaper.com/setting-pythonpath-in-vscode
+ ${workspace Folder}/.vscode/.env:
+ PYTHONPATH=./your_src_dir:${PYTHONPATH}
+
+
+Basic package structure
+path_entry/			// must be in sys.path
+	my_package/		// package root
+		__init__.py
+
+__init__.py			// makes the directory a package
+
+
+reader
+type NUL > reader/__init__.py
+
+01b>python
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import reader
+>>> type(reader)
+<class 'module'>
+>>> reader.__file__
+./reader/__init__.py
+
+
+Package
+just a directory container __init__.py
+
+
+
+Reader
+01b>python
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import reader.reader
+>>> reader.reader.__file__
+'D:\\Bitbucket\\SteveProXNA\\actionstuff\\Study\\Plurasight\\PythonBeyondBasics\\01b\\reader\\reader.py'
+>>> r = reader.reader.Reader('reader/reader.py')
+>>> r
+<reader.reader.Reader object at 0x00D34050>
+>>> r.read()
+'""" Class """\nclass Reader:\n    def __init__(self, filename):\n        self.filename = filename\n        self.file = open(self.filename, \'rt\')\n\n    def close(self):\n        self.file.close()\n\n    def read(self):\n        return self.file.read()\n'
+>>> r.close()
+
+
+__init__.py
+from reader.reader import Reader
+01b>python
+>>> import reader
+>>> r = reader.Reader('reader/reader.py')
+>>> r.read()
+'""" Class """\nclass Reader:\n    def __init__(self, filename):\n        self.filename = filename\n        self.file = open(self.filename, \'rt\')\n\n    def close(self):\n        self.file.close()\n\n    def read(self):\n        return self.file.read()\n'
+>>> r.close()
+
+
+compressed subpackage
+PyCharm
+right click reader
+Python package
+compressed
+
+01b
+python
+>>> import reader
+>>> import reader.compressed
+>>> import reader.compressed.gzipped
+>>> import reader.compressed.bzipped
+
+
+01b
+python -m reader.compressed.bzipped test.bz2 data compressed with bz2
+python -m reader.compressed.gzipped test.gz data compressed with gzip
+
+python
+>>> import reader
+>>> r = reader.Reader('test.bz2')
+>>> r.read()
+'data compressed with bz2'
+>>> r.close()
+
+>>> import reader
+>>> r = reader.Reader('test.gz')
+>>> r.read()
+'\x1f‹\x08\x08½ë™^\x02ÿtest\x00JI,ITHÎÏ-(J-.NMQ(Ï,ÉPH¯Ê,\x00\x00\x00\x00ÿÿ\x03\x00âœ`†\x19\x00\x00\x00'
+>>> r.close()
+
+// DIDN'T WORK [gzip]
+
+
+Package review
+Packages are modules that contain other modules
+Packages are generally implemented as directories container special __init__.py file
+The __init__.py file is executed when the package is imported
+Packages can contain sub packages which themselves are implemented with __init__.py files in directories
+
+
+
+Absolute imports
+imports which use a full path to the module
+
+e.g.
+from reader.reader import Reader
+
+
+Relative imports
+imports which use a relative path to modules in the same package
+from .reader import Reader
+
+IMPORTANT
+relative cannot make imports of modules outside of reader
+
+
+Example
+my_package/
+	__init__.py
+	a.py
+	nested/
+		__init__.py
+		b.py
+		c.py	
+
+
+c.py
+from ..a import A
+from .b import B
+
+
+
+Import error
+https://napuzba.com/a/import-error-relative-no-parent/p4
+
+
+FARM
+absolute
+from farm.bovine.common import ruminate
+
+\relative
+from .common import ruminate
+OR
+from . import common
+
+
+Relative imports
+can reduce typing in deeply nested package structures
+promote certain forms of modifiability
+can aid package renaming and refacotring
+general advice is to avoid them [relative imports] in most cases
+
+
+__all__
+list of attributes names imported via
+from module import *
+
+from reader.compressed import *
+locals()
+
+e.g.
+01b
+from reader.compressed.bzipped import opener as bz2_opener
+from reader.compressed.gzipped import opener as gzip_opener
+
+__all__ = ['bz2_opener', 'gzip_opener']
+
+
+The __all__ attribute should be a list of strings containing names available in the module
+
+
+
+Namespace packages
+packages split across several directories
+
+useful for splitting large packages into multiple parts
+
+
+IMPORTANT
+Namespace packages have NO __init__.py
+this avoids complex initialization ordering problems
+
+
+Importing namespace packages
+1. Python scals all entries in sys.path
+2. If a matching directory with __init__.py is found then a normal package is loaded
+3. If foo.py is found then it is loaded
+4. Otherwise all matching directories in sys.path are considered part of the namespace package
+
+EXAMPLE
+path1
+	split_farm
+		bovine
+			__init__.py
+			common.py
+			cow.py
+			ox.py
+			string.py
+path2
+	split_farm
+		bird
+			__init__.py
+			chicken.py
+			turkey.py
+
+
+to import farm you need to import both path1 and path2
+import sys
+sys.path.extend(['path1', 'path2'])
+
+import split_farm
+split_farm.__path__
+_NamespacePath(['path1/split_farm', 'path2/split_farm'])
+import split_farm.bird
+import split_farm.bovine
+http://www.python.org/dev/peps/pep-0420
+
+
+Executable Directories
+specify main entry point
+
+directories conatining an entry point for Python execution
+e.g.
+
+reader
+	__main__.py
+	reader
+		__init__.py
+		compressed
+			__init__.py
+			bzipped.py
+			gzipped.py
+		reader.py
+
+
+__main__.py
+makes it really easy to bundle up smaller programs and easier to distribute them to people
+
+Executable zip file
+zip file containing an entry point for Python execution
+
+couldn't get working
+cd D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\01d\reader
+python reader test.gz
+
+
+zip the directory 
+Python knows how to zip files and treats them like directories
+
+e.g.
+cd D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\01d\reader
+zip -r reader.zip *
+
+python reader.zip test.gz
+python reader.zip test.gz2
+
+
+RECOMMENDED LAYOUT
+project_name				NOT a package
+	__main__.py			include if you want to make your package executable
+	project_name			common pattern to make the same
+		__init__.py
+		moure_source.py
+		subpackage1
+			__init__.py
+		test
+			__init__.py
+			test_code.py
+	setup.py
+
+
+Note: Galileo-driver follows this pattern pretty much but there is some inconsistency with folder names
+also  there is no __main__.py so there is no executable directories required for this project
+
+
+
+Modules are singletons
+preferred to global variables
+
+if you need singleton then popular to implement as module level attribute
+Why?  Because modules are only executed once when first imported
+
+Guarantees that singleton will only be initialized only once
+and you control the order
+
+Module initialization order is well defined
+
+EXAMPLE
+how to implement signletons in a safe and reliable way
+
+registry.py
+_registry = []					# implementation detail that should not be accessed directly
+
+def register(name):
+	_registry.append(name)
+
+def registered_names():
+	return iter(_registry)
+
+
+user_registry.py
+import registry
+
+registry.register('my name')
+for name in registry.registered_names():
+	print(name)
+
+
+SUMMARY
+Packages are a special type of module
+Unlike modules, packages can contain other modules including other packages
+Packages have __path__ member which specifies the directories in which package is loaded
+sys.path is a list of directories where Python searches for modules
+PYTHONPATH is a list containing directories	; or : delimited list
+Normal packages are implemented by putting __init__.py in directory
+__init__.py is executed when a package is imported
+modules can be passed to Python using -m argument e.g. python -m my_module
+relative imports must use from 'relative import name' syntax
+from in relative import uses "." each "." references a containing package
+__all__ defines what modules to export when from X import * is used
+Namespace packages are split across multiple directories
+Namespace packages don't use __init__.py
+Executable directories are defined by putting __main__.py file in directory
+Executable directories can be compressed into zip files which can be executed as well
+Executable directories and zipped files are convenient ways to distribute Python programs

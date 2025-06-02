@@ -1,0 +1,196 @@
+https://app.pluralsight.com/course-player?clipId=83c1971f-70ab-4170-855f-4c7e8687d0e9
+20/04/2020
+
+Python has 2x functions for making string representations from Python objects
+
+str()
+repr()
+
+point.py
+from point import *
+p = Point2D(x = 42, y=60)
+str(p)
+Out[5]: '(42, 60)'
+repr(p)
+Out[6]: 'Point22D(x=42, y=60'
+
+
+__repr__()
+built-in function
+produces an unambiguous string representation of an object
+Point2D(x=42, y=60)
+
+Exactness is more important than human-friendliness
+Suited for debugging
+Includes identifying information
+Generally best for logging
+
+repr() should contain more information than the result of str()
+repr() is for DEVELOPERS
+
+repr() will be used in debugging
+i.e. pdb
+
+rule of thumb
+always write a repr() for your classes
+default repr() is not very helpful
+
+
+__str__()
+built-in function
+produces a readable, human-friendly representation of an object
+
+str() is for CLIENTS
+str is constructor for the str type
+
+
+String representations
+print()
+uses str()
+
+By default call str()
+simply calls repr()
+
+e.g.
+if you remove str()
+
+
+But repr() does not call str()
+The circle is centered at (123, 456)
+The circle is centered at <point.Point2D object at 0x0000020ABCCF7C88>
+
+
+repr() is used when showing elements of a collection
+
+
+format()
+string representations called behind the scenes
+print(" {} "	calls __format__()
+
+invoked by str.format()
+This is a point [Formatted point: 1 2 ]
+
+But what is the f arg in __format__()
+f specifies any formatting options in the format string
+
+e.g.
+"{:XYX}".format(obj)
+anything after the : is sent verbatim to the format string 
+e.g.
+    print("{}".format(Point2D(1, 2)))
+    print("{:r}".format(Point2D(1, 2)))
+
+IMPORTANT
+most classes don't need to override __format__()
+as just calls __str__() which is sufficient
+
+can force to use repr() by this
+'{!r}'..format()
+
+can force to use str() by this
+'{!s}'..format()
+
+
+reprlib
+standard library module
+supports alternative implementation of repr()
+
+limits otherwise excessive string length
+useful for large collections
+
+e.g.
+reprlib.repr()
+1000000
+[Point2D(x=0, y=0), Point2D(x=0, y=1), Point2D(x=0, y=2), Point2D(x=0, y=3), Point2D(x=0, y=4), Point2D(x=0, y=5), ...]
+
+focus
+reprlib.Rep
+implements the main functionality of reprlib
+supports customization through subclassing
+
+reprlib.aRep
+an instance used by Python and debuggers
+
+
+built-in functions
+ascii()
+replaces non-ASCII characters with escape sequences
+y = ascii(x)
+type(x)
+type(y)
+
+
+ord()
+converts a single character to its integer Unicode codepoint
+x = '3/4'
+ord(x)
+
+
+chr()
+converts an integer Unicode codepoint to a single character string
+chr(190)
+'3/4'
+
+chr(ord(x))
+ord(chr(190))
+
+
+Duck Tails
+repr() larger than str()
+but maybe want str() larger than repr() e.g. for tables
+
+repr()
+Table(header=['First name', 'Last name'])
+
+str()
+First name Last name
+========== =========
+Fred       Flintsone
+George     Jetson   
+Scooby     Doo  
+
+Sometimes the repr() of an object will be shorter than its str()
+
+
+SUMMARY
+Python has 2x string representations
+
+01.
+repr(obj)	__repr__(self)
+unambiguous
+precise
+include type
+for developers
+always implement
+
+str(obj)	__str__(self)
+for humans
+fallback to repr()
+
+
+print() uses str()
+
+collections use repr() to print elements even if the collection is printed with str()
+
+
+str("{:f}".format uses __format__(self, f)
+default __format__() calls str()
+
+args to format() contain any special formatting instructions
+these instructions MUST come after the : in {}
+usually you do not need to impl __format__()
+
+repr.lib is 
+drop in replacement for repr() which limits output size
+useful for printing large data structures
+provides repr() which provides most functionality
+Repr class can be customized via inheritance
+
+ascii()	replaces non ascil characters in Unicode string with escape sequences
+ord() 		converts a single character to its integer Unicode codepoint
+chr()		converts an integer Unicode codepoint to a single character string
+
+ord() and chr() are inverses of one another
+
+good __repr__() are easy to write and can help in debugging
+when reporting errors repr() is more helpful than str()

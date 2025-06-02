@@ -1,0 +1,263 @@
+https://app.pluralsight.com/player?course=python-beyond-basics&author=robert-smallshire&name=python-beyond-basics-m09&clip=0&mode=live
+02/06/2020
+
+Python fundamentals
+
+Protocol		Implementing collections
+Container		str, list, range, tuple, set, bytes, dict
+Sized			str, list, range, tuple, set, bytes, dict
+Iterable		str, list, range, tuple, set, bytes, dict
+Sequence		str, list, range, tuple, bytes
+Set			set
+Mutable Sequence	list
+Mutable Set		set
+Mutable Mapping		dict
+
+
+Protocols
+To implement a protocol objects must support certain operations
+Most collections implement container, sized, iterable
+All except dict and set are sequence
+
+
+Container protocol
+Membership testing using in and not in
+
+
+Sized protocol
+Determine number of elements with len(s)
+
+
+Iterable protocol
+Can produce an iterator with iter(s)
+for item in iterable:
+	do_something(item)
+
+
+Sequence protocol
+Retrieve elements by index
+item = seq[index]
+
+Find items by value
+index = seq.index(item)
+
+Count items
+num = seq.count(item)
+
+Product a reversed sequence
+r = reversed(seq)
+
+
+Set protocol
+set algebra operations
+(methods and infix operators)
+subset
+proper subset
+equal
+not equal
+proper superset
+superset
+intersections
+union
+symmetric difference
+difference
+
+
+SortedSet
+a collection which is seized, iterable, sequence container of a set of distinct items and constructible from an iterable
+
+
+Construction convention
+collection_from_iterable = Collection(iterable)
+empty_collection = Collection()
+
+
+Container protocol
+Membership testing using in and not in
+Special method:	__contains__(item)
+Fallback to iterable protocol
+
+
+Sized protocol
+Number of items using len(sized) function
+Must not consume of modify collection
+Special method __len__()
+
+
+Iterable protocol
+Obtain an iterator with iter(iterable) function
+Special method __iter__()
+
+
+Sequence protocol
+Implies container, sized and iterable
+
+Retrieve slices by slicing
+item = seq[index]
+item = seq[start:stop]
+Special method __getItem__()
+
+Produce a reversed sequence
+r = reversed(seq)
+Special method __reversed__()
+Fallback to __getitem__() and __len__()
+
+Find items by value
+index = seq.index(item)
+No special method
+
+Count items
+num = seq.count(item)
+No special method
+
+Concatenation with + operator
+Special method __add__()
+
+Repetition with * operator
+Special methods __mul__() and rmul__()
+
+
+IMPORTANT notes
+Default equality test inherited from object compares identity
+Equality test specialized by list
+
+
+Equality and inequality
+
+Equality	lhs == rhs
+Special method __eq__(self, rhs)
+self argument is lhs left hand side operand
+
+Inequality
+lhs != rhs
+Special method __ne__(self, rhs)
+self argument is lhs left hand side operand
+
+
+NOTE
+it's important to return NotImplemented rather than NotImplementedError
+
+
+collections.abc
+Abstract Base Classes
+for Containers
+takes the legwork out of collection implementations
+
+
+Default implementations of index() and count() are inefficient with O(n)
+but if you use built-in bisect_left then can achieve O(log n) performance
+
+
+time the count method
+from sorted_set import SortedSet
+from random import randrange
+
+s = SortedSet(randrange(1000) for _ in range(2000))
+s
+
+[s.count(i) for i in range(1000)]
+
+from timeit import timeit
+timeit(setup='from __main__ import s',
+	stmt='[s.count(i) for i in range(1000)]', number=100)
+5.175s
+
+
+def count(self, itme)
+	index = biscect_left(self, ._items, item)
+	found = (index != len(self._items)) and (self._items[index] == item)
+	return int(found)
+
+
+from sorted_set import SortedSet
+from random import randrange
+s = SortedSet(randrange(1000) for _ in range(2000))
+len(s)
+
+from timeit import timeit
+timeit(setup='from __main__ import s',
+	stmt='[s.count(i) for i in range(1000)]', number=100)
+0.2s
+
+
+collections.abc
+from collections.abc import *
+>>> issubclass(list, Sequence)
+True
+>>> issubclass(list, Sized)
+True
+>>> issubclass(dict, Mapping)
+True
+>>> issubclass(dict, Sized)
+True
+>>> issubclass(dict, Iterable)
+True
+
+
+Set protocol
+implies container, sized, and iterable
+
+
+Relational operators
+Special	infix		set		
+method		operator	method		meaning
+__le__()	<=		issubset()	subset
+__lt__()	<				proper subset
+__eq__()	==				equal
+__ne__()	!=				not equal
+__gt__()	>				proper superset
+__ge__()	>=				superset			provided by collections.abc.Set
+
+
+Algebraic operators
+Special	infix		set		
+method		operator	method	
+__and__()	&		intersection()
+__or__()	!		union()
+__xor__()	^		symmetric_difference
+__sub__()	-		difference
+
+
+Finally, mutable set
+inherit from MutableSet instead of Set
+implement add() and discard()
+consider adding update( and symmetric_difference_update() etc.
+
+
+SUMMARY
+Implement collection class that conforms to standard Python protocols
+
+container protocol
+in and not in
+__contains__()
+
+
+size protocol
+__len__()
+
+
+iterable protocol
+__iter__()
+
+
+sequence protocol
+__getitem__()
+__reversed__()			not necessary	rely on built-in
+index()
+count()
+__add__()
+__mul__()
+__rmul__()
+
+
+string representation
+__repr__()
+
+
+value equality
+__eq__()
+__ne__()
+
+
+collections.abc
+Container, Sized, Iterable, Sequence, Set

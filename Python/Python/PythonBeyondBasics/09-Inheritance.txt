@@ -1,0 +1,543 @@
+https://app.pluralsight.com/player?course=python-beyond-basics&author=austin-bingham&name=python-beyond-basics-m08&clip=0&mode=live
+27/04/2020
+
+
+Multiple inheritance
+dispatch method calls
+
+
+01.
+Single inheritance
+class SubClass(BaseClass)
+
+subclasses will want to initialzie base classes
+base class initialize will only be called automatically if subclass initialize is undefined
+
+
+base.py
+Sub can override f() by redefining f()
+
+Calling base class initializer
+* Other languages automatically call base class initializers
+* Python treats __init__() like any other method
+* Base class __init__() is not called if overridden
+* Use super() to call base class __init__()
+
+
+02.
+Example
+super() used to access base-class implementation
+
+sortedlist.py
+>>> sl = SortedList([4, 3, 78, 11])
+>>> sl
+SortedList([3, 4, 11, 78])
+>>> len(sl)
+4
+>>> sl.add(-42)
+>>> sl
+SortedList([-42, 3, 4, 11, 78])
+>>> sl.add(7)
+>>> sl
+SortedList([-42, 3, 4, 7, 11, 78])
+
+
+03.
+Multiple inheritance
+
+isinstance()
+determines if an object is of a specified type
+
+Use isinstance() for runtime type checking
+e.g.
+>>> isinstance(3, int)
+True
+>>> isinstance('hello', str)
+True
+>>> isinstance(4.567, bytes)
+False
+>>> isinstance(sl, SortedList)
+True
+>>> isinstance(sl, SimpleList)
+True
+>>> isinstance(x, (float, dict, list))
+True
+
+
+sorted_list02.py
+>>> from sorted_list02 import *
+>>> il = IntList([1, 2, 3, 4])
+>>> il
+IntList([1, 2, 3, 4])
+>>> il.add(19)
+>>> il.add('5')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\09\09a\sorted_list02.py", line 33, in add
+    self._validate(item)
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\09\09a\sorted_list02.py", line 30, in _validate
+    raise TypeError('IntList only supprts integer values')
+TypeError: IntList only supprts integer values
+
+
+04.
+subblass()
+
+issubclass()
+determines if one type is a subclass of another
+
+>>> from sorted_list02 import *
+>>> issubclass(IntList, SimpleList)
+True
+>>> issubclass(SortedList, SimpleList)
+True
+>>> issubclass(SortedList, IntList)
+False
+
+
+>>> class MyInt(int) : pass
+...
+>>> class MyVerySpecialInt(MyInt) : pass
+...
+>>> issubclass(MyVerySpecialInt, int)
+True
+
+
+05.
+Multiple inheritance
+defining a class with more than one base class
+
+Python has a simple and understandable system for multiple inheritance
+class SubClass(Base1, Base2, ...)
+
+* Subclasses inherit methods of all bases
+* Without conflict, names resolve in the obvious way
+* Method Resolution Order (MRO) determines name lookup in all cases
+
+sorted_list03.py
+>>> from sorted_list03 import *
+>>> sil = SortedIntList([42, 23, 2])
+>>> sil
+SortedIntList([2, 23, 42])
+>>> SortedIntList([42, 23, '1'])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\09\09a\sorted_list03.py", line 37, in __init__
+    self._validate(x)
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\09\09a\sorted_list03.py", line 43, in _validate
+    raise TypeError('IntList only supprts integer values')
+TypeError: IntList only supprts integer values
+
+
+>>> sil.add(-1234)
+>>> sil
+SortedIntList([-1234, 2, 23, 42])
+>>> sil.add('hello')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\09\09a\sorted_list03.py", line 46, in add
+    self._validate(item)
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\09\09a\sorted_list03.py", line 43, in _validate
+    raise TypeError('IntList only supprts integer values')
+TypeError: IntList only supprts integer values
+
+
+Q.
+How does Python know which add() to call?
+How does Python maintain both constraints?
+
+A.
+Method Resolution Order (MRO)
+
+
+06.
+Details multiple inheritance
+
+If a class
+A.	has multiple base classes
+B.	defines no initializer
+
+then only the initializer of the first base class is automatically called
+
+e.g.
+>>> class Base1:
+...   def __init__(self):
+...     print('Base1.__init__')
+...
+>>> class Base2:
+...   def __init__(self):
+...     print('Base2.__init__')
+...
+>>> class Sub(Base1, Base2):
+...   pass
+...
+>>> s = Sub()
+Base1.__init__
+
+
+__bases__
+a tuple of base clases
+
+e.g.
+>>> SortedIntList.__bases__
+(<class 'sorted_list03.IntList'>, <class 'sorted_list03.SortedList'>)
+
+OR
+>>> IntList.__bases__
+(<class 'sorted_list03.SimpleList'>,)
+
+
+
+07.
+MRO
+method resolution order
+
+ordering that determines method name loopup
+
+* Commonly called "MRO"
+* Methods may be defined in multiple places
+* MRO is an ordering of the inheritance graph
+
+stored in __mro__
+(<class 'sorted_list03.SortedIntList'>, <class 'sorted_list03.IntList'>, <class 'sorted_list03.SortedList'>, <class 'sorted_list03.SimpleList'>, <cl
+ass 'object'>)
+
+
+MRO = tuple of classes defining the method resolution order
+
+>>> SortedIntList.mro()
+[<class 'sorted_list03.SortedIntList'>, <class 'sorted_list03.IntList'>, <class 'sorted_list03.SortedList'>, <class 'sorted_list03.SimpleList'>, <cl
+ass 'object'>]
+
+
+does the same but stored in a list instead of tuple
+
+Q.
+How is the MRO used to dispatch method calls?
+obj.method()
+
+A.
+Python searches from first to last base class and as soon as it finds the method it stops
+
+
+diamond.py
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from diamond import *
+>>> D.mro()
+[<class 'diamond.D'>, <class 'diamond.B'>, <class 'diamond.C'>, <class 'diamond.A'>, <class 'object'>]
+
+>>> d = D()
+>>> d.func()
+'B. func'
+
+
+08.
+MRO con't
+
+C3
+algortihm for calculating MRO in Python
+
+* Subclasses come before base classes
+* Base class order from class definition is preserved
+* First two qualities are preserved no matter where you start in the inheritance graph
+
+BUT
+not all inheritance declarations are allowed
+
+e.g.
+>>> class A: pass
+...
+>>> class B(A): pass
+...
+>>> class C(A): pass
+...
+>>> class D(B, A, C): pass
+...
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: Cannot create a consistent method resolution
+order (MRO) for bases A, C
+
+here C3 cannot put A after B and before C
+
+
+09.
+super()
+
+Give a method resolution order and a class C, super() gives you an object which resolves methods using only the part of the MRO which comes after C
+
+super() returns a proxy which routes method calls
+
+Bound proxy bound to a specific class or instance
+Unbound proxy not bound to a class or instance
+
+
+10.
+Bound super proxies
+
+Two types of bound proxies:
+1.	instance bound
+2. 	class bound
+
+
+class bound
+super(base-class, derived-class)
+
+* Python finds MRO for derived-class
+* It then finds base-class in that MRO
+* It take everything after base-class in the MRO, and finds the first class in that sequence with a matching method name
+
+>>> from sorted_list03 import *
+>>> SortedIntList.mro()
+[<class 'sorted_list03.SortedIntList'>, <class 'sorted_list03.IntList'>, <class 'sorted_list03.SortedList'>, <class 'sorted_list03.SimpleList'>, <cl
+ass 'object'>]
+>>> super(SortedList, SortedIntList)
+<super: <class 'SortedList'>, <SortedIntList object>>
+
+Q.
+how does Python find the add() method?
+
+A.
+SortedIntList mro()
+
+finds 1st mro
+SortedIntList 
+IntList
+SortedList
+SimpleList
+object
+
+finds SortedList in that mro and takes everything after SortedList
+i.e.
+SimpleList
+object
+
+then finds first add() which is in SimpleList
+
+PROOF
+>>> super(SortedList, SortedIntList).add
+<function SimpleList.add at 0x0000022A3496F510>
+
+however can't call add here as this is class bound proxy NOT instance bound proxy
+but can call static method
+
+e.g.
+>>> super(SortedIntList, SortedIntList)._validate(5)
+>>> super(SortedIntList, SortedIntList)._validate('hello')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Bitbucket\SteveProXNA\actionstuff\Study\Plurasight\PythonBeyondBasics\09\09a\sorted_list03.py", line 43, in _validate
+    raise TypeError('IntList only supprts integer values')
+TypeError: IntList only supprts integer values
+
+
+Note: Python will raise an exception when the second argument is not a subclass of the first
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: super(type, obj): obj must be an instance or subtype of type
+
+
+11.
+Instance bound proxy
+super(class, instance-of-class)
+
+* Finds the MRO for the type of the second argument
+* Finds the location of the first argument in the MRO
+* Uses everything after that for resolving methods
+
+>>> pp(SortedIntList.mro())
+[<class 'sorted_list03.SortedIntList'>,
+ <class 'sorted_list03.IntList'>,
+ <class 'sorted_list03.SortedList'>,
+ <class 'sorted_list03.SimpleList'>,
+ <class 'object'>]
+>>>
+>>> sil = SortedIntList([5, 115, 10])
+>>> sil
+SortedIntList([5, 10, 115])
+>>> super(SortedList, sil)
+<super: <class 'SortedList'>, <SortedIntList object>>
+
+
+In this example the bound proxy is SimpleList so the add() method is NOT sorted anymore
+>>> super(SortedList, sil).add(6)
+>>> sil
+SortedIntList([5, 10, 115, 6])
+
+
+IMPORTANT
+you must use super() with care otherwise you can break your designs
+
+
+12.
+super() arguments
+super(base-class, derived-class)
+super(class, instance-of-class)
+
+You can call super() and Python will determine correct behavior
+
+e.g.
+instance method
+super(class-of-method, self)
+
+class method
+super(class-of-method, class)
+
+
+13.
+SortedIntList explained
+
+super() uses everything after a specific class in an MRO to resolve method calls
+this is all bundled up into proxy objects returned from the super call
+
+remember SortedList and IntList were defined independently
+but both constraints in SortedIntList were properly maintained
+
+KEY
+Both classes use super() instead of direct base class references
+
+BUT 
+super() doesn't just access base classes 
+it access the complete method resolution order for the class
+
+i.e
+MRO for SortedIntList contains BOTH IntList and SortedList
+
+>>> SortedIntList.mro()
+[<class 'sorted_list03.SortedIntList'>,
+ <class 'sorted_list03.IntList'>,
+ <class 'sorted_list03.SortedList'>,
+ <class 'sorted_list03.SimpleList'>,
+ <class 'object'>]
+
+e.g.
+>>> sil = SortedIntList()
+>>> sil.add(6)				
+calls IntList.add()
+which calls super()
+call to super() in IntList.add() uses the full MRO for IntList
+meaning that rather than calling SimpleList.add() it actually resolves to SortedList.add()
+
+This is how SortedList maintains two constraints without having to manually combine them
+
+
+14.
+Object
+* the core of the Python object model
+* object is the ultimate base class of every class
+* object is automatically added as a base class
+
+e.g.
+>>> IntList.mro()
+[<class 'sorted_list03.IntList'>, <class 'sorted_list03.SimpleList'>, <class 'object'>]
+>>> SortedIntList.mro()
+[<class 'sorted_list03.SortedIntList'>, <class 'sorted_list03.IntList'>, <class 'sorted_list03.SortedList'>, <class 'sorted_list03.SimpleList'>, <cl
+ass 'object'>]
+
+>>> list.mro()
+[<class 'list'>, <class 'object'>]
+>>> int.mro()
+[<class 'int'>, <class 'object'>]
+
+
+
+
+
+Info
+>>> class NoBaseClass: pass
+...
+>>> NoBaseClass.__bases__
+(<class 'object'>,)
+
+>>> dir(object)
+['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_s
+ubclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclassh
+ook__']
+
+object provides the mechanisms for attribute lookup and management
+
+
+15.
+Duck tails
+Inheritance and implementation sharing
+No function argument types
+Unlike nominal typing
+
+SO
+In Python inheritance is a way to share implementation
+not satifsy a type system [nor re-use type hierarchies]
+
+
+16.
+SUMMARY
+Inheritance and subtype polymorphism
+
+Subclasses have all methods of base class
+if class with single base doesn't have __init__ then the base class __init__ will be auto called
+best to explicitly call base class __init__ from sub class __init__
+
+isinstance() takes object as 1st arg and type as 2nd arg
+isinstance() determines if 1st arg is instance of 2nd arg or any subclass of the 2nd arg
+isinstance() can accept tuple of types as 2nd arg which returns true if 1st arg is any of those types
+
+Multiple inheritance means having more than one direct base class
+use comma separated listof class names in parentheses after class name
+Python uses well-defined method resolution order to resolve methods at runtime
+If multi inheritance class has no __init__ Python will auto call __init__ of 1st base class on construction
+
+__bases__ is tuple of types on class object = bases classes for class
+__bases__ is in same order as class definition
+__bases__ populated for single and multiple inheritance
+
+MRO	method resolution order
+defines order in which Python will search an inheritance graph for methods
+MRO is stored as tuple of types in __mro__ attribute of class
+mro() returns contents of __mro__ as a list
+
+To resolve method Python uses 1st entry in class MRO which has requested method
+MRO is dependent on base class declaration order
+MRO is calculated using C3 algorithm
+MRO honors base class ordering from class definitions
+MRO puts subclasses before base classes
+The relative order of clases in an MRO is consistent across all classes
+
+It is possible to specify an inconsistent base class ordering in which case Python will raise TypeError when class definition is reached
+
+Super()
+* operates by using elements in MRO that come after the specified type
+* returns a proxy object which forwards calls to the correct objects
+
+2x types of super proxies: bound and unbound
+Unbound super proxies used for implementing other Python features
+Bound proxies can be bound to either class objects or instances
+
+Calling super() with
+base class and derived class argument returns a proxy bound to a class
+class and an instance of that class returns a proxy bound to an instance
+
+A super proxy takes the MRO of its 2nd arg or the type of its 2nd arg, finds the 1st arg in that MRO and uses everything after in the MRO for method resolution
+
+Since class-bound proxies aren't bound to an instance, you can't directly call instance methods that they resolve however class methods resolved by class-bound proxies can be called directly
+
+Python will raise TypeError if 2nd arg is not a subclass or instance of the 1st arg
+Inappropriate use of super() can violate some design constraints
+
+Call super with no args inside:
+an instance method produces an instance-bound proxy
+a class method produces a class-bound proxy
+
+no arg form of super() is same as calling super with method's class as the 1st arg and method's 1st arg as the 2nd
+
+Since super() works on MROs and not just a class's base classes, classes can be designed to co-operate without prior knowledge of one another
+
+
+Object is ultimate base class for ALL classes in Python
+If you don't specify base class then Python will use object as base
+Therefore object will show up in every class inheritance MRO 
+
+Object provides hooks for Python's comparison operators
+Object provides default __repr__ and __str__ implementations
+Object implements the core attribute lookup and management functionality in Python
+
+Inheritance in Python is best used as a way to share implementation
+
