@@ -1,0 +1,113 @@
+<span style="font-family:verdana;font-size:85%;">
+
+TODO - Intro
+<!--
+<a href="https://blogger.googleusercontent.com/img/a/AVvXsEiCj481fVWFMoyO-kJkFBrGdOjK9cBzwTv4jHVtJbYgpy4KzOh0Hidn576NTY2osFPoCGxU96leIaS1c23MdpIZxqxK4fJspudZa3g_zU9tQa_v31dotCWdBjC7t9VafujVUPF0zsQJpkNyMNfetqOz5ETqmxE6so8hqD7qpYMbINxw7uzi4Td9rsDP=s364"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/a/AVvXsEiCj481fVWFMoyO-kJkFBrGdOjK9cBzwTv4jHVtJbYgpy4KzOh0Hidn576NTY2osFPoCGxU96leIaS1c23MdpIZxqxK4fJspudZa3g_zU9tQa_v31dotCWdBjC7t9VafujVUPF0zsQJpkNyMNfetqOz5ETqmxE6so8hqD7qpYMbINxw7uzi4Td9rsDP=s600"/></a>
+-->
+Let's check it out! 
+<br /><br />
+  
+Evolution of SoftwareDeployment: Physical Servers to Container Orchestration
+<br /><br />
+
+1. Era of Physical Servers: 1990s and Before
+<br />
+Back in the 1990s Software was predominantly deployed directly onto physical servers, many often housed in on-premises data centers.  Each server typically dedicated to specific application [or set of applications].
+<br /><br />
+  
+Challenges: Scalability, Isolation, Resource Utilization
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;involved procuring, setting up, deploying to additional physical servers = time consuming + expensive
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;multiple apps could interfer with one another leading to system crashes or other performance issues
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;some servers underutilized while others overwhelmed which meant inefficient resource distribution
+</td>
+</tr>
+</table>
+<br />
+  
+2. Dawn of Virtualization: 2000s
+<br />
+  
+Introduction of virtualization technologies like those provided by VMware allowed Virtual Machines [VMs] to each run a physical server which meant each VM operating as though it were on own dedicated hardware.
+  
+<br /><br />
+Benefits: Resource Efficiency, Isolation, Snapshot + Cloning
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+multiple VMs could share resources of single server leading to better resource utilization
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+VMs provide new level of isolation btwn apps = failure of one VM did not affect other VM
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+VM state could be saved + cloned making it easier to replicate environments for scaling
+</td>
+</tr>
+</table>
+<br />
+  
+3. Containerization: rise of Docker
+<br />
+  
+Next significant shift was containerization with Docker at the forefront.  Unlike VMs, containers share host OS running in isolated User space which is lightweight and portable and can startup / shutdown more rapidly.
+  
+<br /><br />
+Advantages: Speed, Portability, Density
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+containers start almost instantly i.e. applications launched and scaled in only a matter of seconds
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+container images are consistent across environments = it works on my machine issues minimized
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+lightweight nature = many containers run on host machine = better resource utilization than VMs
+</td>
+</tr>
+</table>
+<br />  
+  
+4. Container Orchestration: enter Kubernetes
+<br />
+  
+Increased container adoption prompted the need for container orchestration technologies like Kubernetes to
+manage scale and monitor containerized applications especially those hosted by managed Cloud providers.
+  
+<br /><br />
+Functions: Auto-scaling, Self-healing, Load Balancing, Service Discovery
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+orchestration systems can automatically scale apps based on denamd or sudden traffic spikes
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+if container or node fails then the orchestrator can restart or replace it = increased reliability!
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+incoming requests are automatically distributed across containers ensure optimal performance  
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+as containers move across nodes, services can be discovered without any manual intervention
+</td>
+</tr>
+</table>
+<br />
+  
+</span>
+  
