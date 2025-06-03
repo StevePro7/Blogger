@@ -1,0 +1,76 @@
+Summary of technology
+<br />
+  
+1. Docker
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Dockerfile
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Image
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Container
+
+</td>
+<td>
+&nbsp;text file that contains all commands used to assemble a Docker image template
+<br />
+&nbsp;executable package that includes code, runtime, environment variables and config
+<br />
+&nbsp;running instance of a Docker image isolated from other processes running on host
+</td>
+  
+</tr>
+</table>
+<br />
+  
+2. Kubernetes
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Namespace
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Workload
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Pod
+<br />  
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Node
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Replicaset
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Deployment
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Service
+<br />
+  
+</td>
+<td>
+&nbsp;scope cluster resources and a way to isolate Kubernetes objects
+<br />
+&nbsp;containerized application running within the Kubernetes cluster
+<br />
+&nbsp;smallest deployable unit as created and managed in Kubernetes
+<br />
+&nbsp;workloads are placed in Containers on Pods to be run on Nodes
+<br />
+&nbsp;maintains a stable set of replica pods available running any time
+<br />
+&nbsp;provide a declarative way to update all Pods and Replicasets
+<br />
+&nbsp;abstract way to expose an application running on a set of Pods
+<br /> 
+</td>
+</tr>
+</table>
+<br />
+  
