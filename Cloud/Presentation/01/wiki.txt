@@ -1,5 +1,9 @@
 <span style="font-family:verdana;font-size:85%;">
 
+
+  	
+  <br />  <br />  
+  
 TODO - Intro
 <!--
 <a href="https://blogger.googleusercontent.com/img/a/AVvXsEiCj481fVWFMoyO-kJkFBrGdOjK9cBzwTv4jHVtJbYgpy4KzOh0Hidn576NTY2osFPoCGxU96leIaS1c23MdpIZxqxK4fJspudZa3g_zU9tQa_v31dotCWdBjC7t9VafujVUPF0zsQJpkNyMNfetqOz5ETqmxE6so8hqD7qpYMbINxw7uzi4Td9rsDP=s364"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/a/AVvXsEiCj481fVWFMoyO-kJkFBrGdOjK9cBzwTv4jHVtJbYgpy4KzOh0Hidn576NTY2osFPoCGxU96leIaS1c23MdpIZxqxK4fJspudZa3g_zU9tQa_v31dotCWdBjC7t9VafujVUPF0zsQJpkNyMNfetqOz5ETqmxE6so8hqD7qpYMbINxw7uzi4Td9rsDP=s600"/></a>
@@ -107,6 +111,161 @@ as containers move across nodes, services can be discovered without any manual i
 </td>
 </tr>
 </table>
+<br />
+  
+Summary of Definitions
+<br />
+  
+1. Docker
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Platform as a Service product that uses OS-level virtualization Software in packages as containers
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Containers are isolated from one another bundle their own software, libraries, and configurations
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+All containers share signle OS kernel on host thus use fewer resources than Virtual Machines
+</td>
+</tr>
+</table>
+<br />
+  
+2. Kubernetes
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Open-source container orchestration system automating app deployment, scaling and management
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Runs containerized applications in cluster host machines from containers typically built using Docker
+</td>
+</tr>
+</table>
+<br />  
+  
+3. Helm
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Kubernetes package manager simplifies managing and deploying applications to clusters via "Charts"
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Helm facilitates configuration separated out in Values files and scaled out across all environments
+</td>
+</tr>
+</table>
+<br />
+  
+Summary of Technology
+<br />
+  
+1. Docker
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Dockerfile
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Image
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Container
+
+</td>
+<td>
+&nbsp;text file that contains all commands used to assemble a Docker image template
+<br />
+&nbsp;executable package that includes code, runtime, environment variables and config
+<br />
+&nbsp;running instance of a Docker image isolated from other processes running on host
+</td>
+  
+</tr>
+</table>
+<br />
+  
+2. Kubernetes
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Namespace
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Workload
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Pod
+<br />  
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Node
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Replicaset
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Deployment
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Service
+<br />
+  
+</td>
+<td>
+&nbsp;scope cluster resources and a way to isolate Kubernetes objects
+<br />
+&nbsp;containerized application running within the Kubernetes cluster
+<br />
+&nbsp;smallest deployable unit as created and managed in Kubernetes
+<br />
+&nbsp;workloads are placed in Containers on Pods to be run on Nodes
+<br />
+&nbsp;maintains a stable set of replica pods available running any time
+<br />
+&nbsp;provide a declarative way to update all Pods and Replicasets
+<br />
+&nbsp;abstract way to expose an application running on a set of Pods
+<br /> 
+</td>
+</tr>
+</table>
+<br />
+  
+DEMO - Hello World
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Execute code on localhost [IDE]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Build Docker image and locally
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Provision local Kubernetes cluster
+</td>
+<td>
+&nbsp;TEST after deployment
+<br />
+&nbsp;curl http://localhost:8080
+<br />
+&nbsp;Hello World
+</td>
+</tr>
+</table>
+<br />
+Python <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">Flask API</a> application:
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMs6w7krE1IcMTs3R-WJf-cBhoLiewJ1vO4ceQ8n8xOgiSSoiHdNWKm79t5aq3F4es0Z4TLaGdMs0PZNU6AT_z0f8alN_qRmQwMGOGYBEBZpR7A5Tx2u6ZblvTcoGKr9oFlw6EscT5pwika3j5SoOn7EiOMwDnUcPNqYgMUQYixdpVvJkhR53j6mpNkH0/s788/01-wsgi.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMs6w7krE1IcMTs3R-WJf-cBhoLiewJ1vO4ceQ8n8xOgiSSoiHdNWKm79t5aq3F4es0Z4TLaGdMs0PZNU6AT_z0f8alN_qRmQwMGOGYBEBZpR7A5Tx2u6ZblvTcoGKr9oFlw6EscT5pwika3j5SoOn7EiOMwDnUcPNqYgMUQYixdpVvJkhR53j6mpNkH0/s600/01-wsgi.png"/></a>
 <br />
   
 </span>
