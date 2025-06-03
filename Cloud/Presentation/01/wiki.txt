@@ -1,8 +1,4 @@
 <span style="font-family:verdana;font-size:85%;">
-
-
-  	
-  <br />  <br />  
   
 TODO - Intro
 <!--
@@ -267,6 +263,111 @@ Provision local Kubernetes cluster
 Python <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">Flask API</a> application:
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMs6w7krE1IcMTs3R-WJf-cBhoLiewJ1vO4ceQ8n8xOgiSSoiHdNWKm79t5aq3F4es0Z4TLaGdMs0PZNU6AT_z0f8alN_qRmQwMGOGYBEBZpR7A5Tx2u6ZblvTcoGKr9oFlw6EscT5pwika3j5SoOn7EiOMwDnUcPNqYgMUQYixdpVvJkhR53j6mpNkH0/s788/01-wsgi.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMs6w7krE1IcMTs3R-WJf-cBhoLiewJ1vO4ceQ8n8xOgiSSoiHdNWKm79t5aq3F4es0Z4TLaGdMs0PZNU6AT_z0f8alN_qRmQwMGOGYBEBZpR7A5Tx2u6ZblvTcoGKr9oFlw6EscT5pwika3j5SoOn7EiOMwDnUcPNqYgMUQYixdpVvJkhR53j6mpNkH0/s600/01-wsgi.png"/></a>
 <br />
+<br />
+DEMO - Docker commands
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Create KinD cluster
+&nbsp;&nbsp;kind create cluster --name flask-cluster
+&nbsp;&nbsp;# Create Dockerfile | Build Docker image
+&nbsp;&nbsp;docker buiild --pull -rm -f "Dockerfile" -t flask-api:latest "."
+&nbsp;&nbsp;# Execute Docker container
+&nbsp;&nbsp;docker run --rm -d -p 8080:8080/tcp flask-api:latest
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
+</td></tr>
+</table>
+<br />
+<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockerfile</a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjakeZFuu4lA7D_aUMew50WNgv2cweAq7OZ1TNsgY2H_gDQQbz94Xt3btADcDMl1Lu3jUCBZ837DffBeWKnY3KAp2jHN7TY3DW9EakCtUpBpKBg-qJnLjkFdyYKHyTL1ZcPzW7R4MuiT0DjSFbB4_TF9sDt4QpwDsGfkQtNH_3y8vlBxAwk0WBoHlgmhj0/s619/02-Dockerfile.png"><img alt="" border="0" width="98%" 
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjakeZFuu4lA7D_aUMew50WNgv2cweAq7OZ1TNsgY2H_gDQQbz94Xt3btADcDMl1Lu3jUCBZ837DffBeWKnY3KAp2jHN7TY3DW9EakCtUpBpKBg-qJnLjkFdyYKHyTL1ZcPzW7R4MuiT0DjSFbB4_TF9sDt4QpwDsGfkQtNH_3y8vlBxAwk0WBoHlgmhj0/s600/02-Dockerfile.png"/></a>
+<br />
+KinD = Kubernetes in Docker is a tool for running local Kubernetes cluster using Docker container "nodes".
+<br />
+<br />  
+
+DEMO - Kubernetes commands
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Load image into KinD cluster
+&nbsp;&nbsp;kind load docker-image flask-api:latest --name flask-cluster
+&nbsp;&nbsp;# Setup KinD cluster
+&nbsp;&nbsp;kubectl create ns test-ns
+&nbsp;&nbsp;kubectl config set-context --current --namespace=test-ns
+&nbsp;&nbsp;# Rollout Kubernetes Deployment and Service resources
+&nbsp;&nbsp;kubectl apply -f Kubernetes.yaml
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
+</td></tr>
+</table>
+<br />
+<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes.yaml</a>
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxjgxrXiMc5mPxGRMJqvLAcDQZ_yvYa-snzbVENPze51HOjUem8oznnuv5zq3UZprfqUF42-PeFjKGV_SMkyYEqqqc5xSWhZoDF2tT6hWxYMLgp6yEJHNyoTcwObPNXR_T3LYcOmL_bD3xKsVz9vQZHS4BXj7LzMffLp3QqLwVv9Ilb6T_6dguEP_4Oy0/s589/03-deployment.png"><img alt="" border="0" height="100%" width="98%"
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxjgxrXiMc5mPxGRMJqvLAcDQZ_yvYa-snzbVENPze51HOjUem8oznnuv5zq3UZprfqUF42-PeFjKGV_SMkyYEqqqc5xSWhZoDF2tT6hWxYMLgp6yEJHNyoTcwObPNXR_T3LYcOmL_bD3xKsVz9vQZHS4BXj7LzMffLp3QqLwVv9Ilb6T_6dguEP_4Oy0/s600/03-deployment.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhgjWwOGYUsKDIjFiirZ9OLOfSLtPbPvmkYrh2usBSVcdzam_ZkzAbsOelvPqVCUXxNhKSRc9fEkND1g2dMY31V6ONub8g5ZywqO7zaFPJvbPju4mFo_BT493hIpu9yPcw40nGieInn8f5-1TFUvY_K6nyus46ksf9RCAn7_OCFIvZUlrXtEVyMfXRI2E/s346/04-service.png"><img alt="" border="0" height="100%" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhgjWwOGYUsKDIjFiirZ9OLOfSLtPbPvmkYrh2usBSVcdzam_ZkzAbsOelvPqVCUXxNhKSRc9fEkND1g2dMY31V6ONub8g5ZywqO7zaFPJvbPju4mFo_BT493hIpu9yPcw40nGieInn8f5-1TFUvY_K6nyus46ksf9RCAn7_OCFIvZUlrXtEVyMfXRI2E/s600/04-service.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
+LIMITATION - localhost
+<br />
+Hello World fine for localhost but has limitations
+<br /><br />
+
+1. Limitations:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Everything is on localhost - Cloud Computing typically requires Kubernetes cluster(s)
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually build Docker image from the Dockerfile
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually push Docker image to container registry
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually deploy running Docker container into Kubernetes cluster [Deployment exposed as Service]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+All Kubernetes resource values are hardcoded into declarative YAML file [Deployment and a Service]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+No facility to scale deployment across multiple environments: DEV, IQA, UAT, Prod
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Environment variables can be injected but is very brittle and cumbersome process
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+No real immediate and secure way to inject secret information into deployment [secret password]
+<br />
+</td>
+</tr>
+</table>
+<br />  
+  
+2. Solution:
+<br />
+Next step is to integrate GitLab CI/CD pipeline to solve these issues and automate build deployment process!
+  
+<br />
+This will be the topic of the next post.
+  
   
 </span>
   
