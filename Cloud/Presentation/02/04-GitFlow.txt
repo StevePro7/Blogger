@@ -1,0 +1,93 @@
+<b>GitFlow SDLC</b>
+<br />
+<i>Development</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+GitLab source code repo has main branch for all the Prod deployments
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+GitLab source code repo has develop branch as the integration branch
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+develop branch for feature development and deployment to DEV / UAT
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+GitFlow: ensure develop branch is stable: cut feature branch off develop
+<br />	
+</td>
+</tr>
+</table>
+<br />  
+<i>Deployment</i>  
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Submit Pull Request | Merge to develop branch | Trigger build
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Auto-deploy to DEV | Manual deploy to UAT [when QA ready]
+<br />
+</td>
+</tr>
+</table>
+<br />
+<i>Testing</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Feature completed on DEV / preliminary testing on UAT cut release branch off develop
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Deploy release branch to UAT - complete feature testing and regression testing
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Any bugs on UAT in release candidate then cut bugfix branch off release branch
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Fix bug | Submit Pull Request | Merge to release branch | Re-deploy to UAT [manually]
+<br />
+</td>
+</tr>
+</table>
+<br />
+<i>Release</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Once release candidate is stable / all bugs fixed: then submit Pull Request release branch to main
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+This action will build pipeline but NOT deploy!! Manually deploy to Prod when stakeholders agree!!
+</td>
+</tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1nb1mRvjWBSSpZzRVSDreAmIQ8HlJAcjJSTw5QBaS9VMgbRXl3VU7xEZ6WIbcvHbonF_-oRCGdrPuWdtnK3B36ld2rExt7bTBaffpVANldhWH_VSPXhMhhjgyGHBb_H3h6FoIZQKrZD0JGeem6r3mKXUrSBtNgsWigp0lWdTfivNkES9jydfuxcPNBWQ/s770/BuildPipelines.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1nb1mRvjWBSSpZzRVSDreAmIQ8HlJAcjJSTw5QBaS9VMgbRXl3VU7xEZ6WIbcvHbonF_-oRCGdrPuWdtnK3B36ld2rExt7bTBaffpVANldhWH_VSPXhMhhjgyGHBb_H3h6FoIZQKrZD0JGeem6r3mKXUrSBtNgsWigp0lWdTfivNkES9jydfuxcPNBWQ/s600/BuildPipelines.png"/></a>
+<br />
+<br />
+<i>Alignment</i>  
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Finally, after deploy to Prod from main submit PR from main to develop for alignment
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Hotfixes available similar to bugfix | Cut hotfix branch from main and submit PR deploy to Prod
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+After hotfix merged to main and deployed to Prod submit PR from main to develop for alignment
+<br />
+</td>
+</tr>
+</table>
+<br />
