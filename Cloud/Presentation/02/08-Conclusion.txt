@@ -1,0 +1,41 @@
+25. TEST deployment
+<br />
+Finally, test endpoint(s) via curl or in Postman:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80
+&nbsp;&nbsp;curl http://localhost:8080/api/v1 --header "Content-Type: application/json"
+&nbsp;&nbsp;# RESPONSE
+&nbsp;&nbsp;{"message": "Welcome to analytics!"}
+</pre>
+</td></tr>
+</table>
+<br />
+  
+26. Pipeline Benefits
+<br />
+CI/CD Pipeline Benefits
+<br />
+<a href="https://about.gitlab.com/blog/positive-outcomes-ci-cd">Four Benefits of CI/CD</a> - successful pipeline strategy helps your team deliver higher quality Software faster!
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Increased speed of innovation + automation = deployments that are faster and more regular
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Code in Production adds immediate value instead of sat waiting in a deployment queue!
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Engineers become more productive instead of focus on boring / mundane manual tasks
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Higher code quality due to continuous automated build, test, deploy rinse + repeat cycles <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+<br />
+</td>
+</tr>
+</table>
