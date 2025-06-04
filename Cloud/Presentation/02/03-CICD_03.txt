@@ -1,0 +1,28 @@
+15. SOLUTION - GitLab CI/CD Helm
+<br />
+CI/CD pipeline components
+<br /><br />
+
+1. Components
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML files that contain Helm chart artefacts used like Deployment and Service YAML
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML files that contain Values to be injected including specific variables that are overridden per environment
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+NOTE: hardcoded non-sensitive variables stored in Values YAML files Sensitive information stored in Kubernetes secret resources and injected at deployment time
+<br />
+</td>
+</tr>
+</table>
+
+<br />
+TODO
+08-deployment.png
+09-service.png
+10-values.png
+<br />
