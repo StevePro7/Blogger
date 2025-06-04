@@ -1,0 +1,23 @@
+18. WORKFLOW - GitFlow SDLC
+<br />
+Development / Deployment Workflow [GitFlow]
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Feature completed on DEV / preliminary testing on UAT cut release branch off develop
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Deploy release branch to UAT - complete feature testing and regression testing
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Any bugs on UAT in release candidate then cut bugfix branch off release branch
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Fix bug | Submit Pull Request | Merge to release branch | Re-deploy to UAT [manually]
+<br />
+</td>
+</tr>
+</table>
+<br />
