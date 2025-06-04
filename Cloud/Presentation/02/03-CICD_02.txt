@@ -1,4 +1,4 @@
-14. SOLUTION - GitLab CI/CD [cicd]
+15. SOLUTION - GitLab CI/CD Helm
 <br />
 CI/CD pipeline components
 <br />
@@ -6,40 +6,38 @@ CI/CD pipeline components
 <tr>
 <td>
 &nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
-Generic Variables used in all environments and environment specific variables to build software
+YAML files that contain Helm chart artefacts used like Deployment and Service YAML
 <br />
 &nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
-Rules that can be used to automate deployments to "lower" environments vs. Manual deployments
-<br />
-&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
-YAML that builds the Docker image and push image to container registry of the developer's choice
-<br />
-&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
-YAML that has instructions on how to deploy latest built Docker image to Kubernetes cluster
+YAML files that contain Values to be injected including environment specific variables
 <br />
 </td>
 </tr>
 </table>
-
 <br />
 <table width="99%" border="1">
 <tr>
 <td valign="top">
-&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/cicd/deploy/environments.yml">environments.yml</a>
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/helm/templates/deployment.yaml">deployment.yaml</a>
 </td>
 <td valign="top">
-&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/cicd/templates/deployment-rules.yml">deployment-rules.yml</a>
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/helm/templates/service.yaml">service.yaml</a>
 </td>
 </tr>
-
 <tr>
 <td valign="top">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1vsDlaM52GnLHCHM6tmreKRAzvLTZB12aWlMJnZK-eC1vhQ-8TSt8QRU7o9QWXEATw1StKSZ2LguMjVNbD9p6lec48nahCxoX6Dl30KPSe7zpiI4GP8SIraj7mzHDZ9krLlct9x2oWpXT1hiRaida8nMye5UL-Rv6V-vun_KVhWfzdMsSafiUoiHiJbo/s689/06-environments.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1vsDlaM52GnLHCHM6tmreKRAzvLTZB12aWlMJnZK-eC1vhQ-8TSt8QRU7o9QWXEATw1StKSZ2LguMjVNbD9p6lec48nahCxoX6Dl30KPSe7zpiI4GP8SIraj7mzHDZ9krLlct9x2oWpXT1hiRaida8nMye5UL-Rv6V-vun_KVhWfzdMsSafiUoiHiJbo/s600/06-environments.png"/></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52aJLK_aTvke-VFYnD47_2mfGIRumEs0Y0uW3f_QaI2N5_3XGeyTnx_iFGNFkmlJF1IdkwVhNU-7SQTVt6wx4Nnf9a-9mfNh5fG-zZl9vAWVjctkUkPTSoxsA1Y-tfIuUJI-J06DlpuWmpPFynwM4Yre2Gwi0FvFKvTKEJvA4109K3ARPziN2WzN2_hE/s777/08-deployment.png"><img alt="" border="0" width="98%" 
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52aJLK_aTvke-VFYnD47_2mfGIRumEs0Y0uW3f_QaI2N5_3XGeyTnx_iFGNFkmlJF1IdkwVhNU-7SQTVt6wx4Nnf9a-9mfNh5fG-zZl9vAWVjctkUkPTSoxsA1Y-tfIuUJI-J06DlpuWmpPFynwM4Yre2Gwi0FvFKvTKEJvA4109K3ARPziN2WzN2_hE/s600/08-deployment.png"/></a>
 </td>
 <td valign="top">
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggNvWP1hSwIDkLlhSBdGanDlEF3ewbjay4Irz0wifIYRoUHS4R2spksccRjIJishN0q77DGLaBk5zVJmdJvCd79Z5RAl-6c_tRuMWul2dJ0J50hQg2JvtecF__tSPuvR8rNo5a0kl9j2rt7YDUj3nVa5dsAx9RcXmRuShIfmH0l9pV9Cl4_pDUP0AiKQs/s483/07-deployment-rules.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggNvWP1hSwIDkLlhSBdGanDlEF3ewbjay4Irz0wifIYRoUHS4R2spksccRjIJishN0q77DGLaBk5zVJmdJvCd79Z5RAl-6c_tRuMWul2dJ0J50hQg2JvtecF__tSPuvR8rNo5a0kl9j2rt7YDUj3nVa5dsAx9RcXmRuShIfmH0l9pV9Cl4_pDUP0AiKQs/s600/07-deployment-rules.png"/></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWmleL0XwjN_gJnA94UuuSlTPYozFce-zXdCD01E2PIwlUMRd5PsXRmR1AYIfUBf476d5AEaWHrVpHA81G47l8wcZ10YhyowISW5wlBmg1RHkWzA_P4dd0nqMUdCa9P8S18nBF3EyfdGucEFeQfVNizioySnhQS9I2-OBmvl14qCGsywBfkjzpFmxZ_Kc/s785/09-service.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWmleL0XwjN_gJnA94UuuSlTPYozFce-zXdCD01E2PIwlUMRd5PsXRmR1AYIfUBf476d5AEaWHrVpHA81G47l8wcZ10YhyowISW5wlBmg1RHkWzA_P4dd0nqMUdCa9P8S18nBF3EyfdGucEFeQfVNizioySnhQS9I2-OBmvl14qCGsywBfkjzpFmxZ_Kc/s600/09-service.png"/></a>
 </td>
 </tr>
 </table>
 <br />
+NOTE: Hardcoded non-sensitive variables stored in <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/helm/values.yaml">Values YAML</a> files including all environment variables:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH1u2tCLZJiuzoVwLjYzRXniQbFjfwIatFPYi_-Yh0u22yECcsKkn46C8dfk4_zEhF0AWNAMSxIB1HerIaAOdR8VuxICndcxI9W06tfs8Ebqb1E3OVqcczOcoiUL3uKOwe6WQqPTBBLHXVRPcy21vHHnKZWp5EKKg6dWA3ObX21p6nr081pKDLWKNGvBE/s437/10-values.png"><img alt="" border="0" width="98%" height="300" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH1u2tCLZJiuzoVwLjYzRXniQbFjfwIatFPYi_-Yh0u22yECcsKkn46C8dfk4_zEhF0AWNAMSxIB1HerIaAOdR8VuxICndcxI9W06tfs8Ebqb1E3OVqcczOcoiUL3uKOwe6WQqPTBBLHXVRPcy21vHHnKZWp5EKKg6dWA3ObX21p6nr081pKDLWKNGvBE/s600/10-values.png"/></a>
+<br />
+Whereas sensitive information is stored in Kubernetes secret resources and injected at deployment time.
 <br />
