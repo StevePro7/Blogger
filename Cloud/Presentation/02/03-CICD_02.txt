@@ -1,0 +1,45 @@
+14. SOLUTION - GitLab CI/CD [cicd]
+<br />
+CI/CD pipeline components
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Generic Variables used in all environments and environment specific variables to build software
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Rules that can be used to automate deployments to "lower" environments vs. Manual deployments
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML that builds the Docker image and push image to container registry of the developer's choice
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML that has instructions on how to deploy latest built Docker image to Kubernetes cluster
+<br />
+</td>
+</tr>
+</table>
+
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/cicd/deploy/environments.yml">environments.yml</a>
+</td>
+<td valign="top">
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/cicd/templates/deployment-rules.yml">deployment-rules.yml</a>
+</td>
+</tr>
+
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1vsDlaM52GnLHCHM6tmreKRAzvLTZB12aWlMJnZK-eC1vhQ-8TSt8QRU7o9QWXEATw1StKSZ2LguMjVNbD9p6lec48nahCxoX6Dl30KPSe7zpiI4GP8SIraj7mzHDZ9krLlct9x2oWpXT1hiRaida8nMye5UL-Rv6V-vun_KVhWfzdMsSafiUoiHiJbo/s689/06-environments.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1vsDlaM52GnLHCHM6tmreKRAzvLTZB12aWlMJnZK-eC1vhQ-8TSt8QRU7o9QWXEATw1StKSZ2LguMjVNbD9p6lec48nahCxoX6Dl30KPSe7zpiI4GP8SIraj7mzHDZ9krLlct9x2oWpXT1hiRaida8nMye5UL-Rv6V-vun_KVhWfzdMsSafiUoiHiJbo/s600/06-environments.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggNvWP1hSwIDkLlhSBdGanDlEF3ewbjay4Irz0wifIYRoUHS4R2spksccRjIJishN0q77DGLaBk5zVJmdJvCd79Z5RAl-6c_tRuMWul2dJ0J50hQg2JvtecF__tSPuvR8rNo5a0kl9j2rt7YDUj3nVa5dsAx9RcXmRuShIfmH0l9pV9Cl4_pDUP0AiKQs/s483/07-deployment-rules.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggNvWP1hSwIDkLlhSBdGanDlEF3ewbjay4Irz0wifIYRoUHS4R2spksccRjIJishN0q77DGLaBk5zVJmdJvCd79Z5RAl-6c_tRuMWul2dJ0J50hQg2JvtecF__tSPuvR8rNo5a0kl9j2rt7YDUj3nVa5dsAx9RcXmRuShIfmH0l9pV9Cl4_pDUP0AiKQs/s600/07-deployment-rules.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+<br />
