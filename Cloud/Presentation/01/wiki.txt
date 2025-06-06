@@ -7,10 +7,10 @@ In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab
 Let's check it out! 
 <br /><br />
   
-Evolution of SoftwareDeployment: Physical Servers to Container Orchestration
+<u>Evolution of SoftwareDeployment: Physical Servers to Container Orchestration</u>
 <br /><br />
 
-1. Era of Physical Servers: 1990s and Before
+<b>Era of Physical Servers: 1990s and Before</b>
 <br />
 Back in the 1990s Software was predominantly deployed directly onto physical servers, many often housed in on-premises data centers.  Each server typically dedicated to specific application [or set of applications].
 <br /><br />
@@ -30,7 +30,7 @@ Challenges: Scalability, Isolation, Resource Utilization
 </table>
 <br />
   
-2. Dawn of Virtualization: 2000s
+<b>Dawn of Virtualization: 2000s</b>
 <br />
   
 Introduction of virtualization technologies like those provided by VMware allowed Virtual Machines [VMs] to each run a physical server which meant each VM operating as though it were on own dedicated hardware.
@@ -55,7 +55,7 @@ VM state could be saved + cloned making it easier to replicate environments for 
 </table>
 <br />
   
-3. Containerization: rise of Docker
+<b>Containerization: Rise of Docker</b>
 <br />
   
 Next significant shift was containerization with Docker at the forefront.  Unlike VMs, containers share host OS running in isolated User space which is lightweight and portable and can startup / shutdown more rapidly.
@@ -80,7 +80,7 @@ lightweight nature = many containers run on host machine = better resource utili
 </table>
 <br />  
   
-4. Container Orchestration: enter Kubernetes
+<b>Container Orchestration: Enter Kubernetes</b>
 <br />
   
 Increased container adoption prompted the need for container orchestration technologies like Kubernetes to
@@ -370,4 +370,4 @@ This will be the topic of the next post.
   
   
 </span>
-  
+  s
