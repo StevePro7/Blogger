@@ -1,0 +1,335 @@
+<span style="font-family:verdana;font-size:85%;">
+
+TODO - Intro
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s713/GitLab.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfdryn90ILEQjxlge0UqwMW56nzSHXLsRAkYD0iz3Kr0e3PbwLmRbdkn_FUgSn_pX43Y0SViVk1BDpb_bN9TYxrbtWENbO_A4uAHJLAqwrQ4z6hohhScg4NRV_ZCWZZBMS1AkFFY0Qlv7E9L7uQJr_9dFml5CaoXCwENAeF7My9r9k0mn7jW9Qc4l9Ovg/s600/GitLab.png"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+  
+<b>GitLab CI/CD</b>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Create <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/.gitlab-ci.yml">.gitlab-ci.yml</a> at the root of project
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+this is the driver file that co-ordinates stages:
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Build / Lint / Deploy
+<br />
+</td>
+</tr>
+</table>
+<br />
+<i>gitlab-ci.yml</i>
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_eMSneyUfkzf1Mi3wKJXltnC9vcZ2kfPhCLPI76I726T81Nmbeq8fOmuF_R6R3Feh1kUrGxk76xIuioLHNSGDvaOG36YLPSwKNqOYb062MtAt5zqOQI1gjeKTSvJ84VTAF8lgLrZsasCAUHvtionukb-yni5kvW1BSI4feplXSAHGugy9f-T7MsIB5z0/s441/05-gitlab-ci.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_eMSneyUfkzf1Mi3wKJXltnC9vcZ2kfPhCLPI76I726T81Nmbeq8fOmuF_R6R3Feh1kUrGxk76xIuioLHNSGDvaOG36YLPSwKNqOYb062MtAt5zqOQI1gjeKTSvJ84VTAF8lgLrZsasCAUHvtionukb-yni5kvW1BSI4feplXSAHGugy9f-T7MsIB5z0/s600/05-gitlab-ci.png"/></a>
+<br />
+<br />
+  
+<i>Variables</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Generic Variables used in all environments and environment specific variables to build software
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Rules that can be used to automate deployments to "lower" environments vs. Manual deployments
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML that builds the Docker image and push image to container registry of the developer's choice
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML that has instructions on how to deploy latest built Docker image to Kubernetes cluster
+<br />
+</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/cicd/deploy/environments.yml">environments.yml</a>
+</td>
+<td valign="top">
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/cicd/templates/deployment-rules.yml">deployment-rules.yml</a>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1vsDlaM52GnLHCHM6tmreKRAzvLTZB12aWlMJnZK-eC1vhQ-8TSt8QRU7o9QWXEATw1StKSZ2LguMjVNbD9p6lec48nahCxoX6Dl30KPSe7zpiI4GP8SIraj7mzHDZ9krLlct9x2oWpXT1hiRaida8nMye5UL-Rv6V-vun_KVhWfzdMsSafiUoiHiJbo/s689/06-environments.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1vsDlaM52GnLHCHM6tmreKRAzvLTZB12aWlMJnZK-eC1vhQ-8TSt8QRU7o9QWXEATw1StKSZ2LguMjVNbD9p6lec48nahCxoX6Dl30KPSe7zpiI4GP8SIraj7mzHDZ9krLlct9x2oWpXT1hiRaida8nMye5UL-Rv6V-vun_KVhWfzdMsSafiUoiHiJbo/s600/06-environments.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggNvWP1hSwIDkLlhSBdGanDlEF3ewbjay4Irz0wifIYRoUHS4R2spksccRjIJishN0q77DGLaBk5zVJmdJvCd79Z5RAl-6c_tRuMWul2dJ0J50hQg2JvtecF__tSPuvR8rNo5a0kl9j2rt7YDUj3nVa5dsAx9RcXmRuShIfmH0l9pV9Cl4_pDUP0AiKQs/s483/07-deployment-rules.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggNvWP1hSwIDkLlhSBdGanDlEF3ewbjay4Irz0wifIYRoUHS4R2spksccRjIJishN0q77DGLaBk5zVJmdJvCd79Z5RAl-6c_tRuMWul2dJ0J50hQg2JvtecF__tSPuvR8rNo5a0kl9j2rt7YDUj3nVa5dsAx9RcXmRuShIfmH0l9pV9Cl4_pDUP0AiKQs/s600/07-deployment-rules.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+  
+<i>Artefacts</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML files that contain Helm chart artefacts used like Deployment and Service YAML
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+YAML files that contain Values to be injected including environment specific variables
+<br />
+</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/helm/templates/deployment.yaml">deployment.yaml</a>
+</td>
+<td valign="top">
+&nbsp;<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/helm/templates/service.yaml">service.yaml</a>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52aJLK_aTvke-VFYnD47_2mfGIRumEs0Y0uW3f_QaI2N5_3XGeyTnx_iFGNFkmlJF1IdkwVhNU-7SQTVt6wx4Nnf9a-9mfNh5fG-zZl9vAWVjctkUkPTSoxsA1Y-tfIuUJI-J06DlpuWmpPFynwM4Yre2Gwi0FvFKvTKEJvA4109K3ARPziN2WzN2_hE/s777/08-deployment.png"><img alt="" border="0" width="98%" 
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj52aJLK_aTvke-VFYnD47_2mfGIRumEs0Y0uW3f_QaI2N5_3XGeyTnx_iFGNFkmlJF1IdkwVhNU-7SQTVt6wx4Nnf9a-9mfNh5fG-zZl9vAWVjctkUkPTSoxsA1Y-tfIuUJI-J06DlpuWmpPFynwM4Yre2Gwi0FvFKvTKEJvA4109K3ARPziN2WzN2_hE/s600/08-deployment.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWmleL0XwjN_gJnA94UuuSlTPYozFce-zXdCD01E2PIwlUMRd5PsXRmR1AYIfUBf476d5AEaWHrVpHA81G47l8wcZ10YhyowISW5wlBmg1RHkWzA_P4dd0nqMUdCa9P8S18nBF3EyfdGucEFeQfVNizioySnhQS9I2-OBmvl14qCGsywBfkjzpFmxZ_Kc/s785/09-service.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWmleL0XwjN_gJnA94UuuSlTPYozFce-zXdCD01E2PIwlUMRd5PsXRmR1AYIfUBf476d5AEaWHrVpHA81G47l8wcZ10YhyowISW5wlBmg1RHkWzA_P4dd0nqMUdCa9P8S18nBF3EyfdGucEFeQfVNizioySnhQS9I2-OBmvl14qCGsywBfkjzpFmxZ_Kc/s600/09-service.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+NOTE: Hardcoded non-sensitive variables stored in <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/helm/values.yaml">Values YAML</a> files including all environment variables:
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH1u2tCLZJiuzoVwLjYzRXniQbFjfwIatFPYi_-Yh0u22yECcsKkn46C8dfk4_zEhF0AWNAMSxIB1HerIaAOdR8VuxICndcxI9W06tfs8Ebqb1E3OVqcczOcoiUL3uKOwe6WQqPTBBLHXVRPcy21vHHnKZWp5EKKg6dWA3ObX21p6nr081pKDLWKNGvBE/s437/10-values.png"><img alt="" border="0" width="98%" height="300" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH1u2tCLZJiuzoVwLjYzRXniQbFjfwIatFPYi_-Yh0u22yECcsKkn46C8dfk4_zEhF0AWNAMSxIB1HerIaAOdR8VuxICndcxI9W06tfs8Ebqb1E3OVqcczOcoiUL3uKOwe6WQqPTBBLHXVRPcy21vHHnKZWp5EKKg6dWA3ObX21p6nr081pKDLWKNGvBE/s600/10-values.png"/></a>
+<br />
+Whereas sensitive information is stored in Kubernetes secret resources and injected at deployment time.
+<br />
+<br />
+
+<b>GitFlow SDLC</b>
+<br />
+<i>Development</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+GitLab source code repo has main branch for all the Prod deployments
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+GitLab source code repo has develop branch as the integration branch
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+develop branch for feature development and deployment to DEV / UAT
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+GitFlow: ensure develop branch is stable: cut feature branch off develop
+<br />	
+</td>
+</tr>
+</table>
+<br />  
+<i>Deployment</i>  
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Submit Pull Request | Merge to develop branch | Trigger build
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Auto-deploy to DEV | Manual deploy to UAT [when QA ready]
+<br />
+</td>
+</tr>
+</table>
+<br />
+<i>Testing</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Feature completed on DEV / preliminary testing on UAT cut release branch off develop
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Deploy release branch to UAT - complete feature testing and regression testing
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Any bugs on UAT in release candidate then cut bugfix branch off release branch
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Fix bug | Submit Pull Request | Merge to release branch | Re-deploy to UAT [manually]
+<br />
+</td>
+</tr>
+</table>
+<br />
+<i>Release</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Once release candidate is stable / all bugs fixed: then submit Pull Request release branch to main
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+This action will build pipeline but NOT deploy!! Manually deploy to Prod when stakeholders agree!!
+</td>
+</tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1nb1mRvjWBSSpZzRVSDreAmIQ8HlJAcjJSTw5QBaS9VMgbRXl3VU7xEZ6WIbcvHbonF_-oRCGdrPuWdtnK3B36ld2rExt7bTBaffpVANldhWH_VSPXhMhhjgyGHBb_H3h6FoIZQKrZD0JGeem6r3mKXUrSBtNgsWigp0lWdTfivNkES9jydfuxcPNBWQ/s770/BuildPipelines.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1nb1mRvjWBSSpZzRVSDreAmIQ8HlJAcjJSTw5QBaS9VMgbRXl3VU7xEZ6WIbcvHbonF_-oRCGdrPuWdtnK3B36ld2rExt7bTBaffpVANldhWH_VSPXhMhhjgyGHBb_H3h6FoIZQKrZD0JGeem6r3mKXUrSBtNgsWigp0lWdTfivNkES9jydfuxcPNBWQ/s600/BuildPipelines.png"/></a>
+<br />
+<br />
+<i>Alignment</i>  
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Finally, after deploy to Prod from main submit PR from main to develop for alignment
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Hotfixes available similar to bugfix | Cut hotfix branch from main and submit PR deploy to Prod
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+After hotfix merged to main and deployed to Prod submit PR from main to develop for alignment
+<br />
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
+
+<b>Kubernetes Management: Rancher</b>
+<br />
+Q. What is Rancher?
+<br />
+Open source platform that simplifies the deployment, scaling and management of your Kubernetes clusters:
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Kubernetes: open source orchestration platform that automates management of containerized apps
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Rancher: open source container platform built on top of Kubernetes to simplify cluster management
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Download Kubernetes cluster configuration kubeconfig files from Rancher to connect to your clusters
+<br />
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
+<b>Kubernetes kubeconfig</b>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+kubeconfig file is YAML configuration used to connect to Kubernetes clusters, users and contexts
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Download DEV kubeconfig file from Rancher to localhost ~/.kube/dev-config
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Download UAT kubeconfig file from Rancher to localhost ~/.kube/uat-config
+<br />
+</td>
+</tr>
+</table>
+<br />
+SETUP
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Setup the global KUBECONFIG environment variable
+&nbsp;&nbsp;export KUBECONFIG=~/.kube/config:~/.kube/dev-config:~/.kube/uat-config
+&nbsp;&nbsp;# Flatten multiple kubeconfig files into one "master" kubeconfig file
+&nbsp;&nbsp;kubectl config view --flatten > one-config.yaml
+&nbsp;&nbsp;# Rename accordingly
+&nbsp;&nbsp;mv one-config.yaml ~/.kube/config
+&nbsp;&nbsp;# Confirm cluster configuration update
+&nbsp;&nbsp;kubectl config get-contexts
+</pre>
+</td></tr>
+</table>
+<br />
+<br />
+  
+<b>Deployment Verification</b>
+<br />
+Monitor cluster - What is <a href="https://www.armosec.io/glossary/kubectl">kubectl</a>?
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Command line tool run commands against Kubernetes clusters - communicate using Kubernetes API
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Post-deployment use kubectl commands to verify the health of cluster ensuring all pods re-spawned
+<br />
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
+<b>TEST Deployment</b>
+<br />
+Finally, test endpoint(s) via curl or in Postman:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80
+&nbsp;&nbsp;curl http://localhost:8080/api/v1 --header "Content-Type: application/json"
+&nbsp;&nbsp;# RESPONSE
+&nbsp;&nbsp;{"message": "Welcome to analytics!"}
+</pre>
+</td></tr>
+</table>
+<br />
+<br />
+  
+<b>CI/CD Pipeline Benefits</b>
+<br />
+<a href="https://about.gitlab.com/blog/positive-outcomes-ci-cd">Four Benefits of CI/CD</a> - successful pipeline strategy helps your team deliver higher quality Software faster!
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Increased speed of innovation + automation = deployments that are faster and more regular
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Code in Production adds immediate value instead of sat waiting in a deployment queue!
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Engineers become more productive instead of focus on boring / mundane manual tasks
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Higher code quality due to continuous automated build, test, deploy rinse + repeat cycles <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+<br />
+</td>
+</tr>
+</table>
+    
+</span>

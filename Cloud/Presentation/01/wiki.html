@@ -1,0 +1,373 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/07/gitlab-cheat-sheet.html">GitLab Cheat Sheet</a> to streamline collaborative workflow and then leverage CI/CD pipelines.  However, it is interesting to tell the back story how we got from the 1990s to modern day CI/CD.
+<br />
+<a href="https://blogger.googleusercontent.com/img/a/AVvXsEiCj481fVWFMoyO-kJkFBrGdOjK9cBzwTv4jHVtJbYgpy4KzOh0Hidn576NTY2osFPoCGxU96leIaS1c23MdpIZxqxK4fJspudZa3g_zU9tQa_v31dotCWdBjC7t9VafujVUPF0zsQJpkNyMNfetqOz5ETqmxE6so8hqD7qpYMbINxw7uzi4Td9rsDP=s364"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/a/AVvXsEiCj481fVWFMoyO-kJkFBrGdOjK9cBzwTv4jHVtJbYgpy4KzOh0Hidn576NTY2osFPoCGxU96leIaS1c23MdpIZxqxK4fJspudZa3g_zU9tQa_v31dotCWdBjC7t9VafujVUPF0zsQJpkNyMNfetqOz5ETqmxE6so8hqD7qpYMbINxw7uzi4Td9rsDP=s600"/></a>
+<br />
+Let's check it out! 
+<br /><br />
+  
+<u>Evolution of SoftwareDeployment: Physical Servers to Container Orchestration</u>
+<br /><br />
+
+<b>Era of Physical Servers: 1990s and Before</b>
+<br />
+Back in the 1990s Software was predominantly deployed directly onto physical servers, many often housed in on-premises data centers.  Each server typically dedicated to specific application [or set of applications].
+<br /><br />
+  
+Challenges: Scalability, Isolation, Resource Utilization
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;involved procuring, setting up, deploying to additional physical servers = time consuming + expensive
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;multiple apps could interfer with one another leading to system crashes or other performance issues
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;some servers underutilized while others overwhelmed which meant inefficient resource distribution
+</td>
+</tr>
+</table>
+<br />
+  
+<b>Dawn of Virtualization: 2000s</b>
+<br />
+  
+Introduction of virtualization technologies like those provided by VMware allowed Virtual Machines [VMs] to each run a physical server which meant each VM operating as though it were on own dedicated hardware.
+  
+<br /><br />
+Benefits: Resource Efficiency, Isolation, Snapshot + Cloning
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+multiple VMs could share resources of single server leading to better resource utilization
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+VMs provide new level of isolation btwn apps = failure of one VM did not affect other VM
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+VM state could be saved + cloned making it easier to replicate environments for scaling
+</td>
+</tr>
+</table>
+<br />
+  
+<b>Containerization: Rise of Docker</b>
+<br />
+  
+Next significant shift was containerization with Docker at the forefront.  Unlike VMs, containers share host OS running in isolated User space which is lightweight and portable and can startup / shutdown more rapidly.
+  
+<br /><br />
+Advantages: Speed, Portability, Density
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+containers start almost instantly i.e. applications launched and scaled in only a matter of seconds
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+container images are consistent across environments = it works on my machine issues minimized
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+lightweight nature = many containers run on host machine = better resource utilization than VMs
+</td>
+</tr>
+</table>
+<br />  
+  
+<b>Container Orchestration: Enter Kubernetes</b>
+<br />
+  
+Increased container adoption prompted the need for container orchestration technologies like Kubernetes to
+manage scale and monitor containerized applications especially those hosted by managed Cloud providers.
+  
+<br /><br />
+Functions: Auto-scaling, Self-healing, Load Balancing, Service Discovery
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+orchestration systems can automatically scale apps based on denamd or sudden traffic spikes
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+if container or node fails then the orchestrator can restart or replace it = increased reliability!
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+incoming requests are automatically distributed across containers ensure optimal performance  
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+as containers move across nodes, services can be discovered without any manual intervention
+</td>
+</tr>
+</table>
+<br />
+  
+<b>Summary of Definitions</b>
+<br />
+  
+<i>Docker</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Platform as a Service product that uses OS-level virtualization Software in packages as containers
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Containers are isolated from one another bundle their own software, libraries, and configurations
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+All containers share signle OS kernel on host thus use fewer resources than Virtual Machines
+</td>
+</tr>
+</table>
+<br />
+  
+<i>Kubernetes</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Open-source container orchestration system automating app deployment, scaling and management
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Runs containerized applications in cluster host machines from containers typically built using Docker
+</td>
+</tr>
+</table>
+<br />  
+  
+<i>Helm</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Kubernetes package manager simplifies managing and deploying applications to clusters via "Charts"
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Helm facilitates configuration separated out in Values files and scaled out across all environments
+</td>
+</tr>
+</table>
+<br />
+  
+<b>Summary of Technology</b>
+<br />
+  
+<i>Docker</i>
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Dockerfile
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Image
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Container
+
+</td>
+<td>
+&nbsp;text file that contains all commands used to assemble a Docker image template
+<br />
+&nbsp;executable package that includes code, runtime, environment variables and config
+<br />
+&nbsp;running instance of a Docker image isolated from other processes running on host
+</td>
+  
+</tr>
+</table>
+<br />
+  
+<i>Kubernetes</i>
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Namespace
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Workload
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Pod
+<br />  
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Node
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Replicaset
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Deployment
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Service
+<br />
+  
+</td>
+<td>
+&nbsp;scope cluster resources and a way to isolate Kubernetes objects
+<br />
+&nbsp;containerized application running within the Kubernetes cluster
+<br />
+&nbsp;smallest deployable unit as created and managed in Kubernetes
+<br />
+&nbsp;workloads are placed in Containers on Pods to be run on Nodes
+<br />
+&nbsp;maintains a stable set of replica pods available running any time
+<br />
+&nbsp;provide a declarative way to update all Pods and Replicasets
+<br />
+&nbsp;abstract way to expose an application running on a set of Pods
+<br /> 
+</td>
+</tr>
+</table>
+<br />
+  
+<b>DEMO Hello World</b>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Execute code on localhost [IDE]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Build Docker image and locally
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Provision local Kubernetes cluster
+</td>
+<td>
+&nbsp;TEST after deployment
+<br />
+&nbsp;curl http://localhost:8080
+<br />
+&nbsp;Hello World
+</td>
+</tr>
+</table>
+<br />
+Python <a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/main.py">Flask API</a> application:
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMs6w7krE1IcMTs3R-WJf-cBhoLiewJ1vO4ceQ8n8xOgiSSoiHdNWKm79t5aq3F4es0Z4TLaGdMs0PZNU6AT_z0f8alN_qRmQwMGOGYBEBZpR7A5Tx2u6ZblvTcoGKr9oFlw6EscT5pwika3j5SoOn7EiOMwDnUcPNqYgMUQYixdpVvJkhR53j6mpNkH0/s788/01-wsgi.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMs6w7krE1IcMTs3R-WJf-cBhoLiewJ1vO4ceQ8n8xOgiSSoiHdNWKm79t5aq3F4es0Z4TLaGdMs0PZNU6AT_z0f8alN_qRmQwMGOGYBEBZpR7A5Tx2u6ZblvTcoGKr9oFlw6EscT5pwika3j5SoOn7EiOMwDnUcPNqYgMUQYixdpVvJkhR53j6mpNkH0/s600/01-wsgi.png"/></a>
+<br />
+<br />
+<b>DEMO Docker Commands</b>
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Create KinD cluster
+&nbsp;&nbsp;kind create cluster --name flask-cluster
+&nbsp;&nbsp;# Create Dockerfile | Build Docker image
+&nbsp;&nbsp;docker buiild --pull -rm -f "Dockerfile" -t flask-api:latest "."
+&nbsp;&nbsp;# Execute Docker container
+&nbsp;&nbsp;docker run --rm -d -p 8080:8080/tcp flask-api:latest
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
+</td></tr>
+</table>
+<br />
+<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Dockerfile">Dockerfile</a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjakeZFuu4lA7D_aUMew50WNgv2cweAq7OZ1TNsgY2H_gDQQbz94Xt3btADcDMl1Lu3jUCBZ837DffBeWKnY3KAp2jHN7TY3DW9EakCtUpBpKBg-qJnLjkFdyYKHyTL1ZcPzW7R4MuiT0DjSFbB4_TF9sDt4QpwDsGfkQtNH_3y8vlBxAwk0WBoHlgmhj0/s619/02-Dockerfile.png"><img alt="" border="0" width="98%" 
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjakeZFuu4lA7D_aUMew50WNgv2cweAq7OZ1TNsgY2H_gDQQbz94Xt3btADcDMl1Lu3jUCBZ837DffBeWKnY3KAp2jHN7TY3DW9EakCtUpBpKBg-qJnLjkFdyYKHyTL1ZcPzW7R4MuiT0DjSFbB4_TF9sDt4QpwDsGfkQtNH_3y8vlBxAwk0WBoHlgmhj0/s600/02-Dockerfile.png"/></a>
+<br />
+KinD = Kubernetes in Docker is a tool for running local Kubernetes cluster using Docker container "nodes".
+<br />
+<br />  
+
+<b>DEMO Kubernetes Commands</b>
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# Load image into KinD cluster
+&nbsp;&nbsp;kind load docker-image flask-api:latest --name flask-cluster
+&nbsp;&nbsp;# Setup KinD cluster
+&nbsp;&nbsp;kubectl create ns test-ns
+&nbsp;&nbsp;kubectl config set-context --current --namespace=test-ns
+&nbsp;&nbsp;# Rollout Kubernetes Deployment and Service resources
+&nbsp;&nbsp;kubectl apply -f Kubernetes.yaml
+&nbsp;&nbsp;# Test endpoint
+&nbsp;&nbsp;curl http://localhost:8080
+</pre>
+</td></tr>
+</table>
+<br />
+<a href="https://gitlab.com/SteveProXNA/gitlabcheatsheet/-/blob/main/Kubernetes.yaml">Kubernetes.yaml</a>
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxjgxrXiMc5mPxGRMJqvLAcDQZ_yvYa-snzbVENPze51HOjUem8oznnuv5zq3UZprfqUF42-PeFjKGV_SMkyYEqqqc5xSWhZoDF2tT6hWxYMLgp6yEJHNyoTcwObPNXR_T3LYcOmL_bD3xKsVz9vQZHS4BXj7LzMffLp3QqLwVv9Ilb6T_6dguEP_4Oy0/s589/03-deployment.png"><img alt="" border="0" height="100%" width="98%"
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxjgxrXiMc5mPxGRMJqvLAcDQZ_yvYa-snzbVENPze51HOjUem8oznnuv5zq3UZprfqUF42-PeFjKGV_SMkyYEqqqc5xSWhZoDF2tT6hWxYMLgp6yEJHNyoTcwObPNXR_T3LYcOmL_bD3xKsVz9vQZHS4BXj7LzMffLp3QqLwVv9Ilb6T_6dguEP_4Oy0/s600/03-deployment.png"/></a>
+</td>
+<td valign="top">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhgjWwOGYUsKDIjFiirZ9OLOfSLtPbPvmkYrh2usBSVcdzam_ZkzAbsOelvPqVCUXxNhKSRc9fEkND1g2dMY31V6ONub8g5ZywqO7zaFPJvbPju4mFo_BT493hIpu9yPcw40nGieInn8f5-1TFUvY_K6nyus46ksf9RCAn7_OCFIvZUlrXtEVyMfXRI2E/s346/04-service.png"><img alt="" border="0" height="100%" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhgjWwOGYUsKDIjFiirZ9OLOfSLtPbPvmkYrh2usBSVcdzam_ZkzAbsOelvPqVCUXxNhKSRc9fEkND1g2dMY31V6ONub8g5ZywqO7zaFPJvbPju4mFo_BT493hIpu9yPcw40nGieInn8f5-1TFUvY_K6nyus46ksf9RCAn7_OCFIvZUlrXtEVyMfXRI2E/s600/04-service.png"/></a>
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
+<b>LIMITATIONS</b>
+<br />
+DEMO Hello World is sufficient to demonstrate the process on localhost but has many real world limitations!
+<br /><br />
+
+<i>Limitations</i>
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Everything is on localhost - Cloud Computing typically requires Kubernetes cluster(s)
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually build Docker image from the Dockerfile
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually push Docker image to container registry
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Manually deploy running Docker container into Kubernetes cluster [Deployment exposed as Service]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+All Kubernetes resource values are hardcoded into declarative YAML file [Deployment and a Service]
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+No facility to scale deployment across multiple environments: DEV, IQA, UAT, Prod
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+Environment variables can be injected but is very brittle and cumbersome process
+<br />
+&nbsp;<span style="font-family: 'Wingdings';">•</span>&nbsp;
+No real immediate and secure way to inject secret information into deployment [secret password]
+<br />
+</td>
+</tr>
+</table>
+<br />  
+  
+<i>Solution</i>
+<br />
+Next step is to integrate GitLab CI/CD pipeline to solve these issues and automate build deployment process!
+  
+<br />
+This will be the topic of the next post.
+  
+  
+</span>
+  s
