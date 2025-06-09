@@ -1,0 +1,30 @@
+10 Linux Commands You’ve Probably Never Heard Of
+09-Jun-2024
+
+
+https://medium.com/@haroldfinch01/10-linux-commands-youve-probably-never-heard-of-7be44ee8c3bb
+
+1. look — Fast Dictionary Lookup
+2. rev — Reverse the Characters of a Line
+3. tac — The Reverse of cat
+4. yes — Repetitive Stream Generator
+5. nl — Number Lines of Files
+6. column — Format Output into Columns
+7. shuf — Shuffle Lines Randomly
+8. comm — Compare Two Sorted Files Line by Line
+9. chrt — Manipulate Real-Time Scheduling Policies
+10. watch — Execute a Program Periodically
+
+
+EXAMPLES
+look pro
+echo "Linux" | rev
+tac access.log
+yes | sudo apt install mypackage
+nl file.txt
+
+cat data.txt | column -t -s,
+shuf list.txt
+comm file1.txt file2.txt
+sudo chrt -f 99 ./my_program
+watch -n 2 df -h
