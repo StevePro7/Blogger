@@ -21,6 +21,9 @@ complete -F __start_kubectl k
 PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
 export PATH
 
+# Python
+alias sba='source .venv/bin/activate'
+
 # Git
 alias gfp='git fetch --prune'
 
