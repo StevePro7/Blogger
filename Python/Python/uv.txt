@@ -6,3 +6,26 @@ brew install uv
 uv --version
 
 uv pip install requests
+
+
+
+uvx
+15-Jul-2025
+
+uvx ruff check
+uvx ruff check --fix
+uvx ruff format .
+
+Sort imports
+uvx isort .
+OR
+uvx ruff check--select --fix
+
+uvx pylint .
+uvx pylint app.utils.stevepro_utils
+
+uvx mypy -m app.utils.stevepro_utils
+uvx mypy tests
+
+Document linter
+uvx darglint .
