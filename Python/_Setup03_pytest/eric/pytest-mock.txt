@@ -42,6 +42,9 @@ return_value in a mock sets the value that the mocked function will return. Pret
 
 On the other hand, side_effect allows you to define a function or an exception to be raised when the mock is called. It provides more flexibility, enabling dynamic behavior based on the input or other conditions.
 
+Best Practices and Tips
+Use the return_value attribute to set the return value of a mock object and side_effect to define a function or iterable that produces a sequence of return values or exceptions to be raised when the mock is called
+
 
 
 04.
