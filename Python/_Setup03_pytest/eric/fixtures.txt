@@ -26,13 +26,31 @@ Fixture Scopes
 3. module: The fixture is created once per module that uses it and is destroyed at the end of the test session.
 4. session: The fixture is created once per test session and is destroyed at the end of the test session.
 
+
 Yield vs Return in Fixtures
 You can use both yield and return statements to provide the fixture’s value to the test function, but they have different behaviours and implications.
 
 When you use yield in a fixture function, the set-up code is executed before the first yield, and the tear-down code is executed after the last yield.
 
 
-02.
+02. Conftest reference
+Pytest Conftest With Best Practices And Real Examples
+https://pytest-with-eric.com/pytest-best-practices/pytest-conftest
+
+NB:
+The conftest.py file will help us solve this. Luckily, pytest and other testing frameworks are intelligent to automatically pick up fixtures from conftest.py .
+
+
+03. Autouse
+How to Auto-Request Pytest Fixtures Using "Autouse"
+https://pytest-with-eric.com/fixtures/pytest-fixture-autouse
+Reference link above
+i.e.
+"Auto Using Fixtures"
+
+
+
+04.
 What Are Pytest Fixture Scopes? (How To Choose The Best Scope For Your Test)
 https://pytest-with-eric.com/fixtures/pytest-fixture-scope
 
@@ -43,3 +61,35 @@ Function (Set up and tear down once for each test function)
 Class (Set up and tear down once for each test class)
 Module (Set up and tear down once for each test module/file)
 Session (Set up and tear down once for each test session i.e comprising one or more test files)
+
+
+05. Setup Teardown yield
+What is Setup and Teardown in Pytest? (Importance of a Clean Test Environment)
+https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown
+
+Setup allows you to create and configure necessary resources and conditions for tests like initializing required classes, database or network connections, defining test objects, fixtures or variables and so on.
+
+Teardown helps you clean and reset the resources and configurations created using Setup. Simply put, it means to gracefully terminate the changes in the environment that you made to execute your test code.
+
+
+
+50. Misc - parametrize
+A Step-by-Step Guide To Using Pytest Fixtures With Arguments
+https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments
+@pytest.mark.parametrize
+
+	Reference full article:
+	How to Effortlessly Generate Unit Test Cases with Pytest Parameterized Tests
+	https://pytest-with-eric.com/introduction/pytest-parameterized-tests
+
+Factories As Fixtures
+Factories, in the context of Pytest fixtures, are functions that are used to create and return instances of objects that are needed for testing.
+
+Factories are a way to generate test data or objects with specific configurations in a reusable manner.
+
+They can be thought of as a type of fixture that specializes in creating instances of classes or generating data.
+
+
+100. IMPORTANT - do this at the end of fixtures!
+5 Best Practices For Organizing Tests (Simple And Scalable)
+https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests

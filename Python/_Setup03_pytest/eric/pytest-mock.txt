@@ -17,8 +17,45 @@ i.e.
 unittest mock library
 
 
+02.
+How To Mock In Pytest? (A Comprehensive Guide)
+https://pytest-with-eric.com/mocking/pytest-mocking
+
+The pytest-mock plugin provides a mocker fixture and a wrapper around the standard Python mock package.
+
+mocker Fixture
+The pytest-mock plugin provides a mocker fixture that can be used to create mock objects and patch functions.
+
+The mocker fixture is an instance of the MockFixture class, which is a subclass of the unittest.mock module.
+
+mocker.patch
+mocker.MagicMock()
 
 
-99. maybe
-How To Easily Resolve The "Fixture 'Mocker' Not Found" Error in Pytest
-https://pytest-with-eric.com/introduction/fixture-mocker-not-found
+
+03.
+How To Return Multiple Values From Pytest Mock (Practical Guide)
+https://pytest-with-eric.com/mocking/pytest-mock-multiple-return-values
+
+Difference between side_effect and return_value
+return_value in a mock sets the value that the mocked function will return. Pretty straightforward.
+
+On the other hand, side_effect allows you to define a function or an exception to be raised when the mock is called. It provides more flexibility, enabling dynamic behavior based on the input or other conditions.
+
+
+
+04.
+How To Test Raised Exceptions with Pytest MagicMock? (Advanced Guide)
+https://pytest-with-eric.com/mocking/python-magicmock-raise-exception
+
+IMPORTANT
+there is also reference to Mock vs. MagicMock here
+
+before diving into 
+pytest-mock plugin uses MagicMock [by default]
+as 
+pytest-mock plugin built on top of the unittest.mock module
+
+# Assert  
+    with pytest.raises(FileNotFoundError):  
+        remove_file("/tmp/test.txt")

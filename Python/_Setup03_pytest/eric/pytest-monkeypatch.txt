@@ -1,0 +1,17 @@
+monkeypatch
+21-Jul-2025
+
+The Ultimate Guide To Using Pytest Monkeypatch with Real Code Examples
+https://pytest-with-eric.com/mocking/pytest-monkeypatch
+
+What is Monkeypatching and Why Use It?
+Monkeypatching is a technique used to modify code behavior at runtime, particularly useful in testing scenarios where certain dependencies or global settings make it challenging to isolate functionality.
+
+The monkeypatch fixture in Pytest allows you to safely and temporarily alter attributes, environment variables, dictionary values, or even system paths for testing purposes.
+
+Monkeypatching ensures that you can mock or replace these dependencies without affecting other parts of your application.
+
+
+Monkeypatching Environment Variables
+monkeypatch.setenv("APP_MODE", "Production")
+monkeypatch.delenv("APP_MODE", raising=False)

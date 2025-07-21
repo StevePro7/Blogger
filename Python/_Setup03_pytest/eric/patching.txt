@@ -1,0 +1,31 @@
+patching
+21-Jul-2025
+
+
+01.
+Mocking Vs. Patching (A Quick Guide For Beginners)
+https://pytest-with-eric.com/mocking/mocking-vs-patching
+
+Mocking vs Patching - TL;DR
+Mocking is about creating a fake version of an object that mimics the behavior of the real object.
+
+Patching, on the other hand, involves temporarily replacing the actual implementation of a method or object during test execution, which is particularly useful for controlling external dependencies like APIs.
+
+
+Understanding Mocking: Concepts and Examples
+Mocking refers to the creation of fake objects that mimic the behavior of real objects in controlled ways enabling you to temporarily replace functions or objects under test with mock objects that return a result of your choice - fixed values, raise exceptions or side effects.
+
+Understanding Patching: How It Works
+Patching temporarily replaces the actual implementation of a method, function, or object with a mock during testing.
+
+
+
+02. more info
+https://pytest-with-eric.com/mocking/python-magicmock-raise-exception
+What is the Difference Between Mock and Patch?
+
+In the context of PyTest and unit testing in Python, mock and patch are tools for simulating or replacing parts of your code during testing.
+
+Mock: A Mock is a standalone object used to simulate the behaviour of functions or objects. It allows you to set up specific behaviours for method calls, like returning values or raising exceptions.
+
+Patch: patch is a context manager or decorator that temporarily replaces a function or object with a mock during a test. It’s particularly handy for mocking external dependencies.
