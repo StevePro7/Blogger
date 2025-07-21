@@ -9,6 +9,9 @@ pytest.ini
 
 PyCharm setup reference
 
+Fixtures
+conftest
+
 Mock
 MagicMock
 patch
@@ -19,3 +22,5 @@ Asyncio
 @pytest.mark.asyncio
 async def test_fetch_data():
 	results = await fetch_data()
+
+CI/CD
