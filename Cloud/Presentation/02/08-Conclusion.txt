@@ -9,7 +9,7 @@ Finally, test endpoint(s) via curl or in Postman:
 &nbsp;&nbsp;kubectl port-forward service/flask-api-service 8080:80
 &nbsp;&nbsp;curl http://localhost:8080/api/v1 --header "Content-Type: application/json"
 &nbsp;&nbsp;# RESPONSE
-&nbsp;&nbsp;{"message": "Welcome to analytics!"}
+&nbsp;&nbsp;{"message": "Hello World (Python)!"}
 </pre>
 </td></tr>
 </table>
