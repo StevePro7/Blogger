@@ -1,0 +1,85 @@
+Chat01
+21-Jul-2025
+
+
+ORDER
+unittest.mock
+
+Mock
+MagicMock
+patch
+monkeypatch
+
+pytest-mock
+mocker
+
+Q1.
+Python pytest what are all the different mock and patch objects available?
+
+Core Mocking Tools (unittest.mock)
+
+1. Mock
+The core class used to create mock objects.
+You can set attributes, return values, and check calls.
+
+2. MagicMock
+Subclass of Mock with default implementations for most magic methods (__len__, __getitem__, etc.).
+Useful when mocking objects that interact with Python's dunder methods.
+
+3. patch
+Replaces an object in a module or class with a mock for the duration of the test or context.
+
+4. patch.object
+5. patch.dict
+6. PropertyMock
+
+
+pytest Specifics
+While pytest doesn't provide its own mocks, it integrates very well with unittest.mock and often uses:
+
+7. monkeypatch (pytest built-in fixture)
+Patches objects, environment variables, or attributes during a test run.
+Great alternative to patch.
+
+
+Related Utilities
+8. create_autospec
+9. Mock.side_effect
+10. call, ANY, call_args, call_count, assert_called_with, etc.
+
+
+Q2.
+what about pytest-mock and mocker fixture?
+pip install pytest-mock
+
+
+pytest-mock and the mocker Fixture
+The pytest-mock plugin is a thin wrapper around unittest.mock that integrates mocking capabilities into pytest via the mocker fixture. 
+
+It provides a more pythonic, readable, and pytest-native way to use mocks in tests — avoiding some of the verbosity and scoping quirks of patch.
+
+
+Why Use pytest-mock?
+You don't have to import patch or manage decorators/context managers.
+It handles cleanup automatically.
+Works seamlessly with pytest's fixture system and monkeypatch.
+You still get full power of unittest.mock.
+
+mocker Fixture Features
+1. mocker.patch()
+Equivalent to unittest.mock.patch, but scoped to your test and cleaned up automatically.
+
+2. mocker.patch.object()
+Patches a specific attribute on an object.
+
+3. mocker.patch.dict()
+Patch a dictionary like os.environ.
+
+4. mocker.MagicMock / mocker.Mock
+Access to MagicMock and Mock directly from the fixture.
+
+5. mocker.spy()
+Attach a spy to an existing method to track calls without mocking the implementation.
+
+6. mocker.stopall()
+Stops all active patches manually (rarely needed).
