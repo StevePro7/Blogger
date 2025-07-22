@@ -7,5 +7,46 @@ Difference
 BLOG
 
 <u>Difference</u><br />
-In pytest, mock and patch are both <a href="https://pytest-with-eric.com/mocking/python-magicmock-raise-exception/#What-is-the-Difference-Between-Mock-and-Patch">tools</a> for simulating or replacing parts of your code during testing.  Mock creates mock objects while patch temporarily replaces real objects with mocks during tests to isolate code + control its behavior.
+In pytest, Mock and patch are both <a href="https://pytest-with-eric.com/mocking/python-magicmock-raise-exception/#What-is-the-Difference-Between-Mock-and-Patch">tools</a> for simulating or replacing parts of your code during testing.  Mock creates mock objects while patch temporarily replaces real objects with mocks during tests to isolate code:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b>Mock</b></td>
+<td>&nbsp;<b>patch</b></td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from unittest.mock import Mock  
+&nbsp;&nbsp;
+&nbsp;&nbsp;mock_obj = Mock()
+&nbsp;&nbsp;mock_obj.some_method.return_value = 42 
+&nbsp;&nbsp;result = mock_obj.some_method()  
+&nbsp;&nbsp;assert result == 42
+</pre>
+</td>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from unittest.mock import patch
+&nbsp;&nbsp;
+&nbsp;&nbsp;def external_function(): 
+&nbsp;&nbsp;    pass
+&nbsp;&nbsp;
+&nbsp;&nbsp;@patch('module_name.external_function')  
+&nbsp;&nbsp;def test_function(mock_external): 
+&nbsp;&nbsp;    mock_external.return_value = "Mock data"
+&nbsp;&nbsp;    result = external_function() 
+&nbsp;&nbsp;    assert result == "Mock data"
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+
+
+ARCHIVE
+<u>Difference</u><br />
+In pytest, Mock and patch are both <a href="https://pytest-with-eric.com/mocking/python-magicmock-raise-exception/#What-is-the-Difference-Between-Mock-and-Patch">tools</a> for simulating or replacing parts of your code during testing.  Mock creates mock objects while patch temporarily replaces real objects with mocks during tests to isolate code + control its behavior.
 <br /><br />
