@@ -1,6 +1,28 @@
 fixtures
 21-Jul-2025
 
+TODO
+https://pytest-with-eric.com/fixtures
+https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments
+https://pytest-with-eric.com/introduction/pytest-parameterized-tests
+
+50. Misc - parametrize
+A Step-by-Step Guide To Using Pytest Fixtures With Arguments
+https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments
+@pytest.mark.parametrize
+
+	Reference full article:
+	How to Effortlessly Generate Unit Test Cases with Pytest Parameterized Tests
+	https://pytest-with-eric.com/introduction/pytest-parameterized-tests
+
+Factories As Fixtures
+Factories, in the context of Pytest fixtures, are functions that are used to create and return instances of objects that are needed for testing.
+Factories are a way to generate test data or objects with specific configurations in a reusable manner.
+They can be thought of as a type of fixture that specializes in creating instances of classes or generating data.
+
+
+
+
 //01.
 //How Pytest Fixtures Can Help You Write More Readable And Efficient Tests
 //https://pytest-with-eric.com/fixtures/pytest-fixtures
@@ -64,21 +86,8 @@ fixtures
 
 
 
-50. Misc - parametrize
-A Step-by-Step Guide To Using Pytest Fixtures With Arguments
-https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments
-@pytest.mark.parametrize
-
-	Reference full article:
-	How to Effortlessly Generate Unit Test Cases with Pytest Parameterized Tests
-	https://pytest-with-eric.com/introduction/pytest-parameterized-tests
-
-Factories As Fixtures
-Factories, in the context of Pytest fixtures, are functions that are used to create and return instances of objects that are needed for testing.
-Factories are a way to generate test data or objects with specific configurations in a reusable manner.
-They can be thought of as a type of fixture that specializes in creating instances of classes or generating data.
 
 
-100. IMPORTANT - do this at the end of fixtures!
-5 Best Practices For Organizing Tests (Simple And Scalable)
-https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests
+//100. IMPORTANT - do this at the end of fixtures!
+//5 Best Practices For Organizing Tests (Simple And Scalable)
+//https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests
