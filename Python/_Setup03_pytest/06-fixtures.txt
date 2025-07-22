@@ -9,13 +9,21 @@ tables
 conftest
 scopes
 
+LINKS
+setup
+https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown
+
+teardown
+https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown
+
 
 <u>Fixtures</u><br />
-<a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to setup all preconditions for tests, provide data, or perform teardown after tests finished via @pytest.fixture decorator.
+<a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">setup</a> all preconditions for tests, provide data, or perform <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">teardown</a> after tests finished via @pytest.fixture decorator.
 <br /><br /> 
-<i>Scope</i><br />
+<i>01-Scope</i><br />
 Fixtures have scope: Function, Class, Module + Session which define how long fixture available during test:
 <br />
+<!--
 <table width="99%" border="1">
 <tr><td>&nbsp;<b>SCOPE</b></td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
 <tr><td>&nbsp;Function</td><td>&nbsp;Fixture created once per test function and destroyed at end of test function</td></tr>
@@ -23,5 +31,8 @@ Fixtures have scope: Function, Class, Module + Session which define how long fix
 <tr><td>&nbsp;Module</td><td>&nbsp;Fixture created once per test module and destroyed at end of test module</td></tr>
 <tr><td>&nbsp;Session</td><td>&nbsp;Fixture created once per test session and destroyed at end of test session</td></tr>
 </table>
-</br>
+-->
 <br />
+<i>02-conftest</i><br />
+In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-conftest">conftest.py</a> file is used to share fixtures across multiple tests.  All the fixtures in conftest.py will be automagically detected without needing to import.  conftest: typically scoped at test root directory structure.
+<br /><br />
