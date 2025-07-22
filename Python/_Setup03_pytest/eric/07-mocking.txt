@@ -5,7 +5,6 @@ mocking
 01.
 Common Mocking Problems & How To Avoid Them (+ Best Practices)
 https://pytest-with-eric.com/mocking/pytest-common-mocking-problems
-
 Mocking is a powerful technique used in testing to replace real objects with mock objects that simulate the behavior of real objects.
 
 Patching
@@ -55,16 +54,16 @@ side_effect parameter
 allows you to specify a function, object or even exception that will be called when the patched function or method is invoked.
 
 
-ASSERTS
-assert_called
-assert_called_once
-assert_called_once_with
-assert_called_with
-assert_not_called
-assert_has_calls
-assert_any_call
-
-Table ^^
+https://pytest-with-eric.com/mocking/pytest-mock-assert-called/#Pytest-Mock-Assert-Call-The-Key-Concepts
+//ASSERTS
+//assert_called
+//assert_called_once
+//assert_called_once_with
+//assert_called_with
+//assert_not_called
+//assert_has_calls
+//assert_any_call
+//Table ^^
 
 
 IMPORTANT
