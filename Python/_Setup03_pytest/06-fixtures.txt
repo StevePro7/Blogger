@@ -56,7 +56,39 @@ When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yie
 -->
 <br />
 <i>06-Arguments</i><br />
-Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments">arguments</a> to write reusable fixtures that can easily share across tests also known as Parameterized fixtures using <i>@pytest.fixture(params=[0, 1, 2])</i> syntax.  Note: these fixtures should not be confused with the <i>@pytest.mark.parametrize</i> decorator which can be used to specify inputs and outputs!
+Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments">arguments</a> to write reusable fixtures that can easily share across tests also known as Parameterized fixtures using <i>@pytest.fixture(params=[0, 1, 2])</i> syntax.  Note: these fixtures should not be confused with the <i>@pytest.mark.parametrize</i> <a href="https://pytest-with-eric.com/introduction/pytest-parameterized-tests/#What-Are-Pytest-Parameters">decorator</a> which can be used to specify inputs and outputs!
 <br /><br />
+<i>07-Factories</i><br />
+<a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments/#Factories-As-Fixtures">Factories</a>, in the context of pytest fixtures, are functions that are used to create and return instances of objects that are needed to generate test data or objects with specific configuration in reusuable manner:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b>conftest.py</b></td>
+<td>&nbsp;<b>unittest.py</b></td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;@pytest.fixture
+&nbsp;def user_creds(): 
+&nbsp;  def _user_creds(name: str, email: str):
+&nbsp;    return {"name": name, "email": email}  
+&nbsp;  return _user_creds
+</pre>
+</td>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;def test_user_creds(user_creds):
+&nbsp;  assert user_creds("John", "x@abc.com")=={  
+&nbsp;    "name": "John",  
+&nbsp;    "email": "x@abc.com",
+&nbsp;  }
+</pre>
+</td>
+</tr>
+</table>
+-->  
+<br />
 Best <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests">practices</a> for organizing tests include: Organizing Tests by Testing <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-1-%E2%80%94-Organizing-Tests-by-Testing-Pyramid">Pyramid</a>, Structure Should <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-2-Test-Structure-Should-Mirror-Application-Code">Mirror</a> Application Code, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-3-%E2%80%94-How-to-Group-or-Organize-Fixtures">Group</a> or Organize Fixtures and Organize Tests <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Tests-Outside-Application-Code">Outside</a> Application Code for scalability.
 <br /><br />
