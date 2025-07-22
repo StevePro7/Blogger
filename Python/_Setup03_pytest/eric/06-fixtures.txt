@@ -1,15 +1,13 @@
 fixtures
 21-Jul-2025
 
-01.
-How Pytest Fixtures Can Help You Write More Readable And Efficient Tests
-https://pytest-with-eric.com/fixtures/pytest-fixtures
+//01.
+//How Pytest Fixtures Can Help You Write More Readable And Efficient Tests
+//https://pytest-with-eric.com/fixtures/pytest-fixtures
+//What Are Pytest Fixtures
 
-What Are Pytest Fixtures
-
-
-Fixtures Across Multiple Tests via Conftest
-A more efficient way is to stick common fixtures in a file called conftest.py where all unit test files will pick them up automatically.
+//Fixtures Across Multiple Tests via Conftest
+//A more efficient way is to stick common fixtures in a file called conftest.py where all unit test files will pick them up automatically.
 
 
 Fixture Dependency Injection
@@ -20,11 +18,11 @@ Auto Using Fixtures
 If you’re looking for a simple trick to avoid defining the fixture in each test, you can use the autouse=True flag as an argument in the fixture definition.
 
 
-Fixture Scopes
-1. function: The fixture is created for each test function that uses it and is destroyed at the end of the test function. This is the default scope for fixtures.
-2. class: The fixture is created once per test class that uses it and is destroyed at the end of the test class.
-3. module: The fixture is created once per module that uses it and is destroyed at the end of the test session.
-4. session: The fixture is created once per test session and is destroyed at the end of the test session.
+//Fixture Scopes
+//1. function: The fixture is created for each test function that uses it and is destroyed at the end of the test function. This is the default scope for fixtures.
+//2. class: The fixture is created once per test class that uses it and is destroyed at the end of the test class.
+//3. module: The fixture is created once per module that uses it and is destroyed at the end of the test session.
+//4. session: The fixture is created once per test session and is destroyed at the end of the test session.
 
 
 Yield vs Return in Fixtures
@@ -33,12 +31,11 @@ You can use both yield and return statements to provide the fixture’s value to
 When you use yield in a fixture function, the set-up code is executed before the first yield, and the tear-down code is executed after the last yield.
 
 
-02. Conftest reference
-Pytest Conftest With Best Practices And Real Examples
-https://pytest-with-eric.com/pytest-best-practices/pytest-conftest
-
-NB:
-The conftest.py file will help us solve this. Luckily, pytest and other testing frameworks are intelligent to automatically pick up fixtures from conftest.py .
+//02. Conftest reference
+//Pytest Conftest With Best Practices And Real Examples
+//https://pytest-with-eric.com/pytest-best-practices/pytest-conftest
+//NB:
+//The conftest.py file will help us solve this. Luckily, pytest and other testing frameworks are intelligent to automatically pick up fixtures from conftest.py .
 
 
 03. Autouse
@@ -50,17 +47,15 @@ i.e.
 
 
 
-04.
-What Are Pytest Fixture Scopes? (How To Choose The Best Scope For Your Test)
-https://pytest-with-eric.com/fixtures/pytest-fixture-scope
-
-TODO - table
-Pytest provides four levels of fixture scopes:
-
-Function (Set up and tear down once for each test function)
-Class (Set up and tear down once for each test class)
-Module (Set up and tear down once for each test module/file)
-Session (Set up and tear down once for each test session i.e comprising one or more test files)
+//04.
+//What Are Pytest Fixture Scopes? (How To Choose The Best Scope For Your Test)
+//https://pytest-with-eric.com/fixtures/pytest-fixture-scope
+//TODO - table
+//Pytest provides four levels of fixture scopes:
+//Function (Set up and tear down once for each test function)
+//Class (Set up and tear down once for each test class)
+//Module (Set up and tear down once for each test module/file)
+//Session (Set up and tear down once for each test session i.e comprising one or more test files)
 
 
 05. Setup Teardown yield

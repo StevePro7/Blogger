@@ -9,14 +9,7 @@ tables
 conftest
 scopes
 
-LINKS
-setup
-https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown
-
-teardown
-https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown
-
-
+  
 <u>Fixtures</u><br />
 <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">setup</a> all preconditions for tests, provide data, or perform <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">teardown</a> after tests finished via @pytest.fixture decorator.
 <br /><br /> 
@@ -36,3 +29,23 @@ Fixtures have scope: Function, Class, Module + Session which define how long fix
 <i>02-conftest</i><br />
 In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-conftest">conftest.py</a> file is used to share fixtures across multiple tests.  All the fixtures in conftest.py will be automagically detected without needing to import.  conftest: typically scoped at test root directory structure.
 <br /><br />
+
+  
+<i>05-Yield</i><br />
+When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yield-vs-Return-in-Fixtures">yield</a> in fixture function setup code executes before yield and teardown executes after yield: 
+<br />
+<!--  
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pytest  
+&nbsp;&nbsp;@pytest.fixture
+&nbsp;&nbsp;def my_fixture(): 
+&nbsp;&nbsp;    # setup code
+&nbsp;&nbsp;    yield "fixture value"
+&nbsp;&nbsp;    # teardown code
+</pre>
+</td></tr>
+</table>
+-->
+<br />
