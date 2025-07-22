@@ -4,3 +4,23 @@ pytest ini
 
 Ref: eric
 05-pytest.ini.txt
+
+
+BLOG
+
+<u>Configuration</u><br />
+In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-ini">pytest.ini</a> is the main configuration file used to customize and control pytest behavior across the unit test suite.  pytest.ini hosts pytest options, test paths, plugin settings and markers to attach to the test functions to categorize, filter or modify their behavior.  Here is a sample pytest.ini configuration file as base: 
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;[pytest]  
+&nbsp;&nbsp;addopts = -ra -q
+&nbsp;&nbsp;testpaths = tests
+&nbsp;&nbsp;markers =
+&nbsp;&nbsp;    slow: marks tests as slow (deselect with '-m "not slow"')
+&nbsp;&nbsp;    db: marks tests requiring database
+</pre>
+</td></tr>
+</table>
+<br />
