@@ -16,7 +16,7 @@ BLOG
 <a href="https://pytest-with-eric.com/mocking/pytest-common-mocking-problems/#Mock-and-Patch-%E2%80%94-A-Brief-Recap">Patching</a> is technique that temporarily replaces real objects in code with mock objects during test execution.  <a href="https://pytest-with-eric.com/mocking/mocking-vs-patching/#Understanding-Patching-How-It-Works">Patching</a> helps ensure external systems do not affect test outcomes thus tests are consistent and repeatable.
 <br /><br />
 IMPORTANT - Mocks are <b>NOT</b> stubs!<br />
-When we use the patch function with <i>return_value</i> or <i>side_effect</i> we are using a stub [but from Mock library]
+When we use the <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch">patch</a> function with <i>return_value</i> or <i>side_effect</i> we are using a stub [but from Mock library]
 <br />
 <table width="99%" border="1">
 <tr><td>&nbsp;<b>METHOD</b></td><td>&nbsp;<b>DESCRIPTION</b></td></tr>

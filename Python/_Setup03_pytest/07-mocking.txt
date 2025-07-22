@@ -9,11 +9,11 @@ Ref: eric
 BLOG
 
 <u>Mocking</u><br />
-<a href="https://pytest-with-eric.com/mocking/pytest-mocking">Mocking</a> is technique that allows you to isolate pieces of code being tested from its dependencies so the test can focus on the code under test in isolation.  The unittest.mock package offers Mock and MagicMock objects:
+<a href="https://pytest-with-eric.com/mocking/pytest-mocking">Mocking</a> is technique that allows you to isolate pieces of code being tested from its dependencies so the test can focus on the code under test in isolation.  The <a href="https://docs.python.org/3/library/unittest.mock.html">unittest.mock</a> package offers Mock and MagicMock objects:
 <br /><br />
-<i>Mock()</i><br />
+<i><a href="https://docs.python.org/3/library/unittest.mock.html#the-mock-class">Mock</a></i><br />
 A mock object simulates the behavior of the object it replaces by creating attributes and methods on-the-fly.
 <br /><br />
-<i>MagicMock()</i><br />
+<i><a href="https://docs.python.org/3/library/unittest.mock.html#magic-mock">MagicMock</a></i><br />
 Subclass of Mock with default implementations for most magic methods (__len__, __getitem__, etc.).  Useful when mocking objects that interact with Python's dunder methods that enable custom behaviors for common operations.
 <br /><br />
