@@ -31,8 +31,8 @@ Can be harder to read or stack with multiple patches
 - Better to use mocker.patch() inline.
 
 
-5. Use autospec=True when mocking complex or external APIs
-To ensure your mocks behave like the real objects (e.g., catch bad call signatures):
+//5. Use autospec=True when mocking complex or external APIs
+//To ensure your mocks behave like the real objects (e.g., catch bad call signatures):
 
 
 //6. Use create_autospec() for strict mocks
