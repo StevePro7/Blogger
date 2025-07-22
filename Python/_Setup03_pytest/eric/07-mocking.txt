@@ -27,21 +27,18 @@ Autospec with Patch
 You can also apply autospec=True directly in the patch function.
 
 
-02. unittest	Mock()	MagicMock()	@patch
-What Are Pytest Mock Assert Called Methods and How To Leverage Them
-https://pytest-with-eric.com/mocking/pytest-mock-assert-called
-
-Frequently Asked Questions
-Are mock and MagicMock the Same Methods?
-
-No.
-Mock
-The Mock class in Python’s unittest.mock library is used to mock objects.
-A mock object simulates the behavior of the object it replaces by creating attributes and methods on-the-fly.
-
-MagicMock 
-class is an extension of the Mock class.
-It has all the capabilities of a regular Mock, but with the addition of most of the “magic” or “dunder” methods pre-created. These are special methods in Python, like __getitem__ or __len__, that enable custom behaviors for common operations
+//02. unittest	Mock()	MagicMock()	@patch
+//What Are Pytest Mock Assert Called Methods and How To Leverage Them
+//https://pytest-with-eric.com/mocking/pytest-mock-assert-called
+//Frequently Asked Questions
+//Are mock and MagicMock the Same Methods?
+//No.
+//Mock
+//The Mock class in Python’s unittest.mock library is used to mock objects.
+//A mock object simulates the behavior of the object it replaces by creating attributes and methods on-the-fly.
+//MagicMock 
+//class is an extension of the Mock class.
+//It has all the capabilities of a regular Mock, but with the addition of most of the “magic” or “dunder” methods pre-created. These are special methods in Python, like __getitem__ or __len__, that enable custom behaviors for common operations
 
 
 @patch decorator

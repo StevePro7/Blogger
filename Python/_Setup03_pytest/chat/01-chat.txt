@@ -15,16 +15,15 @@ mocker
 
 Q1.
 Python pytest what are all the different mock and patch objects available?
-
 Core Mocking Tools (unittest.mock)
 
-1. Mock
-The core class used to create mock objects.
-You can set attributes, return values, and check calls.
+//1. Mock
+//The core class used to create mock objects.
+//You can set attributes, return values, and check calls.
 
-2. MagicMock
-Subclass of Mock with default implementations for most magic methods (__len__, __getitem__, etc.).
-Useful when mocking objects that interact with Python's dunder methods.
+//2. MagicMock
+//Subclass of Mock with default implementations for most magic methods (__len__, __getitem__, etc.).
+//Useful when mocking objects that interact with Python's dunder methods.
 
 3. patch
 Replaces an object in a module or class with a mock for the duration of the test or context.
