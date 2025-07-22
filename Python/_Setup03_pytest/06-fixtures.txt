@@ -29,9 +29,13 @@ Fixtures have scope: Function, Class, Module + Session which define how long fix
 <i>02-conftest</i><br />
 In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-conftest">conftest.py</a> file is used to share fixtures across multiple tests.  All the fixtures in conftest.py will be automagically detected without needing to import.  conftest: typically scoped at test root directory structure.
 <br /><br />
-
-  
-<i>05-Yield</i><br />
+<i>03-Dependencies</i><br />
+Dependency Injection: when fixtures are requested by other fixtures although this adds complexity to tests!
+<br /><br />
+<i>04-autouse</i><br />
+Simple trick to avoid defining fixture in each test: use the <b><a href="https://pytest-with-eric.com/fixtures/pytest-fixture-autouse">autouse</a>=True</b> flag to apply fixture to all tests.
+<br /><br />
+<i>05-yield</i><br />
 When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yield-vs-Return-in-Fixtures">yield</a> in fixture function setup code executes before yield and teardown executes after yield: 
 <br />
 <!--  
@@ -49,3 +53,4 @@ When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yie
 </table>
 -->
 <br />
+  

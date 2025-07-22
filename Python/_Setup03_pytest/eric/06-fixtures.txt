@@ -10,12 +10,12 @@ fixtures
 //A more efficient way is to stick common fixtures in a file called conftest.py where all unit test files will pick them up automatically.
 
 
-Fixture Dependency Injection
-Fixtures can also be called (or requested) by other fixtures. This is called dependency injection.
+//Fixture Dependency Injection
+//Fixtures can also be called (or requested) by other fixtures. This is called dependency injection.
 
 
-Auto Using Fixtures
-If you’re looking for a simple trick to avoid defining the fixture in each test, you can use the autouse=True flag as an argument in the fixture definition.
+//Auto Using Fixtures
+//If you’re looking for a simple trick to avoid defining the fixture in each test, you can use the autouse=True flag as an argument in the fixture definition.
 
 
 //Fixture Scopes
@@ -25,10 +25,9 @@ If you’re looking for a simple trick to avoid defining the fixture in each tes
 //4. session: The fixture is created once per test session and is destroyed at the end of the test session.
 
 
-Yield vs Return in Fixtures
-You can use both yield and return statements to provide the fixture’s value to the test function, but they have different behaviours and implications.
-
-When you use yield in a fixture function, the set-up code is executed before the first yield, and the tear-down code is executed after the last yield.
+//Yield vs Return in Fixtures
+//You can use both yield and return statements to provide the fixture’s value to the test function, but they have different behaviours and implications.
+//When you use yield in a fixture function, the set-up code is executed before the first yield, and the tear-down code is executed after the last yield.
 
 
 //02. Conftest reference
@@ -38,13 +37,12 @@ When you use yield in a fixture function, the set-up code is executed before the
 //The conftest.py file will help us solve this. Luckily, pytest and other testing frameworks are intelligent to automatically pick up fixtures from conftest.py .
 
 
-03. Autouse
-How to Auto-Request Pytest Fixtures Using "Autouse"
-https://pytest-with-eric.com/fixtures/pytest-fixture-autouse
-Reference link above
-i.e.
-"Auto Using Fixtures"
-
+//03. Autouse
+//How to Auto-Request Pytest Fixtures Using "Autouse"
+//https://pytest-with-eric.com/fixtures/pytest-fixture-autouse
+//Reference link above
+//i.e.
+//"Auto Using Fixtures"
 
 
 //04.
@@ -58,13 +56,11 @@ i.e.
 //Session (Set up and tear down once for each test session i.e comprising one or more test files)
 
 
-05. Setup Teardown yield
-What is Setup and Teardown in Pytest? (Importance of a Clean Test Environment)
-https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown
-
-Setup allows you to create and configure necessary resources and conditions for tests like initializing required classes, database or network connections, defining test objects, fixtures or variables and so on.
-
-Teardown helps you clean and reset the resources and configurations created using Setup. Simply put, it means to gracefully terminate the changes in the environment that you made to execute your test code.
+//05. Setup Teardown yield
+//What is Setup and Teardown in Pytest? (Importance of a Clean Test Environment)
+//https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown
+//Setup allows you to create and configure necessary resources and conditions for tests like initializing required classes, database or network connections, defining test objects, fixtures or variables and so on.
+//Teardown helps you clean and reset the resources and configurations created using Setup. Simply put, it means to gracefully terminate the changes in the environment that you made to execute your test code.
 
 
 
@@ -79,9 +75,7 @@ https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments
 
 Factories As Fixtures
 Factories, in the context of Pytest fixtures, are functions that are used to create and return instances of objects that are needed for testing.
-
 Factories are a way to generate test data or objects with specific configurations in a reusable manner.
-
 They can be thought of as a type of fixture that specializes in creating instances of classes or generating data.
 
 
