@@ -25,12 +25,11 @@ Core Mocking Tools (unittest.mock)
 //Subclass of Mock with default implementations for most magic methods (__len__, __getitem__, etc.).
 //Useful when mocking objects that interact with Python's dunder methods.
 
-3. patch
-Replaces an object in a module or class with a mock for the duration of the test or context.
-
-4. patch.object
-5. patch.dict
-6. PropertyMock
+//3. patch
+//Replaces an object in a module or class with a mock for the duration of the test or context.
+//4. patch.object
+//5. patch.dict
+//6. PropertyMock
 
 
 pytest Specifics
@@ -43,8 +42,8 @@ Great alternative to patch.
 
 Related Utilities
 8. create_autospec
-9. Mock.side_effect
-10. call, ANY, call_args, call_count, assert_called_with, etc.
+//9. Mock.side_effect
+//10. call, ANY, call_args, call_count, assert_called_with, etc.
 
 
 Q2.

@@ -7,17 +7,16 @@ Common Mocking Problems & How To Avoid Them (+ Best Practices)
 https://pytest-with-eric.com/mocking/pytest-common-mocking-problems
 Mocking is a powerful technique used in testing to replace real objects with mock objects that simulate the behavior of real objects.
 
-Patching
-While Mock objects create stand-alone mock instances, whose interactions and calls can be verfied, patch is a feature that temporarily replaces the real objects in your code with mock objects during the test execution.
-
-Key points to keep in mind — Mocks are NOT stubs.
-
-When we use the patch function with return_value or side_effect , we’re essentially using a stub (even though we’re using the Mock library).
+//Patching
+//While Mock objects create stand-alone mock instances, whose interactions and calls can be verfied, patch is a feature that temporarily replaces the real objects in your code with mock objects during the test execution.
+//Key points to keep in mind — Mocks are NOT stubs.
+//When we use the patch function with return_value or side_effect , we’re essentially using a stub (even though we’re using the Mock library).
 
 
 IMPORTANT
 How autospec Solves This Problem
 
+TODO
 By using autospec=True, you can ensure that your mock objects respect the function signatures of the objects they’re replacing.
 
 
@@ -44,11 +43,11 @@ You can also apply autospec=True directly in the patch function.
 @patch decorator
 temporarily replace the get_total_price function with our mock object mock_calculator- this is what isolation of code means
 
-return_value parameter
-TODO
 
-side_effect parameter
-allows you to specify a function, object or even exception that will be called when the patched function or method is invoked.
+//return_value parameter
+//TODO
+//side_effect parameter
+//allows you to specify a function, object or even exception that will be called when the patched function or method is invoked.
 
 
 https://pytest-with-eric.com/mocking/pytest-mock-assert-called/#Pytest-Mock-Assert-Call-The-Key-Concepts
