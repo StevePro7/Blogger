@@ -1,21 +1,3 @@
-Fixtures
-22-Jul-2025
-
-
-Ref: eric
-06-fixtures.txt
-tables
-
-conftest
-scopes
-
-
-<u>Fixtures</u><br />
-<a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to setup all preconditions for tests, provide data, or perform teardown after tests finished via @pytest.fixture decorator.
-<br /><br /> 
-<i>Scope</i><br />
-Fixtures have scope: Function, Class, Module + Session which define how long fixture available during test:
-<br />
 <table width="99%" border="1">
 <tr><td>&nbsp;<b>SCOPE</b></td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
 <tr><td>&nbsp;Function</td><td>&nbsp;Fixture created once per test function and destroyed at end of test function</td></tr>
@@ -24,4 +6,3 @@ Fixtures have scope: Function, Class, Module + Session which define how long fix
 <tr><td>&nbsp;Session</td><td>&nbsp;Fixture created once per test session and destroyed at end of test session</td></tr>
 </table>
 </br>
-<br />
