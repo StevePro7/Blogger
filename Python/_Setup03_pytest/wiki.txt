@@ -1,5 +1,94 @@
 <span style="font-family:verdana;font-size:85%;">
 
-pytest blog...
+In 2020, we checked out <a href="https://steveproxna.blogspot.com/2020/07/python-setup-cheat-sheet.html">Python Setup Cheat Sheet</a> as an interpreted high-level programming language with all code samples' unit tests using unittest package TestCase class.  However, since then we have learned that <a href="https://pytest-with-eric.com">pytest</a> allows writing shorter more readable tests with less boilerplate.  Plus we would like to include mocks!!  
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5SeutLv2xN_orl-llnhD8H58gAtNhBFoIXsyAywK3-tcb0Ov_I4igsZhlk-1QHT2eMPOzY6nn8vQMx_HNHamjKR9eRKRshTajA5xZ-Jekpr-FIAMGht4ayQeF0Vd_2WYAXfuGGQh6winK76XYjsvvYEC2JIA5F2_iuXlobGn7PzMwq2LMPjUjUExW7nc/s2360/PythonPytest.jpg"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5SeutLv2xN_orl-llnhD8H58gAtNhBFoIXsyAywK3-tcb0Ov_I4igsZhlk-1QHT2eMPOzY6nn8vQMx_HNHamjKR9eRKRshTajA5xZ-Jekpr-FIAMGht4ayQeF0Vd_2WYAXfuGGQh6winK76XYjsvvYEC2JIA5F2_iuXlobGn7PzMwq2LMPjUjUExW7nc/s600/PythonPytest.jpg"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+
+<u>Frameworks</u><br />
+When developing code in Python there are typically five Top Python Testing <a href="https://pytest-with-eric.com/comparisons/python-testing-frameworks">Frameworks</a> that are favorable:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>&nbsp;<b>NAME</b>&nbsp;</td><td>&nbsp;<b>MONIKER </b>&nbsp;</td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
+<tr><td>&nbsp;unittest&nbsp;</td><td>&nbsp;PyUnit&nbsp;</td><td>&nbsp;The default Python testing framework built-in with the Python Standard Library</td></tr>
+<tr><td>&nbsp;pytest&nbsp;</td><td>&nbsp;Pytest&nbsp;</td><td>&nbsp;Popular testing frameworks known for simplicity, flexibility + powerful features</td></tr>
+<tr><td>&nbsp;noseTest&nbsp;</td><td>&nbsp;Nose2&nbsp;</td><td>&nbsp;Enhanced unittest version offering additional plugins to support test execution</td></tr>
+<tr><td>&nbsp;DocTest&nbsp;</td><td>&nbsp;DocTest&nbsp;</td><td>&nbsp;Python Standard Library module generates tests within source code DocString</td></tr>
+<tr><td>&nbsp;Robot&nbsp;</td><td>&nbsp;Robot&nbsp;</td><td>&nbsp;Acceptance testing keyword-driven module that simplifies testcase automation</td></tr>
+</table>
+-->
+<br />
+Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a> currently seems to be the most popular Python unit test framework out:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;1. Simple and Readable Syntax
+&nbsp;&nbsp;   You write plain Python functions instead of creating large verbose classes.
+&nbsp;&nbsp;   Assertions use plain assert statements which provide more detailed output.
+</pre>
+</td>
+</tr>
+<tr>  
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;2. Rich Plugin Ecosystem
+&nbsp;&nbsp;   Plugins like pytest-mock, pytest-asyncio, pytest-cov, and more.
+&nbsp;&nbsp;   Easy to extend pytest plugins or write your own custom plugins.
+</pre>
+</td>
+</tr>
+<tr>  
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;3. Powerful Fixtures
+&nbsp;&nbsp;   Allows for clean and re-usable setup and teardown using fixtures.
+&nbsp;&nbsp;   Supports various test level scopes, autouse, and parametrization.
+</pre>
+</td>
+</tr>
+<tr>  
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;4. Test Discovery
+&nbsp;&nbsp;   Automatically disovers tests in files named test_*.py.
+&nbsp;&nbsp;   No need to manually register tests or use loader classes.
+</pre>
+</td>
+</tr>
+<tr>  
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;5. Great Reporting
+&nbsp;&nbsp;   Colored output, diffs for failing assertions, and optional verbosity.
+&nbsp;&nbsp;   Integrates easily with tools like coverage, tox, and CI/CD systems.
+</pre>
+</td>
+</tr>
+<tr>  
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;6. Supports Complex Testing Needs
+&nbsp;&nbsp;   Parameterized tests (@pytest.mark.parametrize)
+&nbsp;&nbsp;   parallel test execution (pytest-xdist) + hooks
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+  
+<u>Setup</u><br />
+Depending on your stack here is some great documentation to setup pytest on <a href="https://pytest-with-eric.com/integrations/pytest-pycharm-integration">PyCharm</a>, <a href="https://pytest-with-eric.com/introduction/how-to-run-pytest-in-vscode">VS Code</a> or <a href="https://pytest-with-eric.com/getting-started/poetry-run-pytest">Poetry</a>.
+<br /><br />
+
+<br />
   
 </span>
