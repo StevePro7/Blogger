@@ -1,35 +1,35 @@
 pytest-mock
 21-Jul-2025
 
-Plugin
-https://pypi.org/project/pytest-mock
+//Plugin
+//https://pypi.org/project/pytest-mock
 
-01.
-Python unit testing with Pytest and Mock
-https://medium.com/@bfortuner/python-unit-testing-with-pytest-and-mock-197499c4623c
+//01.
+//Python unit testing with Pytest and Mock
+//https://medium.com/@bfortuner/python-unit-testing-with-pytest-and-mock-197499c4623c
 
-wrapper library pytest-mock
-instead of plain Mock
+//wrapper library pytest-mock
+//instead of plain Mock
 
-mocker.patch
-mocker fixture = thin wrapper around patching API provided by mock package
-i.e.
-unittest mock library
+//mocker.patch
+//mocker fixture = thin wrapper around patching API provided by mock package
+//i.e.
+//unittest mock library
 
 
-02.
-How To Mock In Pytest? (A Comprehensive Guide)
-https://pytest-with-eric.com/mocking/pytest-mocking
+//02.
+//How To Mock In Pytest? (A Comprehensive Guide)
+//https://pytest-with-eric.com/mocking/pytest-mocking
 
-The pytest-mock plugin provides a mocker fixture and a wrapper around the standard Python mock package.
+//The pytest-mock plugin provides a mocker fixture and a wrapper around the standard Python mock package.
 
-mocker Fixture
-The pytest-mock plugin provides a mocker fixture that can be used to create mock objects and patch functions.
+//mocker Fixture
+//The pytest-mock plugin provides a mocker fixture that can be used to create mock objects and patch functions.
 
-The mocker fixture is an instance of the MockFixture class, which is a subclass of the unittest.mock module.
+//The mocker fixture is an instance of the MockFixture class, which is a subclass of the unittest.mock module.
 
-mocker.patch
-mocker.MagicMock()
+//mocker.patch
+//mocker.MagicMock()
 
 
 
@@ -47,18 +47,18 @@ mocker.MagicMock()
 
 
 
-04.
-How To Test Raised Exceptions with Pytest MagicMock? (Advanced Guide)
-https://pytest-with-eric.com/mocking/python-magicmock-raise-exception
+//04.
+//How To Test Raised Exceptions with Pytest MagicMock? (Advanced Guide)
+//https://pytest-with-eric.com/mocking/python-magicmock-raise-exception
 
-IMPORTANT
-there is also reference to Mock vs. MagicMock here
+//IMPORTANT
+//there is also reference to Mock vs. MagicMock here
 
-before diving into 
-pytest-mock plugin uses MagicMock [by default]
-as 
-pytest-mock plugin built on top of the unittest.mock module
+//before diving into 
+//pytest-mock plugin uses MagicMock [by default]
+//as 
+//pytest-mock plugin built on top of the unittest.mock module
 
-# Assert  
-    with pytest.raises(FileNotFoundError):  
-        remove_file("/tmp/test.txt")
+//# Assert  
+//    with pytest.raises(FileNotFoundError):  
+//        remove_file("/tmp/test.txt")
