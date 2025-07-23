@@ -1,0 +1,27 @@
+Assertions
+22-Jul-2025
+
+//Mocks are not stubs
+
+
+BLOG
+
+IMPORTANT<br />
+When creating mocks it is critical to ensure mock objects accurately reflect objects they are replacing.  Thus, it is best practice to use <b><a href="https://pytest-with-eric.com/mocking/pytest-common-mocking-problems/#Mocks-Fail-To-Respect-Method-Signature">autospec</a>=True</b> to ensure mock objects respect function signatures being replaced!
+<br /><br />
+<u>Assertions</u><br />
+For completeness, here is list of <a href="https://pytest-with-eric.com/mocking/pytest-mock-assert-called/#Pytest-Mock-Assert-Call-The-Key-Concepts">assertion</a> methods to verify method on mock object was called during tests:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;<b>METHOD</b></td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
+<tr><td>&nbsp;assert_called</td><td>&nbsp;verify specific method on mock object has been called during a test</td></tr>
+<tr><td>&nbsp;assert_called_once</td><td>&nbsp;verify specific method on mock object has been called only one time</td></tr>
+<tr><td>&nbsp;assert_called_once_with</td><td>&nbsp;verify specific method on mock object called once with specific args</td></tr>
+<tr><td>&nbsp;assert_called_with</td><td>&nbsp;verify every time method on mock object called with fixed arguments</td></tr>
+<tr><td>&nbsp;assert_not_called</td><td>&nbsp;verify specific method on mock object was not called during the test</td></tr>
+<tr><td>&nbsp;assert_has_calls</td><td>&nbsp;verify the order in which specific method on mock object was called</td></tr>
+<tr><td>&nbsp;assert_any_call</td><td>&nbsp;verify specific method on mock object has been called at least once</td></tr>
+</table>
+<!-- -->
+<br />

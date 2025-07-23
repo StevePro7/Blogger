@@ -1,0 +1,94 @@
+Fixtures
+22-Jul-2025
+
+
+Ref: eric
+06-fixtures.txt
+tables
+
+conftest
+scopes
+
+
+BLOG
+  
+<u>Fixtures</u><br />
+<a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">setup</a> all preconditions for tests, provide data, or perform <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">teardown</a> after tests finished via @pytest.fixture decorator.
+<br /><br /> 
+<i>Scope</i><br />
+Fixtures have scope: Function, Class, Module + Session which define how long fixture available during test:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;<b>SCOPE</b></td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
+<tr><td>&nbsp;Function</td><td>&nbsp;Fixture created once per test function and destroyed at end of test function</td></tr>
+<tr><td>&nbsp;Class</td><td>&nbsp;Fixture created once per test class and destroyed at the end of test class</td></tr>
+<tr><td>&nbsp;Module</td><td>&nbsp;Fixture created once per test module and destroyed at end of test module</td></tr>
+<tr><td>&nbsp;Session</td><td>&nbsp;Fixture created once per test session and destroyed at end of test session</td></tr>
+</table>
+<!-- -->
+<br />
+<i>conftest</i><br />
+In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-conftest">conftest.py</a> file is used to share fixtures across multiple tests.  All the fixtures in conftest.py will be automagically detected without needing to import.  conftest: typically scoped at test root directory structure.
+<br /><br />
+<i>Dependencies</i><br />
+Dependency Injection: when fixtures are requested by other fixtures although this adds complexity to tests!
+<br /><br />
+<i>autouse</i><br />
+Simple trick to avoid defining fixture in each test: use the <b><a href="https://pytest-with-eric.com/fixtures/pytest-fixture-autouse">autouse</a>=True</b> flag to apply fixture to all tests.
+<br /><br />
+<i>yield</i><br />
+When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yield-vs-Return-in-Fixtures">yield</a> in fixture function setup code executes before yield and teardown executes after yield: 
+<br />
+<!-- -->  
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pytest  
+&nbsp;&nbsp;@pytest.fixture
+&nbsp;&nbsp;def my_fixture(): 
+&nbsp;&nbsp;    # setup code
+&nbsp;&nbsp;    yield "fixture value"
+&nbsp;&nbsp;    # teardown code
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+<i>Arguments</i><br />
+Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments">arguments</a> to write reusable fixtures that can easily share across tests also known as Parameterized fixtures using <i>@pytest.fixture(params=[0, 1, 2])</i> syntax.  Note: these fixtures should not be confused with the <i>@pytest.mark.parametrize</i> <a href="https://pytest-with-eric.com/introduction/pytest-parameterized-tests/#What-Are-Pytest-Parameters">decorator</a> which can be used to specify inputs and outputs!
+<br /><br />
+<i>Factories</i><br />
+<a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments/#Factories-As-Fixtures">Factories</a>, in the context of pytest fixtures, are functions that are used to create and return instances of objects that are needed to generate test data or objects with specific configuration in reusuable manner:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b>conftest.py</b></td>
+<td>&nbsp;<b>unittest.py</b></td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;@pytest.fixture
+&nbsp;def user_creds(): 
+&nbsp;  def _user_creds(name: str, email: str):
+&nbsp;    return {"name": name, "email": email}  
+&nbsp;  return _user_creds
+</pre>
+</td>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;def test_user_creds(user_creds):
+&nbsp;  assert user_creds("John", "x@abc.com")=={  
+&nbsp;    "name": "John",  
+&nbsp;    "email": "x@abc.com",
+&nbsp;  }
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->  
+<br />
+Best <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests">practices</a> for organizing tests include: Organizing Tests by Testing <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-1-%E2%80%94-Organizing-Tests-by-Testing-Pyramid">Pyramid</a>, Structure Should <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-2-Test-Structure-Should-Mirror-Application-Code">Mirror</a> Application Code, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-3-%E2%80%94-How-to-Group-or-Organize-Fixtures">Group</a> or Organize Fixtures and Organize Tests <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Tests-Outside-Application-Code">Outside</a> Application Code for scalability.
+<br /><br />
