@@ -5,11 +5,54 @@ BLOG
 
 
 <u>Recommendation</u><br />
-However, here are some recommendations to prefer pytest-mock and mocker fixture for future unit testing.<br><br>
-  for unit testing to prefer pytest-mock and mocker fixture in future:
+However, here are some recommendations to prefer pytest-mock and mocker fixture for future unit testing:
 <br /><br />
-However, it is recommended to prefer pytest-mock and mocker fixture for future unit testing.<br><br>
-  for unit testing to prefer pytest-mock and mocker fixture in future:
-<br /><br />
-However, here are some recommendations for unit testing to prefer pytest-mock and mocker fixture in future:
-<br /><br />
+
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;1. Prefer pytest-mock and the mocker fixture
+&nbsp;&nbsp;   Cleaner syntax than unittest.mock.patch
+&nbsp;&nbsp;   Automatically cleaned up after each test
+&nbsp;&nbsp;   Plays well with other pytest fixtures
+&nbsp;&nbsp;   Centralizes all patching into one fixture (mocker)
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;2. Use monkeypatch for patching env vars, system paths and etc.
+&nbsp;&nbsp;   Prefer monkeypatch for clarity and idiomatic pytest style
+&nbsp;&nbsp;   e.g. os.environ, system paths, or patching open()
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;3. Avoid @patch decorators unless migrating old tests
+&nbsp;&nbsp;   Can be harder to read or stack with multiple patches
+&nbsp;&nbsp;   Better to use mocker.patch() inline as cleaner syntax
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;4. Use autospec=True when mocking complex or external APIs
+&nbsp;&nbsp;   Ensure mocks behave like the real objects (catch bad call signatures)
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;5. Use fixtures to share mocks across tests
+&nbsp;&nbsp;   When you have a mock used by multiple tests then define it as a fixture
+</pre>
+</td>
+</tr>
+</table>
+<br />
