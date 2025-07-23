@@ -15,7 +15,7 @@ BLOG
 <u>Fixtures</u><br />
 <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">setup</a> all preconditions for tests, provide data, or perform <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">teardown</a> after tests finished via @pytest.fixture decorator.
 <br /><br /> 
-<i>01-Scope</i><br />
+<i>Scope</i><br />
 Fixtures have scope: Function, Class, Module + Session which define how long fixture available during test:
 <br />
 <!--
@@ -28,16 +28,16 @@ Fixtures have scope: Function, Class, Module + Session which define how long fix
 </table>
 -->
 <br />
-<i>02-conftest</i><br />
+<i>conftest</i><br />
 In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-conftest">conftest.py</a> file is used to share fixtures across multiple tests.  All the fixtures in conftest.py will be automagically detected without needing to import.  conftest: typically scoped at test root directory structure.
 <br /><br />
-<i>03-Dependencies</i><br />
+<i>Dependencies</i><br />
 Dependency Injection: when fixtures are requested by other fixtures although this adds complexity to tests!
 <br /><br />
-<i>04-autouse</i><br />
+<i>autouse</i><br />
 Simple trick to avoid defining fixture in each test: use the <b><a href="https://pytest-with-eric.com/fixtures/pytest-fixture-autouse">autouse</a>=True</b> flag to apply fixture to all tests.
 <br /><br />
-<i>05-yield</i><br />
+<i>yield</i><br />
 When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yield-vs-Return-in-Fixtures">yield</a> in fixture function setup code executes before yield and teardown executes after yield: 
 <br />
 <!--  
@@ -55,10 +55,10 @@ When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yie
 </table>
 -->
 <br />
-<i>06-Arguments</i><br />
+<i>Arguments</i><br />
 Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments">arguments</a> to write reusable fixtures that can easily share across tests also known as Parameterized fixtures using <i>@pytest.fixture(params=[0, 1, 2])</i> syntax.  Note: these fixtures should not be confused with the <i>@pytest.mark.parametrize</i> <a href="https://pytest-with-eric.com/introduction/pytest-parameterized-tests/#What-Are-Pytest-Parameters">decorator</a> which can be used to specify inputs and outputs!
 <br /><br />
-<i>07-Factories</i><br />
+<i>Factories</i><br />
 <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments/#Factories-As-Fixtures">Factories</a>, in the context of pytest fixtures, are functions that are used to create and return instances of objects that are needed to generate test data or objects with specific configuration in reusuable manner:
 <br />
 <!--
