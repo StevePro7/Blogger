@@ -5,6 +5,34 @@ A Practical Guide To Async Testing With Pytest-Asyncio
 https://pytest-with-eric.com/pytest-advanced/pytest-asyncio
 
 @pytest.mark.asyncio
-@pytest.fixture
+//@pytest.fixture
 
 Async Mocking Using AsyncMock
+
+
+EXAMPLE
+pytest-asyncio.txt
+~/StevePro7/PythonSetup/PyTest
+
+
+pip install pytest-asyncio
+
+
+foo.py
+import asyncio
+
+async def fetch_data():
+await asyncio.sleep(1)
+return {"status": "success", "data": [1, 2, 3]}
+
+
+test_foo.py
+import pytest
+from foo import fetch_data
+
+@pytest.mark.asyncio
+async def test_fetch_data():
+	result = await fetch_data()
+	
+	assert result["status"] = "success"
+	assert result["data"] = [1, 2, 3]
