@@ -15,3 +15,7 @@ Monkeypatching ensures that you can mock or replace these dependencies without a
 Monkeypatching Environment Variables
 monkeypatch.setenv("APP_MODE", "Production")
 monkeypatch.delenv("APP_MODE", raising=False)
+
+
+https://pytest-with-eric.com/mocking/pytest-monkeypatch/#Monkeypatching-Environment-Variables
+https://pytest-with-eric.com/mocking/pytest-monkeypatch/#Monkeypatching-Functions
