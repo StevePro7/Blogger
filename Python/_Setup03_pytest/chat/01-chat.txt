@@ -9,10 +9,11 @@ Chat01
 //MagicMock
 //patch
 
-monkeypatch
+//monkeypatch
 
-pytest-mock
-mocker
+//pytest-mock
+//mocker
+
 
 //Q1.
 //Python pytest what are all the different mock and patch objects available?
@@ -33,12 +34,12 @@ mocker
 //6. PropertyMock
 
 
-pytest Specifics
-While pytest doesn't provide its own mocks, it integrates very well with unittest.mock and often uses:
+//pytest Specifics
+//While pytest doesn't provide its own mocks, it integrates very well with unittest.mock and often uses:
 
-7. monkeypatch (pytest built-in fixture)
-Patches objects, environment variables, or attributes during a test run.
-Great alternative to patch.
+//7. monkeypatch (pytest built-in fixture)
+//Patches objects, environment variables, or attributes during a test run.
+//Great alternative to patch.
 
 
 //Related Utilities
@@ -47,38 +48,37 @@ Great alternative to patch.
 //10. call, ANY, call_args, call_count, assert_called_with, etc.
 
 
-Q2.
-what about pytest-mock and mocker fixture?
-pip install pytest-mock
+//Q2.
+//what about pytest-mock and mocker fixture?
+//pip install pytest-mock
 
 
-pytest-mock and the mocker Fixture
-The pytest-mock plugin is a thin wrapper around unittest.mock that integrates mocking capabilities into pytest via the mocker fixture. 
+//pytest-mock and the mocker Fixture
+//The pytest-mock plugin is a thin wrapper around unittest.mock that integrates mocking capabilities into pytest via the mocker fixture. 
+//It provides a more pythonic, readable, and pytest-native way to use mocks in tests — avoiding some of the verbosity and scoping quirks of patch.
 
-It provides a more pythonic, readable, and pytest-native way to use mocks in tests — avoiding some of the verbosity and scoping quirks of patch.
 
+//Why Use pytest-mock?
+//You don't have to import patch or manage decorators/context managers.
+//It handles cleanup automatically.
+//Works seamlessly with pytest's fixture system and monkeypatch.
+//You still get full power of unittest.mock.
 
-Why Use pytest-mock?
-You don't have to import patch or manage decorators/context managers.
-It handles cleanup automatically.
-Works seamlessly with pytest's fixture system and monkeypatch.
-You still get full power of unittest.mock.
+//mocker Fixture Features
+//1. mocker.patch()
+//Equivalent to unittest.mock.patch, but scoped to your test and cleaned up automatically.
 
-mocker Fixture Features
-1. mocker.patch()
-Equivalent to unittest.mock.patch, but scoped to your test and cleaned up automatically.
+//2. mocker.patch.object()
+//Patches a specific attribute on an object.
 
-2. mocker.patch.object()
-Patches a specific attribute on an object.
+//3. mocker.patch.dict()
+//Patch a dictionary like os.environ.
 
-3. mocker.patch.dict()
-Patch a dictionary like os.environ.
+//4. mocker.MagicMock / mocker.Mock
+//Access to MagicMock and Mock directly from the fixture.
 
-4. mocker.MagicMock / mocker.Mock
-Access to MagicMock and Mock directly from the fixture.
+//5. mocker.spy()
+//Attach a spy to an existing method to track calls without mocking the implementation.
 
-5. mocker.spy()
-Attach a spy to an existing method to track calls without mocking the implementation.
-
-6. mocker.stopall()
-Stops all active patches manually (rarely needed).
+//6. mocker.stopall()
+//Stops all active patches manually (rarely needed).

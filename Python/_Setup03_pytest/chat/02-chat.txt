@@ -60,8 +60,8 @@ Python’s built-in mocking comes from the unittest.mock module — even pytest-
 //Even when switching to pytest, teams often keep these decorators for simplicity unless there's a compelling reason to refactor.
 
 
-Recommendation for New Code
-Prefer pytest-mock (mocker fixture) for readability and less boilerplate.
-Import tools like MagicMock, Mock, call, ANY from unittest.mock when needed.
-Avoid @patch unless needed — inline mocker.patch() is usually cleaner.
-Keep everything in one style within a test module for consistency.
+//Recommendation for New Code
+//Prefer pytest-mock (mocker fixture) for readability and less boilerplate.
+//Import tools like MagicMock, Mock, call, ANY from unittest.mock when needed.
+//Avoid @patch unless needed — inline mocker.patch() is usually cleaner.
+//Keep everything in one style within a test module for consistency.
