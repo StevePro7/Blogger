@@ -44,10 +44,10 @@ When you have a mock used by multiple tests, define it as a fixture:
 
 
 
-LEGACY
-Why do I see pytest but still references to unittest mock MagicMock and patch decorator
+//LEGACY
+//Why do I see pytest but still references to unittest mock MagicMock and patch decorator
 
-1. unittest.mock is the Standard Mocking Library in Python
+//1. unittest.mock is the Standard Mocking Library in Python
 Python’s built-in mocking comes from the unittest.mock module — even pytest-mock (and mocker) is just a thin wrapper around it.
 
 
