@@ -43,6 +43,7 @@ BLOG
 &nbsp;&nbsp;
 &nbsp;&nbsp;def test_get_user_name(mocker):
 &nbsp;&nbsp;    mock_response = mocker.Mock()
+&nbsp;&nbsp;    mock_response.status_code = http.HTTPStatus.OK
 &nbsp;&nbsp;    mock_response.json.return_value = {'name': 'Test'}
 &nbsp;&nbsp;    mocker.patch('app.requests.get', return_value=mock_response)
 &nbsp;&nbsp;    result = get_user_name(1)
