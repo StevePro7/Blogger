@@ -41,8 +41,8 @@ Concurrency allows a program to efficiently execute its tasks asynchronously i.e
 &nbsp;&nbsp;@pytest.mark.asyncio
 &nbsp;&nbsp;async def test_fetch_data():
 &nbsp;&nbsp;    result = await fetch_data()
-&nbsp;&nbsp;    assert result["status"] = "OK"&nbsp;
-&nbsp;&nbsp;    assert result["data"] = [42]
+&nbsp;&nbsp;    assert result["status"] == "OK"&nbsp;
+&nbsp;&nbsp;    assert result["data"] == [42]
 </pre>
 </td>
 </tr>
