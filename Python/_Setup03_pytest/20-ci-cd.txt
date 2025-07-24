@@ -2,3 +2,46 @@ CI/CD
 24-Jul-2025
 
 BLOG
+
+<u>CI/CD</u><br />
+GitHub <a href="https://pytest-with-eric.com/integrations/pytest-github-actions">Actions</a> is feature-rich <a href="https://en.wikipedia.org/wiki/CI/CD">CI/CD</a> platform and offers an easy and flexible way to automate your testing processes.  GitHub Actions mainly consist of files called workflows.  The workflow file contains job or several jobs that consist of sequence of steps.  Here is sample YAML file that will trigger the workflow on git push:
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;&nbsp;<b>~/.github/workflows/run_test.yml</b></td></tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;name: Run Unit Test via Pytest
+&nbsp;&nbsp;on: [push]
+&nbsp;&nbsp;jobs:
+&nbsp;&nbsp;  build:
+&nbsp;&nbsp;    runs-on: ubuntu-latest
+&nbsp;&nbsp;    strategy:
+&nbsp;&nbsp;      matrix:
+&nbsp;&nbsp;        python-version: ["3.10"]
+&nbsp;&nbsp;    steps:
+&nbsp;&nbsp;      - uses: actions/checkout@v3
+&nbsp;&nbsp;      - name: Set up Python ${{ matrix.python-version }}
+&nbsp;&nbsp;        uses: actions/setup-python@v4
+&nbsp;&nbsp;        with:
+&nbsp;&nbsp;          python-version: ${{ matrix.python-version }}
+&nbsp;&nbsp;      - name: Install dependencies
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          python -m pip install --upgrade pip
+&nbsp;&nbsp;          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+&nbsp;&nbsp;      - name: Lint with Ruff
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          pip install ruff
+&nbsp;&nbsp;          ruff --format=github --target-version=py310 .
+&nbsp;&nbsp;        continue-on-error: true
+&nbsp;&nbsp;      - name: Test with pytest
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          coverage run -m pytest  -v -s
+&nbsp;&nbsp;      - name: Generate Coverage Report
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          coverage report -m
+</pre>
+</td>
+</tr>
+</table>
+<br />
