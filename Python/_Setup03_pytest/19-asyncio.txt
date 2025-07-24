@@ -1,0 +1,94 @@
+Asyncio
+24-Jul-2025
+
+BLOG
+
+<u>pytest-asyncio</u><br />
+Concurrency allows a program to efficiently execute its tasks asynchronously i.e. executing tasks while other tasks are waiting.  <i><a href="https://pytest-with-eric.com/pytest-advanced/pytest-asyncio">pytest-asyncio</a></i> simplifies handling event loops + managing async fixtures thru unit testing.
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;pip install pytest-asyncio
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;&nbsp;<b>app.py</b></td>
+<td valign="top">&nbsp;&nbsp;<b>test_app.py</b></td>
+</tr> 
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import asyncio
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;async def fetch_data():
+&nbsp;&nbsp;    # Simulate I/O operation.
+&nbsp;&nbsp;    await asyncio.sleep(1)
+&nbsp;&nbsp;    return {"status": "OK", "data": [42]}&nbsp;
+</pre>
+</td>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pytest
+&nbsp;&nbsp;from app import fetch_data
+&nbsp;&nbsp;
+&nbsp;&nbsp;@pytest.mark.asyncio
+&nbsp;&nbsp;async def test_fetch_data():
+&nbsp;&nbsp;    result = await fetch_data()
+&nbsp;&nbsp;    assert result["status"] = "OK"&nbsp;
+&nbsp;&nbsp;    assert result["data"] = [42]
+</pre>
+</td>
+</tr>
+</table>
+<!--<br />-->
+Consequently <i><a href="https://pytest-with-eric.com/pytest-advanced/pytest-asyncio/#Async-Mocking-Using-AsyncMock">AsyncMock</a></i> from unittest.mock allows you to mock asynchronous functions and/or coroutines.
+<br /><br />
+  
+
+
+ARCHIVE
+
+pip install pytest-asyncio
+
+
+foo.py
+import asyncio
+
+async def fetch_data():
+await asyncio.sleep(1)
+return {"status": "success", "data": [1, 2, 3]}
+
+
+test_foo.py
+import pytest
+from foo import fetch_data
+
+@pytest.mark.asyncio
+async def test_fetch_data():
+	result = await fetch_data()
+	
+	assert result["status"] = "success"
+	assert result["data"] = [1, 2, 3]
+
+
+
+
+<u>pytest asyncio</u>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;pip install pytest-asyncio
+</pre>
+</td>
+</tr>
+</table>
+<br />  
