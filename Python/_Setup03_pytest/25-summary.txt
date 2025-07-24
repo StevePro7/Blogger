@@ -4,5 +4,44 @@ CI/CD
 BLOG
 
 <u>Summary</u><br />
-To summarize, we have setup pytest for more robust unit testing with mocks and stubs via patching.  Looking foward there are additional ways to improve unit test development experience with pytest as per this article:
-<br /><br />
+To summarize, we have setup pytest for more robust unit testing with mocks and stubs via patching.  Looking foward there are additional ways to <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime">improve</a> unit test development experience with pytest as per this article:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;1. Use <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Use-Markers-To-Prioritise-Tests">Markers</a> To Prioritise Tests
+&nbsp;&nbsp;   Organize tests in such a way that prioritizes key functionalities first
+&nbsp;&nbsp;   Running tests with critical functionality first provide faster feedback
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;2. Do More With Less (<a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Do-More-With-Less-Parametrized-Testing">Parametrized</a> Testing)
+&nbsp;&nbsp;   Parametrized Testing allows you to test multiple scenarios in single test function
+&nbsp;&nbsp;   Feed different parameters into same test logic covering more scenarios + less code
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;3. <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Profiling-Tests">Profiling</a> Tests
+&nbsp;&nbsp;   Identify the slow-running unit tests using the --durations=XXX flag
+&nbsp;&nbsp;   Use the pytest-profiling plugin to generate tabular and heat graphs
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;4. Run Tests In Parallel (Use <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Run-Tests-In-Parallel-Use-pytest-xdist">pytest-xdist</a>)
+&nbsp;&nbsp;   Use the pytest-xdist plugin to distribute tests across multiple CPUs
+&nbsp;&nbsp;   Tests run in parallel, use resources better, provide faster feedback!
+</pre>
+</td>
+</tr>
+</table>
+<br />
