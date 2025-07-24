@@ -2,9 +2,9 @@
 
 In 2020, we checked out <a href="https://steveproxna.blogspot.com/2020/07/python-setup-cheat-sheet.html">Python Setup Cheat Sheet</a> as an interpreted high-level programming language with all code samples' unit tests using unittest package TestCase class.  However, since then we have learned that <a href="https://pytest-with-eric.com">pytest</a> allows writing shorter more readable tests with less boilerplate.  Plus we would like to include mocks!!  
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5SeutLv2xN_orl-llnhD8H58gAtNhBFoIXsyAywK3-tcb0Ov_I4igsZhlk-1QHT2eMPOzY6nn8vQMx_HNHamjKR9eRKRshTajA5xZ-Jekpr-FIAMGht4ayQeF0Vd_2WYAXfuGGQh6winK76XYjsvvYEC2JIA5F2_iuXlobGn7PzMwq2LMPjUjUExW7nc/s2360/PythonPytest.jpg"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5SeutLv2xN_orl-llnhD8H58gAtNhBFoIXsyAywK3-tcb0Ov_I4igsZhlk-1QHT2eMPOzY6nn8vQMx_HNHamjKR9eRKRshTajA5xZ-Jekpr-FIAMGht4ayQeF0Vd_2WYAXfuGGQh6winK76XYjsvvYEC2JIA5F2_iuXlobGn7PzMwq2LMPjUjUExW7nc/s600/PythonPytest.jpg"/></a>
--->
+<!-- -->
 <br />
 Let's check it out!
 <br /><br />
@@ -12,7 +12,7 @@ Let's check it out!
 <u>Frameworks</u><br />
 When developing code in Python there are typically five Top Python Testing <a href="https://pytest-with-eric.com/comparisons/python-testing-frameworks">Frameworks</a> that are favorable:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td>&nbsp;<b>NAME</b>&nbsp;</td><td>&nbsp;<b>MONIKER </b>&nbsp;</td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
 <tr><td>&nbsp;unittest&nbsp;</td><td>&nbsp;PyUnit&nbsp;</td><td>&nbsp;The default Python testing framework built-in with the Python Standard Library</td></tr>
@@ -21,18 +21,18 @@ When developing code in Python there are typically five Top Python Testing <a hr
 <tr><td>&nbsp;DocTest&nbsp;</td><td>&nbsp;DocTest&nbsp;</td><td>&nbsp;Python Standard Library module generates tests within source code DocString</td></tr>
 <tr><td>&nbsp;Robot&nbsp;</td><td>&nbsp;Robot&nbsp;</td><td>&nbsp;Acceptance testing keyword-driven module that simplifies testcase automation</td></tr>
 </table>
--->
+<!-- -->
 <br />
 Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a> currently seems to be the most popular Python unit test framework out:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;1. Simple and Readable Syntax
-&nbsp;&nbsp;   You write plain Python functions instead of creating large verbose classes.
-&nbsp;&nbsp;   Assertions use plain assert statements which provide more detailed output.
+&nbsp;&nbsp;   You write plain Python functions instead of creating large verbose classes
+&nbsp;&nbsp;   Assertions use plain assert statements which provide more detailed output
 </pre>
 </td>
 </tr>
@@ -40,8 +40,8 @@ Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a>
 <td valign="top">
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;2. Rich Plugin Ecosystem
-&nbsp;&nbsp;   Plugins like pytest-mock, pytest-asyncio, pytest-cov, and more.
-&nbsp;&nbsp;   Easy to extend pytest plugins or write your own custom plugins.
+&nbsp;&nbsp;   Plugins like pytest-mock, pytest-asyncio, pytest-cov, and more
+&nbsp;&nbsp;   Easy to extend pytest plugins or write your own custom plugins
 </pre>
 </td>
 </tr>
@@ -49,8 +49,8 @@ Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a>
 <td valign="top">
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;3. Powerful Fixtures
-&nbsp;&nbsp;   Allows for clean and re-usable setup and teardown using fixtures.
-&nbsp;&nbsp;   Supports various test level scopes, autouse, and parametrization.
+&nbsp;&nbsp;   Allows for clean and re-usable setup and teardown using fixtures
+&nbsp;&nbsp;   Supports various test level scopes, autouse, and parametrization
 </pre>
 </td>
 </tr>
@@ -58,8 +58,8 @@ Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a>
 <td valign="top">
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;4. Test Discovery
-&nbsp;&nbsp;   Automatically disovers tests in files named test_*.py.
-&nbsp;&nbsp;   No need to manually register tests or use loader classes.
+&nbsp;&nbsp;   Automatically disovers tests in files named test_*.py
+&nbsp;&nbsp;   No need to manually register tests or use loader classes
 </pre>
 </td>
 </tr>
@@ -67,8 +67,8 @@ Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a>
 <td valign="top">
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;5. Great Reporting
-&nbsp;&nbsp;   Colored output, diffs for failing assertions, and optional verbosity.
-&nbsp;&nbsp;   Integrates easily with tools like coverage, tox, and CI/CD systems.
+&nbsp;&nbsp;   Colored output, diffs for failing assertions, and optional verbosity
+&nbsp;&nbsp;   Integrates easily with tools like coverage, tox, and CI/CD systems
 </pre>
 </td>
 </tr>
@@ -82,7 +82,7 @@ Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a>
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 <u>pytest</u>
 <br />
@@ -95,8 +95,8 @@ Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a>
 </td>
 </tr>
 </table>
-<br />
-  
+<br />  
+
 <u>Setup</u><br />
 Depending on your stack here is some great documentation to setup pytest on <a href="https://pytest-with-eric.com/integrations/pytest-pycharm-integration">PyCharm</a>, <a href="https://pytest-with-eric.com/introduction/how-to-run-pytest-in-vscode">VS Code</a> or <a href="https://pytest-with-eric.com/getting-started/poetry-run-pytest">Poetry</a>.
 <br /><br />
@@ -104,7 +104,7 @@ Depending on your stack here is some great documentation to setup pytest on <a h
 <u>Configuration</u><br />
 In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-ini">pytest.ini</a> is the main configuration file used to customize and control pytest behavior across the unit test suite.  pytest.ini hosts pytest options, test paths, plugin settings and markers to attach to the test functions to categorize, filter or modify their behavior.  Here is a sample pytest.ini configuration file as base: 
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -117,16 +117,16 @@ In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-in
 </pre>
 </td></tr>
 </table>
--->
+<!-- -->
 <br />
-  
+
 <u>Fixtures</u><br />
 <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">setup</a> all preconditions for tests, provide data, or perform <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">teardown</a> after tests finished via @pytest.fixture decorator.
 <br /><br /> 
 <i>Scope</i><br />
 Fixtures have scope: Function, Class, Module + Session which define how long fixture available during test:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td>&nbsp;<b>SCOPE</b></td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
 <tr><td>&nbsp;Function</td><td>&nbsp;Fixture created once per test function and destroyed at end of test function</td></tr>
@@ -134,7 +134,7 @@ Fixtures have scope: Function, Class, Module + Session which define how long fix
 <tr><td>&nbsp;Module</td><td>&nbsp;Fixture created once per test module and destroyed at end of test module</td></tr>
 <tr><td>&nbsp;Session</td><td>&nbsp;Fixture created once per test session and destroyed at end of test session</td></tr>
 </table>
--->
+<!-- -->
 <br />
 <i>conftest</i><br />
 In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-conftest">conftest.py</a> file is used to share fixtures across multiple tests.  All the fixtures in conftest.py will be automagically detected without needing to import.  conftest: typically scoped at test root directory structure.
@@ -148,7 +148,7 @@ Simple trick to avoid defining fixture in each test: use the <b><a href="https:/
 <i>yield</i><br />
 When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yield-vs-Return-in-Fixtures">yield</a> in fixture function setup code executes before yield and teardown executes after yield: 
 <br />
-<!--  
+<!-- -->
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -161,7 +161,7 @@ When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yie
 </pre>
 </td></tr>
 </table>
--->
+<!-- -->
 <br />
 <i>Arguments</i><br />
 Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments">arguments</a> to write reusable fixtures that can easily share across tests also known as Parameterized fixtures using <i>@pytest.fixture(params=[0, 1, 2])</i> syntax.  Note: these fixtures should not be confused with the <i>@pytest.mark.parametrize</i> <a href="https://pytest-with-eric.com/introduction/pytest-parameterized-tests/#What-Are-Pytest-Parameters">decorator</a> which can be used to specify inputs and outputs!
@@ -169,7 +169,7 @@ Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-f
 <i>Factories</i><br />
 <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments/#Factories-As-Fixtures">Factories</a>, in the context of pytest fixtures, are functions that are used to create and return instances of objects that are needed to generate test data or objects with specific configuration in reusuable manner:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<b>conftest.py</b></td>
@@ -196,11 +196,11 @@ Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-f
 </td>
 </tr>
 </table>
--->  
+<!-- -->
 <br />
 Best <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests">practices</a> for organizing tests include: Organizing Tests by Testing <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-1-%E2%80%94-Organizing-Tests-by-Testing-Pyramid">Pyramid</a>, Structure Should <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-2-Test-Structure-Should-Mirror-Application-Code">Mirror</a> Application Code, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Best-Practice-3-%E2%80%94-How-to-Group-or-Organize-Fixtures">Group</a> or Organize Fixtures and Organize Tests <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-organize-tests/#Tests-Outside-Application-Code">Outside</a> Application Code for scalability.
 <br /><br />
-  
+
 <u>Mocking</u><br />
 <a href="https://pytest-with-eric.com/mocking/pytest-mocking">Mocking</a> is technique that allows you to isolate pieces of code being tested from its dependencies so the test can focus on the code under test in isolation.  The <a href="https://docs.python.org/3/library/unittest.mock.html">unittest.mock</a> package offers Mock and MagicMock objects:
 <br /><br />
@@ -227,7 +227,7 @@ When we combine <a href="https://docs.python.org/3/library/unittest.mock.html#un
 <u>Difference</u><br />
 In pytest, Mock and patch are both <a href="https://pytest-with-eric.com/mocking/python-magicmock-raise-exception/#What-is-the-Difference-Between-Mock-and-Patch">tools</a> for simulating or replacing parts of your code during testing.  Mock creates mock objects while patch temporarily replaces real objects with mocks during tests to isolate code:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td>&nbsp;<b>Mock</b></td>
@@ -260,8 +260,7 @@ In pytest, Mock and patch are both <a href="https://pytest-with-eric.com/mocking
 </td>
 </tr>
 </table>
--->
-<br />
+<!--<br />-->
   
 IMPORTANT<br />
 When creating mocks it is critical to ensure mock objects accurately reflect objects they are replacing.  Thus, it is best practice to use <b><a href="https://pytest-with-eric.com/mocking/pytest-common-mocking-problems/#Mocks-Fail-To-Respect-Method-Signature">autospec</a>=True</b> to ensure mock objects respect function signatures being replaced!
@@ -269,7 +268,7 @@ When creating mocks it is critical to ensure mock objects accurately reflect obj
 <u>Assertions</u><br />
 For completeness, here is list of <a href="https://pytest-with-eric.com/mocking/pytest-mock-assert-called/#Pytest-Mock-Assert-Call-The-Key-Concepts">assertion</a> methods to verify method on mock object was called during tests:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td>&nbsp;<b>METHOD</b></td><td>&nbsp;<b>DESCRIPTION</b></td></tr>
 <tr><td>&nbsp;assert_called</td><td>&nbsp;verify specific method on mock object has been called during a test</td></tr>
@@ -280,7 +279,281 @@ For completeness, here is list of <a href="https://pytest-with-eric.com/mocking/
 <tr><td>&nbsp;assert_has_calls</td><td>&nbsp;verify the order in which specific method on mock object was called</td></tr>
 <tr><td>&nbsp;assert_any_call</td><td>&nbsp;verify specific method on mock object has been called at least once</td></tr>
 </table>
--->
+<!-- -->
 <br />
+
+<u>Monkeypatch</u><br />
+<a href="https://pytest-with-eric.com/mocking/pytest-monkeypatch">Monkeypatching</a> is technique used to modify code behavior at runtime especially where certain dependencies or settings make it challenging to isolate functionality for example <a href="https://pytest-with-eric.com/mocking/pytest-monkeypatch/#Monkeypatching-Environment-Variables">environment variables</a> or <a href="https://pytest-with-eric.com/mocking/pytest-monkeypatch/#Monkeypatching-Functions">system paths</a>:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;&nbsp;<b>app.py</b></td>
+<td valign="top">&nbsp;&nbsp;<b>test_app.py</b></td>
+</tr>  
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import os
+&nbsp;&nbsp;def get_app_mode() -> str:
+&nbsp;&nbsp;    app_mode = os.getenv("APP_MODE")&nbsp;
+&nbsp;&nbsp;    return app_mode.lower()
+</pre>
+</td>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;def test_get_app_mode(monkeypatch):
+&nbsp;&nbsp;    """Test behavior when APP_MODE is set."""
+&nbsp;&nbsp;    monkeypatch.setenv("APP_MODE", "Testing")&nbsp;
+&nbsp;&nbsp;    assert get_app_mode() == "testing"
+</pre>
+</td>
+</tr>
+</table>
+<br />
+
+<u>pytest-mock</u><br />
+<a href="https://pytest-with-eric.com/mocking/pytest-mocking">pytest-mock</a> is pytest <a href="https://pypi.org/project/pytest-mock">plugin</a> built on top of unittest.mock that provides an easy-to-use <b><a href="https://pytest-with-eric.com/mocking/pytest-mocking/#mocker-Fixture">mocker</a></b> fixture that can be used to create mock objects and patch functions.  When you use <i>mocker.patch()</i> method provided by pytest-mock default behavior is to replace the object with <i>MagicMock()</i> so pytest-mock uses <i>MagicMock()</i>.
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;pip install pytest-mock
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;&nbsp;<b>app.py</b></td></tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import requests
+&nbsp;&nbsp;from http import HTTPStatus
+&nbsp;&nbsp;
+&nbsp;&nbsp;def get_user_name(user_id: int) -> str:
+&nbsp;&nbsp;    response = requests.get(f"https://api.example.com/users/{user_id}")
+&nbsp;&nbsp;    return response.json()['name'] if response.status_code == HTTPStatus.OK else None
+</pre>
+</td>
+</tr>
+</table>
+<br /> 
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;&nbsp;<b>test_app.py</b></td></tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from http import HTTPStatus
+&nbsp;&nbsp;from app import get_user_name
+&nbsp;&nbsp;
+&nbsp;&nbsp;def test_get_user_name(mocker):
+&nbsp;&nbsp;    mock_response = mocker.Mock()
+&nbsp;&nbsp;    mock_response.status_code = http.HTTPStatus.OK
+&nbsp;&nbsp;    mock_response.json.return_value = {'name': 'Test'}
+&nbsp;&nbsp;    mocker.patch('app.requests.get', return_value=mock_response)
+&nbsp;&nbsp;    result = get_user_name(1)
+&nbsp;&nbsp;    assert result == 'Test'
+</pre>
+</td>
+</tr>
+</table>
+<br />   
+<!-- -->
+<u>Legacy</u><br />
+In many legacy Python codebases you may detect references to <i>Mock()</i>, <i>MagicMock()</i> and <i>@patch</i> decorator from unittest.mock with pytest.  Teams often keep the old style unless there compelling reason to refactor it.
+<br /><br />
+
+<u>Recommendation</u><br />
+However, here are some recommendations to prefer pytest-mock and mocker fixture for future unit testing:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;1. Prefer pytest-mock and the mocker fixture
+&nbsp;&nbsp;   Cleaner syntax than unittest.mock.patch
+&nbsp;&nbsp;   Automatically cleaned up after each test
+&nbsp;&nbsp;   Plays well with other pytest fixtures
+&nbsp;&nbsp;   Centralizes all patching into one fixture (mocker)
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;2. Use monkeypatch for patching env vars, system paths and etc.
+&nbsp;&nbsp;   Prefer monkeypatch for clarity and idiomatic pytest style
+&nbsp;&nbsp;   e.g. os.environ, system paths, or patching open()
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;3. Avoid @patch decorators unless migrating old tests
+&nbsp;&nbsp;   Can be harder to read or stack with multiple patches
+&nbsp;&nbsp;   Better to use mocker.patch() inline as cleaner syntax
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;4. Use autospec=True when mocking complex or external APIs
+&nbsp;&nbsp;   Ensure mocks behave like the real objects (catch bad call signatures)
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;5. Use fixtures to share mocks across tests
+&nbsp;&nbsp;   When you have mock used by multiple tests then define it as a fixture
+</pre>
+</td>
+</tr>
+</table>
+<b>tl;dr</b>
+<!-- -->
+<br />
+Prefer pytest-mock (mocker fixture) for readability and less boilerplate.  Import tools like MagicMock, Mock, call, ANY from unittest.mock when needed.  Avoid @patch unless needed — inline mocker.patch() is usually cleaner.  Keep everything in one style within a test module for consistency.
+<br /><br />
+
+<u>pytest-asyncio</u><br />
+Concurrency allows a program to efficiently execute its tasks asynchronously i.e. executing tasks while other tasks are waiting.  <i><a href="https://pytest-with-eric.com/pytest-advanced/pytest-asyncio">pytest-asyncio</a></i> simplifies handling event loops + managing async fixtures thru unit testing.
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;pip install pytest-asyncio
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;&nbsp;<b>app.py</b></td>
+<td valign="top">&nbsp;&nbsp;<b>test_app.py</b></td>
+</tr> 
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import asyncio
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;async def fetch_data():
+&nbsp;&nbsp;    # Simulate I/O operation.
+&nbsp;&nbsp;    await asyncio.sleep(1)
+&nbsp;&nbsp;    return {"status": "OK", "data": [42]}&nbsp;
+</pre>
+</td>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pytest
+&nbsp;&nbsp;from app import fetch_data
+&nbsp;&nbsp;
+&nbsp;&nbsp;@pytest.mark.asyncio
+&nbsp;&nbsp;async def test_fetch_data():
+&nbsp;&nbsp;    result = await fetch_data()
+&nbsp;&nbsp;    assert result["status"] == "OK"&nbsp;
+&nbsp;&nbsp;    assert result["data"] == [42]
+</pre>
+</td>
+</tr>
+</table>
+<!--<br />-->
+Consequently <i><a href="https://pytest-with-eric.com/pytest-advanced/pytest-asyncio/#Async-Mocking-Using-AsyncMock">AsyncMock</a></i> from unittest.mock allows you to mock asynchronous functions and/or coroutines.
+<br /><br />
+  
+<u>CI/CD</u><br />
+GitHub <a href="https://pytest-with-eric.com/integrations/pytest-github-actions">Actions</a> is feature-rich <a href="https://en.wikipedia.org/wiki/CI/CD">CI/CD</a> platform and offers an easy and flexible way to automate your testing processes.  GitHub Actions mainly consist of files called workflows.  The workflow file contains job or several jobs that consist of sequence of steps.  Here is sample YAML file that will trigger the workflow on git push:
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;&nbsp;<b>~/.github/workflows/run_test.yml</b></td></tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;name: Run Unit Test via Pytest
+&nbsp;&nbsp;on: [push]
+&nbsp;&nbsp;jobs:
+&nbsp;&nbsp;  build:
+&nbsp;&nbsp;    runs-on: ubuntu-latest
+&nbsp;&nbsp;    strategy:
+&nbsp;&nbsp;      matrix:
+&nbsp;&nbsp;        python-version: ["3.10"]
+&nbsp;&nbsp;    steps:
+&nbsp;&nbsp;      - uses: actions/checkout@v3
+&nbsp;&nbsp;      - name: Set up Python ${{ matrix.python-version }}
+&nbsp;&nbsp;        uses: actions/setup-python@v4
+&nbsp;&nbsp;        with:
+&nbsp;&nbsp;          python-version: ${{ matrix.python-version }}
+&nbsp;&nbsp;      - name: Install dependencies
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          python -m pip install --upgrade pip
+&nbsp;&nbsp;          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+&nbsp;&nbsp;      - name: Lint with Ruff
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          pip install ruff
+&nbsp;&nbsp;          ruff --format=github --target-version=py310 .
+&nbsp;&nbsp;        continue-on-error: true
+&nbsp;&nbsp;      - name: Test with pytest
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          coverage run -m pytest  -v -s
+&nbsp;&nbsp;      - name: Generate Coverage Report
+&nbsp;&nbsp;        run: |
+&nbsp;&nbsp;          coverage report -m
+</pre>
+</td>
+</tr>
+</table>
+<br />
+  
+<u>Summary</u><br />
+To summarize, we have setup pytest for more robust unit testing with mocks and stubs via patching.  Looking forward there are additional ways to <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime">improve</a> unit test development experience with pytest as per the article:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;1. Use <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Use-Markers-To-Prioritise-Tests">Markers</a> To Prioritise Tests
+&nbsp;&nbsp;   Organize tests in such a way that prioritizes key functionalities first
+&nbsp;&nbsp;   Running tests with critical functionality first provide faster feedback
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;2. Do More With Less (<a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Do-More-With-Less-Parametrized-Testing">Parametrized</a> Testing)
+&nbsp;&nbsp;   Parametrized Testing allows you to test multiple scenarios in single test function
+&nbsp;&nbsp;   Feed different parameters into same test logic covering more scenarios + less code
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;3. <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Profiling-Tests">Profiling</a> Tests
+&nbsp;&nbsp;   Identify the slow-running unit tests using the --durations=XXX flag
+&nbsp;&nbsp;   Use the pytest-profiling plugin to generate tabular and heat graphs
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;4. Run Tests In Parallel (Use <a href="https://pytest-with-eric.com/pytest-advanced/pytest-improve-runtime/#Run-Tests-In-Parallel-Use-pytest-xdist">pytest-xdist</a>)
+&nbsp;&nbsp;   Use the pytest-xdist plugin to distribute tests across multiple CPUs
+&nbsp;&nbsp;   Tests run in parallel, use resources better, provide faster feedback!
+</pre>
+</td>
+</tr>
+</table>
   
 </span>

@@ -7,7 +7,7 @@ BLOG
 <u>Recommendation</u><br />
 However, here are some recommendations to prefer pytest-mock and mocker fixture for future unit testing:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -56,7 +56,7 @@ However, here are some recommendations to prefer pytest-mock and mocker fixture 
 </tr>
 </table>
 <b>tl;dr</b>
--->  
+<!-- -->
 <br />
 Prefer pytest-mock (mocker fixture) for readability and less boilerplate.  Import tools like MagicMock, Mock, call, ANY from unittest.mock when needed.  Avoid @patch unless needed — inline mocker.patch() is usually cleaner.  Keep everything in one style within a test module for consistency.
 <br /><br />
