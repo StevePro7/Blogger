@@ -6,7 +6,7 @@ BLOG
 <u>pytest-mock</u><br />
 <a href="https://pytest-with-eric.com/mocking/pytest-mocking">pytest-mock</a> is pytest <a href="https://pypi.org/project/pytest-mock">plugin</a> built on top of unittest.mock that provides an easy-to-use <b><a href="https://pytest-with-eric.com/mocking/pytest-mocking/#mocker-Fixture">mocker</a></b> fixture that can be used to create mock objects and patch functions.  When you use <i>mocker.patch()</i> method provided by pytest-mock default behavior is to replace the object with <i>MagicMock()</i> so pytest-mock uses <i>MagicMock()</i>.
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -16,8 +16,43 @@ BLOG
 </td>
 </tr>
 </table>
--->
 <br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;&nbsp;<b>app.py</b></td></tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import requests
+&nbsp;&nbsp;from http import HTTPStatus
+&nbsp;&nbsp;
+&nbsp;&nbsp;def get_user_name(user_id: int) -> str:
+&nbsp;&nbsp;    response = requests.get(f"https://api.example.com/users/{user_id}")
+&nbsp;&nbsp;    return response.json()['name'] if response.status_code == HTTPStatus.OK else None
+</pre>
+</td>
+</tr>
+</table>
+<br /> 
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;&nbsp;<b>test_app.py</b></td></tr>
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from http import HTTPStatus
+&nbsp;&nbsp;from app import get_user_name
+&nbsp;&nbsp;
+&nbsp;&nbsp;def test_get_user_name(mocker):
+&nbsp;&nbsp;    mock_response = mocker.Mock()
+&nbsp;&nbsp;    mock_response.json.return_value = {'name': 'Test'}
+&nbsp;&nbsp;    mocker.patch('app.requests.get', return_value=mock_response)
+&nbsp;&nbsp;    result = get_user_name(1)
+&nbsp;&nbsp;    assert result == 'Test'
+</pre>
+</td>
+</tr>
+</table>
+<br />   
+<!-- -->
 <u>Legacy</u><br />
 In many legacy Python codebases you may detect references to <i>Mock()</i>, <i>MagicMock()</i> and <i>@patch</i> decorator from unittest.mock with pytest.  Teams often keep the old style unless there compelling reason to refactor it.
 <br /><br />
