@@ -1,10 +1,6 @@
 Miscellaneous
 22-Jul-2025
 
-Asyncio
-@pytest.mark.asyncio
-async def test_fetch_data():
-	results = await fetch_data()
 
 CI/CD
 
@@ -13,5 +9,13 @@ Summary
 
 
 Ref: eric
-20-asyncio.txt
+//19-asyncio.txt
 20-ci-cd.txt
+
+
+
+DONE
+Asyncio
+@pytest.mark.asyncio
+async def test_fetch_data():
+	results = await fetch_data()
