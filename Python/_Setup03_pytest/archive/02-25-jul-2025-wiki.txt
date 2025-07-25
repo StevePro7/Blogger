@@ -58,7 +58,7 @@ Here are some reasons why <a href="https://docs.pytest.org/en/stable">pytest</a>
 <td valign="top">
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;4. Test Discovery
-&nbsp;&nbsp;   Automatically discovers tests in files named test_*.py
+&nbsp;&nbsp;   Automatically disovers tests in files named test_*.py
 &nbsp;&nbsp;   No need to manually register tests or use loader classes
 </pre>
 </td>
@@ -164,10 +164,10 @@ When you use <a href="https://pytest-with-eric.com/fixtures/pytest-fixtures/#Yie
 <!-- -->
 <br />
 <i>Arguments</i><br />
-Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments">arguments</a> to write re-usable fixtures that can easily share across tests also known as Parameterized fixtures using <i>@pytest.fixture(params=[0, 1, 2])</i> syntax.  Note: these fixtures should not be confused with the <i>@pytest.mark.parametrize</i> <a href="https://pytest-with-eric.com/introduction/pytest-parameterized-tests/#What-Are-Pytest-Parameters">decorator</a> which can be used to specify inputs and outputs!
+Use pytest fixtures with <a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments">arguments</a> to write reusable fixtures that can easily share across tests also known as Parameterized fixtures using <i>@pytest.fixture(params=[0, 1, 2])</i> syntax.  Note: these fixtures should not be confused with the <i>@pytest.mark.parametrize</i> <a href="https://pytest-with-eric.com/introduction/pytest-parameterized-tests/#What-Are-Pytest-Parameters">decorator</a> which can be used to specify inputs and outputs!
 <br /><br />
 <i>Factories</i><br />
-<a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments/#Factories-As-Fixtures">Factories</a>, in the context of pytest fixtures, are functions that are used to create and return instances of objects that are needed to generate test data or objects with specific configuration in re-usable manner:
+<a href="https://pytest-with-eric.com/fixtures/pytest-fixture-with-arguments/#Factories-As-Fixtures">Factories</a>, in the context of pytest fixtures, are functions that are used to create and return instances of objects that are needed to generate test data or objects with specific configuration in reusuable manner:
 <br />
 <!-- -->
 <table width="99%" border="1">
