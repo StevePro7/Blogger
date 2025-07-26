@@ -1,0 +1,63 @@
+Chat GPT
+26-Jul-2025
+
+01.
+https://chatgpt.com/c/6884cfad-a700-8324-84dc-0af4e3f1e759
+Open AI retro is emulator library code built on libretro?
+
+Open AI made their own emulator
+they used libretro to handle emulation and built an RL interface on top
+
+
+01b. standalone
+Open AI [Gym] retro
+Python library developed by Open AI that allows Reinforcement Learning
+agents to interact w/ classic video games for AI research
+
+libretro
+main emulator backend used by Open AI retro
+C API that standardizes how emulator cores are access
+-> plugin system for emulators
+
+Open AI retro useds libretro cores [Genesis Plus] to run actual games
+
+
+Python bindings
+Open AI retro wraps libretro emulator cores w/ Python allowing the user to
+interface thru familiar Open AI Gym environment API
+
+OpenAI Gym
+Retro environments are compatible w/ OpenAI Gym so Reinforcement Learning
+algorithms written for Gym can easily work w/ OpenAI retro
+
+SUMMARY
+OpenAI [Gym] Retro is built on top of the libretro API and
+integrates with OpenAI Gym for Reinforcement Learning
+
+
+02.
+Retro Achievements emulator github project  is RAretro does this also use libretro API
+~\Github\RetroAchievements\RALibretro
+
+Yes, RAretro (used in the RetroAchievements ecosystem) does use the Libretro API.
+
+RAretro
+libretro core that has been modified to support Retro Achievements
+because RAretro is libretro core it conforms to libretro API [like Genesis Plus]
+
+RAretro
+wrapper that adds achievement tracking hooks into libretro cores
+
+RetroArch
+libretro frontend that allos support for unlocking achievements in retro games
+
+libretro core + RA SDK = RAretro core
+
+RAIntegration SDK
+https://github.com/RetroAchievements/RAIntegration
+
+RA libretro core
+https://github.com/RetroAchievements
+
+
+02b. standalone
