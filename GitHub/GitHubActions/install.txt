@@ -31,3 +31,13 @@ C:\Program Files\act
 
 Terminal
 act --version
+
+
+EXAMPLE		on Mac OS/X
+act push
+
+repo
+~\GitHub\StevePro9\github-actions-local
+
+Terminal command
+act push --container-architecture linux/amd64 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest
