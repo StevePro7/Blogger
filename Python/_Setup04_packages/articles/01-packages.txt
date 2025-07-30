@@ -1,0 +1,79 @@
+01 Article
+30-Jul-2025
+
+
+Navigating the Python Packaging Landscape: Pip vs. Poetry vs. uv — A Developer’s Guide
+https://dimasyotama.medium.com/navigating-the-python-packaging-landscape-pip-vs-poetry-vs-uv-a-developers-guide-49a9c93caf9c
+
+
+Pip: The Veteran Standard-Bearer
+Pip, short for "Pip Installs Packages"
+
+
+(PyPI)	Python Package Index 
+the central hub for Python software
+
+(PyPA)	Python Packaging Authority
+group dedicated to maintaining core Python packaging software
+
+Pip isn't just a utility; it's a fundamental part of Python's development culture.
+
+
+Project Scaffolding	No				Yes (poetry new)		Yes (uv init)
+Building Packages	Relies on setuptools/build	Integrated (poetry build)	Integrated (uv build)
+Publishing Packages	Relies on twine			Integrated (poetry publish)	Integrated (uv publish)
+
+
+Solving the Puzzle: Dependency Resolution
+UV
+A key optimization is that uv can fetch just the metadata file from a package (wheel) initially, rather than downloading the entire package as Pip often does
+
+
+Locking it Down: Lockfiles and Reproducibility
+Lockfiles are the key.
+
+Poetry
+When poetry install runs, Poetry uses this lockfile to recreate the exact environment, ensuring high fidelity.
+
+uv
+uv pip compile (similar to pip-tools) can produce a locked requirements.txt from an input file
+uv pip sync command then efficiently installs dependencies strictly from this lockfile
+uv pip compile --universal
+
+
+Isolated Worlds: Virtual Environment Management
+
+Poetry
+poetry install
+Poetry automatically creates an environment if one isn't active
+
+REF:
+ADtest.txt
+~\GitHub\StevePro7\PythonSetup\ML
+
+poetry run <command>
+execute within this managed environment
+
+
+From Start to Finish: Project Lifecycle Management
+
+poetry
+poetry new					for scaffolding ;
+poetry add, poetry remove, and poetry update 	for dependency management ; 
+poetry build 					for creating distributable packages ; and 
+poetry publish 					for uploading them. 
+All project metadata and configurations live in pyproject.toml
+
+uv
+uv init 					for scaffolding ; 
+uv add, uv remove, and uv sync 			for dependencies ; 
+uv build 					for creating packages ; and 
+uv publish 					for uploading them. 
+Additionally, uv run executes scripts within the project's managed environment
+
+
+Poetry has its own build backend (poetry-core), while uv's uv build acts as a frontend, respecting the build-backend specified in pyproject.toml
+
+
+Need for Speed: Performance Benchmarks
+TODO...
