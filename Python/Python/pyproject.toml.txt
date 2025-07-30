@@ -1,0 +1,43 @@
+pyenv
+pyproject.toml
+30-Jul-2025
+
+Launch PyCharm
+New Project
+
+Name		PoetryTest
+Location	/path-to-directory
+
+Custom environment
+Type	Poetry
+Base	3.10.4
+Path	/Users/sp/.local/bin/poetry
+
+Create
+
+NB: how to install 3.10.4
+pyenv
+
+
+pyenv install --list
+
+pyenv install 3.10.4
+pyenv versions
+
+pyenv global 3.10.4
+python --version
+
+
+CONFIRM
+confirm
+pyenv versions
+  system
+* 3.10.4 (set by /Users/stevepro/.pyenv/version)
+  3.12.3
+
+pyenv which python
+/Users/stevepro/.pyenv/versions/3.10.4/bin/python
+
+
+poetry lock
+poetry install --no-root
