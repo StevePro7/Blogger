@@ -1,11 +1,19 @@
 uv
 20-Jun-2025
 
+Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+Mac
 brew install uv
 
-uv --version
+Windows
+powershell -ExecutionPolicy ByPass -c “irm https://astral.sh/uv/install.ps1 | iex”
 
+
+uv --version
 uv pip install requests
+
 
 
 

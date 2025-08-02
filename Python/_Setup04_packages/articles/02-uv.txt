@@ -1,0 +1,76 @@
+01 uv
+02-Aug-2025
+
+
+Python Packaging in 2025: Introducing uv, A Speedy New Contender
+https://medium.com/fhinkel/python-packaging-in-2025-introducing-uv-a-speedy-new-contender-cbf408726687
+
+
+pip
+venv		virtualenv for isolation
+pip-tools	locking
+pipx		running tools
+pyenv		managing Python versions
+twine		publishing
+
+
+uv
+goal = replace pip, pip-tools, virtualenv, pipx, pyenv, twine
+
+
+pyproject.toml
+central configuration file
+define core project metadata and direct dependencies
+
+uv.lock
+captures exact versions of all packages in the dependency tree
+[including transitive dependencies]
+ensures reproducible builds across different machines ad environments
+
+
+EXAMPLE
+uv init <project-name>
+sets up basic project structure including pyproject.toml file
+
+uv add <package-name>
+updates pyproject.toml
+resolves dependencies to uv.lock
+installs package into local virtual environment [.venv]
+
+uv sync
+ensure virtual environment reflects state in uv.lock
+
+uv run <command>
+automatic handling environment activation
+
+
+uvx
+execute command-line tools distributed as Python packages in ephemeral environments
+e.g.
+uvx black
+uvx ruff@0.3.0 check
+uvx -- from 'mypy[reports] mypy
+
+uv tool install <package-name>
+
+
+Python versions
+uv python list
+uv python install pypy@3.10
+uv venv --python 3.11
+
+
+SETUP
+Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+Mac
+brew install uv
+
+Windows
+powershell -ExecutionPolicy ByPass -c “irm https://astral.sh/uv/install.ps1 | iex”
+
+
+Further Resources:
+Official Documentation: https://docs.astral.sh/uv/
+GitHub Repository: https://github.com/astral-sh/uv
