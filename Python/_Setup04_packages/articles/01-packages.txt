@@ -75,5 +75,61 @@ Additionally, uv run executes scripts within the project's managed environment
 Poetry has its own build backend (poetry-core), while uv's uv build acts as a frontend, respecting the build-backend specified in pyproject.toml
 
 
-Need for Speed: Performance Benchmarks
-TODO...
+Making Life Easier: Developer Experience (DX)
+uv
+uv pip install
+PIP compatible CLI
+
+
+Playing Well With Others: Ecosystem Compatibility and Tool Integration
+poetry
+poetry export
+can generate requirements.txt file
+
+uv
+compatible with Pip
+can process both files
+requirements.txt
+pyproject.toml
+
+
+Pros, Cons, and Perfect Fits: Choosing Your Champion
+pip
+CON
+Requires separate tools for 
+virtual environments (venv, virtualenv)
+package building (setuptools, build)
+publishing (twine)
+
+uv
+CON
+build frontend
+uv build
+uv publish 
+
+backend specified in pyproject.toml
+(setuptools, hatchling) 
+
+
+Thinking of Switching? Migration Insights
+Pip to Poetry
+poetry init
+cat requirements.txt | xargs poetry add
+
+Pip to uv
+uv pip install -r requirements.txt
+OR
+uv init
+
+Poetry to uv
+uv pip compile		lockfile
+
+
+SUMMARY
+Poetry
+strong reproducibility via poetry.lock
+
+uv
+pip-compatible interface eases adoption
+while expanding features for pyproject.toml
+[project setup, building and publishing = powerful toolkit]
