@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "PoetrTest_3.10.4"
+version = "0.1.0"
+description = "Test project for poetry with Python 3.10.4"
+authors = ["StevePro"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+pandas = "^1.4"
+elasticsearch = "~7.17.8"
+numpy = "~1.24"
+scikit-learn = "~1.2.2"
+joblib = "^1.0.1"
+click = "~8.1.2"
+pydantic = "^1.10"
+catboost = "~1.0.6"
+transformers = "~4.19.2"
+requests = "^2.27.1"
+requests-toolbelt = "^0.10"
+tldextract = "^3.4"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "~7.2"
+pytest_mock = "~3.10"
+pytest-cov = "^4.0"
+PyYAML = "~6.0"
+pre-commit = "^3.0"
+pytest-profiling = "^1.7"
+mypy = "*"
+black = "*"
+isort = "*"
+pycodestyle = "*"
+google-cloud-bigquery = "^2.34"
+ipykernel = "^6.17"
+pyarrow = "^11.0"
+polyaxon = "==1.20.0"
+pandera = "^0.14"
+protobuf = "^4.22.0"
+trustme = "^0.9.0"
+responses = "^0.23"
+types-requests = "^2.28"
+pydantic-factories = "^1.6.0"
+
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+skip = ["venv"]
+
+[tool.black]
+line-length = 120
+
+[tool.pytest.ini_options]
+log_level = "DEBUG"
+log_format = "%(asctime)s : %(levelname)s : %(message)s"
+log_date_format = "%Y-%m-%d %H:%M:%S"
+
+[tool.mypy]
+python_version = "3.8"
+ignore_missing_imports = true
+plugins = [
+  "pydantic.mypy"
+]

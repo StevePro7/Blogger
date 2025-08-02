@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "PoetrTest_3.8.20"
+version = "0.1.0"
+description = "Test project for poetry with Python 3.8.20"
+authors = ["StevePro"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+elasticsearch = "~7.11.0"
+pydantic = "^1.9.0"
+python-dateutil = "^2.8.2"
+pymongo = "^4.0.1"
+fastapi = "^0.73.0"
+uvicorn = "^0.17.4"
+beautifulsoup4 = "^4.10.0"
+tqdm = "^4.63.0"
+requests = "^2.27.1"
+fastapi-health = "^0.4.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "~6.2.2"
+pytest_mock = "~3.6.1"
+pytest-cov = "~2.12.1"
+pytest-xdist = "~2.3.0"
+PyYAML = "~5.4.1"
+pre-commit = "^2.15.0"
+pytest-randomly = "^3.10.1"
+pytest-profiling = "^1.7.0"
+mypy = "^0.910"
+black = "^21.9b0"
+isort = "^5.9.3"
+pycodestyle = "^2.8.0"
+kubernetes = "^19.15.0"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+skip = ["venv"]
+
+[tool.black]
+line-length = 120
+
+[tool.pytest.ini_options]
+log_level = "INFO"
+log_format = "%(asctime)s : %(levelname)s : %(message)s"
+log_date_format = "%Y-%m-%d %H:%M:%S"
