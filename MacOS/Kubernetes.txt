@@ -1,0 +1,51 @@
+Kubernetes
+04-Aug-2025
+
+How to install Kubernetes on Mac OS/X
+https://steveproxna.blogspot.com/2021/09/kubernetes-cheat-sheet.html
+
+Install Docker Desktop (if not already):
+https://www.docker.com/products/docker-desktop/
+
+
+Enable Kubernetes in Docker Desktop:
+Open Docker Desktop
+Go to Settings (gear icon) → Kubernetes
+Check "Enable Kubernetes"
+Click Apply & Restart
+
+
+kubectl version --client
+kubectl get nodes
+
+
+
+https://steveproxna.blogspot.com/2024/05/macos-setup-cheat-sheet.html
+Kubernetes
+As per this post, install Kubernetes with Docker Desktop on Mac OS/X. Next, install and setup kubectl on the Mac OS/X. However, the default kubectl autocomplete setup quick reference may produce the following error
+
+Install and Set Up kubectl on macOS
+https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
+
+https://kubernetes.io/docs/reference/kubectl/quick-reference/
+
+
+brew install minikube
+minikube start
+kubectl get nodes
+
+
+kubectl is automatically installed with Minikube via Homebrew. If not:
+brew install kubectl
+
+
+Using Kind (Kubernetes IN Docker)
+brew install kind
+kind create cluster
+kubectl cluster-info --context kind-kind
+
+
+
+EXAMPLES
+https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/01-Example
+https://github.com/SteveProXNA/CloudTesting/tree/main/KubernetesCheatSheet/02-Example
