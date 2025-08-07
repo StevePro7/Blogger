@@ -13,12 +13,12 @@ Creates virtual environment and pyproject.toml
 1a. Activate virtual environment manually if needed
 uv venv
 
-# Windows
-source .venv/bin/activate  
 
 # MacOS / Linix
-.venv\Scripts\activate
+source .venv/bin/activate
 
+# Windows
+.venv\Scripts\activate
 
 
 
@@ -87,3 +87,8 @@ it should now contain a .venv, pyproject.toml, and main.py
 Note
 uv manages the .venv just like Python's built-in venv tool, so PyCharm treats it the same way.
 You don't need to manually activate the venv in the terminal when running or debugging from PyCharm.
+
+
+
+Q.
+uv how do you upgrade pip?
