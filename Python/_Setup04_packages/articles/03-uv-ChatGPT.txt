@@ -1,0 +1,89 @@
+03 uv ChatGPT
+07-Aug-2025
+
+01.
+Python simple Hello World example using uv package manager with some basic commands e.g. uv init and whatever commands to import libraries and install them etc
+
+1. Initialize a New Python Project
+uv init
+
+Creates virtual environment and pyproject.toml
+
+
+1a. Activate virtual environment manually if needed
+uv venv
+
+# Windows
+source .venv/bin/activate  
+
+# MacOS / Linix
+.venv\Scripts\activate
+
+
+
+
+2. Create a Hello World Python Script
+def main():
+    print("Hello, World!")
+
+if __name__ == "__main__":
+    main()
+
+
+3. Install a Package (Optional Example)
+uv pip install rich
+
+from rich import print
+
+def main():
+    print("[bold green]Hello, World![/bold green]")
+
+if __name__ == "__main__":
+    main()
+
+
+4. Run the Script
+python main.py
+
+
+5. Check Dependencies
+up pip list
+
+
+Summary of Commands
+uv pip compile
+
+
+Action			Command
+Init project		uv init
+Install a package	uv pip install <package>
+List packages		uv pip list
+Lock dependencies	uv pip compile
+Create venv manually	uv venv
+
+
+
+02.
+Can I still run this main.py thru PyCharm debugger
+
+Yes, you can absolutely run main.py through the PyCharm debugger, even when using uv as your package and environment manager. Here's how to make it work smoothly:
+
+1. Set Up Your Project in PyCharm
+Open the folder where you ran uv init 
+it should now contain a .venv, pyproject.toml, and main.py
+
+
+2. Configure Python Interpreter
+1. Go to File > Settings > Project: > Python Interpreter
+2. Click the gear ⚙️ > Add...
+3. Choose "Existing environment"
+4. Navigate to the .venv/bin/python (or .venv\Scripts\python.exe on Windows)
+5. Apply and close.
+
+
+3. Run or Debug Normally
+
+
+Note
+uv manages the .venv just like Python's built-in venv tool, so PyCharm treats it the same way.
+You don't need to manually activate the venv in the terminal when running or debugging from PyCharm.
