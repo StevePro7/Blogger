@@ -98,3 +98,28 @@ sudo echo "PATH=$PATH:/anaconda3/bin" >> /etc/environment
 Restart
 this works in the sense that if I type "Anaconda" in the bottom right the desktop icon is now detected
 but I still can't right click and add to favorites
+
+
+
+08-Aug-2025
+https://www.anaconda.com/docs/getting-started/anaconda/install#macos-command-line-installer
+https://repo.anaconda.com/archive
+
+Anaconda3-2025.06-1-MacOSX-arm64.sh	
+f9366a024ac6f043dc224986c54f1b4e1226e6ccb6291d83bdadb489f159d847
+
+
+curl -O https://repo.anaconda.com/archive/Anaconda3-2025.06-1-MacOSX-arm64.sh
+shasum -a 256 Anaconda3-2025.06-1-MacOSX-arm64
+
+bash ~/Anaconda3-2025.06-0-MacOSX-arm64.sh
+
+PREFIX=/Users/<USER>/anaconda3
+
+source ~/.bash_profile
+
+# Replace <PATH_TO_CONDA> with the path to your conda install
+source <PATH_TO_CONDA>/bin/activate
+conda init --all
+
+conda config --set auto_activate_base True
