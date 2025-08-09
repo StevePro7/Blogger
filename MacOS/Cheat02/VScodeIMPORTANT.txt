@@ -3,6 +3,7 @@ VS Code
 
 
 IMPORTANT
+01.
 while I was setting up VS Code keyboard bindings
 I realised the information on  the blog was bare
 
@@ -25,3 +26,27 @@ Ctrl + Home
 Enter
 
 repeat until all the keys listed have been updated !!
+
+
+02.
+The final section there was an issue updating the new laptop
+on
+Ctrl + Right
+did not work
+
+Why?
+this clause was missing
+
+ 	 "when":	 "terminalFocus"
+
+
+SOLUTION
+simply add the "when" clause and now works OK !!
+
+
+ {	 	 
+ 	 "key":	 "cmd+right",
+ 	 "command":	 "workbench.action.terminal.sendSequence",
+ 	 "args":	 { "text": "\u001bf" },
+ 	 "when":	 "terminalFocus"
+ },	 
