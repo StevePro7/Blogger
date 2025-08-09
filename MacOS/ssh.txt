@@ -1,0 +1,97 @@
+SSH
+09-Aug-2025
+
+IMPORTANT
+I had similar commands for DevOps blog posts!
+https://steveproxna.blogspot.com/2025/05/cloud-setup-cheat-sheet.html
+
+
+ChatGPT
+github ssh key setup instructions for mac - surely I should I use authentication key type
+
+
+
+Yes — when you set up SSH for GitHub on a Mac, you should pick a modern authentication key type, not just use the default blindly.
+
+GitHub now recommends Ed25519 for most users, because it’s more secure and shorter than RSA, unless you have compatibility constraints (e.g., very old systems).
+
+Here’s the step-by-step for macOS, with Ed25519 as the key type:
+
+1. Check for existing SSH keys
+bash
+Copy
+Edit
+ls -al ~/.ssh
+Look for files named:
+
+id_ed25519 and id_ed25519.pub
+
+or id_rsa and id_rsa.pub
+
+If you already have a usable key, you can reuse it, but for GitHub, it’s often best to make a fresh one.
+
+2. Generate a new Ed25519 SSH key
+bash
+Copy
+Edit
+ssh-keygen -t ed25519 -C "your_email@example.com"
+-t ed25519 → key type
+
+-C → comment (usually your GitHub email)
+
+When prompted:
+
+Press Enter to save to the default location (~/.ssh/id_ed25519).
+
+Optionally enter a passphrase for extra security.
+
+3. Start the SSH agent
+bash
+Copy
+Edit
+eval "$(ssh-agent -s)"
+4. Add your SSH key to the agent
+bash
+Copy
+Edit
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+(--apple-use-keychain ensures macOS remembers it after reboot.)
+
+5. Copy your public key
+bash
+Copy
+Edit
+pbcopy < ~/.ssh/id_ed25519.pub
+Now it’s in your clipboard.
+
+6. Add it to GitHub
+Go to GitHub → Settings → SSH and GPG keys → New SSH key
+
+Paste your key into the Key field.
+
+Give it a title (e.g., “MacBook Pro”).
+
+Save.
+
+7. Test your connection
+bash
+Copy
+Edit
+ssh -T git@github.com
+You should see something like:
+
+vbnet
+Copy
+Edit
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+✅ Key type recommendation:
+
+Use ed25519 unless you know you need RSA for compatibility.
+
+If you must use RSA (e.g., old corporate systems), choose:
+
+bash
+Copy
+Edit
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+If you want, I can give you the exact commands for replacing your old RSA key with Ed25519 without breaking your current GitHub access. That’s a slightly trickier dance. Would you like me to lay that out?
