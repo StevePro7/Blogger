@@ -1,0 +1,64 @@
+04 uv  TODO
+11-Aug-2025
+
+Python UV + pyproject.toml: The Fastest Way to Run Python Apps
+https://medium.com/@philip.mutua/python-uv-pyproject-toml-the-fastest-way-to-run-python-apps-913d6213c111
+
+Already working thru an example but this did not work
+python main.py
+
+TODO - should be ??
+uv run main.py
+
+
+brew install uv
+curl -Ls https://astral.sh/uv/install.sh | sudo sh
+
+uv version
+
+PROJECT
+uv init my-app
+cd my-app
+
+my-app/
+├── .venv/
+├── .python-version
+├── pyproject.toml
+├── hello.py
+└── README.md
+
+uv add pandas numpy
+
+pyproject.toml
+[project]
+name = "my-app"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=2.2.2",
+    "numpy>=2.0.0"
+]
+
+uv remove pandas
+
+
+IMPORTANT
+uv run hello.py
+
+uv venv exec python src/main.py
+
+
+Python installed
+uv python list --only-installed
+
+
+Edit .python-version to e.g. 3.11.7
+uv sync
+
+
+Sync Dependencies
+uv pip install -e .
+
+
+Reproducible installs
+uv pip compile --generate-hashes -o requirements.txt
