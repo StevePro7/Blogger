@@ -13,9 +13,11 @@ alias d='docker'
 
 # Kubernetes
 alias k='kubectl'
-source <(kubectl completion bash)
-#complete -o default -F __start_kubectl k
 complete -F __start_kubectl k
+source /opt/homebrew/etc/profile.d/bash_completion.sh
+source <(kubectl completion bash)
+
+
 
 # Setting PATH for Python 3.12
 PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
