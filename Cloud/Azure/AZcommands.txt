@@ -1,0 +1,37 @@
+Azure Commands
+17-Aug-2025
+
+az login
+
+Subscriptions
+az account list -o table
+
+Tenants
+az account list --all --query "[].{TenantId:tenantId, Name:name}" -o table
+
+
+az ml workspace list --output table
+ERROR - az ml not installed
+
+az extension list
+[]
+
+az extension add -n ml
+[{ml}]
+
+
+Microsoft can customize the Studio UI for enterprise accounts — replacing “Default Directory” with the company name.
+
+
+Azure ML studio Roadmap
+Azure Machine Learning studio - I am a complete beginner - what is the best resource to get started from scratch to learn about ML workspace pipelines, environments, models, endpoints - how they all interact and how to create your own
+
+https://ml.azure.com
+https://learn.microsoft.com/en-us/azure/machine-learning/?view=azureml-api-2
+https://learn.microsoft.com/en-us/azure/machine-learning/quickstart-create-resources?view=azureml-api-2
+
+
+List Azure tenants
+Python SDK
+from azure.ai.ml import MLClient
+from azure.identity import DefaultAzureCredential
