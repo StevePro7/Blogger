@@ -71,14 +71,43 @@ it's easy to understand, modify, fix, debug
 
 
 Chp06.	Objects
+93	private variables	don't want anyone to depend on them
+	hide implementation
 Global variables not mentioned
+Global variables
+make it difficult to track state changes
+introduce hidden dependencies
+can cause unexpected side effects	esp. larger / multithreaded apps
 
-94	rather it exposes abstract interfaces that allows its users to
-	manipulate the essence of the data without having to know its
-	implementation
-97	Data Structures		procedural
-	Classes			Object Orientated
+Global variables
+discouraged due to maintainability and reproducibility concerns
+better = config files, classes, parameters
+
+94	interface [methods] enforce access policy
+	hiding implementation = 	about abstractions
+					layer of functions btwn variables
+94	abstract interfaces that allows its users to manipulate essence of the
+	data without having to know its implementation
+
+95	do not expose details of data
+95	Objects			hide data behind abstractions + expose functions on data
+	Data structures		expose their data + no functions
+
+97	Procedural code		Data structures		easy to add functions w/o change data structure
+	Object Orientated	Classes			add new classes w/o change existing functions
+	Usually want to add new functions rather than new data types
+
 97	Law of Demeter
 	module should not know about the innards of the objects it manipulates
-QQ	internal structure	unit test
+However	internal structure	get accessor useful for unit tests
+
+99	Hybrid			half object and half data structure
 100	DTO			Data Transfer Objects
+	useful when communicate w/ databases, messages from sockets
+	move data efficiently between the layers
+
+101	Active Record		special DTO but have navigational methods
+101	Objects			expose behavior + hide data
+	Data structures		expose data + no behavior
+	Add new data types	prefer objects
+	Add new behaviors	prefer data types and procedures
