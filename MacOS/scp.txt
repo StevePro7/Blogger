@@ -1,0 +1,78 @@
+SCP
+21-Aug-2025
+
+Context: 
+2x Mac laptops and you would like to copy files + folders from srce to dest
+ 
+Disconnect laptops
+Connect 2x laptops via Ethernet cable
+
+Settings | Network
+Laptop #1
+Ethernet slot 0
+Details...
+TCP/IP
+Configure IPv4		Manually
+IP Address		192.168.2.1
+Subnet mask		255.255.255.0
+
+Laptop #2
+Ethernet slot 1
+Details...
+TCP/IP
+Configure IPv4		Manually
+IP Address		192.168.2.2
+Subnet mask		255.255.255.0
+
+
+Settings | Sharing
+Enable File Sharing
+BUT
+Could not get this working via Finder | Go | Connect to server
+smb
+
+
+Therefore - try SCP over SSH instead
+
+Settings | Sharing
+Remote Login
+click "i" in circle
+Allow access for 	Only there users
+Enter user
+Done
+
+Repeat on both laptops
+
+IMPORTANT
+Ensure Firewall is NOT blocking incoming SSH connections
+
+Test TCP/IP is enabled
+sudo netstat -an | grep 445
+OR
+nc -zv <TARGET-MAC-IP> 445
+Connection to <ip> port 445 [tcp/microsoft-ds] succeeded!
+
+
+Test SSH is enabled
+sudo launchctl list | grep ssh
+OR
+nc -zv 192.168.2.2 22
+Connection to 192.168.2.2 port 22 [tcp/ssh] succeeded!
+
+
+Finally, ensure you know the user to SSH connect via whom
+whomi
+steven
+
+On laptop #1
+ssh -p 22 steven@192.168.2.2
+
+scp /Users/steven/srce steve@192.168.2.2:/Users/steven/dest
+
+Copy recursively all files and folders
+scp /Users/steven/srce steve@192.168.2.2:/Users/steven/dest
+
+
+Copy only hidden files
+scp /path/to/source/.??* username@192.168.2.2:/path/to/destination/
+
