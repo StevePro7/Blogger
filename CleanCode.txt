@@ -111,3 +111,20 @@ However	internal structure	get accessor useful for unit tests
 	Data structures		expose data + no behavior
 	Add new data types	prefer objects
 	Add new behaviors	prefer data types and procedures
+
+
+Chp07.	Error Handling
+103	too much error handling	obscures logic	WRONG
+104	better to throw an exception than to return an error code
+105	exceptions define a scope within your program
+106	narrow the type of exception to match type actually thrown
+	checked exceptions not relevant for Python
+
+107	context	create informative error messages pass with exceptions
+	DO NOT log.error("something went wrong")
+
+108	multiple exceptions caught here but Python can catch tuple of exceptions
+	(TypeError, ValueError)
+109	wrap third party API makes it easier to mock out third-party calls in UTs
+110	No null -> empty object - used in games programming
+112	Assertions - don't agree with this as modern way is to offload to UTs
