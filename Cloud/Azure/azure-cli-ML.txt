@@ -1,0 +1,41 @@
+azure CLI ML
+24-Aug-2025
+
+az login --tenant XXXX
+
+az extension list
+[]
+
+az extension add --name ml
+
+Windows had some issues
+manually upgrade AZ cli
+azure-cli-2.76.0-x64.msi
+CLI-Windows.txt
+
+
+
+
+az config set extension.use_dynamic_install=yes_without_prompt
+
+
+pip install --upgrade pip
+
+
+az extension list
+
+az ml workspace list
+
+CMD
+Run as Administrator
+pip install --upgrade pip
+pip install azureml-sdk
+
+az extension add --name ml
+
+
+
+set AZURE_CLI_PYTHON='C:\Program Files\Microsoft SDKs\Azure\CLI2\python.exe'
+
+
+Error because I had conflict with Python 2.7.10 on cygwin
