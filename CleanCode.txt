@@ -165,3 +165,30 @@ Depend on something you control - not something you don't = it will control you
 
 
 Chp09.	Unit Tests
+V/ familiar w/ TDD
+121	last team I worked on still write throw away code as "tests"
+122	3x laws of TDD
+	TDD strange first time you do = write test for code that does not exist
+123	test + prod code written together
+123	Interesting - dirtier the tests the harder they are to change = liability
+	maintain tests = expensive = don't maintain = increased bug count = less refactoring
+STORY	BFG legacy tests rot never run = don't get value of writing them
+124	Test code IMPORTANT as Prod code
+	UTs keep code maintainable	otherwise code changes = maybe bug
+ESP	important w/ Python		brittle language	UTs = code w/o fear
+123	clean tests = reability
+127	Build-Operate-Check	now	Arrange Act Assert	AAA
+	Testing language	APIs that wrap Prod code called by Test code
+127	Dual standard
+130	What you might not do in Prod code OK for Test code
+130 	One Assert - not so relevant in Python as can have single assert but parametrize
+130	ditto Template Method - not so relevant in Python for same reason
+131	However Single Concept per Test	DEFINITELY
+131	bottom hints towards BDD	given when then		w/o saying BDD
+132	minimize the no. asserts per concept	test one concept per test fn
+132	FIRST	Fast, Independent, Repeatable, Self-Validating, Timely
+133	Clean tests preserve maintainability of Prod code
+	if you let tests rot then prod code rots	Keep tests clean
+
+
+Chp10.	Classes
