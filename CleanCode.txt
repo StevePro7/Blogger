@@ -128,3 +128,40 @@ Chp07.	Error Handling
 109	wrap third party API makes it easier to mock out third-party calls in UTs
 110	No null -> empty object - used in games programming
 112	Assertions - don't agree with this as modern way is to offload to UTs
+
+
+Chp08.	Boundaries
+SUMMARY	already knew a lot about this chapter i.e. Adaptor pattern and seams
+	however don't think these concepts only apply to 3rd party S/W use for everything!!
+
+114	Power = flexibility = liability	passing concrete types all around
+115	Why?	liberally pass around the system = lot of places to fix when interface change
+	Instead Map interface at the boundary = hidden
+	Code that is easier to understand and hard to misuse
+SCOTT Meyers
+Interface	should be easy to use hard to misuse
+
+115	Boundary interface keep inside class	also easier to UT [stub - black box]
+
+116	Learning tests = I think of these as system tests	V/ important
+	write [system] tests to explore understanding of [3rd party] code	ALL code!
+
+118	Encapsulate - repeat idea of 3rd party code in class = black box = boundary interface
+	learning tests = experiments that helped increase understanding
+
+119	Code not exist = Adaptor pattern = write code to your interface
+	integrate w/ 3rd party once API ready
+	Code against your interface and "adapt" once destination implemented
+
+SEAMS	thin interfaces that separate concerns	NOT tightly couple code
+	good design to have seams in code - not just for 3rd party but everywhere
+	makes code integration easier - minimize conflicts in code review / merge
+
+120	Boundaries = Change
+	Only thing in S/W that changes is change
+
+Good S/W design accommodate change W/O huge rework
+Depend on something you control - not something you don't = it will control you
+
+
+Chp09.	Unit Tests
