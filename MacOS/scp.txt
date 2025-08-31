@@ -25,7 +25,7 @@ IP Address		192.168.2.2
 Subnet mask		255.255.255.0
 
 
-Settings | Sharing
+Settings | General | Sharing
 Enable File Sharing
 BUT
 Could not get this working via Finder | Go | Connect to server
@@ -47,10 +47,10 @@ IMPORTANT
 Ensure Firewall is NOT blocking incoming SSH connections
 
 Test TCP/IP is enabled
-sudo netstat -an | grep 445
+sudo netstat -an | grep 443
 OR
-nc -zv <TARGET-MAC-IP> 445
-Connection to <ip> port 445 [tcp/microsoft-ds] succeeded!
+nc -zv <TARGET-MAC-IP> 443
+Connection to <ip> port 443 [tcp/microsoft-ds] succeeded!
 
 
 Test SSH is enabled
