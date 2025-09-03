@@ -34,7 +34,7 @@ smb
 
 Therefore - try SCP over SSH instead
 
-Settings | Sharing
+Settings | General | Sharing
 Remote Login
 click "i" in circle
 Allow access for 	Only there users
@@ -64,15 +64,24 @@ Finally, ensure you know the user to SSH connect via whom
 whomi
 steven
 
-On laptop #1
+On laptop #1 - test SSH is working
 ssh -p 22 steven@192.168.2.2
+exit
+
+IMPORTANT
+run scp commands not being SSH into either laptop
+
 
 scp /Users/steven/srce steve@192.168.2.2:/Users/steven/dest
+Password
+
 
 Copy recursively all files and folders
-scp /Users/steven/srce steve@192.168.2.2:/Users/steven/dest
+scp -r /Users/steven/srce steve@192.168.2.2:/Users/steven/dest
+Password
 
 
 Copy only hidden files
 scp /path/to/source/.??* username@192.168.2.2:/path/to/destination/
+Password
 
