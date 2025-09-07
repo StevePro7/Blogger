@@ -1,0 +1,134 @@
+Mac Setup03
+07-Sep-2025
+
+Update Terminal
+/opt/homebrew/bin/bash
+
+Settings
+Language + Region
+NZ and en-NZ
+Get rid of Bad file descriptor
+
+
+TextEdit
+default to Plain Text
+
+
+PyCharm
+projects setup all types
+Install pipenv, poetry and uv
+
+PyCharm | Settings | Terminal
+Update zsh to /bin/bash in PyCharm
+
+
+UTM
+s/w similar to Virtual Box on Mac
+Linux
+16384 MB
+12 cores
+128 GB
+Restart | Clear CD / DVD
+On launch enter pwd as disk is encrypted
+
+Network
+Network mode		Bridge (Advanced)
+Bridged interface	Automatic
+Emulated NIC		virtio-net-pic
+
+sudo apt install chromium-browser
+
+
+PyCharm keyboard shortcuts
+CLion install + import
+
+
+brew install minikube
+brew install kind
+brew install helm
+brew install terraform
+
+brew install bash
+brew install bash-completions
+
+
+Mac terminal
+how to remove the last login on launch
+Terminal
+touch ~/.hushlogin
+
+
+Install Firefox
+
+
+Anaconda
+https://www.anaconda.com/docs/getting-started/anaconda/install#macos-command-line-installer
+
+curl -O https://repo.anaconda.com/archive/Anaconda3-2025.06-0-MacOSX-arm64.sh
+# Replace <INSTALLER-FILENAME> with the name of the downloaded installer file
+shasum -a 256 ~/<INSTALLER-FILENAME>
+
+bash ~/Anaconda3-2025.06-0-MacOSX-arm64.sh
+/Users/<username>/anaconda3
+
+No - conda will not modify your shell scripts
+
+Ensure
+~/.bash_profile
+updated with conda initialize
+
+
+LFS
+Large File Storage
+git-lfs
+brew install git-lfs
+
+
+Hex Friend
+https://hexfiend.com
+
+Interesting
+this is DMG file
+drag into Applications folder
+now becomes APP file in the Applications folder
+
+
+Source Tree
+
+
+Mesh Lab
+MeshLab2023.12-macos
+https://www.meshlab.net/#download
+https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-2023.12/MeshLab2023.12-macos.dmg
+
+
+MacOS 2024/05
+Keyobard shortcuts
+TextEdit
+VS Code
+Homebrew
+
+VS Code | bash
+cd /Users/<username>/Library/Application Support /Code/User
+
+open -e settings.json
+Add "terminal.integrated.defaultProfile.osx": "bash"
+{
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"workbench.colorTheme": "Visual Studio Light",
+	"terminal.integrated.shellIntegration.enabled": false,
+	"terminal.integrated.defaultProfile.osx": "bash"
+}
+
+
+MS Teams
+System Settings
+Privacy and Security
+
+01.
+Screen & System Audio Recording
+MS Teams	CHECKED
+
+02.
+Accessibility
+MS Teams	ADD
