@@ -121,7 +121,7 @@ In pytest, <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-in
 <br />
 
 <u>Fixtures</u><br />
-<a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">setup</a> all preconditions for tests, provide data, or perform <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">teardown</a> after tests finished via @pytest.fixture decorator.
+<a href="https://pytest-with-eric.com/fixtures/pytest-fixtures">Fixtures</a> are methods in pytest that provide fixed baseline for tests to run.  Fixtures can be used to <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#What-is-Setup-and-Teardown">setup</a> all preconditions for tests, provide data, or perform <a href="https://pytest-with-eric.com/pytest-best-practices/pytest-setup-teardown/#Importance-of-Test-Setup-and-Teardown">teardown</a> after tests finished via @pytest.fixture decorator.
 <br /><br /> 
 <i>Scope</i><br />
 Fixtures have scope: Function, Class, Module + Session which define how long fixture available during test:
