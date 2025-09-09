@@ -192,3 +192,32 @@ ESP	important w/ Python		brittle language	UTs = code w/o fear
 
 
 Chp10.	Classes
+SOLID	Principle			S, O, D
+136	Newspaper article repeat	Public then private variables
+136	Classes = small
+	Functions measure		no. lines
+	Classes   measure		no. responsibilities
+138	SRP Single Responsiblity Principle
+	one reason to change only
+GOD class = too many responsibilities
+139	No time for refactoring
+	move on to the next problem rather than refactoring09:56 09/09/2025
+140	wade thru code!
+140	Cohesion
+	more variables a method manipulates the more cohesive that method is to is class
+GOAL	highly cohesive loosely couple classes
+141	When classes lose cohesion split them up	
+EXAMPLE
+147	Organize classes to reduce risk of change
+	Open Closed principle
+	opening a class introduces risk
+	any modifications to the class can potentially break other code in the class
+148	Example of O/C principle	no other code will break from change
+149	incorporate new features by extending system NOT modify existing code
+149	Isolate change
+	Depend on abstractions not [concrete] implementations
+	client depending on concrete details is at risk when those details change
+150	lack of coupling means elements are better isolated from change
+	DIP	Dependency Inversion [Injection?] principle
+	classes should depend on abstractions not concrete details
+IoC	Inversion of Control
