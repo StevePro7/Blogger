@@ -20,6 +20,7 @@ setuptools		building packages
 Poetry
 pyproject.toml
 central hub for all project configuration incl. dependencies
+standardized more expressive project file
 
 unifies these functions into one cohesive toolchain
 virtual environment management, dependency resolution, package building, and publishing, 
@@ -33,3 +34,30 @@ uv python install	Python version mgt
 uv pip install		Pip compatibility
 uvx			Python packagesCLI
 
+uv
+fetch metadata from wheel [WHL] file rather than download entire package
+
+
+Lockfiles
+ensure same reproducible builds
+uv = platform independent lockfiles
+
+
+Pip
+setuptools		project scaffolding
+build			build package distributions [wheel + source]
+publish to PyPI		twine
+
+
+Poetry
+poetry new		project scaffolding
+poetry add		dependency mgt
+poetry build		create distributable packages
+poetry publish		upload packages
+
+
+uv
+uv init			project scaffolding
+uv add			dependency mgt
+uv build		create distributable packages
+uv publish		upload packages
