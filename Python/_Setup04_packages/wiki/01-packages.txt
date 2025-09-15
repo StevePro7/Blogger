@@ -1,0 +1,35 @@
+Navigating the Python Packaging Landscape: Pip vs. Poetry vs. uv — A Developer’s Guide
+https://dimasyotama.medium.com/navigating-the-python-packaging-landscape-pip-vs-poetry-vs-uv-a-developers-guide-49a9c93caf9c
+
+15-Sep-2025
+
+Pip, short for “Pip Installs Packages,”	
+Python Package Index (PyPI) – the central hub for Python software
+
+Python Packaging Authority (PyPA),
+group dedicated to maintaining core Python packaging software, 
+
+newer tools like uv often prioritize compatibility with Pip’s workflow
+
+pip			installation
+venv virtualenv		virtual environments
+requirements.txt	listing dependencies	[not true lock file]
+setuptools		building packages
+
+
+Poetry
+pyproject.toml
+central hub for all project configuration incl. dependencies
+
+unifies these functions into one cohesive toolchain
+virtual environment management, dependency resolution, package building, and publishing, 
+
+
+uv
+Python package installer + resolver + drop-in replacement for Pip
+
+uv venv			virtual environment mgt
+uv python install	Python version mgt
+uv pip install		Pip compatibility
+uvx			Python packagesCLI
+
