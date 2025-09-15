@@ -1,0 +1,32 @@
+Python UV + pyproject.toml: The Fastest Way to Run Python Apps
+15-Sep-2025
+
+https://medium.com/@philip.mutua/python-uv-pyproject-toml-the-fastest-way-to-run-python-apps-913d6213c111
+
+
+UV = pip + poetry
+
+
+
+Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+macOS
+brew install uv
+
+Windows (using PowerShell as Administrator):
+powershell -ExecutionPolicy ByPass -c “irm https://astral.sh/uv/install.ps1 | iex”
+
+
+uv run hello.py
+uv venv exec python src/main.py
+
+
+uv python list
+uv python list --only-installed
+
+
+uv sync
+uv pip install -e .
+
+uv pip compile --generate-hashes -o requirements.txt
