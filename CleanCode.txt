@@ -274,3 +274,29 @@ write app domain logic POJOs decoupled from architecture concerns at code level
 169	DSL allow developer to reveal intent of code at right level of abstraction
 169	when domain logic obscured then quality suffers	bugs easier to hide 
 
+
+Chp12.	Emergence
+172	4x simple rules
+#1	runs all the tests
+#2	contains no duplication
+#3	expresses the INTENT of the programmer
+#4	minimizes number of classes + methods
+
+172	TESTS
+#1	system test that cannot be verified should never be deployed
+	tests run continuously impacts goals low coupling + high cohesion
+	tests lead to better design
+172	REFACTOR
+#2	having tests eliminates fear that cleaning up the code will break it!
+173	DUPLICATION
+	DRY = no duplication
+174	Template Method design pattern = remove higher-level duplication
+175	EXPRESSIVE
+#3	code should clearly express the intent of its author
+	clearer the author can make the code the less time others understand it
+	standard pattern names
+	well written unit tests = expressive	documentation by example
+176	get code working and move on	make code easy for next person
+#4	MINIMAL
+	keep class + function count low but more IMP to have tests, no dup + express
+Simple design encourage developers to adhere to good principles and patterns
