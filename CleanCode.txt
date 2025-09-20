@@ -221,3 +221,56 @@ EXAMPLE
 	DIP	Dependency Inversion [Injection?] principle
 	classes should depend on abstractions not concrete details
 IoC	Inversion of Control
+
+
+Chp11.	Systems
+SUMMARY	a lot of this chapter NOT relevant as is Java
+	Spring, AspectJ, JBoss etc.
+154	abstraction + modularity = individual components
+	stay clean at higher levels of abstraction = the system level
+	software systems separate startup process
+	application objects constructed
+	dependencies "wired" together
+	runtime logic takes over after startup
+VIOLATION	Lazy initialization example
+
+155		break Single Responsibility rule
+	global setup strategy is scattered across the application
+	little modularity + significant duplication
+	modularize process separately from runtime logic
+	consistent strategy for resolving major dependencies
+
+MAIN	build objects then pass them to application
+me	eliminate CPU cycles to always check for null
+
+156	Abstract Factory GoF
+	construction separate from the application code
+
+157	D.I.	IoC	dependency management
+IMPORTANT	help break coupling btwn objects = better U/T
+Do NOT do	A() { b = new B(); }
+special-purpose container = IoC Contaner	Does Python have??
+
+158	TDD	
+	refactoring clean code produced make this work at code level
+S/W systems architecture can grow incrementally if proper separation of concerns
+
+160	EXAMPLE heavy coupling
+AOP	Aspect-Orientated Programming
+	general purpose approach to restoring modularity for cross-cutting concerns
+aspects	modular constructs
+161	Java proxies	NOT relevant
+163	DDD	POJOs	domain objects
+Cross-cutting concerns
+persistence, transactions, security, caching, failover	[AOP] FRAMEWORKs
+ 
+166	Test Drive
+write app domain logic POJOs decoupled from architecture concerns at code level
+= test drive architecture 
+168	agility provided by modularized concerns allow to make optimal
+	JIT decisions based on most recent knowledge
+168	standards make it easier to reuse ideas and components
+168	DSL minimizes comms gap btwn domain concept and code that implements it
+169	DSL allow developer to reveal intent of code at right level of abstraction
+169	when domain logic obscured then quality suffers	bugs easier to hide 
+
