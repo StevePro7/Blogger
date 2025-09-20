@@ -1,0 +1,126 @@
+The One Concept You Must Master Before Learning AI & Machine Learning
+20-Sep-2025
+
+https://medium.com/@sajidkhan.sjic/the-one-concept-you-must-master-before-learning-ai-machine-learning-d99717b0fc3b
+
+
+Linear Algebra
+Understand vectors and matrices
+
+Vector
+single data point
+
+Matrix
+dataset
+
+Model Parameters
+weights in nerual networks stored as matrices
+
+Transformations
+images, text embeddings, feature spaces
+all manipulated using matrix manipulations
+
+Training process
+gradient descent updates nothing but vector operations
+
+
+BUILDING BLOCKS
+Vectors
+list of numbers that represent features
+[size, number_of_rooms, age]	3D vector
+
+Matrices
+grid of numbers [Rows x Cols]
+e.g.
+dataset 100 houses w/ 3x features = 100 * 3 matrix
+
+Matrix Multiplication
+operation that powers neural networks
+e.g.
+multiply input data [matrix] by model weights [matrix] = predictions
+
+Dot product
+measures similarity btwn vectors
+e.g.
+recommendation systems
+
+Transformations
+rotating, scaling, projecting data using matrices
+e.g.
+Computer Vision: images transformed into feature vectors thru matrix operations
+
+
+EXAMPLE
+Y = XW + b
+
+X → your dataset matrix (rows = houses, columns = features)
+W → your weight vector
+b → bias
+Y → predicted prices
+
+Scale idea up w/ multiple layers of weights and activations = neural networks
+
+
+1. Start Small: With a Pen and Paper
+a = [2, 3]
+b = [4, 1]
+
+ADD
+a + b = [6, 4]
+combining features
+
+SCALE
+2 * a = [4, 6]
+amplifying input features
+
+ML
+dot product = basis of similarity measures how neural networks compute weighted sums
+i.e.
+Matrix multiplication = a * b	[described as "dot" product]
+
+
+2. Move to Python + NumPy
+~\GitHub\StevePro7\PythonSetup\Medium\AI\LinearAlgebra\pythonProject\Ex01.py
+Operations are the backbone of libraries
+TensorFlow
+PyTorch
+
+
+3. Experiment with Matrices
+~\GitHub\StevePro7\PythonSetup\Medium\AI\LinearAlgebra\pythonProject\Ex02.py
+Linear regression in matrix form
+Built first ML model!!
+
+
+4. Visualize Transformations
+~\GitHub\StevePro7\PythonSetup\Medium\AI\LinearAlgebra\pythonProject\Ex03.py
+set of 2D points	[co-ordinates]
+apply transformation matrix:
+rotation, scaling
+plot before vs. after
+
+Neural networks apply transformations layer by layer
+Understand this visually makes "hidden layers" less abstract
+
+
+5. Connect It to AI Concepts
+dot prodct = similarity		used in recommendation engines
+matrix multiplications 		linear regression
+				deep learning forward pass
+transformations			feature space changes in embeddings
+		e.g.		word2vec
+				image embeddings
+scaling and normalizing vectors	preprocessing before training
+
+
+SUMMARY
+understanding vectors and matrices:
+
+* deep learning feel less like "magic" and more like layers of transformations
+* concepts like embeddings, attention and back-propagation become logical extensions [not mysteries]
+* confidence to learn more advanced math [calculus, probability, optimization]	see how to connect data
+
+House analogy:
+* Linear Algebra = foundation
+* without it	 = shaky
+* with it	 = build computer vision, NLP, Generative AI etc.
