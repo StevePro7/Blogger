@@ -1,0 +1,56 @@
+Policy Gradient in RLHF from First Principles
+21-Sep-2025
+
+
+https://medium.com/@chandravanshi.pankaj.ai/bd52d31ea27e
+
+RL
+Aligning LLMs w/ human values and preferences
+
+made possible via RLHF
+Reinforcement Learning Human Feedback
+
+RLHF
+refine a language model behavior based on feedback that
+captures what we consider to be good or useful outputs
+
+
+Pre-reqs
+Reinforcement Learning for LLMs from First Principle
+https://medium.com/@chandravanshi.pankaj.ai/5da5b405dd15
+
+
+PPO
+Proximal Policy Optimization
+
+RL framework formalized as Markov Decision Process [MDP]
+which includes states, actions, rewards, transitions and policy
+
+Assume policy = ML model e.g. deep neural network
+
+
+EXAMPLE implementation
+use an environment from Open AI Gym
+
+
+import torch
+import torch.nn as nn
+from torch.distributions.categorical import Categorical
+from torch.optim import Adam
+import numpy as np
+import gym
+from gym.spaces import Discrete, Box
+
+
+EGLP
+Expected Grad Log Prob
+
+
+Pseudo Code: Source
+https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-217.pdf
+
+GAE
+Generalized Advantage Estimation
+
+TRPO
+Trust Region Policy Optimization
