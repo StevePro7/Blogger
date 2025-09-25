@@ -15,3 +15,4 @@ az acr --name $ACR_REGISTRY --expose-token
 
 az acr repository list -n $ACR_REGISTRY
 az acr repository list --name $ACR_REGISTRY
+az acr repository list --name $ACR_REGISTRY | grep repo
