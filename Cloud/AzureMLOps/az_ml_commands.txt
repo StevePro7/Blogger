@@ -37,6 +37,9 @@ az ml online-endpoint list -g $RESOURCE_GROUP -w $ML_WORKSPACE -o table
 #az ml online-endpoint get-logs -n -g pipe -w MLOP -e test-online-endpoint
 az ml online-endpoint get-logs -n -g $RESOURCE_GROUP -w $ML_WORKSPACE -e test-online-endpoint
 
+az ml online-endpoint create --file endpoint.yaml
+
+
 
 Online deployment
 az ml online-deployment list -g pipe -w MLOP -o table -e test-online-endpoint
@@ -50,11 +53,17 @@ az ml online-deployment list get-logs -g pipe -w MLOP -o table -e test-online-en
 az ml online-deployment list --endpoint-type kubernetes -g pipe -w MLOP
 az ml online-deployment list --endpoint-type kubernetes -g $RESOURCE_GROUP -w $ML_WORKSPACE
 
+az ml online-deployment show -n dev -g $RESOURCE_GROUP -w $ML_WORKSPACE
+
 shell into online deployment pod
 cd /var/azureml-app/azureml-models/test_online_endpoint/1/model/checkpoint
 
-az ml az ml online-deployment delete -n dev -e test-online-endpoint -g pipe -w MLOP
-az ml az ml online-deployment delete -n dev -e test-online-endpoint -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml online-deployment create --file deployment.yaml -n dev  -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml online-deployment update --file deployment.yaml -n dev  -g $RESOURCE_GROUP -w $ML_WORKSPACE
+
+az ml online-deployment delete -n dev -e test-online-endpoint -g pipe -w MLOP
+az ml online-deployment delete -n dev -e test-online-endpoint -g $RESOURCE_GROUP -w $ML_WORKSPACE
+
 
 
 Batch endpoint
@@ -75,3 +84,7 @@ az ml batch-deployment create --file deployment.yaml -e test-batch-endpoint -g $
 
 az ml batch-deployment delete --name dev --endpoint-name test-batch-endpoint --resource-group pipe --workspace-name MLOP
 az ml batch-deployment delete -n dev -e test-batch-endpoint -g $RESOURCE_GROUP -w $ML_WORKSPACE
+
+
+COMPUTE
+az ml compute list-sizes --location eastus -g $RESOURCE_GROUP -w $ML_WORKSPACE
