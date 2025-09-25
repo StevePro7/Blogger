@@ -1,0 +1,22 @@
+az ml commands
+25-Sep-2025
+
+00.
+az extensions list
+az ml install ??
+
+01.
+Azure ML
+Mon,25-Aug
+
+RESOURCE_GROUP			pipe
+ML_WORKSPACE			MLOP
+
+
+Models
+az ml model list -g pipe -w MLOP --output table
+az ml model list -g $RESOURCE_GROUP -w $ML_WORKSPACE --output table
+az ml model list -resource-group pipe --workspace-name MLOP --output table
+az ml model list -resource-group $RESOURCE_GROUP --workspace-name $ML_WORKSPACE --output table
+
+
