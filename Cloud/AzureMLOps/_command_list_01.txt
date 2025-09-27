@@ -1,4 +1,4 @@
-commandlist
+commandlist 01
 27-Sep-2025
 
 01. 	az login
@@ -10,8 +10,11 @@ az login --tenant <tenant_id>
 az login --tenant $AZURE_TENANT_ID
 
 az login --service-principal -u <username> -p <password> --tenant <tenant_id>
-
 az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+
+Long-form
+-u	--username
+-p	--password
 az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
 
 
@@ -26,16 +29,23 @@ az configure --defaults acr=$ACR_REGISTRY ml-workspace=$ML_WORKSPACE ml-resource
 
 03.	az acr login
 export ACR_REGISTRY="SteveProRegistry"
-az acr -n <acr_registry>
-az acr -n $ACR_REGISTRY
-az acr --name $ACR_REGISTRY
+az acr --login -n <acr_registry>
+az acr --login -n $ACR_REGISTRY
+az acr --login -n $ACR_REGISTRY --expose-token
 
-az acr -n <acr_registry> --expose-token
-az acr -n $ACR_REGISTRY --expose-token
-az acr --name $ACR_REGISTRY --expose-token
+Long-form
+-n		--name
+az acr --login --name $ACR_REGISTRY
+az acr --login --name $ACR_REGISTRY --expose-token
+
 
 
 04.	az acr repository list 
 export ACR_REGISTRY="SteveProRegistry"
 az acr repository list -n $ACR_REGISTRY -o table
+
+
+Long-form
+-n		--name
+-o		--output
 az acr repository list --name $ACR_REGISTRY --output table

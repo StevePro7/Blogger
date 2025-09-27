@@ -1,0 +1,34 @@
+commandlist 03
+27-Sep-2025
+
+01. 	az ml online-endpoint
+export RESOURCE_GRP="SteveProGroup"
+export ML_WORKSPACE="SteveProWorkspace"
+
+az ml online-endpoint list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
+
+
+
+Long-form
+-g	--resource-group
+-w	--workspace-name
+az ml online-endpoint list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE  --output table
+
+
+
+
+
+02. 	az ml online-deployment
+export MYENDPOINT="test-endpoint"
+export DEPLOYMENT="test-deployment"
+export RESOURCE_GRP="SteveProGroup"
+export ML_WORKSPACE="SteveProWorkspace"
+az ml online-deployment get-logs -n  -g $RESOURCE_GROUP -w $ML_WORKSPACE -e test-online-endpoint
+az ml online-deployment get-logs
+
+Long-form
+-n	--name
+-e	--endpoint-name
+-g	--resource-group
+-w	--workspace-name
+az ml online-deployment get-logs --name my-deployment --endpoint-name my-endpoint --resource-group my-resource-group --workspace-name my-workspace

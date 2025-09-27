@@ -1,0 +1,38 @@
+commandlist 00
+27-Sep-2025
+
+01. 	az version
+az version
+{
+  "azure-cli": "2.76.0",
+  "azure-cli-core": "2.76.0",
+  "azure-cli-telemetry": "1.1.0",
+  "extensions": {}
+}
+
+
+AZ ML
+az extension list
+[]
+az extension add -n ml
+az extension add --name ml
+
+{
+  "azure-cli": "2.76.0",
+  "azure-cli-core": "2.76.0",
+  "azure-cli-telemetry": "1.1.0",
+  "extensions": {
+    "ml": "2.38.1"
+  }
+}
+
+
+https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest
+https://learn.microsoft.com/en-us/cli/azure/ml?view=azure-cli-latest
+https://learn.microsoft.com/en-us/cli/azure/ml/online-deployment?view=azure-cli-latest#az-ml-online-deployment-get-logs
+
+
+https://portal.azure.com/#browse/Microsoft.MachineLearningServices%2Fworkspaces
+https://portal.azure.com/#@stevenbolandhotmail.onmicrosoft.com/resource/subscriptions/5582f145-f8d1-4dbb-9f21-35933d44dcad/resourcegroups/steven_boland-rg/providers/Microsoft.ContainerRegistry/registries/SteveProRegistry/repository
+
+https://ml.azure.com/home?tid=1c1bc2ea-5a92-4635-8b06-e6a4964a44b7

@@ -3,8 +3,36 @@ Compare
 
 
 General
+-n		--name
+-v		--version
 -g		--resource-group
 -w		--workspace-name
-
--n		--name
+-u		--username
+-p		--password
+-o		--output		
 -e 		--endpoint-name
+
+
+IMPORTANT
+-o		--output
+
+Format
+json		standard JSON
+jsonc		colored JSON
+yaml		standard YAML
+yamlc		colored YAML
+table		tabular format
+tsv		tab-separated values
+
+
+
+NO shortform
+az login
+--service-principal
+
+az configure
+ml-workspace
+ml-resource-group
+
+az acr login
+--expose-token

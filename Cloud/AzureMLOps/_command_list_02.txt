@@ -1,0 +1,56 @@
+commandlist 02
+27-Sep-2025
+
+Locations
+az account list-locations --output table
+
+AZ ML
+az extension list
+[]
+az extension add -n ml
+az extension add --name ml
+
+
+00.	az ml compute
+export THE_LOCATION="eastus"
+export THE_LOCATION="northeurope"
+export RESOURCE_GRP="SteveProGroup"
+export ML_WORKSPACE="SteveProWorkspace"
+
+az ml compute list-sizes -l $THE_LOCATION -g $RESOURCE_GRP -w $ML_WORKSPACE
+
+-l	--location
+-g	--resource-group
+-w	--workspace-name
+az ml compute list-sizes --location $THE_LOCATION --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE
+
+
+TODO
+01. 	az ml environment
+
+
+02. 	az ml model
+export RESOURCE_GRP="SteveProGroup"
+export ML_WORKSPACE="SteveProWorkspace"
+
+az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
+
+az ml model delete -n test-model --version 1 -g $RESOURCE_GRP -w $ML_WORKSPACE
+
+
+# Loop delete multiple models
+for v in 4 5 6 7; do
+  az ml model delete -n test-model --version $v -g $RESOURCE_GRP -w $ML_WORKSPACE
+done
+
+
+Long-form
+-n	--name
+-v	--version
+-g	--resource-group
+-w	--workspace-name
+
+az ml model list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --output table
+az ml model delete -n test-model --version 1 -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml model delete --name test-model --version $v --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE 
+
