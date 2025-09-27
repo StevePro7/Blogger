@@ -1,0 +1,41 @@
+commandlist
+27-Sep-2025
+
+01. 	az login
+export AZURE_TENANT_ID="00000000-0000-0000-0000-000000000000"
+export AZURE_CLIENT_ID="00000000-0000-0000-0000-000000000000"
+export AZURE_CLIENT_SECRET="0000000000000000000000000000000000000000"
+
+az login --tenant <tenant_id>
+az login --tenant $AZURE_TENANT_ID
+
+az login --service-principal -u <username> -p <password> --tenant <tenant_id>
+
+az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+
+
+02.	az configure
+export RESOURCE_GRP="SteveProGroup"
+export ACR_REGISTRY="SteveProRegistry"
+export ML_WORKSPACE="SteveProWorkspace"
+
+az configure --defaults acr=<acr_registry> ml-workspace=<workspace> ml-resource-group=<group>
+az configure --defaults acr=$ACR_REGISTRY ml-workspace=$ML_WORKSPACE ml-resource-group=$RESOURCE_GRP
+
+
+03.	az acr login
+export ACR_REGISTRY="SteveProRegistry"
+az acr -n <acr_registry>
+az acr -n $ACR_REGISTRY
+az acr --name $ACR_REGISTRY
+
+az acr -n <acr_registry> --expose-token
+az acr -n $ACR_REGISTRY --expose-token
+az acr --name $ACR_REGISTRY --expose-token
+
+
+04.	az acr repository list 
+export ACR_REGISTRY="SteveProRegistry"
+az acr repository list -n $ACR_REGISTRY -o table
+az acr repository list --name $ACR_REGISTRY --output table

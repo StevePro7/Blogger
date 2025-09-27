@@ -13,6 +13,7 @@ AZURE_CLIENT_ID			bbfd
 AZURE_CLIENT_SECRET		oZlk
 AZURE_TENANT_ID			fe6c
 
+az login --service-principal -u <username> -p <password> --tenant <tenant_id>
 az login --service-principal --username bbdf --password oZlk --tenant fe6c
 az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
 
@@ -22,3 +23,17 @@ az configure --defaults acr=9ebc ml-workspace=MLOP ml-resource-group=pipe
 az configure --defaults acr=$ACR_REGISTRY ml-workspace=$ML_WORKSPACE ml-resource-group=$RESOURCE_GROUP
 
 
+
+AZURE_CLIENT_SECRET	40x chars
+123456789a123456789b123456789c123456789d
+0000000000000000000000000000000000000000
+
+
+guids
+AZURE_CLIENT_ID	
+4ccdeb5f-080d-4d73-87bc-1792efaf30fc
+00000000-0000-0000-0000-000000000000
+
+AZURE_TENANT_ID
+82462f6b-1c56-4993-8721-e5850b27a6c5
+00000000-0000-0000-0000-000000000000
