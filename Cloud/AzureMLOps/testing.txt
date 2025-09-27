@@ -1,0 +1,24 @@
+testing
+27-Sep-2025
+
+export RESOURCE_GRP="SteveProGroup"
+export ML_WORKSPACE="SteveProWorkspace"
+export MYENDPOINT="online-endpoint"
+
+al ml batch-endpoint show -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYENDPOINT --query "auth_mode"
+
+az account get-access-token --resource https:/ml.azure.com
+export BEARER_TOKEN=`az account get-access-token --resource https:/ml.azure.com`
+
+
+curl -X POST '<endpoint-url> 				\
+     -H "Authorization: Bearer <access-token>"		\
+     -H "Content-Type: application/json" 		\
+     -d { ... }
+
+
+
+curl -X POST '<endpoint-url> 				\
+     -H "Authorization: Bearer <access-token>"		\
+     -H "Content-Type: application/json" 		\
+     -d '{ "input_data": { "uri": "https://<storage-acount>.blob.core.windows.net/container/<file>.csv" } }'
