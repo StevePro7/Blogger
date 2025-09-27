@@ -4,31 +4,51 @@ commandlist 03
 01. 	az ml online-endpoint
 export RESOURCE_GRP="SteveProGroup"
 export ML_WORKSPACE="SteveProWorkspace"
+export MYENDPOINT="online-endpoint"
 
 az ml online-endpoint list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
-
-
+az ml online-endpoint show -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYENDPOINT
+az ml online-endpoint create --file endpoint.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml online-endpoint update --file endpoint.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml online-endpoint delete -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYENDPOINT
 
 Long-form
 -g	--resource-group
 -w	--workspace-name
-az ml online-endpoint list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE  --output table
-
-
+az ml online-endpoint list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --output table
+az ml online-endpoint show --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $MYENDPOINT
+az ml online-endpoint create --file endpoint.yaml --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE
+az ml online-endpoint update --file endpoint.yaml --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE
+az ml online-endpoint delete --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $MYENDPOINT
 
 
 
 02. 	az ml online-deployment
-export MYENDPOINT="test-endpoint"
-export DEPLOYMENT="test-deployment"
+export MYENDPOINT="online-endpoint"
+export DEPLOYMENT="online-deployment"
 export RESOURCE_GRP="SteveProGroup"
 export ML_WORKSPACE="SteveProWorkspace"
-az ml online-deployment get-logs -n  -g $RESOURCE_GROUP -w $ML_WORKSPACE -e test-online-endpoint
-az ml online-deployment get-logs
+az ml online-deployment list -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT
+az ml online-deployment show -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
+az ml online-deployment get-logs -g $RESOURCE_GROUP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
+
 
 Long-form
 -n	--name
 -e	--endpoint-name
 -g	--resource-group
 -w	--workspace-name
-az ml online-deployment get-logs --name my-deployment --endpoint-name my-endpoint --resource-group my-resource-group --workspace-name my-workspace
+az ml online-deployment list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT
+az ml online-deployment show --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT --name $DEPLOYMENT
+
+az ml online-deployment get-logs --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT --name $DEPLOYMENT
+
+
+
+
+REPLACE
+export MYENDPOINT="batch-endpoint"
+export DEPLOYMENT="batch-deployment"
+
+az ml batch-endpoint
+az ml batch-deployment
