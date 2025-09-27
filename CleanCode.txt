@@ -300,3 +300,104 @@ Chp12.	Emergence
 #4	MINIMAL
 	keep class + function count low but more IMP to have tests, no dup + express
 Simple design encourage developers to adhere to good principles and patterns
+
+
+Chp13.	Concurrency
+Very theoretical chp - not many examples but any code samples not relevant as is Java
+178	Why?
+Concurrency is a decoupling strategy
+decouple what gets done from when it gets done
+Decoupling what from when can dramatically improve both the throughput and structures of an application
+Structure not the only motive for concurrency:
+Some systems have response time and throughput constraints that require hand-coded concurrent solutions
+
+179	Myths
+Concurrency always improves performance
+Design does not change when writing concurrent programs
+- decouple what from when has huge effect on structure of system
+Concurrency incurs some overhead
+Correct concurrency is complex
+Concurrency bugs aren’t usually repeatable
+Concurrency often requires a fundamental change in design strategy
+
+180 	Challenges
+code = 3x paths
+
+181	Defense principles
+SRP	concurrent code should be separated from the rest of the code
+Recommendation: Keep your concurrency-related code separate from other code
+
+Limit scope of data
+protect critical section in code that uses shared object
+Recommendation: Take data encapsulation to heart; severely limit the access of any data that may be shared
+
+Copies of data
+CSP	Communicating Sequential Processes
+avoid sharing data inf the first place	copy objects and treat them as read-only
+
+182	Threads independent
+each thread exists independently sharing no data with any other thread
+Recommendation: Attempt to partition data into independent subsets than can be
+operated on by independent threads, possibly in different processors
+
+Library	Thread-Safe collections		Python
+queue
+collections deque
+list, dict, set
+Locks
+threading.Lock()
+threading.RLock()			Reentrant lock
+
+183
+Reentrant lock		lock aquired in one method and released in another
+Semaphore		implementation of classic semaphore: lock with a count
+CountDownLatch		lock waits for no. events before releasing all threads
+Recommendation: Review the classes available to you.
+
+Execution Models	DEFINITIONS
+Bound resources		resources of fixed size / number in concurrent environment
+Mutual exclusion	only one thread can access shared data / resource at a time
+Starvation		one thread prohibited from proceeding excessive long time
+Deadlock		two or more threads wait for each other to finish
+Livelock		threads in lockstep - each trying to do work but find another "in the way"
+
+184
+Execution Models	EXAMPLES
+Producer-Consumer	queue = bound resource btwn producers + consumers
+Reader-Writers		throughput = issue can cause starvation
+Dining Philosophers	philosophers = threads and forks = resources
+			processes compete for resources: deadlock, livelock, throughput, efficiency degradataion
+185
+Recommendation: Learn these basic algorithms and understand their solutions
+Recommendation: Avoid using more than one method on a shared object
+
+Critical sections must be guarded via locks = use as few critical sections as possible
+Recommendation: Keep your synchronized sections as small as possible
+
+186	Shutdown
+Recommendation: Think about shut-down early and get it working early
+186	Testing
+Recommendation: Write tests that have the potential to expose problems and then run them frequently
+187
+Treat spurious failures as candidate threading issues	do not ignore system failures as one-offs
+Get your nonthreaded code working first			do not change nonthreading + threading bugs at the same time
+Make your threaded code pluggable			make thread-based code esp. pluggable = various configurations
+188
+Make your threaded code tunable				allow no. threads = easily tuned
+Run with more threads than processors			encourage task swap via more threads than processors
+Run on different platforms				run threaded code on all target platforms early + often
+Instrument your code to try and force failures		hand-coded vs. automated
+
+189	Hand-coded
+divide system non-threading and classes that control threading = easier to instrument the code
+189	Automated	frameworks	NOT relevant here as = Java
+Recommendation: Use jiggling strategies to ferret out errors		Overkill for us??
+
+190	Conclusion
+SRP	break system into classes that separate thread-aware code from thread-ignorant code
+thread-aware code should be small and focused
+Find regions of code that need to be locked and lock them
+Avoid calling one locked seciton from another	= deadlock
+Keep shared objects and sharing as narrow as possible
+Run thread-based code as long as possible before deploy to production
+
