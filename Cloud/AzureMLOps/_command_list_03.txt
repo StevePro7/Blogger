@@ -30,6 +30,9 @@ export RESOURCE_GRP="SteveProGroup"
 export ML_WORKSPACE="SteveProWorkspace"
 az ml online-deployment list -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT
 az ml online-deployment show -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
+az ml online-deployment create --file deployment.yaml g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT
+az ml online-deployment update --file deployment.yaml g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT
+az ml online-deployment delete -g $RESOURCE_GROUP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
 az ml online-deployment get-logs -g $RESOURCE_GROUP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
 
 
@@ -40,7 +43,9 @@ Long-form
 -w	--workspace-name
 az ml online-deployment list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT
 az ml online-deployment show --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT --name $DEPLOYMENT
-
+az ml online-deployment create --file deployment.yaml --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT
+az ml online-deployment update --file deployment.yaml --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT
+az ml online-deployment delete --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT --name $DEPLOYMENT
 az ml online-deployment get-logs --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --endpoint-name $MYENDPOINT --name $DEPLOYMENT
 
 
