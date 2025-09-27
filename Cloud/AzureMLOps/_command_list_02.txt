@@ -12,35 +12,63 @@ az extension add --name ml
 
 
 00.	az ml compute
-export THE_LOCATION="eastus"
-export THE_LOCATION="northeurope"
 export RESOURCE_GRP="SteveProGroup"
 export ML_WORKSPACE="SteveProWorkspace"
+export THE_LOCATION="eastus"
+export THE_LOCATION="northeurope"
+export TEST_CLUSTER="Test-Cluster"
+az ml compute list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
+az ml compute list-sizes -g $RESOURCE_GRP -w $ML_WORKSPACE -l $THE_LOCATION
+az ml compute show -g $RESOURCE_GRP -w $ML_WORKSPACE -n $TEST_CLUSTER
 
-az ml compute list-sizes -l $THE_LOCATION -g $RESOURCE_GRP -w $ML_WORKSPACE
 
--l	--location
+Long-form
 -g	--resource-group
 -w	--workspace-name
-az ml compute list-sizes --location $THE_LOCATION --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE
-
+-l	--location
+az ml compute list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --output table
+az ml compute list-sizes --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --location $THE_LOCATION
+az ml compute show --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $TEST_CLUSTER
 
 TODO
 01. 	az ml environment
+export RESOURCE_GRP="SteveProGroup"
+export ML_WORKSPACE="SteveProWorkspace"
+export ENVIRON="test-model"
+export VERSION="1"
+
+az ml environment list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
+az ml environment show -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON -v $VERSION
+az ml environment create --file model.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml environment update --file model.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
+
+Long-form
+-g	--resource-group
+-w	--workspace-name
+-n	--name
+-v	--version
+az ml environment list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --output table
+az ml environment show --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $ENVIRON --version $VERSION
+az ml environment create --file model.yaml --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE
+az ml environment update --file model.yaml --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE
 
 
 02. 	az ml model
 export RESOURCE_GRP="SteveProGroup"
 export ML_WORKSPACE="SteveProWorkspace"
+export MYMODEL="test-model"
+export VERSION="1"
 
 az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
-
-az ml model delete -n test-model --version 1 -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml model show -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $VERSION
+az ml model create --file model.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml model update -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $VERSION
+az ml model delete -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $VERSION
 
 
 # Loop delete multiple models
 for v in 4 5 6 7; do
-  az ml model delete -n test-model --version $v -g $RESOURCE_GRP -w $ML_WORKSPACE
+  az ml model delete -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $v
 done
 
 
@@ -51,6 +79,8 @@ Long-form
 -w	--workspace-name
 
 az ml model list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --output table
-az ml model delete -n test-model --version 1 -g $RESOURCE_GRP -w $ML_WORKSPACE
-az ml model delete --name test-model --version $v --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE 
-
+az ml model show --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $MODEL --version $VERSION
+az ml model create --file model.yaml --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE
+az ml model update --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $MODEL --version $VERSION
+az ml model delete --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $MODEL --version $VERSION
+az ml model delete --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --name $MODEL --version $v 
