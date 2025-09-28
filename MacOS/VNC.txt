@@ -1,0 +1,21 @@
+VNC
+28-Sep-2025
+
+Mac
+Install VNC Server app
+
+Win
+Install VNC Client app
+
+
+SteveProIMac
+192.168.15.233:5900
+
+Connect
+stevepro
+oxxyy3
+
+
+Confirm VNC on port 5900
+sudo netstat -an | grep 5900
+sudo lsof -i -n | grep LISTEN | grep 5900
