@@ -1,0 +1,161 @@
+How to Start Learning Machine Learning: A Practical Guide
+29-Sep-2025
+
+https://medium.com/@amit25173/how-to-start-learning-machine-learning-a-practical-guide-7620d1843c9e
+
+https://amit404.gumroad.com/l/ds-diary
+
+
+1. Setting the Right Foundation (No, Not ‘Learn Python’)
+NumPy Fluency (Not Just Knowing It Exists)
+math mapped to the arrays
+
+A Debugging Mindset Will Save You
+Don’t guess. Print. Plot. Validate. Every single time.
+
+Python Skills That Actually Matter
+- List/dict comprehensions for data wrangling
+- Lambda functions with apply()
+- Context managers (with open(...))
+- Argument parsing with argparse or click
+- Logging — not print(), but logging with levels
+- Virtual environments (venv, conda, poetry) — crucial when managing packages across projects
+
+
+2. Skip Theory, Build Your First Real ML Model the Right Way
+Step-by-Step ML Project Flow (That I Use)
+- Load real dataset
+- Clean + engineer features
+- Split data properly
+- Train a real model
+
+
+3. Stop Doing Toy Projects — Build a Real ML Pipeline
+Set Up Your Project Like a Real ML Engineer
+Use Pipeline and ColumnTransformer — the Right Way
+Bonus: Add a Custom Transformer
+
+
+4. Learn to Use Notebooks Like a Pro
+skipping this section!
+
+
+5. Evaluate Like a Data Scientist, Not a Kaggle Newbie
+Accuracy Is a Lie (Sometimes)
+- evaluate models like you mean it
+
+Confusion Matrix: A Sanity Check
+help explain models to stakeholders
+best visual for showing where the model is wrong
+e.g.
+bottom left false negatives often biggest problem in real business cases
+
+Stratified Cross-Validation: No, You Can’t Skip It
+Pro Tip: Watch How Metrics Drift on Imbalanced Sets
+
+
+6. Deploy or Die: Push It to Production
+Save Your Model Like a Pro
+- classic ML = joblib
+
+Build a FastAPI Endpoint
+@app.post("/predict")
+e.g.
+curl -X POST "http://localhost:8000/predict" \
+     -H "Content-Type: application/json" \
+     -d '{"feature1": 3.4, "feature2": 1.2, "feature3": 5.6}'
+
+Bonus: Dockerize It for Deployment
+
+
+7. Bonus Track: Learn How to Read Research Papers and Implement Them
+Pick the Right Paper (Hint: Not the One Trending on Twitter)
+e.g.
+"Logistic Regression as a Generalized Linear Model"
+
+My Step-by-Step Paper-to-Code Workflow
+- Skim once for context (abstract + conclusion)
+- Read line-by-line and take notes
+- Draw pseudocode, ignoring unnecessary math noise
+- Implement in NumPy, test on toy data
+- Compare results with paper or known repo
+
+
+8. Build a Portfolio That Gets You Noticed
+tell stories through projects
+
+Structure Projects Like You’re Building for a Real Client
+- Client-style framing
+- Clear scoped README
+- Visual results
+- Deployment-ready code
+- Live demo links
+
+README
+- Problem statement
+- Business context
+- Approach summary
+- Results
+- How to run it
+
+Host it on Render, Hugging Face Spaces, or Railway
+/docs
+
+Record a Quick Demo
+Tools like Loom or OBS Studio
+
+
+9. The ML Stack You Should Actually Learn
+Data Layer — Tools That Let You Slice Fast and Slice Smart
+- pandas
+- polars
+- duckdb
+
+Modeling — Skip the Theory Wars and Use What Works
+- scikit-learn
+- XGBoost, LightGBM, CatBoost
+
+Experiment Tracking — Don’t Rely on Memory or Markdown
+- MLflow
+- Weights & Biases
+
+Pipelines That Survive Production
+- prefect
+- Airflow
+- kedro
+
+Deployment Tools That Actually Work (and Keep Working)
+- FastAPI
+- Docker
+- Streamlit, Gradio
+
+
+Visual Map of Your Toolchain
+Stage		TOOLs
+Data wrangling	pandas, polars, duckdb
+Modeling	scikit-learn, XGBoost, LightGBM, CatBoost
+Tracking	MLflow, Weights & Biases
+Orchestration	Prefect, Airflow, kedro
+Deployment	FastAPI, Docker, Streamlit, Gradio
+
+e.g.
+# Create conda env
+conda create -n ml-env python=3.10
+
+# Init FastAPI app
+pip install fastapi uvicorn
+
+# Install MLflow
+pip install mlflow
+mlflow ui
+
+# Spin up Prefect server
+pip install prefect
+prefect orion start
+
+
+10. Learning Path with Real Milestones (Timeline + Outcomes)
+Week 1–2: Get Dirty With Real Data
+Week 3–4: Build a Reusable Pipeline + Serve It
+Week 5–6: Re-Implement Something from Scratch
+Week 7+: Contribute to Something Real
