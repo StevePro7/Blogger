@@ -401,3 +401,53 @@ Avoid calling one locked seciton from another	= deadlock
 Keep shared objects and sharing as narrow as possible
 Run thread-based code as long as possible before deploy to production
 
+
+Chp14.	Successive Refinement
+Very long chapter!
+Important topic but felt should have used a much smaller + focused code sample
+that could target successive refinement better - too much code in this chapter
+
+200	How Did I do This?
+Programming is a craft more than it is a science
+To write clean code, you must first write dirty code and then clean it
+this is a matter of successive refinement
+
+201	Repeat
+Jr programmers = get program working - once "working" move on to next task
+leaving the "working" program in whatever state they finally got it to work
+
+213	Incrementalist	TDD
+Keep system running at all times
+Achieve with suite of automated tests	verifies behavior of system unchanged
+e.g.
+ArgumentMarshaler
+each change kept the system working
+Indirectly he is saying "Make lots of changes iteratively"
+
+214
+Incrementalism demanded that I get this working quickly before making any other changes
+
+215	TDD #2
+When a test broke I made sure to get it passing again before continuing with the change
+
+231	List = more flexible for additional args input
+233	Refactoring = solving a Rubik's cube
+Lots of little steps required to achieve a large goal
+Each step enables that
+TDD style = lots of small iterations = refactoring [with confidence]
+
+250	Refactoring
+Must of good software design = partitioning - create places to put different kinds of code
+Separation of concerns makes code simpler to understand and maintain
+
+CONCLUSION
+Code that works is often badly broken
+Programmers who satisfy themselves with merely working code are behaving unprofessionally
+Nothing more profound and long-term degrading effect upon a development project than bad code
+
+As code rots the modules insinuate themselves into each other creating lots of hidden and tangled dependencies.  Finding and breaking old dependencies is a long and arduous task
+So the solution is to continuously keep your code as clean and simple as it can be
+Never let the rot get started
+
+
+Chp15.	JUnit Internals
