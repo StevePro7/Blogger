@@ -451,3 +451,22 @@ Never let the rot get started
 
 
 Chp15.	JUnit Internals
+Chp not relevant - JUnit Internals - seems to follow on previous chapter of refactoring
+
+257	Boy Scout Rule
+Leave the code cleaner than we found it
+
+258	Example of splitting large function into 2x functions
+259	Hidden temporal coupling
+Function that depends on a function [that depends on a function...]
+
+262	Refactoring = remove functions
+265
+Functions are topologically sorted so that the definition of each function appears just after it is used
+Often one refactoring leaves to another that leads to the undoing of the first
+Refactoring is an iterative process full of trial and error
+
+CONCLUSION	Boy Scout Rule
+Left module cleaner than we found it
+No module is immune from improvement
+Each of us has the responsibility to leave the code a little better than we found it
