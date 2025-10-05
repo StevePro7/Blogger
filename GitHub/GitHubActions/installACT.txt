@@ -17,9 +17,16 @@ Mac
 brew install act
 
 Linux
+IMPORTANT
+do NOT sudo snap install act
+instead manually download binary
+https://github.com/nektos/act/releases
+e.g.
+wget https://github.com/nektos/act/releases/download/v0.2.82/act_Linux_x86_64.tar.gz
 tar -xzf act_Linux_x86_64.tar.gz
 chmod +x act
 sudo mv act /usr/local/bin/
+
 
 Windows
 https://github.com/nektos/act/releases

@@ -1,0 +1,97 @@
+ACT Examples
+05-Oct-2025
+
+Login
+export AZURE_CLIENT_ID="00000000-0000-0000-0000-000000000000"
+export AZURE_TENANT_ID="00000000-0000-0000-0000-000000000000"
+export AZURE_CLIENT_SECRET="0000000000000000000000000000000000000000"
+export ACR_REGISTRY="SteveProRegistry"
+
+Azure Login
+az login --tenant $AZURE_TENANT_ID
+
+Azure ACR Login
+az acr login -n $ACR_REGISTRY
+
+Docker Login
+docker login $ACR_REGISTRY.azurecr.io -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET 
+OR more secure
+echo $AZURE_CLIENT_SECRET | docker login $ACR_REGISTRY.azurecr.io -u $AZURE_CLIENT_ID -- password-stdin
+
+
+
+Terminal command
+act push --container-architecture linux/amd64 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest
+
+
+$RUNNER=custom-cpu-runner=ACR_REGISTRY.azurecr.io/ci/gh-actions-runner-x64:2.321.0)0.6.1_175587
+act -w .github/workflows/test.yaml --container-architecture linux/amd64 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest
+act -w .github/workflows/test.yaml --container-architecture linux/amd64 -P $RUNNER --platform linux/amd64
+
+
+JOB - runs-on: custom-cpu-runner
+act -j echo-job -P -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest --platform linux/amd64
+act -j echo-job -P $RUNNER --platform linux/amd64
+
+
+localhost
+whenever there is Checkout code step - you don't need to do this on localhost
+instead use "--bind" argument
+BEFORE
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+AFTER
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
+
+act workflow_dispatch -W .github/workflows/test.yaml --bind --container-architecture linux/amd64
+act workflow_dispatch -W .github/workflows/test.yaml --bind -P $RUNNER --container-architecture linux/amd64
+
+
+act workflow_dispatch
+act push
+act pull_request
+
+
+act -W .github/workflows/test.yaml --container-architecture linux/amd64 --bind -P $RUNNER --platform linux/amd64
+
+
+IMPORTANT
+chown issue
+RE: Linux VM No Permissions (FileSystemError
+GitHub Actions locally on Linux VM using ACT
+by default
+docker exec chown -R 1000:1000
+after each run which causes this issue
+
+Solution - add the following
+--container-options "--user $(id -u):$(id -g)"
+resolves this issue!!
+as uses chown -R 1001:1001 instead of 1000:1000
+
+Otherwise another option is to issue this command but EVERY TIME!
+git config --global --add safe.directory ~/GitHub/SteveProXNA/github-actions-local && \
+	sudo chown -R $USER:$USER ~/GitHub/SteveProXNA/github-actions-local >2/dev/null
+
+
+act push -W .github/workflows/test.yaml --bind -P $RUNNER --container-options "--user $(id -u):$(id -g)" --container-architecture linux/amd64 
+act push -W .github/workflows/test.yaml --bind -P $RUNNER --container-options "--user $(id -u):$(id -g)" --container-architecture linux/amd64 --input environment=dev
+
+
+
+
+Docker Logout $ACR_REGISTRY.azurecr.io
+
+References:
+27-Aug-2025	ACT CI/CD latest
+04-Oct-2025	xxxx-cd deploy direct
+27
