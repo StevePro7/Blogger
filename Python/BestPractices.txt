@@ -23,6 +23,20 @@ is vs. ==
 Mypy
 
 function with mutable list as parameter example!
+Python Mistakes to Avoid in 2025 (Advanced Guide)
+https://medium.com/@TheEnaModernCoder/python-mistakes-to-avoid-in-2025-advanced-guide-23a490cf6569
+
+WRONG
+def add_item(item, items=[]):
+	return items.append(item)
+	return items
+
+RIGHT
+def add_item(item, items=None):
+	if items is None:
+		items = []
+	return items.append(item)
+	return items
 
 
 

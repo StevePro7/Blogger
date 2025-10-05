@@ -1,0 +1,39 @@
+Tutorial ChatGPT
+05-Oct-2025
+
+GitHub actions I;d like a tutorial on ACT utility what it is and why you would use it test GitHub worfklows on localhost Mac or Linux and some of the most popular commands used to simulate trigger workflows and corresponding command arguments
+
+1. What is ACT?		Why use ACT?
+2. Installing ACT	brew install act
+3. How ACT Works
+4. Common ACT Commands and Arguments
+5. Example Usage
+6. Tips & Best Practices
+7. Quick Workflow Testing Example
+
+
+Yes pls make a cheat sheet of ACT commands for GitHub Actions with examples
+
+ACT Cheat Sheet for GitHub Actions
+1. Basic Commands
+act --version
+act --list
+
+2. Simulate Events
+Common events: push, pull_request, workflow_dispatch, schedule, release.
+
+3. Run Specific Jobs or Workflows
+Workflow contains many jobs
+
+4. Runner Options
+what are runners?
+ubuntu vs. custom Runners
+
+5. Examples of Common Use Cases
+
+6. Tips & Best Practices
+Docker must be running		ACT relies on Docker containers
+
+
+TODO
+--bind	on localhost		Remove checkout for speed improvements
