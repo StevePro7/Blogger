@@ -1,0 +1,71 @@
+Presentation
+05-Sep-2025
+
+Unit Testing
+Software practice in which individual units of source code are tested in isolation
+Unit tests do not measure how objects interact with dependent objects; these are [system] integration tests
+
+
+Categories
+Unit tests generally fall into two main categories:
+
+#1. State-based unit tests
+Unit tests that verify what the [SUT] System Under Test produces is the correct output from its input
+
+#2. Interaction-based unit tests
+Unit tests that verify how the [SUT] System Under Test interacts correctly with its dependencies rather than what it produces
+Therefore, all external dependencies are replaced by mocks or stubs to isolate the functionality of the System Under Test
+
+NB:
+stubs	provide controlled output to the System Under Test
+mocks	verify that specific interations with dependencies occurred
+
+
+IMPORTANT
+In a legacy code base it is often more difficult to write Interaction-based unit tests because the code base must first be written in a unit-testable state which allows [real] external dependencies to be subsituted by [fake] test doubles like mocks or stubs to test code in isolation.
+
+However, State-based unit tests which have a consistent input -> function -> output form may be easier to write unit tests
+Therefore, State-based unit tests can be a great place to start especially if you are new to Unit Testing + Test Driven Development
+
+
+Test Driven Development [TDD]
+Compared to traditional approach to Software Development 		Code -> Test -> Debug
+In simple terms TDD reverses the Software Development process		Test -> Code -> Refactor
+
+
+As we saw in Clean Code book Chp #9
+TDD practitioners follow the Three Laws of TDD:
+First Law:	You may not write production code until you have written a failing unit test
+Second Law:	You may not write more of a unit test than is sufficient to fail
+Third Law:	You may not write more production code than is sufficient to pass the currently failing test
+
+
+Very wordy and theoretical!
+Many prefer this more concise Three step mantra:
+1.	Write a failing test
+OR	Write a test that fails
+IMPORTANT			
+"broken" code counts as a failing test!
+2.	Write minimal amount of code to make test pass
+3. 	Write another test...
+
+
+Finally, TDD is more than a Software Development technique - it is a paradigm shift in the mindset how developers think about and design software
+
+This can be the biggest challenge when attempting TDD style
+Q. 	How can write unit tests for Production code that does not even exist yet?
+A.	As the name implies TDD - the Tests "Drive" the Development process
+	it changes your mental model of software development and completely turns it upside down!
+
+
+DEMO
+As above - let's focus on simple input -> function -> output code and build some State-based unit tests
+e.g.
+package in the Mono Repo has module with many focused stand alone functions that can be used to test in isolation
+PT
+Start from scratch + Demo end-to-end how these tests would be written first to organically build the Production code
+using TDD style
+
+
+
+
