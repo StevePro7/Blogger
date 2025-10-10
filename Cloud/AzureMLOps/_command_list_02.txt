@@ -38,9 +38,21 @@ export ENVIRON="test-model"
 export VERSION="1"
 
 az ml environment list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
+az ml environment list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON
+# verbose
+az ml environment list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON -o table
+# short key/val - all versions for model
+az ml environment list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON -o table --query "[].{Name:name, Version:version}"
 az ml environment show -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON -v $VERSION
 az ml environment create --file model.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
-az ml environment update --file model.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml environment update -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON -v $VERSION
+az ml environment archive -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON -v $VERSION
+
+# Loop archive multiple environments
+for v in 1 2 3 4 5 6 7; do
+  az ml environment archive -g $RESOURCE_GRP -w $ML_WORKSPACE -n $ENVIRON -v $v
+done
+
 
 Long-form
 -g	--resource-group
@@ -62,16 +74,16 @@ export VERSION="1"
 az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
 az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL
 # verbose
-az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -o
+az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -o table
 # short key/val - all versions for model
-az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL --query "[].{Name:name, Version:verson}" -o table
+az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -o table --query "[].{Name:name, Version:version}"
 az ml model show -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $VERSION
 az ml model create --file model.yaml -g $RESOURCE_GRP -w $ML_WORKSPACE
 az ml model update -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $VERSION
 az ml model archive -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $VERSION
 
 
-# Loop delete multiple models
+# Loop archive multiple models
 for v in 1 2 3 4 5 6 7; do
   az ml model archive -g $RESOURCE_GRP -w $ML_WORKSPACE -n $MYMODEL -v $v
 done
