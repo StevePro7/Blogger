@@ -470,3 +470,28 @@ CONCLUSION	Boy Scout Rule
 Left module cleaner than we found it
 No module is immune from improvement
 Each of us has the responsibility to leave the code a little better than we found it
+
+
+Chp16.	Refactoring
+268	Test coverage	IMPORTANT
+269	Boundary error	out-by-one
+270	docs		IMPORTANT
+271	enum		better
+272	dead comments	remove
+273	abstract factory
+Bad idea for base classes to know about derivatives
+274	other GOT design patterns
+275	DRY examples
+276	strange point	RE: final [sealed] if no class inherits then is correct
+277	weird		Why duplicate Day if in Calendar	DRY
+278	FEATURE ENVY	Not heard of that
+Constant refactoring	esp. out into own class
+279	EXPLAINING TEMPORARY VARIABLES	not heard of that
+280	Intent
+It seems to me that the intent of the method is captured nicely by
+DayDate date = oldDate.plusDays(5);
+281	YAGNI
+only users of this function were tests just modified = deleted the tests
+283	summary of changing
+DRY eliminate duplicaiton
+284 	Boy Scout rule
