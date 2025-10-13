@@ -1,0 +1,124 @@
+uv + virtualenv + direnv: A Fast, Reproducible Python Workflow (with .envrc)
+13-Oct-2025
+
+uv + virtualenv + direnv: A Fast, Reproducible Python Workflow (with .envrc)
+https://medium.com/codecodecode/uv-virtualenv-direnv-a-fast-reproducible-python-workflow-with-envrc-36da47ce1f4b
+
+direnv
+auto-loading env on cd
+
+
+tl;dr
+uv
+Python installs, environment creation
+dependency resolution/locking
+command execution
+uv run
+
+virtualenv
+isolates each project under .venv
+works everywhere reliability
+
+direnv
+evalutes .envrc as you cd into folder
+auto-activate venv, sync dependencies
+read .env if present
+
+
+INSTALLATION
+uv
+~\GitHub\StevePro7\Blogger\Python\Python
+
+direnv
+~\GitHub\StevePro7\Blogger\Python\Python
+
+
+Autoload w/ direnv
+.envrc 
+
+when cd into project
+use / create .venv
+sync when pyproject.toml / uv.lock changed
+load .env	if present
+
+
+Optional helpers
+.python-version
+3.11
+
+
+Recommended layout and .gitignore
+awesome-app/
+├─ .envrc
+├─ .env               # local only (don’t commit)
+├─ .python-version    # optional but useful
+├─ pyproject.toml
+├─ uv.lock            # commit for reproducibility
+├─ .venv/             # ignore
+├─ .direnv/           # ignore
+└─ src/
+
+
+.gitignore
+.venv/ 
+.direnv/ 
+.env 
+__pycache__/ 
+*.pyc
+
+
+WORKFLOW
+01.
+cd awesome-app
+direnv auto-prepares Python, venv, dependencies and .env
+
+02.
+uv add requests
+uv add -D mypy
+uv add -D ruff==0.6.9
+
+03.
+Run
+uv run python main.py
+uv run pytest
+uvx ruff check .
+NB: pytest usually works out-of-the-box
+
+04.
+Upgrade Python
+.python-version
+3.12
+direnv reload
+
+05.
+CI/CD
+uv sync --frozen	# fast deterministic
+uv run ...		# builds / tests
+
+
+FAQ
+How do I enforce Python version?
+Commit .python-version 
+set project.requires-python in pyproject.toml
+.envrc honors both
+
+Which Python interpreter to use
+.venv/bin/python
+
+
+CHEAT SHEET
+Scaffold project        : uv init --app
+Install Python          : uv python install 3.11
+Create venv             : uv venv --python 3.11
+Sync (locked)           : uv sync --frozen
+Sync (normal)           : uv sync
+Add deps                : uv add fastapi
+Add dev deps            : uv add -D pytest
+Run program             : uv run python main.py
+Run tools ad‑hoc        : uvx ruff check .
+Show Python             : uv run python -V
+Update lockfile         : uv lock
+
+
+SUMMARY
+Open folder | extract Python | Isolate env | dependencies sync'd | secrets loaded

@@ -1,0 +1,40 @@
+direnv
+13-Oct-2025
+
+
+direnv
+Mac
+bash brew install direnv
+
+Linux
+sudo apt update
+sudo apt install direnv
+
+
+Option 1: Use direnv's install script (GitHub source)
+curl -sfL https://direnv.net/install.sh | bash
+
+
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+
+Option 2: Use a version manager like asdf
+asdf plugin add direnv
+asdf install direnv latest
+asdf global direnv latest
+
+
+Add the hook
+zsh
+echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
+
+bash
+echo 'eval "$(direnv hook bash)"' >> ~/.bashrc		# Lin
+echo 'eval "$(direnv hook bash)"' >> ~/.bash_profile	# Mac
+
+
+
+IMPORTANT
+direnv does not officially support Windows
+Windows must use WSL	Windows Subsystem for Linux
