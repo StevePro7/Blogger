@@ -1,0 +1,11 @@
+name: Hello World Manual Trigger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Hello World
+        run: echo "Hello, world!"
