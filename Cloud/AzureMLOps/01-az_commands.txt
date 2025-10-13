@@ -5,7 +5,7 @@ az commands
 Azure ML
 Mon,25-Aug
 
-RESOURCE_GROUP			pipe
+RESOURCE_GRP			pipe
 ML_WORKSPACE			MLOP
 SUBSCRIPTION
 
@@ -20,7 +20,7 @@ az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIEN
 ACR_REGISTRY			9ebc
 
 az configure --defaults acr=9ebc ml-workspace=MLOP ml-resource-group=pipe
-az configure --defaults acr=$ACR_REGISTRY ml-workspace=$ML_WORKSPACE ml-resource-group=$RESOURCE_GROUP
+az configure --defaults acr=$ACR_REGISTRY ml-workspace=$ML_WORKSPACE ml-resource-group=$RESOURCE_GRP
 
 
 

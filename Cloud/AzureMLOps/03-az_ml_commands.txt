@@ -9,33 +9,33 @@ az ml install ??
 Azure ML
 Mon,25-Aug
 
-RESOURCE_GROUP			pipe
+RESOURCE_GRP			pipe
 ML_WORKSPACE			MLOP
 
-export RESOURCE_GROUP="pipe"
+export RESOURCE_GRP="pipe"
 export ML_WORKSPACE="MLOP"
 
 
 Model
 #az ml model list -g pipe -w MLOP -o table
-az ml model list -g $RESOURCE_GROUP -w $ML_WORKSPACE -o table
+az ml model list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
 #az ml model list --resource-group pipe --workspace-name MLOP --output table
-az ml model list --resource-group $RESOURCE_GROUP --workspace-name $ML_WORKSPACE --output table
+az ml model list --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --output table
 
 az ml model delete -n test-model --version 1 -resource-group pipe --workspace-name MLOP
-az ml model delete -n test-model --version 1 -g $RESOURCE_GROUP --workspace-name $ML_WORKSPACE
+az ml model delete -n test-model --version 1 -g $RESOURCE_GRP --workspace-name $ML_WORKSPACE
 
 # Loop delete multiple models
 for v in 4 5 6 7; do
-  az ml model delete -n test-model --version $v -g $RESOURCE_GROUP --workspace-name $ML_WORKSPACE
-  az ml model delete --name test-model --version $v --resource-group $RESOURCE_GROUP --workspace-name $ML_WORKSPACE 
+  az ml model delete -n test-model --version $v -g $RESOURCE_GRP --workspace-name $ML_WORKSPACE
+  az ml model delete --name test-model --version $v --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE 
 done
 
 Online endpoint
 #az ml online-endpoint list -g pipe -w MLOP -o table
-az ml online-endpoint list -g $RESOURCE_GROUP -w $ML_WORKSPACE -o table
+az ml online-endpoint list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
 #az ml online-endpoint get-logs -n -g pipe -w MLOP -e test-online-endpoint
-az ml online-endpoint get-logs -n -g $RESOURCE_GROUP -w $ML_WORKSPACE -e test-online-endpoint
+az ml online-endpoint get-logs -n -g $RESOURCE_GRP -w $ML_WORKSPACE -e test-online-endpoint
 
 az ml online-endpoint create --file endpoint.yaml
 
@@ -43,48 +43,48 @@ az ml online-endpoint create --file endpoint.yaml
 
 Online deployment
 az ml online-deployment list -g pipe -w MLOP -o table -e test-online-endpoint
-az ml online-deployment list -g $RESOURCE_GROUP -w $ML_WORKSPACE -o table -e test-online-endpoint
+az ml online-deployment list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table -e test-online-endpoint
 
 az ml online-deployment list -g pipe -w MLOP -o table -e test-online-endpoint -n dev
-az ml online-deployment list -g $RESOURCE_GROUP -w $ML_WORKSPACE -o table -e test-online-endpoint -n dev
+az ml online-deployment list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table -e test-online-endpoint -n dev
 
 az ml online-deployment list get-logs -g pipe -w MLOP -o table -e test-online-endpoint -n dev
 
 az ml online-deployment list --endpoint-type kubernetes -g pipe -w MLOP
-az ml online-deployment list --endpoint-type kubernetes -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml online-deployment list --endpoint-type kubernetes -g $RESOURCE_GRP -w $ML_WORKSPACE
 
-az ml online-deployment show -n dev -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml online-deployment show -n dev -g $RESOURCE_GRP -w $ML_WORKSPACE
 
 shell into online deployment pod
 cd /var/azureml-app/azureml-models/test_online_endpoint/1/model/checkpoint
 
-az ml online-deployment create --file deployment.yaml -n dev  -g $RESOURCE_GROUP -w $ML_WORKSPACE
-az ml online-deployment update --file deployment.yaml -n dev  -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml online-deployment create --file deployment.yaml -n dev  -g $RESOURCE_GRP -w $ML_WORKSPACE
+az ml online-deployment update --file deployment.yaml -n dev  -g $RESOURCE_GRP -w $ML_WORKSPACE
 
 az ml online-deployment delete -n dev -e test-online-endpoint -g pipe -w MLOP
-az ml online-deployment delete -n dev -e test-online-endpoint -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml online-deployment delete -n dev -e test-online-endpoint -g $RESOURCE_GRP -w $ML_WORKSPACE
 
 
 
 Batch endpoint
 az ml batch-endpoint list -g pipe -w MLOP -o table
-az ml batch-endpoint list -g $RESOURCE_GROUP -w $ML_WORKSPACE -o table
+az ml batch-endpoint list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
 
 
 Batch deployment
 az ml batch-deployment list -g pipe -w MLOP -o table -e test-batch-endpoint
-az ml batch-deployment list -g $RESOURCE_GROUP -w $ML_WORKSPACE -o table -e test-batch-endpoint
+az ml batch-deployment list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table -e test-batch-endpoint
 
 az ml batch-deployment show --name dev --endpoint-name test-batch-endpoint --resource-group pipe --workspace-name MLOP  -o json
-az ml batch-deployment show --name dev --endpoint-name test-batch-endpoint --resource-group $RESOURCE_GROUP --workspace-name $ML_WORKSPACE --resource-group pipe -o json
-az ml batch-deployment show --name dev --endpoint-name test-batch-endpoint -g $RESOURCE_GROUP -w $ML_WORKSPACE -o json
+az ml batch-deployment show --name dev --endpoint-name test-batch-endpoint --resource-group $RESOURCE_GRP --workspace-name $ML_WORKSPACE --resource-group pipe -o json
+az ml batch-deployment show --name dev --endpoint-name test-batch-endpoint -g $RESOURCE_GRP -w $ML_WORKSPACE -o json
 
 az ml batch-deployment create --file deployment.yaml --endpoint-name test-batch-endpoint --resource-group pipe --workspace-name MLOP --set-default
-az ml batch-deployment create --file deployment.yaml -e test-batch-endpoint -g $RESOURCE_GROUP -w $ML_WORKSPACE --set-default
+az ml batch-deployment create --file deployment.yaml -e test-batch-endpoint -g $RESOURCE_GRP -w $ML_WORKSPACE --set-default
 
 az ml batch-deployment delete --name dev --endpoint-name test-batch-endpoint --resource-group pipe --workspace-name MLOP
-az ml batch-deployment delete -n dev -e test-batch-endpoint -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml batch-deployment delete -n dev -e test-batch-endpoint -g $RESOURCE_GRP -w $ML_WORKSPACE
 
 
 COMPUTE
-az ml compute list-sizes --location eastus -g $RESOURCE_GROUP -w $ML_WORKSPACE
+az ml compute list-sizes --location eastus -g $RESOURCE_GRP -w $ML_WORKSPACE

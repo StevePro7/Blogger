@@ -32,8 +32,8 @@ az ml online-deployment list -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT
 az ml online-deployment show -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
 az ml online-deployment create --file deployment.yaml g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT
 az ml online-deployment update --file deployment.yaml g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT
-az ml online-deployment delete -g $RESOURCE_GROUP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
-az ml online-deployment get-logs -g $RESOURCE_GROUP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
+az ml online-deployment delete -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
+az ml online-deployment get-logs -g $RESOURCE_GRP -w $ML_WORKSPACE -e $MYENDPOINT -n $DEPLOYMENT 
 
 
 Long-form
