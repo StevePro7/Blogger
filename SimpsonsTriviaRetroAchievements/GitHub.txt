@@ -70,7 +70,7 @@ git clone --recursive --depth 1 https://github.com/RetroAchievements/RAIntegrati
 Launch VS2022
 Open Project/Solution
 RA_Integration.sln
-~\GitHubX\RetroAchievements\RAIntegration
+~\GitHub\RetroAchievements\RAIntegration
 
 Debug | Win32
 Rebuild Solution
@@ -92,7 +92,16 @@ RA_Interface.Tests
 
 
 04.
-git clone https://github.com/RetroAchievements/RALibretro.git
+git clone --recursive --depth 1 https://github.com/RetroAchievements/RALibretro.git
+Launch VS2022
+Open Project/Solution
+RALibretro.sln
+~\GitHub\RetroAchievements\RALibretro
+
+Debug | x86
+Rebuild Solution
+F5
+
 
 IMPORTANT
 --depth 1
