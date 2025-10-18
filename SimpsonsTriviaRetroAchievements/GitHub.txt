@@ -29,3 +29,71 @@ RALibretro is a multi-emulator used to develop RetroAchievements.
 GPT
 RetroAchievements GitHub there is one C project "rcheevos" and three C++ projects: "RAInterface", "RAIntegration" and "RALibretro" - what is the relationship between all 4x projects and what is the dependency order?
 
+
+Summary
+Project		Role										Depends on
+rcheevos	Core engine: parse & evaluate achievements/leaderboards				none (foundation)
+RAInterface	Interface library for emulators to interact with RA stack			rcheevos
+RAIntegration	DLL for full integration (login/server/achievement submission etc)		RAInterface + rcheevos
+RALibretro	Multi-emulator that uses RA stack to support achievements across systems	RAIntegration 
+												(RAInterface + rcheevos)
+
+GitHub
+~\GitHub\RetroAchievements
+
+01. rcheevos
+git clone https://github.com/RetroAchievements/rcheevos.git
+Launch VS2022
+Open Project/Solution
+rcheevos-test.sln
+~\GitHub\RetroAchievements\rcheevos\test
+
+Debug | x86
+Rebuild Solution
+Error - remove Treat Warnings as Errors
+Right click rcheevos-test
+Properties | Configuration Properties
+C/C++ | General
+Treat Warnings As Errors	No (/WX-)
+test.c
+F5
+
+
+02. RAInterface
+git clone https://github.com/RetroAchievements/RAInterface.git
+This code is intended to be loaded into another repository as a submodule.
+i.e. do NOT build this but in the next project INT
+
+
+03. RAIntegration
+git clone --recursive --depth 1 https://github.com/RetroAchievements/RAIntegration.git
+Launch VS2022
+Open Project/Solution
+RA_Integration.sln
+~\GitHubX\RetroAchievements\RAIntegration
+
+Debug | Win32
+Rebuild Solution
+
+F5
+Error
+Unable to start program | not a valid Win32 application
+CppUnitTest adapter MUST be installed
+Extensions | Manage Extensions...
+Test Adapter for CppUnitTestFramework
+Restart VS2022
+
+Test menu | Test Explorer
+Right click test in explorer
+Run or Debug
+Repeat for
+RA_Integration.Tests
+RA_Interface.Tests
+
+
+04.
+git clone https://github.com/RetroAchievements/RALibretro.git
+
+IMPORTANT
+--depth 1
+Limits the clone to only the latest commit of each branch (depth of 1).
