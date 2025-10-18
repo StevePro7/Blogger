@@ -1,0 +1,39 @@
+RA Integration Debug
+18-Oct-2025
+
+Q.
+Test explorer | can integrate | right click test
+
+Reference
+GitHub.txt
+03. RAIntegration
+
+Debug
+Open test
+set breakpoint
+Right click | Debug Tests
+but
+I only want to debug that test!
+
+Right click RA_Integration.Tests
+Set as Startup Project
+
+
+$(VSInstallDir)
+"C:\Program Files\Microsoft Visual Studio\2022\Community\"
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
+
+"$(VSInstallDir)\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
+
+
+Property	Value
+Command	Path to vstest.console.exe
+Command Arguments	"$(TargetPath)" (or add /Tests:<TestName> to filter)
+Working Directory	$(OutDir)
+
+
+"$(TargetPath)"
+$(OutDir)
+
+Keyboard shortcut
+TestExplorer.DebugSelectedTests
