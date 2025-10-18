@@ -6,6 +6,9 @@ Azure ML
 Mon,25-Aug
 
 ACR_REGISTRY			9ebc
+export ACR_REGISTRY=SteveProRegistry
+az acr repository list -n $ACR_REGISTRY
+
 
 az acr --name 9ebc
 az acr --name 9ebc --expose-token
@@ -16,3 +19,5 @@ az acr --name $ACR_REGISTRY --expose-token
 az acr repository list -n $ACR_REGISTRY
 az acr repository list --name $ACR_REGISTRY
 az acr repository list --name $ACR_REGISTRY | grep repo
+
+
