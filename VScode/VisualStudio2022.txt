@@ -1,6 +1,29 @@
 Visual Studio 2022
-04-Nov-2023
+18-Oct-2023
 
+Alt+O
+I had this setup in VS2015 but not in VS2022
+
+Tools | Options | Environment | Keyboard
+Search
+EditorContextMenus.CodeWindow.ToggleHeaderCodeFile
+Alt + O
+BUT is already assigned to 
+Edit.IntelliCode.APIUsageExamples
+
+so search for this and remove Alt+O
+Edit.IntelliCode.APIUsageExamples
+
+then search for the following and apply
+EditorContextMenus.CodeWindow.ToggleHeaderCodeFile
+
+ALSO
+Ensure you have the following checked
+Projects + Solution | General
+Track Active Item in Solution Explorer
+
+
+04-Nov-2023
 Launch VS 2022
 
 01.
