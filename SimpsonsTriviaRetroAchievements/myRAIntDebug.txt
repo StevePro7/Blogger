@@ -18,22 +18,29 @@ I only want to debug that test!
 Right click RA_Integration.Tests
 Set as Startup Project
 
+Right click RA_Integration.Tests
+Properties | Configuration Properties | Debugging
 
-$(VSInstallDir)
-"C:\Program Files\Microsoft Visual Studio\2022\Community\"
+Command	Path 		$(TargetPath)
+Command Arguments	
+Working Directory	$(ProjectDir)
+
+NB: Chat GPT suggested this configuration if I wanted to run all tests via F5 [CLI]
+Command	Path 
 "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
-
+OR
 "$(VSInstallDir)\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
 
-
-Property	Value
-Command	Path to vstest.console.exe
-Command Arguments	"$(TargetPath)" (or add /Tests:<TestName> to filter)
+Command Arguments	$(TargetPath)
 Working Directory	$(OutDir)
 
+NB: for right click single test | Debug Tests
+this worked OK so long as Test Explorer open
 
-"$(TargetPath)"
-$(OutDir)
 
+Another option??
 Keyboard shortcut
 TestExplorer.DebugSelectedTests
+but
+easier just to use existing keyboard shortcut
+Ctrl+R Ctrl+T
