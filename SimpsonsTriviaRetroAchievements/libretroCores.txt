@@ -1,0 +1,29 @@
+libretro
+18-Oct-2025
+
+GPT
+Retro Achievements RALibretro emulator is based on libretro, correct? What is libretro in short description? What are "cores" in libretro - short concise answer?
+
+
+libretro
+open source API that defines standard way to run emulators and games inside F/E progra [RALibRetro]
+common API that connects [B/E] "cores" to F/E [emulator
+
+[B/E] core
+A plugin [DLL e.g. genesis_plus_gx_libretro.dll] that implements an emulator or engine that adheres to the libretro API
+Each core
+- modular emulator or game engine that implements the libretro API
+- runs a specific system or engine
+
+F/E
+UI [User-facing Interface app] that loads and runs [B/E] cores dynamically to emulate different systems
+thru the same standard interface
+e.g.
+RALibRetro
+UI, menus, video, audio, input
+
+IMPORTANT
+RetroArch emulator can be used to play games with Retro Achievements but only via a specific fork or plugin because there must be RAIntegration in order to support R/A whereas RALibRetro is fully integrated outofbox
+
+libretro Docs
+https://docs.libretro.com/development/libretro-overview
