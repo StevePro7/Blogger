@@ -1,0 +1,100 @@
+Beyond .pkl: The Complete Guide to Saving Machine Learning Models
+19-Oct-2025
+
+https://medium.com/@rohanmistry231/beyond-pkl-the-complete-guide-to-saving-machine-learning-models-ddefaeb3e53e
+
+Model serialization
+Save model = critical step = deploy, reuse, share, monitor over time
+
+Formats
+.pkl
+.h5
+.joblib
+.onnx
+
+
+01. .pkl
+Classic Pickle format
+Usage:
+scikit-learn
+XGBoost
+LighGBM
+
+
+02. .joblib
+Pickle for Large Objects
+Usage:
+scikit-learn
+NumPy-heavy models
+
+
+03. .sav
+Convention over format
+file extension often used with
+pickle
+joblib
+
+
+04. .h5
+Kera, TensorFlow models
+popular format for deep learning models
+
+
+05. SavedModel
+TensorFlow format
+
+
+06. .onnx
+Interoperability king
+Usage:
+PyTorch
+TensorFlow
+scikit-learn	[via conversion]
+
+ONNX
+Open Neural Network Exchange
+
+
+07. .pt and .pth
+PyTorch model format
+
+
+08. MLflow model format
+import mlflow.sklearn
+
+
+09. .bin
+Hugging Face transformers and JSON
+
+
+10. Cloud Storage + Containers
+[Modern trends]
+Dockerize the model	via REST API
+Store models		AWS S3, GCS, Azure blob
+TensorFlow Serving, TrochServe, ONNX Runtime
+
+
+Bonus
+YAML / JSON		Metadata
+requirements.txt
+conda.yaml
+dvc
+mlflow
+
+
+SUMMARY
+Format = store ML models
+choose based on
+
+Framework	TensorFlow, PyTorch, Scikit-learn
+Use case	Deployment, portability, collaboration
+Complexity	Single file OR full pipeline
+
+
+Start for simplicity
+.joblib
+.h5
+
+Move on to for scalable production
+ONNX
+MLflow
