@@ -1,10 +1,8 @@
-<span style="font-family:verdana;font-size:85%;">
-!!
 XX-GitHub<br>
 <u>GitHub</u><br />
-RetroAchievements <a href="https://github.com/orgs/RetroAchievements/repositories">GitHub</a> includes the following source code repositories for game achievement integration
+RetroAchievements <a href="https://github.com/orgs/RetroAchievements/repositories">GitHub</a> includes the following source code repositories for game achievement integration:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -38,8 +36,27 @@ RetroAchievements <a href="https://github.com/orgs/RetroAchievements/repositorie
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 <b>Clone</b><br />
 On Windows, launch Terminal.  Create C:\GitHub\RetroAchievements directory.  Git clone the following repos:
-  <br /><br />
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;mkdir -p C:\GitHub\RetroAchievements
+&nbsp;cd C:\GitHub\RetroAchievements
+&nbsp;git clone --quiet https://github.com/RetroAchievements/rcheevos.git
+&nbsp;git clone --quiet https://github.com/RetroAchievements/RAInterface.git
+&nbsp;git clone --recursive --depth 1 -q https://github.com/RetroAchievements/RAIntegration.git&nbsp;
+&nbsp;git clone --recursive --depth 1 -q https://github.com/RetroAchievements/RALibretro.git
+</pre>
+</td>
+</tr>
+</table>
+<br />
+IMPORTANT: use the <b>--quiet</b> [or <b>-q</b>] flag in order to suppress all the superfluous submodule logging output!
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcT2RT8ooGBAleihrvbHYB6OgvxeOiaYr9F6HXxDS1nJ6DqCHfxWePxcWJtumJnyqiQEDft2PscvWvhA9CmgvphHbj7PEvkZ8zS8VhXnTPL4sEtXaASesGmtPF1zptmKgG_ullWdrk-F7pt0ttg6AUzshZyXIbV7N5dGzvs9rZXv7jqOhrsjS3b8nmX_Q/s974/GitHubClone.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcT2RT8ooGBAleihrvbHYB6OgvxeOiaYr9F6HXxDS1nJ6DqCHfxWePxcWJtumJnyqiQEDft2PscvWvhA9CmgvphHbj7PEvkZ8zS8VhXnTPL4sEtXaASesGmtPF1zptmKgG_ullWdrk-F7pt0ttg6AUzshZyXIbV7N5dGzvs9rZXv7jqOhrsjS3b8nmX_Q/s600/GitHubClone.png"/></a>
+<br />

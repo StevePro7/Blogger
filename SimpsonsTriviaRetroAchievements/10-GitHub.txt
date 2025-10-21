@@ -5,6 +5,8 @@ C:\
 mkdir GitHub
 mkdir RetroAchievements  
 
+
+mkdir -p C:\GitHub\RetroAchievements
 cd C:\GitHub\RetroAchievements
 
 01. rcheevos
@@ -18,3 +20,21 @@ git clone --recursive --depth 1 -q https://github.com/RetroAchievements/RAIntegr
 
 04. RALibretro
 git clone --recursive --depth 1 -q https://github.com/RetroAchievements/RALibretro.git
+
+
+
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;mkdir -p C:\GitHub\RetroAchievements
+&nbsp;cd C:\GitHub\RetroAchievements
+&nbsp;git clone --quiet https://github.com/RetroAchievements/rcheevos.git
+&nbsp;git clone --quiet https://github.com/RetroAchievements/RAInterface.git
+&nbsp;git clone --recursive --depth 1 -q https://github.com/RetroAchievements/RAIntegration.git&nbsp;
+&nbsp;git clone --recursive --depth 1 -q https://github.com/RetroAchievements/RALibretro.git
+</pre>
+</td>
+</tr>
+</table>
+<br />  
