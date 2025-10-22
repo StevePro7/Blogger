@@ -1,0 +1,55 @@
+15-GitHubII<br>
+<u>Overview</u><br />
+Here is an overview of the 1x C project rcheevos and 3x C++ projects to interface + integrate + emulate: 
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<b>Project</b></td>
+<td valign="top">&nbsp;<b>Role</b></td>
+<td valign="top">&nbsp;<b>Dependencies</b></td>
+</tr>
+<tr>
+<td valign="top">
+&nbsp;<a href="https://github.com/RetroAchievements/rcheevos">rcheevos</a>
+</td>
+<td valign="top">
+&nbsp;Core engine: parse + evaluate achievements / leaderboards
+</td>
+<td valign="top">
+&nbsp;None
+</td>  
+</tr>
+<tr>
+<td valign="top">
+&nbsp;<a href="https://github.com/RetroAchievements/RAInterface">RAInterface</a>
+</td>
+<td valign="top">
+&nbsp;Interface library for emulators to interact with the RA stack
+</td>
+<td valign="top">
+&nbsp;rcheevos
+</td>  
+</tr>
+<tr>
+<td valign="top">
+&nbsp;<a href="https://github.com/RetroAchievements/RAIntegration">RAIntegration</a>&nbsp;
+</td>
+<td valign="top">
+&nbsp;Full DLL integration [login/server/achievement submission]
+</td>
+<td valign="top">
+&nbsp;RAInterface + rcheevos&nbsp;
+</td>  
+</tr>
+<td valign="top">
+&nbsp;<a href="https://github.com/RetroAchievements/RALibretro">RALibretro</a>
+</td>
+<td valign="top">
+&nbsp;Multi-emulator that uses RA stack to support achievements
+</td>
+<td valign="top">
+&nbsp;RAIntegration
+</td>  
+</tr>
+</table>
+<br />
+<br />
