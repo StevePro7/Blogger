@@ -1,0 +1,36 @@
+Python Build Backends in 2025: What to Use and Why (uv_build vs Hatchling vs poetry-core)
+22-Oct-2025
+
+https://medium.com/@dynamicy/python-build-backends-in-2025-what-to-use-and-why-uv-build-vs-hatchling-vs-poetry-core-94dd6b92248f
+
+TL;DR
+uv
+most pure Python projects use uv to manage everything
+uv_build as build backend
+
+hatchling
+need custom build steps, advanced file selection OR
+VCS-driven versions
+
+poetry-core
+shop native extensions [C/C++, Rust]
+e.g. 
+scikit-build-core	C/C++
+OR
+maturin			Rust
+
+
+Frontend
+CLI you run
+uv
+pip
+hatch
+
+
+Backend
+engine that builds wheels / sdists
+uv_build
+
+
+Declare backend in pyproject.toml
+[build-system]
