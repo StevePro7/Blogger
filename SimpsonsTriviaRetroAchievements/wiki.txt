@@ -4,7 +4,7 @@
 <u>GitHub</u><br />
 RetroAchievements <a href="https://github.com/orgs/RetroAchievements/repositories">GitHub</a> includes the following source code repositories for game achievement integration:
 <br />
-<!-- -->
+<!--
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -38,12 +38,12 @@ RetroAchievements <a href="https://github.com/orgs/RetroAchievements/repositorie
 </td>
 </tr>
 </table>
-<!-- -->
+-->
 <br />
 <b>Clone</b><br />
 On Windows, launch Terminal.  Create C:\GitHub\RetroAchievements directory.  Git clone the following repos:
 <br />
-<!-- -->
+<!--
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -58,22 +58,20 @@ On Windows, launch Terminal.  Create C:\GitHub\RetroAchievements directory.  Git
 </td>
 </tr>
 </table>
-<!-- -->
+-->
 <br />
 IMPORTANT: use the <b>--quiet</b> [or <b>-q</b>] flag in order to suppress all the superfluous submodule logging output!
 <br />
-<!-- -->
+<!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcT2RT8ooGBAleihrvbHYB6OgvxeOiaYr9F6HXxDS1nJ6DqCHfxWePxcWJtumJnyqiQEDft2PscvWvhA9CmgvphHbj7PEvkZ8zS8VhXnTPL4sEtXaASesGmtPF1zptmKgG_ullWdrk-F7pt0ttg6AUzshZyXIbV7N5dGzvs9rZXv7jqOhrsjS3b8nmX_Q/s974/GitHubClone.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcT2RT8ooGBAleihrvbHYB6OgvxeOiaYr9F6HXxDS1nJ6DqCHfxWePxcWJtumJnyqiQEDft2PscvWvhA9CmgvphHbj7PEvkZ8zS8VhXnTPL4sEtXaASesGmtPF1zptmKgG_ullWdrk-F7pt0ttg6AUzshZyXIbV7N5dGzvs9rZXv7jqOhrsjS3b8nmX_Q/s600/GitHubClone.png"/></a>
-<!-- -->
 <br />
+-->
 <br />
-
 
 
 11-rcheevos<br>
 <a href="https://github.com/RetroAchievements/rcheevos">rcheevos</a><br />
-TODO blurb <br>
-Launch VS 2022.  Open rcheevos-test.sln at C:\GitHub\RetroAchievements\rcheevos\test.  Debug | x64.  Rebuild Solution.  Open test\test.c | Debug
+rcheevos is a C library that makes it easier to process Retro Achievements data.  Launch Visual Studio 2022.  Open rcheevos-test.sln.  Choose Debug | x64.  Rebuild Solution.  Open test\test.c.  Press F5 to Debug source:
 <br />
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoApZPZyYFk2aBvQvITDlNonbC3dr2-fqgQkmiKCJvp3yfrnoP5GO4nrzBswNo7h9x1xb2ygoKqPcgO0z8eRDpIHdi1HvMgnJ1BBNE0WYYMP_1fpOZxdo0OwQquqI1tZ_cH1UQOlHwRzpq9vAPeELYKZAa4TjWT1_fmcmFSsZ1DHf_J-zti6XBjjw3mMk/s1008/rcheevos.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoApZPZyYFk2aBvQvITDlNonbC3dr2-fqgQkmiKCJvp3yfrnoP5GO4nrzBswNo7h9x1xb2ygoKqPcgO0z8eRDpIHdi1HvMgnJ1BBNE0WYYMP_1fpOZxdo0OwQquqI1tZ_cH1UQOlHwRzpq9vAPeELYKZAa4TjWT1_fmcmFSsZ1DHf_J-zti6XBjjw3mMk/s600/rcheevos.png"/></a>
@@ -82,11 +80,11 @@ Launch VS 2022.  Open rcheevos-test.sln at C:\GitHub\RetroAchievements\rcheevos\
 <br />
 
 12-RAInterface<br>
-<a href="https://github.com/RetroAchievements/RAInterface">RAInterface</a>
-TODO blurb <br>
-IMPORTANT This is a submodule - cannot open in VS2022 !!
+<a href="https://github.com/RetroAchievements/RAInterface">RAInterface</a><br />
+RAInterface is a submodule which provides emulator hooks to integrate with RA server via RA_Integration.dll
 <br />
 <br />
+
   
 13-RAIntegration<br>
 <a href="https://github.com/RetroAchievements/RAIntegration">RAIntegration</a>0
