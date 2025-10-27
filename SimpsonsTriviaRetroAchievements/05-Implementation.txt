@@ -1,23 +1,26 @@
 Implementation
 21-Oct-2025
 
-
+  
 05-Implementation<br>
 <u>Implementation</u><br />
-Simpsons Trivia Game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds plus "Get between 80-100%" for 4x categories.  Shout out to Bl4h8L4hBl4h setting up 20x achievements as per documentation!
-  <br /><br />
+<a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds plus "Get between 80-100%" for 4x categories.  Shout out to Bl4h8L4hBl4h setting up 20x achievements as per documentation!
+<br /><br />
+Also, shout out to BenGhazi explaining how RALibRetro emulator processes achievements e.g. Achievement has 4x important pieces of data stored in RAM: Difficulty [0x00], Selected Rounds [0x05], Correct Answers [0x05] and Screen ID [0x0C].  When all values are aligned on Game Over screen then the achievementis set!
+<br /><br />
+  
 Simpsons Trivia Game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds and Get between 80-100% for 4x categories.  Big shout out to Bl4h8L4hBl4h setting up these 20x achievements as per documentation!
   <br /><br />
 Simpsons Trivia Game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Therefore, Simpsons Trivia has 20x achievements setup: Perfect win for 4x categories * 4x rounds and Get between 80-100% for 4x categories.
   <br /><br />
 
 
-<u>Simpsons Trivia</u><br />
-Has 20x achievements
+//<u>Simpsons Trivia</u><br />
+//Has 20x achievements
 
-shout out
-blah
-achi set
+//shout out
+//blah
+//achi 	et
 docs link
 
 shout
