@@ -1,15 +1,8 @@
 <span style="font-family:verdana;font-size:85%;">
   
-05-Implementation<br>
-<u>Implementation</u><br />
-  TODO<br><br><br>
-    
 
   
 
-
-  
-  <br /><br />
   
 01-intro<br/>
 In 2018, <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> built for the Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a> was one entry in the annual SMS Power! <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1.02.zip">Coding</a> competition.  The immediate <a href="https://www.smspower.org/forums/17019-CodingCompetition2018SimpsonsTriviaBySteveProXNA">forum</a> feedback super positive.  In 2020, member <a href="https://www.smspower.org/forums/member7948">FeRcHuLeS</a> posted enjoyment of the game and mastered on <a href="https://retroachievements.org/game/14672">retroachievements.org</a>.  I was unaware of this website so I had to investigate!
@@ -57,7 +50,38 @@ IMPORTANT: Simpsons Trivia v1.02 <b>must</b> be selected as this has the correct
 
 05-Implementation<br>
 <u>Implementation</u><br />
-  TODO<br><br><br>
+<a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds plus "Get between 80-100%" for 4x categories.  Shout out to <a href="https://docs.retroachievements.org/developer-docs">Bl4h8L4hBl4h</a> setting up 20x achievements as per <a href="https://docs.retroachievements.org/developer-docs">documentation</a>!
+<br /><br />
+Also, shout out to BenGhazi explaining how <a href="https://retroachievements.org/downloads">RALibRetro</a> emulator processes achievements e.g. <a href="https://retroachievements.org/achievement/86807">Achievement</a> has 4x important pieces of data stored in RAM: Difficulty [0x00], Selected Rounds [0x05], Correct Answers [0x05] and ScreenID [0x0C].  When all values are aligned on Game Over screen then the achievement is set!
+<br />
+<br />
+IMPORTANT: here is <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/releases/tag/1.02"> Tag 1.02</a> source code excerpt which corroborates Game Over screen definition [0x0C]:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;// Screen type.
+&nbsp;&nbsp;#define SCREEN_TYPE_NONE	0
+&nbsp;&nbsp;#define SCREEN_TYPE_SPLASH	1
+&nbsp;&nbsp;#define SCREEN_TYPE_TITLE	2
+&nbsp;&nbsp;#define SCREEN_TYPE_INTRO	3
+&nbsp;&nbsp;#define SCREEN_TYPE_DIFF	4
+&nbsp;&nbsp;#define SCREEN_TYPE_LONG	5
+&nbsp;&nbsp;#define SCREEN_TYPE_READY	6
+&nbsp;&nbsp;#define SCREEN_TYPE_LEVEL	7
+&nbsp;&nbsp;#define SCREEN_TYPE_NUMBER	8
+&nbsp;&nbsp;#define SCREEN_TYPE_PLAY	9
+&nbsp;&nbsp;#define SCREEN_TYPE_QUIZ	10
+&nbsp;&nbsp;#define SCREEN_TYPE_SCORE	11
+&nbsp;&nbsp;#define SCREEN_TYPE_OVER	12
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
 
   
   <br /><br />
