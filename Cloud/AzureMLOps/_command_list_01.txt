@@ -29,14 +29,14 @@ az configure --defaults acr=$ACR_REGISTRY ml-workspace=$ML_WORKSPACE ml-resource
 
 03.	az acr login
 export ACR_REGISTRY="SteveProRegistry"
-az acr --login -n <acr_registry>
-az acr --login -n $ACR_REGISTRY
-az acr --login -n $ACR_REGISTRY --expose-token
+az acr login -n <acr_registry>
+az acr login -n $ACR_REGISTRY
+az acr login -n $ACR_REGISTRY --expose-token
 
 Long-form
 -n		--name
-az acr --login --name $ACR_REGISTRY
-az acr --login --name $ACR_REGISTRY --expose-token
+az acr login --name $ACR_REGISTRY
+az acr login --name $ACR_REGISTRY --expose-token
 
 
 

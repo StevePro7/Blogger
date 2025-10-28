@@ -4,17 +4,26 @@ commandlist 02
 Locations
 az account list-locations --output table
 
+https://portal.azure.com/#browse/Microsoft.MachineLearningServices%2Fworkspaces
+
+ML Ops
+export TENANT_ID=$(az account show --query tenantId -o tsv)
+ml.azure.com/home?$TENANT_ID
+echo "https://ml.azure.com/home?tid=$TENANT_ID"
+
+
 AZ ML
 az extension list
+az extension list -o table
 []
 az extension add -n ml
 az extension add --name ml
 
 
 00.	az ml compute
-export RESOURCE_GRP="SteveProGroup"
+export RESOURCE_GRP="steven_boland-rg"
 export ML_WORKSPACE="SteveProWorkspace"
-export THE_LOCATION="eastus"
+#export THE_LOCATION="eastus"
 export THE_LOCATION="northeurope"
 export TEST_CLUSTER="Test-Cluster"
 az ml compute list -g $RESOURCE_GRP -w $ML_WORKSPACE -o table
