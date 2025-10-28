@@ -1,6 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-01-intro<br/>
 In 2018, <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> built for the Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a> was one entry in the annual SMS Power! <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1.02.zip">Coding</a> competition.  The immediate <a href="https://www.smspower.org/forums/17019-CodingCompetition2018SimpsonsTriviaBySteveProXNA">forum</a> feedback super positive.  In 2020, member <a href="https://www.smspower.org/forums/member7948">FeRcHuLeS</a> posted enjoyment of the game and mastered on <a href="https://retroachievements.org/game/14672">retroachievements.org</a>.  I was unaware of this website so I had to investigate!
 <br />
 <!-- -->  
@@ -10,7 +9,6 @@ In 2018, <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons
 Let's check it out!
 <br /><br />
 
-02-RAaccount<br/>
 <u>RetroAchievements</u><br />
 <a href="https://emulation.gametechwiki.com/index.php/RetroAchievements">RetroAchievements</a> is an online service which provides users with fan-made achievement sets for many retro gaming platforms such as the Sega Master System.  Navigate to <a href="https://retroachievements.org">RetroAchievements</a> website.  Choose <a href="https://retroachievements.org/createaccount.php">Sign up</a>  Create an account.  Download <a href="https://retroachievements.org/bin/RALibretro-x64.zip">RALibRetro</a> emulator which facilitates achievements integration to retro games!
 <br /><br /> 
@@ -19,20 +17,16 @@ Launch RALibRetro emulator | Choose RetroAchievements menu | Login | Enter Retro
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhymRUNOM98VdYE4ZOBPxN-_9JWyMTxCKZerOIDVasJll4eaX6HB7FxKVsMwwuF2WPuSQ4cgNwUU5MJpSffeDcy4Fg2DTB3veAJe07kErHorc_nlSyW7blI6X5x-CdxtFRkD88Gqp0x-tjm8QzS7PqgIDqHdvcrMmm9FapyDN5WoO4BJ4jtImTbw8Lss70/s642/RALibRetroEmulator.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhymRUNOM98VdYE4ZOBPxN-_9JWyMTxCKZerOIDVasJll4eaX6HB7FxKVsMwwuF2WPuSQ4cgNwUU5MJpSffeDcy4Fg2DTB3veAJe07kErHorc_nlSyW7blI6X5x-CdxtFRkD88Gqp0x-tjm8QzS7PqgIDqHdvcrMmm9FapyDN5WoO4BJ4jtImTbw8Lss70/s600/RALibRetroEmulator.png"/></a>
 <!-- -->
-<br />
+<br /><br />
 
-
-03-Core<br>
 <b>Cores</b><br />
 RetroAchievements <a href="https://emulation.gametechwiki.com/index.php/Libretro#Cores">cores</a> are a special version of emulator cores.  Essentially a core is a plug-in or emulator that runs platform specific games.  Choose Settings menu | Manage Cores... | Master System and Download
 <br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAieeE-SO_lpR6Aah1CCylGb6a79UFuo5p7WExi0tzKW4pGV2W9ovm4MpnW5vRio0bxWdr1IyBq6o50ohvG4WQqN7JalsQ0I-7_3d7qjoeoRo_uZw1tZ9DxblzgMV3JLhiuzKKPJ-Mbx4Q3Hm3esiX3geAjQSNRGmHTh1fo5g97_gsAhggTRHCfrn3RzU/s755/RALibRetroManageCores.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAieeE-SO_lpR6Aah1CCylGb6a79UFuo5p7WExi0tzKW4pGV2W9ovm4MpnW5vRio0bxWdr1IyBq6o50ohvG4WQqN7JalsQ0I-7_3d7qjoeoRo_uZw1tZ9DxblzgMV3JLhiuzKKPJ-Mbx4Q3Hm3esiX3geAjQSNRGmHTh1fo5g97_gsAhggTRHCfrn3RzU/s600/RALibRetroManageCores.png"/></a>
 <!-- -->    
-<br />
+<br /><br />
   
-  
-04-SimpsonsTrivia<br>
 <u>Simpsons Trivia</u><br />
 Download <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1.02.zip">Simpsons Trivia v1.02</a>.  Choose RALibRetro File menu | Select Core | Master System | Genesis Plus GX ensures audio support.  Choose File menu | Load Game | <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/blob/master/SimpsonsTrivia-v1.02.sms">SimpsonsTrivia-v1.02.sms</a>.  Game ready to play:
 <br />
@@ -43,8 +37,6 @@ Download <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1
 IMPORTANT: Simpsons Trivia v1.02 <b>must</b> be selected as this has the correct Retro Achievements game hash!  Choose arrow keys for Left, Right, Up, Down movement.  Choose Z for Fire1, X for Fire2, P or Enter to Pause.
 <br /><br />
   
-
-05-Implementation<br>
 <u>Implementation</u><br />
 <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds plus "Get between 80-100%" for 4x categories.  Shout out to <a href="https://docs.retroachievements.org/developer-docs">Bl4h8L4hBl4h</a> setting up 20x achievements as per <a href="https://docs.retroachievements.org/developer-docs">documentation</a>!
 <br /><br />
@@ -81,7 +73,6 @@ IMPORTANT: here is <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/rel
 </table>
 <br />
 
-08-GitHub<br>
 <u>GitHub</u><br />
 RetroAchievements <a href="https://github.com/orgs/RetroAchievements/repositories">GitHub</a> includes the following source code repositories for game achievement integration:
 <br />
@@ -121,6 +112,7 @@ RetroAchievements <a href="https://github.com/orgs/RetroAchievements/repositorie
 </table>
 <!-- -->
 <br />
+
 <b>Clone</b><br />
 On Windows, launch Terminal.  Create C:\GitHub\RetroAchievements directory.  Git clone the following repos:
 <br />
@@ -148,9 +140,7 @@ IMPORTANT: use the <b>--quiet</b> [or <b>-q</b>] flag in order to suppress all t
 <br />
 <!-- -->
 <br />
-  
-  
-11-rcheevos<br>
+
 <a href="https://github.com/RetroAchievements/rcheevos">rcheevos</a><br />
 rcheevos is a C library that makes it easier to process Retro Achievements data.  Launch Visual Studio 2022.  Open rcheevos-test.sln.  Choose Debug | x64.  Rebuild Solution.  Open test/test.c.  Press F5 to Debug source:
 <br />
@@ -160,14 +150,10 @@ rcheevos is a C library that makes it easier to process Retro Achievements data.
 <!-- -->
 <br />
 
-12-RAInterface<br>
 <a href="https://github.com/RetroAchievements/RAInterface">RAInterface</a><br />
 RAInterface is a submodule which provides emulator hooks to integrate with RA server via RA_Integration.dll
-<br />
-<br />
-
+<br /><br />
   
-13-RAIntegration<br>
 <a href="https://github.com/RetroAchievements/RAIntegration">RAIntegration</a><br />
 RAIntegration is the main DLL used for interfacing with <a href="https://retroachievements.org/game/14672">retroachievements.org</a>.  Launch Visual Studio 2022.  Open RA_Integration.sln.  Choose Debug | x64.  Rebuild Solution.  Install CppUnitTest <a href="https://marketplace.visualstudio.com/items?itemName=drleq.CppUnitTestFrameworkAdaptor">Test Adapter</a> to run all Interface + Integration tests: Extensions menu | Manage Extensions | Test Adapter CppUnitTest Framework
 <br />
@@ -180,7 +166,6 @@ Launch Test Explorer | Test menu | Test Explorer | Right click specific test e.g
 <!-- -->
 <br />
   
-14-RALibRetro<br>
 <a href="https://github.com/RetroAchievements/RALibretro">RALibretro</a><br />
 RALibretro is the multi-emulator used to develop RetroAchievements and earn them.  RALibretro uses <a href="https://github.com/libretro">libretro</a> cores to do the actual emulation with RAIntegration DLL to connect with the site.  Launch Visual Studio 2022.  Open RALibretro.sln.  Choose Debug | x64.  Rebuild Solution.  Open src/main.cpp.  Press F5 to Debug source:
 <br />
@@ -190,8 +175,6 @@ RALibretro is the multi-emulator used to develop RetroAchievements and earn them
  <!-- -->
 <br />
 
-
-15-GitHubII<br>
 <u>Overview</u><br />
 Here is an overview of the 1x C project rcheevos and 3x C++ projects to interface + integrate + emulate:
 <br />
@@ -248,9 +231,7 @@ Here is an overview of the 1x C project rcheevos and 3x C++ projects to interfac
 </table>
 <!-- -->
 <br />
-<br />
   
-16-libretro<br/>
 libretro<br />
 <a href="https://emulation.gametechwiki.com/index.php/Libretro">libretro</a> is an API designed for retro games and emulators to be compiled as <a href="https://en.wikipedia.org/wiki/Dynamic-link_library">DLLs</a> which can be used in front ends like RALibretro that implement the libretro API.  This is reminiscent of the OpenAI Retro work we did in <a href="https://steveproxna.blogspot.com/2024/11">2024</a> which also uses libretro cores but exposes them in Python with Reinforcement Learning environments.
 <br /><br />
@@ -259,11 +240,10 @@ Similar to RetroAchievements OpenAI Retro uses its own Game Integration tool to 
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXtUbvOyapUR10MD4gKS8GreyihNKtskWrvQek4YFLoj3XAK31e_qETB-PbYwN13J9EPGUy5HfwPjSWctINhMa1gLficATXD8q8RFnEUzWm1lTsVHlUNufdhQk7lL26hV543M5Ke6ElMnIHie71SMw1kZdDrfDTpW39RASi5LnaWIvm0-yFDdtWPJCREI/s530/MemoryInspector.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXtUbvOyapUR10MD4gKS8GreyihNKtskWrvQek4YFLoj3XAK31e_qETB-PbYwN13J9EPGUy5HfwPjSWctINhMa1gLficATXD8q8RFnEUzWm1lTsVHlUNufdhQk7lL26hV543M5Ke6ElMnIHie71SMw1kZdDrfDTpW39RASi5LnaWIvm0-yFDdtWPJCREI/s600/MemoryInspector.png"/></a>
 <!-- -->
-<br />
-  
-Summary<br>
+<br /><br />
+
 <u>Summary</u><br />
-To summarize, the RetroAchievements integration into Simpsons Trivia game has been awesome as gamers continue to play this game and top the achievements more than seven years after it was published!  In fact, many hard core games have published YouTube <a href="https://www.youtube.com/watch?v=h1DcCFx0_Ss">videos</a> showcasing their achievements for others to follow:
+To summarize, the RetroAchievements integration into Simpsons Trivia game has been awesome as gamers continue to play this game and top the achievements more than seven years after it was published!  In fact, many hard core gamers have published YouTube <a href="https://www.youtube.com/watch?v=h1DcCFx0_Ss">videos</a> showcasing their achievements for others to follow:
 <br />
 <!-- -->
 <iframe width="98%" height="315" src="https://www.youtube.com/embed/jJ0xRMU2kv0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
