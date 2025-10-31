@@ -495,3 +495,70 @@ only users of this function were tests just modified = deleted the tests
 283	summary of changing
 DRY eliminate duplicaiton
 284 	Boy Scout rule
+
+
+Chp17.	Smells and Heuristics
+COMMENTS
+286	
+Inappropriate Info	but people store this in README.md
+Obsolete Comment
+Redundant Comment	comments say things code cannot say	why NOT what
+
+287
+Poorly Written Comment	be brief
+Commented-Out Code	dead code = rot	Delete It!!
+
+ENVIRONMENT
+287
+Build Requires More Than One Step	checkout + build system single command
+Tests Require  More Than One Step	pytest
+
+FUNCTIONS
+288
+Too Many Arguments	more than 3 = put in class
+Output Arguments	Disagree -> easier to unit test	unless use properties everywhere
+Flag Arguments		Disagree	dry-run
+Dead Function		dead code = delete
+
+GENERAL
+288
+Multiple Languages in One Source File	N/A
+Obvious Behavior Is Unimplemented	can't depend on intuition about function names
+
+289
+Incorrect Behavior at the Boundaries	write test for every boundary condition
+Overridden Safeties			don't ignore warnings + failing tests
+Duplication		DRY		abstraction
+			if/else		polymorphism
+290
+Template Method OR Strategy		nice if he explained w/ an example!
+Code at Wrong Level of Abstraction	don't mix higher + lower level concepts
+
+291
+Base Classes Depending on Their Derivatives
+Too Much Information			well-defined interface = low coupling
+292					hide your data
+					keep interfaces tight and small
+292
+Dead code				delete
+Vertical Separation			limit vertical distance for variables + functions
+					scan down to first usage
+Inconsistency				principle of least surprise
+					consistency = code easier to read + modify
+
+293
+Clutter		similar to dead code	unused code = delete
+Artificial Coupling			couple 2x modules serves no direct purpose
+Feature Envy				method envies the scope of another object
+
+294					exposes internals of one class to another
+Selector Arguments			dangling boolean - what does it mean?
+
+295
+Obscure Intent				make intent of code visible
+Misplace Responsibility			principle of least surprise - put where reader expects
+
+296
+Inappropriate Static
+
+
