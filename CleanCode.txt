@@ -622,4 +622,27 @@ Use Standard Nomenclature Where Possible	e.g. toString()
 312
 Unambiguous Names			explanatory values outweighs the length
 Use Long Names for Long Scopes		short var names short scopes big scopes = longer names
-Avoid Encodings				
+Avoid Encodings				e.g. no Hungarian Notation
+
+313
+Names Should Describe Side-Effects	create or return
+
+
+TESTS
+313
+Insufficient Tests			test suite test everything that could possible break
+Use a Coverage Tool			find modules insufficiently tested
+Don't Skip Trivial Tests		documentary value = higher than cost to produce
+An Ignored Tests is a Question about an Ambiguity
+
+314
+Test Boundary Conditions
+Exhaustively Test Near Bugs		bugs tend to congregate
+Patterns of Failure Are Revealing	find patterns in the way test cases fail
+Test Coverage Patterns Can Be Revealing
+Tests Should be Fast			do what you must to keep tests fast
+
+
+CONCLUSION
+Clean code is not written by following a set of rules
+Professionalism and craftsmanship come from values that drive disciplines
