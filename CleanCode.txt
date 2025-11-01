@@ -10,12 +10,12 @@ How to Write Clean Code, Actually..
 https://medium.com/@brandt.a.derrick/how-to-write-clean-code-actually-5205963ec524
 
 
-Chp01.
+Chp01.	Clean Code
 	code easy to read
 8.	broken windows
 
 
-Chp02.
+Chp02.	Meaningful Names
 	Indent - naming
 21	Conventions
 24	DISAGREE	Interface vs. Implementation
@@ -29,7 +29,7 @@ method	verb
 30	precise
 
 
-Chp03.
+Chp03.	Functions
 34	small	4x lines
 36	one thing	Single Responsibility
 39	small	easier to name
@@ -42,7 +42,7 @@ Chp03.
 48	DRY
 
 
-Chp04.
+Chp04.	Comments
 54	no comments - code	type hints
 	self-describe code	unit tests	self-documenting
 55	Intent			in code
@@ -52,7 +52,7 @@ Chp04.
 64	Noise	Yes
 
 
-Chp05.	Functions
+Chp05.	Formatting
 summary - like Chp1 - when code easy to read 
 it's easy to understand, modify, fix, debug
 
@@ -70,7 +70,7 @@ it's easy to understand, modify, fix, debug
 90	team rules		agree on formatting style = consistent
 
 
-Chp06.	Objects
+Chp06.	Objects and Data Structures
 93	private variables	don't want anyone to depend on them
 	hide implementation
 Global variables not mentioned
@@ -559,6 +559,67 @@ Obscure Intent				make intent of code visible
 Misplace Responsibility			principle of least surprise - put where reader expects
 
 296
-Inappropriate Static
+Inappropriate Static			don't write static functions that could be polymorphic
+Use Explanatory Variables		opaque module more transparent = break up calculations
+
+297
+Function Names Should Say What They Do	ensure you can tell from function call what func does
+Understand the Algorithm		ensure you understand obvious how function works
+
+298
+Make Logical Dependencies		module it depends on should explicitly ask for all data
+
+299
+Prefer Polymorphism to If/Else or Switch/Case	every switch statement should be suspect
+Follow Standard Conventions		coding standard based on industry norms!
+
+300
+Replace Magic Numbers with Named Constants
+
+301
+Be Precise				ambiguities + impression in code = disagreements + laziness
+Structure over Convention		structures force compliance e.g. base class enforcement
+Encapsulate Conditionals		extract functions that explain intent of conditional
+
+302
+Avoid Negative Conditionals		conditionals should be expressed as positives
+Functions Should Do One Thing		SRP - convert large fn into many smaller func
+Hidden Temporal Couplings		expose temporal coupling = create bucket brigade
+
+303
+Don't Be Arbitrary			consistent structure = others preserve the convention
+
+304
+Encapsulate Boundary Conditions		put boundary conditions in one place
+Functions Should Descend Only One Level of Abstraction	don't mix levels of abstraction
+
+305
+separating levels of abstraction = one of the most important functions of refactoring
+
+306
+Keep Configurable Data at High Levels	config constants at high level are easy to change
+Avoid Transitive Navigation		Law of Demeter	"Writing Shy Code"
+					want immediate collaborators to offer all services we need
+
+JAVA
+307
+Avoid Long Import Lists by Using Wildcards	Python says don't do this
+Don't Inherit Constants
+Constants vs. Enums			308
 
 
+NAMES
+309
+Choose Descriptive Names		names in S/W = 90% S/W readable
+					names overload the structure of code w/ description
+311
+Choose Names at the Appropriate Level of Abstraction
+choose names that reflect level of abstraction of class or function working with
+
+Use Standard Nomenclature Where Possible	e.g. toString()
+						ubiquitous language
+
+312
+Unambiguous Names			explanatory values outweighs the length
+Use Long Names for Long Scopes		short var names short scopes big scopes = longer names
+Avoid Encodings				
