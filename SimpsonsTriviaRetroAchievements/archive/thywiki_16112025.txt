@@ -10,9 +10,9 @@ Let's check it out!
 <br /><br />
 
 <u>RetroAchievements</u><br />
-<a href="https://emulation.gametechwiki.com/index.php/RetroAchievements">RetroAchievements</a> is an online service which provides users with fan-made achievement sets for many retro gaming platforms such as the Sega Master System.  Navigate to <a href="https://retroachievements.org">RetroAchievements</a> website.  Choose <a href="https://retroachievements.org/createaccount.php">Sign up</a>  Create an account.  Download <a href="https://retroachievements.org/bin/RALibretro-x64.zip">RALibretro</a> emulator which facilitates achievements integration to retro games!
+<a href="https://emulation.gametechwiki.com/index.php/RetroAchievements">RetroAchievements</a> is an online service which provides users with fan-made achievement sets for many retro gaming platforms such as the Sega Master System.  Navigate to <a href="https://retroachievements.org">RetroAchievements</a> website.  Choose <a href="https://retroachievements.org/createaccount.php">Sign up</a>  Create an account.  Download <a href="https://retroachievements.org/bin/RALibretro-x64.zip">RALibRetro</a> emulator which facilitates achievements integration to retro games!
 <br /><br /> 
-Launch RALibretro emulator | Choose RetroAchievements menu | Login | Enter RetroAchievements site info:
+Launch RALibRetro emulator | Choose RetroAchievements menu | Login | Enter RetroAchievements site info:
 <br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhymRUNOM98VdYE4ZOBPxN-_9JWyMTxCKZerOIDVasJll4eaX6HB7FxKVsMwwuF2WPuSQ4cgNwUU5MJpSffeDcy4Fg2DTB3veAJe07kErHorc_nlSyW7blI6X5x-CdxtFRkD88Gqp0x-tjm8QzS7PqgIDqHdvcrMmm9FapyDN5WoO4BJ4jtImTbw8Lss70/s642/RALibRetroEmulator.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhymRUNOM98VdYE4ZOBPxN-_9JWyMTxCKZerOIDVasJll4eaX6HB7FxKVsMwwuF2WPuSQ4cgNwUU5MJpSffeDcy4Fg2DTB3veAJe07kErHorc_nlSyW7blI6X5x-CdxtFRkD88Gqp0x-tjm8QzS7PqgIDqHdvcrMmm9FapyDN5WoO4BJ4jtImTbw8Lss70/s600/RALibRetroEmulator.png"/></a>
@@ -28,7 +28,7 @@ RetroAchievements <a href="https://emulation.gametechwiki.com/index.php/Libretro
 <br /><br />
   
 <u>Simpsons Trivia</u><br />
-Download <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1.02.zip">Simpsons Trivia v1.02</a>.  Choose RALibretro File menu | Select Core | Master System | Genesis Plus GX ensures audio support.  Choose File menu | Load Game | <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/blob/master/SimpsonsTrivia-v1.02.sms">SimpsonsTrivia-v1.02.sms</a>.  Game ready to play:
+Download <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1.02.zip">Simpsons Trivia v1.02</a>.  Choose RALibRetro File menu | Select Core | Master System | Genesis Plus GX ensures audio support.  Choose File menu | Load Game | <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/blob/master/SimpsonsTrivia-v1.02.sms">SimpsonsTrivia-v1.02.sms</a>.  Game ready to play:
 <br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNDhFc_I51TMNQBk9d6sgQwlG07Z61POKio3s24Kzx7oGW4aDHavjK6sA8zP_IBYXj0Byxx5tU5TeJ0GCJ8tRtHHYxjTuhwAB3NuZ4ug9RJ4DaBDrQlJDf76yLu5BNBcDWT-WN2Q4wjy49GAMj6oN7NqMFbYI_ZBUWoEV8LVFMBq1EXs-qZP8aorkPNW8/s642/RALibRetroSimpsons.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNDhFc_I51TMNQBk9d6sgQwlG07Z61POKio3s24Kzx7oGW4aDHavjK6sA8zP_IBYXj0Byxx5tU5TeJ0GCJ8tRtHHYxjTuhwAB3NuZ4ug9RJ4DaBDrQlJDf76yLu5BNBcDWT-WN2Q4wjy49GAMj6oN7NqMFbYI_ZBUWoEV8LVFMBq1EXs-qZP8aorkPNW8/s600/RALibRetroSimpsons.png"/></a>
@@ -40,7 +40,7 @@ IMPORTANT: Simpsons Trivia v1.02 <b>must</b> be selected as this has the correct
 <u>Implementation</u><br />
 <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds plus "Get between 80-100%" for 4x categories.  Shout out to <a href="https://docs.retroachievements.org/developer-docs">Bl4h8L4hBl4h</a> setting up 20x achievements as per <a href="https://docs.retroachievements.org/developer-docs">documentation</a>!
 <br /><br />
-Also, shout out to BenGhazi explaining how <a href="https://retroachievements.org/downloads">RALibretro</a> emulator processes achievements e.g. <a href="https://retroachievements.org/achievement/86807">Achievement</a> has 4x important pieces of data stored in RAM: Difficulty [0x00], Selected Rounds [0x05], Correct Answers [0x05] and ScreenID [0x0C].  When all values are aligned on Game Over screen then the achievement is set!
+Also, shout out to BenGhazi explaining how <a href="https://retroachievements.org/downloads">RALibRetro</a> emulator processes achievements e.g. <a href="https://retroachievements.org/achievement/86807">Achievement</a> has 4x important pieces of data stored in RAM: Difficulty [0x00], Selected Rounds [0x05], Correct Answers [0x05] and ScreenID [0x0C].  When all values are aligned on Game Over screen then the achievement is set!
 <br />
 <br />
 IMPORTANT: here is <a href="https://github.com/SteveProXNA/SimpsonsTriviaSMS/releases/tag/1.02"> Tag 1.02</a> source code excerpt which corroborates Game Over screen definition [0x0C]:
@@ -235,7 +235,7 @@ Here is an overview of the 1x C project rcheevos and 3x C++ projects to interfac
 libretro<br />
 <a href="https://emulation.gametechwiki.com/index.php/Libretro">libretro</a> is an API designed for retro games and emulators to be compiled as <a href="https://en.wikipedia.org/wiki/Dynamic-link_library">DLLs</a> which can be used in front ends like RALibretro that implement the libretro API.  This is reminiscent of the OpenAI Retro work we did in <a href="https://steveproxna.blogspot.com/2024/11">2024</a> which also uses libretro cores but exposes them in Python with Reinforcement Learning environments.
 <br /><br />
-Similar to RetroAchievements OpenAI Retro uses its own Game Integration tool to inspect memory for points of interest e.g. starting state, reward function + done condition whereas RALibretro uses Memory Inspector:
+Similar to RetroAchievements OpenAI Retro uses its own Game Integration tool to inspect memory for points of interest e.g. starting state, reward function + done condition whereas RALibRetro uses Memory Inspector:
 <br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXtUbvOyapUR10MD4gKS8GreyihNKtskWrvQek4YFLoj3XAK31e_qETB-PbYwN13J9EPGUy5HfwPjSWctINhMa1gLficATXD8q8RFnEUzWm1lTsVHlUNufdhQk7lL26hV543M5Ke6ElMnIHie71SMw1kZdDrfDTpW39RASi5LnaWIvm0-yFDdtWPJCREI/s530/MemoryInspector.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXtUbvOyapUR10MD4gKS8GreyihNKtskWrvQek4YFLoj3XAK31e_qETB-PbYwN13J9EPGUy5HfwPjSWctINhMa1gLficATXD8q8RFnEUzWm1lTsVHlUNufdhQk7lL26hV543M5Ke6ElMnIHie71SMw1kZdDrfDTpW39RASi5LnaWIvm0-yFDdtWPJCREI/s600/MemoryInspector.png"/></a>
