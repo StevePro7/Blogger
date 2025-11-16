@@ -1,6 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
 
-In 2018, <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> built for the Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a> was one entry in the annual SMS Power! <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1.02.zip">Coding</a> competition.  The immediate <a href="https://www.smspower.org/forums/17019-CodingCompetition2018SimpsonsTriviaBySteveProXNA">forum</a> feedback super positive.  In 2020, member <a href="https://www.smspower.org/forums/17019-CodingCompetition2018SimpsonsTriviaBySteveProXNA#108938">FeRcHuLeS</a> posted enjoyment of the game and mastered on <a href="https://retroachievements.org/game/14672">retroachievements.org</a>.  I was unaware of this website so I had to investigate!
+In 2018, <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> built for the Sega <a href="https://en.wikipedia.org/wiki/Master_System">Master System</a> was one entry in the annual SMS Power! <a href="https://www.smspower.org/uploads/Homebrew/SimpsonsTrivia-SMS-1.02.zip">Coding</a> competition.  The immediate <a href="https://www.smspower.org/forums/17019-CodingCompetition2018SimpsonsTriviaBySteveProXNA">forum</a> feedback super positive.  In 2020, member <a href="https://www.smspower.org/forums/member7948">FeRcHuLeS</a> posted enjoyment of the game and mastered on <a href="https://retroachievements.org/game/14672">retroachievements.org</a>.  I was unaware of this website so I had to investigate!
 <br />
 <!-- -->  
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjxo7FxO7IjzPKAVZuQ2UEmxjm91aG-kGv3WgrZZxDrxboP9P_l1voo91zvvgALya_pNry1cM1bax-wTs8IeMJZAlgCjx11v-eslEYW5UwCMXv-_7xRMQzklcQz_H5uCj3QM4Noqyr9BfKAkAzUzcOda1wrmngBajD2Qi0O2KmOBL1C9A0iMY8TnAh0Lo/s1268/RetroAchievements.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjxo7FxO7IjzPKAVZuQ2UEmxjm91aG-kGv3WgrZZxDrxboP9P_l1voo91zvvgALya_pNry1cM1bax-wTs8IeMJZAlgCjx11v-eslEYW5UwCMXv-_7xRMQzklcQz_H5uCj3QM4Noqyr9BfKAkAzUzcOda1wrmngBajD2Qi0O2KmOBL1C9A0iMY8TnAh0Lo/s600/RetroAchievements.png"/></a>
@@ -38,7 +38,7 @@ IMPORTANT: Simpsons Trivia v1.02 <b>must</b> be selected as this has the correct
 <br /><br />
   
 <u>Implementation</u><br />
-<a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds plus "Get between 80-100%" for 4x categories.  Shout out to <a href="https://retroachievements.org/user/Bl4h8L4hBl4h">Bl4h8L4hBl4h</a> setting up 20x achievements as per <a href="https://docs.retroachievements.org/developer-docs">documentation</a>!
+<a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Simpsons Trivia</a> game has 4x difficulty categories: Easy, Normal, Hard and Pro! plus 4x questions rounds: 5, 10, 25, and 50.  Thus 20x achievements setup: Perfect win for 4x categories * 4x rounds plus "Get between 80-100%" for 4x categories.  Shout out to <a href="https://docs.retroachievements.org/developer-docs">Bl4h8L4hBl4h</a> setting up 20x achievements as per <a href="https://docs.retroachievements.org/developer-docs">documentation</a>!
 <br /><br />
 Also, shout out to BenGhazi explaining how <a href="https://retroachievements.org/downloads">RALibretro</a> emulator processes achievements e.g. <a href="https://retroachievements.org/achievement/86807">Achievement</a> has 4x important pieces of data stored in RAM: Difficulty [0x00], Selected Rounds [0x05], Correct Answers [0x05] and ScreenID [0x0C].  When all values are aligned on Game Over screen then the achievement is set!
 <br />
@@ -233,7 +233,7 @@ Here is an overview of the 1x C project rcheevos and 3x C++ projects to interfac
 <br />
   
 libretro<br />
-<a href="https://emulation.gametechwiki.com/index.php/Libretro">libretro</a> is an API designed for retro games and emulators to be compiled as <a href="https://en.wikipedia.org/wiki/Dynamic-link_library">DLLs</a> which can be used in front ends like RALibretro that implement the libretro API.  This is reminiscent of the <a href="https://steveproxna.blogspot.com/2024/11">OpenAI Retro</a> work we did in 2024 which also uses libretro cores but exposes them in Python with Reinforcement Learning environments.
+<a href="https://emulation.gametechwiki.com/index.php/Libretro">libretro</a> is an API designed for retro games and emulators to be compiled as <a href="https://en.wikipedia.org/wiki/Dynamic-link_library">DLLs</a> which can be used in front ends like RALibretro that implement the libretro API.  This is reminiscent of the OpenAI Retro work we did in <a href="https://steveproxna.blogspot.com/2024/11">2024</a> which also uses libretro cores but exposes them in Python with Reinforcement Learning environments.
 <br /><br />
 Similar to RetroAchievements OpenAI Retro uses its own Game Integration tool to inspect memory for points of interest e.g. starting state, reward function + done condition whereas RALibretro uses Memory Inspector:
 <br />
@@ -249,6 +249,6 @@ To summarize, the RetroAchievements integration into Simpsons Trivia game has be
 <iframe width="98%" height="315" src="https://www.youtube.com/embed/jJ0xRMU2kv0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <!-- -->
 <br />
-The next step would be reseach the <a href="https://docs.retroachievements.org/developer-docs">documentation</a> fully and create some RetroAchievements sets myself <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+The next step would be reseach the documentation fully and create some RetroAchievements sets myself <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
   
 </span>
