@@ -12,8 +12,12 @@ Mon,25-Aug
 RESOURCE_GRP			pipe
 ML_WORKSPACE			MLOP
 
-export RESOURCE_GRP="pipe"
-export ML_WORKSPACE="MLOP"
+export RESOURCE_GRP="steven_boland-rg"
+export ML_WORKSPACE="SteveProWorkspace"
+
+set RESOURCE_GRP="steven_boland-rg"
+echo %RESOURCE_GRP%
+set ML_WORKSPACE="SteveProWorkspace"
 
 
 Model
