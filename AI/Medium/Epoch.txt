@@ -1,0 +1,49 @@
+What Is an Epoch in Machine Learning? A Simple Explanation
+19-Nov-2025
+
+https://medium.com/write-a-catalyst/what-is-an-epoch-in-machine-learning-a-simple-explanation-502632a664f9
+
+ML Training loop
+
+EPOCH
+one full pass thru the entire training dataset
+
+
+ML models learn by adjusting their weights gradually
+One pass thru the data usually isn't enough for the model to understand patterns
+
+Each epoch the model
+* sees the same data again
+* makes predictions
+* measures the error
+* updates its weights
+
+
+STUDY
+each study session = one epoch
+your brain [model] improves a bit each time
+
+
+BATCHES
+data        = 1000 rows
+batch size  = 100
+equals      = 10 batches per epoch
+i.e.
+1 epoch     = 10 batches    [10 iterations]
+5 epochs    = 50 batches    [50 iterations]
+
+
+TERMINOLOGY
+epoch       one pass thru all training data
+batch       small chunk of data
+iteration   one update step [one batch processed]
+
+Typical range
+10 - 100 epochs
+
+
+SUMMARY
+epoch       unit of time in the training loop
+
+understanding epoch = helps control model's learning process
+epochs show how far model has gone and how much more it can learn
