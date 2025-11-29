@@ -1,0 +1,36 @@
+UPDATE
+29-Nov-2029
+
+SteveProXNA OpenAI fork
+stable-retro
+~/GitHub/SteveProXNA/stable-retro
+
+
+29-Nov-2025
+Tried the  retro | examples scripts again but weren't working - I believe because pybind11 uninstalled??
+So I did this:
+
+sudo apt-get update
+sudo apt-get install pybind11-dev
+
+Then I open CLion
+~/GitHub/SteveProXNA/stable-retro
+
+Click OK
+Choose test-data | Debug
+Open
+data.cpp
+~/GitHub/SteveProXNA/stable-retro/tests
+F5
+
+Then I open PyCharm
+~/GitHub/SteveProXNA/stable-retro
+Source bin activate
+Which python
+Set interpreter Python
+Navigate to
+~/GitHub/SteveProXNA/stable-retro/tests/test_python
+Run all the tests
+
+Then re-tried retro | examples and they worked
+Except the ones that did not have the imports
