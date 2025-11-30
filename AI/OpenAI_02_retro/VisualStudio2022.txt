@@ -1,0 +1,50 @@
+VS 2022
+30-Nov-2029
+
+Windows
+E:
+cd GitHub\SteveProXNA\stable-retro
+
+
+Launch VS 2022
+Continue w\o code
+File | Open | CMake...
+
+was prompted to install Linux and Mac plugin
+
+CMake Error at C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake:233 (message):
+  Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR)
+
+
+
+Powershell
+
+cd D:\GitHubX\microsoft
+git clone https:\\github.com\microsoft\vcpkg
+cd vcpkg
+.\bootstrap-vcpkg.bat
+
+.\vcpkg.exe install zlib:x64-windows
+
+
+Save file
+vcpkg.json
+D:\GitHub\SteveProXNA\stable-retro
+
+
+ZLIB
+D:\GitHubX\microsoft\vcpkg\installed\x64-windows
+
+Environment variables
+ZLIB_INCLUDE_DIR = D:\GitHubX\microsoft\vcpkg\installed\x64-windows\include
+ZLIB_LIBRARY     = D:\GitHubX\microsoft\vcpkg\installed\x64-windows\lib\zlib.lib
+
+
+Powershell
+mkdir build
+cd build
+
+cmake -DZLIB_INCLUDE_DIR=D:\GitHubX\microsoft\vcpkg\installed\x64-windows\include -DZLIB_LIBRARY=D:\GitHubX\microsoft\vcpkg\installed\x64-windows\lib\zlib.lib ..
+
+
+Now errors complaining about Python 3.12
