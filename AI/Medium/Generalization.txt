@@ -1,0 +1,60 @@
+Why Generalization, Not Accuracy, Should Be Your North Star in Machine Learning
+03-Dec-2025
+
+https://medium.com/@sajidkhan.sjic/why-generalization-not-accuracy-should-be-your-north-star-in-machine-learning-0284b3792894
+
+Why Reliable Machine Learning Means Thinking Beyond Accuracy Scores
+
+ML
+not about fitting a dataset
+its about learning patterns that last
+
+ML model fails in Prod  Why?
+It learned to memorize  NOT generalize
+
+
+Generalization
+model ability to make correct predictions on new unseen data
+
+
+Model that memorizes patterns in training data performs well
+on that data but poorly elsewhere
+
+Model that generalizes learns the structure behind those patterns
+and applies it flexibly
+
+
+Memorization	high training accuracy, low test performance
+Generalization	balanced performance on both
+
+
+Model
+accuracy	how well a model fits known data
+generalization	how well it adapts
+
+
+Avoid accuracy trap
+1. Use validation wisely
+2. Control model complexity
+3. Regularize everything
+4. Simulate the real world
+
+
+SUMMARY
+Metrics that matter more than accuracy
+
+Precision / Recall / F1-score
+esp. for imbalanced data
+
+ROC AUC
+measures separation power
+
+Expected Calibration Error	ECE
+shows how well predicted probabilities align with outcomes
+
+Out-of-sample performance
+track how metrics behave after deployment
+
+
+Generalization = discipline
+building models that think not just remember
