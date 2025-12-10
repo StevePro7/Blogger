@@ -1,0 +1,24 @@
+DL Jargon
+10-Dec-2025
+
+TensorFlow
+tensor
+multi-dimensional array that TF uses to store data
+
+scalar      0-D tensor
+vector      1-D tensor
+matrix      2-D tensor
+
+
+x = layers.Flatten()(inputs)
+EQUIV
+flatten_layer = layers.Flatten()
+x = flatten_layer(inputs)
+
+Keras functional API layers = callable
+after you instantiate them you can call them like function = apply them to data / tensors
+
+Example
+create function + call it
+result = (lambda x: x + 1)(5)
+create layer → call it → get the output tensor.
