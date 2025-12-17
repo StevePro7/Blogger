@@ -1,0 +1,100 @@
+Tensor
+17-Dec-2025
+
+Tensors Explained: From Basic Math to Neural Networks
+https://medium.com/softaai-blogs/tensors-explained-from-basic-math-to-neural-networks-fd16b2fc59d7
+
+https://softaai.com/tensors-explained-from-basic-math-to-neural-networks
+
+
+follow on from Jargon.txt
+
+
+TENSOR
+way to organize numbers
+container for data	similar to arrays or matrices
+
+scalar		0D	7
+vector		1D	[2, 5, 9]
+matrix		2D	[[1, 2, 3], [4, 5, 6]]
+
+
+Tensor
+give a unified way to handle everything from single number to multi-dimensional datasets
+
+
+Why tensors?
+real world data e.g. images, audio, video = multi-dimensional
+
+image
+2D tensor	height * width
+3D tensor	height * width * RGB
+
+
+Neural networks need structure flexible to handle all these shapes
+Tensors = perfect
+
+
+Tensors + Deep Learning
+input data	images, text, sound
+weights + biases
+operations	matrix multiplications, dot products, convolutions
+
+
+Tensors power Neural Networks
+data enters as a tensor		batch 32x color images = [32 * 28 * 28 * 3]
+operations happen		apply transformations to tensors
+backpropagation uses tensors	gradients [tensors] flow backward to adjust weights
+model learns			each iteration tensor operations shape network intelligence
+
+
+SUMMARY
+tensors = containers for numbers: generalizing scalars, vectors, matrices
+modern data [images, videos, text] = multi-dimensional
+libraries like NumPy, PyTorch and TensorFlow = work w/ tensors simple
+neural networks rely on tensor operations for learning + predictions
+
+
+
+CODE
+/d/Steven/cpp
+
+Ex01
+import numpy as np
+
+scalar = np.array(5)
+vector = np.array([1, 2, 3])
+matrix = np.array([[1, 2], [3, 4]])
+tensor = np.array([[[1, 2], [3, 4]],
+                    [[5, 6], [7, 8]]])
+
+print(scalar.shape)     # ()
+print(vector.shape)     # (3, )
+print(matrix.shape)     # (2, 2)
+print(tensor.shape)     # (2, 2, 2)
+
+
+Ex02
+import torch
+
+# Create a tensor
+x = torch.tensor([[1, 2], [3, 4]], dtype=torch.float32)
+y = torch.tensor([[5, 6], [7, 8]], dtype=torch.float32)
+
+# Perform operations
+# Matrix addition
+z = x + y
+
+# Matrix multiplication
+w = torch.matmul(x, y)
+
+print("Addition:\n", z)
+print("Multiplication:\n", w)
+
+# OUTPUT
+# Addition:
+# tensor([[ 6.,  8.],
+#        [10., 12.]])
+#Multiplication:
+# tensor([[19., 22.],
+#        [43., 50.]])
