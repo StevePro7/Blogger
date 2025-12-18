@@ -1,0 +1,241 @@
+18-Dec-2025
+
+
+Atari
+ALE
+Atari Learning Environment
+ALE = C++ library
+rendering inside ALE not pygame
+display using SDL   Simple DirectMedia Layer
+
+step()
+~/GitHubX/Farama-Foundation/Gymnasium/.venv/lib/python3.8/site-packages/shimmy/atari_env.py
+
+self.ale.loadROM(getattr(roms, self._game))
+
+HERE ARE ROMS
+backgammon.bin
+~/GitHubX/Farama-Foundation/Gymnasium/.venv/lib/python3.8/site-packages/AutoROM/roms/
+
+Stellar
+emulator
+https://stella-emu.github.io/docs/index.html
+
+MuJoCo
+EGL
+Embedded-Systems Graphics Library.
+GLFW
+GPU-accelerated OpenGL
+
+the other 3x categories do use pygame
+
+
+EXAMPLE
+cliffwalking
+~/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/toy_text/cliffwalking.py
+
+Reference:
+https://github.com/dennybritz/reinforcement-learning
+
+def step(self, a):
+def render(self):
+
+~/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/toy_text/img/stool.png
+
+PyGame
+pygame.init()
+pygame.display.init()
+pygame.display.set_caption("CliffWalking")
+pygame.Surface(self.window_size)
+pygame.time.Clock()
+pygame.transform.scale(pygame.image.load(f_name), self.cell_size)
+pygame.transform.scale(pygame.image.load(file_name), self.cell_size)
+pygame.event.pump()
+pygame.display.update()
+pygame.surfarray.pixels3d(self.window_surface)
+
+
+
+Sorted list of unique pygame APIs used
+Initialization & shutdown
+pygame.init
+pygame.quit
+
+Display / window management
+pygame.display.set_mode
+pygame.display.flip
+pygame.display.update
+
+Timing
+pygame.time.Clock
+Clock.tick
+
+Event handling
+pygame.event.get
+pygame.QUIT
+
+Surfaces
+pygame.Surface
+Surface.fill
+Surface.blit
+
+Drawing primitives
+pygame.draw.aaline
+pygame.draw.circle
+pygame.draw.line
+pygame.draw.lines
+pygame.draw.polygon
+pygame.draw.rect
+
+Rect utilities
+pygame.Rect
+
+Fonts & text (ToyText)
+pygame.font.Font
+pygame.font.SysFont
+Font.render
+
+Image / pixel access
+pygame.surfarray.array3d
+pygame.surfarray.pixels3d
+
+Transforms
+pygame.transform.flip
+pygame.transform.rotate
+pygame.transform.scale
+
+
+
+
+Sorted list of unique NumPy APIs used in Gymnasium
+Array creation
+np.array
+np.asarray
+np.zeros
+np.ones
+np.empty
+np.full
+
+Array attributes
+ndarray.dtype
+ndarray.shape
+ndarray.ndim
+ndarray.size
+
+Array manipulation
+np.reshape
+np.squeeze
+np.expand_dims
+np.transpose
+np.stack
+np.concatenate
+np.clip
+np.pad
+
+Indexing & slicing helpers
+np.where
+np.take
+np.put
+np.unravel_index
+np.ravel_multi_index
+
+Broadcasting & repetition
+np.tile
+np.repeat
+
+Math (scalar + vectorized)
+np.abs
+np.add
+np.subtract
+np.multiply
+np.divide
+np.maximum
+np.minimum
+np.sign
+np.sqrt
+np.square
+np.power
+np.log
+np.exp
+np.sin
+np.cos
+np.tan
+
+Reductions
+np.sum
+np.mean
+np.std
+np.min
+np.max
+np.argmax
+np.argmin
+np.any
+np.all
+
+Linear algebra (lightweight)
+np.dot
+np.matmul
+np.linalg.norm
+
+Random number generation
+np.random.default_rng
+Generator.random
+Generator.uniform
+Generator.normal
+Generator.integers
+Generator.choice
+Generator.multinomial
+(Gymnasium deliberately avoids legacy np.random.* globals)
+
+Data types & casting
+np.float32
+np.float64
+np.int32
+np.int64
+np.uint8
+np.bool_
+astype
+
+Comparison & logical
+np.equal
+np.not_equal
+np.less
+np.greater
+np.logical_and
+np.logical_or
+np.logical_not
+np.isfinite
+np.isnan
+
+Ranges & grids
+np.arange
+np.linspace
+
+Utilities
+np.copy
+np.allclose
+np.set_printoptions
+
+
+
+
+Where JAX / PyTorch / TensorFlow do appear
+They are used by RL algorithms, outside Gymnasium.
+Examples:
+
+PyTorch
+Stable-Baselines3
+CleanRL
+TorchRL
+RLlib (torch backend)
+
+JAX
+Brax (envs + training)
+Acme
+CleanRL-JAX
+PureJAXRL
+
+TensorFlow
+TF-Agents
+RLlib (TF backend)
+All of these consume Gymnasium environments, but Gymnasium never imports them.
