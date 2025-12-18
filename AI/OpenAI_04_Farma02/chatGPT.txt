@@ -17,9 +17,24 @@ HERE ARE ROMS
 backgammon.bin
 ~/GitHubX/Farama-Foundation/Gymnasium/.venv/lib/python3.8/site-packages/AutoROM/roms/
 
+THIS works
+sudo apt update
+sudo apt install stella
+
+Start
+
+This didn't work as I have 20.04 NOT 22.04
 Stellar
 emulator
 https://stella-emu.github.io/docs/index.html
+
+Download
+https://stella-emu.github.io/downloads.html
+sudo dpkg -i stella_7.0_amd64.deb
+dpkg -l | grep stella
+sudo apt remove stella
+
+
 
 MuJoCo
 EGL
