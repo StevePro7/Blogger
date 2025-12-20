@@ -52,6 +52,84 @@ Chp01
 26	DL approach to ML w/ applied Math
 	
 	
-TODO
-logistic sigmoids
+Chp02
+29	scalars	single number
+s ∈ R	s = real-value scalar		slope of line
+n ∈ N	n = natural number scalar	no. units
 
+30	vectors	array of numbers
+x = [x1, x2, ... xn]
+S={1,3,6}		Set of x contains x1, x3, x6
+x−S			vector = all x except x1, x3, x6
+
+30	matrices	2D array of numbers
+A ∈ Rm×n		matrix A width=m height=n	real-value
+Ai,:			i-th row of A
+A:,i			i-th col of A
+
+31	tensors	array of numbers > 2x axes
+“A”
+Ai,j,k			element of A at co-ords (i,j,k)
+
+31	transpose	mirror image across main diagonal line
+AT
+(AT)i,j= Aj,i
+
+32
+x = [x1, x2, x3]T
+C = A + B 		add 2x matrices i.e	Ci,j= Ai,j+ Bi,j
+D = a . B + c		multiple matrix by scalar
+
+DL
+C=A+b			matrix = matrix + vector Ci,j=Ai,j+bj
+broadcasting		implicit copying of b to many locations
+
+
+32	C = AB		matrix multiplication
+dot product		btwn two vectors x and y	xTy
+
+33	distributed	A(B + C) = AB + AC
+	associative	A(BC) = (AB)C
+NOT	commutative	AB != BA
+but 	commutative	xTy = yTx
+	transpose	(AB)T= BT . AT
+i.e.			xTy = (xTy)T = yTx
+	
+34	identity matrix	In∈ Rn×n
+	inverse  matrix	A−1
+A−1A = In			matrix inverse multiplied on left
+
+35	linear combination
+span	of set of vectors = set of all points obtainable by linear combination
+
+36	linear dependence
+	singular	square matrix with linearly dependent columns
+
+37
+AA−1= I			matrix inverse multiplied on right
+
+37	Norm		ML = measure size of vectors
+norm of vector x = distance from origin to point x
+
+Euclidean norm		L2 norm i.e. p=2
+euclidean distance from origin to point identified by x
+
+L2 norm in ML frequent = ||x||	subscript 2 omitted
+
+38
+L1 norm in ML when difference btwn zero and nonzero = IMPORTANT
+max norm L[infinity]	simplifies abs value element w/ largest magnitude
+
+xTy = ||x||2||y||2cos θ
+
+39	symmetric matrix = matrix = to its own transpose	A = AT
+	unit vector = vector with unit norm	length = 1
+	orthongonal vector x and y = 90deg	xTy = 0
+orthonormal		vectors orthongonal plus have unit form
+orthongonal matrix	matrix A inverse = matrix A transpose
+
+40	Eigendecomposition
+decompose matrix into a set of eigenvectors and eigenvalues
+
+45	Determinant	= product of all the eigenvalues of the matrix
+PCA	Principal Components Analysis
