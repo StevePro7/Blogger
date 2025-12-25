@@ -1,0 +1,22 @@
+Performance
+25-Dec-2025
+
+
+Codon: Python That Runs 100x Faster Without Changing Your Code
+https://www.towardsdeeplearning.com/codon-python-that-runs-100x-faster-without-changing-your-code-5cbec5c3b172
+
+Learn how Codon achieves 100x Python speedups through AOT compilation. Native multithreading, GPU kernels, zero overhead.
+
+strange - though says doesn't work so well with C
+
+For my use case: ML research and healthcare AI, Codon is extremely compelling. The performance gains on computational kernels are hard to ignore, and the ability to parallelize without fighting the GIL is huge.
+
+ChatGPT
+Codon is an independent, compiled programming language with Python-like syntax, designed for high performance — not a Python implementation.
+
+SUMMARY
+instead of writing performant code in C/C++ - which has a steeper learning curve - one
+could write that code in Codon - as it has Python like syntax and then have Python code
+interface with it [Codon]
+
+However, Codon does not currently have its own unit test framework like C++ has gtest
