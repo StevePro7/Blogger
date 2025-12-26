@@ -185,3 +185,55 @@ superscript x* = arg min f(x)
 90	Newton's method	based on second-order Taylor series expansion
 91	Lagrangian
 Remember Moore-Penrose pseudoinverse is the superscript "+"
+
+
+Chp05
+96	ML = applied statistics
+	frequentist estimators + Bayesian inference
+DL algorithms based on optimization aglo = stochastic gradient descent
+97	Learning algorithms	ML = learn from data
+E	Experiences		supervised OR unsupervised
+T	Tasks			process of learning [not the task]
+P	Performance measures	ML quantitative measure
+
+Tasks
+Classification
+Classification w/ missing inputs
+Regression
+Transcription
+Machine translation
+Structured output
+Anomaly detection
+Synthesis and sampling
+Imputation of missing values
+Denoising
+Density estimation	probability mass function estimation
+
+101
+P	Performance measures	ML quantitative measure
+e.g.	accuracy	
+
+102
+E	Experiences		supervised OR unsupervised
+
+103
+Supervised learning		dataset w/ features
+				each example = label OR target
+104	Supervised learning	e.g.
+regression
+classification
+RL	algorithms interact w/ an environment
+104	Design matrix
+each row	different example	vector
+each col	different features
+
+105	Linear Regression
+106	measure performance = compute MSE of model on test set
+	Mean Square Error
+108	b = bias = intercept term
+108	GENERALIZATION	ability to perform well on unobserved inputs
+108	Capacity, Overfitting, Underfitting	
+109	i.i.d	independent identically distributed
+110	capacity = ability to fit a wide variety of functions
+112	Occam's razor	choose simplest hypothesis
+114	Bayes error = error incurred making predictions from true distribution
