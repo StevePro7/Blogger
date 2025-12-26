@@ -1,0 +1,30 @@
+Retro Arch Linux
+26-Dec-2025
+
+Ubuntu Linux 20.04
+lsb_release -a
+
+sudo apt update
+sudo apt install retroarch
+
+Start RetroArch
+BUT I had to change the file
+
+retroarch.cfg
+~/.config/retroarch
+
+libretro_directory = "~/.config/retroarch/cores"
+libretro_info_path = "~/.config/retroarch/info/"
+
+
+Created 2x "demo" cores programs
+~/Steven/MyCpp/HelloLibretro/hello_libretro.c
+
+hello_libretro.so
+~/Steven/MyCpp/HelloLibretro/cmake-build-debug
+
+OR
+demo_libretro.so
+~/GitHub/SteveProXNA/stable-retro/demo_core/build
+
+
