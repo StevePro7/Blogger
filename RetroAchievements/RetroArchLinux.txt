@@ -28,3 +28,24 @@ demo_libretro.so
 ~/GitHub/SteveProXNA/stable-retro/demo_core/build
 
 
+IMPORTANT
+I got RetroArch to work i.e. play Sega ROMs
+
+copy the *.so files built from stable-retro
+e.g.
+
+genesis_plus_gx_libretro.so
+~/GitHub/SteveProXNA/stable-retro/cores/genesis
+
+to here
+~/.config/retroarch/cores
+
+Launch RetroArch
+Load Core
+genesis_plus_gx_libretro.so
+
+Load Content
+navigate to ROM file
+click ROM file to load
+click Genesis Plus GX
+ROM loads
