@@ -1,0 +1,27 @@
+project layout
+27-Dec-2025
+
+myproject/
+├─ CMakeLists.txt
+│
+├─ cpp/
+│  ├─ src/
+│  │  └─ core.cpp
+│  │  └─ core.ch
+//│  ├─ include/
+//│  │  └─ myproject/core.hpp
+│  └─ tests/
+│     └─ test_core.cpp
+│
+├─ python/
+│  ├─ pyproject.toml
+│  ├─ src/
+│  │  └─ myproject/
+│  │     ├─ __init__.py
+│  │     ├─ api.py
+│  │     └─ _core.so     ← ⭐ THIS IS THE CORRECT LOCATION
+│  │
+│  └─ tests/
+│     └─ test_api.py
+│
+└─ build/
