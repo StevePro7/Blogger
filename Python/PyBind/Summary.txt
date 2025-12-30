@@ -1,0 +1,46 @@
+Summary
+30-Dec-2024
+
+To summarize...
+
+mention next step  could be to try 
+
+ctypes
+LoadLibrary
+
+Lin	so
+Mac	dylib
+Win	dll
+
+
+TODO
+need to check this - now Python loads library
+
+from ctypes import CDLL
+lib = CDLL("mylib.so")
+
+OR
+ctypes.LoadLibrary("mylib.so")
+
+
+Plain C library - but does it have C ABI wrapper around C++ code?
+
+
+// mylib.h
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int add(int a, int b);
+
+#ifdef __cplusplus
+}
+#endif
+
+
+// mylib.cpp
+#include "mylib.h"
+
+int add(int a, int b) {
+    return a + b;
+}
