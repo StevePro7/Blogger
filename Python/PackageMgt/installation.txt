@@ -1,6 +1,36 @@
 Installation
 25-Dec-2025
 
+TABLE
+
+<b>Linux</b><br />
+
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;curl -LsSf https://astral.sh/uv/install.sh | sh<br />
+</td></tr>
+</table>
+<br />
+<b>Mac OS/X</b><br />
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;brew update && brew install uv<br />
+</td></tr>
+</table>
+<br />
+<b>Windows</b><br />
+
+<br />
+<table width="99%" border="1">
+<tr><td>
+&nbsp;powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"<br />
+</td></tr>
+</table>
+<br />  
+
+
 Reference:
 UV Python management
 https://medium.com/jacklee26/uv-python-management-83d7df7cbe62

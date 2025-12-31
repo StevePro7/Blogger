@@ -1,0 +1,75 @@
+Projects
+31-Dec-2025
+
+
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b>PYTHON</b></td>  
+<td>&nbsp;~/HelloPython</td>
+<td>&nbsp;~/HelloPython/.venv</td>
+</tr>
+<tr>
+  <td>&nbsp;<b>CONDA</b></td>
+<td>&nbsp;~/HelloConda</td>
+<td>&nbsp;~/anaconda3/bin/conda</td>
+</tr>
+<tr>
+<td>&nbsp;<b>POETRY</b></td>
+<td>&nbsp;~/HelloPoetry</td>
+<td>&nbsp;~/.local/bin/poetry</td>
+</tr>
+<tr>
+  <td>&nbsp;<b>UV</b></td>
+<td>&nbsp;~/HelloUV</td>
+<td>&nbsp;~/.local/bin/uv</td>
+</tr>
+</table>
+<br />
+  
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;TYPE</td>
+<td>&nbsp;Python</td>
+<td>&nbsp;Poetry</td>
+<td>&nbsp;UV</td>
+</tr>
+<tr>
+<td>&nbsp;NAME</td>
+<td>&nbsp;~/HelloPython</td>
+<td>&nbsp;~/HelloPoetry</td>
+<td>&nbsp;~/HelloUV</td>
+</tr>
+
+<tr>
+<td>&nbsp;PATH</td>
+<td>&nbsp;~/HelloPython/.venv</td>
+<td>&nbsp;~/.local/bin/poetry</td>
+<td>&nbsp;~/.local/bin/uv</td>
+</tr>
+</table>
+<br />
+
+
+
+LIN
+Name		HelloPython		HelloConda
+Location	~/HelloPython		~/HelloConda
+Type		Virtualenv		Conda
+Path		~/HelloPython/.venv	~/anaconda3/bin/conda
+
+Name		HelloPoetry		HelloUV
+Location	~/HelloPoetry		~/HelloUV
+Type		Poetry			UV
+Path		~/.local/bin/poetry	~/.local/bin/uv
+
+
+MAC
+Name		HelloPython		HelloConda
+Location	~/HelloPython		~/HelloConda
+Type		Virtualenv		Conda
+Path		~/HelloPython/.venv	~/opt/anaconda3/condabin/conda
+
+Name		HelloPoetry		HelloUV
+Location	~/HelloPoetry		~/HelloUV
+Type		Poetry			UV
+Path		~/.local/bin/poetry	/usr/local/bin/uv
