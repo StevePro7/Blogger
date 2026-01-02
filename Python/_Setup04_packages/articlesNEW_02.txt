@@ -1,12 +1,202 @@
-UV Package Mgt
+UV Python management
 02-Jan-2026
 
 
 https://medium.com/jacklee26/uv-python-management-83d7df7cbe62
 
+IMPORTANT
+will not do any requirements.txt
 
 
+ARCHIVE
 uv build
 uv publish
 A source distribution (.tar.gz), which contains all of your package's source code.
 A wheel (.whl), which is a pre-built and pre-packaged version of your project.
+
+
+1. What is UV
+
+2. Traditional Way
+2 .1 Why do we need to create a virtual environment?
+Python version conflict
+Transitive dependency conflict
+
+
+2.2 Create a virtual environment example
+Activate the virtual environment:
+- For Linux/macOS: source .venv/bin/activate
+- For Windows: .\.venv\Scripts\activate
+
+uv pip install requests
+transitive dependencies OR sub dependencies
+
+
+//2.3 Sharing the package
+//2.4 Install and remove dependencies with toml file
+
+BUT
+pyproject.toml
+https://packaging.python.org/en/latest/guides/writing-pyproject-toml
+
+tools like poetry or pdm will automatically handle installing/removing the transitive dependencies properly
+
+
+NOTE - will NOT do but
+pip install .
+vs.
+pip install –e .
+
+
+Traditional way
+create virtual: env py -m venv .venv
+activate venv: .\venv\Scripts\activate
+add and edit dependency: pyproject.toml
+install it :pip install -e .
+
+
+3. Using UV
+3.1 Introduction / Getting Started 🔝
+Download and INSTALLATION
+
+Lin
+Mac
+Win
+
+
+3.2 Project Initialization 
+uv init
+uv init --python 3.11.11
+
+pyproject.toml
+.python-version
+.gitignore
+main.py			TODO - check!!
+README.md
+
+3.3 uv init 
+mkdir HW
+cd HW
+uv init
+
+
+WEIRD - not sure why this out-of-sync??
+3.9 venv
+uv venv
+uv venv --python 3.11.11
+SBA
+source .venv/bin/activate
+.venv\Scripts\activate
+
+which python
+OR
+import sys
+print(sys.executable)
+
+
+
+3.4 uv run: run script
+uv run main.py
+
+IMPORTANT
+if run Python via PyCharm ensure Python interpreter matches
+path from command
+which python
+
+//3.5 Managing Python Interpreters
+//NO
+/*
+uv python install
+uv python list
+uv python list --only-installed
+uv python install
+*/
+
+
+3.6 uv pip
+uv pip install <dep>
+uv pip install <dep> --upgrade
+
+uv add <dependency>
+uv remove< dependency>
+uv sync
+
+
+3.8 uv tree
+shows you a hierarchy of all your project's dependencies, including transitive dependencies (sub-dependencies)
+displays the relationships between packages
+
+
+3.10 uv sync
+uv sync
+
+
+3.11 uv lock
+uv lock
+NB: uv init does not generate uv.lock file immediately
+
+//uv lock
+//uv lock --upgrade package pandas
+
+
+//3.12 script header block --script
+//NO
+
+//3.13 uv tool: Install Tools into an Isolated Environment
+//NO
+//uv tool list
+
+3.14 uvx: install tool temporarily
+e.g.
+uvx ruff check 
+
+TODO - do other on-the-fly commands for other packages
+e.g.
+Linters and Formatters:
+Formatters: 	black
+Linters: 	ruff, flake8
+Type Checkers:	mypy
+//HTTP Clients:	httpie
+//Testing: 	pytest
+
+
+//Publish Package using UV
+//NO
+
+
+Conclusion 
+Categorized summary of all the UV commands
+
+Install Dependencies:
+Install a dependency and update pyproject.toml
+
+Remove / Uninstall Dependencies
+
+Virtual Environment Management
+
+Python Interpreter Management
+
+Project Initialization & Running
+
+Lock & Sync
+
+Tool Management
+
+Cache Management
+
+Build & Publish Packages
+
+
+UV COMMANDS
+uv init --python 3.11.11
+uv venv --python 3.11.11
+
+uv pip list
+uv pip install
+
+uv sync
+
+which python
+OR
+import sys
+print(sys.executable)
