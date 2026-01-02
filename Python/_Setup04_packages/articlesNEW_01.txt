@@ -1,0 +1,22 @@
+Navigating the Python Packaging Landscape: Pip vs. Poetry vs. uv — A Developer’s Guide
+02-Jan-2026
+
+
+https://dimasyotama.medium.com/navigating-the-python-packaging-landscape-pip-vs-poetry-vs-uv-a-developers-guide-49a9c93caf9c
+
+
+
+
+3. Side-by-side summary
+Task			uv				Poetry			pip / venv
+Initialize project	uv init				poetry init		manual
+Create venv		uv venv				poetry install		python -m venv .venv
+Activate venv		source .venv/bin/activate	poetry shell		source .venv/bin/activate
+Install deps		uv add pkg			poetry add pkg		pip install pkg
+
+
+Windows
+.venv\Scripts\activate
+
+Lin / Mac
+source .venv/bin/activate
