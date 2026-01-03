@@ -1,4 +1,23 @@
 <u>uv cache</u><br />
+When you use uv all tools and dependencies are stored in cache.  These commands remove all cached data: 
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv cache clean
+&nbsp;&nbsp;rm -r "$(uv python dir)"
+&nbsp;&nbsp;rm -r "$(uv tool dir)"
+</pre>
+</td></tr>
+</table>
+<br />
+
+
+
+
+
+ARCHIVE
+<u>uv cache</u><br />
 When you use uv all tools and dependencies are stored in a cache.  This command removes all cached data: <b>uv cache clean</b>
 <br />
 <br />
