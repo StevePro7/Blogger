@@ -2,6 +2,33 @@ Virtual Environment<br />
 A virtual environment isolates Python project interpreter and installed packages from the system and other Python projects which means each project should have its own environment, its version and dependencies.
 <br /><br />
 Create a virtual environment in the traditional way using python and pip then activate virtual environment:
+<br />
+<table width="99%" border="1">
+<tr><td colspan="2">
+&nbsp;python -m venv .venv<br />
+</td></tr>
+<tr>
+<td width="50%">&nbsp;Linux OR Mac OS/X</td>
+<td>&nbsp;source .venv/bin/activate</td>
+</tr>  
+<tr>
+<td width="50%">&nbsp;Windows</td>
+<td>&nbsp;.\.venv\Scripts\activate</td>
+</tr> 
+</table>
+<br />
+Next, install packages using python, pip and requirements.txt OR poetry with pyproject.toml configuration:
+<br />
+Brittle and/or slow [transitive] dependency resolution!
+<br /><br />
+
+
+
+/*
+Virtual Environment<br />
+A virtual environment isolates Python project interpreter and installed packages from the system and other Python projects which means each project should have its own environment, its version and dependencies.
+<br /><br />
+Create a virtual environment in the traditional way using python and pip then activate virtual environment:
 <br /><br />
 python -m venv .venv
   <br>
@@ -13,3 +40,24 @@ Next, install packages using python, pip and requirements.txt OR poetry with pyp
 <br />
 Brittle and/or slow [transitive] dependency resolution!
 <br /><br />
+
+
+
+<table width="99%" border="1">
+<tr><td colspan="2">
+&nbsp;python -m venv .venv<br />
+</td></tr>
+<tr>
+<td width="50%">&nbsp;Linux OR Mac OS/X</td>
+<td>&nbsp;source .venv/bin/activate</td>
+</tr>  
+<tr>
+<td width="50%">&nbsp;Mac OS/X</td>
+<td>&nbsp;source .venv/bin/activate</td>
+</tr> 
+<tr>
+<td width="50%">&nbsp;Windows</td>
+<td>&nbsp;.\.venv\Scripts\activate</td>
+</tr> 
+</table>
+*/

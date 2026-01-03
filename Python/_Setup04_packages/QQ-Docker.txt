@@ -5,5 +5,24 @@ GitHub Actions
 
 Docker
 https://viveksinghpathania.medium.com/from-pip-to-lightning-how-uv-opened-my-eyes-to-better-python-workflows-dfa50e8a5893
-https://fmind.medium.com/poetry-was-good-uv-is-better-an-mlops-migration-story-f52bf0c6c703
+
+ENV UV_PROJECT_ENVIRONMENT=/code/.venv
+COPY pyproject.toml uv.lock /_lock/
+RUN cd /_lock && uv sync --frozen --no-group dev --group prod
+
+
 https://bury-thomas.medium.com/mastering-python-project-management-with-uv-part-3-mlops-4906965f45a2
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+# Copy the application into the container
+COPY . /app
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+RUN uv sync --frozen --no-cache
+
+
+
+//https://fmind.medium.com/poetry-was-good-uv-is-better-an-mlops-migration-story-f52bf0c6c703
