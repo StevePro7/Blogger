@@ -1,0 +1,15 @@
+Virtual Environment<br />
+A virtual environment isolates Python project interpreter and installed packages from the system and other Python projects which means each project should have its own environment, its version and dependencies.
+<br /><br />
+Create a virtual environment in the traditional way using python and pip then activate virtual environment:
+<br /><br />
+python -m venv .venv
+  <br>
+Linux: source .venv/bin/activate<br>
+Mac OS/X: source .venv/bin/activate<br>
+Windows: .\.venv\Scripts\activate
+<br /><br />
+Next, install packages using python, pip and requirements.txt OR poetry with pyproject.toml configuration:
+<br />
+Brittle and/or slow [transitive] dependency resolution!
+<br /><br />

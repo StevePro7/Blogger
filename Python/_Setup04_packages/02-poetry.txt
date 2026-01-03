@@ -1,0 +1,10 @@
+Python Setup Cheat Sheet detailed how to install pip as the de facto standard package-management system on Windows, Mac OS/X and Linux.  However, requirements.txt does not lock down transitive dependencies + versioning which becomes brittle.  Poetry solved this problem using pyproject.toml configuration and lock file.
+<br /><br />
+  
+UV<br />
+Replicating Poetry with more deterministic builds using using pyproject.toml configuration and lock file, UV is built in Rust by Astral as a full rethinking of Python packaging designed for speed and simplicity.  UV: pitched as "A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv and more".  Here is a detailed article comparing the Python Packaging Landscape: Pip vs. Poetry vs. UV from a developer's standpoint.
+<br /><br />
+
+IMPORTANT<br />
+First let's check out the traditional way using python and pip to compare and illustrate benefits of using UV <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+<br /><br />
