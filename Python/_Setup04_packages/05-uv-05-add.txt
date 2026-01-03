@@ -1,0 +1,19 @@
+<u>uv add</u><br />
+Install Python packages either using <i>uv pip install</i> or <i>uv add</i> commands.  Prefer <b>uv add</b> because this updates pyproject.toml file automagically thus you are able to execute <i>uv sync</i> command to install the dependencies.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0SsDA-QXu4-3zW9a1Ajy81x4-rVXPE_v4r4khCEcc1JwthGtckVVdT8k2EwA_p9KSw-vC4Qv3njtcpspZn2Xxh92X9GyYC0uorKeiRHUzGW2fPjRCkjBYAexpLHvl1SVr5TX0ihX9SO-b5lp947rkzYWF7575goCG7iO0I2d2YTht9hY5piHWszAe96M/s809/04-uv_add.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0SsDA-QXu4-3zW9a1Ajy81x4-rVXPE_v4r4khCEcc1JwthGtckVVdT8k2EwA_p9KSw-vC4Qv3njtcpspZn2Xxh92X9GyYC0uorKeiRHUzGW2fPjRCkjBYAexpLHvl1SVr5TX0ihX9SO-b5lp947rkzYWF7575goCG7iO0I2d2YTht9hY5piHWszAe96M/s600/04-uv_add.png"/></a>
+-->
+<br />
+Inside PyCharm Terminal | Execute the following commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip list
+&nbsp;&nbsp;uv add requests
+&nbsp;&nbsp;uv sync
+</pre>
+</td></tr>
+</table>
+<br />
