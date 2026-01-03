@@ -47,10 +47,15 @@ The uv.lock file records all the exact versions of all project dependencies UV f
 UV tool<br>
 UV tool installs persistent tools into virtual environment that are required for that particular Python project
   <br>
-uv tool install ruff<br>
-uv tool run ruff<br>
-uv tool upgrade --all<br>
-uv uninstall ruff  
+uv tool list
+  <br>
+uv tool install ruff
+    <br>
+uv tool run ruff check
+    <br>
+uv tool upgrade --all
+    <br>
+uv tool uninstall ruff
 <br /><br />
   
 UVX tool<br>
