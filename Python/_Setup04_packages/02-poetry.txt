@@ -1,10 +1,11 @@
-Python Setup Cheat Sheet detailed how to install pip as the de facto standard package-management system on Windows, Mac OS/X and Linux.  However, requirements.txt does not lock down transitive dependencies + versioning which becomes brittle.  Poetry solved this problem using pyproject.toml configuration and lock file.
+Python Setup Cheat Sheet detailed how to install <a href="https://en.wikipedia.org/wiki/Pip_(package_manager)">pip</a> as the de facto standard package-management system on Windows, Mac OS/X and Linux.  However, requirements.txt does not lock down transitive dependencies + versioning which becomes brittle.  <a href="https://python-poetry.org/docs">Poetry</a> solved this problem using <a href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml">pyproject.toml</a> configuration and lock file.
 <br /><br />
   
-UV<br />
-Replicating Poetry with more deterministic builds using using pyproject.toml configuration and lock file, UV is built in Rust by Astral as a full rethinking of Python packaging designed for speed and simplicity.  UV: pitched as "A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv and more".  Here is a detailed article comparing the Python Packaging Landscape: Pip vs. Poetry vs. UV from a developer's standpoint.
+<b>uv</b><br />
+Replicating Poetry with more deterministic builds using using pyproject.toml configuration and lock file, <a href="https://docs.astral.sh/uv">uv</a> is built in Rust by Astral as a full rethinking of Python packaging designed for speed and simplicity.  uv: pitched as "A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv and more".  <a href="https://dimasyotama.medium.com/navigating-the-python-packaging-landscape-pip-vs-poetry-vs-uv-a-developers-guide-49a9c93caf9c">Here</a> is a detailed article comparing the Python Packaging Landscape: Pip vs. Poetry vs. UV from a developer's standpoint.
 <br /><br />
 
 IMPORTANT<br />
-First let's check out the traditional way using python and pip to compare and illustrate benefits of using UV <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+First check out the <a href="https://medium.com/jacklee26/uv-python-management-83d7df7cbe62">traditional</a> way using python and pip to compare and illustrate benefits of now using uv:
 <br /><br />
+  
