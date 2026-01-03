@@ -1,0 +1,17 @@
+<u>uv init</u><br />
+Create new directory and execute following command to initialize Python project with an interpreter version:
+  <br>
+uv init --python 3.11.11
+  <br>
+This command will generate project files: .gitignore, .python-version, pyproject.toml, main.py, README.md
+  <br /><br />
+  
+UV venv<br>
+Navigate into Python project and execute following command to create the virtual environment and activate:
+  <br>
+uv venv --python 3.11.11
+  <br>
+  Linux: source .venv/bin/activate<br>
+Mac OS/X: source .venv/bin/activate<br>
+Windows: .\.venv\Scripts\activate
+  <br><br>
