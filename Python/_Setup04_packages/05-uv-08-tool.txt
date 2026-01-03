@@ -1,0 +1,22 @@
+<u>uv tool</u><br />
+UV tool installs persistent tools into virtual environment that are required for that particular Python project:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3tNav_rR_TCa1u1NaeneNZtDvIugePI7DmOda7TCCvk-3fggPnnZxdB1o-IGJ5t4-yx-hsoTJUHOu1Hy62pGzlqPTaqpKzAhdaBlWU_1nsfFgf1yGTAGRMDPhQQu-Dyrty1oy42p-vgQmSLc_77yJ-TcinYDshnKXi8rcbkApDhRLyxrSJHJ5nIBzjng/s807/06-uv_tool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3tNav_rR_TCa1u1NaeneNZtDvIugePI7DmOda7TCCvk-3fggPnnZxdB1o-IGJ5t4-yx-hsoTJUHOu1Hy62pGzlqPTaqpKzAhdaBlWU_1nsfFgf1yGTAGRMDPhQQu-Dyrty1oy42p-vgQmSLc_77yJ-TcinYDshnKXi8rcbkApDhRLyxrSJHJ5nIBzjng/s600/06-uv_tool.png"/></a>
+-->
+<br />
+Inside PyCharm Terminal | Execute the following commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv tool list
+&nbsp;&nbsp;uv tool install ruff
+&nbsp;&nbsp;uv tool run ruff check
+&nbsp;&nbsp;uv tool upgrade --all
+&nbsp;&nbsp;uv tool uninstall ruff
+&nbsp;&nbsp;uv tool list
+</pre>
+</td></tr>
+</table>
+<br />
