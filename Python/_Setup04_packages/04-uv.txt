@@ -1,0 +1,69 @@
+UV install<br />
+Download and install UV for Linux, Mac OS/X or Windows OR Launch PyCharm and install from home page:
+<br />
+QQ-Installation.txt  
+<br /><br />
+  
+UV init<br>
+Create new directory and execute following command to initialize Python project with an interpreter version:
+  <br>
+uv init --python 3.11.11
+  <br>
+This command will generate project files: .gitignore, .python-version, pyproject.toml, main.py, README.md
+  <br /><br />
+  
+UV venv<br>
+Navigate into Python project and execute following command to create the virtual environment and activate:
+  <br>
+uv venv --python 3.11.11
+  <br>
+  Linux: source .venv/bin/activate<br>
+Mac OS/X: source .venv/bin/activate<br>
+Windows: .\.venv\Scripts\activate
+  <br><br>
+
+UV python<br>
+At this point you have Python project initialized with virtual environment activated.  Confirm correct version of Python interpreter installed and activate.  When using PyCharm ensure the IDE interpreter path is aligned!
+    <br>
+which python
+  <br><br>
+  
+UV add<br>
+Install Python packages either using uv pip install or uv add commands.  Prefer uv add because this updates pyproject.toml file automagically thus you are able to execute uv sync command to install the dependencies.
+<br /><br />
+  
+UV tree<br>
+After execute uv add you can verify what is installed by checking pyproject.toml file or execute uv pip list but another useful method is uv tree which shows a hierarch of all your project's dependencies and relationships.
+<br /><br />
+  
+UV sync<br>
+As above, execute uv add or update pyproject.toml to install dependencies then execute uv sync to update the virtual environment.
+<br /><br />
+ 
+UV lock<br>
+The uv.lock file records all the exact versions of all project dependencies UV figures are compatible from the pyproject.toml file to ensure constant deterministic builds with the same dependenices each time and CI/CD
+<br /><br />
+
+UV tool<br>
+UV tool installs persistent tools into virtual environment that are required for that particular Python project
+  <br>
+uv tool install ruff<br>
+uv tool run ruff<br>
+uv tool upgrade --all<br>
+uv uninstall ruff  
+<br /><br />
+  
+UVX tool<br>
+Finally uvx is an alias for <i>uv tool run</i> but is designed to be run immediately without installing it persistently
+    <br>
+uvx ruff check  
+  <br>
+<br /><br />
+  
+UV cache<br>
+When you use uv all tools and dependencies are stored in a cache.  This command removes all cached data
+    <br>
+uv cache clean
+  <br>
+<br /><br />  
+  
