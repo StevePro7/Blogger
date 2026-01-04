@@ -1,27 +1,25 @@
-<b>Cluster YAML</b><br />
+GitHub Actions<br>
+A common <a href="https://viveksinghpathania.medium.com/from-pip-to-lightning-how-uv-opened-my-eyes-to-better-python-workflows-dfa50e8a5893">GitHub Actions</a> pattern is to use UV to install only Prod dependencies during your build or deploy:
+<br />
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
-&nbsp;&nbsp;kind: ClusterConfig
-&nbsp;&nbsp;apiVersion: eksctl.io/v1alpha5
-&nbsp;&nbsp;
-&nbsp;&nbsp;metadata:
-&nbsp;&nbsp;  name: stevepro-aws-eks
-&nbsp;&nbsp;  region: eu-west-1
-&nbsp;&nbsp;  version: "1.27"
-&nbsp;&nbsp;  tags:
-&nbsp;&nbsp;    createdBy: stevepro
-&nbsp;&nbsp;
-&nbsp;&nbsp;kubernetesNetworkConfig:
-&nbsp;&nbsp;  ipFamily: IPv4
-&nbsp;&nbsp;
-&nbsp;&nbsp;iam:
-&nbsp;&nbsp;  withOIDC: true
-&nbsp;&nbsp;  serviceAccounts:
-&nbsp;&nbsp;  - metadata:
-&nbsp;&nbsp;      name: ebs-csi-controller-sa
-&nbsp;&nbsp;      namespace: kube-system
-&nbsp;&nbsp;    attachPolicyARNs:
-&nbsp;&nbsp;    - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-&nbsp;&nbsp;    roleOnly: true
-&nbsp;&nbsp;    roleName: stevepro-aws-eks-AmazonEKS_EBS_CSI_DriverRole
+&nbsp;&nbsp;name: Testing
+&nbsp;&nbsp;on:
+&nbsp;&nbsp;  push:
+&nbsp;&nbsp;    branches:
+&nbsp;&nbsp;      - "main"
+&nbsp;&nbsp;jobs:
+&nbsp;&nbsp;  build:
+&nbsp;&nbsp;    runs-on: ubuntu-latest
+&nbsp;&nbsp;    steps:
+&nbsp;&nbsp;      - uses: actions/checkout@v4
+&nbsp;&nbsp;      - name: Install UV
+&nbsp;&nbsp;        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+&nbsp;&nbsp;      - name: Sync only prod dependencies
+&nbsp;&nbsp;        run: uv sync --no-group dev --group prod
+&nbsp;&nbsp;      - name: Run tests
+&nbsp;&nbsp;        run: uv run pytest
+</td>  </tr>
+</table>
+<br />
