@@ -14,10 +14,14 @@ docker run --rm uv-hello
 
 
 NEW
+
 FROM python:3.11.11-slim
+# Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+# Copy application and set working directory
 COPY . /app
 WORKDIR /app
+# Install dependencies and clear cache
 RUN uv sync --no-dev --frozen
 RUN rm -rf ~/.cache/uv
 CMD ["python", "-c", "print('Hello, World!')"]
