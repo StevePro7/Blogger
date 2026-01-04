@@ -1,0 +1,27 @@
+<b>Cluster YAML</b><br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;kind: ClusterConfig
+&nbsp;&nbsp;apiVersion: eksctl.io/v1alpha5
+&nbsp;&nbsp;
+&nbsp;&nbsp;metadata:
+&nbsp;&nbsp;  name: stevepro-aws-eks
+&nbsp;&nbsp;  region: eu-west-1
+&nbsp;&nbsp;  version: "1.27"
+&nbsp;&nbsp;  tags:
+&nbsp;&nbsp;    createdBy: stevepro
+&nbsp;&nbsp;
+&nbsp;&nbsp;kubernetesNetworkConfig:
+&nbsp;&nbsp;  ipFamily: IPv4
+&nbsp;&nbsp;
+&nbsp;&nbsp;iam:
+&nbsp;&nbsp;  withOIDC: true
+&nbsp;&nbsp;  serviceAccounts:
+&nbsp;&nbsp;  - metadata:
+&nbsp;&nbsp;      name: ebs-csi-controller-sa
+&nbsp;&nbsp;      namespace: kube-system
+&nbsp;&nbsp;    attachPolicyARNs:
+&nbsp;&nbsp;    - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+&nbsp;&nbsp;    roleOnly: true
+&nbsp;&nbsp;    roleName: stevepro-aws-eks-AmazonEKS_EBS_CSI_DriverRole

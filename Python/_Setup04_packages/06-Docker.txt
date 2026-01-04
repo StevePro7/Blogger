@@ -1,0 +1,12 @@
+FROM python:3.11.11-slim
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/	# Install uv
+COPY . /app				# Copy application 
+WORKDIR /app				# Set working directory
+RUN uv sync --frozen --no-cache		# Install dependencies
+RUN rm -rf ~/.cache/uv			# Clear cache
+CMD ["python", "-c", "print('Hello, World!')"]
+
+
+docker build -t uv-hello .
+
+docker run --rm uv-hello
