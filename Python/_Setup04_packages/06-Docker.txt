@@ -10,3 +10,15 @@ CMD ["python", "-c", "print('Hello, World!')"]
 docker build -t uv-hello .
 
 docker run --rm uv-hello
+
+
+
+NEW
+FROM python:3.11.11-slim
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY . /app
+WORKDIR /app
+RUN uv sync --no-dev --frozen
+RUN rm -rf ~/.cache/uv
+CMD ["python", "-c", "print('Hello, World!')"]
+
