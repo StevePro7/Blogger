@@ -1,0 +1,320 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In 2020, we checked out <a href="https://steveproxna.blogspot.com/2020/07/python-setup-cheat-sheet.html">Python Setup Cheat Sheet</a> as an interpreted high-level programming language runs on Windows, Mac OS/X and Linux using pip as the de facto standard package-management system.  However while this worked, <a href="https://medium.com/@Sabrina-Carpenter/your-requirements-txt-is-a-time-bomb-2d0b30ad6a41">requirements.txt</a> is brittle with package dependencies + versioning.  <a href="https://python-poetry.org/docs">Poetry</a> was introduced to resolve deterministic builds but at slower dependency resolution.  Enter <a href="https://docs.astral.sh/uv">uv</a> for blazing speed + reliability <span style='font-family:Wingdings'>J</span><span><o:p></o:p></span>
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjU-dJOo7nUb2oRlo-j0DwfAm3K1uuoNCSZGaeF6pkf4NDot0CbRtvPt_F1PZ1Bpi9cyY8WcUBW5BbzWchZs3f9Klj8nVjT2JNdauhLxVoptyESFUgF4WotZh2te7gOhmAbAiGT45w-HW5GFFIogFBSDLgd5DwT1FgKuX-C-3GeNN8Xf0qqiEyG_p0Whko/s685/UV.png"><img alt="" border="0" width="98%" 
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjU-dJOo7nUb2oRlo-j0DwfAm3K1uuoNCSZGaeF6pkf4NDot0CbRtvPt_F1PZ1Bpi9cyY8WcUBW5BbzWchZs3f9Klj8nVjT2JNdauhLxVoptyESFUgF4WotZh2te7gOhmAbAiGT45w-HW5GFFIogFBSDLgd5DwT1FgKuX-C-3GeNN8Xf0qqiEyG_p0Whko/s600/UV.png"/></a>
+-->
+<br />
+Let's check it out!
+<br /><br />
+
+<u>02-History</u><br />
+Python Setup Cheat Sheet detailed how to install <a href="https://en.wikipedia.org/wiki/Pip_(package_manager)">pip</a> as the de facto standard package-management system on Windows, Mac OS/X and Linux.  However, requirements.txt does not lock down transitive dependencies + versioning which becomes brittle.  <a href="https://python-poetry.org/docs">Poetry</a> solved this problem using <a href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml">pyproject.toml</a> configuration and lock file.
+<br /><br />
+  
+<b>uv</b><br />
+Replicating Poetry with more deterministic builds using using pyproject.toml configuration and lock file, <a href="https://docs.astral.sh/uv">uv</a> is built in Rust by Astral as a full rethinking of Python packaging designed for speed and simplicity.  uv: pitched as "A single tool to replace pip, pip-tools, pipx, poetry, pyenv, twine, virtualenv and more".  <a href="https://dimasyotama.medium.com/navigating-the-python-packaging-landscape-pip-vs-poetry-vs-uv-a-developers-guide-49a9c93caf9c">Here</a> is a detailed article comparing the Python Packaging Landscape: Pip vs. Poetry vs. UV from a developer's standpoint.
+<br /><br />
+
+IMPORTANT<br />
+First check out the <a href="https://medium.com/jacklee26/uv-python-management-83d7df7cbe62">traditional</a> way using python and pip to compare and illustrate benefits of now using uv:
+<br /><br />
+
+<u>03-Virtual Environment</u><br />
+A virtual environment isolates Python project interpreter and installed packages from the system and other Python projects which means each project should have its own environment, its version and dependencies.
+<br /><br />
+Create a virtual environment in the traditional way using python and pip then activate virtual environment:
+<br />
+<!--  
+<table width="99%" border="1">
+<tr><td colspan="2">
+&nbsp;python -m venv .venv<br />
+</td></tr>
+<tr>
+<td width="50%">&nbsp;Linux OR Mac OS/X</td>
+<td>&nbsp;source .venv/bin/activate</td>
+</tr>  
+<tr>
+<td width="50%">&nbsp;Windows</td>
+<td>&nbsp;.\.venv\Scripts\activate</td>
+</tr> 
+</table>
+-->
+<br />
+Next, install packages using python, pip and requirements.txt OR poetry with pyproject.toml configuration:
+<br />
+Brittle and/or slow [transitive] dependency resolution!
+<br /><br />
+
+<u>05-01-uv Installation</u><br />
+Download and <a href="https://medium.com/jacklee26/uv-python-management-83d7df7cbe62#300e">install</a> uv for Linux, Mac OS/X or Windows OR Launch PyCharm and install from home page:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;<b>Linux</b></td>
+<td>&nbsp;curl -LsSf https://astral.sh/uv/install.sh | sh</td>
+</tr>
+<tr>
+<td>&nbsp;<b>Mac OS/X</b>&nbsp;</td>
+<td>&nbsp;brew update && brew install uv</td>
+</tr>
+<tr>
+<td>&nbsp;<b>Windows</b></td>
+<td>&nbsp;&nbsp;powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+</td>
+</tr>
+</table>
+-->
+<br />
+
+<u>05-02-uv init</u><br />
+Create new directory and execute following commands to initialize Python project with an interpreter version
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim1bnRax_fbx7vfP2esAb5522UOE4yjWf5EtqnbQZT7fTYVt1_9UQkomixdFqA2dAcWVRtYBNEK5_yfbGZ3drO_urfqchbenlZnYcolywEDq0qxRn37ouECqAA3B8YYzowg8HFZxIiozrpIEocFIvgbM5dtklUE-Gukuy7p_TwIU1GGQ8adXKriZ48MSg/s664/01-uv_init.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim1bnRax_fbx7vfP2esAb5522UOE4yjWf5EtqnbQZT7fTYVt1_9UQkomixdFqA2dAcWVRtYBNEK5_yfbGZ3drO_urfqchbenlZnYcolywEDq0qxRn37ouECqAA3B8YYzowg8HFZxIiozrpIEocFIvgbM5dtklUE-Gukuy7p_TwIU1GGQ8adXKriZ48MSg/s600/01-uv_init.png"/></a>
+-->
+<br />
+Launch Terminal | Execute the following commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir HelloUV
+&nbsp;&nbsp;cd HelloUV
+&nbsp;&nbsp;uv init --python 3.11.11
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>05-03-uv venv</u><br />
+Navigate into Python project and execute following commands to create the virtual environment and activate
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgww6wb03aLQFe9voHnXn38E1UHL0TTLkOlrwfEZn9T07Uf9Zl_do7k1syXVJNWETMbKtiSneTVlvIvJHhN1dZSsj_bzosYe53INtZIiVgPPx_Q3bjQ431H8BudTZyh7MZ3NLHb7x6FP4efydySggs2Cg5twCaW8dZH-uj2GXkWeuRa-fBXFC_mVBnh6WQ/s664/02-uv_venv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgww6wb03aLQFe9voHnXn38E1UHL0TTLkOlrwfEZn9T07Uf9Zl_do7k1syXVJNWETMbKtiSneTVlvIvJHhN1dZSsj_bzosYe53INtZIiVgPPx_Q3bjQ431H8BudTZyh7MZ3NLHb7x6FP4efydySggs2Cg5twCaW8dZH-uj2GXkWeuRa-fBXFC_mVBnh6WQ/s600/02-uv_venv.png"/></a>
+-->
+<br />
+Launch Terminal | Execute the following commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11.11
+&nbsp;&nbsp;source .venv/bin/activate		# Windows: .\.venv\Scripts\activate
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>05-04-uv python</u><br />
+At this point you have Python project initialized with virtual environment activated.  Confirm correct version of Python interpreter installed and activate.  When using PyCharm ensure the IDE interpreter path is aligned!
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjluLpelMqzN0g17Sbc4d7n1V8CRPm35_FBGnMeP8BlEbktTWXf76atYLdU78KHfHCIEE09sYJcNbNHW2SCrJhWdvQ-sGA-pHYYtduaAdYNuTfdsHcaHV_u6LkOSnF3jW7KklFsdGN95lfgyupAuDiMtdHlvIzlTrbK7ccOntFmR6b47_9EFICZX0uBgk/s797/03-which_python.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjluLpelMqzN0g17Sbc4d7n1V8CRPm35_FBGnMeP8BlEbktTWXf76atYLdU78KHfHCIEE09sYJcNbNHW2SCrJhWdvQ-sGA-pHYYtduaAdYNuTfdsHcaHV_u6LkOSnF3jW7KklFsdGN95lfgyupAuDiMtdHlvIzlTrbK7ccOntFmR6b47_9EFICZX0uBgk/s600/03-which_python.png"/></a>
+-->
+<br />
+Inside PyCharm Terminal | Execute the following commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>05-05-uv add</u><br />
+Install Python packages either using <i>uv pip install</i> or <i>uv add</i> commands.  Prefer <b>uv add</b> because this updates pyproject.toml file automagically thus you are able to execute <i>uv sync</i> command to install the dependencies.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0SsDA-QXu4-3zW9a1Ajy81x4-rVXPE_v4r4khCEcc1JwthGtckVVdT8k2EwA_p9KSw-vC4Qv3njtcpspZn2Xxh92X9GyYC0uorKeiRHUzGW2fPjRCkjBYAexpLHvl1SVr5TX0ihX9SO-b5lp947rkzYWF7575goCG7iO0I2d2YTht9hY5piHWszAe96M/s809/04-uv_add.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0SsDA-QXu4-3zW9a1Ajy81x4-rVXPE_v4r4khCEcc1JwthGtckVVdT8k2EwA_p9KSw-vC4Qv3njtcpspZn2Xxh92X9GyYC0uorKeiRHUzGW2fPjRCkjBYAexpLHvl1SVr5TX0ihX9SO-b5lp947rkzYWF7575goCG7iO0I2d2YTht9hY5piHWszAe96M/s600/04-uv_add.png"/></a>
+-->
+<br />
+Inside PyCharm Terminal | Execute the following commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip list
+&nbsp;&nbsp;uv add requests
+&nbsp;&nbsp;uv sync
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>05-06-uv tree</u><br />
+After execute <i>uv add</i> you can verify what is installed by checking pyproject.toml file or execute <i>uv pip list</i> but another useful method is <b>uv tree</b> which shows hierarchy of all your project's dependencies and relationships.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1YqvoK_gLgMcrcXbCB5ySdifJDC6hqyceAyZwODDkIZp2pjKiSNCko_XR65ewZagU8Pc8inSjbOu6YEV37UmkH2tKw9n7dLZ9yx6QB5mFisCChXB9LhVnLAJpGRMMvuKJ7IGUlu4qSanV9VD0QPuYfphap_mWuP9dVcsy3mDMqG2nvVIjvixYuPjDkWc/s809/05-uv_tree.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1YqvoK_gLgMcrcXbCB5ySdifJDC6hqyceAyZwODDkIZp2pjKiSNCko_XR65ewZagU8Pc8inSjbOu6YEV37UmkH2tKw9n7dLZ9yx6QB5mFisCChXB9LhVnLAJpGRMMvuKJ7IGUlu4qSanV9VD0QPuYfphap_mWuP9dVcsy3mDMqG2nvVIjvixYuPjDkWc/s600/05-uv_tree.png"/></a>
+-->
+<br />
+Inside PyCharm Terminal | Execute the following command: <b>uv tree</b>
+<br />
+<br />
+
+<u>05-07-uv sync</u><br />
+Execute <i>uv add</i> or update pyproject.toml to install dependencies.  Execute <b>uv sync</b> to update environment.
+<br />
+<br />
+
+<u>05-07-uv lock</u><br />
+The uv.lock file records all the exact versions of all project dependencies UV figures are compatible from the pyproject.toml file to ensure constant deterministic builds with the same dependenices each time and CI/CD
+<br />
+<br />
+
+<u>05-08-uv tool</u><br />
+UV tool installs persistent tools into virtual environment that are required for that particular Python project:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3tNav_rR_TCa1u1NaeneNZtDvIugePI7DmOda7TCCvk-3fggPnnZxdB1o-IGJ5t4-yx-hsoTJUHOu1Hy62pGzlqPTaqpKzAhdaBlWU_1nsfFgf1yGTAGRMDPhQQu-Dyrty1oy42p-vgQmSLc_77yJ-TcinYDshnKXi8rcbkApDhRLyxrSJHJ5nIBzjng/s807/06-uv_tool.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3tNav_rR_TCa1u1NaeneNZtDvIugePI7DmOda7TCCvk-3fggPnnZxdB1o-IGJ5t4-yx-hsoTJUHOu1Hy62pGzlqPTaqpKzAhdaBlWU_1nsfFgf1yGTAGRMDPhQQu-Dyrty1oy42p-vgQmSLc_77yJ-TcinYDshnKXi8rcbkApDhRLyxrSJHJ5nIBzjng/s600/06-uv_tool.png"/></a>
+-->
+<br />
+Inside PyCharm Terminal | Execute the following commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv tool list
+&nbsp;&nbsp;uv tool install ruff
+&nbsp;&nbsp;uv tool run ruff check
+&nbsp;&nbsp;uv tool upgrade --all
+&nbsp;&nbsp;uv tool uninstall ruff
+&nbsp;&nbsp;uv tool list
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>05-09-uvx tool</u><br />
+Finally <b>uvx</b> is an alias for <i>uv tool run</i> but is designed to be run immediately without installing it persistently:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZNNc_LaVn-YPidKbVbhfqTwln4RLI29vt4bQs7pCq4gwuucfrwuwC_DDZv5Cymn2Sao4VwmXW9CkvIm84W_xtLrPxVfQKh-RX5PSdbBUqDcSWoJPdAqUztL8EEvexrZBWTktT3tiKf60vJLoqK-AsohWc5r3ARhNcAaevlPnSfAhbtshNLimye16j5rM/s809/07-uvx.png"><img alt="" border="0" width="98%" data-original-height="528" data-original-width="809" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZNNc_LaVn-YPidKbVbhfqTwln4RLI29vt4bQs7pCq4gwuucfrwuwC_DDZv5Cymn2Sao4VwmXW9CkvIm84W_xtLrPxVfQKh-RX5PSdbBUqDcSWoJPdAqUztL8EEvexrZBWTktT3tiKf60vJLoqK-AsohWc5r3ARhNcAaevlPnSfAhbtshNLimye16j5rM/s600/07-uvx.png"/></a>
+-->
+<br />
+Inside PyCharm Terminal | Execute the following command: <b>uvx ruff check</b>
+<br />
+<br />
+
+<u>05-10-uv cache</u><br />
+When you use uv all tools and dependencies are stored in cache.  These commands remove all cached data: 
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv cache clean
+&nbsp;&nbsp;rm -r "$(uv python dir)"
+&nbsp;&nbsp;rm -r "$(uv tool dir)"
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>06-Docker</u><br />
+A well-built uv <a href="https://bury-thomas.medium.com/mastering-python-project-management-with-uv-part-3-mlops-4906965f45a2">Docker image</a> simplifies deployment + ensures application runs consistently in environment:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;FROM python:3.11.11-slim
+&nbsp;&nbsp;# Install uv
+&nbsp;&nbsp;COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+&nbsp;&nbsp;COPY . /app
+&nbsp;&nbsp;WORKDIR /app
+&nbsp;&nbsp;# Install dependencies and clear cache
+&nbsp;&nbsp;RUN uv sync --no-dev --frozen
+&nbsp;&nbsp;RUN rm -rf ~/.cache/uv
+&nbsp;&nbsp;CMD ["python", "-c", "print('Hello, World!')"]
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+This is an example Dockerfile snippet how to integrate uv!  But build and run execution with the commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;docker build -t uv-hello .
+&nbsp;&nbsp;docker run --rm uv-hello
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>07-GitHub Actions</u><br />
+A common <a href="https://viveksinghpathania.medium.com/from-pip-to-lightning-how-uv-opened-my-eyes-to-better-python-workflows-dfa50e8a5893">GitHub Actions</a> pattern is to use UV to install only Prod dependencies during your build or deploy:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;name: Testing
+&nbsp;&nbsp;on:
+&nbsp;&nbsp;  push:
+&nbsp;&nbsp;    branches:
+&nbsp;&nbsp;      - "main"
+&nbsp;&nbsp;jobs:
+&nbsp;&nbsp;  build:
+&nbsp;&nbsp;    runs-on: ubuntu-latest
+&nbsp;&nbsp;    steps:
+&nbsp;&nbsp;      - uses: actions/checkout@v4
+&nbsp;&nbsp;      - name: Install UV
+&nbsp;&nbsp;        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+&nbsp;&nbsp;      - name: Sync only prod dependencies
+&nbsp;&nbsp;        run: uv sync --no-group dev --group prod
+&nbsp;&nbsp;      - name: Run tests
+&nbsp;&nbsp;        run: uv run pytest
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>09-Commands</u><br />
+TODO - complete list of uv commands
+<br /><br />
+
+<u>10-Summary</u><br />
+To summarize, uv has been <a href="https://medium.com/codecodecode/uv-virtualenv-direnv-a-fast-reproducible-python-workflow-with-envrc-36da47ce1f4b">pitched</a> "One Tool for Everything" as uv <b>replaces</b> pip, virtualenv, pip-tools, pipx, poetry, pyenv, twine and is fast at every step.  However, this has only scratched the surface as uv integrates well with other tools for fast reproducible Python workflows such as direnv, pre-commit hooks, pdm + more!
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>&nbsp;uv</td>
+<td>&nbsp;Handles Python installs, environment creation, and dependency resolution with locking</td>  
+</tr>
+<tr>
+<td>&nbsp;direnv&nbsp;</td>
+<td>&nbsp;Evaluates <i>.envrc</i> managing environment variables automatically applied to shell session</td>
+</tr>  
+<tr>
+<td>&nbsp;pdm</td>
+<td>&nbsp;Orchestrate workflows + provide unified tooling to build, version, and publish pacakges</td>
+</tr> 
+</table>
+-->
+
+</span>
