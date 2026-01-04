@@ -1,4 +1,4 @@
-GitHub Actions<br>
+<u>GitHub Actions</u><br />
 A common <a href="https://viveksinghpathania.medium.com/from-pip-to-lightning-how-uv-opened-my-eyes-to-better-python-workflows-dfa50e8a5893">GitHub Actions</a> pattern is to use UV to install only Prod dependencies during your build or deploy:
 <br />
 <table width="99%" border="1">
@@ -20,6 +20,7 @@ A common <a href="https://viveksinghpathania.medium.com/from-pip-to-lightning-ho
 &nbsp;&nbsp;        run: uv sync --no-group dev --group prod
 &nbsp;&nbsp;      - name: Run tests
 &nbsp;&nbsp;        run: uv run pytest
-</td>  </tr>
+</pre>
+</td></tr>
 </table>
 <br />

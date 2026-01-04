@@ -1,4 +1,37 @@
-NEW
+<u>Docker</u><br />
+A well-built uv <a href="https://bury-thomas.medium.com/mastering-python-project-management-with-uv-part-3-mlops-4906965f45a2">Docker image</a> simplifies deployment + ensures application runs consistently in environment:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;FROM python:3.11.11-slim
+&nbsp;&nbsp;# Install uv
+&nbsp;&nbsp;COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+&nbsp;&nbsp;COPY . /app
+&nbsp;&nbsp;WORKDIR /app
+&nbsp;&nbsp;# Install dependencies and clear cache
+&nbsp;&nbsp;RUN uv sync --no-dev --frozen
+&nbsp;&nbsp;RUN rm -rf ~/.cache/uv
+&nbsp;&nbsp;CMD ["python", "-c", "print('Hello, World!')"]
+</pre>
+</td></tr>
+</table>
+<br />
+This is an example Dockerfile snippet how to integrate uv!  But build and run execution with the commands:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;docker build -t uv-hello .
+&nbsp;&nbsp;docker run --rm uv-hello
+</pre>
+</td></tr>
+</table>
+<br />
+
+
+
+ARCHIVE
 
 FROM python:3.11.11-slim
 # Install uv
