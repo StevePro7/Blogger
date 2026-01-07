@@ -229,7 +229,31 @@ When you use uv all tools and dependencies are stored in cache.  These commands 
 -->
 <br />
 
-<u>06-Docker</u><br />
+<u>06-Commands</u><br />
+Here is a quick <a href="https://www.blogger.com/blog/post/edit/preview/8584570627780730363/3332635522540810111">summary</a> of popular uv commands used during workflow.  A comprehensive list can be <a href="https://medium.com/jacklee26/uv-python-management-83d7df7cbe62">found</a>.
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv init --app				# Scaffold project
+&nbsp;&nbsp;uv python install 3.11		# Install Python
+&nbsp;&nbsp;uv venv --python 3.11			# Create virtual environment
+&nbsp;&nbsp;uv add requests			# Add dependencies
+&nbsp;&nbsp;uv add -D pytest			# Add dev dependencies
+&nbsp;&nbsp;uv sync --frozen			# Sync (locked)
+&nbsp;&nbsp;uv sync				# Sync (normal)
+&nbsp;&nbsp;uv run python main.py			# Run program
+&nbsp;&nbsp;uv run python -V			# Show Python
+&nbsp;&nbsp;uvx ruff check .			# Run tools ad‑hoc
+&nbsp;&nbsp;uv lock				# Update lockfile
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+<u>07-Docker</u><br />
 A well-built uv <a href="https://bury-thomas.medium.com/mastering-python-project-management-with-uv-part-3-mlops-4906965f45a2">Docker image</a> simplifies deployment + ensures application runs consistently in environment:
 <br />
 <!--
@@ -264,7 +288,7 @@ This is an example Dockerfile snippet how to integrate uv!  But build and run ex
 -->
 <br />
 
-<u>07-GitHub Actions</u><br />
+<u>08-GitHub Actions</u><br />
 A common <a href="https://viveksinghpathania.medium.com/from-pip-to-lightning-how-uv-opened-my-eyes-to-better-python-workflows-dfa50e8a5893">GitHub Actions</a> pattern is to use UV to install only Prod dependencies during your build or deploy:
 <br />
 <!--
