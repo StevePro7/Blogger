@@ -1,3 +1,58 @@
 <u>Commands</u><br />
-TODO - complete list of uv commands
-<br /><br />
+Here is a quick <a href="https://www.blogger.com/blog/post/edit/preview/8584570627780730363/3332635522540810111">summary</a> of popular uv commands used during workflow.  A comprehensive list can be <a href="https://medium.com/jacklee26/uv-python-management-83d7df7cbe62">found</a>.
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv init --app				# Scaffold project
+&nbsp;&nbsp;uv python install 3.11		# Install Python
+&nbsp;&nbsp;uv venv --python 3.11			# Create virtual environment
+&nbsp;&nbsp;uv add requests			# Add dependencies
+&nbsp;&nbsp;uv add -D pytest			# Add dev dependencies
+&nbsp;&nbsp;uv sync --frozen			# Sync (locked)
+&nbsp;&nbsp;uv sync				# Sync (normal)
+&nbsp;&nbsp;uv run python main.py			# Run program
+&nbsp;&nbsp;uv run python -V			# Show Python
+&nbsp;&nbsp;uvx ruff check .			# Run tools ad‑hoc
+&nbsp;&nbsp;uv lock				# Update lockfile
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+
+
+ARCHIVE
+
+
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv init --app				# Scaffold project
+&nbsp;&nbsp;uv python install 3.11		# Install Python
+&nbsp;&nbsp;uv venv --python 3.11			# Create virtual environment
+&nbsp;&nbsp;uv add requests			# Add dependencies
+&nbsp;&nbsp;uv add -D pytest			# Add dev dependencies
+&nbsp;&nbsp;uv sync --frozen			# Sync (locked)
+&nbsp;&nbsp;uv sync				# Sync (normal)
+&nbsp;&nbsp;uv run python main.py			# Run program
+&nbsp;&nbsp;uv run python -V			# Show Python
+&nbsp;&nbsp;uvx ruff check .			# Run tools ad‑hoc
+&nbsp;&nbsp;uv lock				# Update lockfile
+</pre>
+</td></tr>
+</table>
+
+
+Scaffold project        : uv init --app
+Install Python          : uv python install 3.11
+Create venv             : uv venv --python 3.11
+Sync (locked)           : uv sync --frozen
+Sync (normal)           : uv sync
+Add deps                : uv add fastapi
+Add dev deps            : uv add -D pytest
+Run program             : uv run python main.py
+Run tools ad‑hoc        : uvx ruff check .
+Show Python             : uv run python -V
+Update lockfile         : uv lock
