@@ -1,0 +1,18 @@
+VS Code
+17-Jan-2026
+
+Ubuntu Linux VS Code - the window is not responding
+
+On Ubuntu Linux with VS Code, a "window is not responding" freeze is usually caused by
+GPU acceleration, a stuck extension, or a hung Electron process.
+
+e.g.
+I am now logging on to Ubuntu using GPU accelerated kernel 5.15
+nvidia-smi
+
+
+Therefore launch VS Code without GPU acceleration
+
+pkill -f code
+code --disable-gpu
+
