@@ -1,0 +1,42 @@
+TODO
+20-Jan-2026
+
+
+anLinks
+~\GitHub\StevePro10\Blogger\Python\PyBind
+
+
+01.
+Pybind11 Tutorial: Binding C++ Code to Python
+https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-code-to-python-337da23685dc
+
+sudo apt update
+sudo apt install build-essential g++
+
+meshPO
+setup.py
+python setup.py build
+python setup.py install
+
+Advanced Topics (Class and NumPy)
+Binding Classes
+PYBIND11_MODULE(example, m) {
+    pybind11::class_<Calculator>(m, "Calculator")
+        .def(pybind11::init<int>())
+        .def("add", &Calculator::add);
+}
+
+3D
+Using NumPy
+pybind11::array_t<double> scale_array(pybind11::array_t<double> input_array, double scalar) 
+{}
+
+
+02.
+Using Python with C++. Part1.
+https://medium.com/@stevechange/using-python-with-c-part1-3e894912214d
+
+CLASSIC EXAMPLE
+
+Using Python with C++. Part2.
+https://medium.com/@stevechange/using-python-with-c-part2-e1db73185c9e
