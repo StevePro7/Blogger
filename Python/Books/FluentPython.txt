@@ -3,3 +3,25 @@ Fluent Python
 
 Luciano Ramalho
 978-1-492-05628-7
+
+
+https://github.com/fluentpython/example-code-2e
+
+mkdir -p ~/GitHubX/fluentpython
+cd ~/GitHubX/fluentpython
+git clone https://github.com/fluentpython/example-code-2e.git
+cd example-code-2e
+uv init --python 3.10.19
+uv venv --python 3.10.19
+source .venv/bin/activate
+
+Launch PyCharm
+Open project
+~/GitHubX/fluentpython/example-code-2e
+
+which python
+`which python` --version
+
+Update pyproject.toml
+uv pip list
+uv sync
