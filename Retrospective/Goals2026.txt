@@ -1,0 +1,139 @@
+Goals  2026
+23-Jan-2026
+
+SMART
+Specific
+Measurable
+Attainable
+Relevant
+Time-bound
+
+
+01. Python
+Clean code, code quality, code architecture
+Outcome
+Drive book club - team knowledge transfer
+
+
+02. Azure ML
+Build local KinD cluster to replicate Azure AKS cluster
+Dockerfile, Azure Environment, Model, Endpoint, Deployment
+Outcome
+Cheat sheet with all commands to interact with cluster
+
+
+03. 3D
+Help port code base
+Conda -> UV package manger
+Outcome
+Port service code to leverage UV
+
+
+04. DEV goal
+Python -> C/C++ via PyBind
+Knowledge gain for 3D mesh processing for all relevant products
+Outcome
+Presentation of findings 
+
+
+GOAL
+Milestones + Outcomes
+
+
+01.
+Refined Option 1 (Integrated Refactoring & Reuse)
+
+SMART Goal:
+By the end of Q3 2026, I will lead a team book club focused on Fluent Python, facilitating bi-weekly discussions and translating key concepts into actionable refactoring guidelines and Python coding standards that promote code reuse, composability, and reduced duplication. Success will be measured by documented best practices, increased consistency in code reviews, and a measurable reduction in duplicate or redundant Python code across actively maintained modules.
+
+Why this version is especially strong
+Specific: Refactoring, reuse, duplication reduction
+Measurable: Documentation + review signals + duplication reduction
+Senior-level impact: Influences architecture without owning every line
+Credible: Fluent Python is perfect justification for this focus
+
+Bonus (talking points if asked “how will you do this?”)
+You don’t need to put this in the goal, but it’s nice ammo:
+Identify refactoring-friendly chapters (data model, functions, protocols, composition)
+Extract real examples from the team’s codebase
+Produce small “before/after” examples
+Convert outcomes into shared utilities, patterns, or guidelines
+Reinforce in reviews (not rewrites)
+
+How this strengthens your SMART goal
+You can now credibly say:
+“Each Fluent Python session will map to a specific refactoring outcome—reducing duplication, improving reuse, or simplifying architecture—validated through real examples from our codebase.”
+
+
+
+02.
+Refined SMART Goal (Cost-Effective Local Azure MLOps Enablement)
+
+SMART Goal:
+By the end of Q4 2026, I will build a cost-effective local MLOps reference environment using KinD (Kubernetes in Docker) to replicate key aspects of our Azure AKS-based ML deployment architecture. This environment will enable local interaction using az ml CLI commands to demonstrate CI/CD-driven Docker image builds, model registration, deployments, and endpoint management. I will document validated workflows and command patterns as internal wiki cheat sheets, improving team understanding of Azure MLOps while minimizing reliance on cloud resources.
+
+Why this version is strong
+
+Specific: KinD, AKS, az ml CLI, CI/CD, models, endpoints
+Measurable: Environment built + documented workflows + cheat sheets
+Attainable: “Key aspects” avoids overpromising full parity
+Relevant: Cost reduction + knowledge transfer
+Time-bound: Q4 2026
+This reads as intentional engineering enablement, not just tinkering.
+
+You’re building a reference platform, not just a demo—very strong signal.
+
+
+
+
+03.
+Recommended SMART Goal (End-to-End, Senior Framing)
+
+SMART Goal:
+By the end of Q4 2026, I will migrate an existing PyTorch3D-based deep learning codebase into the team mono-repo, refactor and clean up the Python code to improve readability, structure, and reuse, and transition dependency management from Conda to the UV package manager. As an outcome, I will successfully port and deploy the primary Azure ML REST endpoint that serves the deep learning model, ensuring functional parity and improved maintainability.
+
+Why this works
+
+Specific: Mono-repo, PyTorch3D, UV, Azure ML endpoint
+Measurable: Code migrated, deps switched, endpoint deployed
+Attainable: Functional parity (not feature expansion)
+Relevant: Platform consistency + production impact
+Senior signal: Owns migration and production serving
+
+UPDATE
+
+Refined SMART Goal (Sr. Software Engineer, Learning-Focused, Low Risk)
+
+SMART Goal:
+By the end of Q4 2026, I will integrate an existing PyTorch3D-based deep learning codebase into the team mono-repo and refactor and tidy the surrounding Python infrastructure code to align with shared standards. As a Sr. Software Engineer (not acting as a Machine Learning Engineer), my focus will be on repository structure, dependency management, and build/deployment mechanics, including transitioning from Conda to the UV package manager. This work will support my learning of the underlying Python packages and enable the successful port of the existing Azure ML REST endpoint, without introducing changes to model logic or production ML behavior.
+
+
+Ultra-Concise Version (If Space Is Tight)
+
+SMART Goal (Concise):
+By Q4 2026, migrate a PyTorch3D-based deep learning project into the mono-repo, focusing on Python code structure, dependency management (UV), and deployment mechanics. This goal is intended to support my learning of ML-adjacent Python packages while porting the existing Azure ML REST endpoint without modifying model behavior.
+
+
+
+04. DEV goal
+Recommended SMART Goal (Learning-Focused, Safe Scope)
+
+SMART Goal:
+By the end of Q4 2026, I will study and set up an existing 3D mesh processing codebase implemented in C/C++ with Python bindings via PyBind11, with the goal of understanding how the Python APIs interface with the underlying native code. As a development and learning objective, I will debug and step through key execution paths to identify important APIs and data flows, and present a walkthrough to the engineering team demonstrating how the Python and C/C++ layers interact, without contributing changes to the production codebase.
+
+
+Why this works so well
+
+Specific: C/C++, PyBind11, Python APIs, debugging
+Measurable: Codebase set up + team presentation delivered
+Attainable: Learning + presentation, not refactoring
+Relevant: Cross-stack understanding, knowledge transfer
+Time-bound: Q4 2026
+Risk-aware: Explicitly no production contributions
+This reads as intentional technical ramp-up, not curiosity-driven wandering.
+
+
+Concise Version (If Space Is Limited)
+
+SMART Goal (Concise):
+By Q4 2026, familiarize myself with a C/C++ 3D mesh processing codebase using PyBind11 Python bindings, focusing on understanding and debugging the Python–native interface. The outcome will be a technical walkthrough presentation to the engineering team illustrating key APIs and execution paths, without modifying production code.
