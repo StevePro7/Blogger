@@ -137,3 +137,76 @@ Concise Version (If Space Is Limited)
 
 SMART Goal (Concise):
 By Q4 2026, familiarize myself with a C/C++ 3D mesh processing codebase using PyBind11 Python bindings, focusing on understanding and debugging the Python–native interface. The outcome will be a technical walkthrough presentation to the engineering team illustrating key APIs and execution paths, without modifying production code.
+
+
+
+
+27-Jan-2026
+Azure MLOps con't
+The entire local MLOps reference environment can be developed and exercised on macOS using KinD. While GPU workloads and Azure ML control-plane features require Azure infrastructure, the local setup accurately replicates AKS runtime behavior and deployment patterns.
+
+
+Strong, balanced goal statement (recommended)
+
+Develop a local MLOps reference environment on macOS using KinD to replicate AKS runtime behavior and deployment patterns, establishing a cost-effective foundation for hands-on experimentation. This environment will be used to build transferable Kubernetes-based MLOps skills, with the intent to progressively extend learnings to GPU-enabled workloads and Azure ML control-plane features hosted on Azure infrastructure.
+
+
+Slightly more concise (OKR / goal-tracking friendly)
+
+Establish a local MLOps reference environment using KinD to mirror AKS-style runtime behavior and deployment patterns, enabling low-cost experimentation and skill development. Insights gained will inform subsequent work with GPU workloads and Azure ML control-plane capabilities in Azure.
+
+
+More explicitly “research / non-committal”
+
+Research and prototype a local MLOps reference environment using KinD to evaluate how effectively AKS deployment patterns can be replicated on macOS. The outcome of this work will provide a foundation for future exploration of GPU-based workloads and Azure ML control-plane features that require Azure-hosted infrastructure.
+
+
+Slightly more senior / strategic tone
+
+Leverage a KinD-based local MLOps reference environment to validate Kubernetes-centric ML deployment patterns and operational behaviors in a cost-effective, non-production setting. This work is intended to establish a technical baseline that can be incrementally extended to Azure-hosted GPU workloads and Azure ML control-plane integrations as needed.
+
+
+SMART - before
+Specific: KinD, AKS, az ml CLI, CI/CD, models, endpoints
+Measurable: Environment built + documented workflows + cheat sheets
+Attainable: “Key aspects” avoids overpromising full parity
+Relevant: Cost reduction + knowledge transfer
+Time-bound: Q4 2026
+
+
+
+Short answer: yes — those SMART bullets are still correct, applicable, and well-aligned with the Strong, balanced goal statement.
+Even better: with one or two small wording tweaks, they’ll be rock solid and defensible.
+
+Let’s sanity-check each one and tighten where helpful.
+
+Overall alignment verdict 
+Your updated goal says:
+Local, KinD-based
+Foundation, not final state
+Progression to Azure GPU + Azure ML control plane later
+
+Your SMART bullets:
+Stay scoped to “key aspects”
+Emphasize learning + documentation
+Don’t claim Azure ML parity
+Keep Azure ML CLI as knowledge, not runtime
+That’s exactly what you want.
+
+
+SMART
+Final “SMART summary” (ready to paste)
+
+If you want it clean and polished as a set:
+
+Specific: KinD-based Kubernetes environment mirroring AKS runtime patterns, local model training and containerized endpoints, CI/CD workflows, and hands-on familiarity with Azure ML concepts and az ml CLI usage.
+
+Measurable: Environment built, repeatable workflows documented, and concise reference/cheat sheets produced.
+
+Attainable: Scope limited to key runtime and deployment aspects, avoiding overpromising full Azure ML parity.
+
+Relevant: Enables cost-effective experimentation and accelerates knowledge transfer toward Azure-hosted MLOps workflows.
+
+Time-bound: Initial reference environment and documentation completed by Q4 2026.
+
+This aligns perfectly with your goal statement.
