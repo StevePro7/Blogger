@@ -51,11 +51,34 @@ Specific: 	Code architecture, consistency, refactoring, reuse and code quality
 Measurable:	Documented best practices + code review with duplication reduction
 Attainable:	Achievable within normal workflows rather than large-scale re-writes
 Relevant: 	Improve code maintainability while reinforcing shared team knowledge 
-Time-bound	Q3-2026
+Time-bound:	Q3-2026
 
 
 02. [Local] Azure MLOps Enablement
 Evaluate local cost-effective MLOps reference environment [using MiniKube or KinD] to replicate key aspects of our Azure AKS-based runtime and deployment architecture and build transferable Kubernetes-based MLOps skills with the intent to progress learnings to deployed workloads hosted on Azure infrastructure.
 
+Specific:
+Measurable:
+Attainable:		
+Relevant: 
+Time-bound:	Q2-2026 
 
-document cluster interaction via AZ ML commands to help the team improve MLOps expertise while minimizing reliance on cloud resources.
+
+03. 3D migration
+Help migrate existing PyTorch3D-based Deep Learning codebase into the team Mono Repo code base by transitioning existing dependency management from Conda to UV.  Also, prototype / port existing 3D Azure ML REST endpoint that serves Deep Learning model[s] to ensure functional parity with the new CI/CD automation pipeline for improved maintainability.
+
+Specific:
+Measurable:
+Attainable:		
+Relevant: 
+Time-bound:	Q1-2026 
+
+
+04. Development goal: Python -> C/C++
+Setup existing 3D mesh processing implemented in C/C++ consumed by Python, C#/.NET etc. on Mac OS for debug-step exploration to better understand how the API consumers interface with the underlying native code.  Successful completion of this goal could be to present all research here to the team while identifying opportunities for potential future collaboration.
+
+Specific:
+Measurable:
+Attainable:		
+Relevant: 
+Time-bound:	Q4-2026 
