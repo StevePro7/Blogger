@@ -1,0 +1,32 @@
+Pybind11 Tutorial: Binding C++ Code to Python
+14-Feb-2025
+
+https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-code-to-python-337da23685dc
+
+
+Installing a C++ Compiler
+sudo apt update
+sudo apt install build-essential g++
+
+
+TODO - is there meshPO equivalent
+Advanced Topics (Class and NumPy)
+Binding Classes
+PYBIND11_MODULE(example, m) {
+    pybind11::class_<Calculator>(m, "Calculator")
+        .def(pybind11::init<int>())
+        .def("add", &Calculator::add);
+}
+
+3D
+Using NumPy
+pybind11::array_t<double> scale_array(pybind11::array_t<double> input_array, double scalar) 
+{}
+
+
+ARCHIVEd
+meshPO equivalent
+
+setup.py
+python setup.py build
+python setup.py install

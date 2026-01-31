@@ -4,21 +4,6 @@ Pybind11 Tutorial: Binding C++ Code to Python
 https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-code-to-python-337da23685dc
 
 
-find -type f -name '*.cpp' -exec grep -Hni 'PYBIND11_MODULE' {} \;
-./src/retro.cpp:462:PYBIND11_MODULE(_retro, m)
-
-#include <pybind11/pybind11.h>
-namespace py = pybind11;
-
-PYBIND11_MODULE(_retro, m) 
-{
-	m.doc() = "libretro bindings";
-
-	m.def("core_path", &::corePath, py::arg("hint") = py::none());
-	m.def("data_path", &::dataPath, py::arg("hint") = py::none());
-}
-
-
 PYBIND11_MODULE
 binds your C++ functions to Python
 allowing Python to call your C++ functions as if they were native Python functions
@@ -36,24 +21,16 @@ each bound function is given
 - arguments specified using pybind11::arg()
 
 
-
+Create a setup.py Script
 setup.py
-setup build system
-
-ext_modules
-~\GitHub\StevePro9\PythonSetup\PyBind\DebugEX00
 
 Extension class
 defines a Python extension module
-list of the source files are included to reference C++ code
-
-~\GitHub\StevePro7\FelixTesting\python\pybind\test01
-pybind11.get_include()
-language=C++
 
 
+Build the Python Module
 python setup.py build
-compiles the C++ code and generate Python modele
+compiles the C++ code and generate Python module
 example.cpython-<version>-<platform>.so
 
 python setup.py install
@@ -69,7 +46,7 @@ Advanced Topics (Class and NumPy)
 Python allows you to bind C++ classes enabling object-orientated programming features in Python
 
 pybind11::class_<Calculator>(m, "Calculator")
-py::class_<PyRetroEmulator>(m, "RetroEmulator")
+//py::class_<PyRetroEmulator>(m, "RetroEmulator")		## retro equivalent
 
 Pybind11 code binds the C++ class to Python
 pybind11:class_ is used to bind the C++ class
@@ -86,3 +63,40 @@ CONCLUSION
 Pybind11 simplifies bridging the gap between Python and C++ enabling developers to build high-performance Python-friendly extensions
 
 Here can combine the power of C++ with the simplicity of Python unlocking new possibilities in your projects
+
+
+
+
+ARCHIVEd
+retro equivalent
+
+find -type f -name '*.cpp' -exec grep -Hni 'PYBIND11_MODULE' {} \;
+./src/retro.cpp:462:PYBIND11_MODULE(_retro, m)
+
+#include <pybind11/pybind11.h>
+namespace py = pybind11;
+
+PYBIND11_MODULE(_retro, m) 
+{
+	m.doc() = "libretro bindings";
+
+	m.def("core_path", &::corePath, py::arg("hint") = py::none());
+	m.def("data_path", &::dataPath, py::arg("hint") = py::none());
+}
+
+
+
+//ext_modules
+//~\GitHub\StevePro9\PythonSetup\PyBind\DebugEX00
+
+
+list of the source files are included to reference C++ code
+
+~\GitHub\StevePro7\FelixTesting\python\pybind\test01
+pybind11.get_include()
+language=C++
+
+
+Advanced Topics (Class and NumPy)
+pybind11::class_<Calculator>(m, "Calculator")
+//py::class_<PyRetroEmulator>(m, "RetroEmulator")		## retro equivalent
