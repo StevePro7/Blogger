@@ -1,0 +1,59 @@
+Retro Setup
+31-Jan-2026
+
+Q.
+I have git clone https://github.com/Farama-Foundation/stable-retro this repo has C/C++ code and Python bound by pybind11 When the repo builds the C++ code to be consumed by Python - does it use setup.py?
+
+A.
+Short answer: yes — ultimately it uses setup.py, but setup.py delegates the C/C++ build to CMake.
+
+setup.py
+pip install .
+pip install -e .
+python setup.py build
+
+
+setup.py does not compile C++ directly
+This is the modern “best practice” for non-trivial C++ projects.
+
+pybind11 is used inside CMake
+pybind11 appears in the CMakeLists.txt, not directly in setup.py.
+
+find_package(pybind11 REQUIRED)
+pybind11_add_module(retro_cpp ...)
+
+
+pip install .
+setup.py
+custom build_ext
+cmake configure
+cmake build (uses pybind11)
+C++ → Python extension (.so)
+installed into site-packages
+
+NB: my notes
+pip install -e .
+https://steveproxna.blogspot.com/2024/11
+
+
+It uses the Python interpreter that runs setup.py.
+python3.8 -m pip install .
+python3.10 -m pip install .
+
+As I didn't specify version - I am guessing that's why default to
+Python 3.8.10
+
+Q.
+Why they don’t compile directly in setup.py
+
+A.
+The C++ codebase is large
+Cross-platform support matters
+pybind11 + CMake gives:
+- cleaner dependency handling
+- better compiler support
+- easier debugging
+
+This is exactly how projects like:
+PyTorch
+OpenCV

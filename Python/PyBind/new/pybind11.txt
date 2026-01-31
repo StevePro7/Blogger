@@ -1,0 +1,29 @@
+pybind11
+31-Jan-2026
+
+PyBind11Test
+03-inline-bindings
+sudo apt-get update
+sudo apt-get install pybind11-dev
+
+Where global version of pybind11 installed?
+/usr/include/pybind11
+/usr/lib/cmake/pybind11
+/usr/lib/cmake/pybind11
+
+Version of pybind11
+apt-cache show pybind11-dev | grep Version
+dpkg -s pybind11-dev | grep Version
+grep PYBIND11_VERSION /usr/include/pybind11/detail/common.h
+Version: 2.4.3-2build2
+
+Linux
+which python
+/home/stevepro/anaconda3/bin/python
+`which python` --version
+3.9.12
+
+which python3
+/usr/bin/python3
+`which python3` --version
+3.8.10
