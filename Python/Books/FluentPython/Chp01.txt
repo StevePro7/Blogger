@@ -1,0 +1,99 @@
+Python Data Model
+01-Feb-2026
+
+21.
+Python = consistency
+
+Pythonic = Python data model
+
+22
+data model
+description of Python framework:
+sequences, functions, iterators, coroutines, classes, context managers
+
+special methods = dunder methods    [double underscore]
+
+23 .NEW
+async programming
+
+24. Pythonic Card Deck
+Ex1-1
+__getitem__
+__len__
+namedtuple
+bundle of attributes with no custom methods = DB reord
+
+__getitem__
+deck
+- supports slicing
+- iterable
+- iterate reversed
+- sorted
+
+27.
+Composition __len__ and __getitem__
+implementations can delegate all work to list
+
+28.
+special methods
+e.g. __len__
+
+you don't call      my_object.__len__()
+you call            len(my_object)
+only one you call   __init__()
+
+
+29. Emulating types
+Vector class implements
+__repr__            REPL
+__abs__
+__add__
+__mul__
+
+NB:
+!r      = representation
+
+Python interpreter frequent caller of special methods
+you call
++       P/I __add__
+*       P/I __mul__
+
+NB: infix operators
+create new objects - do not touch operands
+
+33. !r
+f-string __repr__ uses !r   good practice
+get
+Vector(1, 2)
+NOT
+Vector('1', '2')
+
+__str__         used by print statement
+
+NB: toString()
+use __repr__ rather than __str__
+
+35. bool
+truthy OR falsey
+bool(x) = True OR False
+
+35. Collection API
+important collectin interfaces
+
+Collection ABC
+3x interfaces
+1. Iterable
+2. Sized
+3. Contains     in operator
+
+3x Collection specializations
+1. Sequence     list, str
+2. Mapping      dict, defaultdict
+3. Set          set, frozenset
+
+
+39. Overview of Special methods
+
+
+__radd__        r   reversed
+__iadd__        i   in-place
