@@ -70,7 +70,7 @@ Download and <a href="https://medium.com/jacklee26/uv-python-management-83d7df7c
 <!-- -->
 <br />
 
-<u>uv init</u><br />
+<b>uv init</b><br />
 Create new directory and execute following commands to initialize Python project with an interpreter version
 <br />
 <!-- -->
@@ -92,7 +92,7 @@ Launch Terminal | Execute the following commands:
 <!-- -->
 <br />
 
-<u>uv venv</u><br />
+<b>uv venv</b><br />
 Navigate into Python project and execute following commands to create the virtual environment and activate
 <br />
 <!-- -->
@@ -113,7 +113,7 @@ Launch Terminal | Execute the following commands:
 <!-- -->
 <br />
 
-<u>uv python</u><br />
+<b>uv python</b><br />
 At this point you have Python project initialized with virtual environment activated.  Confirm correct version of Python interpreter installed and activate.  When using PyCharm ensure the IDE interpreter path is aligned!
 <br />
 <!-- -->
@@ -134,7 +134,7 @@ Inside PyCharm Terminal | Execute the following commands:
 <!-- -->
 <br />
 
-<u>uv add</u><br />
+<b>uv add</b><br />
 Install Python packages either using <i>uv pip install</i> or <i>uv add</i> commands.  Prefer <b>uv add</b> because this updates pyproject.toml file automagically thus you are able to execute <i>uv sync</i> command to install the dependencies.
 <br />
 <!-- -->
@@ -156,7 +156,7 @@ Inside PyCharm Terminal | Execute the following commands:
 <!-- -->
 <br />
 
-<u>uv tree</u><br />
+<b>uv tree</b><br />
 After execute <i>uv add</i> you can verify what is installed by checking pyproject.toml file or execute <i>uv pip list</i> but another useful method is <b>uv tree</b> which shows hierarchy of all your project's dependencies and relationships.
 <br />
 <!-- -->
@@ -167,17 +167,17 @@ Inside PyCharm Terminal | Execute the following command: <b>uv tree</b>
 <br />
 <br />
 
-<u>uv sync</u><br />
+<b>uv sync</b><br />
 Execute <i>uv add</i> or update pyproject.toml to install dependencies.  Execute <b>uv sync</b> to update environment.
 <br />
 <br />
 
-<u>uv lock</u><br />
+<b>uv lock</b><br />
 The uv.lock file records all the exact versions of all project dependencies UV figures are compatible from the pyproject.toml file to ensure constant deterministic builds with the same dependenices each time and CI/CD
 <br />
 <br />
 
-<u>uv tool</u><br />
+<b>uv tool</b><br />
 UV tool installs persistent tools into virtual environment that are required for that particular Python project:
 <br />
 <!-- -->
@@ -202,7 +202,7 @@ Inside PyCharm Terminal | Execute the following commands:
 <!-- -->
 <br />
 
-<u>uvx tool</u><br />
+<b>uvx tool</b><br />
 Finally <b>uvx</b> is an alias for <i>uv tool run</i> but is designed to be run immediately without installing it persistently:
 <br />
 <!-- -->
@@ -213,7 +213,7 @@ Inside PyCharm Terminal | Execute the following command: <b>uvx ruff check</b>
 <br />
 <br />
 
-<u>uv cache</u><br />
+<b>uv cache</b><br />
 When you use uv all tools and dependencies are stored in cache.  These commands remove all cached data: 
 <br />
 <!-- -->
