@@ -93,7 +93,64 @@ Collection ABC
 
 
 39. Overview of Special methods
+async methods	anext
 
+41. categories of method names
 
+42. @ = infix operator	matrix multiplication
+
+44.
 __radd__        r   reversed
 __iadd__        i   in-place
+
+45. reversed operator = special method
+e.g.
+a += b
+
+len() NOT a method because NO method is called for
+built-in objects of CPython
+len = read a field from C struct
+i.e.
+unary operator			like abs()
+
+
+47. SUMMARY
+implement special methods = objects behave like built-in types
+i.e.
+Pythonic
+
+Data Model = Python object has
+__str__			string rep for debug + logging
+__repr__		string rep to users
+
+e.g.
+FrenchDeck
+special methods
+__len__
+__getitem__
+
+Remaining special methods of Python Data Model covered in rest of book
+
+
+47. augmented operator
+a += b
+
+
+49. Soapbox
+Python Data Model special methods
+NOT
+Python object model
+
+defined by the metaobject protocol
+
+50. AMOP		Art of the Metaobject Protocol
+metaobject		objects part of building blocks of language
+protocol		synonym for interface
+
+metaobject protocol
+fancy for object model = API for core language constructs
+
+AOP
+Aspect-Orientated Programming
+easier for dynamic languages like Python
+frameworks like zope.interface
