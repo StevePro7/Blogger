@@ -1,6 +1,44 @@
 Python Data Model
 01-Feb-2026
 
+GEN SUM
+Python Data Model = PYTHONIC
+
+Python Data Model has Special Methods
+e.g.
+__len__
+__add__
+__str__
+__repr__
+
+and operator-to-method mappings: len(), abs()
+
+By implementing Special Methods you can make custom objects
+behave like built-in objects
+
+Example: FrenchDeck
+which implements sequence Special Methods
+__len__
+__getitem__
+
+this makes the custom object FrenchDeck behave like a built-in
+sequence which enables iteration, indexing, slicing and library interop
+
+
+Chp01 then talks about 
+- doctest = used a lot throughout book
+- Vector custom object with more Special Methods implemented
+  e.g. __repr__
+
+- collection API
+- overview of Special Methods
+
+Chp01 ends
+Python Data Model = language metaobject protocol [object model]
+that defines how core behaviors [attribute access, operators, iterators]
+are exposed and extended
+
+
 21.
 Python = consistency
 
