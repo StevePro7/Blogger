@@ -1,0 +1,227 @@
+Chap02
+14-Feb-2026
+
+One-Sentence Core Idea
+
+Python sequences share a unified design, but mutability, copying behavior, and reference semantics are the crucial subtleties to master.
+
+
+Chapter 2 Summary: An Array of Sequences
+
+This chapter introduces Python’s sequence types, explaining their design philosophy, shared behaviors, and subtle differences. It lays the foundation for understanding how Python treats collections of items and why its sequence model is both powerful and consistent.
+
+
+1. Built-in Sequences
+Python has mutable (e.g., list, bytearray) and immutable (e.g., tuple, str, bytes) sequences that share a common interface: indexing, slicing, iteration, membership, and length.
+
+2. List Comprehensions & Generator Expressions
+List comps → readable, fast list creation.
+Generator expressions → lazy, memory-efficient.
+Prefer comprehensions over map/filter for clarity.
+
+3. Tuples
+Tuples are best viewed as immutable records.
+Support unpacking and extended unpacking (*).
+Emphasize structure and positional meaning.
+
+4. Pattern Matching
+Sequence pattern matching (Python 3.10+) lets you match based on structure and unpack elements declaratively.
+
+5. Slicing
+s[start:stop:step]
+stop is excluded.
+Works for extraction and (if mutable) assignment.
+Encourages clean, off-by-one-free code.
+
+6. + and * with Sequences
++ → concatenates (new object).
+* → repetition.
+⚠️ Repeating nested lists duplicates references, not objects.
+
+7. Augmented Assignment
+Mutable sequences (list +=) modify in place.
+Immutable sequences (tuple +=) create new objects.
+
+8. Sorting
+list.sort() → in place.
+sorted() → new list.
+Sorting is stable and supports key= and reverse=.
+
+9. Specialized Sequence Types
+array.array → compact numeric storage.
+memoryview → efficient shared-memory access to binary data.
+
+
+MORE DETAIL
+
+Core Themes of the Chapter
+1. Consistency
+
+Python sequences share a unified design.
+
+2. Mutability Matters
+Understanding mutable vs immutable is critical for:
+Copying
+Assignment
+Performance
+Bugs
+
+3. Sequences Are Foundational
+They underpin:
+Data structures
+Function arguments
+Pattern matching
+Iteration
+Sorting
+
+Big Takeaways
+Prefer list comprehensions for clarity and performance.
+Think of tuples as records, not just frozen lists.
+Be cautious with * and nested mutable objects.
+Understand in-place vs new-object behavior.
+Use sorted() when you need a new list; list.sort() when you don’t.
+Recognize that Python’s sequence protocol is a carefully designed abstraction.
+
+
+
+
+
+
+1. Overview of Built-in Sequences
+Python provides several sequence types, grouped into:
+
+Mutable Sequences
+list
+bytearray
+array.array
+deque
+
+Immutable Sequences
+tuple
+str
+bytes
+
+All sequences share common behaviors:
+Indexing (s[0])
+Slicing (s[1:4])
+Iteration
+Membership testing (in)
+Length (len())
+
+They follow a common interface defined by abstract base classes in collections.abc.
+
+2. List Comprehensions and Generator Expressions
+List Comprehensions
+A concise, readable way to create lists:
+[x * 2 for x in range(10)]
+
+Key points:
+More readable and often faster than map() + filter()
+Have their own local scope (in Python 3)
+Can include conditions and nested loops
+
+Generator Expressions
+Like list comprehensions, but:
+Use parentheses
+Produce items lazily (one at a time)
+More memory-efficient
+(x * 2 for x in range(10))
+
+3. Tuples: Not Just Immutable Lists
+Important conceptual shift:
+Tuples are best understood as immutable records, not just immutable lists.
+
+Two uses of tuples:
+As immutable sequences
+As records with named meaning by position
+Example:
+lax_coordinates = (33.9425, -118.408056)
+
+Tuple Unpacking
+latitude, longitude = lax_coordinates
+
+Supports:
+Parallel assignment
+Swapping variables
+Extended unpacking with *
+
+Example:
+a, *rest = range(5)
+
+4. Pattern Matching (New in Python 3.10)
+Structural pattern matching allows matching against sequence shapes:
+
+match record:
+    case [name, _, _, (lat, lon)]:
+        ...
+
+This reinforces Python’s philosophy that sequences have structural meaning.
+
+5. Slicing
+Slicing syntax:
+s[start:stop:step]
+
+Key insights:
+
+stop is excluded
+Useful for splitting without off-by-one errors
+Can assign to slices (for mutable sequences)
+
+Example:
+l[2:5] = [20, 30]
+
+6. The + and * Operators with Sequences
+Concatenation (+)
+Creates a new object.
+Repetition (*)
+[1] * 3  # [1, 1, 1]
+
+⚠️ Important caveat with nested lists:
+board = [['_'] * 3] * 3
+
+This creates multiple references to the same inner list, leading to surprising behavior.
+
+This section emphasizes understanding:
+Object references
+Shallow copies
+How Python handles memory
+
+7. Augmented Assignment (+=, *=)
+Key distinction:
+For mutable sequences → modifies in place
+For immutable sequences → creates a new object
+
+Example:
+l += [4]   # modifies list
+t += (4,)  # creates new tuple
+
+This ties into Python’s object model and mutability semantics.
+
+8. Sorting
+Two approaches:
+list.sort()
+In-place
+Returns None
+More efficient
+sorted()
+Returns new list
+Works with any iterable
+
+Both support:
+key= parameter
+reverse=True
+
+Python uses Timsort, a stable and efficient hybrid sorting algorithm.
+Stability allows multi-level sorting:
+sorted(data, key=itemgetter(1))
+
+9. Specialized Sequence Types
+array.array
+Efficient numeric arrays (more compact than lists).
+
+memoryview
+Shared-memory view of binary data without copying.
+Useful for:
+Large datasets
+Binary protocols
+Performance-sensitive tasks
