@@ -1,0 +1,254 @@
+Chap03
+17-Feb-2026
+
+Dictionaries and Sets
+
+140-201
+
+A dict is Python’s built-in, high-performance hash-table implementation of a mapping.
+
+Dictionary keys must be hashable (immutable and with a stable hash value).
+
+Modern dictionaries preserve insertion order as a language guarantee.
+
+Dictionary lookup, insertion, and deletion run in average O(1) time.
+
+Dictionaries can be created with literals, constructors, or dict comprehensions.
+
+Dict comprehensions provide a concise way to transform or filter key–value pairs.
+
+Use get() to retrieve values safely without raising KeyError.
+
+Use setdefault() to insert defaults only when a key is missing.
+
+defaultdict automatically supplies default values for missing keys.
+
+Subclassing dict with __missing__ customizes missing-key behavior.
+
+Counter simplifies frequency counting of hashable items.
+
+ChainMap groups multiple mappings into a single logical view.
+
+Hashability requires consistent __hash__ and __eq__ behavior.
+
+Mutable objects are not hashable because their hash could change.
+
+Dictionaries resolve hash collisions internally while maintaining efficiency.
+
+A set is essentially a dictionary that stores only keys.
+
+Sets provide fast membership testing with O(1) average complexity.
+
+Sets enforce uniqueness of elements automatically.
+
+Set comprehensions offer a concise way to build sets from iterables.
+
+Sets support mathematical operations: union (|), intersection (&), difference (-), symmetric difference (^).
+
+Sets are ideal for deduplication and membership filtering tasks.
+
+Dictionaries and sets share the same optimized hash-table foundation.
+
+
+
+
+
+
+
+1. Dictionaries as First-Class Mappings
+
+The chapter begins by framing dict as Python’s primary mapping type—an efficient, hash-table–based data structure optimized for key lookup.
+
+Key points:
+
+Dictionaries store key–value pairs.
+
+Keys must be hashable (immutable objects with a stable __hash__ and equality behavior).
+
+Lookup, insertion, and deletion are amortized O(1) operations.
+
+It emphasizes that modern Python dictionaries:
+
+Preserve insertion order (official language guarantee since Python 3.7).
+
+Are highly optimized and central to Python’s object model 
+
+Fluent.Python.2nd.Edition
+
+.
+
+2. Dictionary Construction and Comprehensions
+
+Several ways to build dictionaries are discussed:
+
+Literal syntax: {key: value}
+
+dict() constructor
+
+From iterable of key–value pairs
+
+Dictionary comprehensions (similar to list comprehensions)
+
+Example concept:
+
+{key: value for item in iterable}
+
+
+Dict comprehensions are highlighted as expressive and efficient for transformations 
+
+Fluent.Python.2nd.Edition
+
+.
+
+3. Handling Missing Keys
+
+A major theme is graceful handling of missing keys.
+
+Techniques covered:
+
+d.get(key, default)
+
+d.setdefault(key, default)
+
+collections.defaultdict
+
+Overriding __missing__ in subclasses
+
+defaultdict is presented as the cleanest way to handle automatic default values (e.g., grouping items) 
+
+Fluent.Python.2nd.Edition
+
+.
+
+4. Variations of dict
+
+The chapter introduces specialized mapping types from collections:
+
+defaultdict
+
+OrderedDict (historically relevant; less necessary now due to ordered dict)
+
+ChainMap
+
+Counter
+
+Each solves a specific problem:
+
+Counter for frequency counting
+
+ChainMap for layered scopes
+
+defaultdict for automatic defaults 
+
+Fluent.Python.2nd.Edition
+
+.
+
+5. The Hashable Requirement
+
+A crucial conceptual section explains hashability:
+
+An object is hashable if:
+
+It has a hash value that never changes during its lifetime.
+
+It supports equality comparison.
+
+Equal objects have equal hashes.
+
+Immutable built-ins (like str, int, tuple of hashables) are hashable. Mutable types like list and dict are not.
+
+This section explains why immutability matters for dictionary keys and how Python ensures hash consistency 
+
+Fluent.Python.2nd.Edition
+
+.
+
+6. How Dictionaries Work Internally
+
+The book briefly explains dictionary internals:
+
+Dictionaries use hash tables.
+
+Hash values determine storage position.
+
+Collisions are handled internally.
+
+Performance depends on a good hash distribution.
+
+The implementation is optimized for memory efficiency and speed 
+
+Fluent.Python.2nd.Edition
+
+.
+
+7. Sets
+
+Sets are introduced as a close relative of dictionaries:
+
+Implemented using the same hash-table machinery.
+
+Store only keys (no values).
+
+Unordered collection of unique elements.
+
+Key operations:
+
+Membership testing: x in s
+
+Set algebra:
+
+Union |
+
+Intersection &
+
+Difference -
+
+Symmetric difference ^
+
+Set comprehensions are also covered:
+
+{x for x in iterable}
+
+
+Sets are ideal for:
+
+Removing duplicates
+
+Fast membership checks
+
+Mathematical set operations 
+
+Fluent.Python.2nd.Edition
+
+.
+
+8. Practical Patterns
+
+The chapter emphasizes idiomatic usage patterns:
+
+Counting with Counter
+
+Grouping with defaultdict
+
+Filtering with dict comprehensions
+
+Using sets to eliminate duplicates
+
+Using set operations for comparison tasks
+
+The core message: Dictionaries and sets are foundational, high-performance tools in Python and should be used idiomatically rather than reinventing data structures.
+
+Core Takeaways
+
+dict is Python’s fundamental mapping type.
+
+Keys must be hashable.
+
+Modern dicts preserve insertion order.
+
+defaultdict, Counter, and other variants simplify common patterns.
+
+Sets share the same underlying mechanics as dictionaries.
+
+Mastery of dict and set operations leads to cleaner, faster Python code.

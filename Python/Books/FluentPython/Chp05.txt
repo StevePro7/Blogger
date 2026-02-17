@@ -1,0 +1,48 @@
+Chap05
+17-Feb-2026
+
+Data Class Builders
+
+266-323
+
+Data class builders automate the creation of classes primarily used to store data.
+
+collections.namedtuple creates lightweight, immutable tuple subclasses with named fields.
+
+typing.NamedTuple adds type hints to named tuple definitions.
+
+@dataclass generates boilerplate methods like __init__, __repr__, and __eq__.
+
+Data classes reduce repetitive class-writing code.
+
+Fields in a dataclass are defined using type annotations.
+
+Default values can be assigned directly in field definitions.
+
+field() customizes default values and behaviors.
+
+default_factory is used for mutable default values.
+
+Dataclasses can be mutable or frozen (immutable).
+
+frozen=True makes instances hashable when possible.
+
+Field order determines constructor parameter order.
+
+Dataclasses support comparison methods automatically when enabled.
+
+__post_init__ allows additional initialization logic after object creation.
+
+asdict() converts dataclass instances to dictionaries.
+
+astuple() converts dataclass instances to tuples.
+
+Data classes support inheritance.
+
+Named tuples are memory-efficient and iterable like regular tuples.
+
+Dataclasses are more flexible than named tuples for complex models.
+
+Choosing between namedtuple and dataclass depends on mutability and feature needs.
+
+Data class builders encourage clear, declarative domain models.

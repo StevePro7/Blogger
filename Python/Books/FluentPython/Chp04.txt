@@ -1,0 +1,54 @@
+Chap04
+17-Feb-2026
+
+Text Versus Bytes
+
+202-265
+
+Python 3 clearly separates text (str) from binary data (bytes).
+
+str represents Unicode text, not raw bytes.
+
+bytes represents immutable sequences of 8-bit values.
+
+bytearray is a mutable version of bytes.
+
+Text must be encoded to become bytes.
+
+Bytes must be decoded to become text.
+
+Encoding converts Unicode code points into byte sequences.
+
+UTF-8 is the dominant and recommended default encoding.
+
+Never assume a system’s default encoding—always specify it explicitly.
+
+Encoding errors raise UnicodeEncodeError.
+
+Decoding errors raise UnicodeDecodeError.
+
+Error-handling strategies include strict, ignore, and replace.
+
+A code point is not the same as its encoded byte representation.
+
+Characters may occupy multiple bytes in UTF-8.
+
+The length of a string differs from the length of its encoded bytes.
+
+Text files should be opened with an explicit encoding argument.
+
+Binary files must be opened in binary mode ('rb' / 'wb').
+
+Python source files default to UTF-8 encoding.
+
+Byte literals use the b'' prefix.
+
+Bytes and bytearray support most sequence operations.
+
+The memoryview object allows zero-copy slicing of binary data.
+
+Unicode normalization ensures consistent representation of equivalent text.
+
+Case folding is stronger than lowercasing for Unicode comparisons.
+
+Always handle text at the boundaries of your program (I/O), not internally as bytes.
