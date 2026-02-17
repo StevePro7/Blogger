@@ -1,0 +1,49 @@
+Chap07 III
+17-Feb-2026
+
+
+Functions as First-Class Objects
+361-388
+
+
+Functions in Python are first-class objects that can be assigned to variables.
+
+Functions can be passed as arguments to other functions.
+
+Functions can be returned as values from other functions.
+
+A function object has attributes such as __name__ and __doc__.
+
+Higher-order functions accept or return other functions.
+
+map(), filter(), and reduce() operate on iterables using functions.
+
+List comprehensions often replace map() and filter() more readably.
+
+Anonymous functions are created with the lambda keyword.
+
+Lambdas are limited to single expressions.
+
+The sorted() function accepts a key function for custom ordering.
+
+Callable objects are any objects implementing __call__.
+
+Classes can behave like functions by defining __call__.
+
+User-defined callables enable stateful function-like objects.
+
+Functions have introspection attributes accessible via dir() and __dict__.
+
+The __annotations__ attribute stores type hints.
+
+The inspect module reveals function signatures.
+
+Positional-only and keyword-only parameters control function APIs.
+
+Variable positional arguments use *args.
+
+Variable keyword arguments use **kwargs.
+
+Functions support default parameter values.
+
+First-class functions enable flexible, composable program design.
