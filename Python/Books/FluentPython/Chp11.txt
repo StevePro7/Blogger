@@ -1,0 +1,46 @@
+Chap11 IV
+17-Feb-2026
+
+A Pythonic Object
+534-578
+
+A Pythonic object integrates naturally with Python’s data model.
+
+Special methods (dunder methods) enable objects to behave like built-ins.
+
+__repr__ provides an unambiguous string representation for debugging.
+
+__str__ provides a user-friendly string representation.
+
+__bytes__ defines a byte representation of an object.
+
+__format__ customizes behavior of format() and f-strings.
+
+__eq__ defines equality comparison behavior.
+
+__hash__ enables instances to be usable as dictionary keys if immutable.
+
+Objects that define __eq__ properly should also define compatible __hash__.
+
+@property allows controlled attribute access with getter methods.
+
+Read-only attributes can be enforced via properties.
+
+Attribute privacy is by convention using a leading underscore.
+
+__slots__ can reduce memory usage by restricting instance attributes.
+
+Implementing __iter__ makes objects iterable.
+
+Implementing __len__ allows use of len() on instances.
+
+Python favors behavior-based protocols over rigid inheritance hierarchies.
+
+Class methods use @classmethod and receive the class as the first argument.
+
+Static methods use @staticmethod and behave like plain functions inside a class.
+
+Proper operator overloading enhances expressiveness when logically appropriate.
+
+A well-designed Pythonic class behaves naturally in built-in contexts.
+

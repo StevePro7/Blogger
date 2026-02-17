@@ -1,0 +1,48 @@
+Chap09 III
+17-Feb-2026
+
+
+Decorators and Closures
+456-504
+
+A decorator is a callable that takes a function and returns a replacement function.
+
+The @decorator syntax is syntactic sugar for reassigning a function name.
+
+Decorators are executed at function definition time, not at runtime call time.
+
+Closures occur when a nested function captures variables from its enclosing scope.
+
+Free variables are variables referenced but not defined in a function.
+
+A closure retains access to its free variables even after the outer function exits.
+
+Functions carry their closure data in the __closure__ attribute.
+
+The nonlocal keyword allows rebinding a variable in an enclosing scope.
+
+Without nonlocal, assignments create new local variables.
+
+Decorators often wrap a function to add behavior before or after execution.
+
+Wrapper functions must accept *args and **kwargs to be generic.
+
+functools.wraps preserves metadata of the original function.
+
+Decorators can maintain state using closures.
+
+Parameterized decorators require an extra level of nesting.
+
+Decorators can enforce access control, logging, caching, or timing behavior.
+
+The functools.lru_cache decorator implements memoization.
+
+Closures provide an alternative to classes for stateful callables.
+
+Decorators exemplify higher-order functions in practical use.
+
+Proper decorator design preserves function signatures and documentation.
+
+Understanding closures clarifies how decorators manage persistent state.
+
+

@@ -1,0 +1,49 @@
+Chap08 III
+17-Feb-2026
+
+
+Type Hints in Functions
+388-455
+
+
+Type hints document the expected types of function parameters and return values.
+
+Type hints are optional and do not affect runtime behavior by default.
+
+Static type checkers (e.g., mypy) analyze code using annotations.
+
+Function annotations are stored in the __annotations__ attribute.
+
+Parameter types are declared after the parameter name using :.
+
+Return types are declared using -> in the function signature.
+
+Built-in collection types can be parameterized (e.g., list[int]).
+
+typing.Any disables type checking for a specific value.
+
+typing.Union expresses multiple acceptable types.
+
+The | operator provides a modern syntax for unions (e.g., int | str).
+
+typing.Optional[T] is shorthand for T | None.
+
+typing.Sequence and other abstract types support flexible APIs.
+
+Use abstract collection types in annotations for generality.
+
+typing.Callable annotates function parameters that accept callables.
+
+Type variables (TypeVar) enable generic function definitions.
+
+Constrained type variables restrict acceptable types.
+
+Overloaded functions can be expressed using @overload.
+
+typing.Protocol supports structural subtyping (duck typing with types).
+
+Forward references allow types not yet defined to be annotated as strings.
+
+Type hints improve readability, tooling, and maintainability.
+
+Gradual typing allows mixing typed and untyped code safely.
