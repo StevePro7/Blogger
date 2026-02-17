@@ -1,0 +1,49 @@
+Chap06 II
+17-Feb-2026
+
+Object References, Mutability, and Recycling
+324-359
+
+Variables in Python store references to objects, not the objects themselves.
+
+Assignment binds a name to an object reference.
+
+Multiple variables can reference the same object simultaneously.
+
+Identity (is) checks whether two references point to the same object.
+
+Equality (==) checks whether two objects have equivalent values.
+
+Mutable objects can change state after creation.
+
+Immutable objects cannot change state after creation.
+
+Aliasing occurs when multiple names refer to the same mutable object.
+
+In-place operations modify the existing object rather than creating a new one.
+
+Shallow copies duplicate only the outer container, not nested objects.
+
+Deep copies recursively duplicate nested objects.
+
+The copy module provides copy() and deepcopy() utilities.
+
+Mutable default arguments can cause unexpected shared state.
+
+Use None as a default parameter sentinel to avoid shared mutable defaults.
+
+Function arguments are passed by object reference (call by sharing).
+
+Mutating an argument inside a function affects the caller if the object is mutable.
+
+Immutable arguments cannot be altered in-place.
+
+Garbage collection reclaims objects that are no longer referenced.
+
+Reference counting is Python’s primary memory management mechanism.
+
+Circular references require cyclic garbage collection.
+
+Small immutable objects may be reused (object interning).
+
+Understanding references prevents subtle bugs with shared mutable state.
