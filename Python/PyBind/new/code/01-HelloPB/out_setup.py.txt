@@ -1,0 +1,24 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>setup.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from setuptools import setup, Extension
+&nbsp;&nbsp;import pybind11
+&nbsp;&nbsp;
+&nbsp;&nbsp;ext_modules = [
+&nbsp;&nbsp;    Extension(
+&nbsp;&nbsp;        &quot;example&quot;,
+&nbsp;&nbsp;        [&quot;example.cpp&quot;],
+&nbsp;&nbsp;        include_dirs=[pybind11.get_include()],
+&nbsp;&nbsp;        language=&quot;c++&quot;
+&nbsp;&nbsp;    ),
+&nbsp;&nbsp;]
+&nbsp;&nbsp;
+&nbsp;&nbsp;setup(
+&nbsp;&nbsp;    name=&quot;example&quot;,
+&nbsp;&nbsp;    ext_modules=ext_modules,
+&nbsp;&nbsp;)
+</pre>
+</td></tr>
+</table>
+<br />

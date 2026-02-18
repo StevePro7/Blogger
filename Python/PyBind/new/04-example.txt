@@ -20,4 +20,67 @@ Create an <a href="https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-cod
 -->
 <br />
 Create the following files: example.cpp, setup.py, test.py.  Enter the following C++ and Python code and run!
-<br /><br />
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>example.cpp</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;#include &lt;pybind11/pybind11.h&gt;
+&nbsp;&nbsp;
+&nbsp;&nbsp;int add(int i, int j)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    return i + j;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;
+&nbsp;&nbsp;PYBIND11_MODULE(example, m)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    // optional module docstring
+&nbsp;&nbsp;    m.doc() = &quot;pybind11 example plugin&quot;;
+&nbsp;&nbsp;    m.def(&quot;add&quot;, &amp;add, &quot;A function which adds two numbers&quot;);
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />  
+
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>setup.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from setuptools import setup, Extension
+&nbsp;&nbsp;import pybind11
+&nbsp;&nbsp;
+&nbsp;&nbsp;ext_modules = [
+&nbsp;&nbsp;    Extension(
+&nbsp;&nbsp;        &quot;example&quot;,
+&nbsp;&nbsp;        [&quot;example.cpp&quot;],
+&nbsp;&nbsp;        include_dirs=[pybind11.get_include()],
+&nbsp;&nbsp;        language=&quot;c++&quot;
+&nbsp;&nbsp;    ),
+&nbsp;&nbsp;]
+&nbsp;&nbsp;
+&nbsp;&nbsp;setup(
+&nbsp;&nbsp;    name=&quot;example&quot;,
+&nbsp;&nbsp;    ext_modules=ext_modules,
+&nbsp;&nbsp;)
+</pre>
+</td></tr>
+</table>
+
+<br />
+  
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>test.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import example
+&nbsp;&nbsp;
+&nbsp;&nbsp;result = example.add(1, 2)
+&nbsp;&nbsp;print(f"1 + 2 = {result}")
+</pre>
+</td></tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglvt5e31OLhhcfJSAC_tNAIc5D4efHpDumQb-AH_3f-al8KOptjrZJORLOwT5UOvTZ3jCkFKQg_atwKudO4TcTkzE3WoldKtHg93yY8d2H3-W6JVNR4GcMyfnKLSDfN_7rC-z0DpNfaPygX-f01v_aMi1G1LMT8-Ni82_TFHYAIGSudBFV01heuU4bya0/s871/HelloPybind01b.png""><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglvt5e31OLhhcfJSAC_tNAIc5D4efHpDumQb-AH_3f-al8KOptjrZJORLOwT5UOvTZ3jCkFKQg_atwKudO4TcTkzE3WoldKtHg93yY8d2H3-W6JVNR4GcMyfnKLSDfN_7rC-z0DpNfaPygX-f01v_aMi1G1LMT8-Ni82_TFHYAIGSudBFV01heuU4bya0/s600/HelloPybind01b.png"/></a>
+<br />
+-->

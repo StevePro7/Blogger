@@ -1,0 +1,21 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>example.cpp</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;#include &lt;pybind11/pybind11.h&gt;
+&nbsp;&nbsp;
+&nbsp;&nbsp;int add(int i, int j)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    return i + j;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;
+&nbsp;&nbsp;PYBIND11_MODULE(example, m)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    // optional module docstring
+&nbsp;&nbsp;    m.doc() = &quot;pybind11 example plugin&quot;;
+&nbsp;&nbsp;    m.def(&quot;add&quot;, &amp;add, &quot;A function which adds two numbers&quot;);
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />
