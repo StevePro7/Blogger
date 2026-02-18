@@ -1,0 +1,36 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/11/openai-retro-cheat-sheet.html">OpenAI Retro Cheat Sheet</a> as an open-source project that provides an interface to interact with various retro video games for purpose of Reinforcement Learning research.  This project: using C/C++ for high-performance but leverages <a href="https://pybind11.readthedocs.io/en/stable">pybind11</a> to create bindings for Python client code consumption.
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGh5yxV4LJ8gBHcID6DomvBgr9iCkvM2Mm1G9UYgPF7mXiHA85U39FNTMQsKutS5KG21EPCQ-fj_coHW2NxlkSm-cDLrwzJhWc6m-TdEiF1sZjlFHchN16KvMOwpCbjkZ6GsMLiUL04YMQeyojoxvqiA9ZPPygzAdUnVnlcSfR7DFUUV-W98ZPd7eEG4/s1131/pybind11-logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGh5yxV4LJ8gBHcID6DomvBgr9iCkvM2Mm1G9UYgPF7mXiHA85U39FNTMQsKutS5KG21EPCQ-fj_coHW2NxlkSm-cDLrwzJhWc6m-TdEiF1sZjlFHchN16KvMOwpCbjkZ6GsMLiUL04YMQeyojoxvqiA9ZPPygzAdUnVnlcSfR7DFUUV-W98ZPd7eEG4/s600/pybind11-logo.png"/></a>
+<br />
+-->
+Let's check it out!
+<br /><br />
+  
+<u>pybind11</u><br />
+A <a href="http://pybind11.com">lightweight</a> header-only library that can be used to integrate C++ with Python to create bindings exposing C++ functions to Python.  Client code written in Python can be consumed to invoke the underlying C++ code.
+<br /><br />
+  
+<u>Installation</u><br />
+All examples here are executed on Ubuntu Linux.  Therefore install <a href="https://github.com/bonj4/wiki/blob/main/pybind11_installation.md">pybind11</a> globally to begin the examples:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top">
+<pre style="font-size: 12px;">
+&nbsp;sudo apt-get update
+&nbsp;sudo apt-get install pybind11-dev
+&nbsp;sudo apt install build-essential g++
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+  
+<!-- -->
+
+</span>
