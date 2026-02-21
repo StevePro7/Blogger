@@ -1,0 +1,8 @@
+mkdir -p ~/HelloPyBind
+cd HelloPyBind
+python  -m venv .venv
+source .venv/bin/activate
+which python
+`which python` --version            # Python 3.8.10
+pip install pybind11
+pip install --upgrade pip
