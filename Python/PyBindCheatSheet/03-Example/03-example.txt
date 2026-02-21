@@ -1,0 +1,30 @@
+Example III
+21-Feb-2026
+
+<u>Example III</u><br />
+Launch PyCharm...
+UV
+Python 3.11
+
+write all code within PyCharm
+
+
+Commands
+Image
+
+CODE
+~\GitHub\StevePro9\PythonSetup\PyBindCheatSheet\03-Example
+
+#~\GitHub\StevePro9\PythonSetup\PyBind\org\03-inline-bindings\PyBind11Test
+#~\GitHub\StevePro9\PythonSetup\PyBind\new-03\01-inline-bindings
+
+
+write code
+
+COMMAND
+python -c "import sysconfig, shutil, glob; \
+dst = sysconfig.get_paths()['platlib']; \
+so = glob.glob('*.so')[0]; \
+shutil.copy2(so, dst)"
+
+F5
