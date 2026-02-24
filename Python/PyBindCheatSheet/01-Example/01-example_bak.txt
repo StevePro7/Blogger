@@ -1,0 +1,38 @@
+Example I
+reference
+
+BLOG
+04-example.txt
+~\GitHub\StevePro10\Blogger\Python\PyBind\new
+
+<u>Example I</u><br />
+Create an example that exposes C++ function to Python with pybind11.  Launch terminal | Enter commands:
+
+
+Commands
+Image
+
+CODE
+~\GitHub\StevePro9\PythonSetup\PyBindCheatSheet\01-Example
+#~\GitHub\StevePro9\PythonSetup\PyBind\new-01\01-example
+
+
+Create the following files: example.cpp, setup.py, 
+
+python setup.py build_ext --inplace
+
+Produces
+example.cpython-38-x86_64-linux-gnu.so
+
+test.py
+
+uv run test.py
+
+
+test.py.  
+
+
+
+
+
+

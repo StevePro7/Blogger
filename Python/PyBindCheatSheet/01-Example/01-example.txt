@@ -1,38 +1,103 @@
-Example I
-reference
-
-BLOG
-04-example.txt
-~\GitHub\StevePro10\Blogger\Python\PyBind\new
+<span style="font-family:verdana;font-size:85%;">
 
 <u>Example I</u><br />
-Create an example that exposes C++ function to Python with pybind11.  Launch terminal | Enter commands:
+Create an <a href="https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-code-to-python-337da23685dc">example</a> that exposes C++ function to Python with pybind11.  Launch terminal | Enter commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p ~/HelloPyBind
+&nbsp;&nbsp;cd HelloPyBind
+&nbsp;&nbsp;python  -m venv .venv
+&nbsp;&nbsp;source .venv/bin/activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.8.10
+&nbsp;&nbsp;pip install pybind11
+&nbsp;&nbsp;pip install --upgrade pip
+</pre>
+</td></tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYgMbdT4mZYG5ZA8jEL_ytuoQUWcjwTSjqRj-3IlF36atg2ikaZ4R399DK4GaqfHe0OMV4qTMOcUFKd1zRrkh8m9mJgeSaSJvPvL96WLM5teE7fJ0o4NnTF6zw4EwiVsoUHsL3qPcxKC0GsLKHpgdhoZUBHq4LKIA8TKYQFenHoAo0CGfuscaSxpt8-2c/s736/HelloPybind01a.png""><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYgMbdT4mZYG5ZA8jEL_ytuoQUWcjwTSjqRj-3IlF36atg2ikaZ4R399DK4GaqfHe0OMV4qTMOcUFKd1zRrkh8m9mJgeSaSJvPvL96WLM5teE7fJ0o4NnTF6zw4EwiVsoUHsL3qPcxKC0GsLKHpgdhoZUBHq4LKIA8TKYQFenHoAo0CGfuscaSxpt8-2c/s600/HelloPybind01a.png"/></a>
+-->
+<br />
+Create the following files: example.cpp, setup.py, test.py.  Enter the following C++ and Python source code:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>example.cpp</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;#include &lt;pybind11/pybind11.h&gt;
+&nbsp;&nbsp;
+&nbsp;&nbsp;int add(int x, int y)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    return x + y;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;
+&nbsp;&nbsp;PYBIND11_MODULE(example, m)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    // optional module docstring
+&nbsp;&nbsp;    m.doc() = &quot;pybind11 example plugin&quot;;
+&nbsp;&nbsp;    m.def(&quot;add&quot;, &amp;add, &quot;A function which adds two numbers&quot;);
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />  
 
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>setup.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from setuptools import setup, Extension
+&nbsp;&nbsp;import pybind11
+&nbsp;&nbsp;
+&nbsp;&nbsp;ext_modules = [
+&nbsp;&nbsp;    Extension(
+&nbsp;&nbsp;        &quot;example&quot;,
+&nbsp;&nbsp;        [&quot;example.cpp&quot;],
+&nbsp;&nbsp;        include_dirs=[pybind11.get_include()],
+&nbsp;&nbsp;        language=&quot;c++&quot;
+&nbsp;&nbsp;    ),
+&nbsp;&nbsp;]
+&nbsp;&nbsp;
+&nbsp;&nbsp;setup(
+&nbsp;&nbsp;    name=&quot;example&quot;,
+&nbsp;&nbsp;    version=&quot;0.1&quot;,
+&nbsp;&nbsp;    ext_modules=ext_modules,
+&nbsp;&nbsp;)
+</pre>
+</td></tr>
+</table>
 
-Commands
-Image
+<br />
+  
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>test.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import example
+&nbsp;&nbsp;
+&nbsp;&nbsp;result = example.add(1, 2)
+&nbsp;&nbsp;print(f"1 + 2 = {result}")
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Build C++ code using setup.py build inplace.  Finally execute <i>python test.py</i> for Python to execute C++ code!
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;python setup.py build_ext --inplace		# example.cpython-38-x86_64-linux-gnu.so
+&nbsp;&nbsp;python test.py				# OUTPUT	1 + 2 = 3
+</pre>
+</td></tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglvt5e31OLhhcfJSAC_tNAIc5D4efHpDumQb-AH_3f-al8KOptjrZJORLOwT5UOvTZ3jCkFKQg_atwKudO4TcTkzE3WoldKtHg93yY8d2H3-W6JVNR4GcMyfnKLSDfN_7rC-z0DpNfaPygX-f01v_aMi1G1LMT8-Ni82_TFHYAIGSudBFV01heuU4bya0/s871/HelloPybind01b.png""><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglvt5e31OLhhcfJSAC_tNAIc5D4efHpDumQb-AH_3f-al8KOptjrZJORLOwT5UOvTZ3jCkFKQg_atwKudO4TcTkzE3WoldKtHg93yY8d2H3-W6JVNR4GcMyfnKLSDfN_7rC-z0DpNfaPygX-f01v_aMi1G1LMT8-Ni82_TFHYAIGSudBFV01heuU4bya0/s600/HelloPybind01b.png"/></a>
+<br />
 
-CODE
-~\GitHub\StevePro9\PythonSetup\PyBindCheatSheet\01-Example
-#~\GitHub\StevePro9\PythonSetup\PyBind\new-01\01-example
+<!-- -->
 
-
-Create the following files: example.cpp, setup.py, 
-
-python setup.py build_ext --inplace
-
-Produces
-example.cpython-38-x86_64-linux-gnu.so
-
-test.py
-
-uv run test.py
-
-
-test.py.  
-
-
-
-
-
-
+</span>
