@@ -1,30 +1,86 @@
-Example IV
-21-Feb-2026
+<span style="font-family:verdana;font-size:85%;">
 
 <u>Example IV</u><br />
-Launch PyCharm...
-UV
-Python 3.11
-setup
-
-CLion
-write all C++ code within CLion
-
-
-PyCharm
-write all Python code within PyCharm
-
-
-CODE
-~\GitHub\StevePro9\PythonSetup\PyBindCheatSheet\04-Example
-#~\GitHub\StevePro9\PythonSetup\PyBind\new-02\01-stevechange-01
-
-
-
-
-
-
-
-
-
-
+TODO - the issue with all previous examples is that we cannot debug step thru code plus code coupled... LAYOUT
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>layout.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;~/HelloPyBind/
+&nbsp;&nbsp;├── cpp/
+&nbsp;&nbsp;│   ├── src/
+&nbsp;&nbsp;│   │   ├── api/
+&nbsp;&nbsp;│   │   │   ├── my_api.h
+&nbsp;&nbsp;│   │   │   └── my_api.cpp
+&nbsp;&nbsp;│   │   ├── bindings/
+&nbsp;&nbsp;│   │   │   └── pybind_module.cpp       # pybind11 bindings
+&nbsp;&nbsp;│   │   ├── CMakeLists.txt
+&nbsp;&nbsp;│   │   └── main.cpp                    # C++ executable entry point
+&nbsp;&nbsp;│   ├── tests/
+&nbsp;&nbsp;│   │   ├── CMakeLists.txt
+&nbsp;&nbsp;│   │   └── test_api.cpp
+&nbsp;&nbsp;│   └── CMakeLists.txt                  # top-level C++ (CLion entry point)
+&nbsp;&nbsp;│
+&nbsp;&nbsp;└── python/
+&nbsp;&nbsp;    ├── .venv/
+&nbsp;&nbsp;    │   └── lib/
+&nbsp;&nbsp;    │       └── python3.11/
+&nbsp;&nbsp;    │           └── site-packages/
+&nbsp;&nbsp;    │               └── my_api_py.cpython-311-x86_64-linux-gnu.so
+&nbsp;&nbsp;    ├── test.py
+&nbsp;&nbsp;    ├── pyproject.toml
+&nbsp;&nbsp;    └── README.md
+</pre>
+</td></tr>
+</table>
+<br />
+<!-- -->
+<br />
+Repeat previous exercise but prefer JetBrains IDEs to build and run source code.  Create PyCharm Project:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_I8o2Al43lhmTbassAIRN8QCM2BvOkPyszKR_cRelb_s67m6MH_oldlyDdvUr2i5bpQyiEnjXI1Afg2BkPcJpNLBzYlINveumFsyxHHtkYTFVwDMdZoBT7oD_d459rMc0HL7n1k1jlXB8yh8JFr0HwkHxIyIwS78b4AteyjoGAuMUfrzFuJ0jokQVHgU/s1000/HelloPybind04a.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_I8o2Al43lhmTbassAIRN8QCM2BvOkPyszKR_cRelb_s67m6MH_oldlyDdvUr2i5bpQyiEnjXI1Afg2BkPcJpNLBzYlINveumFsyxHHtkYTFVwDMdZoBT7oD_d459rMc0HL7n1k1jlXB8yh8JFr0HwkHxIyIwS78b4AteyjoGAuMUfrzFuJ0jokQVHgU/s600/HelloPybind04a.png"/></a>
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind/python</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<!-- -->
+<br />
+Launch CLion | New Project.  Create C++ Executable using C++ 17.  Enter the following CLion information:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZuhMmNWxfw8BCpeOEBJnWoX4WxvkNDuoITgoTYXBXThPVhzh45Z0CzoSBDTVzksJYb1GD9n08sFvxb8qjL0wDNhx_P-z_sYzPkqP3ikchubE4tZgENvy92hI2zbCnUUPVSDf_i9nuK5CXTaAJOCyfFBMCZ161f6iqWFPj0dMkxU_jXmuQZunXjMhgHxY/s705/HelloPybind04b.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZuhMmNWxfw8BCpeOEBJnWoX4WxvkNDuoITgoTYXBXThPVhzh45Z0CzoSBDTVzksJYb1GD9n08sFvxb8qjL0wDNhx_P-z_sYzPkqP3ikchubE4tZgENvy92hI2zbCnUUPVSDf_i9nuK5CXTaAJOCyfFBMCZ161f6iqWFPj0dMkxU_jXmuQZunXjMhgHxY/s600/HelloPybind04b.png"/></a>
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;C++</td><td valign="top">&nbsp;C++ Executable</td></tr>
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind/cpp</td></tr>
+<tr><td valign="top">&nbsp;Language standard:</td><td valign="top">&nbsp;C++17</td></tr>
+</table>
+<!-- -->
+<br />
+Set  build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitVgFdvzMLdRIT7Dw9GJCgMu0m52HnUsT93q23POxMdiHrriyYMhyphenhyphenKKd1LI3grFmbrzH8ndhMEIPzET590KGyly02AOEQ5PxpqDLQLzAHLfuy77aASsL_JKAJ7bMzhVyllP1944pMIVtKlbNSbRULX9soveeTbPvL20BNiRBKhxnGPQ2smn1QwEqTxRLE/s1022/HelloPybind04c.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitVgFdvzMLdRIT7Dw9GJCgMu0m52HnUsT93q23POxMdiHrriyYMhyphenhyphenKKd1LI3grFmbrzH8ndhMEIPzET590KGyly02AOEQ5PxpqDLQLzAHLfuy77aASsL_JKAJ7bMzhVyllP1944pMIVtKlbNSbRULX9soveeTbPvL20BNiRBKhxnGPQ2smn1QwEqTxRLE/s600/HelloPybind04c.png"/></a>
+<!-- -->
+<br />
+Setup folder layout as above.  Enter all C++ source code and tests.  Rebuild entire solution in Debug mode.
+<br />
+<br />
+IMPORTANT<br />
+CMakeLists.txt files are configured to copy shared object SO file into the Python .venv virtual environment
+<br />
+<br /> 
+Launch PyCharm | Complete the test runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv run test.py				# OUTPUT	1 + 2 = 3
+</pre>
+</td></tr>
+</table>
+</span>
