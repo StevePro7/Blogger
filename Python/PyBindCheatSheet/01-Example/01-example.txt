@@ -10,7 +10,7 @@ Create an <a href="https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-cod
 &nbsp;&nbsp;mkdir -p ~/HelloPyBind
 &nbsp;&nbsp;cd HelloPyBind
 &nbsp;&nbsp;python  -m venv .venv
-&nbsp;&nbsp;source .venv/bin/activate
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
 &nbsp;&nbsp;which python
 &nbsp;&nbsp;`which python` --version            # Python 3.8.10
 &nbsp;&nbsp;pip install pybind11

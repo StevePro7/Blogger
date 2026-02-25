@@ -1,38 +1,68 @@
-Example II
-
+<span style="font-family:verdana;font-size:85%;">
 
 <u>Example II</u><br />
-Launch PyCharm...
-UV
-Python 3.11
-//Create an example that exposes C++ function to Python with pybind11.  Launch terminal | Enter commands:
-
-
-Commands
-Image
-
-CODE
-~\GitHub\StevePro9\PythonSetup\PyBindCheatSheet\02-Example
-#~\GitHub\StevePro9\PythonSetup\PyBind\new-01\02-exampleHW
-
-
-Create the following files: example.cpp, setup.py, 
-
-python setup.py build
-python setup.py install
-
-
-Produces
-example.cpython-38-x86_64-linux-gnu.so
-
-test.py
-F5
-
-
-
-
-
-
-
-
-
+Repeat previous exercise but prefer PyCharm IDE.  Launch PyCharm | New Project.  Enter the following info:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiVvrWw2AjNA3i39GhyphenhyphenTNpeTkJbeIm5Ho9rKXI0xHBle1XSp3H6YRDDuIjEwzsRd-hg2LpNHabTKzqGv8IAbxO_XVrA8AubnuLlUvXnolerpV8kVzUHy4ZCZo3_t9ym3-4aDwZUwd-RS0y708SPeL6WIxb860J4Z5M3EUYX6q162ecD3EVk6ZTjpK-x74/s1000/HelloPybind02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiVvrWw2AjNA3i39GhyphenhyphenTNpeTkJbeIm5Ho9rKXI0xHBle1XSp3H6YRDDuIjEwzsRd-hg2LpNHabTKzqGv8IAbxO_XVrA8AubnuLlUvXnolerpV8kVzUHy4ZCZo3_t9ym3-4aDwZUwd-RS0y708SPeL6WIxb860J4Z5M3EUYX6q162ecD3EVk6ZTjpK-x74/s600/HelloPybind02.png"/></a>
+ -->
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+-->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.8.10
+</pre>
+</td></tr>
+</table>
+-->
+<br />  
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package dependencies:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv add pybind11
+&nbsp;&nbsp;uv add setuptools
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+Create the following files: example.cpp, setup.py, test.py.  Enter C++ and Python code similar to Example I.  Build C++ code using setup.py build install.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv run setup.py build		
+&nbsp;&nbsp;uv run setup.py install		# example.cpython-38-x86_64-linux-gnu.so
+&nbsp;&nbsp;uv run test.py			# OUTPUT	3 + 5 = 8	9 - 5 = 4
+</pre>
+</td></tr>
+</table>
+<br />  
+  
+</span>
