@@ -3,11 +3,11 @@
 <u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/02-Example">Example II</a></u><br />
 Repeat previous exercise but prefer PyCharm IDE.  Launch PyCharm | New Project.  Enter the following info:
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiVvrWw2AjNA3i39GhyphenhyphenTNpeTkJbeIm5Ho9rKXI0xHBle1XSp3H6YRDDuIjEwzsRd-hg2LpNHabTKzqGv8IAbxO_XVrA8AubnuLlUvXnolerpV8kVzUHy4ZCZo3_t9ym3-4aDwZUwd-RS0y708SPeL6WIxb860J4Z5M3EUYX6q162ecD3EVk6ZTjpK-x74/s1000/HelloPybind02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiVvrWw2AjNA3i39GhyphenhyphenTNpeTkJbeIm5Ho9rKXI0xHBle1XSp3H6YRDDuIjEwzsRd-hg2LpNHabTKzqGv8IAbxO_XVrA8AubnuLlUvXnolerpV8kVzUHy4ZCZo3_t9ym3-4aDwZUwd-RS0y708SPeL6WIxb860J4Z5M3EUYX6q162ecD3EVk6ZTjpK-x74/s600/HelloPybind02.png"/></a>
- -->
+<!-- -->
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind</td></tr>
 <tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
@@ -15,10 +15,10 @@ Repeat previous exercise but prefer PyCharm IDE.  Launch PyCharm | New Project. 
 <tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
 </table>
 <br />
--->
+<!-- -->
 PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -29,11 +29,11 @@ PyCharm should setup UV virtual environment and configure Python interpreter if 
 </pre>
 </td></tr>
 </table>
--->
+<!-- -->
 <br />  
 In the PyCharm Terminal | Enter the following commands for UV to install and sync package dependencies:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td width="50%">
@@ -50,9 +50,9 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
-Create the following files: example.cpp, setup.py, test.py.  Enter C++ and Python code similar to Example I.  Build C++ code using setup.py build install.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/setup.py">setup.py</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/test.py">test.py</a>.  Enter C++ and Python code similar to Example I.  Build C++ code using setup.py build install.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
 <br />
 <table width="99%" border="1">
 <tr><td>

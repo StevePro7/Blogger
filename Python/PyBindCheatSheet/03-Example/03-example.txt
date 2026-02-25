@@ -3,18 +3,18 @@
 <u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/03-Example">Example III</a></u><br />
 Repeat previous exercise but prefer CMake to build <a href="https://medium.com/@stevechange/using-python-with-c-part1-3e894912214d">C++ code</a> via CMakeLists.txt.  Create PyCharm Project:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind</td></tr>
 <tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
 <tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
 <tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
 </table>
--->
+<!-- -->
 <br />
 In the PyCharm Terminal | Enter the following commands for UV to install and sync package dependencies:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td width="50%">
@@ -29,13 +29,13 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
-Create the following files: example.cpp, CMakeLists.txt, test.py.  Enter code similar to Example II but update:
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/test.p">test.p</a>y.  Enter code similar to Example II but update:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>CMakeLists.txt</strong></td></tr>
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a></strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;cmake_minimum_required(VERSION 3.16)
@@ -52,7 +52,7 @@ Create the following files: example.cpp, CMakeLists.txt, test.py.  Enter code si
 </pre>
 </td></tr>
 </table>
--->
+<!-- -->
 <br />
 Build C++ code using cmake and make.  In the PyCharm Terminal | Enter the following commands to build:
 <table width="99%" border="1">
