@@ -1,0 +1,90 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/03-Example">Example III</a></u><br />
+Repeat previous exercise but prefer CMake to build <a href="https://medium.com/@stevechange/using-python-with-c-part1-3e894912214d">C++ code</a> via CMakeLists.txt.  Create PyCharm Project:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package dependencies:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv add pybind11
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/test.p">test.p</a>y.  Enter code similar to Example II but update:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a></strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;cmake_minimum_required(VERSION 3.16)
+&nbsp;&nbsp;project(example)
+&nbsp;&nbsp;
+&nbsp;&nbsp;# Find the Python 3.11-specific pybind11 CONFIG from pip
+&nbsp;&nbsp;execute_process(
+&nbsp;&nbsp;        COMMAND ${Python3_EXECUTABLE} -m pybind11 --cmakedir
+&nbsp;&nbsp;        OUTPUT_VARIABLE pybind11_DIR
+&nbsp;&nbsp;        OUTPUT_STRIP_TRAILING_WHITESPACE
+&nbsp;&nbsp;)
+&nbsp;&nbsp;find_package(pybind11 REQUIRED CONFIG)
+&nbsp;&nbsp;pybind11_add_module(example example.cpp)
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Build C++ code using cmake and make.  In the PyCharm Terminal | Enter the following commands to build:
+<table width="99%" border="1">
+<tr>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p build
+&nbsp;&nbsp;cd build
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;cmake -DPython3_EXECUTABLE=$(which python) ..
+&nbsp;&nbsp;make -j$(grep -c ^processor /proc/cpuinfo)
+</pre>
+</td>
+</tr>
+</table>
+<br />
+Enter commands to copy library to be used.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;python -c "import sysconfig, shutil, glob;		\		
+&nbsp;&nbsp;dst = sysconfig.get_paths()['platlib'];		\
+&nbsp;&nbsp;so = glob.glob('*.so')[0];				\
+&nbsp;&nbsp;shutil.copy2(so, dst)"
+&nbsp;&nbsp;cd ..
+&nbsp;&nbsp;uv run test.py			# OUTPUT	Hello, World!
+</pre>
+</td></tr>
+</table>
+<br />  
+  
+</span>
