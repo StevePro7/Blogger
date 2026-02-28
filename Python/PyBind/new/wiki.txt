@@ -2,10 +2,10 @@
 
 In 2024, we checked out <a href="https://steveproxna.blogspot.com/2024/11/openai-retro-cheat-sheet.html">OpenAI Retro Cheat Sheet</a> as an open-source project that provides an interface to interact with various retro video games for purpose of Reinforcement Learning research.  This project: using C/C++ for high-performance but leverages <a href="https://pybind11.readthedocs.io/en/stable">pybind11</a> to create bindings for Python client code consumption.
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGh5yxV4LJ8gBHcID6DomvBgr9iCkvM2Mm1G9UYgPF7mXiHA85U39FNTMQsKutS5KG21EPCQ-fj_coHW2NxlkSm-cDLrwzJhWc6m-TdEiF1sZjlFHchN16KvMOwpCbjkZ6GsMLiUL04YMQeyojoxvqiA9ZPPygzAdUnVnlcSfR7DFUUV-W98ZPd7eEG4/s1131/pybind11-logo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGh5yxV4LJ8gBHcID6DomvBgr9iCkvM2Mm1G9UYgPF7mXiHA85U39FNTMQsKutS5KG21EPCQ-fj_coHW2NxlkSm-cDLrwzJhWc6m-TdEiF1sZjlFHchN16KvMOwpCbjkZ6GsMLiUL04YMQeyojoxvqiA9ZPPygzAdUnVnlcSfR7DFUUV-W98ZPd7eEG4/s600/pybind11-logo.png"/></a>
 <br />
--->
+<!-- -->
 Let's check it out!
 <br /><br />
   
@@ -16,7 +16,7 @@ A <a href="http://pybind11.com">lightweight</a> header-only library that can be 
 <u>Installation</u><br />
 All examples here are executed on Ubuntu Linux.  Therefore install <a href="https://github.com/bonj4/wiki/blob/main/pybind11_installation.md">pybind11</a> globally to begin the examples:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top">
@@ -28,9 +28,456 @@ All examples here are executed on Ubuntu Linux.  Therefore install <a href="http
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
   
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/01-Example">Example I</a></u><br />
+Create an example that exposes <a href="https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-code-to-python-337da23685dc">C++ function</a> to Python with pybind11.  Launch terminal | Enter commands:
+<br />
 <!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p ~/HelloPyBind
+&nbsp;&nbsp;cd HelloPyBind
+&nbsp;&nbsp;python  -m venv .venv
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.8.10
+&nbsp;&nbsp;pip install pybind11
+&nbsp;&nbsp;pip install --upgrade pip
+</pre>
+</td></tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYgMbdT4mZYG5ZA8jEL_ytuoQUWcjwTSjqRj-3IlF36atg2ikaZ4R399DK4GaqfHe0OMV4qTMOcUFKd1zRrkh8m9mJgeSaSJvPvL96WLM5teE7fJ0o4NnTF6zw4EwiVsoUHsL3qPcxKC0GsLKHpgdhoZUBHq4LKIA8TKYQFenHoAo0CGfuscaSxpt8-2c/s736/HelloPybind01a.png""><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYgMbdT4mZYG5ZA8jEL_ytuoQUWcjwTSjqRj-3IlF36atg2ikaZ4R399DK4GaqfHe0OMV4qTMOcUFKd1zRrkh8m9mJgeSaSJvPvL96WLM5teE7fJ0o4NnTF6zw4EwiVsoUHsL3qPcxKC0GsLKHpgdhoZUBHq4LKIA8TKYQFenHoAo0CGfuscaSxpt8-2c/s600/HelloPybind01a.png"/></a>
+<!-- -->
+<br />
+<br />
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/setup.py">setup.py</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/test.py">test.py</a>.  Enter the following C++ and Python source code:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/example.cpp">example.cpp</a></strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;#include &lt;pybind11/pybind11.h&gt;
+&nbsp;&nbsp;
+&nbsp;&nbsp;int add(int x, int y)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    return x + y;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;
+&nbsp;&nbsp;PYBIND11_MODULE(example, m)
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    // optional module docstring
+&nbsp;&nbsp;    m.doc() = &quot;pybind11 example plugin&quot;;
+&nbsp;&nbsp;    m.def(&quot;add&quot;, &amp;add, &quot;A function which adds two numbers&quot;);
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />  
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/setup.py">setup.py</a></strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from setuptools import setup, Extension
+&nbsp;&nbsp;import pybind11
+&nbsp;&nbsp;
+&nbsp;&nbsp;ext_modules = [
+&nbsp;&nbsp;    Extension(
+&nbsp;&nbsp;        &quot;example&quot;,
+&nbsp;&nbsp;        [&quot;example.cpp&quot;],
+&nbsp;&nbsp;        include_dirs=[pybind11.get_include()],
+&nbsp;&nbsp;        language=&quot;c++&quot;
+&nbsp;&nbsp;    ),
+&nbsp;&nbsp;]
+&nbsp;&nbsp;
+&nbsp;&nbsp;setup(
+&nbsp;&nbsp;    name=&quot;example&quot;,
+&nbsp;&nbsp;    version=&quot;0.1&quot;,
+&nbsp;&nbsp;    ext_modules=ext_modules,
+&nbsp;&nbsp;)
+</pre>
+</td></tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/test.py">test.py</a></strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import example
+&nbsp;&nbsp;
+&nbsp;&nbsp;result = example.add(1, 2)
+&nbsp;&nbsp;print(f"1 + 2 = {result}")
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Build C++ code using setup.py build inplace.  Finally execute <i>python test.py</i> for Python to execute C++ code!
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;python setup.py build_ext --inplace		# example.cpython-38-x86_64-linux-gnu.so
+&nbsp;&nbsp;python test.py				# OUTPUT	1 + 2 = 3
+</pre>
+</td></tr>
+</table>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglvt5e31OLhhcfJSAC_tNAIc5D4efHpDumQb-AH_3f-al8KOptjrZJORLOwT5UOvTZ3jCkFKQg_atwKudO4TcTkzE3WoldKtHg93yY8d2H3-W6JVNR4GcMyfnKLSDfN_7rC-z0DpNfaPygX-f01v_aMi1G1LMT8-Ni82_TFHYAIGSudBFV01heuU4bya0/s871/HelloPybind01b.png""><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglvt5e31OLhhcfJSAC_tNAIc5D4efHpDumQb-AH_3f-al8KOptjrZJORLOwT5UOvTZ3jCkFKQg_atwKudO4TcTkzE3WoldKtHg93yY8d2H3-W6JVNR4GcMyfnKLSDfN_7rC-z0DpNfaPygX-f01v_aMi1G1LMT8-Ni82_TFHYAIGSudBFV01heuU4bya0/s600/HelloPybind01b.png"/></a>
+<br />
+<br />
+  
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/02-Example">Example II</a></u><br />
+Repeat previous exercise but prefer PyCharm IDE.  Launch PyCharm | New Project.  Enter the following info:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiVvrWw2AjNA3i39GhyphenhyphenTNpeTkJbeIm5Ho9rKXI0xHBle1XSp3H6YRDDuIjEwzsRd-hg2LpNHabTKzqGv8IAbxO_XVrA8AubnuLlUvXnolerpV8kVzUHy4ZCZo3_t9ym3-4aDwZUwd-RS0y708SPeL6WIxb860J4Z5M3EUYX6q162ecD3EVk6ZTjpK-x74/s1000/HelloPybind02.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiVvrWw2AjNA3i39GhyphenhyphenTNpeTkJbeIm5Ho9rKXI0xHBle1XSp3H6YRDDuIjEwzsRd-hg2LpNHabTKzqGv8IAbxO_XVrA8AubnuLlUvXnolerpV8kVzUHy4ZCZo3_t9ym3-4aDwZUwd-RS0y708SPeL6WIxb860J4Z5M3EUYX6q162ecD3EVk6ZTjpK-x74/s600/HelloPybind02.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.8.10
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />  
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package dependencies:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv add pybind11
+&nbsp;&nbsp;uv add setuptools
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/setup.py">setup.py</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/test.py">test.py</a>.  Enter C++ and Python code similar to Example I.  Build C++ code using setup.py build install.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv run setup.py build		
+&nbsp;&nbsp;uv run setup.py install		# example.cpython-38-x86_64-linux-gnu.so
+&nbsp;&nbsp;uv run test.py			# OUTPUT	3 + 5 = 8	9 - 5 = 4
+</pre>
+</td></tr>
+</table>
+<br />
+<br />
+  
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/03-Example">Example III</a></u><br />
+Repeat previous exercise but prefer CMake to build <a href="https://medium.com/@stevechange/using-python-with-c-part1-3e894912214d">C++ code</a> via CMakeLists.txt.  Create PyCharm Project:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package dependencies:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv add pybind11
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/test.p">test.p</a>y.  Enter code similar to Example II but update:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a></strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;cmake_minimum_required(VERSION 3.16)
+&nbsp;&nbsp;project(example)
+&nbsp;&nbsp;
+&nbsp;&nbsp;# Find the Python 3.11-specific pybind11 CONFIG from pip
+&nbsp;&nbsp;execute_process(
+&nbsp;&nbsp;        COMMAND ${Python3_EXECUTABLE} -m pybind11 --cmakedir
+&nbsp;&nbsp;        OUTPUT_VARIABLE pybind11_DIR
+&nbsp;&nbsp;        OUTPUT_STRIP_TRAILING_WHITESPACE
+&nbsp;&nbsp;)
+&nbsp;&nbsp;find_package(pybind11 REQUIRED CONFIG)
+&nbsp;&nbsp;pybind11_add_module(example example.cpp)
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Build C++ code using cmake and make.  In the PyCharm Terminal | Enter the following commands to build:
+<table width="99%" border="1">
+<tr>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p build
+&nbsp;&nbsp;cd build
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;cmake -DPython3_EXECUTABLE=$(which python) ..
+&nbsp;&nbsp;make -j$(grep -c ^processor /proc/cpuinfo)
+</pre>
+</td>
+</tr>
+</table>
+<br />
+Enter commands to copy library to be used.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;python -c "import sysconfig, shutil, glob;		\		
+&nbsp;&nbsp;dst = sysconfig.get_paths()['platlib'];		\
+&nbsp;&nbsp;so = glob.glob('*.so')[0];				\
+&nbsp;&nbsp;shutil.copy2(so, dst)"
+&nbsp;&nbsp;cd ..
+&nbsp;&nbsp;uv run test.py			# OUTPUT	Hello, World!
+</pre>
+</td></tr>
+</table>
+<br />
+  
+IMPORTANT<br />
+The first 3x examples worked but tightly coupled Python and C++ without being able to debug separately!
+<br /><br /> 
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/04-Example">Example IV</a></u><br />
+Repeat previous exercise but prefer to modify the project layout to separate top level Python and C++ code:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;~/HelloPyBind/
+&nbsp;&nbsp;├── cpp/
+&nbsp;&nbsp;│   ├── src/
+&nbsp;&nbsp;│   │   ├── api/
+&nbsp;&nbsp;│   │   │   ├── my_api.h
+&nbsp;&nbsp;│   │   │   └── my_api.cpp
+&nbsp;&nbsp;│   │   ├── bindings/
+&nbsp;&nbsp;│   │   │   └── pybind_module.cpp       # pybind11 bindings
+&nbsp;&nbsp;│   │   ├── CMakeLists.txt
+&nbsp;&nbsp;│   │   └── main.cpp                    # C++ executable entry point
+&nbsp;&nbsp;│   ├── tests/
+&nbsp;&nbsp;│   │   ├── CMakeLists.txt
+&nbsp;&nbsp;│   │   └── test_api.cpp
+&nbsp;&nbsp;│   └── CMakeLists.txt                  # top-level C++ (CLion entry point)
+&nbsp;&nbsp;│
+&nbsp;&nbsp;└── python/
+&nbsp;&nbsp;    ├── .venv/
+&nbsp;&nbsp;    │   └── lib/
+&nbsp;&nbsp;    │       └── python3.11/
+&nbsp;&nbsp;    │           └── site-packages/
+&nbsp;&nbsp;    │               └── my_api_py.cpython-311-x86_64-linux-gnu.so
+&nbsp;&nbsp;    ├── test.py
+&nbsp;&nbsp;    ├── pyproject.toml
+&nbsp;&nbsp;    └── README.md
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Create PyCharm Project.  Setup virtual environment as before then create CLion project to build C++ code.
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_I8o2Al43lhmTbassAIRN8QCM2BvOkPyszKR_cRelb_s67m6MH_oldlyDdvUr2i5bpQyiEnjXI1Afg2BkPcJpNLBzYlINveumFsyxHHtkYTFVwDMdZoBT7oD_d459rMc0HL7n1k1jlXB8yh8JFr0HwkHxIyIwS78b4AteyjoGAuMUfrzFuJ0jokQVHgU/s1000/HelloPybind04a.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_I8o2Al43lhmTbassAIRN8QCM2BvOkPyszKR_cRelb_s67m6MH_oldlyDdvUr2i5bpQyiEnjXI1Afg2BkPcJpNLBzYlINveumFsyxHHtkYTFVwDMdZoBT7oD_d459rMc0HL7n1k1jlXB8yh8JFr0HwkHxIyIwS78b4AteyjoGAuMUfrzFuJ0jokQVHgU/s600/HelloPybind04a.png"/></a>
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind/python</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<!-- -->
+<br />
+Launch CLion | New Project.  Create C++ Executable using C++ 17.  Enter the following CLion information:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZuhMmNWxfw8BCpeOEBJnWoX4WxvkNDuoITgoTYXBXThPVhzh45Z0CzoSBDTVzksJYb1GD9n08sFvxb8qjL0wDNhx_P-z_sYzPkqP3ikchubE4tZgENvy92hI2zbCnUUPVSDf_i9nuK5CXTaAJOCyfFBMCZ161f6iqWFPj0dMkxU_jXmuQZunXjMhgHxY/s705/HelloPybind04b.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZuhMmNWxfw8BCpeOEBJnWoX4WxvkNDuoITgoTYXBXThPVhzh45Z0CzoSBDTVzksJYb1GD9n08sFvxb8qjL0wDNhx_P-z_sYzPkqP3ikchubE4tZgENvy92hI2zbCnUUPVSDf_i9nuK5CXTaAJOCyfFBMCZ161f6iqWFPj0dMkxU_jXmuQZunXjMhgHxY/s600/HelloPybind04b.png"/></a>
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;C++</td><td valign="top">&nbsp;C++ Executable</td></tr>
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyBind/cpp</td></tr>
+<tr><td valign="top">&nbsp;Language standard:</td><td valign="top">&nbsp;C++17</td></tr>
+</table>
+<!-- -->
+<br />
+Set build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitVgFdvzMLdRIT7Dw9GJCgMu0m52HnUsT93q23POxMdiHrriyYMhyphenhyphenKKd1LI3grFmbrzH8ndhMEIPzET590KGyly02AOEQ5PxpqDLQLzAHLfuy77aASsL_JKAJ7bMzhVyllP1944pMIVtKlbNSbRULX9soveeTbPvL20BNiRBKhxnGPQ2smn1QwEqTxRLE/s1022/HelloPybind04c.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitVgFdvzMLdRIT7Dw9GJCgMu0m52HnUsT93q23POxMdiHrriyYMhyphenhyphenKKd1LI3grFmbrzH8ndhMEIPzET590KGyly02AOEQ5PxpqDLQLzAHLfuy77aASsL_JKAJ7bMzhVyllP1944pMIVtKlbNSbRULX9soveeTbPvL20BNiRBKhxnGPQ2smn1QwEqTxRLE/s600/HelloPybind04c.png"/></a>
+<!-- -->
+<br />
+Setup folder layout as above.  Enter all C++ <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/04-Example/cpp/src">source</a> code and <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/04-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
+<br />
+<br />
+IMPORTANT<br />
+<a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/04-Example/cpp/CMakeLists.txt">CMakeLists.txt</a> files are configured to copy shared object SO file into the Python .venv virtual environment
+<br />
+<br /> 
+Launch PyCharm | Complete the <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/04-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv run test.py				# OUTPUT	1 + 2 = 3
+</pre>
+</td></tr>
+</table>
+<br />
+<br />
+  
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/05-Example">Example V</a></u><br />
+Repeat previous exercise but prefer more complexity to build <a href="https://medium.com/@stevechange/using-python-with-c-part2-e1db73185c9e">C++ code</a> with classes as consumed by Python
+<br />  
+<br />
+Create PyCharm Project. Setup virtual environment as before then create CLion project to build C++ code.  Launch CLion | New Project.  Create C++ Executable using C++ 17.  Enter the following CLion from before.
+<br />
+<br />
+Set build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory.  Setup folder layout as above.  Enter all C++ <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/05-Example/cpp/src">source</a> code and <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/05-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
+<br />
+<br />
+Launch PyCharm | Complete the <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/05-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv run test.py		# OUTPUT	
+&nbsp;&nbsp;# Guitar: 'Fender' [6-string] = $1500.0
+&nbsp;&nbsp;# Guitar: 'Ibanez' [7-string] = $1200.0
+&nbsp;&nbsp;# Guitar: 'Gibson' [6-string] = $2400.0
+</pre>
+</td></tr>
+</table>
+<br />
+<br />
 
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/06-Example">Example VI</a></u><br />
+Repeat previous exercise but prefer more complexity to build <a href="https://medium.com/@stevechange/using-python-with-c-part2-e1db73185c9e">C++ code</a> with templates consumed by Python
+<br />  
+<br />
+Create PyCharm Project. Setup virtual environment as before then create CLion project to build C++ code.  Launch CLion | New Project.  Create C++ Executable using C++ 17.  Enter the following CLion from before.
+<br />
+<br />
+Set build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory.  Setup folder layout as above.  Enter all C++ <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/06-Example/cpp/src">source</a> code and <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/06-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
+<br />
+<br />
+Launch PyCharm | Complete the <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/06-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+<br />
+<table width="99%" border="1">
+<tr>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# OUTPUT	
+&nbsp;&nbsp;# Container[0] = 0.0
+&nbsp;&nbsp;# Container[1] = 1.0
+&nbsp;&nbsp;# Container[2] = 2.0
+&nbsp;&nbsp;# Container[3] = 3.0
+&nbsp;&nbsp;# Container[4] = 4.0
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;# OUTPUT	
+&nbsp;&nbsp;# Container[5] = 5.0
+&nbsp;&nbsp;# Container[6] = 6.0
+&nbsp;&nbsp;# Container[7] = 7.0
+&nbsp;&nbsp;# Container[8] = 8.0
+&nbsp;&nbsp;# Container[9] = 9.0
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<br />
+
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/07-Example">Example VII</a></u><br />
+Repeat previous exercise but prefer Visual Studio 2022 on Windows to build an increasing C++ code base:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;~/HelloPyBind/
+&nbsp;&nbsp;├── cpp/
+&nbsp;&nbsp;│   ├── src/
+&nbsp;&nbsp;│   │   ├── core/			  # Core API implementation
+&nbsp;&nbsp;│   │   │   ├── *.h
+&nbsp;&nbsp;│   │   │   └── *.cpp
+&nbsp;&nbsp;│   │   ├── math/			  # Math-related API
+&nbsp;&nbsp;│   │   │   ├── *.h
+&nbsp;&nbsp;│   │   │   └── *.cpp
+&nbsp;&nbsp;│   │   ├── mesh/			  # Mesh-related API
+&nbsp;&nbsp;│   │   │   ├── *.h
+&nbsp;&nbsp;│   │   │   └── *.cpp
+&nbsp;&nbsp;│   │   ├── bindings/
+&nbsp;&nbsp;│   │   │   └── pybind_module.cpp       # pybind11 bindings
+&nbsp;&nbsp;│   │   ├── CMakeLists.txt
+&nbsp;&nbsp;│   │   └── main.cpp                    # C++ executable entry point
+&nbsp;&nbsp;│   ├── tests/
+&nbsp;&nbsp;│   │   ├── CMakeLists.txt
+&nbsp;&nbsp;│   │   ├── test_matrix.cpp
+&nbsp;&nbsp;│   │   ├── test_vector.cpp
+&nbsp;&nbsp;│   │   ├── test_mesh.cpp
+&nbsp;&nbsp;│   │   ├── test_mesh_algorithms.cpp
+&nbsp;&nbsp;│   │   └── test_mesh_processor.cpp
+&nbsp;&nbsp;│   └── CMakeLists.txt                  # top-level C++ (CLion entry point)
+&nbsp;&nbsp;└── python/
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Launch Visual Studio 2022 | Continue without code.  File | Open | CMake...  Navigate to cpp/<a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/07-Example/cpp/CMakeLists.txt">CMakeLists.txt</a>.  Build menu | Build All.  Finally, choose Test menu | Test Explorer.  Run All Tests in View or choose to Debug: 
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGn4bGwT0Fnt6S127k02KrSCJC5SeNMW929rseqsJf0Kl7EeUlIvLiKmB_84jfgrnYIfSM9wtDs_miJMtajttlaWp6IT_mrIoKQ2fPclFc-YlWm_y4l43_WgWbCAl4ldPRNWjzpmgdTJ9KuUU0dfN3aHTxcZ3nX-MzhvmZACqrXAFkfLKFq8bbnveS3w/s1593/HelloPybind07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGn4bGwT0Fnt6S127k02KrSCJC5SeNMW929rseqsJf0Kl7EeUlIvLiKmB_84jfgrnYIfSM9wtDs_miJMtajttlaWp6IT_mrIoKQ2fPclFc-YlWm_y4l43_WgWbCAl4ldPRNWjzpmgdTJ9KuUU0dfN3aHTxcZ3nX-MzhvmZACqrXAFkfLKFq8bbnveS3w/s600/HelloPybind07.png"/></a>  
+<!-- -->
+<br />
+<br />
+
+<u>Summary</u><br />
+To summarize, we have demonstrated various PyBind examples in which C++ library code is consumed by a single Python API exclusively.  However, in future there may be instances in which the C++ library may need to be consumed by multiple languages.  In this case <b>ctypes.cdll.LoadLibrary()</b> may be better that PyBind!
 </span>
