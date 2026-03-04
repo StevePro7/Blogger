@@ -84,3 +84,13 @@ reference
 Example debugging mixed Python C++ in VS Code
 https://nadiah.org/2020/03/01/example-debug-mixed-python-c-in-visual-studio-code
 ~\GitHub\StevePro9\PythonSetup\PyBind\org\05-debugging\DebugEX00
+
+
+LINUX
+repeat process but you may be prompted to run command via Terminal
+
+CLion
+Must do this first
+
+Terminal
+sudo sysctl kernel.yama.ptrace_scope=0
