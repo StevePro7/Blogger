@@ -1,0 +1,86 @@
+Debugging
+04-Mar-2026
+
+
+MacOS Setup
+brew install uv
+
+Pre-Reqs
+brew install gcc@15
+brew upgrade gcc@15
+brew install libomp
+brew install llvm
+brew upgrade  llvm
+
+
+git clone --recurse-submodules repo
+
+
+Launch PyCharm | Open ~/repo/Python
+conda env create -f environment-build.yaml
+conda activate repo-build
+
+OR
+uv venv --python 3.11
+source .venv/bin/activate
+uv sync
+
+
+Make directory at project level
+cd ..
+mkdir -p build
+cd build
+
+
+Run CMake
+cmake -S .. -B . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-15 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15 -DPython_EXECUTABLE="~/anaconda3/envs/repo-build/bin/python"
+
+OR
+
+cmake -S .. -B . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-15 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15 -DPython_EXECUTABLE="$(cd .. && pwd)/Python/.venv/bin/python"
+
+
+Build C++ code
+make -j"$(sysctl -n hw.logicalcpu)"
+OR
+make -j"$(sysctl -n hw.physicalcpu)"
+
+
+Launc CLion | Open ~/repo | configure CMake options
+Generator		Unix Makefiles
+
+CMake options
+-G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-15 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15 -DPython_EXECUTABLE="~/anaconda3/envs/repo-build/bin/python" -DCMAKE_C_FLAGS_DEBUG="-O0 -g3" DCMAKE_CXX_FLAGS_DEBUG="-O0 -g3 -fno-omit-frame-pointer"
+
+OR
+
+-G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-15 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-15 -DPython_EXECUTABLE="$PROJECT_DIR$/Python/.venv/bin/python"
+DCMAKE_C_FLAGS_DEBUG="-O0 -g3" DCMAKE_CXX_FLAGS_DEBUG="-O0 -g3 -fno-omit-frame-pointer"
+
+Build directory		build
+
+
+CLion | Build menu | Rebuild All in 'Debug'
+
+
+DEBUGGING
+Debug across Python to C++ code boundaries
+
+Launch PyCharm | Debug step thru unit test e.g. test_data.py
+
+Terminal
+ps aux | grep test_data
+
+Get PID that is associated with pytest_runner
+
+CLion | Run menu | Attach to Process | Enter PIDS | Choose Attach with Bundled LLDB
+
+Resume Python code and API will call across and break in C++ code!
+
+
+
+Otherwise try VS Code
+reference
+Example debugging mixed Python C++ in VS Code
+https://nadiah.org/2020/03/01/example-debug-mixed-python-c-in-visual-studio-code
+~\GitHub\StevePro9\PythonSetup\PyBind\org\05-debugging\DebugEX00
