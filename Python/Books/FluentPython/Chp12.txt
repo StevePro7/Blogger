@@ -1,7 +1,295 @@
 Chap12 IV
-17-Feb-2026
+06-Mar-2026
 
 Writing Special Methods for Sequences
-578-
+578-623
 
+1. Goal of the Chapter
+
+The chapter demonstrates how to build a custom Python sequence type by implementing the appropriate special (dunder) methods.
+
+The example used is a multidimensional Vector class that behaves like an immutable Python sequence of floats. 
+
+Fluent.Python.2nd.Edition
+
+By the end of the chapter the class supports:
+
+Sequence protocol (__len__, __getitem__)
+
+Proper slicing
+
+Safe object representation
+
+Hashing
+
+Equality comparison
+
+Custom formatting
+
+Dynamic attribute access
+
+2. Python Sequences Use Protocols (Duck Typing)
+
+Python relies on protocols, not strict inheritance.
+
+A protocol = an informal interface defined by expected methods.
+If a class implements those methods, Python treats it as that type.
+
+For sequences, the core protocol methods are:
+
+__len__()
+__getitem__()
+
+Any class implementing them behaves like a sequence, even if it does not inherit from Sequence. 
+
+Fluent.Python.2nd.Edition
+
+Example capabilities gained automatically:
+
+indexing obj[i]
+
+slicing obj[a:b]
+
+iteration for x in obj
+
+membership x in obj
+
+3. Building a Custom Sequence (Vector)
+
+The implementation strategy:
+
+Use composition rather than inheritance.
+
+Example internal storage:
+
+self._components = array('d', components)
+
+The class wraps an array and exposes sequence behavior through special methods.
+
+Benefits:
+
+memory efficient
+
+reusable internal container
+
+clean abstraction
+
+4. Implementing the Sequence Protocol
+__len__
+
+Returns number of items.
+
+def __len__(self):
+    return len(self._components)
+
+This enables:
+
+len(v)
+__getitem__
+
+Returns elements by index or slice.
+
+def __getitem__(self, index):
+    return self._components[index]
+
+This enables:
+
+indexing
+
+slicing
+
+iteration
+
+in operator fallback
+
+Python will try iteration using __getitem__ if __iter__ is missing. 
+
+Fluent.Python.2nd.Edition
+
+5. Supporting Proper Slicing
+
+Problem:
+
+Default slicing of the underlying container returns the wrong type.
+
+Example problem:
+
+Vector slice -> array
+
+But built-in sequences return same type:
+
+list slice -> list
+tuple slice -> tuple
+Solution
+
+Detect slice objects inside __getitem__.
+
+Example logic:
+
+if isinstance(index, slice):
+    return Vector(self._components[index])
+else:
+    return self._components[index]
+
+Now:
+
+v[1:4] -> Vector
+
+instead of returning the internal container.
+
+6. How Python Represents Slices
+
+When Python sees:
+
+obj[1:4:2]
+
+It actually calls:
+
+obj.__getitem__(slice(1,4,2))
+
+A slice object contains:
+
+start
+stop
+step
+
+Example:
+
+slice(1,4,2)
+
+The method slice.indices(length) normalizes values for a given sequence size. 
+
+Fluent.Python.2nd.Edition
+
+7. Dynamic Attribute Access (__getattr__)
+
+The class supports convenient attribute shortcuts:
+
+v.x
+v.y
+v.z
+v.t
+
+These map to vector components:
+
+x -> index 0
+y -> index 1
+z -> index 2
+t -> index 3
+
+Implemented with:
+
+def __getattr__(self, name):
+
+Benefits:
+
+intuitive access
+
+no need to predefine properties
+
+But must handle invalid attributes carefully.
+
+8. Hashing Immutable Sequences
+
+To make objects usable as dictionary keys or set elements:
+
+__hash__()
+
+Vector hashing combines the hashes of all components.
+
+Example approach:
+
+hashes = (hash(x) for x in components)
+reduce(operator.xor, hashes)
+
+Key principle:
+
+Objects that compare equal must produce the same hash.
+
+9. Faster Equality Comparison
+
+__eq__ compares vectors element-by-element.
+
+Efficient version:
+
+Compare lengths first
+
+Compare components
+
+Example idea:
+
+return len(self) == len(other) and all(a == b for a,b in zip(self, other))
+10. Custom Formatting (__format__)
+
+The class supports custom string formatting:
+
+format(v)
+format(v, ".2f")
+
+Extends Python formatting to support different vector representations.
+
+Example possibilities:
+
+(1.0, 2.0, 3.0)
+<1.0, 2.0, 3.0>
+
+depending on format specifier.
+
+11. Important Design Principles
+1. Favor composition over inheritance
+
+Instead of subclassing built-in types, wrap them.
+
+2. Implement protocols, not class hierarchies
+
+Behavior matters more than inheritance.
+
+3. Minimal methods unlock many features
+
+For sequences:
+
+__len__
+__getitem__
+
+are usually enough.
+
+4. Match built-in type behavior
+
+Example:
+
+slicing returns same type
+
+hashing respects equality
+
+12. Key Takeaways
+The minimal sequence protocol
+__len__()
+__getitem__()
+Important special methods used
+
+__len__
+
+__getitem__
+
+__repr__
+
+__eq__
+
+__hash__
+
+__format__
+
+__getattr__
+
+Python behaviors enabled automatically
+
+indexing
+
+slicing
+
+iteration
+
+in operator
+
+compatibility with many standard library tools
 
