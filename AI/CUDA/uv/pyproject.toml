@@ -1,0 +1,65 @@
+[project]
+name = "3Duv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.8, <3.9"
+
+dependencies = [
+    # Azure SDKs (Py38-compatible ranges)
+    "azure-storage-blob>=12.10.0,<13.0.0",
+    "azureml-contrib-services>=1.48.0,<1.52.0",
+    "azureml-inference-server-http>=1.1.0,<1.3.0",
+    "azureml-sdk>=1.38.0,<1.48.0",
+
+    # Hydra
+    "hydra-core>=1.2.0,<1.3.0",   # 1.3 requires Py39+
+
+    # IO / Imaging
+    "imageio>=2.25.0,<3.0.0",
+    "pillow>=9.0.0,<10.0.0",       # Pillow 10+ drops Py <3.8
+
+    # Visualization / 3D
+    "open3d>=0.16.0,<0.18.0",      # 0.18+ requires Py>=3.9
+    "opencv-python>=4.6.0,<4.8.0", # 4.9+ drops Py38 wheels
+    "pyrender>=0.1.45",
+
+    # Tables / Plots
+    "prettytable>=3.8.0,<4.0.0",
+    "seaborn>=0.12.2,<0.13.0",    # 0.13+ requires Py>=3.9
+
+    # ML / DL
+    "lightning>=1.9.0,<2.0.0",     # Lightning 2.x drops Py38
+    "tensorboard>=2.11.0,<2.14.0",
+
+    # Transformers
+    "transformers>=4.30.0,<4.33.0",  # 4.34+ requires Py>=3.9, 4.36+ requires >=3.10
+
+    # Ray
+    "ray[tune]>=2.2.0,<2.5.0",      # 2.6+ requires Py>=3.9
+
+    # Locust
+    "locust>=2.9.0,<2.15.0",         # Newer versions require Py39+
+
+    "torch==1.12.1",
+    "torch-geometric>=2.4.0,<2.7.0",
+]
+
+
+[dependency-groups]
+dev = [
+    "pytest>=7.2.0,<7.4.0",
+    "pytest-cov>=4.0.0,<4.1.0",
+    "pytest-regressions>=2.3.0,<2.5.0",
+    "pytest-xdist>=3.1.0,<3.5.0",
+    "syrupy>=3.0.0,<4.0.0",
+    "pre-commit>=3.2.0,<3.6.0",
+    "twine>=4.0.0,<5.0.0",
+    "ipython>=7.31.1,<8.0.0",
+    "pdoc3>=0.10.0,<0.11.0"
+]
+
+[tool.uv.extra-build-dependencies]
+file = ["setuptools"]
+pytorch3d = ["torch"]
+
