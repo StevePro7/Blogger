@@ -1,70 +1,30 @@
 Goals  2026
 10-Mar-2026
 
-SMART
-Specific
-Measurable
-Attainable
-Relevant
-Time-bound
-
-
-Deadlines
-Goal
-01.	Python		Q3	2026
-02.	3D		Q1	2026
-03.	3D		Q2	2026
-04.	DEV		Q4	2026
-
 ORG
 02. 3D migration
-Help migrate existing PyTorch3D-based Deep Learning codebase into the team Mono Repo code base by transitioning existing dependency management from Conda to UV.  Also, prototype / port existing 3D Azure ML REST endpoint that serves Deep Learning model[s] to ensure functional parity with the new CI/CD automation pipeline for improved maintainability.
+Help migrate existing PyTorch3D-based Deep Learning codebase into the team Mono Repo code base by transitioning existing dependency management from Conda to UV.  
+This goal mayinclude having to manually build custom PyTorch3D and/or TorchSparse wheels and upload to the internal PyPi Artifacts feed all full documented.
 
-Specific:	PyTorch3D to Mono-repo with, UV and Azure ML endpoint
-Measurable:	Code migrated, dependency switched, endpoint deployed
+
+Also, 
+
+Specific:	PyTorch3D to Mono-repo with UV including dependencies
+Measurable:	Code migrated + published, package mgr switched, doco
 Attainable:	Functionality parity not feature expansion
 Relevant: 	Platform consistency and Production impact
 Time-bound:	Q1-2026 
 
 
-01. extn
-Pre-build pytorch3d and torchsparse wheels and upload to internal PyPi for consumption
+03. 3D refactor
+Prototype / port existing 3D Azure ML REST endpoint(s) that serves Deep Learning model[s] to ensure functional parity with the new CI/CD automation pipeline for improved maintainability.
+Also, seek opportunities to contribute to further code refactors, re-design / code architecture, unit and system tests etc. ideally shape solution(s) to model inference going forward.
 
-Chat GPT
-I am setting SMART goals for 2026 Specific Measurable Attainable Relevant Time-bound I have one goal that I would like to split into two goals: 3D migration Help migrate existing PyTorch3D-based Deep Learning codebase into the team Mono Repo code base by transitioning existing dependency management from Conda to UV. Also, prototype / port existing 3D Azure ML REST endpoint that serves Deep Learning model[s] to ensure functional parity with the new CI/CD automation pipeline for improved maintainability. 
-
-Specific: PyTorch3D to Mono-repo with, UV and Azure ML endpoint Measurable: Code migrated, dependency switched, endpoint deployed Attainable: Functionality parity not feature expansion Relevant: Platform consistency and Production impact Time-bound: Q1-2026 
-
-Split 
-Goal one: Help migrate existing PyTorch3D-based Deep Learning codebase into the team Mono Repo code base by transitioning existing dependency management from Conda to UV but I would like to add the following Manually build wheels for pytorch3d and torchsparse and upload the artefacts to the internal PyPi and document the process 
-
-Goal two: Also, prototype / port existing 3D Azure ML REST endpoint that serves Deep Learning model[s] to ensure functional parity with the new CI/CD automation pipeline for improved maintainability. but I would like to add the following contribute in meetings to further code refactors and re-design / code architecture to build generic solutions for model inference going forward
-
-
-
-Yes pls - can you also show a shorter “performance review friendly” version (about 40–50% shorter) that managers tend to prefer in HR goal systems.
-
-
-03.
-Goal 1 — 3D Codebase Migration to Mono-Repo
-
-Goal:
-Help migrate the PyTorch3D-based deep learning codebase into the team mono-repo by transitioning dependency management from Conda to UV.
-
-Specific:
-PyTorch3D codebase migrated to mono-repo with UV; build wheels for pytorch3d and torchsparse, publish to internal PyPI, document process.
-
-Measurable:
-Code migrated, dependencies switched to UV, wheels published to internal PyPI, documentation completed.
-
-Attainable:
-Migration and packaging only; no feature expansion.
-
-Relevant:
-Platform consistency, reproducible builds, improved maintainability.
-
-Time-bound:
-Q1-2026
+Specific:	Azure ML endpoint(s) code port integrate into Mono-repo
+Measurable:	Endpoint(s) auto-deployed via CI/CD pipeline + refactor
+Attainable:	Functionality parity not feature expansion
+Relevant: 	Platform consistency and Production impact
+Time-bound:	Q2-2026 
 
 
 Goal 2 — 3D Model Inference Endpoint Modernisation
@@ -86,6 +46,33 @@ Improved deployment automation, platform alignment, and inference maintainabilit
 
 Time-bound:
 Q1-2026
+
+
+01. extn
+Pre-build pytorch3d and torchsparse wheels and upload to internal PyPi for consumption
+
+
+Goal 1 — 3D Codebase Migration to Mono-Repo
+
+Goal:
+Help migrate the PyTorch3D-based deep learning codebase into the team mono-repo by transitioning dependency management from Conda to UV.
+
+Specific:
+PyTorch3D codebase migrated to mono-repo with UV; build wheels for pytorch3d and torchsparse, publish to internal PyPI, document process.
+
+Measurable:
+Code migrated, dependencies switched to UV, wheels published to internal PyPI, documentation completed.
+
+Attainable:
+Migration and packaging only; no feature expansion.
+
+Relevant:
+Platform consistency, reproducible builds, improved maintainability.
+
+Time-bound:
+Q1-2026
+
+
 
 
 02
