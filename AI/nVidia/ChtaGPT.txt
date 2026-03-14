@@ -1,0 +1,83 @@
+ChatGPT.txt
+14-Mar-2026
+
+nVidia CUDA
+https://docs.nvidia.com/cuda/archive/12.1.0/cuda-installation-guide-linux
+
+parallel computing platform and programming model invented by nVidia
+enables dramatic increases in computing performance by narnessing the power of the graphics processing unit GPU
+
+Q.
+I am on Linux Ubuntu 20.04 - I was on kernel 6.0.9 -
+I tried to install nVidia GPU driver 570 but on reboot I got black screen so I reboot into recovery mode and purged driver 570 and
+downgraded kernel to 5.15 and installed nVidia GPU driver 535 - then I installed nvcc CUDA toolkit -
+I installed 12.1 i.e. which nvcc /usr/local/cuda-12.1/bin/nvcc
+
+
+A.
+Below is a clean, reliable sequence for Ubuntu 20.04 + NVIDIA driver 535 + CUDA 12.1 (nvcc 12.1) that matches what you ended up doing.
+
+uname -r
+5.15.0-139-generic
+
+Remove partial CUDA installs
+```sh
+sudo apt remove -y cuda* nvidia-cuda-toolkit
+sudo apt autoremove -y
+sudo rm -rf /usr/local/cuda*
+```
+
+Install NVIDIA Driver 535
+```sh
+sudo apt update
+sudo apt install -y nvidia-driver-535
+sudo reboot
+```
+
+Verify
+```sh
+nvidia-smi
+```
+NVIDIA-SMI 535.230.02             Driver Version: 535.230.02   CUDA Version: 12.2
+
+
+Install CUDA 12.1 Toolkit (nvcc 12.1)
+```sh
+sudo mkdir -p /etc/apt/keyrings
+
+curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub \
+ | sudo gpg --dearmor -o /etc/apt/keyrings/cuda-archive-keyring.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/cuda-archive-keyring.gpg] \
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
+| sudo tee /etc/apt/sources.list.d/cuda.list
+sudo apt update
+```
+
+Install CUDA 12.1 toolkit ONLY
+```sh
+sudo apt install -y cuda-toolkit-12-1
+```
+/usr/local/cuda-12.1
+
+
+Configure Environment Variables
+```sh
+# CUDA - PyTorch3D
+export CUB_HOME=~/cub
+export CUDA_HOME=/usr/local/cuda-12.1
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+```
+
+Verify nvcc
+nvcc --version                      Cuda compilation tools, release 12.1, V12.1.105
+which nvcc                          /usr/local/cuda-12.1/bin/nvcc
+
+
+SUMMARY
+Kernel                              5.15.0-139
+Driver                              nvidia-driver-535
+CUDA toolkit                        CUDA 12.1
+                                    /usr/local/cuda-12.1
+nvcc                                /usr/local/cuda-12.1/bin/nvcc

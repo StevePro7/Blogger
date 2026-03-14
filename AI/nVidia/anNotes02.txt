@@ -1,0 +1,32 @@
+anNotes02.txt
+14-Mar-2026
+
+PyTorch3D
+3Duv
+
+3Duvnew             installed pytorch3d
+uv pip list | grep torch
+
+pytorch-lightning                    2.6.0
+pytorch3d                            0.7.7
+torch                                2.2.0+cu121
+torch-cluster                        1.6.3+pt22cu121
+torch-geometric                      2.7.0
+torch-scatter                        2.1.2+pt22cu121
+torch-sparse                         0.6.18+pt22cu121
+torch-spline-conv                    1.2.2+pt22cu121
+torchmetrics                         1.8.2
+torchsparse                          2.0.0b0
+
+
+
+I had CUDA 11.8 installed from previous but this needed 12.1
+Reference: Chat GPT
+
+export CUB_HOME=~/cub                           /home/stevepro/cub
+export CUDA_HOME=/usr/local/cuda-11.8           /usr/local/cuda-12.1
+export PATH=$CUDA_HOME/bin:$PATH                /usr/local/cuda-12.1/bin
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH    /usr/local/cuda-12.1/lib64
+
+nvcc --version                      Cuda compilation tools, release 12.1, V12.1.105
+which nvcc                          /usr/local/cuda-12.1/bin/nvcc

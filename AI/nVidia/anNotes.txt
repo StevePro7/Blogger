@@ -1,0 +1,49 @@
+anNotes.txt
+14-Mar-2026
+
+Specs
+Linux Ubuntu 20.04
+Linux kernel 6.0.9
+
+Reference:
+CUDA_nvcc.txt
+/home/stevepro/GitHub/StevePro10/Blogger/AI
+
+
+Overview
+/home/stevepro/GitHub/StevePro10/Blogger/AI/DL/nVidiaSetup.txt
+
+kernel 6.0.9 (recovery mode)
+Attempt to install nVidia driver 570
+sudo apt install nvidia-driver-570
+
+Roboot | Black screen
+Advanced options for Ubuntu
+kernel 6.0.9 (recovery mode)
+
+sudo apt remove --purge nvidia-driver-570
+sudo apt autoremove
+
+Driver 580 is intended for newer Ubuntu releases such as 22.04 or 24.04.
+black screen on Ubuntu 20.04
+
+Explanation only 535 will work
+
+downgrade to 5.15.0-97 kernel that is compatible with nvidia-535
+Ubuntu with Linux 5.15.0-139-generic
+
+sudo apt install linux-headers-5.15.0-97-generic
+
+Update grub menu
+to point to kernel
+
+nano /etc/default/grub
+GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.15.0-139-generic"
+
+sudo apt purge linux-image-6.0.19-060019-generic linux-headers-6.0.19-060019-generic
+
+nvidia-smi = nothing
+sudo apt install nvidia-driver-535
+
+Summary 01
+installed nvidia graphics driver    535
