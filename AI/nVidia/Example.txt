@@ -1,0 +1,44 @@
+Example
+17-Mar-2026
+
+Launch PyCharm
+~/HelloPyTorch3d
+uv
+3.10
+IMAGE
+
+which python
+`which python` --version
+3.10.19
+
+reference
+pyproject.toml
+/home/stevepro/HelloPytorch02
+
+uv lock
+uv sync
+
+This works OK
+but must be 3.10
+
+
+uv run main.py
+
+uv run main.py
+warning: The `extra-build-dependencies` option is experimental and may change without warning. Pass `--preview-features extra-build-dependencies` to disable this warning.
+
+
+REMOVE this warning
+
+gedit ~/.bashrc
+
+# UV
+export UV_PREVIEW_FEATURES=extra-build-dependencies
+
+
+
+Disabling PyTorch because PyTorch >= 2.4 is required but found 2.2.0+cu121
+PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+
+SO had to downgrade transformers
+"transformers>=4.30,<4.45"
