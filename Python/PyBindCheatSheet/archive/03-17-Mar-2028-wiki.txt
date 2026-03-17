@@ -31,7 +31,7 @@ All examples here are executed on Ubuntu Linux.  Therefore install <a href="http
 <!-- -->
 <br />
   
-<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/01-Example">Example I</a></u><br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/01-Example">Example I</a></u><br />
 Create an example that exposes <a href="https://medium.com/@ahmedfgad/pybind11-tutorial-binding-c-code-to-python-337da23685dc">C++ function</a> to Python with pybind11.  Launch terminal | Enter commands:
 <br />
 <!-- -->
@@ -53,11 +53,11 @@ Create an example that exposes <a href="https://medium.com/@ahmedfgad/pybind11-t
 <!-- -->
 <br />
 <br />
-Create the following files: <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/01-Example/example.cpp">example.cpp</a>, <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/01-Example/setup.py">setup.py</a>, <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/01-Example/test.py">test.py</a>.  Enter the following C++ and Python source code:
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/setup.py">setup.py</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/test.py">test.py</a>.  Enter the following C++ and Python source code:
 <br />
 <!-- -->
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/01-Example/example.cpp">example.cpp</a></strong></td></tr>
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/example.cpp">example.cpp</a></strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;#include &lt;pybind11/pybind11.h&gt;
@@ -78,7 +78,7 @@ Create the following files: <a href="https://github.com/SteveProXNA/PythonSetup/
 </table>
 <br />  
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/01-Example/setup.py">setup.py</a></strong></td></tr>
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/setup.py">setup.py</a></strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;from setuptools import setup, Extension
@@ -103,7 +103,7 @@ Create the following files: <a href="https://github.com/SteveProXNA/PythonSetup/
 </table>
 <br />
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/01-Example/test.py">test.py</a></strong></td></tr>
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/01-Example/test.py">test.py</a></strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;import example
@@ -129,7 +129,7 @@ Build C++ code using setup.py build inplace.  Finally execute <i>python test.py<
 <br />
 <br />
   
-<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/02-Example">Example II</a></u><br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/02-Example">Example II</a></u><br />
 Repeat previous exercise but prefer PyCharm IDE.  Launch PyCharm | New Project.  Enter the following info:
 <br />
 <!-- -->
@@ -154,7 +154,7 @@ PyCharm should setup UV virtual environment and configure Python interpreter if 
 &nbsp;&nbsp;uv venv --python 3.11
 &nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
 &nbsp;&nbsp;which python
-&nbsp;&nbsp;`which python` --version            # Python 3.11.11
+&nbsp;&nbsp;`which python` --version            # Python 3.8.10
 </pre>
 </td></tr>
 </table>
@@ -181,7 +181,7 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </table>
 <!-- -->
 <br />
-Create the following files: <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/02-Example/example.cpp">example.cpp</a>, <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/02-Example/setup.py">setup.py</a>, <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/02-Example/test.py">test.py</a>.  Enter C++ and Python code similar to Example I.  Build C++ code using setup.py build install.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/setup.py">setup.py</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/02-Example/test.py">test.py</a>.  Enter C++ and Python code similar to Example I.  Build C++ code using setup.py build install.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
 <br />
 <table width="99%" border="1">
 <tr><td>
@@ -195,7 +195,7 @@ Create the following files: <a href="https://github.com/SteveProXNA/PythonSetup/
 <br />
 <br />
   
-<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/03-Example">Example III</a></u><br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/03-Example">Example III</a></u><br />
 Repeat previous exercise but prefer CMake to build <a href="https://medium.com/@stevechange/using-python-with-c-part1-3e894912214d">C++ code</a> via CMakeLists.txt.  Create PyCharm Project:
 <br />
 <!-- -->
@@ -226,11 +226,11 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </table>
 <!-- -->
 <br />
-Create the following files: <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/03-Example/example.cpp">example.cpp</a>, <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a>, <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/03-Example/test.py">test.p</a>y.  Enter code similar to Example II but update:
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/example.cpp">example.cpp</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a>, <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/test.p">test.p</a>y.  Enter code similar to Example II but update:
 <br />
 <!-- -->
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a></strong></td></tr>
+<tr><td>&nbsp;&nbsp;<strong><a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/03-Example/CMakeLists.txt">CMakeLists.txt</a></strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;cmake_minimum_required(VERSION 3.16)
@@ -285,7 +285,7 @@ Enter commands to copy library to be used.  Finally execute <i>uv run test.py</i
 IMPORTANT<br />
 The first 3x examples worked but tightly coupled Python and C++ without being able to debug separately!
 <br /><br /> 
-<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/04-Example">Example IV</a></u><br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/04-Example">Example IV</a></u><br />
 Repeat previous exercise but prefer to modify the project layout to separate top level Python and C++ code:
 <br />
 <!-- -->
@@ -350,14 +350,14 @@ Set build directory in CLion.  File menu | Settings... | Build, Execution, Deplo
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitVgFdvzMLdRIT7Dw9GJCgMu0m52HnUsT93q23POxMdiHrriyYMhyphenhyphenKKd1LI3grFmbrzH8ndhMEIPzET590KGyly02AOEQ5PxpqDLQLzAHLfuy77aASsL_JKAJ7bMzhVyllP1944pMIVtKlbNSbRULX9soveeTbPvL20BNiRBKhxnGPQ2smn1QwEqTxRLE/s1022/HelloPybind04c.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitVgFdvzMLdRIT7Dw9GJCgMu0m52HnUsT93q23POxMdiHrriyYMhyphenhyphenKKd1LI3grFmbrzH8ndhMEIPzET590KGyly02AOEQ5PxpqDLQLzAHLfuy77aASsL_JKAJ7bMzhVyllP1944pMIVtKlbNSbRULX9soveeTbPvL20BNiRBKhxnGPQ2smn1QwEqTxRLE/s600/HelloPybind04c.png"/></a>
 <!-- -->
 <br />
-Setup folder layout as above.  Enter all C++ <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/04-Example/cpp/src">source</a> code and <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/04-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
+Setup folder layout as above.  Enter all C++ <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/04-Example/cpp/src">source</a> code and <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/04-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
 <br />
 <br />
 IMPORTANT<br />
-<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/04-Example/cpp/CMakeLists.txt">CMakeLists.txt</a> files are configured to copy shared object SO file into the Python .venv virtual environment
+<a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/04-Example/cpp/CMakeLists.txt">CMakeLists.txt</a> files are configured to copy shared object SO file into the Python .venv virtual environment
 <br />
 <br /> 
-Launch PyCharm | Complete the <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/04-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+Launch PyCharm | Complete the <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/04-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
 <br />
 <table width="99%" border="1">
 <tr><td>
@@ -369,17 +369,17 @@ Launch PyCharm | Complete the <a href="https://github.com/SteveProXNA/PythonSetu
 <br />
 <br />
   
-<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/05-Example">Example V</a></u><br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/05-Example">Example V</a></u><br />
 Repeat previous exercise but prefer more complexity to build <a href="https://medium.com/@stevechange/using-python-with-c-part2-e1db73185c9e">C++ code</a> with classes as consumed by Python
 <br />  
 <br />
 Create PyCharm Project. Setup virtual environment as before then create CLion project to build C++ code.  Launch CLion | New Project.  Create C++ Executable using C++ 17.  Enter the following CLion from before.
 <br />
 <br />
-Set build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory.  Setup folder layout as above.  Enter all C++ <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/05-Example/cpp/src">source</a> code and <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/05-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
+Set build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory.  Setup folder layout as above.  Enter all C++ <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/05-Example/cpp/src">source</a> code and <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/05-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
 <br />
 <br />
-Launch PyCharm | Complete the <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/05-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+Launch PyCharm | Complete the <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/05-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
 <br />
 <table width="99%" border="1">
 <tr><td>
@@ -394,17 +394,17 @@ Launch PyCharm | Complete the <a href="https://github.com/SteveProXNA/PythonSetu
 <br />
 <br />
 
-<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/06-Example">Example VI</a></u><br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/06-Example">Example VI</a></u><br />
 Repeat previous exercise but prefer more complexity to build <a href="https://medium.com/@stevechange/using-python-with-c-part2-e1db73185c9e">C++ code</a> with templates consumed by Python
 <br />  
 <br />
 Create PyCharm Project. Setup virtual environment as before then create CLion project to build C++ code.  Launch CLion | New Project.  Create C++ Executable using C++ 17.  Enter the following CLion from before.
 <br />
 <br />
-Set build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory.  Setup folder layout as above.  Enter all C++ <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/06-Example/cpp/src">source</a> code and <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/06-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
+Set build directory in CLion.  File menu | Settings... | Build, Execution, Deployment | CMake | Build directory.  Setup folder layout as above.  Enter all C++ <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/06-Example/cpp/src">source</a> code and <a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/06-Example/cpp/tests">tests</a>.  Rebuild entire solution in Debug mode.
 <br />
 <br />
-Launch PyCharm | Complete the <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/06-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
+Launch PyCharm | Complete the <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/06-Example/python/test.py">test</a> runner.  Finally execute <i>uv run test.py</i> for Python to execute C++ code!
 <br />
 <table width="99%" border="1">
 <tr>
@@ -433,7 +433,7 @@ Launch PyCharm | Complete the <a href="https://github.com/SteveProXNA/PythonSetu
 <br />
 <br />
 
-<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyBindCheatSheet/07-Example">Example VII</a></u><br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyBindCheatSheet/07-Example">Example VII</a></u><br />
 Repeat previous exercise but prefer Visual Studio 2022 on Windows to build an increasing C++ code base:
 <br />
 <!-- -->
@@ -470,7 +470,7 @@ Repeat previous exercise but prefer Visual Studio 2022 on Windows to build an in
 </table>
 <!-- -->
 <br />
-Launch Visual Studio 2022 | Continue without code.  File | Open | CMake...  Navigate to cpp/<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyBindCheatSheet/07-Example/cpp/CMakeLists.txt">CMakeLists.txt</a>.  Build menu | Build All.  Finally, choose Test menu | Test Explorer.  Run All Tests in View or choose to Debug: 
+Launch Visual Studio 2022 | Continue without code.  File | Open | CMake...  Navigate to cpp/<a href="https://github.com/StevePro7/PythonSetup/blob/master/PyBindCheatSheet/07-Example/cpp/CMakeLists.txt">CMakeLists.txt</a>.  Build menu | Build All.  Finally, choose Test menu | Test Explorer.  Run All Tests in View or choose to Debug: 
 <br />
 <!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGn4bGwT0Fnt6S127k02KrSCJC5SeNMW929rseqsJf0Kl7EeUlIvLiKmB_84jfgrnYIfSM9wtDs_miJMtajttlaWp6IT_mrIoKQ2fPclFc-YlWm_y4l43_WgWbCAl4ldPRNWjzpmgdTJ9KuUU0dfN3aHTxcZ3nX-MzhvmZACqrXAFkfLKFq8bbnveS3w/s1593/HelloPybind07.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiGn4bGwT0Fnt6S127k02KrSCJC5SeNMW929rseqsJf0Kl7EeUlIvLiKmB_84jfgrnYIfSM9wtDs_miJMtajttlaWp6IT_mrIoKQ2fPclFc-YlWm_y4l43_WgWbCAl4ldPRNWjzpmgdTJ9KuUU0dfN3aHTxcZ3nX-MzhvmZACqrXAFkfLKFq8bbnveS3w/s600/HelloPybind07.png"/></a>  
