@@ -1,0 +1,62 @@
+aaLayout
+21-Mar-2026
+
+
+Intro - DL + PyTorch3d -> setup!
+Image
+LCIO
+
+
+Table on torch, audio, vision, pytorch3d, sparse [2x], cluster etc.
+
+
+Pre-Reqs
+Linux Ubuntu 20.04 setup
+GPU nVidia drivers install
+cuda
+nvcc
+
+
+Hello PyTorch3D
+3.10.19
+minimal pyproject.toml torch
+import statements
+
+then larger program
+
+
+Hello PT endpoint
+no model
+
+
+Important
+have to manually build pytorch3d + torchsparse from source
+next post
+
+
+Second post
+
+01.
+Build wheels 2x into wheelhouse
+pytorch3d
+torchsparse
+
+update pyproject.toml to read local wheels
+
+
+02.
+upload built wheels??
+setup PyPI
+token ~/.pypirc
+
+20-Mar could not upload - got 400 BadRequest
+as the naming convention x86_64 NOT manylinux
+
+
+Also, do want to mention Cuda dev setup?
+HelloCUDA
+/home/stevepro/GitHub/StevePro10/Blogger/AI/GPU
+
+
+Summary
+now setup dev env = good spot to resume DL study!
