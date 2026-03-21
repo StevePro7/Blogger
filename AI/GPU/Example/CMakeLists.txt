@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-set(CMAKE_CUDA_COMPILER /usr/local/cuda-11.8/bin/nvcc)
+set(CMAKE_CUDA_COMPILER /usr/local/cuda-12.1/bin/nvcc)
 project(cuda_hello LANGUAGES CXX CUDA)
 
 set(CMAKE_CXX_STANDARD 14)
