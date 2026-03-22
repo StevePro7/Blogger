@@ -1,0 +1,24 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>CMakeLists.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;cmake_minimum_required(VERSION 3.19)
+&nbsp;&nbsp;project(HelloCUDAl LANGUAGES CXX CUDA)
+&nbsp;&nbsp;
+&nbsp;&nbsp;set(CMAKE_CXX_STANDARD 17)
+&nbsp;&nbsp;set(CMAKE_CUDA_STANDARD 17)
+&nbsp;&nbsp;set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+&nbsp;&nbsp;
+&nbsp;&nbsp;# Enable debug symbols for device code
+&nbsp;&nbsp;set(CMAKE_CUDA_FLAGS_DEBUG &quot;-G -g&quot;)
+&nbsp;&nbsp;set(CMAKE_CUDA_COMPILER /usr/local/cuda-12.1/bin/nvcc)
+&nbsp;&nbsp;
+&nbsp;&nbsp;# Executable
+&nbsp;&nbsp;add_executable(HelloCUDA hello.cu)
+&nbsp;&nbsp;
+&nbsp;&nbsp;# Required for printf + debugging
+&nbsp;&nbsp;set_target_properties(HelloCUDA PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+</pre>
+</td></tr>
+</table>
+<br />

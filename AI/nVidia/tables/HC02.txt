@@ -1,0 +1,21 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>hellocu.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;#include &lt;stdio.h&gt;
+&nbsp;&nbsp;
+&nbsp;&nbsp;__global__ void hello()
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    printf(&quot;Hello from GPU! block=%d thread=%d\n&quot;, blockIdx.x, threadIdx.x);
+&nbsp;&nbsp;}
+&nbsp;&nbsp;
+&nbsp;&nbsp;int main()
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    hello&lt;&lt;&lt;2, 4&gt;&gt;&gt;();
+&nbsp;&nbsp;    cudaDeviceSynchronize();
+&nbsp;&nbsp;    return 0;
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />
