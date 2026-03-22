@@ -1,0 +1,14 @@
+22-Mar-2026
+
+Blog post PyTorch - Pre-requisites - I found that one of the hardest things before even writing any PyTorch code was to setup a development environment that has all the packages above compatible versions e.g.
+pytorch-lightning                    2.6.0
+pytorch3d                            0.7.7
+torch                                2.2.0+cu121
+torch-cluster                        1.6.3+pt22cu121
+torch-geometric                      2.7.0
+torch-scatter                        2.1.2+pt22cu121
+torch-sparse                         0.6.18+pt22cu121
+torch-spline-conv                    1.2.2+pt22cu121
+torchmetrics                         1.8.2
+torchsparse                          2.0.0b0
+Therefore could you assist with a short intro on how it can be difficult to setup the dev env and what is CUDA and why we need to install the correct GPU drivers with nvcc toolkit etc.  - I am on Ubuntu 20.04 but I had to installed nVidia GPU drivers 535 for CUDA 12.1
