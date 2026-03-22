@@ -1,0 +1,4 @@
+22-Mar-2026
+
+IMPORTANT
+project(HelloCUDAl LANGUAGES CXX CUDA)
