@@ -2,7 +2,13 @@
 
 CUDA<br />
 CUDA [Compute Unified Device Architecture] is a proprietary parallel computing platform and API that allows software to use GPUs for accelerated general-purpose processing in high-performance scientific computing.
-<br /><br />  
+<br /><br />
   
-
+Therefore, to leverage PyTorch computations on GPUs one must install nVidia GPU drivers that support your CUDA version, install CUDA Toolkit that includes nvcc compiler with all PyTorch compatible built packages.
+<br /><br />
+  
+Development setup example:
+Ubuntu 20.04 | Linux kernel 5.15.0-9  | nVidia GPU Driver v535  | CUDA 12.1
+<br /><br />
+  
 </span>

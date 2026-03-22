@@ -1,0 +1,18 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>installnvcc.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 10px;">
+&nbsp;&nbsp;sudo mkdir -p /etc/apt/keyrings
+&nbsp;&nbsp;
+&nbsp;&nbsp;curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub \
+&nbsp;&nbsp; | sudo gpg --dearmor -o /etc/apt/keyrings/cuda-archive-keyring.gpg
+&nbsp;&nbsp;
+&nbsp;&nbsp;echo &quot;deb [signed-by=/etc/apt/keyrings/cuda-archive-keyring.gpg] \
+&nbsp;&nbsp;https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /&quot; \
+&nbsp;&nbsp;| sudo tee /etc/apt/sources.list.d/cuda.list
+&nbsp;&nbsp;
+&nbsp;&nbsp;sudo apt update
+</pre>
+</td></tr>
+</table>
+<br />

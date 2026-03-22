@@ -17,9 +17,11 @@ I installed 12.1 i.e. which nvcc /usr/local/cuda-12.1/bin/nvcc
 A.
 Below is a clean, reliable sequence for Ubuntu 20.04 + NVIDIA driver 535 + CUDA 12.1 (nvcc 12.1) that matches what you ended up doing.
 
+01.
 uname -r
 5.15.0-139-generic
 
+02.
 Remove partial CUDA installs
 ```sh
 sudo apt remove -y cuda* nvidia-cuda-toolkit
@@ -27,6 +29,7 @@ sudo apt autoremove -y
 sudo rm -rf /usr/local/cuda*
 ```
 
+03.
 Install NVIDIA Driver 535
 ```sh
 sudo apt update
@@ -34,13 +37,14 @@ sudo apt install -y nvidia-driver-535
 sudo reboot
 ```
 
+04.
 Verify
 ```sh
 nvidia-smi
 ```
 NVIDIA-SMI 535.230.02             Driver Version: 535.230.02   CUDA Version: 12.2
 
-
+05.
 Install CUDA 12.1 Toolkit (nvcc 12.1)
 ```sh
 sudo mkdir -p /etc/apt/keyrings
@@ -54,13 +58,14 @@ https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
 sudo apt update
 ```
 
-Install CUDA 12.1 toolkit ONLY
-```sh
-sudo apt install -y cuda-toolkit-12-1
-```
-/usr/local/cuda-12.1
+//Install CUDA 12.1 toolkit ONLY
+//```sh
+//sudo apt install -y cuda-toolkit-12-1
+//```
+///usr/local/cuda-12.1
 
 
+06.
 Configure Environment Variables
 ```sh
 # CUDA - PyTorch3D
@@ -70,11 +75,13 @@ export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 ```
 
+07.
 Verify nvcc
 nvcc --version                      Cuda compilation tools, release 12.1, V12.1.105
 which nvcc                          /usr/local/cuda-12.1/bin/nvcc
 
 
+08.
 SUMMARY
 Kernel                              5.15.0-139
 Driver                              nvidia-driver-535

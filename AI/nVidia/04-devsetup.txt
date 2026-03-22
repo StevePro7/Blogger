@@ -1,0 +1,96 @@
+Reference: ChtaGPT_PreReqs02.txt
+<br /><br />  
+
+01-TODO confirm linux kernel 
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uname -r				# 5.15.0-139-generic
+</pre>
+</td></tr>
+</table>
+<br />
+uname -r
+5.15.0-139-generic
+<br /><br />
+  
+02- Remove partial CUDA installs
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>removecuda.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sudo apt remove -y cuda* nvidia-cuda-toolkit
+&nbsp;&nbsp;sudo apt autoremove -y
+&nbsp;&nbsp;sudo rm -rf /usr/local/cuda*
+</pre>
+</td></tr>
+</table>
+<br />
+  
+03. Install NVIDIA Driver 535
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>installdriver.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sudo apt update
+&nbsp;&nbsp;sudo apt install -y nvidia-driver-535
+&nbsp;&nbsp;sudo reboot
+</pre>
+</td></tr>
+</table>
+<br />
+
+04. verify nvidia-smi
+<br />  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifRzzCh6otxSMyclgWtpty42FAXJHWf3krd6KIFLIS7vNmf6i7yapU9Im3uk_1Fl03M50ycrNFyMGmLYnAxHKkjouk2jFkgZ-9fNq6HS67J1qLQVy1_Tzuqit6JZfwvSSiOAz1GAgGf78iwuuenJWOMFTL4t6nsCZqLgiKN9r-WQ857EW9ysYtDxgj9eI/s824/nvidia-smi.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifRzzCh6otxSMyclgWtpty42FAXJHWf3krd6KIFLIS7vNmf6i7yapU9Im3uk_1Fl03M50ycrNFyMGmLYnAxHKkjouk2jFkgZ-9fNq6HS67J1qLQVy1_Tzuqit6JZfwvSSiOAz1GAgGf78iwuuenJWOMFTL4t6nsCZqLgiKN9r-WQ857EW9ysYtDxgj9eI/s600/nvidia-smi.png"/></a>
+<br />  
+<br />
+  
+05. Install CUDA 12.1 Toolkit (nvcc 12.1)
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>installnvcc.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 10px;">
+&nbsp;&nbsp;sudo mkdir -p /etc/apt/keyrings
+&nbsp;&nbsp;
+&nbsp;&nbsp;curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub \
+&nbsp;&nbsp; | sudo gpg --dearmor -o /etc/apt/keyrings/cuda-archive-keyring.gpg
+&nbsp;&nbsp;
+&nbsp;&nbsp;echo &quot;deb [signed-by=/etc/apt/keyrings/cuda-archive-keyring.gpg] \
+&nbsp;&nbsp;https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /&quot; \
+&nbsp;&nbsp;| sudo tee /etc/apt/sources.list.d/cuda.list
+&nbsp;&nbsp;
+&nbsp;&nbsp;sudo apt update
+</pre>
+</td></tr>
+</table>
+<br />
+  
+06. Configure Environment Variables | TODO - update ~/.bashrc
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>envvars.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export CUB_HOME=~/cub
+&nbsp;&nbsp;export CUDA_HOME=/usr/local/cuda-12.1
+&nbsp;&nbsp;export PATH=$CUDA_HOME/bin:$PATH
+&nbsp;&nbsp;export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+</pre>
+</td></tr>
+</table>
+<br />
+  
+07. Verify nvcc | nvcc --version which nvcc
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwgtJbDb7ZOUD9R3aRUrXuYN_Ndp5vPCuPYgBtwQ9Xu0DDKY6l80Th82MTwXnrhyphenhyphenNvRrrID5-2U7aoe9nRcuxEV0atdxzJByr6nXY4k7uzxzX_dlaJStUxY0mGh27vonazz6bDW1KcvxkyGl66M3uCI6QC9pyTB6hqAMskqUMCWbV4qTiDm8JAXDDuhTs/s734/nvcc.png"><img alt="" border="0" width="98%" 
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwgtJbDb7ZOUD9R3aRUrXuYN_Ndp5vPCuPYgBtwQ9Xu0DDKY6l80Th82MTwXnrhyphenhyphenNvRrrID5-2U7aoe9nRcuxEV0atdxzJByr6nXY4k7uzxzX_dlaJStUxY0mGh27vonazz6bDW1KcvxkyGl66M3uCI6QC9pyTB6hqAMskqUMCWbV4qTiDm8JAXDDuhTs/s600/nvcc.png"/></a>
+<br />
+<br />
+  
+08. summary table
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Kernel</td><td valign="top">&nbsp;5.15.0-139</td></tr>
+<tr><td valign="top">&nbsp;Driver</td><td valign="top">&nbsp;nvidia-driver-535</td></tr>
+<tr><td valign="top">&nbsp;CUDA 12.1</td><td valign="top">&nbsp;/usr/local/cuda-12.1</td></tr>
+<tr><td valign="top">&nbsp;CUDA toolkit</td><td valign="top">&nbsp;/usr/local/cuda-12.1/bin/nvcc</td></tr>
+</table>
+<br />
