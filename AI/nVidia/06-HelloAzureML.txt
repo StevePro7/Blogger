@@ -1,10 +1,10 @@
 <span style="font-family:verdana;font-size:85%;">
-Create the following files: app/scoring.py and .env.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the following info to launch Azure ML endpoint: 
-<br />
-Create the following files: app/scoring.py and .env.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the remaining info in order to launch Azure ML endpoint from PyCharm 
-<br />
-<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s880/HelloAzmlinfsrv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s600/HelloAzmlinfsrv.png"/></a>
-<br />
+
+
+  
+  
+
+  
 <u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet01/01/02-Example">Example II</a></u><br />
 Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | New Project.  Enter info:
 <br />
@@ -57,10 +57,69 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </table>
 -->
 <br />
-Create the following file: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/01-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify PyTorch packages installed!
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/app/scoring.py">app/scoring.py</a> and <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/.env">.env</a>.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the following info to launch Azure ML endpoint: 
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s880/HelloAzmlinfsrv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s600/HelloAzmlinfsrv.png"/></a>
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;script value</td><td valign="top">&nbsp;~/HelloAzureML/.venv/bin/azmlinfsrv</td></tr>
+<tr><td valign="top">&nbsp;Parameters</td><td valign="top">&nbsp;--entry app/scoring.py</td></tr>
+<tr><td valign="top">&nbsp;Working directory</td><td valign="top">&nbsp;~/HelloAzureML</td></tr>
+<tr><td valign="top">&nbsp;Path to .env files</td><td valign="top">&nbsp;~/HelloAzureML/.env</td></tr>
+</table>
+-->
+<br />
+Alternatively, launch terminals.  Enter following commands to launch Azure ML endpoint and submit request:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #1</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;set -a; source .env; set +a
+&nbsp;&nbsp;~/.venv/bin/azmlinfsrv --entry app/scoring.py
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #2</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;curl --location --request POST 'http://localhost:5001/score' \
+&nbsp;&nbsp;  --header 'Content-Type: application/json' \
+&nbsp;&nbsp;  --data-raw '{}'
+</pre>
+</td>
+</tr>
+</table>
+-->
 <br />
 <!--
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSIvSpRbFMxCZcg8fkVUzHvL0QbQyRz7IhTschrm96PpQcRsIBSU7jCiVpnCtwDfiRrND4mHxwS9Kw5v3k88mESV-dBAXGK4cCJjkie9M9NK3YNUqABn6jCcf7rwEwG49iib4nFGbjILxBuwgiyre3RnUgOqgWnJNB1I0Qw3hLGUvR2WEevmRYRxviZU4/s1436/HelloAzureMLoutput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSIvSpRbFMxCZcg8fkVUzHvL0QbQyRz7IhTschrm96PpQcRsIBSU7jCiVpnCtwDfiRrND4mHxwS9Kw5v3k88mESV-dBAXGK4cCJjkie9M9NK3YNUqABn6jCcf7rwEwG49iib4nFGbjILxBuwgiyre3RnUgOqgWnJNB1I0Qw3hLGUvR2WEevmRYRxviZU4/s600/HelloAzureMLoutput.png"/></a>
+-->
+<!--  
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example II</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    &quot;message&quot;: &quot;Hello PyTorch3d&quot;,
+&nbsp;&nbsp;    &quot;torch_version&quot;: &quot;2.2.0+cu121&quot;,
+&nbsp;&nbsp;    &quot;pytorch3d_version&quot;: &quot;0.7.7&quot;,
+&nbsp;&nbsp;    &quot;cuda_version&quot;: &quot;12.1&quot;,
+&nbsp;&nbsp;    &quot;cuda_available&quot;: true,
+&nbsp;&nbsp;    &quot;torch_geometric_version&quot;: &quot;2.7.0&quot;,
+&nbsp;&nbsp;    &quot;torch_scatter_version&quot;: &quot;2.1.2+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torch_sparse_version&quot;: &quot;0.6.18+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torch_cluster_version&quot;: &quot;1.6.3+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torch_spline_conv_version&quot;: &quot;1.2.2+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torchsparse_version&quot;: &quot;2.0.0b&quot;
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
 -->
 <br />
   
