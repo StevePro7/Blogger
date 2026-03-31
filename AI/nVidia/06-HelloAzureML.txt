@@ -1,0 +1,67 @@
+<span style="font-family:verdana;font-size:85%;">
+Create the following files: app/scoring.py and .env.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the following info to launch Azure ML endpoint: 
+<br />
+Create the following files: app/scoring.py and .env.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the remaining info in order to launch Azure ML endpoint from PyCharm 
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s880/HelloAzmlinfsrv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s600/HelloAzmlinfsrv.png"/></a>
+<br />
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet01/01/02-Example">Example II</a></u><br />
+Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | New Project.  Enter info:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s1000/HelloAzureML.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s600/HelloAzureML.png"/></a>
+-->
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloAzureML</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+-->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.10
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.10.19
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/pyproject.toml">dependencies</a>:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export MAX_JOBS=1
+&nbsp;&nbsp;export NVCC_THREADS=1
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+Create the following file: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/01-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify PyTorch packages installed!
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSIvSpRbFMxCZcg8fkVUzHvL0QbQyRz7IhTschrm96PpQcRsIBSU7jCiVpnCtwDfiRrND4mHxwS9Kw5v3k88mESV-dBAXGK4cCJjkie9M9NK3YNUqABn6jCcf7rwEwG49iib4nFGbjILxBuwgiyre3RnUgOqgWnJNB1I0Qw3hLGUvR2WEevmRYRxviZU4/s1436/HelloAzureMLoutput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSIvSpRbFMxCZcg8fkVUzHvL0QbQyRz7IhTschrm96PpQcRsIBSU7jCiVpnCtwDfiRrND4mHxwS9Kw5v3k88mESV-dBAXGK4cCJjkie9M9NK3YNUqABn6jCcf7rwEwG49iib4nFGbjILxBuwgiyre3RnUgOqgWnJNB1I0Qw3hLGUvR2WEevmRYRxviZU4/s600/HelloAzureMLoutput.png"/></a>
+-->
+<br />
+  
+</span>
