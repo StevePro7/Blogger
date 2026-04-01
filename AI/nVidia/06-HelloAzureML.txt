@@ -3,11 +3,11 @@
 <u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet01/01/02-Example">Example II</a></u><br />
 Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | New Project.  Enter info:
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s1000/HelloAzureML.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s600/HelloAzureML.png"/></a>
--->
+<!-- -->
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloAzureML</td></tr>
 <tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
@@ -15,10 +15,10 @@ Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | 
 <tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
 </table>
 <br />
--->
+<!-- -->
 PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -29,11 +29,11 @@ PyCharm should setup UV virtual environment and configure Python interpreter if 
 </pre>
 </td></tr>
 </table>
--->
+<!-- -->
 <br />
 In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/pyproject.toml">dependencies</a>:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td width="50%">
@@ -50,11 +50,11 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
 Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/app/scoring.py">app/scoring.py</a> and <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/.env">.env</a>.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the following info to launch Azure ML endpoint: 
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s880/HelloAzmlinfsrv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s600/HelloAzmlinfsrv.png"/></a>
 <br />
 <table width="99%" border="1">
@@ -63,11 +63,11 @@ Create the following files: <a href="https://github.com/StevePro7/PythonSetup/bl
 <tr><td valign="top">&nbsp;Working directory</td><td valign="top">&nbsp;~/HelloAzureML</td></tr>
 <tr><td valign="top">&nbsp;Path to .env files</td><td valign="top">&nbsp;~/HelloAzureML/.env</td></tr>
 </table>
--->
+<!-- -->
 <br />
 Alternatively, launch terminals.  Enter following commands to launch Azure ML endpoint and submit request:
 <br />
-<!--
+<!-- -->
 <table width="99%" border="1">
 <tr>
 <td valign="top"><br />&nbsp;<b>Terminal #1</b></td>
@@ -89,12 +89,12 @@ Alternatively, launch terminals.  Enter following commands to launch Azure ML en
 </td>
 </tr>
 </table>
--->
+<!-- -->
 <br />
-<!--
+<!-- -->
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMk9jDOAEoq7FNEb3WrdoUBe8LkRNrFARn9BdUSVSfr1Cq5pEnY9127UXrVgIWEhih7ZQDn4jDhu9pJ9aTio3wWMGGNkylb5YS525YRilztt56B_unqmhxIkJBlLU3B3PrNbKk4crtBMtOQAhp2GpC3VLI0RDK0r7ECxJGgXoJh8YAqynuKR_X9rMyPmo/s1289/HelloAzScoring.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMk9jDOAEoq7FNEb3WrdoUBe8LkRNrFARn9BdUSVSfr1Cq5pEnY9127UXrVgIWEhih7ZQDn4jDhu9pJ9aTio3wWMGGNkylb5YS525YRilztt56B_unqmhxIkJBlLU3B3PrNbKk4crtBMtOQAhp2GpC3VLI0RDK0r7ECxJGgXoJh8YAqynuKR_X9rMyPmo/s600/HelloAzScoring.png"/></a>
--->
-<!--  
+<!-- -->
+<!-- -->
 <table width="99%" border="1">
 <tr><td>&nbsp;&nbsp;<strong>Example II</strong></td></tr>
 <tr><td>
@@ -115,7 +115,7 @@ Alternatively, launch terminals.  Enter following commands to launch Azure ML en
 </pre>
 </td></tr>
 </table>
--->
+<!-- -->
 <br />
   
 </span>
