@@ -1,0 +1,59 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+<u>Example II</u><br />
+TODO.  Build on previous PyTorch3DWheels example Launch PyCharm | New Project.  Enter the following info:
+<br />
+
+TODO.Copy custom wheels built from previous example 
+<br /><br />
+
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/02/02-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export MAX_JOBS=1
+&nbsp;&nbsp;export NVCC_THREADS=1
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following file: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/02/02-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify PyTorch packages installed!
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s1027/HelloPyTorch3dOutput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s600/HelloPyTorch3dOutput.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example II</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;Hello PyTorch3d
+&nbsp;&nbsp;torch 2.2.0+cu121
+&nbsp;&nbsp;pytorch3d 0.7.7
+&nbsp;&nbsp;cuda 12.1
+&nbsp;&nbsp;cuda True
+&nbsp;&nbsp;torch_geometric 2.7.0
+&nbsp;&nbsp;torch_scatter 2.1.2+pt22cu121
+&nbsp;&nbsp;torch_sparse 0.6.18+pt22cu121
+&nbsp;&nbsp;torch_cluster 1.6.3+pt22cu121
+&nbsp;&nbsp;torch_spline_conv 1.2.2+pt22cu121
+&nbsp;&nbsp;torchsparse 2.0.0b
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+
+</span>
