@@ -1,0 +1,71 @@
+<span style="font-family:verdana;font-size:85%;">
+  
+<u>Example I</u><br />
+TODO.  Launch PyCharm | New Project.  Enter the following info:
+<br />
+<!--
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxgIHgV6C7wVBw29bhA6eVsYiqMyhrxdIyMELC19tG4K4oztAEOonATSLpJlsaKcAMveEyV8LC-2KA9mfJSrjKblS-VZau1XFUi00sJ3RVIKU-lWBGOyo3gkfOBDiQpeBbcJYiA2AbwLmHg9LWI3wum7CPaHFedpZtUHWVN-V2c3_ANp4Dkk2iSPlnhxg/s1000/HelloPyTorch3dWheels.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxgIHgV6C7wVBw29bhA6eVsYiqMyhrxdIyMELC19tG4K4oztAEOonATSLpJlsaKcAMveEyV8LC-2KA9mfJSrjKblS-VZau1XFUi00sJ3RVIKU-lWBGOyo3gkfOBDiQpeBbcJYiA2AbwLmHg9LWI3wum7CPaHFedpZtUHWVN-V2c3_ANp4Dkk2iSPlnhxg/s600/HelloPyTorch3dWheels.png"/></a>
+-->
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3dWheels</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+-->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!--
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.10
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.10.19
+</pre>
+</td></tr>
+</table>
+-->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install packages to build custom wheels:
+<br />
+<!--
+<table width="99%" border="1">
+<tr>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install twine
+&nbsp;&nbsp;uv pip install numpy==1.26.4
+&nbsp;&nbsp;uv pip install --index-url https://download.pytorch.org/whl/cu121 \
+&nbsp;&nbsp;    "torch==2.2.0+cu121" "torchvision==0.17.0"  "torchaudio==2.2.0"
+</pre>
+</td>
+</tr>
+</table>
+-->
+<br />
+Create directory to house custom wheels <i>mkdir -p wheelhouse-cu121</i>.  Write shell scripts to code wheel logic:
+<br />
+<!--
+<table width="99%" border="1">  
+<tr><td valign="top">&nbsp;PyTorch3D</td><td valign="top">&nbsp;chmod +x steveprobuild_pytorch3d_wheel.sh</td></tr>
+<tr><td valign="top">&nbsp;TorchSparse</td><td valign="top">&nbsp;chmod +x steveprobuild_torchsparse_wheel.sh</td></tr>
+</table>
+-->
+<br />
+Execute shell scripts to build custom wheels.  These will be the custom wheels used locally on next examples:
+<br />
+<!--
+<table width="99%" border="1">  
+<tr><td valign="top">&nbsp;<b>COMMAND</b></td><td valign="top">&nbsp;<b>ARTIFACT</b></td></tr>
+<tr><td valign="top">&nbsp;bash steveprobuild_pytorch3d_wheel.sh </td><td valign="top">&nbsp;stevepropytorch3d-0.7.7-cp310-cp310-linux_x86_64.whl </td></tr>
+<tr><td valign="top">&nbsp;bash steveprobuild_torchsparse_wheel.sh </td><td valign="top">&nbsp;steveprotorchsparse-2.0.0b0-cp310-cp310-linux_x86_64.whl </td></tr>
+</table>
+-->  
+<br />
+  
+</span>
