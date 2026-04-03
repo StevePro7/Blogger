@@ -1,20 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
-  
 
-Cleanup as necessary: find and kill processes using TCP port 5001 esp. if that port is continued to be in use:
-<br />
-<!-- -->
-<table width="99%" border="1">
-<tr><td>
-<pre style="font-size: 12px;">
-&nbsp;&nbsp;sudo fuser -k 5001/tcp		# Linux
-&nbsp;&nbsp;sudo lsof -ti tcp:5001		# MacOS
-</pre>
-</td></tr>
-</table>
-<!-- -->
-<br />
-<br />
 <u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet01/01/02-Example">Example II</a></u><br />
 Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | New Project.  Enter info:
 <br />
@@ -127,6 +112,19 @@ Alternatively, launch terminals.  Enter following commands to launch Azure ML en
 &nbsp;&nbsp;    &quot;torch_spline_conv_version&quot;: &quot;1.2.2+pt22cu121&quot;,
 &nbsp;&nbsp;    &quot;torchsparse_version&quot;: &quot;2.0.0b&quot;
 &nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Cleanup as necessary: find and kill processes using TCP port 5001 esp. if that port is continued to be in use:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sudo fuser -k 5001/tcp		# Linux
+&nbsp;&nbsp;sudo lsof -ti tcp:5001		# MacOS
 </pre>
 </td></tr>
 </table>
