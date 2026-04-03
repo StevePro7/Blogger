@@ -1,33 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Alternatively, launch terminals. Enter following commands to launch Azure ML endpoint and submit request:
-<br />
-  
-Launch terminals. Enter following commands: build Docker image run Docker container and submit request:
-<br />
-<table width="99%" border="1">
-<tr><td>
-<pre style="font-size: 12px;">
-&nbsp;&nbsp;curl --location --request POST &#x27;http://localhost:5001/score&#x27; \
-&nbsp;&nbsp;  --header &#x27;Content-Type: application/json&#x27; \
-&nbsp;&nbsp;  --data-raw &#x27;{
-&nbsp;&nbsp;  &quot;points&quot;: [
-&nbsp;&nbsp;    [0.0, 0.0, 1.0],
-&nbsp;&nbsp;    [0.1, 0.0, 0.99],
-&nbsp;&nbsp;    [-0.1, 0.0, 0.99],
-&nbsp;&nbsp;    [0.0, 0.1, 0.99],
-&nbsp;&nbsp;    [0.0, -0.1, 0.99],
-&nbsp;&nbsp;    [0.7, 0.7, 0.0],
-&nbsp;&nbsp;    [-0.7, 0.7, 0.0],
-&nbsp;&nbsp;    [0.7, -0.7, 0.0],
-&nbsp;&nbsp;    [-0.7, -0.7, 0.0],
-&nbsp;&nbsp;    [0.0, 0.0, -1.0]
-&nbsp;&nbsp;  ]
-&nbsp;&nbsp;}&#x27;
-</pre>
-</td></tr>
-</table>
-<br />
 
   
 TODO - Create the following directories <b>app</b> and <b>test</b>
@@ -86,7 +58,44 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </table>
 <!-- -->
 <br />
-  
+Launch terminals. Enter following commands: build Docker image run Docker container and submit request:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #1</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;docker build -t azml-gpu-local:latest .
+&nbsp;&nbsp;docker run --gpus all -p 5001:5001 azml-gpu-local:latest
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #2</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;curl --location --request POST &#x27;http://localhost:5001/score&#x27; \
+&nbsp;&nbsp;  --header &#x27;Content-Type: application/json&#x27; \
+&nbsp;&nbsp;  --data-raw &#x27;{
+&nbsp;&nbsp;  &quot;points&quot;: [
+&nbsp;&nbsp;    [0.0, 0.0, 1.0],
+&nbsp;&nbsp;    [0.1, 0.0, 0.99],
+&nbsp;&nbsp;    [-0.1, 0.0, 0.99],
+&nbsp;&nbsp;    [0.0, 0.1, 0.99],
+&nbsp;&nbsp;    [0.0, -0.1, 0.99],
+&nbsp;&nbsp;    [0.7, 0.7, 0.0],
+&nbsp;&nbsp;    [-0.7, 0.7, 0.0],
+&nbsp;&nbsp;    [0.7, -0.7, 0.0],
+&nbsp;&nbsp;    [-0.7, -0.7, 0.0],
+&nbsp;&nbsp;    [0.0, 0.0, -1.0]
+&nbsp;&nbsp;  ]
+&nbsp;&nbsp;}&#x27;
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF9LfrZcnlP9BnXvU3V6gMThMy6lf7ISpyzORaxXgkpL9JXzDueeNNlIsUdfXdynJpB2yZVojm1zSL-20crG30ECrSSHt0dLle6TVjRbeeRG1xdCMk7LN0yntsAS5z8Nt0lro1b0pk0xFBhoBLqZ7LkD0xyKGBSRX3JJYpDrM3_a7lwxFk9RWUF6TYCEg/s1128/ScorePointCloud.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF9LfrZcnlP9BnXvU3V6gMThMy6lf7ISpyzORaxXgkpL9JXzDueeNNlIsUdfXdynJpB2yZVojm1zSL-20crG30ECrSSHt0dLle6TVjRbeeRG1xdCMk7LN0yntsAS5z8Nt0lro1b0pk0xFBhoBLqZ7LkD0xyKGBSRX3JJYpDrM3_a7lwxFk9RWUF6TYCEg/s600/ScorePointCloud.png"/></a>  
 <br />
 <table width="99%" border="1">
