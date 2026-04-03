@@ -10,6 +10,7 @@ Let's check it out!
 PyTorch ecosystem extends specialized libraries for different domains [vision, audio, 3D, sparse data] go-to choice for everything from prototyping research ideas to deploying production-grade deep learning systems.
   
 <br /><br />
+PACKAGES<br />
 <table width="99%" border="1">
 <tr><td valign="top">&nbsp;torch</td><td valign="top">&nbsp;Core PyTorch library providing tensors, autograd and neural network building blocks</td></tr>
 <tr><td valign="top">&nbsp;torchaudio</td><td valign="top">&nbsp;Tools + datasets for audio processing, waveform transformations and speech models</td></tr>
@@ -31,6 +32,301 @@ Therefore, to leverage PyTorch computations on GPUs one must install nVidia GPU 
 Development setup example:
 Ubuntu 20.04 | Linux kernel 5.15.0-9  | nVidia GPU Driver v535  | CUDA 12.1
 <br /><br />
+
+INSTALLATION<br />
+Complete nVidia CUDA Toolkit installation guide found <a href="https://docs.nvidia.com/cuda/archive/12.1.0/cuda-installation-guide-linux">here</a> but can be summarized in the following steps: 
+<br />  
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uname -r				# 5.15.0-139-generic
+</pre>
+</td></tr>
+</table>
+<br />
   
+<b>Step #1</b> - <i>Remove partial CUDA installs</i>
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sudo apt remove -y cuda* nvidia-cuda-toolkit
+&nbsp;&nbsp;sudo apt autoremove -y
+&nbsp;&nbsp;sudo rm -rf /usr/local/cuda*
+</pre>
+</td></tr>
+</table>
+<br />
+<b>Step #2</b> - <i>Install nVidia Driver 535</i>
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sudo apt update
+&nbsp;&nbsp;sudo apt install -y nvidia-driver-535
+&nbsp;&nbsp;sudo reboot
+</pre>
+</td></tr>
+</table>
+<br />
+
+<b>Step #3</b> - <i>Verify nVidia Driver and CUDA version</i> - nvidia-smi
+<br />  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifRzzCh6otxSMyclgWtpty42FAXJHWf3krd6KIFLIS7vNmf6i7yapU9Im3uk_1Fl03M50ycrNFyMGmLYnAxHKkjouk2jFkgZ-9fNq6HS67J1qLQVy1_Tzuqit6JZfwvSSiOAz1GAgGf78iwuuenJWOMFTL4t6nsCZqLgiKN9r-WQ857EW9ysYtDxgj9eI/s824/nvidia-smi.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifRzzCh6otxSMyclgWtpty42FAXJHWf3krd6KIFLIS7vNmf6i7yapU9Im3uk_1Fl03M50ycrNFyMGmLYnAxHKkjouk2jFkgZ-9fNq6HS67J1qLQVy1_Tzuqit6JZfwvSSiOAz1GAgGf78iwuuenJWOMFTL4t6nsCZqLgiKN9r-WQ857EW9ysYtDxgj9eI/s600/nvidia-smi.png"/></a>
+<br />  
+<br />  
+<b>Step #4</b> - <i>Install CUDA 12.1 Toolkit</i>
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 10px;">
+&nbsp;&nbsp;sudo mkdir -p /etc/apt/keyrings
+&nbsp;&nbsp;
+&nbsp;&nbsp;curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub \
+&nbsp;&nbsp; | sudo gpg --dearmor -o /etc/apt/keyrings/cuda-archive-keyring.gpg
+&nbsp;&nbsp;
+&nbsp;&nbsp;echo &quot;deb [signed-by=/etc/apt/keyrings/cuda-archive-keyring.gpg] \
+&nbsp;&nbsp;https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /&quot; \
+&nbsp;&nbsp;| sudo tee /etc/apt/sources.list.d/cuda.list
+&nbsp;&nbsp;
+&nbsp;&nbsp;sudo apt update
+</pre>
+</td></tr>
+</table>
+<br />
+<b>Step #5</b> - <i>Configure Environment Variables</i> - source ~/.bashrc
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export CUB_HOME=~/cub
+&nbsp;&nbsp;export CUDA_HOME=/usr/local/cuda-12.1
+&nbsp;&nbsp;export PATH=$CUDA_HOME/bin:$PATH
+&nbsp;&nbsp;export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+</pre>
+</td></tr>
+</table>
+<br />  
+<b>Step #6</b> - <i>Verify CUDA 12.1 Toolkit</i> - nvcc --version
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwgtJbDb7ZOUD9R3aRUrXuYN_Ndp5vPCuPYgBtwQ9Xu0DDKY6l80Th82MTwXnrhyphenhyphenNvRrrID5-2U7aoe9nRcuxEV0atdxzJByr6nXY4k7uzxzX_dlaJStUxY0mGh27vonazz6bDW1KcvxkyGl66M3uCI6QC9pyTB6hqAMskqUMCWbV4qTiDm8JAXDDuhTs/s734/nvcc.png"><img alt="" border="0" width="98%" 
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwgtJbDb7ZOUD9R3aRUrXuYN_Ndp5vPCuPYgBtwQ9Xu0DDKY6l80Th82MTwXnrhyphenhyphenNvRrrID5-2U7aoe9nRcuxEV0atdxzJByr6nXY4k7uzxzX_dlaJStUxY0mGh27vonazz6bDW1KcvxkyGl66M3uCI6QC9pyTB6hqAMskqUMCWbV4qTiDm8JAXDDuhTs/s600/nvcc.png"/></a>
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Kernel</td><td valign="top">&nbsp;5.15.0-139</td></tr>
+<tr><td valign="top">&nbsp;Driver</td><td valign="top">&nbsp;nvidia-driver-535</td></tr>
+<tr><td valign="top">&nbsp;CUDA 12.1</td><td valign="top">&nbsp;/usr/local/cuda-12.1</td></tr>
+<tr><td valign="top">&nbsp;CUDA toolkit</td><td valign="top">&nbsp;/usr/local/cuda-12.1/bin/nvcc</td></tr>
+</table>
+<br />
   
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet/01-Example">Example I</a></u><br />
+All examples listed are Python 3.10.19 compatible.  Launch PyCharm | New Project.  Enter the following info:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibcf5LsFgM4sBaOXeNxNhNGN7rj13ga0nagi80ZMixV97Gd5uUmfuz9bhfkvib44dEDumub94j-FCEtMF3A0BdnZpj9OcGg6qnQjOd59LaaWT6xl7YIXT9vusdoAw6K42N0nty93YsoqLYJfomWzvXXN7nPt8_xC4JPCKrtH5IXw_091AQ2pNpphAizds/s1000/HelloPyTorch3d.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibcf5LsFgM4sBaOXeNxNhNGN7rj13ga0nagi80ZMixV97Gd5uUmfuz9bhfkvib44dEDumub94j-FCEtMF3A0BdnZpj9OcGg6qnQjOd59LaaWT6xl7YIXT9vusdoAw6K42N0nty93YsoqLYJfomWzvXXN7nPt8_xC4JPCKrtH5IXw_091AQ2pNpphAizds/s600/HelloPyTorch3d.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3d</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.10
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.10.19
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet/01-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export MAX_JOBS=1
+&nbsp;&nbsp;export NVCC_THREADS=1
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following file: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet/01-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify PyTorch packages installed!
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s1027/HelloPyTorch3dOutput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s600/HelloPyTorch3dOutput.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example I</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;Hello PyTorch3d
+&nbsp;&nbsp;torch 2.2.0+cu121
+&nbsp;&nbsp;pytorch3d 0.7.7
+&nbsp;&nbsp;cuda 12.1
+&nbsp;&nbsp;cuda True
+&nbsp;&nbsp;torch_geometric 2.7.0
+&nbsp;&nbsp;torch_scatter 2.1.2+pt22cu121
+&nbsp;&nbsp;torch_sparse 0.6.18+pt22cu121
+&nbsp;&nbsp;torch_cluster 1.6.3+pt22cu121
+&nbsp;&nbsp;torch_spline_conv 1.2.2+pt22cu121
+&nbsp;&nbsp;torchsparse 2.0.0b
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet/02-Example">Example II</a></u><br />
+Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | New Project.  Enter info:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s1000/HelloAzureML.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s600/HelloAzureML.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloAzureML</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.10
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.10.19
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet/02-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export MAX_JOBS=1
+&nbsp;&nbsp;export NVCC_THREADS=1
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet/02-Example/app/scoring.py">app/scoring.py</a> and <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet/02-Example/.env">.env</a>.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the following info to launch Azure ML endpoint: 
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s880/HelloAzmlinfsrv.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggbq8XI9RsjUOXBgIsxoYQkV_jzi-jL7_3LgpREhaBG0gw-kkqiMHTvTKIGbIkXufN9SkauKQUp0UDO11KAdUM1O03zeeqgRtpcQcgF2fDyoem9disYjLgz25omBJ7Vu4q2yfUkCW5VMJwKLvasNN48Fw2sr2vrjzWHe_L8s5U9IGCuoZ_rj-CoNK0pgU/s600/HelloAzmlinfsrv.png"/></a>
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;script value</td><td valign="top">&nbsp;~/HelloAzureML/.venv/bin/azmlinfsrv</td></tr>
+<tr><td valign="top">&nbsp;Parameters</td><td valign="top">&nbsp;--entry app/scoring.py</td></tr>
+<tr><td valign="top">&nbsp;Working directory</td><td valign="top">&nbsp;~/HelloAzureML</td></tr>
+<tr><td valign="top">&nbsp;Path to .env files</td><td valign="top">&nbsp;~/HelloAzureML/.env</td></tr>
+</table>
+<!-- -->
+<br />
+Alternatively, launch terminals.  Enter following commands to launch Azure ML endpoint and submit request:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #1</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;set -a; source .env; set +a
+&nbsp;&nbsp;~/.venv/bin/azmlinfsrv --entry app/scoring.py
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #2</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;curl --location --request POST 'http://localhost:5001/score' \
+&nbsp;&nbsp;  --header 'Content-Type: application/json' \
+&nbsp;&nbsp;  --data-raw '{}'
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMk9jDOAEoq7FNEb3WrdoUBe8LkRNrFARn9BdUSVSfr1Cq5pEnY9127UXrVgIWEhih7ZQDn4jDhu9pJ9aTio3wWMGGNkylb5YS525YRilztt56B_unqmhxIkJBlLU3B3PrNbKk4crtBMtOQAhp2GpC3VLI0RDK0r7ECxJGgXoJh8YAqynuKR_X9rMyPmo/s1289/HelloAzScoring.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMk9jDOAEoq7FNEb3WrdoUBe8LkRNrFARn9BdUSVSfr1Cq5pEnY9127UXrVgIWEhih7ZQDn4jDhu9pJ9aTio3wWMGGNkylb5YS525YRilztt56B_unqmhxIkJBlLU3B3PrNbKk4crtBMtOQAhp2GpC3VLI0RDK0r7ECxJGgXoJh8YAqynuKR_X9rMyPmo/s600/HelloAzScoring.png"/></a>
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example II</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    &quot;message&quot;: &quot;Hello PyTorch3d&quot;,
+&nbsp;&nbsp;    &quot;torch_version&quot;: &quot;2.2.0+cu121&quot;,
+&nbsp;&nbsp;    &quot;pytorch3d_version&quot;: &quot;0.7.7&quot;,
+&nbsp;&nbsp;    &quot;cuda_version&quot;: &quot;12.1&quot;,
+&nbsp;&nbsp;    &quot;cuda_available&quot;: true,
+&nbsp;&nbsp;    &quot;torch_geometric_version&quot;: &quot;2.7.0&quot;,
+&nbsp;&nbsp;    &quot;torch_scatter_version&quot;: &quot;2.1.2+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torch_sparse_version&quot;: &quot;0.6.18+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torch_cluster_version&quot;: &quot;1.6.3+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torch_spline_conv_version&quot;: &quot;1.2.2+pt22cu121&quot;,
+&nbsp;&nbsp;    &quot;torchsparse_version&quot;: &quot;2.0.0b&quot;
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Cleanup as necessary: find and kill processes using TCP port 5001 esp. if that port is continued to be in use:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;sudo fuser -k 5001/tcp		# Linux
+&nbsp;&nbsp;sudo lsof -ti tcp:5001		# MacOS
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+<u>Summary</u><br />
+To summarize, we have installed and configured our nVidia driver and CUDA Toolkit and built some simple PyTorch programs.  However, we have built the PyTorch3d + TorchSparse packages from source each time.  Ideally, we would like to pre-build custom wheels once and house on localhost for future examples reuse!
+<br />
+This will be the topic of the next <a href="https://steveproxna.blogspot.com/2026/05/pytorch-setup-cheat-sheet-ii.html">post</a>.
+
 </span>
