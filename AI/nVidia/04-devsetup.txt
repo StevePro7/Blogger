@@ -1,7 +1,7 @@
-Reference: ChtaGPT_PreReqs02.txt
-<br /><br />  
+<span style="font-family:verdana;font-size:85%;">
 
-01-TODO confirm linux kernel 
+Complete nVidia CUDA Toolkit installation guide found <a href="https://docs.nvidia.com/cuda/archive/12.1.0/cuda-installation-guide-linux">here</a> but can be summarized in the following steps: 
+<br />  
 <table width="99%" border="1">
 <tr><td>
 <pre style="font-size: 12px;">
@@ -10,13 +10,9 @@ Reference: ChtaGPT_PreReqs02.txt
 </td></tr>
 </table>
 <br />
-uname -r
-5.15.0-139-generic
-<br /><br />
   
-02- Remove partial CUDA installs
+<b>Step #1</b> - <i>Remove partial CUDA installs</i>
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>removecuda.txt</strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;sudo apt remove -y cuda* nvidia-cuda-toolkit
@@ -26,10 +22,8 @@ uname -r
 </td></tr>
 </table>
 <br />
-  
-03. Install NVIDIA Driver 535
+<b>Step #2</b> - <i>Install nVidia Driver 535</i>
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>installdriver.txt</strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;sudo apt update
@@ -40,15 +34,13 @@ uname -r
 </table>
 <br />
 
-04. verify nvidia-smi
+<b>Step #3</b> - <i>Verify nVidia Driver and CUDA version</i> - nvidia-smi
 <br />  
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifRzzCh6otxSMyclgWtpty42FAXJHWf3krd6KIFLIS7vNmf6i7yapU9Im3uk_1Fl03M50ycrNFyMGmLYnAxHKkjouk2jFkgZ-9fNq6HS67J1qLQVy1_Tzuqit6JZfwvSSiOAz1GAgGf78iwuuenJWOMFTL4t6nsCZqLgiKN9r-WQ857EW9ysYtDxgj9eI/s824/nvidia-smi.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifRzzCh6otxSMyclgWtpty42FAXJHWf3krd6KIFLIS7vNmf6i7yapU9Im3uk_1Fl03M50ycrNFyMGmLYnAxHKkjouk2jFkgZ-9fNq6HS67J1qLQVy1_Tzuqit6JZfwvSSiOAz1GAgGf78iwuuenJWOMFTL4t6nsCZqLgiKN9r-WQ857EW9ysYtDxgj9eI/s600/nvidia-smi.png"/></a>
 <br />  
-<br />
-  
-05. Install CUDA 12.1 Toolkit (nvcc 12.1)
+<br />  
+<b>Step #4</b> - <i>Install CUDA 12.1 Toolkit</i>
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>installnvcc.txt</strong></td></tr>
 <tr><td>
 <pre style="font-size: 10px;">
 &nbsp;&nbsp;sudo mkdir -p /etc/apt/keyrings
@@ -65,10 +57,8 @@ uname -r
 </td></tr>
 </table>
 <br />
-  
-06. Configure Environment Variables | TODO - update ~/.bashrc
+<b>Step #5</b> - <i>Configure Environment Variables</i> - source ~/.bashrc
 <table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>envvars.txt</strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;export CUB_HOME=~/cub
@@ -78,15 +68,11 @@ uname -r
 </pre>
 </td></tr>
 </table>
-<br />
-  
-07. Verify nvcc | nvcc --version which nvcc
+<br />  
+<b>Step #6</b> - <i>Verify CUDA 12.1 Toolkit</i> - nvcc --version
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwgtJbDb7ZOUD9R3aRUrXuYN_Ndp5vPCuPYgBtwQ9Xu0DDKY6l80Th82MTwXnrhyphenhyphenNvRrrID5-2U7aoe9nRcuxEV0atdxzJByr6nXY4k7uzxzX_dlaJStUxY0mGh27vonazz6bDW1KcvxkyGl66M3uCI6QC9pyTB6hqAMskqUMCWbV4qTiDm8JAXDDuhTs/s734/nvcc.png"><img alt="" border="0" width="98%" 
 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwgtJbDb7ZOUD9R3aRUrXuYN_Ndp5vPCuPYgBtwQ9Xu0DDKY6l80Th82MTwXnrhyphenhyphenNvRrrID5-2U7aoe9nRcuxEV0atdxzJByr6nXY4k7uzxzX_dlaJStUxY0mGh27vonazz6bDW1KcvxkyGl66M3uCI6QC9pyTB6hqAMskqUMCWbV4qTiDm8JAXDDuhTs/s600/nvcc.png"/></a>
 <br />
-<br />
-  
-08. summary table
 <table width="99%" border="1">
 <tr><td valign="top">&nbsp;Kernel</td><td valign="top">&nbsp;5.15.0-139</td></tr>
 <tr><td valign="top">&nbsp;Driver</td><td valign="top">&nbsp;nvidia-driver-535</td></tr>
@@ -94,3 +80,6 @@ src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwgtJbDb7ZOUD9R3
 <tr><td valign="top">&nbsp;CUDA toolkit</td><td valign="top">&nbsp;/usr/local/cuda-12.1/bin/nvcc</td></tr>
 </table>
 <br />
+
+  
+</span>
