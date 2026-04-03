@@ -1,0 +1,83 @@
+<span style="font-family:verdana;font-size:85%;">
+
+Launch Terminal #1.  Initialize devpi-server on localhost port 3141 and start.  Navigate to the homepage URL
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;devpi-init					# Launch browser
+&nbsp;&nbsp;devpi-server --host 127.0.0.1 --port 3141	# Navigate http://localhost:3141
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Launch Terminal #2.  Connect to the devpi-client and login.  Create custom cuda-wheels index and activate
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;devpi use http://localhost:3141
+&nbsp;&nbsp;devpi login root --password=''
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;devpi index -c cuda-wheels bases=root/pypi&nbsp;&nbsp;
+&nbsp;&nbsp;devpi use root/cuda-wheels
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+
+<br />  
+<u>Example III</u><br />
+TODO.  Build on previous PyTorch3DWheels example Launch PyCharm | New Project.  Enter the following info:
+<br />
+
+TODO.Copy custom wheels built from previous example
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p wheelhouse-cu121
+&nbsp;&nbsp;cp -r ../01-Example/wheelhouse-cu121 .
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+
+In the PyCharm Terminal | Enter the following commands to install devpi packages to upload wheels locally:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install devpi-server
+&nbsp;&nbsp;uv pip install devpi-client
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install devpi-web
+&nbsp;&nbsp;uv pip install twine
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxSzpXh_G6qKBmFMc16wphQLF6_WxSCIsTOYnqQ8g4TXn-5z2nlK0A7LAsHAZs4EOYiYcHgy3gBncgSaEpUwGKVGvvxE2aQE1FUotNR61g-8A9bHwpSYiX4ZhaxFi_t1m5KkgVn_IWQfx12BGFNM7UgUGUiMAHAudhXBz_62Y4EOiqmodAzMZP0o_Y7AM/s1208/devpi-cuda-wheels.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxSzpXh_G6qKBmFMc16wphQLF6_WxSCIsTOYnqQ8g4TXn-5z2nlK0A7LAsHAZs4EOYiYcHgy3gBncgSaEpUwGKVGvvxE2aQE1FUotNR61g-8A9bHwpSYiX4ZhaxFi_t1m5KkgVn_IWQfx12BGFNM7UgUGUiMAHAudhXBz_62Y4EOiqmodAzMZP0o_Y7AM/s600/devpi-cuda-wheels.png"/></a>
+<br />
+
+</span>

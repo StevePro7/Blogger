@@ -4,8 +4,19 @@
 TODO.  Build on previous PyTorch3DWheels example Launch PyCharm | New Project.  Enter the following info:
 <br />
 
-TODO.Copy custom wheels built from previous example 
-<br /><br />
+TODO.Copy custom wheels built from previous example
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p wheelhouse-cu121
+&nbsp;&nbsp;cp -r ../01-Example/wheelhouse-cu121 .
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
 
 In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/02/02-Example/pyproject.toml">dependencies</a>:
 <br />
