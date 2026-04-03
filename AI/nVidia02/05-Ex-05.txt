@@ -1,8 +1,38 @@
 <span style="font-family:verdana;font-size:85%;">
 
-  Create the following files: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/app/scoring.py">app/scoring.py</a> and <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheet01/01/02-Example/.env">.env</a>.  Enter the command <i>which azmlinfsrv</i>.  Edit configurations  Copy and paste the azmlinfsrv path as the script value.  Enter the following info to launch Azure ML endpoint: 
+Alternatively, launch terminals. Enter following commands to launch Azure ML endpoint and submit request:
 <br />
-  <br><br>
+  
+Launch terminals. Enter following commands: build Docker image run Docker container and submit request:
+<br />
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;curl --location --request POST &#x27;http://localhost:5001/score&#x27; \
+&nbsp;&nbsp;  --header &#x27;Content-Type: application/json&#x27; \
+&nbsp;&nbsp;  --data-raw &#x27;{
+&nbsp;&nbsp;  &quot;points&quot;: [
+&nbsp;&nbsp;    [0.0, 0.0, 1.0],
+&nbsp;&nbsp;    [0.1, 0.0, 0.99],
+&nbsp;&nbsp;    [-0.1, 0.0, 0.99],
+&nbsp;&nbsp;    [0.0, 0.1, 0.99],
+&nbsp;&nbsp;    [0.0, -0.1, 0.99],
+&nbsp;&nbsp;    [0.7, 0.7, 0.0],
+&nbsp;&nbsp;    [-0.7, 0.7, 0.0],
+&nbsp;&nbsp;    [0.7, -0.7, 0.0],
+&nbsp;&nbsp;    [-0.7, -0.7, 0.0],
+&nbsp;&nbsp;    [0.0, 0.0, -1.0]
+&nbsp;&nbsp;  ]
+&nbsp;&nbsp;}&#x27;
+</pre>
+</td></tr>
+</table>
+<br />
+
+  
+TODO - Create the following directories <b>app</b> and <b>test</b>
+<br />
+<br />  
   
 <u>Example V</u><br />
 Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | New Project.  Enter info:
@@ -57,4 +87,39 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 <!-- -->
 <br />
   
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF9LfrZcnlP9BnXvU3V6gMThMy6lf7ISpyzORaxXgkpL9JXzDueeNNlIsUdfXdynJpB2yZVojm1zSL-20crG30ECrSSHt0dLle6TVjRbeeRG1xdCMk7LN0yntsAS5z8Nt0lro1b0pk0xFBhoBLqZ7LkD0xyKGBSRX3JJYpDrM3_a7lwxFk9RWUF6TYCEg/s1128/ScorePointCloud.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF9LfrZcnlP9BnXvU3V6gMThMy6lf7ISpyzORaxXgkpL9JXzDueeNNlIsUdfXdynJpB2yZVojm1zSL-20crG30ECrSSHt0dLle6TVjRbeeRG1xdCMk7LN0yntsAS5z8Nt0lro1b0pk0xFBhoBLqZ7LkD0xyKGBSRX3JJYpDrM3_a7lwxFk9RWUF6TYCEg/s600/ScorePointCloud.png"/></a>  
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example V</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    &quot;num_vertices&quot;: 1524,
+&nbsp;&nbsp;    &quot;num_faces&quot;: 2892,
+&nbsp;&nbsp;    &quot;mean_pixel&quot;: 0.9926620125770569,
+&nbsp;&nbsp;    &quot;image_shape&quot;: [
+&nbsp;&nbsp;		128,
+&nbsp;&nbsp;		128,
+&nbsp;&nbsp;		3
+&nbsp;&nbsp;	],
+&nbsp;&nbsp;    &quot;device&quot;: &quot;cuda:0&quot;
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />   
+Cleanup as necessary: stop and remove the docker process esp. if that process is continued to be in use:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;docker stop $(docker ps -q)
+&nbsp;&nbsp;docker rm -f $(docker ps -q)
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+
 </span>
