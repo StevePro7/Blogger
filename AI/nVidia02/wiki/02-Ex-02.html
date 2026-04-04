@@ -1,11 +1,30 @@
 <span style="font-family:verdana;font-size:85%;">
   
-<u>Example II</u><br />
-TODO.  Build on previous PyTorch3DWheels example Launch PyCharm | New Project.  Enter the following info:
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheetII/02-Example">Example II</a></u><br />
+Repeat previous exercise using locally built wheels.  Launch PyCharm | New Project.  Enter the following info:
 <br />
-
-TODO.Copy custom wheels built from previous example 
-<br /><br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3dWheels</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+Copy custom wheels built from previous example: <i>mkdir wheelhouse-cu121</i>.  Copy files into new directory:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p wheelhouse-cu121
+&nbsp;&nbsp;cp -r ../01-Example/wheelhouse-cu121 .
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
 
 In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/02-Example/pyproject.toml">dependencies</a>:
 <br />
