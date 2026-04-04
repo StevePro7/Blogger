@@ -1,0 +1,74 @@
+PyGame Examples
+04-Apr-2026
+
+Launch PyCharm
+/home/stevepro/GitHubX/Farama-Foundation/Gymnasium
+
+Open file
+examples/stevepro.py
+
+AA.
+Classic Control
+https://gymnasium.farama.org/environments/classic_control
+
+name = "Acrobot-v1"         /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/classic_control/acrobot.py
+CartPole-v1                 /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/classic_control/cartpole.py
+MountainCarContinuous-v0    /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/classic_control/continuous_mountain_car.py
+MountainCar-v0              /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/classic_control/mountain_car.py
+Pendulum-v1                 /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/classic_control/pendulum.py
+
+class AcrobotEnv(Env):
+class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
+class Continuous_MountainCarEnv(gym.Env):
+class MountainCarEnv(gym.Env):
+class PendulumEnv(gym.Env):
+    def step(self, action: np.ndarray):
+    def render(self):
+
+
+BB.
+Toy Text
+https://gymnasium.farama.org/environments/toy_text
+
+name = "Blackjack-v1"       /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/toy_text/blackjack.py
+CliffWalking-v0             /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/toy_text/cliffwalking.py
+FrozenLake-v1               /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/toy_text/frozen_lake.py
+Taxi-v3                     /home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/toy_text/taxi.py
+
+class BlackjackEnv(gym.Env):
+class CliffWalkingEnv(Env):
+class FrozenLakeEnv(Env):
+class TaxiEnv(Env):
+    def step(self, a):
+    def render(self):
+
+
+CC.
+Box2D
+01.
+name = "BipedalWalker-v3"
+/home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/box2d/bipedal_walker.py
+
+class BipedalWalker(gym.Env, EzPickle):
+    def step(self, action: np.ndarray):
+    def render(self):
+
+
+02.
+name = "CarRacing-v2"
+
+/home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/box2d/car_racing.py
+https://gymnasium.farama.org/environments/box2d/car_racing/
+python gymnasium/envs/box2d/car_racing.py
+
+class CarRacing(gym.Env, EzPickle):
+    def step(self, action: Union[np.ndarray, int]):
+    def render(self):
+
+
+03.
+name = "LunarLander-v2"
+/home/stevepro/GitHubX/Farama-Foundation/Gymnasium/gymnasium/envs/box2d/lunar_lander.py
+
+class LunarLander(gym.Env, EzPickle):
+    def step(self, action):
