@@ -1,0 +1,474 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In the previous <a href="https://steveproxna.blogspot.com/2026/04/pytorch-setup-cheat-sheet.html">post</a>, we checked out PyTorch Setup as an open-source machine learning framework widely used for building + training neural networks.  Here we installed and configured our nVidia driver and CUDA Toolkit to build some simple PyTorch programs.  However, we built PyTorch3d + TorchSparse packages from source each time.  Now we'd like to pre-build custom wheels housed on localhost for future examples reuse.
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQOvRLMCkSahj7o71INnlByMXsLthjiUzdBMTxoIlyWskK1BOd3Wc0Z3oAiwXfa5pBJG7ynepfKPGtuV4dFSx2WUExguAMyIxMYCefr8aGI7tbvPhOrqDebG5NBqnAdshg7BOKEaGnb6g1FCaFr5wQHLGFKXEZ0nunmni91dWzAibUyAtTISewcREpMfE/s636/PyTorchLogo.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQOvRLMCkSahj7o71INnlByMXsLthjiUzdBMTxoIlyWskK1BOd3Wc0Z3oAiwXfa5pBJG7ynepfKPGtuV4dFSx2WUExguAMyIxMYCefr8aGI7tbvPhOrqDebG5NBqnAdshg7BOKEaGnb6g1FCaFr5wQHLGFKXEZ0nunmni91dWzAibUyAtTISewcREpMfE/s600/PyTorchLogo.png"/></a>
+<!-- -->
+Let's check it out!
+<br /><br />
+
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheetII/01-Example">Example I</a></u><br />
+All examples listed are Python 3.10.19 compatible. Launch PyCharm | New Project. Enter the following info:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxgIHgV6C7wVBw29bhA6eVsYiqMyhrxdIyMELC19tG4K4oztAEOonATSLpJlsaKcAMveEyV8LC-2KA9mfJSrjKblS-VZau1XFUi00sJ3RVIKU-lWBGOyo3gkfOBDiQpeBbcJYiA2AbwLmHg9LWI3wum7CPaHFedpZtUHWVN-V2c3_ANp4Dkk2iSPlnhxg/s1000/HelloPyTorch3dWheels.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxgIHgV6C7wVBw29bhA6eVsYiqMyhrxdIyMELC19tG4K4oztAEOonATSLpJlsaKcAMveEyV8LC-2KA9mfJSrjKblS-VZau1XFUi00sJ3RVIKU-lWBGOyo3gkfOBDiQpeBbcJYiA2AbwLmHg9LWI3wum7CPaHFedpZtUHWVN-V2c3_ANp4Dkk2iSPlnhxg/s600/HelloPyTorch3dWheels.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3dWheels</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.10
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.10.19
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install packages to build custom wheels:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install twine
+&nbsp;&nbsp;uv pip install numpy==1.26.4
+&nbsp;&nbsp;uv pip install --index-url https://download.pytorch.org/whl/cu121 \
+&nbsp;&nbsp;    "torch==2.2.0+cu121" "torchvision==0.17.0"  "torchaudio==2.2.0"
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create directory to house custom wheels <i>mkdir -p wheelhouse-cu121</i>.  Write shell scripts to code wheel logic:
+<br />
+<!-- -->
+<table width="99%" border="1">  
+<tr><td valign="top">&nbsp;PyTorch3D</td><td valign="top">&nbsp;chmod +x <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_pytorch3d_wheel.sh">steveprobuild_pytorch3d_wheel.sh</a></td></tr>
+<tr><td valign="top">&nbsp;TorchSparse</td><td valign="top">&nbsp;chmod +x <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_torchsparse_wheel.sh">steveprobuild_torchsparse_wheel.sh</a></td></tr>
+</table>
+<!-- -->
+<br />
+Execute shell scripts to build custom wheels.  These will be the custom wheels used locally on next examples:
+<br />
+<!-- -->
+<table width="99%" border="1">  
+<tr><td valign="top">&nbsp;<b>COMMAND</b></td><td valign="top">&nbsp;<b>ARTIFACT</b></td></tr>
+<tr><td valign="top">&nbsp;bash <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_pytorch3d_wheel.sh">steveprobuild_pytorch3d_wheel.sh</a></td><td valign="top">&nbsp;stevepropytorch3d-0.7.7-cp310-cp310-linux_x86_64.whl </td></tr>
+<tr><td valign="top">&nbsp;bash <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_torchsparse_wheel.sh">steveprobuild_torchsparse_wheel.sh</a></td><td valign="top">&nbsp;steveprotorchsparse-2.0.0b0-cp310-cp310-linux_x86_64.whl </td></tr>
+</table>
+<!-- -->
+<br />
+  
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheetII/02-Example">Example II</a></u><br />
+Repeat previous exercise using locally built wheels.  Launch PyCharm | New Project.  Enter the following info:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3dWheels</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+Copy custom wheels built from previous example: <i>mkdir wheelhouse-cu121</i>.  Copy files into new directory:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p wheelhouse-cu121
+&nbsp;&nbsp;cp -r ../01-Example/wheelhouse-cu121 .
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/02-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export MAX_JOBS=1
+&nbsp;&nbsp;export NVCC_THREADS=1
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following file: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/02-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify PyTorch packages installed!
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s1027/HelloPyTorch3dOutput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s600/HelloPyTorch3dOutput.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example II</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;Hello PyTorch3d
+&nbsp;&nbsp;torch 2.2.0+cu121
+&nbsp;&nbsp;pytorch3d 0.7.7
+&nbsp;&nbsp;cuda 12.1
+&nbsp;&nbsp;cuda True
+&nbsp;&nbsp;torch_geometric 2.7.0
+&nbsp;&nbsp;torch_scatter 2.1.2+pt22cu121
+&nbsp;&nbsp;torch_sparse 0.6.18+pt22cu121
+&nbsp;&nbsp;torch_cluster 1.6.3+pt22cu121
+&nbsp;&nbsp;torch_spline_conv 1.2.2+pt22cu121
+&nbsp;&nbsp;torchsparse 2.0.0b
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+  
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheetII/03-Example">Example III</a></u><br />
+Repeat previous exercise but upload custom wheels.  Launch PyCharm | New Project.  Enter the following info
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3dWheels</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+Copy custom wheels built from previous example: <i>mkdir wheelhouse-cu121</i>.  Copy files into new directory:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;mkdir -p wheelhouse-cu121
+&nbsp;&nbsp;cp -r ../01-Example/wheelhouse-cu121 .
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands to install devpi packages to upload wheels locally:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install devpi-server
+&nbsp;&nbsp;uv pip install devpi-client
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install devpi-web
+&nbsp;&nbsp;uv pip install twine
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Launch Terminal #1.  Initialize devpi-server on localhost port 3141 and start.  Navigate to the homepage URL
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;devpi-init					# Launch browser
+&nbsp;&nbsp;devpi-server --host 127.0.0.1 --port 3141	# Navigate http://localhost:3141
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Launch Terminal #2.  Connect to the devpi-client and login.  Create custom cuda-wheels index and activate
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;devpi use http://localhost:3141
+&nbsp;&nbsp;devpi login root --password=''
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;devpi index -c cuda-wheels bases=root/pypi&nbsp;&nbsp;
+&nbsp;&nbsp;devpi use root/cuda-wheels
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Finally upload 2x custom wheel files to devpi-web available at <b>http://localhost:3141/root/cuda-wheels</b>
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 11px;">
+&nbsp;&nbsp;twine upload --repository-url http://localhost:3141/root/cuda-wheels/ wheelhouse-cu121/*&nbsp;&nbsp
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxSzpXh_G6qKBmFMc16wphQLF6_WxSCIsTOYnqQ8g4TXn-5z2nlK0A7LAsHAZs4EOYiYcHgy3gBncgSaEpUwGKVGvvxE2aQE1FUotNR61g-8A9bHwpSYiX4ZhaxFi_t1m5KkgVn_IWQfx12BGFNM7UgUGUiMAHAudhXBz_62Y4EOiqmodAzMZP0o_Y7AM/s1208/devpi-cuda-wheels.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxSzpXh_G6qKBmFMc16wphQLF6_WxSCIsTOYnqQ8g4TXn-5z2nlK0A7LAsHAZs4EOYiYcHgy3gBncgSaEpUwGKVGvvxE2aQE1FUotNR61g-8A9bHwpSYiX4ZhaxFi_t1m5KkgVn_IWQfx12BGFNM7UgUGUiMAHAudhXBz_62Y4EOiqmodAzMZP0o_Y7AM/s600/devpi-cuda-wheels.png"/></a>
+<br />
+<br />
+
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheetII/04-Example">Example IV</a></u><br />
+Repeat previous exercise using uploaded wheels.  Launch PyCharm | New Project.  Enter the following info:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3dWheels</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+In the PyCharm Terminal | Enter the following commands to install devpi packages to consume local wheels:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install devpi-server
+&nbsp;&nbsp;uv pip install devpi-client
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv pip install devpi-web
+&nbsp;&nbsp;uv pip install twine
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Launch Terminal #1.  Initialize devpi-server on localhost port 3141 and start.  Navigate to the homepage URL
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;devpi-init					# Launch browser
+&nbsp;&nbsp;devpi-server --host 127.0.0.1 --port 3141	# Navigate http://localhost:3141
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/04-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export MAX_JOBS=1
+&nbsp;&nbsp;export NVCC_THREADS=1
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following file: <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/04-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify PyTorch packages installed!
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s1027/HelloPyTorch3dOutput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb79Zt0pM7bF95Bo1-iDwVK3FEJgILUGZu1qPmrIW1EaD8ydKx-6EjRHK8mhCNFKOUIjSHk0Ldty5fk7VkYHpYqRvvTNqW1DC1ypmnHsGq-ZsrBp32gHorzXEzMlqDMdfA7vRavVwEBXNvZ-CH_mPKRqczlna_KMqqzyYa9Q2TH_cHcrPuUYnyZ8xP1I0/s600/HelloPyTorch3dOutput.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example IV</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;Hello PyTorch3d
+&nbsp;&nbsp;torch 2.2.0+cu121
+&nbsp;&nbsp;pytorch3d 0.7.7
+&nbsp;&nbsp;cuda 12.1
+&nbsp;&nbsp;cuda True
+&nbsp;&nbsp;torch_geometric 2.7.0
+&nbsp;&nbsp;torch_scatter 2.1.2+pt22cu121
+&nbsp;&nbsp;torch_sparse 0.6.18+pt22cu121
+&nbsp;&nbsp;torch_cluster 1.6.3+pt22cu121
+&nbsp;&nbsp;torch_spline_conv 1.2.2+pt22cu121
+&nbsp;&nbsp;torchsparse 2.0.0b
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+
+<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheetII/05-Example">Example V</a></u><br />
+Repeat previous exercise but wrap logic as Azure ML endpoint.  Launch PyCharm | New Project.  Enter info:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s1000/HelloAzureML.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnRBTV2AAXc6kZ_sKalVsSlog77OMO8ierw-ZbrgQgD6cJyLMUoE0fa7j0QccEk0E6AuPNHrDgQ3IR3UGr1xNjbBhXdrTXosoo6l1BFMiNZu0DKLaCR6kuUK0QzQETgaA_lkWpKEUiGYmWWwdcQNhoJD5vg-T-otqsl-RBIbOSI1qkEUJ-UP8Pj1AhE9E/s600/HelloAzureML.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloAzureML</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.10
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.10.19
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/05-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;export MAX_JOBS=1
+&nbsp;&nbsp;export NVCC_THREADS=1
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following directories <b><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet01/02/05-Example/app">app</a></b> and <b><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheet01/02/05-Example/tests">tests</a></b>.  Enter all code for <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/05-Example/app/scoring.py">app/scoring.py</a>.  Test all code using <b>pytest</b>.
+<br />
+Launch terminals. Enter following commands: build <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/05-Example/Dockerfile">Docker</a> image run Docker container and submit request:
+<br />
+<table width="99%" border="1">
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #1</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;docker build -t azml-gpu-local:latest .
+&nbsp;&nbsp;docker run --gpus all -p 5001:5001 azml-gpu-local:latest
+</pre>
+</td>
+</tr>
+<tr>
+<td valign="top"><br />&nbsp;<b>Terminal #2</b></td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;curl --location --request POST &#x27;http://localhost:5001/score&#x27; \
+&nbsp;&nbsp;  --header &#x27;Content-Type: application/json&#x27; \
+&nbsp;&nbsp;  --data-raw &#x27;{
+&nbsp;&nbsp;  &quot;points&quot;: [
+&nbsp;&nbsp;    [0.0, 0.0, 1.0],
+&nbsp;&nbsp;    [0.1, 0.0, 0.99],
+&nbsp;&nbsp;    [-0.1, 0.0, 0.99],
+&nbsp;&nbsp;    [0.0, 0.1, 0.99],
+&nbsp;&nbsp;    [0.0, -0.1, 0.99],
+&nbsp;&nbsp;    [0.7, 0.7, 0.0],
+&nbsp;&nbsp;    [-0.7, 0.7, 0.0],
+&nbsp;&nbsp;    [0.7, -0.7, 0.0],
+&nbsp;&nbsp;    [-0.7, -0.7, 0.0],
+&nbsp;&nbsp;    [0.0, 0.0, -1.0]
+&nbsp;&nbsp;  ]
+&nbsp;&nbsp;}&#x27;
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF9LfrZcnlP9BnXvU3V6gMThMy6lf7ISpyzORaxXgkpL9JXzDueeNNlIsUdfXdynJpB2yZVojm1zSL-20crG30ECrSSHt0dLle6TVjRbeeRG1xdCMk7LN0yntsAS5z8Nt0lro1b0pk0xFBhoBLqZ7LkD0xyKGBSRX3JJYpDrM3_a7lwxFk9RWUF6TYCEg/s1128/ScorePointCloud.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF9LfrZcnlP9BnXvU3V6gMThMy6lf7ISpyzORaxXgkpL9JXzDueeNNlIsUdfXdynJpB2yZVojm1zSL-20crG30ECrSSHt0dLle6TVjRbeeRG1xdCMk7LN0yntsAS5z8Nt0lro1b0pk0xFBhoBLqZ7LkD0xyKGBSRX3JJYpDrM3_a7lwxFk9RWUF6TYCEg/s600/ScorePointCloud.png"/></a>  
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example V</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;{
+&nbsp;&nbsp;    &quot;num_vertices&quot;: 1524,
+&nbsp;&nbsp;    &quot;num_faces&quot;: 2892,
+&nbsp;&nbsp;    &quot;mean_pixel&quot;: 0.9926620125770569,
+&nbsp;&nbsp;    &quot;image_shape&quot;: [
+&nbsp;&nbsp;		128,
+&nbsp;&nbsp;		128,
+&nbsp;&nbsp;		3
+&nbsp;&nbsp;	],
+&nbsp;&nbsp;    &quot;device&quot;: &quot;cuda:0&quot;
+&nbsp;&nbsp;}
+</pre>
+</td></tr>
+</table>
+<br />   
+Cleanup as necessary: stop and remove the docker process esp. if that process is continued to be in use:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;docker stop $(docker ps -q)
+&nbsp;&nbsp;docker rm -f $(docker ps -q)
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+
+<u>Summary</u><br />
+To summarize, we have built <a href="https://github.com/facebookresearch/pytorch3d">PyTorch3d</a> and <a href="https://github.com/mit-han-lab/torchsparse">TorchSparse</a> packages from source, pre-built the custom wheels housed on localhost for  examples reuse.  We are now in an excellent position: drive Deep Learning education!
+
+</span>
