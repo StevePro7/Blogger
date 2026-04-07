@@ -1,0 +1,63 @@
+Grub Menu
+14-Mar-2026
+
+REFERENCE:
+nVidiaSetup.txt
+D:\GitHub\StevePro7\Blogger\AI\DL
+
+
+New approach - downgrade to 5.17.0-19 kernel that is compatible with nvidia-535
+
+sudo apt install linux-headers-5.15.0-97-generic
+dpkg -l | grep 5.15.0-97
+ls /usr/src | grep 5.15
+
+sudo update-grub
+
+
+AFTER
+sudo apt install dkms build-essential
+sudo apt install nvidia-driver-535
+
+nvidia-smi
+
+sudo nano /etc/default/grub
+GRUB_DEFAULT="Ubuntu, with Linux 5.15.0-139-generic"
+
+I change this and also to
+GRUB_DEFAULT=4
+
+but each reboot
+uname -r
+6.0.19-060019-generic
+
+
+grep menuentry /boot/grub/grub.cfg
+grep menuentry /boot/grub/grub.cfg | grep 5.15
+	menuentry 'Ubuntu, with Linux 5.15.0-139-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-5.15.0-139-generic-advanced-2f802f18-99ea-4d72-b536-d80db99ecf90' {
+
+Apparently 5.15.0-139-generic is supposed to be compatible with nvidia-535
+but I could not get this to auto default select on GRUB
+
+
+cd /boot/grub
+grep 5.15.0-139-generic grub.cfg
+
+5.15.0-139-generic grub.cfg
+	menuentry 'Ubuntu, with Linux 5.15.0-139-generic' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-5.15.0-139-generic-advanced-2f802f18-99ea-4d72-b536-d80db99ecf90' {
+		echo	'Loading Linux 5.15.0-139-generic ...'
+		linux	/boot/vmlinuz-5.15.0-139-generic root=UUID=2f802f18-99ea-4d72-b536-d80db99ecf90 ro  quiet splash $vt_handoff
+		initrd	/boot/initrd.img-5.15.0-139-generic
+
+nano /etc/default/grub
+GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.15.0-139-generic"
+GRUB_SAVEDEFAULT=false
+
+
+sudo apt purge linux-image-6.0.19-060019-generic linux-headers-6.0.19-060019-generic
+sudo update-grub
+
+
+
+nVidiaSetup02.txt
+installation
