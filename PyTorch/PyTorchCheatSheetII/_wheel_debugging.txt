@@ -1,0 +1,35 @@
+Wheel Debugging
+08-Apr-2026
+
+
+After building custom wheels let's check the "cubin" support via
+cuobjdump
+
+
+unzip -o stevepropytorch3d '*.sl'
+cd pytorch3d
+cuobjdump --list-elf _C.cpython-310-x86_64-linux-gnu.so
+
+
+Also after install WHL via pyproject.toml file
+launch python
+
+import pytorch3d._C
+error
+
+import pytorch3d.ops
+import pytorch3d._C
+OK
+
+
+Terminal
+navigate into .venv
+cd ~/.venv/lib/python3.10/site-packages
+
+cd pytorch3d
+ll | grep _C.cpy...
+cuobjdump --list-elf _C.cpython-310-x86_64-linux-gnu.so
+
+OR
+cd torch/lib
+ll | grep libc10
