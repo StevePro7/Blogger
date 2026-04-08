@@ -6,6 +6,7 @@ After building custom wheels let's check the "cubin" support via
 cuobjdump
 
 
+01-Example
 unzip -o stevepropytorch3d-0.7.7-cp310-cp310-linux_x86_64.whl '*.so'
 cd pytorch3d
 cuobjdump --list-elf _C.cpython-310-x86_64-linux-gnu.so
@@ -41,3 +42,21 @@ cd torch/lib
 ll | grep libc10
 libc10_cuda.so
 libc10.so
+
+
+
+Repeat for Torchsparse
+unzip -o steveprotorchsparse-2.0.0b0-cp310-cp310-linux_x86_64.whl
+cuobjdump --list-elf ./torchsparse/backend.cpython-310-x86_64-linux-gnu.so
+
+
+Terminal
+navigate into .venv
+cd ~/.venv/lib/python3.10/site-packages
+
+cd torchsparse
+ll | grep  backend.cpython-310-x86_64-linux-gnu.so
+cuobjdump --list-elf backend.cpython-310-x86_64-linux-gnu.so
+
+cuobjdump --list-elf backend.cpython-310-x86_64-linux-gnu.so | wc -l
+9
