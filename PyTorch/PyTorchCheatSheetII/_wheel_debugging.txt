@@ -1,0 +1,62 @@
+Wheel Debugging
+08-Apr-2026
+
+
+After building custom wheels let's check the "cubin" support via
+cuobjdump
+
+
+01-Example
+unzip -o stevepropytorch3d-0.7.7-cp310-cp310-linux_x86_64.whl '*.so'
+cd pytorch3d
+cuobjdump --list-elf _C.cpython-310-x86_64-linux-gnu.so
+
+
+Also after install WHL via pyproject.toml file
+launch python
+
+import pytorch3d._C as _C
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: libc10.so: cannot open shared object file: No such file or directory
+
+import pytorch3d.ops
+import pytorch3d._C as _C
+OK
+
+
+Terminal
+navigate into .venv
+cd ~/.venv/lib/python3.10/site-packages
+
+cd pytorch3d
+ll | grep  _C.cpython-310-x86_64-linux-gnu.so
+cuobjdump --list-elf _C.cpython-310-x86_64-linux-gnu.so
+
+cuobjdump --list-elf _C.cpython-310-x86_64-linux-gnu.so | wc -l
+31
+
+
+OR
+cd torch/lib
+ll | grep libc10
+libc10_cuda.so
+libc10.so
+
+
+
+Repeat for Torchsparse
+unzip -o steveprotorchsparse-2.0.0b0-cp310-cp310-linux_x86_64.whl
+cuobjdump --list-elf ./torchsparse/backend.cpython-310-x86_64-linux-gnu.so
+
+
+Terminal
+navigate into .venv
+cd ~/.venv/lib/python3.10/site-packages
+
+cd torchsparse
+ll | grep  backend.cpython-310-x86_64-linux-gnu.so
+cuobjdump --list-elf backend.cpython-310-x86_64-linux-gnu.so
+
+cuobjdump --list-elf backend.cpython-310-x86_64-linux-gnu.so | wc -l
+9
