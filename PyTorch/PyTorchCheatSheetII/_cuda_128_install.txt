@@ -1,0 +1,21 @@
+InstallCUDA 12.8
+10-Apr-2026
+
+
+set -e
+cd /tmp
+wget -q https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+sudo apt-get install -y cuda-toolkit-12-8
+
+
+SymLinks
+sudo update-alternatives --set cuda /usr/local/cuda-12.8
+sudo update-alternatives --set cuda-12 /usr/local/cuda-12.8
+readlink -f /usr/local/cuda
+readlink -f /usr/local/cuda-12
+/usr/local/cuda/bin/nvcc --version | tail -n 1
+/usr/local/cuda-128.8
+/usr/local/cuda-128.8
+Build cuda_12.8.r12.8/compiler.35583870_0
