@@ -1,0 +1,46 @@
+GitHub Copilot Code Review: Guidelines, Best Practices, and How to Integrate It into Your PR Workflow
+18-Apr-2026
+
+
+https://blog.mrinalmaheshwari.com/github-copilot-code-review-guidelines-best-practices-pr-workflow-b4518073b4c9
+
+
+
+copilot-instructions.md
+# Copilot Code Review Instructions (Team Standards)
+When reviewing PRs, focus on:
+1) Correctness: edge cases, null handling, error paths
+2) Security: secrets, authz/authn assumptions, input validation
+3) Performance: avoid unnecessary loops, N+1 calls, heavy work on hot paths
+4) Maintainability: naming, duplication, function size, clear intent
+5) Testing: new behavior must have tests; changed behavior must update tests
+Review style:
+- Prefer short, actionable comments
+- If you suggest a change, include a small code snippet
+- If uncertain, ask a question instead of asserting
+Project rules:
+- No new dependencies without justification
+- No logging of PII
+- Prefer existing utility helpers over new custom ones
+- Follow our linting + formatting rules (do not argue style)
+
+
+
+PR.md
+## What changed?
+(Explain in 2–4 lines)
+
+## Why?
+(What problem does it solve?)
+## How did you test?
+- [ ] Unit tests
+- [ ] Manual steps:
+  1)
+  2)
+## Risk areas
+- [ ] Auth / permissions
+- [ ] Payments / pricing
+- [ ] Data migrations
+- [ ] Performance hot path
+## Copilot review prompt (optional but recommended)
+Copilot: review this PR for correctness, security, missing tests, and backward compatibility. Focus on the diff.
