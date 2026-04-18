@@ -1,0 +1,56 @@
+Hello Pygame
+<br />
+TODO - intro line
+<br />
+<!-- -->
+TODO HelloPygame image
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPygame</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.11.11
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package dependencies:
+<br />
+TODO - link to online pyproject.toml
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+
+<!-- -->
+<br />
