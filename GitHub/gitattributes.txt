@@ -1,0 +1,25 @@
+gitattributes
+16-May-2026
+
+
+Starlark
+
+docker run --rm \
+  --user "$(id -u):$(id -g)" \
+  -v "$PWD":/repo \
+  ghcr.io/github-linguist/linguist \
+  github-linguist --breakdown /repo
+
+I added the file
+.gitattributes
+
+*.bzl linguist-detectable=false
+
+**/BUILD linguist-detectable=false
+**/BUILD.bazel linguist-detectable=false
+**/WORKSPACE linguist-detectable=false
+**/WORKSPACE.bazel linguist-detectable=false
+
+
+git check-attr -a HelloC/main/BUILD
+HelloC/main/BUILD: linguist-detectable: false
