@@ -1,0 +1,75 @@
+AIAgentInfo
+20-Jun-2026
+
+You are NOT building:
+an AI coding assistant
+
+You ARE building:
+an engineering knowledge system that AI must operate inside of
+
+
+One Sentence Summary
+Your handwritten code becomes valuable when it is transformed into:
+
+structured patterns + constraints + reusable architecture knowledge that the AI retrieval system enforces during generation
+
+
+
+
+Here are the 3 systems, condensed into clear engineering bullets:
+
+1. Engineering Knowledge Base (EKB)
+
+Purpose: Turn your historical code + experience into structured, reusable engineering knowledge.
+
+Stores your “how I build systems” knowledge (not just code)
+Captures:
+design patterns you use
+system architectures you prefer
+reusable components
+architectural rules
+anti-patterns you’ve learned
+Structured as:
+Patterns (how to solve problems)
+Systems (your actual reusable modules)
+Rules (architectural constraints)
+Anti-patterns (what to avoid)
+Annotated examples (real code with intent)
+Acts as the source of truth for how software should be built in your style
+2. Retrieval + Reasoning Layer
+
+Purpose: Find the right parts of your engineering knowledge for each new task.
+
+Takes a user request (e.g. “add inventory system”)
+Retrieves relevant:
+existing systems in your codebase
+applicable patterns from EKB
+architectural rules
+anti-pattern warnings
+Produces a context pack for the AI
+Ensures AI does NOT hallucinate new architecture
+Enforces:
+reuse first
+consistency with your architecture
+rule-based constraints
+3. AI Delivery Agent Layer
+
+Purpose: Use AI to design, implement, and review software within your engineering constraints.
+
+Multi-step workflow:
+Architect agent → designs solution using EKB context
+Developer agent → generates code using existing systems
+Review agent → validates against rules + architecture
+Ensures:
+reuse of existing code > new code creation
+adherence to architectural rules
+detection of violations and duplication
+Outputs:
+implementation plan
+code changes
+review feedback
+Acts as an AI-assisted SDLC pipeline, not a single code generator
+One-line mental model
+EKB = your engineering knowledge
+Retrieval layer = selects relevant knowledge per task
+Agent layer = executes software delivery using that knowledge
