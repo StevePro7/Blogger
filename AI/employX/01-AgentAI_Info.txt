@@ -1,0 +1,440 @@
+AIAgentInfo
+20-Jun-2026
+
+
+Chat GPT
+File Dependency Sorting
+https://chatgpt.com/c/6a36a9c3-bc34-83eb-8906-17952e343007
+
+I am a Senior Software Engineer with over 20yrs experience - I use AI coding tools everyday like GitHub CoPilot and ChatGPT to assist me with my job as a programmer but a lot of the code that is generated is terrible, buggy, tightly coupled, brittle and won't ever scale.  I need to learn about AI agents, coding agents, Agentic workflows etc. but I want to create an individual development plan which lets me upskill myself in the world of AI and AI agents and AI coding agents but I want to integrate my knowledge and better practical programming skills into using these AI agents and Agentic workflows to produce better, reliable and more performant software - could you help me create an action plan to transition this idea into reality that I can implement as part of my job
+
+
+
+The next wave is not "AI writes software."
+
+It's "Engineers design systems that use AI to accelerate software delivery while preserving architectural integrity."
+
+
+SUMMARY
+AI-Augmented Software Architect
+
+Designs agentic SDLCs
+
+Builds engineering agents
+
+Creates evaluation systems
+
+Uses AI safely at scale
+
+Leads AI adoption inside engineering teams
+
+
+Role			Focus
+Software Engineer	Builds software systems
+AI Developer		Uses AI tools/frameworks to build AI-powered applications
+AI Engineer		Designs, builds, evaluates and operates AI systems
+AI Architect		Designs enterprise AI platforms and governance
+AI-Augmented Software 	Architect	Uses AI to improve software delivery and architecture
+
+
+
+Track 1: AI Engineering
+Learn:
+
+LLMs
+Agents
+MCP
+Tool calling
+RAG
+Evaluation
+
+
+Track 2: AI-Assisted Software Delivery
+Learn:
+
+Agentic SDLCs
+AI code review
+AI testing
+AI architecture review
+Repository intelligence
+
+
+Track 3: AI Governance and Quality
+Learn:
+
+Evaluation frameworks
+Hallucination control
+Architecture compliance
+Security review
+Performance validation
+
+
+EXAMPLE
+Build a Repository Understanding Agent
+
+Phase 1 (Month 1)
+Understand How LLMs Actually Think
+
+Goal:
+
+Stop treating AI as magic.
+
+Learn its strengths and weaknesses.
+
+Topics
+LLM fundamentals
+
+Understand:
+
+Tokens
+Context windows
+Embeddings
+Retrieval
+Tool calling
+Function calling
+Reasoning models
+Learn why generated code is bad
+
+Study:
+
+hallucination
+context loss
+local optimization
+reward hacking
+
+You will immediately recognize why Copilot creates tightly coupled code.
+
+The model optimizes:
+
+"Make this function compile."
+
+You optimize:
+
+"Make this subsystem maintainable for five years."
+
+These objectives are fundamentally different.
+
+Deliverable
+
+Create a document:
+
+"Why AI Generates Poor Software"
+
+Include examples from your own codebase.
+
+This becomes your personal engineering philosophy.
+
+Phase 2 (Month 2)
+Learn Agent Architectures
+
+Most engineers jump straight into LangChain.
+
+Don't.
+
+Learn concepts first.
+
+Study
+ReAct
+
+Reason + Act
+
+The foundation of most agents.
+
+Planning Agents
+
+Task decomposition.
+
+Reflection Agents
+
+Self-review.
+
+Critic Agents
+
+Code review.
+
+Multi-Agent Systems
+
+Planner
+
+↓
+
+Architect
+
+↓
+
+Developer
+
+↓
+
+Reviewer
+
+↓
+
+Tester
+
+Read about:
+
+ReAct
+Reflexion
+AutoGen
+CrewAI
+OpenAI Agents SDK
+
+Don't focus on frameworks yet.
+
+Focus on patterns.
+
+Deliverable
+
+Create diagrams showing:
+
+Coding agent workflow
+Software delivery workflow
+Bug fixing workflow
+Phase 3 (Months 3–4)
+Build Your First Engineering Agent
+
+Not a chatbot.
+
+Build an engineering assistant.
+
+Example:
+
+Repository Architecture Agent
+
+Capabilities:
+
+Reads codebase
+Builds dependency graph
+Detects coupling
+Detects violations
+Generates reports
+
+Input:
+
+Analyse Game folder.
+
+Output:
+
+Circular dependency detected.
+
+Manager depends on Screen.
+
+Screen depends on Manager.
+
+This provides immediate value.
+
+Tools
+
+Python
+
+GitHub API
+
+OpenAI API
+
+AST parsing
+
+Tree-sitter
+
+Phase 4 (Months 4–5)
+Build Coding Agents That Follow Architecture
+
+This is where senior engineers gain leverage.
+
+Typical Copilot workflow:
+
+Prompt
+↓
+Code
+
+Result:
+
+Chaos.
+
+Better workflow:
+
+Requirements
+↓
+Architect Agent
+↓
+Design Document
+↓
+Developer Agent
+↓
+Reviewer Agent
+↓
+Tests Agent
+↓
+Human Approval
+
+This mirrors how experienced teams work.
+
+Example
+
+Architect Agent creates:
+
+Interfaces
+
+Domain boundaries
+
+Dependency rules
+
+Data flow
+
+Developer Agent cannot violate those rules.
+
+You become:
+
+Architect-in-the-loop.
+
+Phase 5 (Months 5–6)
+Learn Evaluation
+
+Most AI projects fail here.
+
+People measure:
+
+Looks good.
+
+That's useless.
+
+Create scorecards.
+
+For generated code evaluate:
+
+Complexity
+
+Cyclomatic complexity
+
+Coupling
+
+Fan-in
+
+Fan-out
+
+Testability
+
+Coverage
+
+Performance
+
+Memory
+
+CPU
+
+Architecture Compliance
+
+Layer violations
+
+Dependency violations
+
+Build automated evaluations.
+
+This is where senior engineers massively outperform junior engineers using AI.
+
+Phase 6 (Months 6–8)
+Create an Agentic SDLC
+
+This is probably your long-term destination.
+
+Instead of:
+
+Developer
++
+Copilot
+
+Build:
+
+Developer
++
+Agent Team
+
+Example
+
+Feature request:
+
+Add multiplayer support.
+
+Workflow:
+
+Planner Agent
+
+↓
+
+Architect Agent
+
+↓
+
+Task Breakdown Agent
+
+↓
+
+Developer Agent
+
+↓
+
+Unit Test Agent
+
+↓
+
+Reviewer Agent
+
+↓
+
+Performance Agent
+
+↓
+
+Human Review
+
+This scales surprisingly well.
+
+Skills to Learn
+AI
+Prompt engineering
+Context engineering
+RAG
+Tool calling
+MCP
+Agent orchestration
+Evaluation
+Software
+AST analysis
+Static analysis
+Graph analysis
+Code generation
+Dependency management
+Frameworks
+
+Start in this order:
+
+OpenAI Agents SDK
+MCP
+LangGraph
+CrewAI
+AutoGen
+
+I would not start with LangChain.
+
+Practical Work Project
+
+Create:
+
+Engineering Architecture Agent
+
+Capabilities:
+
+Architecture Review
+
+Checks:
+
+SOLID
+Dependency inversion
+Layer violations
+Code Review
+
+Checks:
+
+Complexity
+Duplication
+Coupling
