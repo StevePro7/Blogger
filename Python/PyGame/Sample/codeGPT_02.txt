@@ -1,0 +1,88 @@
+CodeGPT02
+21-Jun-2026
+
+
+Simpsons Trivia game written in C# has been ported to Python - the code is on GitHub here
+
+https://github.com/StevePro7/PythonSetup/tree/master/PyGame/Testing
+
+can you help explain what explain the following files in the Managers folder
+e.g.
+
+Q01.
+BaseManager.py
+
+
+A01.
+This BaseManager is essentially the foundation class that all Managers inherit from, and it provides two main things:
+
+It’s the “common toolbox + coordinate system helper” for all game managers.
+
+
+Q02.
+can you summarize:
+
+
+
+ClockManager 
+is a very small system manager responsible for controlling game timing and frame pacing.
+
+CollisionManager
+is the input detection layer of the game — it translates mouse clicks (x, y) into meaningful game actions like:
+
+ConfigManager 
+is the game’s configuration loader + runtime config holder.
+responsible
+Loading settings from a TOML file → converting them into structured Python objects → making them available to the rest of the game.
+
+ContentManager 
+is the asset loading system of the game — it’s responsible for loading all visual resources (fonts, images, textures) into global memory at startup.
+
+DebugManager 
+is a runtime override system that forces or adjusts game settings when debugging is enabled.
+
+DisplayManager 
+is the core rendering and window management system of the game — it controls how the game appears on screen, including fullscreen handling, scaling, and drawing.
+
+EventManager 
+is the input/event polling system for the game — it collects Pygame events each frame and tracks whether the player wants to quit.
+
+FileManager 
+is a very simple utility for reading text files into memory.
+
+GraphicsManager
+is the rendering abstraction layer of the game — it wraps Pygame drawing calls into simple reusable functions so the rest of the game doesn’t directly deal with low-level rendering.
+
+ImageManager 
+is the sprite/character rendering system for the game. It controls which Simpsons character is currently shown, handles sprite sheet slicing, and draws UI images like the title and header.
+
+InputManager 
+is the central input abstraction layer for the game — it unifies keyboard + mouse input and converts raw input into meaningful game actions like “move forward”, “select answer”, or “toggle fullscreen”.
+
+LogManager 
+is a simple wrapper around Python’s built-in logging system that standardizes how the game prints debug, info, and error messages.
+
+PyGameManager 
+is the minimal lifecycle wrapper for Pygame itself — it’s responsible for starting and shutting down the Pygame engine in a controlled way.
+
+QuestionManager 
+is the core gameplay system of the trivia game — it loads questions from files, manages quiz state, randomizes answers, tracks difficulty, and handles all question/answer rendering.
+
+RandomManager 
+is a centralised random number generator wrapper used by the game to ensure all randomness is controlled, repeatable (if seeded), and consistent across systems.
+
+ResolutionManager 
+is the coordinate transformation system for the game — it handles converting positions between the game’s fixed resolution and the actual screen resolution.
+
+ScoreManager
+is a small UI + state manager for tracking and displaying the player’s score and related stats in the trivia game
+
+ScreenManager 
+is the state machine and navigation system of the entire game — it controls which screen is active loads them dynamically, and handles transitions between them.
+
+SoundManager is the audio subsystem of the game, responsible for initializing audio, loading music and sound effects, playing them, and handling volume.
+
+SpriteManager is the central UI sprite renderer and icon mapper for the game — it handles drawing UI icons from a spritesheet and positioning them on screen.
+
+TextManager 
+is the UI text rendering + layout-from-file system. It handles loading text definitions from files and converting them into screen-renderable positions using a fixed grid system.

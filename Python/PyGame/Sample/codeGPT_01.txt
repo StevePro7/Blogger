@@ -1,0 +1,41 @@
+CodeGPT01
+21-Jun-2026
+
+
+Simpsons Trivia game written in C# has been ported to Python - the code is on GitHub here
+
+https://github.com/StevePro7/PythonSetup/tree/master/PyGame/Testing
+
+can you help explain what explain the following files
+
+e.g.
+
+Q01.
+ServiceRegistry.py
+
+A01.
+ServiceRegistry.py is implementing a very simple Service Locator / Dependency Injection container.
+
+
+Managers folder contains singleton-like systems that need to be available everywhere in the game.
+
+
+Instead of passing these objects through every constructor and function call, they're stored in a central registry.
+
+
+So the ServiceRegistry acts as the central hub connecting all game systems together, allowing screens, UI controls, and gameplay code to access shared managers without passing references through the entire application.
+
+
+Q02.
+can you help explain what explain the following files
+e.g.
+
+Bootstrap.py
+
+
+A02.
+This Bootstrap.py file is doing something very important: it is automatically discovering and registering all game managers at startup using reflection-like behaviour (dynamic imports).
+
+
+In one sentence:
+It scans the Managers folder, imports every manager file dynamically, instantiates each manager class, and registers it in the ServiceRegistry.

@@ -1,0 +1,43 @@
+CodeGPT00
+21-Jun-2026
+
+
+Simpsons Trivia game written in C# has been ported to Python - the code is on GitHub here
+
+https://github.com/StevePro7/PythonSetup/tree/master/PyGame/Testing
+
+Q01.
+Summarize the files in the Static folder
+
+A01.
+they are global shared resources and constants containers, mirroring how C# static classes often work.
+
+Assets.py — Global loaded game resources
+Colors.py — Global color definitions
+
+Constants.py — Core configuration & numeric settings
+This file is the central configuration hub for the entire game.
+
+Enumerations.py — Game-wide type definitions
+This defines all strongly-typed categories used in the game using Python enums.
+
+Globalize.py — Shared text / UI strings
+This is the global text constants file.
+
+
+Q02.
+Summarize the files in the Objects folder
+
+A02.
+Data layer (plain structured objects used by managers and screens)
+
+These files define the game’s data models — i.e., structured “things the game works with”, not logic or systems.
+
+ConfigData.py — Game runtime configuration snapshot
+A single structured object representing the current game settings
+
+Question.py — Quiz content model
+A structured representation of one trivia question
+
+TextData.py — Renderable UI text object
+A UI text element ready to be drawn on screen
