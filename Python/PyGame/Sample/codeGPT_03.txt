@@ -1,0 +1,27 @@
+CodeGPT03
+21-Jun-2026
+
+
+Simpsons Trivia game written in C# has been ported to Python - the code is on GitHub here
+
+https://github.com/StevePro7/PythonSetup/tree/master/PyGame/Testing
+
+can you help explain what explain the following files in the Managers folder
+e.g.
+
+Q01.
+Inputs directory
+KeyboardInput.py
+MouseInput.py
+
+
+A02.
+These two files are the low-level input layer of the game engine. Together they turn raw Pygame input into a cleaner “game-friendly” input API (press / hold / click logic + resolution-aware mouse coordinates).
+
+
+Q02.
+Screens directory
+BaseScreen.py
+
+A02.
+BaseScreen defines a common lifecycle and interface for all game screens, allowing the ScreenManager to treat every screen uniformly, switch between them dynamically, and keep game state transitions clean and decoupled from individual screen logic.
