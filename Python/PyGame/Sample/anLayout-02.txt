@@ -8,7 +8,53 @@ SimpsonsTriviaTitle.png
 Let's check it out!
 
 
+Pre-requisites??
+ALL examples use UV
 
+
+THEORY on all text
+axCodeFormatting.txt
+axCodeFormatting_02.txt
+
+
+SimpsonsTrivia.py
+
+AnGame.py
+ctor()
+build_game()	# bootstrap managers
+
+Run()
+Init
+Load
+
+infinite loop
+	quit?
+	deltaTime
+	Update
+	Draw
+
+AnGame controller - delegates all work to MyGame
+
+
+MyGame
+delegates all work to relevant managers
+Init
+Load
+Update
+Draw
+
+
+Managers can be tested in isolation TDD-style
+
+
+CODE
+some managers of interest
+
+Screen
+Clock
+Event
+Content
+Resolution
 
 SUMMARY
 now have ported full game to Python using PyGame
