@@ -1,0 +1,77 @@
+8 Terminal Tricks I Use Every Single Day
+28-Jun-2026
+
+https://medium.com/@gopi_ck/c61219f3f4f6
+
+Trick #1: Ctrl + R Is Better Than Remembering Commands
+
+
+Trick #2: I Stopped Retyping Commands Completely
+apt install nginx
+sudo !!
+
+
+cd backend-project
+cd !$
+
+!$
+Take the last argument from the previous command.
+
+
+Trick #3: Aliases Saved Me Thousands of Keystrokes
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit -m'
+alias ni='npm install'
+alias nrd='npm run dev'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+
+
+Trick #4: The Day I Learned tmux
+tmux new -s myproject
+
+
+Trick #5: fzf Is the Tool I Wish I Had Installed Years Earlier
+cd src
+ls
+cd services
+ls
+cd user
+ls
+vim UserService.java
+
+VS.
+vim $(fzf)
+
+
+Trick #6: Running Commands in the Background Changed My Patience
+npm run build &
+
+jobs
+fg
+Ctrl+Z
+bg
+
+
+Trick #7: Stop Copying Text With Your Mouse
+cat ~/.ssh/id_rsa.pub
+
+MacOS
+cat ~/.ssh/id_rsa.pub | pbcopy
+
+Linux
+cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
+
+
+Trick #8: I Built My Own Commands
+cd project
+ls -la
+
+BUT
+function cl()
+{
+  cd "$1" && ls -la
+}
+
+cl my-project
