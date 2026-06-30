@@ -1,0 +1,17 @@
+30-Jun-2026
+
+LangGraph Explained: Why LangChain Alone Is Not Enough for Building Agentic AI
+https://blog.stackademic.com/langgraph-explained-why-langchain-alone-is-not-enough-for-building-agentic-ai-e218b826bce2
+
+
+
+However, LLMs are fundamentally reactive. They respond to prompts, but they lack the ability to achieve complex, long-term goals. This is where Agentic AI comes in.
+
+AI agents use LLMs to actively achieve their given goal through clever system design.
+
+
+
+Intent-to-Action Layer for AI Agents: The Raw User Prompts Should Not Directly Trigger Tools
+https://medium.com/@pankaj_pandey/9d3dab9aea17
+
+Microsoft Copilot Studio uses generative orchestration: an LLM “planner” turns a user message into a structured plan, identifies intents, chooses which tools, topics, or agents to invoke for each step, sequences them and in Microsoft’s own words ensures each step is within policy, seeking approval for sensitive actions.
