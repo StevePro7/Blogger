@@ -1,0 +1,46 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>EX06.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;pygame.mixer.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Sound&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(None, 48)  # Built-in default font
+&nbsp;&nbsp;sound_01 = pygame.mixer.Sound(&quot;right.wav&quot;)
+&nbsp;&nbsp;sound_02 = pygame.mixer.Sound(&quot;wrong.wav&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;def render_text(text, color=(255, 255, 255)):
+&nbsp;&nbsp;    return font.render(text, False, color)
+&nbsp;&nbsp;
+&nbsp;&nbsp;text1 = render_text(&quot;Hello Sound!&quot; )
+&nbsp;&nbsp;text2 = render_text(&quot;Press Left - sound #1&quot;)
+&nbsp;&nbsp;text3 = render_text(&quot;Press Right - sound #2&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    screen.blit(text1, (220, 140))
+&nbsp;&nbsp;    screen.blit(text2, (160, 180))
+&nbsp;&nbsp;    screen.blit(text3, (160, 220))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    keys = pygame.key.get_pressed()
+&nbsp;&nbsp;    if keys[pygame.K_LEFT]:
+&nbsp;&nbsp;        sound_01.play()
+&nbsp;&nbsp;    if keys[pygame.K_RIGHT]:
+&nbsp;&nbsp;        sound_02.play()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />

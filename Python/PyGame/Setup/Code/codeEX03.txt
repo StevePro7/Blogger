@@ -1,0 +1,31 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>EX03.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Text&quot;)
+&nbsp;&nbsp;sms_surface = pygame.Surface((640, 480))
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(&quot;emulogic.ttf&quot;, 20)
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    sms_surface.fill((0, 0, 0))
+&nbsp;&nbsp;    text_surface = font.render(&quot;Hello Text!&quot;, False, (255, 255, 255))
+&nbsp;&nbsp;    sms_surface.blit(text_surface, (0, 0))
+&nbsp;&nbsp;    scaled = pygame.transform.scale(sms_surface, (640, 480))
+&nbsp;&nbsp;    screen.blit(scaled, (220, 220))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />

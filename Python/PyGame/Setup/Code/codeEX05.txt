@@ -1,0 +1,34 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>EX05.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Input&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(None, 48)  # Built-in default font
+&nbsp;&nbsp;text = font.render(&quot;Hello Input - Press space...&quot;, True, (255, 255, 255))
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    screen.blit(text, (100, 220))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    keys = pygame.key.get_pressed()
+&nbsp;&nbsp;    if keys[pygame.K_SPACE]:
+&nbsp;&nbsp;        space = font.render(&quot;Space pressed!!&quot;, True, (255, 255, 255))
+&nbsp;&nbsp;        screen.blit(space, (200, 260))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />

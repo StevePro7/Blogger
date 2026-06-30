@@ -1,0 +1,40 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>EX04.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Sprites&quot;)
+&nbsp;&nbsp;sms_surface = pygame.Surface((320, 240))
+&nbsp;&nbsp;
+&nbsp;&nbsp;spritesheet = pygame.image.load(&quot;Sprites.bmp&quot;).convert()
+&nbsp;&nbsp;
+&nbsp;&nbsp;def get_sprite(sheet, col, row, width=32, height=32):
+&nbsp;&nbsp;    rect = pygame.Rect(col * width, row * height, width, height)
+&nbsp;&nbsp;    return sheet.subsurface(rect)
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    sms_surface.fill((0, 0, 0))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    sprite1 = get_sprite(spritesheet, col=0, row=0)
+&nbsp;&nbsp;    sprite2 = get_sprite(spritesheet, col=0, row=1)
+&nbsp;&nbsp;    sms_surface.blit(sprite1, (64, 64))
+&nbsp;&nbsp;    sms_surface.blit(sprite2, (128, 64))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    scaled = pygame.transform.scale(sms_surface, (640, 480))
+&nbsp;&nbsp;    screen.blit(scaled, (0, 0))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />

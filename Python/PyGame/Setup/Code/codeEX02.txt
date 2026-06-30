@@ -1,0 +1,33 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>EX02.txt</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Splash&quot;)
+&nbsp;&nbsp;sms_surface = pygame.Surface((640, 480))
+&nbsp;&nbsp;
+&nbsp;&nbsp;splash = pygame.image.load(&quot;StevePro.bmp&quot;).convert()
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    dest: tuple[float, float] = ((640 - splash.get_width()) / 2, (480 - splash.get_height()) / 2)
+&nbsp;&nbsp;    sms_surface.blit(splash, dest=dest)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    scaled = pygame.transform.scale(sms_surface, (640, 480))
+&nbsp;&nbsp;    screen.blit(scaled, (0, 0))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />
