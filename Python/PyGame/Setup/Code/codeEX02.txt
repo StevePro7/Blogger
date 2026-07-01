@@ -17,8 +17,9 @@
 &nbsp;&nbsp;        if event.type == pygame.QUIT:
 &nbsp;&nbsp;            running = False
 &nbsp;&nbsp;
-&nbsp;&nbsp;    dest: tuple[float, float] = ((640 - splash.get_width()) / 2, (480 - splash.get_height()) / 2)
-&nbsp;&nbsp;    sms_surface.blit(splash, dest=dest)
+&nbsp;&nbsp;    wide: int = (640 - splash.get_width()) / 2
+&nbsp;&nbsp;    high: int = (480 - splash.get_height()) / 2
+&nbsp;&nbsp;    sms_surface.blit(splash, dest=(wide, high))
 &nbsp;&nbsp;
 &nbsp;&nbsp;    screen.fill((0, 0, 0))
 &nbsp;&nbsp;    scaled = pygame.transform.scale(sms_surface, (640, 480))
