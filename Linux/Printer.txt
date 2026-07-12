@@ -1,0 +1,90 @@
+PRINTER
+12-Jul-2026
+
+
+Today I print but print job just says status Processing
+yet nothing is printed
+
+
+Ubuntu Linux
+ping 192.168.1.80
+
+
+Network connectivity was OK
+Printer was alive
+IP address was correct
+
+The problem was the CUPS printer queue
+i.e.
+
+lpstat -t
+device for Brother_MFC_J5330DW: implicitclass://Brother_MFC_J5330DW/
+
+
+Check CUPS configuration
+sudo cat /etc/cups/printers.conf
+
+
+Check cups-browsed
+systemctl status cups-browsed
+
+
+Remove the broken printer queue
+sudo lpadmin -x Brother_MFC_J5330DW
+
+
+Discover available printer protocols
+sudo lpinfo -v
+
+network dnssd://Brother%20MFC-J5330DW._ipp._tcp.local/
+network ipp://Brother%20MFC-J5330DW._ipp._tcp.local/
+
+So IPP was available.
+
+
+
+The command that fixed it
+The printer was recreated as a real IPP printer queue:
+
+sudo lpadmin \
+  -p Brother_MFC_J5330DW \
+  -E \
+  -v "ipp://Brother%20MFC-J5330DW._ipp._tcp.local/" \
+  -m everywhere
+  
+  
+ NOW
+ ipp://Brother%20MFC-J5330DW._ipp._tcp.local/
+ 
+ 
+ 
+Enable the printer
+sudo cupsenable Brother_MFC_J5330DW
+sudo cupsaccept Brother_MFC_J5330DW
+
+
+Make it default
+lpoptions -d Brother_MFC_J5330DW
+
+
+Verify final state
+lpstat -t
+
+Now showed:
+system default destination: Brother_MFC_J5330DW
+
+device for Brother_MFC_J5330DW:
+ipp://Brother%20MFC-J5330DW._ipp._tcp.local/
+
+printer Brother_MFC_J5330DW is idle. enabled
+
+Which is exactly what we wanted.
+
+
+EXTRA for experts
+Since printer has a static IP - could leverage this
+
+
+sudo lpadmin \
+  -p Brother_MFC_J5330DW \
+  -v ipp://192.168.1.80/ipp/print
