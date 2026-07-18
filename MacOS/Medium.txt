@@ -1,0 +1,92 @@
+Medium
+18-Jul-2026
+
+I Ignored These Mac Terminal Commands for Years
+https://medium.com/@TusharKanjariya/i-ignored-these-mac-terminal-commands-for-years-6b18665d468d
+
+
+01.
+Trick #1: open — Stop Alt-Tabbing to Finder
+open .
+
+open index.html              # open in default browser
+open -a Safari index.html    # open in a specific app
+open -a "Visual Studio Code" .
+open https://github.com      # URLs work too
+open -R config.json          # reveal the file in Finder (highlighted)
+
+
+02.
+Trick #2: mdfind — Spotlight Lives in Your Terminal
+
+mdfind "docker-compose.yml"
+mdfind -onlyin . "TODO"
+mdfind -name ".zshrc"
+
+
+03.
+Trick #3: caffeinate — Your Mac Stays Awake Exactly As Long As It Needs To
+caffeinate ./deploy.sh
+
+
+04.
+Trick #4: say — Let Your Mac Tell You When It’s Done
+
+npm run build && say "build done" || say "build failed"
+say -v "Daniel" "deployment finished"
+
+
+05.
+Trick #5: screencapture — Screenshots Without Touching the Mouse
+
+screencapture -c            # full screen → straight to clipboard
+screencapture -i shot.png   # interactive selection → file
+screencapture -T 5 shot.png # 5-second timer (open that dropdown menu first)
+screencapture -w window.png # click a window, capture just it
+
+
+06.
+Trick #6: sips — Delete ImageMagick, It Was Built In the Whole Time
+
+sips -Z 800 photo.png                      # resize to max 800px (keeps ratio)
+sips -s format jpeg photo.png --out photo.jpg
+sips -r 90 photo.png                       # rotate 90 degrees
+sips -Z 200 *.png                          # batch resize an entire folder
+
+
+07.
+Trick #7: textutil — The Document Converter Nobody Knows Exists
+
+textutil -convert txt report.docx     # docx → plain text
+textutil -convert html report.docx    # docx → html
+textutil -convert docx notes.html     # and back the other way
+textutil -cat txt *.docx -output all.txt   # merge many docs into one text file
+
+
+08.
+Trick #8: defaults write — The Settings Apple Didn’t Put in System Settings
+
+# Screenshots: stop dumping them on the Desktop
+mkdir -p ~/Screenshots
+defaults write com.apple.screencapture location ~/Screenshots
+
+# Screenshots as JPEG instead of huge PNGs
+defaults write com.apple.screencapture type jpg
+
+
+09.
+Trick #9: networkQuality — A Speed Test Without the Ad-Covered Website
+networkQuality
+
+
+10.
+Trick #10: pmset — Ask Your Mac Why It Woke Up at 3 AM
+
+pmset -g batt
+pmset -g log | grep -i wake
+
+
+XX.
+Bonus: qlmanage -p — Quick Look From the Terminal
+qlmanage -p diagram.png
+
