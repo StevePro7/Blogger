@@ -3,3 +3,7 @@ PyGame blog content
 
 
 ~\GitHub\StevePro7\Blogger\Python\PyGame\Setup\Code
+
+
+Setup
+_images02.txt
