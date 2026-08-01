@@ -1,4 +1,4 @@
-<u><a href="https://github.com/StevePro7/PythonSetup/tree/master/PyTorchCheatSheetII/01-Example">Example I</a></u><br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyTorchCheatSheetII/01-Example">Example I</a></u><br />
 All examples listed are Python 3.10.19 compatible. Launch PyCharm | New Project. Enter the following info:
 <br />
 <!-- -->
@@ -50,8 +50,8 @@ Create directory to house custom wheels <i>mkdir -p wheelhouse-cu121</i>.  Write
 <br />
 <!-- -->
 <table width="99%" border="1">  
-<tr><td valign="top">&nbsp;PyTorch3D</td><td valign="top">&nbsp;chmod +x <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_pytorch3d_wheel.sh">steveprobuild_pytorch3d_wheel.sh</a></td></tr>
-<tr><td valign="top">&nbsp;TorchSparse</td><td valign="top">&nbsp;chmod +x <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_torchsparse_wheel.sh">steveprobuild_torchsparse_wheel.sh</a></td></tr>
+<tr><td valign="top">&nbsp;PyTorch3D</td><td valign="top">&nbsp;chmod +x <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_pytorch3d_wheel.sh">steveprobuild_pytorch3d_wheel.sh</a></td></tr>
+<tr><td valign="top">&nbsp;TorchSparse</td><td valign="top">&nbsp;chmod +x <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_torchsparse_wheel.sh">steveprobuild_torchsparse_wheel.sh</a></td></tr>
 </table>
 <!-- -->
 <br />
@@ -60,8 +60,8 @@ Execute shell scripts to build custom wheels.  These will be the custom wheels u
 <!-- -->
 <table width="99%" border="1">  
 <tr><td valign="top">&nbsp;<b>COMMAND</b></td><td valign="top">&nbsp;<b>ARTIFACT</b></td></tr>
-<tr><td valign="top">&nbsp;bash <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_pytorch3d_wheel.sh">steveprobuild_pytorch3d_wheel.sh</a></td><td valign="top">&nbsp;stevepropytorch3d-0.7.7-cp310-cp310-linux_x86_64.whl </td></tr>
-<tr><td valign="top">&nbsp;bash <a href="https://github.com/StevePro7/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_torchsparse_wheel.sh">steveprobuild_torchsparse_wheel.sh</a></td><td valign="top">&nbsp;steveprotorchsparse-2.0.0b0-cp310-cp310-linux_x86_64.whl </td></tr>
+<tr><td valign="top">&nbsp;bash <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_pytorch3d_wheel.sh">steveprobuild_pytorch3d_wheel.sh</a></td><td valign="top">&nbsp;stevepropytorch3d-0.7.7-cp310-cp310-linux_x86_64.whl </td></tr>
+<tr><td valign="top">&nbsp;bash <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyTorchCheatSheetII/01-Example/steveprobuild_torchsparse_wheel.sh">steveprobuild_torchsparse_wheel.sh</a></td><td valign="top">&nbsp;steveprotorchsparse-2.0.0b0-cp310-cp310-linux_x86_64.whl </td></tr>
 </table>
 <!-- -->
 <br />
