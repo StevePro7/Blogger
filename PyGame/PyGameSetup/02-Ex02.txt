@@ -1,0 +1,84 @@
+<span style="font-family:verdana;font-size:85%;">
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/02-Example">Example II</a></u><br />
+Repeat previous exercise but render splash screen. Launch PyCharm | New Project. Enter the following info:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloSplash</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.11.11
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSetup/02-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following file: <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyTorchCheatSheet/01-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify Hello PyGame is working OK!
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example I</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello PyGame!&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(None, 48)  # Built-in default font
+&nbsp;&nbsp;text = font.render(&quot;Hello PyGame!&quot;, True, (255, 255, 255))
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    screen.blit(text, (220, 220))
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<!-- <br /> -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVOZjJ2hYKZSy2JYCUUWVeA02D7eelwzuSvkY5T6P3ma_EASH_x37IEb-bVr6AZoXHh9YGjCOrtA5sPtyQHyme-_DOtuK_dZoRs8Sg2y_Mwb_gWYNZmsFBpddftv4dljt4twReIO0fwit8TPZ2P09OmoVLOhK_g5hSFCi9vk6EDgf8FNatCUeot91lHh4/s642/HelloPyGameText.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVOZjJ2hYKZSy2JYCUUWVeA02D7eelwzuSvkY5T6P3ma_EASH_x37IEb-bVr6AZoXHh9YGjCOrtA5sPtyQHyme-_DOtuK_dZoRs8Sg2y_Mwb_gWYNZmsFBpddftv4dljt4twReIO0fwit8TPZ2P09OmoVLOhK_g5hSFCi9vk6EDgf8FNatCUeot91lHh4/s600/HelloPyGameText.png"/></a>
+<!-- -->
+<br />
+ 
+  
+</span>  
