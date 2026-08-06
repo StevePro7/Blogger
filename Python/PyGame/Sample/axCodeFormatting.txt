@@ -2,14 +2,14 @@
 
 codeGPT_00.txt
 
-Static<br>
+Static<br />
 Includes globally loaded game resource assets and colors definitions.  Constants store core configuration with enumerations defining all strongly-typed categories as Python enums and globalize has UI text information.
-<br><br>
+<br /><br />
 
 
-Objects<br>
+Objects<br />
 Includes game data models to represent configuration, questions and text elements to rendered on-screen.
-<br><br>
+<br /><br />
 
 
 codeGPT_01.txt
@@ -32,22 +32,56 @@ codeGPT_01.txt
 
 codeGPT_03.txt
 
-Inputs<br>
+Inputs<br />
 Includes low-level input layer for game engine to convert raw PyGame input into cleaner game input APIs.
-<br><br>
+<br /><br />
 
 
-Screens<br>
+Screens<br />
 Includes BaseScreen to define common interface for all game screens thus ScreenManager lifecycle invokes each screen uniformly and keeps game state transitions clean and decoupled from individual screen logic.
-<br><br>
+<br /><br />
 
 
 
 
 <table width="99%" border="1">
-<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyTorch3dWheels</td></tr>
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/SimpsonsTrivia</td></tr>
 <tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
-<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.10</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
 <tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
 </table>
 <br />
+
+
+
+CONSOLIDATE
+
+
+Inputs<br />
+Includes low-level input layer for game engine to convert raw PyGame input into cleaner game input APIs.
+<br /><br />
+
+
+Screens<br />
+Includes BaseScreen to define common interface for all game screens thus ScreenManager lifecycle invokes each screen uniformly and keeps game state transitions clean and decoupled from individual screen logic.
+<br /><br />
+  
+Objects<br />
+Includes game data models to represent configuration, questions and text elements to rendered on-screen.
+<br /><br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;ServiceRegistry</td>
+<td valign="top">
+&nbsp;Simple service locator central hub which connects all game systems together
+</td>
+</tr>
+<tr><td valign="top">&nbsp;Bootstrap</td>
+<td valign="top">
+&nbsp;Automatic game management discovery using reflection [dynamic imports]
+</td>
+</tr>
+</table>
+<br />
+<br />
+
+
