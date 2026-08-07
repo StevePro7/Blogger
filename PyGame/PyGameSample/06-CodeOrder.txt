@@ -1,0 +1,31 @@
+CodeOrder05
+07-Aug-2026
+
+LIMITATIONS
+vibe coding
+
+
+Fullscreen
+all code worked but needed to centralize
+
+however when did so the mouse input button collision failed because
+we have virtual screen co-ords 640, 480 but actual monitor resolution 
+on fullscreen maybe 1920, 1080
+i.e. not compatible
+
+so we need an adaptor - I asked GPT to vibe code for me - which solution worked
+BUT
+
+GPT tightly coupled the screen detection code directly into MouseInput.py
+which is wrong - MouseInput single responsibility is mouse input [only]
+
+so I had to re-prompt GPT to extract this tight coupled code into a separate component
+ResolutionManager - which is responsible for co-ord resolution mgt + adaptation
+
+solution now correct and code cleaner with correct responsibilities
+
+Interesting exercise:
+coding agent not sophisticated enough to "know" this and get right first time
+Jr programmer most likely not have enough experience to know this is wrong + re-prompt
+
+Opens new discussion on iNet - how to fill this vacuum - topic for another day...!
