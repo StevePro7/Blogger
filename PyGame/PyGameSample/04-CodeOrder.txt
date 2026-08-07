@@ -1,0 +1,108 @@
+CodeOrder04
+07-Aug-2026
+
+REFERENCE
+D:\GitHub\StevePro7\Blogger\Python\PyGame\Sample
+
+MANAGERS
+codeGPT_02.txt		- definitions!!
+
+Here are 
+some managers of interest
+
+Managers can be tested in isolation TDD-style
+
+BaseManager?
+PyGameManager
+LogManager
+//BaseManager?
+RandomManager
+
+ConfigManager
+EventManager
+    def ProcessEvents(self):
+        self.Events.clear()
+        for event in pygame.event.get():
+
+            self.Events.append(event)
+            if event.type == pygame.QUIT:
+                self.QuitRequested = True
+
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                self.QuitRequested = True
+
+ClockManager
+    def Initialize(self):
+        self.clock: pygame.time.Clock = pygame.time.Clock()
+        self.fps = MyGame.Manager.ConfigManager.ConfigData.FPS
+
+
+    def Update(self) -> int:
+        deltaTime: int = self.clock.tick(self.fps)
+        return deltaTime
+
+
+DisplayManager
+GraphicsManager
+ResolutionManager
+SoundManager
+
+ContentManager
+ImageManager
+SpriteManager
+TextManager
+
+QuestionManager
+
+ScreenManager
+    def _import_all_screens(self):
+        for _, module_name, _ in pkgutil.iter_modules(Screens.__path__):
+            if module_name == BaseScreen.__name__:
+                continue
+
+            path_name: str = f"{const.GAME_DIRECTORY}.{ENGINE_SCREENS}.{module_name}"
+            importlib.import_module(path_name)
+
+    def _build_screen_map(self) -> dict[ScreenType, type[BaseScreen]]:
+        screen_map: dict[ScreenType, type[BaseScreen]] = {}
+
+        for screen_type in ScreenType:
+            class_name = f"{screen_type.name}{ENGINE_SCREEN}"
+            path_name: str = f"{const.GAME_DIRECTORY}.{ENGINE_SCREENS}.{class_name}"
+            module = importlib.import_module(path_name)
+
+            cls = getattr(module, class_name)
+            screen_map[screen_type] = cls
+
+        return screen_map
+
+
+
+TESTs
+corresponding unit and system tests are located beneath Tests directory
+execute all tests from command line via pytest
+ pytest
+======================================================================= test session starts ========================================================================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0
+rootdir: D:\GitHub\SteveProXNA\PythonSetup\PyGameSample\SimpsonsTrivia
+configfile: pyproject.toml
+testpaths: Tests
+collected 24 items                                                                                                                                                  
+
+Tests\TestBaseManager.py .......                                                                                                                              [ 29%]
+Tests\TestCollisionManager.py ..                                                                                                                              [ 37%]
+Tests\TestConfigManager.py .                                                                                                                                  [ 41%]
+Tests\TestContentManager.py .                                                                                                                                 [ 45%]
+Tests\TestDebugManager.py .                                                                                                                                   [ 50%]
+Tests\TestFileManager.py .                                                                                                                                    [ 54%]
+Tests\TestImageManager.py .                                                                                                                                   [ 58%]
+Tests\TestQuestionManager.py ......                                                                                                                           [ 83%]
+Tests\TestRandomManager.py .                                                                                                                                  [ 87%]
+Tests\TestScoreManager.py .                                                                                                                                   [ 91%]
+Tests\TestSoundManager.py .                                                                                                                                   [ 95%]
+Tests\TestTextManager.py .                                                                                                                                    [100%]
+
+======================================================================== 24 passed in 0.61s ========================================================================
+
+pytest.png
+D:\GitHub\StevePro7\Blogger\PyGame\PyGameSample\images

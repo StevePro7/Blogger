@@ -1,4 +1,4 @@
-CodeOrder01
+CodeOrder02
 07-Aug-2026
 
 REFERENCE
@@ -17,16 +17,13 @@ A Manager is responsible for a particular game system or service. It owns data o
 e.g.
 GraphicsManager, ScoreManager
 
+axCodeFormatting02.txt
+BaseManager
+Foundation class and common toolbox and system helper all managers inherit from
+
 
 SCREENS
-codeGPT_03.txt
-A Screen represents one visible part of the game that the player interacts with.
-e.g.
-SplashScreen, TitleScreen
-
-TODO
-do I list the IScreen interface here?
-Init()
-Load()
-Update()
-Draw()
+axCodeFormatting.txt
+Screens<br />
+Includes BaseScreen to define common interface for all game screens thus ScreenManager lifecycle invokes each screen uniformly and keeps game state transitions clean and decoupled from individual screen logic.
+<br /><br />

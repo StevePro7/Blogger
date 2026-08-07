@@ -1,0 +1,61 @@
+CodeOrder05
+07-Aug-2026
+
+REFERENCE
+D:\GitHub\StevePro7\Blogger\Python\PyGame\Sample
+
+
+VIBE Coding
+In order to fully port C#/.NET paradigms to Python we needed some helper scripts
+In order to integrate coding agents we "vibe" coded some of this stand alone code
+
+Engine
+axCodeFormatting
+codeGPT_01.txt
+
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;ServiceRegistry</td>
+<td valign="top">
+&nbsp;Simple service locator central hub which connects all game systems together
+</td>
+</tr>
+<tr><td valign="top">&nbsp;Bootstrap</td>
+<td valign="top">
+&nbsp;Automatic game management discovery using reflection [dynamic imports]
+</td>
+</tr>
+</table>
+<br />
+
+
+class ServiceRegistry:
+
+BS
+def build_game():
+
+    ServiceRegistry.clear()
+
+
+2x helper scripts that helped generate boilerplate code for managers and screens
+generate_managers.py
+generate_screens.py
+
+
+Finally
+generate_stubs.py
+
+In order to navigate to the correct manager Init or Load method we need
+MyGame.pyi
+
+e.g.
+MyGame.Manager.RandomManager.Initialize()
+
+
+PyCharm cannot statically infer dynamically created manager attributes, so a .pyi type stub is needed to provide type information for code navigation, autocompletion, and static analysis.
+
+
+Why the .pyi fixes it
+
+A .pyi file is called a type stub.
+
+It doesn't contain implementation—it contains type information.

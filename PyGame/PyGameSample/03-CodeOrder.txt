@@ -1,27 +1,57 @@
-CodeOrder01
+CodeOrder03
 07-Aug-2026
 
 REFERENCE
 D:\GitHub\StevePro7\Blogger\Python\PyGame\Sample
 
-PRE-REQs
+ENTRY
+anLayout-02.txt
 
 01.
-MANAGERS
-https://chatgpt.com/c/6a759fe0-84bc-83eb-90a6-240e5f378793
+SimpsonsTrivia.py
 
-A Manager is responsible for a particular game system or service. It owns data or functionality that is shared across multiple parts of the game.
-e.g.
-GraphicsManager, ScoreManager
+Main game entry point
+similar to Program.cs
 
-SCREENS
-A Screen represents one visible part of the game that the player interacts with.
-e.g.
-SplashScreen, TitleScreen
+def main():
+    try:
+        game = AnGame()
+        game.Run()
+    except KeyboardInterrupt:
+        game.Exit()
+    finally:
+        game.ShutDown()
 
-TODO
-do I list the IScreen interface here?
-Init()
-Load()
-Update()
-Draw()
+
+02.
+AnGame.py
+Build game infrastructure
+Intermediary between Game bootrap [and service registry]
+which delegates game init, load, update + draw game loop to actual ST game implementation code
+
+i.e.
+AnGame controller - delegates all work to MyGame
+
+    def Run(self):
+        self.Initialize()
+        self.LoadContent()
+
+        while self.running:
+            MyGame.Manager.EventManager.ProcessEvents()
+            if MyGame.Manager.EventManager.QuitRequested:
+                self.Exit()
+
+            deltaTime: int = MyGame.Manager.ClockManager.Update()
+            self.Update(deltaTime)
+            self.Draw()
+
+03.
+MyGame.py
+delegates all work to relevant managers
+
+class MyGame:
+    class _ManagerFacade:
+        def __getattr__(self, name):
+            return ServiceRegistry.get(name)
+
+    Manager = _ManagerFacade()
