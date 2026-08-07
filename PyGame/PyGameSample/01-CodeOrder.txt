@@ -1,12 +1,21 @@
-CodeGPT00
-21-Jun-2026
+CodeOrder01
+07-Aug-2026
 
+REFERENCE
+D:\GitHub\StevePro7\Blogger\Python\PyGame\Sample
 
-Simpsons Trivia game written in C# has been ported to Python - the code is on GitHub here
-https://github.com/StevePro7/PythonSetup/tree/master/PyGame/Testing
+PRE-REQs
 
+01.
+STATIC
 
-DONE
+axCodeFormatting.txt
+Static<br />
+Includes globally loaded game resource assets and colors definitions.  Constants store core configuration with enumerations defining all strongly-typed categories as Python enums and globalize has UI text information.
+<br /><br />
+
+codeGPT_00.txt
+
 Q01.
 Summarize the files in the Static folder
 
@@ -26,6 +35,16 @@ Globalize.py — Shared text / UI strings
 This is the global text constants file.
 
 
+02.
+OBJECTS
+
+axCodeFormatting.txt
+Objects<br />
+Includes game data models to represent configuration, questions and text elements to rendered on-screen.
+<br /><br />
+
+codeGPT_00.txt
+
 Q02.
 Summarize the files in the Objects folder
 
@@ -42,5 +61,24 @@ A structured representation of one trivia question
 
 TextData.py — Renderable UI text object
 A UI text element ready to be drawn on screen
+
+
+03.
+INPUTS
+
+axCodeFormatting.txt
+Inputs<br />
+Includes low-level input layer for game engine to convert raw PyGame input into cleaner game input APIs.
+<br /><br />
+
+codeGPT_03.txt
+Q01.
+Inputs directory
+KeyboardInput.py
+MouseInput.py
+
+
+A02.
+These two files are the low-level input layer of the game engine. Together they turn raw Pygame input into a cleaner “game-friendly” input API (press / hold / click logic + resolution-aware mouse coordinates).
 
 
