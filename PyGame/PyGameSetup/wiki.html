@@ -1,0 +1,379 @@
+<span style="font-family:verdana;font-size:85%;">
+
+In 2020, we checked out <a href="https://steveproxna.blogspot.com/2020/07/python-setup-cheat-sheet.html">Python Setup Cheat Sheet</a> to create development environment.  However, working through code exercises to improve code skills is tedious; we would like to build video games using <a href="https://www.pygame.org">PyGame</a>!
+<br />  
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEheCshljvVjOpFiBvRjqE6X4OSEwF-ygGtY-_-Tm30VKNCP_ZAT2F1lQkq7O7aEG1SxznikR-f7PPhoZGYc1Nmx8weV5wiMquaZ7kG4GWVLkNGzxizhwDyv6ys3hsKmRrGuad6_ZI91msgPzdj3IXdnv6Dqf_mYdpaiW8qlI6Pa25syIv4Rp84JkGPJLXM/s1610/PyGame.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEheCshljvVjOpFiBvRjqE6X4OSEwF-ygGtY-_-Tm30VKNCP_ZAT2F1lQkq7O7aEG1SxznikR-f7PPhoZGYc1Nmx8weV5wiMquaZ7kG4GWVLkNGzxizhwDyv6ys3hsKmRrGuad6_ZI91msgPzdj3IXdnv6Dqf_mYdpaiW8qlI6Pa25syIv4Rp84JkGPJLXM/s600/PyGame.png"/></a>
+<!-- -->
+<br /> 
+Let’s check it out!
+<br /><br /> 
+<u>PyGame</u><br />
+<a href="https://github.com/pygame/pygame">PyGame</a> is a free and open-source cross-platform library for the development of video games using Python. Using Simple <a href="https://en.wikipedia.org/wiki/Simple_DirectMedia_Layer">DirectMedia Layer</a> to abstract most common functions makes it easier to write these programs.
+<br />
+<br />
+
+<u>Tutorials</u><br />
+In order to build video games in Python we first need to learn PyGame APIs.  Here are some great resources:
+<br />
+TODO - compile table here!
+<br />
+<br />
+  
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/01-Example">Example I</a></u> - <i>Hello PyGame</i><br />
+All examples listed are Python 3.11.11 compatible. Launch PyCharm | New Project. Enter the following info:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq5l3KiTMSXnoXq2jsStUVRWz1U_KlYd6bp1CLheDWj8vwN6UgSnNaaA4cNqcP3jmpp7jIdZ6XTXk01V-MG7I6NaMEbAX9d08TNy5-vZU1pKrvXapc39grPOhauwHDAFHZ8pzOnba9Ls-AIcwEuhZbw6ZTFCndHyXS7iuLF0v3m3hsmazewzym2SvCSuo/s1000/HelloPyGameProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq5l3KiTMSXnoXq2jsStUVRWz1U_KlYd6bp1CLheDWj8vwN6UgSnNaaA4cNqcP3jmpp7jIdZ6XTXk01V-MG7I6NaMEbAX9d08TNy5-vZU1pKrvXapc39grPOhauwHDAFHZ8pzOnba9Ls-AIcwEuhZbw6ZTFCndHyXS7iuLF0v3m3hsmazewzym2SvCSuo/s600/HelloPyGameProject.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloPyGame</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.11.11
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSetup/01-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+Create the following file: <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSetup/01-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify Hello PyGame is working OK!
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example I</strong> - <i>Hello PyGame</i></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello PyGame!&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(None, 48)  # Built-in default font
+&nbsp;&nbsp;text = font.render(&quot;Hello PyGame!&quot;, True, (255, 255, 255))
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    screen.blit(text, (220, 220))
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<!-- <br /> -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVOZjJ2hYKZSy2JYCUUWVeA02D7eelwzuSvkY5T6P3ma_EASH_x37IEb-bVr6AZoXHh9YGjCOrtA5sPtyQHyme-_DOtuK_dZoRs8Sg2y_Mwb_gWYNZmsFBpddftv4dljt4twReIO0fwit8TPZ2P09OmoVLOhK_g5hSFCi9vk6EDgf8FNatCUeot91lHh4/s642/HelloPyGameText.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVOZjJ2hYKZSy2JYCUUWVeA02D7eelwzuSvkY5T6P3ma_EASH_x37IEb-bVr6AZoXHh9YGjCOrtA5sPtyQHyme-_DOtuK_dZoRs8Sg2y_Mwb_gWYNZmsFBpddftv4dljt4twReIO0fwit8TPZ2P09OmoVLOhK_g5hSFCi9vk6EDgf8FNatCUeot91lHh4/s600/HelloPyGameText.png"/></a>
+<!-- -->
+<br />
+<br />  
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/02-Example">Example II</a></u> - <i>Hello Splash</i><br />
+Repeat previous exercise but render splash screen. Launch PyCharm | New Project. Enter the following info:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/HelloSplash</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSetup/02-Example/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.11.11
+&nbsp;&nbsp;uv sync
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+Create the following file: <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSetup/02-Example/main.py">main.py</a>.  Enter the command <b>uv run main.py</b>.  Verify splash screen renders OK!
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example II</strong> - <i>Hello Splash</i></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Splash&quot;)
+&nbsp;&nbsp;sms_surface = pygame.Surface((640, 480))
+&nbsp;&nbsp;
+&nbsp;&nbsp;splash = pygame.image.load(&quot;StevePro.bmp&quot;).convert()
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    wide: int = (640 - splash.get_width()) / 2
+&nbsp;&nbsp;    high: int = (480 - splash.get_height()) / 2
+&nbsp;&nbsp;    sms_surface.blit(splash, dest=(wide, high))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    scaled = pygame.transform.scale(sms_surface, (640, 480))
+&nbsp;&nbsp;    screen.blit(scaled, (0, 0))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<!-- <br /> -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBUkfED1mfXMT5M8Qk28ANmsxcTef9TxZZGuC3Dh0W9K3Yk9TCowhzG57SZMK3eomV625vifsGmpbkHZR0qFIFiCFyQhEru-EBaJlbU-KjX20NHSPdypwekzIetxNSWSCDB5aoevd0JMOt8LwrTrsZ-n0Vg_47OPkc8OcRUOyoBQC0HRDlxYfBbjXfiwI/s642/HelloSplashScreen.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBUkfED1mfXMT5M8Qk28ANmsxcTef9TxZZGuC3Dh0W9K3Yk9TCowhzG57SZMK3eomV625vifsGmpbkHZR0qFIFiCFyQhEru-EBaJlbU-KjX20NHSPdypwekzIetxNSWSCDB5aoevd0JMOt8LwrTrsZ-n0Vg_47OPkc8OcRUOyoBQC0HRDlxYfBbjXfiwI/s600/HelloSplashScreen.png"/></a>
+<!-- -->
+<br />
+<br />  
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/03-Example">Example III</a></u> - <i>Hello Text</i><br />
+Repeat previous exercise but render font text. Launch PyCharm | New Project. Setup project as previously:
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example III</strong> - <i>Hello Text</i></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Text&quot;)
+&nbsp;&nbsp;sms_surface = pygame.Surface((640, 480))
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(&quot;emulogic.ttf&quot;, 20)
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    sms_surface.fill((0, 0, 0))
+&nbsp;&nbsp;    text_surface = font.render(&quot;Hello Text!&quot;, False, (255, 255, 255))
+&nbsp;&nbsp;    sms_surface.blit(text_surface, (0, 0))
+&nbsp;&nbsp;    scaled = pygame.transform.scale(sms_surface, (640, 480))
+&nbsp;&nbsp;    screen.blit(scaled, (220, 220))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/04-Example">Example IV</a></u> - <i>Hello Sprites</i><br />
+Repeat previous exercise but render out sprites. Launch PyCharm | New Project. Setup project previously:
+<br />  
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example IV</strong> - <i>Hello Sprites</i></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Sprites&quot;)
+&nbsp;&nbsp;sms_surface = pygame.Surface((320, 240))
+&nbsp;&nbsp;
+&nbsp;&nbsp;spritesheet = pygame.image.load(&quot;Sprites.bmp&quot;).convert()
+&nbsp;&nbsp;
+&nbsp;&nbsp;def get_sprite(sheet, col, row, width=32, height=32):
+&nbsp;&nbsp;    rect = pygame.Rect(col * width, row * height, width, height)
+&nbsp;&nbsp;    return sheet.subsurface(rect)
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    sms_surface.fill((0, 0, 0))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    sprite1 = get_sprite(spritesheet, col=0, row=0)
+&nbsp;&nbsp;    sprite2 = get_sprite(spritesheet, col=0, row=1)
+&nbsp;&nbsp;    sms_surface.blit(sprite1, (64, 64))
+&nbsp;&nbsp;    sms_surface.blit(sprite2, (128, 64))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    scaled = pygame.transform.scale(sms_surface, (640, 480))
+&nbsp;&nbsp;    screen.blit(scaled, (0, 0))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/05-Example">Example V</a></u> - <i>Hello Input</i><br />
+Repeat previous exercise but with input detection. Launch PyCharm | New Project. Setup project previously:
+<br />  
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example V</strong> - <i>Hello Input</i></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Input&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(None, 48)  # Built-in default font
+&nbsp;&nbsp;text = font.render(&quot;Hello Input - Press space...&quot;, True, (255, 255, 255))
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    screen.blit(text, (100, 220))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    keys = pygame.key.get_pressed()
+&nbsp;&nbsp;    if keys[pygame.K_SPACE]:
+&nbsp;&nbsp;        space = font.render(&quot;Space pressed!!&quot;, True, (255, 255, 255))
+&nbsp;&nbsp;        screen.blit(space, (200, 260))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/06-Example">Example VI</a></u> - <i>Hello Sound</i><br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/07-Example">Example VII</a></u> - <i>Hello Music</i><br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/08-Example">Example VIII</a></u> - <i>Hello Audio</i><br />
+Repeat previous exercise but integrate all audio. Launch PyCharm | New Project. Setup project previously:
+<br />  
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Example VIII</strong> - <i>Hello Audio</i></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;pygame.init()
+&nbsp;&nbsp;pygame.mixer.init()
+&nbsp;&nbsp;
+&nbsp;&nbsp;screen = pygame.display.set_mode((640, 480))
+&nbsp;&nbsp;pygame.display.set_caption(&quot;Hello Audio&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;font = pygame.font.Font(None, 48)  # Built-in default font
+&nbsp;&nbsp;sound_01 = pygame.mixer.Sound(&quot;right.wav&quot;)
+&nbsp;&nbsp;sound_02 = pygame.mixer.Sound(&quot;wrong.wav&quot;)
+&nbsp;&nbsp;pygame.mixer.music.load(&quot;music.mp3&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;def render_text(text, color=(255, 255, 255)):
+&nbsp;&nbsp;    return font.render(text, False, color)
+&nbsp;&nbsp;
+&nbsp;&nbsp;text1 = render_text(&quot;Hello Audio!&quot; )
+&nbsp;&nbsp;text2 = render_text(&quot;Press Left - sound #1&quot;)
+&nbsp;&nbsp;text3 = render_text(&quot;Press Right - sound #2&quot;)
+&nbsp;&nbsp;text4 = render_text(&quot;Press Up - play music&quot;)
+&nbsp;&nbsp;text5 = render_text(&quot;Press Down - stop music&quot;)
+&nbsp;&nbsp;
+&nbsp;&nbsp;running = True
+&nbsp;&nbsp;while running:
+&nbsp;&nbsp;    for event in pygame.event.get():
+&nbsp;&nbsp;        if event.type == pygame.QUIT:
+&nbsp;&nbsp;            running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;    screen.fill((0, 0, 0))
+&nbsp;&nbsp;    screen.blit(text1, (220, 140))
+&nbsp;&nbsp;    screen.blit(text2, (160, 180))
+&nbsp;&nbsp;    screen.blit(text3, (160, 220))
+&nbsp;&nbsp;    screen.blit(text4, (160, 260))
+&nbsp;&nbsp;    screen.blit(text5, (160, 300))
+&nbsp;&nbsp;
+&nbsp;&nbsp;    keys = pygame.key.get_pressed()
+&nbsp;&nbsp;    if keys[pygame.K_LEFT]:
+&nbsp;&nbsp;        sound_01.play()
+&nbsp;&nbsp;    if keys[pygame.K_RIGHT]:
+&nbsp;&nbsp;        sound_02.play()
+&nbsp;&nbsp;    if keys[pygame.K_UP]:
+&nbsp;&nbsp;        pygame.mixer.music.play()
+&nbsp;&nbsp;    if keys[pygame.K_DOWN]:
+&nbsp;&nbsp;        pygame.mixer.music.stop()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    pygame.display.flip()
+&nbsp;&nbsp;
+&nbsp;&nbsp;pygame.quit()
+</pre>
+</td></tr>
+</table>
+<br />  
+  
+<table width="100%">  
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyxLK0FV6ZjgLo9tVXDjkLcBZZCAoEM5vrpCYiTWDzazFMW4rP3Mdv9DvDhrEfOh4jvi6WThNzu_wLBQqM9NJnzWcZxBfEcfHucnCNH_8r3J7uBOFnT6ZDJADZpwsiIuy44HgChw_BMi0r1qoyQspaWX5dgQVSTBWWzP3xz9V1jH-gM6Dhha9sH0BVyaU/s642/Ex03-HelloText.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyxLK0FV6ZjgLo9tVXDjkLcBZZCAoEM5vrpCYiTWDzazFMW4rP3Mdv9DvDhrEfOh4jvi6WThNzu_wLBQqM9NJnzWcZxBfEcfHucnCNH_8r3J7uBOFnT6ZDJADZpwsiIuy44HgChw_BMi0r1qoyQspaWX5dgQVSTBWWzP3xz9V1jH-gM6Dhha9sH0BVyaU/s600/Ex03-HelloText.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHtPAmA2YhXm4oE_iewP0zJD5XwWEt8b9o8o3733tNZijGCn8SURtwPlpyEXFP9LfTGZr9VOQrX7EVv_aZVrcHZfGJctjLgZ5MhTNgp_h5ar4jduEAV4PLRqZuYUemDY6Vw3WHSiuczOh_M4W9liX8NHFEu4BZCgExFeJlDWFlOt9uZiBt7EnwelvjNR8/s642/Ex04-HelloSprites.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHtPAmA2YhXm4oE_iewP0zJD5XwWEt8b9o8o3733tNZijGCn8SURtwPlpyEXFP9LfTGZr9VOQrX7EVv_aZVrcHZfGJctjLgZ5MhTNgp_h5ar4jduEAV4PLRqZuYUemDY6Vw3WHSiuczOh_M4W9liX8NHFEu4BZCgExFeJlDWFlOt9uZiBt7EnwelvjNR8/s600/Ex04-HelloSprites.png"/></a>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEUsimoLASTSxtidcGa1w0xu0lsohQcke8WA2Xa0cD1mDNCqppJsiAnkjSEgS6_KfKf2YmxU3ta7VW3iXKP40xWXPdgBcIxUsHMpB-l9cUDj6KRgj0VuKD2BpVPWI4HY2urVR8fI18yu98xM7MpU1Mkw_HPnFdrIetohdmsRU5p87D9k2Ftrxr75D-f5Y/s642/Ex05-HelloInput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEUsimoLASTSxtidcGa1w0xu0lsohQcke8WA2Xa0cD1mDNCqppJsiAnkjSEgS6_KfKf2YmxU3ta7VW3iXKP40xWXPdgBcIxUsHMpB-l9cUDj6KRgj0VuKD2BpVPWI4HY2urVR8fI18yu98xM7MpU1Mkw_HPnFdrIetohdmsRU5p87D9k2Ftrxr75D-f5Y/s600/Ex05-HelloInput.png"/></a>
+</td>
+<td valign="top" width="40%">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmkim8bLyU2I01s8nM3aOyhnH3TvjrTZkf6wgciIe-S0VcYX586_QzFc-I3jrTj_S7-SdAY6wSAm-2u-hVCeCSLraTgOpAyCK6jBRZySa4JvIDIsQKquWhbJ4Ypg-S5z5ue1vYZtqy8m4rxCscVeavyID0ZrgzQDuX_Id7k_D5mJMol7ZX12gO4zCAV6Q/s642/Ex08-HelloAudio.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmkim8bLyU2I01s8nM3aOyhnH3TvjrTZkf6wgciIe-S0VcYX586_QzFc-I3jrTj_S7-SdAY6wSAm-2u-hVCeCSLraTgOpAyCK6jBRZySa4JvIDIsQKquWhbJ4Ypg-S5z5ue1vYZtqy8m4rxCscVeavyID0ZrgzQDuX_Id7k_D5mJMol7ZX12gO4zCAV6Q/s600/Ex08-HelloAudio.png"/></a>
+</td>
+</tr>
+<tr>
+</table>
+<br />
+  
+<u>Summary</u><br />
+To summarize, we now have the building blocks to implement PyGame APIs; we are in an excellent position to reuse existing video game content and port video game from another language to Python using PyGame!  This will be the topic of the next <a href="https://steveproxna.blogspot.com/2026/11/pygame-programming-sample.html">post</a>.
+
+</span>
