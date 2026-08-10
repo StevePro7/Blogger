@@ -1,0 +1,74 @@
+Scripts - just a nod to MyGame.pyi
+10-Aug-2026
+
+Why I need it for PyCharm navigation
+
+
+REF
+95-CodeOrder.txt
+
+
+from Game.Managers.BaseManager import BaseManager
+from Game.Managers.ClockManager import ClockManager
+from Game.Managers.CollisionManager import CollisionManager
+from Game.Managers.ConfigManager import ConfigManager
+from Game.Managers.ContentManager import ContentManager
+from Game.Managers.DebugManager import DebugManager
+from Game.Managers.DisplayManager import DisplayManager
+from Game.Managers.EventManager import EventManager
+from Game.Managers.FileManager import FileManager
+from Game.Managers.GraphicsManager import GraphicsManager
+from Game.Managers.ImageManager import ImageManager
+from Game.Managers.InputManager import InputManager
+from Game.Managers.LogManager import LogManager
+from Game.Managers.PyGameManager import PyGameManager
+from Game.Managers.QuestionManager import QuestionManager
+from Game.Managers.RandomManager import RandomManager
+from Game.Managers.ResolutionManager import ResolutionManager
+from Game.Managers.ScoreManager import ScoreManager
+from Game.Managers.ScreenManager import ScreenManager
+from Game.Managers.SoundManager import SoundManager
+from Game.Managers.SpriteManager import SpriteManager
+from Game.Managers.TextManager import TextManager
+
+
+class MyGame:
+    @staticmethod
+    def Construct(): ...
+
+    @staticmethod
+    def Initialize(): ...
+
+    @staticmethod
+    def LoadContent(): ...
+
+    @staticmethod
+    def Update(game_time: float): ...
+
+    @staticmethod
+    def Draw(): ...
+
+    class Manager:
+        ...
+        BaseManager: BaseManager
+        ClockManager: ClockManager
+        CollisionManager: CollisionManager
+        ConfigManager: ConfigManager
+        ContentManager: ContentManager
+        DebugManager: DebugManager
+        DisplayManager: DisplayManager
+        EventManager: EventManager
+        FileManager: FileManager
+        GraphicsManager: GraphicsManager
+        ImageManager: ImageManager
+        InputManager: InputManager
+        LogManager: LogManager
+        PyGameManager: PyGameManager
+        QuestionManager: QuestionManager
+        RandomManager: RandomManager
+        ResolutionManager: ResolutionManager
+        ScoreManager: ScoreManager
+        ScreenManager: ScreenManager
+        SoundManager: SoundManager
+        SpriteManager: SpriteManager
+        TextManager: TextManager
