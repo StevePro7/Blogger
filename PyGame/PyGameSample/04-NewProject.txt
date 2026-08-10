@@ -1,0 +1,51 @@
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia">Simpsons Trivia</a></u><br />
+Simpsons Trivia port is Python 3.11.11 <a href="https://steveproxna.blogspot.com/2026/02/python-package-cheat-sheet.html">compatible</a>. Launch PyCharm | New Project. Enter the following info:
+<br />
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh84aJO6almywtNtg-2YM5Nsno-PbLGeOqJH1e8vT6Ma4OiC2-Gn4Qru_CKpkrY8Yu4KmrAjKKNnlN2201l7VwAVkMmy5Hm9w9ClG8XFXoyj16DebCqLhy6O5ny-W1sNuuqmiW5Q9X72qf5KpoCbAdX2Wxe_1fiq_2EKhM332XOeIbUpVJb1q4ectiWTL8/s1000/SimpsonsTriviaProject.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh84aJO6almywtNtg-2YM5Nsno-PbLGeOqJH1e8vT6Ma4OiC2-Gn4Qru_CKpkrY8Yu4KmrAjKKNnlN2201l7VwAVkMmy5Hm9w9ClG8XFXoyj16DebCqLhy6O5ny-W1sNuuqmiW5Q9X72qf5KpoCbAdX2Wxe_1fiq_2EKhM332XOeIbUpVJb1q4ectiWTL8/s600/SimpsonsTriviaProject.png"/></a>
+<!-- -->
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;Location:</td><td valign="top">&nbsp;~/SimpsonsTrivia</td></tr>
+<tr><td valign="top">&nbsp;Interpreter type: </td><td valign="top">&nbsp;uv</td></tr>
+<tr><td valign="top">&nbsp;Python version:</td><td valign="top">&nbsp;3.11</td></tr>
+<tr><td valign="top">&nbsp;Path to uv: </td><td valign="top">&nbsp;~/.local/bin/uv</td></tr>
+</table>
+<br />
+<!-- -->
+PyCharm should setup UV virtual environment and configure Python interpreter if not then enter commands:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv venv --python 3.11
+&nbsp;&nbsp;source .venv/bin/activate           # OR .\.venv\Scripts\activate
+&nbsp;&nbsp;which python
+&nbsp;&nbsp;`which python` --version            # Python 3.11.11
+</pre>
+</td></tr>
+</table>
+<!-- -->
+<br />
+In the PyCharm Terminal | Enter the following commands for UV to install and sync package <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/pyproject.toml">dependencies</a>:
+<br />
+<!-- -->
+<table width="99%" border="1">
+<tr>
+<td width="50%">
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv lock
+</pre>
+</td>
+<td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;uv sync
+</pre>
+</td>
+</tr>
+</table>
+<!-- -->
+<br />
+  
