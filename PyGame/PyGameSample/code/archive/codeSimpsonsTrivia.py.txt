@@ -1,10 +1,10 @@
-<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/SimpsonsTrivia.py">SimpsonsTrivia.py</a><br />
-Main game entry point similar to <a href="https://github.com/SteveProXNA/SimpsonsTrivia/blob/master/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA/Program.cs">Program.cs</a>: creates Game -> runs the [in]finite game loop until shutdown:
-<br />
 <table width="99%" border="1">
 <tr><td>&nbsp;&nbsp;<strong>SimpsonsTrivia.py</strong></td></tr>
 <tr><td>
 <pre style="font-size: 12px;">
+&nbsp;&nbsp;from Game.AnGame import AnGame
+&nbsp;&nbsp;
+&nbsp;&nbsp;
 &nbsp;&nbsp;def main():
 &nbsp;&nbsp;    try:
 &nbsp;&nbsp;        game = AnGame()
@@ -13,8 +13,11 @@ Main game entry point similar to <a href="https://github.com/SteveProXNA/Simpson
 &nbsp;&nbsp;        game.Exit()
 &nbsp;&nbsp;    finally:
 &nbsp;&nbsp;        game.ShutDown()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;if __name__ == &quot;__main__&quot;:
+&nbsp;&nbsp;    main()
 </pre>
 </td></tr>
 </table>
-<br />
 <br />

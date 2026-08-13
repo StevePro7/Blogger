@@ -1,0 +1,73 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>MyGame.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from Engine.ServiceRegistry import ServiceRegistry
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class MyGame:
+&nbsp;&nbsp;    class _ManagerFacade:
+&nbsp;&nbsp;        def __getattr__(self, name):
+&nbsp;&nbsp;            return ServiceRegistry.get(name)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    Manager = _ManagerFacade()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Initialize():
+&nbsp;&nbsp;        MyGame.Manager.PyGameManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.LogManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.BaseManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.RandomManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.TextManager.Initialize()
+&nbsp;&nbsp;
+&nbsp;&nbsp;        MyGame.Manager.ConfigManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.ConfigManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.ConfigManager.DumpConfig()
+&nbsp;&nbsp;
+&nbsp;&nbsp;        MyGame.Manager.ClockManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.ContentManager.Initialize()
+&nbsp;&nbsp;
+&nbsp;&nbsp;        MyGame.Manager.DisplayManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.ImageManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.InputManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.QuestionManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.ScoreManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.SpriteManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.ScreenManager.Initialize()
+&nbsp;&nbsp;        MyGame.Manager.SoundManager.Initialize()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def LoadContent():
+&nbsp;&nbsp;        MyGame.Manager.CollisionManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.ContentManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.DisplayManager.LoadContent()
+&nbsp;&nbsp;
+&nbsp;&nbsp;        MyGame.Manager.ImageManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.QuestionManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.ScoreManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.SpriteManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.ScreenManager.LoadContent()
+&nbsp;&nbsp;        MyGame.Manager.SoundManager.LoadContent()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Update(deltaTime: int):
+&nbsp;&nbsp;        MyGame.Manager.InputManager.Update(deltaTime)
+&nbsp;&nbsp;        MyGame.Manager.ScreenManager.Update(deltaTime)
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Draw():
+&nbsp;&nbsp;        MyGame.Manager.ScreenManager.Draw()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def ShutDown():
+&nbsp;&nbsp;        MyGame.Manager.PyGameManager.Quit()
+</pre>
+</td></tr>
+</table>
+<br />

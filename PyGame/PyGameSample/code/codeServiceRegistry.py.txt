@@ -1,0 +1,22 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>ServiceRegistry.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class ServiceRegistry:
+&nbsp;&nbsp;    _services: dict = {}
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @classmethod
+&nbsp;&nbsp;    def register(cls, name: str, service):
+&nbsp;&nbsp;        cls._services[name] = service
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @classmethod
+&nbsp;&nbsp;    def get(cls, name: str):
+&nbsp;&nbsp;        return cls._services[name]
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @classmethod
+&nbsp;&nbsp;    def clear(cls):
+&nbsp;&nbsp;        cls._services.clear()
+</pre>
+</td></tr>
+</table>
+<br />

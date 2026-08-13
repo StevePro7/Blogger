@@ -1,0 +1,160 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>SoundManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;from pygame._sdl2 import get_audio_device_names
+&nbsp;&nbsp;from pathlib import Path
+&nbsp;&nbsp;from Game.MyGame import MyGame
+&nbsp;&nbsp;from Game.Static import Enumerations as enums, Constants as const
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class SoundManager:
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self.contentRoot: Path = None
+&nbsp;&nbsp;        self.soundRoot: Path = None
+&nbsp;&nbsp;        self.audioEnable = False
+&nbsp;&nbsp;        self.soundEnable = False
+&nbsp;&nbsp;        self.music: dict[enums.MusicType, str] = {}
+&nbsp;&nbsp;        self.sound: dict[enums.SoundType, str] = {}
+&nbsp;&nbsp;        self.currMusic = None
+&nbsp;&nbsp;        self.currSound = None
+&nbsp;&nbsp;        self.prevSound = None
+&nbsp;&nbsp;        self.volume: int = None
+&nbsp;&nbsp;        self.channel: pygame.mixer.Channel = None
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Initialize(self) -&gt; None:
+&nbsp;&nbsp;        self.contentRoot = MyGame.Manager.BaseManager.GetContentRoot()
+&nbsp;&nbsp;        self.soundRoot = self.contentRoot / const.SOUND_DIRECTORY
+&nbsp;&nbsp;
+&nbsp;&nbsp;        self.audioEnable = pygame.mixer.get_init() is not None
+&nbsp;&nbsp;        if self.audioEnable:
+&nbsp;&nbsp;            pygame.mixer.init()
+&nbsp;&nbsp;            devices = get_audio_device_names(True)
+&nbsp;&nbsp;            MyGame.Manager.LogManager.Debug(devices)
+&nbsp;&nbsp;
+&nbsp;&nbsp;            # Edge case where pygame may &quot;detect&quot; device but list is empty
+&nbsp;&nbsp;            if len(devices) == 0:
+&nbsp;&nbsp;                self.audioEnable = False
+&nbsp;&nbsp;                self.soundEnable = False
+&nbsp;&nbsp;            else:
+&nbsp;&nbsp;                self.soundEnable = MyGame.Manager.ConfigManager.ConfigData.SoundEnable
+&nbsp;&nbsp;                self.SetVolume()
+&nbsp;&nbsp;        else:
+&nbsp;&nbsp;            self.soundEnable = False
+&nbsp;&nbsp;        self.prevSound = -1
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def LoadContent(self) -&gt; None:
+&nbsp;&nbsp;        if not self.audioEnable:
+&nbsp;&nbsp;            return
+&nbsp;&nbsp;
+&nbsp;&nbsp;        for type in enums.MusicType:
+&nbsp;&nbsp;            file = self.__getAudioFile(type.name, &quot;mp3&quot;)
+&nbsp;&nbsp;            self.music[type] = file
+&nbsp;&nbsp;
+&nbsp;&nbsp;        for type in enums.SoundType:
+&nbsp;&nbsp;            file = self.__getAudioFile(type.name, &quot;wav&quot;)
+&nbsp;&nbsp;            sfx: pygame.mixer.Sound = pygame.mixer.Sound(file)
+&nbsp;&nbsp;            self.sound[type] = sfx
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def PlaySound(self, type: enums.SoundType) -&gt; None:
+&nbsp;&nbsp;        if not self.audioEnable or not self.soundEnable:
+&nbsp;&nbsp;            return
+&nbsp;&nbsp;
+&nbsp;&nbsp;        sfx: pygame.mixer.Sound = self.sound[type]
+&nbsp;&nbsp;        self.currSound = sfx
+&nbsp;&nbsp;        self.channel: pygame.mixer.Channel = sfx.play()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def PlayRightSound(self) -&gt; None:
+&nbsp;&nbsp;        self.PlayMultiSound(0)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def PlayWrongSound(self) -&gt; None:
+&nbsp;&nbsp;        self.PlayMultiSound(const.WRONG_DELTA)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def PlayMultiSound(self, delta: int = 0) -&gt; None:
+&nbsp;&nbsp;        while True:
+&nbsp;&nbsp;            value = MyGame.Manager.RandomManager.Next(const.SOUND_MAXIM)
+&nbsp;&nbsp;            value += delta
+&nbsp;&nbsp;            if value != self.prevSound:
+&nbsp;&nbsp;                self.prevSound = value
+&nbsp;&nbsp;                break
+&nbsp;&nbsp;
+&nbsp;&nbsp;        type: enums.SoundType = enums.SoundType(value)
+&nbsp;&nbsp;        self.PlaySound(type)
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def PlayMusic(self, type: enums.MusicType) -&gt; None:
+&nbsp;&nbsp;        if not self.audioEnable:
+&nbsp;&nbsp;            return
+&nbsp;&nbsp;
+&nbsp;&nbsp;        song = self.music[type]
+&nbsp;&nbsp;        self.currMusic = song
+&nbsp;&nbsp;        pygame.mixer.music.load(song)
+&nbsp;&nbsp;        pygame.mixer.music.play()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def StopMusic(self) -&gt; None:
+&nbsp;&nbsp;        if not self.audioEnable:
+&nbsp;&nbsp;            return
+&nbsp;&nbsp;
+&nbsp;&nbsp;        pygame.mixer.music.stop()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def PauseMusic(self) -&gt; None:
+&nbsp;&nbsp;        if not self.audioEnable:
+&nbsp;&nbsp;            return
+&nbsp;&nbsp;
+&nbsp;&nbsp;        pygame.mixer.music.pause()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def ResumeMusic(self) -&gt; None:
+&nbsp;&nbsp;        if not self.audioEnable:
+&nbsp;&nbsp;            return
+&nbsp;&nbsp;
+&nbsp;&nbsp;        pygame.mixer.music.unpause()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def IsMusicPlaying(self) -&gt; bool:
+&nbsp;&nbsp;        if not self.audioEnable:
+&nbsp;&nbsp;            return False
+&nbsp;&nbsp;
+&nbsp;&nbsp;        return pygame.mixer.music.get_busy() and self.currMusic is not None
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def IsSoundPlaying(self) -&gt; bool:
+&nbsp;&nbsp;        if not self.audioEnable or not self.soundEnable:
+&nbsp;&nbsp;            return False
+&nbsp;&nbsp;
+&nbsp;&nbsp;        return self.channel and self.channel.get_busy() and self.currSound is not None
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def AlternateSound(self) -&gt; None:
+&nbsp;&nbsp;        self.soundEnable = not self.soundEnable
+&nbsp;&nbsp;        self.SetVolume()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def DrawVolumeIcon(self) -&gt; None:
+&nbsp;&nbsp;        if self.soundEnable:
+&nbsp;&nbsp;            MyGame.Manager.SpriteManager.DrawVolumeOn()
+&nbsp;&nbsp;        else:
+&nbsp;&nbsp;            MyGame.Manager.SpriteManager.DrawVolumeOff()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def SetVolume(self) -&gt; None:
+&nbsp;&nbsp;        self.volume = 1 if self.soundEnable else 0
+&nbsp;&nbsp;        pygame.mixer.music.set_volume(self.volume)
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @property
+&nbsp;&nbsp;    def AudioEnable(self) -&gt; bool:
+&nbsp;&nbsp;        return self.audioEnable
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @property
+&nbsp;&nbsp;    def SoundEnable(self) -&gt; bool:
+&nbsp;&nbsp;        return self.audioEnable and self.soundEnable
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def __getAudioFile(self, soundFile: str, extention: str) -&gt; str:
+&nbsp;&nbsp;        file = f&quot;{soundFile}.{extention}&quot;
+&nbsp;&nbsp;        path: Path = self.soundRoot / file
+&nbsp;&nbsp;        return path
+</pre>
+</td></tr>
+</table>
+<br />

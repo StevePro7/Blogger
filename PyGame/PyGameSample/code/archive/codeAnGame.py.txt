@@ -1,0 +1,53 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>AnGame.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from Engine.Bootstrap import build_game
+&nbsp;&nbsp;from Game.MyGame import MyGame
+&nbsp;&nbsp;
+&nbsp;&nbsp;class AnGame:
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self.running: bool = True
+&nbsp;&nbsp;        build_game()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Initialize(self):
+&nbsp;&nbsp;        MyGame.Initialize()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def LoadContent(self):
+&nbsp;&nbsp;        MyGame.LoadContent()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Update(self, deltaTime: int):
+&nbsp;&nbsp;        MyGame.Update(deltaTime)
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Draw(self):
+&nbsp;&nbsp;        MyGame.Draw()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Exit(self):
+&nbsp;&nbsp;        self.running = False
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def ShutDown(self):
+&nbsp;&nbsp;        MyGame.ShutDown()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Run(self):
+&nbsp;&nbsp;        self.Initialize()
+&nbsp;&nbsp;        self.LoadContent()
+&nbsp;&nbsp;
+&nbsp;&nbsp;        while self.running:
+&nbsp;&nbsp;            MyGame.Manager.EventManager.ProcessEvents()
+&nbsp;&nbsp;            if MyGame.Manager.EventManager.QuitRequested:
+&nbsp;&nbsp;                self.Exit()
+&nbsp;&nbsp;
+&nbsp;&nbsp;            deltaTime: int = MyGame.Manager.ClockManager.Update()
+&nbsp;&nbsp;            self.Update(deltaTime)
+&nbsp;&nbsp;            self.Draw()
+</pre>
+</td></tr>
+</table>
+<br />

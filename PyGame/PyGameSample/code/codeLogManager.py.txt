@@ -1,0 +1,31 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>LogManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import logging
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class LogManager:
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Initialize():
+&nbsp;&nbsp;        level = logging.INFO
+&nbsp;&nbsp;        output: str = &quot;[%(asctime)s] [%(module)s] %(message)s&quot;
+&nbsp;&nbsp;        datefmt: str = &#x27;%Y-%m-%d %H:%M:%S&#x27;
+&nbsp;&nbsp;        logging.basicConfig(level=level, format=output, datefmt=datefmt)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Debug(msg: str):
+&nbsp;&nbsp;        logging.debug(msg, stacklevel=2)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Write(msg: str):
+&nbsp;&nbsp;        logging.info(msg, stacklevel=2)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Error(msg: str):
+&nbsp;&nbsp;        logging.error(msg, stacklevel=2)
+</pre>
+</td></tr>
+</table>
+<br />

@@ -1,0 +1,38 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Bootstrap.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;from pathlib import Path
+&nbsp;&nbsp;import importlib
+&nbsp;&nbsp;
+&nbsp;&nbsp;from Engine.ServiceRegistry import ServiceRegistry
+&nbsp;&nbsp;from Game.Static import Constants as const
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;def build_game():
+&nbsp;&nbsp;
+&nbsp;&nbsp;    ServiceRegistry.clear()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    base_dir = Path(__file__).resolve().parent.parent
+&nbsp;&nbsp;    managers_path = base_dir / const.GAME_DIRECTORY / const.ENGINE_MANAGERS
+&nbsp;&nbsp;
+&nbsp;&nbsp;    for file in managers_path.glob(f&quot;*{const.ENGINE_MANAGER}.py&quot;):
+&nbsp;&nbsp;
+&nbsp;&nbsp;        if file.stem == &quot;__init__&quot;:
+&nbsp;&nbsp;            continue
+&nbsp;&nbsp;
+&nbsp;&nbsp;        module_name = file.stem
+&nbsp;&nbsp;        path_name = f&quot;{const.GAME_DIRECTORY}.{const.ENGINE_MANAGERS}.{module_name}&quot;
+&nbsp;&nbsp;        module = importlib.import_module(path_name)
+&nbsp;&nbsp;
+&nbsp;&nbsp;        manager_class = getattr(module, module_name)
+&nbsp;&nbsp;        ServiceRegistry.register(
+&nbsp;&nbsp;            manager_class.__name__,
+&nbsp;&nbsp;            manager_class()
+&nbsp;&nbsp;        )
+&nbsp;&nbsp;
+&nbsp;&nbsp;    return ServiceRegistry
+</pre>
+</td></tr>
+</table>
+<br />

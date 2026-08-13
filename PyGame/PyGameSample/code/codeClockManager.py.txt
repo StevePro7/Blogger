@@ -1,0 +1,22 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>ClockManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;from Game.MyGame import MyGame
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class ClockManager:
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Initialize(self):
+&nbsp;&nbsp;        self.clock: pygame.time.Clock = pygame.time.Clock()
+&nbsp;&nbsp;        self.fps = MyGame.Manager.ConfigManager.ConfigData.FPS
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Update(self) -&gt; int:
+&nbsp;&nbsp;        deltaTime: int = self.clock.tick(self.fps)
+&nbsp;&nbsp;        return deltaTime
+</pre>
+</td></tr>
+</table>
+<br />

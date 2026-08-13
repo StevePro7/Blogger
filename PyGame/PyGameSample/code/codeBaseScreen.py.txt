@@ -1,0 +1,98 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>BaseScreen.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import time
+&nbsp;&nbsp;from abc import ABC, abstractmethod
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;from Game.Static.Enumerations import ScreenType
+&nbsp;&nbsp;from Game.Objects.TextData import TextData
+&nbsp;&nbsp;from Game.MyGame import MyGame
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class BaseScreen(ABC):
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self.Timer: int = None
+&nbsp;&nbsp;        self.BuildPosition: pygame.Vector2 = None
+&nbsp;&nbsp;        self.CheatPositions: list[pygame.Vector2] = None
+&nbsp;&nbsp;        self.textDataList: list[TextData] = []
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Initialize(self) -&gt; None:
+&nbsp;&nbsp;        self.BuildPosition = self.__getBuildPosition()
+&nbsp;&nbsp;        self.CheatPositions = self.__getCheatPositions()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def LoadContent(self) -&gt; None:
+&nbsp;&nbsp;        self.Timer = 0
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Update(self, deltaTime: int) -&gt; ScreenType | None:
+&nbsp;&nbsp;        return None
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Draw(self) -&gt; None:
+&nbsp;&nbsp;        pass
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def UpdateTimer(self, deltaTime: int):
+&nbsp;&nbsp;        self.Timer += deltaTime
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def UpdateVolumeIcon(self) -&gt; bool:
+&nbsp;&nbsp;        volume: bool = MyGame.Manager.InputManager.VolumeIcon()
+&nbsp;&nbsp;        if volume:
+&nbsp;&nbsp;            if MyGame.Manager.SoundManager.AudioEnable:
+&nbsp;&nbsp;                MyGame.Manager.SoundManager.AlternateSound()
+&nbsp;&nbsp;
+&nbsp;&nbsp;        return volume
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def InitScreenText(self) -&gt; None:
+&nbsp;&nbsp;        screen_name = self.__class__.__name__
+&nbsp;&nbsp;        self.textDataList = MyGame.Manager.TextManager.InitTextData(screen_name)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def DrawScreenText(self) -&gt; None:
+&nbsp;&nbsp;        MyGame.Manager.TextManager.DrawTextDataList(self.textDataList)
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def HideCheatMode(self) -&gt; None:
+&nbsp;&nbsp;        cheatMode: bool = MyGame.Manager.QuestionManager.GetCheatMode()
+&nbsp;&nbsp;        if not cheatMode:
+&nbsp;&nbsp;            MyGame.Manager.SpriteManager.DrawWhite(self.CheatPositions[0])
+&nbsp;&nbsp;            MyGame.Manager.SpriteManager.DrawWhite(self.CheatPositions[1])
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def BlockOnSoundFX(self) -&gt; None:
+&nbsp;&nbsp;        soundEnable: bool = MyGame.Manager.SoundManager.SoundEnable
+&nbsp;&nbsp;        if not soundEnable:
+&nbsp;&nbsp;            delay: int = MyGame.Manager.ConfigManager.ConfigData.OptionDelay
+&nbsp;&nbsp;            timer = int(delay / 1000)
+&nbsp;&nbsp;            time.sleep(timer)
+&nbsp;&nbsp;        else:
+&nbsp;&nbsp;            while (MyGame.Manager.SoundManager.IsSoundPlaying()):
+&nbsp;&nbsp;                pass
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def GetTextPositions(self, coordinates: list[tuple]) -&gt; list[pygame.Vector2]:
+&nbsp;&nbsp;        positions: list[pygame.Vector2] = []
+&nbsp;&nbsp;        for x, y in coordinates:
+&nbsp;&nbsp;            positions.append(MyGame.Manager.TextManager.GetTextPosition(x, y))
+&nbsp;&nbsp;
+&nbsp;&nbsp;        return positions
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def __getBuildPosition(self) -&gt; pygame.Vector2:
+&nbsp;&nbsp;        return MyGame.Manager.TextManager.GetTextPosition(26, 23)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def __getCheatPositions(self) -&gt; list[pygame.Vector2]:
+&nbsp;&nbsp;        positions: list[pygame.Vector2] = []
+&nbsp;&nbsp;        positions.append(MyGame.Manager.TextManager.GetTextPosition(25, 9))
+&nbsp;&nbsp;        positions.append(MyGame.Manager.TextManager.GetTextPosition(27, 9))
+&nbsp;&nbsp;        return positions
+</pre>
+</td></tr>
+</table>
+<br />

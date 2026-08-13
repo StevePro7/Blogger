@@ -1,12 +1,45 @@
 <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/AnGame.py">AnGame.py</a><br />
 Builds game infrastructure and acts as an intermediary between the game bootstrap and the service registry which delegates game init, load, update and draw game loop methods to actual game implementation code.
 <br />
-TODO - 93-CodeOrder.txt 
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>AnGame.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class AnGame:
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self.running: bool = True
+&nbsp;&nbsp;        build_game()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Run(self):
+&nbsp;&nbsp;        self.Initialize()
+&nbsp;&nbsp;        self.LoadContent()
+&nbsp;&nbsp;
+&nbsp;&nbsp;        while self.running:
+&nbsp;&nbsp;            MyGame.Manager.EventManager.ProcessEvents()
+&nbsp;&nbsp;            if MyGame.Manager.EventManager.QuitRequested:
+&nbsp;&nbsp;                self.Exit()
+&nbsp;&nbsp;
+&nbsp;&nbsp;            deltaTime: int = MyGame.Manager.ClockManager.Update()
+&nbsp;&nbsp;            self.Update(deltaTime)
+&nbsp;&nbsp;            self.Draw()
+</pre>
+</td></tr>
+</table>
 <br />
-<br />
-
 <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/MyGame.py">MyGame.py</a><br />
 Delegates game init, load, update + draw game static methods to actual management implementation code.
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>MyGame.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class MyGame:
+&nbsp;&nbsp;    class _ManagerFacade:
+&nbsp;&nbsp;        def __getattr__(self, name):
+&nbsp;&nbsp;            return ServiceRegistry.get(name)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    Manager = _ManagerFacade()
+</pre>
+</td></tr>
+</table>
 <br />
-TODO - 93-CodeOrder.txt 
 <br />

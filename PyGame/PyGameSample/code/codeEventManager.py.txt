@@ -1,0 +1,28 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>EventManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import pygame
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class EventManager:
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self.QuitRequested = False
+&nbsp;&nbsp;        self.Events = []
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def ProcessEvents(self):
+&nbsp;&nbsp;        self.Events.clear()
+&nbsp;&nbsp;        for event in pygame.event.get():
+&nbsp;&nbsp;
+&nbsp;&nbsp;            self.Events.append(event)
+&nbsp;&nbsp;            if event.type == pygame.QUIT:
+&nbsp;&nbsp;                self.QuitRequested = True
+&nbsp;&nbsp;
+&nbsp;&nbsp;            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+&nbsp;&nbsp;                self.QuitRequested = True
+</pre>
+</td></tr>
+</table>
+<br />

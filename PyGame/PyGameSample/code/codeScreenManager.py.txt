@@ -1,0 +1,85 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>ScreenManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import importlib
+&nbsp;&nbsp;import pkgutil
+&nbsp;&nbsp;import Game.Screens as Screens
+&nbsp;&nbsp;from Game.MyGame import MyGame
+&nbsp;&nbsp;from Game.Screens.BaseScreen import BaseScreen
+&nbsp;&nbsp;from Game.Static.Colors import Colors
+&nbsp;&nbsp;from Game.Static.Enumerations import ScreenType
+&nbsp;&nbsp;import Game.Static.Constants as const
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;ENGINE_SCREENS: str = &quot;Screens&quot;
+&nbsp;&nbsp;ENGINE_SCREEN: str = &quot;Screen&quot;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class ScreenManager:
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self.screens: dict = {}
+&nbsp;&nbsp;        self.currScreen: ScreenType = ScreenType.Unknown
+&nbsp;&nbsp;        self.nextScreen: ScreenType = ScreenType.Splash
+&nbsp;&nbsp;        self.color = Colors.Black
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Initialize(self):
+&nbsp;&nbsp;        self._import_all_screens()
+&nbsp;&nbsp;        screen_classes = self._build_screen_map()
+&nbsp;&nbsp;        self.screens: dict[ScreenType, BaseScreen] = {
+&nbsp;&nbsp;            st: cls()
+&nbsp;&nbsp;            for st, cls in screen_classes.items()
+&nbsp;&nbsp;        }
+&nbsp;&nbsp;        for screen in self.screens.values():
+&nbsp;&nbsp;            screen.Initialize()
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def LoadContent(self):
+&nbsp;&nbsp;        self.nextScreen = MyGame.Manager.ConfigManager.ConfigData.ScreenType
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Update(self, deltaTime: int):
+&nbsp;&nbsp;        if self.currScreen != self.nextScreen:
+&nbsp;&nbsp;            self.currScreen = self.nextScreen
+&nbsp;&nbsp;            self.screens[self.currScreen].LoadContent()
+&nbsp;&nbsp;
+&nbsp;&nbsp;            self.color = Colors.White
+&nbsp;&nbsp;            if self.currScreen in (ScreenType.Splash, ScreenType.Unknown):
+&nbsp;&nbsp;                self.color = Colors.Black
+&nbsp;&nbsp;
+&nbsp;&nbsp;        tempScreen = self.screens[self.currScreen].Update(deltaTime)
+&nbsp;&nbsp;        if tempScreen:
+&nbsp;&nbsp;            self.nextScreen = tempScreen
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Draw(self):
+&nbsp;&nbsp;        MyGame.Manager.DisplayManager.Clear(self.color)
+&nbsp;&nbsp;        self.screens[self.currScreen].Draw()
+&nbsp;&nbsp;        MyGame.Manager.DisplayManager.Present(self.color)
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def _import_all_screens(self):
+&nbsp;&nbsp;        for _, module_name, _ in pkgutil.iter_modules(Screens.__path__):
+&nbsp;&nbsp;            if module_name == BaseScreen.__name__:
+&nbsp;&nbsp;                continue
+&nbsp;&nbsp;
+&nbsp;&nbsp;            path_name: str = f&quot;{const.GAME_DIRECTORY}.{ENGINE_SCREENS}.{module_name}&quot;
+&nbsp;&nbsp;            importlib.import_module(path_name)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def _build_screen_map(self) -&gt; dict[ScreenType, type[BaseScreen]]:
+&nbsp;&nbsp;        screen_map: dict[ScreenType, type[BaseScreen]] = {}
+&nbsp;&nbsp;
+&nbsp;&nbsp;        for screen_type in ScreenType:
+&nbsp;&nbsp;            class_name = f&quot;{screen_type.name}{ENGINE_SCREEN}&quot;
+&nbsp;&nbsp;            path_name: str = f&quot;{const.GAME_DIRECTORY}.{ENGINE_SCREENS}.{class_name}&quot;
+&nbsp;&nbsp;            module = importlib.import_module(path_name)
+&nbsp;&nbsp;
+&nbsp;&nbsp;            cls = getattr(module, class_name)
+&nbsp;&nbsp;            screen_map[screen_type] = cls
+&nbsp;&nbsp;
+&nbsp;&nbsp;        return screen_map
+</pre>
+</td></tr>
+</table>
+<br />

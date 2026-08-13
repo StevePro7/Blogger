@@ -1,5 +1,29 @@
 <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Screens">Screens</a><br />
-Includes BaseScreen to define common interface for all game screens thus ScreenManager lifecycle invokes each screen uniformly and keeps game state transitions clean and decoupled from individual screen logic.
+Includes <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Screens/BaseScreen.py">BaseScreen</a> to define common interface for all game screens thus ScreenManager lifecycle invokes each screen uniformly and keeps game state transitions clean and decoupled from individual screen logic.
 <br />
-TODO - 92-CodeOrder.txt 
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>BaseScreen.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class BaseScreen(ABC):
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Initialize(self) -&gt; None:
+&nbsp;&nbsp;        self.Timer: int = None
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def LoadContent(self) -&gt; None:
+&nbsp;&nbsp;        self.Timer = 0
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Update(self, deltaTime: int) -&gt; ScreenType | None:
+&nbsp;&nbsp;        return None
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Draw(self) -&gt; None:
+&nbsp;&nbsp;        pass
+</pre>
+</td></tr>
+</table>
+<br />
 <br />
