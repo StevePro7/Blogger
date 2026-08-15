@@ -1,4 +1,4 @@
-<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Screens">Screens</a><br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Screens">Screens</a></u><br />
 Includes <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Screens/BaseScreen.py">BaseScreen</a> to define common interface for all game screens thus ScreenManager lifecycle invokes each screen uniformly and keeps game state transitions clean and decoupled from individual screen logic.
 <br />
 <table width="99%" border="1">
@@ -6,7 +6,6 @@ Includes <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameS
 <tr><td>
 <pre style="font-size: 12px;">
 &nbsp;&nbsp;class BaseScreen(ABC):
-&nbsp;&nbsp;
 &nbsp;&nbsp;    @abstractmethod
 &nbsp;&nbsp;    def Initialize(self) -&gt; None:
 &nbsp;&nbsp;        self.Timer: int = None
@@ -25,5 +24,4 @@ Includes <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameS
 </pre>
 </td></tr>
 </table>
-<br />
 <br />
