@@ -1,10 +1,48 @@
 <span style="font-family:verdana;font-size:85%;">
 
-Engine
-  <br>
-  https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Engine
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Engine">Engine</a></u><br />
+In order to fully port C#/.NET paradigms to Python we need helper scripts to <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/ServiceRegistry.py">register</a> and <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/Bootstrap.py">bootstrap</a> game:
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/ServiceRegistry.py">ServiceRegistry</a></td>
+<td valign="top">
+&nbsp;Simple service locator central hub which connects all game systems together
+</td>
+</tr>
+<tr><td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/Bootstrap.py">Bootstrap</a></td>
+<td valign="top">
+&nbsp;Automatic game management discovery using reflection via dynamic imports
+</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Bootstrap.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;def build_game():
+&nbsp;&nbsp;    ServiceRegistry.clear()
+&nbsp;&nbsp;    base_dir = Path(__file__).resolve().parent.parent
+&nbsp;&nbsp;    managers_path = base_dir / const.GAME_DIRECTORY / const.ENGINE_MANAGERS
+&nbsp;&nbsp;    for file in managers_path.glob(f&quot;*{const.ENGINE_MANAGER}.py&quot;):
+&nbsp;&nbsp;        if file.stem == &quot;__init__&quot;:
+&nbsp;&nbsp;            continue
+&nbsp;&nbsp;        module_name = file.stem
+&nbsp;&nbsp;        path_name = f&quot;{const.GAME_DIRECTORY}.{const.ENGINE_MANAGERS}.{module_name}&quot;
+&nbsp;&nbsp;        module = importlib.import_module(path_name)
+&nbsp;&nbsp;        manager_class = getattr(module, module_name)
+&nbsp;&nbsp;        ServiceRegistry.register(
+&nbsp;&nbsp;            manager_class.__name__,
+&nbsp;&nbsp;            manager_class()
+&nbsp;&nbsp;        )
+&nbsp;&nbsp;    return ServiceRegistry
+</pre>
+</td></tr>
+</table>
+<br />
+  
   <br><br>
-In order to fully port C#/.NET paradigms to Python we need helper scripts to register and bootstrap game.  
+
   <br><br>
 Fully port C#/.NET paradigms to Python we need helper scripts to create Service Registry and bootstrap game.
   <br><br>  
@@ -12,21 +50,7 @@ In order to fully port C#/.NET paradigms to Python we needed some helper scripts
   <br><br>
   ServiceRegistry + bootstrap
   <br><br>
-<table width="99%" border="1">
-<tr><td valign="top">&nbsp;ServiceRegistry</td>
-<td valign="top">
-&nbsp;Simple service locator central hub which connects all game systems together
-</td>
-</tr>
-<tr><td valign="top">&nbsp;Bootstrap</td>
-<td valign="top">
-&nbsp;Automatic game management discovery using reflection via dynamic imports
-</td>
-</tr>
-</table>
-<br />
-<br />
-  
+
   Finally
 generate_stubs.py
 
