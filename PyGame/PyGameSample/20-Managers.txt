@@ -1,5 +1,52 @@
 <span style="font-family:verdana;font-size:85%;">
 
+<i>Miscellaneous</i><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ImageManager</td>
+<td valign="top">&nbsp;Character rendering system game system responsible for image content rendering</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;SoundManager</td>
+<td valign="top">&nbsp;Audio game sub-system responsible loading and playing all music + sound effects</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;SpriteManager&nbsp;</td>
+<td valign="top">&nbsp;Central UI sprite renderer and game icons mapper using spritesheet for rendering</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;TextManager&nbsp;</td>
+<td valign="top">&nbsp;Central UI text rendering and layout-from-file system handling all text definitions</td>
+</tr>
+</table>
+<br />
+<br />
+  
+<i>Resources</i><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;ContentManager&nbsp;</td>
+<td valign="top">&nbsp;Asset loading game system responsible for loading all game content into memory</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;DisplayManager&nbsp;</td>
+<td valign="top">&nbsp;Low-level rendering window mgt system controlling how game appears onscreen</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;GraphicsManager&nbsp;</td>
+<td valign="top">&nbsp;Rendering abstraction layer wrapping PyGame drawing calls as usuable functions</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;ResolutionManager&nbsp;</td>
+<td valign="top">&nbsp;Co-ordinate transformation system for game used for all full screen conversions</td>
+</tr>
+</table>
+<br />
+  
+Finally, the QuestionManager which is the core gameplay system loading questions from files, manages quiz state, randomizes question and answers, tracks difficulty, and handles all of the question / answer rendering.
+<br /><br />
+
+  
 <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Managers">Managers</a><br />
 A Manager is responsible for a particular game system or service. It owns data or functionality that is shared across multiple parts of the game.  <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/BaseManager.py">BaseManager</a> is a foundation class, common toolbox and system helper.
 <br />
