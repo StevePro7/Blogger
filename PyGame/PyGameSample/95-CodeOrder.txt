@@ -51,6 +51,7 @@ e.g.
 MyGame.Manager.RandomManager.Initialize()
 
 
+Why I need it for PyCharm navigation
 PyCharm cannot statically infer dynamically created manager attributes, so a .pyi type stub is needed to provide type information for code navigation, autocompletion, and static analysis.
 
 
