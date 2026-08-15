@@ -1,5 +1,6 @@
 <span style="font-family:verdana;font-size:85%;">
-
+  
+  
 In the previous <a href="https://steveproxna.blogspot.com/2026/09/pygame-programming-setup.html">post</a>, we checked out PyGame Programming Setup.  <a href="https://github.com/pygame/pygame">PyGame</a> is a free and open-source cross platform library for the development of video games using Python.  Now that we have the building blocks to implement PyGame APIs we're in excellent position to port an <a href="https://github.com/SteveProXNA/SimpsonsTrivia">existing video game</a> to Python using PyGame!
 <br />
 <!-- -->  
@@ -12,6 +13,7 @@ Let’s check it out!
 <u>Simpsons Trivia</u><br />
 <a href="https://steveproxna.blogspot.com/2018/05/simpsons-trivia-code-complete.html">Simpsons Trivia</a> is a retro fan-made quiz game built for the 2018 SMS Power! Coding Competition originally targeting the Sega <a href="https://www.smspower.org/Homebrew/SimpsonsTrivia-SMS">Master System</a>.  The game was ported to the <a href="https://steveproxna.blogspot.com/2023/06/sega-console-game-port.html">Sega Genesis</a>, <a href="https://steveproxna.blogspot.com/2018/08/simpsons-trivia-windows-port.html">Windows</a>, <a href="https://steveproxna.blogspot.com/2018/09/simpsons-trivia-android-port.html">Android</a> and <a href="https://steveproxna.blogspot.com/2018/11/simpsons-trivia-ios-port.html">iOS</a>.  
 <br /><br />
+
 
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia">Simpsons Trivia</a></u><br />
 Simpsons Trivia port is Python 3.11.11 <a href="https://steveproxna.blogspot.com/2026/02/python-package-cheat-sheet.html">compatible</a>. Launch PyCharm | New Project. Enter the following info:
@@ -63,85 +65,6 @@ In the PyCharm Terminal | Enter the following commands for UV to install and syn
 </table>
 <!-- -->
 <br />
-
-<b>Dissection</b><br />
-Before jumping into the full code dissection let's document some of the support folders with their functions:
-<br /><br />
-<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Static">Static</a><br />
-Includes globally loaded game resource assets and colors definitions.  Constants store core configuration with enumerations defining all strongly-typed categories as Python enums and globalize has UI text information.
-<br /><br />
-<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Objects">Objects</a><br />
-Includes game data models to represent configuration, questions and text elements to rendered on-screen.
-<br /><br />
-<a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Inputs">Inputs</a><br />
-Includes low-level input layer for game engine to convert raw PyGame input into cleaner game input APIs.
-<br /><br />
-
-<b>CODE</b><br />  
-<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/SimpsonsTrivia.py">SimpsonsTrivia.py</a><br />
-Main game entry point similar to <a href="https://github.com/SteveProXNA/SimpsonsTrivia/blob/master/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA/SimpsonsTrivia.XNA/Program.cs">Program.cs</a>: creates Game -> runs the [in]finite game loop until shutdown:
-<br />
-<table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>SimpsonsTrivia.py</strong></td></tr>
-<tr><td>
-<pre style="font-size: 12px;">
-&nbsp;&nbsp;def main():
-&nbsp;&nbsp;    try:
-&nbsp;&nbsp;        game = AnGame()
-&nbsp;&nbsp;        game.Run()
-&nbsp;&nbsp;    except KeyboardInterrupt:
-&nbsp;&nbsp;        game.Exit()
-&nbsp;&nbsp;    finally:
-&nbsp;&nbsp;        game.ShutDown()
-</pre>
-</td></tr>
-</table>
-<br />
-
-<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/AnGame.py">AnGame.py</a><br />
-Builds game infrastructure and acts as an intermediary between the game bootstrap and the service registry which delegates game init, load, update and draw game loop methods to actual game implementation code.
-<br />
-<table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>AnGame.py</strong></td></tr>
-<tr><td>
-<pre style="font-size: 12px;">
-&nbsp;&nbsp;class AnGame:
-&nbsp;&nbsp;    def __init__(self):
-&nbsp;&nbsp;        self.running: bool = True
-&nbsp;&nbsp;        build_game()
-&nbsp;&nbsp;
-&nbsp;&nbsp;    def Run(self):
-&nbsp;&nbsp;        self.Initialize()
-&nbsp;&nbsp;        self.LoadContent()
-&nbsp;&nbsp;
-&nbsp;&nbsp;        while self.running:
-&nbsp;&nbsp;            MyGame.Manager.EventManager.ProcessEvents()
-&nbsp;&nbsp;            if MyGame.Manager.EventManager.QuitRequested:
-&nbsp;&nbsp;                self.Exit()
-&nbsp;&nbsp;
-&nbsp;&nbsp;            deltaTime: int = MyGame.Manager.ClockManager.Update()
-&nbsp;&nbsp;            self.Update(deltaTime)
-&nbsp;&nbsp;            self.Draw()
-</pre>
-</td></tr>
-</table>
-<br />
-<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/MyGame.py">MyGame.py</a><br />
-Delegates game init, load, update + draw game static methods to actual management implementation code.
-<table width="99%" border="1">
-<tr><td>&nbsp;&nbsp;<strong>MyGame.py</strong></td></tr>
-<tr><td>
-<pre style="font-size: 12px;">
-&nbsp;&nbsp;class MyGame:
-&nbsp;&nbsp;    class _ManagerFacade:
-&nbsp;&nbsp;        def __getattr__(self, name):
-&nbsp;&nbsp;            return ServiceRegistry.get(name)
-&nbsp;&nbsp;
-&nbsp;&nbsp;    Manager = _ManagerFacade()
-</pre>
-</td></tr>
-</table>
-<br />
-<br />
-
+  
+  
 </span>
