@@ -1,9 +1,50 @@
+<span style="font-family:verdana;font-size:85%;">
+
 Engine
-10-Aug-2026
+  <br>
+  https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Engine
+  <br><br>
+In order to fully port C#/.NET paradigms to Python we need helper scripts to register and bootstrap game.  
+  <br><br>
+Fully port C#/.NET paradigms to Python we need helper scripts to create Service Registry and bootstrap game.
+  <br><br>  
+In order to fully port C#/.NET paradigms to Python we needed some helper scripts to create the Service Registry and bootstrap game.
+  <br><br>
+  ServiceRegistry + bootstrap
+  <br><br>
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;ServiceRegistry</td>
+<td valign="top">
+&nbsp;Simple service locator central hub which connects all game systems together
+</td>
+</tr>
+<tr><td valign="top">&nbsp;Bootstrap</td>
+<td valign="top">
+&nbsp;Automatic game management discovery using reflection via dynamic imports
+</td>
+</tr>
+</table>
+<br />
+<br />
+  
+  Finally
+generate_stubs.py
+
+In order to navigate to the correct manager Init or Load method we need
+MyGame.pyi
+
+e.g.
+MyGame.Manager.RandomManager.Initialize()
 
 
-Bootstrap
-ServiceRegistry
+Why I need it for PyCharm navigation
+PyCharm cannot statically infer dynamically created manager attributes, so a .pyi type stub is needed to provide type information for code navigation, autocompletion, and static analysis.
 
-REF
-95-CodeOrder.txt
+
+Why the .pyi fixes it
+
+A .pyi file is called a type stub.
+
+It doesn't contain implementation—it contains type information.
+  
+</span>
