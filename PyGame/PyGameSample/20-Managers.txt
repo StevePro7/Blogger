@@ -1,5 +1,31 @@
+<span style="font-family:verdana;font-size:85%;">
+
 <a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Managers">Managers</a><br />
-A Manager is responsible for a particular game system or service. It owns data or functionality that is shared across multiple parts of the game.  BaseManager is a foundation class, common toolbox and system helper.
+A Manager is responsible for a particular game system or service. It owns data or functionality that is shared across multiple parts of the game.  <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/BaseManager.py">BaseManager</a> is a foundation class, common toolbox and system helper.
 <br />
-TODO - 92-CodeOrder.txt 
 <br />
+LogManager<br />
+Simple wrapper around Python built-in logging system that standardizes how the game prints info messages.
+<br /><br />
+  
+RandomManager<br />
+Centralised random number generator used by the game to ensure randomness is consistent across system.
+<br /><br />
+  
+ConfigManager<br />
+External game configuration loader and runtime object responsible for all global gaming settings and access.
+<br /><br />
+
+EventManager<br />
+Event polling game system collecting Pygame events each frame and here is used mainly to track quit game.
+<br /><br />
+
+ClockManager<br />
+Very small but important system manager responsible for controlling the game timing and inject <a href="https://en.wikipedia.org/wiki/Frame_rate">FPS</a> pacing.
+<br /><br />
+  
+ScreenManager<br />
+State machine and game navigation system controlling screen activation and handling all screen transitions.
+<br /><br />
+
+</span>
