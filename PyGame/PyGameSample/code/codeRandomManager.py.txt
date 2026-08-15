@@ -1,0 +1,33 @@
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>RandomManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;import random
+&nbsp;&nbsp;import time
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;class RandomManager:
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self._random = None
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Initialize(self, seed: int = None):
+&nbsp;&nbsp;        if seed is None:
+&nbsp;&nbsp;            seed = int(time.time_ns()) &amp; 0xFFFF
+&nbsp;&nbsp;
+&nbsp;&nbsp;        self._random = random.Random(seed)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Next(self, *args) -&gt; int:
+&nbsp;&nbsp;        if len(args) == 1:
+&nbsp;&nbsp;            max_val: int = args[0]
+&nbsp;&nbsp;            return self._random.randrange(max_val)
+&nbsp;&nbsp;        elif len(args) == 2:
+&nbsp;&nbsp;            min_val: int = args[0]
+&nbsp;&nbsp;            max_val: int = args[1]
+&nbsp;&nbsp;            return self._random.randrange(min_val, max_val)
+&nbsp;&nbsp;        else:
+&nbsp;&nbsp;            raise TypeError(&quot;next() expects 1 or 2 arguments&quot;)
+</pre>
+</td></tr>
+</table>
+<br />
