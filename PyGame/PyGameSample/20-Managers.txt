@@ -7,51 +7,54 @@ codeEventManager.py
 codeClockManager.py
 codeScreenManager.py
 
-
+<br><br>
+  
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Managers">Managers</a></u><br />
 A Manager is responsible for a particular game system or service. It owns data or functionality that is shared across multiple parts of the game.  <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/BaseManager.py">BaseManager</a> is a foundation class, common toolbox and system helper.
 <br />
 <br />
-LogManager<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/LogManager.py">LogManager</a></u><br />
 Simple wrapper around Python built-in logging system that standardizes how the game prints info messages.
-<br /><br />
-  
-RandomManager<br />
+<br />
+<br />  
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/RandomManager.py">RandomManager</a></u><br />
 Centralised random number generator used by the game to ensure randomness is consistent across system.
-<br /><br />
-  
-ConfigManager<br />
+<br />
+<br />  
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ConfigManager.py">ConfigManager</a></u><br />
 External game configuration loader and runtime object responsible for all global gaming settings and access.
-<br /><br />
+<br />
+<br />
 
-EventManager<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/EventManager.py">EventManager</a></u><br />
 Event polling game system collecting Pygame events each frame and here is used mainly to track quit game.
-<br /><br />
+<br />
+<br />
 
-ClockManager<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ClockManager.py">ClockManager</a></u><br />
 Very small but important system manager responsible for controlling the game timing and inject <a href="https://en.wikipedia.org/wiki/Frame_rate">FPS</a> pacing.
 <br /><br />
   
-ScreenManager<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ScreenManager.py">ScreenManager</a></u><br />
 State machine and game navigation system controlling screen activation and handling all screen transitions.
 <br /><br />
 
 <i>Resources</i><br />
 <table width="99%" border="1">
 <tr>
-<td valign="top">&nbsp;ContentManager&nbsp;</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ContentManager.py">ContentManager</a>&nbsp;</td>
 <td valign="top">&nbsp;Asset loading game system responsible for loading all game content into memory</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;DisplayManager&nbsp;</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/DisplayManager.py">DisplayManager</a>&nbsp;</td>
 <td valign="top">&nbsp;Low-level rendering window mgt system controlling how game appears onscreen</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;GraphicsManager&nbsp;</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/GraphicsManager.py">GraphicsManager</a>&nbsp;</td>
 <td valign="top">&nbsp;Rendering abstraction layer wrapping PyGame drawing calls as usuable functions</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;ResolutionManager&nbsp;</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ResolutionManager.py">ResolutionManager</a>&nbsp;</td>
 <td valign="top">&nbsp;Co-ordinate transformation system for game used for all full screen conversions</td>
 </tr>
 </table>
@@ -60,19 +63,19 @@ State machine and game navigation system controlling screen activation and handl
 <i>Miscellaneous</i><br />
 <table width="99%" border="1">
 <tr>
-<td valign="top">&nbsp;ImageManager</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ImageManager.py">ImageManager</a></td>
 <td valign="top">&nbsp;Character rendering system game system responsible for image content rendering</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;SoundManager</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/SoundManager.py">SoundManager</a></td>
 <td valign="top">&nbsp;Audio game sub-system responsible loading and playing all music + sound effects</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;SpriteManager&nbsp;</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/SpriteManager.py">SpriteManager</a>&nbsp;</td>
 <td valign="top">&nbsp;Central UI sprite renderer and game icons mapper using spritesheet for rendering</td>
 </tr>
 <tr>
-<td valign="top">&nbsp;TextManager&nbsp;</td>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/TextManager.py">TextManager</a>&nbsp;</td>
 <td valign="top">&nbsp;Central UI text rendering and layout-from-file system handling all text definitions</td>
 </tr>
 </table>
