@@ -1,5 +1,3 @@
-<span style="font-family:verdana;font-size:85%;">
-
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Engine">Engine</a></u><br />
 In order to fully port C#/.NET paradigms to Python we need helper scripts to <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/ServiceRegistry.py">register</a> and <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/Bootstrap.py">bootstrap</a> game:
 <br />
@@ -39,36 +37,6 @@ In order to fully port C#/.NET paradigms to Python we need helper scripts to <a 
 </pre>
 </td></tr>
 </table>
-<br />
-  
-  <br><br>
-
-  <br><br>
-Fully port C#/.NET paradigms to Python we need helper scripts to create Service Registry and bootstrap game.
-  <br><br>  
-In order to fully port C#/.NET paradigms to Python we needed some helper scripts to create the Service Registry and bootstrap game.
-  <br><br>
-  ServiceRegistry + bootstrap
-  <br><br>
-
-  Finally
-generate_stubs.py
-
-In order to navigate to the correct manager Init or Load method we need
-MyGame.pyi
-
-e.g.
-MyGame.Manager.RandomManager.Initialize()
-
-
-Why I need it for PyCharm navigation
-PyCharm cannot statically infer dynamically created manager attributes, so a .pyi type stub is needed to provide type information for code navigation, autocompletion, and static analysis.
-
-
-Why the .pyi fixes it
-
-A .pyi file is called a type stub.
-
-It doesn't contain implementation—it contains type information.
-  
-</span>
+<!--<br />-->
+Finally, script <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/MyGame.pyi">MyGame.pyi</a> type stub to provide code navigation and autocompletion for coding in PyCharm!
+<br /><br />
