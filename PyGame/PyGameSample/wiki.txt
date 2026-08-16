@@ -351,4 +351,84 @@ State machine and game navigation system controlling screen activation and handl
 Finally, the <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/QuestionManager.py">QuestionManager</a> which is the core gameplay system loading questions from files, manages quiz state, randomizes question and answers, tracks difficulty, and handles all of the question / answer rendering.
 <br /><br />
 
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Tests">Tests</a></u><br />
+The majority of Managers have corresponding Test to code in isolation.  Terminal: execute command <b>pytest</b>:
+<br />  
+<!-- -->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLG3Tm4JRoqzUXyLSYBnIRYq6EnVpz77WKznyzWaa87yDTeL5U0QCLty8xyUGvRp-Fm9SB5ObCCd_56GY0db_UlXmcL6s9-mKDq6rAG9-kJJct_CwPr_44iWo3PXTmjXAa_xn4IF4dvT42L-Jg-MRnWXlyHe-COdb8q6wozYyC5UQfnXIdp7ggZ3H3CsQ/s1389/pytest.png"><img alt="" border="0" width="98%"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLG3Tm4JRoqzUXyLSYBnIRYq6EnVpz77WKznyzWaa87yDTeL5U0QCLty8xyUGvRp-Fm9SB5ObCCd_56GY0db_UlXmcL6s9-mKDq6rAG9-kJJct_CwPr_44iWo3PXTmjXAa_xn4IF4dvT42L-Jg-MRnWXlyHe-COdb8q6wozYyC5UQfnXIdp7ggZ3H3CsQ/s600/pytest.png"/></a>
+<!-- -->
+<br />
+<br />
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Screens">Screens</a></u><br />
+Includes <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Screens/BaseScreen.py">BaseScreen</a> to define common interface for all game screens thus ScreenManager lifecycle invokes each screen uniformly and keeps game state transitions clean and decoupled from individual screen logic.
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>BaseScreen.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class BaseScreen(ABC):
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Initialize(self) -&gt; None:
+&nbsp;&nbsp;        self.Timer: int = None
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def LoadContent(self) -&gt; None:
+&nbsp;&nbsp;        self.Timer = 0
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Update(self, deltaTime: int) -&gt; ScreenType | None:
+&nbsp;&nbsp;        return None
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @abstractmethod
+&nbsp;&nbsp;    def Draw(self) -&gt; None:
+&nbsp;&nbsp;        pass
+</pre>
+</td></tr>
+</table>
+<br />
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Engine">Engine</a></u><br />
+In order to fully port C#/.NET paradigms to Python we need helper scripts to <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/ServiceRegistry.py">register</a> and <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/Bootstrap.py">bootstrap</a> game:
+<br />
+<table width="99%" border="1">
+<tr><td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/ServiceRegistry.py">ServiceRegistry</a></td>
+<td valign="top">
+&nbsp;Simple service locator central hub which connects all game systems together
+</td>
+</tr>
+<tr><td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Engine/Bootstrap.py">Bootstrap</a></td>
+<td valign="top">
+&nbsp;Automatic game management discovery using reflection via dynamic imports
+</td>
+</tr>
+</table>
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>Bootstrap.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;def build_game():
+&nbsp;&nbsp;    ServiceRegistry.clear()
+&nbsp;&nbsp;    base_dir = Path(__file__).resolve().parent.parent
+&nbsp;&nbsp;    managers_path = base_dir / const.GAME_DIRECTORY / const.ENGINE_MANAGERS
+&nbsp;&nbsp;    for file in managers_path.glob(f&quot;*{const.ENGINE_MANAGER}.py&quot;):
+&nbsp;&nbsp;        if file.stem == &quot;__init__&quot;:
+&nbsp;&nbsp;            continue
+&nbsp;&nbsp;        module_name = file.stem
+&nbsp;&nbsp;        path_name = f&quot;{const.GAME_DIRECTORY}.{const.ENGINE_MANAGERS}.{module_name}&quot;
+&nbsp;&nbsp;        module = importlib.import_module(path_name)
+&nbsp;&nbsp;        manager_class = getattr(module, module_name)
+&nbsp;&nbsp;        ServiceRegistry.register(
+&nbsp;&nbsp;            manager_class.__name__,
+&nbsp;&nbsp;            manager_class()
+&nbsp;&nbsp;        )
+&nbsp;&nbsp;    return ServiceRegistry
+</pre>
+</td></tr>
+</table>
+<!--<br />-->
+Finally, script <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/MyGame.pyi">MyGame.pyi</a> type stub to provide code navigation and autocompletion for coding in PyCharm!
+<br /><br />
+
 </span>
