@@ -431,4 +431,36 @@ In order to fully port C#/.NET paradigms to Python we need helper scripts to <a 
 Finally, script <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/MyGame.pyi">MyGame.pyi</a> type stub to provide code navigation and autocompletion for coding in PyCharm!
 <br /><br />
 
+<b>PLAY</b><br />
+In PyCharm hit F5 to run Python code or Terminal enter <b>uv run SimpsonsTrivia.py</b> to play Simpsons Trivia!
+<br />
+<!-- -->  
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyEcVJeXcoqsZVRrqaI3oyESs3Kv1QwMlTCQd5Dr8x-KsxxhGFFU_f_nOcSxc7ByAJBqF-et3uT-hicMBvvz7aQDTvtryKLy93kGgDwHgUPKDPBjI35JSzQaRdv8stc4TIKPtn1rr73oSHmsMXFAnPXlAeMbkMYNAQjAlSvxTyykqN4YKWbyliqGtAtLk/s642/NormalMode.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyEcVJeXcoqsZVRrqaI3oyESs3Kv1QwMlTCQd5Dr8x-KsxxhGFFU_f_nOcSxc7ByAJBqF-et3uT-hicMBvvz7aQDTvtryKLy93kGgDwHgUPKDPBjI35JSzQaRdv8stc4TIKPtn1rr73oSHmsMXFAnPXlAeMbkMYNAQjAlSvxTyykqN4YKWbyliqGtAtLk/s600/NormalMode.png"/></a>
+<!-- -->
+<br /><br />
+<b>CONFIG</b><br />
+Update <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Assets/Data/Config/GlobalConfig.toml">GlobalConfig.toml</a> configuration settings like set CheatMode or FullScreen to true vary the game play!
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>GlobalConfig.toml</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;FPS=50
+&nbsp;&nbsp;ScreenType=&quot;Splash&quot;
+&nbsp;&nbsp;DifficultyType=&quot;Easy&quot;
+&nbsp;&nbsp;SoundEnable=true
+&nbsp;&nbsp;CheatMode=true
+&nbsp;&nbsp;RandomQuestions=true
+&nbsp;&nbsp;RandomAnswers=true
+&nbsp;&nbsp;Fullscreen=true
+</pre>
+</td></tr>
+</table>
+<!--<br />-->
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi5ovFCrCTbLZIH4q7YqOgEMacFzKtV75abuYMdsE6TaYL12o7NeUOLhawdNiuIulhlNLZrY6OVZL6fZIaH40BZ52XBJPyAoCZ6si2VtwYyTALzo7IuP3xkMsaghkVptnOuPDWxLcenDVV-GYMYM_Zm4OlpfxVPA5v6HBe8dIuTZtWgwfdT1SxOuJ_O7M/s642/CheatMode.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi5ovFCrCTbLZIH4q7YqOgEMacFzKtV75abuYMdsE6TaYL12o7NeUOLhawdNiuIulhlNLZrY6OVZL6fZIaH40BZ52XBJPyAoCZ6si2VtwYyTALzo7IuP3xkMsaghkVptnOuPDWxLcenDVV-GYMYM_Zm4OlpfxVPA5v6HBe8dIuTZtWgwfdT1SxOuJ_O7M/s600/CheatMode.png"/></a>
+<br /><br />
+
+<u>Summary</u><br />
+To summarize, we have now completed to port Simpsons Trivia video game from C#/.NET to Python using PyGame.  This exercise provides great foundation to further explore <a href="https://steveproxna.blogspot.com/2024/09/openai-farma-cheat-sheet.html">Farama Foundation Gymnasium</a> project in which <a href="https://gymnasium.farama.org/environments/classic_control">Classic Control</a>, <a href="https://gymnasium.farama.org/environments/toy_text">ToyText</a> and <a href="https://gymnasium.farama.org/environments/box2d">Box2D</a> environments are all implemented using PyGame.  Experience gained here should provide solid grounding for any future work in  Reinforcement Learning research space!
+
 </span>
