@@ -1,4 +1,5 @@
 <span style="font-family:verdana;font-size:85%;">
+  
 In 2020, we checked out <a href="https://steveproxna.blogspot.com/2020/07/python-setup-cheat-sheet.html">Python Setup Cheat Sheet</a> to create development environment.  However, working through code exercises to improve code skills is tedious; we would like to build video games using <a href="https://www.pygame.org">PyGame</a>!
 <br />  
 <!-- -->
@@ -11,6 +12,7 @@ Let’s check it out!
 <a href="https://github.com/pygame/pygame">PyGame</a> is a free and open-source cross-platform library for the development of video games using Python. Using Simple <a href="https://en.wikipedia.org/wiki/Simple_DirectMedia_Layer">DirectMedia Layer</a> to abstract most common functions makes it easier to write these programs.
 <br />
 <br />
+
 <u>Tutorials</u><br />
 In order to build video games in Python we first need to learn PyGame APIs.  Here are some great resources:
 <br />
@@ -33,6 +35,7 @@ In order to build video games in Python we first need to learn PyGame APIs.  Her
 </tr>
 </table>
 <br />
+  
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/01-Example">Example I</a></u> - <i>Hello PyGame</i><br />
 All examples listed are Python 3.11.11 <a href="https://steveproxna.blogspot.com/2026/02/python-package-cheat-sheet.html">compatible</a>. Launch PyCharm | New Project. Enter the following info:
 <br />
@@ -117,6 +120,7 @@ Create the following file: <a href="https://github.com/SteveProXNA/PythonSetup/b
 <!-- -->
 <br />
 <br />  
+
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/02-Example">Example II</a></u> - <i>Hello Splash</i><br />
 Repeat previous exercise but render splash screen. Launch PyCharm | New Project. Enter the following info:
 <br />
@@ -185,6 +189,7 @@ Create the following file: <a href="https://github.com/SteveProXNA/PythonSetup/b
 <!-- -->
 <br />
 <br />  
+
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/03-Example">Example III</a></u> - <i>Hello Text</i><br />
 Repeat previous exercise but render font text. Launch PyCharm | New Project. Setup project as previously:
 <br />
@@ -219,6 +224,7 @@ Repeat previous exercise but render font text. Launch PyCharm | New Project. Set
 </td></tr>
 </table>
 <br />
+
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/04-Example">Example IV</a></u> - <i>Hello Sprites</i><br />
 Repeat previous exercise but render out sprites. Launch PyCharm | New Project. Setup project previously:
 <br />  
@@ -262,6 +268,7 @@ Repeat previous exercise but render out sprites. Launch PyCharm | New Project. S
 </td></tr>
 </table>
 <br />
+
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/05-Example">Example V</a></u> - <i>Hello Input</i><br />
 Repeat previous exercise but with input detection. Launch PyCharm | New Project. Setup project previously:
 <br />  
@@ -299,6 +306,7 @@ Repeat previous exercise but with input detection. Launch PyCharm | New Project.
 </td></tr>
 </table>
 <br />
+
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/06-Example">Example VI</a></u> - <i>Hello Sound</i><br />
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/07-Example">Example VII</a></u> - <i>Hello Music</i><br />
 <u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSetup/08-Example">Example VIII</a></u> - <i>Hello Audio</i><br />
@@ -358,13 +366,10 @@ Repeat previous exercise but integrate all audio. Launch PyCharm | New Project. 
 </pre>
 </td></tr>
 </table>
-<br />
-<table width="99%" border="1">  
+<br />  
+  
+<table width="100%">  
 <tr>
-<tr>
-<td>&nbsp;&nbsp;<strong>Example III</strong> - <i>Hello Text</i></td>
-<td>&nbsp;&nbsp;<strong>Example IV</strong> - <i>Hello Sprites</i></td>
-</tr>  
 <td valign="top" width="40%">
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyxLK0FV6ZjgLo9tVXDjkLcBZZCAoEM5vrpCYiTWDzazFMW4rP3Mdv9DvDhrEfOh4jvi6WThNzu_wLBQqM9NJnzWcZxBfEcfHucnCNH_8r3J7uBOFnT6ZDJADZpwsiIuy44HgChw_BMi0r1qoyQspaWX5dgQVSTBWWzP3xz9V1jH-gM6Dhha9sH0BVyaU/s642/Ex03-HelloText.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyxLK0FV6ZjgLo9tVXDjkLcBZZCAoEM5vrpCYiTWDzazFMW4rP3Mdv9DvDhrEfOh4jvi6WThNzu_wLBQqM9NJnzWcZxBfEcfHucnCNH_8r3J7uBOFnT6ZDJADZpwsiIuy44HgChw_BMi0r1qoyQspaWX5dgQVSTBWWzP3xz9V1jH-gM6Dhha9sH0BVyaU/s600/Ex03-HelloText.png"/></a>
 </td>
@@ -373,10 +378,6 @@ Repeat previous exercise but integrate all audio. Launch PyCharm | New Project. 
 </td>
 </tr>
 <tr>
-<tr>
-<td>&nbsp;&nbsp;<strong>Example V</strong> - <i>Hello Input</i></td>
-<td>&nbsp;&nbsp;<strong>Example VIII</strong> - <i>Hello Audio</i></td>
-</tr>
 <td valign="top" width="40%">
 <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEUsimoLASTSxtidcGa1w0xu0lsohQcke8WA2Xa0cD1mDNCqppJsiAnkjSEgS6_KfKf2YmxU3ta7VW3iXKP40xWXPdgBcIxUsHMpB-l9cUDj6KRgj0VuKD2BpVPWI4HY2urVR8fI18yu98xM7MpU1Mkw_HPnFdrIetohdmsRU5p87D9k2Ftrxr75D-f5Y/s642/Ex05-HelloInput.png"><img alt="" border="0" width="98%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEUsimoLASTSxtidcGa1w0xu0lsohQcke8WA2Xa0cD1mDNCqppJsiAnkjSEgS6_KfKf2YmxU3ta7VW3iXKP40xWXPdgBcIxUsHMpB-l9cUDj6KRgj0VuKD2BpVPWI4HY2urVR8fI18yu98xM7MpU1Mkw_HPnFdrIetohdmsRU5p87D9k2Ftrxr75D-f5Y/s600/Ex05-HelloInput.png"/></a>
 </td>
@@ -387,6 +388,8 @@ Repeat previous exercise but integrate all audio. Launch PyCharm | New Project. 
 <tr>
 </table>
 <br />
+  
 <u>Summary</u><br />
 To summarize, we now have the building blocks to implement PyGame APIs; we are in an excellent position to reuse existing video game content and port video game from another language to Python using PyGame!  This will be the topic of the next <a href="https://steveproxna.blogspot.com/2026/11/pygame-programming-sample.html">post</a>.
+
 </span>
