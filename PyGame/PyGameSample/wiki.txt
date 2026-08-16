@@ -142,6 +142,213 @@ Delegates game init, load, update + draw game static methods to actual managemen
 </td></tr>
 </table>
 <br />
+
+<u><a href="https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia/Game/Managers">Managers</a></u><br />
+A Manager is responsible for a particular game system or service. It owns data or functionality that is shared across multiple parts of the game.  <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/BaseManager.py">BaseManager</a> is a foundational class, common toolbox and system helper.
 <br />
+<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/LogManager.py">LogManager</a></u><br />
+Simple wrapper around Python built-in logging system that standardizes how the game prints info messages.
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>LogManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class LogManager:
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Initialize():
+&nbsp;&nbsp;        level = logging.INFO
+&nbsp;&nbsp;        output: str = &quot;[%(asctime)s] [%(module)s] %(message)s&quot;
+&nbsp;&nbsp;        datefmt: str = &#x27;%Y-%m-%d %H:%M:%S&#x27;
+&nbsp;&nbsp;        logging.basicConfig(level=level, format=output, datefmt=datefmt)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    @staticmethod
+&nbsp;&nbsp;    def Write(msg: str):
+&nbsp;&nbsp;        logging.info(msg, stacklevel=2)
+</pre>
+</td></tr>
+</table>
+<br />  
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/RandomManager.py">RandomManager</a></u><br />
+Centralised random number generator used by the game to ensure randomness is consistent across system.
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>RandomManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class RandomManager:
+&nbsp;&nbsp;    def Initialize(self, seed: int = None):
+&nbsp;&nbsp;        if seed is None:
+&nbsp;&nbsp;            seed = int(time.time_ns()) &amp; 0xFFFF
+&nbsp;&nbsp;        self._random = random.Random(seed)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Next(self, *args) -&gt; int:
+&nbsp;&nbsp;        if len(args) == 1:
+&nbsp;&nbsp;            max_val: int = args[0]
+&nbsp;&nbsp;            return self._random.randrange(max_val)
+&nbsp;&nbsp;        elif len(args) == 2:
+&nbsp;&nbsp;            min_val: int = args[0]
+&nbsp;&nbsp;            max_val: int = args[1]
+&nbsp;&nbsp;            return self._random.randrange(min_val, max_val)
+</pre>
+</td></tr>
+</table>
+<br />  
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ConfigManager.py">ConfigManager</a></u><br />
+External game configuration loader and runtime object responsible for all global gaming settings and access.
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>ConfigManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class ConfigManager:
+&nbsp;&nbsp;    def LoadContent(self):
+&nbsp;&nbsp;        file: Path = self.configRoot / &quot;GlobalConfig.toml&quot;
+&nbsp;&nbsp;        text = file.read_text()
+&nbsp;&nbsp;        data: ConfigData = tomllib.loads(text)
+&nbsp;&nbsp;        data[ScreenType.__name__] = ScreenType[data[ScreenType.__name__]]
+&nbsp;&nbsp;        data[OptionType.__name__] = OptionType[data[OptionType.__name__]]
+&nbsp;&nbsp;        data[DifficultyType.__name__] = DifficultyType[data[DifficultyType.__name__]]
+&nbsp;&nbsp;        self.ConfigData = ConfigData(**data)
+</pre>
+</td></tr>
+</table>
+<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/EventManager.py">EventManager</a></u><br />
+Event polling game system collecting Pygame events each frame and here is used mainly to track quit game.
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>EventManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class EventManager:
+&nbsp;&nbsp;    def __init__(self):
+&nbsp;&nbsp;        self.QuitRequested = False
+&nbsp;&nbsp;        self.Events = []
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def ProcessEvents(self):
+&nbsp;&nbsp;        self.Events.clear()
+&nbsp;&nbsp;        for event in pygame.event.get():
+&nbsp;&nbsp;            self.Events.append(event)
+&nbsp;&nbsp;            if event.type == pygame.QUIT:
+&nbsp;&nbsp;                self.QuitRequested = True
+&nbsp;&nbsp;            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+&nbsp;&nbsp;                self.QuitRequested = True
+</pre>
+</td></tr>
+</table>
+<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ClockManager.py">ClockManager</a></u><br />
+Very small but important system manager responsible for controlling the game timing and inject <a href="https://en.wikipedia.org/wiki/Frame_rate">FPS</a> pacing.
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>ClockManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class ClockManager:
+&nbsp;&nbsp;    def Initialize(self):
+&nbsp;&nbsp;        self.clock: pygame.time.Clock = pygame.time.Clock()
+&nbsp;&nbsp;        self.fps = MyGame.Manager.ConfigManager.ConfigData.FPS
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Update(self) -&gt; int:
+&nbsp;&nbsp;        deltaTime: int = self.clock.tick(self.fps)
+&nbsp;&nbsp;        return deltaTime
+</pre>
+</td></tr>
+</table>
+<br />
+<u><a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ScreenManager.py">ScreenManager</a></u><br />
+State machine and game navigation system controlling screen activation and handling all screen transitions.
+<br />
+<table width="99%" border="1">
+<tr><td>&nbsp;&nbsp;<strong>ScreenManager.py</strong></td></tr>
+<tr><td>
+<pre style="font-size: 12px;">
+&nbsp;&nbsp;class ScreenManager:
+&nbsp;&nbsp;    def Initialize(self):
+&nbsp;&nbsp;        self._import_all_screens()
+&nbsp;&nbsp;        screen_classes = self._build_screen_map()
+&nbsp;&nbsp;        self.screens: dict[ScreenType, BaseScreen] = {
+&nbsp;&nbsp;            st: cls()
+&nbsp;&nbsp;            for st, cls in screen_classes.items()
+&nbsp;&nbsp;        }
+&nbsp;&nbsp;        for screen in self.screens.values():
+&nbsp;&nbsp;            screen.Initialize()
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Update(self, deltaTime: int):
+&nbsp;&nbsp;        if self.currScreen != self.nextScreen:
+&nbsp;&nbsp;            self.currScreen = self.nextScreen
+&nbsp;&nbsp;            self.screens[self.currScreen].LoadContent()
+&nbsp;&nbsp;        tempScreen = self.screens[self.currScreen].Update(deltaTime)
+&nbsp;&nbsp;        if tempScreen:
+&nbsp;&nbsp;            self.nextScreen = tempScreen
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def Draw(self):
+&nbsp;&nbsp;        MyGame.Manager.DisplayManager.Clear(self.color)
+&nbsp;&nbsp;        self.screens[self.currScreen].Draw()
+&nbsp;&nbsp;        MyGame.Manager.DisplayManager.Present(self.color)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def _import_all_screens(self):
+&nbsp;&nbsp;        for _, module_name, _ in pkgutil.iter_modules(Screens.__path__):
+&nbsp;&nbsp;            if module_name == BaseScreen.__name__:
+&nbsp;&nbsp;                continue
+&nbsp;&nbsp;            path_name: str = f&quot;{const.GAME_DIRECTORY}.{ENGINE_SCREENS}.{module_name}&quot;
+&nbsp;&nbsp;            importlib.import_module(path_name)
+&nbsp;&nbsp;
+&nbsp;&nbsp;    def _build_screen_map(self) -&gt; dict[ScreenType, type[BaseScreen]]:
+&nbsp;&nbsp;        screen_map: dict[ScreenType, type[BaseScreen]] = {}
+&nbsp;&nbsp;        for screen_type in ScreenType:
+&nbsp;&nbsp;            class_name = f&quot;{screen_type.name}{ENGINE_SCREEN}&quot;
+&nbsp;&nbsp;            path_name: str = f&quot;{const.GAME_DIRECTORY}.{ENGINE_SCREENS}.{class_name}&quot;
+&nbsp;&nbsp;            module = importlib.import_module(path_name)
+&nbsp;&nbsp;            cls = getattr(module, class_name)
+&nbsp;&nbsp;            screen_map[screen_type] = cls
+&nbsp;&nbsp;        return screen_map
+</pre>
+</td></tr>
+</table>
+<br />
+<i>Resources</i><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ContentManager.py">ContentManager</a>&nbsp;</td>
+<td valign="top">&nbsp;Asset loading game system responsible for loading all game content into memory</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/DisplayManager.py">DisplayManager</a>&nbsp;</td>
+<td valign="top">&nbsp;Low-level rendering window mgt system controlling how game appears onscreen</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/GraphicsManager.py">GraphicsManager</a>&nbsp;</td>
+<td valign="top">&nbsp;Rendering abstraction layer wrapping PyGame drawing calls as usuable functions</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ResolutionManager.py">ResolutionManager</a>&nbsp;</td>
+<td valign="top">&nbsp;Co-ordinate transformation system for game used for all full screen conversions</td>
+</tr>
+</table>
+<br />
+<i>Miscellaneous</i><br />
+<table width="99%" border="1">
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/ImageManager.py">ImageManager</a></td>
+<td valign="top">&nbsp;Character rendering system game system responsible for image content rendering</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/SoundManager.py">SoundManager</a></td>
+<td valign="top">&nbsp;Audio game sub-system responsible loading and playing all music + sound effects</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/SpriteManager.py">SpriteManager</a>&nbsp;</td>
+<td valign="top">&nbsp;Central UI sprite renderer and game icons mapper using spritesheet for rendering</td>
+</tr>
+<tr>
+<td valign="top">&nbsp;<a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/TextManager.py">TextManager</a>&nbsp;</td>
+<td valign="top">&nbsp;Central UI text rendering and layout-from-file system handling all text definitions</td>
+</tr>
+</table>
+<br />
+Finally, the <a href="https://github.com/SteveProXNA/PythonSetup/blob/master/PyGameSample/SimpsonsTrivia/Game/Managers/QuestionManager.py">QuestionManager</a> which is the core gameplay system loading questions from files, manages quiz state, randomizes question and answers, tracks difficulty, and handles all of the question / answer rendering.
+<br /><br />
 
 </span>
