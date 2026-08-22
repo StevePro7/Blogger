@@ -1,0 +1,109 @@
+Layout
+22-Aug-2026
+
+Fluent Python book
+lots of theory
+lots of practical code examples
+but a lot of the theory was old and not so relevant
+and a lot of the practical was not relevant to the work this team does
+so
+I thought why not try and code something up in Python that may have some more relevant code examples
+Plus let's do something fun!
+
+So why not take an existing project I did awhile ago - a small video game built in C#/XNA and port it to Python
+NB: XNA was Microsoft's Indie video game framework for C# development
+original code
+https://github.com/SteveProXNA/SimpsonsTrivia
+
+Also as we all use coding agents nowadays can I use GPT to help me port some of the code quickly
+To be clear - this was not 100% vibe coded project - I actually wrote most of the code but I did use GPT
+here and there esp. with some of the code infrastructure
+
+First let's check out the game: Simpsons Trivia
+https://github.com/SteveProXNA/PythonSetup/tree/master/PyGameSample/SimpsonsTrivia
+
+
+Launch game
+Easy | 5 Qs
+
+Cheat Mode
+
+
+Launch PyCharm
+Python 3.11
+
+dependencies - pyproject.toml
+pygame 
+pytest
+
+Code structure
+Assets		all game content, game data, fonts, sound and graphics
+BuildX		helper scripts to automate code templates for managers components + game screens
+Engine		helper scripts to register manager components + boot strap game
+
+Game
+Inputs		code for keyboard and mouse input detection
+Managers	each manager component is responsible for a particular game system or service. 
+Objects		game data models to represent configuration, questions and text elements
+Screens		each game screen represents particular state in game managed by screen manager 
+Static		globally loaded game assets, colors definitions, constants, enums and global text
+
+Tests		most manager components were written and tested in isolation using TDD style
+
+Simpsons Trivia
+Main game entry point that runs the [in]finite game loop until shutdown:
+first thing you may notice that is different in video game development in the game loop
+
+A game loop is the repeating cycle that keeps a game running:
+Input → Update game state → Render graphics → Repeat
+
+It exists so the game can continuously respond to the player, update what's happening, and 
+display the result many times per second - measured as FPS - Frames Per Second
+
+
+AnGame.py
+Builds game infrastructure and acts as an intermediary between the game bootstrap and the service registry which delegates game init, load, update and draw game loop methods to actual game implementation code.
+
+
+MyGame.py
+Delegates game init, load, update + draw game static methods to actual management implementation code.
+
+
+CODE
+build game and run
+initialize and load content
+enter game loop
+process PyGame events - here we simply check if ESC button pressed to quit game
+calculate deltaTime in Milliseconds between frame - used for Timers e.g. splash screen 3s
+Update game
+Draw game
+
+TODO - explain why I have this syntax
+MyGame.Manager.SoundManager.LoadContent()
+
+
+INTERESTING
+all constants in const
+all enumerations in enums	zero index trick for collection lookup
+
+BaseScreen = ABC - each method = factory method
+
+ScreenManager = state design pattern
+
+MyGame = singletons
+
+MyGame.pyi	publi interface
+used mainly for PyCharm autocomplete, type checking and navigation
+
+Bootstrap	getattr
+ServiceRegistry	service locator	TODO
+
+Config.toml
+cheat mode
+full screen
+
+BOOK - todo - all references
+
+FINAL
+fullScreen - GPT initially tightly coupled MouseInput to DisplayMgr
+I had to "correct" this to channel the work via Resolution Mgr
