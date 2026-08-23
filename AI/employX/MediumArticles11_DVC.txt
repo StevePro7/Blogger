@@ -1,0 +1,562 @@
+23-Aug-2026
+
+The Architecture Behind Every Production ML System
+https://pub.towardsai.net/the-architecture-behind-every-production-ml-system-9ba2863dab2a?sk=987ca0d10b8ffd7bc6b988886466d8aa
+
+Layer 2: Data Versioning
+The job: Track datasets over time the same way Git tracks code. Answer the question: “Which exact version of the data trained this model?”
+
+Tools: DVC, LakeFS, Delta Lake
+
+DVC works by storing metadata in your Git repo while pushing the actual data
+to remote storage S3, GCS, Azure Blob - Same commit, same data. 
+
+
+CoPilot
+We have Git Enterprise for source control and we also have Git LFS for large file storage but currently our models are manually uploaded to Azure ML Ops - they are not currently version controlled because the checkpoint files are esp. large e.g. GB in size so cannot store in Git - I heard about DVC to help version control the models - how would I integrate DVC in our current tech stack?
+
+
+
+
+Sure — I can format the steps as a simple .txt file, but I can’t directly attach/create a file in this chat. Here is the plain-text content you can save as dvc_ubuntu_prototype.txt:
+
+DVC + Azure Blob Storage Prototype on Ubuntu
+=============================================
+
+Goal:
+-----
+Prototype the following architecture:
+
+    Git Enterprise
+         |
+         | Python code + DVC metadata
+         |
+         v
+        DVC
+         |
+         | actual large model/checkpoint
+         v
+    Azure Blob Storage
+
+
+STEP 1 - Install prerequisites
+------------------------------
+
+sudo apt update
+sudo apt install -y git python3 python3-pip python3-venv
+
+
+STEP 2 - Create a Python virtual environment
+--------------------------------------------
+
+mkdir ~/dvc-prototype
+cd ~/dvc-prototype
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+
+STEP 3 - Install DVC with Azure support
+---------------------------------------
+
+pip install --upgrade pip
+pip install "dvc[azure]"
+
+Check the installation:
+
+dvc --version
+git --version
+
+
+STEP 4 - Create a Git repository
+--------------------------------
+
+git init
+
+Create directories:
+
+mkdir models
+mkdir src
+
+Create initial files:
+
+touch README.md
+touch src/train.py
+
+The directory should look like:
+
+dvc-prototype/
+├── .venv/
+├── models/
+├── src/
+│   └── train.py
+└── README.md
+
+
+STEP 5 - Create a .gitignore
+----------------------------
+
+Create .gitignore:
+
+cat > .gitignore <<'EOF'
+.venv/
+__pycache__/
+*.pyc
+models/*.pt
+models/*.pth
+models/*.bin
+EOF
+
+
+STEP 6 - Initialise DVC
+-----------------------
+
+dvc init
+
+Commit the initial DVC configuration:
+
+git add .dvc .gitignore README.md src
+git commit -m "Initialise DVC"
+
+
+STEP 7 - Create an Azure Blob Storage container
+-----------------------------------------------
+
+Create an Azure Storage Account.
+
+Example:
+
+Storage Account:
+    mlopsprototype
+
+Container:
+    dvc
+
+The resulting structure is conceptually:
+
+Azure Storage Account
+└── dvc/
+    ├── DVC objects
+    ├── DVC objects
+    └── ...
+
+
+STEP 8 - Authenticate to Azure
+------------------------------
+
+Install Azure CLI if it isn't already installed.
+
+Then:
+
+az login
+
+Check the active account/subscription:
+
+az account show
+
+If necessary, list subscriptions:
+
+az account list
+
+Select the required subscription:
+
+az account set --subscription "<subscription-name-or-id>"
+
+
+STEP 9 - Configure Azure Blob as the DVC remote
+------------------------------------------------
+
+Assuming:
+
+Storage Account:
+    mlopsprototype
+
+Container:
+    dvc
+
+Run:
+
+dvc remote add -d azure azure://dvc
+
+Then configure the Azure storage account:
+
+dvc remote modify azure account_name mlopsprototype
+
+Check the configuration:
+
+dvc remote list
+
+Expected result should be similar to:
+
+azure    azure://dvc    (default)
+
+
+STEP 10 - Create a test model
+-----------------------------
+
+Before testing with a multi-GB checkpoint, create a smaller test file.
+
+For example, create a 100 MB test model:
+
+dd if=/dev/urandom of=models/test-model.bin bs=1M count=100
+
+Check it:
+
+ls -lh models/
+
+
+STEP 11 - Tell DVC to track the model
+-------------------------------------
+
+Run:
+
+dvc add models/test-model.bin
+
+DVC should create:
+
+models/
+├── test-model.bin
+└── test-model.bin.dvc
+
+The actual model is NOT intended to be committed to Git.
+
+The .dvc file contains metadata describing the model.
+
+
+STEP 12 - Commit the DVC metadata to Git
+----------------------------------------
+
+Check Git:
+
+git status
+
+Add the DVC metadata:
+
+git add models/test-model.bin.dvc
+
+Commit:
+
+git commit -m "Add test model"
+
+
+STEP 13 - Push the actual model to Azure Blob
+--------------------------------------------
+
+Run:
+
+dvc push
+
+DVC will upload the actual model to the Azure Blob Storage DVC remote.
+
+The architecture is now:
+
+Git
+ |
+ └── models/test-model.bin.dvc
+             |
+             | contains metadata/hash
+             v
+       Azure Blob Storage
+             |
+             └── actual model
+
+
+STEP 14 - Test reproducibility
+------------------------------
+
+First, verify the Git history:
+
+git log --oneline
+
+Then delete the local model:
+
+rm models/test-model.bin
+
+Check:
+
+ls models/
+
+You should still have:
+
+test-model.bin.dvc
+
+Now retrieve the model from Azure:
+
+dvc pull
+
+Check:
+
+ls -lh models/
+
+The model should have been restored.
+
+This demonstrates the core DVC workflow.
+
+
+IMPORTANT REPRODUCIBILITY TEST
+------------------------------
+
+The most useful test is to create two different versions of the model.
+
+Create model version 1:
+
+dd if=/dev/urandom of=models/test-model.bin bs=1M count=100
+
+Track and push:
+
+dvc add models/test-model.bin
+dvc push
+
+Commit the DVC metadata:
+
+git add models/test-model.bin.dvc
+git commit -m "Add model version 1"
+
+
+Create model version 2:
+
+dd if=/dev/urandom of=models/test-model.bin bs=1M count=200
+
+Track and push:
+
+dvc add models/test-model.bin
+dvc push
+
+Commit:
+
+git add models/test-model.bin.dvc
+git commit -m "Add model version 2"
+
+
+Now you have:
+
+Git commit A
+    |
+    └── Model version 1
+
+Git commit B
+    |
+    └── Model version 2
+
+
+Test version 1:
+
+git log --oneline
+
+git checkout <commit-A>
+
+dvc pull
+
+The version 1 model should be restored.
+
+
+Test version 2:
+
+git checkout <commit-B>
+
+dvc pull
+
+The version 2 model should be restored.
+
+
+TEST WITH A REAL CHECKPOINT
+---------------------------
+
+Once the small test works, test with one of your real model/checkpoint files.
+
+For example:
+
+models/
+└── checkpoint.pt
+
+Check its size:
+
+ls -lh models/checkpoint.pt
+
+Tell DVC to track it:
+
+dvc add models/checkpoint.pt
+
+Push it to Azure:
+
+dvc push
+
+Commit the DVC metadata:
+
+git add models/checkpoint.pt.dvc
+git commit -m "Add model checkpoint"
+
+
+RECOMMENDED FINAL REPOSITORY STRUCTURE
+--------------------------------------
+
+The eventual repository could look like:
+
+my-ml-project/
+│
+├── src/
+│   ├── train.py
+│   ├── evaluate.py
+│   └── inference.py
+│
+├── config/
+│   └── training.yaml
+│
+├── models/
+│   └── checkpoint.pt.dvc
+│
+├── dvc.yaml
+├── dvc.lock
+├── .gitignore
+├── requirements.txt
+└── README.md
+
+
+RECOMMENDED ARCHITECTURE
+------------------------
+
+                    Git Enterprise
+                         |
+                 +-------+-------+
+                 |               |
+            Python code      DVC metadata
+                 |               |
+                 +-------+-------+
+                         |
+                     Git commit
+                         |
+                         v
+                  CI/CD pipeline
+                         |
+                    +----+----+
+                    |         |
+                 dvc pull   Azure ML
+                    |       training
+                    v          |
+              Azure Blob      |
+              DVC remote      |
+                    ^          |
+                    |          v
+                    +---- model/checkpoint
+                              |
+                              v
+                       Evaluation gate
+                              |
+                              v
+                       Azure ML Registry
+                              |
+                              v
+                          Deployment
+
+
+ROLE OF EACH SYSTEM
+-------------------
+
+Git Enterprise:
+    Python source code
+    Configuration
+    DVC metadata
+    dvc.yaml
+    dvc.lock
+
+DVC:
+    Versioning of models/data
+    Association between Git commits and model/data versions
+    Upload/download of large artifacts
+
+Azure Blob Storage:
+    Actual multi-GB model/checkpoint files
+    DVC remote storage
+
+Azure ML:
+    Training
+    Model registration
+    Model deployment
+    Serving
+
+
+GIT LFS
+-------
+
+Do not use Git LFS and DVC to manage the same model/checkpoint files.
+
+A sensible division is:
+
+Small source/config files:
+    Git
+
+Large general-purpose files:
+    Git LFS
+
+ML datasets/checkpoints/models:
+    DVC + Azure Blob Storage
+
+The existing Git LFS installation can remain in place for files that aren't managed by DVC.
+
+
+IMPORTANT PROTOTYPE GOAL
+------------------------
+
+The key experiment is:
+
+1. Put Python code in Git.
+2. Put a model under DVC.
+3. Push the actual model to Azure Blob.
+4. Commit the DVC metadata to Git.
+5. Delete the local model.
+6. Run "dvc pull".
+7. Verify the model is restored.
+8. Create a second model version.
+9. Commit the second DVC metadata change.
+10. Checkout the first Git commit.
+11. Run "dvc pull".
+12. Verify that the first model version is restored.
+
+If this works, you have demonstrated:
+
+    Git commit
+        |
+        +----> exact Python code
+        |
+        +----> exact DVC metadata
+                    |
+                    +----> exact model/checkpoint
+                              |
+                              +----> Azure Blob Storage
+
+
+NEXT STEP
+---------
+
+Once the Git + DVC + Azure Blob prototype works, integrate Azure ML.
+
+The eventual workflow can be:
+
+Developer
+    |
+    v
+Git Enterprise
+    |
+    v
+CI/CD
+    |
+    +--> checkout code
+    |
+    +--> dvc pull
+    |
+    +--> Azure ML training
+    |
+    +--> evaluate model
+    |
+    +--> dvc push
+    |
+    +--> register approved model
+    |
+    v
+Azure ML Model Registry
+    |
+    v
+Deployment
+
+
+Save that as dvc_ubuntu_prototype.txt, and you'll have the complete walkthrough in a format you can work through directly in a terminal.
