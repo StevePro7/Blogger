@@ -1,0 +1,160 @@
+Fluent Python 02
+23-Aug-2026
+
+Mapping of topics from FP to Simpsons code base
+
+
+
+
+
+04.
+Ch 2	Sequences
+Ch 3	Dicts & Sets
+BaseScreen.py
+ScreenManager.py
+
+Tuple unpacking 	for x, y in co-ordinates
+list / dict comprehensions
+dict-based registries
+
+
+01.
+Ch 5	Data Class Builders
+Objects
+Question.py
+ConfigData.py
+TextData.py
+
+@dataclass(frozen=True)
+immutable data classes with typed fields exactly the @dataclass builder pattern
+
+
+
+03.
+Ch 6	References, Mutability & Recycling
+ServiceRegistry.py	frozen dataclasses
+
+Shared mutable class attribute
+_services: dict = {}	classic gotcha vs.
+			frozen immutability of the data objects
+
+
+
+02.
+Ch 7	Functions as First-Class Objects
+ScreenManager.py
+RandomManager.py
+
+Classes stored in dicts and instantiated via comprehensions
+( {st: cls() for ...} );
+*args handling in RandomManager Next
+
+
+
+
+04.
+Ch 8	Type Hints in Functions
+Prevasive
+e.g.
+BaseManager.py
+plus the MyGame.pyi stub
+
+Parameter / return annotations
+deltaTime: int
+pygame.Vector2
+and a dedicated .pyi stub file
+
+
+06.
+Ch 10	Design Patterns w/ First-Class Functions
+ServiceRegistry.py
+ScreenManager.py
+
+Service Locator + a State-machine screen transition	currScreen / nextScreen
+
+
+
+
+
+03.
+Ch 13	Interfaces, Protocols & ABCs
+BaseScreen.py
+
+class BaseScreen(ABC)
+@abstractmethod
+an abstract base class defining a screen contract
+e.g.
+all screens implement the following factory methods
+Initialize()
+LoadContent()
+Update()
+Draw()
+
+
+07.
+Ch 14	Inheritance
+13 screens subclassing BaseScreen
+managers cloned from BaseManager
+
+Template-method style base classes
+
+
+
+
+
+05.
+Ch 15	More About Type Hints
+BaseScreen.py
+ScreenManager.py
+
+Union syntax		ScreenType | None
+class-as-type		type[BaseScreen]
+generic			dict[ScreenType, BaseScreen]
+
+01. union types
+BaseScreen
+def Update(self, deltaTime: int) -> ScreenType | None:
+
+
+Ch 18	with, match else Blocks
+SimpsonsTrivia.py
+BuildX	generate_managers.py
+
+try / except / finally	KeyboardInterrupt
+with open( .. ) as file	context managers
+
+
+02.
+Ch 22	Dynamic Attributes & Properties
+MyGame.py
+_ManagerFacade.__getattr__
+
+__getattr__
+intercepts attribute access and resolves it via the service registry
+the canonical __getattr__ use case
+
+//Ch12		Special Methods for Sequences
+//Not present	the only dunder in use is __getattr__
+
+
+01.
+Ch 24	Class Metaprogramming	dynamic import / registration
+Bootstrap.py
+ScreenManager.py
+
+importlib.import_module
+pkgutil.iter_modules
+getattr(module, name)	to load classes by name - a plugin / registry pattern
+
+
+
+
+
+
+
+TODO
+
+
+
+02.
+enumerations in index for collections
