@@ -83,30 +83,104 @@ dynamically loads each screen class and stores class reference in a dict keyed b
 this aboids hard-coded conditional logic + demos that classes can be handled as values like functions
 
 
+
 Chp 8	Type Hints in Functions
+CODE
+MyGame.pyi
+provides static type information without implementing runtime behavior and
+helps IPE [PyCharm] with code intellisense and navigation during development
+
 
 
 Chp 10	Design Patterns with First-Class Functions
+Not officially a GoF design pattern but this application does implement MyGame.Manager as a Service Locator
+e.g.
+MyGame accesses all game managers via the Manager facade which delegates to the ServiceRegistry
+- provides one consistent access point for application services
+- avoids passing every manager through every method as required
+# allows to code in any scrren or manager to access any game manager at anytime via this syntax
+MyGame.Manager.QuestionManager.SetQuizLength(...)
+
+NB:
+Manager components are not strictly enforced Singletons
+they are single registered service instances managed through a Service Locator
+
+ScreenManager.py
+implements a state machine similar to the State design pattern
+currScreen identifies the active state
+nextScreen records requested transitions
 
 
 
 Chp 13. Interfaces, Protocols, and ABCs
+CODE
+BaseScreen.py
+defines an abstract base class that every concrete screen must follow
+def Initialize(self) -> None:
+def LoadContent(self) -> None:
+def Update(self, deltaTime: int) -> ScreenType | None:
+def Draw(self) -> None:
+
+ScreenManager.py
+does not need to know the concrete screen type - it relies on the common BaseScreen contract
 
 
 
 Chp 14. Inheritance: For Good or For Worse
+CODE
+BaseScreen.py
+each concrete screen inherits from BaseScreen
+this gives every screen access to shared behavior e.g. UpdateTimer()
 
 
 
 Chp 15	More About Type Hints
+CODE
+BaseScreen.py
+def Update(self, deltaTime: int) -> ScreenType | None:
+
+uses a union return type because most frames there is no screen transition i.e. return None
+however when there is screen transition then that screen logic will return next screen type
 
 
 
 Chp 18	Context Managers and else Blocks
+SimpsonsTrivia.py
+try - except - finally block    for exception handling and guaranteed cleanup
+
+FileManager.py
+with open(file, "r", encoding="utf-8") as reader:
+simple context manager example to auto close file
+
+QuestionManager.py
+simple match case example to randomize answer position on-screen
 
 
 
 Chp23	Dynamic Attributes and Properties
+CODE
+Bootstrap.py
+MyGame.py
+ScreenManager.py
+All three use getattr to work with names determined at runtime, avoiding hard-coded imports or Properties
+e.g.
+managers and scrrens code has been written using getattr so they can be discovered and accessed
+through naming conventions without hard-coded wiring
+Adding a correctly named manager or screen would require no new explicit import in the bootstrap code
+
 
 
 Chp 25	Class Metaprogramming
+CODE
+Bootstrap.py
+ScreenManager.py
+module = importlib.import_module(path_name)
+there are 3x usages that support runtime discovery and loading of modules
+this is written this way to reduce hard-coded imports
+
+for _, module_name, _ in pkgutil.iter_modules(Screens.__path__):
+scans the SCreens package directory and returns information about its modules
+
+Important
+this is more dynamic importing, introspection and plugin style class discovery
+while not deemed full meta programming - they are the closest examples here!
