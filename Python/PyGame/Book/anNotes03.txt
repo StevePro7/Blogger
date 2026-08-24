@@ -1,0 +1,112 @@
+Fluent Python 03
+24-Aug-2026
+
+
+
+
+
+
+
+
+Chp 2	An Array of Sequences
+CODE
+SpriteManager.py
+demonstrates sequences (lists) with enum values as indexes
+e.g.
+position: pygame.Vector2 = self.positionsSelect[optionType.value]
+
+NB:
+Enumerations.py
+ZeroBasedEnum makes every autio() value start at 0 and increaes sequentially
+
+Benefit:
+Enum values loke optionType match the [zero-based] list indexes directly
+e.g.
+position: pygame.Vector2 = self.positionsSelect[optionType.value]
+
+
+
+Chp 3	Dictionaries and Sets
+CODE
+SoundManager.py
+self.music: dict[enums.MusicType, str] = {}
+self.sound: dict[enums.SoundType, str] = {}
+stores music and sound FX in dictionaries which allows for direct fast lookup to play audio
+
+CODE
+ServiceRegistry.py
+_services: dict = {}
+maps each Manager name to its shared manager object instance acting as a central service registry
+
+CODE
+ScreenManager.py
+self.screens: dict[ScreenType, BaseScreen] = {
+    st: cls()
+    for st, cls in screen_classes.items()
+}
+demonstrates a dict comprehension as a concise way to build all screen objects
+while preserving their ScreenType keys
+
+
+
+Chp 5	Data Class Builders
+CODE
+ConfigData.py
+Question.py
+TextData.py
+@dataclass(frozen=True)
+examples of immutable data classes with strongly typed fields used as domain objects throughout game
+
+
+
+Chp 6	Object References, Mutability, and Recycling
+CODE
+Bootstrap.py
+module = importlib.import_module(path_name)
+manager_class = getattr(module, module_name)
+ServiceRegistry.register(
+    manager_class.__name__,
+    manager_class()
+)
+Bootstrap
+dynamically creates each manager and registers its reference in the shared mutable ServiceRegistry
+this way multiple parts of the application can access each manager reference via-> ServiceRegistry
+
+
+
+Chp 7	Functions as First-Class Objects
+CODE
+ScreenManager.py
+_build_screen_map()
+treats screen classes as first-class objects
+dynamically loads each screen class and stores class reference in a dict keyed by ScreenType
+this aboids hard-coded conditional logic + demos that classes can be handled as values like functions
+
+
+Chp 8	Type Hints in Functions
+
+
+Chp 10	Design Patterns with First-Class Functions
+
+
+
+Chp 13. Interfaces, Protocols, and ABCs
+
+
+
+Chp 14. Inheritance: For Good or For Worse
+
+
+
+Chp 15	More About Type Hints
+
+
+
+Chp 18	Context Managers and else Blocks
+
+
+
+Chp23	Dynamic Attributes and Properties
+
+
+Chp 25	Class Metaprogramming
