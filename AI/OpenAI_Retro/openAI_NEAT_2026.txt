@@ -1,0 +1,52 @@
+openai NEAT tutorials 2026
+29-Aug-2026
+
+
+Yesterday - I watched the Lucas videos again
+Introduction and Setup - EP1 - Open-AI and NEAT Tutorial
+https://www.youtube.com/watch?v=CFa6NhLgeL0
+
+Today - I attempt to re-setup and attempt NEAT example
+BUT
+First get setup with FF
+/home/stevepro/GitHub/SteveProXNA2/OpenAItesting/FarmaCheatSheet
+
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+ERROR
+deactivate
+uv venv --python 3.11
+source .venv/bin/activate
+uv pip install -r requirements.txt
+
+uv pip install gymnasium
+uv pip install Box2D
+uv pip install gymnasium[atari]==0.29.1
+uv pip install gymnasium[accept-rom-license]
+
+RETRO
+/home/stevepro/GitHub/SteveProXNA2/OpenAItesting/RetroCheatSheet/README_02.md
+
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+ERROR
+deactivate
+uv venv --python 3.11
+source .venv/bin/activate
+uv pip install stable-retro
+
+Copy MD files for Sonic2 Genesis
+
+NEAT
+NB: original source code here
+/home/stevepro/GitHubX/lucasrthompson/Sonic-Bot-In-OpenAI-and-NEAT
+
+My example with GPT help
+neural5c.py
+config-feedforward
+/home/stevepro/GitHub/SteveProXNA2/OpenAItesting/RetroCheatSheet/examples
+
