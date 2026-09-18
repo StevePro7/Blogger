@@ -4,3 +4,72 @@ https://steveproxna.blogspot.com/2022/06/devkitsms-programming-setup-ii.html
 C:\>sdcc --version
 SDCC : mcs51/z80/z180/r2k/r2ka/r3ka/sm83/tlcs90/ez80_z80/z80n/ds390/pic16/pic14/TININative/ds400/hc08/s08/stm8/pdk13/pdk14/pdk15/mos6502 4.2.0 #13081 (MINGW64)
 published under GNU General Public License (GPL)
+
+
+
+LINUX
+I downloaded SDCC 4.2.0 from source forge .net for Windows namely version
+SDCC : mcs51/z80/z180/r2k/r2ka/r3ka/sm83/tlcs90/ez80_z80/z80n/ds390/pic16/pic14/TININative/ds400/hc08/s08/stm8/pdk13/pdk14/pdk15/mos6502 4.2.0 #13081 (MINGW64)
+
+Now I would like to download the same version SDCC 4.2.0 #13081 for Ubuntu Linux amd64
+The previous version I downloaded was 4.1.0 from this link
+https://sourceforge.net/projects/sdcc/files/sdcc-linux-amd64/4.1.0/sdcc-4.1.0-amd64-unknown-linux2.5.tar.bz2/download
+
+
+4.2.0
+https://sourceforge.net/projects/sdcc/files/sdcc-linux-amd64/4.2.0/sdcc-4.2.0-amd64-unknown-linux2.5.tar.bz2/download
+
+tar -xjf sdcc-4.2.0-amd64-unknown-linux2.5.tar.bz2
+
+I extracted into
+~/sdcc
+but when I try
+sdcc --version
+on Ubuntu Linux 20.04
+I get the following
+sdcc: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found (required by sdcc)
+sdcc: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by sdcc)
+
+
+Option 1 — Build SDCC 4.2.0 #13081 on Ubuntu 20.04
+
+sudo apt update
+sudo apt install build-essential bison flex texinfo libboost-dev libpng-dev pkg-config
+
+
+
+gcc --version
+make --version
+bison --version
+flex --version
+makeinfo --version
+
+cd ~/
+wget https://sourceforge.net/projects/sdcc/files/sdcc/4.2.0/sdcc-src-4.2.0.tar.bz2/download -O sdcc-src-4.2.0.tar.bz2
+
+tar -xjf sdcc-src-4.2.0.tar.bz2
+
+cd ~/sdcc-4.2.0
+./configure --prefix=$HOME/sdcc-4.2.0-install
+
+
+I'm on step 5 but I get error
+checking for gplib... :
+configure: error: gputils (gpasm, gplink, and gplib) are required but not found.
+Either install gputils or reconfigure with --disable-pic14-port and --disable-pic16-port.
+configure: error: ./configure failed for device/lib/pic14
+
+sudo apt install gputils
+
+gpasm --version
+gplink --version
+gplib --version
+
+
+./configure --prefix=$HOME/sdcc-4.2.0-install
+make -j$(nproc)
+
+make install
+
+CLEANUP
+mv ~/sdcc-4.2.0-install ~/sdcc
