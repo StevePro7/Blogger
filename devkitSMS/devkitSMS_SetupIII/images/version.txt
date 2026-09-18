@@ -73,3 +73,26 @@ make install
 
 CLEANUP
 mv ~/sdcc-4.2.0-install ~/sdcc
+
+
+Copy devkitSMS tools to ~/sdcc/bin
+
+HELLO WORLD
+I tried this example
+/home/stevepro/GitHub/StevePro8/SegaMasterSystemLinux/ExamplesNew420/01-HelloWorld/main.c
+
+but it did not work because the tools were built on different Linux version
+so I had to manually build + copy
+
+cd /home/stevepro/GitHubX/sverx420/devkitSMS/tools/legacy/ihx2sms/src
+gcc -O2 -o ihx2sms ihx2sms.c
+
+copy here
+~/sdcc/bin
+
+
+cd /home/stevepro/GitHubX/sverx420/devkitSMS/tools/makesms/src/makesms
+make
+
+copy here
+~/sdcc/bin
