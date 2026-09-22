@@ -11,3 +11,43 @@ What happens if I try a Hello World without claude.md?
 Try the test alpha, beta skill with an agent and check
 Ctrl + Shift + P
 Developer: Show Chat Debug View
+
+Also there is now
+/troubleshoot
+
+
+03. Testing skills
+```
+user-invocable: true
+disable-model-invocation: false
+```
+Test disable-model-invocation: true
+run prompt with description map
+this skill will not be used
+run prompt ann specify skill /skill-name
+this skill WILL be used
+
+Test user-invocable: false
+run prompt with description map
+this skill WILL be used
+run prompt ann specify skill /skill-name
+this skill will not be used
+
+
+04. Agent Hosts
+VS Code prompt files are being migrated to Agent Skills for Agent Host sessions.
+The docs say prompt files are deprecated for Agent Hosts but continue to work with the Local agent now
+
+Exercise - choose Copilot and /prompt-name - will that work?
+
+Remember
+Agent Host = execution process that runs an agent session
+Agent Harness = agent runtime being used with that environment e.g. Copilot, Cloud, Claude
+
+
+05. Custom Prompts
+Use input variables
+e.g.
+${input:componentName}
+Test
+/create-component

@@ -247,3 +247,11 @@ VS Code | Click top right "..." | Show Chat Debug View
 
 Ctrl + Shift + P  
 Developer: Show Chat Debug View
+
+
+#### SKILLS
+VS Code says the skill description should be specific about what the skill does and when to use it because that helps Copilot decide when to load it
+
+The description of a skill is part of the information Copilot uses to decide whether that skill is relevant to the current task and should be automatically loaded
+
+Skill's description is effectively its discovery contract
