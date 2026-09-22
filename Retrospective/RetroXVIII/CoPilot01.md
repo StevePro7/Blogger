@@ -236,3 +236,14 @@ Is this a reusable task request?
         ▼
 Example/reference only
 ```
+
+Decompose engineering practices into different mechanisms by which an AI coding system can consume and execute engineering knowledge
+
+
+#### DIAGNOSTICS
+Chat customization diagnostics view - old "syntax"  
+
+VS Code | Click top right "..." | Show Chat Debug View
+
+Ctrl + Shift + P  
+Developer: Show Chat Debug View
