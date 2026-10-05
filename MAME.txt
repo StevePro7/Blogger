@@ -1,4 +1,62 @@
-MAME joy pad
+MAME 
+05-Oct-2026
+
+Build from scratch
+mkdir C:\msys64
+
+https://www.msys2.org
+Download + install at
+C:\msys64
+
+Navigate
+C:\msys64
+
+Double click
+ucrt64.exe
+
+echo $MSYSTEM
+UCRT64
+
+Download + install dependencies
+pacman -Syu
+pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+
+pacman -S --needed mingw-w64-ucrt-x86_64-lua
+
+pacman -S --needed git
+
+make vs2022
+
+ERROR - as I had tried to build before using cygwin
+
+find
+find . -name lauxlib.o -o -name lbaselib.o -o -name os_stat.o
+
+delete
+D:\GitHubX\mamedev\mame\3rdparty\genie\bin
+D:\GitHubX\mamedev\mame\3rdparty\genie\build\gmake.windows
+
+
+RETRY
+make vs2022
+
+
+mame.sln
+D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022
+
+
+Launch VS 2022
+Open solution
+D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022
+mame.sln
+
+Debug | x64
+Clean solution
+Rebuild solution
+
+
+ORG
+joy pad
 30/06/2023
 
 
