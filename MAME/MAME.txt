@@ -1,6 +1,21 @@
 MAME
 06-Oct-2026
 
+
+Launch VS Installer
+VS 2022
+Modify
+Desktop development with C++
+C++ Clang Tools for Windows
+
+
+make vs2022_clang
+
+
+VS 2022
+D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022-clang
+
+
 Launch VS Code
 Open D:\GitHubX\mamedev\mame
 
@@ -41,12 +56,10 @@ make vs2022_clang
   /m /p:Configuration=Release /p:Platform=x64 `
   /clp:ErrorsOnly
 
-Launch VS Installer
-VS 2022
-Modify
-Desktop development C++
-check CLang tools
 
+
+Entry point
+D:\GitHubX\mamedev\mame\src\osd\windows\window.cpp
 
 
 05-Oct-2026
