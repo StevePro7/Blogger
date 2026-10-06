@@ -1,4 +1,54 @@
-MAME 
+MAME
+06-Oct-2026
+
+Launch VS Code
+Open D:\GitHubX\mamedev\mame
+
+& "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" `
+  "build\projects\windows\mame\vs2022\mame.sln" `
+  /m /p:Configuration=Debug /p:Platform=Win32
+
+
+VS Code
+cd D:\GitHubX\mamedev\mame
+git pull --ff-only
+make vs2022
+
+
+
+& "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" `
+  "build\projects\windows\mame\vs2022\mame.sln" `
+  /m /p:Configuration=Debug /p:Platform=Win32 `
+  /clp:ErrorsOnly `
+  /fl /flp:logfile=msbuild-debug-win32.log;verbosity=diagnostic
+
+
+C2220
+C2672
+C2440
+C2737
+C2360
+C2680
+
+
+IMPORTANT
+it may be because I need clang
+
+make vs2022_clang
+
+& "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" `
+  "build\projects\windows\mame\vs2022-clang\mame.sln" `
+  /m /p:Configuration=Release /p:Platform=x64 `
+  /clp:ErrorsOnly
+
+Launch VS Installer
+VS 2022
+Modify
+Desktop development C++
+check CLang tools
+
+
+
 05-Oct-2026
 
 Build from scratch
