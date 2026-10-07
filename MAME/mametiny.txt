@@ -1,0 +1,57 @@
+MAME Tiny
+07-Oct-2026
+
+
+This works!
+
+Launch 
+C:\msys64\ucrt64.exe
+
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SUBTARGET=tiny
+
+Launch VS2022
+Open solution
+D:\GitHubX\mamedev\mame\build\projects\windows\mametiny\vs2022-clang
+
+mametiny.sln
+
+Breakpoint
+206
+D:\GitHubX\mamedev\mame\src\osd\windows\winmain.cpp
+
+F5
+
+
+
+
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/segas16b.cpp
+
+D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022-clang
+
+
+
+cd D:\GitHubX\mamedev\mame
+.\mamed.exe -verifyroms shinobi
+.\mamed.exe -listroms shinobi
+
+
+.\mamed.exe -verifyroms shinobi6
+.\mamed.exe -verifyroms shinobi5
+.\mamed.exe -verifyroms shinobi4
+.\mamed.exe -verifyroms shinobi3
+.\mamed.exe -verifyroms shinobi2
+
+
+NOT FOUND
+
+
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/segas16a.cpp,src/mame/sega/segas16b.cpp
+
+
+NOW
+.\mamed.exe -verifyroms shinobi
+romset shinobi is good
+1 romsets found, 1 were OK.
+
+
+.\mamed.exe shinobi -window
