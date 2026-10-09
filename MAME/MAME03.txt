@@ -1,0 +1,96 @@
+MAME 03
+09-Oct-2026
+
+
+I have finally got this working - I have built the MAME source code for Shinobi using the following command with C:\msys64\ucrt64.exe
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/segas16b.cpp
+which builds
+mame.sln
+Which I build using Debug + x64
+I can verify the ROM
+.\mamed.exe -verifyroms shinobi
+and execute Shinobi game
+.\mamed.exe shinobi -window
+
+
+Now I have some other ROMs
+e.g.
+Kung Fu Master 
+kungfum.zip
+by IREM
+
+How do I replicate the above for Kung Fu Master like Shinobi?
+
+
+cd /d/GitHubX/mamedev/mame
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/irem/m62.cpp
+
+.\mamed.exe -verifyroms kungfum
+.\mamed.exe kungfum -window
+
+.\mamed.exe kungfum -debug -window
+
+
+Kung-Fu Master uses a Z80 main CPU, unlike Shinobi's 68000 main CPU
+m62.cpp
+https://github.com/mamedev/mame/blob/master/src/mame/irem/m62.cpp
+
+
+
+Moon Patrol
+mpatrol
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/irem/m52.cpp
+
+.\mamed.exe -verifyroms mpatrol
+.\mamed.exe mpatrol -window
+
+
+IMPORTANT
+this does not work because when unzipped I have 16 files and it is expecting 17
+i.e.
+there is one file missing
+mp_7621-5.7h
+
+So I would have to get this file and add and zip and try again
+
+
+
+Power Drift
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/segaybd.cpp
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/segaybd.cpp
+
+.\mamed.exe -verifyroms pdrift
+.\mamed.exe pdrift -window
+
+
+
+
+Get-ChildItem D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022-clang -Recurse -Include *.vcxproj,*.vcxproj.filters | Select-String -Pattern 'm68kmusashi|m68000'
+D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022-clang\mame.sln
+
+
+
+Select-String -Path D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022-clang\mame.sln `    -Pattern 'mame_mame|mame_cpu|m68k|musashi'
+
+
+
+make vs2022_clang REGENIE=1 NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/segaybd.cpp
+
+
+Select-String `
+  -Path D:\GitHubX\mamedev\mame\build\projects\windows\mame\vs2022-clang\mame_mame.vcxproj `
+  -Pattern 'm68000musashi.cpp'
+
+
+
+cd /d/GitHubX/mamedev/mame
+make vs2022_clang REGENIE=1 NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/segaybd.cpp
+
+
+
+RETRY
+cd /d/GitHubX/mamedev/mame
+make vs2022_clang REGENIE=1 NOWERROR=1 SYMBOLS=1 OPTIMIZE=0
+
+
+.\mamed.exe -verifyroms pdrift
