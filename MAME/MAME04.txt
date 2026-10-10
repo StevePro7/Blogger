@@ -1,0 +1,87 @@
+MAME 04
+10-Oct-2026
+
+
+Shinobi
+Open in VS Code
+create .vs code directory
+Add files
+tasks.json
+launch.json
+
+Ctrl+Shift+B
+F5
+
+
+ENTRY point
+winmain.cpp
+190
+int main(int argc, char *argv[])
+{
+}
+
+
+First popup
+manager().ui_initialize(*this);
+
+
+
+MAIN LOOP
+machine.cpp
+D:\GitHubX\mamedev\mame\src\emu\machine.cpp
+
+
+// run the CPUs until a reset or exit
+while ((!m_hard_reset_pending && !m_exit_pending) || m_saveload_schedule != saveload_schedule::NONE)
+{
+	auto profile = g_profiler.start(PROFILER_EXTRA);
+
+	// execute CPUs if not paused
+	if (!m_paused)
+		m_scheduler.timeslice();
+	// otherwise, just pump video updates and sound mapping updates through
+	else
+	{
+		m_video->frame_update();
+		sound().mapping_update();
+	}
+
+	// handle save/load
+	if (m_saveload_schedule != saveload_schedule::NONE)
+		handle_saveload();
+}
+
+
+D:\GitHubX\mamedev\mame\src\emu\video.cpp
+
+I have opened video.cpp which has frame_update() but after shinobi rom is loaded into memory where is the code that reads the rom bytes and load graphics and music and render the graphics and reverse engineers the 68000 Motorola CPU assembly code into the game assets and logic for emulation
+
+
+MAME emulates the hardware
+
+
+D:\GitHubX\mamedev\mame\src\mame\sega\segas16b.cpp
+
+10270
+GAME( 1987, shinobi6,   shinobi,  system16b,             shinobi,  segas16b_state, init_generic_5521,       ROT0,   "Sega", "Shinobi (set 6, System 16B) (unprotected)", 0 )
+
+
+
+AVAST
+Menu | Settings
+General | Exceptions
+Add Exception
+D:\GitHubX\mamedev\mame\mamed.exe
+
+
+
+LOGGING
+#define LOG_LOAD 1
+D:\GitHubX\mamedev\mame\src\emu\romload.cpp
+
+
+
+luaengine_input.cpp
+
+
+.\mamed.exe shinobi -window -autoboot_script .vscode\autoplay_stitch.lua
