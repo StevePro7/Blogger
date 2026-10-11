@@ -1,0 +1,52 @@
+11-Oct-2026
+
+https://github.com/retcon85/quickstart-sms-devkitsms
+
+https://github.com/haroldo-ok/dangerous-dave-sms
+
+https://github.com/haroldo-ok/sega-master-system-skill-for-claude/tree/main/skills/sega-master-system-devkitsms
+
+
+Q.
+can you give me a URL that has an excellent tutorial of how to apply GitHub Copilot instructions, agents, and skills to practical software application using devkitSMS
+
+
+A.
+My recommendation is to start with GitHub’s official hands-on tutorial, then apply the techniques to your devkitSMS application. The important distinction is that instructions define the rules, agents specialise the work, and skills provide reusable, task-specific workflows
+
+
+https://www.youtube.com/watch?v=-yKALFS5ewY
+
+
+Will Britton
+https://github.com/microsoft/learn-ai-native-dev/blob/main/docs/harness.md
+
+es a starter Sega Master System game project using C, devkitSMS, a Makefile, and GitHub Actions builds. That gives Copilot a real codebase and build process to work with. 
+GitHub
+
+I would use this sequence:
+
+    Instructions: Create .github/copilot-instructions.md describing the C coding conventions, devkitSMS APIs, Z80/SDCC constraints, memory limitations, and build commands.
+
+    Custom agents: Create .github/agents/ agents specialising in game logic, graphics and sprites, audio, and code review.
+
+    Skills: Create .github/skills/ workflows for adding a sprite, implementing controller input, debugging a build failure, and testing a generated ROM.
+
+    Validate: Have Copilot implement a small feature, run make, inspect compiler errors, and verify the resulting ROM in an emulator.
+
+For the official technical reference on implementing skills, use 
+GitHub Docs: Adding agent skills for GitHub Copilot 
+. 
+GitHub Docs
+
+My verdict: Watch the GitHub video first, use the devkitSMS Quickstart as your practical codebase, and use the official documentation to implement the customisations.
+
+
+
+
+
+https://github.com/retcon85/quickstart-sms-devkitsms
+
+SEARCH GitHub
+https://github.com/search?q=devkitSMS+copilot-instructions.md&type=code
+https://github.com/search?q=SMSlib+SKILL.md&type=code
