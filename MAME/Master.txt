@@ -1,0 +1,632 @@
+Master
+11-Oct-2026
+
+Master Linkuei (P.H.G.F.)
+@masterlinkueibr
+Shinobi
+https://x.com/masterlinkueibr/status/2104371012724773218
+
+
+Wonderboy
+Mega Drive will be the ultimate machine to play 80s Arcade games natively
+
+https://x.com/Indie_RetroNEWS/status/2108637258345828572
+https://www.indieretronews.com/2026/10/wonderboy-1986-arcade-classic-gets.html?spref=tw
+https://shinobiz72.itch.io/wonderboy-for-amiga-megadrive/download/eyJpZCI6NTEwODA2MCwiZXhwaXJlcyI6MTc5MTcyOTgwOH0%3D.b9wspERvhYaGfVYf4dH35FGFmBg%3D
+
+
+FireFox
+
+Chat GPT
+https://chatgpt.com/uc/6acbad8f-3cc8-83ea-b090-d09e45dc575c
+
+
+Q1.
+I am following some Indie software game developers
+e.g.
+@masterlinkueibr
+on twitter
+https://x.com/masterlinkueibr/status/2104371012724773218
+he is porting 1987 Shinobi original video game to the Sega MegaDrive / Genesis
+I have the MAME shinobi.zip ROM - I would like to know how he extracts all of the level background graphics from the ROM and how he extracts all of the game sprites from the game and how he extracts all of the game music and sound FX from the shinobi.zip ROM?
+
+
+
+A1.
+What that developer is doing with the original 1987 arcade game Shinobi is a fascinating example of reverse engineering an old arcade game. The good news is that you can extract and inspect a large part of the original graphics, sprites, and audio using tools available today. You don't necessarily need to disassemble the entire game or write your own extraction software.
+
+The important distinction is that shinobi.zip is not normally a single game file containing everything in an easily readable format. A MAME ROM set generally contains several ROM images, each holding a different part of the arcade hardware's data: program code, graphics data, sound-program code, and possibly samples or other data.
+
+For a Mega Drive/Genesis port, the developer then has to go beyond extraction: they must understand how the arcade hardware arranges its graphics, composes its backgrounds, plays its music, and runs its game logic, and reproduce those features on different hardware.
+
+Let's break down how you can investigate each part yourself.
+1. First, identify what is inside shinobi.zip
+
+MAME's documentation explains that arcade ROM sets contain separate images of the chips on the original board, rather than one unified game-data file. 
+GitHub
+
+For Shinobi, the ROMs fall into several broad categories:
+
+    Main CPU program ROMs: the 68000 game code, which controls gameplay, enemies, level progression, and graphics setup.
+
+    Graphics ROMs: encoded pixel data for backgrounds, characters, enemies, objects, and other visual elements.
+
+    Sound program ROMs: code that controls the sound hardware and responds to requests from the main game.
+
+    Audio data and samples: music-related data, sound-effect data, or sampled audio, depending on the sound device.
+
+    Other ROMs and keys: data used by particular board revisions, protection systems, or other hardware functions.
+
+The exact files depend on which Shinobi ROM set you have. MAME lists multiple versions, including unprotected System 16A and protected System 16A/System 16B sets. 
+MAME machine
++2
+
+Your first step: make a backup of shinobi.zip, then extract a copy into a working folder. Keep the original ZIP intact for MAME.
+
+
+
+2. Extracting the level backgrounds and sprites
+
+There are two different approaches, and they complement each other.
+[tuto] ripping from MAME - [ TUTORIAL LIBRARY ] - Mugen Free For All
+
+Method A — Inspect the graphics ROMs directly
+
+Use a graphics-tile editor to interpret the raw bytes as pixels. This is ideal for finding individual tiles, character animation frames, background components, and objects.
+David Haywood's Homepage |   2014  May
+
+Method B — Inspect the running game in MAME
+
+Use MAME's built-in graphics and tilemap viewer to see how the emulator decodes the graphics and assembles tiles into backgrounds. This is often the easier way to understand which tiles belong to which level.
+Method A: Use Tile Molester
+Emulação, ROM Hacking e Tradução de Jogos | Taihen's Hextinkers
+Tile Molester
+
+A general-purpose graphics editor for raw game data. It can display binary files as tiled pixel graphics and export selected graphics. Its supported formats include several console-oriented layouts, but you may need the correct custom layout or decoding rules for an arcade ROM. 
+GitHub
++1
+
+Download: 
+Tile Molester on GitHub 
+
+Here's the workflow:
+
+    Extract the ZIP and identify the graphics ROM files. Don't assume every .bin file contains graphics.
+
+    Open an individual graphics ROM in Tile Molester.
+
+    Experiment with the tile codec, bit depth, tile width, and pixel arrangement until the images become recognizable.
+
+    Find a suitable palette. Raw graphics often contain pixel indices rather than the final RGB colours.
+
+    Select the region you want and export it to an image file.
+
+A warning specific to Shinobi: a generic tile editor may show garbled or oddly arranged pixels initially. That doesn't mean the graphics are missing. Arcade hardware can store pixels in multiple bitplanes and distribute data across multiple ROM chips. You must decode the correct arrangement before the image looks right.
+Method B: Use MAME's built-in graphics viewer
+
+This is the approach I'd try first for Shinobi because MAME already knows how to emulate the original arcade hardware.
+
+The MAME development wiki documents the built-in GFX/TileMap viewer, accessed with F4 during emulation. It can display decoded graphics, palettes, and tilemaps. 
+MAMEDEV Wiki
+Step-by-step
+
+    Launch Shinobi in MAME.
+
+    Press F4 to open the graphics/tilemap viewer, if your MAME build supports this shortcut.
+
+    Use Enter to cycle between palette, graphics, and tilemap views.
+    In the graphics view, browse the available graphics sets and palette selections until you find the player, enemies, scenery, and objects.
+    Switch to the tilemap view to inspect how the game assembles the background tiles.
+
+For reference, the 
+MAME GFX/TileMap viewer guide 
+ 
+explains the controls. 
+MAMEDEV Wiki
+
+The important limitation is that a viewer is not necessarily a one-click asset exporter. You may need screenshots, a separate extraction tool, or a small script to turn the decoded data into reusable PNG files.
+3. How to extract complete level backgrounds
+
+This is the part where extracting raw tiles and extracting a complete level are very different jobs.
+
+A level background in Shinobi is not necessarily stored as one big image. Sega System 16 hardware uses tile layers and a separate sprite layer. The game builds the visible scene from many small graphical elements, with scrolling and palette selection. 
+Sega System 16A Hardware (Sega)
++1
+Shinobi - LaunchBox Games Database
+Shinobi Arcade 119 | The King of Grabs
+Shinobi Part I – VGR2016
+
+To reconstruct a level, you need to recover several things:
+
+    Tile graphics: the small images that form scenery, buildings, walls, ground, and other background elements.
+
+    Tilemap data: the arrangement of those tiles, including their positions and attributes.
+
+    Palette data: the colours assigned to the tile pixels.
+
+    Scrolling and layer information: how the game moves and combines the background layers during play.
+
+The tile graphics may be relatively straightforward to decode, but the tilemap and its attributes can be harder to identify because they are often assembled or updated by the game code.
+The practical extraction workflow
+
+    Use MAME's viewer to identify the background graphics and palettes.
+
+    Capture screenshots of each stage as a visual reference.
+
+    Examine the Shinobi driver in MAME's source code to learn how its graphics regions and tile layers are decoded.
+
+    If you want actual reusable background maps, investigate the game's tilemap memory and level data rather than simply stitching together screenshots.
+
+    Export the reconstructed background as PNGs or convert it into your own tile-and-map format.
+
+The relevant source file is 
+MAME's Sega System 16A driver 
+. It is a useful starting point for understanding how MAME models the hardware and ROM layout. 
+MAME machine
++1
+
+An easier alternative: if your immediate goal is to reproduce the look of a level in a Mega Drive game engine, start by capturing clean gameplay screenshots. You can then use those as references while extracting the original tiles. This won't give you the original scrolling tilemaps, but it is a useful first milestone.
+4. Extracting all the game sprites
+
+Sprite extraction has two levels of difficulty:
+
+    Sprite tiles: decoding the raw pixels from the ROM.
+
+    Complete animated characters and objects: identifying the correct tiles, their arrangement, palette, animation frames, and positioning.
+
+Shinobi | play online
+Shinobi, Arcade | The King of Grabs
+Shinobi Part I – VGR2016
+
+A character may be composed of multiple graphics elements rather than one self-contained image. The ROM may contain the pixels, while the game's code and sprite hardware determine which pieces appear on screen and where.
+Recommended approach
+
+    Find the sprite graphics region in the ROM definitions.
+
+    Decode the graphics using the correct pixel layout.
+
+    Use MAME to identify the relevant palettes and view the sprites in the running game.
+
+    Capture individual animation frames for the player, enemies, bosses, weapons, explosions, and other objects.
+
+    Organize the extracted frames into sprite sheets, preserving transparency and colour information.
+
+For the actual layout, the MAME driver is especially valuable. For example, its System 16 source distinguishes the tile graphics region from the sprite graphics region in some board definitions, and describes the way graphics data is loaded into those regions. 
+zxGit
++1
+
+One important detail: don't assume that every decoded tile represents a complete sprite. Many entries will be fragments, duplicated graphics, or tiles that are never displayed independently.
+
+For your Mega Drive port, you'll probably want to turn the recovered graphics into organized sprite sheets and then reconstruct the animations in your own engine. You'll also need to account for the Mega Drive's different palette and sprite limitations.
+5. Extracting the music and sound effects
+
+This part is quite different from graphics extraction.
+
+The original Shinobi System 16A hardware uses a Yamaha YM2151 FM sound chip, along with an NEC uPD7751 sound device on relevant versions. 
+Sega System 16A Hardware (Sega)
++1
+
+That means you should not expect to find all the music stored as ordinary WAV or MP3 files inside the ZIP.
+
+There are three useful approaches.
+Radio Effect Voice overs - Mission Editor - ED Forums
+
+Approach A — Record the audio from MAME
+
+This is the easiest way to obtain music and sound effects as playable audio files. Capture each track or effect while the game runs, then trim and save it in an audio editor such as Audacity.
+Jaroslav Sýkora Builds a Modern Equivalent to Yamaha's Classic YM2151 Synth, From an iCE40 FPGA - Hackster.io
+
+Approach B — Recover the original music data
+
+Investigate the sound CPU's program and the game's sound-command system. This is the more advanced route if you want to reproduce the music using a compatible FM synthesizer rather than recording it.
+06028: neogeo.c: Wrong volume of SSG versus the FM & ADPCM sound generation parts - MAME Testers
+
+Approach C — Extract sampled sound effects
+
+Where the game uses stored digital samples, identify the relevant sample ROM and encoding. Depending on the sound hardware, those samples may need decoding rather than direct playback.
+Approach A: Record the audio
+
+If you simply want the original soundtrack and sound effects as audio files, this is the best place to start.
+
+    Launch Shinobi in MAME and navigate to the desired stage.
+
+    Record the game's audio output using an appropriate system loopback or audio-capture method.
+
+    Capture each music track from a clean start where possible.
+
+    Trigger individual effects during separate recordings, if you want a sound-effects library.
+
+    Edit the resulting files in 
+    Audacity 
+    , remove unwanted silence, and export to WAV or another suitable format.
+
+This method captures the sound that the emulated hardware produces. It does not recover the original sequence data or separate every sound source automatically, so you'll need to isolate effects by recording them individually or by processing the audio.
+Approach B: Recreate the original music
+
+If you want the soundtrack to play natively in your Mega Drive port, recording the audio may not be sufficient.
+
+The original music can be driven by program instructions and register writes to the YM2151, while sample playback is handled by the board's sound hardware. The ROM definitions and sound-device mappings in the 
+MAME System 16 source 
+ 
+are useful references. 
+GitHub
++1
+
+The process is broadly:
+
+    Identify the sound CPU ROM and relevant sound data.
+
+    Determine how the main game requests a song or effect.
+
+    Trace how the sound program interprets those requests.
+
+    Recover the music sequences and instrument parameters, or log the FM register writes while a song plays.
+
+    Convert the results into a format your Mega Drive sound driver can play.
+
+This is a reverse-engineering task, not just a matter of converting a ROM to MIDI. A compatible YM2151 playback system or a suitable conversion pipeline can help, but the original data format must first be understood.
+Approach C: Extract the sampled effects
+
+The exact method depends on the ROM set and hardware revision. Some Shinobi sets have different sound hardware or sample-ROM arrangements, so identify your particular set before assuming that a particular file contains the sound effects.
+
+The MAME source is useful here because it documents the regions and sound devices for individual versions of the game. 
+zxGit
++1
+6. The most useful tools for your project
+
+Here is the toolset I'd recommend, depending on how far you want to go.
+Mame Logo PNG Vector (SVG) Free Download
+
+MAME
+
+Best for inspecting the game as it runs, viewing decoded graphics and tilemaps, and recording audio.
+
+Official MAME documentation 
+ · 
+Graphics viewer guide 
+HOW TO: "Decompress" Graphics in Sega Genesis - How-To & Reference - NHL'94 Forums
+
+Tile Molester
+
+Best for exploring raw graphics data and exporting selected tiles.
+
+Download and source code 
+Learning about Sound with Audacity – Physics Lens
+
+Audacity
+
+Best for recording, cleaning, trimming, and exporting the music and sound effects.
+
+Official website 
+Aramok's Black - Visual Studio Marketplace
+
+Visual Studio Code and Python
+
+Useful later for automating tile decoding, organizing extracted assets, and investigating ROM data.
+
+VS Code 
+ · 
+Python 
+7. How I'd approach this if I were starting today
+
+I'd tackle the project in this order:
+
+    Get MAME's graphics viewer working. Explore the tile sets and palettes, and learn which graphics belong to the player and the first level.
+
+    Extract the easy assets first. Start with individual sprites and small objects, then build sprite sheets.
+
+    Capture a full level as a reference. Record the scrolling background and its layers, then investigate the tilemap data if you want to reconstruct it accurately.
+
+    Record the music and sound effects. This gets you usable audio quickly while you investigate the more complex original music data.
+
+    Study the MAME source code. Use it to understand the exact graphics layout, ROM assignments, palettes, and sound hardware for your ROM set.
+
+One final point: extracting assets for personal study is different from distributing them in a public port. Shinobi's original graphics, music, and other game assets remain protected material, so check the relevant permissions before distributing a port or extracted assets.
+8. I can help you go a level deeper
+
+The most useful next step is to establish exactly which ROM set you have. The extraction process differs depending on whether you're using the original protected arcade set or an unprotected set.
+Let's tailor the extraction instructions
+
+1. Which operating system are you using?
+Windows 10 / 11
+Linux
+macOS
+
+2. Which ROM set do you have?
+shinobi.zip — unprotected System 16A
+shinobi1.zip — protected System 16A
+I'm not sure
+
+If you're unsure, the ZIP's filenames or MAME's game information can help identify it.
+
+3. What would you most like to extract first?
+Complete level backgrounds and scrolling maps
+All character and enemy sprites with animation frames
+Music and individual sound effects
+Everything — a complete asset-extraction workflow
+
+I can then give you a more concrete walkthrough, including which ROM files to inspect, how to configure the graphics decoder, and how to turn the results into assets suitable for a Mega Drive/Genesis project.
+
+
+
+
+Q2.
+Give me a practical Shinobi arcade ROM asset-extraction tutorial. Operating system: Windows. ROM set: shinobi. Primary goal: backgrounds. Include exact tools, steps, and commands where applicable. Do not assume unknown ROM filenames or extraction capabilities.
+
+
+A2.
+Shinobi (1987): Windows background extraction tutorial
+
+The goal here is to get from your existing shinobi.zip to two useful results:
+
+    A collection of the original background tiles and palettes.
+
+    Reconstructed level backgrounds, where possible, rather than just screenshots of the game.
+
+We'll use MAME first, then examine the ROM layout and decide whether a separate decoder is needed. This avoids guessing which ROM files contain the backgrounds.
+Step 1 — Set up a working folder
+
+Create this folder structure in Windows Explorer:
+text
+
+C:\ShinobiExtract\
+    roms\
+    reference\
+    tiles\
+    backgrounds\
+    tools\
+    source\
+
+Copy your existing shinobi.zip into:
+text
+
+C:\ShinobiExtract\roms\shinobi.zip
+
+Do not rename the files inside the ZIP or modify the original archive.
+
+Download a Windows build of 
+MAME 
+, and extract it into a folder such as:
+text
+
+C:\ShinobiExtract\tools\mame\
+
+You should have mame.exe in that folder. The commands below assume that location; adjust them if yours differs.
+
+Open Command Prompt and enter:
+bat
+
+cd /d C:\ShinobiExtract\tools\mame
+
+Step 2 — Verify the ROM set and identify its contents
+
+First, ask MAME whether it recognises the ZIP as a valid shinobi set.
+bat
+
+mame.exe -rompath C:\ShinobiExtract\roms -verifyroms shinobi
+
+MAME's verification command checks whether the ROM images required by the selected set are present and valid. 
+GitHub
++1
+
+Next, ask MAME to list the ROMs it expects:
+bat
+
+mame.exe -listroms shinobi > C:\ShinobiExtract\rom-list.txt
+
+And save the machine's complete XML description:
+bat
+
+mame.exe -listxml shinobi > C:\ShinobiExtract\machine.xml
+
+Open rom-list.txt in Notepad.
+
+These commands tell you what MAME expects, but they do not extract or decode the graphics.
+
+If verification fails, stop here and investigate the set before attempting extraction. A missing ROM, an incorrect revision, or a set that requires a parent ROM can affect the results.
+Step 3 — Extract a working copy of the ROM files
+
+This step is optional for the MAME viewer, but useful for later investigation with a graphics editor.
+
+Open PowerShell and run:
+powershell
+
+New-Item -ItemType Directory -Force C:\ShinobiExtract\roms\unpacked | Out-Null
+
+Expand-Archive `
+  -LiteralPath C:\ShinobiExtract\roms\shinobi.zip `
+  -DestinationPath C:\ShinobiExtract\roms\unpacked `
+  -Force
+
+Get-ChildItem C:\ShinobiExtract\roms\unpacked |
+  Select-Object Name, Length
+
+This extracts the ZIP and prints the actual filenames and sizes. Save that listing if you want to identify the graphics ROMs later.
+
+Do not assume that a file called tiles.bin, background.bin, or similar exists. The archive's actual filenames, together with MAME's ROM definitions, determine what each file contains.
+Step 4 — Open Shinobi's live graphics and tilemaps
+
+Start the game with:
+bat
+
+cd /d C:\ShinobiExtract\tools\mame
+mame.exe -rompath C:\ShinobiExtract\roms shinobi
+
+Play until the first level is visible.
+
+Press F4 to open MAME's GFX/TileMap viewer. This is a particularly valuable feature because it shows graphics decoded using the emulator's hardware definitions, instead of asking you to guess the pixel format. 
+MAMEDEV Wiki
++1
+Controls to try
+Enter
+Cycle through the palette, decoded graphics, and tilemap views.
+[ ]
+Change the graphics set or tilemap being inspected.
+Arrows
+Browse graphics entries or navigate around a tilemap, depending on the current view.
+P
+Pause or unpause the emulation while examining the graphics.
+Esc
+Exit the viewer.
+
+The precise controls are documented in the 
+MAME graphics viewer guide 
+.
+What to look for
+
+    In the graphics view, look for repeating patterns, buildings, walls, windows, and ground tiles.
+
+    In the palette view, find colour groups that make the graphics look correct.
+
+    In the tilemap view, look for the background layers and how their tiles are arranged.
+
+MAME's System 16A driver explicitly draws two background tilemaps, two foreground tilemaps, and two text tilemaps before mixing in the sprites. This is why one screen may contain several independent graphical layers. 
+GitHub
+
+Take screenshots of useful views with Windows Snipping Tool, and save them under C:\ShinobiExtract\reference\.
+
+One important limitation: F4 is an inspection tool, not a guaranteed PNG exporter. It lets you understand the graphics and the currently constructed maps, but you still need an extraction method to turn them into assets.
+Step 5 — Identify the exact background ROMs from MAME's source code
+
+Now we need to connect the graphics you see in the viewer to the actual files inside your ZIP.
+
+Open the official MAME source file:
+
+segas16a.cpp — Sega System 16A driver 
+
+In your browser, press Ctrl+F and search for:
+cpp
+
+ROM_START( shinobi )
+
+Inspect the ROM declarations in that section. In particular, look for these kinds of declarations:
+cpp
+
+ROM_REGION(...)
+ROM_LOAD(...)
+
+These are examples of the declaration syntax, not the actual Shinobi ROM filenames or sizes.
+
+    ROM_REGION defines a logical region of the emulated machine's memory, such as graphics data.
+
+    ROM_LOAD specifies which ROM file supplies data to that region, including its offset and size.
+
+Look for region descriptions containing terms such as tiles, sprites, or gfx. The exact names depend on the driver.
+
+If you want a local copy of the source for searching, you can download the source archive from the 
+MAME GitHub repository 
+, or browse the file directly online.
+
+Important: the labels in a region comment help you understand the data, but the actual load declarations and the graphics decoder determine how the bytes are interpreted. Don't simply concatenate every graphics file and expect a correctly assembled background.
+Step 6 — Decide which kind of background extraction you need
+
+There are two distinct outcomes to aim for.
+We Pointed an AI at Raw Binary Files From 1986. | by Marco Kotrotsos | Mar, 2026 | Medium
+
+A. A background tileset
+Best first milestone
+
+The decoded individual tiles, with their original colours. These are useful for building your own backgrounds in a game engine.
+
+The graphics viewer helps you identify them. A separate decoder or exporter may be required to save them as a complete image.
+Shinobi - LaunchBox Games Database
+
+B. A complete level map
+
+A reconstructed background extending beyond the visible screen, including tile placement, colours, scrolling, and potentially multiple layers.
+
+This requires more work: the tile graphics alone aren't sufficient. You'll need the level's tilemap data and attributes, or you'll need to capture and reconstruct the scene from gameplay.
+
+For a complete map, the next advanced step is to examine the tilemap memory used by the running game. The System 16A driver and its video-device implementation are the starting points for understanding how that memory becomes a displayed background. 
+GitHub
++1
+Step 7 — A practical fallback: capture and stitch the level
+
+If your immediate objective is to obtain a long visual reference of the first stage, you can do this without reverse-engineering the map format.
+
+    Run Shinobi in MAME and play through the level slowly.
+
+    Capture screenshots at regular intervals, with enough horizontal overlap between adjacent images.
+
+    Save the screenshots in C:\ShinobiExtract\reference\.
+
+    Use an image editor such as 
+    GIMP 
+     
+    to align and stitch them.
+
+    Remove the player, enemies, HUD, and other moving elements where practical.
+
+This creates a useful visual reference, but it isn't equivalent to the original tilemap: overlapping scenery, animated objects, parallax layers, and changes in vertical position can make a seamless reconstruction difficult.
+Your next checkpoint
+
+Before moving on to a custom graphics decoder, I would do just these three things:
+
+    Run -verifyroms and save rom-list.txt.
+
+    Open Shinobi in MAME and explore its F4 tilemap viewer.
+
+    Extract the ZIP and save the output of the PowerShell filename-and-size listing.
+
+With those results, we can identify the actual graphics regions in your version of Shinobi and choose an extraction approach based on real filenames and verified data, rather than guessing.
+
+The key distinction is that MAME can decode and display the graphics for you, but extracting the complete original level maps is a separate reverse-engineering task. That is likely the part that requires the most work for a faithful Mega Drive conversion.
+
+
+
+Q3.
+cd /d C:\ShinobiExtract\tools\mame
+Set-Location : A positional parameter cannot be found that accepts argument 'C:\ShinobiExtract\tools\mame'.
+At line:1 char:1
++ cd /d C:\ShinobiExtract\tools\mame
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Set-Location], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.SetLocationCommand cd /d C:\ShinobiExtract\tools\mame
+Set-Location : A positional parameter cannot be found that accepts argument 'C:\ShinobiExtract\tools\mame'.
+At line:1 char:1
+
+
+A3.
+You're running PowerShell, not Command Prompt. The command cd /d works in Command Prompt (cmd.exe), but not in PowerShell.
+Fix: Run this in PowerShell
+
+Copy and paste:
+powershell
+
+Set-Location "C:\ShinobiExtract\tools\mame"
+
+Or simply:
+powershell
+
+cd "C:\ShinobiExtract\tools\mame"
+
+The /d option isn't needed in PowerShell.
+Next, verify your MAME installation
+
+Run:
+powershell
+
+Get-ChildItem "C:\ShinobiExtract\tools\mame\mame.exe"
+
+If the file exists, verify your Shinobi ROM set:
+powershell
+
+.\mame.exe -rompath "C:\ShinobiExtract\roms" -verifyroms shinobi
+
+Then create the ROM inventory:
+powershell
+
+.\mame.exe -rompath "C:\ShinobiExtract\roms" -listroms shinobi |
+    Out-File "C:\ShinobiExtract\rom-list.txt"
+
+You can open the resulting file with Notepad:
+powershell
+
+notepad "C:\ShinobiExtract\rom-list.txt"
+
+If PowerShell says the directory or mame.exe doesn't exist, your MAME installation is in a different location. Run this command to check the folder:
+powershell
+
+Get-ChildItem "C:\ShinobiExtract\tools\mame"
+
+Once you've got rom-list.txt, share its contents here. I'll help identify which ROM regions contain Shinobi's background graphics so we can proceed with the actual extraction.

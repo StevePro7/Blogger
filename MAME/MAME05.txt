@@ -1,0 +1,80 @@
+MAME 05
+11-Oct-2026
+
+Master Linkuei (P.H.G.F.)
+@masterlinkueibr
+Shinobi
+https://x.com/masterlinkueibr/status/2104371012724773218
+
+
+Wonderboy
+Mega Drive will be the ultimate machine to play 80s Arcade games natively
+
+https://x.com/Indie_RetroNEWS/status/2108637258345828572
+https://www.indieretronews.com/2026/10/wonderboy-1986-arcade-classic-gets.html?spref=tw
+https://shinobiz72.itch.io/wonderboy-for-amiga-megadrive/download/eyJpZCI6NTEwODA2MCwiZXhwaXJlcyI6MTc5MTcyOTgwOH0%3D.b9wspERvhYaGfVYf4dH35FGFmBg%3D
+
+
+VS Code
+I am following Master Linkuei on twitter
+@masterlinkueibr
+He is working on original 1987 Shinobi port to Sega Genesis MegaDrive
+Here is his post on twitter
+https://x.com/masterlinkueibr/status/2104371012724773218
+
+This is the ROM that I have loaded in my roms folder shinobi.zip
+I would like to know how does he reverse engineer Shinobi ROM i.e. from MAME here like I have setup to export all the graphics and music and sound FX so that he is able to complete the port
+
+I had GitHub Copilot help me generate some Lua scripts in the .vscode folder to at least generate some level background graphics - am I doing it the "right" way - or does he have a better way that I can use to follow?
+
+
+
+
+
+.\mamed.exe shinobi -wavwrite shinobi.wav      
+
+
+
+
+Get-Process mamed -ErrorAction SilentlyContinue | % { Stop-Process -Id $_.Id }; Remove-Item shinobi_sounds\index.csv -ErrorAction SilentlyContinue; .\.vscode\render_sounds.ps1 -Ids @(1,2,3) -Seconds 6 -Boot 3; Get-Content shinobi_sounds\index.csv; Get-ChildItem shinobi_sounds\snd_0[123].* | select Name,Length,LastWriteTime
+
+
+
+Firefox
+https://chatgpt.com/uc/6acbad8f-3cc8-83ea-b090-d09e45dc575c
+
+3. What would you most like to extract first?
+Complete level backgrounds and scrolling maps
+All character and enemy sprites with animation frames
+Music and individual sound effects
+Everything — a complete asset-extraction workflow
+
+
+Google
+https://chatgpt.com/c/6acbb292-fbac-83ed-a49e-4cfdc7148f31
+
+
+
+Powershell
+cd /d C:\ShinobiExtract\tools\mame
+
+mame.exe -rompath C:\ShinobiExtract\roms -verifyroms shinobi
+
+mame.exe -listroms shinobi > C:\ShinobiExtract\rom-list.txt
+
+mame.exe -listxml shinobi > C:\ShinobiExtract\machine.xml
+
+
+New-Item -ItemType Directory -Force C:\ShinobiExtract\roms\unpacked | Out-Null
+
+Expand-Archive `
+  -LiteralPath C:\ShinobiExtract\roms\shinobi.zip `
+  -DestinationPath C:\ShinobiExtract\roms\unpacked `
+  -Force
+
+Get-ChildItem C:\ShinobiExtract\roms\unpacked |
+  Select-Object Name, Length
+
+
+cd /d C:\ShinobiExtract\tools\mame
+mame.exe -rompath C:\ShinobiExtract\roms shinobi
