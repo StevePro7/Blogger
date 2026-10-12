@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build mamed (Debug x64)",
+      "type": "shell",
+      "command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
+      "args": [
+        "${workspaceFolder}\\build\\projects\\windows\\mame\\vs2022-clang\\mame.sln",
+        "/p:Configuration=Debug",
+        "/p:Platform=x64",
+        "/m",
+        "/nologo",
+        "/v:minimal"
+      ],
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
+
+

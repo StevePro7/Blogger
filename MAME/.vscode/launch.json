@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "MAME Shinobi (debug)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}\\mamed.exe",
+      "args": ["shinobi", "-window", "-debug"],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "externalTerminal",
+      "preLaunchTask": "Build mamed (Debug x64)"
+    }
+  ]
+}
