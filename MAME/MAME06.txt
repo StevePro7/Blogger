@@ -1,0 +1,30 @@
+MAME 06
+19-Oct-2026
+
+
+Download
+wboy.zip
+
+https://www.emu-land.net/en/arcade/mame/roms/wboy
+
+
+Launch 
+C:\msys64\ucrt64.exe
+cd /d/GitHubX/mamedev/mame
+
+make vs2022_clang NOWERROR=1 SYMBOLS=1 OPTIMIZE=0 SOURCES=src/mame/sega/system1.cpp
+
+
+Launch VS2022
+Open solution
+build/projects/windows/mame/vs2022-clang/mame.sln
+
+Debug | x64
+
+Debug menu
+mame Debug Properties
+Configuration Properties
+Debugging
+Command Arguments
+wboy -window -debug
+
