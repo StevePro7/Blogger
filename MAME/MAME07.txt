@@ -1,0 +1,33 @@
+MAME 07
+26-Oct-2026
+
+Follow on from MAME 06
+
+
+When the MAME debugger launches
+in the console window at the bottom we can enter commands
+
+
+e.g.
+dasm wboy.asm,0,10000,0
+Disassembles the ROM without opcodes
+
+OR
+dasm wboy_with_opcodes.asm,0,10000,1
+dasm wboy_with_opcodes.asm,0,10000
+
+Disassembles the ROM with opcodes
+
+
+AND
+save wboy_maincpu.bin,maincpu,10000
+Dumps out the entire ROM but the opcodes are encoded
+i.e. raw program / data ROM
+
+Whereas
+saveo wboy_decrypted_opcodes.bin,0,10000
+
+exports the byte stream that corresponds to the debugger's disassembly
+Decrypted instruction/opcode view
+i.e.
+saveo	= save Opcodes
