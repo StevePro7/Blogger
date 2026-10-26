@@ -1,0 +1,193 @@
+26-Oct-2026
+
+
+01.
+People Who Can Read and Write Code Both Manually and with AI Will Be in High Demand Soon
+https://medium.com/@yurinovicow/people-who-can-read-and-write-code-both-manually-and-with-ai-will-be-in-high-demand-soon-0f64c87ebed4?sk=860f7e6f08f68976dd5fec3fe5398333
+
+someone who can comfortably switch between manual coding and AI-assisted development.
+
+Today’s senior engineer exists because someone hired yesterday’s junior.
+
+Reading code is a skill. Writing code manually is another skill. Neither stays sharp automatically.
+
+The developer who uses an “AI” assistant, but doesn't turn into an “AI”s assistant.
+
+
+
+02.
+the Creator of Linux and Git on AI Coding Hype
+https://medium.com/@yurinovicow/the-creator-of-linux-and-git-on-ai-coding-hype-89e06c1f6433?sk=cf374e296948dfc737831a3ef431ecdc
+
+AI does not eliminate the need to understand code
+"AI is changing programming, but it’s not changing the fundamentals."
+"Good developers write good code. Other developers write code that then breaks."
+Vibe coding is fine. Maintaining software is different.
+
+Developers still need to understand systems, evaluate generated code, and take responsibility for software they maintain. The ability to generate code is becoming cheaper; the ability to judge whether that code is correct and maintainable remains essential.
+
+
+
+03.
+LLMs Explained for Developers: What Actually Happens After You Send a Prompt?
+https://medium.com/ai-engineering-compass/llms-explained-for-developers-what-actually-happens-after-you-send-a-prompt-c5fb33bdf798?sk=9b944c745ac897ffd5bd7e1d1da8274f
+
+
+LLMs
+Large
+parameters as values leanred during training that influence model transforms input into output
+
+Language
+models trained to work with sequences of text
+
+Model
+learned mathematical system
+
+
+LLM
+generates response by repeated predicting what token should come next
+
+
+Step 1: Your Application Builds the Input
+Context
+model work w/ info available to it during current inference request
+plus patterns captured in its trined parameters
+
+Later RAG = developers deliberately inject external info into context
+
+
+Step 2: Text Becomes Tokens
+ionput sentence = text must be transformed into smaller units called tokens
+
+Tokenizer = engine that converts text into tokens
+
+Tokenization depends on the model
+
+
+Step 3: Token IDs Become Numerical Representations
+
+Embeddings
+model converts token IDs into numerical representations
+
+Tokens turn text into numerical representations the neural network can operate on
+
+
+Step 4: Position Information Is Added
+model needs info about where tokens appear in the sequence
+this helps the model reason about relationships baesd on order
+
+
+Step 5: The Transformer Processes the Sequence
+
+Transformer
+the architecture that lets the model analyze relationships between tokens in the context
+
+Attention
+LLM needs to reason about relationships among tokens
+attention helps the model calculate 
+
+
+A Developer-Friendly Mental Model for Attention
+context matters
+
+attention does something loosely analoguous mathematically
+
+different tokens can pay different levels of attention to other tokens
+
+
+Step 6: The Model Passes Information Through Many Layers
+Transformer-based LLM contains many processing layers
+
+
+Step 7: The Model Predicts the Next Token
+
+Temperature Doesn’t Make the Model "Smarter"
+
+Temperature
+influences how the model samples from its probability distribution
+
+Low  temp	favors highest-probability options more
+High temp	makes lower-probability alternatives more likely
+
+
+Step 8: The New Token Is Added Back to the Context
+
+Why Does Text Appear Gradually in Chat Applications?
+
+Streaming
+AI responses often appear word by word - NO -> token by token
+
+
+Wait — Where Does the Model’s Knowledge Come From?
+during training LLM processes enourmous amounts of data and learns patterns that help it predict tokens
+
+Training is not the same as inference.
+
+Training
+learn model parameters
+computationally expensive
+
+Inference
+use the trained model to generate output
+
+
+REMEMBER
+Training
+learning phase where a model studies massive amounts of data and adjusts its internal weights
+think: studying for an exam
+
+Inference [Prediction]
+active phase where the already-trained model takes new, unseen data and produces an output, answer or score
+without changing its learned weights
+think: sit the exam and answering questions
+
+
+Why Can an LLM Answer Questions About Programming?
+generated code and generated answers should not automatically be treated as verified truth
+
+
+Then Why Do LLMs Hallucinate?
+model doesn't know the private system
+yet language generation needs to continue
+
+
+An LLM Is Not Your Database
+An LLM Is Also Not a Search Engine
+
+What About "Reasoning"?
+what tasks can the model reliably perform, under what conditions, and how do we verify the result?
+
+
+Five Common LLM Misconceptions
+1. "The model searches the internet for every answer."
+2. "The model has a database of sentences it copies from."
+3. "If the response sounds confident, it probably knows."
+4. "Temperature controls intelligence."					NO
+5. "A powerful LLM removes the need for application architecture."	NO
+
+
+When Should You NOT Ask an LLM?
+rules that must always behave deterministically should remain deterministic
+
+LLMs are valuable when the problem involves ambiguity or language
+
+Important engineering skill = know where the LLM belongs in the system
+
+
+Production Considerations Start Earlier Than You Think
+- latency
+- cost
+- rate limits
+- failure
+- security
+- privacy
+- evaluation
+
+
+Key Takeaways
+1. LLMs generate responses token by token.
+2. Models don’t directly process ordinary text.
+3. Transformers help the model process relationships across context.
+4. Training and inference are different.
+5. Fluent does not mean factual.
+6. The LLM is a component, not the entire AI architecture.
