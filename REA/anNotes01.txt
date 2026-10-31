@@ -1,0 +1,116 @@
+Reverse Engineer Anything
+31-Oct-2026
+
+https://github.com/morluto/rea
+https://rea.tools
+
+Linux
+Launch terminal
+npx rea-agents@latest setup
+
+SyntaxError: The requested module 'node:zlib' does not provide an export named 'crc32'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:134:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:217:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)
+    at async file:///home/stevepro/.npm/_npx/9b9809298fe40d2c/node_modules/rea-agents/scripts/rea.mjs:132:26
+
+
+Node too old
+
+node -v
+v20.12.2
+npm -v
+10.5.0
+which node
+/usr/local/bin/node
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+nvm
+nvm not found
+ls -la ~/.nvm
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+nvm --version
+0.40.3
+
+nvm install 24
+nvm use 24
+nvm alias default 24
+
+node -v
+v24.22.2
+npm -v
+11.19.1
+which node
+/home/stevepro/.nvm/versions/node/v24.22.2/bin/node
+
+nvm --version
+
+RETRY
+nvm use 24
+Now using node v24.22.2 (npm v11.19.1)
+
+npx rea-agents@latest setup
+
+NB: if you ever want to use the old one 20.12.2
+do this
+nvm use system
+
+
+npm install --global rea-agents
+
+rea --help
+
+rea update
+status: current
+currentVersion: 6.8.0
+latestVersion: 6.8.0
+installMethod: npm
+
+
+WB
+mkdir -p ~/sms-reverse-engineering/wonderboy
+cd ~/sms-reverse-engineering/wonderboy
+
+file WonderBoy.sms
+ls -lh WonderBoy.sms
+
+sudo apt update
+sudo apt install binutils python3 xxd
+
+sudo apt install z80dasm
+z80dasm --version
+dd if=WonderBoy.sms of=bank0.bin bs=16384 count=1
+z80dasm -a -l -t -g 0x0000 bank0.bin -o bank0.asm
+
+cd /home/stevepro/sms-reverse-engineering/wonderboy-re
+
+
+VS Code
+https://chatgpt.com/c/6ae5e3bb-3e60-83eb-a80d-5316bced55c4
+
+rea doctor --client vscode
+rea setup --client vscode
+
+Open in Agents
+Tools
+REA
+VS Code Customizations
+
+Ctrl+Shift+P
+MCP: List servers
+rea running
+
+for i in {0..7}; do
+    dd if=WonderBoy.sms \
+       of=disassembly/bank${i}.bin \
+       bs=16384 skip=$i count=1 status=none
+
+    z80dasm -a -l -t \
+       -g 0x0000 \
+       disassembly/bank${i}.bin \
+       -o disassembly/bank${i}.asm
+done
