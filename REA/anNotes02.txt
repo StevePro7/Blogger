@@ -1,6 +1,11 @@
 Reverse Engineer Anything 02
 01-Nov-2026
 
+TL;DR
+got rea MCP server working on Windows laptop
+but I need to start the MCP server each time
+
+
 https://github.com/morluto/rea
 https://rea.tools
 
@@ -94,3 +99,148 @@ nvm-2.1.0-beta.7-x64-setup.exe
 
 https://github.com/nvm-windows/nvm/releases/tag/v2.1.0-beta.7
 https://github.com/nvm-windows/nvm/releases/download/v2.1.0-beta.7/nvm-2.1.0-beta.7-x64-setup.exe
+
+
+Powershell Admin
+[Environment]::SetEnvironmentVariable(
+    "NVM_SYMLINK",
+    "C:\Program Files\nodejs",
+    "Machine"
+)
+
+
+$machinePath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+
+$entries = @(
+    "%NVM_HOME%",
+    "%NVM_SYMLINK%"
+)
+
+foreach ($entry in $entries) {
+    if ($machinePath -notlike "*$entry*") {
+        $machinePath += ";$entry"
+    }
+}
+
+[Environment]::SetEnvironmentVariable("Path", $machinePath, "Machine")
+
+
+ & "C:\Users\steve\AppData\Local\Author Software\nvm\nvm.exe" version
+v2.1.0-beta.7
+
+
+
+$nvmHome = "C:\Users\steve\AppData\Local\Author Software\nvm"
+$nvmLink = "C:\Program Files\nodejs"
+
+[Environment]::SetEnvironmentVariable("NVM_HOME", $nvmHome, "Machine")
+[Environment]::SetEnvironmentVariable("NVM_SYMLINK", $nvmLink, "Machine")
+
+$machinePath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+
+$machinePath = $machinePath.Replace("%NVM_HOME%", $nvmHome)
+$machinePath = $machinePath.Replace("%NVM_SYMLINK%", $nvmLink)
+
+[Environment]::SetEnvironmentVariable("Path", $machinePath, "Machine")
+
+
+REA
+nvm install 24.22.2
+
+Get-Item "C:\Program Files\nodejs" -ErrorAction SilentlyContinue |
+    Format-List FullName,Attributes,LinkType,Target
+
+nvm use 24.22.2
+
+node -v
+npm -v
+where.exe node
+
+node -e "console.log(typeof require('node:zlib').crc32)"
+
+npx rea-agents@latest setup
+
+IMPORTANT
+npm install --global rea-agents
+
+
+NOW rea works
+
+rea --version
+6.8.0
+
+
+VS Code
+https://chatgpt.com/c/6ae5e3bb-3e60-83eb-a80d-5316bced55c4
+
+rea doctor --client vscode
+rea setup --client vscode
+
+
+
+REA not healthy in VS Code
+Start MCP server = Error
+
+& "C:\Program Files\nodejs\node.exe" "C:\Users\steve\AppData\Roaming\npm\node_modules\rea-agents\scripts\rea.mjs" mcp
+
+
+I had multiple rea MCP server entries
+
+e.g.
+$files = Get-ChildItem "$env:APPDATA\Code\agentPlugins" -Filter ".mcp.json" -Recurse -File
+Select-String -Path $files.FullName -Pattern 'rea-agents|rea\.mjs|"rea"\s*:'
+
+Global
+Select-String -Path "$env:APPDATA\Code\User\mcp.json" -Pattern 'rea'	
+
+
+Copy-Item "$env:USERPROFILE\.copilot\mcp-config.json" "$env:USERPROFILE\.copilot\mcp-config.json.bak"
+
+notepad "$env:USERPROFILE\.copilot\mcp-config.json"
+
+
+LOGS
+$logRoot = "$env:APPDATA\Code\logs"
+
+Get-ChildItem $logRoot -Recurse -File |
+    Where-Object { $_.FullName -notmatch 'authentication' } |
+    Select-String -Pattern 'multiple local MCP servers|MCP Gateway|rea.*(error|fail)|spawn.*(error|fail)' |
+    Select-Object -Last 30 |
+    Format-List Path, LineNumber, Line
+
+E.G.
+Server 'rea' failed: Cannot start an MCP server before the session
+runtime has been created. Send a message first.
+
+
+Finally
+I found out what was the issue - and there was duplicate rea MCP servers = Error
+
+Launch Ctrl+Shift+P
+Chat: Open Customizations
+
+
+I see 2x rea entries!
+1. rea migration available -
+%USERPROFILE%\AppData\Roaming\Code\User\mcp.json
+
+[disabled globally]
+
+and
+2. %USERPROFILE%\.copilot\mcp-config.json
+
+
+ChatGPT recommend keep Option 2
+.copilit
+
+
+So - I removed 1. and click Start to 2.
+
+Finally
+List MCP servers = rea Running 
+
+TEST
+Use REA to run a basic health check and tell me whether its tools are available.
+
+OUTPUT
+Yes—the REA MCP is reachable; its health check completed successfully with no missing client requirements or pending cleanup.
