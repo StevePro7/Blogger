@@ -1,0 +1,57 @@
+ShinobiPort
+04-Nov-2026
+
+GOOGLEMaster Linkuei shinobi port how did he find unused assets e.g. yellow taxi + brown ninja YY-CHR or Tile Layer Pro
+
+
+https://www.youtube.com/watch?v=83VfgyTYyAM
+
+
+In his 1:1 port of the 1987 Shinobi arcade game to the Sega Mega Drive/Genesis,Master Linkuei discovered these hidden assets by dumping and digging through the original arcade ROM code , using classic tile editing utilities like YY-CHR and Tile Layer Pro.
+
+https://www.patreon.com/MasterLinkuei/posts/sega-mega-drive-170603033?utm_campaign=patron_engagement&utm_source=post_link&post_id=170603033&utm_id=a917e128-c6c4-44bb-960f-750e70c7f7c3&utm_medium=email
+
+
+
+Here is exactly how hackers and developers like Master Linkuei locate and view these uncompressed, unused graphics:
+
+1. Digging Through Raw ROM Data (The "Garbage" Scrolling)
+
+When you open an arcade or Genesis ROM in a tile editor like YY-CHR or Tile Layer Pro, you are looking directly at the binary data translated into visual 8x8 pixel blocks.
+
+https://www.arcade-projects.com/threads/golden-axe-port-dev-log.32625/
+
+
+
+• The Process: The user scrolls vertically through the ROM. Most of the file looks like visual "noise" or garbage text (which represents executable game code or music data).
+• Spotting Assets: Eventually, the user hits a massive bank of graphic data where coherent patterns appear—such as faces, limbs, weapons, and in this case, a brown ninja and a yellow taxi .
+
+https://x.com/masterlinkueibr/status/2104313293024416149
+
+
+
+
+2. Configuring the Correct Bit Depth (BPP)
+
+If you open a SEGA System 16 or Genesis ROM in YY-CHR, the assets will initially look completely scrambled and unreadable until you tell the software how to read the bytes. To see the Shinobi assets clearly, Master Linkuei had to:
+• Set the graphic format to 4BPP (4 Bits Per Pixel) . This configuration maps 16 colors per tile, which is standard for the Sega Genesis and many late '80s arcade boards.
+
+3. Assembling the Pieces (Tile Arranging)
+
+Sprites in vintage arcade games are not stored as full, completed illustrations; they are chopped up into tiny 8x8 pixel tile matrices .
+• When Master Linkuei found the taxi and the brown ninja, they looked like a jigsaw puzzle.
+• Using the Tile Arranger tool in Tile Layer Pro or the canvas selection features in YY-CHR, he copy-pasted and re-ordered the blocks next to each other to reconstruct the full, continuous sprite sheet for the vehicle and the character
+
+https://wiki.neogeodev.org/index.php/YY-CHR
+
+
+
+4. Correcting the Palettes
+
+When extracting raw data from a ROM file, the original colors (palettes) are usually missing, causing the sprites to display in grayscale or random default neon colors. To realize that the taxi was meant to be yellow and the ninja brown , Master Linkuei either manually mapped the color palettes using the color editor, or extracted the palette data directly from the code side of the ROM
+
+
+
+Why were they there?
+
+Because Master Linkuei did a true 1:1 assembly-level port of the original arcade game logic, he combed through everything left behind by SEGA's original 1987 developers. He discovered that the yellow taxi belonged to an entirely unused test level hidden in the code. In his final port, he completely restored both the lost stage and the yellow taxi object, making them playable for the first time
