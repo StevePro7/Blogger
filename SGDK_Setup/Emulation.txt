@@ -1,0 +1,61 @@
+Emulation
+04-Nov-2026
+
+Compare Genesis Emulators
+https://chatgpt.com/c/6aeb8799-0adc-83ed-b522-77237476932c
+
+
+BlastEM
+Gens KMod
+
+
+https://marketplace.visualstudio.com/items?itemName=zerasul.genesis-code
+
+
+GUI emulator
+https://github.com/DramaDesu/gpgx_debugger
+D:\GitHubX\DramaDesu\gpgx_debugger\smd_dgx_cmake
+
+D:\GitHubX\DramaDesu\gpgx_debugger\builds\x64-debug\smd_dgx_cmake.exe
+
+
+But I needed to install Qt
+https://www.qt.io/download-qt-installer-oss?utm_source=chatgpt.com
+
+VS2022
+Open Project → Delete Cache and Reconfigure (or use the CMake cache deletion option).
+
+No - I only had installed
+C:\Qt\6.12.0\mingw_64
+
+I need
+C:\Qt\6.12.0\msvc2022_64
+
+Launch
+MaintenanceTool.exe
+C:\Qt
+
+Expand Qt | 6.12.0
+Check msvc2022_64
+
+
+IMPORTANT 
+Qt was not building because the value was hardcoded here
+
+D:\GitHubX\DramaDesu\gpgx_debugger\smd_dgx_cmake\CMakePresets.json
+
+Update
+CMAKE_PREFIX_PATH
+ "CMAKE_PREFIX_PATH": "C:/Qt/6.12.0/msvc2022_64"
+
+C:\Qt\6.12.0\msvc2022_64
+
+Save
+Re-open VS2022
+Project | clear cache as before
+
+REbuild
+Now can see this
+
+smd_dgx_qt6.exe
+D:\GitHubX\DramaDesu\gpgx_debugger\builds\x64-debug
